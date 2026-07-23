@@ -12,7 +12,7 @@
 | 2 | Launcher wiring on the canonical path (a fixed-J xperiment config; the RELAX → set-J → EVOLVE flow) |
 | 3 | Live verification: the stable rotating state on screen = the first honest ZBW δ-sweep (simulated dynamics only, per the standing no-display-only-kinematics directive, [`m5_visualization.md`](../m5_visualization.md)) |
 
-**Gating**: the RENDERING UNLOCK marker (physics through [M5.21.4](m5_21_task_details.md), user 2026-07-20) + [M5.21.9](m5_21_9_task_details.md) results + user "go". Feeds [M5.23.2](m5_23_2_task_details.md) (the J/μ twist demo arm rides this port).
+**Gating**: user "go" ([M5.21.9](m5_21_9_task_details.md) ✅; the physics-first hold cleared at the [M5.21.4](m5_21_task_details.md) close 2026-07-21; the former RENDERING UNLOCK marker retired at the 2026-07-23 Backlog reorder, row order = run sequence). First row of the sequenced Backlog. Feeds [M5.23.2](m5_23_2_task_details.md) (the J/μ twist demo arm rides this port).
 
 ## Consumes from M5.21.9 (wired 2026-07-20 at the run close)
 
