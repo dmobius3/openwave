@@ -1,6 +1,6 @@
 # M5.21.4: the 2-particle program: attraction/repulsion + the antipair capture-to-annihilation film
 
-**Status**: ✅ CLOSED COMPLETE 2026-07-21 (go ~13:15 EDT, terminal review presented 15:45, approved same day; duration 2:30, no cap). Roadmap row: [`m5_roadmap.md § DONE`](../m5_roadmap.md) (appended at the end). (Was M5.21.2 before the 2026-07-17 run-order renumber; staged at the [M5.21](m5_21_task_details.md) close, the ANTIPAIR arm added 2026-07-16 at the scorecard sync.) The LAST physics row before the RENDERING UNLOCK marker: **the unlock TRIPPED at this close**: [M5.26](m5_26_task_details.md) → [M5.25](m5_25_task_details.md) are runnable on user "go".
+**Status**: ✅ CLOSED COMPLETE 2026-07-21 (go ~13:15 EDT, terminal review presented 15:45, approved same day; duration 2:30, no cap). Roadmap row: [`m5_roadmap.md § DONE`](../m5_roadmap.md) (appended at the end). (Was M5.21.2 before the 2026-07-17 run-order renumber; staged at the [M5.21](m5_21_task_details.md) close, the ANTIPAIR arm added 2026-07-16 at the scorecard sync.) The LAST physics row before the RENDERING UNLOCK marker: **the unlock TRIPPED at this close**: [M5.23.1](m5_23_1_task_details.md) → [M5.23.2](m5_23_2_task_details.md) are runnable on user "go".
 
 ## TASK PLANNING (2026-07-21)
 
@@ -56,7 +56,7 @@
 
 **Research-body destinations**: scripts [`m5_21_4_a_pair.py`](../scripts/m5_21_4_a_pair.py) (seeds + degree + ladder + evolution driver) · `m5_21_4_c_films.py` · `m5_21_4_d_panel.py` · `m5_21_4_audit_check.py` (the audit agent's own); data `../data/m5_21_4_*.json` + npz (heavy arrays local, manifest-listed); plots `../plots/m5_21_4_*.png`; findings [`../findings/m5_21_4_note.md`](../findings/m5_21_4_note.md); checkpoint `../checkpoints/m5_21_4_progress.md`.
 
-**Post-task wiring (user 2026-07-21, recorded at go)**: after this close the sequence is (1) the author outbound carrying BOTH notes (21.5 + 21.4; drafts terminal-only), (2) the high-level doc sweep INCLUDING `MODELS.md` (first touch since the particle-hunt hold) + the M5 model briefing from the hunt results so far, (3) the RENDERING UNLOCK: M5.26 → M5.25 next; M5.22 (nuclei) stays later per the user's sequencing.
+**Post-task wiring (user 2026-07-21, recorded at go)**: after this close the sequence is (1) the author outbound carrying BOTH notes (21.5 + 21.4; drafts terminal-only), (2) the high-level doc sweep INCLUDING `MODELS.md` (first touch since the particle-hunt hold) + the M5 model briefing from the hunt results so far, (3) the RENDERING UNLOCK: M5.23.1 → M5.23.2 next; M5.22 (nuclei) stays later per the user's sequencing.
 
 ## FINDINGS (2026-07-21)
 
@@ -109,7 +109,7 @@ Approved by the user 2026-07-21 (terminal review).
 
 **Deviations from plan**: five, logged live in § DEVIATIONS LOG (charge-instrument plan amendment pre-code; the heal-eats-the-physics catch in both arms; the ladder re-labels + seed-level redesign; two audit-adoption rounds; the timestamp correction).
 
-**Action needed** (executed at this closeout): roadmap Done append + the RENDERING UNLOCK marker tripped; hunt antimatter row upgraded; canonical recipes/anti-recipes + briefing arc updated. Next per the user's stated sequence: the author outbound carrying BOTH notes (21.5 + 21.4), the high-level doc sweep including `MODELS.md` + the model briefing from the particle-hunt results, then the rendering tasks (M5.26 → M5.25).
+**Action needed** (executed at this closeout): roadmap Done append + the RENDERING UNLOCK marker tripped; hunt antimatter row upgraded; canonical recipes/anti-recipes + briefing arc updated. Next per the user's stated sequence: the author outbound carrying BOTH notes (21.5 + 21.4), the high-level doc sweep including `MODELS.md` + the model briefing from the particle-hunt results, then the rendering tasks (M5.23.1 → M5.23.2).
 
 **Findings**: The antipair capture-to-annihilation film is delivered and audited at verified-L rigor, revealing the mechanism: charges cancel through the connecting topological line (conduit annihilation), not by cores walking together. The like-charge sector shows string confinement instead of two-body repulsion (linear E(d), two box sizes) and merges into a single charge-2 ring compound, landing directly on the nuclei-as-vortex-knots doorstep ([M5.22](m5_22_task_details.md)). The seed-level antipair binding is consistent with the derived zero-free-parameter Coulomb form as an outer-window trend, with an honest unresolved near-zone excess.
 

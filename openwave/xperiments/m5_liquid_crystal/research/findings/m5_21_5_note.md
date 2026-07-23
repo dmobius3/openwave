@@ -91,7 +91,7 @@ The length unit CANCELS: g needs three measured lattice numbers and nothing else
 | t24A | mixed | 23.1 | 13.1 | 1.45 | 966 | 0.110 vs 0.0796 (box-squeezed) |
 | t48A | mixed | 16.38 | 36.1 | 0.355 | 248.6 | 0.449 vs 0.0796 |
 
-The kin-convention flag (M5.26 stub ⚠️) made quantitative: the m5_21_9 carried J (0.048 at the ω\* = 0.2 rung) is a UNIT-FROBENIUS-flow descent parametrization, not the physical angular momentum; the physical-rate S_env(twist) = 37.2 is the g-relevant number, ratio 771. The production port must pin the physical-rate convention (this task's) for any ħ/2 statement.
+The kin-convention flag (M5.23.1 stub ⚠️) made quantitative: the m5_21_9 carried J (0.048 at the ω\* = 0.2 rung) is a UNIT-FROBENIUS-flow descent parametrization, not the physical angular momentum; the physical-rate S_env(twist) = 37.2 is the g-relevant number, ratio 771. The production port must pin the physical-rate convention (this task's) for any ħ/2 statement.
 
 ## 6. Verdict (G4): the honest characterization
 
@@ -103,7 +103,7 @@ The kin-convention flag (M5.26 stub ⚠️) made quantitative: the m5_21_9 carri
 | μ | 🔶 EXISTS (nonzero, radially converged under the envelope clock, static + clock parts separated) but PREPARATION-FRAGILE: spans 4 orders across textures of the same electron; not closable to a single number at this rigor |
 | g | ❌ NO closure: first-principles bridge (no free factor) gives 0.097 on the state of record; the canonical 1.97 does not survive re-basing: it was the analytic seed's specific transverse texture × the underived K = 4/α (k_needed/k_derived = 20.5 on the state of record), AND the audit retro-flags the canonical record itself: the 0.221 grows as R^3.2 with cutoff, so the [1.97, 2.22] box-ladder "bracketing 2.0023" compared box-truncated values of a non-converged observable (cross-box rigid-μ comparisons are not meaningful) |
 
-What WOULD close it (routed, not run): (i) a preparation-robust μ observable: the texture-dependence suggests μ must be read on the DYNAMICALLY SELECTED texture (the state a long fixed-J evolution actually holds, M5.26 territory) rather than on descent endpoints; (ii) the c_lat assumption replaced by the measured dispersion; (iii) h-refinement of the census rung (resolution vs physics at the restructured core is unseparated at h = 1.5).
+What WOULD close it (routed, not run): (i) a preparation-robust μ observable: the texture-dependence suggests μ must be read on the DYNAMICALLY SELECTED texture (the state a long fixed-J evolution actually holds, M5.23.1 territory) rather than on descent endpoints; (ii) the c_lat assumption replaced by the measured dispersion; (iii) h-refinement of the census rung (resolution vs physics at the restructured core is unseparated at h = 1.5).
 
 ## 7. Not computed
 
@@ -112,7 +112,7 @@ What WOULD close it (routed, not run): (i) a preparation-robust μ observable: t
 | h-refinement of the ladder | window; the box ladder (24/32/48 at fixed h) ran instead |
 | f48/f64 free-endpoint μ reads | the pinned matched family carried G2; the free endpoints add a preparation axis already covered by the fjom-vs-census contrast |
 | the measured c_lat dispersion for the S conversion | routed to M5.21.11 (absolute scale) |
-| μ on a long-evolution endpoint | needs M5.26 (the production fixed-J port) |
+| μ on a long-evolution endpoint | needs M5.23.1 (the production fixed-J port) |
 | MODELS.md scorecard update | held until the particle-hunt program completes (user 2026-07-16) |
 
 ## 8. Adversarial audit (independent implementations; script [`m5_21_5_d_audit.py`](../scripts/m5_21_5_d_audit.py), results [`m5_21_5_audit.json`](../data/m5_21_5_audit.json))

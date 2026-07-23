@@ -1,6 +1,6 @@
 # M5.24, production-engine catch-up (audit + port the M5.x-era physics)
 
-> ✅ CLOSED COMPLETE + APPROVED 2026-07-19 (go 15:50, closed ~21:05 EDT; three rounds + close-out). Roadmap row: [`m5_roadmap.md § DONE`](../m5_roadmap.md). The remaining round-4 scope (the fixed-J port) was RE-HOMED at close to [M5.26](m5_26_task_details.md) (gated on [M5.21.9](m5_21_9_task_details.md), which gates on the author's fork answer). Checkpoint: [`../checkpoints/m5_24_progress.md`](../checkpoints/m5_24_progress.md).
+> ✅ CLOSED COMPLETE + APPROVED 2026-07-19 (go 15:50, closed ~21:05 EDT; three rounds + close-out). Roadmap row: [`m5_roadmap.md § DONE`](../m5_roadmap.md). The remaining round-4 scope (the fixed-J port) was RE-HOMED at close to [M5.23.1](m5_23_1_task_details.md) (gated on [M5.21.9](m5_21_9_task_details.md), which gates on the author's fork answer). Checkpoint: [`../checkpoints/m5_24_progress.md`](../checkpoints/m5_24_progress.md).
 
 ## TASK PLANNING
 
@@ -28,7 +28,7 @@
 | Hot files: `_launcher.py` / `medium.py` / `engine4_render.py` were edited today (M5.23 + user edits) | re-grep current state before every edit |
 | Hidden dependents: launcher demo features (WM modes, flux mesh, VIZ suite) may depend on OLD kernel behavior | per port: back-compat or an explicit behavioral-change flag at review |
 
-**Research body**: audit inventory + gap table + findings live in THIS doc; scripts `../scripts/m5_24_*.py`; plots `../plots/m5_24_*.png`; checkpoint `../checkpoints/m5_24_progress.md`. Feeds [M5.25](m5_25_task_details.md) (gated on the certified 4D production physics this task delivers).
+**Research body**: audit inventory + gap table + findings live in THIS doc; scripts `../scripts/m5_24_*.py`; plots `../plots/m5_24_*.png`; checkpoint `../checkpoints/m5_24_progress.md`. Feeds [M5.23.2](m5_23_2_task_details.md) (gated on the certified 4D production physics this task delivers).
 
 **Stages**: A inventory sweep → B gap table → C port batch 1 → D smoke + regression. Preconditions: taichi via the conda env `openwave312`; canonical registry fresh-read at EXECUTE.
 
@@ -48,7 +48,7 @@ Every physics kernel in the production stack, dispositioned. The launcher's live
 | Seeds (`engine1_seeds`): vacuum, uniaxial hedgehog, biaxial hedgehog, charged ring, dressed hedgehog | all embed the time axis as `+g` at `[0,0]` (block-diag), boost-decoupled except the dressed seed | ring seed is post-census (ported 2026-07-17); the `+g` embed is era-consistent with the plain-commutator paths but is NOT the verified vacuum (`M_vac = diag(−g, 1, δ, 0)`; `diag(+g,…)` has `V ≈ 1.05e6·w` at g = 8, canonical § 1) |
 | `update_trackers_M`, `compute_energyH_density_M`, `compute_energyF_density`, `compute_director_em*` (`engine3_observables`) | ‖M−D_vac‖_F amplitude + ‖Ṁ‖_F clock; the Eq.18 plain ℋ + LdG V + v0-subtraction display hack; Frank density; director div/curl EM views | energyH is pre-verified-L; the trackers/EM/Frank views are director-derived viz (era-agnostic) |
 | `compute_winding_number` (`engine3_observables`) | naive sphere integral on the director | the canonical instrument adds guards (multi-radius, decline on λ₁ ≈ λ₂); dashboard-only today |
-| `fill_dipole_sample_B` (`engine3_observables`) | analytic dipole placeholder | already tracked as [M5.6.5f](m5_6_5f_task_details.md) stage 2 |
+| `fill_dipole_sample_B` (`engine3_observables`) | analytic dipole placeholder | already tracked as [M5.23.5](m5_23_5_task_details.md) stage 2 |
 
 ## STAGE B: the gap table (routed)
 
@@ -145,7 +145,7 @@ Round-3 backlog: G8 statics-relaxer catch-up (FIRE frozen-time-row + the stencil
 
 ## ROUND 3 FINDINGS (2026-07-19, go 20:02)
 
-Trigger: the user's round-2 live verdict (the animation works at 64 substeps; the sloshing/shape-melt diagnosis was accepted as known physics) → "go round 3": the relaxer + sponge arc, with the M5.21.9 → M5.25 staging left untouched.
+Trigger: the user's round-2 live verdict (the animation works at 64 substeps; the sloshing/shape-melt diagnosis was accepted as known physics) → "go round 3": the relaxer + sponge arc, with the M5.21.9 → M5.23.2 staging left untouched.
 
 ### What landed
 
@@ -173,7 +173,7 @@ Trigger: the user's round-2 live verdict (the animation works at 64 substeps; th
 | Press `RELAX (FIRE canonical)` a few times | drains the seed's transient (the round-2 sloshing) toward a near-stationary state, watching the force RMS fall in the console; topology holds |
 | Press `>> EVOLVE PDE >>` | dynamics from the relaxed state: the residual motion is genuine physics (breathing mode), not seed shock; the sponge (γ 0.5) absorbs outgoing radiation instead of reflecting it back (the t ≈ 12 caveat) |
 
-The clean spinning-electron animation (the δ-axis sweep) remains gated on the fixed-J physics as staged: [M5.21.9](m5_21_9_task_details.md) → [M5.25](m5_25_task_details.md) (untouched this round, per the user's directive).
+The clean spinning-electron animation (the δ-axis sweep) remains gated on the fixed-J physics as staged: [M5.21.9](m5_21_9_task_details.md) → [M5.23.2](m5_23_2_task_details.md) (untouched this round, per the user's directive).
 
 Round-4+ backlog: the sponge energy ledger (if live runs ever need the dissipated-energy bookkeeping), the launcher unit-map follow-through on other paths, and any census-grade relax targets (deep relaxes stay research-side; the launcher FIRE is demo-grade conditioning, chunked + interruptible).
 
@@ -188,7 +188,7 @@ Round-4+ backlog: the sponge energy ledger (if live runs ever need the dissipate
 
 **Deviations from plan**: the round-1 conservation gate consumed its 3-try goal-loop cap and was surfaced rather than tuned (resolved at round 2 with the mechanism measured); the dt cap moved 0.02 → 0.005 on measurement; otherwise per plan.
 
-**Action needed**: the user runs git (message proposed at close). Next in the chain: [M5.21.9](m5_21_9_task_details.md) (author-gated) → [M5.26](m5_26_task_details.md) (the fixed-J port) → [M5.25](m5_25_task_details.md).
+**Action needed**: the user runs git (message proposed at close). Next in the chain: [M5.21.9](m5_21_9_task_details.md) (author-gated) → [M5.23.1](m5_23_1_task_details.md) (the fixed-J port) → [M5.23.2](m5_23_2_task_details.md).
 
 **Standing directive recorded (user, 2026-07-19, at the round-3 review)**: NO display-only kinematics in the launcher: rendered motion must always come from simulated dynamics ("we need simulation fidelity; animation is easy; we need to be running on top of real physics always"). Codified in [`m5_visualization.md § Other visualization conventions`](../m5_visualization.md).
 
@@ -196,7 +196,7 @@ Round-4+ backlog: the sponge energy ledger (if live runs ever need the dissipate
 
 **Findings**: The launcher's production physics has been brought from three pre-verified-L era stacks to the canonical formulation of record, end to end: audit → routed gap table → the η + V4 canonical integrator → viz/unit levers → FIRE relax + sponge, all machine-gated against the audited research reference (ALL 14 GREEN) with three measured by-products (the dimension-split certified dt, the f32 cooling floor, the production reproduction of the indefinite-channel physics). The live demo now faithfully shows the true physics of the verified L, including its measured instabilities; the stable-ZBW animation is correctly blocked on the fixed-J physics (M5.21.9), not on rendering.
 
-**Research docs created / updated**: this doc (audit + gap table + three rounds + reviews) · [`../scripts/m5_24_canonical_engine_selftest.py`](../scripts/m5_24_canonical_engine_selftest.py) (14 gates) · production `engine2_pde.py` / `engine3_observables.py` / `medium.py` / `_launcher.py` / `xparameters/_topo_canonical4d.py` · [`../m5_theory_canonical.md`](../m5_theory_canonical.md) (§ 5.2 + § 5.3 annotations) · [`../../__M5_model_briefing.md`](../../__M5_model_briefing.md) (implementation-status row) · [`../m5_visualization.md`](../m5_visualization.md) (the no-display-only-kinematics convention) · [`m5_26_task_details.md`](m5_26_task_details.md) (the re-homed round 4) · [`../m5_roadmap.md`](../m5_roadmap.md)
+**Research docs created / updated**: this doc (audit + gap table + three rounds + reviews) · [`../scripts/m5_24_canonical_engine_selftest.py`](../scripts/m5_24_canonical_engine_selftest.py) (14 gates) · production `engine2_pde.py` / `engine3_observables.py` / `medium.py` / `_launcher.py` / `xparameters/_topo_canonical4d.py` · [`../m5_theory_canonical.md`](../m5_theory_canonical.md) (§ 5.2 + § 5.3 annotations) · [`../../__M5_model_briefing.md`](../../__M5_model_briefing.md) (implementation-status row) · [`../m5_visualization.md`](../m5_visualization.md) (the no-display-only-kinematics convention) · [`m5_23_1_task_details.md`](m5_23_1_task_details.md) (the re-homed round 4) · [`../m5_roadmap.md`](../m5_roadmap.md)
 
 ## TASK REVIEW (2026-07-19, round 1)
 

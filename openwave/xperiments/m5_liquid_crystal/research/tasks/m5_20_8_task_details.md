@@ -1,6 +1,6 @@
-# M5.21.7: neutrino-oscillation parameters on the validated instrument
+# M5.20.8: neutrino-oscillation parameters on the validated instrument
 
-**Status**: 🚧 PLANNED STUB (2026-07-18, from the author's autonomy goal list, goal (b); [`m5_21_convo.md § 2026-07-18 morning`](m5_21_convo.md)). His framing: after the electron, the model "should be able to get neutrino oscillations parameters right - rather worth article". Full PLAN at go.
+**Status**: 🚧 PLANNED STUB (2026-07-18, from the author's autonomy goal list, goal (b); [`m5_21_convo.md § 2026-07-18 morning`](m5_21_convo.md)). Renumbered M5.21.7 → M5.20.8 (2026-07-23: a neutrino task belongs to the M5.20 neutrino-hunt series, not the M5.21 electron series). His framing: after the electron, the model "should be able to get neutrino oscillations parameters right - rather worth article". Full PLAN at go.
 
 ## Scope (stub level)
 

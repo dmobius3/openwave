@@ -1,6 +1,6 @@
-# M5.13: Dynamic on-screen demo suite (charge/ZBW/spin/2-charge/gravity/EM)
+# M5.23.3: Dynamic on-screen demo suite (charge/ZBW/spin/2-charge/gravity/EM)
 
-> Task **M5.13** (M5 / Liquid-Crystal model). Status: **Backlog** · Gated by: headless gates (demo-tier, non-gating) · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
+> Task **M5.23.3** (M5 / Liquid-Crystal model; renumbered from M5.13 on 2026-07-23, the rendering-series consolidation). Status: **Backlog** · Gated by: headless gates (demo-tier, non-gating) · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
 
 This doc is the task's full record: planning + findings + future planning + documentation.
 
@@ -8,7 +8,7 @@ This doc is the task's full record: planning + findings + future planning + docu
 
 ## Current detail (from the roadmap, 2026-07-02 migration)
 
-The breathing time-crystal on screen — which would now SELF-START at kick = 0 per 2g. Demo value only; no UI troubleshooting on any critical path
+The breathing time-crystal on screen: which would now SELF-START at kick = 0 per 2g. Demo value only; no UI troubleshooting on any critical path
 
 ---
 
@@ -20,18 +20,18 @@ The breathing time-crystal on screen — which would now SELF-START at kick = 0 
 
 ## Goal
 
-A suite of **on-screen / rendered M5 dynamic demos** — charge stable at evolve PDE, the ZBW lock + breathing time-crystal, spin/magnetism, two-charge dynamics, gravity, EM waves. Communication / demo value, built on the existing rendering stack. **Policy (NG-6, headless-first):** rendering gates nothing scientific (the physics is validated headless); these are for *seeing* and explaining the validated results, not for validating them.
+A suite of **on-screen / rendered M5 dynamic demos**: charge stable at evolve PDE, the ZBW lock + breathing time-crystal, spin/magnetism, two-charge dynamics, gravity, EM waves. Communication / demo value, built on the existing rendering stack. **Policy (NG-6, headless-first):** rendering gates nothing scientific (the physics is validated headless); these are for *seeing* and explaining the validated results, not for validating them.
 
-## The rendering map — the time axis vs its shadows
+## The rendering map: the time axis vs its shadows
 
 M5.8 is a 4D tensor field (time = the 4th axis, via boosts). You cannot render the time *axis* as static geometry; you render its time-**evolution** (animation) or its 3D **shadows** (imprints). This sets what each demo is:
 
 | Phenomenon | What it is in M5 | Visualization |
 | --- | --- | --- |
-| **Electric / charge** | `E = ∇·n̂` (director splay), the radial hedgehog diverging at the core like Coulomb charge | **pure static 3D geometry** — no time-projection (already done: `WAVE_MENU` 6 + E glyph) |
+| **Electric / charge** | `E = ∇·n̂` (director splay), the radial hedgehog diverging at the core like Coulomb charge | **pure static 3D geometry**: no time-projection (already done: `WAVE_MENU` 6 + E glyph) |
 | **Magnetic / spin** | `B = ∇×n̂` (curl), zero for a static hedgehog, appears from the clock's circulation | a **shadow of the time axis**, but the spatial curl is 3D-renderable |
 | **Gravity** | boost-tilt of the 4×4 time axis (GEM ∝ (b·g)²) | a **shadow of the time axis** |
-| **The clock / ZBW / breathing** | the time-evolution of the defect's oscillation | **animate it** — the most direct view of the time-dynamics |
+| **The clock / ZBW / breathing** | the time-evolution of the defect's oscillation | **animate it**: the most direct view of the time-dynamics |
 
 Electric/charge is the one field that is pure static 3D space geometry (the easiest, already built). Magnetism and gravity are 3D shadows of the time-axis coupling. The clock is best animated. Full plan: review [`m5_4b_rendering_features.md`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/4b_rendering_features.md) (its new "the time axis is not renderable, only its shadows" section + Parts 3-5).
 
@@ -39,7 +39,7 @@ Electric/charge is the one field that is pure static 3D space geometry (the easi
 
 | Demo | Home / status | Notes |
 | --- | --- | --- |
-| Charge stable @ evolvePDE / E-field | `4b` WAVE_MENU 6 + E glyph — ✅ mostly built | the static-3D charge geometry |
+| Charge stable @ evolvePDE / E-field | `4b` WAVE_MENU 6 + E glyph: ✅ mostly built | the static-3D charge geometry |
 | **Clock + breathing time-crystal + ZBW + particle stability** (the headline GUI demo) | **NG-6** | the breathing time-crystal on screen, self-starts at kick = 0 (per M5.8.2g spontaneity) |
 | Magnetic dipole / spin | **NG-8** | real circulating `B = ∇×n̂` from the live clock (physics half in EID-C); delete the VIZ.4 placeholder scaffolding |
 | 2 charges, attraction / repulsion | **NG-9** | two-defect demo; needs the multi-center seeder + the charge-class (`π₁ = Q₈`) handling |
@@ -49,7 +49,7 @@ Electric/charge is the one field that is pure static 3D space geometry (the easi
 
 ## Review (the rendering plan)
 
-Review [`openwave/xperiments/m5_liquid_crystal/research/4b_rendering_features.md`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/4b_rendering_features.md) — the full feature catalog, the observable→channel map, the glyph/flux-mesh assignments, the gauge-stable charge fix, the magnetic-dipole sample, the gravitational-field (future) section, and the M5.8 4×4 safety contract. The new "time axis vs its shadows" subsection (Part 3) frames which demos are static-3D / animation / shadow.
+Review [`openwave/xperiments/m5_liquid_crystal/research/4b_rendering_features.md`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/4b_rendering_features.md): the full feature catalog, the observable→channel map, the glyph/flux-mesh assignments, the gauge-stable charge fix, the magnetic-dipole sample, the gravitational-field (future) section, and the M5.8 4×4 safety contract. The new "time axis vs its shadows" subsection (Part 3) frames which demos are static-3D / animation / shadow.
 
 ## Definition of done
 
