@@ -1787,6 +1787,17 @@ So the "where do waves live" tension is **unique to the topological models**. M1
 The question isn't "are waves still here" — it's **which layer** they live on now that they're no
 longer the substrate.
 
+### Scope addendum (2026-07-23): the layer below the substrate
+
+The ledger below says "the substrate does not wave; the wave is downstream." That statement is
+scoped to **M5's own substrate**: the field `M` does not wave. The 2026-07-23 planning voicenotes
+(the M5.27 pilot) propose a layer BELOW that substrate: Planck-scale granule oscillations composing
+fundamental waves, with `M` as their coarse-grained order parameter. So within M5 the ledger stands
+unchanged, and the deeper-layer claim lives one level down as an **open hypothesis** (the same
+honesty grade as L1 Q9's granule-covariance reading). The M5.27 background scalar χ is the first
+in-model representative of that layer; the full frame is documented at
+[`m5_27_task_details.md § 2b`](research/tasks/m5_27_task_details.md).
+
 ### THE EMERGENCE LEDGER — what comes from where (none of it a base wave)
 
 The reconciliation: the M5 universe is an **emergence ledger**. A static substrate is *given*;
