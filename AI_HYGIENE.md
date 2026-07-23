@@ -37,6 +37,7 @@ And its enforcement mechanism, a **CARDINAL RULE for anyone (human or agent) wor
 | Publish only **human-owned, script-backed** claims; disclose AI assistance where venues ask | Post model-generated physics text to research venues, preprint servers, or mailing lists as if human-authored ([why](#publication-slop-detail)) |
 | Write outbound scientific communication in your **own voice**; use AI for checking and organizing | Send collaborators raw model output as your reply |
 | Record AI-assisted findings with their verification status attached ("re-derived by hand", "confirmed by script X") | Let unverified model text age into the record until it reads like an established result |
+| Keep public comparisons **per-criterion and artifact-linked** (the [`MODELS.md`](MODELS.md) pattern: one criterion, one status, one runnable link per cell) | Publish aggregate self-ranking ("further along than any other program"), cross-program scoreboards settled by prose, or headlines whose conditions live in an appendix ([why](#publication-slop-detail)) |
 | Run the **adversarial audit** (cardinal rule, § 1) on every substantive claim before trusting or sending it: independent refuter agent, own script, verdict per claim, outcome recorded in the deliverable | Ship a derivation or verification on the strength of the agent that produced it, however green its own checks look |
 
 ## 3. Division of labor
@@ -80,7 +81,7 @@ These repo standards exist precisely to make AI-assisted research auditable. Use
 | **The adversarial audit (CARDINAL, § 1)**: independent second agent tries to refute every substantive claim before it is trusted or sent; outcome recorded in the deliverable | [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) checklist (REQUIRED row) + the [`m5_18_verification_note.md § 10`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_18_verification_note.md) pattern | catches plausible-but-wrong witnesses, overclaims, and missed structure that the producing agent's own green checks cannot see (first real catch: M5.18) |
 | Method notes: equations first, hyperlinked equation-to-code map (blob/main for frozen task files; commit-pin for live files), small auditable physics module, explicit not-computed list | [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) | makes every reported result legible and checkable by a human in minutes, without trusting the pipeline that produced it |
 | Script-backed claims with honest status icons (✅ ⚠️ ❌ 🔶 🚧); negatives are results | [`MODELS.md`](MODELS.md) | no cell in the coverage matrix rests on prose; every claim links to something runnable |
-| One-script reproduction | per-model `research/scripts/` | a single command re-earns the headline numbers on any machine |
+| One-script reproduction | per-model `research/scripts/` + [`REPRODUCE.md`](REPRODUCE.md) (the clean-clone front door) | a single command re-earns the headline numbers on any machine |
 | Question trackers with stable IDs, provenance, and resolution history | per-model `research/*question_tracker.md` | separates measured facts, author-gated asks, and self-determinable questions; records who resolved what, how, and when |
 | Staged previews before benchmark entry | per-model research folders → [`MODELS.md`](MODELS.md) governance | results marinate in a preview until mature; nothing lands in the shared benchmark on model output alone |
 | Independent re-derivation on receipt | working practice | externally received derivations (however produced) get re-derived by hand or by an independent method before anything downstream depends on them |
@@ -137,6 +138,8 @@ These repo standards exist precisely to make AI-assisted research auditable. Use
 **Symptom (in your own work).** A paragraph you cannot defend line by line without the assistant; a derivation in your name you never re-derived; a claim whose only provenance is "the model was confident".
 
 **Countermeasure.** OpenWave's bar for anything public, in rising order of strictness: internal docs may be AI-drafted freely (they are verified by use and by review); repository claims must be script-backed with honest icons; benchmark entries go through staged preview plus governance; anything aimed at the research community (papers, preprints, mailing lists, collaborator reports) must be **human-owned prose over verified results**, with AI assistance disclosed where the venue expects it, and formatted for auditability per [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md). The test is simple: if the assistant vanished tomorrow, you could still defend every published sentence, because you verified each one while writing it.
+
+A special case is **positioning slop**: aggregate self-ranking against other research programs ("closer to a complete theory than anything else produced") is prose that no single artifact can back, and it reads as marketing even when the underlying work is sound. The house pattern is the [`MODELS.md`](MODELS.md) one: comparisons stay per-criterion, artifact-linked, and carry their conditions inline, or they stay unpublished. The platform's voice is the referee's, never a contestant's.
 
 ---
 
