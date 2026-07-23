@@ -6,9 +6,11 @@ OpenWave's mission is to build a platform where multiple candidate field-theoret
 
 This makes the platform an **open arena** for rigorous, side-by-side numerical verification of candidate models, including unconventional ones the mainstream overlooks, all judged on the same falsifiable criteria. Anyone with a model is invited to put it to the test.
 
+This is the structural difference from a single-model theory-of-everything program: a lone framework carries a built-in incentive to sell itself, while an arena referees. OpenWave has no house model and no stake in which column wins; the platform's claims are the per-criterion cells below and the scripts behind them, nothing more, and a column full of honest negatives is a working column.
+
 Features that survive across frameworks are likely load-bearing physics; features that only work in one framework, or only with hand-tuning, reveal themselves as such. A null result in one model is ambiguous (model wrong, or engine wrong?); a positive result in any model certifies the engine for all of them.
 
-Anybody can contribute to building these numerical validations. Every cell in the table below is backed by a runnable script or a research document in this repository, and every claim is reproducible, refutable, and extendable under [Apache 2.0](LICENSE).
+Anybody can contribute to building these numerical validations. Every cell in the table below is backed by a runnable script or a research document in this repository, and every claim is reproducible, refutable, and extendable under [Apache 2.0](LICENSE). The clean-clone path from any cell to the command that regenerates it is documented in [REPRODUCE.md](REPRODUCE.md).
 
 ## Main use case: emergent science feeding new technology
 

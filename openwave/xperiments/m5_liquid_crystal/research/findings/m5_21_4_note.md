@@ -165,7 +165,7 @@ The near-raw-seed run `cap0` (the full sequence from ±1, under the blend-transi
 | The same-charge sector's per-core charge decomposition at seed | measured-ill-defined through the tube channel (§ 3); reported post-heal as found |
 | Converged pair minima | equal-depth heals only (the 21.2/21.3 contained-not-converged honesty label); the interaction reads are seed-level |
 | h-refinement of the string tension | the seed's winding-2 line is lattice-regularized, so the 7.0/6.2 tension carries an unquantified cutoff dependence (audit: 16% with r_t alone); a refinement ladder is a natural follow-up if the tension is ever quoted beyond form level |
-| The residual line's fate beyond t = 100 | whether the post-annihilation axial line flux decays, persists, or reorganizes needs a longer window (rides any M5.26-era long-evolution run) |
+| The residual line's fate beyond t = 100 | whether the post-annihilation axial line flux decays, persists, or reorganizes needs a longer window (rides any M5.23.1-era long-evolution run) |
 | A drain-side positive control | the discriminator's drain branch is exercised only by the M5.21.6 B-precedent, not reproduced in-task |
 
 ## 8. Adversarial audit

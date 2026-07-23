@@ -26,7 +26,7 @@
 
 ## Why a new task ID (and not reopening M5.12)
 
-M5.12 closed on a measured, audited endpoint whose reopening conditions anticipated exactly this: an author redirect that plausibly relaxes below the floor. Duda's reply redirects the CONSTRUCTION (the ansatz was under-regularized), not the old search, so the successor gets a fresh Duda-facing surface (`m5_19_*`) and the `m5_12_*` corpus stays frozen as the evidence his reply is responding to (the M5.11 → M5.12 precedent). The M5.13-M5.15 IDs were already taken by backlog tasks; M5.19 is the next free ID.
+M5.12 closed on a measured, audited endpoint whose reopening conditions anticipated exactly this: an author redirect that plausibly relaxes below the floor. Duda's reply redirects the CONSTRUCTION (the ansatz was under-regularized), not the old search, so the successor gets a fresh Duda-facing surface (`m5_19_*`) and the `m5_12_*` corpus stays frozen as the evidence his reply is responding to (the M5.11 → M5.12 precedent). The M5.23.3-M5.28 IDs were already taken by backlog tasks; M5.19 is the next free ID.
 
 ## The spec (the author's construction, verbatim source in the convo record)
 

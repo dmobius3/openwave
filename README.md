@@ -100,6 +100,8 @@ OpenWave is built to be disconfirmed. Every model is held to concrete, public pa
 
 ### Platform vs. Model — what survives if a model fails
 
+OpenWave is **not a theory of everything, and it does not advocate one**. A single-model TOE program argues for its framework; OpenWave is the arena where candidate frameworks are tested side by side against the same pass/fail criteria. The platform has no house model and no stake in which one wins: its voice is the referee's, never a contestant's, and its only claims are the per-criterion cells in [MODELS.md](MODELS.md) with the scripts behind them, honest negatives included.
+
 OpenWave is the **simulator and comparison engine**; the candidate frameworks contributed by Yee, Duda, Close, Werbos, and others are **models** running inside that simulator. The platform value comes from hosting multiple frameworks side-by-side on the same numerical engine, running them against shared observables, and providing cause-effect experimentation under perturbation. Those capabilities survive any individual model being wrong: if a candidate framework fails its pass criteria, the platform's value as a comparison engine is intact and another candidate can be tested. The simulator IS the product, not any particular physics it embeds. The model-by-model validation status lives in [MODELS.md](MODELS.md), the side-by-side comparison table with per-criteria status and the script behind every cell.
 
 ### Historical Pioneers
@@ -162,7 +164,7 @@ Both workflows operate on the same underlying field equations. Validation answer
 
 ### TL;DR: If you only read one thing first, read this section: [TUTORIAL: START HERE](TUTORIAL.md#0-start-here-drive-openwave-with-an-ai-agent)
 
-For development installation refer to [Contribution Guide](CONTRIBUTING.md)
+For development installation refer to [Contribution Guide](CONTRIBUTING.md). To reproduce any published claim from a clean clone, follow [REPRODUCE.md](REPRODUCE.md).
 
 ```bash
 # Make sure you have Python >=3.12 installed

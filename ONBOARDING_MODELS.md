@@ -7,7 +7,7 @@ This guide is for two readers:
 | **A model author** | Self-screen whether your framework fits the platform, then scaffold it as a new column with rigor. |
 | **An OpenWave maintainer** | Run a consistent first-pass evaluation when a new model is proposed, so every column is admitted on the same terms. |
 
-It complements two existing docs and does not replace them: [`MODELS.md`](MODELS.md) defines the comparison table and the shared criteria, and [`CONTRIBUTING.md`](CONTRIBUTING.md) is the canonical setup + pull-request + DCO reference. This doc adds the part those two leave open: **how to tell whether a model belongs here, and how to test it honestly before it becomes a column.**
+It complements three existing docs and does not replace them: [`MODELS.md`](MODELS.md) defines the comparison table and the shared criteria, [`CONTRIBUTING.md`](CONTRIBUTING.md) is the canonical setup + pull-request + DCO reference, and [`REPRODUCE.md`](REPRODUCE.md) is the clean-clone path from any published claim to the command that regenerates it (the reproducibility bar your model's results will be held to). This doc adds the part those two leave open: **how to tell whether a model belongs here, and how to test it honestly before it becomes a column.**
 
 The platform bar, restated: **reproducibility, not orthodoxy.** Unconventional frameworks are explicitly in scope. A documented negative (a runnable script showing "this does not work, and here is why") is as valuable as a positive. What is *not* in scope is an unfalsifiable claim, or a numerical agreement that cannot be independently reproduced from stated inputs.
 

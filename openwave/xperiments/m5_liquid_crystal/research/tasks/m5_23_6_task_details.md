@@ -1,6 +1,6 @@
-# M5.8.7: Gravity / time-dilation viz + electron gravitational mass
+# M5.23.6: Gravity / time-dilation viz + electron gravitational mass
 
-> Task **M5.8.7** (M5 / Liquid-Crystal model). Status: **Backlog** · Gated by: M5.8 4D g-axis live · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
+> Task **M5.23.6** (M5 / Liquid-Crystal model; renumbered from M5.8.7 on 2026-07-23, the rendering-series consolidation). Status: **Backlog** · Gated by: M5.8 4D g-axis live · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
 
 This doc is the task's full record: planning + findings + future planning + documentation.
 
@@ -8,7 +8,7 @@ This doc is the task's full record: planning + findings + future planning + docu
 
 ## Current detail (from the roadmap, 2026-07-02 migration)
 
-- [ ] **M5.8.7 — Gravity / time-dilation viz suite (REVISIT when the 4D `g`-axis is live; breadth, NOT headline-gating)** — once the time axis exists, build the renders specced in [`4b §4.7`](m5_4b_rendering_features.md): **(a)** `g(x)` scalar flux-mesh = the **gravity well** (sequential single-sign palette, deep = clock-slow); **(b)** `∇g` **PURPLE** vector glyph = the **gravitational pull** (monopole `1/r²`); **(c)** per-voxel **clock-rate `ω`** colormap / animation-speed = **time dilation** (the wristwatch-per-voxel). The "gravity = a *bend in time*" intuition reads as the *pattern* of clock-rates across voxels (same "read the arrangement, not one glyph" lesson as bend in the director glyphs). Physics-intuition home = `0c` Lesson 3 (gravity = time-tilt gradient + Wheeler's curved-time). ⚠️ Needs the boost-`g` axis (M5.8 promotion); the gravity sector is the framework's least-developed (design expectation, not yet verified). **Seed from 2a/2b (2026-06-05): the static GEM effect is now MEASURED** — boost dressing alone lowers the defect's energy (`A(b)`: 5.97→0.39→rise; the dressed defect IS the family's static ground state) ⇒ the gravity-well `g(x)` viz has a concrete, already-validated target: render the dressing profile `b·w(r)` + its energy dip, not just a design expectation.
+- [ ] **M5.23.6: Gravity / time-dilation viz suite (REVISIT when the 4D `g`-axis is live; breadth, NOT headline-gating)**, once the time axis exists, build the renders specced in [`4b §4.7`](m5_4b_rendering_features.md): **(a)** `g(x)` scalar flux-mesh = the **gravity well** (sequential single-sign palette, deep = clock-slow); **(b)** `∇g` **PURPLE** vector glyph = the **gravitational pull** (monopole `1/r²`); **(c)** per-voxel **clock-rate `ω`** colormap / animation-speed = **time dilation** (the wristwatch-per-voxel). The "gravity = a *bend in time*" intuition reads as the *pattern* of clock-rates across voxels (same "read the arrangement, not one glyph" lesson as bend in the director glyphs). Physics-intuition home = `0c` Lesson 3 (gravity = time-tilt gradient + Wheeler's curved-time). ⚠️ Needs the boost-`g` axis (M5.8 promotion); the gravity sector is the framework's least-developed (design expectation, not yet verified). **Seed from 2a/2b (2026-06-05): the static GEM effect is now MEASURED**, boost dressing alone lowers the defect's energy (`A(b)`: 5.97→0.39→rise; the dressed defect IS the family's static ground state) ⇒ the gravity-well `g(x)` viz has a concrete, already-validated target: render the dressing profile `b·w(r)` + its energy dip, not just a design expectation.
 
 ---
 

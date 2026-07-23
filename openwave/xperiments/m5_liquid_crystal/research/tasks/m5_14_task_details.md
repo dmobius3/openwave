@@ -1,6 +1,8 @@
 # M5.14: 3D dynamical pair-annihilation (capture to breather to vacuum)
 
-> Task **M5.14** (M5 / Liquid-Crystal model). Status: **Backlog** · Gated by: - · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
+> Task **M5.14** (M5 / Liquid-Crystal model). Status: ❌ **RETIRED 2026-07-23** (user decision, the series reorganization review) · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
+>
+> **Why retired**: the scope has been delivered at higher rigor by the verified-L era. The capture film + the measured mechanism (CONDUIT ANNIHILATION through the connecting axial line, charge ±1 → ≤ 0.005, energy ledger 0.1%) landed at [M5.21.4](m5_21_4_task_details.md) (2026-07-21); the energy-release-as-outgoing-waves read landed at the [M5.21.6](m5_21_6_task_details.md) dynamics arm (23% of the start energy radiated, ledger closed to 3 decimals); the localized oscillating remnant (breather candidate) was measured at [M5.20](m5_20_task_details.md). The 1+1D Sine-Gordon `m5_14_*` scripts/data stay the frozen validated record; GitHub #198 stays archived below.
 
 This doc is the task's full record: planning + findings + future planning + documentation.
 

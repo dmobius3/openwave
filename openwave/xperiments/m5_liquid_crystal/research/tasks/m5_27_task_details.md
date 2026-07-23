@@ -1,6 +1,6 @@
 # M5.27: the background-scalar time sector (the staged 4×4), entrainment pilot
 
-**Status**: 🚧 PROPOSED 2026-07-21, **pending author go**. Staged in the roadmap Backlog above the RENDERING UNLOCK marker for visibility; it does NOT hold the rendering block (M5.26 → M5.25 run on user "go" regardless). Roadmap: [`m5_roadmap.md § BACKLOG`](../m5_roadmap.md). Offered as the THIRD branch of the fork left open at the [M5.21.3](m5_21_3_task_details.md) close (the fixed-J reading vs the T2η potential lift vs this), proposed to the author in the M5.21-series close round (sent 2026-07-21 17:06 EDT; [convo record](m5_21_convo.md)).
+**Status**: 🚧 PROPOSED 2026-07-21, **pending author go**. Staged in the roadmap Backlog above the RENDERING UNLOCK marker for visibility; it does NOT hold the rendering block (M5.23.1 → M5.23.2 run on user "go" regardless). Roadmap: [`m5_roadmap.md § BACKLOG`](../m5_roadmap.md). Offered as the THIRD branch of the fork left open at the [M5.21.3](m5_21_3_task_details.md) close (the fixed-J reading vs the T2η potential lift vs this), proposed to the author in the M5.21-series close round (sent 2026-07-21 17:06 EDT; [convo record](m5_21_convo.md)).
 
 ## 1. WHY NOW: the M5.21-series close diagnosis
 
@@ -92,7 +92,7 @@ The structural reason the import is attractive: each side's validated strength c
 | --- | --- |
 | The M5.21.3-close fork | This is the third branch (fixed-J reading vs T2η lift vs background scalar); the author's call |
 | [M5.21.8](m5_21_8_task_details.md) (notebook verification) | Natural companion: the § 2 economy hypothesis (the pathology lives in the mixed block) is checkable against its results |
-| RENDERING UNLOCK / [M5.26](m5_26_task_details.md) | Rendering proceeds regardless. Note: M5.26 ports the fixed-J clock into production; if this pilot delivers a lock, the clock's origin story changes (a dynamically supplied J-budget vs the hand-imposed constraint), so the pilot tells us whether the port target is the final clock or the crutch |
+| RENDERING UNLOCK / [M5.23.1](m5_23_1_task_details.md) | Rendering proceeds regardless. Note: M5.23.1 ports the fixed-J clock into production; if this pilot delivers a lock, the clock's origin story changes (a dynamically supplied J-budget vs the hand-imposed constraint), so the pilot tells us whether the port target is the final clock or the crutch |
 | Gate | Pending author go; nothing runs before it |
 
 ## 9. DEFINITION OF DONE (pilot scope, draft; frozen at go)

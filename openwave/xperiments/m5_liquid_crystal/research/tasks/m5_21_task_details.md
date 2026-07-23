@@ -8,7 +8,7 @@
 
 **Series framing**: [`../m5_particle_hunt.md`](../m5_particle_hunt.md) (shapes measured vs identifications hypothesized: M5.20 = the vortex-loop hunt, possibly the neutrino; M5.21 = the hedgehog hunt, possibly the electron).
 
-**Lineage**: [M5.20.2](m5_20_2_task_details.md) (the 4×4 EOM machinery + the census this task rides: all rotation generators K_eff > 0, rotation injections measured stable over T = 400) · [M5.16](m5_16_task_details.md) (the audited axisym hedgehog minimizer + parameter lock; the **Q8 saddle finding** this task probes dynamically) · [M5.11](m5_11_task_details.md) (Faber electron statics, 511 keV) · [`m5_4b_rendering_features.md`](m5_4b_rendering_features.md) (the viz framework this task previews headlessly: Part 4 observable catalog, § 4.1.1 the clock-visibility recipe, § 5.3 placeholder-sample strategy) · [M5.13](m5_13_task_details.md) (the future on-screen demo suite this feeds).
+**Lineage**: [M5.20.2](m5_20_2_task_details.md) (the 4×4 EOM machinery + the census this task rides: all rotation generators K_eff > 0, rotation injections measured stable over T = 400) · [M5.16](m5_16_task_details.md) (the audited axisym hedgehog minimizer + parameter lock; the **Q8 saddle finding** this task probes dynamically) · [M5.11](m5_11_task_details.md) (Faber electron statics, 511 keV) · [`m5_4b_rendering_features.md`](m5_4b_rendering_features.md) (the viz framework this task previews headlessly: Part 4 observable catalog, § 4.1.1 the clock-visibility recipe, § 5.3 placeholder-sample strategy) · [M5.23.3](m5_23_3_task_details.md) (the future on-screen demo suite this feeds).
 
 ## TASK PLANNING (2026-07-13, specs interview folded)
 
