@@ -183,6 +183,15 @@ class SimulationState:
         self.ELLIPSOID_SHELL = True
         self.ELLIPSOID_RODS = False
         self.ELLIPSOID_RODRINGS = True
+        # M5.23.2 arm (4) — the energy-density ISOSURFACE (canonical path
+        # only: V4 + curvature are exactly zero on the covariant vacuum, so
+        # level sets need no background subtraction). ISO_LEVEL = fraction
+        # of the per-frame interior density max. ISO_COVER = the author's
+        # "surface covered with ellipsoids" variant (uses the shell pool,
+        # exclusive with the S² shell view).
+        self.SHOW_ISO = False
+        self.ISO_LEVEL = 0.30
+        self.ISO_COVER = False
         self.FLUX_MESH_PLANES = [0.5, 0.5, 0.5]
         self.SHOW_FLUX_MESH = 0
         self.WARP_MESH = 300
@@ -258,6 +267,9 @@ class SimulationState:
         self.ELLIPSOID_SIZE = ui.get("ELLIPSOID_SIZE", 0.025)  # ellipsoid base size
         self.ELLIPSOID_SHELL = ui.get("ELLIPSOID_SHELL", True)  # S² shell sub-toggle
         self.ELLIPSOID_RODS = ui.get("ELLIPSOID_RODS", False)  # Stage D rod-line samples
+        self.SHOW_ISO = ui.get("SHOW_ISO", False)  # M5.23.2 energy isosurface
+        self.ISO_LEVEL = ui.get("ISO_LEVEL", 0.30)  # fraction of density max
+        self.ISO_COVER = ui.get("ISO_COVER", False)  # ellipsoid-covered variant
         self.ELLIPSOID_RODRINGS = ui.get("ELLIPSOID_RODRINGS", True)  # Stage D rod rings
         self.FLUX_MESH_PLANES = ui["FLUX_MESH_PLANES"]
         self.SHOW_FLUX_MESH = ui["SHOW_FLUX_MESH"]
@@ -462,6 +474,11 @@ def display_controls(state):
             state.ELLIPSOID_SIZE = sub.slider_float("Size", state.ELLIPSOID_SIZE, 0.01, 0.15)
             state.ELLIPSOID_SHELL = sub.checkbox("Shell (1 /3D-angle)", state.ELLIPSOID_SHELL)
             state.ELLIPSOID_RODS = sub.checkbox("Rods (disclination)", state.ELLIPSOID_RODS)
+        # M5.23.2 arm (4) — the energy isosurface (canonical path only)
+        state.SHOW_ISO = sub.checkbox("Iso-Surface (energyH)", state.SHOW_ISO)
+        if state.SHOW_ISO:
+            state.ISO_LEVEL = sub.slider_float("Iso Level", state.ISO_LEVEL, 0.02, 0.95)
+            state.ISO_COVER = sub.checkbox("Cover w/ Ellipsoids", state.ISO_COVER)
             state.ELLIPSOID_RODRINGS = sub.checkbox(
                 "Rod Rings (1 /2D-angle)", state.ELLIPSOID_RODRINGS
             )
@@ -719,6 +736,13 @@ def initialize_xperiment(state):
     # cleared).
     state.evolve_4d = False
     state.integrator_4d = ""
+    # M5.23.2 — npz-loader routing flags, reset with the integrator routing
+    # (same stale-state hazard): npz_covariant marks a loaded state ALREADY in
+    # the covariant vacuum convention (M[0,0] = -g), so the canonical
+    # activation must NOT flip it again; npz_h carries the source grid unit
+    # as the ETA_DX fallback.
+    state.npz_covariant = False
+    state.npz_h = 0.0
 
     # Optional topology seed (M5.1+ vacuum / hedgehog xperiments)
     if state.TOPOLOGY_SEED is not None:
@@ -916,6 +940,62 @@ def initialize_xperiment(state):
                 f"4D evolve ON (dt×{dt_scale}, integrator={state.integrator_4d})"
             )
 
+        elif seed_mode == "npz_file":
+            # M5.23.2 arm (3) — the research-ENDPOINT loader: npz → launcher
+            # seed. Loads a converged research state (a fixed-J isorotation
+            # endpoint, the μ/τ census states, any saved M array) as a LIVE
+            # renderable field instead of an analytic ansatz.
+            #
+            # CONVENTIONS (measured at the loader build, m5_23_2 task_details):
+            #   - research npz storage keeps M[0,0] = +g (the plain storage
+            #     convention); the production covariant vacuum is diag(−g, 1,
+            #     δ, 0) — V4 measured 759.4/cell at +g vs 0.0 at −g, and the
+            #     fixed-J endpoint far field flipped lands on the production
+            #     vacuum to 2e-11. So 4×4 data is flipped to −g AT LOAD
+            #     (state.npz_covariant tells the canonical activation to skip
+            #     its own flip); 3×3 data takes the launcher's normal path
+            #     (embed4 at +g here, flip_time_axis at canonical activation).
+            #   - the TensorField grid is ODD; research grids are even (32³ /
+            #     64³). GRID FIT: launcher grid == n_src − 1 → CROP (drop the
+            #     last plane per axis, sponge-zone content); launcher grid ≥
+            #     n_src → EMBED centered with edge-extend padding (the source
+            #     boundary IS the far field). Anything else → vacuum fallback
+            #     with a WARNING. The data array itself is never resampled.
+            #   - a loaded state is an INITIAL CONDITION in this arena, not a
+            #     launcher equilibrium: drift under free evolution (pinned-bc
+            #     sources especially) is physics, not a loader bug.
+            tf = state.tensor_field
+            npz_path = str(topo.get("PATH", ""))
+            if not os.path.isabs(npz_path):
+                npz_path = os.path.join(os.path.dirname(__file__), npz_path)
+            if not os.path.isfile(npz_path):
+                print(f"[M5.23.2] WARNING: npz not found: {npz_path}; seeding vacuum")
+                seeds.seed_vacuum_M(tf, tf.lc_delta)
+            else:
+                info_npz = seeds.load_npz_M(
+                    tf, npz_path, delta_cfg=topo.get("BIAXIAL_DELTA", tf.lc_delta)
+                )
+                for w_npz in info_npz["warn"]:
+                    print(f"[M5.23.2] WARNING: {w_npz}")
+                if not info_npz["ok"]:
+                    print("[M5.23.2] load failed; seeding vacuum")
+                    seeds.seed_vacuum_M(tf, tf.lc_delta)
+                else:
+                    state.npz_covariant = bool(info_npz["covariant"])
+                    state.npz_h = float(info_npz["h"])
+                    print(
+                        f"[M5.23.2] loaded {os.path.basename(npz_path)}: "
+                        f"{info_npz['n_src']}^3 x {info_npz['blk']}x{info_npz['blk']} "
+                        f"-> {tf.nx}x{tf.ny}x{tf.nz} ({info_npz['fit']}); "
+                        f"h = {info_npz['h'] or '?'}, delta = {info_npz['delta']}, "
+                        f"bc = {info_npz['bc']}"
+                        + (
+                            ", flipped to covariant -g at load"
+                            if info_npz["covariant"]
+                            else ""
+                        )
+                    )
+
         else:
             print(f"[M5.1] WARNING: unknown TOPOLOGY_SEED mode: {seed_mode!r}")
 
@@ -941,13 +1021,17 @@ def initialize_xperiment(state):
                     "the era 4D path."
                 )
             else:
-                if seed_mode not in ("biaxial_hedgehog", "charged_ring", "vacuum"):
+                if seed_mode not in ("biaxial_hedgehog", "charged_ring", "vacuum", "npz_file"):
                     print(
                         f"[M5.24] WARNING: canonical stack on seed mode {seed_mode!r}: "
                         "the far field is not the covariant vacuum, V4 charges the "
                         "background (biaxial-family seeds are the intended use)."
                     )
-                pde.flip_time_axis(state.tensor_field)
+                # M5.23.2 — a 4×4 npz load is ALREADY covariant (flipped at
+                # load, measured V4 = 0 far field); flipping again would put
+                # it back on the +g ridge (V4 = 759/cell).
+                if not getattr(state, "npz_covariant", False):
+                    pde.flip_time_axis(state.tensor_field)
                 state.evolve_4d = True
                 state.integrator_4d = "canonical"
                 state.eta_delta = float(topo.get("BIAXIAL_DELTA", state.tensor_field.lc_delta))
@@ -956,7 +1040,11 @@ def initialize_xperiment(state):
                 # m5_21_2b/3 h) to run the launcher as a research-twin; the
                 # physical dx_am fallback weakens the curvature ~100× against
                 # the dimensionless V4 (the unit-map finding, task_details).
-                state.eta_dx = float(topo.get("ETA_DX", state.tensor_field.dx_am))
+                # M5.23.2 — an npz load's recorded grid unit h is the natural
+                # ETA_DX for that state (research-twin geometry); an explicit
+                # ETA_DX in the config still wins.
+                eta_dx_default = getattr(state, "npz_h", 0.0) or state.tensor_field.dx_am
+                state.eta_dx = float(topo.get("ETA_DX", eta_dx_default))
                 # ETA_SUBSTEPS (round 2, viz speed): N physics steps per
                 # rendered frame at the CERTIFIED dt (dt itself cannot rise:
                 # the stiff-mode wall is 2/78 ≈ 0.026 τ, NaN measured at
@@ -1409,6 +1497,60 @@ def render_elements(state):
         )
         flux_mesh.render_flux_mesh(render.scene, state.tensor_field, state.SHOW_FLUX_MESH)
 
+    # M5.23.2 arm (4) — the energy-density ISOSURFACE: marching tetrahedra
+    # on the live energyH density (already computed this frame by
+    # compute_field_observables). Canonical path only: V4 + curvature are
+    # exactly zero on the covariant vacuum, so a level set needs no
+    # background subtraction. ISO_COVER renders the author's "surface
+    # covered with ellipsoids" variant into the SHELL pool (the shell view
+    # is suppressed while it is live — same buffers).
+    iso_cover_live = False
+    if state.SHOW_ISO:
+        if getattr(state, "integrator_4d", "") != "canonical":
+            if not getattr(state, "_iso_warned", False):
+                print(
+                    "[M5.23.2] the iso-surface needs the canonical integrator "
+                    "(true-zero vacuum); ignoring SHOW_ISO on this path"
+                )
+                state._iso_warned = True
+        else:
+            tf_iso = state.tensor_field
+            viz.iso_density_max(tf_iso, state.observables)
+            iso_lvl = state.ISO_LEVEL * float(tf_iso.iso_level_max[None])
+            if iso_lvl > 0.0:
+                viz.marching_tetrahedra(tf_iso, state.observables, iso_lvl)
+                viz.collapse_iso_tail(tf_iso)
+                n_iso_raw = int(tf_iso.iso_tri_count[None])
+                if n_iso_raw > tf_iso.iso_max_tris and n_iso_raw != getattr(
+                    state, "_iso_overflow_reported", 0
+                ):
+                    print(
+                        f"[M5.23.2] WARNING: isosurface overflow: {n_iso_raw} "
+                        f"triangles at this level, budget {tf_iso.iso_max_tris} "
+                        "— surface truncated (raise Iso Level)"
+                    )
+                    state._iso_overflow_reported = n_iso_raw
+                if state.ISO_COVER:
+                    viz.update_iso_ellipsoids(
+                        tf_iso,
+                        state.ELLIPSOID_SIZE,
+                        state.ELLIPSOID_COUNT * medium.ELLIPSOID_MAX_CENTERS,
+                    )
+                    render.scene.mesh(
+                        tf_iso.ellipsoid_mesh_vertices,
+                        indices=tf_iso.ellipsoid_mesh_indices,
+                        per_vertex_color=tf_iso.ellipsoid_mesh_colors,
+                        two_sided=True,
+                    )
+                    iso_cover_live = True
+                else:
+                    render.scene.mesh(
+                        tf_iso.iso_vertices,
+                        indices=tf_iso.iso_indices,
+                        per_vertex_color=tf_iso.iso_colors,
+                        two_sided=True,
+                    )
+
     # VIZ.5 (M5.23) — the "ellipsoid" viz: M·u eigen-ellipsoid surfaces, a
     # FULL-3D view (not plane cross-sections). Sub-views, combinable: the S²
     # shell (one per 3D angle around each defect center), the Stage D
@@ -1419,7 +1561,7 @@ def render_elements(state):
     if state.SHOW_ELLIPSOID:
         tf = state.tensor_field
         ell_extent = state.ELLIPSOID_RADIUS * tf.max_grid_size  # shell R / rod half-length
-        if state.ELLIPSOID_SHELL:
+        if state.ELLIPSOID_SHELL and not iso_cover_live:  # M5.23.2: cover owns the pool
             viz.update_ellipsoid_mesh(
                 tf,
                 ell_extent,

@@ -1,0 +1,15 @@
+{
+ "sphere": {
+  "n_tris": 26664,
+  "R_vox": 15.3,
+  "area_rel_err": 0.0011,
+  "open_edges": 0
+ },
+ "electron": {
+  "n_tris": 3372,
+  "level": "0.8 x interior max",
+  "interior_dmax": 0.0009014635579660535,
+  "topology": "rod tube, open only at the marched-region clip planes (0 interior cracks)"
+ },
+ "cover_samples": 500
+}
