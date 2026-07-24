@@ -64,6 +64,14 @@ def init_instrumentation(state, xperiment_name="unknown", data_dir=None):
             "cfl_factor": state.cfl_factor,
             "PAUSED": state.PAUSED,
         },
+        "emc_profile": {
+            "R_WALL": state.R_WALL,
+            "WALL_HEIGHT": state.WALL_HEIGHT,
+            "DEFICIT_DEPTH": state.DEFICIT_DEPTH,
+            "R_SOLITON": state.R_SOLITON,           
+            "SIGMA": state.SIGMA,                  
+            "PRESSURE_STRENGTH": state.PRESSURE_STRENGTH, 
+        },
     }
 
     # Add the K value at top level for filename generation
@@ -76,7 +84,16 @@ def init_instrumentation(state, xperiment_name="unknown", data_dir=None):
 # Timestep logging
 # ================================================================
 
-def log_timestep_data(timestep: int, wave_field, trackers) -> None:
+def log_timestep_data(timestep: int, wave_field, trackers, wave_center=None) -> None:
+    """
+    Log timestep data including field values and wave-center positions.
+
+    Args:
+        timestep: Current simulation frame number
+        wave_field: WaveField instance
+        trackers: Trackers instance
+        wave_center: WaveCenter instance (optional, for WC position logging)
+    """
     px, py, pz = wave_field.nx // 2, wave_field.ny // 2, wave_field.nz // 2
     disp = wave_field.psi_am[px, py, pz]
     amp = trackers.amp_local_emarms_am[px, py, pz]
@@ -94,12 +111,27 @@ def log_timestep_data(timestep: int, wave_field, trackers) -> None:
     amp_local_emarms_am = to_float(amp) / wave_field.scale_factor
     freq_local_cross_rHz = to_float(freq) * wave_field.scale_factor
 
-    json_logger.log_timestep({
+    # Build log entry
+    log_entry = {
         "timestep": timestep,
         "displacement_am": displacement_am,
         "amp_local_emarms_am": amp_local_emarms_am,
         "freq_local_cross_rHz": freq_local_cross_rHz,
-    })
+    }
+
+    # Log wave-center positions if wave_center is provided
+    if wave_center is not None:
+        positions = []
+        for i in range(wave_center.num_sources):
+            if wave_center.active[i] == 1:
+                pos = wave_center.position_float[i]
+                positions.append([float(pos[0]), float(pos[1]), float(pos[2])])
+            else:
+                # Log inactive WCs as None
+                positions.append(None)
+        log_entry["wc_positions"] = positions
+
+    json_logger.log_timestep(log_entry)
 
 
 # ================================================================
@@ -108,15 +140,16 @@ def log_timestep_data(timestep: int, wave_field, trackers) -> None:
 
 def plot_probe_wave_profile(wave_field):
     """
-    Plot the displacement profile along the x-axis through the probe position.
-    Currently only longitudinal component is plotted (velocity field not available).
+    Plot the longitudinal (x) displacement profile along the x-axis
+    through the probe position.
     """
     px, py, pz = wave_field.nx // 2, wave_field.ny // 2, wave_field.nz // 2
     x_indices = np.arange(wave_field.nx)
     displacements = np.zeros(wave_field.nx)
 
     for i in range(wave_field.nx):
-        displacements[i] = wave_field.psi_am[i, py, pz]
+        # psi_am is a 3-vector; extract the x-component (longitudinal)
+        displacements[i] = wave_field.psi_am[i, py, pz][0]
 
     distances = x_indices - px
 
@@ -124,14 +157,13 @@ def plot_probe_wave_profile(wave_field):
     fig = plt.figure(figsize=(12, 6), facecolor=colormap.DARK_GRAY[1])
     fig.suptitle("OPENWAVE Analytics", fontsize=20, family="Monospace")
 
-    # Plot: Longitudinal Displacement vs distance from center
-    plt.subplot(1, 1, 1)   # only one plot
+    plt.subplot(1, 1, 1)
     plt.plot(
         distances,
         displacements,
         color=colormap.viridis_palette[2][1],
         linewidth=4,
-        label="LONGITUDINAL",
+        label="LONGITUDINAL (X)",
     )
     plt.axhline(y=0, color="k", linestyle="--", alpha=0.3)
     plt.axvline(x=0, color="r", linestyle="--", alpha=0.3)

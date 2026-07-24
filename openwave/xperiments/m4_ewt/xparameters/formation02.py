@@ -21,6 +21,8 @@ Each K places WCs at λ/2 spacing in the simplest possible geometry:
 import numpy as np
 from openwave.common import constants
 
+from openwave.xperiments.m4_ewt.xparameters.formation10e_golden_angle_positions import golden_angle_positions
+
 UNIVERSE_EDGE = 1e-15  # m, universe edge length in meters
 TARGET_VOXELS = 75_000_000  # Target voxel count (impacts performance)
 
@@ -182,7 +184,11 @@ def generate_K_positions(
     elif K == 10:
         # 1-3-6 tetrahedron
         positions = tetrahedron_10(univ_edge=UNIVERSE_EDGE, center=center, rotation=rotation)
-
+    elif K == 11:
+        # Golden-angle spherical phyllotaxis – no closed shell exists,
+        # so we use the generic minimally-interfering configuration.
+        radius = 0.35 * s  # same radius as used for K=10 golden-angle tests
+        positions = golden_angle_positions(K, radius, center)
     else:
         raise ValueError(f"K={K} not implemented")
 

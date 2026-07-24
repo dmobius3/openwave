@@ -1,0 +1,1234 @@
+{
+  "metadata": {
+    "model": "M4",
+    "xperiment": "test_soliton_gamma",
+    "engine": {
+      "SEED_MODE": 0,
+      "SEED_BOOST": 10.0,
+      "V_MODE": 1,
+      "V_C1": 0.0003,
+      "V_C2": 0.0,
+      "WC_INTERACT_MODE": 0,
+      "WC_BOOST": 1.0,
+      "WC_RADIUS": 2,
+      "WC_SIGMA": 1.5
+    },
+    "wave_centers": {
+      "K": 10,
+      "POSITIONS": [
+        [
+          0.5015637939992227,
+          0.5326073740004317,
+          0.5020469461369699
+        ],
+        [
+          0.4725856497922952,
+          0.48120535214570404,
+          0.5027149441792077
+        ],
+        [
+          0.5300316008294458,
+          0.4851547764340487,
+          0.49787720084049936
+        ],
+        [
+          0.5139872758628946,
+          0.5075015571018074,
+          0.5024360569228442
+        ],
+        [
+          0.4865507273666763,
+          0.5100814524979144,
+          0.4996769973257336
+        ],
+        [
+          0.4984430259804753,
+          0.48383344666780426,
+          0.4975101847137007
+        ],
+        [
+          0.5018701819632051,
+          0.5172296996331364,
+          0.5247768149789002
+        ],
+        [
+          0.48489912364430615,
+          0.4944477682531786,
+          0.5255476115807126
+        ],
+        [
+          0.5158595492348687,
+          0.4900178718933513,
+          0.5231136374134039
+        ],
+        [
+          0.4973959438483279,
+          0.49802661769790213,
+          0.5476520794480078
+        ]
+      ],
+      "PHASE_OFFSETS_DEG": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ]
+    },
+    "universe": {
+      "EDGE_X": 1e-15,
+      "EDGE_Y": 1e-15,
+      "EDGE_Z": 1e-15,
+      "TARGET_VOXELS": 55000000
+    },
+    "simulation": {
+      "SIM_SPEED": 1.0,
+      "dt_rs": 4.810845153459681,
+      "cfl_factor": 0.3008333,
+      "PAUSED": false
+    },
+    "K": 10,
+    "timestamp": "2026-07-21T14:57:57.758593"
+  },
+  "data": [
+    {
+      "timestep": 1,
+      "displacement_am": 2.3485448067374377,
+      "amp_local_emarms_am": 0.2847604103293749,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 2,
+      "displacement_am": 5.612108437358842,
+      "amp_local_emarms_am": 0.7362828268511799,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 3,
+      "displacement_am": -0.451012324652178,
+      "amp_local_emarms_am": 0.7291489805831824,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 4,
+      "displacement_am": -1.8240460428402927,
+      "amp_local_emarms_am": 0.7532507742497376,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 5,
+      "displacement_am": -0.23902873202425523,
+      "amp_local_emarms_am": 0.7444160466843918,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 6,
+      "displacement_am": -1.1828886780190164,
+      "amp_local_emarms_am": 0.7489877615765866,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 7,
+      "displacement_am": -1.6830619658348642,
+      "amp_local_emarms_am": 0.7672775863256053,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 8,
+      "displacement_am": -0.42497416046494485,
+      "amp_local_emarms_am": 0.7594535000103813,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 9,
+      "displacement_am": -0.02488993857403049,
+      "amp_local_emarms_am": 0.7499830378018347,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 10,
+      "displacement_am": -0.21522671807984356,
+      "amp_local_emarms_am": 0.7410843162556985,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 11,
+      "displacement_am": 0.3888679424263094,
+      "amp_local_emarms_am": 0.7333543070225966,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 12,
+      "displacement_am": 1.1623503301387255,
+      "amp_local_emarms_am": 0.7377894079743345,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 13,
+      "displacement_am": 0.849303205534661,
+      "amp_local_emarms_am": 0.735824625635732,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 14,
+      "displacement_am": 0.20334979645803206,
+      "amp_local_emarms_am": 0.7270611163084855,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 15,
+      "displacement_am": 0.2932366476038489,
+      "amp_local_emarms_am": 0.7188685389581294,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 16,
+      "displacement_am": 0.4491816223727376,
+      "amp_local_emarms_am": 0.7119845765157117,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 17,
+      "displacement_am": 0.21033338895647385,
+      "amp_local_emarms_am": 0.7035627637767118,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 18,
+      "displacement_am": -0.0640132275056536,
+      "amp_local_emarms_am": 0.694826965406606,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 19,
+      "displacement_am": -0.15825309802296125,
+      "amp_local_emarms_am": 0.6864251002437582,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 20,
+      "displacement_am": -0.13597001113397125,
+      "amp_local_emarms_am": 0.6780603267900794,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 21,
+      "displacement_am": -0.1690008116193745,
+      "amp_local_emarms_am": 0.6699129280040893,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 22,
+      "displacement_am": -0.18528613409268258,
+      "amp_local_emarms_am": 0.661935029703023,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 23,
+      "displacement_am": -0.12426847992328527,
+      "amp_local_emarms_am": 0.6538489831917922,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 24,
+      "displacement_am": -0.13907933956666182,
+      "amp_local_emarms_am": 0.6459103330946142,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 25,
+      "displacement_am": -0.17058014748311587,
+      "amp_local_emarms_am": 0.6381858229230462,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 26,
+      "displacement_am": -0.12053194847962671,
+      "amp_local_emarms_am": 0.63039192753389,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 27,
+      "displacement_am": -0.061965810985032316,
+      "amp_local_emarms_am": 0.6225711298731126,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 28,
+      "displacement_am": -0.054350486836712376,
+      "amp_local_emarms_am": 0.6148379398103,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 29,
+      "displacement_am": -0.07619616246715614,
+      "amp_local_emarms_am": 0.6072361881006186,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 30,
+      "displacement_am": -0.06292108423324046,
+      "amp_local_emarms_am": 0.5997075954742839,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 31,
+      "displacement_am": -0.03623928050185199,
+      "amp_local_emarms_am": 0.5922407325092842,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 32,
+      "displacement_am": -0.03180396390064223,
+      "amp_local_emarms_am": 0.5848634179874966,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 33,
+      "displacement_am": -0.01618338429403004,
+      "amp_local_emarms_am": 0.5775688050381879,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 34,
+      "displacement_am": -0.006862623253267396,
+      "amp_local_emarms_am": 0.5703624466352596,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 35,
+      "displacement_am": -0.020570983395294472,
+      "amp_local_emarms_am": 0.5632509739999731,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 36,
+      "displacement_am": -0.024792967071652457,
+      "amp_local_emarms_am": 0.5562307750036741,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 37,
+      "displacement_am": -0.007378111413976758,
+      "amp_local_emarms_am": 0.5492907976109268,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 38,
+      "displacement_am": 0.009377751468000243,
+      "amp_local_emarms_am": 0.5424378886924645,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 39,
+      "displacement_am": 0.0013743955782984775,
+      "amp_local_emarms_am": 0.5356692987175203,
+      "freq_local_cross_rHz": 0.0007660357489957519
+    },
+    {
+      "timestep": 40,
+      "displacement_am": -0.009297284731650327,
+      "amp_local_emarms_am": 0.5289863754952937,
+      "freq_local_cross_rHz": 0.0012500310423653631
+    },
+    {
+      "timestep": 41,
+      "displacement_am": -0.00468400340374408,
+      "amp_local_emarms_am": 0.5223859381960739,
+      "freq_local_cross_rHz": 0.0012500310423653631
+    },
+    {
+      "timestep": 42,
+      "displacement_am": -0.001470061390514536,
+      "amp_local_emarms_am": 0.5158675555209172,
+      "freq_local_cross_rHz": 0.0012500310423653631
+    },
+    {
+      "timestep": 43,
+      "displacement_am": 0.002512902434197054,
+      "amp_local_emarms_am": 0.5094305805214078,
+      "freq_local_cross_rHz": 0.0012500310423653631
+    },
+    {
+      "timestep": 44,
+      "displacement_am": 0.008365132307878144,
+      "amp_local_emarms_am": 0.5030748514604417,
+      "freq_local_cross_rHz": 0.0012500310423653631
+    },
+    {
+      "timestep": 45,
+      "displacement_am": 0.0052520573868034435,
+      "amp_local_emarms_am": 0.496797834456724,
+      "freq_local_cross_rHz": 0.0012500310423653631
+    },
+    {
+      "timestep": 46,
+      "displacement_am": -0.0037572695941440934,
+      "amp_local_emarms_am": 0.4905989903865749,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 47,
+      "displacement_am": -0.004593684182146123,
+      "amp_local_emarms_am": 0.48447756447684265,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 48,
+      "displacement_am": 0.006497666426570671,
+      "amp_local_emarms_am": 0.4784328558667436,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 49,
+      "displacement_am": 0.010640222443233446,
+      "amp_local_emarms_am": 0.4724647028191738,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 50,
+      "displacement_am": 0.003737713303850327,
+      "amp_local_emarms_am": 0.46656949320547864,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 51,
+      "displacement_am": 0.00030104160850653264,
+      "amp_local_emarms_am": 0.46074760441223406,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 52,
+      "displacement_am": 0.0007002066750662613,
+      "amp_local_emarms_am": 0.4549983894910243,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 53,
+      "displacement_am": 0.002474861783113465,
+      "amp_local_emarms_am": 0.4493210128001456,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 54,
+      "displacement_am": 0.0062715133090897966,
+      "amp_local_emarms_am": 0.4437149891282863,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 55,
+      "displacement_am": 0.008461259744745016,
+      "amp_local_emarms_am": 0.4381794828337426,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 56,
+      "displacement_am": 0.004467824074339197,
+      "amp_local_emarms_am": 0.4327121756846915,
+      "freq_local_cross_rHz": 0.003102618380085589
+    },
+    {
+      "timestep": 57,
+      "displacement_am": -0.0016732630020901338,
+      "amp_local_emarms_am": 0.4273127981192931,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 58,
+      "displacement_am": 0.0008824932361988883,
+      "amp_local_emarms_am": 0.4219807840576837,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 59,
+      "displacement_am": 0.007442890493625728,
+      "amp_local_emarms_am": 0.41671624132459917,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 60,
+      "displacement_am": 0.00740361364879201,
+      "amp_local_emarms_am": 0.4115173908118962,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 61,
+      "displacement_am": 0.0037548582792481873,
+      "amp_local_emarms_am": 0.4063826960170875,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 62,
+      "displacement_am": 0.0015095522000586675,
+      "amp_local_emarms_am": 0.40131188737833307,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 63,
+      "displacement_am": 0.0013944977313180248,
+      "amp_local_emarms_am": 0.39630431794721727,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 64,
+      "displacement_am": 0.003024793418510174,
+      "amp_local_emarms_am": 0.3913593407753243,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 65,
+      "displacement_am": 0.006050500398943356,
+      "amp_local_emarms_am": 0.3864766323884463,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 66,
+      "displacement_am": 0.006797553552259793,
+      "amp_local_emarms_am": 0.3816550606268558,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 67,
+      "displacement_am": 0.0021673740665153355,
+      "amp_local_emarms_am": 0.3768928194262254,
+      "freq_local_cross_rHz": 0.003992081925181329
+    },
+    {
+      "timestep": 68,
+      "displacement_am": -0.0007799017906494876,
+      "amp_local_emarms_am": 0.3721899357427391,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 69,
+      "displacement_am": 0.002407182597138598,
+      "amp_local_emarms_am": 0.36754584349653324,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 70,
+      "displacement_am": 0.005733654042811674,
+      "amp_local_emarms_am": 0.3629602461695839,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 71,
+      "displacement_am": 0.00515176311355837,
+      "amp_local_emarms_am": 0.3584317420403236,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 72,
+      "displacement_am": 0.0026398110954421214,
+      "amp_local_emarms_am": 0.3539593606861287,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 73,
+      "displacement_am": 0.0011277755569334515,
+      "amp_local_emarms_am": 0.34954267080805546,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 74,
+      "displacement_am": 0.0009054207342528003,
+      "amp_local_emarms_am": 0.3451810524138721,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 75,
+      "displacement_am": 0.002544950599222739,
+      "amp_local_emarms_am": 0.3408739933360828,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 76,
+      "displacement_am": 0.00527025870766138,
+      "amp_local_emarms_am": 0.3366211431442957,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 77,
+      "displacement_am": 0.004365251161166288,
+      "amp_local_emarms_am": 0.3324211540293114,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 78,
+      "displacement_am": 0.00057876569667206,
+      "amp_local_emarms_am": 0.32827319034942615,
+      "freq_local_cross_rHz": 0.0048370720870912366
+    },
+    {
+      "timestep": 79,
+      "displacement_am": -0.0003278314222976427,
+      "amp_local_emarms_am": 0.32417698254280014,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 80,
+      "displacement_am": 0.0022873158177703266,
+      "amp_local_emarms_am": 0.32013196452956955,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 81,
+      "displacement_am": 0.004241280934571229,
+      "amp_local_emarms_am": 0.31613773196697453,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 82,
+      "displacement_am": 0.0033979461887107304,
+      "amp_local_emarms_am": 0.3121932066076556,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 83,
+      "displacement_am": 0.0017507569767744944,
+      "amp_local_emarms_am": 0.3082977145470129,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 84,
+      "displacement_am": 0.0004993037099613026,
+      "amp_local_emarms_am": 0.30445074361755076,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 85,
+      "displacement_am": 0.000326476874052187,
+      "amp_local_emarms_am": 0.30065178165177325,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 86,
+      "displacement_am": 0.0024468821065134583,
+      "amp_local_emarms_am": 0.2969003703945527,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 87,
+      "displacement_am": 0.004154213302666965,
+      "amp_local_emarms_am": 0.2931960515907612,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 88,
+      "displacement_am": 0.0025228680090607376,
+      "amp_local_emarms_am": 0.28953769308067123,
+      "freq_local_cross_rHz": 0.005639812921095314
+    },
+    {
+      "timestep": 89,
+      "displacement_am": -0.000156690822054162,
+      "amp_local_emarms_am": 0.285924809652971,
+      "freq_local_cross_rHz": 0.0065068758020039984
+    },
+    {
+      "timestep": 90,
+      "displacement_am": -0.00012886108922759482,
+      "amp_local_emarms_am": 0.28235699696490063,
+      "freq_local_cross_rHz": 0.0065068758020039984
+    },
+    {
+      "timestep": 91,
+      "displacement_am": 0.0020481620275847384,
+      "amp_local_emarms_am": 0.27883385067370037,
+      "freq_local_cross_rHz": 0.0065068758020039984
+    },
+    {
+      "timestep": 92,
+      "displacement_am": 0.003021683559377611,
+      "amp_local_emarms_am": 0.27535477774332234,
+      "freq_local_cross_rHz": 0.0065068758020039984
+    },
+    {
+      "timestep": 93,
+      "displacement_am": 0.0023670218843032985,
+      "amp_local_emarms_am": 0.2719190503567989,
+      "freq_local_cross_rHz": 0.0065068758020039984
+    },
+    {
+      "timestep": 94,
+      "displacement_am": 0.0011206698647148693,
+      "amp_local_emarms_am": 0.2685260485218983,
+      "freq_local_cross_rHz": 0.0065068758020039984
+    },
+    {
+      "timestep": 95,
+      "displacement_am": -0.0001445464293814795,
+      "amp_local_emarms_am": 0.2651753678958607,
+      "freq_local_cross_rHz": 0.00809662073442332
+    },
+    {
+      "timestep": 96,
+      "displacement_am": 0.00025841798495441007,
+      "amp_local_emarms_am": 0.26186649631119036,
+      "freq_local_cross_rHz": 0.00809662073442332
+    },
+    {
+      "timestep": 97,
+      "displacement_am": 0.0023049679063794834,
+      "amp_local_emarms_am": 0.2585990563813113,
+      "freq_local_cross_rHz": 0.00809662073442332
+    },
+    {
+      "timestep": 98,
+      "displacement_am": 0.0031322432950332477,
+      "amp_local_emarms_am": 0.2553725089825438,
+      "freq_local_cross_rHz": 0.00809662073442332
+    },
+    {
+      "timestep": 99,
+      "displacement_am": 0.0013258990867549023,
+      "amp_local_emarms_am": 0.2521859915170003,
+      "freq_local_cross_rHz": 0.00809662073442332
+    },
+    {
+      "timestep": 100,
+      "displacement_am": -0.0005033842023126629,
+      "amp_local_emarms_am": 0.24903920746665673,
+      "freq_local_cross_rHz": 0.009989896185318682
+    },
+    {
+      "timestep": 101,
+      "displacement_am": 0.00012810231476733722,
+      "amp_local_emarms_am": 0.24593169857638542,
+      "freq_local_cross_rHz": 0.009989896185318682
+    },
+    {
+      "timestep": 102,
+      "displacement_am": 0.0016670319116848875,
+      "amp_local_emarms_am": 0.24286303354724248,
+      "freq_local_cross_rHz": 0.009989896185318682
+    },
+    {
+      "timestep": 103,
+      "displacement_am": 0.002242705018029753,
+      "amp_local_emarms_am": 0.23983272716791615,
+      "freq_local_cross_rHz": 0.009989896185318682
+    },
+    {
+      "timestep": 104,
+      "displacement_am": 0.001785334600596225,
+      "amp_local_emarms_am": 0.23684015944617465,
+      "freq_local_cross_rHz": 0.009989896185318682
+    },
+    {
+      "timestep": 105,
+      "displacement_am": 0.0005116426925871569,
+      "amp_local_emarms_am": 0.2338848721268902,
+      "freq_local_cross_rHz": 0.009989896185318682
+    },
+    {
+      "timestep": 106,
+      "displacement_am": -0.00043349503044105896,
+      "amp_local_emarms_am": 0.2309664339111189,
+      "freq_local_cross_rHz": 0.01140549192621029
+    },
+    {
+      "timestep": 107,
+      "displacement_am": 0.00036305746870142534,
+      "amp_local_emarms_am": 0.22808441349991698,
+      "freq_local_cross_rHz": 0.01140549192621029
+    },
+    {
+      "timestep": 108,
+      "displacement_am": 0.002148147568285061,
+      "amp_local_emarms_am": 0.22523851437526055,
+      "freq_local_cross_rHz": 0.01140549192621029
+    },
+    {
+      "timestep": 109,
+      "displacement_am": 0.0023010940079069776,
+      "amp_local_emarms_am": 0.22242814350110182,
+      "freq_local_cross_rHz": 0.01140549192621029
+    },
+    {
+      "timestep": 110,
+      "displacement_am": 0.0005218224427564413,
+      "amp_local_emarms_am": 0.21965266740711709,
+      "freq_local_cross_rHz": 0.01140549192621029
+    },
+    {
+      "timestep": 111,
+      "displacement_am": -0.00048254517673234916,
+      "amp_local_emarms_am": 0.21691183000955844,
+      "freq_local_cross_rHz": 0.01313332134634377
+    },
+    {
+      "timestep": 112,
+      "displacement_am": 0.00024316868213606892,
+      "amp_local_emarms_am": 0.21420517305329806,
+      "freq_local_cross_rHz": 0.01313332134634377
+    },
+    {
+      "timestep": 113,
+      "displacement_am": 0.0013520390037976484,
+      "amp_local_emarms_am": 0.21153237306412806,
+      "freq_local_cross_rHz": 0.01313332134634377
+    },
+    {
+      "timestep": 114,
+      "displacement_am": 0.0018251181374508638,
+      "amp_local_emarms_am": 0.20889297178692065,
+      "freq_local_cross_rHz": 0.01313332134634377
+    },
+    {
+      "timestep": 115,
+      "displacement_am": 0.0013052240095279913,
+      "amp_local_emarms_am": 0.20628644357608802,
+      "freq_local_cross_rHz": 0.01313332134634377
+    },
+    {
+      "timestep": 116,
+      "displacement_am": 8.938986503589302e-05,
+      "amp_local_emarms_am": 0.20371238408887038,
+      "freq_local_cross_rHz": 0.01313332134634377
+    },
+    {
+      "timestep": 117,
+      "displacement_am": -0.0005313129675261122,
+      "amp_local_emarms_am": 0.2011704428948758,
+      "freq_local_cross_rHz": 0.014391745365839271
+    },
+    {
+      "timestep": 118,
+      "displacement_am": 0.0005574884225067348,
+      "amp_local_emarms_am": 0.19866022912943648,
+      "freq_local_cross_rHz": 0.014391745365839271
+    },
+    {
+      "timestep": 119,
+      "displacement_am": 0.0019679825430704567,
+      "amp_local_emarms_am": 0.1961814732307125,
+      "freq_local_cross_rHz": 0.014391745365839271
+    },
+    {
+      "timestep": 120,
+      "displacement_am": 0.0015649781156489581,
+      "amp_local_emarms_am": 0.19373359564074813,
+      "freq_local_cross_rHz": 0.014391745365839271
+    },
+    {
+      "timestep": 121,
+      "displacement_am": 0.00012024227058743312,
+      "amp_local_emarms_am": 0.19131616506059954,
+      "freq_local_cross_rHz": 0.014391745365839271
+    },
+    {
+      "timestep": 122,
+      "displacement_am": -0.0003996591228694052,
+      "amp_local_emarms_am": 0.1889288984503348,
+      "freq_local_cross_rHz": 0.01597026757116398
+    },
+    {
+      "timestep": 123,
+      "displacement_am": 0.0002680574531703804,
+      "amp_local_emarms_am": 0.1865714319014701,
+      "freq_local_cross_rHz": 0.01597026757116398
+    },
+    {
+      "timestep": 124,
+      "displacement_am": 0.0011735955942401648,
+      "amp_local_emarms_am": 0.18424344193979755,
+      "freq_local_cross_rHz": 0.01597026757116398
+    },
+    {
+      "timestep": 125,
+      "displacement_am": 0.0015191473379876869,
+      "amp_local_emarms_am": 0.18194452422255733,
+      "freq_local_cross_rHz": 0.01597026757116398
+    },
+    {
+      "timestep": 126,
+      "displacement_am": 0.0009324469411417842,
+      "amp_local_emarms_am": 0.1796742339727136,
+      "freq_local_cross_rHz": 0.01597026757116398
+    },
+    {
+      "timestep": 127,
+      "displacement_am": -0.0002421029651901534,
+      "amp_local_emarms_am": 0.1774322342379665,
+      "freq_local_cross_rHz": 0.017469859496118807
+    },
+    {
+      "timestep": 128,
+      "displacement_am": -0.0004731016673382688,
+      "amp_local_emarms_am": 0.17521822850029217,
+      "freq_local_cross_rHz": 0.017469859496118807
+    },
+    {
+      "timestep": 129,
+      "displacement_am": 0.0007702344185711846,
+      "amp_local_emarms_am": 0.1730318663292987,
+      "freq_local_cross_rHz": 0.017469859496118807
+    },
+    {
+      "timestep": 130,
+      "displacement_am": 0.00167441053526636,
+      "amp_local_emarms_am": 0.17087287816314625,
+      "freq_local_cross_rHz": 0.017469859496118807
+    },
+    {
+      "timestep": 131,
+      "displacement_am": 0.0010398725992183048,
+      "amp_local_emarms_am": 0.168740751834339,
+      "freq_local_cross_rHz": 0.017469859496118807
+    },
+    {
+      "timestep": 132,
+      "displacement_am": -8.115654088629516e-05,
+      "amp_local_emarms_am": 0.16663519082485306,
+      "freq_local_cross_rHz": 0.0188944760464123
+    },
+    {
+      "timestep": 133,
+      "displacement_am": -0.0003262387961928139,
+      "amp_local_emarms_am": 0.1645558986166646,
+      "freq_local_cross_rHz": 0.0188944760464123
+    },
+    {
+      "timestep": 134,
+      "displacement_am": 0.00029213301088848735,
+      "amp_local_emarms_am": 0.1625025517355657,
+      "freq_local_cross_rHz": 0.0188944760464123
+    },
+    {
+      "timestep": 135,
+      "displacement_am": 0.001051022877308793,
+      "amp_local_emarms_am": 0.16047488061971646,
+      "freq_local_cross_rHz": 0.0188944760464123
+    },
+    {
+      "timestep": 136,
+      "displacement_am": 0.00131835461946334,
+      "amp_local_emarms_am": 0.15847254831681706,
+      "freq_local_cross_rHz": 0.0188944760464123
+    },
+    {
+      "timestep": 137,
+      "displacement_am": 0.0005773137481524246,
+      "amp_local_emarms_am": 0.15649513700601564,
+      "freq_local_cross_rHz": 0.0188944760464123
+    },
+    {
+      "timestep": 138,
+      "displacement_am": -0.00045371701212224566,
+      "amp_local_emarms_am": 0.1545423906035643,
+      "freq_local_cross_rHz": 0.019864839602318038
+    },
+    {
+      "timestep": 139,
+      "displacement_am": -0.00028505311658036354,
+      "amp_local_emarms_am": 0.1526139991133472,
+      "freq_local_cross_rHz": 0.019864839602318038
+    },
+    {
+      "timestep": 140,
+      "displacement_am": 0.0008759569933670772,
+      "amp_local_emarms_am": 0.1507097064516164,
+      "freq_local_cross_rHz": 0.019864839602318038
+    },
+    {
+      "timestep": 141,
+      "displacement_am": 0.001383259003248822,
+      "amp_local_emarms_am": 0.14882922957844003,
+      "freq_local_cross_rHz": 0.019864839602318038
+    },
+    {
+      "timestep": 142,
+      "displacement_am": 0.00066414840913061,
+      "amp_local_emarms_am": 0.14697213719487426,
+      "freq_local_cross_rHz": 0.019864839602318038
+    },
+    {
+      "timestep": 143,
+      "displacement_am": -0.0001794775372252869,
+      "amp_local_emarms_am": 0.1451382001733552,
+      "freq_local_cross_rHz": 0.02116970725026709
+    },
+    {
+      "timestep": 144,
+      "displacement_am": -0.00026014449694963815,
+      "amp_local_emarms_am": 0.14332716243013494,
+      "freq_local_cross_rHz": 0.02116970725026709
+    },
+    {
+      "timestep": 145,
+      "displacement_am": 0.00028782755022817053,
+      "amp_local_emarms_am": 0.1415387139690976,
+      "freq_local_cross_rHz": 0.02116970725026709
+    },
+    {
+      "timestep": 146,
+      "displacement_am": 0.0010109979983693763,
+      "amp_local_emarms_am": 0.13977263914077123,
+      "freq_local_cross_rHz": 0.02116970725026709
+    },
+    {
+      "timestep": 147,
+      "displacement_am": 0.0011134258114581551,
+      "amp_local_emarms_am": 0.13802861447094805,
+      "freq_local_cross_rHz": 0.02116970725026709
+    },
+    {
+      "timestep": 148,
+      "displacement_am": 0.00024549702252813334,
+      "amp_local_emarms_am": 0.13630628952923612,
+      "freq_local_cross_rHz": 0.02116970725026709
+    },
+    {
+      "timestep": 149,
+      "displacement_am": -0.0005210537703223753,
+      "amp_local_emarms_am": 0.13460546214425556,
+      "freq_local_cross_rHz": 0.022026312437911276
+    },
+    {
+      "timestep": 150,
+      "displacement_am": -9.449616654515366e-05,
+      "amp_local_emarms_am": 0.13292583579798248,
+      "freq_local_cross_rHz": 0.022026312437911276
+    },
+    {
+      "timestep": 151,
+      "displacement_am": 0.0009138849760253991,
+      "amp_local_emarms_am": 0.13126722179712896,
+      "freq_local_cross_rHz": 0.022026312437911276
+    },
+    {
+      "timestep": 152,
+      "displacement_am": 0.0011023365006744238,
+      "amp_local_emarms_am": 0.1296293371017631,
+      "freq_local_cross_rHz": 0.022026312437911276
+    },
+    {
+      "timestep": 153,
+      "displacement_am": 0.0004060890151315715,
+      "amp_local_emarms_am": 0.1280118178034011,
+      "freq_local_cross_rHz": 0.022026312437911276
+    },
+    {
+      "timestep": 154,
+      "displacement_am": -0.0002119066689450059,
+      "amp_local_emarms_am": 0.12641447520875496,
+      "freq_local_cross_rHz": 0.02322310129580456
+    },
+    {
+      "timestep": 155,
+      "displacement_am": -0.00024101745229662084,
+      "amp_local_emarms_am": 0.12483706671216879,
+      "freq_local_cross_rHz": 0.02322310129580456
+    },
+    {
+      "timestep": 156,
+      "displacement_am": 0.0003297701615929886,
+      "amp_local_emarms_am": 0.12327934970798674,
+      "freq_local_cross_rHz": 0.02322310129580456
+    },
+    {
+      "timestep": 157,
+      "displacement_am": 0.000990106534587396,
+      "amp_local_emarms_am": 0.12174112202482884,
+      "freq_local_cross_rHz": 0.02322310129580456
+    },
+    {
+      "timestep": 158,
+      "displacement_am": 0.0008813345414777289,
+      "amp_local_emarms_am": 0.12022207366657923,
+      "freq_local_cross_rHz": 0.02322310129580456
+    },
+    {
+      "timestep": 159,
+      "displacement_am": -7.416741310394735e-06,
+      "amp_local_emarms_am": 0.11872192159330604,
+      "freq_local_cross_rHz": 0.02436005688873451
+    },
+    {
+      "timestep": 160,
+      "displacement_am": -0.0005076090576649965,
+      "amp_local_emarms_am": 0.1172405175459973,
+      "freq_local_cross_rHz": 0.02436005688873451
+    },
+    {
+      "timestep": 161,
+      "displacement_am": 9.155941665664623e-05,
+      "amp_local_emarms_am": 0.11577757848472116,
+      "freq_local_cross_rHz": 0.02436005688873451
+    },
+    {
+      "timestep": 162,
+      "displacement_am": 0.0008797719778359036,
+      "amp_local_emarms_am": 0.11433294267237366,
+      "freq_local_cross_rHz": 0.02436005688873451
+    },
+    {
+      "timestep": 163,
+      "displacement_am": 0.0008564581955594749,
+      "amp_local_emarms_am": 0.11290633380806891,
+      "freq_local_cross_rHz": 0.02436005688873451
+    },
+    {
+      "timestep": 164,
+      "displacement_am": 0.00025078006604843233,
+      "amp_local_emarms_am": 0.11149748232996703,
+      "freq_local_cross_rHz": 0.02436005688873451
+    },
+    {
+      "timestep": 165,
+      "displacement_am": -0.0002559878217892303,
+      "amp_local_emarms_am": 0.11010620628382609,
+      "freq_local_cross_rHz": 0.025057143770731146
+    },
+    {
+      "timestep": 166,
+      "displacement_am": -0.00021261853332726674,
+      "amp_local_emarms_am": 0.10873229675922017,
+      "freq_local_cross_rHz": 0.025057143770731146
+    },
+    {
+      "timestep": 167,
+      "displacement_am": 0.0003992496731762729,
+      "amp_local_emarms_am": 0.10737553136763135,
+      "freq_local_cross_rHz": 0.025057143770731146
+    },
+    {
+      "timestep": 168,
+      "displacement_am": 0.0009446306098169196,
+      "amp_local_emarms_am": 0.10603574837195572,
+      "freq_local_cross_rHz": 0.025057143770731146
+    },
+    {
+      "timestep": 169,
+      "displacement_am": 0.0006490876416538025,
+      "amp_local_emarms_am": 0.10471265799321537,
+      "freq_local_cross_rHz": 0.025057143770731146
+    },
+    {
+      "timestep": 170,
+      "displacement_am": -0.00020132273396227448,
+      "amp_local_emarms_am": 0.1034060445819384,
+      "freq_local_cross_rHz": 0.026102390032328213
+    },
+    {
+      "timestep": 171,
+      "displacement_am": -0.0004206443541585821,
+      "amp_local_emarms_am": 0.10211574640102089,
+      "freq_local_cross_rHz": 0.026102390032328213
+    },
+    {
+      "timestep": 172,
+      "displacement_am": 0.00022928487851292908,
+      "amp_local_emarms_am": 0.1008415410619449,
+      "freq_local_cross_rHz": 0.026102390032328213
+    },
+    {
+      "timestep": 173,
+      "displacement_am": 0.0007966111499021794,
+      "amp_local_emarms_am": 0.09958327356665252,
+      "freq_local_cross_rHz": 0.026102390032328213
+    },
+    {
+      "timestep": 174,
+      "displacement_am": 0.000677895273233133,
+      "amp_local_emarms_am": 0.09834069457044181,
+      "freq_local_cross_rHz": 0.026102390032328213
+    },
+    {
+      "timestep": 175,
+      "displacement_am": 0.00012695425510314228,
+      "amp_local_emarms_am": 0.0971135951628869,
+      "freq_local_cross_rHz": 0.026102390032328213
+    },
+    {
+      "timestep": 176,
+      "displacement_am": -0.00029471480258860615,
+      "amp_local_emarms_am": 0.09590180686783784,
+      "freq_local_cross_rHz": 0.026712361904593522
+    },
+    {
+      "timestep": 177,
+      "displacement_am": -0.00016532743598766033,
+      "amp_local_emarms_am": 0.09470514099200669,
+      "freq_local_cross_rHz": 0.026712361904593522
+    },
+    {
+      "timestep": 178,
+      "displacement_am": 0.00047447169432999955,
+      "amp_local_emarms_am": 0.09352341558115154,
+      "freq_local_cross_rHz": 0.026712361904593522
+    },
+    {
+      "timestep": 179,
+      "displacement_am": 0.0008761422118344091,
+      "amp_local_emarms_am": 0.09235648237626044,
+      "freq_local_cross_rHz": 0.026712361904593522
+    },
+    {
+      "timestep": 180,
+      "displacement_am": 0.0004100444139416071,
+      "amp_local_emarms_am": 0.09120406507644752,
+      "freq_local_cross_rHz": 0.026712361904593522
+    },
+    {
+      "timestep": 181,
+      "displacement_am": -0.0003082174289225242,
+      "amp_local_emarms_am": 0.09006602216174682,
+      "freq_local_cross_rHz": 0.027674846538738813
+    },
+    {
+      "timestep": 182,
+      "displacement_am": -0.00030556582491777715,
+      "amp_local_emarms_am": 0.08894218515600841,
+      "freq_local_cross_rHz": 0.027674846538738813
+    },
+    {
+      "timestep": 183,
+      "displacement_am": 0.0003062261987767149,
+      "amp_local_emarms_am": 0.08783236536594437,
+      "freq_local_cross_rHz": 0.027674846538738813
+    },
+    {
+      "timestep": 184,
+      "displacement_am": 0.0007139658063384513,
+      "amp_local_emarms_am": 0.08673642801063475,
+      "freq_local_cross_rHz": 0.027674846538738813
+    },
+    {
+      "timestep": 185,
+      "displacement_am": 0.0005341155156314392,
+      "amp_local_emarms_am": 0.08565415070156164,
+      "freq_local_cross_rHz": 0.027674846538738813
+    },
+    {
+      "timestep": 186,
+      "displacement_am": 2.6701363812395605e-05,
+      "amp_local_emarms_am": 0.08458535148448311,
+      "freq_local_cross_rHz": 0.027674846538738813
+    },
+    {
+      "timestep": 187,
+      "displacement_am": -0.00032670281636388524,
+      "amp_local_emarms_am": 0.08352989557847923,
+      "freq_local_cross_rHz": 0.028206193938235233
+    },
+    {
+      "timestep": 188,
+      "displacement_am": -9.730192622708873e-05,
+      "amp_local_emarms_am": 0.08248760102930805,
+      "freq_local_cross_rHz": 0.028206193938235233
+    },
+    {
+      "timestep": 189,
+      "displacement_am": 0.0005514479207460995,
+      "amp_local_emarms_am": 0.08145833979509565,
+      "freq_local_cross_rHz": 0.028206193938235233
+    }
+  ]
+}

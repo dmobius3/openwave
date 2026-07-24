@@ -1,0 +1,1990 @@
+{
+  "metadata": {
+    "model": "M4",
+    "xperiment": "test_soliton_gamma",
+    "engine": {
+      "SEED_MODE": 0,
+      "SEED_BOOST": 10.0,
+      "V_MODE": 1,
+      "V_C1": 0.0004,
+      "V_C2": 0.0,
+      "WC_INTERACT_MODE": 0,
+      "WC_BOOST": 1.0,
+      "WC_RADIUS": 2,
+      "WC_SIGMA": 1.5
+    },
+    "wave_centers": {
+      "K": 10,
+      "POSITIONS": [
+        [
+          0.5015637939992227,
+          0.5326073740004317,
+          0.5020469461369699
+        ],
+        [
+          0.4725856497922952,
+          0.48120535214570404,
+          0.5027149441792077
+        ],
+        [
+          0.5300316008294458,
+          0.4851547764340487,
+          0.49787720084049936
+        ],
+        [
+          0.5139872758628946,
+          0.5075015571018074,
+          0.5024360569228442
+        ],
+        [
+          0.4865507273666763,
+          0.5100814524979144,
+          0.4996769973257336
+        ],
+        [
+          0.4984430259804753,
+          0.48383344666780426,
+          0.4975101847137007
+        ],
+        [
+          0.5018701819632051,
+          0.5172296996331364,
+          0.5247768149789002
+        ],
+        [
+          0.48489912364430615,
+          0.4944477682531786,
+          0.5255476115807126
+        ],
+        [
+          0.5158595492348687,
+          0.4900178718933513,
+          0.5231136374134039
+        ],
+        [
+          0.4973959438483279,
+          0.49802661769790213,
+          0.5476520794480078
+        ]
+      ],
+      "PHASE_OFFSETS_DEG": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ]
+    },
+    "universe": {
+      "EDGE_X": 1e-15,
+      "EDGE_Y": 1e-15,
+      "EDGE_Z": 1e-15,
+      "TARGET_VOXELS": 55000000
+    },
+    "simulation": {
+      "SIM_SPEED": 1.0,
+      "dt_rs": 4.810845153459681,
+      "cfl_factor": 0.3008333,
+      "PAUSED": false
+    },
+    "K": 10,
+    "timestamp": "2026-07-21T15:02:53.758652"
+  },
+  "data": [
+    {
+      "timestep": 1,
+      "displacement_am": 3.587442396900732,
+      "amp_local_emarms_am": 0.4349764412274137,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 2,
+      "displacement_am": 5.884245563244113,
+      "amp_local_emarms_am": 0.8327915724186719,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 3,
+      "displacement_am": -2.4153267039006185,
+      "amp_local_emarms_am": 0.8729876096483279,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 4,
+      "displacement_am": -6.647503659062726,
+      "amp_local_emarms_am": 1.1801931674448356,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 5,
+      "displacement_am": 7.147957075542588,
+      "amp_local_emarms_am": 1.4523982229137598,
+      "freq_local_cross_rHz": 0.0
+    },
+    {
+      "timestep": 6,
+      "displacement_am": -6.200201799224288,
+      "amp_local_emarms_am": 1.619354151893808,
+      "freq_local_cross_rHz": 0.003830179195452919
+    },
+    {
+      "timestep": 7,
+      "displacement_am": -1.65597660781202,
+      "amp_local_emarms_am": 1.611703555578738,
+      "freq_local_cross_rHz": 0.003830179195452919
+    },
+    {
+      "timestep": 8,
+      "displacement_am": 8.275396667446413,
+      "amp_local_emarms_am": 1.8814763006539514,
+      "freq_local_cross_rHz": 0.003830179195452919
+    },
+    {
+      "timestep": 9,
+      "displacement_am": -11.653097094067395,
+      "amp_local_emarms_am": 2.3342082141951663,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 10,
+      "displacement_am": 41.335708028307856,
+      "amp_local_emarms_am": 5.516581759486443,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 11,
+      "displacement_am": -2367.967616288881,
+      "amp_local_emarms_am": 287.1653235359263,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 12,
+      "displacement_am": 450742087.1790266,
+      "amp_local_emarms_am": 54652012.65122377,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 13,
+      "displacement_am": -3.1087533287590897e+24,
+      "amp_local_emarms_am": Infinity,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 14,
+      "displacement_am": Infinity,
+      "amp_local_emarms_am": Infinity,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 15,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 16,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 17,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 18,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 19,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 20,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 21,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 22,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 23,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 24,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 25,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 26,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 27,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 28,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 29,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 30,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 31,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 32,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 33,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 34,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 35,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 36,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 37,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 38,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 39,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 40,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 41,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 42,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 43,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 44,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 45,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 46,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 47,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 48,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 49,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 50,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 51,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 52,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 53,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 54,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 55,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 56,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 57,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 58,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 59,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 60,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 61,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 62,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 63,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 64,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 65,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 66,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 67,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 68,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 69,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 70,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 71,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 72,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 73,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 74,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 75,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 76,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 77,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 78,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 79,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 80,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 81,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 82,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 83,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 84,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 85,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 86,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 87,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 88,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 89,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 90,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 91,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 92,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 93,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 94,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 95,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 96,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 97,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 98,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 99,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 100,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 101,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 102,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 103,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 104,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 105,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 106,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 107,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 108,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 109,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 110,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 111,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 112,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 113,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 114,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 115,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 116,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 117,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 118,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 119,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 120,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 121,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 122,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 123,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 124,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 125,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 126,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 127,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 128,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 129,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 130,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 131,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 132,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 133,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 134,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 135,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 136,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 137,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 138,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 139,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 140,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 141,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 142,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 143,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 144,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 145,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 146,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 147,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 148,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 149,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 150,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 151,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 152,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 153,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 154,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 155,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 156,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 157,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 158,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 159,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 160,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 161,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 162,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 163,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 164,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 165,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 166,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 167,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 168,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 169,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 170,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 171,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 172,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 173,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 174,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 175,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 176,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 177,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 178,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 179,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 180,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 181,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 182,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 183,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 184,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 185,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 186,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 187,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 188,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 189,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 190,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 191,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 192,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 193,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 194,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 195,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 196,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 197,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 198,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 199,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 200,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 201,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 202,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 203,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 204,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 205,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 206,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 207,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 208,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 209,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 210,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 211,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 212,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 213,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 214,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 215,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 216,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 217,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 218,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 219,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 220,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 221,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 222,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 223,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 224,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 225,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 226,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 227,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 228,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 229,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 230,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 231,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 232,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 233,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 234,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 235,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 236,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 237,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 238,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 239,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 240,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 241,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 242,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 243,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 244,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 245,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 246,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 247,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 248,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 249,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 250,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 251,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 252,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 253,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 254,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 255,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 256,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 257,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 258,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 259,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 260,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 261,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 262,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 263,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 264,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 265,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 266,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 267,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 268,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 269,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 270,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 271,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 272,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 273,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 274,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 275,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 276,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 277,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 278,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 279,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 280,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 281,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 282,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 283,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 284,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 285,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 286,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 287,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 288,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 289,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 290,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 291,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 292,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 293,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 294,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 295,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 296,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 297,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 298,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 299,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 300,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 301,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 302,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 303,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 304,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 305,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 306,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 307,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 308,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 309,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 310,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 311,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 312,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 313,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 314,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    },
+    {
+      "timestep": 315,
+      "displacement_am": NaN,
+      "amp_local_emarms_am": NaN,
+      "freq_local_cross_rHz": 0.007468849212331458
+    }
+  ]
+}

@@ -137,12 +137,18 @@ class SimulationState:
         self.amp_global_rms = constants.EWAVE_AMPLITUDE
         self.freq_global_avg = constants.EWAVE_FREQUENCY
         self.wavelength_global_avg = constants.EWAVE_LENGTH
-
+        self.R_WALL = 100.0
+        self.WALL_HEIGHT = 1.2
+        self.DEFICIT_DEPTH = 0.8
+        self.R_SOLITON = 20.0
+        self.SIGMA = 3.0
+        self.PRESSURE_STRENGTH = 0.0
+        self.CFL_SAFETY = 0.95
         # Current xperiment parameters
         self.X_NAME = ""
         self.CAM_INIT = [2.00, 1.50, 1.75]
         self.UNIVERSE_SIZE = []
-        self.TARGET_VOXELS = 1e8
+        self.TARGET_VOXELS = 3_500_000
         self.NUM_SOURCES = 1
         self.SOURCES_POSITION = []
         self.SOURCES_OFFSET_DEG = []
@@ -245,6 +251,15 @@ class SimulationState:
         self.WC_RADIUS = engine["WC_RADIUS"]
         self.WC_SIGMA = engine["WC_SIGMA"]
 
+        # New EMC density profile parameters (must be after `engine` is defined)
+        self.R_WALL = engine.get("R_WALL", 100.0)
+        self.WALL_HEIGHT = engine.get("WALL_HEIGHT", 1.2)
+        self.DEFICIT_DEPTH = engine.get("DEFICIT_DEPTH", 0.8)
+        self.R_SOLITON = engine.get("R_SOLITON", 20.0)
+        self.SIGMA = engine.get("SIGMA", 3.0)
+        self.PRESSURE_STRENGTH = engine.get("PRESSURE_STRENGTH", 0.0)
+        self.CFL_SAFETY = engine.get("CFL_SAFETY", 0.95)
+
     def initialize_grid(self):
         """Initialize or reinitialize the wave-field grid and wave-centers."""
         self.wave_field = medium.WaveField(
@@ -268,15 +283,11 @@ class SimulationState:
         ewave.seed_wave(self.wave_field, self.SEED_MODE, self.SEED_BOOST, self.dt_rs)
 
     def _compute_timestep(self):
-        """Derive the CFL-safe PDE timestep and wave speed (am/rs).
-
-        dt is set just inside the 3D Courant limit dt ≤ dx/(c·√3). SIM_SPEED scales
-        the rendered wave speed (c_amrs) without changing dt, so SIM_SPEED ≤ 1 stays stable.
-        """
-        CFL_SAFETY = 0.95  # margin below the 3D Courant boundary (1/√3)
+        """Derive the CFL-safe PDE timestep and wave speed (am/rs)."""
         c_phys_amrs = constants.WAVE_SPEED / constants.ATTOMETER * constants.RONTOSECOND
         self.c_amrs = c_phys_amrs * self.SIM_SPEED
-        self.dt_rs = CFL_SAFETY * self.wave_field.dx_am / (c_phys_amrs * (3**0.5))
+        # Use CFL_SAFETY from xparameters (default 0.95)
+        self.dt_rs = self.CFL_SAFETY * self.wave_field.dx_am / (c_phys_amrs * (3**0.5))
         self.cfl_factor = round((self.c_amrs * self.dt_rs / self.wave_field.dx_am) ** 2, 7)
 
     def reset_sim(self):
@@ -484,6 +495,11 @@ def compute_wave_oscillation(state):
         state.V_MODE,
         state.V_C1,
         state.V_C2,
+        state.R_WALL,
+        state.WALL_HEIGHT,
+        state.DEFICIT_DEPTH,
+        state.R_SOLITON,
+        state.SIGMA,
     )
 
     # Re-drive the wave centers on top of the base wave (P3). Mode 0 = free (no re-drive).
@@ -516,20 +532,17 @@ def compute_wave_oscillation(state):
         )
 
     # IN-FRAME DATA SAMPLING & ANALYTICS ==================================
-    # Frame skip reduces GPU->CPU transfer overhead
+    # Frame skip reduces GPU->CPU transfer overhead.
+    # Log timestep data and wave-center positions every 60 frames (and on frame 10)
     if state.frame % 60 == 0 or state.frame == 10:
-        ewave.sample_avg_trackers(state.wave_field, state.trackers)
+        instrument.log_timestep_data(state.frame, state.wave_field, state.trackers, state.wave_center)
+
     state.amp_global_rms = state.trackers.amp_global_emarms_am[None] * constants.ATTOMETER  # m
     state.freq_global_avg = state.trackers.freq_global_avg_rHz[None] / constants.RONTOSECOND  # Hz
     state.energy_global_avg = state.trackers.energy_global_avg_aJ[None] * constants.ATTOJOULE  # J
     state.wavelength_global_avg = constants.WAVE_SPEED / (
         state.freq_global_avg or 1
     )  # prevents 0 div
-
-    if state.INSTRUMENTATION:
-        instrument.log_timestep_data(state.frame, state.wave_field, state.trackers)
-        if state.frame == 500:
-            instrument.plot_probe_wave_profile(state.wave_field)
 
 
 def compute_force_motion(state):
@@ -538,21 +551,35 @@ def compute_force_motion(state):
 
     Physics:
     - Force = -grad(E) where E = rho * V * (f * A)^2
+    - Vacuum pressure: F_pressure = -strength * grad(rho)
     - Motion: Euler integration of F = m * a
-
-    Phases:
-    - Phase 1 (SMOKE_TEST=True): Hardcoded force for testing motion integration
-    - Phase 3+ (SMOKE_TEST=False): Force computed from energy gradient
 
     See research/02_force_motion.md for detailed documentation.
     """
 
-    # Compute force from energy gradient, then integrate motion
+    # 1. Compute force from energy gradient
     force_motion.compute_force_vector(
         state.wave_field,
         state.trackers,
         state.wave_center,
     )
+
+    # 2. Add vacuum pressure force (for non-uniform density profiles)
+    # Only active for V_MODE >= 4 (non-uniform profiles)
+    if state.PRESSURE_STRENGTH > 0.0 and state.V_MODE >= 4:
+        force_motion.add_pressure_force(
+            state.wave_center,
+            state.wave_field,
+            state.PRESSURE_STRENGTH,
+            state.V_MODE,
+            state.R_SOLITON,
+            state.SIGMA,
+            state.DEFICIT_DEPTH,
+            state.R_WALL,
+            state.WALL_HEIGHT,
+        )
+
+    # 3. Integrate motion
     if state.APPLY_MOTION:
         force_motion.integrate_motion_leapfrog(
             state.wave_field,
@@ -564,9 +591,7 @@ def compute_force_motion(state):
         for wc_idx in range(state.wave_center.num_sources):
             state.wave_center.velocity_amrs[wc_idx] = ti.Vector([0.0, 0.0, 0.0], dt=ti.f32)
 
-    # Annihilation naturally occurs from wave physics, but needs numerical precision check
-    # Detect and handle particle annihilation (opposite phase WCs meeting)
-    # Threshold: WCs can be at grid diagonal positions and dt may cause larger jumps
+    # 4. Annihilation detection
     annihilation_threshold = state.wave_field.ewave_res / 2.0  # in voxels
     force_motion.detect_annihilation(state.wave_center, annihilation_threshold)
 
@@ -649,7 +674,7 @@ def main():
     selected_xperiment_arg = sys.argv[1] if len(sys.argv) > 1 else None
 
     # Initialize Taichi
-    ti.init(arch=ti.gpu, log_level=ti.WARN)  # GPU preferred, suppress info logs
+    ti.init(arch=ti.cpu, log_level=ti.WARN)  # GPU preferred, suppress info logs
 
     # Initialize xperiment manager and state
     xperiment_mgr = XperimentManager()

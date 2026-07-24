@@ -1,14 +1,19 @@
 """
-XPERIMENT PARAMETERS - Nonlinearity test with gamma (Variant A)
+XPERIMENT PARAMETERS - Nonlinearity test with EMC wall (Variant B + wall)
 
-Goal: verify whether the cubic nonlinearity with gamma = 1/epsilon_M ~ 2.4148e4
-      stabilises the K=10 electron configuration (1-3-6 tetrahedron).
+Goal: test whether the density-modulated cubic nonlinearity with a
+      Degraded EMC Wall (v_mode=5) stabilises the K=10 electron
+      configuration (1-3-6 tetrahedron) better than neighbouring K.
 
-Variant A: F(psi) = gamma * psi^3  (pure cubic self-trapping)
-Coefficient gamma follows from BCC geometry: gamma = N_final * pi^3 ~ 2.4148e4
+Variant B + wall: F(psi) = gamma * psi^3 * (1 - rho(r)/rho_0)
+where rho(r) is a radial EMC density profile with a core deficit
+and a Gaussian wall at r = R_WALL.
 
-A perturbation of 0.1*lambda is applied on purpose - at perfect placement
-all K values are stable.
+Parameters:
+  V_MODE = 5   (deficit + wall)
+  R_WALL = 100 (wall radius in grid units)
+  WALL_HEIGHT = 2.0 (peak density relative to background)
+  DEFICIT_DEPTH = 0.9 (core density reduction)
 """
 
 from openwave.common import constants
@@ -27,8 +32,8 @@ PHASES = [180] * K  # all in the same phase (electron)
 
 XPARAMETERS = {
     "meta": {
-        "X_NAME": f"  /Soliton gamma-test (K={K})",
-        "DESCRIPTION": "Nonlinearity test with gamma - Variant A (pure cubic)",
+        "X_NAME": f"  /Soliton EMC-wall (K={K})",
+        "DESCRIPTION": "Nonlinearity test with EMC wall - K=10 (electron)",
     },
     "camera": {
         "INITIAL_POSITION": [0.94, 0.91, 0.69],
@@ -44,15 +49,19 @@ XPARAMETERS = {
         "APPLY_MOTION": True,
     },
     "engine": {
-        "SEED_MODE": 0,          # gaussian pulse
-        "SEED_BOOST": 10.0,      # 
-        "V_MODE": 4,             # density-modulated cubic
-        "V_C1": 300.0,           # start od 300
+        "SEED_MODE": 0,
+        "SEED_BOOST": 0.01,                
+        "V_MODE": 1,                      
+        "V_C1": -5.0,                 
         "V_C2": 0.0,
         "WC_INTERACT_MODE": 0,
         "WC_BOOST": 1.0,
         "WC_RADIUS": 2,
         "WC_SIGMA": 1.5,
+        "R_WALL": 100.0,
+        "WALL_HEIGHT": 1.2,
+        "DEFICIT_DEPTH": 0.8,
+        "CFL_SAFETY": 1e-7,                # sub-CFL
     },
     "ui_defaults": {
         "SHOW_AXIS": False,
@@ -68,7 +77,7 @@ XPARAMETERS = {
     },
     "color_defaults": {
         "COLOR_THEME": "OCEAN",
-        "WAVE_MENU": 1,          # energy - best reveals nonlinear effects
+        "WAVE_MENU": 1,          # displacement - best reveals wave structure
     },
     "analytics": {
         "INSTRUMENTATION": True, # enable diagnostics
