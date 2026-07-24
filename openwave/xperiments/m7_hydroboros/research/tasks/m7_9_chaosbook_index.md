@@ -7,7 +7,7 @@
 | File | Chapter | Pages | Why it is in the set |
 | --- | --- | --- | --- |
 | `contents.pdf` | front matter | 15 | the map of the tome; use to decide what else to fetch |
-| `intro.pdf` | ch. 1 Overture | 35 | the author's suggested reading dose for Rodrigo (E5 digest source) |
+| `intro.pdf` | ch. 1 Overture | 35 | the author's suggested reading dose for the maintainer (E5 digest source) |
 | `flows.pdf` | ch. 2 Go with the flow | 28 | Rössler flow defined (2.28); equilibria formula + values (2.29); exercises 2.7, 2.8 |
 | `maps.pdf` | ch. 3 Discrete time dynamics | 18 | Poincaré sections + return maps; Hénon map (3.17)/(3.18); Lozi map (3.19) |
 | `stability.pdf` | ch. 4 Local stability | 21 | stability matrix, exponents; Rössler equilibrium eigenvalues (4.36), example 4.5 |

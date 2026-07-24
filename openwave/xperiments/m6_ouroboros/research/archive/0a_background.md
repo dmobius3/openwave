@@ -18,7 +18,7 @@
 - Later additions (2026-05-18 → 2026-05-20):
   - `Werbos_Law_of_Everything_2026_v5.pdf` → `_Werbos_Law_of_Everything_2026_v8.txt` (v8 deposited 2026-05-20 as Zenodo 20313063; absorbs all 7 of our v6-review suggestions plus 3 §4 Hopf-invariant Zenodo references)
   - `_Dark_Matter_in_Universe_v4.txt` — broad narrative DM paper, deposited 2026-05-19 as Zenodo 20298669
-  - `_The Neutral Chaoiton_ A Dark Matter Candidate from the Ouroboros Langrangian.txt` (2026-05-20) — compact ApJ-style DM paper, distinct from v4 above; cites both 20313063 + 20298669 as prior work; Acknowledgments thank Rodrigo by name for the helicity-structure dialogue
+  - `_The Neutral Chaoiton_ A Dark Matter Candidate from the Ouroboros Langrangian.txt` (2026-05-20) — compact ApJ-style DM paper, distinct from v4 above; cites both 20313063 + 20298669 as prior work; Acknowledgments thank the maintainer by name for the helicity-structure dialogue
   - `Numerical Benchmark for the Ouroboros Lagrangian.docx` — 4-fn benchmark ODE source for T5/T6+ work
   - `Claude bosonization May18 4PM.txt` — Werbos's bosonization session log with the lepton-spectrum numbers (ω=1.0 / 12.78 / 40.7 hypothesis)
   - `Competion_Of_Hopf_invariant_Ouroboros_proof.txt` — **Hopf invariant proof completion (Zenodo 20296060, 2026-05-19)**. Supplies Lemmas A (∇×J = B everywhere for finite-energy Lorenz-constrained solutions) and B (zeros of B made isolated by perturbation preserving Q[A,J]). Together with the main argument of Werbos 2026b (Zenodo 20181683), these establish Q[A,J] = H(Φ) ∈ ℤ as a theorem of differential topology. **Charge quantization is now rigorous.** Doesn't address existence of specific-Q chaoitons (the open T6-T10 problem).

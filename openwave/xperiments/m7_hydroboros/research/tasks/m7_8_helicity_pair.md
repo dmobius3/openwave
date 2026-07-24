@@ -7,8 +7,8 @@
 | Input | State |
 | --- | --- |
 | The Q15 units contract | **RESOLVED-directive** ([tracker](../m7_question_tracker.md#q15-detail)): the author pins no frequency mapping ("the frequency is emergent... there is only one frequency that works"); the directive is "make the decision that gives us the proper spin ℏ/2, whatever's coming out of your model is fine". The **observable `S_z = ℏ/2` is the target**; this task measures it |
-| The 3:1 ratio | The author suspects early-model drift in his own notes but ruled: "it's part of the model right now, so we run with it, that's part of the ansatz". The two-line algebra (§ 3) is not in dispute; whether the closure postulates survive full 3D nonlinear relaxation is the measurable question |
-| The audit loop | Agreed at the call: we run at zero cost to him, send the data + the walkthrough, and **he runs his own adversarial pass** (his tools, his framing). We treat whatever comes back as external-audit evidence per [`AI_HYGIENE.md`](../../../../../AI_HYGIENE.md) |
+| The 3:1 ratio | The author suspects early-model drift in the original notes but ruled: "it's part of the model right now, so we run with it, that's part of the ansatz". The two-line algebra (§ 3) is not in dispute; whether the closure postulates survive full 3D nonlinear relaxation is the measurable question |
+| The audit loop | Agreed at the call: we run at zero cost to the author, send the data + the walkthrough, and **the author runs an independent adversarial pass** (the author's own tools and framing). We treat whatever comes back as external-audit evidence per [`AI_HYGIENE.md`](../../../../../AI_HYGIENE.md) |
 | Trust context | The author's stated blocker is under-the-hood visibility ("how could a single-person team on a laptop run extensive complex simulations..."): deliverable (b) answers it head-on |
 
 ## 2. Deliverables (three)
@@ -87,12 +87,12 @@ Skeleton already in place; filled during this task. Tuned to the author's regist
 | --- | --- | --- |
 | 1 | The discovery narrative: the five-step chain to the stable rotating electron (pre-filled) | "show me how it was found" |
 | 2 | What is actually integrated: the evolution equations at each step, energies as field quadratures, line-by-line code map | "what's the PDE, what's the actual equation you're integrating" |
-| 3 | Numerics: the integrator (velocity-Verlet / leapfrog), the drift-fix history, `O(dt²)` convergence evidence, conservation traces, why it does not explode at Zitter-like scales | his own symplectic/Taylor crash experience |
+| 3 | Numerics: the integrator (velocity-Verlet / leapfrog), the drift-fix history, `O(dt²)` convergence evidence, conservation traces, why it does not explode at Zitter-like scales | the author's own symplectic/Taylor crash experience |
 | 4 | The automated test suite: inventory + current pass report (auto-generated from the gate JSONs) | "let's make sure we have tests automated that show the PDE is behaving correctly... generate me a report" |
 | 5 | "Approximately Beltrami", precisely: `λ_eff = F·(∇×F)/\|F\|²` defined, the 0.96 alignment map shown | "is that word salad?" |
 | 6 | The system under the hood: human + AI + repo governance (AI_HYGIENE, method notes, script-backed claims, adversarial audits), and the honest answer to "one person + a laptop": GPU lattice + AD gradients + agent throughput + validated gates + known-answer tests at every step | the David-and-Goliath question |
 | 7 | The extension results, one report: § 7.1 = the M7.8 results (from deliverable a); § 7.2 = the [M7.9](m7_9_chaosbook.md) benchmark scorecard; § 7.3 = the [M7.10](m7_10_pure_maxwell.md) pure-Maxwell results (2026-07-07: the walkthrough ships to the author once all three land) | the agreed data handoff |
-| 8 | Reproduce everything: `m7_7_canonical.py` quick mode, the grid ladder, and the local-install path for when he takes it | "I do want to install OpenWave at some point" |
+| 8 | Reproduce everything: `m7_7_canonical.py` quick mode, the grid ladder, and the local-install path for when the author takes it | "I do want to install OpenWave at some point" |
 
 ## 6. Folded from the call-prep sheet (so nothing is lost and that doc can retire)
 

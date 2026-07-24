@@ -23,7 +23,7 @@ The ansatz satisfies **Maxwell-with-sources where the sources are read off the f
 | --- | --- | --- |
 | 1 | **The Heaviside is inverted**: the paper defines `H(r−r₀) = 1 for r < r₀`, 0 outside (their Eq 1 text), the opposite of the standard `H` | implement their stated definition (fields live INSIDE the tube), never the formula's face value |
 | 2 | **Instantaneous charge integrates to zero** (`ρ ∝ sin(φ−ωt)` over one wavelength around the ring) | the electron charge is `Q_rms` (RMS over volume), their Eq 19: `√2 π² ε₀ E₀ r₀² = e`; compute RMS, not the plain integral |
-| 3 | **Complex-field energy convention**: the paper's `u(t) = ε₀E₀²(1 + R/4R₀)` (Eq 31) comes from the appendix's specific convention | pin the convention against the **FLDB Appendix** (corpus #1, Appendix PDF) before comparing `U`; if ambiguous, compute both real-part-instantaneous and complex-modulus averages and report which matches Eq 32; tracked as **Q10** in [`../m7_question_tracker.md`](../m7_question_tracker.md) (a direct Marc ask, he is the author) |
+| 3 | **Complex-field energy convention**: the paper's `u(t) = ε₀E₀²(1 + R/4R₀)` (Eq 31) comes from the appendix's specific convention | pin the convention against the **FLDB Appendix** (corpus #1, Appendix PDF) before comparing `U`; if ambiguous, compute both real-part-instantaneous and complex-modulus averages and report which matches Eq 32; tracked as **Q10** in [`../m7_question_tracker.md`](../m7_question_tracker.md) (a direct ask to Marc Fleury, the author) |
 | 4 | **The mask's delta shell**: `∇·E` at the tube boundary is a distribution; the lattice smears it | grid-convergence study is mandatory (§ 4); report observables vs `h` with Richardson extrapolation |
 | 5 | `ω` is not free | enforce `ω = 2c/R₀` (Faraday); phase velocity `v_p = 2c` is a check, not a violation |
 
@@ -131,7 +131,7 @@ As the paper states them: the mask is unphysical at the boundary (now quantified
 
 **Issues / blockers**: none; two implementation bugs (a 2π in μ, erosion starving thin-tube integrals) caught by the gates and fixed via the interface-weighted quadrature.
 
-**Action needed**: Q10 ask sharpened for Marc (tracker updated); the § 3 finding corrects the authors' paper, outbound phrasing is Rodrigo's. Next: M7.3 (verbatim-ODE pre-gate + the 3D chaoiton); after M7.3, the consolidated report + ask round to Marc.
+**Action needed**: Q10 ask sharpened for Marc (tracker updated); the § 3 finding corrects the authors' paper, outbound phrasing is the maintainer's. Next: M7.3 (verbatim-ODE pre-gate + the 3D chaoiton); after M7.3, the consolidated report + ask round to Marc.
 
 **Findings**: The lattice reproduces every published observable of the Fleury electron at demonstrated O(h²·⁵) convergence (the "reproduce Faber" trust-builder passed), and finds two results beyond the paper: its energy formula rests on two identifiable algebra slips (corrected with the paper's own convention, `U` rises 0.795 → 0.958 m_ec² at unchanged parameters), and the "unphysical mask" is quantitatively a hidden surface charge ~18× the bulk RMS charge, pointing at M7.4's relaxation as the principled fix.
 

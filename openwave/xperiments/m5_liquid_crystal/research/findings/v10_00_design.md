@@ -1,7 +1,7 @@
 # N1+N2 foundation build , design + progress log (LOCAL, do not publish)
 
 Go-time: 2026-06-21 19:00 EDT. Reset 11:00pm EDT (resume ping armed 03:05 UTC Jun 22).
-HOLD: no GitHub #236 posting until the whole N-program (N1-N5) finishes (Rodrigo's call,
+HOLD: no GitHub #236 posting until the whole N-program (N1-N5) finishes (the maintainer's call,
 `research/10a_neutrino_oscillations.md § N1 + N2 foundation scope` WORKFLOW NOTE). Everything LOCAL. Progress logged here.
 
 Scope source: `research/10a_neutrino_oscillations.md § N1 + N2 foundation scope`. Master plan: `research/10a_neutrino_oscillations.md`.

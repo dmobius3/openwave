@@ -118,7 +118,7 @@ def main():
                             1.0, True, smooth=True, steps=1500, km=30.0)
     print("\n" + "=" * 76)
     print(f"  j (SAFE GUI v1, 1500): {'bounded' if j_ok else f'EXPLODED @ {j_n}'}")
-    print("  → " + ("SAFE config validated — Rodrigo GUI re-test" if j_ok
+    print("  → " + ("SAFE config validated — maintainer GUI re-test" if j_ok
           else "even the safe config fails — full stop, deeper diagnosis"))
     print("=" * 76)
 

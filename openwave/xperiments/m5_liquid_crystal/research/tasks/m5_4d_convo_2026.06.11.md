@@ -1,6 +1,6 @@
 # Convo record 2026-06-11: Duda on the ZBW clock, charge quantization, and a MODELS.md review
 
-Participants: Jarek Duda (Jagiellonian), Adrian Sulich (IFPAN), Manfried Faber (TU Wien), Rodrigo (OpenWave), models-of-particles group. Thread: "how much electron's mass would grow if stopping its Zitterbewegung?" plus Duda's review of [`MODELS.md`](../../../../../MODELS.md). This record captures the physics and the resulting table updates. Figures from Duda are in [`../theory/`](../../theory).
+Participants: Jarek Duda (Jagiellonian), Adrian Sulich (IFPAN), Manfried Faber (TU Wien), the maintainer (OpenWave), models-of-particles group. Thread: "how much electron's mass would grow if stopping its Zitterbewegung?" plus Duda's review of [`MODELS.md`](../../../../../MODELS.md). This record captures the physics and the resulting table updates. Figures from Duda are in [`../theory/`](../../theory).
 
 ## 1. The Zitterbewegung / charge-quantization exchange
 

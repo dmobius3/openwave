@@ -30,4 +30,4 @@ TBM gap).
 ## End-of-night state (autonomous, 2026-06-21 -> 22)
 N3 COMPLETE (TBM gate) + N4 COMPLETE (CP sector + gate closure). 14 scripts, 4 findings docs (n3, n4,
 n_foundation, + the 10a plan updates), 13 checkpoints, 2 figures. All < 130 KB, nothing > 1 MB. #236 HELD,
-git untouched (Rodrigo's). Ready for N5 (the peer-review article draft) tomorrow.
+git untouched (the maintainer's). Ready for N5 (the peer-review article draft) tomorrow.

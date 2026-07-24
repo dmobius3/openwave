@@ -128,8 +128,8 @@ Fable 5 high for Phase A (novel constraint derivation) and the audit brief; defa
 | --- | --- |
 | Hard cap (~1 day) | Ship partials + ONE sharp follow-up question (M5.20.2 precedent) |
 | Fable-cap model switch mid-run | Checkpoint file is resume-complete (decision tree, relaunch commands); detached production processes survive |
-| Results ready after ~13:00 EDT | Flag to Rodrigo: holding for the next-day 14:00 EDT send costs nothing (deeper replies arrive his morning either way) |
-| Outbound content | Next email opens with the brief timing apology (Rodrigo-voice bullet) + the one-sentence "measured, not manual" clarification + the a ≈ δ/2 prediction-confirmed line, then this task's results |
+| Results ready after ~13:00 EDT | Flag to the maintainer: holding for the next-day 14:00 EDT send costs nothing (deeper replies arrive his morning either way) |
+| Outbound content | Next email opens with the brief timing apology (maintainer-voice bullet) + the one-sentence "measured, not manual" clarification + the a ≈ δ/2 prediction-confirmed line, then this task's results |
 
 ## M5.21 findings feed (2026-07-14, folded pre-go)
 

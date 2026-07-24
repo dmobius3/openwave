@@ -22,7 +22,7 @@ The full re-entry plan drafted here on 2026-07-02 (the δ=0.3-inconclusive hypot
 
 ---
 
->**#199 merged into M5.11 (2026-07-02).** Per Rodrigo: the PMNS-mixing task (#199) folds into the neutrino vortex-loop task M5.11 (#236); both archived below.
+>**#199 merged into M5.11 (2026-07-02).** Per the maintainer: the PMNS-mixing task (#199) folds into the neutrino vortex-loop task M5.11 (#236); both archived below.
 
 ## GitHub issue archive (#236)
 

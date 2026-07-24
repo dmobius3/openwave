@@ -112,7 +112,7 @@ Dr. Duda reiterated that a Lagrangian is ultimately required and drew a sharp di
 
 ### 2026-04-08 — Jeff's reply
 
-Jeff acknowledged the Lagrangian point and deferred the Lagrangian-candidate discussion to Rodrigo as the implementation lead. Confirmed that charge magnitude and rigorous Coulomb derivation remain open problems for OpenWave, and recognized that stable configurations with topological invariants could be a useful connection point to Dr. Duda's framework.
+Jeff acknowledged the Lagrangian point and deferred the Lagrangian-candidate discussion to the maintainer as the implementation lead. Confirmed that charge magnitude and rigorous Coulomb derivation remain open problems for OpenWave, and recognized that stable configurations with topological invariants could be a useful connection point to Dr. Duda's framework.
 
 ### 2026-04-07 — Dr. Duda (charge quantization is required for particle stability)
 
@@ -137,9 +137,9 @@ Dr. Duda proposed a concrete starting experiment: recreate the Coulomb interacti
 
 Dr. Close joined the thread, offering his **nonlinear vector wave equation for the evolution of spin density** (and the equivalent first-order Dirac equation) as a candidate, consistent with relativistic QM's dynamical operators. Defined spin density as the vector field whose curl equals twice the intrinsic (aether) momentum density. Linked his paper ("Plane Wave Solutions to a Proposed 'Equation of Everything'", *Foundations of Physics* 55:27, 2025, <https://doi.org/10.1007/s10701-025-00839-0>) and recommended starting from a spherical-harmonic linear wave solution and observing what evolves.
 
-### 2026-04-09 — Rodrigo (status update + proposed tests)
+### 2026-04-09 — the maintainer (status update + proposed tests)
 
-Rodrigo replied with OpenWave's current status, open challenges, 5 proposed test ideas, and a compatibility assessment between standing waves and topological defects. (Full content in the [What We Can Test in OpenWave](#what-we-can-test-in-openwave) sections below.)
+The maintainer replied with OpenWave's current status, open challenges, 5 proposed test ideas, and a compatibility assessment between standing waves and topological defects. (Full content in the [What We Can Test in OpenWave](#what-we-can-test-in-openwave) sections below.)
 
 ### 2026-04-09 — Dr. Duda (endorses the dual approach, adds new directions)
 
@@ -159,9 +159,9 @@ Dr. Duda outlined a concrete learning sequence:
 3. To combine defects with oscillation, **propulsion** is required (the electron's Zitterbewegung, <https://en.wikipedia.org/wiki/Zitterbewegung>, experimentally confirmed in Gerritsma et al., <https://link.springer.com/article/10.1007/s10701-008-9225-1>)
 4. **Faber's 4D approach** automatically generates this propulsion (<https://arxiv.org/pdf/2501.04036>)
 
-### 2026-04-17 — Rodrigo (sandbox complete, M5 plan drafted)
+### 2026-04-17 — the maintainer (sandbox complete, M5 plan drafted)
 
-Rodrigo reported that all 8 sandbox experiments were complete and that the M5 / Liquid-Crystal Model build plan was drafted based on the group's directions. Summary of results:
+The maintainer reported that all 8 sandbox experiments were complete and that the M5 / Liquid-Crystal Model build plan was drafted based on the group's directions. Summary of results:
 
 - ✅ 4 Passed (Sine-Gordon kinks, Hedgehog Coulomb, Winding quantization, Klein-Gordon dispersion)
 - ⚠️ 3 Partial (Lagrangian derivation + docs correction, biaxial lepton mechanism, Close's vector wave equation)
@@ -194,9 +194,9 @@ Jeff said he was still digesting the full message but directly answered the M3-t
 
 Dr. Close responded positively to the results and provided a crucial architectural pointer: in his paper, the most likely candidate for a **particle equation is Equation 23**, not Eq. 21 (the Dirac factorization). Eq. 23 preserves **zero divergence of spin density** (`∇·s = 0`). Even with the nonlinear term, he expected dispersion in most cases, but suggested that certain amplitudes of certain harmonic waves could produce longer-lived localized energy — an unstable particle or resonance. Recommended exploring a **wide range of amplitudes**, with `l = 1` as the most interesting harmonic mode, and maximum displacement comparable to the wavelength (or half / twice). Cautioned that truly stable non-radiating solutions likely require infinite-domain modeling.
 
-### 2026-04-19 — Rodrigo (integrating feedback)
+### 2026-04-19 — the maintainer (integrating feedback)
 
-Rodrigo confirmed the M5 build-plan updates driven by the three replies:
+The maintainer confirmed the M5 build-plan updates driven by the three replies:
 
 - Adopted Dr. Close's **Eq. 23** as the particle equation (replacing Eq. 21), with `∇·s = 0` enforced at each time step, and the `l = 1` amplitude-sweep protocol for M5.2 resonance-hunting. Success criterion reframed to long-lived resonance with measurable lifetime
 - Adopted the biaxial hierarchy `0 < δ ≪ 1 ≪ g` as the M5.6 lepton-mass parameterization. Added **M5.7** (Cornell potential via topological vortex string) and **M5.8** (de Broglie clock / Zitterbewegung validation) as new phases

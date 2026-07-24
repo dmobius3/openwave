@@ -33,4 +33,4 @@ chiral (Lifshitz material) coupling (n4_chiral, N=0), not a topological integer.
 
 ## End-of-night state (autonomous run, 2026-06-21)
 N3 COMPLETE (TBM gate + theta13 crux + scorecard). N4 first pass: delta_CP=maximal SOLID; topological-theta13
-INCONCLUSIVE (honest). Clean stopping point. #236 HELD, git untouched (Rodrigo's). No raw data > 1 MB.
+INCONCLUSIVE (honest). Clean stopping point. #236 HELD, git untouched (the maintainer's). No raw data > 1 MB.

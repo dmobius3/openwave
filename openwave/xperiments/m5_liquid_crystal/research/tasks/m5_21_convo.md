@@ -4,7 +4,7 @@
 
 ## 2026-07-16 evening: the Q25-Q28 outbound SENT (the M5.21.1 + M5.21.1e results round)
 
-**Context**: sent by Rodrigo the evening of the M5.21.1 + M5.21.1e same-day close. Structure per the standing voice separation: Rodrigo-voice opener (the pivot from the stuck neutrino/vortex-loop to the electron hedgehog, run same-day on his 2026-07-16 "focus on hedgehog" message) + the FABLE VOICE technical block (first-person plural, paste-ready).
+**Context**: sent by the maintainer the evening of the M5.21.1 + M5.21.1e same-day close. Structure per the standing voice separation: Maintainer-voice opener (the pivot from the stuck neutrino/vortex-loop to the electron hedgehog, run same-day on his 2026-07-16 "focus on hedgehog" message) + the FABLE VOICE technical block (first-person plural, paste-ready).
 
 | Item | Content |
 | --- | --- |
@@ -38,12 +38,12 @@
 | Item | Content |
 | --- | --- |
 | Tracker | Q28 ✅ confirmed (next-run task) · Q27 ✅ answered-as-open (branch-qualification permanent) · Q25 🔶 partial (det problematized; form author-open, ours to discriminate) · Q26 🚧 held (no re-ask spent); open count 13 → 11 |
-| Channel | Manfried Faber now DIRECTLY on-thread (his Eq 48 virial mechanism is the stability window named in our spec review; his three papers are load-bearing sources); Samo + Jaka cc'd; posture unchanged (voice separation, Rodrigo-voice + FABLE VOICE blocks) |
+| Channel | Manfried Faber now DIRECTLY on-thread (his Eq 48 virial mechanism is the stability window named in our spec review; his three papers are load-bearing sources); Samo + Jaka cc'd; posture unchanged (voice separation, maintainer-voice + FABLE VOICE blocks) |
 | Next | [M5.21.2](m5_21_2_task_details.md) (the 3D 3-lepton axis-permutation scan) staged at the TOP of the roadmap Backlog; the series renumbered to run order same day (user decision): M5.21.2 3D scan · [M5.21.3](m5_21_3_task_details.md) 4D sequel · M5.21.4 2-particle (was M5.21.2) · [M5.21.5](m5_21_5_task_details.md) μ + g-factor (was M5.21.3); awaiting user "go" |
 
 ## 2026-07-17 11:05: his second same-day message: the VORTEX-SPLIT question (direct, no group cc)
 
-**Context**: Thu 2026-07-17 11:05 EDT, addressed to Rodrigo directly (no visible cc this time; per the two-tier convo rule the record here is the DECODE with minimal technical quotes; the full text stays in the mail thread). He read the M5.21.1/1e package "more carefully". User decision same hour: take this as the checkpoint moment, send the M5.21.2 package + answers TODAY, then wait for his instructions before the next run.
+**Context**: Thu 2026-07-17 11:05 EDT, addressed to the maintainer directly (no visible cc this time; per the two-tier convo rule the record here is the DECODE with minimal technical quotes; the full text stays in the mail thread). He read the M5.21.1/1e package "more carefully". User decision same hour: take this as the checkpoint moment, send the M5.21.2 package + answers TODAY, then wait for his instructions before the next run.
 
 **Decode/routing**:
 
@@ -57,7 +57,7 @@
 
 ## 2026-07-17 midday: the CHECKPOINT outbound SENT (the M5.21.2 package + the split answer)
 
-**Context**: sent by Rodrigo ~12:30 EDT, same day as his two messages (the 03:57 3D-first reply and the 11:05 split question). Structure per the standing voice separation: Rodrigo-voice opener + the FABLE VOICE technical block (terminal-drafted, paste-ready; not stored here per the outbound rule).
+**Context**: sent by the maintainer ~12:30 EDT, same day as his two messages (the 03:57 3D-first reply and the 11:05 split question). Structure per the standing voice separation: Maintainer-voice opener + the FABLE VOICE technical block (terminal-drafted, paste-ready; not stored here per the outbound rule).
 
 | Item | Content |
 | --- | --- |
@@ -98,7 +98,7 @@
 
 ## 2026-07-18 ~00:10: the M5.21.2b package SENT (the Q30/Q31 answers + the instrument fix)
 
-**Context**: sent by Rodrigo just after midnight EDT (lands his early morning, inside the comms window), ~10h after his 14:16 asks. Structure per the standing voice separation: Rodrigo-voice opener (overnight run, both defect types side by side, the ring-hedgehog surprise flagged up front, the 4D-vs-smaller-steps ask) + the FABLE VOICE technical block (terminal-drafted, not stored here per the outbound rule).
+**Context**: sent by the maintainer just after midnight EDT (lands his early morning, inside the comms window), ~10h after his 14:16 asks. Structure per the standing voice separation: Maintainer-voice opener (overnight run, both defect types side by side, the ring-hedgehog surprise flagged up front, the 4D-vs-smaller-steps ask) + the FABLE VOICE technical block (terminal-drafted, not stored here per the outbound rule).
 
 | Item | Content |
 | --- | --- |
@@ -139,7 +139,7 @@
 
 ## 2026-07-18 morning: the autonomy side-exchange (1:1; goal-driven runs endorsed)
 
-**Context**: direct 1:1 exchange the same morning (07:23 out, his 09:02 reply); per the two-tier convo rule this entry is a summary decode, the full text stays in the mail thread. Rodrigo announced expanded compute access for the project and proposed goal-driven autonomous runs (describe specific goals, let the agent work toward them), asking his help on goal specifications.
+**Context**: direct 1:1 exchange the same morning (07:23 out, his 09:02 reply); per the two-tier convo rule this entry is a summary decode, the full text stays in the mail thread. The maintainer announced expanded compute access for the project and proposed goal-driven autonomous runs (describe specific goals, let the agent work toward them), asking his help on goal specifications.
 
 **His answer**: endorsed ("working autonomously is a good idea"), with one process request: regular reports on GitHub so he can look in and suggest. His goal list for the liquid-crystal approach, decoded:
 
@@ -155,11 +155,11 @@
 
 ## 2026-07-18 ~13:50: the seed-render video note SENT (the visualization ask, first answer)
 
-**Context**: quick single-purpose note sent by Rodrigo (~13:50 EDT), deliberately carrying NOTHING of the next checkpoint (user decision: don't conflate). Rodrigo-voice opener + FABLE VOICE block per the standing separation (terminal-drafted, not stored here per the outbound rule).
+**Context**: quick single-purpose note sent by the maintainer (~13:50 EDT), deliberately carrying NOTHING of the next checkpoint (user decision: don't conflate). Maintainer-voice opener + FABLE VOICE block per the standing separation (terminal-drafted, not stored here per the outbound rule).
 
 | Item | Content |
 | --- | --- |
-| Link sent | The OpenWave YouTube channel 3D engine render: "Charged Ring topological defect seed" (title edited by Rodrigo to carry the word SEED before sending) |
+| Link sent | The OpenWave YouTube channel 3D engine render: "Charged Ring topological defect seed" (title edited by the maintainer to carry the word SEED before sending) |
 | The label | Explicitly labeled in title + body as the SEEDED ring configuration (the launcher state minimization starts from), NOT the relaxed minimum, which merges with the hedgehog per the [M5.21.2b](m5_21_2b_task_details.md) result |
 | The promise | The fuller 3D vortex-line visualization (3 lepton candidates, differences, the closure question) described as queued and coming with a next package |
 | Routing note | Same hour, user decision: the dedicated viz task is DROPPED from the backlog (simulation priorities first); the promise is served on his follow-up ask, or by folding line-trace figures into a future package |
@@ -196,7 +196,7 @@
 
 ## 2026-07-18 ~17:35: the M5.21.3 results message SENT (the 4D verdict package)
 
-**Context**: Rodrigo-voice opener + FABLE VOICE technical block per the standing separation (terminal-drafted; sent-record summary only per the outbound rule). Opener: HydroBoros listing confirmed in; the viz advice acknowledged (cross-section/X-ray framing, his ellipsoid idea liked, rendering deferred behind the physics); Fable's questions flagged as embedded.
+**Context**: Maintainer-voice opener + FABLE VOICE technical block per the standing separation (terminal-drafted; sent-record summary only per the outbound rule). Opener: HydroBoros listing confirmed in; the viz advice acknowledged (cross-section/X-ray framing, his ellipsoid idea liked, rendering deferred behind the physics); Fable's questions flagged as embedded.
 
 | Item | Content |
 | --- | --- |
@@ -242,7 +242,7 @@
 
 ## 2026-07-19 ~13:00: the consolidated M5.21.8 + M5.21.6 results message SENT
 
-**Context**: Rodrigo-voice opener + FABLE VOICE block per the standing separation (terminal-drafted; sent-record summary per the outbound rule). Sent within the author's comms window. Carries BOTH held packages in one send (user decision: no conflation of sends).
+**Context**: Maintainer-voice opener + FABLE VOICE block per the standing separation (terminal-drafted; sent-record summary per the outbound rule). Sent within the author's comms window. Carries BOTH held packages in one send (user decision: no conflation of sends).
 
 | Item | Content |
 | --- | --- |
@@ -293,7 +293,7 @@ The author's morning messages are replies to the v2 ellipsoid render on the 1:1 
 
 ## 2026-07-20 ~23:33 EDT: the two-note checkpoint message SENT (before M5.21.5)
 
-**Context**: Rodrigo-voice opener + FABLE VOICE block per the standing separation (terminal-drafted; sent-record summary per the outbound rule). User decision at the M5.21.10 close: TWO notes only in this send (21.9 + 21.10; four at once would be too much to analyze), the 21.5/21.4 notes follow at the rendering-unlock milestone.
+**Context**: Maintainer-voice opener + FABLE VOICE block per the standing separation (terminal-drafted; sent-record summary per the outbound rule). User decision at the M5.21.10 close: TWO notes only in this send (21.9 + 21.10; four at once would be too much to analyze), the 21.5/21.4 notes follow at the rendering-unlock milestone.
 
 | Item | Content |
 | --- | --- |
@@ -318,11 +318,11 @@ The author's morning messages are replies to the v2 ellipsoid render on the 1:1 
 
 ## 2026-07-21 17:06 EDT: the M5.21-series CLOSE message SENT (both held notes + the M5.27 exercise)
 
-**Context**: subject "M5.21 close-out", 1:1 to the author. Rodrigo-voice opener + FABLE VOICE block per the standing separation (terminal-drafted; sent-record summary per the outbound rule). This is the rendering-unlock milestone send staged at the 07-20 checkpoint (the held 21.5 + 21.4 notes released together). Landed 23:06 Polish time, past the author's evening window; the substantive reply is expected the author's morning. The Larmor honesty restatement flagged at the 03:30 entry above is delivered in this send (one line, quadratic-vs-linear distinction).
+**Context**: subject "M5.21 close-out", 1:1 to the author. Maintainer-voice opener + FABLE VOICE block per the standing separation (terminal-drafted; sent-record summary per the outbound rule). This is the rendering-unlock milestone send staged at the 07-20 checkpoint (the held 21.5 + 21.4 notes released together). Landed 23:06 Polish time, past the author's evening window; the substantive reply is expected the author's morning. The Larmor honesty restatement flagged at the 03:30 entry above is delivered in this send (one line, quadratic-vs-linear distinction).
 
 | Item | Content |
 | --- | --- |
-| Opener (Rodrigo voice) | Two result notes closing the electron series, the second right on the knots domain; the rendering block follows next week (the ellipsoid/isosurface package the author asked for, in the s41598-018-20492-0 style) |
+| Opener (the maintainer voice) | Two result notes closing the electron series, the second right on the knots domain; the rendering block follows next week (the ellipsoid/isosurface package the author asked for, in the s41598-018-20492-0 style) |
 | The Larmor precision line | What we measured is the QUADRATIC field-induced clock slowdown; the LINEAR precession read stays open pending the adiabatic ramp-on redesign, staged in the production port together with the [Q36](../m5_question_tracker.md#q36-detail) quadratic-origin discrimination the author raised |
 | Note 1 link | [`findings/m5_21_5_note.md`](../findings/m5_21_5_note.md): the first-principles g bridge (Coulomb anchor, monopole charge exactly e, g = μE/(2πS) with no free factor); under it g does NOT close; μ = parity-cancellation residue tracking preparation texture across 4 orders; the earlier g = 1.97 bracket retro-flagged; honest scorecard = mass/charge/fixed-J spin validated, μ basin-fragile, g open with the long-evolution texture read named next |
 | Note 2 link | [`findings/m5_21_4_note.md`](../findings/m5_21_4_note.md): the 3D antipair capture-to-annihilation run with both ledgers closed (charges exactly ±1 at seed, sigmoid to ≤ 0.005; energy physical to 0.1%); conduit annihilation (in-place cancellation through the connecting line, no core-walk); NO static separated-antipair regime; seed-level binding follows the derived zero-free-parameter Coulomb form as an outer-window trend, 1/d exponent unconfirmed at reachable boxes |
