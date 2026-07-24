@@ -95,6 +95,8 @@ Full-3D central-diff twin of the static energy (48³, h = 1, boundary pinned), v
 
 ![3D traces](../plots/m5_21_d_traces.png)
 
+![P1 deep statics film, basic template](../plots/m5_21_1_b_film_basic.png)
+
 ## 5. Reuse map (the rendering-block feeder)
 
 | Asset | Reuse |

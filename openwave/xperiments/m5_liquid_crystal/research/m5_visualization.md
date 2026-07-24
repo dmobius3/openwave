@@ -2,6 +2,64 @@
 
 The single source for the M5 research visualization conventions: film-strip templates, title/time standards, and the snapshot-instrument catalog. Implementation: [`scripts/m5_film.py`](scripts/m5_film.py) (the standard API) + [`scripts/m5_21_a_snap.py`](scripts/m5_21_a_snap.py) (the reusable snapshot instrument, built at [M5.21](tasks/m5_21_task_details.md)). Adopted 2026-07-14 (during the [M5.20.3](tasks/m5_20_3_task_details.md) run); it SUPERSEDES the 2026-07-14-morning per-series presentation boundary (M5.20 series = seed/endpoint maps only, M5.21 series = its own film format): both series now emit film strips from the shared template set.
 
+## Viz Needs
+
+- flux mesh of energies
+- electric/magnetic field
+- scalar + vector viz
+- magnitude + direction views
+- glyphs
+
+enumeration:
+
+- charge
+- mass/energy
+- deBroglie clock/ZBW, particle stability
+- LC director vector
+- angular momentum, spin, magnetic moment
+- **2-particle attraction/repulsion**
+- **Coulomb**, force fields (ele-mag-grav)
+- EM waves
+- and thermal energy in the future if it lands
+
+| Phenomenon | What it is in M5 | Visualization |
+| --- | --- | --- |
+| **Electric / charge** | `E = ∇·n̂` (director splay): the radial hedgehog diverging at the core like Coulomb charge | **Pure static 3D geometry** — already done (`WAVE_MENU` 6 + E glyph). 3D is enough; no time-projection |
+| **Magnetic / spin** | `B = ∇×n̂` (curl): *zero* for a static radial hedgehog, appears only from the clock's circulation | A **shadow of the time axis** (sourced by the clock), but its spatial curl pattern is 3D-renderable |
+| **Gravity** | boost-tilt of the 4×4 time axis (GEM ∝ (b·g)²): gravitational time dilation | A **shadow of the time axis** |
+
+## The observable catalog — what each quantity IS
+
+This part organizes the full observable wishlist for the EM + clock-state rendering into one coherent
+catalog: **the physical quantities to display, what each *is* in the substrate, and the render
+channel that conveys it.** The channels are how we will *read* the field's amplitude/clock state and
+*watch* its dynamics in the simulator.
+
+Everything visible derives from `M`'s **eigenframe** — the director `n̂` (principal eigenvector) +
+the δ-axis (middle eigenvector) + the deviation `M−D`. Two source families: **EM = orientation
+distortion of `n̂`** (tilts/gradients), **the clock's rotational state** = its `(A, ω)` (of the
+`clock_twist`). The director is the origin of both EM observables (`∇·n̂`, `∇×n̂`). **Status reflects the
+as-built stack through VIZ.4 (2026-05-31).** The 4 glyph states (UI checkboxes, §4.2): `0` Director,
+`1` Director + Delta, `2` Electric Field, `3` Magnetic Field; all glyphs **centered** on the voxel.
+
+| Quantity | What it IS in the substrate | Scalar / vector | Source field (live) | Status |
+| --- | --- | --- | --- | --- |
+| **Director `n̂`** | principal eigenvector of `M` (largest λ=`1`, the EM axis) — the LC "grain"; apolar (`n̂≡−n̂`), unit | unit vector | `director_nhat` | ✅ live — glyph states 0/1, COLOR_MEDIUM, centered+barbless |
+| **δ-axis (middle eigenvector)** | the middle eigen-axis (eigenvalue `δ~ℏ`; L1 figure's `b`) — the **QM/twist** axis = the clock-hand that sweeps around `n̂`; apolar, shorter (∝ λ₂/λ₁) | unit vector | `director_mid` | ✅ live — **VIZ.3: CYAN cross-bar in "Director + Delta" (glyph state 1)**; the ellipsoid-wireframe "+" |
+| **Electric field lines** | the director field itself (E ∝ the `n̂` texture); convention: lines point **+ → −** | vector (= `n̂`) | `director_nhat` | ✅ live — glyph state 2, centered+barbed; single **GREEN** / gradient greenyellow charge |
+| **Charge density** | `∇·n̂` (director splay) — diverges at defect cores like Coulomb charge | signed scalar | `director_div_field` | ✅ live (WM6, greenyellow diverging) |
+| **Charge sign** | sign of `∇·n̂` (+ outward / − inward hedgehog) | sign | `director_div_field` sign | ⚠️ flips under Evolve-PDE → §4.4 fix (M5.8 winding density) |
+| **Magnetic field lines** | the curl vector `∇×n̂` — direction = circulation; handedness N→S | vector | `director_curl_field` (raw vector stored) | ✅ live — glyph state 3, centered+barbed; single **ORANGE** / gradient **bluered N/S** (radial `B·r̂` + γ-spread, §4.3) |
+| **Magnetic field strength** | `‖∇×n̂‖` (`frank_twist`+bend circulation magnitude) — ≈0 for a static charge | scalar ≥0 | `director_curl_mag_field` | ✅ live (WM7) |
+| **Magnetic moment μ** | net `∮ B` of the defect / its dipole axis — a single vector per defect | vector (per defect) | future: ∫ `director_curl_field`; **now: HARDCODED `DIPOLE_AXIS`** | 🔶 **HARDCODED placeholder** — VIZ.4 draws a YELLOW moment glyph but `m̂ = DIPOLE_AXIS = +ẑ` is a constant in `_viz_sample_dipole` (`update_moment_glyph`), **NOT computed from the field**. Real μ = compute from the actual circulating B (`m̂ ∝ ∫∇×n̂`) + auto-axis + **remove the hardcoded one** @ M5.8 (§4.5, roadmap 5f stage-2) |
+| **Amplitude `A`** | `‖M−D‖_F` EMA = the clock's rotational **radius** (`≈δ/2`), grows with excitation | scalar | `amp_local_emarms_am` | ✅ live (WM2, ironbow) |
+| **Clock `ω`** | `‖Ṁ‖_F` EMA = the Zitterbewegung rate (director angular speed) | scalar | `freq_local_cross_rHz` | ✅ live (WM3, blueprint) |
+| **Gravitational field `g`** | gradient of the boost eigenvalue `g` (mass monopole, `1/r²`) — the 4D addition | vector | none yet (needs 4×4 `M`) | 🚧 M5.8 / §4.7 (PURPLE glyph + density mesh) |
+
+> **Zitterbewegung note (from `0c §L7`):** the amplitude `A` is the *radius* of the spinning
+> director (constant at ground state, `≈δ/2`), `ω` its rate — the two are the AM/FM channels. WM2 +
+> WM3 already show them.
+
 ## Film strips
 
 A film strip is a grid: **one row per snapshot (time), one column per plot defined by the TEMPLATE**. Rendered by `m5_film.film_strip(states, path, template=..., ...)`.
@@ -14,6 +72,10 @@ A film strip is a grid: **one row per snapshot (time), one column per plot defin
 | `thermal` | glyphs (director + δ-tick clock) · A (spectral amplitude) · clock (phase) · energy · charge · curl | the M5.21 panel set (`m5_21_c_film_prod.png` era); directed at thermal / energy-flow analysis: amplitude-excess, clock-phase, and transport channels |
 
 Adding a template = one entry in `m5_film.py` + one row here.
+
+![P1 deep statics film, basic template](plots/m5_21_1_b_film_basic.png)
+
+![prod film-strip](plots/m5_21_c_film_prod.png)
 
 ### The standard (applies to every template)
 
