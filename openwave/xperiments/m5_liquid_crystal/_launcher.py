@@ -513,6 +513,11 @@ def display_controls(state):
         if getattr(state, "integrator_4d", "") == "canonical" and state.PAUSED:
             if sub.button("RELAX (FIRE canonical)"):
                 relax_field_canonical(state, 500)
+            # M5.23.1 — SET-J: (re)initialize the isorotation velocity on the
+            # current state (run after RELAX; the next EVOLVE carries the clock)
+            if sub.button("SET J (isorotate)"):
+                om_btn = float(getattr(state, "fixedj_omega", 0.0)) or 0.2
+                set_fixed_j_launcher(state, om_btn)
         if state.PAUSED:
             if sub.button(">> EVOLVE PDE >>"):
                 state.PAUSED = False
@@ -976,6 +981,17 @@ def initialize_xperiment(state):
                 )
                 if canon_relax > 0:
                     relax_field_canonical(state, canon_relax)
+                # M5.23.1 — the FIXED-J isorotation clock (RELAX → SET-J →
+                # EVOLVE): FIXEDJ_OMEGA ≠ 0 sets the seed-time isorotation
+                # velocity Ṁ(0) = ω*·a0 on the conjugation-tangent clock
+                # flow, AFTER any seed-time relax (FIRE clobbers the Md_am
+                # a0 scratch and re-zeros Ṁ, so SET-J is the last touch on
+                # the buffers). The SET J button redoes it interactively.
+                state.fixedj_renv = float(topo.get("FIXEDJ_RENV", 10.0))
+                state.fixedj_log_every = int(topo.get("FIXEDJ_LOG_EVERY", 0))
+                state.fixedj_omega = float(topo.get("FIXEDJ_OMEGA", 0.0))
+                if state.fixedj_omega != 0.0:
+                    set_fixed_j_launcher(state, state.fixedj_omega)
 
         # VIZ.3: populate the derived eigenframe (director_nhat + director_mid +
         # eigenvalues) from the seeded M so a PAUSED boot renders the δ-clock-hand
@@ -1074,6 +1090,52 @@ def relax_field_canonical(state, n_iters):
     )
 
 
+def set_fixed_j_launcher(state, om_target):
+    """M5.23.1 — the SET-J step of the RELAX → SET-J → EVOLVE flow: build the
+    conjugation-tangent clock flow a0, measure the clock inertia kin, and
+    kick the isorotation velocity Ṁ(0) = ω*·a0 into the triple buffer
+    (engine2_pde.set_fixed_j, gated by the m5_23_1 selftest). Canonical path
+    only. CONVENTION: kin/J are flow-parameter values on the conjugation
+    tangent (kin = 0.1206 on the certified research state); any ABSOLUTE
+    J / ħ/2 / g statement needs the physical-rate convention
+    (research m5_21_5_note § 5) — never quote these numbers as physical
+    angular momentum."""
+    tf = state.tensor_field
+    if getattr(state, "integrator_4d", "") != "canonical":
+        print("[M5.23.1] SET-J needs the canonical integrator path — skipped.")
+        return None
+    dt_eff = state.c_amrs * state.dt_rs
+    info = pde.set_fixed_j(
+        tf,
+        getattr(state, "eta_dx", tf.dx_am),
+        float(getattr(state, "fixedj_renv", 10.0)),
+        float(om_target),
+        dt_eff,
+        shell=1,
+    )
+    if info["set"]:
+        # the CARRIED charge J_self = <Mdot, a0(M)> is the hold observable
+        # (== omega* here by construction); the global [G_k, M] projections
+        # near-cancel on hedgehog-family states (selftest S4 measurement)
+        js = pde.read_carried_j(
+            tf, getattr(state, "eta_dx", tf.dx_am), float(getattr(state, "fixedj_renv", 10.0)), dt_eff
+        )
+        print(
+            f"[M5.23.1] SET-J: kin = {info['kin']:.5e}, J = {info['J']:.5e}, "
+            f"omega* = {info['om_star']:.4f} (flow-parameter convention, "
+            f"conjugation tangent; dt_eff = {dt_eff:.4f}); carried "
+            f"J_self = {js:+.4f}. EVOLVE now runs the live clock — keep dt "
+            f"unchanged (the kick encodes velocity at this dt_eff)."
+        )
+    else:
+        print(
+            f"[M5.23.1] SET-J DECLINED: kin = {info['kin']:.3e} <= 0 "
+            f"(nonpositive clock inertia — the state left the positive-kin "
+            f"sector; no honest isorotation to set)."
+        )
+    return info
+
+
 def compute_propagation(state):
     """Per-step field evolution — M5.5.4: the Eq.18 matrix-action leapfrog ("Evolve PDE").
 
@@ -1133,6 +1195,16 @@ def compute_propagation(state):
                     f"AUTO-PAUSED (the indefinite time-row channel grew; "
                     f"vacuum scale ~8, threshold 50)."
                 )
+        # M5.23.1 — optional periodic J readout (FIXEDJ_LOG_EVERY frames;
+        # 0 = off): the CARRIED isorotation charge J_self = <Mdot, a0(M)>
+        # (== omega* at SET-J; its drift = the honest hold/decay read; the
+        # global-flow projections near-cancel on hedgehog states, selftest S4)
+        log_n = int(getattr(state, "fixedj_log_every", 0))
+        if log_n > 0 and state.guard4d_frame % log_n == 0:
+            js = pde.read_carried_j(
+                tf, dx_eta, float(getattr(state, "fixedj_renv", 10.0)), dt_eff
+            )
+            print(f"[M5.23.1] frame {state.guard4d_frame}: carried J_self = {js:+.4f}")
     elif (
         getattr(state, "evolve_4d", False) and getattr(state, "integrator_4d", "") == "constrained"
     ):
