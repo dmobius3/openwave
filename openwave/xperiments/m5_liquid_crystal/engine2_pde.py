@@ -1310,6 +1310,324 @@ def flip_time_axis(tensor_field: ti.template()):  # type: ignore
 
 
 # ================================================================
+# M5.23.1 — FIXED-J ISOROTATION (the M5.21.9 machinery, production port)
+# ================================================================
+# The constraint-carried ZBW clock of the two-stack consensus (research
+# m5_21_9_note.md §§ 1, 5; canonical § 2): free minimization gives ω* = 0 or
+# −∞, never a finite clock — the electron carries its rotation as a CONSERVED
+# charge J on the CONJUGATION-tangent clock flow (the standard isorotating-
+# soliton construction, Coleman → Radu-Volkov):
+#
+#   a0  = w(r)·[W, M] / ‖·‖_F(global) ,  W = rotation generator about the
+#         local leading SPATIAL eigenvector (the director);
+#         w(r) = exp(−(r/renv)⁴)  (the research clock envelope)
+#   kin(M; a0) = h³ Σ_branches wt Σ_i 4·⟨[a0, A_i]_η, [a0, A_i]_η⟩_η
+#         (the clock inertia; E_kin(ω) = ω²·kin — reference kin_of)
+#   J   = 2·kin·ω ,  ω* = J/(2·kin) ,  E(J) = E_stat + J²/(4·kin)
+#         (the Legendre family; dE/dJ = ω* closes at ~1%, m5_21_9_note § 7)
+#   SET-J: Ṁ(0) = ω*·a0  →  M_prev ← M − dt_eff·ω*·a0
+#         (position-Verlet implicit-velocity init; O(dt) offset from the
+#         reference kick-drift-kick leap(), absorbed by observable-level gates)
+#
+# CONVENTION PINS (load-bearing, never change silently):
+#   - kin convention = the CONJUGATION tangent [W, M] (kin = 0.1206 on the
+#     certified state, M5.21.3-adopted; canonical § 6 anti-recipe: the
+#     antisymmetric gen_catalog probe flow, kin = 0.297, is NOT physical
+#     inertia — it exits the symmetric configuration space).
+#   - any ABSOLUTE J / ħ/2 / g statement must use the PHYSICAL-RATE
+#     convention (m5_21_5_note § 5): the flow-parameter J carried here is
+#     NOT the physical angular momentum (ratio ~771 at the ω = 0.2 rung).
+#   - a0 SIGN GAUGE: the leading eigenvector is apolar (±v give opposite
+#     local rotations). The research flow inherits numpy eigh's per-voxel
+#     signs; production pins a DETERMINISTIC RADIAL gauge (v·r̂ ≥ 0, fixed
+#     axis tie-breaks at r ≈ 0). All quadratic reads (kin, E, J·J) are
+#     per-voxel-sign invariant; the selftest quantifies the gauge overlap.
+#   - the J readout projects Ṁ on the SYMMETRIC global rotation flows
+#     [G_k, M] (normalized) — not gen_catalog's antisymmetric rot flows,
+#     whose projection tracked a sym4-projected-out spectator (the disclosed
+#     M5.21.9 § 5 Mt(0) issue).
+#
+# Reuses Md_am (a0 scratch — free outside the constrained path and FIRE; a
+# FIRE call clobbers it, so SET-J must follow any relax, as the launcher
+# flow does) and fire_partials (per-slice reduction rows, the M5.0h
+# contention pattern) — no new fields. Selftest:
+# research/scripts/m5_23_1_fixedj_engine_selftest.py (S1-S5).
+
+
+@ti.kernel
+def clock_flow_k(tensor_field: ti.template(), dx_eta: ti.f32, renv: ti.f32):  # type: ignore
+    """The UNNORMALIZED conjugation-tangent clock flow a0_raw = w(r)·[W, M]
+    per voxel → Md_am (full grid; the host normalizes to unit global
+    Frobenius norm via md_norm_partials_k + scale_md_k).
+
+    W = spatial rotation generator about the local leading eigenvector of
+    the SPATIAL 3×3 block (production Cardano solver), radial sign gauge:
+    v·r̂ ≥ 0 (tie-breaks z > y > x at the center voxel). [W, M] with W
+    antisymmetric and M symmetric is symmetric: the flow stays in the
+    configuration space (the conjugation convention of record)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    cx = 0.5 * ti.cast(nx - 1, ti.f32)
+    cy = 0.5 * ti.cast(ny - 1, ti.f32)
+    cz = 0.5 * ti.cast(nz - 1, ti.f32)
+    for i, j, k in ti.ndrange(nx, ny, nz):
+        m4 = tensor_field.M_am[i, j, k]
+        m3 = ti.Matrix(
+            [
+                [m4[1, 1], m4[1, 2], m4[1, 3]],
+                [m4[2, 1], m4[2, 2], m4[2, 3]],
+                [m4[3, 1], m4[3, 2], m4[3, 3]],
+            ]
+        )
+        v, _lam = principal_director(m3)
+        # radial sign gauge (deterministic; apolar ±v ambiguity pinned)
+        rx = ti.cast(i, ti.f32) - cx
+        ry = ti.cast(j, ti.f32) - cy
+        rz = ti.cast(k, ti.f32) - cz
+        s = v[0] * rx + v[1] * ry + v[2] * rz
+        if s == 0.0:
+            s = v[2]
+        if s == 0.0:
+            s = v[1]
+        if s == 0.0:
+            s = v[0]
+        if s < 0.0:
+            v = -v
+        w4 = ti.Matrix.zero(ti.f32, 4, 4)
+        w4[1, 2] = -v[2]
+        w4[1, 3] = v[1]
+        w4[2, 1] = v[2]
+        w4[2, 3] = -v[0]
+        w4[3, 1] = -v[1]
+        w4[3, 2] = v[0]
+        r_env = ti.sqrt(rx * rx + ry * ry + rz * rz) * dx_eta
+        q = (r_env / renv) ** 4
+        w_env = ti.exp(-q)
+        tensor_field.Md_am[i, j, k] = w_env * (w4 @ m4 - m4 @ w4)
+
+
+@ti.kernel
+def md_norm_partials_k(tensor_field: ti.template()):  # type: ignore
+    """Per-z-slice Σ Md·Md → fire_partials[0, k] (full grid: the reference
+    normalizes a0 over ALL cells). Host: ‖a0‖_F = sqrt(Σ_k partials)."""
+    nz = tensor_field.nz
+    for k in range(nz):
+        s = 0.0
+        for i in range(tensor_field.nx):
+            for j in range(tensor_field.ny):
+                a = tensor_field.Md_am[i, j, k]
+                s += (a * a).sum()
+        tensor_field.fire_partials[0, k] = s
+
+
+@ti.kernel
+def scale_md_k(tensor_field: ti.template(), s: ti.f32):  # type: ignore
+    for i, j, k in tensor_field.Md_am:
+        tensor_field.Md_am[i, j, k] = s * tensor_field.Md_am[i, j, k]
+
+
+@ti.kernel
+def kin_partials_k(tensor_field: ti.template(), dx_eta: ti.f32):  # type: ignore
+    """Per-z-slice partial sums of the clock-inertia integrand →
+    fire_partials[1, k]:  Σ_branches ½ Σ_i 4·⟨[a0, A_i]_η, [a0, A_i]_η⟩_η
+    with a0 = Md_am (normalized), A_i the one-sided ∂_i M per branch (the
+    reference d1 edge convention: zero where the neighbor is outside).
+    Host: kin = dx_eta³ · Σ_k partials (reference kin_of, sym stencil)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dx = 1.0 / dx_eta
+    for k in range(nz):
+        s = 0.0
+        for i in range(nx):
+            for j in range(ny):
+                m0 = tensor_field.M_am[i, j, k]
+                a0 = tensor_field.Md_am[i, j, k]
+                for br in ti.static(range(2)):
+                    ax_ = ti.Matrix.zero(ti.f32, 4, 4)
+                    ay_ = ti.Matrix.zero(ti.f32, 4, 4)
+                    az_ = ti.Matrix.zero(ti.f32, 4, 4)
+                    if ti.static(br == 0):  # fwd
+                        if i <= nx - 2:
+                            ax_ = (tensor_field.M_am[i + 1, j, k] - m0) * inv_dx
+                        if j <= ny - 2:
+                            ay_ = (tensor_field.M_am[i, j + 1, k] - m0) * inv_dx
+                        if k <= nz - 2:
+                            az_ = (tensor_field.M_am[i, j, k + 1] - m0) * inv_dx
+                    else:  # bwd
+                        if i >= 1:
+                            ax_ = (m0 - tensor_field.M_am[i - 1, j, k]) * inv_dx
+                        if j >= 1:
+                            ay_ = (m0 - tensor_field.M_am[i, j - 1, k]) * inv_dx
+                        if k >= 1:
+                            az_ = (m0 - tensor_field.M_am[i, j, k - 1]) * inv_dx
+                    fx = comm_eta44(a0, ax_)
+                    fy = comm_eta44(a0, ay_)
+                    fz = comm_eta44(a0, az_)
+                    s += (
+                        0.5
+                        * 4.0
+                        * (inner_eta44(fx, fx) + inner_eta44(fy, fy) + inner_eta44(fz, fz))
+                    )
+        tensor_field.fire_partials[1, k] = s
+
+
+@ti.kernel
+def isorotation_kick_k(
+    tensor_field: ti.template(),  # type: ignore
+    dt_eff: ti.f32,  # type: ignore
+    om: ti.f32,  # type: ignore
+    shell: ti.i32,  # type: ignore
+):
+    """The SET-J velocity init: M_prev ← M − dt_eff·ω*·a0 (a0 = Md_am,
+    normalized) on cells at least `shell` cells from every face (production
+    Dirichlet shell = 1; the research free mask = 2 at h = 1.5). Encodes
+    Ṁ(0) = ω*·a0 in the triple buffer — the next evolve step must run at the
+    SAME dt_eff (position-Verlet: the implied velocity scales with dt)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    for i, j, k in ti.ndrange(nx, ny, nz):
+        d = ti.min(
+            ti.min(i, nx - 1 - i),
+            ti.min(ti.min(j, ny - 1 - j), ti.min(k, nz - 1 - k)),
+        )
+        if d >= shell:
+            tensor_field.M_prev_am[i, j, k] = (
+                tensor_field.M_am[i, j, k] - dt_eff * om * tensor_field.Md_am[i, j, k]
+            )
+
+
+@ti.kernel
+def j_partials_k(tensor_field: ti.template(), axis: ti.i32, dt_eff: ti.f32):  # type: ignore
+    """Per-z-slice partials of the J projection on ONE symmetric global
+    rotation flow a_rot = [G_axis, M] (axis 0/1/2 = x/y/z; G antisym, flow
+    symmetric — the physical-read convention, NOT the probe flow):
+    fire_partials[0, k] = Σ Ṁ·a_rot,  fire_partials[1, k] = Σ a_rot·a_rot,
+    Ṁ = (M − M_prev)/dt_eff.  Host: J_axis = Σ₀ / sqrt(Σ₁)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dt = 1.0 / dt_eff
+    a = 1
+    b = 2
+    if axis == 0:  # rotation about x: (y, z) plane
+        a = 2
+        b = 3
+    elif axis == 1:  # about y: (z, x) plane
+        a = 3
+        b = 1
+    else:  # about z: (x, y) plane
+        a = 1
+        b = 2
+    for k in range(nz):
+        s_dot = 0.0
+        s_nrm = 0.0
+        for i in range(nx):
+            for j in range(ny):
+                m0 = tensor_field.M_am[i, j, k]
+                g4 = ti.Matrix.zero(ti.f32, 4, 4)
+                g4[a, b] = -1.0
+                g4[b, a] = 1.0
+                arot = g4 @ m0 - m0 @ g4
+                mt = (m0 - tensor_field.M_prev_am[i, j, k]) * inv_dt
+                s_dot += (mt * arot).sum()
+                s_nrm += (arot * arot).sum()
+        tensor_field.fire_partials[0, k] = s_dot
+        tensor_field.fire_partials[1, k] = s_nrm
+
+
+def compute_clock_flow(tensor_field, dx_eta, renv):
+    """Host: build the normalized conjugation-tangent clock flow a0 into
+    Md_am. Returns the pre-normalization global Frobenius norm (diagnostic;
+    ~field scale). Numpy only for the (3, nz) partial sums (taichi-first)."""
+    import numpy as np
+
+    clock_flow_k(tensor_field, dx_eta, renv)
+    md_norm_partials_k(tensor_field)
+    p = tensor_field.fire_partials.to_numpy()
+    nrm = float(np.sqrt(max(p[0].sum(), 0.0)))
+    scale_md_k(tensor_field, 1.0 / max(nrm, 1e-30))
+    return nrm
+
+
+def kin_canonical(tensor_field, dx_eta):
+    """Host: the clock inertia kin(M; a0) with a0 = the current Md_am
+    (normalized). Reference: m5_21_3_a_4d.kin_of (sym stencil, h³-weighted)."""
+    import numpy as np
+
+    kin_partials_k(tensor_field, dx_eta)
+    p = tensor_field.fire_partials.to_numpy()
+    return float(dx_eta**3 * p[1].sum())
+
+
+def set_fixed_j(tensor_field, dx_eta, renv, om_target, dt_eff, shell=1):
+    """The launcher SET-J step (RELAX → SET-J → EVOLVE): build a0, measure
+    kin, carry J = 2·kin·ω_target, kick Ṁ(0) = ω*·a0 into the triple buffer.
+    Returns dict(kin, J, om_star, a0_raw_norm). Run AFTER any FIRE relax
+    (FIRE clobbers Md_am); evolve must continue at the same dt_eff."""
+    nrm = compute_clock_flow(tensor_field, dx_eta, renv)
+    kin = kin_canonical(tensor_field, dx_eta)
+    if kin <= 0.0:
+        # the indefinite-channel guard: a nonpositive clock inertia means the
+        # state left the positive-kin sector — no honest isorotation to set
+        return {"kin": kin, "J": 0.0, "om_star": 0.0, "a0_raw_norm": nrm, "set": False}
+    j_charge = 2.0 * kin * om_target
+    om_star = j_charge / (2.0 * kin)
+    isorotation_kick_k(tensor_field, dt_eff, om_star, shell)
+    return {"kin": kin, "J": j_charge, "om_star": om_star, "a0_raw_norm": nrm, "set": True}
+
+
+@ti.kernel
+def j_self_partials_k(tensor_field: ti.template(), dt_eff: ti.f32):  # type: ignore
+    """Per-z-slice partials of the CARRIED isorotation charge projection:
+    fire_partials[2, k] = Σ Ṁ·a0 with a0 = Md_am (normalized, rebuilt on the
+    CURRENT state by the host), Ṁ = (M − M_prev)/dt_eff. At SET-J time this
+    projection equals ω* exactly (Ṁ = ω*·a0, unit norm) — the meaningful
+    hold observable: the GLOBAL rotation flows [G_k, M] near-cancel on
+    hedgehog-family states (measured ~1e-4·ω*, selftest S4 info)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dt = 1.0 / dt_eff
+    for k in range(nz):
+        s = 0.0
+        for i in range(nx):
+            for j in range(ny):
+                mt = (tensor_field.M_am[i, j, k] - tensor_field.M_prev_am[i, j, k]) * inv_dt
+                s += (mt * tensor_field.Md_am[i, j, k]).sum()
+        tensor_field.fire_partials[2, k] = s
+
+
+def read_carried_j(tensor_field, dx_eta, renv, dt_eff):
+    """Host: the carried isorotation charge J_self = ⟨Ṁ, a0(M)⟩ with a0
+    REBUILT on the current state (clobbers the Md_am scratch — same rule as
+    set_fixed_j). Equals ω* at SET-J time by construction; its drift is the
+    honest hold/decay read. Diagnostics rate."""
+    import numpy as np
+
+    compute_clock_flow(tensor_field, dx_eta, renv)
+    j_self_partials_k(tensor_field, dt_eff)
+    p = tensor_field.fire_partials.to_numpy()
+    return float(p[2].sum())
+
+
+def read_isorotation(tensor_field, dt_eff):
+    """Host: the J-vector readout — Ṁ projected on the three normalized
+    SYMMETRIC global rotation flows [G_k, M]. Returns dict(Jx, Jy, Jz, Jmag,
+    phi_xy). Diagnostics-rate only (3 kernel passes + host sums)."""
+    import math
+
+    import numpy as np
+
+    out = []
+    for axis in range(3):
+        j_partials_k(tensor_field, axis, dt_eff)
+        p = tensor_field.fire_partials.to_numpy()
+        dot, nrm2 = float(p[0].sum()), float(p[1].sum())
+        out.append(dot / max(math.sqrt(max(nrm2, 0.0)), 1e-30))
+    jx, jy, jz = out
+    return {
+        "Jx": jx,
+        "Jy": jy,
+        "Jz": jz,
+        "Jmag": float(np.sqrt(jx * jx + jy * jy + jz * jz)),
+        "phi_xy": float(math.atan2(jy, jx)),
+    }
+
+
+# ================================================================
 # GRADIENT-DESCENT RELAXATION (M5.1 task 6)
 # ================================================================
 # Direct port of Exp 2's relax() inner loop to Taichi:

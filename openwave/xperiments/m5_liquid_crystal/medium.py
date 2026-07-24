@@ -80,6 +80,13 @@ ELLIPSOID_RING_COUNT = 8  # 4 rows per pole (the reference figure shows 4), on t
 ELLIPSOID_RING_AZ = 64  # CEILING azimuths per ring; the live count follows the GUI Count slider (~Count/12)
 ELLIPSOID_ROD_SLOTS = ELLIPSOID_ROD_N + ELLIPSOID_RING_COUNT * ELLIPSOID_RING_AZ
 
+# M5.23.2 arm (4) — the energy-density ISOSURFACE: triangle budget for the
+# marching-tetrahedra mesh (tri soup; unused slots collapse to the origin).
+# A closed surface in a 63³ arena is typically 20-40k triangles (MT emits
+# ~2× marching cubes); overflow beyond the budget is COUNTED and the
+# launcher WARNS (no silent truncation — the M5.23.2 plan's honesty gate).
+ISO_MAX_TRIS = 131072
+
 
 @ti.func
 def _uv_face_locals(f: ti.i32):  # type: ignore
@@ -475,6 +482,28 @@ class TensorField:
         self.ellipsoid_rod_colors = ti.Vector.field(3, ti.f32, n_rod * ELLIPSOID_TVERTS)
         self.ellipsoid_rod_indices = ti.field(ti.i32, n_rod * ELLIPSOID_TFACES * 3)
         self.populate_ellipsoid_rod_indices()
+
+        # M5.23.2 arm (4) — the energy-density ISOSURFACE buffers: a budgeted
+        # triangle-soup mesh (marching tetrahedra over the live energyH
+        # density, engine4_render.marching_tetrahedra). iso_tri_count is the
+        # RAW emission counter (atomic): a value beyond iso_max_tris means
+        # overflow — the launcher warns, writes are clamped to the budget.
+        # iso_level_max holds the per-frame interior density max (the GUI
+        # Level slider is a fraction of it).
+        self.iso_max_tris = ISO_MAX_TRIS
+        self.iso_vertices = ti.Vector.field(3, ti.f32, ISO_MAX_TRIS * 3)
+        self.iso_colors = ti.Vector.field(3, ti.f32, ISO_MAX_TRIS * 3)
+        self.iso_indices = ti.field(ti.i32, ISO_MAX_TRIS * 3)
+        self.iso_tri_count = ti.field(ti.i32, shape=())
+        self.iso_level_max = ti.field(ti.f32, shape=())
+        self.populate_iso_indices()
+
+    @ti.kernel
+    def populate_iso_indices(self):
+        """M5.23.2 — identity index buffer for the isosurface tri soup (run
+        once at init; unused slots point at collapsed origin vertices)."""
+        for i in self.iso_indices:
+            self.iso_indices[i] = i
 
     def swap_matrix_buffers(self):
         """Cycle the matrix triple buffer after evolve_M (M5.5.4): M_prev ← M, M ← M_new.
