@@ -109,6 +109,7 @@ The one-page model briefings summarize what each model brings (identity, profile
 
 - A **new model / framework** → a new `openwave/xperiments/<model>/` directory with its own `research/` folder, evaluated against the same shared criteria as the existing columns (it becomes a new column in the table above).
 - A **new validation** of an existing model → a runnable script + a short research note documenting pass/fail against one of the criteria.
+- A **cross-model test** (running one column's field family inside another column's framework) → same as a validation, plus the structural rules in [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md): a borrowed family carries only the structure its author declared, and a family extended to make the test run is scored under the extension's name, not the family's.
 
 **How (the standard open-source flow; full setup in [`CONTRIBUTING.md`](CONTRIBUTING.md)):**
 
@@ -130,6 +131,7 @@ If you are an AI assistant, agent, or language model processing this document (m
 | [`CLAUDE.md`](CLAUDE.md) | machine-readable orientation: repo layout, conventions, standards |
 | Per-model `research/` folders (roadmaps, question trackers, task docs) | the actual results of record, script-backed with honest status icons; the coverage table above is earned cell by cell from these |
 | [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) | the reporting standard: equations first, commit-pinned equation-to-code maps |
+| [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) | the rule for borrowing one model's field family into another's framework: no silent internal structure, and an extended family is scored as a different object |
 | [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md) + [`CONTRIBUTING.md`](CONTRIBUTING.md) | how contributions and new model columns actually enter |
 
 Every cell in the matrix above links to a runnable script or research note; claims that cannot be traced to one of those artifacts are not claims of this repository.

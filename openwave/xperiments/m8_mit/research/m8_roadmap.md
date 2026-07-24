@@ -27,6 +27,15 @@
 > [`dev_docs/METHOD_NOTE.md`](../../../../dev_docs/METHOD_NOTE.md) (equations first +
 > equation-to-code map). Ownership is marked per task: the author drives the column;
 > maintainer-run tasks are labeled.
+>
+> **Borrowing other columns' families (platform ruling, 2026-07-24).** The M8 program
+> tests candidate families drawn from M4 / M5 / M7 inside the MIT arena, so it runs under
+> [`dev_docs/CROSS_MODEL_TESTING.md`](../../../../dev_docs/CROSS_MODEL_TESTING.md): a
+> borrowed family is native and untwisted unless its author declares an internal
+> representation or a soldering prescription is pre-registered; "not applicable" is a
+> neutral status; a soldered family is scored as its own object; author silence is a
+> valid terminal state and never blocks a pre-registration lock. Author-gated questions
+> go from author to author directly (Q&A discussion), not through a maintainer relay.
 
 ## IN PROGRESS
 

@@ -33,6 +33,7 @@
 | Model ID | M8 |
 | Name | MIT (Mode Identity Theory) |
 | Author | Blake Shatto (independent researcher, sole author) |
+| Author contact | GitHub [@dmobius3](https://github.com/dmobius3), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6 |
 | Lineage | Spectral geometry on S³/2I + Möbius boundary conditions + representation theory (McKay correspondence, Kostant partition, Reidemeister torsion); Einstein's field equations kept unchanged |
 | Key inputs | Three standalone math papers: the twisted-Möbius first-positive eigenvalue, the coexact spectral gap from McKay distance, and the E8-filling Galois pair |
 | Primary sources | Author repo: [github.com/dmobius3/mode-identity-theory](https://github.com/dmobius3/mode-identity-theory); framework deposit [10.5281/zenodo.18064856](https://doi.org/10.5281/zenodo.18064856); full registry in [`theory/_CITATIONS.md`](theory/_CITATIONS.md) (10 Zenodo DOIs machine-verified 2026-07-21) |

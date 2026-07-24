@@ -15,6 +15,7 @@
 | Model ID | M5 |
 | Name | Liquid Crystal (LC) |
 | Author | Jarek Duda (Jagiellonian University, Kraków) |
+| Author contact | GitHub [@JarekDuda](https://github.com/JarekDuda), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6 |
 | Key inputs | Manfried Faber (TU Wien) EM and core regularization; liquid-crystal discussions with [Samo Kralj](https://scholar.google.com/citations?user=Bojz5CkAAAAJ&hl=en) |
 | Lineage | Landau-de Gennes nematics + Skyrme term + Einstein teleparallel gravity |
 | Primary sources | Duda arXiv:2501.04036 (time crystal), arXiv:2108.07896 (superfluid / KG-around-hedgehog); Faber arXiv:2201.13262, Faber & Golubich arXiv:2604.12021; liquid-crystal particle-analog experiments ([Wikipedia: Liquid crystal particle analogs](https://en.wikipedia.org/wiki/Draft:Liquid_crystal_particle_analogs)) |

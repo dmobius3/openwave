@@ -18,6 +18,7 @@
 | Model ID | M6 |
 | Name | Ouroboros (Chaoiton framework) |
 | Author | Paul J. Werbos (NSF program director, retired; QAGI LLC) |
+| Author contact | GitHub [@pwerbos](https://github.com/pwerbos), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6 |
 | Collaboration | AI co-authorship disclosed on the papers (DeepSeek; Claude Sonnet 4.6 + Claude Code; "Nuclear Gemini"); OpenWave contributed the neutral-chaoiton BVP profile + scaling symmetry, and the Test 1 corrections acknowledged in the July 8 record |
 | Lineage | Schwinger 1969 dyons + Maxwell extension (toroidal-poloidal mutual confinement); shares the Schwinger ancestor with M5 |
 | Primary sources | The full latest-version Zenodo corpus, 29 records: manifest [`theory/_CITATIONS.md`](theory/_CITATIONS.md) (local corpus, gitignored; every record openly downloadable at its DOI). Current spec: Zenodo [21447590](https://zenodo.org/records/21447590) (v4) |

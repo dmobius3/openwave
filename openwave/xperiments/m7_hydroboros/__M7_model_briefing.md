@@ -19,6 +19,7 @@
 | Model ID | M7 |
 | Name | HydroBoros (Hydrodynamics + Ouroboros; evokes the Hydra water-snake) |
 | Author | Marc Fleury (toroidal-EM electron) + Paul Werbos (Ouroboros / M6): the two physics parents |
+| Author contact | GitHub [@marcf999](https://github.com/marcf999) (toroidal-EM electron) + [@pwerbos](https://github.com/pwerbos) (Ouroboros), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6. Note: this column is PARKED by its own roadmap pending the author's return, so author-gated rows here record "not applicable" under the § 1 default in the meantime |
 | Blend | Fleury's toroidal EM electron (arXiv:2510.22384) fused with Werbos's Ouroboros self-confinement (M6) |
 | Lineage | force-free / Beltrami (Trkalian → variable-λ) + knotted-EM / Clebsch + Faber geometric soliton |
 | Primary sources | Fleury / dos Santos arXiv:2510.22384; Werbos M6; Faber arXiv:2201.13262 + Faber & Golubich arXiv:2604.12021; Sato-Yamada arXiv:1809.03136; Ceperley; Pisello 1977 |

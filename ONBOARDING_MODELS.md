@@ -274,6 +274,7 @@ A practical pattern: run the reproducer and the independent recomputer first (do
 | [`MODELS.md`](MODELS.md) | The comparison table, the shared criteria, the validation legend |
 | [`m5_liquid_crystal/__M5_model_briefing.md`](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | The model-briefing template (Section 3.1), a worked one-pager to copy |
 | [`m7_hydroboros/theory/_CITATIONS.md`](openwave/xperiments/m7_hydroboros/theory/_CITATIONS.md) | The theory-corpus citations template (Section 3.2), bibliography + gitignored-file manifest |
+| [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) | If your program tests another column's field family: what structure you may assume, and how a soldered family is scored |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Canonical setup, fork/branch/PR flow, DCO sign-off |
 | [`SYS_ARCH.md`](SYS_ARCH.md) | Repository structure and tech stack |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Community expectations |
