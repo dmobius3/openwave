@@ -28,7 +28,7 @@
   - [Why `∇·n̂` and `∇×n̂` are the right "see EM" observables](#why-n̂-and-n̂-are-the-right-see-em-observables)
   - [Implementation order (M5.6.5b)](#implementation-order-m565b)
   - [As-built log (update as features land)](#as-built-log-update-as-features-land)
-- [Part 4 — The consolidated viz target (Rodrigo 2026-05-30): "what I want to *see*"](#part-4--the-consolidated-viz-target-rodrigo-2026-05-30-what-i-want-to-see)
+- [Part 4 — The consolidated viz target (2026-05-30): "what I want to *see*"](#part-4--the-consolidated-viz-target-2026-05-30-what-i-want-to-see)
   - [4.1 The observable catalog — what each quantity IS](#41-the-observable-catalog--what-each-quantity-is)
   - [4.2 Glyph (vector-field) displays — split the one EM toggle into four](#42-glyph-vector-field-displays--split-the-one-em-toggle-into-four)
   - [4.3 flux_mesh (scalar/warp) displays — keep, with one upgrade](#43-flux_mesh-scalarwarp-displays--keep-with-one-upgrade)
@@ -60,7 +60,7 @@
 
 | Mode | Palette | Reads |
 | --- | --- | --- |
-| 1 Deviation (Magnitude) | orange | `ψ.norm()` (+ vector_warp) |
+| 1 Deviation/Displacement (Magnitude) | orange | `ψ.norm()` (+ vector_warp) |
 | 2 Amp (A) (EMA RMS) | ironbow | `amp_local_emarms_am` |
 | 3 Clock (ω) | blueprint | `freq_local_cross_rHz` |
 | 4 ENERGY (Hamiltonian) | ironbow | `energyH_density_aJ` |
@@ -298,7 +298,7 @@ The `unit`+`single` combination is the **far-field inspection** view (uniform, f
 
 ---
 
-## Part 4 — The consolidated viz target (Rodrigo 2026-05-30): "what I want to *see*"
+## Part 4 — The consolidated viz target (2026-05-30): "what I want to *see*"
 
 This part organizes the full observable wishlist for the EM + clock-state rendering into one coherent
 catalog: **the physical quantities to display, what each *is* in the substrate, and the render
