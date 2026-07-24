@@ -1,6 +1,6 @@
 # M5.23.1, fixed-J isorotation dynamics → production port (the former M5.24 round 4)
 
-> 🔶 IN PROGRESS (go 2026-07-24 12:20 EDT). Staged 2026-07-19 at the [M5.24](m5_24_task_details.md) close (user-approved re-home of its round-4 scope); renumbered M5.26 → M5.23.1 (2026-07-23, the rendering-series consolidation: M5.23.x = the official rendering series). Roadmap row: [`m5_roadmap.md § IN PROGRESS`](../m5_roadmap.md). Checkpoint: [`../checkpoints/m5_23_1_progress.md`](../checkpoints/m5_23_1_progress.md).
+> ✅ ROUND 1 CLOSED COMPLETE + APPROVED 2026-07-24 (go 12:20 EDT, 27 min, no cap; review approved same day). Staged 2026-07-19 at the [M5.24](m5_24_task_details.md) close (user-approved re-home of its round-4 scope); renumbered M5.26 → M5.23.1 (2026-07-23, the rendering-series consolidation: M5.23.x = the official rendering series). Roadmap row: [`m5_roadmap.md § DONE`](../m5_roadmap.md). Checkpoint: [`../checkpoints/m5_23_1_progress.md`](../checkpoints/m5_23_1_progress.md). Deferred rounds staged (Larmor ramp-on + body-frame, the constrained FIRE build, the J(t) secular-decay falsifier): see TASK PLANNING § Deferred.
 
 ## TASK PLANNING
 
@@ -113,3 +113,29 @@ The field-state evidence (the simulation-prints rule): the production hold run's
 ## Round 3 carries Q36 (wired 2026-07-21)
 
 The author's reply to the 21.9 note poses the quadratic-effect origin question ([Q36](../m5_question_tracker.md#q36-detail); [`m5_21_convo.md § 2026-07-21 03:30`](m5_21_convo.md)): the measured instant-on systematic (ours) vs a formulation-truncation effect ("3x3 formulation (4x4 might change)") vs a genuine quadratic coupling ("they might search experimentally"). Round 3 (adiabatic ramp-on + body-frame read) is the discriminator for the first; its design should also record which functional terms the port's field coupling carries, so the truncation hypothesis is answerable by inspection rather than a new run.
+
+## TASK REVIEW (2026-07-24)
+
+**Task Duration:** 00:27 (from the 12:20 go to the 12:47 review post)
+**Usage Cap Triggered:** NO
+
+**Results**:
+
+| Piece | Verdict |
+| --- | --- |
+| The fixed-J port (`engine2_pde.py` M5.23.1 section) | ✅ taichi-first: clock flow a0 = w·[W, M] (radial sign gauge), kin reduction, SET-J kick, J readouts; zero new fields |
+| Selftest | ✅ ALL 12 GREEN (goal loop, try 2): a0 2.5e-7, kin 1.2e-7, Legendre 0.9970/0.9919 (research 0.997/0.992), hold ledger 3.4e-3 with spectrum 2.9e-4, cross-stack vs the certified f64 `leap()` 1.85e-3 at step 200, carried-charge retention 0.965 |
+| Launcher RELAX → SET-J → EVOLVE | ✅ wired + `_topo_fixedj4d`; 63³ smoke: retention 0.92 over t = 3.2, the δ clock-hand axis measurably rotating (0.0159 rad/τ vs 0.0185 predicted from ω\*/‖a0_raw‖) |
+| Regressions + docs | ✅ M5.24 14/14, M5.23 14/14, byte-compile clean, doc checker exit 0 |
+
+**Issues / blockers**: I1 (data hygiene: the missing `m5_21_2b`/`m5_21_3` arrays, stale manifest rows, broken recorded regen chain: follow-up housekeeping task) and I2 (the f32 hold certified to t = 2-3.2; the research t = 80 window not re-certified in production): both in ROUND 1 FINDINGS § Issues.
+
+**Deviations from plan**: four, logged in ROUND 1 FINDINGS (arena re-base to the rung endpoint; hold gates re-based on the carried charge after the try-1 near-cancellation measurement; the abandoned p1 restore; `read_carried_j` added beyond the planned kernel list).
+
+**Action needed**: the user live-tests `_topo_fixedj4d` (visible axis rate is ω\*/‖a0_raw‖, raise `ETA_SUBSTEPS` if slow); the commit is the user's. Deferred rounds stay staged in TASK PLANNING § Deferred; [M5.23.2](m5_23_2_task_details.md) arm (2) is now unblocked.
+
+**Model-doc sweep**: canonical § 5 fixed-J recipe row annotated with the production-port pointer + the carried-charge observable + the sign-gauge lesson; model briefing production-launcher row updated (the fixed-J clock is LIVE). The hunt table explicitly SKIPPED (infrastructure port; no hunt observable moved: the Larmor/g cells already point at this task's deferred rounds). SABER EXEC_SUMMARY/GOAL_TRACKER explicitly SKIPPED (no SABER-facing status change).
+
+**Findings**: The ZBW clock is live in the production launcher as simulated dynamics only: the M5.21.9 constraint-carried electron ports cleanly (Legendre closure and clock inertia at reference precision; cross-stack trajectory agreement 1.85e-3), and the run measured two facts worth keeping: the global rotation charge of a hedgehog-family state near-cancels (the carried charge ⟨Ṁ, a0(M)⟩ is the honest hold observable, retro-explaining part of the M5.21.9 Larmor J-azimuth fragility) and the on-screen rotation rate is ω\*/‖a0_raw‖, a convention fact any demo statement must quote as measured.
+
+**Research docs created / updated**: [this task_details](m5_23_1_task_details.md) (planning + findings + embedded panel + this review) · [`../scripts/m5_23_1_fixedj_engine_selftest.py`](../scripts/m5_23_1_fixedj_engine_selftest.py) · [`../scripts/m5_23_1_a_hold_panel.py`](../scripts/m5_23_1_a_hold_panel.py) → [`../plots/m5_23_1_hold_panel.png`](../plots/m5_23_1_hold_panel.png) + [`../data/m5_23_1_selftest.json`](../data/m5_23_1_selftest.json) · production [`engine2_pde.py`](../../engine2_pde.py) / [`_launcher.py`](../../_launcher.py) / [`xparameters/_topo_fixedj4d.py`](../../xparameters/_topo_fixedj4d.py) · [`../m5_theory_canonical.md`](../m5_theory_canonical.md) (§ 5 annotation) · [`../../__M5_model_briefing.md`](../../__M5_model_briefing.md) (production row) · [`../m5_roadmap.md`](../m5_roadmap.md) (row → Done) · [`../checkpoints/m5_23_1_progress.md`](../checkpoints/m5_23_1_progress.md)
