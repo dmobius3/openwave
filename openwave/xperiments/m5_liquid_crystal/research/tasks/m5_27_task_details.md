@@ -1,6 +1,81 @@
 # M5.27: the background-scalar time sector (the staged 4×4), entrainment pilot
 
-**Status**: 🚧 SANCTIONED (author green light 2026-07-22), awaiting slot. Proposed 2026-07-21 pending author go; the author's group reply the next morning granted standing permission for self-directed 4×4 work: "Sure, if Fable has idea how to move forward with 4x4 case, please work on it" ([`m5_22_convo.md § 2026-07-22`](m5_22_convo.md), the 4×4 green-light row), which covers this pilot as the third fork branch. No further ask needed to run; this runs on user "go". Roadmap: [`m5_roadmap.md § BACKLOG`](../m5_roadmap.md), **sequenced NEXT, ahead of [M5.22](m5_22_task_details.md)** (the 2026-07-24 user reorder: a single self-contained pilot fits before the long multi-phase nuclei run, whose main-priority standing and week-of-2026-07-27 start commitment are unchanged; supersedes the 2026-07-23 after-M5.22 slotting; Backlog row order = the run sequence). Offered as the THIRD branch of the fork left open at the [M5.21.3](m5_21_3_task_details.md) close (the fixed-J reading vs the T2η potential lift vs this), proposed to the author in the M5.21-series close round (sent 2026-07-21 17:06 EDT; [convo record](m5_21_convo.md)).
+**Status**: ✅ **CLOSED 2026-07-24** (phase A run complete: gates 8/8, tongue map NULL at all 40 points, adversarial audit 5/5; findings + review below, method note [`../findings/m5_27_note.md`](../findings/m5_27_note.md)). Planning locked and run the same day. Sanctioned by the author green light 2026-07-22. Proposed 2026-07-21 pending author go; the author's group reply the next morning granted standing permission for self-directed 4×4 work: "Sure, if Fable has idea how to move forward with 4x4 case, please work on it" ([`m5_22_convo.md § 2026-07-22`](m5_22_convo.md), the 4×4 green-light row), which covers this pilot as the third fork branch. No further ask needed to run; this runs on user "go". Roadmap: [`m5_roadmap.md § BACKLOG`](../m5_roadmap.md), **sequenced NEXT, ahead of [M5.22](m5_22_task_details.md)** (the 2026-07-24 user reorder: a single self-contained pilot fits before the long multi-phase nuclei run, whose main-priority standing and week-of-2026-07-27 start commitment are unchanged; supersedes the 2026-07-23 after-M5.22 slotting; Backlog row order = the run sequence). Offered as the THIRD branch of the fork left open at the [M5.21.3](m5_21_3_task_details.md) close (the fixed-J reading vs the T2η potential lift vs this), proposed to the author in the M5.21-series close round (sent 2026-07-21 17:06 EDT; [convo record](m5_21_convo.md)).
+
+## TASK PLANNING (2026-07-24)
+
+**Scope**: Phase A of the § 2c phasing ONLY: the prescribed uniform background χ = A·cos(ω̄t), coupled by driving the V4 spectral targets (g → g + κχ), run on the verified-L η stack as the staged 4×4 (spatial block + time-time entry live; the (0,i) mixed block projected out per step, its leak norm logged AND its removed energy booked in the ledger). Deliverables: the lock-or-not verdict map (Arnold tongue), the J and μ re-reads under drive, the drive-power ledger, the eigenvalue-excursion read (§ 6b U3), the boost test, and a conditional Kapitza-window arm. Phase B (dynamical χ) stays out of scope (§ 2c).
+
+**Definition of done** (freezes the § 9 draft at "go"):
+
+| # | Item | Pass condition |
+| --- | --- | --- |
+| 1 | Pre-registration lock | The search spaces, verdict criteria, protocols P0-P6, and the boost protocol below are frozen BEFORE numerics; the two ω̄ windows (lock vs Kapitza) run as SEPARATE experiments (§ 6b U4) |
+| 2 | Gates green | κ = 0 regression reproduces the fixed-J live hold (the delivered [M5.23.2](m5_23_2_task_details.md) L-gate anchor: J 0.19923 → 0.19865 over 100 steps) + the free-release decay baseline ([M5.21.3](m5_21_3_task_details.md)) on this harness; **G-vac: the defect-free driven box matches the adiabatic analytic vacuum response with no spurious interior gradients** (this gate also DECIDES the boundary handling, blindspot B7); the phase instrument validated on the live hold at known ω* (B9); the drive-power instrument passes the analytic driven-oscillator audit case; box + M00 spectrum pre-computed (§ 6b T4); dt cost pre-checked (§ 6b T5); statics re-measured at κ ≠ 0 (§ 6b T3) |
+| 3 | The lock scan delivered | The (κ, ω̄) verdict map with the 4-way discriminator below; every point classified; the Arnold-tongue plot (or the measured absence of a tongue: a NULL map is a complete result) |
+| 4 | Re-reads delivered | J budget under drive, μ per the [M5.21.5](m5_21_5_task_details.md) protocol, eigenvalue excursion vs κ (§ 6b U3), each vacuum-referenced |
+| 5 | Audit + note | Adversarial audit (independent implementation) of any nontrivial claim BEFORE anything author-facing; method note per the house standard; findings doc + roadmap + tracker cross-linked |
+
+**Gating**: user "go" only. The author sanction stands (2026-07-22 green light, status line above); no upstream task gates this; nothing downstream gates on it ([M5.28](m5_28_task_details.md) gates on [M5.22](m5_22_task_details.md) Phase 1). Consumes DELIVERED instruments only: the [M5.21.9](m5_21_9_task_details.md) fixed-J endpoints, the [M5.23.2](m5_23_2_task_details.md) npz loader (`engine1_seeds.load_npz_M`), the [M5.21.5](m5_21_5_task_details.md) J/μ protocol, the [M5.21.6](m5_21_6_task_details.md) kick protocol.
+
+**Model/effort**: Fable 5 / high (deep-research default: novel driven-system physics + an audit arm).
+
+**Implementation route (code-scoped 2026-07-24)**: the drive needs NO kernel surgery. Production engine files are consumed read-only; new kernels (mixed-block projection, drive-power sum) live in the task's own scripts (taichi-first).
+
+| Fact (measured in code today) | Consequence for the run |
+| --- | --- |
+| `v4_of` / `dv4_of` / `evolve_M_eta_finish` take `sg` as a per-call argument; ALL g-dependence of V4 sits in the trace targets `C_p = sg^p + 1 + δ^p` (`../../engine2_pde.py` ≈ lines 985-1140) | The prescribed drive is host-side: pass `sg(t) = g + κA·cos(ω̄t)` each step; every kernel that receives `sg` receives the same time sample |
+| Only the product κA enters the EOM for a prescribed drive | The phase-A knob space collapses from (κ, A, ω̄) to (κA, ω̄); register A ≡ 1, κ is the coupling knob, and the § 6b U3 read becomes κ ↦ excursion. The § 4 ledger form ½ρω̄²A² stays bookable at A ≡ 1 |
+| The V4 stiff M00 mode sits at ω ≈ 78 (g = 8), the fixed-J clock band at ω* ≈ 0.2-1.0 | The lock window drives quasi-statically (the vacuum M00 adiabatically tracks −sg(t): the in-model background oscillation); dt already resolves ω ≈ 78, so the scan costs no dt tightening; ω̄ near 78 and box modes are excluded/marked bands |
+| The vacuum minimum tracks diag(−sg(t), 1, δ, 0): the WHOLE BOX breathes under a global drive | Every defect read is vacuum-referenced: subtract a far-field probe, else the tongue map reads the box's response, not the defect's |
+| Drive power is analytic: P(t) = (∂V4/∂sg)·ṡg summed over the grid | A small in-script kernel; audited against finite-difference V4 at paired sg values + the analytic driven-oscillator toy |
+| On-disk seeds: `m5_21_9_fixedj{,_conj}_om{0.2,0.5,1}_end.npz` (32³ 4×4, h = 1.5), all 6 verified present 2026-07-24; g = 8.0, δ = 0.5 (`../../medium.py`) | The released fixed-J clock is the lock target; its measured ω* centers each ω̄ window. Load via `load_npz_M` WITH the covariant-flip check (post-load sanity: V4/cell ≈ 0; storage is +g, dynamics wants −g, the M5.23.2 loader handles it) |
+| `set_fixed_j` / `read_carried_j` at `../../engine2_pde.py` lines 1557/1593; the release + ω\*-re-kick initialization is DELIVERED tech (the [M5.23.2](m5_23_2_task_details.md) live-hold protocol / `_topo_npz_electron` path) | P0/P1 start from a verified procedure, not new plumbing; the live-hold J numbers double as the κ = 0 regression anchor |
+| The clock-phase time series Δφ(t) does NOT exist yet as an instrument (M5.21.9 logged kin/twist/J, not an unwrapped phase) | NEW arm-A deliverable: the phase instrument (core-axis azimuth from `eigen_decompose`, unwrapped, apolar mod-π handled, B9); validated on the live hold where the rate is known before any verdict uses it |
+
+**Sub-experiments (protocols, pre-registered)**:
+
+| ID | Protocol | Read |
+| --- | --- | --- |
+| P0 | Control: release a fixed-J endpoint (constraint OFF, drive OFF) | The free-decay baseline (the M5.21.3 result re-measured on this exact harness); the ledger noise floor |
+| P1 | Capture: release + drive ON at ω̄ near the endpoint's ω* | Phase difference Δφ(t) defect-clock vs drive; mean drive power; frequency pulling ω_defect(ω̄) |
+| P2 | Tongue map: the (κ, ω̄) grid, each point classified by the 4-way discriminator | The Arnold-tongue map (primary endpoint: conj om0.2; spot-checks om0.5/om1.0 at the best κ) |
+| P3 | Drive-off discriminator: after any lock, switch the drive OFF | Persistence vs instant collapse (entrained self-oscillation vs forced response); expected = decay per M5.21.3, pre-registered honestly |
+| P4 | Re-reads under drive: J budget, μ (M5.21.5 protocol), eigenvalue excursion vs κ (U3), statics gate (T3) | Does the drive supply the J-budget the fixed-J constraint hand-imposes (the § 3 decisive detail); does κ map monotonically onto excursion |
+| P5 | Boost test: kicked defect (M5.21.6 protocol) under the uniform drive | Lock survival in motion + the modulation read (de Broglie signature, qualitative grade) |
+| P6 | CONDITIONAL Kapitza window (runs only if P0-P4 leave budget): ω̄ ∈ [5, 20] | Can a fast drive stabilize the free clock that statics kills; separate experiment per § 6b U4 |
+| AUD | Independent small-grid numpy reimplementation of the driven block-diag EOM + ledger; refuters on any lock claim (forced-response mimic, projection artifact, box-mode coincidence, f32 phase drift) | Audit verdicts per claim |
+
+**Search spaces + verdict criteria (frozen at "go")**:
+
+| Register | Value |
+| --- | --- |
+| Drive excursion ε = κA/g (A ≡ 1) | {0.003, 0.01, 0.03, 0.1} log grid + ONE flagged stress point 0.3; spectrum ordering preserved at all registered ε |
+| ω̄ lock window | [0.4, 2.6] × the released state's measured ω* (covers the 1:1 AND the parametric 2:1 tongue, blindspot B10), 10 coarse points including registered points at exactly 1.0× and 2.0×, adaptive refinement near any response, cap 3 rounds (goal-loop try cap) |
+| Drive ramp | κ ramps 0 → κ_target over ≥ 5 drive cycles (B8); verdict windows open post-ramp |
+| Arena | 32³ h = 1.5 for scans; 64³ (and f64 if the measured f32 phase-noise floor demands) for the headline point only |
+| Run windows | ≥ 50 drive cycles at the window's lowest ω̄; P0 control matched in length |
+| LOCKED | abs(Δφ) net drift < π over the final 20 drive cycles AND mean drive power within the P0 noise floor AND rotation kin plateau (no decay) |
+| DRIVEN RESPONSE | Response at ω̄ with sustained nonzero mean drive power (the § 3 outcome (b)) |
+| MATHIEU UNSTABLE | Monotone ledger growth (§ 6b T2); recorded, excluded from the tongue |
+| NULL | Decay indistinguishable from P0 |
+
+**Blindspot pass** (unknown unknowns surfaced at PLAN, beyond the § 6b tripwires):
+
+| # | Blindspot | Fold-in |
+| --- | --- | --- |
+| B1 | A scalar drive moves eigenVALUE targets; the clock is a phase in eigenVECTOR space: at linear order a uniform spectral drive may not couple to the rotation phase at all (the coupling channel is indirect, through the defect profile's position-dependent excursions) | An empty tongue at all κ is a LIVE, informative outcome: it would say the time-time entry alone cannot entrain the clock, pointing at the deferred mixed block as the necessary coupling. Pre-registered as part of outcome (c) |
+| B2 | Leapfrog + a time-dependent potential: the sg sample point (t vs t + dt/2) biases the work ledger at O(dt) | Fix ONE sampling convention, verify on the analytic driven-oscillator audit case before any scan |
+| B3 | The global drive shakes the vacuum too | Vacuum-referenced reads everywhere (the far-field probe subtraction, implementation-route table) |
+| B4 | f32 phase drift over ≥ 50-cycle windows can mimic or destroy a lock verdict | Measure the κ = 0 phase-noise floor FIRST; it sets the drift threshold; f64 fallback for the headline |
+| B5 | A tongue narrower than the coarse ω̄ grid reads as a false NULL | The adaptive-refinement protocol (cap 3) + report the grid resolution next to any NULL claim |
+| B6 | "Injection locking" textbook framing presumes a self-sustained oscillator; verified-L has none (M5.21.3) | Claim language pinned to the § 3 decisive detail: the question is whether the drive SUPPLIES the missing J-budget, not whether it locks an existing clock |
+| B7 | Boundary pinning becomes an ANTENNA under a global drive: `evolve_M_eta_finish` updates the interior only, so boundary cells stay at the UNDRIVEN vacuum while the driven interior tracks −sg(t); the mismatch layer radiates spuriously | The G-vac gate (DoD 2): defect-free driven box FIRST, must match the adiabatic analytic response with no spurious interior gradients; the boundary handling (analytically track diag(−sg(t), spatial) vs stay pinned) is DECIDED at that gate and registered before any scan |
+| B8 | Switching κ on as a step shocks C_p and launches a transient that can mask or fake a capture | The drive amplitude RAMPS adiabatically over ≥ 5 drive cycles (registered ramp profile); verdict windows open only after the ramp |
+| B9 | The clock phase is read off an APOLAR axis (n ≡ −n, the spin-½ result): the raw azimuth is defined mod π, and naive unwrapping can double or halve a measured lock ratio | The phase instrument handles the mod-π degeneracy explicitly and is validated on the fixed-J live hold at known ω* before any verdict consumes it |
+| B10 | A potential-modulation drive is PARAMETRIC: leading-order coupling sits at ω̄ ≈ 2ω* (the Mathieu/parametric-resonance structure), not at the 1:1 tongue; a window centered on 1:1 alone can miss the physics entirely | The ω̄ window covers BOTH tongues: [0.4, 2.6] × ω* with registered grid points AT 1.0× and 2.0×; verdicts report the lock RATIO (1:1 vs 2:1 vs other rational), and the mod-π care of B9 feeds this read |
+
+**Research body**: scripts `../scripts/m5_27_*.py` (harness `m5_27_a_harness.py`, scan `m5_27_b_lockscan.py`, re-reads `m5_27_c_rereads.py`, boost `m5_27_d_boost.py`, conditional `m5_27_e_kapitza.py`, audit `m5_27_audit_check.py`), data `../data/m5_27_*` (arrays local-only + `_DATASETS.md` regen), plots `../plots/m5_27_*.png` (embedded inline), findings `../findings/m5_27_note.md` (method-note grade; created at close, linked then), checkpoint `../checkpoints/m5_27_progress.md` (updated on every sub-result). Engine files untouched unless a blocker forces an edit (logged as a deviation + the full selftest/regression suite rerun).
 
 ## 1. WHY NOW: the M5.21-series close diagnosis
 
@@ -146,7 +221,7 @@ Tripwires (named before numerics; each carries its guard):
 | The M5.21.3-close fork | This is the third branch (fixed-J reading vs T2η lift vs background scalar); the author's call |
 | [M5.21.8](m5_21_8_task_details.md) (notebook verification) | Natural companion: the § 2 economy hypothesis (the pathology lives in the mixed block) is checkable against its results |
 | [M5.23.1](m5_23_1_task_details.md) (rendering series) | Rendering proceeds regardless (sequenced BEFORE this pilot in the reordered Backlog). Note: M5.23.1 ports the fixed-J clock into production; if this pilot delivers a lock, the clock's origin story changes (a dynamically supplied J-budget vs the hand-imposed constraint), so the pilot tells us whether the port target is the final clock or the crutch |
-| Gate | Author go ✅ granted 2026-07-22 (the 4×4 green light); runs on user "go" at its Backlog slot (after [M5.22](m5_22_task_details.md)) |
+| Gate | Author go ✅ granted 2026-07-22 (the 4×4 green light); runs on user "go", sequenced AHEAD of [M5.22](m5_22_task_details.md) (the 2026-07-24 user reorder; planning locked same day, § TASK PLANNING) |
 
 ## 9. DEFINITION OF DONE (pilot scope, draft; frozen at go)
 
@@ -157,3 +232,76 @@ Tripwires (named before numerics; each carries its guard):
 | 3 | The lock scan: defect response vs (κ, ω̄), Arnold-tongue map, regime verdict per § 3 (with the § 6b T2 lock-vs-instability discriminator) |
 | 4 | J and μ re-read under lock (the M5.21.5 protocol) + the eigenvalue-excursion read (§ 6b U3). The two-defect force under a shared background is phase B scope (§ 2c), NOT in this pilot's DoD |
 | 5 | Adversarial audit (independent implementation) before anything author-facing; method note per the house standard |
+
+## FINDINGS (2026-07-24)
+
+Full method note (equations first + equation-to-code map + audit record): [`../findings/m5_27_note.md`](../findings/m5_27_note.md).
+
+**Headline**: phase A answers the fork branch with a measured, over-determined NO, and delivers the reason. A prescribed uniform background scalar coupled as `g → g + κχ` does not entrain the clock at any registered `(κ, ω̄)`; the drive is an eigenVALUE actuator (authority coefficient 1.000) with exactly zero torque on the eigenFRAME the clock lives in.
+
+| # | Result | Grade |
+| --- | --- | --- |
+| 1 | **Tongue map NULL at all 40 registered points** (eps 0.003-0.1 x om_bar/om* 0.4-2.6, covering the 1:1 and the 2:1 parametric tongue). 7 raw SUSTAINED flags all REFUTED on 4 independent grounds (noise band, zero-crossing, no widening with drive amplitude, phase rates consistent with zero) | ✅ measured |
+| 2 | **The mechanism**: `[dF/dsg, M]` = 4.5e-21 (machine zero) on the block-diagonal staged states vs 1.38e-02 with the mixed (0,i) block present. The uniform spectral drive moves eigenvalues and cannot torque the eigenframe | ✅ measured (algebraic, independent build) |
+| 3 | **U3 answered sharply**: the time-time eigenvalue excursion equals the drive amplitude `g·eps` to ratio 0.999/0.996/0.999/0.999 across 1.5 decades (log-log slope alpha = 1.000), while the spatial spectrum shows no eps dependence | ✅ measured |
+| 4 | **The mixed block is a dynamically INVARIANT manifold**: with the projection disabled and block-diagonal data, the largest (0,i) entry reached is exactly 0.0. The drive cannot even excite the channel that would carry the coupling | ✅ measured |
+| 5 | **P0 control**: free release does not hold the clock (J 0.19923 -> 0.00673, -96.6% over t = 200; kin x100). The [M5.21.3](m5_21_3_task_details.md) no-free-clock result quantified on this harness | ✅ measured |
+| 6 | **P7 seeded-mixed test = outcome (c)**: seeding the (0,i) block goes non-finite at t = 16.8 / 13.8, exactly as the M5.21.3 all-negative time-mixing curvatures predict. The dynamical test cannot isolate the coupling; the algebraic result stands alone | ✅ measured |
+| 7 | Independent audit **5/5** on a separate numpy f64 build (own stencil, gradient, integrator): reproduces the null (control +0.088 vs driven 1:1 +0.052, 2:1 -0.125) and closes the energy ledger (dE +23.39 vs drive work +22.67) | ✅ measured |
+| 8 | Recommendation: **do not build phase B (dynamical chi) on this coupling**. A dynamical chi coupled the same way inherits the same commutator and the same invariant manifold; it would add a radiation channel and an energy sector while still not reaching the clock | 🔶 judgement on measured grounds |
+
+**The economy argument, re-graded honestly**: the proposal's "+1 field component instead of +4" is correct about parameter count and wrong about physics. The cheap component is cheap precisely because it does not touch the sector the time face needs. If the background-wave idea is carried forward, the coupling must act non-commutingly on `M` (the mixed (0,i) block), and that block is measured unstable under the current L, which routes the question back to the Lagrangian-level work the author flagged as needing soliton specialists.
+
+## TASK REVIEW (2026-07-24)
+
+**Task Duration:** 02:15 (from 17:36 to 19:51)
+**Usage Cap Triggered:** NO
+
+**Results**: see the FINDINGS table above. Gates 8/8 ✅, audit 5/5 ✅, tongue map NULL 40/40 ✅ measured, mechanism ✅ measured, recommendation 🔶 judgement.
+
+**Issues / blockers**: none outstanding. The mixed-block instability (result 6) is a measured property of the current L, not a harness fault, and it is already the author's named open problem.
+
+**Deviations from plan**:
+
+| # | Deviation | Handling |
+| --- | --- | --- |
+| 1 | Ramp registered in drive CYCLES consumed most of a run at low om_bar (158 of 200 time units) | Re-registered as `RAMP_T = 60` TIME units (~2 clock periods); all affected measurements re-run |
+| 2 | Blindspot B3 (vacuum referencing) was written for FIELD reads; it applies to the ENERGY LEDGER too (raw kin/power are ~90% box breathing) | `vacuum_reference()` added, paired defect-free run per (eps, om_bar); J and phase verified clean and used as the primary observables |
+| 3 | The pre-registered SUSTAINED threshold (gain > 0.10) was frozen before the control's noise band was known and sat BELOW it (0.153) | Added the explicit refutation pass `m5_27_h_refute.py` with 4 independent refuters rather than silently relaxing a threshold |
+| 4 | U3 as planned was buried under the state's own relaxation (excursion 0.319 at eps = 0) | Retargeted to the time-time eigenvalue on a non-kicked state; the read then came out exact (alpha = 1.000) |
+| 5 | P7 as first written was a no-op (staged and mixed-live byte-identical) | Discovered the invariance property (a result in itself), then seeded the block by hand; outcome (c) |
+| 6 | Model was Opus 5, not the planned Fable 5 (user switched at go) | Logged; no effect on artifacts |
+| 7 | Primary endpoint stayed `conj_om0.2` as planned (the earlier cost concern that would have forced `conj_om1` did not materialize: Metal gave 0.197 ms/step) | No change needed |
+
+**Action needed**:
+
+| Item | Owner |
+| --- | --- |
+| Decide whether M5.27.x phase B is retired, re-scoped onto a non-commuting coupling, or parked (the note's § 11 recommends not building it on this coupling) | user |
+| The M5.27 result is a clean negative worth carrying into the author channel when the next batch goes out (it answers the third fork branch he left open, and it sharpens WHY the 4x4 mixed block is the load-bearing part) | user-gated, batched |
+| [M5.22](m5_22_task_details.md) nuclei is next in the Backlog, start committed for the week of 2026-07-27 | user "go" |
+
+**Findings**: A prescribed uniform background scalar coupled to the spectral targets (`g → g + κχ`) does NOT entrain the M5 clock: the Arnold-tongue map is null at all 40 registered points, and the null is structural rather than a parameter miss. The drive force commutes with `M` on the block-diagonal states the staged 4×4 runs (machine zero 4.5e-21, vs 1.38e-02 once the mixed (0,i) block is present), so it has complete authority over eigenvalues (the time-time eigenvalue tracks the drive amplitude with slope 1.000 across 1.5 decades) and exactly none over the eigenframe that carries the clock; the block-diagonal sector is moreover dynamically invariant, so the drive cannot even excite the channel that would carry the coupling. Seeding that channel by hand destabilizes within t ≈ 15, as M5.21.3's all-negative time-mixing curvatures predict. The practical consequence: the proposal's economy argument (one scalar instead of four mixed components) is right about parameter count and wrong about physics, and phase B should not be built on this coupling.
+
+**Research docs created / updated**:
+
+| Doc | Content |
+| --- | --- |
+| [`../findings/m5_27_note.md`](../findings/m5_27_note.md) | the method note (equations first, equation-to-code map, gates, refutation, mechanism, not-computed list) |
+| [`m5_27_task_details.md`](m5_27_task_details.md) | this record: TASK PLANNING (locked pre-run) + FINDINGS + review |
+| [`../scripts/m5_27_a_harness.py`](../scripts/m5_27_a_harness.py) | the driven harness: host-side drive, ledger kernels, apolar phase instrument, boundary tracking |
+| [`../scripts/m5_27_b_gates.py`](../scripts/m5_27_b_gates.py) · [`../data/m5_27_gates.json`](../data/m5_27_gates.json) | the 8/8 gate battery |
+| [`../scripts/m5_27_c_lockscan.py`](../scripts/m5_27_c_lockscan.py) · [`../data/m5_27_lockscan.json`](../data/m5_27_lockscan.json) | P0-P3, the 40-point tongue map |
+| [`../scripts/m5_27_h_refute.py`](../scripts/m5_27_h_refute.py) · [`../data/m5_27_verdicts.json`](../data/m5_27_verdicts.json) | the refutation pass (7/7 refuted) |
+| [`../scripts/m5_27_d_audit.py`](../scripts/m5_27_d_audit.py) · [`../data/m5_27_audit.json`](../data/m5_27_audit.json) | the independent adversarial audit (5/5) |
+| [`../scripts/m5_27_f_rereads.py`](../scripts/m5_27_f_rereads.py) · [`../data/m5_27_rereads.json`](../data/m5_27_rereads.json) | U3 eigenvalue authority + P5 boost |
+| [`../scripts/m5_27_g_mechanism.py`](../scripts/m5_27_g_mechanism.py) · [`../data/m5_27_mechanism.json`](../data/m5_27_mechanism.json) | P7 invariance + seeded-mixed test |
+| [`../scripts/m5_27_e_plots.py`](../scripts/m5_27_e_plots.py) | the figures |
+
+Key plots: [`m5_27_tongue_map.png`](../plots/m5_27_tongue_map.png) (the null map + refuted verdicts), [`m5_27_baseline_panel.png`](../plots/m5_27_baseline_panel.png) (the control, driven traces, gain sweep vs the noise band), [`m5_27_rereads_panel.png`](../plots/m5_27_rereads_panel.png) (U3 eigenvalue authority).
+
+![the tongue map and the verdict map](../plots/m5_27_tongue_map.png)
+
+![P0 control, driven runs, and the gain sweep](../plots/m5_27_baseline_panel.png)
+
+![U3 eigenvalue authority and the P5 boost test](../plots/m5_27_rereads_panel.png)

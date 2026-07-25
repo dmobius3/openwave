@@ -22,7 +22,7 @@
   - `Numerical Benchmark for the Ouroboros Lagrangian.docx` — 4-fn benchmark ODE source for T5/T6+ work
   - `Claude bosonization May18 4PM.txt` — Werbos's bosonization session log with the lepton-spectrum numbers (ω=1.0 / 12.78 / 40.7 hypothesis)
   - `Competion_Of_Hopf_invariant_Ouroboros_proof.txt` — **Hopf invariant proof completion (Zenodo 20296060, 2026-05-19)**. Supplies Lemmas A (∇×J = B everywhere for finite-energy Lorenz-constrained solutions) and B (zeros of B made isolated by perturbation preserving Q[A,J]). Together with the main argument of Werbos 2026b (Zenodo 20181683), these establish Q[A,J] = H(Φ) ∈ ℤ as a theorem of differential topology. **Charge quantization is now rigorous.** Doesn't address existence of specific-Q chaoitons (the open T6-T10 problem).
-- Existing context: [m5_1b_topological_defect.md](m5_1b_topological_defect.md) (compares time-periodicity vs topology), [feedback_no_static_solitons](../../../../../../.claude/projects/-Users-xrodz-Documents-source-code-OPENWAVE-LABS-openwave/memory/feedback_no_static_solitons.md) (three Derrick escapes)
+- Existing context: [m5_1b_topological_defect.md](../../../m5_liquid_crystal/research/tasks/m5_1b_topological_defect.md) (compares time-periodicity vs topology; catalogues the three Derrick escapes), [MODELS.md § Reading the table](../../../../../MODELS.md) (how the columns escape Derrick three different ways: standing-wave interference, topology + time-periodic resonance, oscillation)
 
 ---
 
@@ -70,7 +70,7 @@ Two coupled Lorenz-constrained vector fields on Minkowski spacetime. Classical, 
 
 ### What's a chaoiton
 
-A **chaoiton** is a time-periodic, spatially-localized solution of the Ouroboros field equations. The "like a soliton but non-static" framing — energy is stored in oscillation rather than in a static gradient configuration. This is **the third Derrick escape** (time-periodicity) catalogued in [m5_1b_topological_defect.md § Alternative stabilization](m5_1b_topological_defect.md).
+A **chaoiton** is a time-periodic, spatially-localized solution of the Ouroboros field equations. The "like a soliton but non-static" framing: energy is stored in oscillation rather than in a static gradient configuration. This is **the third Derrick escape** (time-periodicity) catalogued in [m5_1b_topological_defect.md § Alternative stabilization](../../../m5_liquid_crystal/research/tasks/m5_1b_topological_defect.md).
 
 Werbos's prior numerical work (Zenodo 20030162, **not yet read locally**) claims existence of 62 stable chaoiton families across 1280 parameter combinations, with L/Q ratio (angular momentum / charge) in the range 0.79–2.6 — overlapping the electron g-factor.
 

@@ -1,0 +1,177 @@
+{
+ "arch": "Arch.metal",
+ "tag": "conj_om0.2",
+ "om_star": 0.1992308983677509,
+ "probe": [
+  19,
+  15,
+  15
+ ],
+ "boundary_decision": "track",
+ "omega_M00": 78.27710961135396,
+ "box_modes": [
+  0.06981317007977318,
+  0.13962634015954636,
+  0.20943951023931953,
+  0.2792526803190927,
+  0.3490658503988659
+ ],
+ "vacuum_gate": {
+  "track": {
+   "max_rel_dev_from_adiabatic": 0.000158768709567618,
+   "max_interior_gradient": 0.0
+  },
+  "pin": {
+   "max_rel_dev_from_adiabatic": 0.000158768709567618,
+   "max_interior_gradient": 0.0
+  }
+ },
+ "free_baseline": {
+  "steps": 40000,
+  "t_end": 199.9999999998906,
+  "J_trace": [
+   [
+    0.005,
+    0.1992289125919342
+   ],
+   [
+    20.005000000000305,
+    -0.004847695119678974
+   ],
+   [
+    40.00500000000201,
+    -0.05405880883336067
+   ],
+   [
+    60.005000000012245,
+    -0.012382621876895428
+   ],
+   [
+    80.00499999999973,
+    0.008309170603752136
+   ],
+   [
+    100.00499999998154,
+    -0.015254098922014236
+   ],
+   [
+    120.00499999996335,
+    0.004836286883801222
+   ],
+   [
+    140.00499999994517,
+    -0.00402711471542716
+   ],
+   [
+    160.00499999992698,
+    -1.382260143145686e-05
+   ],
+   [
+    180.0049999999088,
+    0.0028427846264094114
+   ],
+   [
+    199.9999999998906,
+    0.006732246372848749
+   ]
+  ],
+  "kin_trace": [
+   [
+    0.005,
+    0.038842763751745224
+   ],
+   [
+    20.005000000000305,
+    1.1539125442504883
+   ],
+   [
+    40.00500000000201,
+    1.7492849826812744
+   ],
+   [
+    60.005000000012245,
+    1.62873375415802
+   ],
+   [
+    80.00499999999973,
+    2.0987117290496826
+   ],
+   [
+    100.00499999998154,
+    2.682185173034668
+   ],
+   [
+    120.00499999996335,
+    2.9033312797546387
+   ],
+   [
+    140.00499999994517,
+    3.2319982051849365
+   ],
+   [
+    160.00499999992698,
+    3.630558490753174
+   ],
+   [
+    180.0049999999088,
+    3.8783037662506104
+   ],
+   [
+    199.9999999998906,
+    4.162535667419434
+   ]
+  ],
+  "phase_rate_free": 0.0007483156844215449,
+  "phase_rate_pred": 0.01602566718811419
+ },
+ "phase_gate": {
+  "phi_acc": -0.04732025151261363,
+  "rate_meas": -0.01359749998304882,
+  "rate_pred": 0.01602566718811419,
+  "ratio": -0.8484826137618608
+ },
+ "results": [
+  {
+   "gate": "G-box: stiff M00 mode + box modes pre-computed",
+   "pass": true,
+   "detail": "omega_M00 = 78.28 (V4'' = 6127); box modes ['0.070', '0.140', '0.209', '0.279', '0.349']; clock band omega* = 0.1992 (ratio to M00 = 2.55e-03)"
+  },
+  {
+   "gate": "G-vac: driven vacuum tracks the analytic adiabatic response, no spurious interior gradients",
+   "pass": true,
+   "detail": "BOUNDARY DECISION = 'track'. track: dev 1.588e-04 grad 0.000e+00 | pin: dev 1.588e-04 grad 0.000e+00"
+  },
+  {
+   "gate": "G-power: the taichi ledger matches an independent f64 numpy reference (V4 and dV4/dsg)",
+   "pass": true,
+   "detail": "dV4/dsg taichi 6977.5615 vs numpy-f64 6977.0129 (rel 7.86e-05, f32 grid-sum level); V4 taichi 2.62205 vs numpy 2.62208 (rel 1.42e-05); numpy FD truncation falls 4.00x on halving h (O(h^2) expected 4x) -> the analytic dV4/dsg is confirmed exact"
+  },
+  {
+   "gate": "G-phase: unwrapped apolar phase advances at the visible clock rate",
+   "pass": true,
+   "detail": "phi advance -0.04732 rad over t = 3.50; rate -0.01360 vs predicted omega*/|a0_raw| = 0.01603 (ratio -0.848); rotation axis = local leading spatial eigenvector"
+  },
+  {
+   "gate": "G-reg: the fixed-J live hold reproduces the delivered anchor over 100 steps",
+   "pass": true,
+   "detail": "J 0.19923 -> 0.19872 (+0.255% over 100 steps); M5.23.2 anchor 0.19923 -> 0.19865 (-0.29%)"
+  },
+  {
+   "gate": "G-reg: the free-release baseline is measured (the P0 control + noise floor)",
+   "pass": true,
+   "detail": "t = 200.0 (40000 steps): J 0.19923 -> 0.00673 (+96.62%), kin 0.03884 -> 4.16254, free phase rate +0.00075 (pred 0.01603), max|M| 8.001, leak 0.00e+00"
+  },
+  {
+   "gate": "G-static: the spatial core spectrum survives the drive (topology-protected sector intact)",
+   "pass": true,
+   "detail": "core spatial eigenvalues [0.0262, 0.2825, 0.9937] -> [-0.0882, 0.6111, 0.979] (max shift 0.3286) at eps = 0.03"
+  },
+  {
+   "gate": "G-dt: the Kapitza window is resolvable at the certified dt",
+   "pass": true,
+   "detail": "om_bar = 10.0: 126 steps/cycle at dt = 0.005; 4000 steps stable, max|M| 8.124"
+  }
+ ],
+ "all_pass": true,
+ "wall_s": 30.792222023010254
+}

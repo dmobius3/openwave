@@ -1,0 +1,42 @@
+{
+ "results": [
+  {
+   "check": "A2 V4 gradient matches an independent complex-step derivative",
+   "pass": true,
+   "detail": "max rel deviation 1.743e-16 (complex-step h = 1e-20, no truncation error)",
+   "refuter": "a mismatch would mean the force driving every run is not dV4/dM"
+  },
+  {
+   "check": "A1 the background enters the dynamics ONLY through the trace targets C_p(sg)",
+   "pass": true,
+   "detail": "dV4/dsg analytic 40.87354581 vs central FD 40.87354868 (rel 7.01e-08); truncation falls 4.00x on halving h (O(h^2) expected 4x); the sg dependence of V4 is exactly C_p = sg^p + 1 + delta^p",
+   "refuter": "any additional sg channel would break this identity and invalidate the host-side drive construction"
+  },
+  {
+   "check": "A5 on the STAGED (block-diagonal) states the uniform drive force commutes with M: it moves eigenvalues and cannot torque the clock frame",
+   "pass": true,
+   "detail": "||[dF/dsg, M]||rel = 4.544e-21 block-diagonal (machine zero) vs 1.383e-02 with the mixed (0,i) block present. So the null is STRUCTURAL for phase A, and the mixed block is the missing coupling channel",
+   "refuter": "if the block-diagonal commutator were nonzero, a uniform spectral drive could torque the clock directly and a null tongue would need another explanation; if the general-M commutator were ALSO zero, the mixed block would not be the channel and phase B would need a different design"
+  },
+  {
+   "check": "A3 the field energy change is accounted by the explicit drive work",
+   "pass": true,
+   "detail": "dE = +23.3894 vs Int (dV4/dsg) dsg = +22.6727 (rel gap 0.03; a coarse independent discretization, so the bar is order-of-magnitude)",
+   "refuter": "a ledger that does not close means 'zero average drive power' cannot discriminate entrainment from pumping"
+  },
+  {
+   "check": "A4 INDEPENDENT: a background drive at the clock frequency does not sustain the carried J above control",
+   "pass": true,
+   "detail": "J retention: control +0.0883, driven 1:1 +0.0524 (gain -0.0359), driven 2:1 -0.1254 (gain -0.2137) on an independent numpy integrator with a non-eta curvature term",
+   "refuter": "if THIS build sustained J where the taichi run does not, the main NULL would be an artifact of the production discretization"
+  }
+ ],
+ "all_pass": true,
+ "arena": 13,
+ "retention": {
+  "control": 0.08831206320268131,
+  "driven_1to1": 0.052407193898243665,
+  "driven_2to1": -0.12541531189289995
+ },
+ "wall_s": 202.04859805107117
+}
