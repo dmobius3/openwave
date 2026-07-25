@@ -28,7 +28,7 @@ Every file reference is an active link to the file in this repository (under `op
 
 **Column order:** models are sequenced by their validated + partial count (✅ + ⚠️), highest first; ties break toward more ✅ (validated), then fewer ❌ (honest negatives). The order updates as validations land. A ❌ is a result, not an embarrassment: documented negatives (with the scripts that produced them) are part of the platform's value.
 
-| **SCORE-BOARD** | [Liquid Crystal<br>(M5)](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | [HydroBoros<br>(M7)](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) | [EWT<br>(M4)](openwave/xperiments/m4_ewt/__M4_model_briefing.md) | [Ouroboros<br>(M6)](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md) | [MIT<br>(M8)](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
+| **MODEL SCORE-BOARD** | [Liquid Crystal<br>(M5)](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | [HydroBoros<br>(M7)](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) | [EWT<br>(M4)](openwave/xperiments/m4_ewt/__M4_model_briefing.md) | [Ouroboros<br>(M6)](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md) | [MIT<br>(M8)](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
 | --- | --- | --- | --- | --- | --- |
 | ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 |
 | ⚠️ partial / with caveats | 7 | 9 | 8 | 3 | 1 |
@@ -57,12 +57,14 @@ Each icon is earned by the matching row in that model's own table (column header
 | Baryons (p, n) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 |
 | Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 |
 | Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 |
+| | | | | | |
 | **FORCES** | | | | | |
 | Electric force (Coulomb 1/r) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 |
 | Magnetic force | ⚠️ | 🚧 | 🚧 | ⚠️ | 🚧 |
 | Gravity | ⚠️ | 🚧 | 🚧 | 🚧 | ⚠️ |
 | Strong force / confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 |
 | Weak force | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 |
+| | | | | | |
 | **WAVES + QUANTUM EMERGENCE** | | | | | |
 | EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 |
 | Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 |
@@ -74,7 +76,7 @@ One table per model, column order of the matrix. Each row is the evidence behind
 
 **Cell format (the 55-word rule).** Every summary cell in the per-model tables below is a condensed summary, never a report: a status tag, then **at most 55 words** of prose, then the links. Detail (derivations, numbers, audit rounds, caveats, lineage) belongs in the linked findings note or script, which is the record the cell points at. When a cell cannot stay honest inside the budget, the fix is a sharper sentence plus a better link, not a longer cell. The at-a-glance matrix carries status icons only; each icon must match the status tag of the same criterion in the model's own table. Both rules are linted by [`dev_docs/check_models_md.py`](dev_docs/check_models_md.py).
 
-### Liquid Crystal (M5)
+## Liquid Crystal (M5)
 
 Deep dive: [`m5_summary_report.md`](openwave/xperiments/m5_liquid_crystal/research/archive/m5_summary_report.md) (results-of-record) · [`m5_roadmap.md`](openwave/xperiments/m5_liquid_crystal/research/m5_roadmap.md) (full program) · [`m5_question_tracker.md`](openwave/xperiments/m5_liquid_crystal/research/m5_question_tracker.md) (emergence catalog + open questions) · [model briefing](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md)
 
@@ -106,7 +108,7 @@ Deep dive: [`m5_summary_report.md`](openwave/xperiments/m5_liquid_crystal/resear
 | Quantum wave equation (Klein-Gordon) | ✅ [validated in-platform]<br>Klein-Gordon emerges from the biaxial twist with GEOMETRIC mass (minimal coupling to the hedgehog connection; the explicit mass term cancels, core regularization generates it)<br>[`m5_6_1_kg_operator_check.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_1_kg_operator_check.py), [`m5_6_1b_twist_evolution.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_1b_twist_evolution.py) |
 | Orbital quantization (atomic structure) | 🚧 [not yet tested]<br>With the electron clock established, coupled pilot waves give orbit quantization as standing-wave resonance (the hydrodynamic-quantum-analogs route: KG-around-hedgehog arXiv:2108.07896, Perrard ncomms4219); EM Coulomb + de Broglie quantization deferred to 15a. Electron-trajectory precedents gathered in [`theory/pilot_wave/`](openwave/xperiments/m5_liquid_crystal/theory/pilot_wave/)<br>[`m5_15a_composite_particles.md`](openwave/xperiments/m5_liquid_crystal/research/tasks/m5_15a_composite_particles.md) |
 
-### HydroBoros (M7)
+## HydroBoros (M7)
 
 Deep dive: [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research/m7_theory_canonical.md) (canonical spec, equations first) · [`m7_roadmap.md`](openwave/xperiments/m7_hydroboros/research/m7_roadmap.md) (full program) · [`m7_question_tracker.md`](openwave/xperiments/m7_hydroboros/research/m7_question_tracker.md) (open questions Q1-Q14) · [model briefing](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md)
 
@@ -138,7 +140,7 @@ Deep dive: [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research
 | Quantum wave equation (Klein-Gordon) | ⚠️ [partially validated]<br>Both transverse fluctuation branches are exact KG dispersions ω² = k² + m_eff² with m_eff² = (1+√5)/2 (upper) and −(√5−1)/2 (the tachyonic band), lattice-anchored via the measured rate; the collective-coordinate (phase/twist) KG remains open<br>[`m7_6_observables.md`](openwave/xperiments/m7_hydroboros/research/tasks/m7_6_observables.md) |
 | Orbital quantization (atomic structure) | 🚧 [not yet tested]<br>M7.22 target<br>(none yet) |
 
-### EWT (M4)
+## EWT (M4)
 
 Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md) (targets, achieved, honest blockers) · [model briefing](openwave/xperiments/m4_ewt/__M4_model_briefing.md)
 
@@ -170,7 +172,7 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 | Quantum wave equation (Klein-Gordon) | ⚠️ [partially validated]<br>The scalar wave equation is the postulated substrate, not an emergent result<br>[`0_WAVE_EQUATION.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_WAVE_EQUATION.md)<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
 | Orbital quantization (atomic structure) | ⚠️ [partially validated]<br>Standing-wave lock-in demonstrated: same-phase wave centers sit in energy wells at λ separation; selectivity fragile under perturbation<br>[`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md) |
 
-### Ouroboros (M6)
+## Ouroboros (M6)
 
 Deep dive: [`m6_theory_canonical.md`](openwave/xperiments/m6_ouroboros/research/m6_theory_canonical.md) (specs of record + provenance ledger, refreshed 2026-07-20) · [`m6_roadmap.md`](openwave/xperiments/m6_ouroboros/research/m6_roadmap.md) (the refresh validation program M6.1+) · [`m6_particle_hunt.md`](openwave/xperiments/m6_ouroboros/research/m6_particle_hunt.md) (identification scorecards) · [`m6_1_method_note.md`](openwave/xperiments/m6_ouroboros/research/findings/m6_1_method_note.md) + [`m6_2_method_note.md`](openwave/xperiments/m6_ouroboros/research/findings/m6_2_method_note.md) (spec certification + the decision gate, 2026-07-20) · [`0d_canonical.md`](openwave/xperiments/m6_ouroboros/research/archive/0d_canonical.md) (archive-era numerical specification) · [model briefing](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md)
 
@@ -202,7 +204,7 @@ Deep dive: [`m6_theory_canonical.md`](openwave/xperiments/m6_ouroboros/research/
 | Quantum wave equation (Klein-Gordon) | 🚧 [not yet tested]<br>QM not derived; the classical field carries the e^{iωt} ansatz, quantum behavior is outside current scope<br>(none yet) |
 | Orbital quantization (atomic structure) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 
-### MIT (M8)
+## MIT (M8)
 
 Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_theory_canonical.md) (spec of record, transcribed at scaffold, pre-verification) · [`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) (the gap map + onboarding evaluation of record) · [`m8_roadmap.md`](openwave/xperiments/m8_mit/research/m8_roadmap.md) (the program, M8.1 certification gate first) · [`m8_platform_pointers.md`](openwave/xperiments/m8_mit/research/m8_platform_pointers.md) (the cross-model reading map written for the author's AI agents) · [model briefing](openwave/xperiments/m8_mit/__M8_model_briefing.md)
 
@@ -239,12 +241,6 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 The frameworks escape Derrick's theorem three different ways (standing-wave interference, topology + time-periodic resonance, oscillation), and the table makes the triangulation visible: M7 (HydroBoros) carries M6's topology-plus-oscillation route into a full-3D dynamical PDE, earning the harmonic-frame soliton but surfacing an honest real-time vacuum instability as its open question. M6's own column now records the 2026-07-20 decision-gate close of its electron sector (three honest negatives earned by pre-registered re-derivation; the neutral-sector DM candidate stands), the platform's clearest demonstration that cells move in both directions. Particle stability requires time-periodicity in every framework that achieves it, charge quantization only emerges where there is topology, and lepton mass spectra remain the open problem across all four dynamical columns. The new M8 column (scaffold stage, 2026-07-21) inverts the direction of the whole table: it is a top-down structural model, strong exactly on the origin-of-the-numbers questions the dynamical columns leave open and absent exactly where they are strong (it has no field equation); its program is to close that gap on the platform ([`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md)). That convergence-and-divergence pattern is the platform's scientific product.
 
 The one-page model briefings summarize what each model brings (identity, profile, per-particle field configurations, status, roadmap, contribution invite). Beyond the five scored columns above: [`M3 Wolff-LaFreniere`](openwave/xperiments/m3_wolff_lafreniere/__M3_model_briefing.md) (the scalar engine behind the EWT record), and the wave-physics library [`M1 Granule Motion`](openwave/xperiments/m1_granule_motion/__M1_model_briefing.md) + [`M2 Free Wave`](openwave/xperiments/m2_free_wave/__M2_model_briefing.md).
-
-## Main use case: emergent science feeding new technology
-
-OpenWave serves as a repository of **emergent science with concrete numerical validation status**, so that applied researchers can build on what holds and route around what does not.
-
-> The goal of the OpenWave effort is to build working models on an open-source platform that anyone can use for applied research, with different models hosted in the same computational environment, supporting new tech development from emergent science.
 
 ## Contributing a model or a validation
 
