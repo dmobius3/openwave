@@ -5,9 +5,9 @@
 > manifest is the tracked record; obtain the papers from their original venues / authors.
 > Our own research notes (`.md`) and code remain tracked.
 
-Total: 58 local-only documents (as of 2026-07-17). The Golubich/Faber SU(2)-soliton sources shared by Dr. R. Golubich 2026-07-02 (see [`../research/tasks/m5_4g_convo_2026.07.02.md`](../research/tasks/m5_4g_convo_2026.07.02.md)) are the `golubich_faber_su2/*.tex` files; the same dipole paper is also present as a PDF (`DR14235.pdf`), so the Faber & Golubich 2026 work maps to two local files (one Bibliography entry, two Local corpus rows).
+Total: 58 local-only documents (as of 2026-07-17). The Golubich/Faber SU(2)-soliton sources shared by Dr. R. Golubich 2026-07-02 (see [`../research/tasks/m5_4g_convo_2026.07.02.md`](../research/tasks/m5_4g_convo_2026.07.02.md)) are the `golubich_faber_su2/*.tex` files; the same dipole paper is also present as two PDFs, so the Faber & Golubich 2026 work maps to three local files (one Bibliography entry, three Local corpus rows). ⚠️ **`faber_universe_2025.pdf` is a filename misnomer**: its content is the arXiv:2604.12021v1 preprint of that dipole paper (title page read 2026-07-25), not a Universe 2025 article; `DR14235.pdf` is the APS accepted version of the same work. The file is left under its original name because several research docs link it by path; use this row as the mapping.
 
-Entries are ordered by year (ascending; undated last); the Bibliography is the readable list, and the "Local corpus" appendix preserves the gitignored-file inventory (path + size). The Bibliography has 57 works; the Local corpus has 58 files.
+Entries are ordered by year (ascending; undated last); the Bibliography is the readable list, and the "Local corpus" appendix preserves the gitignored-file inventory (path + size). The Bibliography has 56 works; the Local corpus has 58 files.
 
 ## Bibliography
 
@@ -51,9 +51,8 @@ Entries are ordered by year (ascending; undated last); the Bibliography is the r
 | Duda | 2021 | Framework for liquid crystal based particle models | [arXiv:2108.07896](https://arxiv.org/abs/2108.07896) (v7, 2025) |
 | Duda | 2025 | Time crystal phi^4 kinks by curvature coupling as toy model for mechanism of oscillations propelled by mass, like observed for electron and neutrinos | [arXiv:2501.04036](https://arxiv.org/abs/2501.04036) (v2, 2025) |
 | Duda | 2025 | Time crystal phi^4 kink as toy model for mechanism of electron clock and neutrino oscillations | Wolfram Community; [community.wolfram.com/groups/-/m/t/3398814](https://community.wolfram.com/groups/-/m/t/3398814) |
-| Faber | 2025 | Faber universe note (author draft) | author copy; n/a |
 | Faber | 2025 | On the realization of spin in SO(3) resp. SU(2) field configurations instead of in the su(2) algebra (presentation) | author copy (Atominstitut, TU Wien, presentation slides, Sept 2025); n/a |
-| Faber & Golubich | 2026 | High-precision lattice determination of the interaction potential of an SU(2) solitonic dipole and comparison with perturbative QED | author copy ([arXiv:2604.12021](https://arxiv.org/abs/2604.12021) preprint PDF + LaTeX source); shared by R. Golubich, see [convo](../research/tasks/m5_4g_convo_2026.07.02.md) |
+| Faber & Golubich | 2026 | High-precision lattice determination of the interaction potential of an SU(2) solitonic dipole and comparison with perturbative QED | **Phys. Rev. D 114, 014510** (published 2026-07-16); [DOI 10.1103/8zn4-rwth](https://doi.org/10.1103/8zn4-rwth); preprint [arXiv:2604.12021](https://arxiv.org/abs/2604.12021) (v1, 2026-04-13, no journal-ref on the arXiv record yet). Local: author copies (arXiv PDF + APS accepted PDF + LaTeX source), shared by R. Golubich, see [convo](../research/tasks/m5_4g_convo_2026.07.02.md) |
 | Baretz, Fieg, Ganesh, Ghosh, Knapp-Pérez, Rudolph & Whiteson | 2026 | Towards AI-assisted neutrino flavor theory design (AMBer: RL agent + physics-software pipeline searching neutrino flavor-symmetry model space; methodological benchmark, not LC physics: the 9-observable lepton scoreboard + KATRIN/KamLAND-ZEN/Planck bounds it fits against is the eventual falsification target for any 4×4 oscillation sector) | Commun. Phys. 9, 227; [DOI 10.1038/s42005-026-02627-2](https://doi.org/10.1038/s42005-026-02627-2); open access; shared by Duda to models-of-particles 2026-07-12 ("maybe let's try to work together before being overrun") |
 | n/a | n/a | Equation of Everything | author copy; n/a |
 | n/a | n/a | Liquid crystal particles (source unresolved from filename) | n/a |
@@ -113,10 +112,10 @@ Entries are ordered by year (ascending; undated last); the Bibliography is the r
 | Duda (2021) | `liquid_crystal_model.pdf` | 13.6 MB |
 | Duda (2025) | `time_crystal_toy_model.pdf` | 2.6 MB |
 | Duda (2025) | `Time_crystal_toy_model_Wolfram_Community.pdf` | 22.3 MB |
-| Faber (2025) | `faber_universe_2025.pdf` | 343 KB |
 | Faber (2025) | `FaberManfried.pdf` | 5.3 MB |
 | Faber & Golubich (2026) | `golubich_faber_su2/dipole.tex` | 30 KB |
-| Faber & Golubich (2026) | `DR14235.pdf` | 123 KB |
+| Faber & Golubich (2026) | `DR14235.pdf` (APS accepted version) | 123 KB |
+| Faber & Golubich (2026) | `faber_universe_2025.pdf` (filename misnomer, see the header note: content = the arXiv:2604.12021v1 preprint) | 343 KB |
 | Baretz et al. (2026) | `amber_neutrino_flavor_rl.pdf` | 1.6 MB |
 | n/a (n/a) | `Equation-of-Everything.pdf` | 1.8 MB |
 | n/a (n/a) | `liquid_crystal_particles.pdf` | 16.8 MB |

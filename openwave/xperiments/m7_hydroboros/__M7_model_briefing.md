@@ -22,7 +22,7 @@
 | Author contact | GitHub [@marcf999](https://github.com/marcf999) (toroidal-EM electron) + [@pwerbos](https://github.com/pwerbos) (Ouroboros), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6. Note: this column is PARKED by its own roadmap pending the author's return, so author-gated rows here record "not applicable" under the § 1 default in the meantime |
 | Blend | Fleury's toroidal EM electron (arXiv:2510.22384) fused with Werbos's Ouroboros self-confinement (M6) |
 | Lineage | force-free / Beltrami (Trkalian → variable-λ) + knotted-EM / Clebsch + Faber geometric soliton |
-| Primary sources | Fleury / dos Santos arXiv:2510.22384; Werbos M6; Faber arXiv:2201.13262 + Faber & Golubich arXiv:2604.12021; Sato-Yamada arXiv:1809.03136; Ceperley; Pisello 1977 |
+| Primary sources | Fleury / dos Santos arXiv:2510.22384; Werbos M6; Faber arXiv:2201.13262 + Faber & Golubich [Phys. Rev. D 114, 014510](https://doi.org/10.1103/8zn4-rwth) (2026; preprint arXiv:2604.12021); Sato-Yamada arXiv:1809.03136; Ceperley; Pisello 1977 |
 | In-repo | [`research/m7_roadmap.md`](research/m7_roadmap.md) (roadmap) + [`m7_background.md`](research/m7_background.md) (background) + [`m7_question_tracker.md`](research/m7_question_tracker.md) (Q1-Q7); `theory/` (66-doc electron-Beltrami corpus + notes); `images/` icon |
 
 ## Model Profile (what it brings, short form)

@@ -18,15 +18,15 @@
 | Author contact | GitHub [@JarekDuda](https://github.com/JarekDuda), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6 |
 | Key inputs | Manfried Faber (TU Wien) EM and core regularization; liquid-crystal discussions with [Samo Kralj](https://scholar.google.com/citations?user=Bojz5CkAAAAJ&hl=en) |
 | Lineage | Landau-de Gennes nematics + Skyrme term + Einstein teleparallel gravity |
-| Primary sources | Duda arXiv:2501.04036 (time crystal), arXiv:2108.07896 (superfluid / KG-around-hedgehog); Faber arXiv:2201.13262, Faber & Golubich arXiv:2604.12021; liquid-crystal particle-analog experiments ([Wikipedia: Liquid crystal particle analogs](https://en.wikipedia.org/wiki/Draft:Liquid_crystal_particle_analogs)) |
+| Primary sources | Duda arXiv:2501.04036 (time crystal), arXiv:2108.07896 (superfluid / KG-around-hedgehog); Faber arXiv:2201.13262, Faber & Golubich [Phys. Rev. D 114, 014510](https://doi.org/10.1103/8zn4-rwth) (2026; preprint arXiv:2604.12021); liquid-crystal particle-analog experiments ([Wikipedia: Liquid crystal particle analogs](https://en.wikipedia.org/wiki/Draft:Liquid_crystal_particle_analogs)) |
 | In-repo | `medium.py` + `engine1-4` + `_launcher.py` (production); `research/sandbox_v1..v11` (headless); [`__M5_course.md`](__M5_course.md) (intuition) |
 
 ## Model Profile (what it brings, short form)
 
 | Attribute | M5 |
 | --- | --- |
-| Substrate | `M`, a 4×4 real symmetric tensor field (`M = O·D·Oᵀ`); the eigenspectrum `D` is fixed only in vacuum (the potential minimum) |
-| Vacuum | the preferred shape `D = diag(g, 1, δ, 0)`, the minimum of the potential, SO(1,3) vacuum dynamics unifies EM (tilts) + QM (twists) + GEM (boosts) |
+| Substrate | `M`, a 4×4 real symmetric tensor field (`M = O·D·Oᵀ`, `O ∈ SO(1,3)`); the eigenspectrum `D` is fixed only in vacuum (the potential minimum). ⚠️ `D` is the **η-spectrum** (the generalized spectrum of `η·M`, `η = diag(−1, 1, 1, 1)`), not the literal diagonal of `M`: carry the sign per the Vacuum row |
+| Vacuum | the preferred η-spectrum `D = diag(g, 1, δ, 0)` (the author's `Λ` notation, see [`research/tasks/m5_27_convo.md`](research/tasks/m5_27_convo.md)), the minimum of the potential, SO(1,3) vacuum dynamics unifies EM (tilts) + QM (twists) + GEM (boosts). ⚠️ **The tensor itself is `M_vac = diag(−g, 1, δ, 0)`, time-time NEGATIVE**; `diag(+g, 1, δ, 0)` is NOT a vacuum (`V ≈ 1.05e6` at g = 8, machine-exact), so any background built from this row must carry that sign: [`research/m5_theory_canonical.md`](research/m5_theory_canonical.md) (covariant-vacuum row), measured in [`research/findings/m5_18_verification_note.md`](research/findings/m5_18_verification_note.md) § 5 |
 | Particle | defect of `M`: a point-like topological charge (elementary electric charge), a topological vortex line (quark string) |
 | Charge | integer winding of the director (Gauss-Bonnet), `\|Q\| = ±1`, additive |
 | Derrick escape | time-periodic resonance (no static soliton; the stable object is 4D) |

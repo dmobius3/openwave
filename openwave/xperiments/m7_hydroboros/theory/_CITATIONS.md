@@ -83,7 +83,7 @@ Entries are ordered by year (ascending; undated last); the Bibliography is the r
 | Kovacs, Vassallo, O'Hara, Scott | 2025 | The Bose-Einstein Condensation of Electrons | Zitter Institute (book), ISBN 978-952-65314-4-1; DOI n/a |
 | Kovacs et al. | 2025 | What is Inside an Electron | self-published (book); DOI n/a |
 | Duda | 2026 | Hydrodynamical Analogues of Quantum Phenomena (Couder walkers) | Duda slide-notes (walking-droplet / Couder-Fort pilot-wave) |
-| Faber, Golubich | 2026 | High-Precision Lattice SU(2) Solitonic Dipole vs Perturbative QED | arXiv [2604.12021](https://arxiv.org/abs/2604.12021) |
+| Faber, Golubich | 2026 | High-Precision Lattice SU(2) Solitonic Dipole vs Perturbative QED | Phys. Rev. D 114, 014510 (published 2026-07-16); [DOI 10.1103/8zn4-rwth](https://doi.org/10.1103/8zn4-rwth); preprint arXiv [2604.12021](https://arxiv.org/abs/2604.12021) |
 | Fleury | 2026 | The Beltrami Electron: Ansatz Recommendation and Closure (working notes) | author copy (private communication 2026-07-05, unpublished, not distributed) |
 | Fleury | 2026 | Beltrami Electron Closure: Corrections, Charge/Tail Program, Pinning, Verification (working notes) | author copy (private communication 2026-07-05, unpublished, not distributed) |
 | Werbos | 2026 | Evaluating Universe Model Alternatives v5 | author copy (unpublished) |
