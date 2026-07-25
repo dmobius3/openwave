@@ -1,5 +1,5 @@
 # electron_k10_vmode10_gaussian_saturation.py
-from openwave.xperiments.m4_ewt.xparameters.formation02 import generate_K_positions
+from openwave.xperiments.m4_ewt.xparameters.geometry import generate_K_positions
 from openwave.common import constants
 
 # ================================================================
