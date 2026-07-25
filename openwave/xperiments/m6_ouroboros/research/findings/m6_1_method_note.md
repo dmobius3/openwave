@@ -85,7 +85,7 @@ Consequences are encoded in the convention sheet ([`m6_1_v11_convention_sheet.md
 | Any BVP solve, any H/Q value, any reproduction or contestation of 1.6890/1.6918/1.6969 | M6.2 (the decision gate) |
 | Q_CS on a converged state | M6.3 |
 | Anything involving an explicit C[φ] (impossible: unspecified) | author-gated (canonical OQ2) |
-| Scattering cross-sections, DAMA/NIF/Sawada fits, any empirical-domain rerun | M6.5 (parked) |
+| Scattering cross-sections, DAMA/NIF/Sawada fits, any empirical-domain rerun | M6.5 |
 | The stability census / GF rerun | M6.4 |
 | Whether v4 supersedes or coarse-grains the two-vector theory | author-gated (canonical OQ1) |
 

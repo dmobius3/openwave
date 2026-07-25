@@ -76,7 +76,7 @@
 
 **Issues / blockers**: none. **Deviations from plan**: see the log above (3 entries, minor).
 
-**Action needed** (approved at review, all applied): M6.2 → Done; M6.3 PARKED (gating condition unmet); branch-(b) sync executed: MODELS.md (electron mass, lepton spectrum, pion cells → ❌; charge/clock/stability cells annotated; summary counts 3/3/3/12; column re-sorted M5, M7, M4, M6 per the ordering rule), hunt page (catalog + scorecard + closing), briefing (profile, status, roadmap, help-wanted), canonical (§ 3 annotated, § 4 two new ledger rows, OQ4 resolved). Method notes relocated to `research/findings/`. Next: M6.4 behind user "go".
+**Action needed** (approved at review, all applied): M6.2 → Done; M6.3 (gating condition unmet); branch-(b) sync executed: MODELS.md (electron mass, lepton spectrum, pion cells → ❌; charge/clock/stability cells annotated; summary counts 3/3/3/12; column re-sorted M5, M7, M4, M6 per the ordering rule), hunt page (catalog + scorecard + closing), briefing (profile, status, roadmap, help-wanted), canonical (§ 3 annotated, § 4 two new ledger rows, OQ4 resolved). Method notes relocated to `research/findings/`. Next: M6.4 behind user "go".
 
 **Findings**: The M6 decision gate closed on branch (b), redundantly: the published electron benchmark H/Q = 1.689 is a code artifact three times over (its H is not the spec's energy, its Q is no Noether charge, its ODE implements a different Lagrangian than the paper cites), and the state it is evaluated on is provably not a bound state, making the headline number an integration-window artifact, the 1D root of the author's own July 8 "window-defined" concession. M6's durable record stays the in-platform neutral-chaoiton DM sector and the M7 lineage.
 
