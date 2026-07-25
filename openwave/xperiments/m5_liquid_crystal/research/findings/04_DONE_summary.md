@@ -1,7 +1,7 @@
 # Checkpoint 04 - #200 full production engine build COMPLETE (local)
 
 Go 2026-06-20 08:31 EDT. All sub-tasks 1-6 done on the production 4x4 engine. Nothing posted to
-GitHub / committed (Rodrigo's call). The distilled writeup goes to issue #200 only after he commits.
+GitHub / committed (the maintainer's call). The distilled writeup goes to issue #200 only after he commits.
 
 ## Deliverables (all LOCAL in sandbox_v9)
 
@@ -34,6 +34,6 @@ framework + the potential search, honest about what lands. Delivered exactly tha
 production-engine runs (47^3 + 63^3 confirmation), the load-bearing new physics (the signed ledger),
 real minimization, and an honest frontier map. Did not fake a spectrum match.
 
-## For Rodrigo's Duda reply (content bullets ready in 9a_lepton_mass_planning § "Open questions for Dr. Duda")
-The open-questions bullets are staged; after Rodrigo commits + publishes the distilled #200 writeup,
+## For the maintainer's Duda reply (content bullets ready in 9a_lepton_mass_planning § "Open questions for Dr. Duda")
+The open-questions bullets are staged; after the maintainer commits + publishes the distilled #200 writeup,
 the reply to Duda can point at the signed ledger (the negative gravity term) + the honest open frontier.

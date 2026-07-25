@@ -1,7 +1,7 @@
 # N3 design , the parameter+potential search (closed-loop field theory -> PMNS)
 
 Go: 2026-06-21 21:27 EDT (01:27 UTC 06-22). Task: OpenWave #236 N3 (HELD, local). Resume ping NOT
-armed (Rodrigo: 11pm reset is the cap RELEASE not a deadline, won't hit it, one completion ping).
+armed (the maintainer: 11pm reset is the cap RELEASE not a deadline, won't hit it, one completion ping).
 
 ## The job (from 10a § "Sub-tasks" + the TBM gate)
 

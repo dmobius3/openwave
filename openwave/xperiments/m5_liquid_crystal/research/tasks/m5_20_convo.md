@@ -4,7 +4,7 @@ Per-task convo record (technical exchange, no author-private content, so tracked
 
 ## 2026-07-11: Duda's replies to the M5.20 note: the (1, delta, 0) spectrum directive (spec for M5.20.1)
 
-**From**: Jarek Duda, 2026-07-11, two replies to Rodrigo (12:59 and 14:27 EDT), 1:1 on the thread.
+**From**: Jarek Duda, 2026-07-11, two replies to the maintainer (12:59 and 14:27 EDT), 1:1 on the thread.
 
 ### Verbatim core (his 14:27 reply, after reading the note; the 12:59 first reaction asked "the vortex loop does not radiate, but still collapses? How is it happening?" and confirmed "The negative term is from Hamiltonian we have agreed to")
 
@@ -26,7 +26,7 @@ Per-task convo record (technical exchange, no author-private content, so tracked
 | "maybe there is problem with assumed simpler spectrum" | Correct reading of M5.20's scope: the verdict is a statement about the δ = 0 theory (his electron-sector spec, run because Q22 was parked-unknown and disclosed in the note § 4). Not a computational bug: the audit stands; the theory he intends is different and now testable | The M5.20 record keeps its licensed close sentence unchanged (in-scope); M5.20.1 tests the intended theory |
 | "clock propulsion ... require full 4x4 tensor field with (g, 1, delta, 0) spectrum" | Confirms the clock sector needs the time eigenvalue g in the potential AND the time/kinetic term (the negative `Γ·Γ̃` contributions, "from Hamiltonian we have agreed to" per his 12:59 line, i.e. the M5.18-verified 4D Lagrangian) | Tracker [Q23](../m5_question_tracker.md#q23-detail) rider added; the clock stays out of M5.20.1 scope unless the M-variable time term arrives |
 
-### Same-day outbound (Rodrigo, 16:07 EDT): the "unwinds" explanation + the M5.20.1 seed round
+### Same-day outbound (the maintainer, 16:07 EDT): the "unwinds" explanation + the M5.20.1 seed round
 
 The reply (drafted per the message-drafting rule) explained the unwinding mechanism in his core-regularization language, conceded the spectrum point with the measured evidence (exact-zero two-equal face at δ = 0, the 4 zero modes), framed M5.20 as the δ = 0 verdict, announced the (1, δ, 0) rerun with a δ sweep, and asked three questions:
 
@@ -68,7 +68,7 @@ The reply (drafted per the message-drafting rule) explained the unwinding mechan
 
 ## 2026-07-12 afternoon: both runs closed same-day; the combined answer + the one question drafted
 
-**Outbound posture**: M5.20.1 (the (1, δ, 0) protection verdict) and M5.20.2 (the 4×4 clock sector) both closed and review-approved 2026-07-12. Per the user's delivery call: ONE email, ONE method note ([`../findings/m5_20_2_method_note.md`](../findings/m5_20_2_method_note.md), Part I + Part II + both audits), ONE question. The FABLE VOICE block was wrapped in Rodrigo's voice (biography-only motivation, the thermal-program boundary held per the 2026-07-12 disclosure decision) and **SENT 2026-07-12 late afternoon EDT**, after the M5.20.x commit/merge to main. Awaiting his constraint answer; the next entry here records his reply.
+**Outbound posture**: M5.20.1 (the (1, δ, 0) protection verdict) and M5.20.2 (the 4×4 clock sector) both closed and review-approved 2026-07-12. Per the user's delivery call: ONE email, ONE method note ([`../findings/m5_20_2_method_note.md`](../findings/m5_20_2_method_note.md), Part I + Part II + both audits), ONE question. The FABLE VOICE block was wrapped in the maintainer's voice (biography-only motivation, the thermal-program boundary held per the 2026-07-12 disclosure decision) and **SENT 2026-07-12 late afternoon EDT**, after the M5.20.x commit/merge to main. Awaiting his constraint answer; the next entry here records his reply.
 
 | What goes to him | Content |
 | --- | --- |
@@ -107,7 +107,7 @@ Attachment: the same half-integer vortex ellipse-field diagram already on file f
 
 ## 2026-07-13 late morning: outbound: the one blocking question isolated (sent inside the comms window)
 
-**From**: Rodrigo, 2026-07-13 ~11:20 EDT (his ~17:20, inside the before-20:00 window). His promised deeper reply had not arrived by late morning; rather than wait, the outbound isolates the single blocking question so his answer can be short, and defers everything else ("full analysis ... whenever convenient, no rush"). Voice-separation format; the RODRIGO VOICE section (timing apology + no-rush framing + "everything staged") is his own words, not logged here.
+**From**: The maintainer, 2026-07-13 ~11:20 EDT (his ~17:20, inside the before-20:00 window). His promised deeper reply had not arrived by late morning; rather than wait, the outbound isolates the single blocking question so his answer can be short, and defers everything else ("full analysis ... whenever convenient, no rush"). Voice-separation format; the RODRIGO VOICE section (timing apology + no-rush framing + "everything staged") is his own words, not logged here.
 
 ### FABLE VOICE block (as sent)
 
@@ -131,7 +131,7 @@ Attachment: the same half-integer vortex ellipse-field diagram already on file f
 
 His reply to the 2026-07-13 nudge came in three parts: a same-evening group-cc'd answer (2026-07-13 14:51 EDT, cc **models-of-particles**), a group thread convening the loop-identification debate (2026-07-14 02:47 EDT), and a direct technical-check email (2026-07-14 04:58 EDT). **The M5.20.3 gate is LIFTED.**
 
-### Message 1 (2026-07-13 14:51 EDT, to the group + Rodrigo): the answer
+### Message 1 (2026-07-13 14:51 EDT, to the group + the maintainer): the answer
 
 Verbatim core:
 
@@ -221,10 +221,10 @@ Verbatim core:
 | M5.20.4 + M5.20.5 | compressed to one paragraph: alternatives dead (lemma + measurement), roots real (ladders attached), rigid level out (directional), escape self-answered |
 | γ = −1 sub-ask | WITHDRAWN: reported as a measurement, no question spent (ask-economy per ask-when-gated) |
 | Q24 (the one question) | BVP confirmation + the breathing/profile-dynamic clock; his two named alternatives (rigid class we missed / constraint surface) offered back |
-| Attachments | `m5_20_3_film_recipe.png` + `m5_20_5_a1_ladders.png` (committed in-repo; blob URLs resolve after Rodrigo's commit) |
+| Attachments | `m5_20_3_film_recipe.png` + `m5_20_5_a1_ladders.png` (committed in-repo; blob URLs resolve after the maintainer's commit) |
 | Timing | user-gated; 14:00 EDT window 2026-07-15; backstage posture stands; **M5 PARKED on this message + his answer** |
 
-**SENT 2026-07-14 19:22 EDT** (Rodrigo sent same evening rather than waiting for the 14:00 window; reply landed his next morning: the evening slot works too).
+**SENT 2026-07-14 19:22 EDT** (the maintainer sent same evening rather than waiting for the 14:00 window; reply landed his next morning: the evening slot works too).
 
 ## 2026-07-15: Duda's reply: the Q24 deferral + THE ELECTRON REDIRECT (two messages, group-cc'd)
 

@@ -1,6 +1,6 @@
 # N4b design , close the N4 pending tasks for a complete Duda round (no loose ends)
 
-Rodrigo (2026-06-22): nail items 2, 3, 6 + refine 4 as ONE bundle "N4b" (extension of N4), so Duda gets a
+The maintainer (2026-06-22): nail items 2, 3, 6 + refine 4 as ONE bundle "N4b" (extension of N4), so Duda gets a
 complete round. DEFER N5 (article) + N6 (masses) behind it.
 
 | N4b sub-task | Source item | Question | Script |

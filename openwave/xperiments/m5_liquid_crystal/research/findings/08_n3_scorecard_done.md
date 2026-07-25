@@ -26,9 +26,9 @@ mass spectrum ratios at the gate: 1.00 : 1.15 : 1.68.
 ## FINISH bookkeeping
 - findings doc: `n3_findings.md` (cross-linked <-> foundation findings <-> 10a <-> #199) ✅
 - raw data > 1MB: NONE produced (all artifacts < 100 KB) ✅ nothing to delete
-- GitHub #236: HELD (stays In progress; nothing posted; Rodrigo: don't touch issues) ✅
-- git: NOT committed (Rodrigo's, later) ✅
-- resume ping: never armed (Rodrigo: 11pm reset = cap release, not deadline; one completion ping) ✅
+- GitHub #236: HELD (stays In progress; nothing posted; The maintainer: don't touch issues) ✅
+- git: NOT committed (the maintainer's, later) ✅
+- resume ping: never armed (the maintainer: 11pm reset = cap release, not deadline; one completion ping) ✅
 
 ## The 7 N3 scripts (sandbox_v10)
 m5_11_n3_derisk.py (scaffold) -> m5_11_n3_mass_matrix.py (loop->matrix) -> m5_11_n3_search.py (TBM gate) ->

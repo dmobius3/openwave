@@ -3,7 +3,7 @@ M5.7.2 — is the defect ITSELF the metastable particle? (intrinsic-oscillation 
 
 M5.7.1 found that a *seeded* l=1 perturbation disperses (Close's "mostly dispersion"). But
 M5.6.2b found the biaxial hedgehog **sources its own twist** (`C_μν≠0` drives a ψ-independent
-force — released from rest, the defect oscillates on its own). So the synthesis (Rodrigo's
+force — released from rest, the defect oscillates on its own). So the synthesis (the maintainer's
 2026-05-28 call): stop seeding from outside — **measure the defect's OWN oscillation** and ask
 whether it is the long-lived localized object we're hunting.
 

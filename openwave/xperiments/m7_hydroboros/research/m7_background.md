@@ -169,8 +169,8 @@ Acknowledged limits (Fleury, § 5.2): the Heaviside mask is unphysical at the to
 analytic mask with a relaxed lattice field**, which is precisely where the PDE treatment earns its
 keep.
 
-Fleury's ansatz is a **rotating wave** in Ceperley's sense (his ref [13], [M7.0 corpus](tasks/m7_0_bootstrap.md) #14): Ceperley's
-circularly-polarized-EM rotating mode `E_r = E₀ e^{i(κz+φ−ωt)}` at `m=1` (his Eq 15) is literally this
+Fleury's ansatz is a **rotating wave** in Ceperley's sense (Fleury's ref [13], [M7.0 corpus](tasks/m7_0_bootstrap.md) #14): Ceperley's
+circularly-polarized-EM rotating mode `E_r = E₀ e^{i(κz+φ−ωt)}` at `m=1` (Ceperley Eq 15) is literally this
 torus phase, its **`J_m(κr)` Bessel envelope** is exactly the § 5.2 fix for the Heaviside mask, and
 its angular-momentum law **`L_z = m(U/ω)`** (quantized when `U/ω = ℏ`) is the structural origin of the
 spin `= ℏ/2` constraint. See [`../theory/ceperley_rotating_waves.md`](../theory/_CITATIONS.md) § 4b.

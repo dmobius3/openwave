@@ -8,7 +8,7 @@ shooter). v4 confirmed empirically that forward-IVP from value-BC origin
 cannot reach a Q_CS=1 chaoiton in any explored parameter range. v5 implements
 Werbos's actual method, which is structurally different.
 
-**Source:** Paul Werbos email 2026-05-20 1:52 PM (CC: Rodrigo), continuing the
+**Source:** Paul Werbos email 2026-05-20 1:52 PM (CC: The maintainer), continuing the
 chaoiton-calibration thread that started 2026-05-17.
 
 **Status as of 2026-05-20 end-of-day:** PARTIAL SUCCESS. First-ever clean

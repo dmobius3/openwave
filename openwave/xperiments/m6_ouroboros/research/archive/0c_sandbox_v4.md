@@ -7,7 +7,7 @@ days, and gives an operational hypothesis for the discrete-ω selection
 mechanism that v4 can test directly.
 
 **Source:** Email thread continuation, "Intro & Nice to eMeet You" / reply
-chain. Rodrigo responded at 20:10 acknowledging the late hour, will resume
+chain. The maintainer responded at 20:10 acknowledging the late hour, will resume
 2026-05-19.
 
 ---
@@ -629,7 +629,7 @@ C    | Ask Werbos for the specific m_J²    | 0 hr   | Low —
      | not the m_J² number itself)         | ask)   | resolves
 ```
 
-**Sequencing (per Rodrigo, 2026-05-19 afternoon):**
+**Sequencing (per the maintainer, 2026-05-19 afternoon):**
 
 1. Document this T6 finding now (this section)
 2. Build T6→A (BVP solver) — first solo attempt
@@ -909,7 +909,7 @@ Specifically:
 5. If no: report specific failure mode and escalate
 
 The Werbos paper draft v2 (Dark_Matter_in_Universe_v2.txt) is being
-reviewed in parallel (paste-ready review delivered to Rodrigo
+reviewed in parallel (paste-ready review delivered to the maintainer
 2026-05-19 4:30 PM ish; user-edited and to be sent imminently).
 
 ---
@@ -1117,7 +1117,7 @@ six-attempt summary and an unambiguous algorithmic question.
 
 ### Next action — Werbos email v3
 
-Rodrigo's email (~5:00 PM 2026-05-19) asked for:
+The maintainer's email (~5:00 PM 2026-05-19) asked for:
 
 1. Specific calibrated (m_J², λ_bench) values [Werbos's 4:21 PM
    reply already answered: m_J²≈0.5, λ_bench=1.0]

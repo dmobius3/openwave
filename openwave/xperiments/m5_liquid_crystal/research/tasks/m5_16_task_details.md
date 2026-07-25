@@ -90,7 +90,7 @@ M5.11 was built to answer Duda's 2026-06-22 "too simple" critique ("I am trying 
 
 ## Comms plan: deliver first, ask second (decided 2026-07-02)
 
-Strategy (Rodrigo): fix the infrastructure first, show Duda something **concrete, rigorous, and aligned with his theory design**, and only then ask questions, so the asks land as "doing our job right", not as leaning on him.
+Strategy (the maintainer): fix the infrastructure first, show Duda something **concrete, rigorous, and aligned with his theory design**, and only then ask questions, so the asks land as "doing our job right", not as leaning on him.
 
 | Step | What | When |
 | --- | --- | --- |

@@ -1,6 +1,6 @@
 # M7.11: the variable-λ vacuum-cure check (Q14)
 
-> **Status: PLANNED, PARKED** (defined 2026-07-07 at the post-M7.10 park; first task of the reserved Maxwell band M7.11-M7.14). M7 is parked until the author returns from the conference and reviews the [walkthrough § 7](m7_phase1_walkthrough.md) package; his adversarial pass may re-scope this plan before it runs. Roadmap row: [`m7_roadmap.md`](../m7_roadmap.md) § BACKLOG (top = next task).
+> **Status: PLANNED, PARKED** (defined 2026-07-07 at the post-M7.10 park; first task of the reserved Maxwell band M7.11-M7.14). M7 is parked until the author returns from the conference and reviews the [walkthrough § 7](m7_phase1_walkthrough.md) package; an adversarial pass may re-scope this plan before it runs. Roadmap row: [`m7_roadmap.md`](../m7_roadmap.md) § BACKLOG (top = next task).
 
 ## 0. Planning notes (2026-07-07, the post-M7.10 next-task analysis)
 
@@ -8,7 +8,7 @@
 
 **The two-track scoreboard this task must thread** (the M7.10 closing finding): the harmonic/functional track has particles with a sick vacuum; the pure-Maxwell track has a healthy vacuum with no particles (no localization, no attractor, no isolated orbits: all three measured). The variable-λ construction is the natural candidate precisely because it is the interpolation.
 
-**Sequencing at the park:** first action on the author's return = Rodrigo sends the walkthrough package (Rodrigo's voice; content bullets preparable on request); this task is the next "go" trigger after that, unless the author's pass re-scopes the band. Parallel options that do NOT need the Q14 cure: [M7.15](m7_15_magnetic.md) / [M7.19](m7_19_lepton_family.md) / [M7.20](m7_20_dark_matter.md) (harmonic-frame measurements); [M7.16](m7_16_gravity.md) any time (honest pass/fail); the M7.9 E6 book-walkthrough sessions are user-scheduled with the [reading digest](m7_9_reading_digest.md) and [benchmark report](m7_9_benchmark_report.md) ready.
+**Sequencing at the park:** first action on the author's return = the maintainer sends the walkthrough package (the maintainer's voice; content bullets preparable on request); this task is the next "go" trigger after that, unless the author's pass re-scopes the band. Parallel options that do NOT need the Q14 cure: [M7.15](m7_15_magnetic.md) / [M7.19](m7_19_lepton_family.md) / [M7.20](m7_20_dark_matter.md) (harmonic-frame measurements); [M7.16](m7_16_gravity.md) any time (honest pass/fail); the M7.9 E6 book-walkthrough sessions are user-scheduled with the [reading digest](m7_9_reading_digest.md) and [benchmark report](m7_9_benchmark_report.md) ready.
 
 ## 1. Objective
 
@@ -32,10 +32,10 @@ Answer the Q14 cure question in-model, by measurement: **can the vacuum tachyon 
 
 | Unknown | Route |
 | --- | --- |
-| What SUSTAINS `λ(r)` (back-reaction)? | nature-gated and out of scope here: this task tests the profile as a fixed background (the author's own framing); the self-consistency question is the M7.12+ physics and his post-August lead |
+| What SUSTAINS `λ(r)` (back-reaction)? | nature-gated and out of scope here: this task tests the profile as a fixed background (the author's own framing); the self-consistency question is the M7.12+ physics and the author's post-August lead |
 | Does the scalar sector help or hurt? | machine-checkable: the M7.4 § 1 timelike-instability finding cuts both ways; the linearization decides |
 | The reference profile's edge (`λ → 0` at finite r) may be C⁰-sharp like the CK cutoff | anticipate the M7.10 sheet lesson: measure the discrete profile's own spectrum first; smooth the edge if the corner radiates |
-| Author re-scope risk | the park exists for this: the plan is a draft until his walkthrough pass lands |
+| Author re-scope risk | the park exists for this: the plan is a draft until the author's walkthrough pass lands |
 
 ## 4. Cross-refs
 

@@ -380,7 +380,7 @@ Active count entering Paul's email v10 reply (post-9b review):
              Email v11 offers two paths: caveat-as-is vs BVP.
   EMAIL v11: SENT 2026-05-21 PM later. Confirms 9c numbers,
              declines writing role, delivers DM inputs with caveat,
-             offers BVP variant. Rodrigo signed off for business
+             offers BVP variant. The maintainer signed off for business
              event.
 
 Active count post-9c + email v11 (entering Paul's reply):

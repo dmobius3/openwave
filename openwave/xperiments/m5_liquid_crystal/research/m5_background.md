@@ -267,7 +267,7 @@ make the framework empirically grounded in a way M6 is not.
 
 ## CONCEPT OVERVIEW
 
-A conceptual walk-through of the Lagrangian / topological framework from Rodrigo's intuitive-build-up perspective. This document captures where the EWT / M1-M2-M3 physical picture has to bend to accommodate Duda's vacuum + defect framing, and where it stays the same.
+A conceptual walk-through of the Lagrangian / topological framework from the maintainer's intuitive-build-up perspective. This document captures where the EWT / M1-M2-M3 physical picture has to bend to accommodate Duda's vacuum + defect framing, and where it stays the same.
 
 **Status** (2026-04-17): the 8 sandbox experiments of M5 sandbox are now complete. Every conceptual claim below that had a testable prediction has been checked numerically. The consolidated "empirical validation" scorecard is in the **[EMPIRICAL VALIDATION](#empirical-validation--what-the-sandbox-experiments-confirmed)** section near the end of this document. Core findings in one line: **topology is load-bearing, Klein-Gordon-like wave dynamics validate the mass-gap mechanism, pure scalar/vector nonlinearity without topology is insufficient**.
 
@@ -375,7 +375,7 @@ WAVES:               perturbations of the aether around the vacuum state
 
 ### THE INTUITIVE LAYERING — USER'S FIRST PASS
 
-Rodrigo's initial mental model, after working through the sandbox experiments:
+The maintainer's initial mental model, after working through the sandbox experiments:
 
 1. **Medium / field** — spacetime / vacuum is an elastic medium at rest, static, but carries mass/density so it can transfer energy over distance
 2. **WC** — wave centers are defects in the medium, a topological property of the field (not wave reflectors as in EWT, not external objects imposed on the field)
@@ -516,7 +516,7 @@ Everything else — wave frequencies, masses, forces, oscillations, charge quant
 
 ### THE CORRECTED MENTAL MODEL (side-by-side)
 
-| Layer | Rodrigo's first pass | Corrected version |
+| Layer | The maintainer's first pass | Corrected version |
 | --- | --- | --- |
 | Medium | Elastic medium at rest, has mass/density | ✅ right — *static*, not pre-oscillating |
 | WC | Defects in the medium, topological | ✅ right — *intrinsic to the field*, not external |

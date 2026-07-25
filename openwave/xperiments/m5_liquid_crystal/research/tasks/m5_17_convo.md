@@ -1,4 +1,4 @@
-# M5.17 convo record (Duda ↔ Rodrigo)
+# M5.17 convo record (Duda ↔ the maintainer)
 
 > The message exchange attached to task [M5.17](m5_17_task_details.md); datestamped entries accumulate in chronological order (the per-task convo convention, adopted 2026-07-05: one `m5_<id>_convo.md` per task that exchanges messages; some tasks have none, some accumulate several). Lineage: follows [`m5_4i_convo_2026.07.04.md`](m5_4i_convo_2026.07.04.md) (group threads) and [`m5_4h_convo_2026.07.03.md`](m5_4h_convo_2026.07.03.md) (the audit failure that created the method-note standard; last of the retired date-keyed `m5_4x` naming).
 

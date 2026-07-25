@@ -1,7 +1,7 @@
 # #200 full production engine build - design + progress log (LOCAL, do not publish)
 
 Go-time: 2026-06-20 08:31 EDT. Reset 12:10pm EDT (resume ping armed 16:15 UTC).
-Keeping everything LOCAL per Rodrigo: no GitHub status, no comments. Progress here.
+Keeping everything LOCAL per the maintainer: no GitHub status, no comments. Progress here.
 
 ## The corrected pipeline (from 9a_lepton_mass_planning, Duda's critique)
 

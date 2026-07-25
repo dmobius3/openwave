@@ -1,6 +1,6 @@
 # Convention refactor: index-3 -> index-0 ("flip the living engine, freeze the history")
 
-Decision (Rodrigo, 2026-06-21): align the M5 storage convention to Duda's `D = diag(g, 1, δ, 0)`
+Decision (the maintainer, 2026-06-21): align the M5 storage convention to Duda's `D = diag(g, 1, δ, 0)`
 (time/g axis = array index 0, `eta = diag(-1,1,1,1)`). Flip the LIVING engine + active sandboxes;
 FREEZE historical sandboxes as index-3 records. N0 Test B already proved the relabel is physics-
 neutral; the golden master proves the WHOLE engine is.
