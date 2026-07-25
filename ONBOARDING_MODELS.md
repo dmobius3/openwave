@@ -139,8 +139,9 @@ Status legend (same as the table):
 | ✅ | validated in-platform (runnable reproduction exists) |
 | ⚠️ | partial, or validated with documented caveats |
 | ❌ | tested and failed, or honest negative on record |
-| 🔶 | in progress |
 | 🚧 | planned, not yet tested in-platform |
+
+A criterion is scored at one of those four in the table. 🔶 (in progress) is used on per-model pages (roadmaps, question trackers, particle hunts) where a claim is mid-flight; in the table a mid-flight criterion is 🚧 until something runnable backs it, then ⚠️ or ✅.
 
 A good first PR adds the column plus a model directory with one or two cells actually backed (a runnable script + a note), and the rest marked 🚧 honestly. Finite-difference / first-pass now, fuller validation later, is fine and expected.
 

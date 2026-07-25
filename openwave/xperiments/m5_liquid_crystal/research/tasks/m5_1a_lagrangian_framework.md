@@ -261,7 +261,7 @@ In response to our follow-up question about δ, g values and LdG regularization,
 
 1. **δ, g require numerical simulation, not ab-initio derivation.** Jarek clarified that while these axis-length parameters describe the Lagrangian contributions of QM and gravity respectively, their exact values can only be determined by numerical simulation — there is no closed-form analytical derivation. **M5 implication**: treat (δ, g) as **calibration parameters** — the plan in M5.6 was already aimed this way; Jarek confirms there is no pre-solved analytical form to pull from. We will iterate them against observed lepton-mass ratios and other measurable physics
 2. **LdG regularization — port Manfried Faber's scheme as the starting point.** Jarek noted that while the specific regularization form is still an open research question, Manfried Faber has already worked out a scheme for a closely-related (slightly simpler) potential that demonstrably produces the running-coupling effect. Jarek pointed to Faber's two papers:
-    - Manfried Faber et al., *Universe* 11 (2025) 113: <https://www.mdpi.com/2218-1997/11/4/113>
+    - Wabnig, Resch, Theuerkauf, Anmasser & Faber, *Universe* 11 (2025) 113: <https://www.mdpi.com/2218-1997/11/4/113> (author list resolved 2026-07-25; earlier recorded here as "Manfried Faber et al.", but Faber is the last author, not the first)
     - arxiv preprint: <https://arxiv.org/pdf/2604.12021>
 
    Faber's scheme uses a simpler potential than full biaxial LdG but produces the **running-coupling effect** — the same phenomenon Jarek flagged in his April 9 reply as what our simple Coulomb calculation would be missing. **M5 implication**: M5.6 imports Faber's regularization approach as the baseline, adapts it to LdG-with-Skyrme, and uses running-coupling recovery as a validation target. This converts the "hardest numerical step" from "invent something new" to "port + adapt an existing working scheme"
@@ -800,7 +800,7 @@ Dr Duda's papers and references:
 
 - Duda, J. (2021). "Four-dimensional understanding of quantum mechanics and Bell violation." <https://arxiv.org/pdf/2108.07896> — core paper: Coulomb from topological charges (Fig. 2), Klein-Gordon derivation around electron (Fig. 9), LdGS Lagrangian
 - Duda, J. (2025). "Time crystal phi-4 kinks by curvature coupling as toy model for mechanism of oscillations propelled by mass." <https://arxiv.org/pdf/2501.04036> — derives WHY resting particles oscillate (time crystal mechanism), phi-4 potential with curvature coupling
-- Duda, J. (2026?). Running coupling / regularization for Coulomb. <https://www.mdpi.com/2076-3417/16/2/1030> — (URL may be pre-publication or incorrect, verify with Duda)
+- ~~Duda, J. (2026?). Running coupling / regularization for Coulomb. <https://www.mdpi.com/2076-3417/16/2/1030>~~ **RESOLVED 2026-07-25: this entry was wrong on both counts.** The URL is a mis-transcription (ISSN 2076-3417 is MDPI *Applied Sciences*, not the venue), and the running-coupling pointer is **Faber's** work, not a Duda paper. The two papers the author actually gave (recorded correctly in the 2026-04-19 sections above, ISSN 2218-1997) are: Wabnig, Resch, Theuerkauf, Anmasser & Faber, *Universe* **11**(4):113 (2025), [DOI 10.3390/universe11040113](https://doi.org/10.3390/universe11040113); and Faber & Golubich, *Phys. Rev. D* **114**, 014510 (2026), [DOI 10.1103/8zn4-rwth](https://doi.org/10.1103/8zn4-rwth) (preprint arXiv:2604.12021)
 
 Orbit quantization in classical wave-particle systems (cited by Duda):
 

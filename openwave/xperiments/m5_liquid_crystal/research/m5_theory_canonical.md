@@ -25,7 +25,7 @@ g = 8,  delta = 0.3 (working; see the delta lock row in § 4)
 
 | Verified structure | Statement | Gate / precision | Source |
 | --- | --- | --- | --- |
-| Covariant vacuum | `M_vac = diag(-g, 1, delta, 0)` (time-time NEGATIVE); `V(M_vac) = 0` exactly; `diag(+g,1,delta,0)` is NOT a vacuum (`V ≈ 1.05e6` at g = 8): spectrum statements always mean spectrum of `eta.M` | machine-exact | [m5_18 § 5](findings/m5_18_verification_note.md) |
+| Covariant vacuum | `M_vac = diag(-g, 1, delta, 0)` (time-time NEGATIVE); `V(M_vac) = 0` exactly; `diag(+g,1,delta,0)` is NOT a vacuum (`V ≈ 1.05e6` at g = 8): spectrum statements always mean spectrum of `eta.M`. The author's own notation writes this spectrum as `Λ` and states it with a positive leading g, so the sign of the tensor entry is exactly where a notation difference bites: [`tasks/m5_27_convo.md`](tasks/m5_27_convo.md) (2026-07-25, public) | machine-exact | [m5_18 § 5](findings/m5_18_verification_note.md) |
 | Vacuum manifold | union of 4 disjoint Lorentz orbits (timelike-eigenvalue label); the g-timelike branch is the physical one in current use | measured | [m5_18 § 6](findings/m5_18_verification_note.md) |
 | Legendre structure | `H = T + U` exact (`pi:Mdot = 2T`; `H = L(Mdot) - 2L(0)` to 3.6e-16); T exactly quadratic in Mdot | machine | [m5_18 § 3](findings/m5_18_verification_note.md) |
 | THE kinetic operator (closed form) | `T_tot = 1/2 Mdot.KK(M).Mdot`, `KK = 4 w_cell k_apply(M)`; `k_apply(M)[X] = 2 SUM_i (eta X W_i + W_i X eta - 2 Y_i X Y_i)`, `W_i = eta A_i eta A_i eta`, `Y_i = eta A_i eta` | GC0d: fast == 10-pass build 7e-18 | [m5_20_3 § 1](findings/m5_20_3_method_note.md) |
