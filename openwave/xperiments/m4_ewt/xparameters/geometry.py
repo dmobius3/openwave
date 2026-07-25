@@ -129,3 +129,154 @@ def _apply_perturbation(positions, perturbation, lock_spacing, rng):
         p[1] + rng.uniform(-perturbation, perturbation) * lock_spacing,
         p[2] + rng.uniform(-perturbation, perturbation) * lock_spacing
     ] for p in positions]
+
+def generate_shell_structure(
+    K,
+    univ_edge,
+    core_rotation=(0, 0, 0),
+    shell_mode="sphere",  # "sphere" or "torus"
+    shell_radius_factor=1.5,  # relative to core radius
+    torus_thickness_factor=0.3,  # for torus: thickness / radius
+    num_shells=1,
+    perturbation=0.0,
+):
+    """
+    Generate a core + shell structure for higher K (muon, tau, etc.).
+
+    Core is always the 1-3-6 tetrahedron (10 wave centers).
+    Shells are placed on either a sphere (golden angle) or a torus.
+
+    Args:
+        K: Total number of wave centers (core + shells)
+        univ_edge: Universe edge length (m) – used to compute λ spacing
+        core_rotation: Rotation of the core (rx, ry, rz) in degrees
+        shell_mode: "sphere" or "torus" – geometry of the shell
+        shell_radius_factor: Radius of shell relative to core radius
+        torus_thickness_factor: For torus: thickness = radius * factor
+        num_shells: Number of shells (1 or 2)
+        perturbation: Random displacement fraction of λ
+
+    Returns:
+        List of K positions [(x1,y1,z1), ...]
+    """
+    LOCK_SPACING = constants.EWAVE_LENGTH / univ_edge
+    cx, cy, cz = 0.5, 0.5, 0.5
+
+    # 1. Generate core (1-3-6 tetrahedron)
+    core_positions = tetrahedron_10(univ_edge, center=(cx, cy, cz), rotation=core_rotation)
+    core_size = len(core_positions)
+
+    if K <= core_size:
+        return core_positions[:K]
+
+    # 2. Determine shell size
+    remaining = K - core_size
+
+    # Core radius (approximate distance from center to outer vertices)
+    core_radius = LOCK_SPACING * 2.0 / math.sqrt(3)
+
+    # 3. Generate shell positions
+    shell_positions = []
+    shell_radius = shell_radius_factor * core_radius
+
+    if shell_mode == "sphere":
+        # Distribute points on sphere using golden angle
+        points = golden_angle_positions(remaining, shell_radius, (cx, cy, cz))
+        shell_positions = points
+
+    elif shell_mode == "torus":
+        # Distribute points on a torus surface
+        shell_positions = _torus_positions(remaining, shell_radius, torus_thickness_factor, (cx, cy, cz))
+
+    elif shell_mode == "flat_disk":
+        # Flat disk (2D) – useful for testing planar configurations
+        shell_positions = _disk_positions(remaining, shell_radius, (cx, cy, cz))
+
+    else:
+        raise ValueError(f"Unknown shell_mode: {shell_mode}")
+
+    # 4. Apply perturbation (if any)
+    if perturbation > 0:
+        rng = random.Random(42)
+        shell_positions = _apply_perturbation(shell_positions, perturbation, LOCK_SPACING, rng)
+
+    # 5. Combine core + shells
+    return core_positions + shell_positions
+
+
+def _torus_positions(N, radius, thickness_factor, center):
+    """
+    Generate N points on a torus surface.
+
+    The torus is oriented with its axis along Z.
+    Points are distributed using golden angle on the torus surface.
+
+    Args:
+        N: Number of points
+        radius: Major radius (distance from center to tube center)
+        thickness_factor: Minor radius = radius * thickness_factor
+        center: (cx, cy, cz) center of the torus
+
+    Returns:
+        List of N positions
+    """
+    cx, cy, cz = center
+    minor_radius = radius * thickness_factor
+
+    if N == 0:
+        return []
+
+    # Golden angle for even distribution on torus
+    phi = math.pi * (3.0 - math.sqrt(5.0))
+
+    positions = []
+    for i in range(N):
+        # Two angles: theta (around torus) and phi (around tube)
+        theta = 2.0 * math.pi * i / N
+        psi = phi * i
+
+        # Torus surface parametrization
+        x = (radius + minor_radius * math.cos(psi)) * math.cos(theta)
+        y = (radius + minor_radius * math.cos(psi)) * math.sin(theta)
+        z = minor_radius * math.sin(psi)
+
+        positions.append([cx + x, cy + y, cz + z])
+
+    return positions
+
+
+def _disk_positions(N, radius, center):
+    """
+    Generate N points on a flat disk (2D) using golden angle spiral.
+
+    This is useful for testing planar configurations.
+
+    Args:
+        N: Number of points
+        radius: Disk radius
+        center: (cx, cy, cz) center of the disk
+
+    Returns:
+        List of N positions (all with Z = center_z)
+    """
+    cx, cy, cz = center
+
+    if N == 0:
+        return []
+
+    positions = []
+    # Use Fermat spiral for disk distribution
+    golden_ratio = (1.0 + math.sqrt(5.0)) / 2.0
+
+    for i in range(N):
+        # Fermat spiral: r = sqrt(i / N) * radius, theta = i * golden_angle
+        r = math.sqrt(i / N) * radius
+        theta = 2.0 * math.pi * i / golden_ratio
+
+        x = cx + r * math.cos(theta)
+        y = cy + r * math.sin(theta)
+        z = cz
+
+        positions.append([x, y, z])
+
+    return positions
