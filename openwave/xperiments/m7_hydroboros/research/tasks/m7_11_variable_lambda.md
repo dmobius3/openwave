@@ -1,6 +1,6 @@
 # M7.11: the variable-λ vacuum-cure check (Q14)
 
-> **Status: PLANNED, PARKED** (defined 2026-07-07 at the post-M7.10 park; first task of the reserved Maxwell band M7.11-M7.14). M7 is parked until the author returns from the conference and reviews the [walkthrough § 7](m7_phase1_walkthrough.md) package; an adversarial pass may re-scope this plan before it runs. Roadmap row: [`m7_roadmap.md`](../m7_roadmap.md) § BACKLOG (top = next task).
+> **Status: PLANNED** (defined 2026-07-07 at the post-M7.10 park; first task of the reserved Maxwell band M7.11-M7.14). m7 waits until the author returns from the conference and reviews the [walkthrough § 7](m7_phase1_walkthrough.md) package; an adversarial pass may re-scope this plan before it runs. Roadmap row: [`m7_roadmap.md`](../m7_roadmap.md) § BACKLOG (top = next task).
 
 ## 0. Planning notes (2026-07-07, the post-M7.10 next-task analysis)
 

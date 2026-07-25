@@ -11,7 +11,7 @@
 
 ## BACKLOG
 
-> **M7 is PARKED (2026-07-07, post-M7.10)** until the author returns from the conference and reviews the [walkthrough § 7](tasks/m7_phase1_walkthrough.md) package (M7.8 + M7.9 + M7.10); an adversarial pass may re-scope the band below before anything runs. The sequencing rationale lives in the future task docs themselves ([M7.11 § 0](tasks/m7_11_variable_lambda.md) carries the full post-M7.10 analysis; [M7.15](tasks/m7_15_magnetic.md)/[M7.16](tasks/m7_16_gravity.md)/[M7.19](tasks/m7_19_lepton_family.md)/[M7.20](tasks/m7_20_dark_matter.md) each carry their own planning note).
+> **M7 (2026-07-07, post-M7.10)** until the author returns from the conference and reviews the [walkthrough § 7](tasks/m7_phase1_walkthrough.md) package (M7.8 + M7.9 + M7.10); an adversarial pass may re-scope the band below before anything runs. The sequencing rationale lives in the future task docs themselves ([M7.11 § 0](tasks/m7_11_variable_lambda.md) carries the full post-M7.10 analysis; [M7.15](tasks/m7_15_magnetic.md)/[M7.16](tasks/m7_16_gravity.md)/[M7.19](tasks/m7_19_lepton_family.md)/[M7.20](tasks/m7_20_dark_matter.md) each carry their own planning note).
 
 | TaskID | Task title | Description | Validation gate |
 | --- | --- | --- | --- |
@@ -104,7 +104,7 @@ M7.21 published the drafted 21-cell HydroBoros column into repo-root [`MODELS.md
 
 | TaskID | Task title | Description | Validation gate |
 | --- | --- | --- | --- |
-| [M7.21](tasks/m7_21_models_column.md) | complete + govern the MODELS.md column | published the 21-cell HydroBoros column into repo-root [`MODELS.md`](../../../../MODELS.md), reordered M5·M6·M7·M4 per the ✅+⚠️ rule; M7 was PARKED, so this published the results-so-far honestly (0✅/8⚠️/13🚧) | ✅ DONE (2026-07-18, [record](tasks/m7_21_models_column.md)): all 21 cells carry an honest, script-backed icon; the M7 column is live in MODELS.md as the 3rd column; doc-checker clean, no cross-repo leak |
+| [M7.21](tasks/m7_21_models_column.md) | complete + govern the MODELS.md column | published the 21-cell HydroBoros column into repo-root [`MODELS.md`](../../../../MODELS.md), reordered M5·M6·M7·M4 per the ✅+⚠️ rule; This published the results-so-far honestly (0✅/8⚠️/13🚧) | ✅ DONE (2026-07-18, [record](tasks/m7_21_models_column.md)): all 21 cells carry an honest, script-backed icon; the M7 column is live in MODELS.md as the 3rd column; doc-checker clean, no cross-repo leak |
 
 The M5 prescription that governed every cell (the column is now published):
 

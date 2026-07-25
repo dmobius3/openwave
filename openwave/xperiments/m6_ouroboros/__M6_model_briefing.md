@@ -86,7 +86,7 @@ in-platform.
 | Dark-matter candidate | ✅ era: m_χ = 0.460 MeV, parameter-free m_J (our strongest M6 result); the phenomenology chain above it (suppression factors, modulation inference) is unverified → M6.6 |
 | Maxwell EM | ✅ era: `A_μ` is the 4-potential by construction (two-vector spec; absent from v4) |
 | Electron rest mass | ❌ M6.2 (2026-07-20): the benchmark H/Q is a code artifact on a non-localized state; honest negative of record ([`research/findings/m6_2_method_note.md`](research/findings/m6_2_method_note.md)) |
-| Charge quantization | ⚠️ Lean-stated + claimed; static-proof vs time-periodic gap; never computed in-platform; M6.3 parked after branch (b) |
+| Charge quantization | ⚠️ Lean-stated + claimed; static-proof vs time-periodic gap; never computed in-platform; |
 | de Broglie clock | ⚠️ built into the ansatz, not emergent; the Q in L = ωQ is a coded convention (no internal U(1) exists, M6.2) |
 | Lepton spectrum | ❌ the ω ladder rides the invalidated H/Q machinery and the non-localized charged-state family (M6.2); the discreteness question is CLOSED negative (M6.4): no localized state exists for a mechanism to select, every ladder ω sits above every window, and the system the ladder was computed in cannot select by construction |
 | Magnetic moment + spin | the published g-factor match is the identity L = ωQ with ω chosen (v11's own footnote concedes this); honest status: not independently evidenced |
@@ -112,9 +112,9 @@ day and landed **branch (b)**: the electron sector closed honestly.
 | --- | --- |
 | ✅ [M6.1](research/tasks/m6_1_task_details.md) spec certification gate (DONE 2026-07-20) | the v11 spec certified: [convention sheet](research/m6_1_v11_convention_sheet.md) with the FIXED-vs-GAP pre-registration checklist; v4 characterized script-backed (EL unclosable, boundedness verified, A-linearity generic); four print-level v11 defects ledgered (canonical § 4); adversarial audit 9/10 CONFIRMED ([method note](research/findings/m6_1_method_note.md)) |
 | ✅ [M6.2](research/tasks/m6_2_task_details.md) THE DECISION GATE (DONE 2026-07-20, branch (b)) | pre-registered no-search H/Q re-derivation, audited 8/8: the derived pairing gives 0.1429 vs the claimed 1.689; the state is provably non-localized and the number window-defined; electron sector closed as three honest negatives ([method note](research/findings/m6_2_method_note.md)) |
-| PARKED: [M6.3](research/m6_roadmap.md) charge quantization in-platform | gating condition (M6.2 branch (a)) unmet; parked with the July-era programs |
+| [M6.3](research/m6_roadmap.md) charge quantization in-platform | gating condition (M6.2 branch (a)) unmet; |
 | ✅ [M6.4](research/tasks/m6_4_task_details.md) stability census + ω-selection (2026-07-21) | all three published counts fail reproduction (May 0/1280; June 318/360 only under imposed-tail backgrounds, window-defined; July = a citation of the dead May count); the record's numerics do not implement its own Lean theorem; OQ3 closed negative: no localized charged-sector state at any ω. Adversarial audit 9/10 CONFIRMED + 1 PARTIAL. The decidable core is exhausted; M6 returns to hold (DM sector + M7 lineage = the durable legacy) |
-| PARKED: [M6.5](research/m6_roadmap.md) / [M6.6](research/m6_roadmap.md) | the July-era nuclear + DM fitting programs, parked until the author freezes a spec (reopening condition in the roadmap); M6.6's solar-wind arm is spec-independent and can be pulled forward alone |
+| [M6.5](research/m6_roadmap.md) / [M6.6](research/m6_roadmap.md) | the July-era nuclear + DM fitting programs, until the author freezes a spec (reopening condition in the roadmap); M6.6's solar-wind arm is spec-independent and can be pulled forward alone |
 | OPTIONAL: [M6.7](research/m6_roadmap.md) the two-theories fork | only if continued engagement with the author is wanted |
 
 The full-3D route remains **M7 HydroBoros**, which carries the two-vector Lagrangian,
