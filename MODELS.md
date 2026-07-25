@@ -33,7 +33,7 @@ Every file reference is an active link to the file in this repository (under `op
 | ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 |
 | ⚠️ partial / with caveats | 7 | 9 | 8 | 3 | 1 |
 | ❌ honest negative | 1 | 0 | 3 | 3 | 0 |
-| 🚧 not yet tested | 5 | 13 | 11 | 13 | 21 |
+| 🚧 planned / not tested | 5 | 13 | 11 | 13 | 21 |
 | **Total criteria** | **22** | **22** | **22** | **22** | **22** |
 
 ### Summary Status
