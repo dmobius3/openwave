@@ -2,7 +2,7 @@
 
 ## Trademark Ownership
 
-"OpenWave" and the OpenWave logo (if applicable) are trademarks of OpenWave Labs ("we" or "us").
+"OpenWave" and the OpenWave logo (if applicable) are trademarks of the OpenWave project ("we" or "us").
 
 ## Purpose
 
@@ -32,6 +32,10 @@ You may NOT use the OpenWave trademark to:
 - **Forks and derivatives:** Create a competing project called "OpenWave [Something]" without clear differentiation
 
 **Note:** OpenWave is licensed under Apache License 2.0, which allows commercial use (including proprietary derivative works). This trademark policy does not restrict commercial use of the software itself, only misuse of the "OpenWave" trademark.
+
+## Official Channels
+
+The only official OpenWave channels are this repository and the [openwave-labs](https://github.com/openwave-labs) GitHub organization. Third-party sites, apps, or services that reference OpenWave or display OpenWave data are not affiliated with, maintained by, or endorsed by the project unless explicitly stated in this repository.
 
 ## Modified Versions and Forks
 
@@ -83,4 +87,4 @@ We may update this trademark policy. Check this file periodically for changes.
 
 ---
 
-**Last Updated:** 2025-10-08
+**Last Updated:** 2026-07-25
