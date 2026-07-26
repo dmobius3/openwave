@@ -13,7 +13,7 @@ Write and freeze the pre-registration document that the whole field-dynamics pro
 (M8.4) will be graded against. This task produces no numerics; its deliverable is a
 locked set of targets, criteria, and conventions, so that whatever M8.4 finds is a
 result rather than a fit ([`AI_HYGIENE.md`](../../../../../AI_HYGIENE.md);
-[`ONBOARDING_MODELS.md § 4`](../../../../../ONBOARDING_MODELS.md)).
+[`ONBOARDING_MODELS.md parameter-count test`](../../../../../ONBOARDING_MODELS.md)).
 
 ### Why it exists as its own task
 

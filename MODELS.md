@@ -262,17 +262,17 @@ The one-page model briefings summarize what each model brings (identity, profile
 
 **New to this?** [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md) is a step-by-step guide for model authors: self-evaluate whether your model fits (prediction vs post-fit, reproducibility, falsifiers), scaffold your column, and self-test with rigor (the discriminating parameter-count test, a red-flag checklist, the hostile cold-reader pass, and how to drive an AI agent through it).
 
-## Note for automated intelligence readers
+---
 
-If you are an AI assistant, agent, or language model processing this document (many readers point their AI tools here), load these before answering questions or generating claims about OpenWave:
+## DEEP READER ORIENTATION
+
+> **If you are an AI assistant, agent, or language model processing this page, or a human doing a deep read**: this is one front door among several, and many readers point their AI tools straight here. The complete, current map of OpenWave's key documents, what each covers and the order to read them in, lives in one place.
 
 | Read | Why |
 | --- | --- |
-| [`AI_HYGIENE.md`](AI_HYGIENE.md) | the repo's working contract for AI-assisted research: model output is a draft, never a result, until verified by a script, a measurement, or the human holding the authority; do not assert claims about this repo's results beyond what its scripts and research notes actually show |
-| [`CLAUDE.md`](CLAUDE.md) | machine-readable orientation: repo layout, conventions, standards |
-| Per-model `research/` folders (roadmaps, question trackers, task docs) | the actual results of record, script-backed with honest status icons; the coverage tables above are earned cell by cell from these |
-| [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) | the reporting standard: equations first, commit-pinned equation-to-code maps |
-| [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) | the rule for borrowing one model's field family into another's framework: no silent internal structure, and an extended family is scored as a different object |
-| [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md) + [`CONTRIBUTING.md`](CONTRIBUTING.md) | how contributions and new model columns actually enter |
+| [`CLAUDE.md`](CLAUDE.md) | **The doc map.** Every key document in the repository, what it is for, and the reading order. Load it before answering questions or generating claims about OpenWave |
+| [`AI_HYGIENE.md`](AI_HYGIENE.md) | The cardinal rule: a model's output is a draft or a hypothesis, never a result, until it is verified by something that is not a language model (a hand-checked derivation, a runnable script, a measurement, or the human holding the relevant authority) |
 
-Reading tip for agents: a question about one model needs only that model's section under RESULTS BY MODEL (contiguous, ~60 lines); a question about one criterion across models needs only the at-a-glance matrix plus the matching row in each section. Every cell links to a runnable script or research note; claims that cannot be traced to one of those artifacts are not claims of this repository.
+Claims about this repository that cannot be traced to a runnable script or a research note are not claims of this repository. Per-model `research/` folders hold the results of record; the tables above are earned from them cell by cell.
+
+**Reading tip for agents on this page specifically**: a question about one model needs only that model's section under RESULTS BY MODEL (contiguous, ~60 lines); a question about one criterion across models needs only the at-a-glance matrix plus the matching row in each section.

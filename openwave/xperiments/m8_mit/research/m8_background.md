@@ -40,7 +40,7 @@ absent where they are strong.
 ## 3. Evidence weight (the author's own ledger, adopted as the column's grading)
 
 The author's `claim-ledger.md` runs the platform's
-[`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) § 4 parameter count on the
+[`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) parameter-count test on the
 framework itself, and the M8 column adopts its verdicts as the grading baseline:
 
 | Layer | Weight | Why |
@@ -71,7 +71,7 @@ the 24 numbers would inherit freedom the author's own audit already flagged.
 | Check | Result |
 | --- | --- |
 | Provenance | author account + repo real and active; all artifacts named in the submission exist (`calculator.html`, `claim-ledger.md`, `mass-null-test.py` + frozen inputs/results, per-paper test scripts); all 10 Zenodo DOIs machine-verified resolving (SSRN IDs author-attested, see [`../theory/_CITATIONS.md`](../theory/_CITATIONS.md)) |
-| [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) § 1 fit | partial criteria coverage (particle rows yes, dynamics rows structurally absent); genuine forward predictions exist; reproducible (calculator + scripts + public data); strongly falsifiable (dated pre-registrations with thresholds, 3 documented negatives on record) |
+| [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) STEP 1 fit | partial criteria coverage (particle rows yes, dynamics rows structurally absent); genuine forward predictions exist; reproducible (calculator + scripts + public data); strongly falsifiable (dated pre-registrations with thresholds, 3 documented negatives on record) |
 | § 4 parameter count | run by the author in advance; freedom found non-trivial and DISCLOSED (the nulls and cycles above), which is the honest shape the test exists to find |
 | § 5.1 red flags | one real hit: unrefereed sourcing (all venues preprint-tier), recorded in the citations registry; the other flags largely pass BECAUSE residuals and negatives are preserved rather than smoothed |
 | Rigor culture | pre-registration with frozen tags, one-shot runs, negatives reported unprompted: compatible with [`AI_HYGIENE.md`](../../../../AI_HYGIENE.md) and the platform's method-note standard from day one |
