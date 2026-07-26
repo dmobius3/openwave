@@ -137,6 +137,62 @@ def compute_energyH_density_M(
         observables.energyH_density_aJ[i, j, k] = e_scale * (kinetic + c2 * curvature + potential)
 
 
+@ti.kernel
+def compute_energyH_density_eta(
+    tensor_field: ti.template(),  # type: ignore
+    observables: ti.template(),  # type: ignore
+    dt_eff: ti.f32,  # type: ignore
+    dx_eta: ti.f32,  # type: ignore
+    sg: ti.f32,  # type: ignore
+    delta: ti.f32,  # type: ignore
+    w1: ti.f32,  # type: ignore
+    e_scale: ti.f32,  # type: ignore
+):
+    """M5.24 — the verified-L era energy density for the CANONICAL integrator path:
+
+        H = ½‖Ṁ‖²_F  +  ½ Σ_branch 4 Σ_{i<j} <F_ij, F_ij>_eta  +  V4(M)
+
+    (canonical-kinetic + η-signed curvature on the symmetrized stencil + the
+    universal spectral potential). Ṁ = (M − M_prev)/dt_eff, τ-units like the
+    canonical evolve pair. NO v0 subtraction: V4 and the curvature are both
+    EXACTLY zero on the covariant vacuum diag(−sg, 1, δ, 0) — the display
+    floor is the true zero (retires the plain-path v0 hack on this path).
+
+    Reads:  tensor_field.M_am, M_prev_am;  Writes: observables.energyH_density_aJ
+    dx_eta = the canonical-unit grid spacing (must match the evolve kernels).
+    """
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dt = 1.0 / dt_eff
+    inv_dx = 1.0 / dx_eta
+    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
+        m0 = tensor_field.M_am[i, j, k]
+        m_dot = (m0 - tensor_field.M_prev_am[i, j, k]) * inv_dt
+        kinetic = 0.5 * m_dot.norm_sqr()
+        u_eta = 0.0
+        for br in ti.static(range(2)):
+            ax_ = ti.Matrix.zero(ti.f32, 4, 4)
+            ay_ = ti.Matrix.zero(ti.f32, 4, 4)
+            az_ = ti.Matrix.zero(ti.f32, 4, 4)
+            if ti.static(br == 0):  # fwd (interior: neighbors always exist)
+                ax_ = (tensor_field.M_am[i + 1, j, k] - m0) * inv_dx
+                ay_ = (tensor_field.M_am[i, j + 1, k] - m0) * inv_dx
+                az_ = (tensor_field.M_am[i, j, k + 1] - m0) * inv_dx
+            else:  # bwd
+                ax_ = (m0 - tensor_field.M_am[i - 1, j, k]) * inv_dx
+                ay_ = (m0 - tensor_field.M_am[i, j - 1, k]) * inv_dx
+                az_ = (m0 - tensor_field.M_am[i, j, k - 1]) * inv_dx
+            fxy = pde.comm_eta44(ax_, ay_)
+            fxz = pde.comm_eta44(ax_, az_)
+            fyz = pde.comm_eta44(ay_, az_)
+            u_eta += 0.5 * 4.0 * (
+                pde.inner_eta44(fxy, fxy)
+                + pde.inner_eta44(fxz, fxz)
+                + pde.inner_eta44(fyz, fyz)
+            )
+        potential = pde.v4_of(m0, sg, delta, w1)
+        observables.energyH_density_aJ[i, j, k] = e_scale * (kinetic + u_eta + potential)
+
+
 # Note: the global energy aggregate (mean per voxel + grid total) is computed
 # by the 3-plane sample_avg_trackers below alongside amp / freq — single pass
 # over the slice planes, single GPU↔CPU sync per dashboard cadence. The launcher
@@ -399,6 +455,68 @@ def compute_winding_number(
     cross = np.cross(dn_dtheta, dn_dphi, axis=-1)
     integrand = (n_s * cross).sum(axis=-1)
     return float(integrand.sum() * dth * dph / (4.0 * np.pi))
+
+
+def compute_winding_number_guarded(
+    psi_np,
+    center_vox,
+    radii_vox,
+    eigenvalues_np=None,
+    gap_frac=0.1,
+):
+    """M5.24 (G9) — the GUARDED winding read per the canonical instrument
+    (m5_theory_canonical.md § 5.4): Q at MULTIPLE radii + the eigen-gap
+    reliability flag. A single-radius read on a churned state flips branch
+    (±1/0 flickers are read artifacts, the § 6 anti-recipe); near-degenerate
+    λ₁ ≈ λ₂ regions reshuffle band identity and must DECLINE the read.
+
+    Args:
+        psi_np: (nx, ny, nz, 3) director field (director_nhat.to_numpy()).
+        center_vox: (cx, cy, cz) defect center, voxel coords.
+        radii_vox: iterable of sphere radii (voxels) — use ≥ 3 spanning
+            core-adjacent to far-field (e.g. (4, 6, 8, 10)).
+        eigenvalues_np: optional (nx, ny, nz, 3) sorted spectrum
+            (tensor_field.eigenvalues.to_numpy()); enables the gap guard.
+        gap_frac: decline threshold as a fraction of the sphere's median
+            λ₁ − λ₂ gap.
+
+    Returns dict: q_mean, q_spread (max − min over radii), per_radius,
+    min_gap, declined (True → do NOT quote a charge from this state; the
+    caller reports "read declined", never a flickering integer).
+    """
+    per_radius = []
+    min_gap = float("inf")
+    declined = False
+    nx, ny, nz = psi_np.shape[:3]
+    cx, cy, cz = center_vox
+    for r in radii_vox:
+        per_radius.append(float(compute_winding_number(psi_np, center_vox, r)))
+        if eigenvalues_np is not None:
+            # nearest-voxel gap sample on the sphere (coarse but sufficient:
+            # the guard needs "is any band-crossing region on the sphere",
+            # not a precise minimum)
+            th = np.linspace(1e-3, np.pi - 1e-3, 16)
+            ph = np.linspace(0.0, 2.0 * np.pi, 32, endpoint=False)
+            TH, PH = np.meshgrid(th, ph, indexing="ij")
+            si = np.clip((cx + r * np.sin(TH) * np.cos(PH)).round().astype(int), 0, nx - 1)
+            sj = np.clip((cy + r * np.sin(TH) * np.sin(PH)).round().astype(int), 0, ny - 1)
+            sk = np.clip((cz + r * np.cos(TH)).round().astype(int), 0, nz - 1)
+            gaps = eigenvalues_np[si, sj, sk, 0] - eigenvalues_np[si, sj, sk, 1]
+            g_min, g_med = float(gaps.min()), float(np.median(gaps))
+            min_gap = min(min_gap, g_min)
+            if g_min < gap_frac * max(g_med, 1e-12):
+                declined = True
+    q_arr = np.array(per_radius)
+    spread = float(q_arr.max() - q_arr.min())
+    if spread > 0.2:  # radius-inconsistent read = churned state
+        declined = True
+    return {
+        "q_mean": float(q_arr.mean()),
+        "q_spread": spread,
+        "per_radius": per_radius,
+        "min_gap": (None if eigenvalues_np is None else min_gap),
+        "declined": declined,
+    }
 
 
 # ================================================================

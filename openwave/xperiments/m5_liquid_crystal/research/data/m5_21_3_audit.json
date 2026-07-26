@@ -1,0 +1,165 @@
+{
+ "audit": "M5.21.3 independent adversarial audit",
+ "auditor": "second-agent re-implementation, fresh seeds",
+ "date": "2026-07-18",
+ "C1_gates": {
+  "gates_rerun_matches_recorded": true,
+  "gates_compare": {
+   "g0_static": {
+    "recorded": 1.5123118328337079e-15,
+    "rerun": 1.5123118328337079e-15,
+    "bar": "< 5e-09",
+    "both_pass_bar": true
+   },
+   "g0_kin": {
+    "recorded": 1.2284208804160419e-15,
+    "rerun": 6.798117999075322e-16,
+    "bar": "< 5e-09",
+    "both_pass_bar": true
+   },
+   "g1_so13": {
+    "recorded": 3.040081825033414e-13,
+    "rerun": 3.040081825033414e-13,
+    "bar": "< 1e-09",
+    "both_pass_bar": true
+   },
+   "g1_negctrl": {
+    "recorded": 179793.42847598367,
+    "rerun": 179793.42847598367,
+    "bar": "> 1e-06",
+    "both_pass_bar": true
+   },
+   "g3_regression": {
+    "recorded": 0.0,
+    "rerun": 0.0,
+    "bar": "< 1e-12",
+    "both_pass_bar": true
+   },
+   "g2_vac_s+1": {
+    "recorded": [
+     0.0,
+     0.0
+    ],
+    "rerun": [
+     0.0,
+     0.0
+    ],
+    "bar": "< 1e-16",
+    "both_pass_bar": true
+   },
+   "g2_vac_s-1": {
+    "recorded": [
+     0.0,
+     0.0
+    ],
+    "rerun": [
+     0.0,
+     0.0
+    ],
+    "bar": "< 1e-16",
+    "both_pass_bar": true
+   }
+  },
+  "gen_eta_antisym_dev": 0.0,
+  "L_preserves_eta_dev": 2.220446049250313e-16,
+  "own_so13_rel": 8.08502134443221e-16,
+  "own_negctrl_rel": 0.5054189063539514,
+  "verdict": "CONFIRMED"
+ },
+ "C2_saddle": {
+  "E0_mine_pow": 6.239697665771401,
+  "E0_mine_eig": 6.23969766577137,
+  "E0_task_hess_row": 6.239697665771402,
+  "E0_rel_vs_task": 1.4234318187759846e-16,
+  "Eu_mine": 4.832936949526052,
+  "Eu_task_p2_row": 4.832936949526051,
+  "Eu_rel_vs_task": 1.8377612391306402e-16,
+  "curv_timemix_fresh": [
+   -0.2632708984151577,
+   -0.2618744741056389,
+   -0.26074702752509893,
+   -0.2691369598295523,
+   -0.25869799991085074,
+   -0.2729673589385584
+  ],
+  "n_neg": 6,
+  "t_robustness_dir0": {
+   "t=0.0005": -0.26327099078571337,
+   "t=0.002": -0.26327044455598525
+  },
+  "curv_ctrl_fresh": [
+   0.4126115724645274,
+   0.41160821950825266,
+   0.44292284595570663
+  ],
+  "verdict": "CONFIRMED"
+ },
+ "C3_kin": {
+  "kin_rot_z_mine": 0.2575093981453086,
+  "kin_boost_z_mine": -0.0834460289570569,
+  "kin_rot_z_task": 0.25750939814530854,
+  "kin_boost_z_task": -0.08344602895705688,
+  "rot_z_rel": 2.1556941855742964e-16,
+  "boost_z_rel": 1.6630854674889637e-16,
+  "kin_boost_z_fwd_mine": -0.08344594955407386,
+  "kin_boost_z_bwd_mine": -0.08344610836003992,
+  "kin_boost_z_cen_mine": -0.07646222895870551,
+  "a0_rot_z_antisym_resid": 0.0,
+  "a0_boost_z_antisym_resid": 0.0,
+  "kin_rot_z_conjtangent": 0.12053262184554421,
+  "kin_boost_z_conjtangent": -0.08275741732481601,
+  "verdict": "CONFIRMED"
+ },
+ "C4_decoupling": {
+  "E_star_0p8": 5.862174566817383,
+  "E_ctrl": 5.91858443274397,
+  "diff": -0.05640986592658681,
+  "omega2_kin_end": -0.0559425349112138,
+  "ratio": 1.0083537690259248,
+  "pct_dev": 0.8353769025924714,
+  "row_internal_resid": 0.0,
+  "Eu_gap": 0.00020997886966345192,
+  "Ev_gap": 0.0006773098850365589,
+  "kin_from_saved_endpoint": -0.0874095484906845,
+  "kin_endpoint_note": "recorded kin_end used the rung's frozen a0 from the warm start, so only approximate re-derivation is possible from the npz",
+  "verdict": "CONFIRMED"
+ },
+ "C5_twist": {
+  "ks": [
+   -0.03,
+   -0.015,
+   0.0,
+   0.015,
+   0.03
+  ],
+  "E_at_k": [
+   4.833088893025474,
+   4.832974935400907,
+   4.832936949526052,
+   4.832974935400907,
+   4.833088893025474
+  ],
+  "b_polyfit": 1.3138828720148654e-14,
+  "d_polyfit": 0.16882611046951454,
+  "k_star": -3.89123124486161e-14,
+  "dE_at_kstar": -2.5563110418363752e-28,
+  "b_direct_oddpart": 0.0,
+  "palindrome_dev": 0.0,
+  "E_scale": 4.832936949526052,
+  "verdict": "CONFIRMED"
+ },
+ "C6_blockdiag": {
+  "m5_21_3_p1_s+1.npz": 0.0,
+  "m5_21_3_p1_s-1.npz": 0.0,
+  "verdict": "CONFIRMED"
+ },
+ "C7_wording": {
+  "verdict": "SEE REPORT",
+  "flags": [
+   "Sec 6 'static parts match the control to 4 decimals': measured gaps are E_u 2.1e-4, E_V 6.8e-4 (3 decimals for E_u, between 2 and 3 for E_V); '4 decimals' overstates",
+   "Sec 6 verdict sentence 'on NEITHER reading does free 4x4 energy minimization select nonzero time derivatives': on the eta-reading E*(omega) is monotone DECREASING (every probed omega beats the equal-depth static control), so descent does prefer omega != 0; supported claim is 'no FINITE stationary omega* / no stable dynamical state is landed', which the same paragraph states correctly",
+   "Sec 8 points the discretization burden at a 'Sec 9 confirm block' that is not written in the note (the confirm DATA row exists: data/m5_21_3_row_confirm.json)",
+   "a0 convention: task a0 = G M - M G^T is exactly ANTISYMMETRIC for symmetric M (see C3 antisym resid), so dM/dt = omega a0 leaves the symmetric configuration space; the films and gate G1 use M -> L M L^T whose tangent is G M + M G^T (symmetric); C3 also reports kin under the conjugation-tangent variant for comparison"
+  ]
+ }
+}

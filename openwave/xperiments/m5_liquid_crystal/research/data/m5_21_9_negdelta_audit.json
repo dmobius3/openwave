@@ -1,0 +1,277 @@
+{
+ "CL1": {
+  "claim": "om2_coeff factors exactly as 8 d^3 ((g-1) d - 2g)/(g-1); g>1 positive iff d<0 or d>2g/(g-1)",
+  "method": "own dict-polynomial algebra over exact integers, factors multiplied out in code, denominators cleared; 400 exact-Fraction random points; tampered-coefficient comparator control; exact sign-law cases incl the threshold d = 2g/(g-1)",
+  "mine": {
+   "poly_identity_exact": true,
+   "tamper_control_detected": true,
+   "n_exact_samples": 400,
+   "n_mismatch": 0,
+   "sign_law_exact_ok": true
+  },
+  "claimed": {
+   "factored": "8 d^3 ((g-1) d - 2g)/(g-1)",
+   "task_worst_rel": 1.1771868814335383e-12
+  },
+  "verdict": "CONFIRMED"
+ },
+ "CL2": {
+  "claim": "entire d<0 half-plane at g>1 omega-bounded; corner (1e10, -1e-10) coeff +1.6e-29, (1e10, +1e-10) -1.6e-29",
+  "method": "exact fractions.Fraction on a 6x8 (g, d) grid incl g = 1+1e-9 and d = -1e-30, plus the exact corner; naive float64 route as fragility probe",
+  "mine": {
+   "grid_all_positive_exact": true,
+   "corner_neg_exact": "200000000009999999999/12499999998750000000000000000000000000000000000000",
+   "corner_neg_float": 1.60000000024e-29,
+   "corner_pos_float": -1.60000000008e-29,
+   "corner_signs_exact_ok": true,
+   "float64_corner_neg": 1.60000000024e-29,
+   "float64_corner_pos": -1.6000000000800003e-29,
+   "float64_sign_agrees": true,
+   "float64_rel_err_neg": 0.0
+  },
+  "claimed": {
+   "corner_neg": 1.60000000024e-29,
+   "corner_pos": -1.6000000000800003e-29
+  },
+  "verdict": "CONFIRMED"
+ },
+ "CL3": {
+  "claim": "Hm exactly linear in om^2; positive coeff gives argmin om = 0 with value fin(g, d, r); instance (8, -0.3, 1) both = 0.6611510204081633; boundedness restored but state is STATIC",
+  "method": "exact second differences in om^2 (30 random Fraction draws); Hm(om=0, r=1) numerator == fin numerator as exact polynomials; exact instance; monotonicity of Hm on an om grid",
+  "mine": {
+   "exact_linear_om2": true,
+   "static_identity_poly": true,
+   "instance_exact_equal": true,
+   "instance_value": "80991/122500",
+   "instance_float": 0.6611510204081633,
+   "slope_pos_at_8_m03": true,
+   "monotone_in_om2_grid": true
+  },
+  "claimed": {
+   "both_equal": 0.6611510204081633,
+   "argmin_om": 0.0
+  },
+  "verdict": "CONFIRMED"
+ },
+ "CL4": {
+  "claim": "ansatz-pipeline dE/d(om^2) positive at (8,-0.3) ~ +0.552, (8,-0.05) ~ +0.00231, (3,-0.3) ~ +0.705, (100,-0.001) ~ +1.60e-8 (m = -|m*|, r = 1.3)",
+  "method": "own pipeline (explicit-matrix build, plain central FD, midpoint time avg nt=24, Simpson nTH=61); probe pairs (0.2,0.4), (0.1,0.5), (0.3,0.6); r-structure E = S/r^2 + K om^2 at r = 0.8, 1.0, 1.3, 2.0",
+  "mine": {
+   "rows": [
+    {
+     "g": 8.0,
+     "dl": -0.3,
+     "slope_mine": 0.5522427731084466,
+     "slope_claimed": 0.5522427721761849,
+     "coeff_formula": 0.5585142857142856,
+     "positive": true,
+     "rel_vs_claimed": 1.6881374628015677e-09
+    },
+    {
+     "g": 8.0,
+     "dl": -0.05,
+     "slope_mine": 0.0023094867329974743,
+     "slope_claimed": 0.0023094867314125732,
+     "coeff_formula": 0.002335714285714286,
+     "positive": true,
+     "rel_vs_claimed": 6.862568317240772e-10
+    },
+    {
+     "g": 3.0,
+     "dl": -0.3,
+     "slope_mine": 0.7047960253041976,
+     "slope_claimed": 0.7047960241503909,
+     "coeff_formula": 0.7127999999999999,
+     "positive": true,
+     "rel_vs_claimed": 1.6370789239721323e-09
+    },
+    {
+     "g": 100.0,
+     "dl": -0.001,
+     "slope_mine": 1.5988047997068332e-08,
+     "slope_claimed": 1.598804894566053e-08,
+     "coeff_formula": 1.616961616161616e-08,
+     "positive": true,
+     "rel_vs_claimed": 5.933132934819777e-08
+    }
+   ],
+   "probe_pairs_slope": {
+    "0.1-0.5": 0.5522427730875717,
+    "0.3-0.6": 0.5522427730788395
+   },
+   "K_of_r": {
+    "0.8": 0.5522427728663883,
+    "1": 0.5522427730072387,
+    "1.3": 0.5522427731084466,
+    "2": 0.5522427731966598
+   },
+   "S_of_r": {
+    "0.8": 1.376558788173297,
+    "1": 1.3765587892721043,
+    "1.3": 1.3765587900808094,
+    "2": 1.376558790755053
+   },
+   "K_rel_spread": 5.980548645534202e-10,
+   "S_rel_spread": 1.8755144638371592e-09
+  },
+  "claimed": {
+   "slopes": [
+    0.5522427721761849,
+    0.0023094867314125732,
+    0.7047960241503909,
+    1.598804894566053e-08
+   ],
+   "coeffs": [
+    0.5585142857142856,
+    0.002335714285714286,
+    0.7127999999999999,
+    1.616961616161616e-08
+   ]
+  },
+  "verdict": "CONFIRMED"
+ },
+ "CL5": {
+  "claim": "E linear in om^2 over (0.05..0.6] to ~1e-11 rel, positive slope; om = 0 point off the line by -0.264 = t = 0 snapshot artifact",
+  "method": "own 12-point fit vs om^2; own t = 0 snapshot evaluator; own static clock-phase-average evaluator (alpha average, zero time derivs) as the om -> 0 limit; E(om = 0.01) on-line check",
+  "mine": {
+   "slope_fit": 0.5522427730840193,
+   "intercept_fit": 0.8145318284527775,
+   "max_rel_resid": 2.622229276204879e-12,
+   "snapshot_t0": 0.5502061503706032,
+   "static_phase_avg": 0.8145318284503065,
+   "E_at_om_0p01": 0.8145870527274846,
+   "snapshot_offset": -0.26432567808217433,
+   "intercept_vs_static_rel": 3.033673209074561e-12,
+   "tiny_om_on_line_rel": 3.1934752219410436e-12
+  },
+  "claimed": {
+   "resid": 8.968460342315011e-12,
+   "slope": 0.5522427722763334,
+   "intercept": 0.814528591438574,
+   "snapshot": 0.5502061498648072,
+   "offset": -0.26432244157376683
+  },
+  "verdict": "CONFIRMED"
+ },
+ "CL6": {
+  "claim": "m-scan interior minimum survives d < 0: |m| ~ 0.123 at (8, -1e-4, om 0.3) (resolution-limited vs m* = 0.1257); |m| ~ 0.149 at (8, -0.3)",
+  "method": "own scans, negative-m branch [-0.30, -0.02] step 0.005 + fine step 0.0005 + parabolic refine; om controls 0.2 / 0.45 at dl = -0.3; evenness spot check",
+  "mine": {
+   "m_min_small_dl": -0.12566366874704762,
+   "interior_small": true,
+   "m_star_8": 0.12565721414045308,
+   "rel_dev_vs_mstar": 5.136678095797049e-05,
+   "m_min_big_dl": -0.1507573861478779,
+   "interior_big": true,
+   "E_ends_above_min_big": true,
+   "m_min_big_om0p2": -0.15051278462225703,
+   "m_min_big_om0p45": -0.15130469033832014,
+   "om_dependence_abs": 0.0005473041904422438,
+   "evenness_rel": 0.0
+  },
+  "claimed": {
+   "m_min_small": -0.12312388633422496,
+   "m_star": 0.12565721414045308,
+   "m_min_big": -0.1486170209765923
+  },
+  "verdict": "CONFIRMED"
+ },
+ "CL7": {
+  "claim": "d -> d + c I shifts M by c Qb^2 (position-dependent unless m = 0): H invariant at m = 0 (~1e-10), broken at m != 0, violation grows with |m| (up to ~0.41 at |m| ~ 0.1)",
+  "method": "own arbitrary-diagonal builder (gated against the Rodrigues build); exact algebra M(d + cI) - M(d) = c Q Q^T; orthogonality defect and position dependence of Q Q^T; pointwise H with own FD, m = 0 draws vs growing |m|",
+  "mine": {
+   "gate_M4_vs_rod": 0.0,
+   "algebra_dev": 2.220446049250313e-15,
+   "QQ_orth_defect_m0p1": 0.30393210610208965,
+   "QQ_position_dep": 0.2176157609976322,
+   "worst_rel_m0": 5.525129950510399e-11,
+   "growth_fixed_point": {
+    "0.0013": 8.016581377265041e-05,
+    "0.01": 0.004759570181279304,
+    "0.05": 0.12957031234970218,
+    "0.1": 0.692636881460577
+   },
+   "growth_monotone": true,
+   "worst_rel_boosted": 0.3643605576570652
+  },
+  "claimed": {
+   "undressed_worst": 4.275833557318291e-11,
+   "boosted_worst": 0.4102263682324696,
+   "small_m_rel": 7.510091779619473e-05
+  },
+  "verdict": "CONFIRMED"
+ },
+ "CL8": {
+  "claim": "cone channel flips sign: dl = +0.3 E falls 0.686 -> 0.324 over Delta 0.4 -> 0.05 (collapse channel); dl = -0.3 E rises 1.10 -> 1.74, log slope ~ +0.28 (normal vortex core)",
+  "method": "own Simpson quadrature nTH = 161, 6 Delta rungs down to 0.01, both signs of dl, both r = 1.0 and r = 1.3",
+  "mine": {
+   "dl+0.3_r1": {
+    "ladder": {
+     "0.4": 0.6858772909273962,
+     "0.2": 0.6009227648618889,
+     "0.1": 0.468408491196254,
+     "0.05": 0.323797492736619,
+     "0.02": 0.12816341297472525,
+     "0.01": -0.022612149307325878
+    },
+    "log_slope_0p1_0p05": -0.20862957033571694,
+    "log_slope_0p02_0p01": -0.21752315599156022,
+    "rises_toward_small_Delta": false
+   },
+   "dl+0.3_r1.3": {
+    "ladder": {
+     "0.4": 0.39132798793105805,
+     "0.2": 0.3401290683987152,
+     "0.1": 0.2614828284182493,
+     "0.05": 0.17585514765485427,
+     "0.02": 0.06007878130246988,
+     "0.01": -0.02913993701719325
+    },
+    "log_slope_0p1_0p05": -0.12353463040017333,
+    "log_slope_0p02_0p01": -0.12871540247424731,
+    "rises_toward_small_Delta": false
+   },
+   "dl-0.3_r1": {
+    "ladder": {
+     "0.4": 1.1009471879937542,
+     "0.2": 1.3393166533866478,
+     "0.1": 1.5442106164670326,
+     "0.05": 1.7406272022057352,
+     "0.02": 1.9976464052617915,
+     "0.01": 2.194304782799081
+    },
+    "log_slope_0p1_0p05": 0.28336923419356813,
+    "log_slope_0p02_0p01": 0.283718066022317,
+    "rises_toward_small_Delta": true
+   },
+   "dl-0.3_r1.3": {
+    "ladder": {
+     "0.4": 0.6703509028227613,
+     "0.2": 0.812608890852909,
+     "0.1": 0.9341544856900372,
+     "0.05": 1.0504542003174826,
+     "0.02": 1.2025581273312196,
+     "0.01": 1.318927168460956
+    },
+    "log_slope_0p1_0p05": 0.1677850215498171,
+    "log_slope_0p02_0p01": 0.1678850385508746,
+    "rises_toward_small_Delta": true
+   }
+  },
+  "claimed": {
+   "neg_ladder": {
+    "0.4": 1.1009471878659454,
+    "0.2": 1.3393166236184166,
+    "0.1": 1.544209968176653,
+    "0.05": 1.7406159693389178
+   },
+   "neg_log_slope": 0.2833539638776314,
+   "pos_ends": [
+    0.686,
+    0.324
+   ]
+  },
+  "verdict": "NUANCE",
+  "note": "numbers verified, but the claimed values sit at r = 1.0 while CL4/CL5 use r = 1.3 (hidden parameter switch; the sign flip itself holds at both r)"
+ }
+}

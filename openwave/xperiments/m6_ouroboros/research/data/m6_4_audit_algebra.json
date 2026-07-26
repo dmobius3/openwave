@@ -1,0 +1,146 @@
+{
+  "task": "M6.4 audit: A1/A2/A3/A9 independent algebra",
+  "A1_quote_line_hits": {
+    "lean_a_lhs": [
+      95,
+      96
+    ],
+    "lean_a_rhs": [
+      96,
+      97
+    ],
+    "lean_b": [
+      98,
+      99
+    ],
+    "lean_b_rhs": [
+      99,
+      100
+    ],
+    "may_a": [
+      147,
+      148
+    ],
+    "may_b": [
+      149,
+      150
+    ],
+    "june_a": [
+      147,
+      148
+    ],
+    "june_b": [
+      149,
+      150
+    ],
+    "june_masses": [
+      151,
+      152
+    ],
+    "june_q12": [
+      182,
+      183
+    ]
+  },
+  "A1_all_quotes_found": true,
+  "A1_lean_equals_may": true,
+  "A1_scaling_map_a_mismatch": {
+    "a": "2*w**2 + 1 - 1/r**2",
+    "b": "(-p - q/2)/p",
+    "a^3": "-4*g*p**2"
+  },
+  "A1_scaling_map_b_mismatch": {
+    "a": "(-p/2 - q)/q",
+    "b": "2*lam + 2*w**2 + 1 - 1/r**2",
+    "b^3": "4*g*(1 - q**2)"
+  },
+  "A1_scaling_obstruction": {
+    "coeff_a_in_a_eq": "2*w**2 + 1 - 1/r**2",
+    "coeff_a3_in_a_eq": "-4*g*p**2",
+    "note": "coeff(a) is r-dependent (contains 1/r^2) so no constant choice of p, q kills it; coeff(a^3) = -4*g*p^2 nonzero for all p != 0"
+  },
+  "A1_swap_map_mismatch_bcoeff": "lam + w**2 - 1/r**2",
+  "A1_no_flip_scaling_or_swap_maps_june_to_may": true,
+  "A2_direct_perturbation": {
+    "Q11": "-12*g*a(r)**2 + w**2 + 1",
+    "Q22": "-12*g*b(r)**2 + lam + w**2 + 1",
+    "Q12_from_a_eq": "-c/2",
+    "Q12_from_b_eq": "-c/2"
+  },
+  "A2_functional_generates_june": true,
+  "A2_hessian": {
+    "H11": "-12*A**2*g + w**2 + 1",
+    "H12": "-c/2",
+    "H22": "-12*B**2*g + lam + w**2 + 1"
+  },
+  "A2_verdict": {
+    "true_cross_term": "-c/2",
+    "printed_Q12": "-c/4",
+    "printed_is_linearization": false,
+    "factor": "2"
+  },
+  "A3_may_eigs": {
+    "eigenvalues": [
+      "-lam/2 - w**2 - sqrt(lam**2 + 4)/2",
+      "-lam/2 - w**2 + sqrt(lam**2 + 4)/2"
+    ],
+    "match_Xpm_minus_w2": {
+      "-lam/2 - w**2 - sqrt(lam**2 + 4)/2": [
+        false,
+        true
+      ],
+      "-lam/2 - w**2 + sqrt(lam**2 + 4)/2": [
+        true,
+        false
+      ]
+    }
+  },
+  "A3_Xp_Xm_product": "-1",
+  "A3_Xp_decreasing_in_lam": "lam/(2*sqrt(lam**2 + 4)) - 1/2",
+  "A3_wmax_table": {
+    "0": 1.0,
+    "0.5": 0.8836,
+    "1": 0.7862,
+    "1.5": 0.7071,
+    "2": 0.6436
+  },
+  "A3_june_det": "lam*w**2 + lam + w**4 + 2*w**2 + 3/4",
+  "A3_june_det_all_coeffs_positive": true,
+  "A3_june_pos_def_all_w_lam_nonneg": true,
+  "A3_bessel_spot_checks": {
+    "osc_channel_w0.5_lam0": 1.2546578355487062e-05,
+    "osc_channel_w1.3_lam1": 2.6448297580854467e-05,
+    "dec_channel_w0.5_lam0": 4.3038318253079235e-06,
+    "dec_channel_w0.6_lam1": 3.6012670409638507e-06,
+    "note": "residual of the FULL linearized May system on exact J1/K1 channel solutions, relative to field scale; ~1e-6 = finite-difference floor confirms the channel decomposition"
+  },
+  "A3_osc_channel_always": true,
+  "A9_wmax_global_max_on_lam_0_2": 1.0,
+  "A9_ladder": {
+    "electron_v11": {
+      "w": 1.0,
+      "exceeds_wmax_for_all_lam": "sits exactly AT wmax(0)=1 (kappa = 0)"
+    },
+    "muon_May16": {
+      "w": 11.0,
+      "exceeds_wmax_for_all_lam": true
+    },
+    "muon_May23": {
+      "w": 12.82,
+      "exceeds_wmax_for_all_lam": true
+    },
+    "pion": {
+      "w": 15.0,
+      "exceeds_wmax_for_all_lam": true
+    },
+    "tau_May16": {
+      "w": 40.7,
+      "exceeds_wmax_for_all_lam": true
+    },
+    "tau_May23": {
+      "w": 50.0,
+      "exceeds_wmax_for_all_lam": true
+    }
+  },
+  "A9_electron_kappa_at_boundary": 0.0
+}

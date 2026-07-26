@@ -215,19 +215,25 @@ imgui.ini
 .claude/worktrees/
 .claude/*.lock
 
-# Heavy REGENERABLE npz caches (>1MB), kept local, regen from the scripts (repro table in m5_roadmap.md).
-# Relocated to research/data/ by the 2026-07-02 sandbox consolidation (were sandbox_v8/, sandbox_vn/).
-# seed refs + precision twins (regen: <CB env> python m5_8_2cb_taichi_constrained.py <ref|ti cpu f64|...>)
-openwave/xperiments/m5_liquid_crystal/research/data/_m5_8_2cb_ref*.npz
-openwave/xperiments/m5_liquid_crystal/research/data/_m5_8_2cb_ti_*.npz
-openwave/xperiments/m5_liquid_crystal/research/data/*.npz.bak
-# Track C tabulations (regen: python m5_8_2f*.py all, one-time ~110s each)
-openwave/xperiments/m5_liquid_crystal/research/data/_m5_8_2f_tables.npz
-openwave/xperiments/m5_liquid_crystal/research/data/_m5_8_2f2_tables.npz
-openwave/xperiments/m5_liquid_crystal/research/data/_m5_8_2f3_kin.npz
-# settled configs (regen: m5_8_2g settle / m5_8_2o settle)
-openwave/xperiments/m5_liquid_crystal/research/data/_m5_8_2g_settled.npz
-openwave/xperiments/m5_liquid_crystal/research/data/_m5_8_2o_settled.npz
+# Heavy binary arrays under any data/ folder are LOCAL-ONLY: kept on the working machine
+# (later tasks consume them directly), never published, never deleted.
+# Decision 2026-07-20 (SUPERSEDES the "delete raw data > 1 MB at FINISH" rule, which traded
+# reusable results for repo weight; it also subsumes the 2026-07-02 per-file npz list that
+# lived here). What stays TRACKED and readable on GitHub: the distilled summary .json / .csv
+# / .txt beside them (the artifacts the docs actually link, 276 references vs 16 to arrays),
+# the plots, the scripts, and the per-folder _DATASETS.md manifest that indexes every
+# local-only file with its producing script and the record holding its regen command.
+# Regenerate a manifest with:
+#   python3 ~/Documents/source_code/XRODZ/dotfiles/claude_projects/NEPTUNYA-SABER/scripts/gen_datasets_manifest.py <path/to/data> --write
+# Untracked going forward; existing copies remain in pre-existing history (no rewrite).
+**/data/*.npz
+**/data/*.npy
+**/data/*.npz.bak
+**/data/*.h5
+**/data/*.hdf5
+**/data/*.pkl
+**/data/*.pt
+**/data/*.mat
 
 # All model theory/ folders are LOCAL-ONLY corpora: third-party copyrighted papers (publisher
 # PDFs, author docs; the m7 corpus alone is ~700 MB), author-shared material and images,

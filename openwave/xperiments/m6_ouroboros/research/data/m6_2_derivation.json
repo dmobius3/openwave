@@ -1,0 +1,102 @@
+{
+  "D0_identities": {
+    "div_phihat_f_zero": true,
+    "curl2_equals_fprime_plus_f_over_rho_sq": true
+  },
+  "D1_T00_avg_matched": "3*g*beta(rho)**4/8 + omega**2*alpha(rho)**2/4 + omega**2*beta(rho)**2/4 - alpha(rho)*beta(rho)/2 + Derivative(alpha(rho), rho)**2/4 + Derivative(beta(rho), rho)**2/4 + alpha(rho)*Derivative(alpha(rho), rho)/(2*rho) + beta(rho)*Derivative(beta(rho), rho)/(2*rho) + alpha(rho)**2/(4*rho**2) + beta(rho)**2/(4*rho**2)",
+  "D1_T00_avg_printed": "3*g*beta(rho)**4/8 + omega**2*alpha(rho)**2/4 + omega**2*beta(rho)**2/4 + Derivative(alpha(rho), rho)**2/4 + Derivative(beta(rho), rho)**2/4 + alpha(rho)*Derivative(alpha(rho), rho)/(2*rho) + beta(rho)*Derivative(beta(rho), rho)/(2*rho) + alpha(rho)**2/(4*rho**2) + beta(rho)**2/(4*rho**2)",
+  "D1_gradient_cross_term": "int 2 a a'/rho * rho drho = a^2 | boundary = 0 for localized fields; so int (a'+a/rho)^2 rho drho = int (a'^2 + a^2/rho^2) rho drho",
+  "D2_real_theory_SO2": {
+    "JA_invariant": false,
+    "conclusion": "the real two-field theory has NO exact internal U(1): J.A is not invariant under joint (A,J) rotation; time translation gives H, spatial symmetries give L, P; no Noether charge equals the production Q_J"
+  },
+  "D2_noether_Q_complexified": {
+    "Q_density": "omega*(a**2 + b**2)",
+    "reading": "Q = w * int (a^2 + b^2) rho drho  [joint U(1)]; the J-only rotation is NOT a symmetry even of the complexified theory (J*.A breaks it), so a J-only charge w*int b^2 exists only if the coupling term is dropped: DERIVATION STATUS = convention, not theorem",
+    "production_Q": "int b^2 rho drho (coefficient 1, no w, J-only)"
+  },
+  "D3_constrained_EL": {
+    "matched::Qjoint_w(a2+b2)": {
+      "EL_alpha": "rho*(-2*lambda*omega*alpha(rho) + omega**2*alpha(rho)/2 - beta(rho)/2 - Derivative(alpha(rho), (rho, 2))/2) - Derivative(alpha(rho), rho)/2 + alpha(rho)/(2*rho)",
+      "EL_beta": "rho*(3*g*beta(rho)**3/2 - 2*lambda*omega*beta(rho) + omega**2*beta(rho)/2 - alpha(rho)/2 - Derivative(beta(rho), (rho, 2))/2) - Derivative(beta(rho), rho)/2 + beta(rho)/(2*rho)"
+    },
+    "matched::QJonly_w_b2": {
+      "EL_alpha": "rho*(omega**2*alpha(rho)/2 - beta(rho)/2 - Derivative(alpha(rho), (rho, 2))/2) - Derivative(alpha(rho), rho)/2 + alpha(rho)/(2*rho)",
+      "EL_beta": "rho*(3*g*beta(rho)**3/2 - 2*lambda*omega*beta(rho) + omega**2*beta(rho)/2 - alpha(rho)/2 - Derivative(beta(rho), (rho, 2))/2) - Derivative(beta(rho), rho)/2 + beta(rho)/(2*rho)"
+    },
+    "printed::Qjoint_w(a2+b2)": {
+      "EL_alpha": "rho*(-2*lambda*omega*alpha(rho) + omega**2*alpha(rho)/2 - Derivative(alpha(rho), (rho, 2))/2) - Derivative(alpha(rho), rho)/2 + alpha(rho)/(2*rho)",
+      "EL_beta": "rho*(3*g*beta(rho)**3/2 - 2*lambda*omega*beta(rho) + omega**2*beta(rho)/2 - Derivative(beta(rho), (rho, 2))/2) - Derivative(beta(rho), rho)/2 + beta(rho)/(2*rho)"
+    },
+    "printed::QJonly_w_b2": {
+      "EL_alpha": "rho*(omega**2*alpha(rho)/2 - Derivative(alpha(rho), (rho, 2))/2) - Derivative(alpha(rho), rho)/2 + alpha(rho)/(2*rho)",
+      "EL_beta": "rho*(3*g*beta(rho)**3/2 - 2*lambda*omega*beta(rho) + omega**2*beta(rho)/2 - Derivative(beta(rho), (rho, 2))/2) - Derivative(beta(rho), rho)/2 + beta(rho)/(2*rho)"
+    }
+  },
+  "D3_time_reduction_of_dynamics": {
+    "eq_2_1": "lap_vec alpha + w^2 alpha = -beta (phase-matched; sign of beta absorbable by beta -> -beta jointly in both equations)",
+    "eq_2_2_real_cos_projection": "lap_vec beta + w^2 beta = -alpha + 3g beta^3 (cos^3 -> (3/4) cos fundamental-harmonic projection of the 4g beta^3 cubic)",
+    "eq_2_2_complex_convention": "lap_vec beta + w^2 beta = -alpha + 4g beta^3 (quartic read as (J*.J)^2-class, no 3/4)",
+    "production_ODE": "lap_vec alpha + w^2 alpha = +beta ; lap_vec beta + w^2 beta = +alpha - lam*beta - 4g beta^3",
+    "notes": "production matches the complex-convention time reduction up to the joint beta-sign flip EXCEPT for the extra -lam*beta term, which does not arise from (2.1)/(2.2) at all: it is the constrained-minimization multiplier injected into the dynamics; a lam-term appearing ONLY in the beta equation is inconsistent with delta(H - lam Q)/delta alpha unless Q is J-only"
+  },
+  "D4_convention_enumeration": {
+    "sJJ=1, proj=complex, flip=1": {
+      "eq1_beta_coeff": "-1",
+      "eq2_alpha_coeff": "-1",
+      "eq2_cubic_coeff": "4*g",
+      "production_needs": "+1, +1, -4*g (plus the -lam*b term)",
+      "matches_production_sans_lambda": false
+    },
+    "sJJ=1, proj=complex, flip=-1": {
+      "eq1_beta_coeff": "1",
+      "eq2_alpha_coeff": "1",
+      "eq2_cubic_coeff": "4*g",
+      "production_needs": "+1, +1, -4*g (plus the -lam*b term)",
+      "matches_production_sans_lambda": false
+    },
+    "sJJ=1, proj=real_proj, flip=1": {
+      "eq1_beta_coeff": "-1",
+      "eq2_alpha_coeff": "-1",
+      "eq2_cubic_coeff": "3*g",
+      "production_needs": "+1, +1, -4*g (plus the -lam*b term)",
+      "matches_production_sans_lambda": false
+    },
+    "sJJ=1, proj=real_proj, flip=-1": {
+      "eq1_beta_coeff": "1",
+      "eq2_alpha_coeff": "1",
+      "eq2_cubic_coeff": "3*g",
+      "production_needs": "+1, +1, -4*g (plus the -lam*b term)",
+      "matches_production_sans_lambda": false
+    },
+    "sJJ=-1, proj=complex, flip=1": {
+      "eq1_beta_coeff": "-1",
+      "eq2_alpha_coeff": "-1",
+      "eq2_cubic_coeff": "-4*g",
+      "production_needs": "+1, +1, -4*g (plus the -lam*b term)",
+      "matches_production_sans_lambda": false
+    },
+    "sJJ=-1, proj=complex, flip=-1": {
+      "eq1_beta_coeff": "1",
+      "eq2_alpha_coeff": "1",
+      "eq2_cubic_coeff": "-4*g",
+      "production_needs": "+1, +1, -4*g (plus the -lam*b term)",
+      "matches_production_sans_lambda": true
+    },
+    "sJJ=-1, proj=real_proj, flip=1": {
+      "eq1_beta_coeff": "-1",
+      "eq2_alpha_coeff": "-1",
+      "eq2_cubic_coeff": "-3*g",
+      "production_needs": "+1, +1, -4*g (plus the -lam*b term)",
+      "matches_production_sans_lambda": false
+    },
+    "sJJ=-1, proj=real_proj, flip=-1": {
+      "eq1_beta_coeff": "1",
+      "eq2_alpha_coeff": "1",
+      "eq2_cubic_coeff": "-3*g",
+      "production_needs": "+1, +1, -4*g (plus the -lam*b term)",
+      "matches_production_sans_lambda": false
+    }
+  },
+  "D4_conclusion": "eq1 needs flip = -1 (joint b -> -b relabeling), giving eq2 alpha coefficient +1 automatically; the cubic then matches production's -4g ONLY for s_JJ = -1 with the complex projection, i.e. the mostly-MINUS reading of (J.J), the OPPOSITE of the signature M6.1 certified from the printed interaction signs; under the certified mostly-plus reading the production quartic has the wrong sign relative to the pinned dynamics; and the -lam*b term arises from NO reading of (2.1)/(2.2)"
+}

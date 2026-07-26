@@ -142,7 +142,7 @@ What the self-read settles and what it cannot:
 | Item | Status |
 | --- | --- |
 | `(Ω, G)` definitions | NOT in the doc; and the electron island `G ∈ [1.15, 3.25]` does **not** bracket the canonical `g = 1.0625`, so `(Ω, G) ≠ (ω, g)` naively: the dictionary ask to Werbos remains, now surgical |
-| `k` meaning | pinned: the far-field decay constant; Werbos claims the electron island **decays** (`k > 0`), which couples Q9 to Q11: his islands are implicitly the "localized branch elsewhere in parameter space" that Q11(b) asks about, and our no-decaying-channel dispersion argument applies at the canonical point specifically |
+| `k` meaning | pinned: the far-field decay constant; Werbos claims the electron island **decays** (`k > 0`), which couples Q9 to Q11: those islands are implicitly the "localized branch elsewhere in parameter space" that Q11(b) asks about, and our no-decaying-channel dispersion argument applies at the canonical point specifically |
 | `f` normalization (Q6/Q12 evidence) | LoE v5 writes **`f(s) = g s²`** with λ a separate parameter, NOT the `(g/4)s²` transcribed into [`0d_canonical.md § 1`](../../../m6_ouroboros/research/archive/0d_canonical.md); with `s` the phasor norm this gives exactly the benchmark's `λβ + 4gβ³`, consistent with the M7.3 C2 pin |
 | v5's own ansatz | `A_μ = (φ(r),0,0,α(r))e^{−iωt}`, `J_μ = (ρ(r),0,0,β(r))e^{−iωt}`: same-phase complex phasor, consistent with the M7.3 C2 winner extended by scalars (and the scalar extension is exactly the sector our § 1 finding shows is unstable under the naive averaged Hamiltonian) |
 

@@ -1,0 +1,860 @@
+{
+ "meta": {
+  "audit": "m5_21_10_d_audit (adversarial, independent recompute)",
+  "date": "2026-07-20",
+  "own_implementations": [
+   "biaxiality mask + 26-conn labeling (my_census)",
+   "ledger drift vs recomputed t=0 budgets",
+   "pair speeds / angles from raw centroid records",
+   "stencil energies + orderings from t32 npz",
+   "f64 retention from endpoint npz"
+  ]
+ },
+ "C1": {
+  "per_ev": {
+   "C": {
+    "start_state_identified": "M_it1000",
+    "start_identification_ok": true,
+    "E0_recomputed": 6.179181708772606,
+    "E_candidates": {
+     "M": 4.113849987328063,
+     "M_it1000": 6.179181708772606
+    },
+    "tot_first_row_t5": 6.17894947804739,
+    "tot_last_row_t150": 6.178919791579677,
+    "tot_min": 6.178779335673291,
+    "tot_max": 6.17894947804739,
+    "drift_end_vs_first": -4.8044522485362675e-06,
+    "drift_max_vs_first": 2.753580923479649e-05,
+    "drift_max_vs_E0": 6.511753793274851e-05
+   },
+   "B": {
+    "start_state_identified": "M_it1000",
+    "start_identification_ok": true,
+    "E0_recomputed": 7.655584382295599,
+    "E_candidates": {
+     "M": 3.0087880313180673,
+     "M_it1000": 7.655584382295599
+    },
+    "tot_first_row_t5": 7.655149262619398,
+    "tot_last_row_t150": 7.655387875731898,
+    "tot_min": 7.654903755635739,
+    "tot_max": 7.655387875731898,
+    "drift_end_vs_first": 3.117027562937343e-05,
+    "drift_max_vs_first": 3.207082908989534e-05,
+    "drift_max_vs_E0": 8.89059052675382e-05
+   },
+   "A": {
+    "start_state_identified": "M_it1000",
+    "start_identification_ok": true,
+    "E0_recomputed": 3.6132897709765857,
+    "E_candidates": {
+     "M": 3.3324251195440735,
+     "M_it1000": 3.6132897709765857
+    },
+    "tot_first_row_t5": 3.6132393948636583,
+    "tot_last_row_t150": 3.6132771491776863,
+    "tot_min": 3.6132393948636583,
+    "tot_max": 3.6132771491776863,
+    "drift_end_vs_first": 1.0448882540592322e-05,
+    "drift_max_vs_first": 1.0448882540592322e-05,
+    "drift_max_vs_E0": 1.3941896753477738e-05
+   }
+  },
+  "max_drift_vs_E0_all": 8.89059052675382e-05,
+  "max_drift_vs_first_all": 3.207082908989534e-05,
+  "max_drift_end_vs_first_all": 3.117027562937343e-05,
+  "verdict": "NUANCE",
+  "reason": "conservation is real but at the 1e-4 grade, not 5e-5: max-over-rows drift vs the t=0 budget reaches 8.9e-05 (B), and vs the first hist row 3.2e-05; only the end-vs-first-row difference stays <= 5e-5 (3.1e-05). Also a provenance gap: the evolutions start from relax snapshot M_it1000 (energy match), not the stored final M, and the ev JSON does not record it"
+ },
+ "C2": {
+  "frag_census_history_thr009": [
+   {
+    "t": 10.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 20.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 30.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 40.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 50.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 60.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 70.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 80.0,
+    "n_frag": 2,
+    "sizes": [
+     14,
+     14
+    ],
+    "xyz": [
+     [
+      -0.2857142857142857,
+      -0.2857142857142857,
+      -11.785714285714286
+     ],
+     [
+      0.2857142857142857,
+      0.2857142857142857,
+      11.785714285714286
+     ]
+    ]
+   },
+   {
+    "t": 90.0,
+    "n_frag": 2,
+    "sizes": [
+     18,
+     18
+    ],
+    "xyz": [
+     [
+      0.0,
+      0.0,
+      -12.5
+     ],
+     [
+      0.0,
+      0.0,
+      12.5
+     ]
+    ]
+   },
+   {
+    "t": 100.0,
+    "n_frag": 2,
+    "sizes": [
+     11,
+     11
+    ],
+    "xyz": [
+     [
+      -1.7727272727272727,
+      -1.7727272727272727,
+      -8.772727272727273
+     ],
+     [
+      1.7727272727272727,
+      1.7727272727272727,
+      8.772727272727273
+     ]
+    ]
+   },
+   {
+    "t": 110.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 120.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 130.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 140.0,
+    "n_frag": 0,
+    "sizes": [],
+    "xyz": []
+   },
+   {
+    "t": 150.0,
+    "n_frag": 5,
+    "sizes": [
+     13,
+     13,
+     13,
+     13,
+     11
+    ],
+    "xyz": [
+     [
+      -3.5,
+      -0.5,
+      -13.5
+     ],
+     [
+      -0.5,
+      -3.5,
+      -13.5
+     ],
+     [
+      0.5,
+      3.5,
+      13.5
+     ],
+     [
+      3.5,
+      0.5,
+      13.5
+     ],
+     [
+      -3.5,
+      -0.5,
+      14.5
+     ]
+    ]
+   }
+  ],
+  "t_first_two_fragments": 80.0,
+  "n_departing_tracks_thr009": 2,
+  "big_remnant": {
+   "size_first": 680,
+   "size_last": 1300,
+   "departing": false
+  },
+  "pair": {
+   "sizes": [
+    [
+     14,
+     13
+    ],
+    [
+     14,
+     13
+    ]
+   ],
+   "speeds_recomputed": [
+    0.05213077458957061,
+    0.05213077458957061
+   ],
+   "dir_angle_deg_recomputed": 108.91335498854015,
+   "pos_angle_deg_t_first": 180.0,
+   "r_first": [
+    11.792638658528135,
+    11.792638658528135
+   ],
+   "r_last": [
+    13.955285736952863,
+    13.955285736952863
+   ]
+  },
+  "spot": {
+   "M_it3200": {
+    "t": 80.0,
+    "n_offcenter_frag_census_cut": 2,
+    "n_filament_like": 0,
+    "n_full_domain_edge_connected": 0,
+    "frags": [
+     {
+      "size": 14,
+      "xyz": [
+       -0.2857142857142857,
+       -0.2857142857142857,
+       -11.785714285714286
+      ],
+      "r_xyz": 11.792638658528135,
+      "r_cells_min": 9.630680142129112,
+      "r_cells_mean": 11.835754663679563,
+      "r_cells_max": 14.517231140957975,
+      "radial_span": 4.886550998828863,
+      "bbox_extent": [
+       2.0,
+       2.0,
+       5.0
+      ],
+      "full_domain_comp_sizes": [
+       14
+      ],
+      "full_domain_comp_r_max": 14.517231140957975,
+      "full_domain_reaches_edge_zone": false
+     },
+     {
+      "size": 14,
+      "xyz": [
+       0.2857142857142857,
+       0.2857142857142857,
+       11.785714285714286
+      ],
+      "r_xyz": 11.792638658528135,
+      "r_cells_min": 9.630680142129112,
+      "r_cells_mean": 11.835754663679563,
+      "r_cells_max": 14.517231140957975,
+      "radial_span": 4.886550998828863,
+      "bbox_extent": [
+       2.0,
+       2.0,
+       5.0
+      ],
+      "full_domain_comp_sizes": [
+       14
+      ],
+      "full_domain_comp_r_max": 14.517231140957975,
+      "full_domain_reaches_edge_zone": false
+     }
+    ],
+    "max_pos_angle_deg": 180.0,
+    "mask_cells_census_region": 868
+   },
+   "M_it4800": {
+    "t": 120.0,
+    "n_offcenter_frag_census_cut": 0,
+    "n_filament_like": 0,
+    "n_full_domain_edge_connected": 0,
+    "frags": [],
+    "max_pos_angle_deg": null,
+    "mask_cells_census_region": 2666
+   },
+   "M_it6000": {
+    "t": 150.0,
+    "n_offcenter_frag_census_cut": 8,
+    "n_filament_like": 8,
+    "n_full_domain_edge_connected": 8,
+    "frags": [
+     {
+      "size": 13,
+      "xyz": [
+       -3.5,
+       -0.5,
+       -13.5
+      ],
+      "r_xyz": 13.955285736952863,
+      "r_cells_min": 8.2915619758885,
+      "r_cells_mean": 13.991846462537904,
+      "r_cells_max": 19.817921182606415,
+      "radial_span": 11.526359206717915,
+      "bbox_extent": [
+       0.0,
+       0.0,
+       12.0
+      ],
+      "full_domain_comp_sizes": [
+       14
+      ],
+      "full_domain_comp_r_max": 20.80264406271472,
+      "full_domain_reaches_edge_zone": true
+     },
+     {
+      "size": 13,
+      "xyz": [
+       -0.5,
+       -3.5,
+       -13.5
+      ],
+      "r_xyz": 13.955285736952863,
+      "r_cells_min": 8.2915619758885,
+      "r_cells_mean": 13.991846462537904,
+      "r_cells_max": 19.817921182606415,
+      "radial_span": 11.526359206717915,
+      "bbox_extent": [
+       0.0,
+       0.0,
+       12.0
+      ],
+      "full_domain_comp_sizes": [
+       14
+      ],
+      "full_domain_comp_r_max": 20.80264406271472,
+      "full_domain_reaches_edge_zone": true
+     },
+     {
+      "size": 13,
+      "xyz": [
+       0.5,
+       3.5,
+       13.5
+      ],
+      "r_xyz": 13.955285736952863,
+      "r_cells_min": 8.2915619758885,
+      "r_cells_mean": 13.991846462537904,
+      "r_cells_max": 19.817921182606415,
+      "radial_span": 11.526359206717915,
+      "bbox_extent": [
+       0.0,
+       0.0,
+       12.0
+      ],
+      "full_domain_comp_sizes": [
+       14
+      ],
+      "full_domain_comp_r_max": 20.80264406271472,
+      "full_domain_reaches_edge_zone": true
+     },
+     {
+      "size": 13,
+      "xyz": [
+       3.5,
+       0.5,
+       13.5
+      ],
+      "r_xyz": 13.955285736952863,
+      "r_cells_min": 8.2915619758885,
+      "r_cells_mean": 13.991846462537904,
+      "r_cells_max": 19.817921182606415,
+      "radial_span": 11.526359206717915,
+      "bbox_extent": [
+       0.0,
+       0.0,
+       12.0
+      ],
+      "full_domain_comp_sizes": [
+       14
+      ],
+      "full_domain_comp_r_max": 20.80264406271472,
+      "full_domain_reaches_edge_zone": true
+     },
+     {
+      "size": 11,
+      "xyz": [
+       -3.5,
+       -0.5,
+       14.5
+      ],
+      "r_xyz": 14.9248115565993,
+      "r_cells_min": 10.136567466356647,
+      "r_cells_mean": 14.945133247031208,
+      "r_cells_max": 19.817921182606415,
+      "radial_span": 9.681353716249768,
+      "bbox_extent": [
+       0.0,
+       0.0,
+       10.0
+      ],
+      "full_domain_comp_sizes": [
+       12
+      ],
+      "full_domain_comp_r_max": 20.80264406271472,
+      "full_domain_reaches_edge_zone": true
+     },
+     {
+      "size": 11,
+      "xyz": [
+       -0.5,
+       -3.5,
+       14.5
+      ],
+      "r_xyz": 14.9248115565993,
+      "r_cells_min": 10.136567466356647,
+      "r_cells_mean": 14.945133247031208,
+      "r_cells_max": 19.817921182606415,
+      "radial_span": 9.681353716249768,
+      "bbox_extent": [
+       0.0,
+       0.0,
+       10.0
+      ],
+      "full_domain_comp_sizes": [
+       12
+      ],
+      "full_domain_comp_r_max": 20.80264406271472,
+      "full_domain_reaches_edge_zone": true
+     },
+     {
+      "size": 11,
+      "xyz": [
+       0.5,
+       3.5,
+       -14.5
+      ],
+      "r_xyz": 14.9248115565993,
+      "r_cells_min": 10.136567466356647,
+      "r_cells_mean": 14.945133247031206,
+      "r_cells_max": 19.817921182606415,
+      "radial_span": 9.681353716249768,
+      "bbox_extent": [
+       0.0,
+       0.0,
+       10.0
+      ],
+      "full_domain_comp_sizes": [
+       12
+      ],
+      "full_domain_comp_r_max": 20.80264406271472,
+      "full_domain_reaches_edge_zone": true
+     },
+     {
+      "size": 11,
+      "xyz": [
+       3.5,
+       0.5,
+       -14.5
+      ],
+      "r_xyz": 14.9248115565993,
+      "r_cells_min": 10.136567466356647,
+      "r_cells_mean": 14.945133247031206,
+      "r_cells_max": 19.817921182606415,
+      "radial_span": 9.681353716249768,
+      "bbox_extent": [
+       0.0,
+       0.0,
+       10.0
+      ],
+      "full_domain_comp_sizes": [
+       12
+      ],
+      "full_domain_comp_r_max": 20.80264406271472,
+      "full_domain_reaches_edge_zone": true
+     }
+    ],
+    "max_pos_angle_deg": 179.99999914622634,
+    "mask_cells_census_region": 1630
+   }
+  },
+  "core_checks_pass": true,
+  "verdict": "NUANCE",
+  "reason": "the JSON-level numbers reproduce exactly (census gains 2 departing antipodal size-14 objects at t=80, same recomputed centroid speed 0.052, dir angle 108.9 deg, big remnant non-departing), BUT the raw snapshots do not support the stable-departing-fragment picture: at t=80 each object is a 2x2x5 rod (radial span 4.9), at t=120 and t=140 the census resolves NO off-center fragments (own labeling: 0 at t=120), and at t=150 there are 8 candidates, not 2, ALL 8 of them 1-cell-wide z-columns spanning r 8.3-19.8 (mirror quadruplets of the t=80 pair), 8 of which connect to the edge zone once the census r-cut is removed. Antipodal geometry and cell counts 13-14 do hold; 'two compact fragments departing at 0.052' is a tracker construction over threshold filaments"
+ },
+ "C3": {
+  "departing_counts": {
+   "0.06": 3,
+   "0.09": 2,
+   "0.15": 0
+  },
+  "pair_at_006": true,
+  "pair_at_009": true,
+  "pair_min_cross_thr_distance_lt3": true,
+  "pair_006_records": [
+   {
+    "xyz_first": [
+     -1.0,
+     -1.0,
+     11.5
+    ],
+    "t_first": 70.0,
+    "sizes": [
+     6,
+     5
+    ],
+    "speed": 0.026516504294495535
+   },
+   {
+    "xyz_first": [
+     1.0,
+     1.0,
+     -11.5
+    ],
+    "t_first": 70.0,
+    "sizes": [
+     6,
+     5
+    ],
+    "speed": 0.026516504294495535
+   }
+  ],
+  "note_006_third_departing": [
+   {
+    "xyz_first": [
+     1.0595238095238095,
+     1.0595238095238095,
+     0.0
+    ],
+    "sizes": [
+     84,
+     6
+    ],
+    "r": [
+     1.4983929410857793,
+     5.814254514170803
+    ]
+   }
+  ],
+  "verdict": "CONFIRMED",
+  "reason": "departing counts 3/2/0 across 0.06/0.09/0.15; an antipodal departing pair exists at both 0.06 and 0.09 at the same location (cross-threshold distance < 3)"
+ },
+ "C4": {
+  "volume_thr009_lp": {
+   "t10": 4298,
+   "t150": 644,
+   "ratio": 0.1498371335504886
+  },
+  "volume_thr009_own": {
+   "t10": 4298,
+   "t150": 644,
+   "ratio": 0.1498371335504886
+  },
+  "own_spot": {
+   "M_it400": {
+    "t": 10.0,
+    "mask_cells_census_region": 4298,
+    "mask_cells_full_domain": 7058,
+    "largest_compact_nonedge": 0,
+    "largest_compact_xyz": null,
+    "top_comps": [
+     {
+      "size": 4298,
+      "r_xyz": 0.0,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   "M_it6000": {
+    "t": 150.0,
+    "mask_cells_census_region": 644,
+    "mask_cells_full_domain": 3262,
+    "largest_compact_nonedge": 6,
+    "largest_compact_xyz": [
+     -0.16666666666666666,
+     -0.16666666666666666,
+     -9.166666666666666
+    ],
+    "top_comps": [
+     {
+      "size": 316,
+      "r_xyz": 8.164636075566065,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 316,
+      "r_xyz": 8.164636075566065,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 6,
+      "r_xyz": 9.169696468985945,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 6,
+      "r_xyz": 9.169696468985945,
+      "touches_edge_zone": false
+     }
+    ]
+   }
+  },
+  "absorbed_final": 3.7903564482017815,
+  "budget_E0": 7.655584382295599,
+  "absorbed_over_budget": 0.49511000844917963,
+  "rot_final_deg": 20.141721522912867,
+  "end_largest_compact_nonedge": 6,
+  "end_edge_reaching_note": [
+   {
+    "size": 316,
+    "r_xyz": 8.164636075566065,
+    "touches_edge_zone": true
+   },
+   {
+    "size": 316,
+    "r_xyz": 8.164636075566065,
+    "touches_edge_zone": true
+   }
+  ],
+  "verdict": "CONFIRMED",
+  "reason": "own mask volume falls 4298 -> 644 cells (x0.15), absorbed/budget = 0.495 ~ half, rot = 20.1 deg, largest compact non-edge end remnant = 6 cells; note two ~316-cell edge-reaching mirror shells do remain at r~13 but the claim scoped itself to compact non-edge"
+ },
+ "C5": {
+  "absorbed_final": 0.15810112102095555,
+  "budget_E0": 3.6132897709765857,
+  "absorbed_over_budget": 0.04375545030760835,
+  "E_drop_vs_E0": 0.05587683945867862,
+  "E_drop_vs_first_row": 0.04904628496015889,
+  "EplusKE_drop_vs_E0": 0.043758943467498514,
+  "departing_tracks": [
+   {
+    "r_first": 0.0,
+    "r_last": 7.7524669494073235,
+    "sizes": [
+     402,
+     55
+    ],
+    "speed": 0.05537476392433802,
+    "xyz_first": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "r_first": 5.557457732400514,
+    "r_last": 7.805900273615636,
+    "sizes": [
+     89,
+     56
+    ],
+    "speed": 0.022858960663164788,
+    "xyz_first": [
+     3.9269662921348316,
+     -3.9269662921348316,
+     0.20786516853932585
+    ]
+   }
+  ],
+  "specdev_first_last": [
+   0.1581814388633671,
+   0.13907399046805358
+  ],
+  "specdev_rel_change": -0.12079450365739834,
+  "specdev_monotone_nonincreasing": true,
+  "rot_final_deg": 11.968307591095796,
+  "rot_monotone_increasing": true,
+  "end_largest_compact_nonedge": 56,
+  "end_largest_compact_xyz": [
+   5.517857142857143,
+   -5.517857142857143,
+   -0.19642857142857142
+  ],
+  "checks": {
+   "absorbed_le_5pct": true,
+   "E_drop_le_3pct": false,
+   "claimed_artifact_track_found": true,
+   "all_departing_centered": false,
+   "departing_all_eroding_unlike_C_pair": true,
+   "specdev_flat_no_melt": true,
+   "rot_12deg_growing": true
+  },
+  "verdict": "NUANCE",
+  "reason": "the null holds qualitatively (absorbed 4.4% <= 5%, the 402->55 r_first=0 artifact track is real, all departing tracks are eroding masks unlike C's stable pair, specdev drifts only -12% with no melt while rot grows monotonically to 12.0 deg) BUT the E-drop bound is wrong: E falls 4.9% from the first hist row and 5.6% from the t=0 budget, not <= 3%; and the second departing track starts at r=5.6 (sizes 89->56), not r=0, so 'centered artifacts' is exact for only one of the two"
+ },
+ "C6": {
+  "stops": {
+   "t32_A": "f_tol",
+   "t32_R4": "f_tol",
+   "t32_R6": "f_tol"
+  },
+  "E_mine": {
+   "t32_A": {
+    "sym": 4.767566744686399,
+    "fwd": 4.767566931047158,
+    "2h": 4.4023438252680975
+   },
+   "t32_R4": {
+    "sym": 4.766186369846297,
+    "fwd": 4.766186369837211,
+    "2h": 4.402242341659052
+   },
+   "t32_R6": {
+    "sym": 4.765763933330432,
+    "fwd": 4.765763933247541,
+    "2h": 4.403157683578214
+   }
+  },
+  "orders_mine": {
+   "sym": [
+    "t32_R6",
+    "t32_R4",
+    "t32_A"
+   ],
+   "fwd": [
+    "t32_R6",
+    "t32_R4",
+    "t32_A"
+   ],
+   "2h": [
+    "t32_R4",
+    "t32_A",
+    "t32_R6"
+   ]
+  },
+  "rel_spread_sym": 0.0003782838137152734,
+  "rel_spread_fwd": 0.00037832293518327305,
+  "rel_spread_2h": 0.0002079262903133286,
+  "offset_2h_per_tag": [
+   -0.07660572761259277,
+   -0.07635958813733534,
+   -0.07608565065849171
+  ],
+  "offset_2h_mean": -0.07635032213613994,
+  "recorded_vs_mine_max_rel_diff": 0.0,
+  "verdict": "CONFIRMED",
+  "reason": "all stops f_tol; my sym spread 3.78e-04 <= 4e-4; sym order ['t32_R6', 't32_R4', 't32_A'] == fwd order; 2h order ['t32_R4', 't32_A', 't32_R6'] flips it at 2h spread 2.08e-04; 2h offset mean -7.64%"
+ },
+ "C7": {
+  "per_eig_rows": {
+   "f64_A": [
+    0.8800102463641374,
+    0.95460624460718,
+    0.8676764057915684
+   ],
+   "f64_B": [
+    0.8958129160094846,
+    0.8293766801449369,
+    0.8947368978336475
+   ],
+   "f64_C": [
+    0.7208202507984935,
+    0.7114920257348849,
+    0.9905008592862876
+   ],
+   "f48_A": [
+    0.8345257728114022,
+    0.9354247919110097,
+    0.8258142030296022
+   ],
+   "f48_B": [
+    0.8417248801846663,
+    0.7542741280803364,
+    0.8528820686432853
+   ],
+   "f48_C": [
+    0.33641182645757206,
+    0.3230238736798817,
+    0.9820116450461367
+   ]
+  },
+  "means_rows": {
+   "f64_A": 0.9007642989209619,
+   "f64_B": 0.8733088313293563,
+   "f64_C": 0.8076043786065554,
+   "f48_A": 0.8652549225840046,
+   "f48_B": 0.8162936923027627,
+   "f48_C": 0.5471491150611968
+  },
+  "per_eig_f64_recomputed": {
+   "f64_A": [
+    0.8800102464098278,
+    0.954606244607714,
+    0.867676405802531
+   ],
+   "f64_B": [
+    0.8958129158832887,
+    0.8293766800673366,
+    0.8947368977875834
+   ],
+   "f64_C": [
+    0.720820250893004,
+    0.711492025752492,
+    0.9905008592079366
+   ]
+  },
+  "recompute_max_abs_dev": 1.261959425846726e-10,
+  "f48_npz_present": {
+   "f48_A": false,
+   "f48_B": false,
+   "f48_C": false
+  },
+  "checks": {
+   "f64C_two_depressed_one_high": true,
+   "f48C_deeper": true,
+   "f64A_ge_f48A": true
+  },
+  "verdict": "CONFIRMED",
+  "reason": "f64_C per-eig [0.721, 0.711, 0.991] vs f48_C [0.336, 0.323, 0.982]; f64_A >= f48_A on every eig and the mean; my npz recompute of all f64 rows matches to 1.3e-10. Caveat: the f48 endpoint npz no longer exist, so the f48 values rest on the row JSONs alone"
+ }
+}

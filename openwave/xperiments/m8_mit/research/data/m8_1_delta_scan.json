@@ -1,0 +1,319 @@
+{
+ "W": 1.0,
+ "delta0_values": [
+  0.001,
+  0.0019306977288832496,
+  0.003727593720314938,
+  0.0071968567300115215,
+  0.013894954943731374,
+  0.026826957952797246,
+  0.0517947467923121,
+  0.1,
+  0.19306977288832497,
+  0.3727593720314938,
+  0.7196856730011514,
+  1.3894954943731375,
+  2.6826957952797246,
+  5.179474679231207,
+  10.0
+ ],
+ "method": "exact log-trace Frobenius shooting (series about cone, s=1-sin y)",
+ "eigencondition": "v_reg(lam)=0 OR F(lam)=v_log'(lam)-ln(delta0/2R)*v_reg'(lam)=0",
+ "vreg_zeros_positive": [
+  2.0,
+  12.0,
+  29.99999999999998
+ ],
+ "n_ge1_sector_minima_W1_fem": [
+  {
+   "sector_n": 1,
+   "mu": 2.4674011002723395,
+   "lambda": 4.038197427041537,
+   "err": 3.389528657748997e-10
+  },
+  {
+   "sector_n": 2,
+   "mu": 9.869604401089358,
+   "lambda": 13.01119705453479,
+   "err": 2.123437425893826e-09
+  },
+  {
+   "sector_n": 3,
+   "mu": 22.206609902451056,
+   "lambda": 26.91899888241181,
+   "err": 6.324746948394022e-09
+  },
+  {
+   "sector_n": 4,
+   "mu": 39.47841760435743,
+   "lambda": 45.76160291060873,
+   "err": 1.3849714264324575e-08
+  }
+ ],
+ "mu0_A_exact_eigs_for_reference": [
+  0.0,
+  2.0,
+  5.999999999999999,
+  12.0,
+  19.99999999999998,
+  29.99999999999998,
+  42.00000000000005
+ ],
+ "per_delta0": [
+  {
+   "delta0": 0.001,
+   "L=ln(delta0/2R)": -7.600902459542082,
+   "negative_eigenvalues": [
+    -1260947.3400820869
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.15086918639975896,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.15086918639975896,
+    2.0,
+    6.8362655659349025
+   ]
+  },
+  {
+   "delta0": 0.0019306977288832496,
+   "L=ln(delta0/2R)": -6.943021004400927,
+   "negative_eigenvalues": [
+    -338274.0566409176
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.16740751308382334,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.16740751308382334,
+    2.0,
+    6.937974940467878
+   ]
+  },
+  {
+   "delta0": 0.003727593720314938,
+   "L=ln(delta0/2R)": -6.285139549259771,
+   "negative_eigenvalues": [
+    -90748.88285053348
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.1879908552417125,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.1879908552417125,
+    2.0,
+    7.067250371674619
+   ]
+  },
+  {
+   "delta0": 0.0071968567300115215,
+   "L=ln(delta0/2R)": -5.6272580941186146,
+   "negative_eigenvalues": [
+    -24345.408555509777
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.2142948066564459,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.2142948066564459,
+    2.0,
+    7.2366709588509455
+   ]
+  },
+  {
+   "delta0": 0.013894954943731374,
+   "L=ln(delta0/2R)": -4.969376638977459,
+   "negative_eigenvalues": [
+    -6531.376428342321
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.24905505752935114,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.24905505752935114,
+    2.0,
+    7.467437129033231
+   ]
+  },
+  {
+   "delta0": 0.026826957952797246,
+   "L=ln(delta0/2R)": -4.311495183836303,
+   "negative_eigenvalues": [
+    -1752.4135241975416
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.29704421278747817,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.29704421278747817,
+    2.0,
+    7.7975998408007134
+   ]
+  },
+  {
+   "delta0": 0.0517947467923121,
+   "L=ln(delta0/2R)": -3.6536137286951473,
+   "negative_eigenvalues": [
+    -470.36317139877036
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.3673306585121755,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.3673306585121755,
+    2.0,
+    8.30009093741619
+   ]
+  },
+  {
+   "delta0": 0.1,
+   "L=ln(delta0/2R)": -2.995732273553991,
+   "negative_eigenvalues": [
+    -126.42812248361638
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.47917927149517586,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.47917927149517586,
+    2.0,
+    9.119590035345016
+   ]
+  },
+  {
+   "delta0": 0.19306977288832497,
+   "L=ln(delta0/2R)": -2.3378508184128353,
+   "negative_eigenvalues": [
+    -34.16104164901501
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 0.6797005578486544,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    0.6797005578486544,
+    2.0,
+    10.499281181074707
+   ]
+  },
+  {
+   "delta0": 0.3727593720314938,
+   "L=ln(delta0/2R)": -1.67996936327168,
+   "negative_eigenvalues": [
+    -9.41371811169589
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 1.0979476504999885,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    1.0979476504999885,
+    2.0,
+    12.0
+   ]
+  },
+  {
+   "delta0": 0.7196856730011514,
+   "L=ln(delta0/2R)": -1.022087908130524,
+   "negative_eigenvalues": [
+    -2.8701549117034117
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 1.9637446372848142,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    1.9637446372848142,
+    2.0,
+    12.0
+   ]
+  },
+  {
+   "delta0": 1.3894954943731375,
+   "L=ln(delta0/2R)": -0.3642064529893675,
+   "negative_eigenvalues": [
+    -1.217344542108064
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 2.0,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    2.0,
+    3.007739241204191,
+    12.0
+   ]
+  },
+  {
+   "delta0": 2.6826957952797246,
+   "L=ln(delta0/2R)": 0.2936750021517881,
+   "negative_eigenvalues": [
+    -0.7099220741304484
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 2.0,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    2.0,
+    3.7529226309907546,
+    12.0
+   ]
+  },
+  {
+   "delta0": 5.179474679231207,
+   "L=ln(delta0/2R)": 0.9515564572929437,
+   "negative_eigenvalues": [
+    -0.4917953354863832
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 2.0,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    2.0,
+    4.2314859387123525,
+    12.0
+   ]
+  },
+  {
+   "delta0": 10.0,
+   "L=ln(delta0/2R)": 1.6094379124341003,
+   "negative_eigenvalues": [
+    -0.37416405706897227
+   ],
+   "n_negative": 1,
+   "zeroish_eigenvalue_exists": false,
+   "F_at_lambda0": 1.0,
+   "first_positive": 2.0,
+   "first_positive_source": "mu0-channel",
+   "mu0_channel_positive_first3": [
+    2.0,
+    4.551037641935974,
+    12.0
+   ]
+  }
+ ]
+}

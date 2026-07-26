@@ -1,0 +1,93 @@
+{
+  "task": "M6.4 D2: three-ODE comparison",
+  "term_table": {
+    "centrifugal -1/r^2": {
+      "MAY/LEAN": "present (both eqs)",
+      "JUNE": "absent",
+      "v11_reduction_M6.2": "present"
+    },
+    "omega^2 sign": {
+      "MAY/LEAN": "+w^2 (Klein-Gordon reduction)",
+      "JUNE": "-w^2 inside -(1+w^2) (flipped)",
+      "v11_reduction_M6.2": "+w^2"
+    },
+    "unit mass": {
+      "MAY/LEAN": "none",
+      "JUNE": "1 (both fields)",
+      "v11_reduction_M6.2": "none printed"
+    },
+    "cross coupling": {
+      "MAY/LEAN": "+1 (both eqs)",
+      "JUNE": "+c/2 = +1/2 (both eqs)",
+      "v11_reduction_M6.2": "+1-class"
+    },
+    "cubic term": {
+      "MAY/LEAN": "-4g b^3 (beta eq only)",
+      "JUNE": "-4g a^3 AND -4g b^3 (moved to RHS)",
+      "v11_reduction_M6.2": "beta-sector only"
+    }
+  },
+  "V1_redefinition_scan": {
+    "any_redefinition_matches": false,
+    "details": [
+      {
+        "sa": 1,
+        "sb": 1,
+        "linear_a_mismatch": "-2*w**2 - 1 + r**(-2)",
+        "cubic_a_mismatch": "4*g",
+        "identical": false
+      },
+      {
+        "sa": 1,
+        "sb": -1,
+        "linear_a_mismatch": "-2*w**2 - 1 + r**(-2)",
+        "cubic_a_mismatch": "4*g",
+        "identical": false
+      },
+      {
+        "sa": -1,
+        "sb": 1,
+        "linear_a_mismatch": "-2*w**2 - 1 + r**(-2)",
+        "cubic_a_mismatch": "4*g",
+        "identical": false
+      },
+      {
+        "sa": -1,
+        "sb": -1,
+        "linear_a_mismatch": "-2*w**2 - 1 + r**(-2)",
+        "cubic_a_mismatch": "4*g",
+        "identical": false
+      }
+    ]
+  },
+  "V2_jacobi_cross": {
+    "linearized_cross_term": "c/2",
+    "printed_Q12": "-c/4",
+    "printed_matches_linearization": false,
+    "correct_is_half_c": true
+  },
+  "V3_may_farfield": {
+    "eigenvalues": [
+      "-lam/2 - w**2 - sqrt(lam**2 + 4)/2",
+      "-lam/2 - w**2 + sqrt(lam**2 + 4)/2"
+    ],
+    "equal_to_Xpm_minus_w2": {
+      "-lam/2 - w**2 - sqrt(lam**2 + 4)/2": [
+        false,
+        true
+      ],
+      "-lam/2 - w**2 + sqrt(lam**2 + 4)/2": [
+        true,
+        false
+      ]
+    },
+    "X_minus_always_negative": true,
+    "threshold": "w^2 < X_plus = (-lam+sqrt(lam^2+4))/2"
+  },
+  "V4_june_farfield": {
+    "det": "lam*w**2 + lam + w**4 + 2*w**2 + 3/4",
+    "det_at_w0_lam0": "3/4",
+    "positive_definite_all_w_lam_nonneg": true,
+    "meaning": "both far-field channels decay at EVERY omega: localization is structural in the June system, no omega-selection is possible"
+  }
+}

@@ -6,6 +6,8 @@
 > not a particle-emergence model**, and it is not scored in the
 > [`MODELS.md`](../../../MODELS.md) coverage matrix.
 
+![M1_hero](../../../images/demo2.gif)
+
 ## Identity
 
 | Field | Value |

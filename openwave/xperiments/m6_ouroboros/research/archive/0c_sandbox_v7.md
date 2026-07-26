@@ -365,7 +365,7 @@ After the v9 LoE paper cited our v1 H/Q = 1.6918 as "independent reproduction
 (Griesi 2026)" in §5.1 and §9 criterion 9, we re-ran sandbox_v1 to verify
 under current understanding. **Finding: the number is reproducible, but it
 comes from a systematic search across ~60 variants, not from a first-principles
-derivation.** Rodrigo's instinct that v1 might have been "wrong tool, lucky
+derivation.** The maintainer's instinct that v1 might have been "wrong tool, lucky
 number" was empirically correct.
 
 ### What v1 actually produced

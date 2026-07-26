@@ -1,0 +1,456 @@
+{
+ "task": "M5.21.1e adversarial audit",
+ "auditor": "independent re-implementation (m5_21_1e_audit_check.py)",
+ "wscale": 0.0007240238793069094,
+ "g": 8.0,
+ "delta": 0.3,
+ "C2": {
+  "claimed": "orbit tangents leave Tr((eta M)^p) exactly invariant",
+  "measured": {
+   "pointwise_FD_worst_abs": 0.004470348358154297,
+   "pointwise_FD_worst_vs_random_dir": 1.4187507276268298e-09,
+   "finite_Lam_invariance_worst_rel": 1.6717102797592947e-15,
+   "field_level_FD_rel_endpoint": 0.0,
+   "traces_power_vs_eig_route_rel": 4.438715958180857e-16
+  },
+  "verdict": "CONFIRMED"
+ },
+ "C1": {
+  "claimed": {
+   "endpoint_tan_frac": 0.054,
+   "seed_tan_frac": 0.0003,
+   "headline": "97-99.97% of the slide force orthogonal"
+  },
+  "measured": {
+   "A0_force_vs_myFD_rel": [
+    6.927217437767054e-07,
+    1.425437420172216e-07,
+    1.8417062841141832e-07
+   ],
+   "endpoint_tan_frac_all_cells": 0.054111865475071165,
+   "endpoint_tan_frac_free_cells": 0.05384888272123209,
+   "endpoint_tan_frac_cutoff1e-6": 0.054111865475071165,
+   "endpoint_orthogonal_pct": 94.58881345249289,
+   "seed64_tan_frac": 0.00026067226212361517
+  },
+  "verdict": "QUALIFIED (tan_frac values confirmed exactly; the '97-99.97% orthogonal' headline does not cover the endpoint, which is 94.6% orthogonal)"
+ },
+ "C3": {
+  "claimed": {
+   "q_inside_r20": "~0",
+   "q_r40_58": "+0.98..0.99",
+   "reading": "charge migrated to a boundary shell"
+  },
+  "measured": {
+   "q_vs_r_npts241_1921": {
+    "5": [
+     0.0004762436730638532,
+     0.0004762436730648427
+    ],
+    "10": [
+     0.0012727672710496998,
+     0.0012727672710483569
+    ],
+    "15": [
+     2.0015547225730956,
+     2.0015547225730956
+    ],
+    "20": [
+     0.0017438978855744717,
+     0.001743897885573977
+    ],
+    "25": [
+     3.0019171459950145,
+     3.0019171459950145
+    ],
+    "30": [
+     3.001922553663222,
+     3.001922553663222
+    ],
+    "35": [
+     1.002108005939366,
+     1.002108005939366
+    ],
+    "40": [
+     1.0020862993672084,
+     1.0020862993672084
+    ],
+    "45": [
+     1.002315649040853,
+     1.0023156490408538
+    ],
+    "50": [
+     1.002379298104339,
+     1.0023792981043382
+    ],
+    "55": [
+     1.002706690179697,
+     1.0027066901796968
+    ],
+    "58": [
+     1.0028127716586483,
+     1.002812771658648
+    ]
+   },
+   "top_eig_gap_min_median": {
+    "5": [
+     0.49080846286764845,
+     0.5320183949321021
+    ],
+    "10": [
+     0.48520885587631046,
+     0.6541518164178396
+    ],
+    "15": [
+     0.027715306179385668,
+     0.607174396863615
+    ],
+    "20": [
+     0.17915772803270608,
+     0.5881781250136496
+    ],
+    "25": [
+     0.04019730153604989,
+     0.6089808512434146
+    ],
+    "30": [
+     0.017263240165365012,
+     0.6518389120079788
+    ],
+    "35": [
+     0.015127628933014725,
+     0.674060653686194
+    ],
+    "40": [
+     0.3264631703616457,
+     0.6863197253979496
+    ],
+    "45": [
+     0.44253454324374913,
+     0.691802508262527
+    ],
+    "50": [
+     0.599912787254362,
+     0.695474101194171
+    ],
+    "55": [
+     0.6760343641270762,
+     0.6967186799814499
+    ],
+    "58": [
+     0.6896348989044689,
+     0.6980120088528031
+    ]
+   },
+   "u_shell_edges": [
+    0.0,
+    4.0,
+    8.0,
+    12.0,
+    16.0,
+    20.0,
+    24.0,
+    28.0,
+    32.0,
+    36.0,
+    40.0,
+    44.0,
+    48.0,
+    52.0,
+    56.0,
+    60.0,
+    64.0
+   ],
+   "u_shell_endpoint": [
+    0.19964961388822822,
+    0.67472141882997,
+    0.8673084025708476,
+    1.701818650392451,
+    1.0074327971676866,
+    0.9774091131647813,
+    0.7448627770552259,
+    0.5955302605226498,
+    0.4742260998959704,
+    0.4499823360585822,
+    0.42292478429492153,
+    0.3499406336235822,
+    0.28416625422370423,
+    0.19121784607362713,
+    0.12419997456662735,
+    0.09073118313967932
+   ],
+   "u_shell_seed": [
+    2.7328293174463267,
+    8.013363351794212,
+    3.274154921662568,
+    1.8664133342071239,
+    1.1117146649603864,
+    0.7523046716121229,
+    0.5642146820772496,
+    0.4228408484537809,
+    0.32679494477805093,
+    0.2715055123540324,
+    0.2243837554655954,
+    0.18520172821453684,
+    0.15977474761945842,
+    0.1381241421359789,
+    0.11972546730763156,
+    0.09632420140529518
+   ],
+   "u_peak_shell": [
+    12.0,
+    16.0
+   ],
+   "u_frac_r_lt_20": 0.4861152802610871,
+   "u_frac_r_ge_28": 0.3257841392904116,
+   "contain_u_only": {
+    "r50": 20.796634343085422,
+    "r90": 46.28714724413247,
+    "coreball8": 0.09461664943008007,
+    "E": 9.241196322052616
+   }
+  },
+  "verdict": "QUALIFIED (outer-shell winding confirmed; interior NOT simply q=0: wound rings / ill-defined director at intermediate radii)",
+  "verdict_energy": "u_eta does NOT peak in an outer shell: peak shell r=[12,16], broad spread"
+ },
+ "C4": {
+  "claimed": {
+   "r90": 6.5,
+   "coreball": 0.93,
+   "E_u_no_dilution": "20.3 -> 20.6",
+   "virial_u_over_3v": 0.053
+  },
+  "measured": {
+   "E_u": 20.57330091314924,
+   "E_v4": 128.98932520190007,
+   "virial_u_over_3v": 0.05316538372703053,
+   "contain_total": {
+    "r50": 3.5355339059327378,
+    "r90": 6.519202405202649,
+    "coreball8": 0.9349213171339693,
+    "E": 149.56262611504962
+   },
+   "contain_u_only": {
+    "r50": 7.516648189186454,
+    "r90": 27.721832551258224,
+    "coreball8": 0.5352241644833127,
+    "E": 20.573300913149154
+   },
+   "contain_u_only_SEED": {
+    "r50": 7.648529270389178,
+    "r90": 27.97320146139873,
+    "coreball8": 0.5280989898902939,
+    "E": 20.34882261651916
+   },
+   "E_u_seed": 20.348822616519236,
+   "gnorm": 195.68484756351398,
+   "continuation_probe_600it": [
+    {
+     "it": 1,
+     "E": 149.55954508127695,
+     "E_u": 20.57341881659148,
+     "r90": 6.519202405202649,
+     "coreball8": 0.9349202826751362
+    },
+    {
+     "it": 200,
+     "E": 149.42250490084103,
+     "E_u": 20.57470882942668,
+     "r90": 6.519202405202649,
+     "coreball8": 0.9348641496555687
+    },
+    {
+     "it": 400,
+     "E": 149.29308989538345,
+     "E_u": 20.576011416982322,
+     "r90": 6.519202405202649,
+     "coreball8": 0.9348112558904247
+    },
+    {
+     "it": 600,
+     "E": 149.1637939927678,
+     "E_u": 20.57731096988229,
+     "r90": 6.519202405202649,
+     "coreball8": 0.9347583096460762
+    }
+   ]
+  },
+  "verdict": "CONFIRMED"
+ },
+ "C5": {
+  "claimed": {
+   "u_eta_exponent": -1.0,
+   "V4_exponent": 3.0,
+   "orbit_class_descent": "expands monotonically"
+  },
+  "measured": {
+   "lambdas": [
+    1.0,
+    1.25,
+    1.6,
+    2.0,
+    2.5
+   ],
+   "seed": {
+    "E_u": [
+     20.348822616519236,
+     15.969943443881807,
+     12.441857534627161,
+     9.816043674973681,
+     7.72043283220105
+    ],
+    "E_v4": [
+     0.37823772531230077,
+     0.7835506083547683,
+     1.6398841859863682,
+     3.221331885608553,
+     6.248812559840214
+    ],
+    "u_fit_A_over_lam_plus_B": [
+     20.956696005093537,
+     -0.6767828229466115
+    ],
+    "u_fit_resid_rel": 0.004480562158314853,
+    "v4_slope": 3.050025968804695
+   },
+   "compact_timemix_field": {
+    "E_u": [
+     -0.08292066393479697,
+     -0.0642372291341086,
+     -0.05139195383700993,
+     -0.041307353561629366,
+     -0.03356322093143281
+    ],
+    "E_v4": [
+     62672.060284917,
+     119293.96873635579,
+     249498.39115295382,
+     485466.0973902887,
+     949462.8026757364
+    ],
+    "lamEu_over_Eu1_dev_from_1": [
+     0.0,
+     0.03164624344089473,
+     0.008363871713888082,
+     0.003689753518843264,
+     0.01190762768809317
+    ],
+    "v4_slope": 2.9703260943685006
+   },
+   "w1000_endpoint": {
+    "E_u": [
+     20.57330091314924,
+     16.128819695488602,
+     12.560619692619,
+     9.902371727584738,
+     7.7835258616552325
+    ],
+    "E_v4": [
+     128.98932520190007,
+     271.2168990216743,
+     567.3412628005551,
+     1115.9159354732867,
+     2160.8728890949023
+    ],
+    "u_slope": -1.0559202904150982,
+    "v4_slope": 3.062457092088012,
+    "u_fit_A_over_lam_plus_B": [
+     21.222204743795544,
+     -0.7230385765246737
+    ],
+    "u_fit_resid_rel": 0.004718163203255839
+   },
+   "iso_lambdas": [
+    1.0,
+    1.05,
+    1.1,
+    1.25,
+    1.5,
+    2.0,
+    2.5
+   ],
+   "iso_endpoint_Eu_vs_lambda": [
+    9.24119632205268,
+    13.935685612909673,
+    49.14927917313158,
+    496.582506298873,
+    2504.128327083056,
+    4329.410747714276,
+    2683.664546248518
+   ],
+   "iso_Eu_monotone_decreasing": false,
+   "sawtooth_ratio_fwd_over_central": {
+    "iso_endpoint": {
+     "rho": 163.75961945690912,
+     "z": 95.51053771319451
+    },
+    "w1000_endpoint": {
+     "rho": 1.0688304407640523,
+     "z": 1.0101822653660806
+    },
+    "seed": {
+     "rho": 1.0668612911983026,
+     "z": 1.0098114095102873
+    }
+   }
+  },
+  "verdict": "CONFIRMED (scaling law); QUALIFIED (the iso endpoint itself carries stencil-null grid-scale texture, sawtooth ratio 163.8, so its E_u descent is partly a discretization artifact channel)"
+ },
+ "C6": {
+  "claimed": {
+   "floor_at_omstar": -0.0041,
+   "grid_min": {
+    "E": -5.8,
+    "omega": 2.15
+   },
+   "alpha_om2_gt_1_at_omstar": true
+  },
+  "measured": {
+   "om_star": 1.0712333936199698,
+   "alpha_om_star_sq_minus_1": 0.14754098360655732,
+   "floor_closed_form": -0.004132653061224488,
+   "floor_exact_rational_81_19600": -0.00413265306122449,
+   "floor_numeric_scan": -0.004132653060720023,
+   "px_closed_form": 0.23668630751115557,
+   "px_numeric": 0.236685,
+   "grid": "N=401 L=20 link-based discretization (own)",
+   "E_relaxed_vs_omega": {
+    "1.0": 2.0667864673391083,
+    "1.5": -0.5575825000424905,
+    "2.0": -2.515712395004331,
+    "2.15": -2.8508346459567173,
+    "2.3": -3.0906377975583443,
+    "2.5": -3.3375856603849563
+   },
+   "E_min": -3.3375856603849563,
+   "om_at_min": 2.5,
+   "E_neg_exists_below_kink": true
+  },
+  "verdict": "CONFIRMED"
+ },
+ "C7": {
+  "claimed": {
+   "a_p8_det_quote": true,
+   "b_p12_det_and_could_use_eg": true,
+   "c_vacuum_positive_g": true
+  },
+  "measured_by_direct_read": {
+   "a": "p. 8 col 1: 'Ideally we would not having to fix shape (lambda_i) ... from a simple e.g. V(A) = (sum ||A||_F^2 - 1)^2 Higgs-like potential, with additional e.g. volume constraint det(M) = prod lambda_i = const to prevent using only long axes which allow for low curvature (hence energy).' -- present verbatim",
+   "b": "p. 12 col 1: 'we could use e.g. V(M) = sum_p (Tr((M xi)^p) - c_p)^2 potential' AND 'There might be required additional det(M) = const (volume preserving) constraint' -- both present",
+   "c": "p. 11 Fig 10 caption + p. 11 col 1: vacuum M = ODO^T, D = diag(g, 1, delta, 0), g >> 1 >> delta > 0, O in SO(1,3); p. 12: 'traces of (M xi)^p = (-lambda_0)^p + lambda_1^p + lambda_2^p + lambda_3^p' => targets (-g)^p + 1 + delta^p: M_vac has POSITIVE g eigenvalue (the stack's s = -1 branch)"
+  },
+  "note": "p. 7 also confirms Eq 12/13 and the 'difficult open question requiring simulations' potential language; p. 12 'Choosing the details especially of potential is very difficult, will rather require PDE simulations' and the 6th-order skyrmion hedge are present.",
+  "verdict": "CONFIRMED"
+ },
+ "C8": {
+  "claimed": "boost tangents pure time-mixing on block-diagonal fields; rot3 == full6 to ~1e-5",
+  "measured": {
+   "boost_tangent_block_part_max": 0.0,
+   "boost_tangent_timemix_max": 3.943028859669497,
+   "force_timemix_on_blockdiag_seed": 0.0,
+   "force_dot_boost_tangent": 0.0,
+   "rot3_vs_full6_it8000_max_rel": 5.2192951429548784e-05
+  },
+  "verdict": "CONFIRMED"
+ }
+}

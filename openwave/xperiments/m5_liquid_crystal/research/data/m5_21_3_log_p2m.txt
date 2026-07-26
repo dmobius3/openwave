@@ -1,0 +1,7 @@
+  p1_s-1 clock_local  kin +2.969555e-01 k* +0.0000 dE(k*) -4.622e-27
+  p1_s-1 plane_1d     kin +2.717969e-01 k* +0.0000 dE(k*) -3.869e-27
+  p1_s-1 rot_z        kin +2.600230e-01 k* +0.0000 dE(k*) -3.727e-27
+  p1_s-1 rot_x        kin +2.737242e-01 k* +0.0000 dE(k*) -5.567e-27
+  p1_s-1 boost_z      kin -8.322694e-02 k* +0.0000 dE(k*) +0.000e+00
+  p1_s-1 boost_x      kin -7.287919e-02 k* -0.0000 dE(k*) +1.424e-26
+{"tag": "p2_p1_s-1", "min_kin": -0.08322694435796972, "argmin": "boost_z"}

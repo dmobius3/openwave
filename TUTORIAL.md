@@ -15,7 +15,7 @@ This is the hands-on, start-to-finish guide for a newcomer. It takes you from a 
 | Add your own framework | [6. Scaffold a new model](#6-scaffold-a-new-model) |
 | Get your work merged | [7. Ship it: open a pull request from your fork](#7-ship-it-open-a-pull-request-from-your-fork) |
 
-New to the project itself? Read [`WELCOME.md`](WELCOME.md) and the [`README.md`](README.md) "Scientific Position" section for the what and why. This tutorial is the how.
+New to the project itself? Read the [`README.md`](README.md) "Scientific Position" section for the what and why. This tutorial is the how.
 
 ---
 
@@ -154,7 +154,7 @@ The rendered simulations are the quickest way to see OpenWave do something. Laun
 openwave -x
 ```
 
-You get an interactive menu (arrow keys on macOS/Linux, numbered fallback elsewhere). The first entry opens [`WELCOME.md`](WELCOME.md) in your browser; the rest are the simulation **collections**, one per model that ships a renderer:
+You get an interactive menu (arrow keys on macOS/Linux, numbered fallback elsewhere). The first entry opens this tutorial in your browser; the rest are the simulation **collections**, one per model that ships a renderer:
 
 | Collection | Model | What it shows |
 | --- | --- | --- |
@@ -166,7 +166,7 @@ You get an interactive menu (arrow keys on macOS/Linux, numbered fallback elsewh
 
 Pick one and it runs in its own window. Under the hood the CLI finds every `_launcher.py` under `openwave/xperiments/` and runs the one you select (see [`openwave/i_o/cli.py`](openwave/i_o/cli.py)).
 
-Each xperiment is fully customizable: open its launcher and parameter files to change universe size, sources, resolution, and visualization settings, or to turn on instrumentation (`"INSTRUMENTATION": True`) for real-time probes and CSV export. The granule-motion demo sequence in [`WELCOME.md`](WELCOME.md#xperiments-granule-motion-demo-start-here) is the recommended first walkthrough.
+Each xperiment is fully customizable: open its launcher and parameter files to change universe size, sources, resolution, and visualization settings, or to turn on instrumentation (`"INSTRUMENTATION": True`) for real-time probes and CSV export.
 
 ---
 
@@ -281,7 +281,6 @@ Security issues follow a separate private path: see [`SECURITY.md`](SECURITY.md)
 | Path | What it is |
 | --- | --- |
 | [`README.md`](README.md) | What OpenWave is, scientific position, installation |
-| [`WELCOME.md`](WELCOME.md) | Quick intro + the granule-motion demo walkthrough |
 | [`MODELS.md`](MODELS.md) | The side-by-side comparison table; every cell links its script |
 | [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md) | How to self-evaluate and scaffold a new model |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Setup, code style, PR flow, DCO |

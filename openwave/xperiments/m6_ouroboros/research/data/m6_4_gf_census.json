@@ -1,0 +1,103 @@
+{
+  "task": "M6.4 N1/N2 June (z20866581 v2) census rerun",
+  "published": {
+    "n": 360,
+    "localized": 340,
+    "gf_pass": 319,
+    "LoverQ_range": [
+      0.57,
+      2.6
+    ],
+    "best_LoverQ": 0.567,
+    "best_point": {
+      "g": 0.3,
+      "w": 2.2,
+      "lam": 0.5,
+      "A": 0.1,
+      "B": 0.2
+    }
+  },
+  "summaries": {
+    "T": {
+      "n": 360,
+      "diverged": 0,
+      "loc_printed_pass": 360,
+      "gf_printed_pass": 318,
+      "gf_linearized_pass": 317,
+      "gf_proper_pass_printedQ": 338,
+      "gf_proper_pass_linQ": 338,
+      "both_printed_pass": 318,
+      "window_flips_printed": 94,
+      "LoverQ_min": -2.9376772018985533,
+      "LoverQ_max": 1.7534103711851412,
+      "best_point": {
+        "conv": "T",
+        "g": 0.3,
+        "w": 2.2,
+        "lam": 0.5,
+        "A": 0.1,
+        "B": 0.2,
+        "diverged": false,
+        "abs_at_rmax": 8.110628979111617e-13,
+        "loc_printed": true,
+        "core_amp": 0.22727660375065872,
+        "Q": 0.002634783804372364,
+        "L": 0.0012409353348379695,
+        "LoverQ": 0.47098184404301613,
+        "w_cross_printed": 0,
+        "gf_conjpts_printed": 0,
+        "w_cross_linearized": 0,
+        "gf_conjpts_linearized": 0,
+        "w_cross_printed_rmax15": 0
+      }
+    },
+    "V": {
+      "n": 360,
+      "diverged": 250,
+      "loc_printed_pass": 0,
+      "gf_printed_pass": 0,
+      "gf_linearized_pass": 0,
+      "gf_proper_pass_printedQ": 0,
+      "gf_proper_pass_linQ": 0,
+      "both_printed_pass": 0,
+      "window_flips_printed": 0,
+      "LoverQ_min": -0.06362393113206719,
+      "LoverQ_max": 1.0000000000000002,
+      "best_point": null
+    },
+    "S": {
+      "n": 360,
+      "diverged": 0,
+      "loc_printed_pass": 0,
+      "gf_printed_pass": 0,
+      "gf_linearized_pass": 0,
+      "gf_proper_pass_printedQ": 0,
+      "gf_proper_pass_linQ": 0,
+      "both_printed_pass": 0,
+      "window_flips_printed": 0,
+      "LoverQ_min": -0.9745105198184609,
+      "LoverQ_max": 1.2615183439954363,
+      "best_point": {
+        "conv": "S",
+        "g": 0.3,
+        "w": 2.2,
+        "lam": 0.5,
+        "A": 0.1,
+        "B": 0.2,
+        "diverged": false,
+        "abs_at_rmax": 2.8032071665272964,
+        "loc_printed": false,
+        "core_amp": 3.065436454905619,
+        "Q": 1230.834650000654,
+        "L": 1073.783743767344,
+        "LoverQ": 0.8724029208690002,
+        "w_cross_printed": 13,
+        "gf_conjpts_printed": 13,
+        "w_cross_linearized": 13,
+        "gf_conjpts_linearized": 13,
+        "w_cross_printed_rmax15": 22
+      }
+    }
+  },
+  "runtime_s": 3020.4
+}

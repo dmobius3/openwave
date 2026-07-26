@@ -1,6 +1,6 @@
 # Sandbox v8 + vn index-0 flip (the second-wave flip: bring the M5.8 body onto index-0)
 
-Decision (Rodrigo, 2026-06-22): the 2026-06-21 refactor flipped the engine + active sandboxes (v9, v10) to
+Decision (the maintainer, 2026-06-22): the 2026-06-21 refactor flipped the engine + active sandboxes (v9, v10) to
 index-0 and FROZE v1-v8 + vn as index-3 history. On review, the M5.8 4D body (v8 + vn) is treated as LIVING,
 not history, so it is flipped to index-0 to match the engine. v1-v5 (pre-4×4) and v7 (3×3 self-contained) and
 the 3×3 files of v6 stay as-is; v6's one 4×4 engine-boundary file (`m5_6_5c_prod_scale`) is fixed too.

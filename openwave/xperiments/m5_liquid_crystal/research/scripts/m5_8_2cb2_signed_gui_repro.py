@@ -1,6 +1,6 @@
 """
 M5.8.2cB-2 — headless repro of the _topo_dressed4d_signed GUI explosion
-(63³, the exact launcher constrained path, Metal f32). Rodrigo's GUI smoke
+(63³, the exact launcher constrained path, Metal f32). The maintainer's GUI smoke
 scrambled by ~step 31 and blew up around ~1000+ steps; the pre-handoff Metal
 sanity ran exactly 1003 steps and saw ‖Ṁ‖ DECREASING — stopped just under the
 horizon (the 2c-2 short-check lesson, one octave up).

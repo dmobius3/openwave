@@ -1,0 +1,71 @@
+{
+  "C1_e_nat": {
+    "e_nat_sqrt_4pi_alpha": 0.302822,
+    "paper_value": 0.30282,
+    "match": true,
+    "target_phys_me_over_enat": 1.687456,
+    "paper_target": 1.6875,
+    "match_target": true
+  },
+  "C2_gap_matrix_pct": {
+    "1.6875_physical_vs_1.6890_scan": 0.089,
+    "1.6875_physical_vs_1.6918_reproduction": 0.254,
+    "1.6875_physical_vs_1.6969_relabeled": 0.554,
+    "1.6890_scan_vs_1.6918_reproduction": 0.166,
+    "1.6890_scan_vs_1.6969_relabeled": 0.466,
+    "1.6918_reproduction_vs_1.6969_relabeled": 0.301
+  },
+  "C2_verdicts": {
+    "scan_1.6890_vs_physical": "0.089% (paper prints 0.09%)",
+    "repro_1.6918_vs_relabeled_1.6969": "0.301% (paper 5.1 prints 0.30%)",
+    "repro_1.6969_vs_physical_1.6875": "0.557% (paper Table 2 prints this pairing as 0.30%: arithmetically inconsistent; 0.30% only holds against the model-internal 1.6969)"
+  },
+  "C3_Q_predicted_identity": {
+    "me_over_1.6969": 0.30114,
+    "paper_Q_predicted": 0.3011,
+    "identity_holds": true,
+    "me_over_1.6890": 0.30255,
+    "gap_vs_e_nat_pct_1.6969": 0.557,
+    "gap_vs_e_nat_pct_1.6890": 0.091,
+    "verdict": "Q_predicted = m_e/(H/Q): its 0.56% gap vs e_nat is the H/Q gap vs the physical target restated, not an independent prediction"
+  },
+  "C4_R_phys": {
+    "H_code_implied_by_191fm": 0.49461,
+    "printed_anywhere_in_v11": false,
+    "unit_energy_hbar_c_over_191fm_MeV": 1.03313,
+    "july_papers_m_J_MeV": 1.033,
+    "numeric_identity": true,
+    "note": "191 fm requires H_code = 0.4946 (equivalently Q_code = 0.2928 at H/Q = 1.6890), neither printed in v11; hbar_c/191 fm = 1.0331 MeV coincides numerically with the m_J = 1.033 MeV of the July 5/8 papers"
+  },
+  "C5_ansatz_degenerate": {
+    "r_hat_cross_grad_phi_of_r_is_zero": true,
+    "verdict": "the Section 5.1 production ansatz as printed vanishes identically for radial phi(r); the actual field configuration exists only in the benchmark code"
+  },
+  "C6_EL_normalization": {
+    "per_signature": {
+      "mostly_minus(+,-,-,-)": {
+        "identity_A_verified": true,
+        "identity_J_verified": true,
+        "coeffs_reproducing_printed_pair_at_a_quarter": {
+          "a": "1/4 (kinetic normalization; printed: 1)",
+          "c": "-1 (printed: +1)",
+          "q": "-g (printed: g)"
+        }
+      },
+      "mostly_plus(-,+,+,+)": {
+        "identity_A_verified": true,
+        "identity_J_verified": true,
+        "coeffs_reproducing_printed_pair_at_a_quarter": {
+          "a": "1/4 (kinetic normalization; printed: 1)",
+          "c": "1 (printed: +1)",
+          "q": "g (printed: g)"
+        }
+      }
+    },
+    "el_of_printed_lagrangian_in_lorenz_gauge": {
+      "mostly_plus": "box A = J/4, box J = A/4 - g(J.J)J",
+      "mostly_minus": "box A = -J/4, box J = -A/4 + g(J.J)J"
+    },
+    "verdict": "the printed EL pair (2.1)/(2.2) is NOT the EL system of the printed Lagrangian -F^2 - G^2 + J.A - g(J.J)^2 under either signature; the unique reconstruction preserving the printed interaction signs is L_ref = -1/4 F^2 - 1/4 G^2 + J.A - g(J.J)^2 under mostly-plus signature (-,+,+,+); under (+,-,-,-) the coupling and quartic signs must flip as well; v11 states no metric signature; the dropped 1/4 cannot be absorbed by rescaling L because the quartic coefficient -4g in (2.2) pins the scale"
+  }
+}

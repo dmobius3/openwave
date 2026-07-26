@@ -1,0 +1,44 @@
+{
+  "N1_config": {
+    "g": 1.0,
+    "lam": 1.0,
+    "omega": 1.0,
+    "A0": 0.1,
+    "B0": 0.1,
+    "tail": 0.08064,
+    "localized": true
+  },
+  "reference_production_coded": {
+    "H_p": 0.49555,
+    "Q_p": 0.293404,
+    "HQ": 1.688971,
+    "expected_from_v11_sec8": 1.689,
+    "reproduces_config": true
+  },
+  "PRIMARY_derived": {
+    "H_d": 0.156254,
+    "Q_d": 1.09323,
+    "HQ": 0.142929,
+    "gap_vs_1.6875_pct": 91.53,
+    "gap_vs_1.6969_pct": 91.577
+  },
+  "branch_Jonly_Q": {
+    "HQ": 0.532557,
+    "gap_vs_1.6875_pct": 68.441,
+    "gap_vs_1.6969_pct": 68.616
+  },
+  "secondary_printed_phases": {
+    "HQ_with_Qd": 0.36194,
+    "HQ_with_QJonly": 1.3486
+  },
+  "term_decomposition_H_d": {
+    "quadratic_quarter": 0.394778,
+    "cross_minus_half_ab": -0.23943,
+    "quartic_3_8_g": 0.000907
+  },
+  "DECISION": {
+    "primary_gap_pct_vs_1.6875": 91.53,
+    "rule": "<=1% survives; 1-5% partial; >5% fails",
+    "verdict": "branch (b): fails"
+  }
+}

@@ -1,6 +1,6 @@
 # M5.8.3: Production engine port (4D seeder + faithful-kinetic variant)
 
-> Task **M5.8.3** (M5 / Liquid-Crystal model). Status: **Backlog** · Gated by: - · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
+> Task **M5.8.3** (M5 / Liquid-Crystal model). Status: **MERGED into [M5.24](m5_24_task_details.md)** (2026-07-19, maintainer call at the M5.23 review): the residual scope below (4D production seeder + faithful-kinetic engine variant) is now explicit scope of the M5.24 production-engine catch-up; its roadmap row was folded in. This doc remains the record of the original M5.8.3 framing. · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
 
 This doc is the task's full record: planning + findings + future planning + documentation.
 

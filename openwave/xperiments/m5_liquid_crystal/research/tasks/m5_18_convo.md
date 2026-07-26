@@ -1,10 +1,10 @@
-# M5.18 convo record (Duda ↔ Rodrigo, cc models-of-particles)
+# M5.18 convo record (Duda ↔ the maintainer, cc models-of-particles)
 
 > The message exchange attached to task [M5.18](m5_18_task_details.md); datestamped entries accumulate in chronological order (the per-task convo convention). Lineage: follows [`m5_17_convo.md`](m5_17_convo.md) (the universal-potential + Fable5-delegation round). NOTE: with his 2026-07-06 reply Duda cc'd **models-of-particles**, so this thread is now GROUP-PUBLIC ("maybe somebody there would like to help/contribute"): provenance labels and claim discipline carry group-level weight from here on.
 
 ## 2026-07-05: the M5.18 reply email out (the verification deliverable + 3 qualifications + back-answers)
 
-Rodrigo's 2026-07-05 15:16 email: both verification claims confirmed (Lorentz invariance + Legendre Hamiltonian, machine-checked, adversarial-audited) with the [verification note](../findings/m5_18_verification_note.md) linked; the three owner-intent questions (1: degenerate Legendre map / Dirac constraints; 2: 4-branch vacuum split + domain walls; 3: negative boost-texture channel intended?); the spectral-potential validation (`r_half = 2.935 fm`, potential-shape robust); the melt-channel negative (survives his potential too); Q13 re-stated as THE pre-M5.12 blocker; his two back-questions answered (fixed ansatz = no optimization; energy finite in the continuum via the melt core `s(r)`). Content bullets: [`m5_18_task_details.md § Phase C`](m5_18_task_details.md).
+The maintainer's 2026-07-05 15:16 email: both verification claims confirmed (Lorentz invariance + Legendre Hamiltonian, machine-checked, adversarial-audited) with the [verification note](../findings/m5_18_verification_note.md) linked; the three owner-intent questions (1: degenerate Legendre map / Dirac constraints; 2: 4-branch vacuum split + domain walls; 3: negative boost-texture channel intended?); the spectral-potential validation (`r_half = 2.935 fm`, potential-shape robust); the melt-channel negative (survives his potential too); Q13 re-stated as THE pre-M5.12 blocker; his two back-questions answered (fixed ansatz = no optimization; energy finite in the continuum via the melt core `s(r)`). Content bullets: [`m5_18_task_details.md § Phase C`](m5_18_task_details.md).
 
 ## 2026-07-06: Duda's reply 1 (Q13 redirect + the melt diagnosis + the SM-correspondence program)
 

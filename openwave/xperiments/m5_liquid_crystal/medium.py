@@ -26,6 +26,8 @@ the ∇²/∇·/∇× operators, V_psi) entirely. The live substrate is:
     Coulomb machinery consume). See m5_4b_rendering_features.md.
 """
 
+import math
+
 import taichi as ti
 
 from openwave.common import colormap, constants, utils
@@ -46,6 +48,78 @@ LC_DELTA = 0.5
 # sandbox_v8/m5_8_1_4x4_promotion.py); the Minkowski coupling driving the clock lands in M5.8.2.
 MDIM = 4          # matrix substrate dimension (was 3)
 LC_G = 8.0        # time-axis (boost/gravity) eigenvalue g ≫ 1, constant in M5.8.1
+
+# VIZ.5 (M5.23) — the "ellipsoid" visualization: one eigenframe glyph per 3D
+# angle on an S² shell around each defect center — a FULL-3D view (unlike the
+# 3-plane flux-mesh cross-sections); design + decisions:
+# research/tasks/m5_23_task_details.md. Buffer ceilings only — the live glyph
+# count is the GUI density slider (capped at ELLIPSOID_MAX_DIRS, honoring the
+# not-too-dense readability spec), and directions are computed IN-KERNEL as a
+# Fibonacci-sphere lattice (taichi-native, no host-side table). Centers:
+# dipole configs use 2; headroom for small clusters.
+ELLIPSOID_MAX_DIRS = 642
+ELLIPSOID_MAX_CENTERS = 4
+# Stage B mesh template: a UV sphere generated in-kernel (closed form per
+# index — poles + LAT rings × LON meridians; faces = 2·LAT·LON triangles).
+# It is a per-glyph SURFACE template (pole clustering is irrelevant here,
+# unlike the Fibonacci SAMPLING lattice above); each shell sample maps it
+# through M·u to the local eigen-ellipsoid (the m5_6_5b geometry).
+ELLIPSOID_TEMPLATE_LAT = 8
+ELLIPSOID_TEMPLATE_LON = 12
+ELLIPSOID_TVERTS = ELLIPSOID_TEMPLATE_LAT * ELLIPSOID_TEMPLATE_LON + 2
+ELLIPSOID_TFACES = 2 * ELLIPSOID_TEMPLATE_LAT * ELLIPSOID_TEMPLATE_LON
+
+# VIZ.5 Stage D — the disclination-rod render: ellipsoid samples ALONG the rod
+# axis (the ±z column through each center: the escaped-core disclination pair
+# every biaxial seed constructs) plus per-2D-angle RINGS around the cord at
+# fixed heights. Fixed v1 layout (course-correctable): ROD_N axis samples
+# spanning ± the GUI Radius, RING_COUNT rings (heights ±0.35 / ±0.7 of that
+# half-length) × RING_AZ azimuths each.
+ELLIPSOID_ROD_N = 41
+ELLIPSOID_RING_COUNT = 8  # 4 rows per pole (the reference figure shows 4), on the outer rod sections
+ELLIPSOID_RING_AZ = 64  # CEILING azimuths per ring; the live count follows the GUI Count slider (~Count/12)
+ELLIPSOID_ROD_SLOTS = ELLIPSOID_ROD_N + ELLIPSOID_RING_COUNT * ELLIPSOID_RING_AZ
+
+# M5.23.2 arm (4) — the energy-density ISOSURFACE: triangle budget for the
+# marching-tetrahedra mesh (tri soup; unused slots collapse to the origin).
+# A closed surface in a 63³ arena is typically 20-40k triangles (MT emits
+# ~2× marching cubes); overflow beyond the budget is COUNTED and the
+# launcher WARNS (no silent truncation — the M5.23.2 plan's honesty gate).
+ISO_MAX_TRIS = 131072
+
+
+@ti.func
+def _uv_face_locals(f: ti.i32):  # type: ignore
+    """Template-local vertex ids (i0, i1, i2) of UV-sphere face `f`: top fan,
+    then the quad bands split in two, then the bottom fan. Shared by the shell
+    and rod index kernels (two_sided render ⇒ winding order not load-bearing)."""
+    lat, lon = ELLIPSOID_TEMPLATE_LAT, ELLIPSOID_TEMPLATE_LON
+    i0, i1, i2 = 0, 0, 0
+    if f < lon:  # top fan: north pole + ring 0
+        b = f
+        i0 = 0
+        i1 = 1 + b
+        i2 = 1 + ((b + 1) % lon)
+    elif f < lon + 2 * (lat - 1) * lon:  # quad bands between rings
+        q = (f - lon) // 2
+        t = (f - lon) - q * 2
+        a = q // lon
+        b = q - a * lon
+        p00 = 1 + a * lon + b
+        p01 = 1 + a * lon + ((b + 1) % lon)
+        p10 = 1 + (a + 1) * lon + b
+        p11 = 1 + (a + 1) * lon + ((b + 1) % lon)
+        if t == 0:
+            i0, i1, i2 = p00, p10, p01
+        else:
+            i0, i1, i2 = p01, p10, p11
+    else:  # bottom fan: south pole + last ring
+        b = f - lon - 2 * (lat - 1) * lon
+        ring = 1 + (lat - 1) * lon
+        i0 = ELLIPSOID_TVERTS - 1
+        i1 = ring + ((b + 1) % lon)
+        i2 = ring + b
+    return ti.Vector([i0, i1, i2])
 
 
 @ti.data_oriented
@@ -198,6 +272,11 @@ class TensorField:
         self.curv_flux_x = ti.Matrix.field(MDIM, MDIM, dtype=ti.f32, shape=self.grid_size)
         self.curv_flux_y = ti.Matrix.field(MDIM, MDIM, dtype=ti.f32, shape=self.grid_size)
         self.curv_flux_z = ti.Matrix.field(MDIM, MDIM, dtype=ti.f32, shape=self.grid_size)
+
+        # M5.24 round 3 — FIRE-relaxer per-z-slice partial sums (F·V, F·F, V·V);
+        # a two-stage Metal-safe reduction (63 slice threads, no full-grid
+        # atomics — the M5.0h contention lesson). Host sums the (3, nz) array.
+        self.fire_partials = ti.field(dtype=ti.f32, shape=(3, self.nz))
 
         # M5.8.2c — 4D Minkowski evolution support (flag-gated; OFF unless the
         # xperiment seeds a DRESSED hedgehog). stable_mask (1.0 = Minkowski-signed
@@ -358,6 +437,74 @@ class TensorField:
         self.moment_glyph_vertices = ti.Vector.field(3, ti.f32, 4)
         self.moment_glyph_colors = ti.Vector.field(3, ti.f32, 4)
 
+        # VIZ.5 (M5.23) — the "ellipsoid" viz: one eigen-ellipsoid per 3D angle
+        # on an S² shell of GUI radius R around each defect center (a FULL-3D
+        # view, not a plane cross-section). Centers are filled at seed time by
+        # the launcher (voxel coords; count in ellipsoid_n_centers). The line-
+        # glyph Stage A variant was retired 2026-07-19 (maintainer verdict:
+        # mesh is the better viz); the mesh buffers below are the feature.
+        self.ellipsoid_max_dirs = ELLIPSOID_MAX_DIRS
+        self.ellipsoid_max_centers = ELLIPSOID_MAX_CENTERS
+        self.ellipsoid_centers = ti.Vector.field(3, ti.f32, ELLIPSOID_MAX_CENTERS)  # voxel coords
+        self.ellipsoid_n_centers = ti.field(ti.i32, shape=())
+
+        # VIZ.5 Stage B — the M·u ellipsoid MESH: per shell sample the unit-sphere
+        # template maps through the local M (spatial block + a small isotropic
+        # visibility floor) to the eigen-ellipsoid surface — semi-axes = the
+        # eigenvalues along the eigenvectors, NO eigendecomposition needed
+        # (m5_6_5b key simplification). One flat vertex/color/index pool spans
+        # all (center, direction) slots so the launcher renders the whole shell
+        # set with ONE scene.mesh call; unused slots collapse to the origin
+        # (zero-area triangles, invisible). Indices are static (filled once);
+        # vertices + colors are rewritten per-frame by
+        # engine4_render.update_ellipsoid_mesh.
+        self.ellipsoid_tverts = ELLIPSOID_TVERTS
+        self.ellipsoid_tfaces = ELLIPSOID_TFACES
+        self.ellipsoid_template = ti.Vector.field(3, ti.f32, ELLIPSOID_TVERTS)
+        n_slots = ELLIPSOID_MAX_CENTERS * ELLIPSOID_MAX_DIRS
+        self.ellipsoid_mesh_vertices = ti.Vector.field(3, ti.f32, n_slots * ELLIPSOID_TVERTS)
+        self.ellipsoid_mesh_colors = ti.Vector.field(3, ti.f32, n_slots * ELLIPSOID_TVERTS)
+        self.ellipsoid_mesh_indices = ti.field(ti.i32, n_slots * ELLIPSOID_TFACES * 3)
+        self.populate_ellipsoid_template()
+        self.populate_ellipsoid_mesh_indices()
+
+        # VIZ.5 Stage D — the ROD pool: rod-line + rod-ring ellipsoid slots per
+        # center (the disclination-rod render), same template + M·u map as the
+        # shell pool, rendered as ONE additional scene.mesh call. Indices are
+        # static (filled once); vertices + colors are rewritten per-frame by
+        # engine4_render.update_rod_ellipsoids (inactive slots collapse).
+        self.ellipsoid_rod_n = ELLIPSOID_ROD_N
+        self.ellipsoid_ring_count = ELLIPSOID_RING_COUNT
+        self.ellipsoid_ring_az = ELLIPSOID_RING_AZ
+        self.ellipsoid_rod_slots = ELLIPSOID_ROD_SLOTS
+        n_rod = ELLIPSOID_MAX_CENTERS * ELLIPSOID_ROD_SLOTS
+        self.ellipsoid_rod_vertices = ti.Vector.field(3, ti.f32, n_rod * ELLIPSOID_TVERTS)
+        self.ellipsoid_rod_colors = ti.Vector.field(3, ti.f32, n_rod * ELLIPSOID_TVERTS)
+        self.ellipsoid_rod_indices = ti.field(ti.i32, n_rod * ELLIPSOID_TFACES * 3)
+        self.populate_ellipsoid_rod_indices()
+
+        # M5.23.2 arm (4) — the energy-density ISOSURFACE buffers: a budgeted
+        # triangle-soup mesh (marching tetrahedra over the live energyH
+        # density, engine4_render.marching_tetrahedra). iso_tri_count is the
+        # RAW emission counter (atomic): a value beyond iso_max_tris means
+        # overflow — the launcher warns, writes are clamped to the budget.
+        # iso_level_max holds the per-frame interior density max (the GUI
+        # Level slider is a fraction of it).
+        self.iso_max_tris = ISO_MAX_TRIS
+        self.iso_vertices = ti.Vector.field(3, ti.f32, ISO_MAX_TRIS * 3)
+        self.iso_colors = ti.Vector.field(3, ti.f32, ISO_MAX_TRIS * 3)
+        self.iso_indices = ti.field(ti.i32, ISO_MAX_TRIS * 3)
+        self.iso_tri_count = ti.field(ti.i32, shape=())
+        self.iso_level_max = ti.field(ti.f32, shape=())
+        self.populate_iso_indices()
+
+    @ti.kernel
+    def populate_iso_indices(self):
+        """M5.23.2 — identity index buffer for the isosurface tri soup (run
+        once at init; unused slots point at collapsed origin vertices)."""
+        for i in self.iso_indices:
+            self.iso_indices[i] = i
+
     def swap_matrix_buffers(self):
         """Cycle the matrix triple buffer after evolve_M (M5.5.4): M_prev ← M, M ← M_new.
 
@@ -366,6 +513,55 @@ class TensorField:
         """
         self.M_prev_am.copy_from(self.M_am)
         self.M_am.copy_from(self.M_new_am)
+
+    @ti.kernel
+    def populate_ellipsoid_template(self):
+        """VIZ.5 Stage B — fill the unit-sphere UV template (closed form per index,
+        taichi-native): vertex 0 = north pole, then LAT rings × LON meridians,
+        last vertex = south pole. Run once at init."""
+        lat, lon = ELLIPSOID_TEMPLATE_LAT, ELLIPSOID_TEMPLATE_LON
+        for v in range(ELLIPSOID_TVERTS):
+            if v == 0:
+                self.ellipsoid_template[v] = ti.Vector([0.0, 0.0, 1.0])
+            elif v == ELLIPSOID_TVERTS - 1:
+                self.ellipsoid_template[v] = ti.Vector([0.0, 0.0, -1.0])
+            else:
+                a = (v - 1) // lon  # ring index (0..LAT-1)
+                b = (v - 1) - a * lon  # meridian index (0..LON-1)
+                theta = math.pi * ti.cast(a + 1, ti.f32) / ti.cast(lat + 1, ti.f32)
+                phi = 2.0 * math.pi * ti.cast(b, ti.f32) / ti.cast(lon, ti.f32)
+                st = ti.sin(theta)
+                self.ellipsoid_template[v] = ti.Vector(
+                    [st * ti.cos(phi), st * ti.sin(phi), ti.cos(theta)]
+                )
+
+    @ti.kernel
+    def populate_ellipsoid_mesh_indices(self):
+        """VIZ.5 Stage B — static triangle indices for every (center, direction)
+        slot of the SHELL pool: the shared `_uv_face_locals` layout, face-local
+        vertex ids offset by the slot's vertex block so the whole pool renders
+        as one mesh. Run once at init."""
+        n_slots = ELLIPSOID_MAX_CENTERS * ELLIPSOID_MAX_DIRS
+        for s, f in ti.ndrange(n_slots, ELLIPSOID_TFACES):
+            loc = _uv_face_locals(f)
+            base_v = s * ELLIPSOID_TVERTS
+            base_i = (s * ELLIPSOID_TFACES + f) * 3
+            self.ellipsoid_mesh_indices[base_i + 0] = base_v + loc[0]
+            self.ellipsoid_mesh_indices[base_i + 1] = base_v + loc[1]
+            self.ellipsoid_mesh_indices[base_i + 2] = base_v + loc[2]
+
+    @ti.kernel
+    def populate_ellipsoid_rod_indices(self):
+        """VIZ.5 Stage D — same static index layout for the ROD pool (rod-line +
+        rod-ring slots per center). Run once at init."""
+        n_slots = ELLIPSOID_MAX_CENTERS * ELLIPSOID_ROD_SLOTS
+        for s, f in ti.ndrange(n_slots, ELLIPSOID_TFACES):
+            loc = _uv_face_locals(f)
+            base_v = s * ELLIPSOID_TVERTS
+            base_i = (s * ELLIPSOID_TFACES + f) * 3
+            self.ellipsoid_rod_indices[base_i + 0] = base_v + loc[0]
+            self.ellipsoid_rod_indices[base_i + 1] = base_v + loc[1]
+            self.ellipsoid_rod_indices[base_i + 2] = base_v + loc[2]
 
     @ti.kernel
     def populate_grid_lines(self):

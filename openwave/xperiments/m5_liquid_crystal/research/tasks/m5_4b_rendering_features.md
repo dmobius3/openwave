@@ -4,7 +4,7 @@
 
 > Director-glyph **design + as-shipped specifics** live in [`m5_2b_director_glyph_rendering.md`](m5_2b_director_glyph_rendering.md). This doc is the broader stack catalog + migration plan. M5.4 implementers: Part 2 is the work list; cross-ref [`m5_roadmap.md` § Phase M5.4](../m5_roadmap.md#phase-m54--matrix-field-substrate-migration).
 >
-> **Reading order (2026-05-30):** Parts 1–3 are the as-built history (M5.1 inventory → M5.4 migration → M5.6.5b EM-wiring as-shipped). **Part 4 is the consolidated target** — the full "what we want to *see*" observable catalog for the EM + clock-state rendering, organized from Rodrigo's 2026-05-30 vision. **Part 5 is the implementation timeline + the M5.8 4×4 safety contract + the placeholder-sample strategy** (hard-coded analytic fields to validate rendering *before* the physics produces it). Start at Part 4 for the plan; Parts 1–3 for why things are the way they are.
+> **Reading order (2026-05-30):** Parts 1–3 are the as-built history (M5.1 inventory → M5.4 migration → M5.6.5b EM-wiring as-shipped). **Part 4 is the consolidated target** — the full "what we want to *see*" observable catalog for the EM + clock-state rendering, organized from the maintainer's 2026-05-30 vision. **Part 5 is the implementation timeline + the M5.8 4×4 safety contract + the placeholder-sample strategy** (hard-coded analytic fields to validate rendering *before* the physics produces it). Start at Part 4 for the plan; Parts 1–3 for why things are the way they are.
 
 ---
 
@@ -20,7 +20,7 @@
   - [Feature-by-feature mapping](#feature-by-feature-mapping)
   - [Color-coding modes — source remap](#color-coding-modes--source-remap)
   - [Tracker redefinitions (feed the color modes)](#tracker-redefinitions-feed-the-color-modes)
-  - [Decisions taken (Rodrigo, 2026-05-26 — M5.4 step 5)](#decisions-taken-rodrigo-2026-05-26--m54-step-5)
+  - [Decisions taken (the maintainer, 2026-05-26 — M5.4 step 5)](#decisions-taken-rodrigo-2026-05-26--m54-step-5)
   - [What does NOT change](#what-does-not-change)
 - [Part 3 — Wiring viz to physical observables (M5.6.5b): "how do I *see* X?"](#part-3--wiring-viz-to-physical-observables-m565b-how-do-i-see-x)
   - [The map — physics question → channel + observable](#the-map--physics-question--channel--observable)
@@ -28,7 +28,7 @@
   - [Why `∇·n̂` and `∇×n̂` are the right "see EM" observables](#why-n̂-and-n̂-are-the-right-see-em-observables)
   - [Implementation order (M5.6.5b)](#implementation-order-m565b)
   - [As-built log (update as features land)](#as-built-log-update-as-features-land)
-- [Part 4 — The consolidated viz target (Rodrigo 2026-05-30): "what I want to *see*"](#part-4--the-consolidated-viz-target-rodrigo-2026-05-30-what-i-want-to-see)
+- [Part 4 — The consolidated viz target (2026-05-30): "what I want to *see*"](#part-4--the-consolidated-viz-target-2026-05-30-what-i-want-to-see)
   - [4.1 The observable catalog — what each quantity IS](#41-the-observable-catalog--what-each-quantity-is)
   - [4.2 Glyph (vector-field) displays — split the one EM toggle into four](#42-glyph-vector-field-displays--split-the-one-em-toggle-into-four)
   - [4.3 flux_mesh (scalar/warp) displays — keep, with one upgrade](#43-flux_mesh-scalarwarp-displays--keep-with-one-upgrade)
@@ -60,7 +60,7 @@
 
 | Mode | Palette | Reads |
 | --- | --- | --- |
-| 1 Deviation (Magnitude) | orange | `ψ.norm()` (+ vector_warp) |
+| 1 Deviation/Displacement (Magnitude) | orange | `ψ.norm()` (+ vector_warp) |
 | 2 Amp (A) (EMA RMS) | ironbow | `amp_local_emarms_am` |
 | 3 Clock (ω) | blueprint | `freq_local_cross_rHz` |
 | 4 ENERGY (Hamiltonian) | ironbow | `energyH_density_aJ` |
@@ -165,7 +165,7 @@ Amplitude/frequency trackers are not retired — re-derived against M, and physi
 
 Tracker *infrastructure* (per-voxel EMA fields, crossing detection, global aggregates) carries over unchanged; only the sampled quantity changes. The ψ_z zero-crossing was always a convention hack (the kernel docstring admits it) — the matrix clock-rate is the genuine article.
 
-### Decisions taken (Rodrigo, 2026-05-26 — M5.4 step 5)
+### Decisions taken (the maintainer, 2026-05-26 — M5.4 step 5)
 
 | Decision | Chosen | Implementation |
 | --- | --- | --- |
@@ -191,7 +191,7 @@ Net: the rendering layer is **not a rewrite**. It is "add the eigen-decompositio
 
 ## Part 3 — Wiring viz to physical observables (M5.6.5b): "how do I *see* X?"
 
-**Premise (Rodrigo, 2026-05-27).** Through M5.5 the viz channels were mostly placeholders — only the energy flux-meshes (`WAVE_MENU` 4/5) carried real signal. The channels are general-purpose *displays*; the value comes from **wiring each to the observable that builds physical intuition** for the phenomena OpenWave investigates (matter / forces / EM). This part is the observable→channel map: pick a physics question, pick the channel + observable that answers it visually.
+**Premise (the maintainer, 2026-05-27).** Through M5.5 the viz channels were mostly placeholders — only the energy flux-meshes (`WAVE_MENU` 4/5) carried real signal. The channels are general-purpose *displays*; the value comes from **wiring each to the observable that builds physical intuition** for the phenomena OpenWave investigates (matter / forces / EM). This part is the observable→channel map: pick a physics question, pick the channel + observable that answers it visually.
 
 ### The time axis is not renderable — only its shadows (and one exception)
 
@@ -236,7 +236,7 @@ The director `n̂` is the LC analog of the field; its **distortion modes** map o
 
 1. ✅ **EM div/curl DONE** (freshest — M5.6.4 just validated the EM sector): `compute_director_em` → `director_div` (scalar), `director_curl` (vector) + `director_curl_mag` (scalar), wired as WAVE_MENU 6/7 + E/B glyphs with size/color toggles. Glyph↔flux-mesh cell-center alignment fixed (see as-built log). **This is the M5.6 PR boundary.**
 
-The rest are **deferred past the M5.6 PR** (Rodrigo 2026-05-27):
+The rest are **deferred past the M5.6 PR** (the maintainer 2026-05-27):
 
 1. **gauge-stable charge** — UPDATE 2026-05-30 (VIZ.1): the **director-glyph** half is ✅ DONE (centered + barbless = gauge-stable). The **signed-charge WM6** half is **left honest-but-flipping** and deferred to **M5.8** via topological-winding density (`|∇·n̂|`-unsigned was tried + dropped as redundant). The charge-region *expansion* is real free-defect dispersal, not the artifact. See §4.4 + §5.2 #1b.
 1. **granule amplitude-map** — color each granule by local amplitude `A`. → **backlog**.
@@ -283,7 +283,7 @@ The `unit`+`single` combination is the **far-field inspection** view (uniform, f
 
 **Color-spread calibration (2026-05-31) — why B needed γ-compression but E didn't.** The dipole `B ∝ 1/r³` falls off ~9× steeper than the hedgehog's `∇·n̂ ∝ 1/r`, so a *linear* bluered map dumped everything past the core into black (only a thin shell of poles visible). Two fixes, both on the B bluered (glyph **and** WM7 mesh, kept in lockstep): (1) **scale against B's OWN `director_curl_max`**, not the shared `max(div_absmax, curl_max)` — else the bigger E charge (`div_absmax=0.19` vs `curl_max=0.07` in the sample) caps the B peak at ~0.39 of palette so it never reaches the extreme; (2) **γ-compress the normalized magnitude** (`|t|^γ`, `_BLUERED_GAMMA=0.4` in `engine4_render.py`) so mid/far values lift toward the palette extremes while the peak clips to the extreme and 0 stays black-center. Probe (2026-05-31): the dipole now reads core→r=24 voxels (r6 brightness 0.47, r14 0.17, was ~0). The glyph **size** declutter still uses the shared scale (so static-noise glyphs stay zero-length). E (greenyellow) is unchanged — its gentle `1/r` already spreads well linearly. `_BLUERED_GAMMA` is tunable (1.0 = old linear).
 
-**🚧 Deferred past the M5.6 PR (Rodrigo 2026-05-27)** — none blocks the PR; each homed to the phase where it becomes meaningful:
+**🚧 Deferred past the M5.6 PR (the maintainer 2026-05-27)** — none blocks the PR; each homed to the phase where it becomes meaningful:
 
 | Feature | What | Home | Why deferred |
 | --- | --- | --- | --- |
@@ -298,7 +298,7 @@ The `unit`+`single` combination is the **far-field inspection** view (uniform, f
 
 ---
 
-## Part 4 — The consolidated viz target (Rodrigo 2026-05-30): "what I want to *see*"
+## Part 4 — The consolidated viz target (2026-05-30): "what I want to *see*"
 
 This part organizes the full observable wishlist for the EM + clock-state rendering into one coherent
 catalog: **the physical quantities to display, what each *is* in the substrate, and the render
@@ -346,7 +346,7 @@ This is the central clock observable (and the M5.8 headline), so it gets an expl
 > three as the ellipsoid semi-axes `a` (longest) > `b` (middle) > `c` (flat) — so `a`↔`n̂`/`1`,
 > `b`↔δ-axis, `c`↔null. `a/b/c` are geometry; `g,1,δ,0` are the eigenvalue lengths. (`0c §L2`.)
 >
-> ⚠️ **Correction (Rodrigo 2026-05-30) — the director glyph does NOT show the clock spin.** Two
+> ⚠️ **Correction (the maintainer 2026-05-30) — the director glyph does NOT show the clock spin.** Two
 > independent reasons: **(1)** the clock twists the secondary axes *around* `n̂`, so the director
 > `n̂` itself **stays put** (it's the axle, not the clock-hand — invariant under the `clock_twist`).
 > **(2)** Even if it rolled about its own axis, a single line segment looks *identical at every
@@ -400,7 +400,7 @@ ignore them (always unit + fixed colors). UI spells "delta" — GGUI cannot rend
 | **2 Electric Field** | `+ → −` half-barb (gauge-arbitrary sign until M5.8) | **honors** size (`∝\|∇·n̂\|` charge) + color (greenyellow charge) | `director_nhat` as a polar field line (E ∝ `n̂`) |
 | **3 Magnetic Field** | `N → S` (along `∇×n̂`) | size `∝‖∇×n̂‖` (shared scale); color: single → orange, gradient → **bluered signed N/S** (same `_curl_signed_proj` + γ-compressed-against-own-`curl_max` as WM7 — visible far from the core) | `director_curl_field`, via `update_em_vector_glyphs` |
 
-**Why the Director states ignore size/color (Rodrigo 2026-05-30):** they represent the *ellipsoid
+**Why the Director states ignore size/color (the maintainer 2026-05-30):** they represent the *ellipsoid
 orientation*, not an E/B field — there is no charge/strength to encode, so magnitude-scaling and
 charge-coloring are meaningless. State 0 is the bare director axis; state 1 adds the δ cross-bar to
 make the biaxial frame legible as a wireframe "+". (Both share `mode=0` in `_write_glyph`; a
@@ -432,7 +432,7 @@ scalar-vs-vector distinction. The barb is the only polar/apolar difference. The 
 
 ### 4.3 flux_mesh (scalar/warp) displays — keep, with one upgrade
 
-The WAVE_MENU flux-meshes are good as-is. One change Rodrigo flagged:
+The WAVE_MENU flux-meshes are good as-is. One change the maintainer flagged:
 
 | WAVE_MENU | Keep / change | Detail |
 | --- | --- | --- |
@@ -446,7 +446,7 @@ The WAVE_MENU flux-meshes are good as-is. One change Rodrigo flagged:
 > `.norm()`. The upgrade is a new render branch that displaces the vertex by all 3 curl components
 > (like WAVE_MENU 1's old vector_warp did for ψ), no new physics kernel.
 
-**Blue-red signed-color — warp and color are separable** (Rodrigo 2026-05-30):
+**Blue-red signed-color — warp and color are separable** (the maintainer 2026-05-30):
 
 > The *warp*
 > (twist-in-fabric) shows B rotation/handedness from the **vector** `∇×n̂` and works regardless of
@@ -494,7 +494,7 @@ director's sign (`n̂≡−n̂`) drifts between neighbouring voxels during the s
   the `arrow_length`/`centered` params, and the barb math. Barbs are kept only for the **polar**
   E/B field-line glyphs (VIZ.3), which genuinely have a direction.
 - **`|∇·n̂|` unsigned charge mode → NOT shipped (dropped the planned WM8).** Redundant with the
-  signed WM6 (same field, just sign-stripped) → UI clutter (Rodrigo). Option 1 above is therefore
+  signed WM6 (same field, just sign-stripped) → UI clutter (the maintainer). Option 1 above is therefore
   *available in principle* but deliberately not exposed.
 - **Signed charge WM6 → left honest-but-flipping (option b).** The cosmetic local sign-flip stays;
   the gauge-invariant fix (option 3, **topological winding density** — the conserved charge that
@@ -509,7 +509,7 @@ charge-region **expansion** + director **tilt** seen under Evolve-PDE is **real 
 director orientation → the Frank elastic F spreads). Only the **local sign-flip** is a gauge
 artifact. A gauge-fix should remove the flip and leave the expansion — the expansion is the result.
 
-**⚠️ Scope expansion → ✅ FIXED (Rodrigo 2026-05-30) — the same apolar gauge also corrupted the
+**⚠️ Scope expansion → ✅ FIXED (the maintainer 2026-05-30) — the same apolar gauge also corrupted the
 director GLYPH.** Under Evolve-PDE the director glyphs *sloshed direction* (sudden 180° flips), the
 **same `n̂≡−n̂` sign-flip artifact** as the charge view. Root cause: the glyph was drawn
 **asymmetric** (`pos → pos + L·n̂`), so `n̂→−n̂` flipped the segment 180°. **Fixed by rendering the
@@ -552,7 +552,7 @@ twisting/spinning defect — i.e. the Zitterbewegung clock (M5.8) or a seeded cu
 This is the M5.6.5f carry-over: **the render path is built + smoke-tested** (Sample ✅); the *physics
 source* swaps in at M5.8 with no render change.
 
-**Axial vs radial — which scalar gives N/S poles (Rodrigo 2026-05-30):** the bluered color projects
+**Axial vs radial — which scalar gives N/S poles (the maintainer 2026-05-30):** the bluered color projects
 `∇×n̂` (=B) onto a chosen direction. The choice matters:
 
 | Projection | Formula | Dipole pattern | Bar-magnet N/S? |
@@ -642,7 +642,7 @@ deviation scalars every frame.
 | 1 | **VIZ.1 — centered + barbless director glyph** (§4.4) — apolar-correct convention; kills the 180° slosh | ✅ yes | **low** | **✅ DONE + TESTED (2026-05-30)** |
 | 1b | **Gauge-stable SIGNED charge** (§4.4) — winding-density (Brouwer) so WM6's ± can't flip | ⏳ **M5.8** | medium | deferred — see "When we address it" below; WM6 stays honest-but-flipping until then |
 | 2 | **VIZ.2 — curl-vector mesh-warp + bluered N/S toggle** (§4.3) — WM7 warps by raw `∇×n̂` vector | ✅ yes | **low** | **✅ DONE (2026-05-30)** |
-| 3 | **VIZ.3 — 4-state glyph select: Director / Director+Delta / E / B** (§4.2) | ✅ yes | **low–med** | **✅ DONE (2026-05-30)** — `director_mid` + `eigvec_for`; `_write_glyph` ti.func w/ `mode` + `show_delta`; refined per Rodrigo (added bare Director-only state so δ never shows alone; slider → 4 checkboxes) *Director states = ellipsoid orientation (agnostic to size/color); E/B polar + barbed; 4 mutually-exclusive checkboxes, "delta" spelled out for GGUI* |
+| 3 | **VIZ.3 — 4-state glyph select: Director / Director+Delta / E / B** (§4.2) | ✅ yes | **low–med** | **✅ DONE (2026-05-30)** — `director_mid` + `eigvec_for`; `_write_glyph` ti.func w/ `mode` + `show_delta`; refined per the maintainer (added bare Director-only state so δ never shows alone; slider → 4 checkboxes) *Director states = ellipsoid orientation (agnostic to size/color); E/B polar + barbed; 4 mutually-exclusive checkboxes, "delta" spelled out for GGUI* |
 | 4 | **VIZ.4 — magnetic-dipole viz SAMPLE** (§4.5 stage 1) — hard-coded analytic B → bluered N/S + moment glyph | ✅ yes (placeholder) | **medium** | **✅ DONE (2026-05-30)** — `_viz_sample_dipole` xparam + `fill_dipole_sample_B` + `update_moment_glyph` + `moment_glyph_*` buffers; loader reads `GLYPH_VECTOR`/`SIZE`/`COLOR`/`CURL_COLOR`+dipole keys. Math + headless verified; **on-screen confirmed** — radial `B·r̂` gives N-red-above / S-blue-below + YELLOW moment glyph (the original axial projection's "2 red lobes" was fixed via `_curl_signed_proj`/`curl_radial`) |
 | 6 | **Granule amplitude-map** (§4.6) | ⏸ backlog | low | pending |
 | 7 | **Magnetic-dipole viz REAL** (§4.5 stage 2) — point at the clock's actual circulating B + auto-axis | ⏳ M5.8 | low (render exists from #4) | pending |
@@ -667,7 +667,7 @@ M5.6.5c). Cheaper interim if ever needed before M5.8: a per-step defect-relative
 
 **Principle:** rendering and physics are decoupled. We can build + visually verify a render channel
 against a **hard-coded analytic field** *now*, then swap the data source to the real computed field
-when the physics lands — with no render change. This de-risks the viz work and lets Rodrigo approve
+when the physics lands — with no render change. This de-risks the viz work and lets the maintainer approve
 the *look* early.
 
 | Channel | Placeholder field (hard-coded, analytic) | Swap to (real) when |

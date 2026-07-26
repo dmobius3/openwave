@@ -1,0 +1,156 @@
+# M8 MIT (Mode Identity Theory): Model Briefing
+
+> **What M8 brings.** Particles as samples of a single standing wave on a fixed
+> topology: the three-sphere, its binary icosahedral quotient S³/2I, and a Möbius
+> edge. It is a top-down structural model, not an emergent-dynamics one. Where the
+> other columns start from a Lagrangian and evolve fields until particles appear, MIT
+> starts from the topology and reads the spectrum off it: the couplings, the fermion
+> mass ratios, and Λ come from representation theory on S³/2I (McKay distance,
+> Reidemeister torsion, the 120-cell). It is strong on the origin of the numbers and
+> has no field dynamics of its own; supplying that dynamics IS the M8 program
+> ([`research/m8_background.md`](research/m8_background.md)).
+>
+> **Status: scaffold stage, research mode first.** This column was scaffolded by the
+> maintainers on 2026-07-21 from the author's onboarding proposal
+> ([discussion #312](https://github.com/openwave-labs/openwave/discussions/312));
+> the content below is adapted from the briefing the author submitted there. The
+> author owns the science; the platform supplies the arena, the standards, and the
+> cross-model pointers ([`research/m8_platform_pointers.md`](research/m8_platform_pointers.md)).
+> The first sector is now VALIDATED in-platform: M8.1 (2026-07-21) verified the
+> twisted-Möbius first-eigenvalue theorem at 10-digit precision, blind and audited.
+> MIT's other results remain analytic or externally computed, and three of them are
+> pre-registered documented negatives the author reports as results. Work runs
+> headless (scripts + research notes) first; the 3D rendering port is a later stage,
+> gated on field dynamics validating in-platform
+> ([`research/m8_roadmap.md`](research/m8_roadmap.md) M8.7).
+
+![Möbius manifold topological universe blueprint, by Blake Shatto (asset from the author's mode-identity-theory repo, MIT license)](research/images/blueprint.png)
+
+## Identity
+
+| Field | Value |
+| --- | --- |
+| Model ID | M8 |
+| Name | MIT (Mode Identity Theory) |
+| Author | Blake Shatto (independent researcher, sole author) |
+| Author contact | GitHub [@dmobius3](https://github.com/dmobius3), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6 |
+| Lineage | Spectral geometry on S³/2I + Möbius boundary conditions + representation theory (McKay correspondence, Kostant partition, Reidemeister torsion); Einstein's field equations kept unchanged |
+| Key inputs | Three standalone math papers: the twisted-Möbius first-positive eigenvalue, the coexact spectral gap from McKay distance, and the E8-filling Galois pair |
+| Primary sources | Author repo: [github.com/dmobius3/mode-identity-theory](https://github.com/dmobius3/mode-identity-theory); framework deposit [10.5281/zenodo.18064856](https://doi.org/10.5281/zenodo.18064856); full registry in [`theory/_CITATIONS.md`](theory/_CITATIONS.md) (10 Zenodo DOIs machine-verified 2026-07-21) |
+| Author-side artifacts | `calculator.html` (recomputes couplings, the 24-entry mass spectrum, and cosmology from the postulate); `mass-null-test.py` (pre-registered torsion null test, frozen tag); `claim-ledger.md` (the framework's own freedom audit: calibration web, cycles, overclaim checks) |
+| Onboarding record | [Discussion #312](https://github.com/openwave-labs/openwave/discussions/312) (2026-07-21); maintainer evaluation against [`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) §§ 1, 4, 5 passed on artifact verification |
+
+## Model Profile (what it brings, short form)
+
+| Attribute | M8 |
+| --- | --- |
+| Substrate | not a dynamical medium: a standing wave `Ψ = cos(t/2)` sampled on a fixed static geometry (S³, the quotient S³/2I, the Möbius edge `S¹ = ∂(Möbius)`). Topology is the input |
+| Vacuum / dynamics | none native. No field Lagrangian and no equation of motion; Einstein's field equations are kept unchanged as the geometry's dynamics. This is the defining gap versus the emergent-field columns, and the M8 program's target |
+| Particle | a sampled standing-wave mode: an irreducible representation of 2I at a McKay-lattice position, carrying a Reidemeister-torsion / flat-connection (vacuum) assignment. Not a soliton and not an evolved defect |
+| Charge | from the 2I stabilizer structure: the Z₃ face stabilizers give QCD color (singlet / triplet per irrep). A group-theoretic assignment, not an integrated winding |
+| Derrick escape | not applicable in current MIT: no soliton, so the collapse question does not arise. Stability is asserted spectrally (the first positive level is stable across the cone's self-adjoint extensions; matter modes return under the Möbius double cover), not derived from dynamics |
+| Clock | the Waltz clock `dt/dτ = S^(-1/2)`, `S = sin(t/2)`, mapping phase to time. Assumed, not derived: the exponent −1/2 is empirically forced (integer alternatives excluded at Δχ² > 60) but not yet derived from the embedding. The opposite of M5, where the clock is the measured energy-minimizing state |
+| EM | α read from the first Fibonacci well (13/60) at grid depth. Calibration-webbed: α is the calibration input that fixes the curvature radius R, so the 0.5% match is a consistency check, not a free prediction (the author's own Cycle 2) |
+| Quantum | not applicable: no field quantization. MIT is spectral geometry on a fixed manifold, not a QFT |
+| Gravity | Einstein's equations unchanged; `Λ = 3/R²` as the Möbius-surface first-positive eigenvalue `2/R²` carried by the Gauss-Codazzi factor 3/2. The value of R is the open R-problem (two routes disagree by ~4×, author-flagged) |
+| Free parameters | not zero. One measured calibration anchor per sector: H₀ (edge), Λ or α (surface), m_e (mass-sector normalization). Plus named selection choices (the first-positive eigenvalue branch, the anti-periodic boundary condition, the well set {13, 21, 34, 55}, the torsion-to-slot map), several of which the author's own audits show are chosen or null, not forced |
+| Lab anchor | m_e (mass benchmark); measured Λ, H₀, α; PDG fermion masses as comparison targets |
+| Formal artifacts | the calculator reassembles every quoted number from the postulate; `mass-null-test.py` is a pre-registered, frozen-tag null test; the claim ledger runs the parameter-count and red-flag self-checks. Documented negatives preserved |
+| Next falsifier | Euclid DR1 (full release, mid 2027): a₀(z) ∝ H(z), Λ epoch-independence, and the sign-fixed negative (1+z)¹ term in H²(z). Nearer-term structural: ν₂ neutrino mass at 8.6 meV (JUNO / DUNE) |
+
+## Decision-Relevant Attributes
+
+MIT's parameter economy is audited in the author's own `claim-ledger.md`, which runs the
+[`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) § 4 test on the framework before
+any maintainer does. The honest summary, kept at the ledger's own weight:
+
+| Attribute | M8 |
+| --- | --- |
+| Free parameters | one calibration anchor per sector (H₀, Λ-or-α, m_e), plus the four named selection choices above. The ledger's shared-freedom audit finds several are not forced: the well set {13, 21, 34, 55} ranks 30,420 / 249,900 (12.2%) under its own eight-functional variational test, never extremal (selection null); the torsion-to-slot map is a pre-registered null (p = 0.174); α is input-and-output (Cycle 2, consistency check); and the two independent routes to R disagree by ~4× (Cycle 7, the framework's most significant internal tension) |
+| Honest residuals | present and listed, not smoothed: down quark 3.2×, top quark 3.9×, tau a soft miss; the m_e-to-Λ calibration loop closes only to ~11%; charm is unplaced, and 8 of 24 mass slots are unassigned |
+| Formal artifacts | every claim recomputes from its own definition (McKay distances, Reidemeister torsions, the C_geom weights) via the calculator; documented negatives kept as results |
+| Falsifiable near-term tests | Euclid DR1 (mid 2027) is the live gate, with pre-registered thresholds on a five-row contender card; ν₂ = 8.6 meV is the sharp particle-sector falsifier |
+
+## Field Configuration of Particles
+
+Standing demand of any particle model: *state the field configuration of each particle,
+and say whether it uses topological vortices.* MIT's honest answer is that it does
+**not** currently supply field configurations of that kind: its particles are
+representation-theory slots, not field defects. This is exactly the half of the program
+MIT lacks and the M8 program supplies
+(the gap map: [`research/m8_background.md`](research/m8_background.md)).
+
+| Particle | Configuration in MIT | Topological vortex? |
+| --- | --- | --- |
+| Electron / leptons | an irrep of 2I at a fixed McKay distance, trivial-vacuum flat connection, with a Kostant geometric weight `C_geom` | ❌ a spectral / representation-theory slot, not a field defect |
+| Three generations | the same irrep read in the three flat connections (trivial, standard, Galois) of S³/2I | ❌ three vacua, a structural label |
+| Quarks / color | color charge from the Z₃ face stabilizer of 2I (triplet vs singlet) | ❌ a group-theoretic assignment |
+| Photon / gluon | massless at the edge-only (S¹) level of the layer split | ❌ (radiation, and no field model of it here) |
+
+The clock is **assumed** (empirically pinned), not derived, the opposite of M5 where the
+de Broglie clock is the energy-minimizing state.
+
+## Implementation Status
+
+Nothing is validated in-platform yet: M8 is a scaffold-stage column with no OpenWave
+runs, so the [`MODELS.md`](../../../MODELS.md) column starts at 21 🚧. The table records
+honest external status and marks the in-platform work planned. The three ❌ rows are
+pre-registered negatives the author already owns, offered in the spirit that a
+documented negative is a result.
+
+| Sector | Status |
+| --- | --- |
+| Λ = first-positive eigenvalue 2/R² (twisted Möbius Laplacian) | ✅ VERIFIED in-platform (M8.1, 2026-07-21): blind two-agent eigensolve per [`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) § 6, adversarially audited (6/6 fidelity checks); 2/R², the α₀(α₀+1)/R² wide branch, the 2R/e stability threshold and the −4e^(−2γ)/δ₀² defect state all confirmed at 10-digit precision by agents that never saw the claimed values. The Λ = 3/R² inference (Gauss-Codazzi step + the R-problem) remains open ([`research/findings/m8_1_method_note.md`](research/findings/m8_1_method_note.md)) |
+| Fermion mass spectrum (24 entries) | 🚧 planned in-platform / analytic-only today. Reproducible as a script from recomputed constants (M8.3), the same category the platform scores EWT's masses under ("from analytic equations, not in-sim dynamics"). Residuals listed above; evidence graded at the ledger's own weight (the torsion null caps the ×3 hit-rate claim) |
+| Yang-Mills mass gap 4/R² on S³/2I | 🚧 planned in-platform. Analytic (the coexact-gap bedrock paper) |
+| Charge / color quantization | 🚧 planned in-platform. Structural in MIT (2I stabilizers); not run in the engine |
+| Torsion mass-scorecard (the within-3× hit rate) | ❌ documented negative (author-side): the pre-registered null test (`mass-null-v1.0`, frozen tag, one run) finds random torsion reassignment reproduces or beats the observed coverage 17.4% of the time (p = 0.174). The ×3 proximity count is not evidence for the specific torsions; the structural outputs are the evidence |
+| a₀(z) coherence-scale trigger (SPARC) | ❌ documented negative (author-side): pre-registered pipeline ([10.5281/zenodo.20271702](https://doi.org/10.5281/zenodo.20271702)), run once on 123 galaxies. Transition radius tracks L_f at slope 0.23 (registered [0.7, 1.3]); the coherence-scale mechanism is falsified. The lattice arithmetic is untouched |
+| H₀ bimodality (discrete-vs-continuous fork) | ❌ documented negative (author-side): dip test fails to reject unimodality (p = 0.217); H₀ data sorts by calibration class but does not quantize |
+| Native field dynamics | 🚧 planned / absent, the defining open problem and the M8 program's core: MIT has no Lagrangian, so masses are assigned by structure rather than emerging from evolution. The platform supplies the Lagrangian-family candidates and the simulation engineering ([`research/m8_platform_pointers.md`](research/m8_platform_pointers.md)) |
+
+## Roadmap
+
+Full program with gates and ownership: [`research/m8_roadmap.md`](research/m8_roadmap.md). Short form:
+
+| Task | What lands |
+| --- | --- |
+| M8.1 | ✅ DONE (2026-07-21): the certification gate PASSED: independent blind eigensolve + adversarial audit confirmed 2/R², the wide branch, the 2R/e threshold and the defect-state asymptotic at 10-digit precision ([`research/findings/m8_1_method_note.md`](research/findings/m8_1_method_note.md)) |
+| M8.2 | Pre-registration lock for the field-dynamics program (targets + success criteria BEFORE any run) |
+| M8.3 | Mass-formula reproducer: every constant recomputed from its definition, assembly scripted |
+| M8.4 | Lagrangian-family survey on S³/2I (candidates drawn from M4/M5/M7; Derrick analysis on a compact arena) |
+| M8.5 | Quotient-manifold simulation engineering (2I-equivariant grid vs spectral basis) |
+| M8.6 | McKay-distance rule vs M5's measured lepton hierarchy (bounded cross-check, no simulation needed) |
+| M8.7 | LATER, gated on validated field dynamics: the 3D rendering port (M5-style launcher + shared GGUI stack) |
+
+## Help Wanted
+
+M8 is an open column in an open arena; the author's original asks from #312 stand, with
+M8.1 adopted by the maintainers:
+
+| Contribution | What it would settle |
+| --- | --- |
+| A field dynamics | the central gap: a Lagrangian whose defect or standing-wave spectrum on S³/2I matches the McKay-distance mass ladder. MIT supplies the target structure; it needs the equation of motion |
+| Independent recompute of 2/R² | ✅ delivered as M8.1 (2026-07-21): script and number, blind and audited; the author's verification block is cleared |
+| Adversarial parameter count | a hostile § 4 pass on the mass and coupling sectors. The author's ledger already runs one and expects the freedom to be non-trivial; an independent counter is welcome to check it |
+
+Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
+(`git commit -s`), under Apache 2.0. Light review checks only reproducibility + honest
+documentation, not orthodoxy. Start here: [`../../../MODELS.md`](../../../MODELS.md)
+§ Contributing, [`../../../ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md),
+[`../../../CONTRIBUTING.md`](../../../CONTRIBUTING.md).
+
+## Rich Context for Deep Reader
+
+This is top-level orientation content. **AI agents working for the author start at
+[`research/m8_agent_orientation.md`](research/m8_agent_orientation.md)** (the
+one-prompt bootstrap: reading list, task template, workflow suggestion, completion
+protocol). For additional context: the spec of record in
+[`research/m8_theory_canonical.md`](research/m8_theory_canonical.md) (canonical when
+docs disagree), the gap map and program rationale in
+[`research/m8_background.md`](research/m8_background.md), the cross-model pointer map
+in [`research/m8_platform_pointers.md`](research/m8_platform_pointers.md) (written to
+be consumed by the author's AI agents), the citations registry in
+[`theory/_CITATIONS.md`](theory/_CITATIONS.md), and the author's repo (calculator,
+claim ledger, null tests) at
+[github.com/dmobius3/mode-identity-theory](https://github.com/dmobius3/mode-identity-theory).

@@ -27,7 +27,7 @@ The lesson generalizes: physicists verify by reading the Lagrangian / Hamiltonia
 | --- | --- |
 | Can the owner find `V(...)` and the Hamiltonian density from the report in one click? | yes, via the equation-to-code map |
 | Does the report open with equations, not results? | yes |
-| Is every code link clickable (absolute https) with a file:line anchor? | yes. `blob/main` links are the DEFAULT for task-scoped files (frozen after task close, anchors stable; Rodrigo 2026-07-05); commit-pin ONLY when linking into live/evolving files whose lines will drift |
+| Is every code link clickable (absolute https) with a file:line anchor? | yes. `blob/main` links are the DEFAULT for task-scoped files (frozen after task close, anchors stable; The maintainer 2026-07-05); commit-pin ONLY when linking into live/evolving files whose lines will drift |
 | Is the functional in a small module whose docstring matches the report's equations? | yes |
 | Is each headline number next to its gate + convergence evidence? | yes |
 | Is the not-computed list explicit? | yes |

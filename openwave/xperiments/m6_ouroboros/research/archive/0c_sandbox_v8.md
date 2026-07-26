@@ -524,7 +524,7 @@ Paul: *"please check if the corrected neutral mass (0.998 MeV at λ=1) and the l
 ## DM paper input extraction (2026-05-21 PM later)
 
 Paul's parallel ask (4:10 PM, `DarMatterMay21.docx` draft): *"Submit
-to ApJ when Rodrigo provides the precise numerical values for m_J, C,
+to ApJ when the maintainer provides the precise numerical values for m_J, C,
 and m_χ."* DeepSeek wrote a full DM paper draft and gated ApJ
 submission on us providing these three numbers.
 

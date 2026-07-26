@@ -1,0 +1,34 @@
+{
+  "task": "M6.4 D1: May z20044392 census reconstruction",
+  "summary": {
+    "n": 1280,
+    "diverged": 0,
+    "crit_i_pass": 26,
+    "crit_i_and_ii_pass": 26,
+    "all_three_pass": 0,
+    "passers_below_threshold": 0,
+    "published_counts": {
+      "sec_5_1": 62,
+      "sec_5_4_internal": 42
+    },
+    "thresholds_w_max": {
+      "0.0": 1.0,
+      "0.5": 0.8836,
+      "1.0": 0.7862,
+      "1.5": 0.7071,
+      "2.0": 0.6436
+    },
+    "grid_reconstruction": "4g x 4w x 4A0 x 4B0 x 5lam = 1280 evenly spaced incl. endpoints (factorization unprinted in the record)"
+  },
+  "representative_case": {
+    "kappa_printed": 0.436,
+    "kappa_analytic": 0.4359,
+    "best_grid_shot": {
+      "A0": 0.4,
+      "B0": 0.4,
+      "tail_mag_at_10": 0.15719979686369276,
+      "tail_decay_fit": 0.6932
+    }
+  },
+  "runtime_s": 13.7
+}

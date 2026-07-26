@@ -15,7 +15,7 @@
 
 ## What is OpenWave?
 
-OpenWave is an open-source subatomic physics simulator for exploring fundamental physics through **classical field theory enriched with topology and nonlinearity** — the scientific tradition of de Broglie–Bohm pilot waves, wave structure of matter, and modern topological-soliton models. The platform is python-based and lets you model matter and energy phenomena using wave-dynamics, topological defects, and nonlinear potentials, investigating whether particles and forces can emerge from deterministic field equations rather than being postulated.
+OpenWave™ is an open-source subatomic physics simulator for exploring fundamental physics through **classical field theory enriched with topology and nonlinearity**: the scientific tradition of de Broglie-Bohm pilot waves, wave structure of matter, and modern topological-soliton models. The platform is python-based and lets you model matter and energy phenomena using wave-dynamics, topological defects, and nonlinear potentials, investigating whether particles and forces can emerge from deterministic field equations rather than being postulated.
 
 OpenWave is a computational platform for testing candidate field-theoretic models against a specific, well-defined scientific question: *can a classical Lagrangian field theory, when augmented with topology and the right nonlinear potentials, quantitatively reproduce specific particle-scale phenomena (Coulomb interaction, lepton mass spectrum, Zitterbewegung, quark confinement, annihilation)?* — with concrete pass/fail criteria for each phenomenon, applied uniformly across the candidate models implemented in the platform. See the [Scientific Position](#scientific-position) section below.
 
@@ -100,6 +100,8 @@ OpenWave is built to be disconfirmed. Every model is held to concrete, public pa
 
 ### Platform vs. Model — what survives if a model fails
 
+OpenWave is **not a theory of everything, and it does not advocate one**. A single-model TOE program argues for its framework; OpenWave is the arena where candidate frameworks are tested side by side against the same pass/fail criteria. The platform has no house model and no stake in which one wins: its voice is the referee's, never a contestant's, and its only claims are the per-criterion cells in [MODELS.md](MODELS.md) with the scripts behind them, honest negatives included.
+
 OpenWave is the **simulator and comparison engine**; the candidate frameworks contributed by Yee, Duda, Close, Werbos, and others are **models** running inside that simulator. The platform value comes from hosting multiple frameworks side-by-side on the same numerical engine, running them against shared observables, and providing cause-effect experimentation under perturbation. Those capabilities survive any individual model being wrong: if a candidate framework fails its pass criteria, the platform's value as a comparison engine is intact and another candidate can be tested. The simulator IS the product, not any particular physics it embeds. The model-by-model validation status lives in [MODELS.md](MODELS.md), the side-by-side comparison table with per-criteria status and the script behind every cell.
 
 ### Historical Pioneers
@@ -110,17 +112,18 @@ OpenWave is the **simulator and comparison engine**; the candidate frameworks co
 - Milo Wolff — [Wave Structure of Matter](https://www.amazon.com/dp/0962778710) & [Schroedinger's Universe](https://www.amazon.com/Schroedingers-Universe-Origin-Natural-Laws-ebook/dp/B001MIZV3A)
 - Gabriel LaFreniere — [Matter is Made of Waves](https://lafreniere.pages.dev/)
 
-### Major Theoretical Contributions
+### Theoretical Contributors
 
 | Contributor | Framework | Contribution |
 | --- | --- | --- |
 | [Jeff Yee](https://www.linkedin.com/in/jeffyee/) | [Energy Wave Theory (EWT)](https://energywavetheory.com "Energy Wave Theory") | A proposed deterministic field-theoretic alternative to quantum mechanics, drawing conceptual inspiration from historical wave interpretations of QM (de Broglie, Bohm, Wolff). Primary physics advisor and collaborator on OpenWave since its inception. |
 | [Dr. Jarek Duda](https://en.wikipedia.org/wiki/Jaros%C5%82aw_Duda_(computer_scientist)) | [Liquid-Crystal Particle Analogs](https://en.wikipedia.org/wiki/Draft:Liquid_crystal_particle_analogs "Topological Field Framework") | A Landau-de Gennes field framework modeling particles as topological defects with integer-quantized charge. Proposes unifying electromagnetism, quantum mechanics, and gravity through a single vector order parameter, with mass and Zitterbewegung derived from a time-crystal mechanism (see [arXiv:2108.07896](https://arxiv.org/pdf/2108.07896), [arXiv:2501.04036](https://arxiv.org/pdf/2501.04036)). |
-| [Dr. Manfried Faber](https://www.fetzer-franklin-fund.org/media/manfried-faber/) | [Model of Topological Fermions](https://arxiv.org/abs/hep-th/9910221 "A Model for Topological Fermions") | A soliton model in which charged fermions are stable topological solitons of an SU(2) / S³ order-parameter field, with electric charge quantized as a topological winding number and the soliton held at a fixed size (evading Derrick's theorem). Derives the electron's charge and spin from geometry rather than point-particle postulates, recently recast as a geometric 3+1D model of electrodynamics ([arXiv:2201.13262](https://arxiv.org/abs/2201.13262)) with high-precision lattice SU(2) solitonic-dipole results ([arXiv:2604.12021](https://arxiv.org/abs/2604.12021)). Also known for the center-vortex model of QCD confinement |
-| [Dr. Rudolf Golubich](https://www.linkedin.com/in/rudolf-golubich/) | [Lattice SU(2) Soliton Determination](https://arxiv.org/abs/2604.12021 "High-precision lattice determination of the SU(2) solitonic dipole") | Co-author with Faber of the high-precision lattice implementation of the Model of Topological Fermions ([arXiv:2604.12021](https://arxiv.org/abs/2604.12021)): a static total-energy minimization (nonlinear conjugate-gradient, Polak-Ribière, with a bracketing + golden-section line search) on the SU(2)/S³ field whose single free parameter r₀ = (π/4)·(classical electron radius) reproduces the electron mass, the fine-structure constant, and the perturbative-QED vacuum-polarization corrections; charge and spin emerge as topological invariants of the analytic soliton. An active collaborator guiding the OpenWave lattice-minimizer implementation. |
+| [Dr. Manfried Faber](https://www.fetzer-franklin-fund.org/media/manfried-faber/) | [Model of Topological Fermions](https://arxiv.org/abs/hep-th/9910221 "A Model for Topological Fermions") | A soliton model in which charged fermions are stable topological solitons of an SU(2) / S³ order-parameter field, with electric charge quantized as a topological winding number and the soliton held at a fixed size (evading Derrick's theorem). Derives the electron's charge and spin from geometry rather than point-particle postulates, recently recast as a geometric 3+1D model of electrodynamics ([arXiv:2201.13262](https://arxiv.org/abs/2201.13262)) with high-precision lattice SU(2) solitonic-dipole results ([Phys. Rev. D 114, 014510 (2026)](https://doi.org/10.1103/8zn4-rwth)). Also known for the center-vortex model of QCD confinement |
+| [Dr. Rudolf Golubich](https://www.linkedin.com/in/rudolf-golubich/) | [Lattice SU(2) Soliton Determination](https://doi.org/10.1103/8zn4-rwth "High-precision lattice determination of the SU(2) solitonic dipole") | Co-author with Faber of the high-precision lattice implementation of the Model of Topological Fermions ([Phys. Rev. D 114, 014510 (2026)](https://doi.org/10.1103/8zn4-rwth), preprint [arXiv:2604.12021](https://arxiv.org/abs/2604.12021)): a static total-energy minimization (nonlinear conjugate-gradient, Polak-Ribière, with a bracketing + golden-section line search) on the SU(2)/S³ field whose single free parameter r₀ = (π/4)·(classical electron radius) reproduces the electron mass, the fine-structure constant, and the perturbative-QED vacuum-polarization corrections; charge and spin emerge as topological invariants of the analytic soliton. An active collaborator guiding the OpenWave lattice-minimizer implementation. |
 | [Dr. Robert Close](https://www.classicalmatter.org) | ["Equation of Everything" (Foundations of Physics 2025)](https://doi.org/10.1007/s10701-025-00839-0 "Classical Wave Mechanics") | A classical elastic-solid framework that derives the Dirac equation from a nonlinear vector wave equation for spin density, giving every term a concrete physical interpretation in the underlying medium. |
 | [Dr. Paul Werbos](https://en.wikipedia.org/wiki/Paul_Werbos) | [Ouroboros System (chaoiton framework)](https://zenodo.org/records/20357670) | A two-vector-field classical Lagrangian (A_μ, J_μ on Minkowski spacetime) where particles emerge as **chaoitons** — time-periodic localized solutions that escape Derrick's theorem via oscillation rather than topology. Charge quantization derives from the mutual Chern-Simons linking number between A and J flux lines (also see [What Does the Universe Look Like? A New Dark Matter Candidate from the Ouroboros Lagrangian](https://zenodo.org/records/20350105)). |
 | [Dr. Marc Fleury](https://en.wikipedia.org/wiki/Marc_Fleury) | [Toroidal Electromagnetic Electron](https://arxiv.org/abs/2510.22384 "An electromagnetic model of the electron") | A toroidal electromagnetic model of the electron (with Carlos dos Santos): a rotating EM wave confined to a torus where electric charge emerges as the field divergence (∇·E) of a novel non-divergence-free Maxwell solution, reproducing the elementary charge, spin ℏ/2, and the anomalous magnetic moment μ_B(1 + α/2π) (see [arXiv:2510.22384](https://arxiv.org/abs/2510.22384)). Brings the hydrodynamics + Beltrami / force-free-field tradition (the electromagnetism ≡ fluid-flow equivalence), now being blended with Werbos's Ouroboros into the in-platform HydroBoros model. A pioneer of the open-source movement and founder of JBoss (Ph.D. in physics, École Polytechnique). |
+| [Blake Shatto](https://github.com/dmobius3) | [Mode Identity Theory (MIT)](https://github.com/dmobius3/mode-identity-theory) | A top-down structural framework: matter as samples of a single standing wave on a fixed topology (the three-sphere, its binary icosahedral quotient S³/2I, and a Möbius edge), with the couplings, fermion mass ratios, and Λ read from representation theory (McKay correspondence, Reidemeister torsion, the 120-cell) rather than evolved from a field dynamics; Einstein's equations kept unchanged (framework deposit: [zenodo.18064856](https://doi.org/10.5281/zenodo.18064856)). |
 
 How these frameworks compare against the shared observables, criteria by criteria with validation status and the script behind each cell: **[MODELS.md](MODELS.md)**.
 
@@ -161,7 +164,7 @@ Both workflows operate on the same underlying field equations. Validation answer
 
 ### TL;DR: If you only read one thing first, read this section: [TUTORIAL: START HERE](TUTORIAL.md#0-start-here-drive-openwave-with-an-ai-agent)
 
-For development installation refer to [Contribution Guide](CONTRIBUTING.md)
+For development installation refer to [Contribution Guide](CONTRIBUTING.md). To reproduce any published claim from a clean clone, follow [REPRODUCE.md](REPRODUCE.md).
 
 ```bash
 # Make sure you have Python >=3.12 installed
@@ -189,7 +192,6 @@ XPERIMENTS are virtual lab scripts where you can explore wave mechanics and simu
 - **Highly Recommended:**
   - New here and want the full hands-on path (setup, running sims, validating a model, opening a PR)?
     - Follow the [**TUTORIAL**](TUTORIAL.md).
-  - Read the [**WELCOME TO OPENWAVE**](WELCOME.md) to get started.
 - Then, on your terminal run:
 
 ```bash
@@ -344,4 +346,4 @@ All dependencies use licenses compatible with Apache 2.0.
 
 ### Trademark
 
-"OpenWave" is a trademark of OpenWave Labs. See [TRADEMARK](TRADEMARK) for usage guidelines.
+OpenWave™ is a trademark of the OpenWave project. See [TRADEMARK.md](TRADEMARK.md) for usage guidelines.

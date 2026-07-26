@@ -4,6 +4,6 @@
 
 ## Planning notes (2026-07-07, the post-M7.10 next-task analysis)
 
-A good PARALLEL option during the park: harmonic-frame, no Q14-cure dependency. This task carries the **Q11 localized-branch hunt** and its scan design is already pre-worked: the 2026-07-05 micro-slice ([`m7_13_q11_window.py`](../scripts/m7_13_q11_window.py)) refuted the external `(ω, g)` claim and derived that the decaying-channel condition at canonical `(λ, m_c)` is `ω < ω* = 0.786` (localization and existence mutually exclusive there), so the scan moves **`(λ, m_c)`**, not `(ω, g)`. M7 is parked until the author's walkthrough pass; sequencing lives in [M7.11 § 0](m7_11_variable_lambda.md).
+A good PARALLEL option during the park: harmonic-frame, no Q14-cure dependency. This task carries the **Q11 localized-branch hunt** and its scan design is already pre-worked: the 2026-07-05 micro-slice ([`m7_13_q11_window.py`](../scripts/m7_13_q11_window.py)) refuted the external `(ω, g)` claim and derived that the decaying-channel condition at canonical `(λ, m_c)` is `ω < ω* = 0.786` (localization and existence mutually exclusive there), so the scan moves **`(λ, m_c)`**, not `(ω, g)`. M7 waits until the author's walkthrough pass; sequencing lives in [M7.11 § 0](m7_11_variable_lambda.md).
 
 Cross-refs: [roadmap](../m7_roadmap.md) · [tracker Q11 detail](../m7_question_tracker.md) · [M7.11 planning](m7_11_variable_lambda.md).

@@ -617,7 +617,7 @@ numbers, all in the *time* sector**:
 
 | New entries (4) | Raw block | Holds | Renderable? |
 | --- | --- | --- | --- |
-| **time-axis scale** (the new `g` eigenvalue) | `M₀₀` (time-time) | the local **rate-of-time** = gravitational potential / clock-rate | only its *shadow* — the gravity-well / clock-rate field (M5.8.7) |
+| **time-axis scale** (the new `g` eigenvalue) | `M₀₀` (time-time) | the local **rate-of-time** = gravitational potential / clock-rate | only its *shadow*: the gravity-well / clock-rate field (M5.23.6) |
 | **time-space mixing** (3 new boosts) | `M₀ᵢ` (time-space, ×3) | how the frame **leans into time** = the **clock** (at rest) + **motion / momentum** (moving → the de Broglie wave) | only its *shadow* — the δ-sweep + the de Broglie wave |
 
 So the honest read: the 4 new numbers are a genuine part of the field **state**, but they're the
@@ -900,7 +900,7 @@ particle — it **is the shape of the knot**.
 | **biaxial** (`seed_biaxial_hedgehog_M`) | **no sign knob** — single-center, hard-builds `O=[r̂\|e_Θ\|e_Φ]` (one fixed winding) | **not** a `±` bit — the order-parameter space is `SO(3)/D₂`, whose `π₁` is the **non-abelian quaternion group `Q₈`** — a *quaternion-class label*, richer than one sign |
 
 So a biaxial defect's "charge" is a **`Q₈` class**, not a `±`. This is the **discovery hook** of the
-deferred two-defect demo (M5.6.5e → M5.8) — *"what does opposite charge even mean for a biaxial
+deferred two-defect demo (M5.23.4 → M5.8), *"what does opposite charge even mean for a biaxial
 defect?"* is a result to find, not a parameter to set — and the **seed for L10** (handedness /
 chirality / matter–antimatter).
 
@@ -1499,7 +1499,7 @@ frame-dragging). Two consequences:
   gravitational field is a **monopole**: `g ∝ 1/r²`, force `1/r²` — the *same* falloff as electric
   charge. The family: **monopole fields (charge, mass) → `1/r²`; dipole field (magnetism) → `1/r³`.**
 - **Render it like E, not B.** When OpenWave draws gravity (M5.8 4D boost-`g`; spec `4b §4.7` / roadmap
-  M5.8.7) expect a gentle `1/r²` spread (like E) and a **single-sign sequential palette** (no ±/bluered
+  M5.23.6) expect a gentle `1/r²` spread (like E) and a **single-sign sequential palette** (no ±/bluered
   — there is no "negative mass"). The clock-rate gradient `∇g` *is* the pull (L3).
 
 ### The two layers of "force" — field vs the pull you feel
@@ -1541,7 +1541,7 @@ defect sits in the energy landscape the others shape, and rolls downhill.
 | `3a` | Coulomb visual geometry |
 | `0b` M5.8 (Full-text extract) | Faber `R_μν=Γ_μ×Γ_ν` quantized EM + GEM (Gravity Probe B) |
 | `../theory/…Wolfram Community.pdf` | the EM-hydro dictionary + Γ generator→force map |
-| `4b §4.7` | gravity / GEM viz spec (M5.8.7) |
+| `4b §4.7` | gravity / GEM viz spec (M5.23.6) |
 
 ---
 
@@ -1636,7 +1636,7 @@ as a pure **gauge** artifact — *not* physics. Two rules follow:
 | **mass / energy** (the rod) | WM4 (`energyH`); compare WM5 (`energyF`) to watch the dispersal |
 | the **clock** | glyph state 1 (the `δ` cross-bar) + WM3 (ω) / WM2 (A) |
 | **EM fields** | WM6 (E) & WM7 (B) + glyph states 2 & 3 |
-| **gravity** | *not yet* — the boost-`g` field + clock-rate map land at **M5.8.7** (`4b §4.7`) |
+| **gravity** | *not yet*: the boost-`g` field + clock-rate map land at **M5.23.6** (`4b §4.7`) |
 
 ### L9 Q&A / clarifications (2026-06-04)
 
@@ -1646,7 +1646,7 @@ as a pure **gauge** artifact — *not* physics. Two rules follow:
 | 2 | what's the cyan `δ` cross-bar? | the `clock_twist` hand — glyph state 1 — the clock's *spatial shadow* (L7). | above |
 | 3 | why does the director keep flipping sign? | apolarity `n̂≡−n̂` — a pure **gauge** flip, not physics; read gauge-stable observables instead. | above |
 | 4 | charge vs B — which WAVE_MENU? | WM6 = `∇·n̂` (charge/E); WM7 = `‖∇×n̂‖` (rotation/B). | above, L8 |
-| 5 | what can't I render yet? | **gravity** (boost-`g`, M5.8.7), the **real `B`** (placeholder until M5.8), and the **coherent 4D clock** (incoherent wobble today). | above, L7/L8 |
+| 5 | what can't I render yet? | **gravity** (boost-`g`, M5.23.6), the **real `B`** (placeholder until M5.8), and the **coherent 4D clock** (incoherent wobble today). | above, L7/L8 |
 | 6 | why are WM4/WM5 in "rel." units? | the physical energy scale (`e_scale`) is pinned at M5.9 lepton calibration; today they're qualitative. | above |
 
 ### L9 Anchors
@@ -1718,7 +1718,7 @@ For a **uniaxial** defect "sign" is a clean `±` (winding `+1` / `−1`). For th
 parameter the topology is richer: the line defects are classified by `π₁(SO(3)/D₂) = Q₈` — the **eight
 quaternion classes** `{±1, ±i, ±j, ±k}`, *not* a simple `±` (L4). So "opposite handedness/charge" for a
 biaxial defect is a **non-abelian** statement (the order in which you combine defects matters) — exactly
-what the M5.6.5e two-defect demo is built to make concrete.
+what the M5.23.4 two-defect demo is built to make concrete.
 
 ### Composite particles (15a)
 
@@ -1786,6 +1786,17 @@ So the "where do waves live" tension is **unique to the topological models**. M1
 
 The question isn't "are waves still here" — it's **which layer** they live on now that they're no
 longer the substrate.
+
+### Scope addendum (2026-07-23): the layer below the substrate
+
+The ledger below says "the substrate does not wave; the wave is downstream." That statement is
+scoped to **M5's own substrate**: the field `M` does not wave. The 2026-07-23 planning voicenotes
+(the M5.27 pilot) propose a layer BELOW that substrate: Planck-scale granule oscillations composing
+fundamental waves, with `M` as their coarse-grained order parameter. So within M5 the ledger stands
+unchanged, and the deeper-layer claim lives one level down as an **open hypothesis** (the same
+honesty grade as L1 Q9's granule-covariance reading). The M5.27 background scalar χ is the first
+in-model representative of that layer; the full frame is documented at
+[`m5_27_task_details.md § 2b`](research/tasks/m5_27_task_details.md).
 
 ### THE EMERGENCE LEDGER — what comes from where (none of it a base wave)
 

@@ -1,0 +1,45 @@
+{
+  "task": "M6.4 audit A10: provenance",
+  "A10a_file_inventories": {
+    "20030162": {
+      "title": "Formal Statement of the Chaoiton Existence Theorem in Lean 4",
+      "publication_date": "2026-05-04",
+      "files": [
+        "chaoiton_theorem.lean.txt"
+      ]
+    },
+    "20866581": {
+      "title": "Formal Statement of the Chaoiton Existence Theorem in Lean 4",
+      "publication_date": "2026-06-25",
+      "files": [
+        "Zenodo_20030162_Version2.docx"
+      ]
+    }
+  },
+  "A10a_version_chain": [
+    {
+      "id": 20866581,
+      "files": [
+        "Zenodo_20030162_Version2.docx"
+      ]
+    },
+    {
+      "id": 20030162,
+      "files": [
+        "chaoiton_theorem.lean.txt"
+      ]
+    }
+  ],
+  "A10a_gf_verification_py_anywhere": false,
+  "A10a_v1_exactly_lean": true,
+  "A10a_v2_exactly_docx": true,
+  "A10a_v2_supplementary_claim_present": true,
+  "A10b_z21268405_62_distinct": true,
+  "A10b_z21268405_context": "aly matched via J-field A-scaling. A new extraction yields g_J = 0.0054 per nucleon, constant to within 2% from calcium to lead, confirming the mass-number dependence predicted by Ouroboros.  TEST 3 - Hard Quantization: 62 distinct families pass the Gelfand-Fomin stability test.  TEST 4 - Lepton Hierarchy: muon and tau masses from oscilla",
+  "A10b_z21268405_hard_quant_context": true,
+  "A10b_z21268405_table_row": true,
+  "A10b_v2_not_finetuned": true,
+  "A10b_v2_not_finetuned_context": "on target L/Q \u2248 0.5): g=0.3, \u03c9=2.20, \u03bb=0.5, A=0.1, B=0.2 \u27f9 L/Q = 0.567, E > 0.  Stability is not fine-tuned: broad regions of parameter space pass the test, particularly for \u03c9 \u2265 1.5 and g \u2264 1.0.  3.3 Significance  These 319 families constit",
+  "extract_v2_matches_fresh_pandoc": true,
+  "extract_may_matches_fresh_pandoc": true
+}

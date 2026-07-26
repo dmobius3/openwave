@@ -39,9 +39,9 @@ def _get_version():
         return version("OPENWAVE")
 
 
-# Hardcoded welcome entry
-WELCOME_URL = "https://github.com/openwave-labs/openwave/blob/main/WELCOME.md"
-WELCOME_ENTRY = ("README FIRST: Welcome to OpenWave XPERIMENTS", WELCOME_URL)
+# Hardcoded tutorial entry
+TUTORIAL_URL = "https://github.com/openwave-labs/openwave/blob/main/TUTORIAL.md"
+TUTORIAL_ENTRY = ("OpenWave TUTORIAL", TUTORIAL_URL)
 
 
 def get_experiments_list():
@@ -111,8 +111,8 @@ def get_experiments_list():
     # Sort by display name (which starts with A/, B/, C/ etc.)
     experiments.sort(key=lambda x: x[0])
 
-    # Insert hardcoded welcome entry at the beginning
-    experiments.insert(0, WELCOME_ENTRY)
+    # Insert hardcoded tutorial entry at the beginning
+    experiments.insert(0, TUTORIAL_ENTRY)
 
     return experiments
 
@@ -239,14 +239,14 @@ def run_experiment(display_name, file_path):
     Returns:
         int: The return code from the experiment process
     """
-    # Handle welcome URL specially
-    if file_path == WELCOME_URL:
+    # Handle tutorial URL specially
+    if file_path == TUTORIAL_URL:
         console.print()
         console.print(
-            Panel("Opening welcome in your default browser...", border_style="cyan", width=64)
+            Panel("Opening the tutorial in your default browser...", border_style="cyan", width=64)
         )
         console.print()
-        webbrowser.open(WELCOME_URL)
+        webbrowser.open(TUTORIAL_URL)
         console.print("[green]Done![/green]")
         return 0
 

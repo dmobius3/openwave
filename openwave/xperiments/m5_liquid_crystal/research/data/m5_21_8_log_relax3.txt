@@ -1,0 +1,26 @@
+  relax_m+0.103_s-1_dt0.0001 it    250 E  -16736.530519 fmax 1.196e+03 [34s]
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:121: RuntimeWarning: invalid value encountered in subtract
+  return A @ ETA @ B - B @ ETA @ A
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:217: RuntimeWarning: invalid value encountered in subtract
+  dA[i] += WF @ (ETA @ A[j]).swapaxes(-1, -2) \
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:219: RuntimeWarning: invalid value encountered in subtract
+  dA[j] += (A[i] @ ETA).swapaxes(-1, -2) @ WF \
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:217: RuntimeWarning: invalid value encountered in add
+  dA[i] += WF @ (ETA @ A[j]).swapaxes(-1, -2) \
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:219: RuntimeWarning: invalid value encountered in add
+  dA[j] += (A[i] @ ETA).swapaxes(-1, -2) @ WF \
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:86: RuntimeWarning: invalid value encountered in subtract
+  out[at(slice(0, -1))] -= g[at(slice(0, -1))] / h
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:222: RuntimeWarning: invalid value encountered in add
+  G += wt * d1_adj(dA[ax], ax, cfg["h"], br)
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:89: RuntimeWarning: invalid value encountered in subtract
+  out[at(slice(0, -1))] -= g[at(slice(1, None))] / h
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:234: RuntimeWarning: overflow encountered in multiply
+  GV += coef[..., None, None] * X.swapaxes(-1, -2)
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:234: RuntimeWarning: invalid value encountered in add
+  GV += coef[..., None, None] * X.swapaxes(-1, -2)
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py:196: RuntimeWarning: overflow encountered in square
+  vd = sum((t[p] - cp[p]) ** 2 for p in range(4))
+/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_8_b_lattice.py:151: RuntimeWarning: overflow encountered in square
+  dv = float(np.sqrt(np.sum((M - M0) ** 2))
+{"m": 0.1027, "s": -1.0, "E0": 0.9665065448032724, "E_end": NaN, "E_u_end": NaN, "E_v_end": NaN, "rel_move": Infinity, "kin_end": NaN, "stop": "non-finite"}

@@ -1,0 +1,35 @@
+{
+ "int_sech4_rel": 0.0,
+ "int_sech8_rel": 0.0,
+ "closed_form": {
+  "omega": 1.0712333936199698,
+  "w": 1.25450009637436,
+  "E": 2.1256807188565547
+ },
+ "scan_min": {
+  "omega": 1.07,
+  "w": 1.2541666666666667,
+  "E": 2.1256827058466436
+ },
+ "anchor_pure_tanh": {
+  "E": 2.12568,
+  "omega": 1.07123
+ },
+ "cf_vs_anchor_E_rel": 3.3817722080778806e-07,
+ "cf_vs_anchor_om_rel": 3.1679657682541856e-06,
+ "free_profile_min": {
+  "omega": 2.15,
+  "E": -5.797632525321667
+ },
+ "anchor_deg5": {
+  "E": 2.02515,
+  "omega": 1.28975
+ },
+ "free_min_below_kink": true,
+ "ripple_density_floor_at_omstar": -0.004132653061224488,
+ "clock_in_family": {
+  "E_omstar": 2.1256807188565547,
+  "E_om0_min": 2.6666666666666665,
+  "propelled": true
+ }
+}

@@ -6,6 +6,8 @@
 > lock-in *mechanism* while honestly documenting where selectivity fails. It shares the
 > "EWT (M4)" [`MODELS.md`](../../../MODELS.md) column with M4.
 
+![M3_hero](../../../images/demo3.gif)
+
 ## Identity
 
 | Field | Value |

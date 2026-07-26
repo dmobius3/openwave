@@ -526,9 +526,9 @@ Strategic decision 2026-05-11: M5.1 Coulomb result (R²=0.978 + visual EM-field-
 | R² = 0.978 (Dirichlet BC) vs Exp 2's 0.993 (periodic BC) | First impression should not look like a regression on a worked example |
 | Topology dissipates under heavy relax | Admits the result is fragile — undermines the demo |
 
-Per `feedback_external_comms.md` memory: scientific-venue communications are Rodrigo's voice only, no AI text generation. Below are the **content-trigger milestones** that would lift the email-readiness threshold. Send when any of these lands, in increasing impact order:
+Per `feedback_external_comms.md` memory: scientific-venue communications are the maintainer's voice only, no AI text generation. Below are the **content-trigger milestones** that would lift the email-readiness threshold. Send when any of these lands, in increasing impact order:
 
-| Trigger | What's added since M5.1 | Email framing (in Rodrigo's voice when composed) |
+| Trigger | What's added since M5.1 | Email framing (in the maintainer's voice when composed) |
 | --- | --- | --- |
 | **M5.2 V(ψ) lands + defect survives EVOLVE PSI** | Stable particle in simplest dynamic sense; topology no longer dissolves | "Topological hedgehog is now a long-lived resonance under V(ψ)" |
 | **M5.2 + dynamic attraction visible** | Pair moves toward each other under wave dynamics (defect motion is observable, not just static energy bookkeeping) | "Coulomb attraction observed dynamically" |
@@ -541,7 +541,7 @@ Recommended first send: **M5.2 + defect survives EVOLVE PSI** (the lowest bar th
 
 | Item | Status when ready |
 | --- | --- |
-| Composed in Rodrigo's voice (no AI prose draft) | Required |
+| Composed in the maintainer's voice (no AI prose draft) | Required |
 | Visual screenshots / plots as the lead | Available — `images/coulomb_visual/` + future M5.2 dynamic captures |
 | Honest caveats (what's still TBD) | Required — Duda values transparency |
 | Reference Jarek's April 2026 framing | The April thread set the "recreate EM via topological charges" milestone; closing the loop |

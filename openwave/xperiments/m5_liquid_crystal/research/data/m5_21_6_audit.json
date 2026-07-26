@@ -1,0 +1,218 @@
+[
+ {
+  "claim": "1 pinned level p32_B",
+  "method": "own energy (sym stencil, T2 potential) on stored float32 M",
+  "computed": 55.599676,
+  "expected": 55.599677,
+  "verdict": "CONFIRMED",
+  "note": "rel diff 1.69e-08"
+ },
+ {
+  "claim": "1 pinned level p32_C",
+  "method": "own energy (sym stencil, T2 potential) on stored float32 M",
+  "computed": 15.934286,
+  "expected": 15.934288,
+  "verdict": "CONFIRMED",
+  "note": "rel diff 1.09e-07"
+ },
+ {
+  "claim": "1 pinned level i2_A_T2",
+  "method": "own energy, stated W2 AND the run-recorded w2=0.0027581",
+  "computed": "E(W2 stated)=5.318035, E(run w2)=6.604177, own E_u=4.860236",
+  "expected": 6.604177,
+  "verdict": "PARTIAL",
+  "note": "claim as stated REFUTED: with W2=0.000724023879 the file scores 5.318035, not 6.604177. The 2b run json records w2=0.0027581 (the n=32 calib match); under THAT weight the claimed value reproduces (rel 2.6e-08) and own E_u matches the row E_u=4.860236 (rel 1.3e-08). So the number is genuine but the A level uses a ~3.8x heavier potential weight than B and C -> the three levels are NOT on one common energy scale"
+ },
+ {
+  "claim": "1 ordering A < C < B",
+  "method": "compare recomputed levels",
+  "computed": "A=6.6042 (or 5.3180 at stated W2) C=15.9343 B=55.5997",
+  "expected": "A < C < B",
+  "verdict": "CONFIRMED",
+  "note": "ordering holds under BOTH weight conventions"
+ },
+ {
+  "claim": "2 JSON: 12 runs |dE_rel| < 0.002",
+  "method": "read both p1 JSONs",
+  "computed": "12 runs, max |dE_rel| = 1.54e-03",
+  "expected": "12 runs, all < 0.002",
+  "verdict": "CONFIRMED",
+  "note": ""
+ },
+ {
+  "claim": "2 recompute p32_B_K1_0.4 endpoint",
+  "method": "own energy on kicked-relaxed endpoint + start",
+  "computed": "E_end=55.585388 (json 55.585388), own dE_rel=-2.57e-04",
+  "expected": "json dE_rel=-2.57e-04, |dE_rel|<0.002",
+  "verdict": "CONFIRMED",
+  "note": "rel diff vs json E_end 4.59e-14"
+ },
+ {
+  "claim": "2 recompute p32_C_K1_0.4 endpoint",
+  "method": "own energy on kicked-relaxed endpoint + start",
+  "computed": "E_end=15.909754 (json 15.909754), own dE_rel=-1.54e-03",
+  "expected": "json dE_rel=-1.54e-03, |dE_rel|<0.002",
+  "verdict": "CONFIRMED",
+  "note": "rel diff vs json E_end 9.92e-13"
+ },
+ {
+  "claim": "3 f48_A endpoint E",
+  "method": "own energy, n=48 h=1.0",
+  "computed": 1.946038,
+  "expected": 1.946,
+  "verdict": "CONFIRMED",
+  "note": "rel diff 1.94e-05 (claim quoted to 3 decimals)"
+ },
+ {
+  "claim": "3 f48_B endpoint E",
+  "method": "own energy, n=48 h=1.0",
+  "computed": 0.852794,
+  "expected": 0.853,
+  "verdict": "CONFIRMED",
+  "note": "rel diff 2.42e-04 (claim quoted to 3 decimals)"
+ },
+ {
+  "claim": "3 f48_C endpoint E",
+  "method": "own energy, n=48 h=1.0",
+  "computed": 2.099319,
+  "expected": 2.099,
+  "verdict": "CONFIRMED",
+  "note": "rel diff 1.52e-04 (claim quoted to 3 decimals)"
+ },
+ {
+  "claim": "3 f48_A core spectrum (r<6)",
+  "method": "own eigvalsh mean over r<6",
+  "computed": [
+   0.773,
+   0.486,
+   0.042
+  ],
+  "expected": [
+   0.77,
+   0.49,
+   0.04
+  ],
+  "verdict": "CONFIRMED",
+  "note": "max dev vs claim 0.004"
+ },
+ {
+  "claim": "3 f48_B core spectrum (r<6)",
+  "method": "own eigvalsh mean over r<6",
+  "computed": [
+   1.005,
+   0.222,
+   0.073
+  ],
+  "expected": [
+   1.0,
+   0.22,
+   0.07
+  ],
+  "verdict": "CONFIRMED",
+  "note": "max dev vs claim 0.005"
+ },
+ {
+  "claim": "3 f48_C core spectrum (r<6)",
+  "method": "own eigvalsh mean over r<6",
+  "computed": [
+   0.773,
+   0.507,
+   0.02
+  ],
+  "expected": [
+   0.77,
+   0.51,
+   0.02
+  ],
+  "verdict": "CONFIRMED",
+  "note": "max dev vs claim 0.003"
+ },
+ {
+  "claim": "3 A == C within ~0.03; B near vacuum",
+  "method": "compare own spectra",
+  "computed": "max|A-C|=0.021; |B-vac|=[0.005, 0.078, 0.073]",
+  "expected": "|A-C| <~0.03; B near (1, 0.3, 0)",
+  "verdict": "CONFIRMED",
+  "note": "B mid-eigenvalue sits 0.08 below vacuum 0.3 (claim itself says 'near', shift noted)"
+ },
+ {
+  "claim": "4 f48_A compact components (26-conn)",
+  "method": "own gap<0.09 & r<15.6 mask + scipy label",
+  "computed": "2 compact (sizes [24, 24]); 2 with size>=3",
+  "expected": 2,
+  "verdict": "CONFIRMED",
+  "note": "total components 6"
+ },
+ {
+  "claim": "4 f48_B compact components (26-conn)",
+  "method": "own gap<0.09 & r<15.6 mask + scipy label",
+  "computed": "0 compact (sizes []); 0 with size>=3",
+  "expected": 0,
+  "verdict": "CONFIRMED",
+  "note": "total components 6"
+ },
+ {
+  "claim": "4 f48_C compact components (26-conn)",
+  "method": "own gap<0.09 & r<15.6 mask + scipy label",
+  "computed": "2 compact (sizes [19, 19]); 2 with size>=3",
+  "expected": 2,
+  "verdict": "CONFIRMED",
+  "note": "total components 14"
+ },
+ {
+  "claim": "4 robustness: 6-connectivity",
+  "method": "same mask, 6-conn label",
+  "computed": "A=8 B=23 C=2 (26-conn: A=2 B=0 C=2)",
+  "expected": "report whether counts change",
+  "verdict": "PARTIAL",
+  "note": "counts CHANGE under 6-conn"
+ },
+ {
+  "claim": "4d f48_C it10000 equatorial arcs",
+  "method": "own components; select rho_c>13, |z_c|<3; size>=3 (the instrument's loop_read convention)",
+  "computed": "2 arcs size>=3: sizes [8, 8], rho_c [15.2, 15.2], z_c [0.0, 0.0]; raw count in band 4 (extra sizes [2, 2])",
+  "expected": "2 arcs, equal size ~8, rho~15.2, z~0",
+  "verdict": "PARTIAL",
+  "note": "the two size-8 equal arcs EXIST exactly as claimed (rho_c 15.2, z_c 0.0), but the raw 26-conn count in the band is 4: two additional 2-voxel specks at rho 15.6, z +-0.5. The 'exactly two' phrasing holds only under the size>=3 filter the source pipeline (loop_read) applies"
+ },
+ {
+  "claim": "5 ledger E+KE+absorbed == start E",
+  "method": "sum final JSON row; own E of f48_C M_it1000",
+  "computed": "sum=5.0644; own start E=5.0645",
+  "expected": "5.064 within 0.01",
+  "verdict": "CONFIRMED",
+  "note": "leak -1.02e-04"
+ },
+ {
+  "claim": "5 final-row values",
+  "method": "read JSON final row",
+  "computed": "E=3.5816 KE=0.3337 abs=1.1491",
+  "expected": "E=3.5816 KE=0.3337 absorbed=1.1491",
+  "verdict": "CONFIRMED",
+  "note": ""
+ },
+ {
+  "claim": "5 evolve endpoint static E",
+  "method": "own energy on ev_C_free.npz M",
+  "computed": 3.581573,
+  "expected": 3.581573,
+  "verdict": "CONFIRMED",
+  "note": "rel diff 3.56e-10"
+ },
+ {
+  "claim": "6 JSON: rot 0.16 -> ~4.27, spec_dev in [0.14, 0.19]",
+  "method": "read ev JSON history",
+  "computed": "rot 0.16 -> 4.27 (peak 4.61); spec_dev [0.143, 0.184]",
+  "expected": "0.16 -> 4.27; [0.14, 0.19]",
+  "verdict": "CONFIRMED",
+  "note": "rot peaks 4.61 at it2750 then settles 4.27 (claim 'grows to ~4.27' is the endpoint, not monotone)"
+ },
+ {
+  "claim": "6 independent final rotation (r<10)",
+  "method": "own eigh leading vectors, mean arccos|dot|",
+  "computed": 4.27,
+  "expected": "~4.27 within 0.5",
+  "verdict": "CONFIRMED",
+  "note": ""
+ }
+]

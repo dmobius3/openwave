@@ -1,0 +1,802 @@
+{
+ "file": "m5_21_6_end_f48_C.npz",
+ "snaps": {
+  "M": [
+   {
+    "thr": 0.06,
+    "n_components": 2,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 4,
+      "r_centroid": 14.891234757351464,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 14.891234757351464,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 12,
+    "n_compact": 2,
+    "components": [
+     {
+      "size": 19,
+      "r_centroid": 5.397693231065154,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 19,
+      "r_centroid": 5.397693231065154,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 7,
+      "r_centroid": 12.046213065004645,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 7,
+      "r_centroid": 12.046213065004645,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 7,
+      "r_centroid": 12.046213065004645,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 7,
+      "r_centroid": 12.046213065004645,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 7,
+      "r_centroid": 12.046213065004645,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 7,
+      "r_centroid": 12.046213065004645,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 7,
+      "r_centroid": 12.046213065004645,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 7,
+      "r_centroid": 12.046213065004645,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 6,
+      "r_centroid": 15.12096865519527,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 6,
+      "r_centroid": 15.12096865519527,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 4,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 208,
+      "r_centroid": 8.12806085235111,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 208,
+      "r_centroid": 8.12806085235111,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 10,
+      "r_centroid": 15.1736307946136,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 10,
+      "r_centroid": 15.1736307946136,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ],
+  "M_it250": [
+   {
+    "thr": 0.06,
+    "n_components": 5,
+    "n_compact": 5,
+    "components": [
+     {
+      "size": 200,
+      "r_centroid": 5.252711131799614,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 8,
+      "r_centroid": 11.211722416613686,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 8,
+      "r_centroid": 11.211722416613686,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 7,
+      "r_centroid": 11.699935814121364,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 7,
+      "r_centroid": 11.699935814121364,
+      "touches_edge_zone": false
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 1,
+    "n_compact": 1,
+    "components": [
+     {
+      "size": 538,
+      "r_centroid": 5.945223443397192,
+      "touches_edge_zone": false
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 1,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 1416,
+      "r_centroid": 6.854730324731742,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ],
+  "M_it500": [
+   {
+    "thr": 0.06,
+    "n_components": 1,
+    "n_compact": 1,
+    "components": [
+     {
+      "size": 286,
+      "r_centroid": 6.099558389721723,
+      "touches_edge_zone": false
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 1,
+    "n_compact": 1,
+    "components": [
+     {
+      "size": 640,
+      "r_centroid": 5.892007469199934,
+      "touches_edge_zone": false
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 1,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 1768,
+      "r_centroid": 6.920409500752775,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ],
+  "M_it1000": [
+   {
+    "thr": 0.06,
+    "n_components": 2,
+    "n_compact": 1,
+    "components": [
+     {
+      "size": 208,
+      "r_centroid": 4.5396631892341635,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 126,
+      "r_centroid": 9.363391375803177,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 1,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 790,
+      "r_centroid": 6.563226479707986,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 1,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 2312,
+      "r_centroid": 7.394489576072508,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ],
+  "M_it2000": [
+   {
+    "thr": 0.06,
+    "n_components": 2,
+    "n_compact": 1,
+    "components": [
+     {
+      "size": 324,
+      "r_centroid": 9.589019762621309,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 116,
+      "r_centroid": 8.938239018424893,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 2,
+    "n_compact": 1,
+    "components": [
+     {
+      "size": 884,
+      "r_centroid": 10.225506068386307,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 216,
+      "r_centroid": 8.376829157692711,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 2,
+    "n_compact": 1,
+    "components": [
+     {
+      "size": 3678,
+      "r_centroid": 11.720767247059072,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 578,
+      "r_centroid": 8.320678055185846,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ],
+  "M_it4000": [
+   {
+    "thr": 0.06,
+    "n_components": 4,
+    "n_compact": 2,
+    "components": [
+     {
+      "size": 11,
+      "r_centroid": 3.6493300086148865,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 11,
+      "r_centroid": 3.649330008614886,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 8,
+      "r_centroid": 14.957941133389099,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 8,
+      "r_centroid": 14.957941133389099,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 10,
+    "n_compact": 6,
+    "components": [
+     {
+      "size": 30,
+      "r_centroid": 7.96999653843453,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 30,
+      "r_centroid": 7.96999653843453,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 21,
+      "r_centroid": 6.714080215304959,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 21,
+      "r_centroid": 6.714080215304959,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 21,
+      "r_centroid": 6.714080215304959,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 21,
+      "r_centroid": 6.714080215304959,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 14,
+      "r_centroid": 15.20631065366923,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 14,
+      "r_centroid": 15.20631065366923,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 15.580436450882884,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 15.580436450882884,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 6,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 256,
+      "r_centroid": 8.07826623451393,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 255,
+      "r_centroid": 8.06721140657535,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 16,
+      "r_centroid": 15.196082254742347,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 16,
+      "r_centroid": 15.196082254742347,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 11,
+      "r_centroid": 15.289188007278817,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 11,
+      "r_centroid": 15.289188007278817,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ],
+  "M_it6000": [
+   {
+    "thr": 0.06,
+    "n_components": 2,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 4,
+      "r_centroid": 14.891234757351464,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 14.891234757351464,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 12,
+    "n_compact": 6,
+    "components": [
+     {
+      "size": 29,
+      "r_centroid": 7.739501560802864,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 29,
+      "r_centroid": 7.739501560802864,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 19,
+      "r_centroid": 6.303078883480379,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 19,
+      "r_centroid": 6.303078883480379,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 19,
+      "r_centroid": 6.303078883480379,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 19,
+      "r_centroid": 6.303078883480379,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 12,
+      "r_centroid": 15.165439572553694,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 12,
+      "r_centroid": 15.165439572553694,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 3,
+      "r_centroid": 13.956826116772914,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 3,
+      "r_centroid": 13.956826116772914,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 3,
+      "r_centroid": 13.956826116772914,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 3,
+      "r_centroid": 13.956826116772914,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 6,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 240,
+      "r_centroid": 7.779997095664856,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 240,
+      "r_centroid": 7.779997095664856,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 16,
+      "r_centroid": 15.196082254742347,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 16,
+      "r_centroid": 15.196082254742347,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 11,
+      "r_centroid": 15.289188007278817,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 11,
+      "r_centroid": 15.289188007278817,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ],
+  "M_it8000": [
+   {
+    "thr": 0.06,
+    "n_components": 2,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 4,
+      "r_centroid": 14.891234757351464,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 14.891234757351464,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 16,
+    "n_compact": 6,
+    "components": [
+     {
+      "size": 28,
+      "r_centroid": 7.492542656197508,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 28,
+      "r_centroid": 7.492542656197508,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 12,
+      "r_centroid": 4.901324869697253,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 12,
+      "r_centroid": 4.901324869697253,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 12,
+      "r_centroid": 4.901324869697253,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 12,
+      "r_centroid": 4.901324869697253,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 8,
+      "r_centroid": 15.235835604117174,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 8,
+      "r_centroid": 15.235835604117174,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 13.475421941458677,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 13.475421941458679,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 13.475421941458677,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 13.475421941458679,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 6,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 226,
+      "r_centroid": 7.673410238647837,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 226,
+      "r_centroid": 7.673410238647837,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 14,
+      "r_centroid": 15.20631065366923,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 14,
+      "r_centroid": 15.20631065366923,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 15.580436450882884,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 15.580436450882884,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ],
+  "M_it10000": [
+   {
+    "thr": 0.06,
+    "n_components": 2,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 4,
+      "r_centroid": 14.891234757351464,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 14.891234757351464,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.09,
+    "n_components": 12,
+    "n_compact": 2,
+    "components": [
+     {
+      "size": 24,
+      "r_centroid": 6.545935373745223,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 24,
+      "r_centroid": 6.545935373745223,
+      "touches_edge_zone": false
+     },
+     {
+      "size": 8,
+      "r_centroid": 15.235835604117174,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 8,
+      "r_centroid": 15.235835604117174,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 5,
+      "r_centroid": 12.996189533782976,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 5,
+      "r_centroid": 12.996189533782973,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 5,
+      "r_centroid": 12.996189533782976,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 5,
+      "r_centroid": 12.996189533782973,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 5,
+      "r_centroid": 12.996189533782976,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 5,
+      "r_centroid": 12.996189533782973,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 5,
+      "r_centroid": 12.996189533782976,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 5,
+      "r_centroid": 12.996189533782973,
+      "touches_edge_zone": true
+     }
+    ]
+   },
+   {
+    "thr": 0.15,
+    "n_components": 6,
+    "n_compact": 0,
+    "components": [
+     {
+      "size": 212,
+      "r_centroid": 7.833647412893386,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 212,
+      "r_centroid": 7.833647412893386,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 12,
+      "r_centroid": 15.165439572553694,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 12,
+      "r_centroid": 15.165439572553694,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 15.580436450882884,
+      "touches_edge_zone": true
+     },
+     {
+      "size": 4,
+      "r_centroid": 15.580436450882884,
+      "touches_edge_zone": true
+     }
+    ]
+   }
+  ]
+ }
+}

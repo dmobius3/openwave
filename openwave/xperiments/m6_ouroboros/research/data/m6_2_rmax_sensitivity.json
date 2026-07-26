@@ -1,0 +1,52 @@
+{
+  "rows": [
+    {
+      "r_max": 12,
+      "tail": 0.08064,
+      "beta_sign_changes": 2,
+      "H_p": 0.49555,
+      "Q_p": 0.293404,
+      "HQ_production": 1.688971,
+      "HQ_derived": 0.142929
+    },
+    {
+      "r_max": 18,
+      "tail": 0.12406,
+      "beta_sign_changes": 3,
+      "H_p": 0.729021,
+      "Q_p": 0.451594,
+      "HQ_production": 1.61433,
+      "HQ_derived": 0.13839
+    },
+    {
+      "r_max": 24,
+      "tail": 0.12451,
+      "beta_sign_changes": 4,
+      "H_p": 0.933742,
+      "Q_p": 0.633818,
+      "HQ_production": 1.473203,
+      "HQ_derived": 0.129217
+    },
+    {
+      "r_max": 36,
+      "tail": 0.03928,
+      "beta_sign_changes": 6,
+      "H_p": 1.38302,
+      "Q_p": 0.975901,
+      "HQ_production": 1.417172,
+      "HQ_derived": 0.125956
+    },
+    {
+      "r_max": 48,
+      "tail": 0.05861,
+      "beta_sign_changes": 9,
+      "H_p": 1.895405,
+      "Q_p": 1.26648,
+      "HQ_production": 1.496593,
+      "HQ_derived": 0.131792
+    }
+  ],
+  "HQ_production_drift_absolute": 0.2718,
+  "HQ_production_drift_pct_of_1p689": 16.09,
+  "reading": "if the drift is comparable to or larger than the claimed 0.09%-0.56% accuracy, the benchmark H/Q is a window-defined quantity at the production r_max, matching the July 8 concession for the 3D case"
+}

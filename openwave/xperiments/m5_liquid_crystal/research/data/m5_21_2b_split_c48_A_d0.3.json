@@ -1,0 +1,774 @@
+{
+ "tag": "c48_A_d0.3",
+ "h": 1.0,
+ "delta": 0.3,
+ "term": "T1",
+ "endpoint": [
+  {
+   "z": -16.0,
+   "kz": 8,
+   "n_cores": 2,
+   "n_clean": 0,
+   "net_half_units": -2,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [],
+   "clean_rhos": [],
+   "cores": [
+    {
+     "xy": [
+      -2.0,
+      7.0
+     ],
+     "rho": 7.280109889280518,
+     "angle_deg": 105.94539590092286,
+     "half_units": -1,
+     "gap_min": 0.04302125710796029,
+     "clean": false
+    },
+    {
+     "xy": [
+      7.0,
+      -2.0
+     ],
+     "rho": 7.280109889280518,
+     "angle_deg": -15.945395900922854,
+     "half_units": -1,
+     "gap_min": 0.042876833879185894,
+     "clean": false
+    }
+   ]
+  },
+  {
+   "z": -12.0,
+   "kz": 12,
+   "n_cores": 2,
+   "n_clean": 2,
+   "net_half_units": -2,
+   "pair_angle_deg": 108.92464441605124,
+   "clean_azimuths_deg": [
+    99.46232220802563,
+    -9.462322208025617
+   ],
+   "clean_rhos": [
+    6.082762530298219,
+    6.082762530298219
+   ],
+   "cores": [
+    {
+     "xy": [
+      -1.0,
+      6.0
+     ],
+     "rho": 6.082762530298219,
+     "angle_deg": 99.46232220802563,
+     "half_units": -1,
+     "gap_min": 0.19299365818994305,
+     "clean": true
+    },
+    {
+     "xy": [
+      6.0,
+      -1.0
+     ],
+     "rho": 6.082762530298219,
+     "angle_deg": -9.462322208025617,
+     "half_units": -1,
+     "gap_min": 0.1928038140721554,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": -8.0,
+   "kz": 16,
+   "n_cores": 2,
+   "n_clean": 1,
+   "net_half_units": 2,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    -135.0
+   ],
+   "clean_rhos": [
+    11.313708498984761
+   ],
+   "cores": [
+    {
+     "xy": [
+      -8.0,
+      -8.0
+     ],
+     "rho": 11.313708498984761,
+     "angle_deg": -135.0,
+     "half_units": 1,
+     "gap_min": 0.6699636670743638,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": 1,
+     "gap_min": 0.037676431159505586,
+     "clean": false
+    }
+   ]
+  },
+  {
+   "z": -4.0,
+   "kz": 20,
+   "n_cores": 4,
+   "n_clean": 4,
+   "net_half_units": 0,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    0.0,
+    90.0,
+    0.0,
+    45.0
+   ],
+   "clean_rhos": [
+    0.0,
+    2.0,
+    2.0,
+    4.242640687119285
+   ],
+   "cores": [
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -1,
+     "gap_min": 0.16077259890184914,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      2.0
+     ],
+     "rho": 2.0,
+     "angle_deg": 90.0,
+     "half_units": 1,
+     "gap_min": 0.20477173893562928,
+     "clean": true
+    },
+    {
+     "xy": [
+      2.0,
+      0.0
+     ],
+     "rho": 2.0,
+     "angle_deg": 0.0,
+     "half_units": 1,
+     "gap_min": 0.20418674866188208,
+     "clean": true
+    },
+    {
+     "xy": [
+      3.0,
+      3.0
+     ],
+     "rho": 4.242640687119285,
+     "angle_deg": 45.0,
+     "half_units": -1,
+     "gap_min": 0.32151706226862853,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": 4.0,
+   "kz": 28,
+   "n_cores": 5,
+   "n_clean": 5,
+   "net_half_units": 1,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    -135.0,
+    -135.0,
+    180.0,
+    -90.0,
+    0.0
+   ],
+   "clean_rhos": [
+    11.313708498984761,
+    5.656854249492381,
+    3.0,
+    3.0,
+    0.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      -8.0,
+      -8.0
+     ],
+     "rho": 11.313708498984761,
+     "angle_deg": -135.0,
+     "half_units": 1,
+     "gap_min": 0.6789532856827247,
+     "clean": true
+    },
+    {
+     "xy": [
+      -4.0,
+      -4.0
+     ],
+     "rho": 5.656854249492381,
+     "angle_deg": -135.0,
+     "half_units": -1,
+     "gap_min": 0.34209457185673514,
+     "clean": true
+    },
+    {
+     "xy": [
+      -3.0,
+      0.0
+     ],
+     "rho": 3.0,
+     "angle_deg": 180.0,
+     "half_units": 1,
+     "gap_min": 0.15358786391924592,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      -3.0
+     ],
+     "rho": 3.0,
+     "angle_deg": -90.0,
+     "half_units": 1,
+     "gap_min": 0.15465656581090426,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -1,
+     "gap_min": 0.11585967003618158,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": 8.0,
+   "kz": 32,
+   "n_cores": 8,
+   "n_clean": 4,
+   "net_half_units": 0,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    0.0,
+    90.0,
+    45.0,
+    0.0
+   ],
+   "clean_rhos": [
+    0.0,
+    8.0,
+    9.899494936611665,
+    8.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      -8.0,
+      0.0
+     ],
+     "rho": 8.0,
+     "angle_deg": 180.0,
+     "half_units": -1,
+     "gap_min": 0.045317192978505366,
+     "clean": false
+    },
+    {
+     "xy": [
+      -8.0,
+      1.0
+     ],
+     "rho": 8.06225774829855,
+     "angle_deg": 172.8749836510982,
+     "half_units": 1,
+     "gap_min": 0.045317192978505366,
+     "clean": false
+    },
+    {
+     "xy": [
+      0.0,
+      -8.0
+     ],
+     "rho": 8.0,
+     "angle_deg": -90.0,
+     "half_units": -1,
+     "gap_min": 0.04505179362538067,
+     "clean": false
+    },
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": 1,
+     "gap_min": 0.09609928138678292,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      8.0
+     ],
+     "rho": 8.0,
+     "angle_deg": 90.0,
+     "half_units": -1,
+     "gap_min": 0.08753970374500453,
+     "clean": true
+    },
+    {
+     "xy": [
+      1.0,
+      -8.0
+     ],
+     "rho": 8.06225774829855,
+     "angle_deg": -82.8749836510982,
+     "half_units": 1,
+     "gap_min": 0.04505179362538067,
+     "clean": false
+    },
+    {
+     "xy": [
+      7.0,
+      7.0
+     ],
+     "rho": 9.899494936611665,
+     "angle_deg": 45.0,
+     "half_units": 1,
+     "gap_min": 0.5842811287458308,
+     "clean": true
+    },
+    {
+     "xy": [
+      8.0,
+      0.0
+     ],
+     "rho": 8.0,
+     "angle_deg": 0.0,
+     "half_units": -1,
+     "gap_min": 0.08769139379191723,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": 12.0,
+   "kz": 36,
+   "n_cores": 2,
+   "n_clean": 2,
+   "net_half_units": -2,
+   "pair_angle_deg": 108.92464441605125,
+   "clean_azimuths_deg": [
+    170.53767779197437,
+    -80.53767779197439
+   ],
+   "clean_rhos": [
+    6.082762530298219,
+    6.082762530298219
+   ],
+   "cores": [
+    {
+     "xy": [
+      -6.0,
+      1.0
+     ],
+     "rho": 6.082762530298219,
+     "angle_deg": 170.53767779197437,
+     "half_units": -1,
+     "gap_min": 0.23265448700570926,
+     "clean": true
+    },
+    {
+     "xy": [
+      1.0,
+      -6.0
+     ],
+     "rho": 6.082762530298219,
+     "angle_deg": -80.53767779197439,
+     "half_units": -1,
+     "gap_min": 0.23249721602346834,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": 16.0,
+   "kz": 40,
+   "n_cores": 2,
+   "n_clean": 2,
+   "net_half_units": -2,
+   "pair_angle_deg": 118.07248693585296,
+   "clean_azimuths_deg": [
+    165.96375653207352,
+    -75.96375653207353
+   ],
+   "clean_rhos": [
+    8.246211251235321,
+    8.246211251235321
+   ],
+   "cores": [
+    {
+     "xy": [
+      -8.0,
+      2.0
+     ],
+     "rho": 8.246211251235321,
+     "angle_deg": 165.96375653207352,
+     "half_units": -1,
+     "gap_min": 0.07197069580685361,
+     "clean": true
+    },
+    {
+     "xy": [
+      2.0,
+      -8.0
+     ],
+     "rho": 8.246211251235321,
+     "angle_deg": -75.96375653207353,
+     "half_units": -1,
+     "gap_min": 0.07211176506765571,
+     "clean": true
+    }
+   ]
+  }
+ ],
+ "seed": [
+  {
+   "z": -16.0,
+   "kz": 8,
+   "n_cores": 1,
+   "n_clean": 1,
+   "net_half_units": -1,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    0.0
+   ],
+   "clean_rhos": [
+    0.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -1,
+     "gap_min": 0.299999900850799,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": -12.0,
+   "kz": 12,
+   "n_cores": 2,
+   "n_clean": 2,
+   "net_half_units": 2,
+   "pair_angle_deg": 180.0,
+   "clean_azimuths_deg": [
+    180.0,
+    0.0
+   ],
+   "clean_rhos": [
+    1.0,
+    1.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      -1.0,
+      0.0
+     ],
+     "rho": 1.0,
+     "angle_deg": 180.0,
+     "half_units": 1,
+     "gap_min": 0.2999252237786456,
+     "clean": true
+    },
+    {
+     "xy": [
+      1.0,
+      0.0
+     ],
+     "rho": 1.0,
+     "angle_deg": 0.0,
+     "half_units": 1,
+     "gap_min": 0.2999252237786456,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": -8.0,
+   "kz": 16,
+   "n_cores": 1,
+   "n_clean": 1,
+   "net_half_units": -2,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    0.0
+   ],
+   "clean_rhos": [
+    0.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -2,
+     "gap_min": 0.2913556453414951,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": -4.0,
+   "kz": 20,
+   "n_cores": 3,
+   "n_clean": 3,
+   "net_half_units": 1,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    -90.0,
+    0.0,
+    90.0
+   ],
+   "clean_rhos": [
+    1.0,
+    0.0,
+    1.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      0.0,
+      -1.0
+     ],
+     "rho": 1.0,
+     "angle_deg": -90.0,
+     "half_units": 1,
+     "gap_min": 0.1647794112270955,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -1,
+     "gap_min": 0.1647794112270955,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      1.0
+     ],
+     "rho": 1.0,
+     "angle_deg": 90.0,
+     "half_units": 1,
+     "gap_min": 0.1647794112270955,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": 4.0,
+   "kz": 28,
+   "n_cores": 3,
+   "n_clean": 3,
+   "net_half_units": 1,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    -90.0,
+    0.0,
+    90.0
+   ],
+   "clean_rhos": [
+    1.0,
+    0.0,
+    1.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      0.0,
+      -1.0
+     ],
+     "rho": 1.0,
+     "angle_deg": -90.0,
+     "half_units": 1,
+     "gap_min": 0.21798456576933345,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -1,
+     "gap_min": 0.21798456576933345,
+     "clean": true
+    },
+    {
+     "xy": [
+      0.0,
+      1.0
+     ],
+     "rho": 1.0,
+     "angle_deg": 90.0,
+     "half_units": 1,
+     "gap_min": 0.21798456576933345,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": 8.0,
+   "kz": 32,
+   "n_cores": 1,
+   "n_clean": 1,
+   "net_half_units": -2,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    0.0
+   ],
+   "clean_rhos": [
+    0.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -2,
+     "gap_min": 0.2968199275101172,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": 12.0,
+   "kz": 36,
+   "n_cores": 1,
+   "n_clean": 1,
+   "net_half_units": -1,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    0.0
+   ],
+   "clean_rhos": [
+    0.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -1,
+     "gap_min": 0.29998331470637807,
+     "clean": true
+    }
+   ]
+  },
+  {
+   "z": 16.0,
+   "kz": 40,
+   "n_cores": 1,
+   "n_clean": 1,
+   "net_half_units": -2,
+   "pair_angle_deg": null,
+   "clean_azimuths_deg": [
+    0.0
+   ],
+   "clean_rhos": [
+    0.0
+   ],
+   "cores": [
+    {
+     "xy": [
+      0.0,
+      0.0
+     ],
+     "rho": 0.0,
+     "angle_deg": 0.0,
+     "half_units": -2,
+     "gap_min": 0.2999999919184078,
+     "clean": true
+    }
+   ]
+  }
+ ],
+ "up_n_clean_per_plane": [
+  5,
+  4,
+  2,
+  2
+ ],
+ "up_azimuths": [
+  -135.0,
+  -135.0,
+  180.0,
+  -90.0,
+  0.0,
+  0.0,
+  90.0,
+  45.0,
+  0.0,
+  170.53767779197437,
+  -80.53767779197439,
+  165.96375653207352,
+  -75.96375653207353
+ ],
+ "down_n_clean_per_plane": [
+  0,
+  2,
+  1,
+  4
+ ],
+ "down_azimuths": [
+  99.46232220802563,
+  -9.462322208025617,
+  -135.0,
+  0.0,
+  90.0,
+  0.0,
+  45.0
+ ]
+}

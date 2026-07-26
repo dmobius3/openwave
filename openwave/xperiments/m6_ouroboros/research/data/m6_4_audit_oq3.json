@@ -1,0 +1,176 @@
+{
+  "task": "M6.4 audit A8: OQ3 existence (May system)",
+  "part1_candidate_profiles": [
+    {
+      "A0": 0.8297241423223741,
+      "B0": 0.14884440333386637,
+      "kappa_analytic": 0.4358898943540673,
+      "lsoda": {
+        "mag_r5": 2.0484245269110577,
+        "mag_r25": 1.4861445339690746,
+        "expected_r25_if_localized": 0.00013429284791582931,
+        "bessel_amp_R12": 1.2457109072238146,
+        "bessel_amp_R18": 0.21155372652349383,
+        "bessel_amp_R24": 1.0031016883469273
+      },
+      "rk4": {
+        "mag_r25": 1.486436904704644
+      }
+    },
+    {
+      "A0": 1.0190475618320765,
+      "B0": 0.09022087372298898,
+      "kappa_analytic": 0.4358898943540673,
+      "lsoda": {
+        "mag_r5": 2.0475520896826778,
+        "mag_r25": 0.6513379492207855,
+        "expected_r25_if_localized": 0.0001342356517250555,
+        "bessel_amp_R12": 1.2621082995205646,
+        "bessel_amp_R18": 0.1041456866508661,
+        "bessel_amp_R24": 0.5311939713179802
+      },
+      "rk4": {
+        "mag_r25": 0.651803091836678
+      }
+    }
+  ],
+  "part2_panel1": [
+    {
+      "w": 0.45,
+      "kappa_pred": 0.8930285549745876,
+      "grid": "15x15 over (0.02,1.2]^2",
+      "diverged": 0,
+      "tail_mag_below_1e-3_at_r24": 0,
+      "min_bessel_osc_amp_R18": 7.517958329670867,
+      "argmin": [
+        1.2,
+        0.8628571428571429
+      ],
+      "tail_mag_at_argmin": 12.419730348613543
+    },
+    {
+      "w": 0.7,
+      "kappa_pred": 0.714142842854285,
+      "grid": "15x15 over (0.02,1.2]^2",
+      "diverged": 0,
+      "tail_mag_below_1e-3_at_r24": 0,
+      "min_bessel_osc_amp_R18": 0.43137672942212557,
+      "argmin": [
+        0.8628571428571429,
+        1.2
+      ],
+      "tail_mag_at_argmin": 3.978174942794001
+    },
+    {
+      "w": 0.9,
+      "kappa_pred": 0.4358898943540673,
+      "grid": "15x15 over (0.02,1.2]^2",
+      "diverged": 0,
+      "tail_mag_below_1e-3_at_r24": 0,
+      "min_bessel_osc_amp_R18": 0.016017653908728745,
+      "argmin": [
+        0.18857142857142856,
+        0.27285714285714285
+      ],
+      "tail_mag_at_argmin": 1.394802762551151
+    }
+  ],
+  "part2_panel2": [
+    {
+      "w": 0.4,
+      "kappa_pred": 0.6767820836501915,
+      "grid": "15x15 over (0.02,1.2]^2",
+      "diverged": 0,
+      "tail_mag_below_1e-3_at_r24": 0,
+      "min_bessel_osc_amp_R18": 5.636734623301744,
+      "argmin": [
+        1.2,
+        1.0314285714285714
+      ],
+      "tail_mag_at_argmin": 8.40893241980047
+    },
+    {
+      "w": 0.6,
+      "kappa_pred": 0.5079704605091667,
+      "grid": "15x15 over (0.02,1.2]^2",
+      "diverged": 0,
+      "tail_mag_below_1e-3_at_r24": 0,
+      "min_bessel_osc_amp_R18": 0.07769557092756457,
+      "argmin": [
+        0.61,
+        0.35714285714285715
+      ],
+      "tail_mag_at_argmin": 3.2716702546521916
+    },
+    {
+      "w": 0.763,
+      "kappa_pred": 0.18938053952266282,
+      "grid": "15x15 over (0.02,1.2]^2",
+      "diverged": 0,
+      "tail_mag_below_1e-3_at_r24": 0,
+      "min_bessel_osc_amp_R18": 0.0071667162649377515,
+      "argmin": [
+        0.5257142857142857,
+        0.7785714285714286
+      ],
+      "tail_mag_at_argmin": 1.3484793083063602
+    }
+  ],
+  "part3_bvp_panel1": [
+    {
+      "w_seed": 0.45,
+      "status": 0,
+      "message": "The algorithm converged to the desired accuracy.",
+      "converged": true,
+      "w_found": 1.0138023931076596,
+      "max_field": 0.3353288444646115,
+      "leftover_vminus_deriv_at_Rb": -0.10190428086787112,
+      "reintegration_tail_mag_r24": 0.2530057549680461
+    },
+    {
+      "w_seed": 0.7,
+      "status": 0,
+      "message": "The algorithm converged to the desired accuracy.",
+      "converged": true,
+      "w_found": 1.0138023930880713,
+      "max_field": 0.3353288446323578,
+      "leftover_vminus_deriv_at_Rb": -0.10190428086171455,
+      "reintegration_tail_mag_r24": 0.253005755110659
+    },
+    {
+      "w_seed": 0.9,
+      "status": 1,
+      "message": "The maximum number of mesh nodes is exceeded.",
+      "converged": false
+    }
+  ],
+  "part3_bvp_panel2": [
+    {
+      "w_seed": 0.4,
+      "status": 0,
+      "message": "The algorithm converged to the desired accuracy.",
+      "converged": true,
+      "w_found": 1.189695893321198,
+      "max_field": 0.37170629812970796,
+      "leftover_vminus_deriv_at_Rb": 8.985675460357741e-05,
+      "reintegration_tail_mag_r24": 0.17570697282548314
+    },
+    {
+      "w_seed": 0.6,
+      "status": 0,
+      "message": "The algorithm converged to the desired accuracy.",
+      "converged": true,
+      "w_found": 0.8726085451952476,
+      "max_field": 0.47260235508825166,
+      "leftover_vminus_deriv_at_Rb": 0.07083794324975501,
+      "reintegration_tail_mag_r24": 0.1588841506581425
+    },
+    {
+      "w_seed": 0.763,
+      "status": 1,
+      "message": "The maximum number of mesh nodes is exceeded.",
+      "converged": false
+    }
+  ],
+  "runtime_s": 43.0
+}

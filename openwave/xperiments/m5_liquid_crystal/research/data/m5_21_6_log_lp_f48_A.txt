@@ -1,0 +1,9 @@
+  m5_21_6_end_f48_A.npz:M thr0.09 comps 6 compact 2
+  m5_21_6_end_f48_A.npz:M_it250 thr0.09 comps 1 compact 0
+  m5_21_6_end_f48_A.npz:M_it500 thr0.09 comps 1 compact 0
+  m5_21_6_end_f48_A.npz:M_it1000 thr0.09 comps 10 compact 6
+  m5_21_6_end_f48_A.npz:M_it2000 thr0.09 comps 6 compact 2
+  m5_21_6_end_f48_A.npz:M_it4000 thr0.09 comps 6 compact 2
+  m5_21_6_end_f48_A.npz:M_it6000 thr0.09 comps 6 compact 2
+  m5_21_6_end_f48_A.npz:M_it8000 thr0.09 comps 6 compact 2
+  m5_21_6_end_f48_A.npz:M_it10000 thr0.09 comps 6 compact 2

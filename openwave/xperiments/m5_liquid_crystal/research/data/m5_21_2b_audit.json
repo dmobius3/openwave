@@ -1,0 +1,218 @@
+{
+ "C1": {
+  "verdict": "CONFIRMED",
+  "numbers": {
+   "A": {
+    "E_u_fwd": 0.9069647693140314,
+    "E_u_bwd": 266.823811176579,
+    "ratio": 294.1942401780248
+   },
+   "R": {
+    "E_u_fwd": 0.8787386329668538,
+    "E_u_bwd": 338.969950854607,
+    "ratio": 385.74604340559705
+   }
+  },
+  "reasoning": "bwd/fwd E_u = 294.2 (A: 0.907 vs 266.8) and 385.7 (R: 0.879 vs 339.0); both >= 250: the fwd-only endpoint hides curvature from its own stencil."
+ },
+ "C2": {
+  "verdict": "CONFIRMED",
+  "numbers": {
+   "A": {
+    "reads": {
+     "fwd": 4.1999698395094045,
+     "bwd": 4.1999698395094045,
+     "2h": 3.8007796283088915,
+     "sub0": 3.9177779861836757,
+     "sub1": 3.8167185480123527
+    },
+    "ratio": 1.1050285073691914,
+    "ratio_strict_7read": 1.1050285073691914
+   },
+   "R": {
+    "reads": {
+     "fwd": 4.198572204136123,
+     "bwd": 4.198572204136123,
+     "2h": 3.800897786243502,
+     "sub0": 3.919111891026592,
+     "sub1": 3.821599606260107
+    },
+    "ratio": 1.1046264436081166,
+    "ratio_strict_7read": 1.1046264436081166
+   }
+  },
+  "reasoning": "max/min over {fwd,bwd,2h,sub0,sub1} = 1.105 (A) and 1.105 (R), both <= 1.3; the stricter 7-read set (bwd subsamples added) reads 1.105 / 1.105."
+ },
+ "C3": {
+  "verdict": "CONFIRMED",
+  "numbers": {
+   "A": {
+    "E": 5.261129109376181,
+    "stated": 5.261,
+    "rel_dev": 2.45408432202332e-05
+   },
+   "C": {
+    "E": 22.059295249318357,
+    "stated": 22.06,
+    "rel_dev": -3.194699372810472e-05
+   },
+   "B": {
+    "E": 84.08475039255286,
+    "stated": 84.08,
+    "rel_dev": 5.6498484215739e-05
+   }
+  },
+  "reasoning": "recomputed E: A 5.2611 < C 22.0593 < B 84.0848 (ordering holds; each within 0.01% of stated)."
+ },
+ "C4": {
+  "verdict": "CONFIRMED",
+  "numbers": {
+   "T1": {
+    "dist_AR": 17.71986358572645,
+    "dist_Avac": 295.99120949766,
+    "ratio": 0.05986618189033258,
+    "ratio_Rnorm": 0.05959482442784522
+   },
+   "T2": {
+    "dist_AR": 23.207923250735494,
+    "dist_Avac": 303.54630027181213,
+    "ratio": 0.07645595821775406,
+    "ratio_Rnorm": 0.07623959076449124
+   }
+  },
+  "reasoning": "||A-R||/||A-vac|| = 0.0599 (T1) and 0.0765 (T2), both <= 0.10: point- and ring-seeded endpoints are the same state to <=7.6% field distance."
+ },
+ "C5": {
+  "verdict": "CONFIRMED",
+  "numbers": {
+   "rho_w_d0.1": {
+    "i4_a3_d0.1": 3.461563237409149,
+    "i4_a4.5_d0.1": 3.352543639045447,
+    "i4_a6_d0.1": 3.363945567028973,
+    "c48_A_d0.1": 3.387451640556067
+   },
+   "delta_trend": {
+    "c48_A_d0.3": 2.4921297474408,
+    "c48_A_d0.2": 2.7352538622510445,
+    "c48_A_d0.1": 3.387451640556067
+   },
+   "mean": 3.391376021009909,
+   "max_dev_from_mean": 0.020695793083522318
+  },
+  "reasoning": "four delta=0.1 seedings read rho_w 3.353-3.462 (mean 3.391, max dev 2.1%, bar 5%); delta trend 2.492 -> 2.735 -> 3.387 monotone as delta 0.3 -> 0.1."
+ },
+ "C6": {
+  "verdict": "CONFIRMED",
+  "numbers": {
+   "sign_control": {
+    "+1": 2.0,
+    "-1": -2.0
+   },
+   "circles": [
+    {
+     "z": -12.0,
+     "rho_c": 10.0,
+     "winding_half_units": 2.0,
+     "min_gap": 0.11503198781348749,
+     "min_inplane": 0.9369685708252224
+    },
+    {
+     "z": -12.0,
+     "rho_c": 14.0,
+     "winding_half_units": 2.0000000000000004,
+     "min_gap": 0.25611989800730806,
+     "min_inplane": 0.9861316923597966
+    },
+    {
+     "z": -4.0,
+     "rho_c": 10.0,
+     "winding_half_units": 2.0000000000000004,
+     "min_gap": 0.1834534486763858,
+     "min_inplane": 0.8281488392427325
+    },
+    {
+     "z": -4.0,
+     "rho_c": 14.0,
+     "winding_half_units": 2.0000000000000004,
+     "min_gap": 0.24771869988759104,
+     "min_inplane": 0.9081735897323814
+    },
+    {
+     "z": 4.0,
+     "rho_c": 10.0,
+     "winding_half_units": 2.0000000000000004,
+     "min_gap": 0.17327891684519459,
+     "min_inplane": 0.8017072248086047
+    },
+    {
+     "z": 4.0,
+     "rho_c": 14.0,
+     "winding_half_units": 2.0000000000000004,
+     "min_gap": 0.24125914220455116,
+     "min_inplane": 0.882670897183175
+    },
+    {
+     "z": 12.0,
+     "rho_c": 10.0,
+     "winding_half_units": 2.0000000000000004,
+     "min_gap": 0.1145535232089172,
+     "min_inplane": 0.9306291869473352
+    },
+    {
+     "z": 12.0,
+     "rho_c": 14.0,
+     "winding_half_units": 2.0,
+     "min_gap": 0.2536312046872014,
+     "min_inplane": 0.9910089604701046
+    }
+   ],
+   "min_gap_overall": 0.1145535232089172
+  },
+  "reasoning": "sign control reads +2/-2 on synthetic +-1 defects; all 8 circles (z in {-12,-4,4,12} x rho_c in {10,14}) read net winding +2 half-units (integer exactly, mod-pi telescoping); min eigen-gap 0.115 > 0.05: band identity clean throughout."
+ },
+ "C7": {
+  "verdict": "CONFIRMED",
+  "numbers": {
+   "E_recomputed": {
+    "i1_A_sym_e0": 4.919819292214902,
+    "i1_A_sym_e0.0003": 5.15011681120339,
+    "i1_A_sym_e0.001": 5.664882880189683,
+    "i1_A_sym_e0.003": 7.069340838392625
+   },
+   "E_rows": {
+    "i1_A_sym_e0": 4.919819354660678,
+    "i1_A_sym_e0.0003": 5.150116874308266,
+    "i1_A_sym_e0.001": 5.664882944634644,
+    "i1_A_sym_e0.003": 7.069340906333203
+   },
+   "fit_intercept": 4.933554125169327,
+   "fit_slope": 713.9403072844863,
+   "residuals": [
+    -0.013734832954424903,
+    0.0023805938487173606,
+    0.017388447735870116,
+    -0.006034208630160798
+   ],
+   "span": 2.1495215461777226,
+   "max_resid_over_span": 0.008089450308972356,
+   "row_vs_recompute_max_rel": 1.2692696893523703e-08
+  },
+  "reasoning": "LSQ line E = 4.9336 + 713.9*eps; max |residual| = 0.81% of the span 2.1495 (bar 3%); rows match my recompute to 1.3e-08."
+ },
+ "C8": {
+  "verdict": "CONFIRMED",
+  "numbers": {
+   "T2": {
+    "E_u": 5.075422648147519,
+    "E_v": 1.7691494078865733,
+    "q": 0.03389920854257787
+   },
+   "T1": {
+    "E_u": 4.336464785697594,
+    "E_v": 0.924664323678587,
+    "q": 0.29698412302356475
+   }
+  },
+  "reasoning": "|-E_u + 3E_v|/E = 0.0339 on the T2 endpoint (<= 0.06: landed) vs 0.2970 on the T1 endpoint (>= 0.25: pin-held): T2 alone reaches the scale-stationary balance."
+ }
+}

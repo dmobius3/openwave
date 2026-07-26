@@ -42,7 +42,7 @@ the ★ TBM gate, "the connecting hypothesis"). Target scorecard: [#199](https:/
 | delta_CP locked to {0,180} | real symmetric mass matrix is CP-conserving; a genuine delta_CP needs a complex/chiral coupling |
 | S3b map nonlinearity | clean+linear for delta<=0.1; one outlier cell at large delta*eps, documented, not load-bearing |
 
-**Action needed:** none blocking. #236 stays HELD (In progress, nothing posted). Git untouched (Rodrigo's).
+**Action needed:** none blocking. #236 stays HELD (In progress, nothing posted). Git untouched (the maintainer's).
 
 ## The bridge (how the angles come from the loop field theory)
 

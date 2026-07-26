@@ -1,0 +1,60 @@
+{
+  "task": "M6.4 audit A7: l-sector monotonicity",
+  "theory_verdict": {
+    "scalar_sturm_sufficient_for_coupled_systems": false,
+    "valid_replacement": "Morse index theorem / matrix Sturm comparison for self-adjoint systems (requires symmetric Q; satisfied here: May Q12=Q21=-1, June printed Q12=Q21=-c/4) with the psd perturbation (l^2/r^2) I",
+    "numeric_caveat": "det sign-change counting misses even-multiplicity zeros; numeric counts are a lower bound on true conjugate-point counts"
+  },
+  "cases": [
+    {
+      "system": "may",
+      "g": 0.5,
+      "w": 1.5,
+      "lam": 0.0,
+      "A": 0.1,
+      "B": 0.1,
+      "label": "printed May representative",
+      "conj_points": {
+        "l=0": 6,
+        "l=1": 6,
+        "l=2": 5,
+        "l=3": 4
+      },
+      "monotone_nonincreasing": true
+    },
+    {
+      "system": "may",
+      "g": 0.5,
+      "w": 0.7,
+      "lam": 0.0,
+      "A": 0.4,
+      "B": 0.4,
+      "label": "May below-threshold combo",
+      "conj_points": {
+        "l=0": 6,
+        "l=1": 6,
+        "l=2": 5,
+        "l=3": 5
+      },
+      "monotone_nonincreasing": true
+    },
+    {
+      "system": "june",
+      "g": 0.3,
+      "w": 2.2,
+      "lam": 0.5,
+      "A": 0.1,
+      "B": 0.2,
+      "label": "June published best point (conv T inward; primary used S)",
+      "conj_points": {
+        "l=0": 0,
+        "l=1": 0,
+        "l=2": 0,
+        "l=3": 0
+      },
+      "monotone_nonincreasing": true
+    }
+  ],
+  "all_monotone": true,
+  "runtime_s": 0.1
+}

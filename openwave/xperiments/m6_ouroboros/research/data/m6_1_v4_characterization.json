@@ -1,0 +1,108 @@
+{
+  "V1_euler_lagrange": {
+    "el_matches_box_plus_m2_plus_cubic_plus_source": true,
+    "open_equation": "box phi + m^2 phi + (lam/6) phi^3 + g rho = lam dC/dphi",
+    "closable": false,
+    "reason": "C[phi] is never written out in v4; the EL system cannot be closed"
+  },
+  "V2_hamiltonian": {
+    "printed_H_matches_legendre_transform": true,
+    "caveat": "verified for L WITHOUT the lam*C[phi] term (unwritable); v4 prints H without it too"
+  },
+  "V3_boundedness": {
+    "limits_at_pm_infinity": {
+      "oo": "oo",
+      "-oo": "oo"
+    },
+    "bounded_below": true,
+    "assumptions": "lam > 0; rho_n bounded with compact support (nuclear profile)",
+    "numeric_minima_at_rho0_gJ": {
+      "lam_0.1": {
+        "phi_min_MeV": -73.519,
+        "Veff_min_MeV4": -365760.6,
+        "analytic_cubic_root_MeV": -73.577
+      },
+      "lam_1.0": {
+        "phi_min_MeV": -34.139,
+        "Veff_min_MeV4": -169913.3,
+        "analytic_cubic_root_MeV": -34.151
+      },
+      "lam_10.0": {
+        "phi_min_MeV": -15.849,
+        "Veff_min_MeV4": -78897.4,
+        "analytic_cubic_root_MeV": -15.852
+      }
+    },
+    "verdict": "v4's boundedness claim VERIFIED under its stated assumptions"
+  },
+  "V4_dimensions": {
+    "phi": 1,
+    "m_phi": 1,
+    "lambda_quartic": 0,
+    "g_given_rho_dim3": 0,
+    "E_int_g_phi_A": 1,
+    "consistent": true,
+    "renormalizability_note": "dimensionless quartic -> strictly renormalizable, NOT superrenormalizable by power counting; v11's quartic coupling had [g] = -4; v4 Section 1 carries the legacy superrenormalizability claim with no v4 derivation"
+  },
+  "V5_range": {
+    "hbar_c_over_m_phi_fm": 429.0,
+    "paper_says": "~400 fm",
+    "yukawa_vs_1_over_r_deviation_pct": {
+      "r_1fm": 0.233,
+      "r_10fm": 2.3,
+      "r_100fm": 20.8,
+      "r_400fm": 60.6
+    },
+    "verdict": "a 428.9 fm Yukawa IS 1/r to within 2.3% over the whole r = 1-10 fm window the paper quotes; the mass/range paradox the constraint C[phi] is invoked to resolve is a percent-level effect below ~40 fm and only becomes order-one at r >~ 400 fm"
+  },
+  "V6_A_linearity": {
+    "rows": {
+      "A_1": {
+        "E_int_numeric": 0.00538,
+        "g_phi0_A": 0.0054,
+        "ratio": 0.9956
+      },
+      "A_2": {
+        "E_int_numeric": 0.01075,
+        "g_phi0_A": 0.0108,
+        "ratio": 0.9953
+      },
+      "A_40": {
+        "E_int_numeric": 0.21425,
+        "g_phi0_A": 0.216,
+        "ratio": 0.9919
+      },
+      "A_85": {
+        "E_int_numeric": 0.45443,
+        "g_phi0_A": 0.459,
+        "ratio": 0.99
+      },
+      "A_184": {
+        "E_int_numeric": 0.98122,
+        "g_phi0_A": 0.9936,
+        "ratio": 0.9875
+      },
+      "A_208": {
+        "E_int_numeric": 1.10868,
+        "g_phi0_A": 1.1232,
+        "ratio": 0.9871
+      }
+    },
+    "max_deviation_pct": 1.29,
+    "verdict": "E_int proportional to A holds to ~2% for ANY field with range >> R_nucleus once rho_n is normalized to A: the v4 'derivation' is the normalization identity int rho = A plus long-rangedness, and the A-linear ENERGY is equally a property of a standard per-nucleon scalar Yukawa coupling; distinguishing v4 substance lives in cross-sections, which v4 defers ('ongoing work')"
+  },
+  "V7_in_medium_phi": {
+    "tadpole_minimum_formula": "phi_min = -(6 g rho / lam)^(1/3) in the quartic regime",
+    "phi_min_MeV_at_lam_1": -34.15,
+    "lam_dependence": "phi_min ~ lam^(-1/3); lam is not pinned numerically in v4",
+    "verdict": "the phi entering E_int ~= g phi A is fixed by nothing in the paper: no equation, no value; with the July g_J and lam = 1 the self-consistent in-medium value would be ~ -34 MeV, 74x m_phi"
+  },
+  "V8_mass_migration": {
+    "0.46_MeV": "429.0 fm",
+    "0.618_MeV": "319.3 fm",
+    "1.033_MeV": "191.0 fm"
+  },
+  "T1_lambda_collision": "lambda is the quartic self-coupling in V(phi) AND the multiplier of C[phi] in the same Lagrangian line",
+  "T2_C_phi_unspecified": "C[phi] appears only as prose + the one-line surface integral I = int phi delta_Sigma - Sigma_n with delta_Sigma undefined; no functional form anywhere",
+  "T3_drafting_artifacts": "duplicated paragraphs (Sections 4.1/5), '[INSERT FIGURE 1 HERE]' placeholders, 'In Word, insert each figure image from your /OuroborosEli_figures folder'"
+}

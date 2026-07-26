@@ -166,6 +166,32 @@ class SimulationState:
         self.GLYPH_COLOR = (
             1  # glyph color — 0=single (COLOR_MEDIUM, see far field), 1=field gradient
         )
+        # VIZ.5 (M5.23) — the "ellipsoid" viz: one M·u eigen-ellipsoid surface
+        # per 3D angle on an S² shell around each defect center (full-3D view).
+        # Its OWN feature namespace (not a GLYPH_VECTOR state); while ON it
+        # suppresses the plane glyphs (no visual pollution). Mesh-only since
+        # 2026-07-19 (the line-glyph and wireframe variants were retired after
+        # the live A/B: mesh won).
+        self.SHOW_ELLIPSOID = False
+        self.ELLIPSOID_RADIUS = 0.1  # shell radius / rod half-length, fraction of max grid dim
+        self.ELLIPSOID_COUNT = 299  # shell ellipsoid count (density; not-too-dense spec)
+        self.ELLIPSOID_SIZE = 0.025  # ellipsoid base size, normalized (scaled by lambda)
+        # Stage D sub-toggles: the S² shell, the disclination-rod line samples
+        # (the escaped-core pair along the spin axis), and the per-2D-angle
+        # rings around the rod cord. Combinable (the electron-clock figure
+        # shows shell + rods together).
+        self.ELLIPSOID_SHELL = True
+        self.ELLIPSOID_RODS = False
+        self.ELLIPSOID_RODRINGS = True
+        # M5.23.2 arm (4) — the energy-density ISOSURFACE (canonical path
+        # only: V4 + curvature are exactly zero on the covariant vacuum, so
+        # level sets need no background subtraction). ISO_LEVEL = fraction
+        # of the per-frame interior density max. ISO_COVER = the author's
+        # "surface covered with ellipsoids" variant (uses the shell pool,
+        # exclusive with the S² shell view).
+        self.SHOW_ISO = False
+        self.ISO_LEVEL = 0.30
+        self.ISO_COVER = False
         self.FLUX_MESH_PLANES = [0.5, 0.5, 0.5]
         self.SHOW_FLUX_MESH = 0
         self.WARP_MESH = 300
@@ -235,6 +261,16 @@ class SimulationState:
         self.GLYPH_VECTOR = ui.get("GLYPH_VECTOR", 0)  # 0=director 1=+delta 2=E 3=B
         self.GLYPH_SIZE = ui.get("GLYPH_SIZE", 0)  # 0=unit, 1=field magnitude
         self.GLYPH_COLOR = ui.get("GLYPH_COLOR", 1)  # 0=single, 1=field gradient
+        self.SHOW_ELLIPSOID = ui.get("SHOW_ELLIPSOID", False)  # VIZ.5 ellipsoid shell
+        self.ELLIPSOID_RADIUS = ui.get("ELLIPSOID_RADIUS", 0.1)  # fraction of max grid dim
+        self.ELLIPSOID_COUNT = ui.get("ELLIPSOID_COUNT", 299)  # shell glyph count
+        self.ELLIPSOID_SIZE = ui.get("ELLIPSOID_SIZE", 0.025)  # ellipsoid base size
+        self.ELLIPSOID_SHELL = ui.get("ELLIPSOID_SHELL", True)  # S² shell sub-toggle
+        self.ELLIPSOID_RODS = ui.get("ELLIPSOID_RODS", False)  # Stage D rod-line samples
+        self.SHOW_ISO = ui.get("SHOW_ISO", False)  # M5.23.2 energy isosurface
+        self.ISO_LEVEL = ui.get("ISO_LEVEL", 0.30)  # fraction of density max
+        self.ISO_COVER = ui.get("ISO_COVER", False)  # ellipsoid-covered variant
+        self.ELLIPSOID_RODRINGS = ui.get("ELLIPSOID_RODRINGS", True)  # Stage D rod rings
         self.FLUX_MESH_PLANES = ui["FLUX_MESH_PLANES"]
         self.SHOW_FLUX_MESH = ui["SHOW_FLUX_MESH"]
         self.WARP_MESH = ui["WARP_MESH"]
@@ -319,6 +355,19 @@ class SimulationState:
         # validated ratio (headless was bounded at the derated dt all along).
         if self.TOPOLOGY_SEED is not None and self.TOPOLOGY_SEED.get("MODE") == "dressed_hedgehog":
             self.dt_rs *= float(self.TOPOLOGY_SEED.get("DT_SCALE_4D", 0.5))
+        # M5.24 — the canonical path caps dt_eff = c·dt at the certified τ-step
+        # (0.005, the full-3D twin's step, canonical § 3; the axisym stack's
+        # 0.02 sits at ω_stiff·dt = 1.57, too close to the leapfrog margin for
+        # the 3D f32 path — measured NaN at the M5.24 selftest try 1): the CFL
+        # above scales with dx but the V4 stiffness does NOT (the stiff g-mode
+        # ω ≈ 78 at g = 8, § 4 gap ladders, bounds dt_eff < 2/78 ≈ 0.026 in
+        # τ-units regardless of grid). Lives here, not in initialize_xperiment,
+        # for the same every-frame-wipe reason as the 4D derate above.
+        if self.TOPOLOGY_SEED is not None and (
+            str(self.TOPOLOGY_SEED.get("INTEGRATOR_4D", "")) == "canonical"
+        ):
+            dt_eta_cap = float(self.TOPOLOGY_SEED.get("DT_ETA_CAP", 0.005))
+            self.dt_rs = min(self.dt_rs, dt_eta_cap / self.c_amrs)
         self.cfl_factor = round((self.c_amrs * self.dt_rs / self.tensor_field.dx_am) ** 2, 7)
         # V(M) couplings for the matrix substrate. Only director-class (topology)
         # seeds use a potential, so gate on TOPOLOGY_SEED presence. (M5.8 ψ-retire:
@@ -413,15 +462,49 @@ def display_controls(state):
     with render.gui.sub_window("CONTROLS", 0.00, 0.25, 0.16, 0.43) as sub:
         state.SHOW_AXIS = sub.checkbox(f"Axis (ticks: {state.TICK_SPACING})", state.SHOW_AXIS)
         state.SHOW_EDGES = sub.checkbox("Sim Universe Edges", state.SHOW_EDGES)
-        state.SHOW_GLYPHS = sub.slider_int("Glyphs", state.SHOW_GLYPHS, 0, 3)
-        if sub.checkbox("Director Vector", state.GLYPH_VECTOR == 0):
+        # VIZ.5 (M5.23) — the "ellipsoid" viz: S² shell, one eigenframe glyph per
+        # 3D angle around each defect center. Its own feature (options below);
+        # while ON it replaces the plane glyphs below (no visual pollution).
+        state.SHOW_ELLIPSOID = sub.checkbox("Ellipsoids", state.SHOW_ELLIPSOID)
+        if state.SHOW_ELLIPSOID:
+            state.ELLIPSOID_RADIUS = sub.slider_float("Radius", state.ELLIPSOID_RADIUS, 0.02, 0.5)
+            state.ELLIPSOID_COUNT = sub.slider_int(
+                "Count", state.ELLIPSOID_COUNT, 32, medium.ELLIPSOID_MAX_DIRS
+            )
+            state.ELLIPSOID_SIZE = sub.slider_float("Size", state.ELLIPSOID_SIZE, 0.01, 0.15)
+            state.ELLIPSOID_SHELL = sub.checkbox("Shell (1 /3D-angle)", state.ELLIPSOID_SHELL)
+            state.ELLIPSOID_RODS = sub.checkbox("Rods (disclination)", state.ELLIPSOID_RODS)
+        # M5.23.2 arm (4) — the energy isosurface (canonical path only)
+        state.SHOW_ISO = sub.checkbox("Iso-Surface (energyH)", state.SHOW_ISO)
+        if state.SHOW_ISO:
+            state.ISO_LEVEL = sub.slider_float("Iso Level", state.ISO_LEVEL, 0.02, 0.95)
+            state.ISO_COVER = sub.checkbox("Cover w/ Ellipsoids", state.ISO_COVER)
+            state.ELLIPSOID_RODRINGS = sub.checkbox(
+                "Rod Rings (1 /2D-angle)", state.ELLIPSOID_RODRINGS
+            )
+        state.SHOW_GLYPHS = sub.slider_int("Glyph Planes", state.SHOW_GLYPHS, 0, 3)
+        # VIZ.5 exclusivity: the vector-glyph select displays UNCHECKED while the
+        # ellipsoid shell owns the screen (those states are not rendering), and
+        # clicking any of them hands the screen back (ellipsoid off) — the same
+        # rule the render dispatch enforces (ellipsoid replaces the plane glyphs).
+        if sub.checkbox("Director Vector", state.GLYPH_VECTOR == 0 and not state.SHOW_ELLIPSOID):
             state.GLYPH_VECTOR = 0
-        if sub.checkbox("Director + Delta Vectors", state.GLYPH_VECTOR == 1):
+            state.SHOW_ELLIPSOID = False
+        if sub.checkbox(
+            "Director + Delta Vectors", state.GLYPH_VECTOR == 1 and not state.SHOW_ELLIPSOID
+        ):
             state.GLYPH_VECTOR = 1
-        if sub.checkbox("Electric Field (divergence)", state.GLYPH_VECTOR == 2):
+            state.SHOW_ELLIPSOID = False
+        if sub.checkbox(
+            "Electric Field (divergence)", state.GLYPH_VECTOR == 2 and not state.SHOW_ELLIPSOID
+        ):
             state.GLYPH_VECTOR = 2
-        if sub.checkbox("Magnetic Field (curl)", state.GLYPH_VECTOR == 3):
+            state.SHOW_ELLIPSOID = False
+        if sub.checkbox(
+            "Magnetic Field (curl)", state.GLYPH_VECTOR == 3 and not state.SHOW_ELLIPSOID
+        ):
             state.GLYPH_VECTOR = 3
+            state.SHOW_ELLIPSOID = False
         # shaft length: unit (director, all glyphs visible) vs field magnitude (E: |∇·n̂| charge
         # density, B: ‖∇×n̂‖); color: single flat COLOR_MEDIUM (see far field) vs field gradient.
         if sub.checkbox("Glyph Size (unit/magnitude)", state.GLYPH_SIZE == 1):
@@ -432,7 +515,7 @@ def display_controls(state):
             state.GLYPH_COLOR = 1
         else:
             state.GLYPH_COLOR = 0
-        state.SHOW_FLUX_MESH = sub.slider_int("Flux Mesh", state.SHOW_FLUX_MESH, 0, 3)
+        state.SHOW_FLUX_MESH = sub.slider_int("Flux Mesh Planes", state.SHOW_FLUX_MESH, 0, 3)
         state.WARP_MESH = sub.slider_int("Warp Mesh", state.WARP_MESH, 0, 50)
         # VIZ.3 — 4-state glyph select (mutually exclusive checkboxes):
         #   0=Director Vector (principal axis n̂ only),
@@ -441,6 +524,17 @@ def display_controls(state):
         # Greek δ is spelled "Delta" — GGUI cannot render Greek glyphs.
         state.SHOW_GRANULES = sub.checkbox("Show Granule Motion", state.SHOW_GRANULES)
         state.SIM_SPEED = sub.slider_float("Speed", state.SIM_SPEED, 0.5, 1.0)
+        # M5.24 round 3 — the canonical FIRE relaxer (G8): relax the seeded
+        # state toward a stationary configuration of the SAME eta + V4 energy
+        # before evolving (500-iter chunks per press, the § 5.2 recipe cadence).
+        if getattr(state, "integrator_4d", "") == "canonical" and state.PAUSED:
+            if sub.button("RELAX (FIRE canonical)"):
+                relax_field_canonical(state, 500)
+            # M5.23.1 — SET-J: (re)initialize the isorotation velocity on the
+            # current state (run after RELAX; the next EVOLVE carries the clock)
+            if sub.button("SET J (isorotate)"):
+                om_btn = float(getattr(state, "fixedj_omega", 0.0)) or 0.2
+                set_fixed_j_launcher(state, om_btn)
         if state.PAUSED:
             if sub.button(">> EVOLVE PDE >>"):
                 state.PAUSED = False
@@ -635,6 +729,21 @@ def initialize_xperiment(state):
     # (M5.8 ψ-retire: the legacy TEST_SEED Gaussian/plane-wave seeding path was
     # removed with the Vector(3) ψ engine — all live xperiments use TOPOLOGY_SEED.)
 
+    # M5.24 — reset the 4D-integrator routing before seeding: these are set
+    # only by the dressed / canonical activations below, so an xperiment
+    # switch away from a 4D config would otherwise keep evolving on the
+    # previous integrator (a stale-state hazard the seed branches never
+    # cleared).
+    state.evolve_4d = False
+    state.integrator_4d = ""
+    # M5.23.2 — npz-loader routing flags, reset with the integrator routing
+    # (same stale-state hazard): npz_covariant marks a loaded state ALREADY in
+    # the covariant vacuum convention (M[0,0] = -g), so the canonical
+    # activation must NOT flip it again; npz_h carries the source grid unit
+    # as the ETA_DX fallback.
+    state.npz_covariant = False
+    state.npz_h = 0.0
+
     # Optional topology seed (M5.1+ vacuum / hedgehog xperiments)
     if state.TOPOLOGY_SEED is not None:
         topo = state.TOPOLOGY_SEED
@@ -649,15 +758,15 @@ def initialize_xperiment(state):
             # convert to voxel coords and bundle into ti.fields for the kernel.
             defects = topo["DEFECTS"]  # list of {"CENTER": [x,y,z], "SIGN": ±1}
             n_defects = len(defects)
-            wf = state.tensor_field
+            tf = state.tensor_field
 
             centers_np = np.zeros((n_defects, 3), dtype=np.int32)
             signs_np = np.zeros(n_defects, dtype=np.int32)
             for d, defect in enumerate(defects):
                 cx_norm, cy_norm, cz_norm = defect["CENTER"]
-                centers_np[d, 0] = int(round(cx_norm * (wf.nx - 1)))
-                centers_np[d, 1] = int(round(cy_norm * (wf.ny - 1)))
-                centers_np[d, 2] = int(round(cz_norm * (wf.nz - 1)))
+                centers_np[d, 0] = int(round(cx_norm * (tf.nx - 1)))
+                centers_np[d, 1] = int(round(cy_norm * (tf.ny - 1)))
+                centers_np[d, 2] = int(round(cz_norm * (tf.nz - 1)))
                 signs_np[d] = int(defect["SIGN"])
 
             centers_field = ti.field(dtype=ti.i32, shape=(n_defects, 3))
@@ -668,10 +777,10 @@ def initialize_xperiment(state):
             # D/4 in voxel units — w_vac falloff radius for the vacuum blend.
             # Default from Exp 2 is one quarter of the largest grid extent.
             domain_quarter_fraction = topo.get("DOMAIN_QUARTER_FRACTION", 0.25)
-            domain_quarter_voxels = float(domain_quarter_fraction * max(wf.nx, wf.ny, wf.nz))
+            domain_quarter_voxels = float(domain_quarter_fraction * max(tf.nx, tf.ny, tf.nz))
 
             seeds.seed_hedgehog_M(
-                wf, centers_field, signs_field, domain_quarter_voxels, n_defects, wf.lc_delta
+                tf, centers_field, signs_field, domain_quarter_voxels, n_defects, tf.lc_delta
             )
             # Stash pin info for relaxation kernel (M5.1 task 6)
             state.pin_centers = centers_field
@@ -685,15 +794,15 @@ def initialize_xperiment(state):
         elif seed_mode == "biaxial_hedgehog":
             # M5.6.5a: a single BIAXIAL hedgehog M = O·D(s(r))·Oᵀ, D = diag(1, δ, 0)
             # (frame O=[r̂|e_Θ|e_Φ] + disclination smoothstep + radial eigenvalue melt).
-            wf = state.tensor_field
+            tf = state.tensor_field
             center = topo.get("CENTER", [0.5, 0.5, 0.5])
-            cx = int(round(center[0] * (wf.nx - 1)))
-            cy = int(round(center[1] * (wf.ny - 1)))
-            cz = int(round(center[2] * (wf.nz - 1)))
-            r0_vox = float(topo.get("R0_FRACTION", 0.06) * max(wf.nx, wf.ny, wf.nz))
+            cx = int(round(center[0] * (tf.nx - 1)))
+            cy = int(round(center[1] * (tf.ny - 1)))
+            cz = int(round(center[2] * (tf.nz - 1)))
+            r0_vox = float(topo.get("R0_FRACTION", 0.06) * max(tf.nx, tf.ny, tf.nz))
             rhoc_vox = float(topo.get("RHOC_VOXELS", 3.0))
             biaxial_delta = float(topo.get("BIAXIAL_DELTA", 0.3))
-            seeds.seed_biaxial_hedgehog_M(wf, cx, cy, cz, r0_vox, rhoc_vox, biaxial_delta)
+            seeds.seed_biaxial_hedgehog_M(tf, cx, cy, cz, r0_vox, rhoc_vox, biaxial_delta)
             # NO auto-relax: the biaxial M is constructed directly; relax_director_step would
             # rebuild M uniaxially from the director and destroy the biaxial structure.
             print(
@@ -701,31 +810,53 @@ def initialize_xperiment(state):
                 f"({cx},{cy},{cz}); r0={r0_vox:.1f}, ρc={rhoc_vox:.1f} voxels (no relax)"
             )
 
+        elif seed_mode == "charged_ring":
+            # M5.21.2: the CHARGED DISCLINATION RING — the hedgehog's same-charge
+            # partner (Alexander et al., RMP 84, 497 (2012) § IV.B: loops carry odd
+            # hedgehog charge). Half-disclination cord of radius a in z = 0, escaped
+            # interior, hedgehog far field. STATIC VIEWING seed (no 4D activation,
+            # no relax — constructed directly like the biaxial mode).
+            tf = state.tensor_field
+            center = topo.get("CENTER", [0.5, 0.5, 0.5])
+            cx = int(round(center[0] * (tf.nx - 1)))
+            cy = int(round(center[1] * (tf.ny - 1)))
+            cz = int(round(center[2] * (tf.nz - 1)))
+            a_vox = float(topo.get("A_FRACTION", 0.10) * max(tf.nx, tf.ny, tf.nz))
+            cord_vox = float(topo.get("CORD_VOXELS", 3.0))
+            rhoc_vox = float(topo.get("RHOC_VOXELS", 3.0))
+            biaxial_delta = float(topo.get("BIAXIAL_DELTA", 0.3))
+            seeds.seed_charged_ring_M(tf, cx, cy, cz, a_vox, cord_vox, rhoc_vox, biaxial_delta)
+            print(
+                f"[M5.21.2] seeded charged ring a={a_vox:.1f} voxels at ({cx},{cy},{cz}); "
+                f"cord melt={cord_vox:.1f}, axis ρc={rhoc_vox:.1f}, δ={biaxial_delta} "
+                f"(static view, no relax)"
+            )
+
         elif seed_mode == "dressed_hedgehog":
             # M5.8.2c — the BOOST-DRESSED biaxial hedgehog (the 2b-1 ground state):
             # biaxial frame + melt, dressed with exp(b*·w(r)·B₁) mixing e_Θ with the
             # time axis. Activates the 4D Minkowski evolve path (signed flux on the
             # stable region; the time-freeze clamp replaced by the soft drift guard).
-            wf = state.tensor_field
+            tf = state.tensor_field
             center = topo.get("CENTER", [0.5, 0.5, 0.5])
-            cx = int(round(center[0] * (wf.nx - 1)))
-            cy = int(round(center[1] * (wf.ny - 1)))
-            cz = int(round(center[2] * (wf.nz - 1)))
-            r0_vox = float(topo.get("R0_FRACTION", 0.06) * max(wf.nx, wf.ny, wf.nz))
+            cx = int(round(center[0] * (tf.nx - 1)))
+            cy = int(round(center[1] * (tf.ny - 1)))
+            cz = int(round(center[2] * (tf.nz - 1)))
+            r0_vox = float(topo.get("R0_FRACTION", 0.06) * max(tf.nx, tf.ny, tf.nz))
             rhoc_vox = float(topo.get("RHOC_VOXELS", 3.0))
             biaxial_delta = float(topo.get("BIAXIAL_DELTA", 0.3))
             b_star = float(topo.get("B_STAR", 0.13))  # 2b-1 GEM-dip dressing
             rw_frac = float(topo.get("RW_FRACTION", 0.29))  # ~3.5/12 of the box (2b-1)
-            rw_vox = rw_frac * max(wf.nx, wf.ny, wf.nz)
+            rw_vox = rw_frac * max(tf.nx, tf.ny, tf.nz)
             kick = float(topo.get("CLOCK_KICK", 0.0))  # clock phase kick (rad)
             seeds.seed_dressed_hedgehog_M(
-                wf, cx, cy, cz, r0_vox, rhoc_vox, biaxial_delta, b_star, rw_vox, kick
+                tf, cx, cy, cz, r0_vox, rhoc_vox, biaxial_delta, b_star, rw_vox, kick
             )
-            pde.compute_stable_mask(wf)  # per-voxel ghost guard (once)
+            pde.compute_stable_mask(tf)  # per-voxel ghost guard (once)
             # smooth the mask (seed-time, numpy): the hard signed/Euclid seam at the
             # core pumped the field (2c-2 diagnosis) — a ~3-voxel transition kills
             # the constitutive shock; the flux kernel blends fractional masks.
-            mnp = wf.stable_mask.to_numpy()
+            mnp = tf.stable_mask.to_numpy()
             import numpy as _np
 
             sm = mnp.astype(_np.float32)
@@ -735,7 +866,7 @@ def initialize_xperiment(state):
                     q = p.copy()
                     q[1:-1] = 0.25 * (p[2:] + p[:-2] + 2.0 * p[1:-1])
                     sm = _np.swapaxes(q, 0, ax)
-            wf.stable_mask.from_numpy(sm)
+            tf.stable_mask.from_numpy(sm)
             # SIGNED_FLUX_4D (default OFF — the safe GUI v1): the Minkowski-signed
             # flux with cheap (diagonal) inertia has slow growing modes that every
             # heuristic only delays (2c-2: explodes @120/250/700 as fixes stack) —
@@ -745,8 +876,8 @@ def initialize_xperiment(state):
             # with the time-axis components still LIVE (dressing + drift guard +
             # dressed-V + inertia all active).
             if not bool(topo.get("SIGNED_FLUX_4D", False)):
-                wf.stable_mask.fill(0.0)
-            pde.compute_tstar(wf)  # V pins to the DRESSED seed
+                tf.stable_mask.fill(0.0)
+            pde.compute_tstar(tf)  # V pins to the DRESSED seed
             state.evolve_4d = True
             state.km_inertia_4d = float(topo.get("KM_INERTIA_4D", 30.0))
             # dt guard (2c seed e): the DT_SCALE_4D derate is applied INSIDE
@@ -761,16 +892,16 @@ def initialize_xperiment(state):
                 # act mask — Dirichlet at the seed (interior ∧ off-core ∧
                 # off-axis, the validated 2c-1 boundary treatment; the frozen
                 # core/axis is a documented caveat for the G-2c-1 design)
-                idx = _np.indices((wf.nx, wf.ny, wf.nz)).astype(_np.float32)
+                idx = _np.indices((tf.nx, tf.ny, tf.nz)).astype(_np.float32)
                 rxv, ryv, rzv = idx[0] - cx, idx[1] - cy, idx[2] - cz
                 r_vox = _np.sqrt(rxv**2 + ryv**2 + rzv**2)
                 rho_vox = _np.sqrt(rxv**2 + ryv**2)
-                act = _np.zeros((wf.nx, wf.ny, wf.nz), _np.float32)
+                act = _np.zeros((tf.nx, tf.ny, tf.nz), _np.float32)
                 act[2:-2, 2:-2, 2:-2] = 1.0
                 act *= (r_vox > 2.0 * rhoc_vox) * (rho_vox > rhoc_vox)
-                wf.act4d.from_numpy(act)
+                tf.act4d.from_numpy(act)
                 state.n_act_pl = float(
-                    act[wf.nx // 2].sum() + act[:, wf.ny // 2].sum() + act[:, :, wf.nz // 2].sum()
+                    act[tf.nx // 2].sum() + act[:, tf.ny // 2].sum() + act[:, :, tf.nz // 2].sum()
                 )
                 # the 10 orthonormal symmetric 4×4 basis matrices (Frobenius)
                 basis = _np.zeros((10, 4, 4), _np.float32)
@@ -781,12 +912,12 @@ def initialize_xperiment(state):
                     for c_ in range(a_ + 1, 4):
                         basis[bi, a_, c_] = basis[bi, c_, a_] = 1.0 / _np.sqrt(2.0)
                         bi += 1
-                wf.sym_basis.from_numpy(basis)
+                tf.sym_basis.from_numpy(basis)
                 # V at the 4×/τ-units convention: K·0.5/dx⁴ (c² cancels)
                 state.ldg_cc_4d = 0.5 * state.ldg_c / (state.c_amrs * state.c_amrs)
                 # P₀ = A(kick·M_ψ) — the 2c-1 velocity-kick semantics
                 # (dt-independent; kick=0 ⇒ P₀ = 0 exactly)
-                pde.init_P_4d(wf, kick)
+                pde.init_P_4d(tf, kick)
                 # Display hygiene: the seeder encodes the kick in M_prev at the
                 # legacy 1/dt semantics — the energyH view's ½‖(M−M_prev)/dt‖²
                 # boot-kinetic is then ~(1/DT_SCALE)² inflated, saturating the
@@ -794,7 +925,7 @@ def initialize_xperiment(state):
                 # The constrained dynamics never reads M_prev (the kick lives in
                 # P via init_P_4d) — sync it so the displayed velocity starts at
                 # 0 and tracks M − M_prev = dt_eff·Ṁ after each swap.
-                wf.M_prev_am.copy_from(wf.M_am)
+                tf.M_prev_am.copy_from(tf.M_am)
                 state.guard4d_frame = 0
                 dt_eff = state.c_amrs * state.dt_rs
                 print(
@@ -802,12 +933,68 @@ def initialize_xperiment(state):
                     f"{100.0 * act.mean():.1f}% of grid, dt_eff={dt_eff:.4f} am, "
                     f"V cc_4d={state.ldg_cc_4d:.3e}"
                 )
-            mask_np = wf.stable_mask.to_numpy()
+            mask_np = tf.stable_mask.to_numpy()
             print(
                 f"[M5.8.2c] seeded DRESSED hedgehog b*={b_star}, r_w={rw_vox:.1f} vox, "
                 f"kick={kick}; stable region {100.0 * mask_np.mean():.1f}% of grid; "
                 f"4D evolve ON (dt×{dt_scale}, integrator={state.integrator_4d})"
             )
+
+        elif seed_mode == "npz_file":
+            # M5.23.2 arm (3) — the research-ENDPOINT loader: npz → launcher
+            # seed. Loads a converged research state (a fixed-J isorotation
+            # endpoint, the μ/τ census states, any saved M array) as a LIVE
+            # renderable field instead of an analytic ansatz.
+            #
+            # CONVENTIONS (measured at the loader build, m5_23_2 task_details):
+            #   - research npz storage keeps M[0,0] = +g (the plain storage
+            #     convention); the production covariant vacuum is diag(−g, 1,
+            #     δ, 0) — V4 measured 759.4/cell at +g vs 0.0 at −g, and the
+            #     fixed-J endpoint far field flipped lands on the production
+            #     vacuum to 2e-11. So 4×4 data is flipped to −g AT LOAD
+            #     (state.npz_covariant tells the canonical activation to skip
+            #     its own flip); 3×3 data takes the launcher's normal path
+            #     (embed4 at +g here, flip_time_axis at canonical activation).
+            #   - the TensorField grid is ODD; research grids are even (32³ /
+            #     64³). GRID FIT: launcher grid == n_src − 1 → CROP (drop the
+            #     last plane per axis, sponge-zone content); launcher grid ≥
+            #     n_src → EMBED centered with edge-extend padding (the source
+            #     boundary IS the far field). Anything else → vacuum fallback
+            #     with a WARNING. The data array itself is never resampled.
+            #   - a loaded state is an INITIAL CONDITION in this arena, not a
+            #     launcher equilibrium: drift under free evolution (pinned-bc
+            #     sources especially) is physics, not a loader bug.
+            tf = state.tensor_field
+            npz_path = str(topo.get("PATH", ""))
+            if not os.path.isabs(npz_path):
+                npz_path = os.path.join(os.path.dirname(__file__), npz_path)
+            if not os.path.isfile(npz_path):
+                print(f"[M5.23.2] WARNING: npz not found: {npz_path}; seeding vacuum")
+                seeds.seed_vacuum_M(tf, tf.lc_delta)
+            else:
+                info_npz = seeds.load_npz_M(
+                    tf, npz_path, delta_cfg=topo.get("BIAXIAL_DELTA", tf.lc_delta)
+                )
+                for w_npz in info_npz["warn"]:
+                    print(f"[M5.23.2] WARNING: {w_npz}")
+                if not info_npz["ok"]:
+                    print("[M5.23.2] load failed; seeding vacuum")
+                    seeds.seed_vacuum_M(tf, tf.lc_delta)
+                else:
+                    state.npz_covariant = bool(info_npz["covariant"])
+                    state.npz_h = float(info_npz["h"])
+                    print(
+                        f"[M5.23.2] loaded {os.path.basename(npz_path)}: "
+                        f"{info_npz['n_src']}^3 x {info_npz['blk']}x{info_npz['blk']} "
+                        f"-> {tf.nx}x{tf.ny}x{tf.nz} ({info_npz['fit']}); "
+                        f"h = {info_npz['h'] or '?'}, delta = {info_npz['delta']}, "
+                        f"bc = {info_npz['bc']}"
+                        + (
+                            ", flipped to covariant -g at load"
+                            if info_npz["covariant"]
+                            else ""
+                        )
+                    )
 
         else:
             print(f"[M5.1] WARNING: unknown TOPOLOGY_SEED mode: {seed_mode!r}")
@@ -818,10 +1005,112 @@ def initialize_xperiment(state):
             relax_field(state, state.AUTO_RELAX_STEPS)
             print("[M5.1] auto-relax complete")
 
+        # M5.24 — the CANONICAL regularization-stack integrator (verified-L era
+        # port): activated by TOPOLOGY_SEED INTEGRATOR_4D = "canonical". Flips
+        # the seeded time axis to the covariant vacuum (M[0,0] = −g) and routes
+        # compute_propagation through the η-stack leapfrog + V4. Placed AFTER
+        # auto-relax (rebuild_M_from_director writes +g back — the flip must be
+        # the last touch on M). Intended for the BIAXIAL-family seeds, whose far
+        # field diag(1, δ, 0) IS the covariant vacuum spatial spectrum; on the
+        # uniaxial seeds (far field (1, δ, δ)) V4 charges the whole background.
+        if str(topo.get("INTEGRATOR_4D", "")) == "canonical":
+            if seed_mode == "dressed_hedgehog":
+                print(
+                    "[M5.24] INTEGRATOR_4D 'canonical' is unsupported on the dressed "
+                    "seed (boost-mixed time row is an era-specific object); keeping "
+                    "the era 4D path."
+                )
+            else:
+                if seed_mode not in ("biaxial_hedgehog", "charged_ring", "vacuum", "npz_file"):
+                    print(
+                        f"[M5.24] WARNING: canonical stack on seed mode {seed_mode!r}: "
+                        "the far field is not the covariant vacuum, V4 charges the "
+                        "background (biaxial-family seeds are the intended use)."
+                    )
+                # M5.23.2 — a 4×4 npz load is ALREADY covariant (flipped at
+                # load, measured V4 = 0 far field); flipping again would put
+                # it back on the +g ridge (V4 = 759/cell).
+                if not getattr(state, "npz_covariant", False):
+                    pde.flip_time_axis(state.tensor_field)
+                state.evolve_4d = True
+                state.integrator_4d = "canonical"
+                state.eta_delta = float(topo.get("BIAXIAL_DELTA", state.tensor_field.lc_delta))
+                # ETA_DX (round 2): the grid spacing in the CANONICAL unit
+                # system. Set it to the research grid unit (1.5 = the
+                # m5_21_2b/3 h) to run the launcher as a research-twin; the
+                # physical dx_am fallback weakens the curvature ~100× against
+                # the dimensionless V4 (the unit-map finding, task_details).
+                # M5.23.2 — an npz load's recorded grid unit h is the natural
+                # ETA_DX for that state (research-twin geometry); an explicit
+                # ETA_DX in the config still wins.
+                eta_dx_default = getattr(state, "npz_h", 0.0) or state.tensor_field.dx_am
+                state.eta_dx = float(topo.get("ETA_DX", eta_dx_default))
+                # ETA_SUBSTEPS (round 2, viz speed): N physics steps per
+                # rendered frame at the CERTIFIED dt (dt itself cannot rise:
+                # the stiff-mode wall is 2/78 ≈ 0.026 τ, NaN measured at
+                # 0.02). N× visual speed, zero physics change.
+                state.eta_substeps = max(1, int(topo.get("ETA_SUBSTEPS", 8)))
+                # ETA_SPONGE_* (round 3): boundary sponge for long live runs
+                # (kills the pinned-box reflection re-agitation, the t ≈ 12
+                # caveat). GAMMA 0 = off (exact no-op).
+                state.eta_sponge_gamma = float(topo.get("ETA_SPONGE_GAMMA", 0.0))
+                state.eta_sponge_width = float(topo.get("ETA_SPONGE_WIDTH", 10.0))
+                # CANON_RELAX_ITERS (round 3): optional seed-time FIRE relax
+                # (the RELAX button runs chunks interactively either way).
+                canon_relax = int(topo.get("CANON_RELAX_ITERS", 0))
+                print(
+                    f"[M5.24] CANONICAL stack ON: eta-curvature + V4 "
+                    f"(w = {pde.W1_SPECTRAL:.3e}, delta = {state.eta_delta}), "
+                    f"covariant vacuum M[0,0] = -g, dt_eff capped at "
+                    f"{float(topo.get('DT_ETA_CAP', 0.005))} tau, "
+                    f"dx_eta = {state.eta_dx:.3f}, substeps/frame = "
+                    f"{state.eta_substeps}, sponge gamma = "
+                    f"{state.eta_sponge_gamma} (width {state.eta_sponge_width})"
+                )
+                if canon_relax > 0:
+                    relax_field_canonical(state, canon_relax)
+                # M5.23.1 — the FIXED-J isorotation clock (RELAX → SET-J →
+                # EVOLVE): FIXEDJ_OMEGA ≠ 0 sets the seed-time isorotation
+                # velocity Ṁ(0) = ω*·a0 on the conjugation-tangent clock
+                # flow, AFTER any seed-time relax (FIRE clobbers the Md_am
+                # a0 scratch and re-zeros Ṁ, so SET-J is the last touch on
+                # the buffers). The SET J button redoes it interactively.
+                state.fixedj_renv = float(topo.get("FIXEDJ_RENV", 10.0))
+                state.fixedj_log_every = int(topo.get("FIXEDJ_LOG_EVERY", 0))
+                state.fixedj_omega = float(topo.get("FIXEDJ_OMEGA", 0.0))
+                if state.fixedj_omega != 0.0:
+                    set_fixed_j_launcher(state, state.fixedj_omega)
+
         # VIZ.3: populate the derived eigenframe (director_nhat + director_mid +
         # eigenvalues) from the seeded M so a PAUSED boot renders the δ-clock-hand
         # glyph correctly before the first Evolve-PDE step. Cheap, runs once.
         pde.eigen_decompose(state.tensor_field)
+
+    # VIZ.5 (M5.23) — ellipsoid-shell center(s), voxel coords: the seeded defect
+    # centers when a multi-defect DEFECTS list was pinned this seed, else the
+    # config CENTER (universe center for vacuum / no-seed configs). Consumed
+    # per-frame by engine4_render.update_ellipsoid_mesh. Decided off the
+    # TOPOLOGY_SEED dict (not pin_centers presence) so a config switch never
+    # inherits stale centers from the previous seed.
+    tf_ell = state.tensor_field
+    topo_ell = state.TOPOLOGY_SEED or {}
+    if "DEFECTS" in topo_ell and state.pin_centers is not None and state.n_defects > 0:
+        n_ell = min(state.n_defects, tf_ell.ellipsoid_max_centers)
+        for c_ell in range(n_ell):
+            tf_ell.ellipsoid_centers[c_ell] = [
+                float(state.pin_centers[c_ell, 0]),
+                float(state.pin_centers[c_ell, 1]),
+                float(state.pin_centers[c_ell, 2]),
+            ]
+    else:
+        n_ell = 1
+        c_norm = topo_ell.get("CENTER", [0.5, 0.5, 0.5])
+        tf_ell.ellipsoid_centers[0] = [
+            c_norm[0] * (tf_ell.nx - 1),
+            c_norm[1] * (tf_ell.ny - 1),
+            c_norm[2] * (tf_ell.nz - 1),
+        ]
+    tf_ell.ellipsoid_n_centers[None] = n_ell
 
     if state.INSTRUMENTATION:
         print("\n" + "=" * 64)
@@ -848,19 +1137,91 @@ def relax_field(state, n_steps):
         # No defects → nothing to pin; gradient descent on a uniform field
         # has nothing to do (∇²n = 0 everywhere). Skip.
         return
-    wf = state.tensor_field
-    cfl_bound = (wf.dx_am**2) / 6.0  # τ < dx²/(2·dim·K) with dim=3, K=1
+    tf = state.tensor_field
+    cfl_bound = (tf.dx_am**2) / 6.0  # τ < dx²/(2·dim·K) with dim=3, K=1
     tau = 0.4 * cfl_bound
     for _ in range(n_steps):
-        pde.relax_director_step(wf, tau, state.pin_centers, state.pin_signs, state.n_defects)
+        pde.relax_director_step(tf, tau, state.pin_centers, state.pin_signs, state.n_defects)
         # M5.4: relaxation operates on director_nhat (the principal eigenvector of M).
         # Copy the relaxed director back. NOT a buffer swap — static update.
-        wf.director_nhat.copy_from(wf.director_nhat_new)
+        tf.director_nhat.copy_from(tf.director_nhat_new)
     # Rebuild M from the relaxed director so M_am, the ‖M−D‖/‖Ṁ‖ trackers, and the
     # flux-mesh orientation mode stay consistent with the relaxed director.
-    pde.rebuild_M_from_director(wf, wf.lc_delta)
+    pde.rebuild_M_from_director(tf, tf.lc_delta)
     # Refresh observables so dashboard + flux mesh reflect the relaxed field
     compute_field_observables(state)
+
+
+def relax_field_canonical(state, n_iters):
+    """M5.24 round 3 (G8) — FIRE-relax the current state under the canonical
+    η + V4 energy (frozen-time-row sector, pinned boundary): the production
+    port of the canonical § 5.2 statics recipe, single-sourced in
+    engine2_pde.fire_relax_canonical (the selftest gates the same function).
+    Refreshes the derived fields + observables so the render shows the
+    relaxed state immediately."""
+    tf = state.tensor_field
+    stats = pde.fire_relax_canonical(
+        tf,
+        getattr(state, "eta_dx", tf.dx_am),
+        tf.lc_g,
+        getattr(state, "eta_delta", tf.lc_delta),
+        pde.W1_SPECTRAL,
+        int(n_iters),
+    )
+    pde.eigen_decompose(tf)
+    compute_field_observables(state)
+    print(
+        f"[M5.24 RELAX] {stats['iters']} FIRE iters: force RMS "
+        f"{stats['f_rms0']:.3e} -> {stats['f_rms1']:.3e} "
+        f"(dt_final {stats['dt_final']:.4f}); press again to continue "
+        f"relaxing, or EVOLVE to run dynamics from here."
+    )
+
+
+def set_fixed_j_launcher(state, om_target):
+    """M5.23.1 — the SET-J step of the RELAX → SET-J → EVOLVE flow: build the
+    conjugation-tangent clock flow a0, measure the clock inertia kin, and
+    kick the isorotation velocity Ṁ(0) = ω*·a0 into the triple buffer
+    (engine2_pde.set_fixed_j, gated by the m5_23_1 selftest). Canonical path
+    only. CONVENTION: kin/J are flow-parameter values on the conjugation
+    tangent (kin = 0.1206 on the certified research state); any ABSOLUTE
+    J / ħ/2 / g statement needs the physical-rate convention
+    (research m5_21_5_note § 5) — never quote these numbers as physical
+    angular momentum."""
+    tf = state.tensor_field
+    if getattr(state, "integrator_4d", "") != "canonical":
+        print("[M5.23.1] SET-J needs the canonical integrator path — skipped.")
+        return None
+    dt_eff = state.c_amrs * state.dt_rs
+    info = pde.set_fixed_j(
+        tf,
+        getattr(state, "eta_dx", tf.dx_am),
+        float(getattr(state, "fixedj_renv", 10.0)),
+        float(om_target),
+        dt_eff,
+        shell=1,
+    )
+    if info["set"]:
+        # the CARRIED charge J_self = <Mdot, a0(M)> is the hold observable
+        # (== omega* here by construction); the global [G_k, M] projections
+        # near-cancel on hedgehog-family states (selftest S4 measurement)
+        js = pde.read_carried_j(
+            tf, getattr(state, "eta_dx", tf.dx_am), float(getattr(state, "fixedj_renv", 10.0)), dt_eff
+        )
+        print(
+            f"[M5.23.1] SET-J: kin = {info['kin']:.5e}, J = {info['J']:.5e}, "
+            f"omega* = {info['om_star']:.4f} (flow-parameter convention, "
+            f"conjugation tangent; dt_eff = {dt_eff:.4f}); carried "
+            f"J_self = {js:+.4f}. EVOLVE now runs the live clock — keep dt "
+            f"unchanged (the kick encodes velocity at this dt_eff)."
+        )
+    else:
+        print(
+            f"[M5.23.1] SET-J DECLINED: kin = {info['kin']:.3e} <= 0 "
+            f"(nonpositive clock inertia — the state left the positive-kin "
+            f"sector; no honest isorotation to set)."
+        )
+    return info
 
 
 def compute_propagation(state):
@@ -878,29 +1239,84 @@ def compute_propagation(state):
     free curvature dynamics; the faithful curvature kinetic (degenerate metric, O-DoF)
     is the M5.6 refinement. (The retired ψ leapfrog stays dormant; see engine2_pde.)
     """
-    wf = state.tensor_field
-    if getattr(state, "evolve_4d", False) and getattr(state, "integrator_4d", "") == "constrained":
+    tf = state.tensor_field
+    if getattr(state, "integrator_4d", "") == "canonical":
+        # M5.24 — the canonical regularization stack (the § 2 row 6 formulation
+        # of record): symmetrized two-branch η-flux + exact adjoint gather + V4
+        # force, τ-units (dt_eff = c·dt), dt capped by compute_timestep. The
+        # RUNNABLE regularization — never present its dynamics as the true-L
+        # evolution (the free-EL IVP is ill-posed, canonical § 2 row 1).
+        dt_eff = state.c_amrs * state.dt_rs
+        dx_eta = getattr(state, "eta_dx", tf.dx_am)
+        eta_delta = getattr(state, "eta_delta", tf.lc_delta)
+        # ETA_SUBSTEPS physics steps per rendered frame (viz speed at the
+        # certified dt). The last substep leaves its swap to the shared
+        # swap_matrix_buffers() below (all paths swap exactly once there).
+        n_sub = max(1, int(getattr(state, "eta_substeps", 1)))
+        sp_gamma = float(getattr(state, "eta_sponge_gamma", 0.0))
+        sp_width = float(getattr(state, "eta_sponge_width", 10.0))
+        for sub_ in range(n_sub):
+            pde.compute_eta_flux(tf, 0, dx_eta)
+            pde.evolve_M_eta_start(tf, dt_eff, dx_eta)
+            pde.compute_eta_flux(tf, 1, dx_eta)
+            pde.evolve_M_eta_finish(tf, dt_eff, dx_eta, tf.lc_g, eta_delta, pde.W1_SPECTRAL)
+            if sp_gamma > 0.0:
+                # round-3 boundary sponge: absorbs outgoing radiation instead
+                # of reflecting it back onto the core (the t ≈ 12 caveat)
+                pde.apply_eta_sponge(tf, dt_eff, sp_gamma, sp_width)
+            if sub_ < n_sub - 1:
+                tf.swap_matrix_buffers()
+        # Bounded-energy guard (same pattern as the constrained path): block-diag
+        # seeds live on an invariant manifold with positive energy, but f32
+        # roundoff slowly leaks into the time-row sector where the η-potential
+        # is INDEFINITE (canonical § 1: H unbounded below) — a long run can
+        # eventually grow there with E conserved. Auto-pause loudly instead of
+        # scrambling the render (the 2026-06-05 signed-GUI failure UX).
+        state.guard4d_frame = getattr(state, "guard4d_frame", 0) + 1
+        if state.guard4d_frame % 60 == 0:
+            m_max = float(abs(tf.M_am.to_numpy()).max())
+            if not (m_max < 50.0):  # catches NaN too
+                state.PAUSED = True
+                print(
+                    f"[M5.24 GUARD] max|M| = {m_max:.3e} at step "
+                    f"{state.guard4d_frame} — bounded-energy guard tripped, "
+                    f"AUTO-PAUSED (the indefinite time-row channel grew; "
+                    f"vacuum scale ~8, threshold 50)."
+                )
+        # M5.23.1 — optional periodic J readout (FIXEDJ_LOG_EVERY frames;
+        # 0 = off): the CARRIED isorotation charge J_self = <Mdot, a0(M)>
+        # (== omega* at SET-J; its drift = the honest hold/decay read; the
+        # global-flow projections near-cancel on hedgehog states, selftest S4)
+        log_n = int(getattr(state, "fixedj_log_every", 0))
+        if log_n > 0 and state.guard4d_frame % log_n == 0:
+            js = pde.read_carried_j(
+                tf, dx_eta, float(getattr(state, "fixedj_renv", 10.0)), dt_eff
+            )
+            print(f"[M5.23.1] frame {state.guard4d_frame}: carried J_self = {js:+.4f}")
+    elif (
+        getattr(state, "evolve_4d", False) and getattr(state, "integrator_4d", "") == "constrained"
+    ):
         # M5.8.2c OPTION B — the Minkowski-SIGNED dynamics under the constrained
         # spectral-projection kernel (B-1-validated, sandbox_v8/m5_8_2cb). The
         # exact 2c-1 step order: flux(M, Ṁ_prev) → P += dt·force → global (α,3)
         # clamp → per-voxel solve (A-eig, keep, P-project, Ṁ = A⁺P) → M update.
         dt_eff = state.c_amrs * state.dt_rs
-        pde.flux_4d_constrained(wf)
-        pde.update_P_4d(wf, dt_eff, getattr(state, "ldg_cc_4d", 0.0))
-        pde.sample_p03_drift(wf)
+        pde.flux_4d_constrained(tf)
+        pde.update_P_4d(tf, dt_eff, getattr(state, "ldg_cc_4d", 0.0))
+        pde.sample_p03_drift(tf)
         n_pl = max(getattr(state, "n_act_pl", 0.0), 1.0)
         pde.apply_p03_clamp(
-            wf, wf.v03_sums[0] / n_pl, wf.v03_sums[1] / n_pl, wf.v03_sums[2] / n_pl
+            tf, tf.v03_sums[0] / n_pl, tf.v03_sums[1] / n_pl, tf.v03_sums[2] / n_pl
         )
-        pde.solve_constrained_4d(wf)
-        pde.update_M_4d_constrained(wf, dt_eff)
+        pde.solve_constrained_4d(tf)
+        pde.update_M_4d_constrained(tf, dt_eff)
         # GUARD (b) — the bounded-energy monitor (load-bearing, roadmap 2c):
         # every 60 steps pull M and auto-PAUSE on divergence — a NaN/blow-up
         # must stop the run with a loud message, not scramble the render at
         # 3 FPS (the 2026-06-05 signed-GUI failure UX).
         state.guard4d_frame = getattr(state, "guard4d_frame", 0) + 1
         if state.guard4d_frame % 60 == 0:
-            m_chk = wf.M_am.to_numpy()
+            m_chk = tf.M_am.to_numpy()
             m_max = float(abs(m_chk).max())
             if not (m_max < 50.0):  # catches NaN too (NaN comparisons are False)
                 state.PAUSED = True
@@ -913,12 +1329,12 @@ def compute_propagation(state):
     elif getattr(state, "evolve_4d", False):
         # M5.8.2c — the 4D Minkowski path (dressed-hedgehog seed): signed flux on
         # the stable region + live time axis + the coherent-(α,3)-drift guard.
-        pde.compute_curvature_flux_4d(wf)
-        pde.sample_v03_drift(wf, state.dt_rs)
-        n_pl = float(wf.nx * wf.ny + wf.ny * wf.nz + wf.nx * wf.nz)
-        vm = [wf.v03_sums[a] / n_pl for a in range(3)]
+        pde.compute_curvature_flux_4d(tf)
+        pde.sample_v03_drift(tf, state.dt_rs)
+        n_pl = float(tf.nx * tf.ny + tf.ny * tf.nz + tf.nx * tf.nz)
+        vm = [tf.v03_sums[a] / n_pl for a in range(3)]
         pde.evolve_M_4d(
-            wf,
+            tf,
             state.c_amrs,
             state.dt_rs,
             state.ldg_c,
@@ -928,10 +1344,10 @@ def compute_propagation(state):
             getattr(state, "km_inertia_4d", 30.0),
         )
     else:
-        pde.compute_curvature_flux(wf)
-        pde.evolve_M(wf, state.c_amrs, state.dt_rs, state.ldg_a, state.ldg_b, state.ldg_c)
-    wf.swap_matrix_buffers()
-    pde.eigen_decompose(wf)  # refresh director_nhat from the evolved M (for render + trackers)
+        pde.compute_curvature_flux(tf)
+        pde.evolve_M(tf, state.c_amrs, state.dt_rs, state.ldg_a, state.ldg_b, state.ldg_c)
+    tf.swap_matrix_buffers()
+    pde.eigen_decompose(tf)  # refresh director_nhat from the evolved M (for render + trackers)
 
 
 def compute_field_observables(state):
@@ -951,17 +1367,31 @@ def compute_field_observables(state):
     # Replaces the dormant-ψ placeholder (uniform ¼λ) — resolves the M5.4 WAVE_MENU=4
     # carry-over. e_scale=1.0 (bare units; the physical-energy calibration is tied to a
     # reference mass scale → deferred to M5.9). Consumed by flux-mesh WAVE_MENU=4.
-    observables.compute_energyH_density_M(
-        state.tensor_field,
-        state.observables,
-        state.c_amrs,
-        state.dt_rs,
-        state.ldg_a,
-        state.ldg_b,
-        state.ldg_c,
-        state.ldg_v0,
-        1.0,
-    )
+    if getattr(state, "integrator_4d", "") == "canonical":
+        # M5.24 — the verified-L era H (canonical kinetic + η-curvature + V4);
+        # no v0 subtraction: the covariant vacuum is the exact zero.
+        observables.compute_energyH_density_eta(
+            state.tensor_field,
+            state.observables,
+            state.c_amrs * state.dt_rs,
+            getattr(state, "eta_dx", state.tensor_field.dx_am),
+            state.tensor_field.lc_g,
+            getattr(state, "eta_delta", state.tensor_field.lc_delta),
+            pde.W1_SPECTRAL,
+            1.0,
+        )
+    else:
+        observables.compute_energyH_density_M(
+            state.tensor_field,
+            state.observables,
+            state.c_amrs,
+            state.dt_rs,
+            state.ldg_a,
+            state.ldg_b,
+            state.ldg_c,
+            state.ldg_v0,
+            1.0,
+        )
 
     # PER-VOXEL FRANK ELASTIC ENERGY DENSITY (M5.1 task 5) ===============
     # F = (K/2)·|∇n̂|²  → observables.energyF_density_aJ.
@@ -978,12 +1408,12 @@ def compute_field_observables(state):
     # (M5.8). div (charge) is left as the real seeded splay for context. Same center-
     # voxel convention as the biaxial_hedgehog seed so the dipole sits on the defect.
     if state.DIPOLE_SAMPLE:
-        wf = state.tensor_field
-        cx = state.DIPOLE_CENTER[0] * (wf.nx - 1)
-        cy = state.DIPOLE_CENTER[1] * (wf.ny - 1)
-        cz = state.DIPOLE_CENTER[2] * (wf.nz - 1)
+        tf = state.tensor_field
+        cx = state.DIPOLE_CENTER[0] * (tf.nx - 1)
+        cy = state.DIPOLE_CENTER[1] * (tf.ny - 1)
+        cz = state.DIPOLE_CENTER[2] * (tf.nz - 1)
         observables.fill_dipole_sample_B(
-            wf, state.observables, state.DIPOLE_AXIS, cx, cy, cz, state.DIPOLE_R0_VOX, 1.0
+            tf, state.observables, state.DIPOLE_AXIS, cx, cy, cz, state.DIPOLE_R0_VOX, 1.0
         )
     observables.compute_director_em_scale(state.tensor_field, state.observables)
 
@@ -1029,12 +1459,12 @@ def _curl_projection(state):
     projection (radial=0, center unused). center is in voxel coords.
     """
     if state.DIPOLE_SAMPLE:
-        wf = state.tensor_field
+        tf = state.tensor_field
         return 1, ti.Vector(
             [
-                state.DIPOLE_CENTER[0] * (wf.nx - 1),
-                state.DIPOLE_CENTER[1] * (wf.ny - 1),
-                state.DIPOLE_CENTER[2] * (wf.nz - 1),
+                state.DIPOLE_CENTER[0] * (tf.nx - 1),
+                state.DIPOLE_CENTER[1] * (tf.ny - 1),
+                state.DIPOLE_CENTER[2] * (tf.nz - 1),
             ],
             dt=ti.f32,
         )
@@ -1067,10 +1497,111 @@ def render_elements(state):
         )
         flux_mesh.render_flux_mesh(render.scene, state.tensor_field, state.SHOW_FLUX_MESH)
 
+    # M5.23.2 arm (4) — the energy-density ISOSURFACE: marching tetrahedra
+    # on the live energyH density (already computed this frame by
+    # compute_field_observables). Canonical path only: V4 + curvature are
+    # exactly zero on the covariant vacuum, so a level set needs no
+    # background subtraction. ISO_COVER renders the author's "surface
+    # covered with ellipsoids" variant into the SHELL pool (the shell view
+    # is suppressed while it is live — same buffers).
+    iso_cover_live = False
+    if state.SHOW_ISO:
+        if getattr(state, "integrator_4d", "") != "canonical":
+            if not getattr(state, "_iso_warned", False):
+                print(
+                    "[M5.23.2] the iso-surface needs the canonical integrator "
+                    "(true-zero vacuum); ignoring SHOW_ISO on this path"
+                )
+                state._iso_warned = True
+        else:
+            tf_iso = state.tensor_field
+            viz.iso_density_max(tf_iso, state.observables)
+            iso_lvl = state.ISO_LEVEL * float(tf_iso.iso_level_max[None])
+            if iso_lvl > 0.0:
+                viz.marching_tetrahedra(tf_iso, state.observables, iso_lvl)
+                viz.collapse_iso_tail(tf_iso)
+                n_iso_raw = int(tf_iso.iso_tri_count[None])
+                if n_iso_raw > tf_iso.iso_max_tris and n_iso_raw != getattr(
+                    state, "_iso_overflow_reported", 0
+                ):
+                    print(
+                        f"[M5.23.2] WARNING: isosurface overflow: {n_iso_raw} "
+                        f"triangles at this level, budget {tf_iso.iso_max_tris} "
+                        "— surface truncated (raise Iso Level)"
+                    )
+                    state._iso_overflow_reported = n_iso_raw
+                if state.ISO_COVER:
+                    viz.update_iso_ellipsoids(
+                        tf_iso,
+                        state.ELLIPSOID_SIZE,
+                        state.ELLIPSOID_COUNT * medium.ELLIPSOID_MAX_CENTERS,
+                    )
+                    render.scene.mesh(
+                        tf_iso.ellipsoid_mesh_vertices,
+                        indices=tf_iso.ellipsoid_mesh_indices,
+                        per_vertex_color=tf_iso.ellipsoid_mesh_colors,
+                        two_sided=True,
+                    )
+                    iso_cover_live = True
+                else:
+                    render.scene.mesh(
+                        tf_iso.iso_vertices,
+                        indices=tf_iso.iso_indices,
+                        per_vertex_color=tf_iso.iso_colors,
+                        two_sided=True,
+                    )
+
+    # VIZ.5 (M5.23) — the "ellipsoid" viz: M·u eigen-ellipsoid surfaces, a
+    # FULL-3D view (not plane cross-sections). Sub-views, combinable: the S²
+    # shell (one per 3D angle around each defect center), the Stage D
+    # disclination RODS (line samples along the spin axis), and the ROD RINGS
+    # (one per 2D angle around the cord). Its own feature; while active it
+    # REPLACES all vector glyph viz (the plane glyphs below are suppressed — no
+    # visual pollution). Mesh-only since 2026-07-19.
+    if state.SHOW_ELLIPSOID:
+        tf = state.tensor_field
+        ell_extent = state.ELLIPSOID_RADIUS * tf.max_grid_size  # shell R / rod half-length
+        if state.ELLIPSOID_SHELL and not iso_cover_live:  # M5.23.2: cover owns the pool
+            viz.update_ellipsoid_mesh(
+                tf,
+                ell_extent,
+                state.ELLIPSOID_SIZE,  # ellipsoid base size (the GUI Size slider)
+                min(state.ELLIPSOID_COUNT, tf.ellipsoid_max_dirs),
+            )
+            render.scene.mesh(
+                tf.ellipsoid_mesh_vertices,
+                indices=tf.ellipsoid_mesh_indices,
+                per_vertex_color=tf.ellipsoid_mesh_colors,
+                two_sided=True,
+            )
+        if state.ELLIPSOID_RODS or state.ELLIPSOID_RODRINGS:
+            # ring radius: a few voxels around the cord (fixed v1; the rod
+            # core melt width is ~rhoc ≈ 3 voxels in the biaxial seeds)
+            ring_r_vox = max(3.0, 0.04 * tf.max_grid_size)
+            # ring azimuth density follows the Count slider (~Count/12 keeps
+            # the default look; buffer ceiling ellipsoid_ring_az)
+            ring_az = min(max(state.ELLIPSOID_COUNT // 12, 8), tf.ellipsoid_ring_az)
+            viz.update_rod_ellipsoids(
+                tf,
+                viz.ELLIPSOID_ROD_SPAN * ell_extent,  # rods protrude beyond the shell
+                ring_r_vox,
+                state.ELLIPSOID_SIZE,
+                ring_az,
+                1 if state.ELLIPSOID_RODS else 0,
+                1 if state.ELLIPSOID_RODRINGS else 0,
+            )
+            render.scene.mesh(
+                tf.ellipsoid_rod_vertices,
+                indices=tf.ellipsoid_rod_indices,
+                per_vertex_color=tf.ellipsoid_rod_colors,
+                two_sided=True,
+            )
+
     # M5.1 director-glyph overlay — line segments showing n̂ orientation,
     # signed-component RGB so opposite directions are visually opposite.
     # Renders on top of (or instead of) the flux mesh; fast (~768 segments).
-    if state.SHOW_GLYPHS > 0:
+    # Suppressed while the VIZ.5 ellipsoid shell is active (see above).
+    elif state.SHOW_GLYPHS > 0:
         glyph_length = 0.02  # ~2% of universe edge in normalized [0,1] coords
         # VIZ.3 — 4-state glyph select (GLYPH_VECTOR):
         #   0 = Director n̂ only (principal axis; apolar, agnostic to size/color)
@@ -1139,21 +1670,21 @@ def render_elements(state):
     # Rendered independently of SHOW_GLYPHS so the moment is always visible alongside
     # the N/S-colored field. YELLOW + thick so it reads as the principal axis.
     if state.DIPOLE_SAMPLE:
-        wf = state.tensor_field
+        tf = state.tensor_field
         viz.update_moment_glyph(
-            wf,
+            tf,
             state.DIPOLE_AXIS,
-            state.DIPOLE_CENTER[0] * (wf.nx - 1),
-            state.DIPOLE_CENTER[1] * (wf.ny - 1),
-            state.DIPOLE_CENTER[2] * (wf.nz - 1),
+            state.DIPOLE_CENTER[0] * (tf.nx - 1),
+            state.DIPOLE_CENTER[1] * (tf.ny - 1),
+            state.DIPOLE_CENTER[2] * (tf.nz - 1),
             0.18,  # normalized length — larger than voxel glyphs (~0.02)
             ti.Vector(
                 [colormap.YELLOW[1][0], colormap.YELLOW[1][1], colormap.YELLOW[1][2]], dt=ti.f32
             ),
         )
         render.scene.lines(
-            wf.moment_glyph_vertices,
-            per_vertex_color=wf.moment_glyph_colors,
+            tf.moment_glyph_vertices,
+            per_vertex_color=tf.moment_glyph_colors,
             width=2.0,
         )
 
@@ -1191,7 +1722,7 @@ def main():
     state = SimulationState()
 
     # Load xperiment from CLI argument or default
-    default_xperiment = selected_xperiment_arg or "_topo_dressed4d_signed"
+    default_xperiment = selected_xperiment_arg or "_topo_canonical4d"
     if default_xperiment not in xperiment_mgr.available_xperiments:
         print(f"Error: Xperiment '{default_xperiment}' not found!")
         return

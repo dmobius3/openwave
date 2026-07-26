@@ -67,8 +67,8 @@ All licenses are compatible with Apache 2.0.
 Trademark
 ---------
 
-"OpenWave" is a trademark of OpenWave Labs.
-See `TRADEMARK <https://github.com/openwave-labs/openwave/blob/main/TRADEMARK>`_
+OpenWave™ is a trademark of the OpenWave project.
+See `TRADEMARK.md <https://github.com/openwave-labs/openwave/blob/main/TRADEMARK.md>`_
 for usage guidelines.
 
 Questions?

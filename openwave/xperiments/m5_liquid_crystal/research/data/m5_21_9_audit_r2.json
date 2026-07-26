@@ -1,0 +1,141 @@
+{
+  "R1": {
+    "runs": {
+      "r2p02f": {
+        "n_rows": 41,
+        "n_finite": 7,
+        "last_finite_t": 12.0,
+        "E_first": 15.912708132049033,
+        "E_last": -246.44179992675524
+      },
+      "r2p02r": {
+        "n_rows": 41,
+        "n_finite": 6,
+        "last_finite_t": 10.0,
+        "E_first": 15.673988122761436,
+        "E_last": 6.492874366000862
+      },
+      "r2p03f": {
+        "n_rows": 41,
+        "n_finite": 6,
+        "last_finite_t": 10.0,
+        "E_first": 53.40071633947895,
+        "E_last": 6.853714892999896
+      },
+      "r2p03r": {
+        "n_rows": 41,
+        "n_finite": 6,
+        "last_finite_t": 10.0,
+        "E_first": 52.30967539745717,
+        "E_last": -26.88831644212702
+      },
+      "r2ctrl": {
+        "n_rows": 41,
+        "n_finite": 41,
+        "last_finite_t": 80.0,
+        "E_first": 6.7408726514539605,
+        "E_last": 5.54412623660796
+      }
+    },
+    "ctrl_E_monotone_decline": false,
+    "ctrl_n_positive_dE_snaps": 16,
+    "ctrl_max_positive_dE": 0.11568090180353874,
+    "ctrl_max_abs_dE_per_snap": 0.2341758324204699,
+    "ctrl_E_range": [
+      5.481324031679621,
+      6.7408726514539605
+    ],
+    "ctrl_max_abs_dJ_per_snap": 0.000847445877947859,
+    "ctrl_phi_drift_total": 0.10641964988674468,
+    "ctrl_omega_fit": 0.0009301987656890936,
+    "nuance": "Confirmed as stated, two sharpenings. (1) The control E decline is a trend with small oscillation, not monotone: 16 of 40 snap steps tick up, largest +0.116; E stays inside [5.54, 6.74] and J steps stay below 8.5e-4, so no blowup. (2) Two field runs are already corrupted before the NaN: r2p02f last finite row has E = -246.4 (KE 258.5) and r2p03r has E = -26.9 (KE 54.2), so the usable field-on prefix is t <= 8..10, one snap shorter than the finite prefix. Field-run E swings wildly from t = 2 on (e.g. 53.4 -> 24.7 -> 9.0 -> 44.0), so the arena is disturbed from the first field-on snap.",
+    "verdict": "CONFIRMED"
+  },
+  "R2": {
+    "p02": {
+      "n_common": 6,
+      "t_last": 10.0,
+      "dphi_last": 0.0009323295765422124,
+      "half1_slope": 6.181583853348547e-06,
+      "half2_slope": 0.00021024794120771948,
+      "split_half_ratio": 34.01198563274827
+    },
+    "p03": {
+      "n_common": 6,
+      "t_last": 10.0,
+      "dphi_last": 0.0024563876458070233,
+      "half1_slope": 1.4149731737744803e-05,
+      "half2_slope": 0.0005615155221213583,
+      "split_half_ratio": 39.68382811269135
+    },
+    "claimed_ratios": {
+      "p02": 34.0,
+      "p03": 40.0
+    },
+    "verdict": "CONFIRMED"
+  },
+  "R3": {
+    "omega_plusJ": 0.0008249399490983967,
+    "omega_minusJ": 0.0008249399490985294,
+    "omega_rel_diff": 1.6086788627131558e-13,
+    "max_abs_dE_rowwise": 1.7763568394002505e-15,
+    "max_abs_phi_image_err": 3.3306690738754696e-16,
+    "max_abs_J_image_err": 3.469446951953614e-18,
+    "nuance": "Stronger than claimed: not merely 3-decimal E agreement but a machine-precision image. Row by row, E identical to 1.8e-15, phi_jm = phi_plus - pi to 3.3e-16, J_jm = -J_plus to 3.5e-18. The J-flip run is the same trajectory under an exact symmetry map and carries zero independent information about a J-driven precession sign.",
+    "verdict": "CONFIRMED"
+  },
+  "R4": {
+    "pairs": {
+      "p02": {
+        "quad_a": -7.376487359181463e-05,
+        "quad_a_se": 2.680998505824309e-05,
+        "quad_a_tstat": -2.7513955502610257,
+        "quad_b": 1.586488409309826e-05,
+        "quad_b_se": 3.177287945927679e-06,
+        "quad_b_tstat": 4.993215711982365,
+        "quad_rss": 3.7825641874741736e-08,
+        "quad_r2": 0.9607808738032622,
+        "lin_only_a": 5.603872353353478e-05,
+        "lin_only_rss": 2.7359478871563295e-07,
+        "rss_ratio_lin_over_quad": 7.233050786596889,
+        "f_stat_quad_vs_lin": 24.932203146387558,
+        "f_crit_0p05_1_dof": 7.71
+      },
+      "p03": {
+        "quad_a": -0.00020410366288820458,
+        "quad_a_se": 7.835814163481572e-05,
+        "quad_a_tstat": -2.6047537451745564,
+        "quad_b": 4.251811110398008e-05,
+        "quad_b_se": 9.286330385516036e-06,
+        "quad_b_tstat": 4.5785697190244194,
+        "quad_rss": 3.231181976823226e-07,
+        "quad_r2": 0.9507741655716746,
+        "lin_only_a": 0.00014377179159890522,
+        "lin_only_rss": 2.0165241803319998e-06,
+        "rss_ratio_lin_over_quad": 6.240825167991835,
+        "f_stat_quad_vs_lin": 20.96330067196734,
+        "f_crit_0p05_1_dof": 7.71
+      }
+    },
+    "B_ratio_p03_over_p02": 2.25,
+    "linear_term_ratio_p03_over_p02": 2.7669492666337745,
+    "quad_term_ratio_p03_over_p02": 2.6800139764321913,
+    "dphi_last_ratio_p03_over_p02": 2.6346773797707654,
+    "round1_pair_env0.03": {
+      "n_common": 21,
+      "dphi_last": 0.002456468191736061,
+      "split_half_ratio": 25.24410331127539,
+      "quad_a": -0.0001565585793942544,
+      "quad_a_se": 3.109215362983711e-05,
+      "quad_a_tstat": -5.03530830505145,
+      "quad_b": 3.459558779888884e-05,
+      "quad_b_tstat": 8.82811081881522
+    },
+    "ctrl_omega_fieldless": 0.0009301987656890936,
+    "round1_omega_claimed": 0.0008249,
+    "ctrl_drift_over_round1_omega": 1.1276503402704492,
+    "resolved_linear_rate_supported": false,
+    "attack_summary": "No reading of the data supports a resolved linear rate. (1) Constant-rate-plus-noise fails: the data is deterministic, and the quadratic term beats the linear-only model by F = 24.9 (p02) and 21.0 (p03) against F_crit(1,4) = 7.71. (2) The fitted linear terms are NEGATIVE (a = -7.4e-5 and -2.0e-4, |t| ~ 2.6-2.8), the wrong sign for the pre-registered pair read, and their ratio 2.77 does not match the B ratio 2.25; the quadratic term ratio 2.68 and endpoint ratio 2.63 do not either. Everything scales super-linearly in eps, as a preparation-texture divergence would. (3) The finer round-1 pair (21 points, dt 0.005) shows the same acceleration: split-half ratio 25.2, a = -1.6e-4 (negative, t = -5.0), b t-stat +8.8. (4) The fieldless control azimuth drifts at 9.3e-4, i.e. 1.13x the round-1 claimed Omega of 8.249e-4, so a single-run linear read is background-dominated even without a field. The note's final verdict (unmeasurable in this configuration; dominant systematic is preparation-texture divergence; adiabatic ramp-on from a common fieldless state is the designed fix) survives the attack.",
+    "verdict": "CONFIRMED"
+  }
+}

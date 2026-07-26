@@ -1,0 +1,202 @@
+[
+ {
+  "claim": "C1 factor-2 bridge: tr(xi F xi F^T) = 2[(spatial entries)^2 - (time-row entries)^2]",
+  "method": "own FD (h=1e-6, plain central) on own explicit-matrix ansatz build; 6 random points/params x 6 (i,j) pairs; plus 4 random symmetric polynomial field draws (genericity) and an anticommutator negative control",
+  "computed": {
+   "dev_ansatz_max": 1.834441091244332e-16,
+   "dev_generic_max": 1.7802307520559157e-16,
+   "dev_anticomm_min": 0.08902399860557553
+  },
+  "expected": "identity holds on the ansatz; genericity to be determined",
+  "verdict": "CONFIRMED",
+  "note": "GENERIC, not ansatz-special: the identity is the entrywise expansion of tr(xi F xi F^T) for ANY antisymmetric F (diagonal terms vanish, off-diagonal pairs give 2 xi_a xi_b F_ab^2); dA xi dB - dB xi dA is antisymmetric whenever dA, dB, xi are symmetric, so it holds for random symmetric fields too (max dev 1.8e-16). The anticommutator control BREAKS it (min dev 0.09), confirming antisymmetry is the operative structure."
+ },
+ {
+  "claim": "C2 plane/time-avg/cone energy: min over m within 3% of |m*| = 0.5 ln((1+g)/(g-1)) = 0.12566 at g=8 (delta=1e-4, om=0.3, Delta=0.15)",
+  "method": "own pipeline: explicit-matrix M, plain central FD, midpoint time average (nt=16), composite Simpson (nTH=41) + alt-quadrature rerun (nt=24, nTH=61, hfd=5e-6); coarse scan [-0.25,0.25] + fine parabolic refine",
+  "computed": {
+   "m_coarse": -0.1254900934843614,
+   "m_fine": 0.1256463089047942,
+   "m_fine_altquad": 0.12564630891007011,
+   "m_star": 0.12565721414045308,
+   "rel_dev": 8.678559152757825e-05,
+   "rel_dev_altquad": 8.6785549540983e-05,
+   "E_at_min": 2.8668382186941265e-08,
+   "E_at_minus": 2.8668382186941265e-08
+  },
+  "expected": "|m_min| within 3% of 0.125657",
+  "verdict": "CONFIRMED",
+  "note": "|m_min| = 0.125646 (0.009% from m*), quadrature-stable (alt 0.125646); E(m) even in m to 0.0e+00 rel; E at the minimum ~ 2.9e-8 (delta^2 scale). FINDING FAVORING THE CLAIM: the task's C1 residual 2.03% gap (m_min 0.12311, scan spacing 0.025 + one parabolic refine) is a scan-resolution artifact; with two-stage refinement (0.001 spacing) the plane-energy minimum agrees with the author's m* to 0.009%, tighter than the task reported."
+ },
+ {
+  "claim": "C3 transcription: (a) Out[54] Hm, (b) Out[45] routes (0 < delta <= 2 && g > 1) to -infinity, (c) Out[51] finite value = integrated omega-minimized density",
+  "method": "human read of the rendered PDF pages 3-4; my own reading re-typed as formulas and numerically compared (20 random points) to the task's transcription in m5_21_8_a_verify.py",
+  "computed": {
+   "dev_Hm_pdf_vs_task": 0.0,
+   "dev_fin_pdf_vs_task": 0.0,
+   "out45_minus_inf_cond_as_read": "(g < d/(-2+d) && d > 0 && (d < 2 || g > 1)) || (0 < d <= 2 && g > 1) || (d < 0 && g < 1 && g(-2+d) < d)",
+   "out45_routes_0d2_g1_to_minus_inf": true,
+   "out51_is_integral_of_minimize_finite_branch": true
+  },
+  "expected": "PDF matches the task transcription on all three",
+  "verdict": "CONFIRMED",
+  "note": "(a) exact match; (b) the -inf branch as read is '(g < d/(-2+d) && d>0 && (d<2 || g>1)) || (0<d<=2 && g>1) || (d<0 && g<1 && g(-2+d)<d)': the claimed region is its second disjunct (the claim is correct but not the whole -inf region); (c) Out[51] integrates exactly the Minimize finite-branch density from r0 to infinity, giving the /r0 form, condition 'r0 != Re[r0] || Re[r0] > 0'. No transcription mismatch found."
+ },
+ {
+  "claim": "C4 omega^2-coefficient sign of transcribed Hm: negative at (8,0.3),(1000,0.001),(1e10,1e-10); positive at (0.5,0.3),(8,2.5)",
+  "method": "own evaluation two ways: Hm(om=1)-Hm(om=0) at r=1 (exact, Hm linear in om^2) and the closed-form coefficient 8 d^3 (-2g(d-1)+d+g^2(d-2))/(g-1)^2",
+  "computed": [
+   {
+    "g": 8.0,
+    "dl": 0.3,
+    "coeff_fd": -0.4289142857142858,
+    "coeff_closed": -0.42891428571428564,
+    "sign_want": -1,
+    "ok": true
+   },
+   {
+    "g": 1000.0,
+    "dl": 0.001,
+    "coeff_fd": -1.600801601601718e-08,
+    "coeff_closed": -1.600801601601602e-08,
+    "sign_want": -1,
+    "ok": true
+   },
+   {
+    "g": 10000000000.0,
+    "dl": 1e-10,
+    "coeff_fd": -1.6000024124861534e-29,
+    "coeff_closed": -1.60000000008e-29,
+    "sign_want": -1,
+    "ok": true
+   },
+   {
+    "g": 0.5,
+    "dl": 0.3,
+    "coeff_fd": 0.4968,
+    "coeff_closed": 0.4967999999999999,
+    "sign_want": 1,
+    "ok": true
+   },
+   {
+    "g": 8.0,
+    "dl": 2.5,
+    "coeff_fd": 26.785714285714285,
+    "coeff_closed": 26.785714285714285,
+    "sign_want": 1,
+    "ok": true
+   }
+  ],
+  "expected": "signs -,-,-,+,+",
+  "verdict": "CONFIRMED",
+  "note": "both routes agree in sign at all 5 points; the (1e10,1e-10) coefficient is -1.6e-29 (tiny but cleanly negative in both routes)."
+ },
+ {
+  "claim": "C5 lattice E(m): (a) E(0.1027) ~ 0.968 smallest of {0, 0.0996, 0.1027, 0.1257, -0.1027}; (b) even in m; (c) E(0) ~ 62.85; (d) V < 1e-15 at every m",
+  "method": "own 32^3 build (explicit matrices), own sliced one-sided fwd/bwd stencils with zero boundary plane, own eta-commutator energy and trace-target potential; nothing imported from the task scripts",
+  "computed": {
+   "E_u": {
+    "+0.0000": 62.851744331478166,
+    "+0.0996": 1.1978168490498378,
+    "+0.1027": 0.9665065448032835,
+    "+0.1257": 16.397900146664078,
+    "-0.1027": 0.9665065448032835
+   },
+   "V": {
+    "+0.0000": 1.673169515504862e-23,
+    "+0.0996": 7.03587953085591e-22,
+    "+0.1027": 1.04942496373697e-21,
+    "+0.1257": 1.250808794905989e-22,
+    "-0.1027": 1.04942496373697e-21
+   },
+   "even_reldiff": 0.0
+  },
+  "expected": "E(0.1027)~0.968 (smallest), E(0)~62.85, even, V<1e-15",
+  "verdict": "CONFIRMED",
+  "note": "E(0.1027) = 0.966507, E(0) = 62.8517, evenness rel diff 0.0e+00, max V 1.0e-21; matches the task's stored curve (fine_g8 m=0.1025 row 0.96818; mcurve m=0 row 62.85174) independently."
+ },
+ {
+  "claim": "C6 kin at the minimum: kin(0.1027) positive ~ +75; kin(0.175) negative ~ -604",
+  "method": "own kin: a0 = centered FD clock flow (om=1, dt=1e-4) of the own-built family; own eta-commutator norm over sym-stencil branches",
+  "computed": {
+   "kin_0.1027": 74.1699189574648,
+   "kin_0.175": -603.8843603273143
+  },
+  "expected": "+75 (positive), -604 (negative)",
+  "verdict": "CONFIRMED",
+  "note": "kin(0.1027) = +74.170, kin(0.175) = -603.884; signs and magnitudes reproduced with fully independent code."
+ },
+ {
+  "claim": "C7 re-reads: (a) C1 |m_min| within 3% of m* for g=3,8 + g=50 under-resolved flag fair; (b) fine g-ladder ratios in [0.80,0.86]; (c) C6 min at om=0 equals his_fin_formula where coeff positive",
+  "method": "arithmetic on data/m5_21_8_p0.json and data/m5_21_8_lat_fine_g*.json",
+  "computed": {
+   "a_rows": [
+    {
+     "g": 3.0,
+     "Delta": 0.1,
+     "rel_dev": 0.0028284293812181364
+    },
+    {
+     "g": 3.0,
+     "Delta": 0.2,
+     "rel_dev": 0.002828430912948532
+    },
+    {
+     "g": 8.0,
+     "Delta": 0.1,
+     "rel_dev": 0.02027255296836259
+    },
+    {
+     "g": 8.0,
+     "Delta": 0.2,
+     "rel_dev": 0.020272554593888364
+    },
+    {
+     "g": 50.0,
+     "Delta": 0.1,
+     "rel_dev": 0.34452475771010593
+    },
+    {
+     "g": 50.0,
+     "Delta": 0.2,
+     "rel_dev": 0.3445247581955693
+    }
+   ],
+   "ok_a": true,
+   "g50_rel_dev": 0.34452475771010593,
+   "g50_spacing": 0.025,
+   "g50_mstar": 0.020002667306849603,
+   "g50_flag_fair": true,
+   "b_ratios": {
+    "8": 0.8176826544096839,
+    "16": 0.8287173052414744,
+    "32": 0.8327582951936019,
+    "64": 0.8356249236755079
+   },
+   "ok_b": true,
+   "c_rows": [
+    {
+     "g": 8.0,
+     "dl": 2.5,
+     "at_om": 0.0,
+     "abs_diff": 0.0
+    },
+    {
+     "g": 3.0,
+     "dl": 2.5,
+     "skip": true
+    },
+    {
+     "g": 0.5,
+     "dl": 0.3,
+     "at_om": 0.0,
+     "abs_diff": 1.1102230246251565e-16
+    }
+   ],
+   "ok_c": true
+  },
+  "expected": "(a) <3% for g=3,8; (b) all in [0.80,0.86]; (c) at_om=0 and float-equal",
+  "verdict": "CONFIRMED",
+  "note": "g=3 dev 0.28%, g=8 dev 2.03%; g=50 dev 34.5% with scan spacing 0.025 > feature |m*| = 0.0200, so the under-resolved flag is fair AND NEEDED: the C1 JSON's own match_abs criterion (abs tol 0.01) marks g=50 true, which alone would overstate. Fine ratios 0.818/0.829/0.833/0.836. C6: (8,2.5) exact to the float; (0.5,0.3) differs by 5.6e-17 (1 ulp)."
+ }
+]

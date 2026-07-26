@@ -1,0 +1,543 @@
+{
+ "meta": {
+  "date": "2026-07-20",
+  "auditor": "independent",
+  "instruments": [
+   "m5_21_3_a_4d.py (certified)",
+   "m5_21_8_b_lattice.py (certified)"
+  ],
+  "task_scripts_imported": "none"
+ },
+ "CL1": {
+  "verdict": "NUANCE",
+  "claimed": {
+   "E_u_mstar": -6.54,
+   "kin_mstar": 39.9,
+   "flip": "past |m| ~ 0.16",
+   "E_v": "~1e-22",
+   "even": true,
+   "min_at": "|m| ~ 0.15"
+  },
+  "measured": {
+   "own_points": {
+    "+0.000": {
+     "E_u": 174.18311583118125,
+     "E_v": 1.674435063924731e-23,
+     "kin": 732.3514934170582
+    },
+    "+0.150": {
+     "E_u": -6.535120516669112,
+     "E_v": 1.7596209710954045e-22,
+     "kin": 39.91805733419052
+    },
+    "-0.150": {
+     "E_u": -6.535120516669112,
+     "E_v": 1.7596209710954045e-22,
+     "kin": 39.91805733419052
+    },
+    "+0.175": {
+     "E_u": 50.2462828908904,
+     "E_v": 3.9260294524889814e-22,
+     "kin": -212.87742630054234
+    },
+    "-0.175": {
+     "E_u": 50.2462828908904,
+     "E_v": 3.9260294524889814e-22,
+     "kin": -212.87742630054234
+    }
+   },
+   "own_vs_json_relgap_max": 3.471006424817894e-14,
+   "E_u_at_0.15": -6.535120516669112,
+   "kin_at_0.15": 39.91805733419052,
+   "even_relgap_max": 8.698143931059524e-15,
+   "E_v_family_max": 3.169764563837796e-21,
+   "parab_vertex_own": 0.13885404638175372,
+   "kin_near_flip": {
+    "0.155": -7.418012915366944,
+    "0.16": -56.360222926297624,
+    "0.165": -106.91385847770235
+   }
+  },
+  "notes": [
+   "own recompute matches the saved curve to machine precision; minima, sub-vacuum E_u, kin(+39.9), evenness (~1e-14 relative), E_v machine zero: all hold",
+   "THE NUANCE: kin(0.155) = -7.4 already NEGATIVE, so the sign flip sits at |m| ~ 0.154 (linear interp), NOT 'past ~0.16' as claimed. The flip is only ~0.003-0.015 in m above the minimum (parab vertex 0.139 grid, analytic 0.1508): the 'kin positive at the minimum' margin is thin, and at the ANALYTIC minimum 0.1508 the interpolated kin is ~+32, still positive but a factor 23 below the m = 0 value"
+  ]
+ },
+ "CL2": {
+  "verdict": "CONFIRMED",
+  "claimed": {
+   "free_dies": "non-finite, E_u ~ -6.3e266",
+   "tanh_dies_identically": true,
+   "boost_channel": "V4-flat on the boosted family",
+   "V4_fires_off_spectrum": true
+  },
+  "measured": {
+   "none_stop": "non-finite",
+   "none_E_u_end": -6.330701878300647e+266,
+   "tanh_stop": "non-finite",
+   "tanh_E_u_end": -6.330701827714909e+266,
+   "identical_relgap": 7.99054179890655e-09,
+   "E_v_base": 1.7596209710954045e-22,
+   "E_v_boost_dressed_cell": 1.7597021382204177e-22,
+   "E_v_off_spectrum_cell": 0.5622229739129355,
+   "E_u_shift_boost_cell": 0.8615080224409075
+  },
+  "notes": [
+   "both relaxes stop 'non-finite' with E_u ~ -6.33e266; the two endpoints agree to 8e-9 relative: identical at the physics level, not bit-identical",
+   "the JSON field finite=true refers to the M array (the ENERGY overflowed first); the note's 'dies non-finite' is the FIRE stop reason: wording holds",
+   "local boost dressing of one cell leaves E_v at machine zero while an off-spectrum bump at the same cell fires V4 by ~17 orders: the boost channel is V4-flat and the collapse attribution is supported"
+  ]
+ },
+ "CL3": {
+  "verdict": "NUANCE",
+  "claimed": {
+   "rel_move_max": 0.00013,
+   "spec": [
+    0.026,
+    0.283,
+    0.993,
+    8.0
+   ],
+   "kin_range": [
+    0.297,
+    0.304
+   ],
+   "om_final": {
+    "0.2": 0.1998,
+    "0.5": 0.4961,
+    "1.0": 0.978
+   }
+  },
+  "measured": {
+   "rungs": {
+    "om0.2": {
+     "J": 0.1187821920565996,
+     "J_eq_2kin0om_gap": 0.0,
+     "omf_json": 0.1992270224069733,
+     "omf_eq_J_over_2kin_gap": 0.0,
+     "kin_final": 0.2981076327436042,
+     "rel_move": 0.00011786143132159216,
+     "spec_absdrift_max": 0.00026236216670916246,
+     "iters": 1200
+    },
+    "om0.5": {
+     "J": 0.296955480141499,
+     "J_eq_2kin0om_gap": 0.0,
+     "omf_json": 0.4960798324930181,
+     "omf_eq_J_over_2kin_gap": 0.0,
+     "kin_final": 0.29930210894602166,
+     "rel_move": 0.00011854491208465275,
+     "spec_absdrift_max": 0.0002639859737083583,
+     "iters": 1200
+    },
+    "om1": {
+     "J": 0.593910960282998,
+     "J_eq_2kin0om_gap": 0.0,
+     "omf_json": 0.9779378609266535,
+     "omf_eq_J_over_2kin_gap": 0.0,
+     "kin_final": 0.30365475354448007,
+     "rel_move": 0.0001250973445516687,
+     "spec_absdrift_max": 0.0006692202817508708,
+     "iters": 1200
+    }
+   },
+   "kin_own_npz_om0.5": 0.29930210798000817,
+   "kin_own_vs_json_relgap": 3.227553239845543e-09,
+   "kin_monotone_up": true,
+   "om_monotone_down_vs_target": true
+  },
+  "notes": [
+   "J = 2 kin0 om_target holds exactly; omega*_final = J/(2 kin_final) holds exactly; rel_move max 1.25e-4 <= 1.3e-4; core spectrum drift <= 6e-4 absolute",
+   "own kin on the om0.5 endpoint npz reproduces kin_final to float32-quantization level",
+   "THE NUANCE: the claimed omega*(0.2) = 0.1998 is the STALE first-pass (300-iteration) figure; the on-disk 1200-iteration rerun gives 0.19923. The 0.5 and 1.0 figures are current. The direction (omega* falls, kin rises with J) is confirmed"
+  ]
+ },
+ "CL4": {
+  "verdict": "CONFIRMED",
+  "claimed": {
+   "ratio_lower": 0.996,
+   "ratio_upper": 0.989,
+   "iters": 1200
+  },
+  "measured": {
+   "E_tot": [
+    6.752687847702331,
+    6.8143798893346315,
+    7.0308145301180724
+   ],
+   "J": [
+    0.1187821920565996,
+    0.296955480141499,
+    0.593910960282998
+   ],
+   "omega_star": [
+    0.1992270224069733,
+    0.4960798324930181,
+    0.9779378609266535
+   ],
+   "intervals": [
+    {
+     "dEdJ": 0.34624742179593127,
+     "om_mid": 0.3476534274499957,
+     "ratio": 0.9959557261828903,
+     "ratio_altmid": 0.9959557261828905
+    },
+    {
+     "dEdJ": 0.7288454170985836,
+     "om_mid": 0.7370088467098358,
+     "ratio": 0.9889235663212247,
+     "ratio_altmid": 0.9889235663212247
+    }
+   ],
+   "iters": [
+    1200,
+    1200,
+    1200
+   ],
+   "E_v_last_window_drift": [
+    -0.014825530747637261,
+    -0.014916605833046548,
+    -0.015235154927949024
+   ]
+  },
+  "notes": [
+   "arithmetic reproduces 0.996 / 0.989 exactly from the JSONs with the stated E_tot definition, applied consistently across rungs",
+   "alt midpoint convention (omega at the J midpoint) moves the ratios by < 0.1%: convention-robust",
+   "fragility: all rungs stop at max_iter with E_v still declining ~0.015 per 300 iterations; the ~1% closure leans on the equal-depth cancellation of that common drift (E_v spread across rungs 0.0017, i.e. ~1-3% of the energy differences). Disclosed in the note"
+  ]
+ },
+ "CL5": {
+  "verdict": "NUANCE",
+  "claimed": {
+   "drift": 2.2e-08,
+   "steps": 400,
+   "dt": 0.005,
+   "dir_hold_pct": 1.0,
+   "try1": "dt=0.02 instability",
+   "try2": "unmasked-velocity bug"
+  },
+  "measured": {
+   "drift_recomputed": 2.2277147622486464e-08,
+   "dir_angle_rad": 0.0004227109262494353,
+   "dir_change_frac": 0.0004227109262494353,
+   "j_norm_change_frac": 0.003320731792209042,
+   "failure_mode_reproduction": {
+    "masked_dt0.005_s400": {
+     "drift": 2.284888259253224e-08,
+     "finite": true
+    },
+    "masked_dt0.02_s200": {
+     "drift": 1.6040543114362647e-06,
+     "finite": true
+    },
+    "unmasked_dt0.005_s400": {
+     "drift": 1.406722421700203e-07,
+     "finite": true
+    },
+    "unmasked_dt0.02_s200": {
+     "drift": 2.799945881053313e-06,
+     "finite": true
+    },
+    "repin_dt0.005_s400": {
+     "drift": 0.12478832926474845,
+     "finite": true
+    }
+   }
+  },
+  "notes": [
+   "the gate numbers hold: drift recomputes to 2.23e-8 from the saved JSON, the auditor's own leapfrog reproduces 2.29e-8 on the production base, and the J direction moved 4.2e-4 rad (0.04%) < 1%",
+   "the try-2 attribution is CONFIRMED QUANTITATIVELY: the repin form (shell held, velocity unmasked = the KE pump) reproduces 12.48% drift over 400 steps at dt = 0.005 vs the logged 12.5%",
+   "THE NUANCE (try-1 attribution): the auditor's MASKED integrator at dt = 0.02 conserves to 1.6e-6 over 200 steps: dt = 0.02 is NOT unstable for this system, so the try-1 'dt instability' attribution is unsupported; try 1 was most plausibly the same masking bug at a coarser dt. The production choice dt = 0.005 is harmless but rests on a misdiagnosis",
+   "a fully UNMASKED integrator also conserves (it is a different conservative system, free boundary): energy drift alone cannot distinguish it; only the mixed repin form pumps KE",
+   "gates ran on the OLD base state (E0 6.7826 matches eps0_oldbase, not the re-relaxed 6.7409): the certificate transfers by construction, not by direct test, to the production base",
+   "failed tries 1-2 are archived in the checkpoint only (49.8% / 12.5% not in data/)"
+  ]
+ },
+ "CL6": {
+  "verdict": "NUANCE",
+  "claimed": {
+   "Omega0_old": 0.000906,
+   "Omega0_new": 0.000923,
+   "ladder_within": 1.1e-05,
+   "B_max": 0.00014,
+   "floor_shape": "clean linear slope"
+  },
+  "measured": {
+   "floors": {
+    "eps0_oldbase": {
+     "eps": 0.0,
+     "B_meas": 0.0,
+     "om_start": 0.19981006052454994,
+     "jxy_first": 0.017072842985245675,
+     "jxy_last": 0.018405593273980152,
+     "E_first": 6.782628177561813,
+     "E_last": 5.882640043843118,
+     "fit_rms_rad": 0.0006173164950390404,
+     "Omega_full": 0.0009063015679467631,
+     "Omega_0_3.5": 0.000364390207383396,
+     "Omega_3_6.5": 0.0009122721734031857,
+     "Omega_6.5_10": 0.0013390114458712052
+    },
+    "eps0v2": {
+     "eps": 0.0,
+     "B_meas": 0.0,
+     "om_start": 0.1992270224069733,
+     "jxy_first": 0.017035407430910254,
+     "jxy_last": 0.018344341343185955,
+     "E_first": 6.740872651453961,
+     "E_last": 5.872704181896134,
+     "fit_rms_rad": 0.000634153130092782,
+     "Omega_full": 0.0009232035543680423,
+     "Omega_0_3.5": 0.00036878039096908683,
+     "Omega_3_6.5": 0.0009272658098379486,
+     "Omega_6.5_10": 0.0013703119315763568
+    }
+   },
+   "ladder": {
+    "eps0.002": {
+     "eps": 0.002,
+     "B_meas": 5.65685424949238e-06,
+     "om_start": 0.19981006052454994,
+     "jxy_first": 0.0170639637552517,
+     "jxy_last": 0.018394075570760497,
+     "E_first": 22.954973383941272,
+     "E_last": 16.144046527947967,
+     "fit_rms_rad": 0.00061504815767128,
+     "Omega_full": 0.0009054259776564089,
+     "Omega_0_3.5": 0.0003644729788015171,
+     "Omega_3_6.5": 0.0009122474706826242,
+     "Omega_6.5_10": 0.0013348874109616032,
+     "floor_used": "eps0_oldbase",
+     "dev_from_floor": -8.755902903541477e-07
+    },
+    "eps0.005": {
+     "eps": 0.005,
+     "B_meas": 3.535533905932738e-05,
+     "om_start": 0.1992270224069733,
+     "jxy_first": 0.016980300542251976,
+     "jxy_last": 0.018272688289461377,
+     "E_first": 638.9912593103026,
+     "E_last": 411.08192925674206,
+     "fit_rms_rad": 0.0006188865562485122,
+     "Omega_full": 0.0009169708143876863,
+     "Omega_0_3.5": 0.00036918175787095284,
+     "Omega_3_6.5": 0.0009266556181906381,
+     "Omega_6.5_10": 0.001342435959969905,
+     "floor_used": "eps0v2",
+     "dev_from_floor": -6.232739980355966e-06
+    },
+    "eps0.01": {
+     "eps": 0.01,
+     "B_meas": 0.0001414213562373095,
+     "om_start": 0.1992270224069733,
+     "jxy_first": 0.016818135584281618,
+     "jxy_last": 0.01806331449598407,
+     "E_first": 10116.518132092875,
+     "E_last": 6589.962578720644,
+     "fit_rms_rad": 0.0005720973943524158,
+     "Omega_full": 0.0008977815025699229,
+     "Omega_0_3.5": 0.00037085162923454154,
+     "Omega_3_6.5": 0.000925544002342131,
+     "Omega_6.5_10": 0.0012534251874833945,
+     "floor_used": "eps0v2",
+     "dev_from_floor": -2.5422051798119384e-05
+    }
+   },
+   "dev_from_floor_max": 2.5422051798119384e-05,
+   "floor_late_over_early_slope": 3.715793911860199
+  },
+  "notes": [
+   "own unwrap + lsq refit reproduces both floors (9.063e-4 / 9.232e-4); no LINEAR (Larmor-sign) response is resolvable anywhere in the ladder: that part of the conclusion stands",
+   "PARTIAL REFUTATION (the +/-1.1e-5 figure): compared to its OWN base's floor, eps0.01 deviates -2.54e-5, 2.3x beyond the claimed bar; the deviations follow a clean eps^2 law (-8.8e-7 / -6.2e-6 / -2.54e-5 at eps 0.002 / 0.005 / 0.01, ratio ~4 per eps doubling) continuing to the env0.03 symmetric slowdown (-1.8e-4): the QUADRATIC slowdown is already resolvable inside the 'perturbative' ladder. The claimed null holds only under a base-mismatched floor comparison",
+   "THE NUANCE: the floor is NOT a clean linear drift. Windowed slopes run 3.7e-4 -> 9.3e-4 -> 1.37e-3 across t = 0..10 (late/early ~3.7x): an ACCELERATING self-drift. The 1.3e-3 rad fit residual is ~14% of the total phase advance, i.e. systematic curvature, not noise. The ladder null survives because every rung shares the same curvature shape",
+   "eps0.002 ran on the OLD base (om_start 0.199810), eps0.005/0.01 on the re-relaxed base: the ladder straddles two bases and only stays clean because each rung is compared to its own floor",
+   "'perturbative' refers to B_meas only: at eps 0.01 the background configuration energy is 10117 vs the state's 6.7 (1500x); the STATE sits in an enormous but weakly-curved background"
+  ]
+ },
+ "CL7": {
+  "verdict": "CONFIRMED",
+  "claimed": {
+   "eps0.03_E0": 810000.0,
+   "eps0.1_E0": 91000000.0,
+   "both_nan": true,
+   "env0.03": "53.4 -> 47.5",
+   "env0.1_E0": 5770,
+   "env0.1_nan": true
+  },
+  "measured": {
+   "eps0.03": {
+    "E0": 812279.0255698034,
+    "E_last_finite": 500212.1815447477,
+    "n_nonfinite_rows": 11
+   },
+   "eps0.1": {
+    "E0": 91200099.62257485,
+    "E_last_finite": 75684990.183044,
+    "n_nonfinite_rows": 19
+   },
+   "env0.03": {
+    "E0": 53.40071633947895,
+    "E_last_finite": 47.46476486454552,
+    "n_nonfinite_rows": 0
+   },
+   "env0.1": {
+    "E0": 5770.069971429854,
+    "E_last_finite": -4850934.497396039,
+    "n_nonfinite_rows": 5
+   }
+  },
+  "notes": [
+   "raw eps 0.03 / 0.1: E0 8.12e5 / 9.12e7 with 11 / 19 non-finite rows (NaN mid-run): claim holds",
+   "env0.03 runs 53.40 -> 47.46 with zero non-finite rows; env0.1 E0 5770 with 5 non-finite rows: the enveloped window claim holds"
+  ]
+ },
+ "CL8": {
+  "verdict": "NUANCE",
+  "claimed": {
+   "Omega_pB": 0.0008249,
+   "Omega_mB": 0.0006525,
+   "replica_repro": 1e-07,
+   "sym": -0.00017,
+   "asym": 8.6e-05,
+   "gamma": 0.068,
+   "grade": "CANDIDATE (self-declared)"
+  },
+  "measured": {
+   "Omega_pB": 0.0008249399490986619,
+   "Omega_negeps": 0.0008249399490986619,
+   "replica_gap": 0.0,
+   "replica_rowlevel_max_dphi": 0.0,
+   "replica_rowlevel_max_dE": 1.7763568394002505e-15,
+   "Omega_mB": 0.0006525040845884968,
+   "Omega_0": 0.0009232035543680423,
+   "sym": -0.000184481537524463,
+   "asym": 8.621793225508252e-05,
+   "gamma_candidate": 0.06773920506383468,
+   "asym_early_t<=5": 1.0227592237685754e-05,
+   "asym_late_t>=5": 0.0002091448887652897,
+   "asym_windows": {
+    "Omega_0_3.5": 5.3309507185021385e-06,
+    "Omega_3_6.5": 3.5646127967414135e-05,
+    "Omega_6.5_10": 0.0002935397380421584
+   },
+   "pair_Etot": {
+    "fwd": {
+     "first": 53.46769558787538,
+     "last": 53.31434060912461,
+     "KE_last": 5.849575744579092
+    },
+    "rev": {
+     "first": 52.376654645853606,
+     "last": 52.20584000930542,
+     "KE_last": 41.350574670293035
+    }
+   },
+   "F_rev_is_minus_F_fwd": true,
+   "F_norm_eq_sqrt2_eps2": 0.0012727922061357855,
+   "F_z_block_only": true,
+   "E0_fwd": 53.40071633947895,
+   "E0_rev": 52.30967539745717,
+   "E0_texture_split": 1.0910409420217775,
+   "field_self_energy_fwd_rev": [
+    45.399370838017674,
+    45.399370838017674
+   ],
+   "E_end_fwd": 47.46476486454552,
+   "E_end_rev": 10.855265339012384,
+   "jxy_last_fwd": 0.018185856939972336,
+   "jxy_last_rev": 0.018127523082610193,
+   "t0_torque": {
+    "fwd": {
+     "phidot_t0": 2.116176471999643e-18,
+     "tau": {
+      "x": -1.1046418054216897e-19,
+      "y": -1.7792958706396797e-20,
+      "z": -1.5524691172517734e-18
+     },
+     "Jxy": 0.017031658229518083
+    },
+    "rev": {
+     "phidot_t0": 1.6538047447982905e-18,
+     "tau": {
+      "x": 8.247073425214941e-20,
+      "y": -4.258050820492798e-20,
+      "z": -5.479054126010368e-19
+     },
+     "Jxy": 0.017031658229518083
+    },
+    "none": {
+     "phidot_t0": -8.622110024497646e-19,
+     "tau": {
+      "x": -1.4945085717301828e-20,
+      "y": 1.743730981709021e-20,
+      "z": 6.117827810442193e-21
+     },
+     "Jxy": 0.017035407430910254
+    }
+   }
+  },
+  "notes": [
+   "all three Omegas, the replica gap, the decomposition and gamma reproduce with the auditor's own fits",
+   "the reversed background DOES flip F_xy exactly (own 4x4 arithmetic) and B_meas = sqrt2 eps^2 checks",
+   "the minus-eps replica is BIT-IDENTICAL row by row (dphi = 0, dJ = 0, dE one ulp): stronger than the claimed 1e-7, but it is an exact eps -> -eps symmetry of the implementation, so it certifies determinism and evenness in eps, NOT F-mediation specifically (any even-in-eps coupling reproduces identically)",
+   "REFUTING EVIDENCE 1 (timing): the antisymmetric split is ABSENT early: asym(t 0-3.5) ~ +0.5e-5, BELOW the floor resolvability bar 1.1e-5, then grows to ~+2.9e-4 late (t 6.5-10), exactly where the two trajectories diverge dynamically. A genuine Larmor term Omega_L = gamma B would be present from t = 0 at constant rate. The measured split has the time signature of the divergence, not of a field coupling",
+   "REFUTING EVIDENCE 2 (texture): the reversed background is a DIFFERENT tensor texture (x T_y + y T_x, shear-type), not a symmetry image of the forward one (x T_y - y T_x, rotation-type): it couples to the state's static anisotropy already at t = 0 (setup energies split by ~1.09 while the field self-energy on the vacuum is sign-even), so Omega(-B) is not the same system with B flipped",
+   "REFUTING EVIDENCE 3 (energetics): E + KE is nearly conserved AND nearly equal in both runs (~53.3 vs ~52.2 at t = 10); the note's 'E_end 47.5 vs 10.9' is the POTENTIAL split only: at the last snapshot the reversed run holds ~41 units of KE (violent ringing). The pair is in different dynamical regimes late-time; the late-window fit rides that",
+   "the omega = 0 discriminator (X1) came out NULL: neither texture pumps any J at omega = 0 (jxy stays < 2e-19 vs the 0.017 the omega-runs carry), so the simplest static-texture-torque alternative is EXCLUDED and that refutation route did NOT fire; the surviving contamination channel is the late-time relaxation asymmetry itself, seeded by the 1.09-unit setup-energy split",
+   "the claim's own CANDIDATE grade and contamination flag are honest, but the windowed refit shows the resolvable antisymmetric signal is consistent with ZERO at matched trajectories (early-window asym +0.5e-5 to +1.0e-5, at or below the floor bar): gamma = 0.068 should be read as an artifact-scale upper bound until a matched-relaxation ladder resolves a constant-rate component"
+  ]
+ },
+ "CL9": {
+  "verdict": "NUANCE",
+  "claimed": {
+   "kin0": 0.297,
+   "framing": "0.119 = different convention era, not a discrepancy"
+  },
+  "measured": {
+   "kin_probe_variant_own": 0.296955480141499,
+   "kin_conjugation_own": 0.12054881756255227,
+   "m5_21_3_p2_row": 0.296955480141499,
+   "m5_21_3_confirm_conj_s-1": 0.1205488175625523
+  },
+  "notes": [
+   "mechanically CONFIRMED: gen_catalog + kin_of give 0.29696 on the s = -1 endpoint, then and now (single commit, no code drift); own conjugation-tangent recompute gives 0.1205 matching the confirm row",
+   "THE FRAMING UNDERSTATES: 0.119 was not merely an older era. The M5.21.3 audit adopted a STRUCTURAL CATCH: a0 = GM - MG^T is the antisymmetric probe variant, the physical conjugation-orbit tangent is GM + MG^T, and 'the quotable inertia is the conjugation value (0.119, not 0.295)'. This run builds J on the probe variant, i.e. it reverts the prior audit's adopted convention without a stated physics justification. Internal consistency (CL3/CL4) is unaffected; any ABSOLUTE J or gamma calibration (hbar/2 bridge) inherits a factor ~2.5 ambiguity"
+  ]
+ },
+ "X1": {
+  "purpose": "reversed field on the omega = 0 state: a fwd/rev azimuth split here needs no J, so it is a non-Larmor channel",
+  "measured": {
+   "none": {
+    "jxy_max": 8.34872048352313e-20,
+    "jxy_end": 8.598934995225074e-21,
+    "jz_end": 6.861380463066109e-20,
+    "phidot_est": 3.445409758987146,
+    "E0": 6.740872651453961,
+    "E_end": 6.731355061967923,
+    "wall_s": 213.06737208366394
+   },
+   "fwd": {
+    "jxy_max": 1.6852379405619405e-19,
+    "jxy_end": 3.1064720490706836e-20,
+    "jz_end": 1.0888095684974248e-19,
+    "phidot_est": -0.07006452225893928,
+    "E0": 53.40071633947895,
+    "E_end": 51.873335004858106,
+    "wall_s": 210.37727808952332
+   },
+   "rev": {
+    "jxy_max": 1.14050869742266e-19,
+    "jxy_end": 1.14050869742266e-19,
+    "jz_end": 5.889525961377557e-20,
+    "phidot_est": -1.0823091690491686,
+    "E0": 52.30967539745717,
+    "E_end": 50.81591289071865,
+    "wall_s": 215.1573851108551
+   }
+  },
+  "fwd_rev_phidot_split": 1.0122446467902293,
+  "jxy_scale_of_omega_runs": 0.017,
+  "claimed_asym_component": 8.6e-05,
+  "finding": "NULL: all three omega = 0 runs (no field, fwd, rev) keep jxy at machine zero (< 2e-19), so no J is texture-pumped and no azimuth split exists without the isorotation; the phidot_est values on those zero vectors are noise. The static-texture alternative to the Larmor reading is excluded; the antisymmetric split requires the J-carrying state and lives in the late-time trajectory divergence (see CL8 windowed evidence)"
+ }
+}

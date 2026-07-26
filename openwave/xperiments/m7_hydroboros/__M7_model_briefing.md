@@ -6,9 +6,11 @@
 > field configuration is both *specified* and *earned* as the energy-minimizer. **Phase 1
 > is complete (M7.0-M7.7, 2026-07-04)**: the canonical spec is
 > [`research/m7_theory_canonical.md`](research/m7_theory_canonical.md) and the 21-cell
-> column is STAGED as a preview in
-> [`research/preview_models.md`](research/preview_models.md); it enters the
-> [`MODELS.md`](../../../MODELS.md) benchmark via governance when the research matures (M7.21).
+> column is PUBLISHED in
+> [`MODELS.md`](../../../MODELS.md) (M7.21, 2026-07-18), entered as the 3rd column
+> (order M5 · M6 · M7 · M4) at 0 ✅ / 8 ⚠️ / 13 🚧.
+
+![M7_hero](research/images/hydroboros_icon.jpg)
 
 ## Identity
 
@@ -17,9 +19,10 @@
 | Model ID | M7 |
 | Name | HydroBoros (Hydrodynamics + Ouroboros; evokes the Hydra water-snake) |
 | Author | Marc Fleury (toroidal-EM electron) + Paul Werbos (Ouroboros / M6): the two physics parents |
+| Author contact | GitHub [@marcf999](https://github.com/marcf999) (toroidal-EM electron) + [@pwerbos](https://github.com/pwerbos) (Ouroboros), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6. Note: this column is PARKED by its own roadmap pending the model author's return from conference, so author-gated rows here record "not applicable" under the § 1 default in the meantime |
 | Blend | Fleury's toroidal EM electron (arXiv:2510.22384) fused with Werbos's Ouroboros self-confinement (M6) |
 | Lineage | force-free / Beltrami (Trkalian → variable-λ) + knotted-EM / Clebsch + Faber geometric soliton |
-| Primary sources | Fleury / dos Santos arXiv:2510.22384; Werbos M6; Faber arXiv:2201.13262 + Faber & Golubich arXiv:2604.12021; Sato-Yamada arXiv:1809.03136; Ceperley; Pisello 1977 |
+| Primary sources | Fleury / dos Santos arXiv:2510.22384; Werbos M6; Faber arXiv:2201.13262 + Faber & Golubich [Phys. Rev. D 114, 014510](https://doi.org/10.1103/8zn4-rwth) (2026; preprint arXiv:2604.12021); Sato-Yamada arXiv:1809.03136; Ceperley; Pisello 1977 |
 | In-repo | [`research/m7_roadmap.md`](research/m7_roadmap.md) (roadmap) + [`m7_background.md`](research/m7_background.md) (background) + [`m7_question_tracker.md`](research/m7_question_tracker.md) (Q1-Q7); `theory/` (66-doc electron-Beltrami corpus + notes); `images/` icon |
 
 ## Model Profile (what it brings, short form)
@@ -50,7 +53,7 @@ lepton / neutrino family (M7.19), quarks / baryons / mesons (M7.22).
 
 ## Implementation Status
 
-**Phase 1 complete (M7.0-M7.7, 2026-07-04); the 21-cell column is STAGED as a preview in [`research/preview_models.md`](research/preview_models.md)** (0 ✅ / 8 ⚠️ / 13 🚧, honest icons; MODELS.md entry deferred to the M7.21 governance step, the research is still maturing). Both parents
+**Phase 1 complete (M7.0-M7.7, 2026-07-04); the 21-cell column is PUBLISHED in [`MODELS.md`](../../../MODELS.md)** (0 ✅ / 8 ⚠️ / 13 🚧, honest icons; entered at M7.21 (2026-07-18) as the 3rd column, order M5 · M6 · M7 · M4). Both parents
 reproduced from one lattice code (Fleury's torus at 1.4e-4, M7.2; M6's charged `H/Q` in
 full 3D at 4.7e-5, M7.3), then the new physics earned: the first stable finite-size 3D
 soliton family (Taylor-dressed, `E = 0.802\|H_A\|`, M7.4), the vacuum-tachyon discovery +
@@ -68,10 +71,10 @@ Five phases, M7.0 → M7.23 (full detail in [`research/m7_roadmap.md`](research/
 
 | Phase | Tasks | What lands |
 | --- | --- | --- |
-| 1 , electron + the column ✅ DONE | M7.0-M7.7 | bootstrap → infra → reproduce Fleury → reproduce M6 in 3D → charged soliton (the new physics) + Coulomb → clock + stability → observables → consolidate (milestone; column staged in [`research/preview_models.md`](research/preview_models.md)) |
-| 1 extension , the author-collaboration track ✅ | M7.8 ✅, M7.9 ✅, M7.10 ✅ + reserved M7.11-M7.14 | the helicity-pair 3:1 test + the Phase 1 walkthrough (M7.8 ✅ 2026-07-07: the closure pair not stationary, spin reads one quantum); the ChaosBook study + canonical-exercise benchmark (M7.9 ✅ 2026-07-07: 5/5 benchmarks incl. the full Rössler cycle table 14/14, audit CONFIRMED, orbit toolkit ready); the pure-Maxwell no-Lagrangian test (M7.10 ✅ 2026-07-07: Theorem 2 at the integrator floor, the honest boundary as measurements (walls 0.371 vs free space 0.042; one state, two deaths), the Q14 tachyon attributed to the bilinear via the 0.786√ε ladder at 0.1-0.3%, audit CONFIRMED); the Beltrami orbit track: [M7.11 defined](research/tasks/m7_11_variable_lambda.md) (the variable-λ vacuum-cure check, top of backlog), M7.12-M7.14 reserved (post-August); **the walkthrough § 7 report is COMPLETE** and **M7 is PARKED** until the author returns from the conference and takes his adversarial external pass (sequencing: [M7.11 § 0](research/tasks/m7_11_variable_lambda.md)) |
+| 1 , electron + the column ✅ DONE | M7.0-M7.7 | bootstrap → infra → reproduce Fleury → reproduce M6 in 3D → charged soliton (the new physics) + Coulomb → clock + stability → observables → consolidate (milestone; column drafted, published to [`MODELS.md`](../../../MODELS.md) at M7.21) |
+| 1 extension , the author-collaboration track ✅ | M7.8 ✅, M7.9 ✅, M7.10 ✅ + reserved M7.11-M7.14 | the helicity-pair 3:1 test + the Phase 1 walkthrough (M7.8 ✅ 2026-07-07: the closure pair not stationary, spin reads one quantum); the ChaosBook study + canonical-exercise benchmark (M7.9 ✅ 2026-07-07: 5/5 benchmarks incl. the full Rössler cycle table 14/14, audit CONFIRMED, orbit toolkit ready); the pure-Maxwell no-Lagrangian test (M7.10 ✅ 2026-07-07: Theorem 2 at the integrator floor, the honest boundary as measurements (walls 0.371 vs free space 0.042; one state, two deaths), the Q14 tachyon attributed to the bilinear via the 0.786√ε ladder at 0.1-0.3%, audit CONFIRMED); the Beltrami orbit track: [M7.11 defined](research/tasks/m7_11_variable_lambda.md) (the variable-λ vacuum-cure check, top of backlog), M7.12-M7.14 reserved (post-August); **the walkthrough § 7 report is COMPLETE** and **M7 is PARKED** until the author returns from the conference and takes an adversarial external pass (sequencing: [M7.11 § 0](research/tasks/m7_11_variable_lambda.md)) |
 | 2 , forces + sectors | M7.15-M7.20 | magnetic, gravity (hard), nuclear (strong / weak), antimatter / annihilation, lepton + neutrino family, dark matter |
-| 3 , MODELS.md publication | M7.21 | publish + govern the 21-cell HydroBoros column (benchmark entry) |
+| 3 , MODELS.md publication ✅ | M7.21 ✅ | published the 21-cell HydroBoros column to MODELS.md (2026-07-18; benchmark entry, 3rd column) |
 | 4 , composites | M7.22 | quarks, baryons, mesons, orbital quantization |
 | 5 , production | M7.23 | graduate the canonical recipe to `medium.py` + engines + `_launcher.py` rendering |
 

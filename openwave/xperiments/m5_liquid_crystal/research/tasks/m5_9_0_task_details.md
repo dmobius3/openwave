@@ -1,6 +1,6 @@
 # M5.9.0: Duda delta/g calibration + unit-scale prep
 
-> Task **M5.9.0** (M5 / Liquid-Crystal model). Status: **Backlog** · Gated by: - · Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
+> Task **M5.9.0** (M5 / Liquid-Crystal model). Status: **RENUMBERED into the M5.21 series as [M5.21.11](m5_21_11_task_details.md)** (2026-07-19, the electron-status gap review: re-scoped as the realistic-parameter bridge + unit calibration). This file stays as the lineage archive (the migrated issue record + the Coulomb-unit axis notes below); the live task doc is [`m5_21_11_task_details.md`](m5_21_11_task_details.md). Roadmap: [`m5_roadmap.md`](../m5_roadmap.md)
 
 This doc is the task's full record: planning + findings + future planning + documentation.
 

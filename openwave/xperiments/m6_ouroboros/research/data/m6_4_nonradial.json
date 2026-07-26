@@ -1,0 +1,88 @@
+{
+  "task": "M6.4 N3: non-radial (l-sector) GF extension",
+  "argument": "the l-sector Jacobi operator adds +l^2/r^2 (positive) to the radial one; by Sturm comparison conjugate points cannot increase with l; radial verdicts are binding within the ansatz reduction",
+  "boundary": "ansatz-breaking perturbations (other vector components, non-axisymmetric 3D modes) are NOT reachable from the printed reduction; the M7 3D continuation found the truncation's real-time vacuum unconditionally tachyonic",
+  "spot_checks": [
+    {
+      "system": "may",
+      "g": 0.5,
+      "w": 1.5,
+      "lam": 0.0,
+      "A0": 0.1,
+      "B0": 0.1,
+      "label": "May crit-i passer (above threshold, radial gf=6)",
+      "conjugate_points": {
+        "l=0": 6,
+        "l=1": 6,
+        "l=2": 5,
+        "l=3": 4
+      },
+      "monotone_nonincreasing": true
+    },
+    {
+      "system": "may",
+      "g": 0.5,
+      "w": 1.1,
+      "lam": 2.0,
+      "A0": 0.1,
+      "B0": 0.1,
+      "label": "May crit-i passer (above threshold, radial gf=6)",
+      "conjugate_points": {
+        "l=0": 6,
+        "l=1": 5,
+        "l=2": 5,
+        "l=3": 4
+      },
+      "monotone_nonincreasing": true
+    },
+    {
+      "system": "may",
+      "g": 0.5,
+      "w": 0.7,
+      "lam": 0.0,
+      "A0": 0.4,
+      "B0": 0.4,
+      "label": "May below-threshold grid shot (in-window)",
+      "conjugate_points": {
+        "l=0": 6,
+        "l=1": 6,
+        "l=2": 5,
+        "l=3": 5
+      },
+      "monotone_nonincreasing": true
+    },
+    {
+      "system": "june",
+      "g": 0.3,
+      "w": 2.2,
+      "lam": 0.5,
+      "A0": 0.1,
+      "B0": 0.2,
+      "label": "June published best point (outward S convention)",
+      "conjugate_points": {
+        "l=0": 13,
+        "l=1": 13,
+        "l=2": 12,
+        "l=3": 12
+      },
+      "monotone_nonincreasing": true
+    },
+    {
+      "system": "june",
+      "g": 1.0,
+      "w": 1.0,
+      "lam": 1.0,
+      "A0": 0.1,
+      "B0": 0.1,
+      "label": "June grid point (outward S convention)",
+      "conjugate_points": {
+        "l=0": 8,
+        "l=1": 8,
+        "l=2": 8,
+        "l=3": 7
+      },
+      "monotone_nonincreasing": true
+    }
+  ],
+  "all_monotone": true
+}

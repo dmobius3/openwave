@@ -17,7 +17,6 @@ OpenWave investigates, in one integrated simulator, four primary domains: **matt
 | Reference | Purpose |
 | --- | --- |
 | `README.md` | Full description, scope, scientific position, installation |
-| `WELCOME.md` | Quick intro |
 | `SYS_ARCH.md` | Module structure and system architecture |
 
 ### Theoretical Advisors and Candidate Frameworks
@@ -57,6 +56,8 @@ Those papers are **third-party copyrighted files: local-only and gitignored, nev
 
 Note: the legacy top-level `scientific_source/` folder was retired 2026-05-18; papers now live per-model.
 
+**Research `data/` folders follow the same local-only pattern (2026-07-20).** Heavy binary arrays (`.npz` `.npy` `.h5` `.pkl` `.pt` `.mat`) are gitignored and **kept on the working machine, never deleted** (this supersedes an earlier rule that deleted arrays over 1 MB at task close). What IS tracked, and what a reader on GitHub audits: the distilled summary `.json` / `.csv` / `.txt` beside them, the plots, the scripts that produce everything, and the per-folder **`_DATASETS.md`** manifest, which indexes every local-only file by task group with its producing script and the task record holding the exact regen command. Regenerate a manifest after any run that writes arrays: `python3 ~/Documents/source_code/XRODZ/dotfiles/claude_projects/NEPTUNYA-SABER/scripts/gen_datasets_manifest.py <path/to/data> --write`. Runs are deterministic from their fixed seeds and configs, so a clone rebuilds every array from tracked code.
+
 ## Installation & Usage
 
 Refer to `README.md` for installation, CLI usage (`openwave -x`), and the instrumentation framework.
@@ -76,29 +77,29 @@ OpenWave implements classical-field-theory-with-topology-and-nonlinearity approa
 
 | Doc | Purpose |
 | --- | --- |
-| [Markdown Style Guide](/dev_docs/MARKDOWN_STYLE_GUIDE.md) | All `.md` files |
-| [Coding Standards](/dev_docs/CODING_STANDARDS.md) | Python code |
-| [Performance Guidelines](/dev_docs/PERFORMANCE_GUIDELINES.md) | Optimization |
-| [Loop Optimization](/dev_docs/LOOP_OPTIMIZATION.md) | Critical loops |
-| [Coordinate System](/dev_docs/COORDINATE_SYSTEM.md) | Spatial conventions |
-| [Floating Point Precision](/dev_docs/FLOATING_POINT_PRECISION.md) | Numerical precision rules |
-| [Scaling Factor](/dev_docs/SCALING_FACTOR.md) | Physics unit scaling |
-| [Version Management](/dev_docs/VERSION_MANAGEMENT.md) | Release versioning |
-| [Wave Diagnostics](/dev_docs/WAVE_DIAGNOSTICS.md) | Validation diagnostics |
-| [Method Note](/dev_docs/METHOD_NOTE.md) | **MANDATORY** standard for any report/email to a model's theory owner or external physicist |
-| [AI Hygiene](/AI_HYGIENE.md) | **MANDATORY** working contract for AI-assisted research: division of labor, failure modes, verification habits |
+| [Markdown Style Guide](dev_docs/MARKDOWN_STYLE_GUIDE.md) | All `.md` files |
+| [Coding Standards](dev_docs/CODING_STANDARDS.md) | Python code |
+| [Performance Guidelines](dev_docs/PERFORMANCE_GUIDELINES.md) | Optimization |
+| [Loop Optimization](dev_docs/LOOP_OPTIMIZATION.md) | Critical loops |
+| [Coordinate System](dev_docs/COORDINATE_SYSTEM.md) | Spatial conventions |
+| [Floating Point Precision](dev_docs/FLOATING_POINT_PRECISION.md) | Numerical precision rules |
+| [Scaling Factor](dev_docs/SCALING_FACTOR.md) | Physics unit scaling |
+| [Version Management](dev_docs/VERSION_MANAGEMENT.md) | Release versioning |
+| [Wave Diagnostics](dev_docs/WAVE_DIAGNOSTICS.md) | Validation diagnostics |
+| [Method Note](dev_docs/METHOD_NOTE.md) | **MANDATORY** standard for any report/email to a model's theory owner or external physicist |
+| [AI Hygiene](AI_HYGIENE.md) | **MANDATORY** working contract for AI-assisted research: division of labor, failure modes, verification habits |
 
 ### AI hygiene (all AI-assisted work): MANDATORY
 
-Every AI agent working in this repo (including you) operates under [`AI_HYGIENE.md`](/AI_HYGIENE.md): model output is a draft or hypothesis, never a result, until verified by something that is not a language model (a hand-checked derivation, a runnable script, a lattice measurement, or the confirmation of the human holding the relevant authority). Author-gated questions (intent, provenance, definitions) can only be answered by the author; externally received AI-derived material is tagged evidence-not-resolution until confirmed; anything community-facing is human-owned prose over script-backed results. Read it before doing research work here.
+Every AI agent working in this repo (including you) operates under [`AI_HYGIENE.md`](AI_HYGIENE.md): model output is a draft or hypothesis, never a result, until verified by something that is not a language model (a hand-checked derivation, a runnable script, a lattice measurement, or the confirmation of the human holding the relevant authority). Author-gated questions (intent, provenance, definitions) can only be answered by the author; externally received AI-derived material is tagged evidence-not-resolution until confirmed; anything community-facing is human-owned prose over script-backed results. Read it before doing research work here.
 
 ### The adversarial audit (every substantive claim): CARDINAL RULE
 
-Before any substantive derivation, verification, or headline claim is trusted, recorded as a result, or sent outside this repo, an **independent second agent audits it adversarially**: instructed to REFUTE (not confirm), with its OWN implementation (different method / seed / construction), its own hand re-derivations, and a per-claim verdict (CONFIRMED / REFUTED / QUALIFIED) backed by its own numbers. Fold every catch back into the artifact and **record the audit outcome IN the deliverable** (the [`m5_18_verification_note.md § 10`](/openwave/xperiments/m5_liquid_crystal/research/findings/m5_18_verification_note.md) pattern). Full rule: [`AI_HYGIENE.md § 1`](/AI_HYGIENE.md). Origin: Duda 2026-07-03 ("careful small steps, maybe multiple agents verifying each other"); first real catch: M5.18 (an overclaimed witness refuted + a missed vacuum-branch structure found by the auditor).
+Before any substantive derivation, verification, or headline claim is trusted, recorded as a result, or sent outside this repo, an **independent second agent audits it adversarially**: instructed to REFUTE (not confirm), with its OWN implementation (different method / seed / construction), its own hand re-derivations, and a per-claim verdict (CONFIRMED / REFUTED / QUALIFIED) backed by its own numbers. Fold every catch back into the artifact and **record the audit outcome IN the deliverable** (the [`m5_18_verification_note.md § 10`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_18_verification_note.md) pattern). Full rule: [`AI_HYGIENE.md § 1`](AI_HYGIENE.md). Origin: Duda 2026-07-03 ("careful small steps, maybe multiple agents verifying each other"); first real catch: M5.18 (an overclaimed witness refuted + a missed vacuum-branch structure found by the auditor).
 
 ### Method note (model-owner-facing output): MANDATORY
 
-Any report, summary doc, or email addressed to a model's theory owner (M5: Duda; M7: Fleury; any advisor) follows [`dev_docs/METHOD_NOTE.md`](/dev_docs/METHOD_NOTE.md): **equations first** (Hamiltonian / potential / observable definitions in math notation), an **equation-to-code map** with absolute GitHub hyperlinks (`#L` anchors; `blob/main` for frozen task-scoped files, commit-pinned only for live/evolving files like the root engines and production rendering code), the functional in a **small auditable module**, results after methods, a minimal physics-first inspection set, and the **adversarial audit recorded in the note**. Adopted 2026-07-03 after the M5.16 audit failure ("still I have no idea what does it calculate"): results a physicist cannot audit by reading carry no weight, regardless of correctness.
+Any report, summary doc, or email addressed to a model's theory owner (M5: Duda; M7: Fleury; any advisor) follows [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md): **equations first** (Hamiltonian / potential / observable definitions in math notation), an **equation-to-code map** with absolute GitHub hyperlinks (`#L` anchors; `blob/main` for frozen task-scoped files, commit-pinned only for live/evolving files like the root engines and production rendering code), the functional in a **small auditable module**, results after methods, a minimal physics-first inspection set, and the **adversarial audit recorded in the note**. Adopted 2026-07-03 after the M5.16 audit failure ("still I have no idea what does it calculate"): results a physicist cannot audit by reading carry no weight, regardless of correctness.
 
 ### Important: Markdown Linting Requirements
 

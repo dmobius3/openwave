@@ -215,6 +215,93 @@ def seed_biaxial_hedgehog_M(
 
 
 @ti.kernel
+def seed_charged_ring_M(
+    tensor_field: ti.template(),  # type: ignore
+    cx: ti.i32,  # type: ignore
+    cy: ti.i32,  # type: ignore
+    cz: ti.i32,  # type: ignore
+    a_vox: ti.f32,  # type: ignore
+    cord_vox: ti.f32,  # type: ignore
+    rhoc_vox: ti.f32,  # type: ignore
+    delta: ti.f32,  # type: ignore
+):
+    """Seed the CHARGED DISCLINATION RING — the hedgehog's same-charge partner
+    (M5.21.2, third defect type; Alexander, Chen, Matsumoto & Kamien,
+    Rev. Mod. Phys. 84, 497 (2012) § IV.B: disclination loops carry odd
+    hedgehog charge — the far sphere reads q = 1 exactly like the point
+    hedgehog, but the core is a half-disclination cord of radius a in the
+    z = 0 plane and the interior is smoothly ESCAPED along +z).
+
+    Meridional director angle (single-valued in the tensor through the
+    half winding; branch cuts rotated so the DIRECTOR seam lies on the
+    minimal spanning disk, see below):
+        ψ(ρ, z) = ½·[atan2(−z, ρ − a) + atan2(−z, ρ + a)] + π/2
+        n̂ = sin ψ · ρ̂ + cos ψ · ẑ     (→ r̂ far away = the hedgehog far
+                                        field; → ±ẑ inside the ring)
+
+    ⚠️ DIRECTOR SEAM (representation, not physics): a half-integer
+    disclination ring is NON-ORIENTABLE around the cord, so any vector
+    director field must flip sign across SOME surface bounded by the
+    ring (the Dirac sheet). The atan2 cuts above place that seam on the
+    MINIMAL SPANNING DISK inside the ring (ρ < a, z = 0): the whole
+    exterior (far field, below-plane region) is seam-free. The tensor
+    M is continuous everywhere; only director-DERIVED diagnostics (EM
+    div/curl in engine3, div-colored glyphs) show the internal disk.
+    (First cut of this kernel used atan2(ρ−a, z), whose seam is a
+    half-infinite cylinder at ρ = a, z < 0 — the 2026-07-17 GGUI
+    below-plane artifact. Fixed same day.)
+    Frame (production biaxial convention, δ on e_Θ, 0 on the azimuth —
+    NOTE the M5.21.2 sandbox census used the rotated family, δ on the
+    azimuth; both are seeds of the same winding sector):
+        e_Φ = azimuth (melted over ρ_c near the z-axis, ⟂ n̂),
+        e_Θ = e_Φ × n̂,  D = (1, δ, 0) on (n̂, e_Θ, e_Φ).
+    Eigenvalue melt: isotropic at the ring CORD (distance
+    d = √((ρ−a)² + z²), smoothstep over cord_vox) — the cord is the only
+    singular locus; the origin/axis are regular (escaped interior).
+
+    Static viewing seed: spatial 3×3 embedded block-diag with g (embed4),
+    boost-decoupled, no clock tangent. Triple-buffer BC rule.
+    """
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    d_iso = (1.0 + delta) / 3.0
+    eps = ti.cast(1e-6, ti.f32)
+    for i, j, k in ti.ndrange(nx, ny, nz):
+        px = ti.cast(i - cx, ti.f32)
+        py = ti.cast(j - cy, ti.f32)
+        pz = ti.cast(k - cz, ti.f32)
+        rho = ti.sqrt(px * px + py * py)
+        ainv = 1.0 / ti.sqrt(rho * rho + eps)
+        rhohat = ti.Vector([px * ainv, py * ainv, 0.0])
+        # seam-on-disk branch choice (see docstring): cuts at z=0, rho<a
+        psi = (0.5 * (ti.atan2(-pz, rho - a_vox) + ti.atan2(-pz, rho + a_vox))
+               + 1.5707963267948966)
+        sp = ti.sin(psi)
+        cp = ti.cos(psi)
+        nvec = ti.Vector([sp * rhohat[0], sp * rhohat[1], cp])
+        azim = ti.Vector([-py * ainv, px * ainv, 0.0])
+        sdisc = ti.min(rho / rhoc_vox, 1.0)
+        shrink = sdisc * sdisc * (3.0 - 2.0 * sdisc)      # axis melt (house style)
+        ephi = azim * shrink
+        ephi = ephi - ephi.dot(nvec) * nvec               # ⟂ n̂ (no renorm → melts)
+        etheta = ephi.cross(nvec)
+        dc = ti.sqrt((rho - a_vox) * (rho - a_vox) + pz * pz)
+        sc = ti.min(dc / cord_vox, 1.0)
+        smelt = sc * sc * (3.0 - 2.0 * sc)                # cord melt smoothstep
+        d0 = d_iso + smelt * (1.0 - d_iso)
+        d1 = d_iso + smelt * (delta - d_iso)
+        d2 = d_iso + smelt * (0.0 - d_iso)
+        m_sp = (d0 * nvec.outer_product(nvec)
+                + d1 * etheta.outer_product(etheta)
+                + d2 * ephi.outer_product(ephi))
+        m = embed4(m_sp, tensor_field.lc_g)
+        tensor_field.M_am[i, j, k] = m
+        tensor_field.M_prev_am[i, j, k] = m
+        tensor_field.M_new_am[i, j, k] = m
+        tensor_field.director_nhat[i, j, k] = nvec
+        tensor_field.director_nhat_new[i, j, k] = nvec
+
+
+@ti.kernel
 def seed_dressed_hedgehog_M(
     tensor_field: ti.template(),  # type: ignore
     cx: ti.i32,  # type: ignore
@@ -302,3 +389,106 @@ def seed_dressed_hedgehog_M(
         tensor_field.director_nhat_new[i, j, k] = rhat
 
 
+
+
+# ================================================================
+# M5.23.2 — RESEARCH-ENDPOINT LOADER (npz → launcher seed)
+# ================================================================
+# Loads a converged research state (fixed-J isorotation endpoints, the μ/τ
+# census states, any saved M array) into a live TensorField as an INITIAL
+# CONDITION (not a launcher equilibrium: drift under free evolution of a
+# pinned-bc source is physics, not a loader bug).
+#
+# CONVENTIONS (measured at the loader build, m5_23_2 task_details):
+#   - research npz storage keeps M[0,0] = +g (plain storage convention); the
+#     production covariant vacuum is diag(−g, 1, δ, 0). V4 measured on the
+#     fixed-J endpoint far field: 759.4/cell raw (+g) vs 2e-11 flipped (−g).
+#     4×4 data is therefore flipped to −g AT LOAD (info["covariant"] = True
+#     tells the canonical activation to skip its own flip); 3×3 data is
+#     embedded block-diag at +g (the seeder convention) and takes the normal
+#     flip_time_axis at canonical activation.
+#   - the TensorField grid is ODD; research grids are even (32³/64³).
+#     GRID FIT: launcher grid == n_src − 1 → CROP (drop the last plane per
+#     axis, sponge-zone content); launcher grid ≥ n_src → EMBED centered
+#     with edge-extend padding (the source boundary IS the far field).
+#     Anything else → info["ok"] = False (caller falls back to vacuum).
+#     The data array itself is never resampled.
+
+
+def load_npz_M(tensor_field, npz_path, delta_cfg=None):
+    """Load a research M-state npz into all three M buffers (Ṁ = 0).
+
+    Returns an info dict: ok, n_src, blk, fit, covariant, h, delta, bc, warn
+    (warn = list of warning strings; caller prints them).
+    """
+    import numpy as np
+
+    info = {
+        "ok": False,
+        "n_src": 0,
+        "blk": 0,
+        "fit": "",
+        "covariant": False,
+        "h": 0.0,
+        "delta": float("nan"),
+        "bc": "?",
+        "warn": [],
+    }
+    z = np.load(npz_path)
+    if "M" not in z.files:
+        info["warn"].append(f"no 'M' array in {npz_path}")
+        return info
+    m_src = z["M"].astype(np.float32)
+    if m_src.ndim != 5 or m_src.shape[3] not in (3, 4) or m_src.shape[3] != m_src.shape[4]:
+        info["warn"].append(f"unsupported M shape {m_src.shape}")
+        return info
+    n_src, blk = int(m_src.shape[0]), int(m_src.shape[3])
+    info["n_src"], info["blk"] = n_src, blk
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    if (nx, ny, nz) == (n_src - 1, n_src - 1, n_src - 1):
+        m_fit = m_src[:nx, :ny, :nz]
+        info["fit"] = "crop"
+    elif min(nx, ny, nz) >= n_src:
+        ox, oy, oz = (nx - n_src) // 2, (ny - n_src) // 2, (nz - n_src) // 2
+        m_fit = np.pad(
+            m_src,
+            (
+                (ox, nx - n_src - ox),
+                (oy, ny - n_src - oy),
+                (oz, nz - n_src - oz),
+                (0, 0),
+                (0, 0),
+            ),
+            mode="edge",
+        )
+        info["fit"] = f"embed(+{ox},+{oy},+{oz})"
+    else:
+        info["warn"].append(
+            f"grid mismatch: launcher {nx}x{ny}x{nz} vs source {n_src}^3 "
+            "(need n_src-1 to crop or >= n_src to embed)"
+        )
+        return info
+    m4 = np.zeros((nx, ny, nz, 4, 4), np.float32)
+    if blk == 4:
+        m4[:] = m_fit
+        m4[..., 0, 0] *= -1.0  # storage +g → covariant −g (measured, header note)
+        info["covariant"] = True
+    else:  # 3×3 spatial block → the seeder's block-diag embed at +g
+        m4[..., 0, 0] = tensor_field.lc_g
+        m4[..., 1:, 1:] = m_fit
+    tensor_field.M_am.from_numpy(m4)
+    tensor_field.M_prev_am.from_numpy(m4)  # Ṁ = 0 (SET-J re-kicks if configured)
+    tensor_field.M_new_am.from_numpy(m4)
+    if "h" in z.files:
+        info["h"] = float(z["h"])
+    if "delta" in z.files:
+        info["delta"] = float(z["delta"])
+        if delta_cfg is not None and abs(info["delta"] - float(delta_cfg)) > 1e-6:
+            info["warn"].append(
+                f"source delta {info['delta']} != config delta {float(delta_cfg)} "
+                "(V4 well mismatch)"
+            )
+    if "bc" in z.files:
+        info["bc"] = str(z["bc"])
+    info["ok"] = True
+    return info

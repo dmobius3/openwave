@@ -2,9 +2,11 @@
 M5 ENGINE — RENDERING / VISUALIZATION (engine4_render)
 
 The viz stack — OpenWave's biggest differential as a simulator:
-  - sample_position_to_render  granule point-cloud
-  - update_flux_mesh_values    3-plane scalar→color/warp mesh
+  - update_ellipsoid_mesh      VIZ.5: M·u eigen-ellipsoid shell (1 per 3D angle)
+  - update_rod_ellipsoids      VIZ.5 Stage D: disclination-rod line + ring samples
   - update_director_glyphs     director-orientation line glyphs
+  - update_flux_mesh_values    3-plane scalar→color/warp mesh
+  - sample_position_to_render  granule point-cloud
 
 Reads pre-computed fields off tensor_field; no engine-func calls yet (M5.4 adds
 engine2_pde.eigen_decompose). Full repurposing plan in m5_4b_rendering_features.md.
@@ -15,6 +17,216 @@ import math
 import taichi as ti
 
 from openwave.common import colormap
+
+# ================================================================
+# ELLIPSOID RENDERING
+# ================================================================
+
+# VIZ.5 — Fibonacci-lattice azimuth step (the golden angle). Successive shell
+# directions advance by this angle while z sweeps (−1,1) uniformly → uniform S²
+# coverage at ANY glyph count (the in-kernel, taichi-native direction set).
+_ELLIPSOID_GOLDEN_ANGLE = math.pi * (3.0 - math.sqrt(5.0))
+
+
+# VIZ.5 Stage B — isotropic visibility floor added to M before the M·u map:
+# the D = diag(1, δ, 0) family has λ₃ = 0, so the raw ellipsoid degenerates to
+# a flat disk; the floor lifts every semi-axis by this amount so the surface
+# stays 3D-visible (the m5_6_5b λ_min floor, point 4 of that de-risk).
+_ELLIPSOID_MESH_FLOOR = 0.08
+
+
+@ti.func
+def _ellipsoid_vertex(
+    tensor_field: ti.template(),  # type: ignore
+    i: ti.i32,  # type: ignore
+    j: ti.i32,  # type: ignore
+    k: ti.i32,  # type: ignore
+    v: ti.i32,  # type: ignore
+    pos: ti.types.vector(3, ti.f32),  # type: ignore
+    size: ti.f32,  # type: ignore
+):
+    """One eigen-ellipsoid surface vertex: template vertex `v` mapped through
+    the spatial block of M at voxel (i,j,k), the m5_6_5b M·u key simplification
+    (semi-axes = eigenvalues along eigenvectors, NO eigendecomposition), plus
+    the isotropic visibility floor. Shared by the shell and rod kernels."""
+    ut = tensor_field.ellipsoid_template[v]
+    m = tensor_field.M_am[i, j, k]
+    w = (
+        ti.Vector(
+            [
+                m[1, 1] * ut[0] + m[1, 2] * ut[1] + m[1, 3] * ut[2],
+                m[2, 1] * ut[0] + m[2, 2] * ut[1] + m[2, 3] * ut[2],
+                m[3, 1] * ut[0] + m[3, 2] * ut[1] + m[3, 3] * ut[2],
+            ]
+        )
+        + _ELLIPSOID_MESH_FLOOR * ut
+    )
+    return pos + 0.5 * size * w
+
+
+@ti.kernel
+def update_ellipsoid_mesh(
+    tensor_field: ti.template(),  # type: ignore
+    radius_vox: ti.f32,  # type: ignore
+    size: ti.f32,  # type: ignore
+    n_active: ti.i32,  # type: ignore
+):
+    """VIZ.5 (M5.23) — the "ellipsoid" viz (taichi MESH): one sample per 3D
+    angle on the S² Fibonacci shell of radius `radius_vox` around each defect
+    center; at each sample the unit-sphere template maps through the local M to
+    the shaded eigen-ellipsoid surface — a FULL-3D view (not a plane
+    cross-section), nearest-voxel sampling.
+
+    The m5_6_5b key simplification: for symmetric M the image of the unit
+    sphere IS the ellipsoid with semi-axes = eigenvalues along eigenvectors,
+        vertex = p + (size/2) · ((M_sp + floor·I) @ u_template)
+    so NO per-glyph eigendecomposition. M_sp is the spatial [1:4,1:4] block of
+    the 4×4 substrate (the time axis stays out of the render); `size` matches
+    the GUI Size slider (ellipsoid major diameter at vacuum λ₁ = 1).
+    Colors: flat director color for now (lighting conveys the shape; a
+    clock-phase palette is a later option). Slots beyond (n_centers, n_active)
+    collapse to the origin (zero-area triangles, invisible).
+    """
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    max_dim = ti.cast(tensor_field.max_grid_size, ti.f32)
+    n_centers = tensor_field.ellipsoid_n_centers[None]
+    zero_v = ti.Vector([0.0, 0.0, 0.0])
+    col = ti.Vector([_GLYPH_DIRECTOR_COLOR[0], _GLYPH_DIRECTOR_COLOR[1], _GLYPH_DIRECTOR_COLOR[2]])
+    for c, d, v in ti.ndrange(
+        tensor_field.ellipsoid_max_centers,
+        tensor_field.ellipsoid_max_dirs,
+        tensor_field.ellipsoid_tverts,
+    ):
+        base = (c * tensor_field.ellipsoid_max_dirs + d) * tensor_field.ellipsoid_tverts + v
+        if c < n_centers and d < n_active:
+            # Fibonacci-sphere shell point, direction d of n_active
+            zf = 1.0 - 2.0 * (ti.cast(d, ti.f32) + 0.5) / ti.cast(n_active, ti.f32)
+            rho = ti.sqrt(ti.max(1.0 - zf * zf, 0.0))
+            phi = ti.cast(d, ti.f32) * _ELLIPSOID_GOLDEN_ANGLE
+            u = ti.Vector([rho * ti.cos(phi), rho * ti.sin(phi), zf])
+            ctr = tensor_field.ellipsoid_centers[c]
+            s = ctr + radius_vox * u
+            i = ti.min(ti.max(ti.cast(ti.round(s[0]), ti.i32), 0), nx - 1)
+            j = ti.min(ti.max(ti.cast(ti.round(s[1]), ti.i32), 0), ny - 1)
+            k = ti.min(ti.max(ti.cast(ti.round(s[2]), ti.i32), 0), nz - 1)
+            pos = ti.Vector(
+                [(s[0] + 0.5) / max_dim, (s[1] + 0.5) / max_dim, (s[2] + 0.5) / max_dim]
+            )
+            tensor_field.ellipsoid_mesh_vertices[base] = _ellipsoid_vertex(
+                tensor_field, i, j, k, v, pos, size
+            )
+            tensor_field.ellipsoid_mesh_colors[base] = col
+        else:
+            tensor_field.ellipsoid_mesh_vertices[base] = zero_v
+            tensor_field.ellipsoid_mesh_colors[base] = zero_v
+
+
+# VIZ.5 Stage D — rod half-length as a multiple of the shell radius: the rods
+# PROTRUDE beyond the shell and the rings sit on the protruding outer sections
+# (matching the reference electron-clock composition; also keeps the rings
+# clear of shell-ellipsoid occlusion). Consumed by the launcher dispatch.
+# 2.4 so the rod tip clears the outermost ring row (2.24R, below).
+ELLIPSOID_ROD_SPAN = 2.4
+# Ring-row heights in SHELL-RADIUS units: the innermost row sits ONE full row
+# gap off the shell (maintainer refinements 2026-07-19: gaps doubled to 0.32R,
+# then the stack offset off the shell) → rows at 1.28R / 1.60R / 1.92R / 2.24R
+# per pole.
+_ROD_RING_H0 = 1.28
+_ROD_RING_STEP = 0.32
+
+
+@ti.kernel
+def update_rod_ellipsoids(
+    tensor_field: ti.template(),  # type: ignore
+    half_len_vox: ti.f32,  # type: ignore
+    ring_r_vox: ti.f32,  # type: ignore
+    size: ti.f32,  # type: ignore
+    n_ring_az: ti.i32,  # type: ignore
+    show_rods: ti.i32,  # type: ignore
+    show_rings: ti.i32,  # type: ignore
+):
+    """VIZ.5 (M5.23) Stage D — the disclination-ROD render. The rods are the
+    line-defect pair along the spin axis (ẑ in every M5 seed): the hedgehog's
+    radial director cannot stay smooth once the clock/spin structure rides it
+    (the hairy-ball constraint), so the biaxial seeds construct an escaped,
+    eigenvalue-melted core column, and that axis IS the angular-momentum /
+    magnetic-dipole axis of the electron picture. Two arms, per (center, slot):
+
+      - slots [0, rod_n): ROD-LINE samples along the axis, heights uniform in
+        [−half_len_vox, +half_len_vox] (gated by `show_rods`; delta-cyan so the
+        melted cores read apart from the shell); the degenerate / shrunken
+        ellipsoid shapes ARE the rod-core melt made visible
+      - remaining slots: ROD RINGS, `n_ring_az` ellipsoids per 2D angle (the
+        GUI Count slider drives the azimuth density, capped by the
+        ellipsoid_ring_az buffer ceiling) on circles of radius `ring_r_vox`
+        AROUND the cord: FOUR rows per pole (the reference figure's count) at
+        heights `_ROD_RING_H0 + _ROD_RING_STEP·row` in shell-radius units
+        (1.28R / 1.60R / 1.92R / 2.24R): the whole stack offset one row gap
+        OFF the shell, on the protruding outer rod sections (gated by
+        `show_rings`; director light-blue) — the one-value-per-2D-angle vortex
+        view placed on the actual defect line
+
+    Same nearest-voxel sampling + `_ellipsoid_vertex` M·u map as the shell;
+    inactive slots collapse to the origin (zero-area triangles, invisible).
+    """
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    max_dim = ti.cast(tensor_field.max_grid_size, ti.f32)
+    n_centers = tensor_field.ellipsoid_n_centers[None]
+    rod_n = tensor_field.ellipsoid_rod_n
+    zero_v = ti.Vector([0.0, 0.0, 0.0])
+    rod_col = ti.Vector([_GLYPH_ROD_COLOR[0], _GLYPH_ROD_COLOR[1], _GLYPH_ROD_COLOR[2]])
+    ring_col = ti.Vector(
+        [_GLYPH_DIRECTOR_COLOR[0], _GLYPH_DIRECTOR_COLOR[1], _GLYPH_DIRECTOR_COLOR[2]]
+    )
+    for c, r, v in ti.ndrange(
+        tensor_field.ellipsoid_max_centers,
+        tensor_field.ellipsoid_rod_slots,
+        tensor_field.ellipsoid_tverts,
+    ):
+        base = (c * tensor_field.ellipsoid_rod_slots + r) * tensor_field.ellipsoid_tverts + v
+        active = 0
+        px, py, pz = 0.0, 0.0, 0.0
+        col = rod_col
+        if c < n_centers:
+            ctr = tensor_field.ellipsoid_centers[c]
+            if r < rod_n:  # rod-line sample
+                if show_rods == 1:
+                    active = 1
+                    h = -half_len_vox + 2.0 * half_len_vox * ti.cast(r, ti.f32) / ti.cast(
+                        rod_n - 1, ti.f32
+                    )
+                    px, py, pz = ctr[0], ctr[1], ctr[2] + h
+            else:  # rod-ring sample (slot layout follows the LIVE azimuth count)
+                q = r - rod_n
+                ring_j = q // n_ring_az
+                az = q - ring_j * n_ring_az
+                if show_rings == 1 and ring_j < tensor_field.ellipsoid_ring_count:
+                    active = 1
+                    # 4 rows per pole at (H0 + STEP·row)·R, sign from j//4:
+                    # the stack starts one row gap off the shell (R derived
+                    # from the passed half-length via the span constant)
+                    r_shell = half_len_vox / ELLIPSOID_ROD_SPAN
+                    h = (2.0 * ti.cast(ring_j // 4, ti.f32) - 1.0) * (
+                        _ROD_RING_H0 + _ROD_RING_STEP * ti.cast(ring_j % 4, ti.f32)
+                    )
+                    ang = 2.0 * math.pi * ti.cast(az, ti.f32) / ti.cast(n_ring_az, ti.f32)
+                    px = ctr[0] + ring_r_vox * ti.cos(ang)
+                    py = ctr[1] + ring_r_vox * ti.sin(ang)
+                    pz = ctr[2] + h * r_shell
+                    col = ring_col
+        if active == 1:
+            i = ti.min(ti.max(ti.cast(ti.round(px), ti.i32), 0), nx - 1)
+            j = ti.min(ti.max(ti.cast(ti.round(py), ti.i32), 0), ny - 1)
+            k = ti.min(ti.max(ti.cast(ti.round(pz), ti.i32), 0), nz - 1)
+            pos = ti.Vector([(px + 0.5) / max_dim, (py + 0.5) / max_dim, (pz + 0.5) / max_dim])
+            tensor_field.ellipsoid_rod_vertices[base] = _ellipsoid_vertex(
+                tensor_field, i, j, k, v, pos, size
+            )
+            tensor_field.ellipsoid_rod_colors[base] = col
+        else:
+            tensor_field.ellipsoid_rod_vertices[base] = zero_v
+            tensor_field.ellipsoid_rod_colors[base] = zero_v
+
 
 # ================================================================
 # GLYPH RENDERING
@@ -58,6 +270,7 @@ from openwave.common import colormap
 #     distinct from the director's light-blue so "single" no longer collides with it.
 _GLYPH_DIRECTOR_COLOR = colormap.COLOR_MEDIUM[1]  # light blue — n̂ principal axis (orientation)
 _GLYPH_DELTA_COLOR = colormap.COLOR_FIELD[1]  # cyan — δ cross-bar (ellipsoid minor axis)
+_GLYPH_ROD_COLOR = colormap.ORANGE[1]  # orange — rod ellipsoid (line samples along the spin axis)
 _GLYPH_E_COLOR = colormap.GREEN[1]  # green — E-field single-color
 _GLYPH_B_COLOR = colormap.ORANGE[1]  # orange — B-field single-color
 
@@ -665,7 +878,10 @@ def update_flux_mesh_values(
             )
             tensor_field.fluxmesh_xy_vertices[i, j][2] = (
                 energyH_value / H_max * 0.3 * warp_mesh / 300.0
-                + (tensor_field.flux_mesh_planes[2] * (tensor_field.nz / tensor_field.max_grid_size))
+                + (
+                    tensor_field.flux_mesh_planes[2]
+                    * (tensor_field.nz / tensor_field.max_grid_size)
+                )
             )
         elif wave_menu == 5:  # Frank elastic density on ironbow (defect-focused palette)
             F_max = observables.energyF_global_avg_aJ[None] * 4.0 + 1e-10
@@ -674,7 +890,10 @@ def update_flux_mesh_values(
             )
             tensor_field.fluxmesh_xy_vertices[i, j][2] = (
                 energyF_value / F_max * 0.3 * warp_mesh / 300.0
-                + (tensor_field.flux_mesh_planes[2] * (tensor_field.nz / tensor_field.max_grid_size))
+                + (
+                    tensor_field.flux_mesh_planes[2]
+                    * (tensor_field.nz / tensor_field.max_grid_size)
+                )
             )
         elif (
             wave_menu == 6
@@ -731,9 +950,12 @@ def update_flux_mesh_values(
             warp_amt = 0.3 * warp_mesh / 300.0 / curl_s
             tensor_field.fluxmesh_xy_vertices[i, j] = ti.Vector(
                 [
-                    (ti.cast(i, ti.f32) + 0.5) / tensor_field.max_grid_size + curl_vec[0] * warp_amt,
-                    (ti.cast(j, ti.f32) + 0.5) / tensor_field.max_grid_size + curl_vec[1] * warp_amt,
-                    tensor_field.flux_mesh_planes[2] * (tensor_field.nz / tensor_field.max_grid_size)
+                    (ti.cast(i, ti.f32) + 0.5) / tensor_field.max_grid_size
+                    + curl_vec[0] * warp_amt,
+                    (ti.cast(j, ti.f32) + 0.5) / tensor_field.max_grid_size
+                    + curl_vec[1] * warp_amt,
+                    tensor_field.flux_mesh_planes[2]
+                    * (tensor_field.nz / tensor_field.max_grid_size)
                     + curl_vec[2] * warp_amt,
                 ]
             )
@@ -783,7 +1005,10 @@ def update_flux_mesh_values(
             )
             tensor_field.fluxmesh_xz_vertices[i, k][1] = (
                 energyH_value / H_max * 0.3 * warp_mesh / 300.0
-                + (tensor_field.flux_mesh_planes[1] * (tensor_field.ny / tensor_field.max_grid_size))
+                + (
+                    tensor_field.flux_mesh_planes[1]
+                    * (tensor_field.ny / tensor_field.max_grid_size)
+                )
             )
         elif wave_menu == 5:  # Frank elastic density on ironbow
             F_max = observables.energyF_global_avg_aJ[None] * 4.0 + 1e-10
@@ -792,7 +1017,10 @@ def update_flux_mesh_values(
             )
             tensor_field.fluxmesh_xz_vertices[i, k][1] = (
                 energyF_value / F_max * 0.3 * warp_mesh / 300.0
-                + (tensor_field.flux_mesh_planes[1] * (tensor_field.ny / tensor_field.max_grid_size))
+                + (
+                    tensor_field.flux_mesh_planes[1]
+                    * (tensor_field.ny / tensor_field.max_grid_size)
+                )
             )
         elif (
             wave_menu == 6
@@ -842,10 +1070,13 @@ def update_flux_mesh_values(
             warp_amt = 0.3 * warp_mesh / 300.0 / curl_s
             tensor_field.fluxmesh_xz_vertices[i, k] = ti.Vector(
                 [
-                    (ti.cast(i, ti.f32) + 0.5) / tensor_field.max_grid_size + curl_vec[0] * warp_amt,
-                    tensor_field.flux_mesh_planes[1] * (tensor_field.ny / tensor_field.max_grid_size)
+                    (ti.cast(i, ti.f32) + 0.5) / tensor_field.max_grid_size
+                    + curl_vec[0] * warp_amt,
+                    tensor_field.flux_mesh_planes[1]
+                    * (tensor_field.ny / tensor_field.max_grid_size)
                     + curl_vec[1] * warp_amt,
-                    (ti.cast(k, ti.f32) + 0.5) / tensor_field.max_grid_size + curl_vec[2] * warp_amt,
+                    (ti.cast(k, ti.f32) + 0.5) / tensor_field.max_grid_size
+                    + curl_vec[2] * warp_amt,
                 ]
             )
 
@@ -894,7 +1125,10 @@ def update_flux_mesh_values(
             )
             tensor_field.fluxmesh_yz_vertices[j, k][0] = (
                 energyH_value / H_max * 0.3 * warp_mesh / 300.0
-                + (tensor_field.flux_mesh_planes[0] * (tensor_field.nx / tensor_field.max_grid_size))
+                + (
+                    tensor_field.flux_mesh_planes[0]
+                    * (tensor_field.nx / tensor_field.max_grid_size)
+                )
             )
         elif wave_menu == 5:  # Frank elastic density on ironbow
             F_max = observables.energyF_global_avg_aJ[None] * 4.0 + 1e-10
@@ -903,7 +1137,10 @@ def update_flux_mesh_values(
             )
             tensor_field.fluxmesh_yz_vertices[j, k][0] = (
                 energyF_value / F_max * 0.3 * warp_mesh / 300.0
-                + (tensor_field.flux_mesh_planes[0] * (tensor_field.nx / tensor_field.max_grid_size))
+                + (
+                    tensor_field.flux_mesh_planes[0]
+                    * (tensor_field.nx / tensor_field.max_grid_size)
+                )
             )
         elif (
             wave_menu == 6
@@ -953,10 +1190,13 @@ def update_flux_mesh_values(
             warp_amt = 0.3 * warp_mesh / 300.0 / curl_s
             tensor_field.fluxmesh_yz_vertices[j, k] = ti.Vector(
                 [
-                    tensor_field.flux_mesh_planes[0] * (tensor_field.nx / tensor_field.max_grid_size)
+                    tensor_field.flux_mesh_planes[0]
+                    * (tensor_field.nx / tensor_field.max_grid_size)
                     + curl_vec[0] * warp_amt,
-                    (ti.cast(j, ti.f32) + 0.5) / tensor_field.max_grid_size + curl_vec[1] * warp_amt,
-                    (ti.cast(k, ti.f32) + 0.5) / tensor_field.max_grid_size + curl_vec[2] * warp_amt,
+                    (ti.cast(j, ti.f32) + 0.5) / tensor_field.max_grid_size
+                    + curl_vec[1] * warp_amt,
+                    (ti.cast(k, ti.f32) + 0.5) / tensor_field.max_grid_size
+                    + curl_vec[2] * warp_amt,
                 ]
             )
 
@@ -998,3 +1238,233 @@ def sample_position_to_render(
             [ti.cast(i, ti.f32), ti.cast(j, ti.f32), ti.cast(k, ti.f32)]
         )
         tensor_field.position_render[render_idx] = displaced / max_dim
+
+
+# ================================================================
+# M5.23.2 arm (4) — ENERGY-DENSITY ISOSURFACE (marching tetrahedra)
+# ================================================================
+# Extracts the level surface of the live Hamiltonian density
+# (observables.energyH_density_aJ, computed per-frame by the launcher's
+# compute_field_observables — on the canonical path V4 + curvature are
+# EXACTLY zero on the covariant vacuum, so level sets are meaningful with
+# no background subtraction, the M5.24 true-zero property).
+#
+# METHOD: marching TETRAHEDRA on the 6-tet decomposition of each grid cell
+# around the c0-c6 diagonal — chosen over classic marching cubes for a
+# TABLE-FREE kernel (the 256-case tri table is replaced by 16 enumerable
+# per-tet cases, auditable by reading; the cost is ~2x triangles for the
+# same surface, covered by the ISO_MAX_TRIS budget + overflow warning).
+# Triangles are emitted as independent soup via an atomic counter; the
+# render draws two_sided so winding order is not load-bearing (same rule
+# as the rod pool). Vertices land in the shared render space
+# (voxel + 0.5)/max_grid_size.
+
+_ISO_COLOR = (1.0, 0.84, 0.30)  # gold — energy surface
+_ISO_EPS = 1e-12
+
+
+@ti.kernel
+def iso_density_max(
+    tensor_field: ti.template(),  # type: ignore
+    observables: ti.template(),  # type: ignore
+):
+    """Density max over the interior EXCLUDING a 3-voxel boundary margin →
+    tensor_field.iso_level_max (the GUI Level slider is a fraction of this
+    per-frame scale). The margin matters on LOADED research states: the
+    fixed-J endpoint's density max sits at the disclination-rod / pin-shell
+    boundary junction (measured 4.2x the core peak at the m5_23_2 build) —
+    normalizing on the grid max would compress the slider's useful range to
+    the artifact. The surface itself still marches the full valid region
+    (boundary blobs render, clipped at the region edge like any marcher)."""
+    tensor_field.iso_level_max[None] = 0.0
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    for i, j, k in ti.ndrange((3, nx - 3), (3, ny - 3), (3, nz - 3)):
+        ti.atomic_max(tensor_field.iso_level_max[None], observables.energyH_density_aJ[i, j, k])
+
+
+@ti.func
+def _iso_lerp(pa, pb, va: ti.f32, vb: ti.f32, lv: ti.f32):  # type: ignore
+    """Edge intersection of the level lv on segment (pa, va)-(pb, vb)."""
+    t = 0.5
+    if ti.abs(vb - va) > _ISO_EPS:
+        t = (lv - va) / (vb - va)
+    t = ti.min(ti.max(t, 0.0), 1.0)
+    return pa + t * (pb - pa)
+
+
+@ti.func
+def _iso_emit(tensor_field: ti.template(), pa, pb, pc):  # type: ignore
+    """Append one triangle to the soup (budget-clamped; the raw counter
+    keeps counting so the launcher can report overflow honestly)."""
+    idx = ti.atomic_add(tensor_field.iso_tri_count[None], 1)
+    if idx < tensor_field.iso_max_tris:
+        col = ti.Vector([_ISO_COLOR[0], _ISO_COLOR[1], _ISO_COLOR[2]])
+        tensor_field.iso_vertices[3 * idx + 0] = pa
+        tensor_field.iso_vertices[3 * idx + 1] = pb
+        tensor_field.iso_vertices[3 * idx + 2] = pc
+        tensor_field.iso_colors[3 * idx + 0] = col
+        tensor_field.iso_colors[3 * idx + 1] = col
+        tensor_field.iso_colors[3 * idx + 2] = col
+
+
+@ti.func
+def _iso_tet(tensor_field: ti.template(), p0, p1, p2, p3, v0: ti.f32, v1: ti.f32, v2: ti.f32, v3: ti.f32, lv: ti.f32):  # type: ignore
+    """Emit the level-surface triangles of one tetrahedron (16 cases:
+    0/4 inside → nothing, 1/3 inside → one triangle, 2 inside → two)."""
+    b0, b1, b2, b3 = v0 > lv, v1 > lv, v2 > lv, v3 > lv
+    n_in = int(b0) + int(b1) + int(b2) + int(b3)
+    if n_in == 1 or n_in == 3:
+        # the LONE vertex (inside if n_in == 1, outside if n_in == 3)
+        lone_is_in = n_in == 1
+        la, va = p0, v0
+        ob, vb = p1, v1
+        oc, vc = p2, v2
+        od, vd = p3, v3
+        if b1 == lone_is_in and b0 != lone_is_in:
+            la, va = p1, v1
+            ob, vb = p0, v0
+        elif b2 == lone_is_in and b0 != lone_is_in and b1 != lone_is_in:
+            la, va = p2, v2
+            oc, vc = p0, v0
+        elif b3 == lone_is_in and b0 != lone_is_in and b1 != lone_is_in and b2 != lone_is_in:
+            la, va = p3, v3
+            od, vd = p0, v0
+        qa = _iso_lerp(la, ob, va, vb, lv)
+        qb = _iso_lerp(la, oc, va, vc, lv)
+        qc = _iso_lerp(la, od, va, vd, lv)
+        _iso_emit(tensor_field, qa, qb, qc)
+    elif n_in == 2:
+        # the inside PAIR (a, b) vs the outside pair (c, d): 6 combinations
+        pa, va = p0, v0
+        pb, vb = p1, v1
+        pc, vc = p2, v2
+        pd, vd = p3, v3
+        if b0 and b1:
+            pass  # (0,1) in / (2,3) out — the default assignment
+        elif b0 and b2:
+            pb, vb = p2, v2
+            pc, vc = p1, v1
+        elif b0 and b3:
+            pb, vb = p3, v3
+            pd, vd = p1, v1
+        elif b1 and b2:
+            pa, va = p1, v1
+            pb, vb = p2, v2
+            pc, vc = p0, v0
+        elif b1 and b3:
+            pa, va = p1, v1
+            pb, vb = p3, v3
+            pd, vd = p0, v0
+        else:  # b2 and b3
+            pa, va = p2, v2
+            pb, vb = p3, v3
+            pc, vc = p0, v0
+            pd, vd = p1, v1
+        qa = _iso_lerp(pa, pc, va, vc, lv)
+        qb = _iso_lerp(pa, pd, va, vd, lv)
+        qc = _iso_lerp(pb, pd, vb, vd, lv)
+        qd = _iso_lerp(pb, pc, vb, vc, lv)
+        _iso_emit(tensor_field, qa, qb, qc)
+        _iso_emit(tensor_field, qa, qc, qd)
+
+
+@ti.kernel
+def marching_tetrahedra(
+    tensor_field: ti.template(),  # type: ignore
+    observables: ti.template(),  # type: ignore
+    level: ti.f32,  # type: ignore
+):
+    """Fill the iso tri-soup buffers with the level surface of the energy
+    density. Cells span the density's valid interior [1, n-2] (the boundary
+    ring is zero by kernel convention). Collapses unused slots."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    max_dim = ti.cast(tensor_field.max_grid_size, ti.f32)
+    tensor_field.iso_tri_count[None] = 0
+    for i, j, k in ti.ndrange((1, nx - 2), (1, ny - 2), (1, nz - 2)):
+        # cube corners (standard order): c0..c7
+        v000 = observables.energyH_density_aJ[i, j, k]
+        v100 = observables.energyH_density_aJ[i + 1, j, k]
+        v110 = observables.energyH_density_aJ[i + 1, j + 1, k]
+        v010 = observables.energyH_density_aJ[i, j + 1, k]
+        v001 = observables.energyH_density_aJ[i, j, k + 1]
+        v101 = observables.energyH_density_aJ[i + 1, j, k + 1]
+        v111 = observables.energyH_density_aJ[i + 1, j + 1, k + 1]
+        v011 = observables.energyH_density_aJ[i, j + 1, k + 1]
+        # early out: cell entirely on one side
+        vmin = ti.min(ti.min(ti.min(v000, v100), ti.min(v110, v010)), ti.min(ti.min(v001, v101), ti.min(v111, v011)))
+        vmax = ti.max(ti.max(ti.max(v000, v100), ti.max(v110, v010)), ti.max(ti.max(v001, v101), ti.max(v111, v011)))
+        if vmin <= level and level < vmax:
+            x0 = (ti.cast(i, ti.f32) + 0.5) / max_dim
+            y0 = (ti.cast(j, ti.f32) + 0.5) / max_dim
+            z0 = (ti.cast(k, ti.f32) + 0.5) / max_dim
+            d = 1.0 / max_dim
+            p000 = ti.Vector([x0, y0, z0])
+            p100 = ti.Vector([x0 + d, y0, z0])
+            p110 = ti.Vector([x0 + d, y0 + d, z0])
+            p010 = ti.Vector([x0, y0 + d, z0])
+            p001 = ti.Vector([x0, y0, z0 + d])
+            p101 = ti.Vector([x0 + d, y0, z0 + d])
+            p111 = ti.Vector([x0 + d, y0 + d, z0 + d])
+            p011 = ti.Vector([x0, y0 + d, z0 + d])
+            # 6-tet decomposition around the c000-c111 diagonal
+            _iso_tet(tensor_field, p000, p101, p100, p111, v000, v101, v100, v111, level)
+            _iso_tet(tensor_field, p000, p100, p110, p111, v000, v100, v110, v111, level)
+            _iso_tet(tensor_field, p000, p110, p010, p111, v000, v110, v010, v111, level)
+            _iso_tet(tensor_field, p000, p010, p011, p111, v000, v010, v011, v111, level)
+            _iso_tet(tensor_field, p000, p011, p001, p111, v000, v011, v001, v111, level)
+            _iso_tet(tensor_field, p000, p001, p101, p111, v000, v001, v101, v111, level)
+
+
+@ti.kernel
+def collapse_iso_tail(tensor_field: ti.template()):  # type: ignore
+    """Zero the vertex slots beyond the emitted count (degenerate, invisible).
+    Run after marching_tetrahedra; count is budget-clamped here."""
+    n_used = ti.min(tensor_field.iso_tri_count[None], tensor_field.iso_max_tris)
+    zero_v = ti.Vector([0.0, 0.0, 0.0])
+    for t in range(tensor_field.iso_max_tris):
+        if t >= n_used:
+            tensor_field.iso_vertices[3 * t + 0] = zero_v
+            tensor_field.iso_vertices[3 * t + 1] = zero_v
+            tensor_field.iso_vertices[3 * t + 2] = zero_v
+
+
+@ti.kernel
+def update_iso_ellipsoids(
+    tensor_field: ti.template(),  # type: ignore
+    size: ti.f32,  # type: ignore
+    n_cover: ti.i32,  # type: ignore
+):
+    """The author's "surface uniformly covered with ellipsoids" variant:
+    the VIZ.5 M·u ellipsoid samples placed at (strided) isosurface triangle
+    centroids instead of the S² shell — writes the SHELL pool buffers
+    (exclusive with the shell view; the launcher gates them). n_cover =
+    live sample budget (the GUI Count slider × centers, slot-clamped)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    max_dim = ti.cast(tensor_field.max_grid_size, ti.f32)
+    n_tri = ti.min(tensor_field.iso_tri_count[None], tensor_field.iso_max_tris)
+    n_slots = tensor_field.ellipsoid_max_centers * tensor_field.ellipsoid_max_dirs
+    n_act = ti.min(ti.min(n_cover, n_slots), n_tri)
+    stride = 1
+    if n_act > 0:
+        stride = ti.max(n_tri // n_act, 1)
+    col = ti.Vector([_ISO_COLOR[0], _ISO_COLOR[1], _ISO_COLOR[2]])
+    zero_v = ti.Vector([0.0, 0.0, 0.0])
+    for s, v in ti.ndrange(n_slots, tensor_field.ellipsoid_tverts):
+        base = s * tensor_field.ellipsoid_tverts + v
+        t = s * stride
+        if s < n_act and t < n_tri:
+            ctr = (
+                tensor_field.iso_vertices[3 * t + 0]
+                + tensor_field.iso_vertices[3 * t + 1]
+                + tensor_field.iso_vertices[3 * t + 2]
+            ) / 3.0
+            i = ti.min(ti.max(ti.cast(ti.round(ctr[0] * max_dim - 0.5), ti.i32), 0), nx - 1)
+            j = ti.min(ti.max(ti.cast(ti.round(ctr[1] * max_dim - 0.5), ti.i32), 0), ny - 1)
+            k = ti.min(ti.max(ti.cast(ti.round(ctr[2] * max_dim - 0.5), ti.i32), 0), nz - 1)
+            tensor_field.ellipsoid_mesh_vertices[base] = _ellipsoid_vertex(
+                tensor_field, i, j, k, v, ctr, size
+            )
+            tensor_field.ellipsoid_mesh_colors[base] = col
+        else:
+            tensor_field.ellipsoid_mesh_vertices[base] = zero_v
+            tensor_field.ellipsoid_mesh_colors[base] = zero_v

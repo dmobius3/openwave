@@ -162,7 +162,7 @@ See the [LICENSE](LICENSE) and [NOTICE](NOTICE) files for full terms.
 
 ## Trademark Notice
 
-"OpenWave" is a trademark of OpenWave Labs. See [TRADEMARK](TRADEMARK) for usage guidelines.
+OpenWave™ is a trademark of the OpenWave project. See [TRADEMARK.md](TRADEMARK.md) for usage guidelines.
 
 ## Need Help?
 

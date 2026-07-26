@@ -95,4 +95,4 @@ The notes also moved three of our open questions in useful ways, folded into § 
 
 ## 8. After the call
 
-Phase 2 ([roadmap](../m7_roadmap.md), M7.15-M7.20): the helicity-pair test (pending § 3), then magnetic force, gravity, nuclear, annihilation (with the in-model vacuum-cure check as its pre-step: linearizing WITH the scalar/Gauss sector, plus the variable-λ mass profile from the working notes), lepton / neutrino family (carrying the localized-branch scan over `(λ, m_c)`), dark matter; the coverage column stays staged in [`preview_models.md`](../preview_models.md) until the research matures (M7.21).
+Phase 2 ([roadmap](../m7_roadmap.md), M7.15-M7.20): the helicity-pair test (pending § 3), then magnetic force, gravity, nuclear, annihilation (with the in-model vacuum-cure check as its pre-step: linearizing WITH the scalar/Gauss sector, plus the variable-λ mass profile from the working notes), lepton / neutrino family (carrying the localized-branch scan over `(λ, m_c)`), dark matter; the coverage column stayed staged as a draft until the research matured (published to [`MODELS.md`](../../../../../MODELS.md) at M7.21).

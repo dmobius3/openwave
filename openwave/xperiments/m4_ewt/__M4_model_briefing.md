@@ -6,6 +6,8 @@
 > electron-soliton search is the live open work. It shares the "EWT (M4)"
 > [`MODELS.md`](../../../MODELS.md) column with M3.
 
+![M1_hero](../../../images/x_amplitude.png)
+
 ## Identity
 
 | Field | Value |
@@ -13,6 +15,7 @@
 | Model ID | M4 |
 | Name | EWT (Energy Wave Theory) |
 | Author | Jeff Yee, built on Milo Wolff + Gabriel LaFreniere pioneer work |
+| Author contact | GitHub [@jeffsyee](https://github.com/jeffsyee), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6 |
 | Extension | Łukasz Smoliński (ψ³ soliton stabilizer, the 1-3-6 arrangement) |
 | Relationship | the vector-PDE successor to M3 (Wolff-LaFreniere scalar); same EWT family, shares the coverage column (see [`../m3_wolff_lafreniere/__M3_model_briefing.md`](../m3_wolff_lafreniere/__M3_model_briefing.md)) |
 | Primary sources | Yee energywavetheory.com papers (01-10 + supplements); Smoliński soliton paper (`theory/`) |

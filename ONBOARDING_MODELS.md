@@ -7,7 +7,7 @@ This guide is for two readers:
 | **A model author** | Self-screen whether your framework fits the platform, then scaffold it as a new column with rigor. |
 | **An OpenWave maintainer** | Run a consistent first-pass evaluation when a new model is proposed, so every column is admitted on the same terms. |
 
-It complements two existing docs and does not replace them: [`MODELS.md`](MODELS.md) defines the comparison table and the shared criteria, and [`CONTRIBUTING.md`](CONTRIBUTING.md) is the canonical setup + pull-request + DCO reference. This doc adds the part those two leave open: **how to tell whether a model belongs here, and how to test it honestly before it becomes a column.**
+It complements three existing docs and does not replace them: [`MODELS.md`](MODELS.md) defines the comparison table and the shared criteria, [`CONTRIBUTING.md`](CONTRIBUTING.md) is the canonical setup + pull-request + DCO reference, and [`REPRODUCE.md`](REPRODUCE.md) is the clean-clone path from any published claim to the command that regenerates it (the reproducibility bar your model's results will be held to). This doc adds the part those two leave open: **how to tell whether a model belongs here, and how to test it honestly before it becomes a column.**
 
 The platform bar, restated: **reproducibility, not orthodoxy.** Unconventional frameworks are explicitly in scope. A documented negative (a runnable script showing "this does not work, and here is why") is as valuable as a positive. What is *not* in scope is an unfalsifiable claim, or a numerical agreement that cannot be independently reproduced from stated inputs.
 
@@ -139,8 +139,9 @@ Status legend (same as the table):
 | ✅ | validated in-platform (runnable reproduction exists) |
 | ⚠️ | partial, or validated with documented caveats |
 | ❌ | tested and failed, or honest negative on record |
-| 🔶 | in progress |
 | 🚧 | planned, not yet tested in-platform |
+
+A criterion is scored at one of those four in the table. 🔶 (in progress) is used on per-model pages (roadmaps, question trackers, particle hunts) where a claim is mid-flight; in the table a mid-flight criterion is 🚧 until something runnable backs it, then ⚠️ or ✅.
 
 A good first PR adds the column plus a model directory with one or two cells actually backed (a runnable script + a note), and the rest marked 🚧 honestly. Finite-difference / first-pass now, fuller validation later, is fine and expected.
 
@@ -274,6 +275,7 @@ A practical pattern: run the reproducer and the independent recomputer first (do
 | [`MODELS.md`](MODELS.md) | The comparison table, the shared criteria, the validation legend |
 | [`m5_liquid_crystal/__M5_model_briefing.md`](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | The model-briefing template (Section 3.1), a worked one-pager to copy |
 | [`m7_hydroboros/theory/_CITATIONS.md`](openwave/xperiments/m7_hydroboros/theory/_CITATIONS.md) | The theory-corpus citations template (Section 3.2), bibliography + gitignored-file manifest |
+| [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) | If your program tests another column's field family: what structure you may assume, and how a soldered family is scored |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Canonical setup, fork/branch/PR flow, DCO sign-off |
 | [`SYS_ARCH.md`](SYS_ARCH.md) | Repository structure and tech stack |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Community expectations |

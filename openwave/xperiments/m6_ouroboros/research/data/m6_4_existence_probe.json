@@ -1,0 +1,40 @@
+{
+  "task": "M6.4 N4b existence probe",
+  "g": 0.5,
+  "lam": 0.0,
+  "grid": {
+    "n": 41,
+    "lo": 0.02,
+    "hi": 1.2
+  },
+  "panels": [
+    {
+      "omega": 0.3,
+      "k_osc": 1.044,
+      "grid_points_ok": 1681,
+      "grid_points_diverged": 0,
+      "min_abs_F": 9.631566419510182,
+      "median_abs_F": 10.7172476639331,
+      "cells_with_both_sign_changes": 0
+    },
+    {
+      "omega": 0.6,
+      "k_osc": 1.1662,
+      "grid_points_ok": 1681,
+      "grid_points_diverged": 0,
+      "min_abs_F": 0.4786576063894409,
+      "median_abs_F": 1.1765117688182376,
+      "cells_with_both_sign_changes": 0
+    },
+    {
+      "omega": 0.9,
+      "k_osc": 1.3454,
+      "grid_points_ok": 1681,
+      "grid_points_diverged": 0,
+      "min_abs_F": 0.0065458761672015885,
+      "median_abs_F": 0.32961546568226774,
+      "cells_with_both_sign_changes": 31
+    }
+  ],
+  "runtime_s": 93.5
+}

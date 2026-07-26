@@ -1,0 +1,3 @@
+wrote ../plots/m5_21_3_film_basic_p1sp_clock.png
+wrote ../plots/m5_21_3_film_thermal_p1sp_clock.png
+films written for p1sp_clock

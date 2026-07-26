@@ -644,6 +644,16 @@ def evolve_M_4d(
 # → collapse; align 1.0 → 0.55 by 6000) — the f64-vs-f32 6000-step
 # scheme-vs-precision discrimination is the active investigation.
 #
+# STATUS (M5.24 audit, 2026-07-19): the canonical registry names this stack
+# the HISTORICAL PRECEDENT of the structural disease later proven at M5.20.3
+# (the η-null constraint + indefinite H; research m5_theory_canonical.md § 2:
+# "every cheap positive-inertia kinetic has slow growing modes — only the
+# faithful kinetic works"). Its refined research descendant (the true-L EL
+# solve) is DIAGNOSTICS-ONLY by verdict (§ 2 row 1: the free-EL IVP is
+# ill-posed). This mode is KEPT as the era 4D path for the dressed-seed
+# xperiments; the verified-L era production dynamics is the M5.24 CANONICAL
+# section below.
+#
 # UNITS + NORMALIZATION: these kernels run the 2c-1 natural convention
 # (c = 1, τ = c·t) — the caller passes dt_eff = c_amrs·dt_rs (am). Fluxes and
 # A both use the 2c-1 4× normalization (the production 8× leapfrog flux is 2×
@@ -901,6 +911,720 @@ def update_M_4d_constrained(tensor_field: ti.template(), dt_eff: ti.f32):  # typ
         tensor_field.M_new_am[i, j, k] = (
             tensor_field.M_am[i, j, k] + dt_eff * tensor_field.Md_am[i, j, k]
         )
+
+
+# ================================================================
+# M5.24 — THE CANONICAL REGULARIZATION STACK (verified-L era port)
+# ================================================================
+# The production port of the dynamics formulation of record (research
+# m5_theory_canonical.md § 2 row 6): canonical kinetic ½‖Ṁ‖²_F + the
+# η-signed curvature energy + the universal spectral potential V4,
+# integrated by the position-Verlet triple-buffer leapfrog. Ported from
+# the audited M5.21.3 instrument (research/scripts/m5_21_3_a_4d.py:
+# comm_eta / inner_eta / e_parts / exact grad; complex-step gated 5e-9,
+# SO(1,3) invariance 1e-9, vacuum ≡ 0, 3D block-diag regression 1e-12).
+#
+#   eta = diag(-1, 1, 1, 1)          [A, B]_eta = A·eta·B − B·eta·A
+#   <F, G>_eta = tr(eta·F·eta·Gᵀ)
+#   E_u = 4 Σ_{i<j} <F_ij, F_ij>_eta ,  F_ij = [A_i, A_j]_eta ,  A_i = ∂_i M
+#   V4  = w Σ_{p=1..4} (tr((M·eta)^p) − C_p)² ,  C_p = sg^p + 1 + δ^p
+#   vacuum: M_vac = diag(−sg, 1, δ, 0)  (time-time NEGATIVE; V4(M_vac) = 0 exact)
+#
+# STENCIL: the M5.21.2b symmetrized pair (½(fwd + bwd) with exact adjoints,
+# the well-posedness certificate) — NOT the 2h central diff of the older
+# paths (the deep-statics checkerboard anti-recipe). Two flux passes per
+# step (one per branch) reusing curv_flux_x/y/z; M_new_am doubles as the
+# force accumulator so no extra field is allocated.
+#
+# LABEL (canonical § 2 row 6): this stack is the RUNNABLE REGULARIZATION,
+# "fine for statics-adjacent dynamics questions and films" — exactly the
+# launcher's use class. It is NOT the true-L evolution (the free EL IVP is
+# ill-posed, § 2 row 1); never present its dynamics as the theory's own.
+#
+# UNITS: τ-units (c = 1) like the constrained path — the caller passes
+# dt_eff = c_amrs·dt_rs. dt cap: the V4 stiff g-mode (ω ≈ 78 at g = 8,
+# canonical § 4 gap ladders) bounds dt_eff < 2/78 ≈ 0.026; the certified
+# full-3D working step is dt_eff = 0.005 (the 3D twin, canonical § 3; the
+# axisym 0.02 is margin-critical in 3D f32 — the M5.24 selftest measured
+# NaN there), enforced by the launcher's compute_timestep cap, NOT here.
+
+W1_SPECTRAL = 7.24023879e-4  # the locked potential weight w (WSCALE, canonical § 4)
+
+
+@ti.func
+def eta_left(m):  # type: ignore
+    """eta·M for eta = diag(−1,1,1,1): row 0 negated."""
+    out = m
+    for c_ in ti.static(range(4)):
+        out[0, c_] = -m[0, c_]
+    return out
+
+
+@ti.func
+def eta_right(m):  # type: ignore
+    """M·eta for eta = diag(−1,1,1,1): column 0 negated."""
+    out = m
+    for r_ in ti.static(range(4)):
+        out[r_, 0] = -m[r_, 0]
+    return out
+
+
+@ti.func
+def comm_eta44(a, b):  # type: ignore
+    """[A, B]_eta = A·eta·B − B·eta·A (the M5.18 verified bracket)."""
+    return eta_right(a) @ b - eta_right(b) @ a
+
+
+@ti.func
+def inner_eta44(f, g_mat):  # type: ignore
+    """<F, G>_eta = tr(eta·F·eta·Gᵀ) = Σ_ab (eta·F·eta)_ab · G_ab."""
+    return (eta_left(eta_right(f)) * g_mat).sum()
+
+
+@ti.func
+def v4_of(m, sg: ti.f32, delta: ti.f32, w1: ti.f32):  # type: ignore
+    """The universal spectral potential V4 = w·Σ_{p=1..4} (tr((M·eta)^p) − C_p)².
+
+    C_p = sg^p + 1 + δ^p; exact zero on the covariant vacuum diag(−sg, 1, δ, 0)."""
+    me = eta_right(m)
+    p1 = me
+    p2 = me @ me
+    p3 = p2 @ me
+    p4 = p3 @ me
+    t1 = p1.trace()
+    t2 = p2.trace()
+    t3 = p3.trace()
+    t4 = p4.trace()
+    c1 = sg + 1.0 + delta
+    c2 = sg * sg + 1.0 + delta * delta
+    c3 = sg * sg * sg + 1.0 + delta * delta * delta
+    c4 = sg * sg * sg * sg + 1.0 + delta * delta * delta * delta
+    return w1 * (
+        (t1 - c1) ** 2 + (t2 - c2) ** 2 + (t3 - c3) ** 2 + (t4 - c4) ** 2
+    )
+
+
+@ti.func
+def dv4_of(m, sg: ti.f32, delta: ti.f32, w1: ti.f32):  # type: ignore
+    """∂V4/∂M (symmetrized): Σ_p 2w(t_p − C_p)·p·(eta·(M·eta)^(p−1))ᵀ — the exact
+    reference gradient (m5_21_3_a_4d.grad, complex-step gated)."""
+    me = eta_right(m)
+    p0 = ti.Matrix.identity(ti.f32, 4)
+    p1 = me
+    p2 = me @ me
+    p3 = p2 @ me
+    t1 = p1.trace()
+    t2 = p2.trace()
+    t3 = (p2 @ me).trace()
+    t4 = (p3 @ me).trace()
+    c1 = sg + 1.0 + delta
+    c2 = sg * sg + 1.0 + delta * delta
+    c3 = sg * sg * sg + 1.0 + delta * delta * delta
+    c4 = sg * sg * sg * sg + 1.0 + delta * delta * delta * delta
+    gv = (
+        (2.0 * w1 * (t1 - c1) * 1.0) * eta_left(p0).transpose()
+        + (2.0 * w1 * (t2 - c2) * 2.0) * eta_left(p1).transpose()
+        + (2.0 * w1 * (t3 - c3) * 3.0) * eta_left(p2).transpose()
+        + (2.0 * w1 * (t4 - c4) * 4.0) * eta_left(p3).transpose()
+    )
+    return 0.5 * (gv + gv.transpose())
+
+
+@ti.kernel
+def compute_eta_flux(tensor_field: ti.template(), branch: ti.i32, dx_eta: ti.f32):  # type: ignore
+    """Per-cell η-curvature flux dA_i = ∂E_u/∂A_i for one stencil branch
+    (0 = fwd, 1 = bwd) → curv_flux_x/y/z. From the reference grad():
+
+        F_ij = [A_i, A_j]_eta ,  WF = 8·eta·F·eta
+        dA_i += WF·(A_j·eta) − (eta·A_j)·WF     (A symmetric)
+        dA_j += (eta·A_i)·WF − WF·(A_i·eta)
+
+    A_i = one-sided ∂_i M (fwd/bwd), zero where the branch neighbor is
+    outside the grid (the reference d1 edge convention). Valid at every
+    cell; the evolve kernels apply the exact adjoint gather.
+
+    dx_eta (M5.24 round 2): the grid spacing in the CANONICAL unit system.
+    Pass the research grid unit (config ETA_DX, e.g. 1.5 = the m5_21_2b/3 h)
+    to run the launcher as a research-twin: the physical dx_am (~15.6 at 64³
+    over 1 fm) weakens the curvature term ~100× against the dimensionless V4
+    and distorts the dynamics balance. Default wiring falls back to dx_am."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dx = 1.0 / dx_eta
+    for i, j, k in ti.ndrange(nx, ny, nz):
+        m0 = tensor_field.M_am[i, j, k]
+        ax_ = ti.Matrix.zero(ti.f32, 4, 4)
+        ay_ = ti.Matrix.zero(ti.f32, 4, 4)
+        az_ = ti.Matrix.zero(ti.f32, 4, 4)
+        if branch == 0:  # fwd
+            if i <= nx - 2:
+                ax_ = (tensor_field.M_am[i + 1, j, k] - m0) * inv_dx
+            if j <= ny - 2:
+                ay_ = (tensor_field.M_am[i, j + 1, k] - m0) * inv_dx
+            if k <= nz - 2:
+                az_ = (tensor_field.M_am[i, j, k + 1] - m0) * inv_dx
+        else:  # bwd
+            if i >= 1:
+                ax_ = (m0 - tensor_field.M_am[i - 1, j, k]) * inv_dx
+            if j >= 1:
+                ay_ = (m0 - tensor_field.M_am[i, j - 1, k]) * inv_dx
+            if k >= 1:
+                az_ = (m0 - tensor_field.M_am[i, j, k - 1]) * inv_dx
+        fxy = comm_eta44(ax_, ay_)
+        fxz = comm_eta44(ax_, az_)
+        fyz = comm_eta44(ay_, az_)
+        wxy = 8.0 * eta_left(eta_right(fxy))
+        wxz = 8.0 * eta_left(eta_right(fxz))
+        wyz = 8.0 * eta_left(eta_right(fyz))
+        tensor_field.curv_flux_x[i, j, k] = (
+            wxy @ eta_right(ay_) - eta_left(ay_) @ wxy
+            + wxz @ eta_right(az_) - eta_left(az_) @ wxz
+        )
+        tensor_field.curv_flux_y[i, j, k] = (
+            eta_left(ax_) @ wxy - wxy @ eta_right(ax_)
+            + wyz @ eta_right(az_) - eta_left(az_) @ wyz
+        )
+        tensor_field.curv_flux_z[i, j, k] = (
+            eta_left(ax_) @ wxz - wxz @ eta_right(ax_)
+            + eta_left(ay_) @ wyz - wyz @ eta_right(ay_)
+        )
+
+
+@ti.kernel
+def evolve_M_eta_start(tensor_field: ti.template(), dt_eff: ti.f32, dx_eta: ti.f32):  # type: ignore
+    """Leapfrog step 1/2 (fwd branch): M_new = 2M − M_prev − dt²·½·adjᶠʷᵈ(flux).
+
+    adjᶠʷᵈ(g)[x] = (g[x−e_i] − g[x])/h per axis (exact adjoint of the fwd
+    difference; flux is zero on the invalid edge planes so the formula holds
+    on the whole interior). Boundary shell untouched (Dirichlet, the
+    triple-buffer BC rule — same pinning as the 3D twin, canonical § 3).
+    dx_eta = the canonical-unit grid spacing (must match compute_eta_flux)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dx = 1.0 / dx_eta
+    dt2 = dt_eff * dt_eff
+    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
+        g_fwd = (
+            (tensor_field.curv_flux_x[i - 1, j, k] - tensor_field.curv_flux_x[i, j, k])
+            + (tensor_field.curv_flux_y[i, j - 1, k] - tensor_field.curv_flux_y[i, j, k])
+            + (tensor_field.curv_flux_z[i, j, k - 1] - tensor_field.curv_flux_z[i, j, k])
+        ) * inv_dx
+        tensor_field.M_new_am[i, j, k] = (
+            2.0 * tensor_field.M_am[i, j, k]
+            - tensor_field.M_prev_am[i, j, k]
+            - dt2 * 0.5 * g_fwd
+        )
+
+
+@ti.kernel
+def evolve_M_eta_finish(
+    tensor_field: ti.template(),  # type: ignore
+    dt_eff: ti.f32,  # type: ignore
+    dx_eta: ti.f32,  # type: ignore
+    sg: ti.f32,  # type: ignore
+    delta: ti.f32,  # type: ignore
+    w1: ti.f32,  # type: ignore
+):
+    """Leapfrog step 2/2 (bwd branch + potential):
+    M_new −= dt²·(½·adjᵇʷᵈ(flux) + ∂V4/∂M).  adjᵇʷᵈ(g)[x] = (g[x] − g[x+e_i])/h.
+    Caller then swap_matrix_buffers() as usual. dx_eta = canonical-unit spacing."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dx = 1.0 / dx_eta
+    dt2 = dt_eff * dt_eff
+    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
+        g_bwd = (
+            (tensor_field.curv_flux_x[i, j, k] - tensor_field.curv_flux_x[i + 1, j, k])
+            + (tensor_field.curv_flux_y[i, j, k] - tensor_field.curv_flux_y[i, j + 1, k])
+            + (tensor_field.curv_flux_z[i, j, k] - tensor_field.curv_flux_z[i, j, k + 1])
+        ) * inv_dx
+        force = 0.5 * g_bwd + dv4_of(tensor_field.M_am[i, j, k], sg, delta, w1)
+        tensor_field.M_new_am[i, j, k] = tensor_field.M_new_am[i, j, k] - dt2 * force
+
+
+# ---- M5.24 round 3: the FIRE statics relaxer (G8) + the sponge ----------
+# FIRE on the SAME pinned-interior η + V4 gradient the dynamics uses (the
+# two-pass kernels above), with the TIME ROW + COLUMN FROZEN (incl. [0,0]):
+# the canonical § 5.2 frozen-time-row recipe, the bounded statics sector
+# (the 3×3 instrument of record is exactly this sector on block-diag data).
+# Parameters per the recipe: dt0 = 0.005, dt_max = 0.05, 500-iter chunks.
+# The 1/w precondition of the loop recipe is NOT ported (convergence
+# accelerator only; noted in the task_details).
+
+FIRE_DT0 = 0.005  # canonical § 5.2 (frozen-time-row FIRE)
+FIRE_DT_MAX = 0.05
+FIRE_F_INC = 1.1
+FIRE_F_DEC = 0.5
+FIRE_ALPHA0 = 0.1
+FIRE_F_ALPHA = 0.99
+FIRE_NDELAY = 5
+
+
+@ti.func
+def _fire_force_at(tensor_field: ti.template(), i: ti.i32, j: ti.i32, k: ti.i32):  # type: ignore
+    """FIRE force F = −∂E/∂M = M_new − M (the dt = 1, Ṁ = 0 two-pass extract),
+    with the time row/col zeroed (frozen-time-row sector)."""
+    f = tensor_field.M_new_am[i, j, k] - tensor_field.M_am[i, j, k]
+    for a_ in ti.static(range(4)):
+        f[0, a_] = 0.0
+        f[a_, 0] = 0.0
+    return f
+
+
+@ti.kernel
+def fire_partials_k(tensor_field: ti.template()):  # type: ignore
+    """Per-z-slice partial sums over the interior: (Σ F·V, Σ F·F, Σ V·V) →
+    fire_partials[0..2, k]. Reads the force from the M_new/M pair (run the
+    two-pass with dt = 1 and M_prev = M first) and V from Md_am."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    for k in ti.ndrange((1, nz - 1)):
+        s_fv = 0.0
+        s_ff = 0.0
+        s_vv = 0.0
+        for i in range(1, nx - 1):
+            for j in range(1, ny - 1):
+                f = _fire_force_at(tensor_field, i, j, k)
+                v = tensor_field.Md_am[i, j, k]
+                s_fv += (f * v).sum()
+                s_ff += (f * f).sum()
+                s_vv += (v * v).sum()
+        tensor_field.fire_partials[0, k] = s_fv
+        tensor_field.fire_partials[1, k] = s_ff
+        tensor_field.fire_partials[2, k] = s_vv
+
+
+@ti.kernel
+def fire_update_k(
+    tensor_field: ti.template(),  # type: ignore
+    dtf: ti.f32,  # type: ignore
+    alpha: ti.f32,  # type: ignore
+    vmix: ti.f32,  # type: ignore
+    vreset: ti.i32,  # type: ignore
+):
+    """One FIRE step on the interior (boundary pinned): velocity mixing
+    V ← (1−α)V + vmix·F (vmix = α·|V|/|F| host-computed), Euler kick
+    V += dtf·F, drift M += dtf·V. V lives in Md_am (free outside the
+    constrained path). Time row/col frozen throughout."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
+        f = _fire_force_at(tensor_field, i, j, k)
+        v = tensor_field.Md_am[i, j, k]
+        if vreset == 1:
+            v = ti.Matrix.zero(ti.f32, 4, 4)
+        else:
+            v = (1.0 - alpha) * v + vmix * f
+        v = v + dtf * f
+        for a_ in ti.static(range(4)):
+            v[0, a_] = 0.0
+            v[a_, 0] = 0.0
+        tensor_field.Md_am[i, j, k] = v
+        tensor_field.M_am[i, j, k] = tensor_field.M_am[i, j, k] + dtf * v
+
+
+def fire_relax_canonical(tensor_field, dx_eta, sg, delta, w1, n_iters):
+    """Host FIRE loop (single source: launcher + selftest both call this).
+    Relaxes M toward a stationary state of the pinned-interior η + V4 energy
+    on the frozen-time-row sector. Returns dict(f_rms0, f_rms1, iters,
+    dt_final). Numpy is used ONLY for the (3, nz) partial-array sums + the
+    FIRE scalars (taichi-first: all field work is in the kernels).
+
+    Anti-recipe guards carried: dt capped at FIRE_DT_MAX = 0.05 (the frozen
+    sector's cap; free-4D would need 0.02); the sym stencil is already the
+    functional (no 2h deep-statics funnel, canonical § 6)."""
+    import numpy as np
+
+    tensor_field.Md_am.fill(0.0)
+    dtf, alpha, npos = FIRE_DT0, FIRE_ALPHA0, 0
+    f_rms0 = f_rms1 = 0.0
+    n_int = max((tensor_field.nx - 2) * (tensor_field.ny - 2) * (tensor_field.nz - 2), 1)
+    for it in range(n_iters):
+        tensor_field.M_prev_am.copy_from(tensor_field.M_am)
+        compute_eta_flux(tensor_field, 0, dx_eta)
+        evolve_M_eta_start(tensor_field, 1.0, dx_eta)
+        compute_eta_flux(tensor_field, 1, dx_eta)
+        evolve_M_eta_finish(tensor_field, 1.0, dx_eta, sg, delta, w1)
+        fire_partials_k(tensor_field)
+        p = tensor_field.fire_partials.to_numpy()
+        fv, ff, vv = float(p[0].sum()), float(p[1].sum()), float(p[2].sum())
+        f_rms1 = (ff / (16.0 * n_int)) ** 0.5
+        if it == 0:
+            f_rms0 = f_rms1
+        vreset = 0
+        if fv > 0.0:
+            npos += 1
+            if npos > FIRE_NDELAY:
+                dtf = min(dtf * FIRE_F_INC, FIRE_DT_MAX)
+                alpha *= FIRE_F_ALPHA
+        else:
+            npos = 0
+            dtf *= FIRE_F_DEC
+            alpha = FIRE_ALPHA0
+            vreset = 1
+        vmix = alpha * (vv / ff) ** 0.5 if (ff > 0.0 and vreset == 0) else 0.0
+        fire_update_k(tensor_field, dtf, alpha, vmix, vreset)
+    # static finalize: all three buffers equal (Ṁ = 0 for a subsequent evolve)
+    tensor_field.M_prev_am.copy_from(tensor_field.M_am)
+    tensor_field.M_new_am.copy_from(tensor_field.M_am)
+    return {"f_rms0": f_rms0, "f_rms1": f_rms1, "iters": n_iters, "dt_final": dtf}
+
+
+@ti.kernel
+def apply_eta_sponge(
+    tensor_field: ti.template(),  # type: ignore
+    dt_eff: ti.f32,  # type: ignore
+    gamma_max: ti.f32,  # type: ignore
+    width_cells: ti.f32,  # type: ignore
+):
+    """Boundary sponge for the canonical path (canonical § 5.3 pattern:
+    quadratic ramp, γmax): damped-Verlet correction of the already-forced
+    M_new:  M_new ← (M_new + a·M_prev)/(1 + a),  a = ½·γ(x)·dt,
+    γ(x) = γmax·q², q = 1 − d/width (d = cell distance to the nearest face).
+    γmax = 0 is an exact no-op. Kills the pinned-box reflection re-agitation
+    (the t ≈ 12 caveat, canonical § 3) for long live runs; the research
+    exact-dissipation LEDGER is not ported (demo device, noted honestly)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
+        d = ti.cast(i, ti.f32)
+        d = ti.min(d, ti.cast(nx - 1 - i, ti.f32))
+        d = ti.min(d, ti.cast(j, ti.f32))
+        d = ti.min(d, ti.cast(ny - 1 - j, ti.f32))
+        d = ti.min(d, ti.cast(k, ti.f32))
+        d = ti.min(d, ti.cast(nz - 1 - k, ti.f32))
+        if d < width_cells:
+            q = 1.0 - d / width_cells
+            a = 0.5 * gamma_max * q * q * dt_eff
+            tensor_field.M_new_am[i, j, k] = (
+                tensor_field.M_new_am[i, j, k] + a * tensor_field.M_prev_am[i, j, k]
+            ) * (1.0 / (1.0 + a))
+
+
+@ti.kernel
+def flip_time_axis(tensor_field: ti.template()):  # type: ignore
+    """Negate the time-time entry M[0,0] on all three M buffers: converts the
+    block-diag seeder embed (+g, the plain-commutator era convention) to the
+    covariant vacuum diag(−g, 1, δ, 0) of the verified L (canonical § 1:
+    diag(+g, …) is NOT a vacuum — V4 ≈ 759 per cell at g = 8). Run once
+    post-seed on the canonical integrator path; block-diag seeds only (the
+    dressed seed's boost-mixed time row is a different, era-specific object)."""
+    for i, j, k in tensor_field.M_am:
+        tensor_field.M_am[i, j, k][0, 0] = -tensor_field.M_am[i, j, k][0, 0]
+        tensor_field.M_prev_am[i, j, k][0, 0] = -tensor_field.M_prev_am[i, j, k][0, 0]
+        tensor_field.M_new_am[i, j, k][0, 0] = -tensor_field.M_new_am[i, j, k][0, 0]
+
+
+# ================================================================
+# M5.23.1 — FIXED-J ISOROTATION (the M5.21.9 machinery, production port)
+# ================================================================
+# The constraint-carried ZBW clock of the two-stack consensus (research
+# m5_21_9_note.md §§ 1, 5; canonical § 2): free minimization gives ω* = 0 or
+# −∞, never a finite clock — the electron carries its rotation as a CONSERVED
+# charge J on the CONJUGATION-tangent clock flow (the standard isorotating-
+# soliton construction, Coleman → Radu-Volkov):
+#
+#   a0  = w(r)·[W, M] / ‖·‖_F(global) ,  W = rotation generator about the
+#         local leading SPATIAL eigenvector (the director);
+#         w(r) = exp(−(r/renv)⁴)  (the research clock envelope)
+#   kin(M; a0) = h³ Σ_branches wt Σ_i 4·⟨[a0, A_i]_η, [a0, A_i]_η⟩_η
+#         (the clock inertia; E_kin(ω) = ω²·kin — reference kin_of)
+#   J   = 2·kin·ω ,  ω* = J/(2·kin) ,  E(J) = E_stat + J²/(4·kin)
+#         (the Legendre family; dE/dJ = ω* closes at ~1%, m5_21_9_note § 7)
+#   SET-J: Ṁ(0) = ω*·a0  →  M_prev ← M − dt_eff·ω*·a0
+#         (position-Verlet implicit-velocity init; O(dt) offset from the
+#         reference kick-drift-kick leap(), absorbed by observable-level gates)
+#
+# CONVENTION PINS (load-bearing, never change silently):
+#   - kin convention = the CONJUGATION tangent [W, M] (kin = 0.1206 on the
+#     certified state, M5.21.3-adopted; canonical § 6 anti-recipe: the
+#     antisymmetric gen_catalog probe flow, kin = 0.297, is NOT physical
+#     inertia — it exits the symmetric configuration space).
+#   - any ABSOLUTE J / ħ/2 / g statement must use the PHYSICAL-RATE
+#     convention (m5_21_5_note § 5): the flow-parameter J carried here is
+#     NOT the physical angular momentum (ratio ~771 at the ω = 0.2 rung).
+#   - a0 SIGN GAUGE: the leading eigenvector is apolar (±v give opposite
+#     local rotations). The research flow inherits numpy eigh's per-voxel
+#     signs; production pins a DETERMINISTIC RADIAL gauge (v·r̂ ≥ 0, fixed
+#     axis tie-breaks at r ≈ 0). All quadratic reads (kin, E, J·J) are
+#     per-voxel-sign invariant; the selftest quantifies the gauge overlap.
+#   - the J readout projects Ṁ on the SYMMETRIC global rotation flows
+#     [G_k, M] (normalized) — not gen_catalog's antisymmetric rot flows,
+#     whose projection tracked a sym4-projected-out spectator (the disclosed
+#     M5.21.9 § 5 Mt(0) issue).
+#
+# Reuses Md_am (a0 scratch — free outside the constrained path and FIRE; a
+# FIRE call clobbers it, so SET-J must follow any relax, as the launcher
+# flow does) and fire_partials (per-slice reduction rows, the M5.0h
+# contention pattern) — no new fields. Selftest:
+# research/scripts/m5_23_1_fixedj_engine_selftest.py (S1-S5).
+
+
+@ti.kernel
+def clock_flow_k(tensor_field: ti.template(), dx_eta: ti.f32, renv: ti.f32):  # type: ignore
+    """The UNNORMALIZED conjugation-tangent clock flow a0_raw = w(r)·[W, M]
+    per voxel → Md_am (full grid; the host normalizes to unit global
+    Frobenius norm via md_norm_partials_k + scale_md_k).
+
+    W = spatial rotation generator about the local leading eigenvector of
+    the SPATIAL 3×3 block (production Cardano solver), radial sign gauge:
+    v·r̂ ≥ 0 (tie-breaks z > y > x at the center voxel). [W, M] with W
+    antisymmetric and M symmetric is symmetric: the flow stays in the
+    configuration space (the conjugation convention of record)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    cx = 0.5 * ti.cast(nx - 1, ti.f32)
+    cy = 0.5 * ti.cast(ny - 1, ti.f32)
+    cz = 0.5 * ti.cast(nz - 1, ti.f32)
+    for i, j, k in ti.ndrange(nx, ny, nz):
+        m4 = tensor_field.M_am[i, j, k]
+        m3 = ti.Matrix(
+            [
+                [m4[1, 1], m4[1, 2], m4[1, 3]],
+                [m4[2, 1], m4[2, 2], m4[2, 3]],
+                [m4[3, 1], m4[3, 2], m4[3, 3]],
+            ]
+        )
+        v, _lam = principal_director(m3)
+        # radial sign gauge (deterministic; apolar ±v ambiguity pinned)
+        rx = ti.cast(i, ti.f32) - cx
+        ry = ti.cast(j, ti.f32) - cy
+        rz = ti.cast(k, ti.f32) - cz
+        s = v[0] * rx + v[1] * ry + v[2] * rz
+        if s == 0.0:
+            s = v[2]
+        if s == 0.0:
+            s = v[1]
+        if s == 0.0:
+            s = v[0]
+        if s < 0.0:
+            v = -v
+        w4 = ti.Matrix.zero(ti.f32, 4, 4)
+        w4[1, 2] = -v[2]
+        w4[1, 3] = v[1]
+        w4[2, 1] = v[2]
+        w4[2, 3] = -v[0]
+        w4[3, 1] = -v[1]
+        w4[3, 2] = v[0]
+        r_env = ti.sqrt(rx * rx + ry * ry + rz * rz) * dx_eta
+        q = (r_env / renv) ** 4
+        w_env = ti.exp(-q)
+        tensor_field.Md_am[i, j, k] = w_env * (w4 @ m4 - m4 @ w4)
+
+
+@ti.kernel
+def md_norm_partials_k(tensor_field: ti.template()):  # type: ignore
+    """Per-z-slice Σ Md·Md → fire_partials[0, k] (full grid: the reference
+    normalizes a0 over ALL cells). Host: ‖a0‖_F = sqrt(Σ_k partials)."""
+    nz = tensor_field.nz
+    for k in range(nz):
+        s = 0.0
+        for i in range(tensor_field.nx):
+            for j in range(tensor_field.ny):
+                a = tensor_field.Md_am[i, j, k]
+                s += (a * a).sum()
+        tensor_field.fire_partials[0, k] = s
+
+
+@ti.kernel
+def scale_md_k(tensor_field: ti.template(), s: ti.f32):  # type: ignore
+    for i, j, k in tensor_field.Md_am:
+        tensor_field.Md_am[i, j, k] = s * tensor_field.Md_am[i, j, k]
+
+
+@ti.kernel
+def kin_partials_k(tensor_field: ti.template(), dx_eta: ti.f32):  # type: ignore
+    """Per-z-slice partial sums of the clock-inertia integrand →
+    fire_partials[1, k]:  Σ_branches ½ Σ_i 4·⟨[a0, A_i]_η, [a0, A_i]_η⟩_η
+    with a0 = Md_am (normalized), A_i the one-sided ∂_i M per branch (the
+    reference d1 edge convention: zero where the neighbor is outside).
+    Host: kin = dx_eta³ · Σ_k partials (reference kin_of, sym stencil)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dx = 1.0 / dx_eta
+    for k in range(nz):
+        s = 0.0
+        for i in range(nx):
+            for j in range(ny):
+                m0 = tensor_field.M_am[i, j, k]
+                a0 = tensor_field.Md_am[i, j, k]
+                for br in ti.static(range(2)):
+                    ax_ = ti.Matrix.zero(ti.f32, 4, 4)
+                    ay_ = ti.Matrix.zero(ti.f32, 4, 4)
+                    az_ = ti.Matrix.zero(ti.f32, 4, 4)
+                    if ti.static(br == 0):  # fwd
+                        if i <= nx - 2:
+                            ax_ = (tensor_field.M_am[i + 1, j, k] - m0) * inv_dx
+                        if j <= ny - 2:
+                            ay_ = (tensor_field.M_am[i, j + 1, k] - m0) * inv_dx
+                        if k <= nz - 2:
+                            az_ = (tensor_field.M_am[i, j, k + 1] - m0) * inv_dx
+                    else:  # bwd
+                        if i >= 1:
+                            ax_ = (m0 - tensor_field.M_am[i - 1, j, k]) * inv_dx
+                        if j >= 1:
+                            ay_ = (m0 - tensor_field.M_am[i, j - 1, k]) * inv_dx
+                        if k >= 1:
+                            az_ = (m0 - tensor_field.M_am[i, j, k - 1]) * inv_dx
+                    fx = comm_eta44(a0, ax_)
+                    fy = comm_eta44(a0, ay_)
+                    fz = comm_eta44(a0, az_)
+                    s += (
+                        0.5
+                        * 4.0
+                        * (inner_eta44(fx, fx) + inner_eta44(fy, fy) + inner_eta44(fz, fz))
+                    )
+        tensor_field.fire_partials[1, k] = s
+
+
+@ti.kernel
+def isorotation_kick_k(
+    tensor_field: ti.template(),  # type: ignore
+    dt_eff: ti.f32,  # type: ignore
+    om: ti.f32,  # type: ignore
+    shell: ti.i32,  # type: ignore
+):
+    """The SET-J velocity init: M_prev ← M − dt_eff·ω*·a0 (a0 = Md_am,
+    normalized) on cells at least `shell` cells from every face (production
+    Dirichlet shell = 1; the research free mask = 2 at h = 1.5). Encodes
+    Ṁ(0) = ω*·a0 in the triple buffer — the next evolve step must run at the
+    SAME dt_eff (position-Verlet: the implied velocity scales with dt)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    for i, j, k in ti.ndrange(nx, ny, nz):
+        d = ti.min(
+            ti.min(i, nx - 1 - i),
+            ti.min(ti.min(j, ny - 1 - j), ti.min(k, nz - 1 - k)),
+        )
+        if d >= shell:
+            tensor_field.M_prev_am[i, j, k] = (
+                tensor_field.M_am[i, j, k] - dt_eff * om * tensor_field.Md_am[i, j, k]
+            )
+
+
+@ti.kernel
+def j_partials_k(tensor_field: ti.template(), axis: ti.i32, dt_eff: ti.f32):  # type: ignore
+    """Per-z-slice partials of the J projection on ONE symmetric global
+    rotation flow a_rot = [G_axis, M] (axis 0/1/2 = x/y/z; G antisym, flow
+    symmetric — the physical-read convention, NOT the probe flow):
+    fire_partials[0, k] = Σ Ṁ·a_rot,  fire_partials[1, k] = Σ a_rot·a_rot,
+    Ṁ = (M − M_prev)/dt_eff.  Host: J_axis = Σ₀ / sqrt(Σ₁)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dt = 1.0 / dt_eff
+    a = 1
+    b = 2
+    if axis == 0:  # rotation about x: (y, z) plane
+        a = 2
+        b = 3
+    elif axis == 1:  # about y: (z, x) plane
+        a = 3
+        b = 1
+    else:  # about z: (x, y) plane
+        a = 1
+        b = 2
+    for k in range(nz):
+        s_dot = 0.0
+        s_nrm = 0.0
+        for i in range(nx):
+            for j in range(ny):
+                m0 = tensor_field.M_am[i, j, k]
+                g4 = ti.Matrix.zero(ti.f32, 4, 4)
+                g4[a, b] = -1.0
+                g4[b, a] = 1.0
+                arot = g4 @ m0 - m0 @ g4
+                mt = (m0 - tensor_field.M_prev_am[i, j, k]) * inv_dt
+                s_dot += (mt * arot).sum()
+                s_nrm += (arot * arot).sum()
+        tensor_field.fire_partials[0, k] = s_dot
+        tensor_field.fire_partials[1, k] = s_nrm
+
+
+def compute_clock_flow(tensor_field, dx_eta, renv):
+    """Host: build the normalized conjugation-tangent clock flow a0 into
+    Md_am. Returns the pre-normalization global Frobenius norm (diagnostic;
+    ~field scale). Numpy only for the (3, nz) partial sums (taichi-first)."""
+    import numpy as np
+
+    clock_flow_k(tensor_field, dx_eta, renv)
+    md_norm_partials_k(tensor_field)
+    p = tensor_field.fire_partials.to_numpy()
+    nrm = float(np.sqrt(max(p[0].sum(), 0.0)))
+    scale_md_k(tensor_field, 1.0 / max(nrm, 1e-30))
+    return nrm
+
+
+def kin_canonical(tensor_field, dx_eta):
+    """Host: the clock inertia kin(M; a0) with a0 = the current Md_am
+    (normalized). Reference: m5_21_3_a_4d.kin_of (sym stencil, h³-weighted)."""
+    import numpy as np
+
+    kin_partials_k(tensor_field, dx_eta)
+    p = tensor_field.fire_partials.to_numpy()
+    return float(dx_eta**3 * p[1].sum())
+
+
+def set_fixed_j(tensor_field, dx_eta, renv, om_target, dt_eff, shell=1):
+    """The launcher SET-J step (RELAX → SET-J → EVOLVE): build a0, measure
+    kin, carry J = 2·kin·ω_target, kick Ṁ(0) = ω*·a0 into the triple buffer.
+    Returns dict(kin, J, om_star, a0_raw_norm). Run AFTER any FIRE relax
+    (FIRE clobbers Md_am); evolve must continue at the same dt_eff."""
+    nrm = compute_clock_flow(tensor_field, dx_eta, renv)
+    kin = kin_canonical(tensor_field, dx_eta)
+    if kin <= 0.0:
+        # the indefinite-channel guard: a nonpositive clock inertia means the
+        # state left the positive-kin sector — no honest isorotation to set
+        return {"kin": kin, "J": 0.0, "om_star": 0.0, "a0_raw_norm": nrm, "set": False}
+    j_charge = 2.0 * kin * om_target
+    om_star = j_charge / (2.0 * kin)
+    isorotation_kick_k(tensor_field, dt_eff, om_star, shell)
+    return {"kin": kin, "J": j_charge, "om_star": om_star, "a0_raw_norm": nrm, "set": True}
+
+
+@ti.kernel
+def j_self_partials_k(tensor_field: ti.template(), dt_eff: ti.f32):  # type: ignore
+    """Per-z-slice partials of the CARRIED isorotation charge projection:
+    fire_partials[2, k] = Σ Ṁ·a0 with a0 = Md_am (normalized, rebuilt on the
+    CURRENT state by the host), Ṁ = (M − M_prev)/dt_eff. At SET-J time this
+    projection equals ω* exactly (Ṁ = ω*·a0, unit norm) — the meaningful
+    hold observable: the GLOBAL rotation flows [G_k, M] near-cancel on
+    hedgehog-family states (measured ~1e-4·ω*, selftest S4 info)."""
+    nx, ny, nz = tensor_field.nx, tensor_field.ny, tensor_field.nz
+    inv_dt = 1.0 / dt_eff
+    for k in range(nz):
+        s = 0.0
+        for i in range(nx):
+            for j in range(ny):
+                mt = (tensor_field.M_am[i, j, k] - tensor_field.M_prev_am[i, j, k]) * inv_dt
+                s += (mt * tensor_field.Md_am[i, j, k]).sum()
+        tensor_field.fire_partials[2, k] = s
+
+
+def read_carried_j(tensor_field, dx_eta, renv, dt_eff):
+    """Host: the carried isorotation charge J_self = ⟨Ṁ, a0(M)⟩ with a0
+    REBUILT on the current state (clobbers the Md_am scratch — same rule as
+    set_fixed_j). Equals ω* at SET-J time by construction; its drift is the
+    honest hold/decay read. Diagnostics rate."""
+    import numpy as np
+
+    compute_clock_flow(tensor_field, dx_eta, renv)
+    j_self_partials_k(tensor_field, dt_eff)
+    p = tensor_field.fire_partials.to_numpy()
+    return float(p[2].sum())
+
+
+def read_isorotation(tensor_field, dt_eff):
+    """Host: the J-vector readout — Ṁ projected on the three normalized
+    SYMMETRIC global rotation flows [G_k, M]. Returns dict(Jx, Jy, Jz, Jmag,
+    phi_xy). Diagnostics-rate only (3 kernel passes + host sums)."""
+    import math
+
+    import numpy as np
+
+    out = []
+    for axis in range(3):
+        j_partials_k(tensor_field, axis, dt_eff)
+        p = tensor_field.fire_partials.to_numpy()
+        dot, nrm2 = float(p[0].sum()), float(p[1].sum())
+        out.append(dot / max(math.sqrt(max(nrm2, 0.0)), 1e-30))
+    jx, jy, jz = out
+    return {
+        "Jx": jx,
+        "Jy": jy,
+        "Jz": jz,
+        "Jmag": float(np.sqrt(jx * jx + jy * jy + jz * jz)),
+        "phi_xy": float(math.atan2(jy, jx)),
+    }
 
 
 # ================================================================

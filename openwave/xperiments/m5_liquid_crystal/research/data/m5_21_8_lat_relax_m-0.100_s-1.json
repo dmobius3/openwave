@@ -1,0 +1,11 @@
+{
+ "m": -0.0996,
+ "s": -1.0,
+ "E0": 1.197816849049836,
+ "E_end": NaN,
+ "E_u_end": NaN,
+ "E_v_end": NaN,
+ "rel_move": Infinity,
+ "kin_end": NaN,
+ "stop": "non-finite"
+}

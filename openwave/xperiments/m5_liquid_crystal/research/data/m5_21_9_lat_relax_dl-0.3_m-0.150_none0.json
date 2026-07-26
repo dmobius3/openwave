@@ -1,0 +1,14 @@
+{
+ "dl": -0.3,
+ "m": -0.15,
+ "prof": "none",
+ "rc": 0.0,
+ "E0": -6.535120516669112,
+ "E_end": Infinity,
+ "E_u_end": -6.330701878300647e+266,
+ "E_v_end": Infinity,
+ "rel_move": 2.9556136512487215e+64,
+ "kin_end": 1.0296983162291743e+134,
+ "stop": "non-finite",
+ "finite": true
+}

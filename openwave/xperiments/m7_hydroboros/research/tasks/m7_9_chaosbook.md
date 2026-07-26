@@ -4,11 +4,11 @@
 
 ## 1. Objective
 
-Two outputs, one task: (a) a **benchmark suite** the author can trust: canonical exercises from Cvitanović et al., *Chaos: Classical and Quantum* ("ChaosBook", <https://chaosbook.org/>), implemented headless and checked against their published solutions ("your AI should kill it in 10 minutes, **but I want to see that**"); (b) the **orbit-hunting toolkit** (Poincaré sections, return maps, periodic-orbit finding, cycle stability) that the M7.10-M7.14 pure-Maxwell/Beltrami track will need (first consumer: [M7.10](m7_10_pure_maxwell.md), the no-Lagrangian test, defined 2026-07-07). A side output: light reading support so Rodrigo gains call fluency without becoming the bottleneck.
+Two outputs, one task: (a) a **benchmark suite** the author can trust: canonical exercises from Cvitanović et al., *Chaos: Classical and Quantum* ("ChaosBook", <https://chaosbook.org/>), implemented headless and checked against their published solutions ("your AI should kill it in 10 minutes, **but I want to see that**"); (b) the **orbit-hunting toolkit** (Poincaré sections, return maps, periodic-orbit finding, cycle stability) that the M7.10-M7.14 pure-Maxwell/Beltrami track will need (first consumer: [M7.10](m7_10_pure_maxwell.md), the no-Lagrangian test, defined 2026-07-07). A side output: light reading support so the maintainer gains call fluency without becoming the bottleneck.
 
 ## 2. Why (from the call)
 
-The author's program is to find the electron as a **stable periodic orbit** in the electromagnetic field flow ("islands of superstability", the solar-system analogy), and ChaosBook is his named "Bible" for that methodology. The benchmark doubles as the self-test he asked for: proof that what comes out of this platform is computed, not "linguistically mirrored", on problems with known answers. Follow-ups agreed at the call ride this task: 4-7 walkthrough sessions on the book, a test-design review session with **Burak Budan**, and possibly a later look by **Cvitanović** himself.
+The author's program is to find the electron as a **stable periodic orbit** in the electromagnetic field flow ("islands of superstability", the solar-system analogy), and ChaosBook is the author's named "Bible" for that methodology. The benchmark doubles as the self-test the author asked for: proof that what comes out of this platform is computed, not "linguistically mirrored", on problems with known answers. Follow-ups agreed at the call ride this task: 4-7 walkthrough sessions on the book, a test-design review session with **Burak Budan**, and possibly a later look by **Cvitanović** himself.
 
 ## 3. Context-window strategy (the book is ~1000 pages; NEVER load it whole)
 
@@ -27,7 +27,7 @@ The author's program is to find the electron as a **stable periodic orbit** in t
 | E2 select | 3-5 canonical exercises **with published solutions**, spanning the toolkit: Rössler / Lorenz equilibria + stability eigenvalues, a Poincaré-section construction, the shortest periodic orbits of a canonical flow (Rössler cycle or Hénon map cycles) found by Newton / multiple shooting, cycle counting on a symbolic-dynamics example (3-disk pinball class) |
 | E3 implement | headless Python; **the reusable toolkit is a MODULE, `scripts/m7_9_orbits.py`**, with per-exercise drivers `m7_9_chaosbook_*.py` importing it; unit tests asserting the published values (cited per E1); implement-first-check-after per the E-loading rule; the integrator layer reuses our own machinery where that is the point (drift behavior on chaotic flows is itself evidence for walkthrough § 3) |
 | E4 benchmark report | a short method-note-lite report (equations, code links, our numbers vs the book's with citations, pass/fail table) suitable for the author and the Burak review |
-| E5 reading support | a 2-page "what you need for the calls" digest for Rodrigo (TOC orientation + ch. 1 + the vocabulary: Poincaré section, return map, Floquet multiplier, cycle expansion), explicitly bounded: fluency, not mastery |
+| E5 reading support | a 2-page "what you need for the calls" digest for the maintainer (TOC orientation + ch. 1 + the vocabulary: Poincaré section, return map, Floquet multiplier, cycle expansion), explicitly bounded: fluency, not mastery |
 | E6 sessions | schedule the 4-7 book walkthrough sessions + the Burak test-design hour AFTER E4 exists (the report is the shared artifact to walk through) |
 
 ## 4b. The toolkit API (what M7.10-M7.14 actually imports)
@@ -43,9 +43,9 @@ The author's program is to find the electron as a **stable periodic orbit** in t
 
 The M7.10 handoff is concrete: E1 of M7.10 verifies the Trkalian cavity mode as a `find_cycle` fixed point of the Maxwell flow (period `2π/λ`), and its `floquet` multipliers on the unit circle are the orbit-language statement of marginal stability that pure Maxwell provides (no attractor without the coupling).
 
-## 5. Effort estimate + independence from Rodrigo's reading
+## 5. Effort estimate + independence from the maintainer's reading
 
-**The benchmark (E1-E4) does not wait for anyone's reading.** The exercises are small ODE / map systems (three variables, not `N³` fields): compute time is seconds, and the real effort is fidelity to the book's definitions plus the honest compare. Estimate: **E1-E4 in one to two focused sessions** (a normal task run each, the first ending at the E2 selection checkpoint if the cap intervenes), E5 half a session more. Rodrigo's 2-3 weeks of light reading (the author's own suggested dose: "TOC + dabbling your feet in the first chapter... you don't need to go super deep to be mega efficient") runs in parallel and gates nothing here; it only gates how interactive the E6 sessions can be, which is exactly where his time is best spent given M5, M7, and his personal projects all compete for it.
+**The benchmark (E1-E4) does not wait for anyone's reading.** The exercises are small ODE / map systems (three variables, not `N³` fields): compute time is seconds, and the real effort is fidelity to the book's definitions plus the honest compare. Estimate: **E1-E4 in one to two focused sessions** (a normal task run each, the first ending at the E2 selection checkpoint if the cap intervenes), E5 half a session more. The maintainer's 2-3 weeks of light reading (the author's own suggested dose: "TOC + dabbling your feet in the first chapter... you don't need to go super deep to be mega efficient") runs in parallel and gates nothing here; it only gates how interactive the E6 sessions can be, which is exactly where the author's time is best spent given M5, M7, and other personal projects all compete for it.
 
 ## 6. Cross-refs
 

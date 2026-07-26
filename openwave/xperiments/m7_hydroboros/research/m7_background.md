@@ -1,7 +1,5 @@
 # M7 / HydroBoros - Background
 
-  ![hydroboros_icon](images/hydroboros_icon_small.jpg)
-
 > **Purpose.** Build a rigorous **full 3D PDE simulation** of the electron as a
 > self-linked toroidal vortex, blending the **hydrodynamics school** (Marc Fleury's toroidal
 > electromagnetic electron + the Beltrami / force-free field tradition) with the **Ouroboros
@@ -171,11 +169,11 @@ Acknowledged limits (Fleury, § 5.2): the Heaviside mask is unphysical at the to
 analytic mask with a relaxed lattice field**, which is precisely where the PDE treatment earns its
 keep.
 
-Fleury's ansatz is a **rotating wave** in Ceperley's sense (his ref [13], [M7.0 corpus](tasks/m7_0_bootstrap.md) #14): Ceperley's
-circularly-polarized-EM rotating mode `E_r = E₀ e^{i(κz+φ−ωt)}` at `m=1` (his Eq 15) is literally this
+Fleury's ansatz is a **rotating wave** in Ceperley's sense (Fleury's ref [13], [M7.0 corpus](tasks/m7_0_bootstrap.md) #14): Ceperley's
+circularly-polarized-EM rotating mode `E_r = E₀ e^{i(κz+φ−ωt)}` at `m=1` (Ceperley Eq 15) is literally this
 torus phase, its **`J_m(κr)` Bessel envelope** is exactly the § 5.2 fix for the Heaviside mask, and
 its angular-momentum law **`L_z = m(U/ω)`** (quantized when `U/ω = ℏ`) is the structural origin of the
-spin `= ℏ/2` constraint. See [`../theory/ceperley_rotating_waves.md`](../theory/ceperley_rotating_waves.md) § 4b.
+spin `= ℏ/2` constraint. See [`../theory/ceperley_rotating_waves.md`](../theory/_CITATIONS.md) § 4b.
 
 ---
 
@@ -292,9 +290,9 @@ M7.4 experiment (Q2), **off by default**.
 - Theory (our notes are in-repo; the source PDFs are local-only / gitignored, cited by public DOI/arXiv):
   [arXiv:2510.22384](https://arxiv.org/abs/2510.22384) (Fleury torus) ·
   Werbos *Evaluating Universe Model Alternatives v5* (shared doc, local only) ·
-  [`../theory/sato_yamada_beltrami.md`](../theory/sato_yamada_beltrami.md) ([arXiv:1809.03136](https://arxiv.org/abs/1809.03136)) ·
-  [`../theory/ceperley_rotating_waves.md`](../theory/ceperley_rotating_waves.md) (Ceperley rotating-wave equations; [AJP DOI 10.1119/1.17020](https://doi.org/10.1119/1.17020) / [IEEE DOI 10.1109/22.216476](https://doi.org/10.1109/22.216476)) ·
-  [`../theory/feynman_maxwell_equations.md`](../theory/feynman_maxwell_equations.md) (Feynman Lectures II Ch 18, the Maxwell baseline for M7.2)
+  [`../theory/sato_yamada_beltrami.md`](../theory/_CITATIONS.md) ([arXiv:1809.03136](https://arxiv.org/abs/1809.03136)) ·
+  [`../theory/ceperley_rotating_waves.md`](../theory/_CITATIONS.md) (Ceperley rotating-wave equations; [AJP DOI 10.1119/1.17020](https://doi.org/10.1119/1.17020) / [IEEE DOI 10.1109/22.216476](https://doi.org/10.1109/22.216476)) ·
+  [`../theory/feynman_maxwell_equations.md`](../theory/_CITATIONS.md) (Feynman Lectures II Ch 18, the Maxwell baseline for M7.2)
 - Source corpus (the evolving M7 library, 64 docs): [`../theory/`](../theory/) , Marc's original 53 in [`electron_beltrami/`](../theory/electron_beltrami/) plus 11 later additions in the theory root, manifest [`../theory/_CITATIONS.md`](../theory/_CITATIONS.md) (Beltrami / force-free / knotted-EM / ball-lightning / LENR / Pisello-Faber canon, the M7.0 corpus)
 - Rigor standard: [`../../m5_liquid_crystal/research/11a_vortex_loop.md`](../../m5_liquid_crystal/research/tasks/m5_11a_vortex_loop.md) (M5.11 vortex-loop)
 - Wave-physics library to mine (§ 0, not parents): [`m1_granule_motion`](../../m1_granule_motion/) · [`m2_free_wave`](../../m2_free_wave/) · [`m3_wolff_lafreniere`](../../m3_wolff_lafreniere/) · [`m4_ewt`](../../m4_ewt/)

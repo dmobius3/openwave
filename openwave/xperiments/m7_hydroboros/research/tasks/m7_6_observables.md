@@ -11,7 +11,7 @@ This doc is the task's full record: planning + findings + future planning + docu
 | Observable | How | Target / gate |
 | --- | --- | --- |
 | mass | `E_ω` of the relaxed state, converted via the units contract (M6 anchors) | reported vs `m_e c²`; Fleury's own analytic ansatz gives `0.795 m_e c²`, so an honest gap is expected and quantified |
-| spin | `L = ∫ R×p dV` from the Poynting momentum; **cross-checked against Ceperley's rotating-wave law `L_z = mU/ω`** ([`../../theory/ceperley_rotating_waves.md`](../../theory/ceperley_rotating_waves.md) § 4b: exact for rotating modes, quantized when `U/ω = ℏ`) | `ℏ/2` vs measured; the Ceperley identity validates the lattice integrals independently |
+| spin | `L = ∫ R×p dV` from the Poynting momentum; **cross-checked against Ceperley's rotating-wave law `L_z = mU/ω`** ([`../../theory/ceperley_rotating_waves.md`](../../theory/_CITATIONS.md) § 4b: exact for rotating modes, quantized when `U/ω = ℏ`) | `ℏ/2` vs measured; the Ceperley identity validates the lattice integrals independently |
 | magnetic moment | `μ = ½∫ R×J dV` (RMS convention per the M7.2 contract) | `μ_B(1 + α/2π)` (the Schwinger factor is the precision bar) |
 | charge | `Q_div` Gauss flux (from M7.4) | `= e` in calibrated units; quantization evidence per the M7.4 Q3 table |
 | Klein-Gordon twist | the phase/twist sector's dispersion on the lattice | KG form recovered (García López corpus #17 is the gauge-fixing route: KG from the electrovacuum) |
