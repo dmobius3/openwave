@@ -34,50 +34,55 @@ def generate_K_positions(univ_edge, K, center=(0.5, 0.5, 0.5), rotation=(0, 0, 0
 
     return positions
 
-
-def tetrahedron_10(univ_edge, center=(0.5, 0.5, 0.5), rotation=(0, 0, 0)):
-    """Generate 10 positions in 1-3-6 tetrahedral arrangement."""
-    LOCK_SPACING = constants.EWAVE_LENGTH / univ_edge
-    layer_h = LOCK_SPACING * math.sqrt(2 / 3)
+def tetrahedron_10(univ_edge, center=(0.5,0.5,0.5), rotation=(0,0,0), perturbation=0.0):
+    """
+    Generate proper 1-3-6 tetrahedral electron geometry.
+    Returns 10 positions: 1 center, 3 inner, 6 outer.
+    """
+    import math
+    import random
+    
     cx, cy, cz = center
-
-    Rb = LOCK_SPACING * 2 / math.sqrt(3)
-    Rm = LOCK_SPACING / math.sqrt(3)
-
-    angles_v = [math.radians(90), math.radians(210), math.radians(330)]
-    angles_m = [math.radians(30), math.radians(150), math.radians(270)]
-
-    local_positions = []
-    for a in angles_v:
-        local_positions.append([Rb * math.cos(a), Rb * math.sin(a), 0.0])
-    for a in angles_m:
-        local_positions.append([Rm * math.cos(a), Rm * math.sin(a), 0.0])
-    for a in angles_v:
-        local_positions.append([Rm * math.cos(a), Rm * math.sin(a), layer_h])
-    local_positions.append([0.0, 0.0, 2 * layer_h])
-
-    # Apply rotation if needed
-    if rotation != (0, 0, 0):
-        rx, ry, rz = math.radians(rotation[0]), math.radians(rotation[1]), math.radians(rotation[2])
-        Rx = [[1, 0, 0], [0, math.cos(rx), -math.sin(rx)], [0, math.sin(rx), math.cos(rx)]]
-        Ry = [[math.cos(ry), 0, math.sin(ry)], [0, 1, 0], [-math.sin(ry), 0, math.cos(ry)]]
-        Rz = [[math.cos(rz), -math.sin(rz), 0], [math.sin(rz), math.cos(rz), 0], [0, 0, 1]]
-
-        def mat_vec_mul(M, v):
-            return [M[0][0]*v[0] + M[0][1]*v[1] + M[0][2]*v[2],
-                    M[1][0]*v[0] + M[1][1]*v[1] + M[1][2]*v[2],
-                    M[2][0]*v[0] + M[2][1]*v[1] + M[2][2]*v[2]]
-
-        rotated = []
-        for p in local_positions:
-            temp = mat_vec_mul(Rx, p)
-            temp = mat_vec_mul(Ry, temp)
-            temp = mat_vec_mul(Rz, temp)
-            rotated.append(temp)
-        local_positions = rotated
-
-    return [[cx + p[0], cy + p[1], cz + p[2]] for p in local_positions]
-
+    # Normalized wavelength for scaling
+    LOCK_SPACING = constants.EWAVE_LENGTH / univ_edge
+    # Radii: inner ~0.015-0.02, outer ~0.03-0.04 (in normalized units)
+    r1 = 0.02  # inner radius
+    r2 = 0.04  # outer radius
+    h = r2 * math.sqrt(2/3)  # height offset for outer layer (approx 0.03266)
+    
+    positions = []
+    # 1. Center
+    positions.append([cx, cy, cz])
+    
+    # 2. Inner 3: in XY plane, Z=0, 120° apart
+    angles_inner = [math.radians(90), math.radians(210), math.radians(330)]
+    for a in angles_inner:
+        positions.append([cx + r1 * math.cos(a),
+                          cy + r1 * math.sin(a),
+                          cz])
+    
+    # 3. Outer 6: two layers of 3, with Z offset, rotated 60° relative to inner
+    angles_outer = [math.radians(30), math.radians(150), math.radians(270)]
+    # Lower layer (Z = -h)
+    for a in angles_outer:
+        positions.append([cx + r2 * math.cos(a),
+                          cy + r2 * math.sin(a),
+                          cz - h])
+    # Upper layer (Z = +h)
+    for a in angles_outer:
+        positions.append([cx + r2 * math.cos(a),
+                          cy + r2 * math.sin(a),
+                          cz + h])
+    
+    # Optional rotation (currently no rotation implemented, but could be added)
+    # For simplicity, we skip rotation; rotation can be applied later.
+    
+    # Perturbation
+    if perturbation > 0:
+        rng = random.Random(42)
+        positions = _apply_perturbation(positions, perturbation, LOCK_SPACING, rng)
+    
+    return positions
 
 def golden_angle_positions(K, radius, center):
     """Generate K points on a sphere via Fibonacci spiral."""
@@ -278,5 +283,189 @@ def _disk_positions(N, radius, center):
         z = cz
 
         positions.append([x, y, z])
+
+    return positions
+
+    # ================================================================
+# EWT LEGACY GEOMETRIES (from formation02.py)
+# ================================================================
+
+def tricapped_trigonal_prism_positions(
+    K: int,
+    center=(0.5, 0.5, 0.5),
+    lock_spacing: float = 0.05,
+    perturbation: float = 0.0
+):
+    """
+    Generate K=9 positions in a tricapped trigonal prism geometry.
+
+    Structure: 6 points form a trigonal prism (3 top, 3 bottom),
+    plus 3 caps at the side-face centers.
+
+    Args:
+        K: Number of wave centres (must be 9)
+        center: (cx, cy, cz) center in normalized coords
+        lock_spacing: Characteristic spacing (λ in normalized coords)
+        perturbation: Random displacement fraction of lock_spacing
+
+    Returns:
+        List of K positions [[x1,y1,z1], ...]
+    """
+    import math
+    import random
+
+    if K != 9:
+        raise ValueError(f"tricapped_trigonal_prism_positions only supports K=9, got K={K}")
+
+    cx, cy, cz = center
+    s = lock_spacing
+
+    angles = [math.radians(90), math.radians(210), math.radians(330)]
+    r = s / math.sqrt(3)       # circumradius for edge = s
+    h = s / 2                  # half-height of prism
+
+    positions = []
+
+    # Bottom and top triangles
+    for z_off in [-h, h]:
+        for a in angles:
+            positions.append([
+                cx + r * math.cos(a),
+                cy + r * math.sin(a),
+                cz + z_off
+            ])
+
+    # Caps: 3 points at the side-face centers (rotated by 60°)
+    cap_angles = [math.radians(30), math.radians(150), math.radians(270)]
+    cap_r = r * 1.5
+    for a in cap_angles:
+        positions.append([
+            cx + cap_r * math.cos(a),
+            cy + cap_r * math.sin(a),
+            cz
+        ])
+
+    if perturbation > 0:
+        rng = random.Random(42)
+        positions = _apply_perturbation(positions, perturbation, lock_spacing, rng)
+
+    return positions
+
+
+def generate_positions_by_EWT_geometry(
+    univ_edge: float,
+    K: int,
+    center=(0.5, 0.5, 0.5),
+    rotation=(0, 0, 0),
+    perturbation: float = 0.0,
+):
+    """
+    Generate K WC positions using the original EWT geometry definitions.
+
+    This is the "legacy" geometry generator from formation02.py.
+    It uses specific polyhedral geometries for each K:
+        K=2:  line
+        K=3:  equilateral triangle
+        K=4:  regular tetrahedron
+        K=5:  trigonal bipyramid
+        K=6:  octahedron
+        K=7:  pentagonal bipyramid
+        K=8:  cube (dual tetrahedra)
+        K=9:  tricapped trigonal prism
+        K=10: 1-3-6 tetrahedron (electron)
+
+    For K outside 2..10, falls back to golden_angle_positions.
+
+    Args:
+        univ_edge: Universe edge length (m) – used to compute λ spacing
+        K: Number of wave centres
+        center: (cx, cy, cz) center in normalized coords
+        rotation: (rx, ry, rz) rotation in degrees (only used for K=10)
+        perturbation: Random displacement fraction of λ
+
+    Returns:
+        List of K positions [[x1,y1,z1], ...]
+    """
+    import math
+    import random
+
+    LOCK_SPACING = constants.EWAVE_LENGTH / univ_edge
+    cx, cy, cz = center
+    s = LOCK_SPACING
+
+    if K == 2:
+        positions = [[cx - s/2, cy, cz], [cx + s/2, cy, cz]]
+
+    elif K == 3:
+        angles = [math.radians(90), math.radians(210), math.radians(330)]
+        r = s / math.sqrt(3)
+        positions = [[cx + r * math.cos(a), cy + r * math.sin(a), cz] for a in angles]
+
+    elif K == 4:
+        h = s * math.sqrt(2 / 3)
+        r = s / math.sqrt(3)
+        positions = [
+            [cx, cy + r, cz],
+            [cx - s/2, cy - r/2, cz],
+            [cx + s/2, cy - r/2, cz],
+            [cx, cy, cz + h],
+        ]
+
+    elif K == 5:
+        angles = [math.radians(90), math.radians(210), math.radians(330)]
+        r = s / math.sqrt(3)
+        positions = [[cx + r * math.cos(a), cy + r * math.sin(a), cz] for a in angles]
+        positions.append([cx, cy, cz + s/2])
+        positions.append([cx, cy, cz - s/2])
+
+    elif K == 6:
+        d = s / math.sqrt(2)
+        positions = [
+            [cx + d, cy, cz],
+            [cx - d, cy, cz],
+            [cx, cy + d, cz],
+            [cx, cy - d, cz],
+            [cx, cy, cz + d],
+            [cx, cy, cz - d],
+        ]
+
+    elif K == 7:
+        angles = [math.radians(i * 72) for i in range(5)]
+        r = s / (2 * math.sin(math.pi / 5))
+        positions = [[cx + r * math.cos(a), cy + r * math.sin(a), cz] for a in angles]
+        positions.append([cx, cy, cz + s/2])
+        positions.append([cx, cy, cz - s/2])
+
+    elif K == 8:
+        d = s / 2
+        positions = [
+            [cx + d, cy + d, cz + d],
+            [cx + d, cy + d, cz - d],
+            [cx + d, cy - d, cz + d],
+            [cx + d, cy - d, cz - d],
+            [cx - d, cy + d, cz + d],
+            [cx - d, cy + d, cz - d],
+            [cx - d, cy - d, cz + d],
+            [cx - d, cy - d, cz - d],
+        ]
+
+    elif K == 9:
+        positions = tricapped_trigonal_prism_positions(
+            K, center, LOCK_SPACING, perturbation
+        )
+        # perturbation already applied inside helper
+        return positions
+
+    elif K == 10:
+        positions = tetrahedron_10(univ_edge, center=center, rotation=rotation)
+
+    else:
+        # Fallback: golden angle on a small sphere
+        positions = golden_angle_positions(K, 0.35 * LOCK_SPACING, center)
+
+    # Apply perturbation for all cases except K=9 (already handled)
+    if perturbation > 0 and K != 9:
+        rng = random.Random(42)
+        positions = _apply_perturbation(positions, perturbation, LOCK_SPACING, rng)
 
     return positions

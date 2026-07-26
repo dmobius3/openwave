@@ -175,6 +175,7 @@ def compute_laplacian(
 #
 # For a focusing (attractive) potential, use c1 < 0.
 # For saturation strength, c2 > 0 (quintic term) — larger values = stronger limiting.
+# Formalization in doc: https://doi.org/10.5281/zenodo.21557369
 # ================================================================
 
 
