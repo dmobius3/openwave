@@ -13,6 +13,22 @@ The columns are deliberately heterogeneous. M5 is a 4x4 real symmetric tensor fi
 | Cross-model reading maps and prior art | The compute and the AI tokens to produce them |
 | Maintainer help pointing the author's AI agent at the right places | The answers when someone challenges a claim on the column |
 
+### Bring your own compute (BYOC)
+
+That table is the platform's resource contract, and it is worth stating plainly because it decides what an author can plan around. There are three roles here, and each one brings something different:
+
+| Role | What the role brings |
+| --- | --- |
+| **Platform maintainers** | The shared criteria and the honest status legend, the scaffold, the review, the best practices, the cross-model prior art, the onboarding of new models, and pull-request review |
+| **Model authors** | The runs behind their own column: their own AI tokens and their own hardware, plus the answers when a claim on that column is challenged |
+| **Anyone else, contributing by pull request** | The same, for whatever they take on: a validation, an independent recompute, a falsification attempt |
+
+**What this means in practice.** Early on, the maintainer side funded most of the runs, because a comparison table with nothing in it convinces nobody and the database had to become non-zero first. That phase is over. Maintainer resources are now prioritized for running the platform: onboarding new models, reviewing pull requests, keeping the standards and the cross-model work in order, and honoring commitments already made. When resources are free, a maintainer can still help an author get scripts running, but that is help, not a guarantee, and it cannot be planned around. Bringing your own compute is what gives an author consistency.
+
+**Why the resources are not pooled.** Sending tokens or compute to a maintainer to spend on someone else's behalf adds administration and puts a maintainer between a contributor and their own runs. The direct path is the useful one: spend the budget on your own runs, then open a pull request with the script and the note behind the result ([`CONTRIBUTING.md`](CONTRIBUTING.md) has the flow). Larger runs here are not blocked on permission, they are blocked on compute, so a contributor who brings tokens or machine time is bringing exactly the scarce resource.
+
+**What the platform offers instead** is not compute, tokens, or admin work: a plain field for comparison, the same criteria applied to every column, the evidence shown for every claim, and openness to anyone who wants to put a model on the table or test one that is already there. Authors own their claims, and everyone owns the runs behind what they submit. The author-side detail is in [§ What the model author owns](#what-the-model-author-owns).
+
 **The bar: reproducibility, not orthodoxy.** Unconventional frameworks are explicitly in scope. A documented negative (a runnable script showing "this does not work, and here is why") is as valuable as a positive. What is *not* in scope is an unfalsifiable claim, or a numerical agreement that cannot be independently reproduced from stated inputs.
 
 This guide is for two readers:
@@ -62,7 +78,7 @@ Being a column in OpenWave is a commitment, not a listing. Five things belong to
 
 | Responsibility | What it means concretely |
 | --- | --- |
-| **Supply the compute** | The model author builds and runs the validation scripts on their own AI tokens and hardware. The platform supplies the standards, the scaffold, the review, and the prior art. It does not supply the token budget |
+| **Supply the compute** | The model author builds and runs the validation scripts on their own AI tokens and hardware. The platform supplies the standards, the scaffold, the review, and the prior art. It does not supply the token budget (the full resource contract, and why it is not pooled: [§ Bring your own compute](#bring-your-own-compute-byoc)) |
 | **Own the model** | The column carries the author's name. When someone challenges a claim in a discussion or an issue, the author answers. A maintainer will not defend an author's physics for them, and should not |
 | **Engage the other authors** | Cross-model questions, comparisons, and critiques are part of the deal. Other authors will read the column and ask hard questions; the author does the same for theirs |
 | **Accept the collaborator invitation** | Once an application is accepted, a maintainer sends the author a GitHub invitation as an **external collaborator** on the repository. Accepting it is what makes someone a model author here rather than a cited reference |
