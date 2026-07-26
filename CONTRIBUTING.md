@@ -24,6 +24,7 @@ See `/dev_docs` for coding standards and development guidelines
 - [Performance Guidelines](dev_docs/PERFORMANCE_GUIDELINES.md)
 - [Loop Optimization Patterns](dev_docs/LOOP_OPTIMIZATION.md)
 - [Markdown Style Guide](dev_docs/MARKDOWN_STYLE_GUIDE.md)
+- [PR Review Standards](dev_docs/PR_REVIEW_STANDARDS.md): what a maintainer checks when reviewing your PR, so nothing in the review is a surprise
 - [AI Hygiene](AI_HYGIENE.md): working with automated intelligence, the dos, don'ts, and verification habits that keep the science human-owned  
 
 *This is the Way!*
