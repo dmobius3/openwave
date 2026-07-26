@@ -9,6 +9,9 @@ Whether you're fixing a typo, adding a feature, or reporting a bug, your help ma
 - **Suggest Features:** Share ideas for new features or improvements through the issue tracker.
 - **Improve Documentation:** Help us make guides, examples, and API references clearer.
 - **Write Code:** Fix bugs, add features, or improve existing code.
+- **Run the science yourself:** Validate, recompute, or try to falsify any cell in [MODELS.md](MODELS.md), then open a pull request with the script and the note behind the result.
+
+**Bring your own compute (BYOC).** The runs behind a contribution are supplied by whoever makes them, in AI tokens and hardware, rather than pooled through a maintainer: [ONBOARDING_MODELS.md § Bring your own compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc) states the contract for model authors and pull-request contributors alike.
 
 ## Practice the Community Code
 

@@ -317,7 +317,7 @@ Working with AI assistance, or pointing an AI assistant at this repo? Read [AI_H
 
 ### WITH RESOURCES
 
-- Support this project via [Buy Me a Coffee](https://buymeacoffee.com/openwave)
+- **Bring your own compute (BYOC).** Runs here are funded by whoever makes them: a model author supplies the AI tokens and hardware behind their own column, and anyone contributing by pull request does the same for whatever they take on. Rather than pooling resources through a maintainer, spend the budget on your own runs and submit the script and the note behind the result. The full contract, and why it works this way: [ONBOARDING_MODELS.md § Bring your own compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc)
 
 ## LICENSE & ATTRIBUTION
 

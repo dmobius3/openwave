@@ -293,6 +293,29 @@ python3 -m py_compile <changed files>
 python3 dev_docs/check_models_md.py
 ```
 
+### Recording the verdict: submit it as a review, not as a comment
+
+The [verdict](#11-verdict-and-how-to-write-it) has to be submitted as a **review**, which carries a state, and not as a conversation comment, which does not. GitHub makes this easy to get wrong: both render identically and both notify, but only a review sets `reviewDecision`, shows the status badge on the PR list, and satisfies or blocks the CODEOWNERS gate. A review body that says "changes requested" while the PR state says `REVIEW_REQUIRED` leaves the contributor without the signal they watch for.
+
+| Surface | Where in the UI | What it produces |
+| --- | --- | --- |
+| **Review** (correct) | **Files changed** tab → **Review changes** → choose Comment / Approve / **Request changes** → **Submit review** | A review with a state. Sets `reviewDecision`, badges the PR, drives the merge gate, and auto-dismisses on a force-push |
+| Conversation comment | The comment box at the bottom of the **Conversation** tab | An issue comment. Notifies, but carries no state and does not touch the merge gate |
+
+The radio buttons live only behind **Review changes** on the Files changed tab. There is no path to them from the Conversation tab, which is why a full review can be written and posted without ever being offered the choice. Inline comments anchored to a specific file and line are also review-only, so any finding worth pinning to the code has to go through the same button.
+
+Terminal equivalents:
+
+```bash
+gh pr review <N> --request-changes --body "..."   # blocking findings exist
+gh pr review <N> --approve       --body "..."     # all gates clear
+gh pr review <N> --comment       --body "..."     # review-shaped, deliberately no state
+gh pr comment <N> --body "..."                    # plain conversation comment, no state
+gh pr view <N> --json reviewDecision,reviews      # verify the state actually landed
+```
+
+A long review body can be posted as a comment first and the state submitted separately with a one-line review pointing at it. Verify with the last command either way: the state is the part that is easy to lose.
+
 ## 13. Lessons log
 
 One row per PR that taught us something. Newest at the bottom.
@@ -303,6 +326,7 @@ One row per PR that taught us something. Newest at the bottom.
 | [#297](https://github.com/openwave-labs/openwave/pull/297) | Two things a diff read catches that a claim read does not: a backend left on CPU, and inline comments stripped by an auto-formatter. Those comments were there for cold readers, so their removal is a real loss even though no behaviour changed | Gate B (removing an existing option), Gate G |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | Recomputing the headline table from the shipped data disagreed with the note, and following the named mechanism through the code showed it contributing zero in the mode actually used. Both were invisible from the PR body. Also: one CP1252 byte in a shared module made `grep` silently skip the file during review | Gate C (recompute, do not read), Gate D rows 1 and 2, Gate A row A2 |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | The contributor was extending a column owned by someone else, and the PR changed that column's engine defaults while claiming its headline open problem. Nothing in the process said when the column's author has to be in the loop and when that would just be noise, so the per-finding routing was written down | Gate F § 8.1, review structure item 7 |
+| [#340](https://github.com/openwave-labs/openwave/pull/340) | The verdict went out as a conversation comment rather than a submitted review, so the PR sat at `REVIEW_REQUIRED` while its body said changes requested. The merge gate held on CODEOWNERS regardless, but the contributor never got the signal. Fixed with `gh pr review --request-changes` and written into the appendix | § 12 "Recording the verdict" |
 
 ---
 
