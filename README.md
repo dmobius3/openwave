@@ -140,6 +140,43 @@ OpenWave is a multi-contributor open-source platform. Alongside the theoretical 
 
 The platform's design treats AI agents as first-class contributors, not as a tool layered on top of the work. Numerical analyses, derivations, and code are performed by AI agents under engineering direction from OpenWave Labs; all artifacts are open-source so any researcher can reproduce, refute, or extend.
 
+### Resource Contributors
+
+Theory and code are two ways in. This is the third: the science here is limited by compute as much as by ideas, and a contributor can move it forward by supplying the resources a run needs instead of the run itself.
+
+| Lane | What it looks like |
+| --- | --- |
+| Sponsorship | Funding applied to what the platform actually spends on: AI usage, GPU and cloud time, storage, and maintainer hours |
+| Infrastructure | Lending compute directly: GPU or cluster hours, a server that accepts jobs, an HPC allocation |
+| Usage grants | AI token budgets or API credits assigned to a named model or a named calculation |
+
+Resources are earmarked to named work rather than pooled into a general fund. A contribution is tied to the run it pays for, that run's script and result are published like every other cell in [MODELS.md](MODELS.md), and the contributor is credited against it. Sustained contributors are listed below, by name, by organization, or anonymously, whichever they prefer.
+
+**What a contribution pays for.** Three costs, and the third one is the one people forget:
+
+| Cost | What it covers |
+| --- | --- |
+| AI tokens | The research agents that write, run, and audit the validation scripts |
+| Compute time | GPU, cluster, and cloud hours, plus storage for the heavy runs |
+| Maintainer hours | Human work: running a specific calculation, reviewing it, porting a run to different hardware, and keeping the platform itself alive (onboarding new models, multi-round pull-request review, standards, housekeeping) |
+
+Maintainer work is volunteer work today, and it is the platform's tightest constraint: review and integration capacity, not ideas. Funding is what allows more maintainers to join and be compensated fairly for that work rather than donating all of it.
+
+**Transparency on the money.** Before any maintainer hour is funded, two things are published on this page: the hourly rate applied, and where each contribution went, recorded against the named run or the named review that it paid for. OpenWave currently has no legal entity behind it; it is volunteer work released under [Apache 2.0](LICENSE). If sponsorship reaches the point where an entity is needed to receive and account for it properly, that structure gets set up and stated here before any funds are handled through it.
+
+Where the cost sits right now, for anyone deciding what to back:
+
+- **Physical-parameter simulation.** Several models are validated only at toy parameter values because the physical regime is numerically out of reach (for the liquid-crystal column: g ~ 1e10, δ ~ 1e-10). Closing that gap is a compute problem before it is a physics problem.
+- **Nuclei-scale runs.** Building toy nuclei as vortex knots, and eventually a table of nuclides, is explicitly supercomputer-scale work.
+- **Cross-model validation.** Every criteria cell that reads 🚧 in [MODELS.md](MODELS.md) is a calculation nobody has paid for yet.
+- **Integration capacity.** Onboarding a new model and reviewing a large pull request take multiple rounds of maintainer time, and that queue is what decides how fast the table grows.
+
+To offer resources, open an issue or contact the maintainers; say what you can bring and it will be matched to the runs blocked on exactly that. The default for authors and code contributors stays [bring-your-own-compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc); this lane exists for people who want to fund the science without running it themselves.
+
+| Contributor | Contribution |
+| --- | --- |
+| This list is open | No resource contributions recorded yet |
+
 ### Computational Approach
 
 OpenWave evolves classical wave-field values on a 3D lattice via GPU-accelerated PDE integration (Taichi), similar in spirit to lattice QCD but with classical field equations and no gauge structure. Multiple complementary models (scalar, vector, director-field, granule-motion) allow cross-checking of mechanisms and direct comparison between candidate Lagrangians.
@@ -318,6 +355,7 @@ Working with AI assistance, or pointing an AI assistant at this repo? Read [AI_H
 ### WITH RESOURCES
 
 - **Bring your own compute (BYOC).** Runs here are funded by whoever makes them: a model author supplies the AI tokens and hardware behind their own column, and anyone contributing by pull request does the same for whatever they take on. Rather than pooling resources through a maintainer, spend the budget on your own runs and submit the script and the note behind the result. The full contract, and why it works this way: [ONBOARDING_MODELS.md § Bring your own compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc)
+- **Resource contributions.** Not running the science yourself, but able to pay for it: sponsorship, GPU or cluster hours, AI token grants. What each lane covers, where the cost currently sits, and how contributions are credited: [§ Resource Contributors](#resource-contributors)
 
 ## LICENSE & ATTRIBUTION
 
