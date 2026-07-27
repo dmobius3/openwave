@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-from openwave.xperiments.m4_ewt.utils import live_monitor
 
 _plot_timesteps = []
 _plot_displacements = []
@@ -28,7 +27,7 @@ def sample_for_plots(timestep, wave_field, trackers):
             if hasattr(val, "__len__"):
                 return float(val[0])
             return float(val)
-        except:
+        except Exception:
             return 0.0
 
     d = to_float(disp) / wave_field.scale_factor

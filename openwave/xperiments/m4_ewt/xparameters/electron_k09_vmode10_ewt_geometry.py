@@ -2,7 +2,6 @@
 from openwave.xperiments.m4_ewt.xparameters.utils.geometry import (
     generate_positions_by_EWT_geometry,
 )
-from openwave.common import constants
 
 # ================================================================
 # V_MODE=10: Gaussian profile + quintic saturation

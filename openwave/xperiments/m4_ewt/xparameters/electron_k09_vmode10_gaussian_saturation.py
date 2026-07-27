@@ -1,6 +1,5 @@
 # electron_k10_vmode10_gaussian_saturation.py
 from openwave.xperiments.m4_ewt.xparameters.utils.geometry import generate_K_positions
-from openwave.common import constants
 
 # ================================================================
 # V_MODE=10: Gaussian profile + quintic saturation

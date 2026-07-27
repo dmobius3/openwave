@@ -683,6 +683,26 @@ def render_elements(state):
 # ================================================================
 
 
+def stop_live_monitor(state):
+    """Terminate the external live-monitor process, if one is running.
+
+    Safe to call more than once. This MUST run before os.execv on the
+    xperiment-switch path: execv replaces the process image immediately, so
+    nothing after it executes and the viewer would be left orphaned, holding a
+    window that has to be force-quit.
+    """
+    proc = getattr(state, "_monitor_process", None)
+    if proc is None or proc.poll() is not None:
+        return
+    proc.terminate()
+    try:
+        proc.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        proc.wait()
+    state._monitor_process = None
+
+
 def main():
     """Main entry point for xperiment launcher."""
     selected_xperiment_arg = sys.argv[1] if len(sys.argv) > 1 else None
@@ -752,6 +772,9 @@ def main():
             sys.stderr.flush()
             render.window.running = False
 
+            # Nothing after os.execv runs, so tear the monitor down here.
+            stop_live_monitor(state)
+
             # os.execv replaces current process (macOS may show harmless warning)
             os.execv(sys.executable, [sys.executable, __file__, new_xperiment])
 
@@ -776,9 +799,7 @@ def main():
             video.export_frame(state.frame, state.VIDEO_FRAMES)
 
     if state.INSTRUMENTATION:
-        if hasattr(state, "_monitor_process"):
-            state._monitor_process.terminate()
-            state._monitor_process.wait()
+        stop_live_monitor(state)
         from openwave.xperiments.m4_ewt.utils.plotting import generate_plots
 
         generate_plots()

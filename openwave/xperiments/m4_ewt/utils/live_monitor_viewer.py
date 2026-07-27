@@ -3,6 +3,7 @@
 External live monitor viewer. Run as a separate process.
 Reads shared JSON file and updates a matplotlib plot.
 """
+import os
 import sys
 import json
 import time
@@ -74,7 +75,15 @@ def main(data_path_str):
     plt.tight_layout()
     fig.show()
 
+    # If the launcher dies without tearing us down (a crash, a force-quit), we
+    # get reparented and would otherwise loop forever holding a window open.
+    parent_pid = os.getppid()
+
     while data_path.exists():
+        if os.getppid() != parent_pid:
+            print("[monitor] Launcher exited, closing.")
+            break
+
         try:
             with open(data_path, "r") as f:
                 data = json.load(f)
@@ -90,7 +99,7 @@ def main(data_path_str):
                 ax2.relim()
                 ax2.autoscale_view(scaley=True)
                 fig.canvas.draw()
-        except:
+        except Exception:
             pass
         plt.pause(0.5)
 

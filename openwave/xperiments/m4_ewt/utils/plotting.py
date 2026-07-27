@@ -4,7 +4,6 @@ Post-simulation plotting functions.
 These are called once after the simulation loop ends.
 """
 
-import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
