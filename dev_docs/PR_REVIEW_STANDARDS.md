@@ -2,7 +2,7 @@
 
 > The procedure a maintainer (or an AI coding agent acting for one) follows when reviewing a pull request, especially one from an external contributor. It exists so that review quality does not depend on who is on duty, and so that the repository's DNA survives contact with contributions it did not plan for.
 >
-> **This is a live file.** Every PR that teaches us something new gets folded back into it: a new gate, a sharper command, or a row in the [lessons log](#13-lessons-log). If a review turns up a failure mode not covered here, add it before closing the PR.
+> **This is a live file.** Every PR that teaches us something new gets folded back into it: a new gate, a sharper command, or a row in the [lessons log](#14-lessons-log). If a review turns up a failure mode not covered here, add it before closing the PR.
 
 ## What review is, and is not
 
@@ -30,10 +30,11 @@ A documented negative is a merge-worthy contribution. An overstated positive is 
 | [7. Gate E: MODELS.md cell changes](#7-gate-e-modelsmd-cell-changes) | the evidence bar for moving a cell |
 | [8. Gate F: other authors' work](#8-gate-f-other-authors-work) | not damaging a column you do not own |
 | [9. Gate G: policy sweep](#9-gate-g-policy-sweep) | AI hygiene, conduct, contributing, reproduce, onboarding, style |
-| [10. Fairness rules](#10-fairness-rules) | measure against the enforced baseline, not the aspirational one |
-| [11. Verdict and how to write it](#11-verdict-and-how-to-write-it) | the ladder, and open-source review etiquette |
-| [12. Command appendix](#12-command-appendix) | copy-paste checks |
-| [13. Lessons log](#13-lessons-log) | what past PRs taught us |
+| [10. Maintainer edits](#10-maintainer-edits) | when to fix it yourself instead of asking, and how to push to a fork |
+| [11. Fairness rules](#11-fairness-rules) | measure against the enforced baseline, not the aspirational one |
+| [12. Verdict and how to write it](#12-verdict-and-how-to-write-it) | the ladder, and open-source review etiquette |
+| [13. Command appendix](#13-command-appendix) | copy-paste checks |
+| [14. Lessons log](#14-lessons-log) | what past PRs taught us |
 
 ## 1. Intake
 
@@ -42,7 +43,7 @@ Establish these five before reading any code. They set how heavy the rest of the
 | # | Establish | How | Why it matters |
 | --- | --- | --- | --- |
 | 1 | **Who** and **prior history** | `gh pr view <N> --json author` then `gh pr list --state all --author <login>` | A returning contributor's past review threads tell you what they already know and what they had to be asked twice |
-| 2 | **DCO sign-off on every commit** | `gh pr checks <N>`, plus `git log main..pr-<N> --format='%(trailers:key=Signed-off-by,valueonly)'` | Apache 2.0 provenance. Non-negotiable, and it is a one-time config fix, not a rejection (see [lessons log](#13-lessons-log)) |
+| 2 | **DCO sign-off on every commit** | `gh pr checks <N>`, plus `git log main..pr-<N> --format='%(trailers:key=Signed-off-by,valueonly)'` | Apache 2.0 provenance. Non-negotiable, and it is a one-time config fix, not a rejection (see [lessons log](#14-lessons-log)) |
 | 3 | **Blast radius** | `gh pr view <N> --json files` | Drives everything below. A PR entirely inside one model folder is a different review from one touching `common/` or a root document |
 | 4 | **What the PR claims** | the PR body plus any added research note | Write the headline claim down in one sentence. Gates C and D are tested against that sentence |
 | 5 | **Source branch** | `headRefName` | A PR from a fork's `main` is workable but fragile: the contributor cannot start a second PR without entangling it. Worth a friendly note, never a blocker |
@@ -68,12 +69,12 @@ Mechanical checks. Run them all; they take under a minute and they catch the thi
 | # | Check | Bar | Command |
 | --- | --- | --- | --- |
 | A1 | **No large data files** | Tracked data is summary-scale: JSON, CSV, plots, manifests. Heavy arrays (`.npz`, `.npy`, raw fields, videos) stay local and gitignored, with a `_DATASETS.md` manifest recording the regeneration script instead | `git ls-tree -r -l pr-<N>` sorted by size, and diff the total against `main` |
-| A2 | **Valid UTF-8, no BOM** | Every text file decodes as UTF-8 and starts without a byte-order mark | [see appendix](#12-command-appendix). A single CP1252 byte silently breaks `grep`, `black`, and some editors |
+| A2 | **Valid UTF-8, no BOM** | Every text file decodes as UTF-8 and starts without a byte-order mark | [see appendix](#13-command-appendix). A single CP1252 byte silently breaks `grep`, `black`, and some editors |
 | A3 | **No third-party copyrighted material** | Citations, DOIs, and links only. Papers and author documents live in the gitignored `theory/` folder and are recorded in that model's `theory/_CITATIONS.md`. Contributor's own work, DCO-signed, is fine and does not need to be hidden | Read every added `.md` and `.pdf`. Check the reference list resolves to citations, not reproduced text |
 | A4 | **Citations registered** | New DOIs or author documents referenced by the PR appear in the model's `theory/_CITATIONS.md`, and stale "unpublished / DOI n/a" entries get updated | `git diff main...pr-<N> -- '*_CITATIONS.md'` |
 | A5 | **No secrets or personal data** | No keys, tokens, absolute home paths, emails beyond the commit trailer | grep the diff for `key`, `token`, `secret`, `/Users/`, `C:\Users` |
 | A6 | **Deleted files leave no dangling references** | Every deletion is either unreferenced or every referencing import and link is repointed in the same PR | grep the deleted basenames across the PR branch, `.py` and `.md` both |
-| A7 | **New files follow the folder convention** | A new subfolder inside a model folder must match what the other columns use (`research/`, `theory/`, `data/`, `plots/`, `xparameters/`). A novel folder name is a convention fork | `ls -d openwave/xperiments/*/*/` and compare |
+| A7 | **New files follow the folder convention** | A new subfolder inside a model folder must match what the other columns use (`research/`, `theory/`, `data/`, `plots/`, `xparameters/`, `utils/`). A novel folder name is a convention fork. **The `utils/` rule holds at two levels.** At the model root: the launcher, the medium and the engines stay at the top, and supporting scripts (instrumentation, plotting, sampling, monitoring) go in `<model>/utils/`. Inside `xparameters/`: only launchable xperiment parameter modules, each defining `XPARAMETERS`, sit at the top level, and supporting scripts go in `xparameters/utils/`, because the launcher offers every top-level `.py` there as a selectable xperiment | `ls -d openwave/xperiments/*/*/` and compare, then `git check-ignore -v <new-folder>/<file>` on any folder name introduced by the PR |
 | A8 | **Repository language is English** | Code comments, docstrings, and documentation in English, so every author and cold reader can read every column | scan added comment lines for non-English text |
 
 ## 4. Gate B: scope containment
@@ -192,14 +193,60 @@ Fast pass over the standing policies. Most PRs clear this in a minute.
 | --- | --- |
 | [`AI_HYGIENE.md`](../AI_HYGIENE.md) | Claims script-backed, not model-fluent. Status attached to AI-assisted findings. No aggregate self-ranking or cross-program scoreboards. Substantive claims carry an adversarial check, and the review itself is one |
 | [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md) | Applies to the review thread as much as the contribution. Critique the artifact, never the contributor |
-| [`CONTRIBUTING.md`](../CONTRIBUTING.md) | DCO, Apache 2.0, fork and branch flow, PEP 8 and Black as the style target (see [fairness](#10-fairness-rules) on how hard to press this) |
+| [`CONTRIBUTING.md`](../CONTRIBUTING.md) | DCO, Apache 2.0, fork and branch flow, PEP 8 and Black as the style target (see [fairness](#11-fairness-rules) on how hard to press this) |
 | [`REPRODUCE.md`](../REPRODUCE.md) | Reproduction route recorded once, in the research note. Nothing result-shaped lands in `REPRODUCE.md` itself |
 | [`ONBOARDING_MODELS.md`](../ONBOARDING_MODELS.md) | For a new column: scaffold set complete, briefing filled, author responsibilities accepted, collaborator invitation sent |
 | [`MARKDOWN_STYLE_GUIDE.md`](MARKDOWN_STYLE_GUIDE.md) | Blank lines around headings and lists, single trailing newline, fenced blocks carry a language |
 | [`METHOD_NOTE.md`](METHOD_NOTE.md) | Required shape for anything that will be reported to a theory owner or an external physicist: equations first, equation-to-code map, the not-computed list, the audit recorded |
 | [`CODING_STANDARDS.md`](CODING_STANDARDS.md) | Naming, docstrings, type hints, Taichi kernel guidance |
 
-## 10. Fairness rules
+## 10. Maintainer edits
+
+When to fix something yourself instead of asking for it.
+
+A review round trip costs both sides more than most of the fixes it asks for. "Line 10 is CP1252, please re-save as UTF-8", a day of waiting, then a re-review, is more expensive than saving the file. So the default is: **if a fix is mechanical and unambiguous, make it, and say so in the review.**
+
+This is not a licence to rewrite a contribution. The test is whether the fix requires knowing *why* the contributor did something.
+
+| Fix it yourself | Leave it to the contributor |
+| --- | --- |
+| Encoding, BOM, trailing newline, formatter output | Anything whose right answer depends on their intent |
+| A duplicated definition where the later one silently wins | Which of two implementations to keep, when both are plausible |
+| A label that contradicts the value beside it, when only one reading is possible | The same contradiction, when either half could be the error |
+| Restoring comments or documentation the diff removed in passing | Removing or rewriting their prose, in code or in documents |
+| A missing gitignore entry, a stale citation, a dangling reference | Tuning constants, thresholds, and anything the physics rests on |
+| The mechanical half of a finding, so only the real question is left | The finding itself, when it is a design or physics decision |
+
+### 10.1 Prerequisites, in order
+
+1. **Confirm you can push.** A PR from a fork is editable only if the contributor left the box ticked:
+
+```bash
+gh api repos/<owner>/<repo>/pulls/<N> -q '{editable: .maintainer_can_modify, head: .head.label}'
+```
+
+If that returns `false`, this section is moot: post the findings with commands instead.
+
+2. **Push to their branch**, not to one of your own:
+
+```bash
+git remote add <contributor> https://github.com/<contributor>/<repo>.git
+git push <contributor> <local-branch>:<their-head-ref>
+```
+
+3. **Check what their head ref is.** If it is their fork's default branch (`head: <user>:main`), say in the review that they must `git pull` before their next commit, or their default branch diverges from the PR. It is also the natural moment to suggest topic branches for future PRs, as a kindness rather than a rule.
+
+### 10.2 Rules that keep this safe
+
+| Rule | Why |
+| --- | --- |
+| **Announce every edit in the review**, what changed and why | The point of review is that the standard becomes visible. Silently fixing and merging teaches nothing, which is exactly what the old "ask, do not fix" rule protected. Writing it down protects the same thing at a fraction of the cost |
+| **Formatter runs go last, in their own commit** | Reformatting a dozen files buries every semantic change before it in the diff, and it conflicts with whatever the contributor has locally |
+| **Never put a repository-wide change inside a contributor's PR** | It inflates their blast radius, entangles the review, and stalls the platform fix if the PR stalls. Conventions are maintainer decisions and the history should say so |
+| **When one change spans both sides, land the platform half on `main` first** | A convention that must hold across every model, applied to a file that exists only in the PR, is two changes. Enforce it on `main`, then apply it to the PR branch. The PR picks up the rest on merge |
+| **A fix that needs a guess is not mechanical** | If you cannot state why they wrote it that way, you are not fixing it, you are overwriting it |
+
+## 11. Fairness rules
 
 These exist so review stays honest in both directions.
 
@@ -207,17 +254,17 @@ These exist so review stays honest in both directions.
 | --- | --- |
 | G1 | **Measure the PR against the enforced baseline, not the aspirational one.** Before citing a standard, check whether `main` itself passes it. If the repository has drift, that is the maintainer's debt, not the contributor's blocker. Say so out loud in the review |
 | G2 | **Separate blocking from optional, explicitly.** Every finding is labelled: blocking, requested, or note. A contributor should be able to count the blockers on one hand and know exactly what merges the PR |
-| G3 | **Ask, do not silently fix.** Pushing corrections into someone else's branch removes their chance to understand the standard. Fix it yourself only when they ask, or when it is a maintainer-owned file |
+| G3 | **Fix it yourself when the fix is mechanical, and say so.** A review round trip costs both sides more than most of what it asks for. Make the unambiguous fixes on the contributor's branch, list every one of them in the review, and leave the findings that need their intent. Rules in [§ 10](#10-maintainer-edits) |
 | G4 | **Give the command, not just the complaint.** The one-time DCO config, the exact reformat invocation, the recompute script. Reviews that ship commands get resolved in one round |
 | G5 | **A negative result is not a weak PR.** Neither is a small one |
 | G6 | **State what you verified and what you did not.** A review that implies more checking than happened is the same failure mode as an overstated claim |
 | G7 | **Findings from an AI-assisted review are findings, not verdicts,** until they carry the command that reproduces them. Same contract as everything else here |
 
-## 11. Verdict and how to write it
+## 12. Verdict and how to write it
 
 | Verdict | When | Action |
 | --- | --- | --- |
-| ✅ **Approve and merge** | All gates clear, or only notes remain | Merge. Record anything learned in the [lessons log](#13-lessons-log) |
+| ✅ **Approve and merge** | All gates clear, or only notes remain | Merge. Record anything learned in the [lessons log](#14-lessons-log) |
 | 🔶 **Approve with follow-ups** | Gates clear; requested items are real but not load-bearing | Merge, and open issues for the follow-ups so they do not evaporate |
 | ⚠️ **Changes requested** | Blocking findings exist, all of them fixable by the contributor | Post the findings with commands. Re-review only the deltas |
 | 🚧 **Split requested** | The contribution is sound but mixes tiers (model work plus shared-surface edits) | Ask for the shared-surface part to come out; merge the rest |
@@ -236,7 +283,7 @@ These exist so review stays honest in both directions.
 
 Findings are about artifacts. "This table disagrees with the shipped data" is a finding; "you were careless" is not. Where a finding could read as a challenge to the author's model rather than to the artifact, say which one you mean.
 
-## 12. Command appendix
+## 13. Command appendix
 
 Fetch and isolate the PR:
 
@@ -295,7 +342,7 @@ python3 dev_docs/check_models_md.py
 
 ### Recording the verdict: submit it as a review, not as a comment
 
-The [verdict](#11-verdict-and-how-to-write-it) has to be submitted as a **review**, which carries a state, and not as a conversation comment, which does not. GitHub makes this easy to get wrong: both render identically and both notify, but only a review sets `reviewDecision`, shows the status badge on the PR list, and satisfies or blocks the CODEOWNERS gate. A review body that says "changes requested" while the PR state says `REVIEW_REQUIRED` leaves the contributor without the signal they watch for.
+The [verdict](#12-verdict-and-how-to-write-it) has to be submitted as a **review**, which carries a state, and not as a conversation comment, which does not. GitHub makes this easy to get wrong: both render identically and both notify, but only a review sets `reviewDecision`, shows the status badge on the PR list, and satisfies or blocks the CODEOWNERS gate. A review body that says "changes requested" while the PR state says `REVIEW_REQUIRED` leaves the contributor without the signal they watch for.
 
 | Surface | Where in the UI | What it produces |
 | --- | --- | --- |
@@ -316,7 +363,7 @@ gh pr view <N> --json reviewDecision,reviews      # verify the state actually la
 
 A long review body can be posted as a comment first and the state submitted separately with a one-line review pointing at it. Verify with the last command either way: the state is the part that is easy to lose.
 
-## 13. Lessons log
+## 14. Lessons log
 
 One row per PR that taught us something. Newest at the bottom.
 
@@ -326,7 +373,10 @@ One row per PR that taught us something. Newest at the bottom.
 | [#297](https://github.com/openwave-labs/openwave/pull/297) | Two things a diff read catches that a claim read does not: a backend left on CPU, and inline comments stripped by an auto-formatter. Those comments were there for cold readers, so their removal is a real loss even though no behaviour changed | Gate B (removing an existing option), Gate G |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | Recomputing the headline table from the shipped data disagreed with the note, and following the named mechanism through the code showed it contributing zero in the mode actually used. Both were invisible from the PR body. Also: one CP1252 byte in a shared module made `grep` silently skip the file during review | Gate C (recompute, do not read), Gate D rows 1 and 2, Gate A row A2 |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | The contributor was extending a column owned by someone else, and the PR changed that column's engine defaults while claiming its headline open problem. Nothing in the process said when the column's author has to be in the loop and when that would just be noise, so the per-finding routing was written down | Gate F § 8.1, review structure item 7 |
-| [#340](https://github.com/openwave-labs/openwave/pull/340) | The verdict went out as a conversation comment rather than a submitted review, so the PR sat at `REVIEW_REQUIRED` while its body said changes requested. The merge gate held on CODEOWNERS regardless, but the contributor never got the signal. Fixed with `gh pr review --request-changes` and written into the appendix | § 12 "Recording the verdict" |
+| [#340](https://github.com/openwave-labs/openwave/pull/340) | The launcher listed every top-level `.py` in `xparameters/` as a selectable xperiment, so a helper module the PR added appeared as a menu entry that failed on selection. Found by running the GGUI, not by reading the diff. The rule now lives in code in all five launchers, and helpers live in `xparameters/utils/` | Gate A row A7, `_discover_xperiments` in every launcher |
+| [#340](https://github.com/openwave-labs/openwave/pull/340) | The first review asked for seven mechanical fixes and scheduled a second round to verify them. Most were an encoding byte, a BOM and a formatter run, so the round trip cost more than the edits would have. Fairness rule G3 was inverted and the maintainer-edit rules written down | § 10, fairness rule G3 |
+| [#340](https://github.com/openwave-labs/openwave/pull/340) | The first name chosen for the support-module folder, `lib/`, collided with `.gitignore` line 20 inherited from the Python template for build output. Committing it would have deleted `instrumentation.py` from four models and silently ignored the replacement. Caught by `git check-ignore` before the commit and resolved by renaming to `utils/` rather than adding ignore negations: a negation covers only the exact depths it names, and the failure it hides is silent | Gate A row A7 command, the `utils/` convention |
+| [#340](https://github.com/openwave-labs/openwave/pull/340) | The verdict went out as a conversation comment rather than a submitted review, so the PR sat at `REVIEW_REQUIRED` while its body said changes requested. The merge gate held on CODEOWNERS regardless, but the contributor never got the signal. Fixed with `gh pr review --request-changes` and written into the appendix | § 13 "Recording the verdict" |
 
 ---
 
