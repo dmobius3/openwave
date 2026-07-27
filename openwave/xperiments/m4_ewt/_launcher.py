@@ -41,14 +41,24 @@ class XperimentManager:
         self.current_xparameters = None
 
     def _discover_xperiments(self):
-        """Discover all available xperiment parameters in /xparameters directory."""
+        """Discover all available xperiment parameters in /xparameters directory.
+
+        An xperiment is a module that defines an XPARAMETERS dict. Shared helper
+        modules (geometry generators and the like) belong in `xparameters/utils/`,
+        which this non-recursive glob never sees. The XPARAMETERS check is the
+        backstop: a helper left at the top level stays out of the launcher menu
+        instead of showing up as an entry that fails when selected.
+        """
         parameters_dir = Path(__file__).parent / "xparameters"
 
         if not parameters_dir.exists():
             return []
 
         xperiment_files = [
-            file.stem for file in parameters_dir.glob("*.py") if file.name != "__init__.py"
+            file.stem
+            for file in parameters_dir.glob("*.py")
+            if file.name != "__init__.py"
+            and "XPARAMETERS" in file.read_text(encoding="utf-8", errors="ignore")
         ]
 
         return sorted(xperiment_files)

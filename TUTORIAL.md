@@ -172,6 +172,8 @@ Pick one and it runs in its own window. Under the hood the CLI finds every `_lau
 
 Each xperiment is fully customizable: open its launcher and parameter files to change universe size, sources, resolution, and visualization settings, or to turn on instrumentation (`"INSTRUMENTATION": True`) for real-time probes and CSV export.
 
+To add your own: an xperiment is a module in that model's `xparameters/` folder that defines an `XPARAMETERS` dict, and the launcher lists every such module it finds there. Shared helper code (geometry generators and the like) belongs in `xparameters/utils/` so it never appears in the menu, and support modules that are not part of the physics loop (logging, plotting, monitoring) belong in `<model>/utils/`.
+
 ---
 
 ## 5. Create a test on a current model
