@@ -19,7 +19,7 @@ build (line, triangle, tetrahedron, bipyramid, octahedron, cube, tricapped
 prism) are no longer generated.
 """
 
-from openwave.xperiments.m4_ewt.xparameters.utils.geometry import generate_K_positions
+from openwave.xperiments.m4_ewt.xparameters.utils.geometry import generate_positions_by_EWT_geometry
 
 UNIVERSE_EDGE = 1e-15  # m, universe edge length in meters
 TARGET_VOXELS = 75_000_000  # Target voxel count (impacts performance)
@@ -34,8 +34,8 @@ K = 2
 # At 0.0: perfect lattice (all K stable). At 0.2+: real test.
 PERTURBATION = 0.1  # fraction of λ (0.0 = perfect, 0.3 = 30% random displacement)
 
-POSITIONS = generate_K_positions(
-    UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), rotation=(0, 0, 0), perturbation=PERTURBATION
+POSITIONS = generate_positions_by_EWT_geometry(
+    UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), perturbation=PERTURBATION
 )
 PHASES = [180] * K  # all same phase (electron-like)
 
