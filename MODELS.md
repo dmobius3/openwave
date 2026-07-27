@@ -40,35 +40,37 @@ Every file reference is an active link to the file in this repository (under `op
 
 Each icon is earned by the matching row in that model's own table (column headers jump there); the per-model row carries the summary and the evidence links.
 
-| Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) |
-| --- | --- | --- | --- | --- | --- |
-| **PARTICLES** | | | | | |
-| Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 |
-| Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 |
-| de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 |
-| Particle stability (Derrick escape) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 |
-| Magnetic moment μ (g ≈ 2) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 |
-| Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 |
-| Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 |
-| Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 |
-| Neutrinos | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 |
-| Lepton mass spectrum (μ, τ) | ⚠️ | 🚧 | ❌ | ❌ | 🚧 |
-| Quarks | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 |
-| Baryons (p, n) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 |
-| Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 |
-| Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 |
-| | | | | | |
-| **FORCES** | | | | | |
-| Electric force (Coulomb 1/r) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 |
-| Magnetic force | ⚠️ | 🚧 | 🚧 | ⚠️ | 🚧 |
-| Gravity | ⚠️ | 🚧 | 🚧 | 🚧 | ⚠️ |
-| Strong force / confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 |
-| Weak force | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 |
-| | | | | | |
-| **WAVES + QUANTUM EMERGENCE** | | | | | |
-| EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 |
-| Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 |
-| Orbital quantization (atomic structure) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 |
+The **regime** column is a property of the criterion, not of any model: it marks what a row demands of whatever framework attempts it. `static` means the row can be earned from structure or spectrum alone, with no time evolution. `dynamic` means it cannot. `both` means the row carries a static sub-question and a dynamic one (a state existing versus that state annihilating, a mass versus an oscillation, a static potential versus a full stress-energy source), so a model can earn part of it without dynamics and the rest only with.
+
+| Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) | regime |
+| --- | --- | --- | --- | --- | --- | --- |
+| **PARTICLES** | | | | | | |
+| Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 | static |
+| Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 | static |
+| de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 | dynamic |
+| Particle stability (Derrick escape) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic |
+| Magnetic moment μ (g ≈ 2) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
+| Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
+| Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 | both |
+| Neutrinos | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | both |
+| Lepton mass spectrum (μ, τ) | ⚠️ | 🚧 | ❌ | ❌ | 🚧 | static |
+| Quarks | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Baryons (p, n) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static |
+| Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 | static |
+| Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 | static |
+| | | | | | | |
+| **FORCES** | | | | | | |
+| Electric force (Coulomb 1/r) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 | static |
+| Magnetic force | ⚠️ | 🚧 | 🚧 | ⚠️ | 🚧 | dynamic |
+| Gravity | ⚠️ | 🚧 | 🚧 | 🚧 | ⚠️ | both |
+| Strong force / confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Weak force | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| | | | | | | |
+| **WAVES + QUANTUM EMERGENCE** | | | | | | |
+| EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic |
+| Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 | dynamic |
+| Orbital quantization (atomic structure) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static |
 
 ## RESULTS BY MODEL
 

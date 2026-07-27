@@ -221,6 +221,30 @@ Partial coverage is normal and welcome. Most cells in a new column begin as 🚧
 
 **A model with no Lagrangian is still admissible.** M8 was admitted with no field Lagrangian and no equation of motion, scored honestly, with the missing dynamics named as its defining open problem and a field-dynamics collaboration set up around it. A framework that is not formulated as an action principle should say so plainly in the application rather than working around it. What the platform cannot substitute for is a **closed set of equations**: something that can be integrated, solved, or eigen-decomposed to produce a number.
 
+**The four tiers.** "Has a Lagrangian" is not the bar, and never was. Frameworks arrive at one of four tiers, and the first three are all admissible:
+
+| Tier | What the model supplies | Admissible |
+| --- | --- | --- |
+| 1 | An action principle, varied to Euler-Lagrange field equations | Yes, with the guarantees below |
+| 2 | Evolution equations written directly, with no action behind them | Yes, without those guarantees |
+| 3 | A spectral or eigenvalue problem, no time evolution at all | Yes, for static observables only |
+| 4 | No closed system: nothing to integrate, solve, or eigen-decompose | No. This is the only disqualifying case |
+
+Tier 2 is ordinary physics, not a compromise. Maxwell's equations were written down and solved for decades before anyone formulated the electromagnetic action, and Navier-Stokes has no standard Lagrangian while being among the most heavily simulated systems in existence. An author whose framework is tier 2 should say so plainly and will not be marked down for it.
+
+**What tier 2 gives up, and must therefore measure.** Deriving equations from an action buys four things for free. A tier-2 column has to establish each one by hand instead:
+
+| Guarantee lost | What it costs the column |
+| --- | --- |
+| Noether's theorem | Energy, momentum and charge conservation stop being automatic. They become quantities to verify numerically, and drift is a result to report rather than a bug to hide |
+| Canonical stress-energy tensor | `T_μν` no longer falls out of varying against the metric, so the gravity rows need their source term supplied another way |
+| Self-consistency by construction | A hand-assembled system can be quietly overdetermined or mutually inconsistent. Worth an explicit check before any physics claim rests on it |
+| Symplectic structure | Structure-preserving integrators are unavailable, so long-run energy drift has to be measured and bounded rather than assumed away |
+
+None of that blocks admission. It changes what the column's method notes have to show: a tier-1 model may assert conservation, a tier-2 model has to demonstrate it.
+
+**Why tier 3 is bounded.** A spectral model produces real, checkable numbers, but its observables are the static catalogue: what states exist, what they weigh, what quantum numbers they carry. Anything about persistence, propagation or exchange (stability under perturbation, angular momentum, magnetic moment, annihilation, radiation, a clock rate) needs time evolution, which is why those rows sit at 🚧 in a tier-3 column and why the [`MODELS.md`](MODELS.md) coverage matrix carries a `regime` column marking which rows demand it. A tier-3 model is admitted on the understanding that the gap is named, not worked around.
+
 ---
 
 ## STEP 2: application

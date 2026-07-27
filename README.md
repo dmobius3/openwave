@@ -146,23 +146,23 @@ Theory and code are two ways in. This is the third: the science here is limited 
 
 | Lane | What it looks like |
 | --- | --- |
-| [Sponsorship](https://github.com/sponsors/openwave-labs) | Funding applied to what the platform actually spends on: AI usage, GPU and cloud time, storage, and maintainer hours. Monthly or one-time: [github.com/sponsors/openwave-labs](https://github.com/sponsors/openwave-labs) |
+| [Sponsorship](https://github.com/sponsors/openwave-labs) | Funding applied to what the platform actually spends on: AI usage, GPU and cloud time, storage, and maintainers work. Monthly or one-time: [github.com/sponsors/openwave-labs](https://github.com/sponsors/openwave-labs) |
 | Infrastructure | Lending compute directly: GPU or cluster hours, a server that accepts jobs, an HPC allocation |
 | Usage grants | AI token budgets or API credits assigned to a named model or a named calculation |
 
-Resources are earmarked to named work rather than pooled into a general fund. A contribution is tied to the run it pays for, that run's script and result are published like every other cell in [MODELS.md](MODELS.md), and the contributor is credited against it. Sustained contributors are listed below, by name, by organization, or anonymously, whichever they prefer.
+Sustained contributors are listed below, by name, by organization, or anonymously, whichever they prefer.
 
 **What a contribution pays for.** Three costs, and the third one is the one people forget:
 
 | Cost | What it covers |
 | --- | --- |
-| AI tokens | The research agents that write, run, and audit the validation scripts |
-| Compute time | GPU, cluster, and cloud hours, plus storage for the heavy runs |
-| Maintainer hours | Human work: running a specific calculation, reviewing it, porting a run to different hardware, and keeping the platform itself alive (onboarding new models, multi-round pull-request review, standards, housekeeping) |
+| AI Tokens | The research agents that write, run, and audit the validation scripts |
+| Compute Time | GPU, cluster, and cloud hours, plus storage for the heavy runs |
+| Maintainers Work | Human work: running a specific calculation, reviewing it, porting a run to different hardware, and keeping the platform itself alive (onboarding new models, multi-round pull-request review, standards, housekeeping) |
 
-Maintainer work is volunteer work today, and it is the platform's tightest constraint: review and integration capacity, not ideas. Funding is what allows more maintainers to join and be compensated fairly for that work rather than donating all of it.
+Maintainers work is volunteer work today, and it is the platform's tightest constraint: review and integration capacity, not ideas. Funding is what allows more maintainers to join and be compensated fairly for that work rather than donating all of it.
 
-**Transparency on the money.** Before any maintainer hour is funded, two things are published on this page: the hourly rate applied, and where each contribution went, recorded against the named run or the named review that it paid for. OpenWave currently has no legal entity behind it; it is volunteer work released under [Apache 2.0](LICENSE). If sponsorship reaches the point where an entity is needed to receive and account for it properly, that structure gets set up and stated here before any funds are handled through it.
+OpenWave currently has no legal entity behind it; it is volunteer work released under [Apache 2.0](LICENSE). If sponsorship reaches the point where an entity is needed to receive and account for it properly, that structure gets set up and stated here before any funds are handled through it.
 
 Where the cost sits right now, for anyone deciding what to back:
 
