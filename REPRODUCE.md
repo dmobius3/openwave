@@ -72,3 +72,7 @@ Keeping this file static is deliberate: the multi-model arena already maintains 
 ---
 
 Cross-refs: [`README.md`](README.md) (what OpenWave is) · [`CONTRIBUTING.md`](CONTRIBUTING.md) (dev setup + PR flow) · [`MODELS.md`](MODELS.md) (the coverage matrix) · [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md) (adding a model) · [`AI_HYGIENE.md`](AI_HYGIENE.md) (the AI-collaboration contract)
+
+---
+
+**Deep readers and AI agents**: the full map of OpenWave's key documents, and the order to read them in, is in [`CLAUDE.md`](CLAUDE.md). The AI-collaboration contract is [`AI_HYGIENE.md`](AI_HYGIENE.md).

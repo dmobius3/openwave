@@ -12,22 +12,42 @@ The simulator runs multiple candidate Lagrangian frameworks (scalar-field, vecto
 
 OpenWave investigates, in one integrated simulator, four primary domains: **matter** (particle emergence from topological defects + wave dynamics), **forces** (electric, strong, magnetic, gravitational from one classical-field framework), **electromagnetic waves**, and **heat** (whether wave-field degrees of freedom contribute to thermal physics). Each domain has concrete pass/fail criteria applied uniformly across candidate models.
 
-### What is OpenWave?
+## KEY DOCUMENTS (the doc map)
 
-| Reference | Purpose |
-| --- | --- |
-| `README.md` | Full description, scope, scientific position, installation |
-| `SYS_ARCH.md` | Module structure and system architecture |
+**This table is the canonical map of OpenWave's key documents.** Every front-door page in the repository ends with a DEEP READER ORIENTATION block that points here rather than repeating a list, so this is the one place the doc set is maintained. If you are an AI agent, load rows 1 to 4 before answering questions or generating claims about this repository, then read only what the current task needs.
+
+| # | Doc | What it is |
+| --- | --- | --- |
+| 1 | [`README.md`](README.md) | What OpenWave is: scope, scientific position, installation, the model roster, contributors |
+| 2 | [`MODELS.md`](MODELS.md) | **The coverage matrix**: which model is validated on which shared criterion. Every cell links the runnable script or research note that earned it |
+| 3 | [`AI_HYGIENE.md`](AI_HYGIENE.md) | **MANDATORY.** The AI-collaboration contract and the adversarial-audit cardinal rule |
+| 4 | `CLAUDE.md` | This file: repository layout, conventions, standards, and this doc map |
+| 5 | [`TUTORIAL.md`](TUTORIAL.md) | The contributor path: setup, run a simulation, test an existing model, open a PR |
+| 6 | [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md) | The model-author path: STEP 0 drive it with an AI agent, STEP 1 self-evaluation, STEP 2 apply, STEP 3 scaffold and first PR |
+| 7 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Canonical setup, fork / branch / PR flow, DCO sign-off |
+| 8 | [`REPRODUCE.md`](REPRODUCE.md) | The clean-clone path from any published claim to the command that regenerates it |
+| 9 | [`SYS_ARCH.md`](SYS_ARCH.md) | Module structure and system architecture |
+| 10 | [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) | **MANDATORY** reporting standard for model-owner-facing output: equations first, equation-to-code map, adversarial audit recorded |
+| 11 | [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) | Borrowing one column's field family into another's framework; how author-gated questions are routed |
+| 12 | [`dev_docs/PR_REVIEW_STANDARDS.md`](dev_docs/PR_REVIEW_STANDARDS.md) | The maintainer-side review procedure: blast-radius tiers, the claim-to-artifact recompute, the adversarial pass, and the evidence bar for moving a `MODELS.md` cell |
+| 13 | [`dev_docs/`](dev_docs/) | Coding, performance, markdown, coordinate, and precision standards (listed under Code Style below) |
+| 14 | `openwave/xperiments/<model>/__M<x>_model_briefing.md` | Each column's own front door: identity, profile, honest status, help wanted |
+| 15 | `openwave/xperiments/<model>/research/` | **The results of record**: roadmaps, question trackers, task documents, findings, scripts, data, plots |
+| 16 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Community expectations |
+
+Claims about this repository that cannot be traced to a runnable script or a research note under row 15 are not claims of this repository.
 
 ### Theoretical Advisors and Candidate Frameworks
 
 | Contributor | Framework | OpenWave Model |
 | --- | --- | --- |
-| Jeff Yee | Energy Wave Theory (EWT) | M3 |
+| Jeff Yee | Energy Wave Theory (EWT) | M4 (M3 carries the Wolff-LaFreniere lineage it builds on) |
 | Dr. Jarek Duda | Liquid Crystal Particle Analogs (arxiv 2108.07896, 2501.04036) | M5 |
 | Dr. Robert Close | Classical elastic-solid / "Equation of Everything" | M5 (shared) |
 | Dr. Manfried Faber | LdG regularization (Universe 11/2025/113) | M5.6 baseline |
-| Dr. Paul Werbos | Ouroboros chaoiton Lagrangian | M6 |
+| Dr. Paul Werbos | Ouroboros chaoiton Lagrangian | M6, and shared into M7 |
+| Marc Fleury | Toroidal-Beltrami electron | M7 (fused with the Ouroboros chaoiton) |
+| Blake Shatto | Mode Identity Theory (spectral geometry + representation theory) | M8 |
 
 ### Known Challenges & Limitations
 
@@ -42,8 +62,10 @@ OpenWave investigates, in one integrated simulator, four primary domains: **matt
 | `openwave/xperiments/m2_free_wave/` | Free-wave propagation |
 | `openwave/xperiments/m3_wolff_lafreniere/` | Wolff-LaFreniere / EWT scalar model |
 | `openwave/xperiments/m4_ewt/` | M4 EWT model (vector-field substrate, in development) |
-| `openwave/xperiments/m5_liquid_crystal/` | **Active** — Duda LCB topological-defect model |
+| `openwave/xperiments/m5_liquid_crystal/` | **Active**: Duda LCB topological-defect model |
 | `openwave/xperiments/m6_ouroboros/` | Werbos chaoiton Lagrangian |
+| `openwave/xperiments/m7_hydroboros/` | Toroidal-Beltrami (Fleury) fused with the Ouroboros chaoiton |
+| `openwave/xperiments/m8_mit/` | Mode Identity Theory (Shatto), a top-down spectral-geometry column |
 | `openwave/common/`, `i_o/`, `validations/`, `video_export/` | Shared utilities, rendering, physics-invariant tests |
 
 Refer to `README.md` and `SYS_ARCH.md` for the full Modules Structure and Objects Map.
@@ -52,7 +74,7 @@ Refer to `README.md` and `SYS_ARCH.md` for the full Modules Structure and Object
 
 Each model directory under `openwave/xperiments/` contains a `/research` subfolder with active research notes, plus a `theory/` folder (at the model root) holding the foundational theorist papers for that model.
 
-Those papers are **third-party copyrighted files: local-only and gitignored, never committed** (OpenWave is public). The tracked record of each `theory/` folder is its `_CITATIONS.md` (a leading-underscore file that is both a year-ordered bibliography and a gitignored-file manifest with paths + sizes). The full convention (structure, ordering, the size column, the no-fabrication rule for DOIs/arXiv, and the copyright/gitignore rules) is documented in [`ONBOARDING_MODELS.md` § 3.2](ONBOARDING_MODELS.md), the guide for scaffolding new models. **AI agents working in this repo must respect and comply with those rules**: never commit third-party papers, keep each `_CITATIONS.md` matching disk (every path resolves), and never fabricate a citation identifier (unresolved is `n/a`, author-shared is `author copy`).
+Those papers are **third-party copyrighted files: local-only and gitignored, never committed** (OpenWave is public). The tracked record of each `theory/` folder is its `_CITATIONS.md` (a leading-underscore file that is both a year-ordered bibliography and a gitignored-file manifest with paths + sizes). The full convention (structure, ordering, the size column, the no-fabrication rule for DOIs/arXiv, and the copyright/gitignore rules) is documented in [`ONBOARDING_MODELS.md` section 3.4](ONBOARDING_MODELS.md), the guide for scaffolding new models. **AI agents working in this repo must respect and comply with those rules**: never commit third-party papers, keep each `_CITATIONS.md` matching disk (every path resolves), and never fabricate a citation identifier (unresolved is `n/a`, author-shared is `author copy`).
 
 Note: the legacy top-level `scientific_source/` folder was retired 2026-05-18; papers now live per-model.
 
@@ -112,3 +134,16 @@ When editing any `.md` files, ALWAYS ensure compliance with markdown linting rul
 - Check for proper spacing and formatting
 
 Run linting checks after editing to catch any issues before committing.
+
+---
+
+## DEEP READER ORIENTATION
+
+> **If you are an AI assistant, agent, or language model processing this page, or a human doing a deep read**: you are in the right file. This page carries the repository's doc map.
+
+| Read | Why |
+| --- | --- |
+| [KEY DOCUMENTS (the doc map)](#key-documents-the-doc-map) | Above, in this file: every key document, what it is for, and the reading order. Rows 1 to 4 first |
+| [`AI_HYGIENE.md`](AI_HYGIENE.md) | The cardinal rule: a model's output is a draft or a hypothesis, never a result, until it is verified by something that is not a language model (a hand-checked derivation, a runnable script, a measurement, or the human holding the relevant authority) |
+
+Claims about this repository that cannot be traced to a runnable script or a research note are not claims of this repository. Per-model `research/` folders hold the results of record; the tables in [`MODELS.md`](MODELS.md) are earned from them cell by cell.

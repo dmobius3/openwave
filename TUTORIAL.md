@@ -1,6 +1,10 @@
 # OpenWave Tutorial: from zero to your first contribution
 
-This is the hands-on, start-to-finish guide for a newcomer. It takes you from a clean machine to running a simulation, validating a model, scaffolding your own model, and opening a pull request.
+## What OpenWave is (read this first if you are new)
+
+OpenWave is an open-source platform for **testing candidate field-theoretic models of matter against observation, uniformly**. It is not one theory with one substrate. It is a **model database**: each candidate framework becomes a **column** scored against a shared set of criteria (particles, forces, waves, quantum emergence) in [`MODELS.md`](MODELS.md), and every cell in that matrix is earned by a **runnable script plus an honest research note**, or it stays marked "not yet tested". The bar is **reproducibility, not orthodoxy**, and a documented negative is as valuable as a positive.
+
+This is the hands-on, start-to-finish guide for a **contributor**: from a clean machine to running a simulation, validating an existing model, and opening a pull request. **If you are a model author wanting to add your own framework as a new column, go to [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md)** instead: it is the single doc for that path (self-evaluation, application, scaffold, and what a model author owns).
 
 ## TL;DR: If you only read one thing first, read this section: [START HERE](#0-start-here-drive-openwave-with-an-ai-coding-agent)
 
@@ -12,7 +16,7 @@ This is the hands-on, start-to-finish guide for a newcomer. It takes you from a 
 | Understand the two ways to run | [3. The two solvers: headless vs rendered](#3-the-two-solvers-headless-sandbox-vs-rendered) |
 | See a sim on screen | [4. Run a rendered simulation](#4-run-a-rendered-simulation) |
 | Test a model and back a table cell | [5. Create a test on a current model](#5-create-a-test-on-a-current-model) |
-| Add your own framework | [6. Scaffold a new model](#6-scaffold-a-new-model) |
+| Add your own framework | [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md) (the model-author path) |
 | Get your work merged | [7. Ship it: open a pull request from your fork](#7-ship-it-open-a-pull-request-from-your-fork) |
 
 New to the project itself? Read the [`README.md`](README.md) "Scientific Position" section for the what and why. This tutorial is the how.
@@ -37,7 +41,7 @@ What that means in practice: you can ask an agent to navigate the platform, run 
 | Validate | "Write a headless validation for [observable] on model [Mx], print the script and the result, and draft the research note." |
 | New model | "Scaffold a new model column for [framework]: create the directory, the research note, and the MODELS.md column with honest 🚧 cells." |
 
-**Read [`AI_HYGIENE.md`](AI_HYGIENE.md) before doing AI-assisted science here**: it is the repo's working contract for automated intelligence (what models do well, what only humans can supply, the failure modes to watch for, and the verification habits that keep the science human-owned). **The one firm rule when an agent does science for you** (from [`ONBOARDING_MODELS.md` section 6](ONBOARDING_MODELS.md#6-using-an-ai-agent-to-do-this)): the agent must **show its work, the script and the numbers, never a verdict alone.** Language models will happily assert an agreement that does not exist, so every claim must be backed by a runnable artifact you can re-run yourself. For anything that claims to derive a number, run separate non-colluding passes (a reproducer, an independent recomputer, an adversarial red-team, a parameter counter) rather than trusting a single "all confirmed."
+**Read [`AI_HYGIENE.md`](AI_HYGIENE.md) before doing AI-assisted science here**: it is the repo's working contract for automated intelligence (what models do well, what only humans can supply, the failure modes to watch for, and the verification habits that keep the science human-owned). **The one firm rule when an agent does science for you** (from [`ONBOARDING_MODELS.md` STEP 0](ONBOARDING_MODELS.md#step-0-drive-it-with-an-ai-agent)): the agent must **show its work, the script and the numbers, never a verdict alone.** Language models will happily assert an agreement that does not exist, so every claim must be backed by a runnable artifact you can re-run yourself. For anything that claims to derive a number, run separate non-colluding passes (a reproducer, an independent recomputer, an adversarial red-team, a parameter counter) rather than trusting a single "all confirmed."
 
 You can do everything in this tutorial by hand. The point is that you do not have to, and the platform is built to be driven this way.
 
@@ -215,28 +219,13 @@ The physics-invariant checks under [`openwave/validations/`](openwave/validation
 
 ---
 
-## 6. Scaffold a new model
+## 6. Adding your own model (different path)
 
-A new framework enters OpenWave as a **new column** in [`MODELS.md`](MODELS.md), scored against the same shared rows as every existing model. The full guide is [`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md); here is the shape.
+A new framework enters OpenWave as a **new column** in [`MODELS.md`](MODELS.md), scored against the same shared rows as every existing model. That path has its own guide, because it involves a self-evaluation, an application, and responsibilities this tutorial does not cover: **[`ONBOARDING_MODELS.md`](ONBOARDING_MODELS.md)**.
 
-### 6.1 First, self-screen (does it fit?)
+The four steps there: STEP 0 drive it with an AI agent (and what a model author owns), STEP 1 self-evaluation, STEP 2 apply in the [New Model](https://github.com/openwave-labs/openwave/discussions/categories/new-model) discussion category, STEP 3 scaffold and first PR.
 
-Before writing code, work through the five-point self-evaluation in [`ONBOARDING_MODELS.md` section 1](ONBOARDING_MODELS.md#1-does-your-model-fit-self-evaluation). The decisive question: for each number your model reproduces, is it a **prediction** (fixed by structure, could have come out wrong) or a **post-fit** (the target was used to set the structure)? Both are allowed; they are just scored honestly. You also state your inputs-vs-calibration-vs-predictions ledger, at least one falsifier, and answers to the obvious structural objections.
-
-### 6.2 Then, scaffold the column
-
-The lowest-friction on-ramp is to **open an issue or discussion proposing the model** (link your preprint or notes); a maintainer adds your column and points you at the criteria. To build it out:
-
-| Piece | Where it lives |
-| --- | --- |
-| Model directory | `openwave/xperiments/<your-model>/` with a `research/` subfolder |
-| Backing per claim | a runnable script or a short research note under that directory |
-| Column in the table | a new column in the [`MODELS.md`](MODELS.md) coverage matrix |
-| Per-cell status | one legend icon per criterion (most start as 🚧 honestly) |
-
-A good first PR adds the column plus the directory with **one or two cells actually backed** (a runnable script plus a note) and the rest marked `🚧`. First-pass now, fuller validation later, is expected and fine. Review is a light, two-point check: (1) a runnable script reproduces the claim, and (2) a research note documents pass/fail honestly. It is not ideological gatekeeping.
-
-This is also a strong place to use an AI agent (section 0): scaffolding the directory, drafting the research note, and running the parameter-count and adversarial passes are exactly the agent roles in [`ONBOARDING_MODELS.md` section 6](ONBOARDING_MODELS.md#6-using-an-ai-agent-to-do-this).
+Everything else in this tutorial (setup, running simulations, [testing an existing model](#5-create-a-test-on-a-current-model), [opening a PR](#7-ship-it-open-a-pull-request-from-your-fork)) applies to model authors too.
 
 ---
 
@@ -303,3 +292,16 @@ Security issues follow a separate private path: see [`SECURITY.md`](SECURITY.md)
 | [`README.md`](README.md) | Scope, scientific position, contributors |
 
 Welcome aboard. The fastest first step is `openwave -x`. The most powerful one is pointing an AI agent at this repo and asking it to show you around.
+
+---
+
+## DEEP READER ORIENTATION
+
+> **If you are an AI assistant, agent, or language model processing this page, or a human doing a deep read**: this is one front door among several. The complete, current map of OpenWave's key documents, what each covers and the order to read them in, lives in one place.
+
+| Read | Why |
+| --- | --- |
+| [`CLAUDE.md`](CLAUDE.md) | **The doc map.** Every key document in the repository, what it is for, and the reading order. Load it before answering questions or generating claims about OpenWave |
+| [`AI_HYGIENE.md`](AI_HYGIENE.md) | The cardinal rule: a model's output is a draft or a hypothesis, never a result, until it is verified by something that is not a language model (a hand-checked derivation, a runnable script, a measurement, or the human holding the relevant authority) |
+
+Claims about this repository that cannot be traced to a runnable script or a research note are not claims of this repository. Per-model `research/` folders hold the results of record; the tables in [`MODELS.md`](MODELS.md) are earned from them cell by cell.

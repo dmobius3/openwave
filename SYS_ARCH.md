@@ -26,3 +26,7 @@ This diagram illustrates the architecture of the OpenWave system, broken down in
   - Export of 3D images and GIFs for visual inspection
 - **Data Output**:
   - Numerical datasets, graphs, and analysis reports in open formats (CSV, JSON, PNG, STL)
+
+---
+
+**Deep readers and AI agents**: the full map of OpenWave's key documents, and the order to read them in, is in [`CLAUDE.md`](CLAUDE.md). The AI-collaboration contract is [`AI_HYGIENE.md`](AI_HYGIENE.md).

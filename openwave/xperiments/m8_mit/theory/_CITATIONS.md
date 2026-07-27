@@ -10,7 +10,7 @@ Total: **16 works** as of 2026-07-21 (scaffold seeding); **0 local files** held 
 Bibliography is the readable list; the Local corpus appendix will hold the gitignored-file
 inventory as papers are pulled down for tasks (filenames follow `YEAR - Author - Title`).
 
-Identifier policy per [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) § 3.2
+Identifier policy per [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) section 3.4
 (never fabricate): all 10 Zenodo DOIs below were machine-verified resolving on 2026-07-21.
 SSRN blocks automated checks, so SSRN IDs are transcribed from the author's registry and
 marked `(author registry)`; treat them as author-attested until first use.
@@ -40,7 +40,7 @@ month ascending.
 | Shatto | 2026 Jul | An Affine Rho-Index Conversion and the Galois Pair on the Poincaré Homology Sphere | SSRN [7129118](https://ssrn.com/abstract=7129118) (author registry) |
 
 Note on venues: all entries are preprints (Zenodo / SSRN), none refereed; this is recorded
-per the [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) § 5.1 sourcing flag and
+per the [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) red-flag checklist sourcing row and
 is one reason the platform's own independent verification (M8.1 first) matters.
 
 ## Local corpus

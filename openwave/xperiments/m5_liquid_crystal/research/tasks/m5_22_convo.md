@@ -20,3 +20,19 @@
 | 05:35, the morning nudge | If the 4×4 case stays stuck, focus the 3×3 nuclei ladder (proton, neutron, beta decay, tritium → He3, He4, clusters, halo nuclei); those results should bring the attention and the help needed for the 4×4 case | Sequencing directive: nuclei before further 4×4 spend |
 | 08:24, the user's commitment | The 3×3 nuclei program starts next week (compute-budget timing) | M5.22 Phase 1 "go" expected next week; roadmap gate updated |
 | 09:00, the 4×4 diagnosis restated | The unstable 4×4 electron has several candidate explanations: more realistic g/δ, or additional Skyrme-style Lagrangian terms; resolution may need skyrmion specialists, larger simulations, or simply more compute. Meanwhile the 3×3 nuclear topics are in reach, and even with inappropriate parameters many qualitative agreements should be expected, which can convince others to help | Matches the standing posture: scaling-law ladders over direct physical-regime runs ([Q33](../m5_question_tracker.md#q33-detail), [M5.21.11](m5_21_11_task_details.md)); M5.22 claim language stays QUALITATIVE at toy parameters |
+
+## 2026-07-26 04:03 (group, cc models-of-particles): the author's reply on the first M5 honest negative
+
+Reply to the 2026-07-25 20:28 send (thread "Housekeeping MODELS.md"), which carried the [`MODELS.md`](../../../../../MODELS.md) magnetic-moment ❌ cell and asked whether it is a real model limitation or an instrument that can be improved. Logged verbatim (group message, public among list members):
+
+> Thanks, but this is very subtle qualitative effect requiring complete 4x4 model, while we are still early - use completely unphysical g/delta, have issues with 4x4 case ... details of potential remain open question ... maybe additional kinetic terms are required as Skyrme people use ...
+>
+> So this negative result is very far from disqualifying - we are just far from ready for such calculations, currently still have rather toy model - able to predict rather only basic qualitative properties ...
+>
+> ... and in nuclear physics we should be able to get many of them with 3x3 field, like proton lighter than neutron - having positive core/negative shell, deuteron having lower energy than proton + neutron and electric quadrupole moment, beta decay of neutron and tritium, He4 ... maybe halos, decay of strange baryons releasing pion or kaon ...
+>
+> Generally, might be worth to distinguish such subtle "honest negative" from the really disqualifying ones ... like lack of charge quantization - without which e.g. electrons would literally explode.
+>
+> Let me cc models-of-particles as many there were waiting for this "honest negative" ;) and I believe it is worth to discuss distinguishing various types of negative results, e.g. (small) quantitative vs qualitative (disqualifying).
+>
+> ps. Maybe there is a way somebody could directly share tokens for OpenWave research? If so, it is worth to add some "Contributor list" and ask for help, maybe also sharing access to other computational resources - we will need for larger simulations, e.g. trying to recreate <https://en.wikipedia.org/wiki/Table_of_nuclides> even with such toy model.

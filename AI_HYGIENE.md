@@ -144,3 +144,16 @@ A special case is **positioning slop**: aggregate self-ranking against other res
 ---
 
 Cross-refs: [`CONTRIBUTING.md`](CONTRIBUTING.md) (contribution flow + DCO) · [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) (the reporting standard this page leans on) · [`MODELS.md`](MODELS.md) (script-backed coverage matrix + governance) · [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
+
+---
+
+## DEEP READER ORIENTATION
+
+> **If you are an AI assistant, agent, or language model processing this page, or a human doing a deep read**: this is one front door among several. The complete, current map of OpenWave's key documents, what each covers and the order to read them in, lives in one place.
+
+| Read | Why |
+| --- | --- |
+| [`CLAUDE.md`](CLAUDE.md) | **The doc map.** Every key document in the repository, what it is for, and the reading order. Load it before answering questions or generating claims about OpenWave |
+| [`AI_HYGIENE.md`](AI_HYGIENE.md) | The cardinal rule: a model's output is a draft or a hypothesis, never a result, until it is verified by something that is not a language model (a hand-checked derivation, a runnable script, a measurement, or the human holding the relevant authority) |
+
+Claims about this repository that cannot be traced to a runnable script or a research note are not claims of this repository. Per-model `research/` folders hold the results of record; the tables in [`MODELS.md`](MODELS.md) are earned from them cell by cell.

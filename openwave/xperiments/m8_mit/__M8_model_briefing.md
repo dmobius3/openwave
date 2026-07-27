@@ -38,7 +38,7 @@
 | Key inputs | Three standalone math papers: the twisted-Möbius first-positive eigenvalue, the coexact spectral gap from McKay distance, and the E8-filling Galois pair |
 | Primary sources | Author repo: [github.com/dmobius3/mode-identity-theory](https://github.com/dmobius3/mode-identity-theory); framework deposit [10.5281/zenodo.18064856](https://doi.org/10.5281/zenodo.18064856); full registry in [`theory/_CITATIONS.md`](theory/_CITATIONS.md) (10 Zenodo DOIs machine-verified 2026-07-21) |
 | Author-side artifacts | `calculator.html` (recomputes couplings, the 24-entry mass spectrum, and cosmology from the postulate); `mass-null-test.py` (pre-registered torsion null test, frozen tag); `claim-ledger.md` (the framework's own freedom audit: calibration web, cycles, overclaim checks) |
-| Onboarding record | [Discussion #312](https://github.com/openwave-labs/openwave/discussions/312) (2026-07-21); maintainer evaluation against [`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) §§ 1, 4, 5 passed on artifact verification |
+| Onboarding record | [Discussion #312](https://github.com/openwave-labs/openwave/discussions/312) (2026-07-21); maintainer evaluation against [`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) STEP 1 (self-evaluation, parameter-count test, red flags) passed on artifact verification |
 
 ## Model Profile (what it brings, short form)
 
@@ -61,7 +61,7 @@
 ## Decision-Relevant Attributes
 
 MIT's parameter economy is audited in the author's own `claim-ledger.md`, which runs the
-[`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) § 4 test on the framework before
+[`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) parameter-count test on the framework before
 any maintainer does. The honest summary, kept at the ledger's own weight:
 
 | Attribute | M8 |
@@ -100,7 +100,7 @@ documented negative is a result.
 
 | Sector | Status |
 | --- | --- |
-| Λ = first-positive eigenvalue 2/R² (twisted Möbius Laplacian) | ✅ VERIFIED in-platform (M8.1, 2026-07-21): blind two-agent eigensolve per [`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) § 6, adversarially audited (6/6 fidelity checks); 2/R², the α₀(α₀+1)/R² wide branch, the 2R/e stability threshold and the −4e^(−2γ)/δ₀² defect state all confirmed at 10-digit precision by agents that never saw the claimed values. The Λ = 3/R² inference (Gauss-Codazzi step + the R-problem) remains open ([`research/findings/m8_1_method_note.md`](research/findings/m8_1_method_note.md)) |
+| Λ = first-positive eigenvalue 2/R² (twisted Möbius Laplacian) | ✅ VERIFIED in-platform (M8.1, 2026-07-21): blind two-agent eigensolve per [`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md) STEP 0 agent roles, adversarially audited (6/6 fidelity checks); 2/R², the α₀(α₀+1)/R² wide branch, the 2R/e stability threshold and the −4e^(−2γ)/δ₀² defect state all confirmed at 10-digit precision by agents that never saw the claimed values. The Λ = 3/R² inference (Gauss-Codazzi step + the R-problem) remains open ([`research/findings/m8_1_method_note.md`](research/findings/m8_1_method_note.md)) |
 | Fermion mass spectrum (24 entries) | 🚧 planned in-platform / analytic-only today. Reproducible as a script from recomputed constants (M8.3), the same category the platform scores EWT's masses under ("from analytic equations, not in-sim dynamics"). Residuals listed above; evidence graded at the ledger's own weight (the torsion null caps the ×3 hit-rate claim) |
 | Yang-Mills mass gap 4/R² on S³/2I | 🚧 planned in-platform. Analytic (the coexact-gap bedrock paper) |
 | Charge / color quantization | 🚧 planned in-platform. Structural in MIT (2I stabilizers); not run in the engine |

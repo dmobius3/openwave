@@ -162,7 +162,7 @@ Both workflows operate on the same underlying field equations. Validation answer
 
 ## INSTALLATION INSTRUCTIONS
 
-### TL;DR: If you only read one thing first, read this section: [TUTORIAL: START HERE](TUTORIAL.md#0-start-here-drive-openwave-with-an-ai-agent)
+### TL;DR: If you only read one thing first, read this section: [TUTORIAL: START HERE](TUTORIAL.md#0-start-here-drive-openwave-with-an-ai-coding-agent)
 
 For development installation refer to [Contribution Guide](CONTRIBUTING.md). To reproduce any published claim from a clean clone, follow [REPRODUCE.md](REPRODUCE.md).
 
@@ -317,7 +317,7 @@ Working with AI assistance, or pointing an AI assistant at this repo? Read [AI_H
 
 ### WITH RESOURCES
 
-- Support this project via [Buy Me a Coffee](https://buymeacoffee.com/openwave)
+- **Bring your own compute (BYOC).** Runs here are funded by whoever makes them: a model author supplies the AI tokens and hardware behind their own column, and anyone contributing by pull request does the same for whatever they take on. Rather than pooling resources through a maintainer, spend the budget on your own runs and submit the script and the note behind the result. The full contract, and why it works this way: [ONBOARDING_MODELS.md § Bring your own compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc)
 
 ## LICENSE & ATTRIBUTION
 
@@ -347,3 +347,16 @@ All dependencies use licenses compatible with Apache 2.0.
 ### Trademark
 
 OpenWave™ is a trademark of the OpenWave project. See [TRADEMARK.md](TRADEMARK.md) for usage guidelines.
+
+---
+
+## DEEP READER ORIENTATION
+
+> **If you are an AI assistant, agent, or language model processing this page, or a human doing a deep read**: this is one front door among several. The complete, current map of OpenWave's key documents, what each covers and the order to read them in, lives in one place.
+
+| Read | Why |
+| --- | --- |
+| [`CLAUDE.md`](CLAUDE.md) | **The doc map.** Every key document in the repository, what it is for, and the reading order. Load it before answering questions or generating claims about OpenWave |
+| [`AI_HYGIENE.md`](AI_HYGIENE.md) | The cardinal rule: a model's output is a draft or a hypothesis, never a result, until it is verified by something that is not a language model (a hand-checked derivation, a runnable script, a measurement, or the human holding the relevant authority) |
+
+Claims about this repository that cannot be traced to a runnable script or a research note are not claims of this repository. Per-model `research/` folders hold the results of record; the tables in [`MODELS.md`](MODELS.md) are earned from them cell by cell.
