@@ -44,6 +44,7 @@ XPARAMETERS = {
         "SIGMA": 3.0,
         "PRESSURE_STRENGTH": 0.001,
         "CFL_SAFETY": 0.1,
+        "VELOCITY_DAMPING": 0.990
     },
     "ui_defaults": {
         "SHOW_AXIS": False,

@@ -11,7 +11,7 @@ TARGET_VOXELS = 55_000_000
 K = 10
 PERTURBATION = 0.02
 
-# BCC lattice — generic placement, NOT 1-3-6
+# BCC lattice â€” generic placement, NOT 1-3-6
 # Spacing chosen to give similar cluster size as golden angle
 LOCK_SPACING = constants.EWAVE_LENGTH / UNIVERSE_EDGE
 SPACING = 0.35 * LOCK_SPACING

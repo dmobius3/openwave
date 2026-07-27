@@ -2,7 +2,7 @@
 
 ### Recommendation for OpenWave M4 Implementation
 
-**Author:** £ukasz SmoliÒski  
+**Author:** ≈Åukasz Smoli≈Ñski  
 **Affiliation:** Independent Researcher, 61-160 Czapury, Poland  
 **Version:** 1.0  
 **Date:** 2026-07-26  
@@ -57,7 +57,7 @@ The Energy Wave Theory (EWT) provides a geometric foundation for particle physic
 
 ## 1. Introduction
 
-The Energy Wave Theory (EWT) [1, 2, 3] posits that fundamental particles are stable solitons in an elastic mediumóthe Body-Centered Cubic (BCC) lattice of Elastic Medium Constituents (EMCs). The electron is modelled as a composite soliton of ten wave centres arranged in a 1-3-6 tetrahedral geometry [1, 4].
+The Energy Wave Theory (EWT) [1, 2, 3] posits that fundamental particles are stable solitons in an elastic medium‚Äîthe Body-Centered Cubic (BCC) lattice of Elastic Medium Constituents (EMCs). The electron is modelled as a composite soliton of ten wave centres arranged in a 1-3-6 tetrahedral geometry [1, 4].
 
 The geometric derivation of coupling constants is well-established [1]. However, the dynamical stabilisation of the 1-3-6 configuration requires a nonlinear term $\mathcal{F}$ in the wave equation that counteracts dispersion. This paper formalises the nonlinear stabilisation mechanisms, extending the existing framework with new profiles and structures.
 
@@ -128,8 +128,8 @@ The nonlinear coupling coefficient $\gamma$ is the inverse:
 $$\gamma = \frac{1}{\epsilon_M} = N_{\text{final}}\pi^3 \approx 2.414 \times 10^4.$$
 
 Two values are available:
-- $\gamma_{\text{geo}} = 8\pi^7$ ó the pure geometric limit.
-- $\gamma_{\text{final}} = N_{\text{final}}\pi^3$ ó calibrated to the measured fine-structure constant.
+- $\gamma_{\text{geo}} = 8\pi^7$ ‚Äî the pure geometric limit.
+- $\gamma_{\text{final}} = N_{\text{final}}\pi^3$ ‚Äî calibrated to the measured fine-structure constant.
 
 ---
 
@@ -282,7 +282,7 @@ These extensions provide a foundation for numerical validation of the electron s
 
 ## References
 
-[1] SmoliÒski, £. (2026). *The Geometric Identity of Gravity and Dimensional Unification Resolving $\alpha$, Lepton $(g-2)_l$, Weinberg, and Cabibbo Mixing*. Version 4.5.2. DOI: [10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657).
+[1] Smoli≈Ñski, ≈Å. (2026). *The Geometric Identity of Gravity and Dimensional Unification Resolving $\alpha$, Lepton $(g-2)_l$, Weinberg, and Cabibbo Mixing*. Version 4.5.2. DOI: [10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657).
 
 [2] Yee, J. (2019). *The Geometry of Particles and the Explanation of their Creation and Decay*. ResearchGate Preprint. DOI: [10.13140/RG.2.2.14966.14401](https://doi.org/10.13140/RG.2.2.14966.14401).
 
@@ -292,7 +292,7 @@ These extensions provide a foundation for numerical validation of the electron s
 
 [5] OpenWave Collaboration (2026). *OpenWave Simulation Platform*. GitHub Repository: [https://github.com/openwave-labs/openwave](https://github.com/openwave-labs/openwave).
 
-[6] Yee, J. and SmoliÒski, £. (2025). *The Geometric Black Hole: The Role of $\epsilon_{G}$ in Extreme Wave Geometries*. DOI: [10.5281/zenodo.17397981](https://doi.org/10.5281/zenodo.17397981).
+[6] Yee, J. and Smoli≈Ñski, ≈Å. (2025). *The Geometric Black Hole: The Role of $\epsilon_{G}$ in Extreme Wave Geometries*. DOI: [10.5281/zenodo.17397981](https://doi.org/10.5281/zenodo.17397981).
 
 ---
 

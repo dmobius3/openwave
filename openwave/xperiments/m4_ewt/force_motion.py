@@ -51,6 +51,12 @@ ELECTRON_OUTER_SHELL = constants.ELECTRON_OUTER_SHELL
 ELECTRON_ORBITAL_G = constants.ELECTRON_ORBITAL_G
 
 # ================================================================
+# DEFAULT VELOCITY DAMPING 
+# ================================================================
+VELOCITY_DAMPING_DEFAULT = 0.999
+
+
+# ================================================================
 # PRESSURE FORCE FROM VACUUM (V_MODE >= 4)
 # ================================================================
 
@@ -71,7 +77,7 @@ def compute_density_gradient(
     
     For V_MODE=4/5: exponential profile
     For V_MODE=6/7: sigmoid profile
-    For V_MODE=9: Gaussian profile
+    For V_MODE=9/10: Gaussian profile
     For V_MODE=0/1: returns zero (uniform density)
     """
     cx = wave_field.nx * 0.5
@@ -101,7 +107,7 @@ def compute_density_gradient(
             d_wall_dr = -(wall_height - 1.0) * (r - r_wall) / (wall_sigma ** 2) * ti.exp(-((r - r_wall) ** 2) / (2.0 * wall_sigma ** 2))
             drho_dr += d_wall_dr
     
-    elif v_mode == 9:
+    elif v_mode == 9 or v_mode == 10:
         # Gaussian profile: rho = 1 - deficit * exp(-(r/R)^2)
         # derivative: drho_dr = 2 * deficit * r / R^2 * exp(-(r/R)^2)
         drho_dr = 2.0 * deficit_depth * r / (r_soliton ** 2) * ti.exp(-(r / r_soliton) ** 2)
@@ -150,6 +156,8 @@ def add_pressure_force(
         wave_center.force[wc_idx][0] += F_pressure[0]
         wave_center.force[wc_idx][1] += F_pressure[1]
         wave_center.force[wc_idx][2] += F_pressure[2]
+
+
 def compute_ewt_electric_force(
     r: float, K: int = 1, Oe: float = 1.0, glambda: float = 1.0
 ) -> float:
@@ -191,11 +199,6 @@ def compute_ewt_electric_force(
 # GRADIENT_WEIGHT_FALLOFF = 2: weights as 1/d² (particle energy density ∝ A² ∝ 1/r²)
 GRADIENT_SAMPLE_RADIUS = 3  # voxels (increased from 1 for better lock-in well resolution)
 GRADIENT_WEIGHT_FALLOFF = 2  # exponent for 1/d^n weighting
-
-# Velocity damping: fraction of velocity retained per timestep
-# 1.0 = no damping, 0.99 = light damping, 0.95 = moderate damping
-# Physically: models energy dissipation via radiation (photon emission)
-VELOCITY_DAMPING = 0.990
 
 
 @ti.kernel
@@ -329,6 +332,7 @@ def integrate_motion_euler(
     wave_field: ti.template(),  # type: ignore
     wave_center: ti.template(),  # type: ignore
     dt_rs: ti.f32,  # type: ignore
+    damping: ti.f32,  # type: ignore  [A2] now passed as parameter
 ):
     """
     Integrate particle motion using Euler method.
@@ -340,22 +344,20 @@ def integrate_motion_euler(
         wave_field: WaveField instance (for dx voxel size)
         wave_center: WaveCenter instance with force/velocity/position fields
         dt_rs: Timestep in rontoseconds
+        damping: per-experiment velocity damping factor (1.0 = no damping)
     """
     # Conversion factor: (N / qg) to am/rs²
-    # Using quectograms (qg) instead of kg for f32 precision on GPU
-    # Division by small kg values (e.g., 4.26e-36) underflows on GPU f32
-    # With qg: m_qg = 4.26e-3 (f32-friendly), conversion factor = 1e-3
     accel_conv_qg = ti.cast(1e-3, ti.f32)  # (F_N / m_qg) * 1e-3 -> am/rs²
 
     # Voxel size in attometers for position conversion
     dx_am = wave_field.dx / ti.cast(ATTOMETER, ti.f32)
 
     for wc_idx in range(wave_center.num_sources):
-        # Skip inactive (annihilated) WCs
+    # Skip inactive (annihilated) WCs
         if wave_center.active[wc_idx] == 0:
             continue
 
-        # Get force (Newtons) and mass (qg - quectograms for GPU precision)
+             # Get force (Newtons) and mass (qg - quectograms for GPU precision)
         F_x = wave_center.force[wc_idx][0]
         F_y = wave_center.force[wc_idx][1]
         F_z = wave_center.force[wc_idx][2]
@@ -371,8 +373,12 @@ def integrate_motion_euler(
         wave_center.velocity_amrs[wc_idx][1] += a_y_amrs * dt_rs
         wave_center.velocity_amrs[wc_idx][2] += a_z_amrs * dt_rs
 
+        # Apply velocity damping (models radiation energy loss)
+        wave_center.velocity_amrs[wc_idx][0] *= damping
+        wave_center.velocity_amrs[wc_idx][1] *= damping
+        wave_center.velocity_amrs[wc_idx][2] *= damping
+
         # Clamp velocity to speed of light (c = 0.3 am/rs)
-        # velocity clamp to prevent superluminal speeds
         c_amrs = ti.cast(0.3, ti.f32)
         v_mag = ti.sqrt(
             wave_center.velocity_amrs[wc_idx][0] ** 2
@@ -399,31 +405,15 @@ def integrate_motion_euler(
         wave_center.position_float[wc_idx][1] += dj
         wave_center.position_float[wc_idx][2] += dk
 
-        # # Clamp position to grid boundaries (with margin for gradient sampling)
-        # margin = ti.cast(2, ti.f32)  # Keep 2 voxels from edge
-        # nx_f = ti.cast(wave_field.nx, ti.f32)
-        # ny_f = ti.cast(wave_field.ny, ti.f32)
-        # nz_f = ti.cast(wave_field.nz, ti.f32)
-
-        # wave_center.position_float[wc_idx][0] = ti.max(
-        #     margin, ti.min(nx_f - margin, wave_center.position_float[wc_idx][0])
-        # )
-        # wave_center.position_float[wc_idx][1] = ti.max(
-        #     margin, ti.min(ny_f - margin, wave_center.position_float[wc_idx][1])
-        # )
-        # wave_center.position_float[wc_idx][2] = ti.max(
-        #     margin, ti.min(nz_f - margin, wave_center.position_float[wc_idx][2])
-        # )
-
-        # Sync integer position for wave generation
+        # Sync integer position (round instead of truncate)
         wave_center.position_grid[wc_idx][0] = ti.cast(
-            wave_center.position_float[wc_idx][0], ti.i32
+            ti.round(wave_center.position_float[wc_idx][0]), ti.i32
         )
         wave_center.position_grid[wc_idx][1] = ti.cast(
-            wave_center.position_float[wc_idx][1], ti.i32
+            ti.round(wave_center.position_float[wc_idx][1]), ti.i32
         )
         wave_center.position_grid[wc_idx][2] = ti.cast(
-            wave_center.position_float[wc_idx][2], ti.i32
+            ti.round(wave_center.position_float[wc_idx][2]), ti.i32
         )
 
 
@@ -437,6 +427,7 @@ def integrate_motion_leapfrog(
     wave_field: ti.template(),  # type: ignore
     wave_center: ti.template(),  # type: ignore
     dt_rs: ti.f32,  # type: ignore
+    damping: ti.f32,  # type: ignore  
 ):
     """
     Integrate particle motion using Velocity Verlet (leapfrog) method.
@@ -463,10 +454,11 @@ def integrate_motion_leapfrog(
         wave_field: WaveField instance (for dx voxel size)
         wave_center: WaveCenter instance with force/velocity/position fields
         dt_rs: Timestep in rontoseconds
+        damping: per-experiment velocity damping factor (1.0 = no damping)
     """
     accel_conv_qg = ti.cast(1e-3, ti.f32)  # (F_N / m_qg) * 1e-3 -> am/rs²
     dx_am = wave_field.dx / ti.cast(ATTOMETER, ti.f32)
-    damping = ti.cast(VELOCITY_DAMPING, ti.f32)
+    damp = ti.cast(damping, ti.f32)  
 
     for wc_idx in range(wave_center.num_sources):
         if wave_center.active[wc_idx] == 0:
@@ -488,9 +480,9 @@ def integrate_motion_leapfrog(
         wave_center.velocity_amrs[wc_idx][2] += a_z * dt_rs
 
         # Apply damping (models radiation energy loss)
-        wave_center.velocity_amrs[wc_idx][0] *= damping
-        wave_center.velocity_amrs[wc_idx][1] *= damping
-        wave_center.velocity_amrs[wc_idx][2] *= damping
+        wave_center.velocity_amrs[wc_idx][0] *= damp
+        wave_center.velocity_amrs[wc_idx][1] *= damp
+        wave_center.velocity_amrs[wc_idx][2] *= damp
 
         # Clamp velocity to speed of light (c = 0.3 am/rs)
         c_amrs = ti.cast(0.3, ti.f32)
@@ -518,15 +510,15 @@ def integrate_motion_leapfrog(
         wave_center.position_float[wc_idx][1] += dj
         wave_center.position_float[wc_idx][2] += dk
 
-        # Sync integer position for wave generation
+        # Sync integer position
         wave_center.position_grid[wc_idx][0] = ti.cast(
-            wave_center.position_float[wc_idx][0], ti.i32
+            ti.round(wave_center.position_float[wc_idx][0]), ti.i32
         )
         wave_center.position_grid[wc_idx][1] = ti.cast(
-            wave_center.position_float[wc_idx][1], ti.i32
+            ti.round(wave_center.position_float[wc_idx][1]), ti.i32
         )
         wave_center.position_grid[wc_idx][2] = ti.cast(
-            wave_center.position_float[wc_idx][2], ti.i32
+            ti.round(wave_center.position_float[wc_idx][2]), ti.i32
         )
 
 

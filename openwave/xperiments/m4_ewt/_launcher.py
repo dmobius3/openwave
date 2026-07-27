@@ -117,6 +117,8 @@ ENGINE_DEFAULTS = {
     "WC_BOOST": 1.0,  # WC drive amplitude multiplier
     "WC_RADIUS": 2,  # WC drive ball radius (voxels)
     "WC_SIGMA": 1.5,  # soft-mode Gaussian width (voxels)
+    # Motion integration
+    "VELOCITY_DAMPING": 0.999,  
 }
 
 
@@ -192,6 +194,7 @@ class SimulationState:
         self.WC_BOOST = ENGINE_DEFAULTS["WC_BOOST"]
         self.WC_RADIUS = ENGINE_DEFAULTS["WC_RADIUS"]
         self.WC_SIGMA = ENGINE_DEFAULTS["WC_SIGMA"]
+        self.VELOCITY_DAMPING = ENGINE_DEFAULTS["VELOCITY_DAMPING"]  
 
     def apply_xparameters(self, params):
         """Apply parameters from xperiment parameter dictionary."""
@@ -250,6 +253,7 @@ class SimulationState:
         self.WC_BOOST = engine["WC_BOOST"]
         self.WC_RADIUS = engine["WC_RADIUS"]
         self.WC_SIGMA = engine["WC_SIGMA"]
+        self.VELOCITY_DAMPING = engine.get("VELOCITY_DAMPING", ENGINE_DEFAULTS["VELOCITY_DAMPING"])  
 
         # New EMC density profile parameters (must be after `engine` is defined)
         self.R_WALL = engine.get("R_WALL", 100.0)
@@ -531,11 +535,16 @@ def compute_wave_oscillation(state):
             state.WC_RADIUS,
         )
 
+    # [A1] Update global tracker averages for HUD and flux-mesh normalisation
+    ewave.sample_avg_trackers(state.wave_field, state.trackers)
+
     # IN-FRAME DATA SAMPLING & ANALYTICS ==================================
     # Frame skip reduces GPU->CPU transfer overhead.
     # Log timestep data and wave-center positions every 60 frames (and on frame 10)
-    if state.frame % 60 == 0 or state.frame == 10:
-        instrument.log_timestep_data(state.frame, state.wave_field, state.trackers, state.wave_center)
+    # [A3] Restored instrumentation gate
+    if state.INSTRUMENTATION:
+        if state.frame % 60 == 0 or state.frame == 10:
+            instrument.log_timestep_data(state.frame, state.wave_field, state.trackers, state.wave_center)
 
     state.amp_global_rms = state.trackers.amp_global_emarms_am[None] * constants.ATTOMETER  # m
     state.freq_global_avg = state.trackers.freq_global_avg_rHz[None] / constants.RONTOSECOND  # Hz
@@ -585,6 +594,7 @@ def compute_force_motion(state):
             state.wave_field,
             state.wave_center,
             state.dt_rs,
+            state.VELOCITY_DAMPING,  # [A2] pass per-experiment damping
         )
     else:
         # Zero-out velocities if not integrating force to motion
@@ -674,7 +684,7 @@ def main():
     selected_xperiment_arg = sys.argv[1] if len(sys.argv) > 1 else None
 
     # Initialize Taichi
-    ti.init(arch=ti.gpu, log_level=ti.WARN)  # GPU preferred, suppress info logs
+    ti.init(arch=ti.cpu, log_level=ti.WARN)  # GPU preferred, suppress info logs
 
     # Initialize xperiment manager and state
     xperiment_mgr = XperimentManager()

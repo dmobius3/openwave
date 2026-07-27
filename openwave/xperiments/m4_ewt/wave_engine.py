@@ -191,17 +191,21 @@ def V_psi(
     u = psi.dot(psi)
     out = 0.0
     if v_mode == 1:
+        # V = (c1/4)·u²
         out = 0.25 * c1 * u * u
     elif v_mode == 2:
-        out = c1 * u * psi - c2 * u * u * psi
+        # V = (c1/4)·u² − (c2/6)·u³  [A4] fixed: now returns scalar, not vector
+        out = 0.25 * c1 * u * u - (c2 / 6.0) * u * u * u
     elif v_mode == 3:
+        # V = −(c1/2)·u + (c2/4)·u²
         out = -0.5 * c1 * u + 0.25 * c2 * u * u
     elif v_mode in (4, 5):
         # Modulation depends on radial position, so we return 0.0 here.
         # The physical effect is captured in dV_psi.
         out = 0.0
-    elif v_mode == 10:  # Gaussian profile + quintic saturation
-    # Returns 0 here; physical effect is in dV_psi
+    elif v_mode == 10:
+        # Gaussian profile + quintic saturation
+        # Returns 0 here; physical effect is in dV_psi
         out = 0.0
     return out
 
@@ -252,15 +256,16 @@ def emc_density_profile(
         rho = rho0  # fallback (no modulation)
     return rho
 
+
 @ti.func
 def emc_density_profile_flat_with_wall(
     r: ti.f32,
-    r_soliton: ti.f32,      # promień płaskiego dna
-    sigma: ti.f32,          # szerokość przejścia (sigmoid)
-    deficit_depth: ti.f32,  # głębokość deficytu w centrum
-    r_wall: ti.f32,         # promień ściany (środek wzgórza)
-    wall_height: ti.f32,    # wysokość ściany (rho_wall - rho0)
-    wall_sigma: ti.f32,     # szerokość ściany
+    r_soliton: ti.f32,      # radius of the flat bottom
+    sigma: ti.f32,           # transition width (sigmoid)
+    deficit_depth: ti.f32,   # deficit depth at the centre
+    r_wall: ti.f32,          # wall radius (centre of the bump)
+    wall_height: ti.f32,     # wall height (rho_wall - rho0)
+    wall_sigma: ti.f32,      # wall width
 ) -> ti.f32:
     """
     Flat-bottom density profile with outer wall.
@@ -287,9 +292,12 @@ def emc_density_profile_flat_with_wall(
 
     return rho
 
+
 # ================================================================
 # RESTORING FORCE dV/dψ (NEW spatial arguments for modes 4/5)
 # ================================================================
+
+
 @ti.func
 def emc_density_profile_flat(
     r: ti.f32,
@@ -308,6 +316,7 @@ def emc_density_profile_flat(
     # Sigmoid transition: smooth but steep rise at r = r_soliton
     rho = rho0 - deficit_depth * (0.5 * (1.0 - ti.tanh((r - r_soliton) / sigma)))
     return rho
+
 
 @ti.func
 def dV_psi(
@@ -475,6 +484,7 @@ def dV_psi(
         # Cubic focusing + quintic saturation, both modulated by density profile
         out = c1 * u * psi * modulation - c2 * u * u * psi * modulation
     return out
+
 
 @ti.kernel
 def propagate_wave(

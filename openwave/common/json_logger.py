@@ -107,7 +107,7 @@ def _flush() -> None:
                 doc = json.load(fh)
             doc["data"].extend(_buffer)
         except (json.JSONDecodeError, OSError):
-            # File is empty or corrupted – overwrite it
+            # File is empty or corrupted â€“ overwrite it
             doc = {"metadata": _meta, "data": list(_buffer)}
     else:
         doc = {"metadata": _meta, "data": list(_buffer)}
