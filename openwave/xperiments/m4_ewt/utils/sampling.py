@@ -1,15 +1,17 @@
 import json
 from pathlib import Path
-from openwave.xperiments.m4_ewt import live_monitor
+from openwave.xperiments.m4_ewt.utils import live_monitor
 
 _plot_timesteps = []
 _plot_displacements = []
 _plot_amplitudes = []
 _plot_frequencies = []
 
-# Plik, który bêdzie wspó³dzielony z podgl¹dem na ¿ywo
-MONITOR_DATA_PATH = Path(__file__).parent / "data" / "_live_monitor_data.json"
-SAVE_EVERY = 10  # zapisuj co 10 próbek
+# File shared with the external live-monitor process
+# The model root, one level above utils/. This must match the path the launcher
+# hands to the viewer process, or the monitor reads a file nobody writes.
+MONITOR_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "_live_monitor_data.json"
+SAVE_EVERY = 10  # write the shared file every 10 samples
 
 
 def sample_for_plots(timestep, wave_field, trackers):
@@ -23,7 +25,7 @@ def sample_for_plots(timestep, wave_field, trackers):
 
     def to_float(val):
         try:
-            if hasattr(val, '__len__'):
+            if hasattr(val, "__len__"):
                 return float(val[0])
             return float(val)
         except:
@@ -50,7 +52,6 @@ def save_monitor_data():
         "frequencies": _plot_frequencies,
     }
     MONITOR_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
-    print(f"[sampling] Saving monitor data to: {MONITOR_DATA_PATH}")  # <-- dodaj
     with open(MONITOR_DATA_PATH, "w") as f:
         json.dump(data, f)
 

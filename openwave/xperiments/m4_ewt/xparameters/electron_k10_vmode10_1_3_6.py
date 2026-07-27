@@ -1,5 +1,5 @@
 # electron_k10_vmode10_1_3_6.py
-from openwave.xperiments.m4_ewt.xparameters.geometry import tetrahedron_10
+from openwave.xperiments.m4_ewt.xparameters.utils.geometry import tetrahedron_10
 from openwave.common import constants
 
 UNIVERSE_EDGE = 2e-15
@@ -44,7 +44,7 @@ XPARAMETERS = {
         "SIGMA": 3.0,
         "PRESSURE_STRENGTH": 0.0,
         "CFL_SAFETY": 0.1,
-        "VELOCITY_DAMPING": 0.95
+        "VELOCITY_DAMPING": 0.95,
     },
     "ui_defaults": {
         "SHOW_AXIS": False,

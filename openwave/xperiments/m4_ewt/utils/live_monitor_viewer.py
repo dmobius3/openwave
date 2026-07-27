@@ -32,10 +32,19 @@ def main(data_path_str):
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 7), facecolor=colormap.DARK_GRAY[1])
     fig.suptitle("OPENWAVE Live Monitor (external)", fontsize=20, family="Monospace")
 
-    line_disp, = ax1.plot([], [], color=colormap.viridis_palette[2][1], linewidth=2, label="DISPLACEMENT (am)")
-    line_amp,  = ax1.plot([], [], color=colormap.viridis_palette[3][1], linewidth=2, label="RMS AMPLITUDE (am)")
-    ax1.axhline(y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER, color=colormap.viridis_palette[4][1],
-                linestyle="--", alpha=0.5, label="eWAVE AMPLITUDE (am)")
+    (line_disp,) = ax1.plot(
+        [], [], color=colormap.viridis_palette[2][1], linewidth=2, label="DISPLACEMENT (am)"
+    )
+    (line_amp,) = ax1.plot(
+        [], [], color=colormap.viridis_palette[3][1], linewidth=2, label="RMS AMPLITUDE (am)"
+    )
+    ax1.axhline(
+        y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
+        color=colormap.viridis_palette[4][1],
+        linestyle="--",
+        alpha=0.5,
+        label="eWAVE AMPLITUDE (am)",
+    )
     ax1.axhline(y=0, color="w", linestyle="--", alpha=0.3)
     ax1.set_xlabel("Timestep", family="Monospace")
     ax1.set_ylabel("Displacement / Amplitude (am)", family="Monospace")
@@ -44,9 +53,16 @@ def main(data_path_str):
     ax1.legend(loc="upper right")
     ax1.set_ylim(auto=True)
 
-    line_freq, = ax2.plot([], [], color=colormap.blueprint_palette[2][1], linewidth=2, label="FREQUENCY (rHz)")
-    ax2.axhline(y=constants.EWAVE_FREQUENCY * constants.RONTOSECOND, color=colormap.blueprint_palette[1][1],
-                linestyle="--", alpha=0.5, label="eWAVE FREQUENCY (rHz)")
+    (line_freq,) = ax2.plot(
+        [], [], color=colormap.blueprint_palette[2][1], linewidth=2, label="FREQUENCY (rHz)"
+    )
+    ax2.axhline(
+        y=constants.EWAVE_FREQUENCY * constants.RONTOSECOND,
+        color=colormap.blueprint_palette[1][1],
+        linestyle="--",
+        alpha=0.5,
+        label="eWAVE FREQUENCY (rHz)",
+    )
     ax2.axhline(y=0, color="w", linestyle="--", alpha=0.3)
     ax2.set_xlabel("Timestep", family="Monospace")
     ax2.set_ylabel("Frequency (rHz)", family="Monospace")
@@ -69,8 +85,10 @@ def main(data_path_str):
                 line_freq.set_data(ts, data.get("frequencies", []))
                 ax1.set_xlim(ts[0], max(ts[-1], ts[0] + 1))
                 ax2.set_xlim(ts[0], max(ts[-1], ts[0] + 1))
-                ax1.relim(); ax1.autoscale_view(scaley=True)
-                ax2.relim(); ax2.autoscale_view(scaley=True)
+                ax1.relim()
+                ax1.autoscale_view(scaley=True)
+                ax2.relim()
+                ax2.autoscale_view(scaley=True)
                 fig.canvas.draw()
         except:
             pass

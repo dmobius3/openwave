@@ -23,17 +23,25 @@ class LiveMonitor:
 
         plt.ioff()
         plt.style.use("dark_background")
-        self.fig, (self.ax1, self.ax2) = plt.subplots(2, 1, figsize=(10, 7), facecolor=colormap.DARK_GRAY[1])
+        self.fig, (self.ax1, self.ax2) = plt.subplots(
+            2, 1, figsize=(10, 7), facecolor=colormap.DARK_GRAY[1]
+        )
         self.fig.suptitle("OPENWAVE Live Monitor", fontsize=20, family="Monospace")
 
         # Subplot 1: Displacement + Amplitude
-        self.line_disp, = self.ax1.plot([], [], color=colormap.viridis_palette[2][1],
-                                        linewidth=2, label="DISPLACEMENT (am)")
-        self.line_amp, = self.ax1.plot([], [], color=colormap.viridis_palette[3][1],
-                                       linewidth=2, label="RMS AMPLITUDE (am)")
-        self.ax1.axhline(y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
-                         color=colormap.viridis_palette[4][1], linestyle="--",
-                         alpha=0.5, label="eWAVE AMPLITUDE (am)")
+        (self.line_disp,) = self.ax1.plot(
+            [], [], color=colormap.viridis_palette[2][1], linewidth=2, label="DISPLACEMENT (am)"
+        )
+        (self.line_amp,) = self.ax1.plot(
+            [], [], color=colormap.viridis_palette[3][1], linewidth=2, label="RMS AMPLITUDE (am)"
+        )
+        self.ax1.axhline(
+            y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
+            color=colormap.viridis_palette[4][1],
+            linestyle="--",
+            alpha=0.5,
+            label="eWAVE AMPLITUDE (am)",
+        )
         self.ax1.axhline(y=0, color="w", linestyle="--", alpha=0.3)
         self.ax1.set_xlabel("Timestep", family="Monospace")
         self.ax1.set_ylabel("Displacement / Amplitude (am)", family="Monospace")
@@ -43,11 +51,16 @@ class LiveMonitor:
         self.ax1.set_ylim(auto=True)
 
         # Subplot 2: Frequency
-        self.line_freq, = self.ax2.plot([], [], color=colormap.blueprint_palette[2][1],
-                                        linewidth=2, label="FREQUENCY (rHz)")
-        self.ax2.axhline(y=constants.EWAVE_FREQUENCY * constants.RONTOSECOND,
-                         color=colormap.blueprint_palette[1][1], linestyle="--",
-                         alpha=0.5, label="eWAVE FREQUENCY (rHz)")
+        (self.line_freq,) = self.ax2.plot(
+            [], [], color=colormap.blueprint_palette[2][1], linewidth=2, label="FREQUENCY (rHz)"
+        )
+        self.ax2.axhline(
+            y=constants.EWAVE_FREQUENCY * constants.RONTOSECOND,
+            color=colormap.blueprint_palette[1][1],
+            linestyle="--",
+            alpha=0.5,
+            label="eWAVE FREQUENCY (rHz)",
+        )
         self.ax2.axhline(y=0, color="w", linestyle="--", alpha=0.3)
         self.ax2.set_xlabel("Timestep", family="Monospace")
         self.ax2.set_ylabel("Frequency (rHz)", family="Monospace")
@@ -70,10 +83,10 @@ class LiveMonitor:
 
         # Trim to sliding window
         if len(self.timesteps) > self.max_history:
-            self.timesteps = self.timesteps[-self.max_history:]
-            self.displacements = self.displacements[-self.max_history:]
-            self.amplitudes = self.amplitudes[-self.max_history:]
-            self.frequencies = self.frequencies[-self.max_history:]
+            self.timesteps = self.timesteps[-self.max_history :]
+            self.displacements = self.displacements[-self.max_history :]
+            self.amplitudes = self.amplitudes[-self.max_history :]
+            self.frequencies = self.frequencies[-self.max_history :]
 
         self.update_counter += 1
         if self.update_counter % self.refresh_every == 0:

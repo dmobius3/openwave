@@ -29,6 +29,7 @@ _flush_interval: int = 100
 # Public API
 # ---------------------------------------------------------------------------
 
+
 def init_session(
     metadata: Dict[str, Any],
     data_dir: Path = Path("data"),
@@ -91,6 +92,7 @@ def finalize() -> None:
 # ---------------------------------------------------------------------------
 # Internal
 # ---------------------------------------------------------------------------
+
 
 def _flush() -> None:
     global _buffer, _meta, _filename, _data_dir

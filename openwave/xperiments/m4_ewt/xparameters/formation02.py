@@ -33,7 +33,7 @@ LOCK_SPACING = EWAVE_LENGTH / UNIVERSE_EDGE
 # ════════════════════════════════════════════════════════════════════════════
 # SELECT K VALUE HERE
 # ════════════════════════════════════════════════════════════════════════════
-K = 10
+K = 2
 # K = 2    # Line — EXPECT: STABLE
 # K = 3    # Triangle — EXPECT: unstable
 # K = 4    # Tetrahedron (4) — EXPECT: unstable
@@ -49,17 +49,17 @@ K = 10
 PERTURBATION = 0.1  # fraction of λ (0.0 = perfect, 0.3 = 30% random displacement)
 
 POSITIONS = generate_K_positions(
-    UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), rotation=(45, 45, 45), perturbation=PERTURBATION
+    UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), rotation=(0, 0, 0), perturbation=PERTURBATION
 )
-PHASES = [0] * K  # all same phase (electron-like)
+PHASES = [180] * K  # all same phase (electron-like)
 
 XPARAMETERS = {
     "meta": {
-        "X_NAME": f"  /Positron (K={K})",
+        "X_NAME": f"  /Particle (K={K})",
         "DESCRIPTION": f"K={K} stability test — {'STABLE' if K == 10 else 'expect UNSTABLE'}",
     },
     "camera": {
-        "INITIAL_POSITION": [0.29, 1.28, 0.22],  # [x, y, z] in normalized coordinates
+        "INITIAL_POSITION": [0.36, 1.20, 0.75],
     },
     "universe": {
         "SIZE": [UNIVERSE_EDGE, UNIVERSE_EDGE, UNIVERSE_EDGE],

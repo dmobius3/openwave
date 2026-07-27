@@ -1,5 +1,7 @@
 # electron_k09_vmode10_ewt_geometry.py
-from openwave.xperiments.m4_ewt.xparameters.geometry import generate_positions_by_EWT_geometry
+from openwave.xperiments.m4_ewt.xparameters.utils.geometry import (
+    generate_positions_by_EWT_geometry,
+)
 from openwave.common import constants
 
 # ================================================================
@@ -12,10 +14,7 @@ K = 9
 PERTURBATION = 0.02
 
 POSITIONS = generate_positions_by_EWT_geometry(
-    UNIVERSE_EDGE,
-    K,
-    center=(0.5, 0.5, 0.5),
-    perturbation=PERTURBATION
+    UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), perturbation=PERTURBATION
 )
 PHASES = [180] * K
 
@@ -40,9 +39,9 @@ XPARAMETERS = {
     "engine": {
         "SEED_MODE": 2,
         "SEED_BOOST": 0.01,
-        "V_MODE": 10,                    # Gaussian + saturation
-        "V_C1": -0.3,                    # focusing (cubic)
-        "V_C2": 0.05,                    # saturation (quintic)
+        "V_MODE": 10,  # Gaussian + saturation
+        "V_C1": -0.3,  # focusing (cubic)
+        "V_C2": 0.05,  # saturation (quintic)
         "WC_INTERACT_MODE": 3,
         "WC_BOOST": 1.0,
         "WC_RADIUS": 2,
@@ -52,7 +51,7 @@ XPARAMETERS = {
         "DEFICIT_DEPTH": 0.9,
         "R_SOLITON": 35.0,
         "SIGMA": 3.0,
-        "PRESSURE_STRENGTH": 0.001,      # vacuum pressure (active for V_MODE >= 4)
+        "PRESSURE_STRENGTH": 0.001,  # vacuum pressure (active for V_MODE >= 4)
         "CFL_SAFETY": 0.1,
     },
     "ui_defaults": {

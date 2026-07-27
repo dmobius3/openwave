@@ -10,14 +10,16 @@ from pathlib import Path
 
 from openwave.common import colormap, constants
 from openwave.common import json_logger
-from openwave.xperiments.m4_ewt import sampling
+from openwave.xperiments.m4_ewt.utils import sampling
 
-PLOT_DIR = Path(__file__).parent / "plots"
+# The model root, one level above utils/, so plots stay where they always were.
+PLOT_DIR = Path(__file__).resolve().parent.parent / "plots"
 
 
 def _read_timestep_data():
     """Read timestep data from JSON log for plotting purposes."""
     import json
+
     log_path = json_logger._data_dir / json_logger._filename
     if not log_path.exists():
         print("\nTimestep data log file does not exist.\n")
@@ -55,13 +57,27 @@ def plot_probe_values():
 
     # Plot 1: Longitudinal Displacement and Amplitude
     plt.subplot(n_plots, 1, 1)
-    plt.plot(data["timesteps"], data["displacements"],
-             color=colormap.viridis_palette[2][1], linewidth=2, label="DISPLACEMENT (am)")
-    plt.plot(data["timesteps"], data["amplitudes"],
-             color=colormap.viridis_palette[3][1], linewidth=2, label="RMS AMPLITUDE (am)")
-    plt.axhline(y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
-                color=colormap.viridis_palette[4][1], linestyle="--", alpha=0.5,
-                label="eWAVE AMPLITUDE (am)")
+    plt.plot(
+        data["timesteps"],
+        data["displacements"],
+        color=colormap.viridis_palette[2][1],
+        linewidth=2,
+        label="DISPLACEMENT (am)",
+    )
+    plt.plot(
+        data["timesteps"],
+        data["amplitudes"],
+        color=colormap.viridis_palette[3][1],
+        linewidth=2,
+        label="RMS AMPLITUDE (am)",
+    )
+    plt.axhline(
+        y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
+        color=colormap.viridis_palette[4][1],
+        linestyle="--",
+        alpha=0.5,
+        label="eWAVE AMPLITUDE (am)",
+    )
     plt.axhline(y=0, color="w", linestyle="--", alpha=0.3)
     plt.xlabel("Timestep", family="Monospace")
     plt.ylabel("Displacement / Amplitude (am)", family="Monospace")
@@ -72,13 +88,27 @@ def plot_probe_values():
 
     if has_transverse:
         plt.subplot(n_plots, 1, 2)
-        plt.plot(data["timesteps"], data["displacements_T"],
-                 color=colormap.ironbow_palette[2][1], linewidth=2, label="DISPLACEMENT (am)")
-        plt.plot(data["timesteps"], data["amplitudes"],
-                 color=colormap.ironbow_palette[3][1], linewidth=2, label="RMS AMPLITUDE (am)")
-        plt.axhline(y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
-                    color=colormap.ironbow_palette[4][1], linestyle="--", alpha=0.5,
-                    label="eWAVE AMPLITUDE (am)")
+        plt.plot(
+            data["timesteps"],
+            data["displacements_T"],
+            color=colormap.ironbow_palette[2][1],
+            linewidth=2,
+            label="DISPLACEMENT (am)",
+        )
+        plt.plot(
+            data["timesteps"],
+            data["amplitudes"],
+            color=colormap.ironbow_palette[3][1],
+            linewidth=2,
+            label="RMS AMPLITUDE (am)",
+        )
+        plt.axhline(
+            y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
+            color=colormap.ironbow_palette[4][1],
+            linestyle="--",
+            alpha=0.5,
+            label="eWAVE AMPLITUDE (am)",
+        )
         plt.axhline(y=0, color="w", linestyle="--", alpha=0.3)
         plt.xlabel("Timestep", family="Monospace")
         plt.ylabel("Displacement / Amplitude (am)", family="Monospace")
@@ -88,11 +118,20 @@ def plot_probe_values():
         plt.ylim(bottom=0)
 
     plt.subplot(n_plots, 1, n_plots)
-    plt.plot(data["timesteps"], data["frequencies"],
-             color=colormap.blueprint_palette[2][1], linewidth=2, label="FREQUENCY (rHz)")
-    plt.axhline(y=constants.EWAVE_FREQUENCY * constants.RONTOSECOND,
-                color=colormap.blueprint_palette[1][1], linestyle="--", alpha=0.5,
-                label="eWAVE FREQUENCY (rHz)")
+    plt.plot(
+        data["timesteps"],
+        data["frequencies"],
+        color=colormap.blueprint_palette[2][1],
+        linewidth=2,
+        label="FREQUENCY (rHz)",
+    )
+    plt.axhline(
+        y=constants.EWAVE_FREQUENCY * constants.RONTOSECOND,
+        color=colormap.blueprint_palette[1][1],
+        linestyle="--",
+        alpha=0.5,
+        label="eWAVE FREQUENCY (rHz)",
+    )
     plt.axhline(y=0, color="w", linestyle="--", alpha=0.3)
     plt.xlabel("Timestep", family="Monospace")
     plt.ylabel("Frequency (rHz)", family="Monospace")
@@ -121,13 +160,27 @@ def plot_live_values():
 
     # Subplot 1: Displacement and Amplitude
     plt.subplot(2, 1, 1)
-    plt.plot(data["timesteps"], data["displacements"],
-             color=colormap.viridis_palette[2][1], linewidth=2, label="DISPLACEMENT (am)")
-    plt.plot(data["timesteps"], data["amplitudes"],
-             color=colormap.viridis_palette[3][1], linewidth=2, label="RMS AMPLITUDE (am)")
-    plt.axhline(y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
-                color=colormap.viridis_palette[4][1], linestyle="--", alpha=0.5,
-                label="eWAVE AMPLITUDE (am)")
+    plt.plot(
+        data["timesteps"],
+        data["displacements"],
+        color=colormap.viridis_palette[2][1],
+        linewidth=2,
+        label="DISPLACEMENT (am)",
+    )
+    plt.plot(
+        data["timesteps"],
+        data["amplitudes"],
+        color=colormap.viridis_palette[3][1],
+        linewidth=2,
+        label="RMS AMPLITUDE (am)",
+    )
+    plt.axhline(
+        y=constants.EWAVE_AMPLITUDE / constants.ATTOMETER,
+        color=colormap.viridis_palette[4][1],
+        linestyle="--",
+        alpha=0.5,
+        label="eWAVE AMPLITUDE (am)",
+    )
     plt.axhline(y=0, color="w", linestyle="--", alpha=0.3)
     plt.xlabel("Timestep", family="Monospace")
     plt.ylabel("Displacement / Amplitude (am)", family="Monospace")
@@ -138,11 +191,20 @@ def plot_live_values():
 
     # Subplot 2: Frequency
     plt.subplot(2, 1, 2)
-    plt.plot(data["timesteps"], data["frequencies"],
-             color=colormap.blueprint_palette[2][1], linewidth=2, label="FREQUENCY (rHz)")
-    plt.axhline(y=constants.EWAVE_FREQUENCY * constants.RONTOSECOND,
-                color=colormap.blueprint_palette[1][1], linestyle="--", alpha=0.5,
-                label="eWAVE FREQUENCY (rHz)")
+    plt.plot(
+        data["timesteps"],
+        data["frequencies"],
+        color=colormap.blueprint_palette[2][1],
+        linewidth=2,
+        label="FREQUENCY (rHz)",
+    )
+    plt.axhline(
+        y=constants.EWAVE_FREQUENCY * constants.RONTOSECOND,
+        color=colormap.blueprint_palette[1][1],
+        linestyle="--",
+        alpha=0.5,
+        label="eWAVE FREQUENCY (rHz)",
+    )
     plt.axhline(y=0, color="w", linestyle="--", alpha=0.3)
     plt.xlabel("Timestep", family="Monospace")
     plt.ylabel("Frequency (rHz)", family="Monospace")

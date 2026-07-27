@@ -248,9 +248,7 @@ def emc_density_profile(
     elif v_mode == 5:
         # Core deficit + Gaussian wall peak
         rho_core = rho0 - deficit_depth * ti.exp(-r / (r_wall * 0.3))
-        bump = (wall_height - 1.0) * ti.exp(
-            -((r - r_wall) ** 2) / (2.0 * (r_wall * 0.1) ** 2)
-        )
+        bump = (wall_height - 1.0) * ti.exp(-((r - r_wall) ** 2) / (2.0 * (r_wall * 0.1) ** 2))
         rho = rho_core + bump
     else:
         rho = rho0  # fallback (no modulation)
@@ -260,12 +258,12 @@ def emc_density_profile(
 @ti.func
 def emc_density_profile_flat_with_wall(
     r: ti.f32,
-    r_soliton: ti.f32,      # radius of the flat bottom
-    sigma: ti.f32,           # transition width (sigmoid)
-    deficit_depth: ti.f32,   # deficit depth at the centre
-    r_wall: ti.f32,          # wall radius (centre of the bump)
-    wall_height: ti.f32,     # wall height (rho_wall - rho0)
-    wall_sigma: ti.f32,      # wall width
+    r_soliton: ti.f32,  # radius of the flat bottom
+    sigma: ti.f32,  # transition width (sigmoid)
+    deficit_depth: ti.f32,  # deficit depth at the centre
+    r_wall: ti.f32,  # wall radius (centre of the bump)
+    wall_height: ti.f32,  # wall height (rho_wall - rho0)
+    wall_sigma: ti.f32,  # wall width
 ) -> ti.f32:
     """
     Flat-bottom density profile with outer wall.
@@ -285,7 +283,7 @@ def emc_density_profile_flat_with_wall(
     transition = 0.5 * (1.0 + ti.tanh((r - r_soliton) / sigma))
 
     # 3. Outer wall (Gaussian bump)
-    wall = (wall_height - 1.0) * ti.exp(-((r - r_wall) ** 2) / (2.0 * wall_sigma ** 2))
+    wall = (wall_height - 1.0) * ti.exp(-((r - r_wall) ** 2) / (2.0 * wall_sigma**2))
 
     # Combine: start with inner, transition to rho0, add wall
     rho = rho_inner + (rho0 - rho_inner) * transition + wall
@@ -335,8 +333,8 @@ def dV_psi(
     r_wall: ti.f32,  # type: ignore
     wall_height: ti.f32,  # type: ignore
     deficit_depth: ti.f32,  # type: ignore
-    r_soliton: ti.f32,   
-    sigma: ti.f32,       
+    r_soliton: ti.f32,
+    sigma: ti.f32,
 ):
     """Restoring force dV/dψ (3-vector) for V_psi; enters the leapfrog as −dt²·dV_psi.
 
@@ -409,7 +407,7 @@ def dV_psi(
         dx = ti.cast(i, ti.f32) - cx
         dy = ti.cast(j, ti.f32) - cy
         dz = ti.cast(k, ti.f32) - cz
-        r = ti.sqrt(dx*dx + dy*dy + dz*dz)
+        r = ti.sqrt(dx * dx + dy * dy + dz * dz)
 
         # Wall parameters for V_MODE=7:
         # wall_sigma controls the width of the Gaussian wall.
@@ -431,9 +429,9 @@ def dV_psi(
         dx = ti.cast(i, ti.f32) - cx
         dy = ti.cast(j, ti.f32) - cy
         dz = ti.cast(k, ti.f32) - cz
-        r = ti.sqrt(dx*dx + dy*dy + dz*dz)
-    
-        rho = 1.0 - deficit_depth * ti.exp(-(r / r_soliton) ** 2)
+        r = ti.sqrt(dx * dx + dy * dy + dz * dz)
+
+        rho = 1.0 - deficit_depth * ti.exp(-((r / r_soliton) ** 2))
         modulation = 1.0 - ti.min(rho, 1.0)
         out = c1 * u * psi * modulation
     elif v_mode == 10:
@@ -479,7 +477,7 @@ def dV_psi(
         r = ti.sqrt(dx * dx + dy * dy + dz * dz)
 
         # Gaussian modulation: strongest at center, decays to zero
-        modulation = deficit_depth * ti.exp(-(r / r_soliton) ** 2)
+        modulation = deficit_depth * ti.exp(-((r / r_soliton) ** 2))
 
         # Cubic focusing + quintic saturation, both modulated by density profile
         out = c1 * u * psi * modulation - c2 * u * u * psi * modulation
@@ -500,7 +498,7 @@ def propagate_wave(
     r_wall: ti.f32,  # type: ignore
     wall_height: ti.f32,  # type: ignore
     deficit_depth: ti.f32,  # type: ignore
-    r_soliton: ti.f32,   
+    r_soliton: ti.f32,
     sigma: ti.f32,
 ):
     """
@@ -563,8 +561,8 @@ def propagate_wave(
                 r_wall,
                 wall_height,
                 deficit_depth,
-                r_soliton,   
-                sigma,       
+                r_soliton,
+                sigma,
             )
         )
         wave_field.psi_new_am[i, j, k] = psi_new
@@ -657,8 +655,10 @@ def interact_wc_dirichlet(
             (-radius, radius + 1), (-radius, radius + 1), (-radius, radius + 1)
         ):
             i, j, k = c[0] + di, c[1] + dj, c[2] + dk
-            inside = (0 < i < wave_field.nx - 1) and (0 < j < wave_field.ny - 1) and (
-                0 < k < wave_field.nz - 1
+            inside = (
+                (0 < i < wave_field.nx - 1)
+                and (0 < j < wave_field.ny - 1)
+                and (0 < k < wave_field.nz - 1)
             )
             d = ti.Vector([ti.cast(di, ti.f32), ti.cast(dj, ti.f32), ti.cast(dk, ti.f32)])
             r = d.norm()
@@ -704,8 +704,10 @@ def interact_wc_neumann(
             (-radius, radius + 1), (-radius, radius + 1), (-radius, radius + 1)
         ):
             i, j, k = c[0] + di, c[1] + dj, c[2] + dk
-            inside = (0 < i < wave_field.nx - 1) and (0 < j < wave_field.ny - 1) and (
-                0 < k < wave_field.nz - 1
+            inside = (
+                (0 < i < wave_field.nx - 1)
+                and (0 < j < wave_field.ny - 1)
+                and (0 < k < wave_field.nz - 1)
             )
             d = ti.Vector([ti.cast(di, ti.f32), ti.cast(dj, ti.f32), ti.cast(dk, ti.f32)])
             r = d.norm()
@@ -747,8 +749,10 @@ def interact_wc_soft(
             (-radius, radius + 1), (-radius, radius + 1), (-radius, radius + 1)
         ):
             i, j, k = c[0] + di, c[1] + dj, c[2] + dk
-            inside = (0 < i < wave_field.nx - 1) and (0 < j < wave_field.ny - 1) and (
-                0 < k < wave_field.nz - 1
+            inside = (
+                (0 < i < wave_field.nx - 1)
+                and (0 < j < wave_field.ny - 1)
+                and (0 < k < wave_field.nz - 1)
             )
             d = ti.Vector([ti.cast(di, ti.f32), ti.cast(dj, ti.f32), ti.cast(dk, ti.f32)])
             r = d.norm()

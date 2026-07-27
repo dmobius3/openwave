@@ -1,5 +1,5 @@
 # electron_k10_vmode10_bcc_lattice.py
-from openwave.xperiments.m4_ewt.xparameters.geometry import bcc_lattice_positions
+from openwave.xperiments.m4_ewt.xparameters.utils.geometry import bcc_lattice_positions
 from openwave.common import constants
 
 # ================================================================

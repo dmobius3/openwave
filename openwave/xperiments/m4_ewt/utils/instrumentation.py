@@ -13,12 +13,14 @@ from openwave.common import json_logger
 # ================================================================
 # Module-level directories
 # ================================================================
-_MODULE_DIR = Path(__file__).parent
+# The model root, one level above utils/, so data and plots stay where they always were.
+_MODULE_DIR = Path(__file__).resolve().parent.parent
 
 
 # ================================================================
 # Initialisation (called from launcher)
 # ================================================================
+
 
 def init_instrumentation(state, xperiment_name="unknown", data_dir=None):
     """
@@ -63,9 +65,9 @@ def init_instrumentation(state, xperiment_name="unknown", data_dir=None):
             "R_WALL": state.R_WALL,
             "WALL_HEIGHT": state.WALL_HEIGHT,
             "DEFICIT_DEPTH": state.DEFICIT_DEPTH,
-            "R_SOLITON": state.R_SOLITON,           
-            "SIGMA": state.SIGMA,                  
-            "PRESSURE_STRENGTH": state.PRESSURE_STRENGTH, 
+            "R_SOLITON": state.R_SOLITON,
+            "SIGMA": state.SIGMA,
+            "PRESSURE_STRENGTH": state.PRESSURE_STRENGTH,
         },
     }
 
@@ -78,6 +80,7 @@ def init_instrumentation(state, xperiment_name="unknown", data_dir=None):
 # ================================================================
 # Timestep logging
 # ================================================================
+
 
 def log_timestep_data(timestep: int, wave_field, trackers, wave_center=None) -> None:
     """
@@ -100,7 +103,7 @@ def log_timestep_data(timestep: int, wave_field, trackers, wave_center=None) -> 
 
     def to_float(val):
         try:
-            if hasattr(val, '__len__'):
+            if hasattr(val, "__len__"):
                 return float(val[0])
             return float(val)
         except:

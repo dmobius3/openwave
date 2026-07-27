@@ -1,5 +1,5 @@
 # electron_k10_vmode10_golden_angle.py
-from openwave.xperiments.m4_ewt.xparameters.geometry import golden_angle_positions
+from openwave.xperiments.m4_ewt.xparameters.utils.geometry import golden_angle_positions
 from openwave.common import constants
 
 # ================================================================
