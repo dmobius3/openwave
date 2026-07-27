@@ -1,50 +1,45 @@
-# electron_k10_vmode10_1_3_6.py
-from openwave.xperiments.m4_ewt.xparameters.geometry import tetrahedron_10
-from openwave.common import constants
+"""
+Minimal test for live monitoring - single Dirichlet-driven wave center.
+No nonlinearity, no motion, just one strong source in the center.
+"""
 
 UNIVERSE_EDGE = 2e-15
 TARGET_VOXELS = 55_000_000
-K = 10
-PERTURBATION = 0.02
-
-LOCK_SPACING = constants.EWAVE_LENGTH / UNIVERSE_EDGE
-POSITIONS = tetrahedron_10(UNIVERSE_EDGE, center=(0.5, 0.5, 0.5))
-PHASES = [180] * K
 
 XPARAMETERS = {
     "meta": {
-        "X_NAME": "Electron K=10 V_MODE=10 1-3-6 (STABLE)",
-        "DESCRIPTION": "K=10 1-3-6 tetrahedron with V_MODE=10",
+        "X_NAME": "Test Live Monitor (K=1, Dirichlet)",
+        "DESCRIPTION": "Single strong WC to verify live plotting works",
     },
-    "camera": {"INITIAL_POSITION": [0.94, 0.91, 0.69]},
+    "camera": {"INITIAL_POSITION": [1.40, 1.40, 1.20]},
     "universe": {
         "SIZE": [UNIVERSE_EDGE, UNIVERSE_EDGE, UNIVERSE_EDGE],
         "TARGET_VOXELS": TARGET_VOXELS,
     },
     "wave_centers": {
-        "COUNT": K,
-        "POSITION": POSITIONS,
-        "PHASE_OFFSETS_DEG": PHASES,
-        "APPLY_MOTION": True,
+        "COUNT": 1,
+        "POSITION": [[0.50, 0.50, 0.50]],
+        "PHASE_OFFSETS_DEG": [0],
+        "APPLY_MOTION": False,
     },
     "engine": {
         "SEED_MODE": 2,
-        "SEED_BOOST": 0.01,
-        "V_MODE": 1,
-        "V_C1": -0.1,
-        "V_C2": 0.1,
-        "WC_INTERACT_MODE": 2,
-        "WC_BOOST": 0.1,
+        "SEED_BOOST": 1.0,
+        "V_MODE": 0,
+        "V_C1": 0.0,
+        "V_C2": 0.0,
+        "WC_INTERACT_MODE": 1,
+        "WC_BOOST": 1.0,
         "WC_RADIUS": 2,
         "WC_SIGMA": 1.5,
+        "VELOCITY_DAMPING": 0.999,
         "R_WALL": 100.0,
         "WALL_HEIGHT": 1.2,
         "DEFICIT_DEPTH": 0.9,
         "R_SOLITON": 35.0,
         "SIGMA": 3.0,
         "PRESSURE_STRENGTH": 0.0,
-        "CFL_SAFETY": 0.1,
-        "VELOCITY_DAMPING": 0.95
+        "CFL_SAFETY": 0.95,
     },
     "ui_defaults": {
         "SHOW_AXIS": False,
@@ -53,7 +48,7 @@ XPARAMETERS = {
         "SHOW_EDGES": False,
         "FLUX_MESH_PLANES": [0.5, 0.5, 0.5],
         "SHOW_FLUX_MESH": 1,
-        "WARP_MESH": 100,
+        "WARP_MESH": 20,
         "SHOW_GRANULES": False,
         "PARTICLE_SHELL": False,
         "SIM_SPEED": 1.0,
