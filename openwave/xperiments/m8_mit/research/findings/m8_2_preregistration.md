@@ -1,13 +1,19 @@
 # M8.2: Field-Dynamics Program, Core Contract and Family Modules
 
-> **Status (v10): WORK IN PROGRESS, but no longer author-gated.** The modular ARCHITECTURE is
-> complete. The index-compatibility question is now governed by the platform standing rule
-> [`dev_docs/CROSS_MODEL_TESTING.md`](../../../../dev_docs/CROSS_MODEL_TESTING.md) (2026-07-24),
-> which this document's audit produced (discussion #312). Under its UNIFORM DEFAULT no family
-> blocks on an author reply, so M8.2 can lock on schedule. What remains before freeze is core-
-> internal, NOT author-gated: immutable source pins (§ 1), the native quotient operators for M4
-> and M5 (§§ 6.1-6.2), and the native-M7 Hodge decomposition (§ 6.3). The author-gate is gone;
-> the native operators M8.4 will actually test still have to be defined.
+> **Status: LOCKED 2026-07-27** ([PR #350](https://github.com/openwave-labs/openwave/pull/350)).
+> The core contract (§§ 1-5) and the family modules (§ 6) are frozen as of this date; later
+> changes go in a dated addendum at the end of this file, never in-place. The modular
+> ARCHITECTURE is complete, and the index-compatibility question is governed by the platform
+> standing rule
+> [`dev_docs/CROSS_MODEL_TESTING.md`](../../../../../dev_docs/CROSS_MODEL_TESTING.md)
+> (2026-07-24), which this document's audit produced (discussion #312). Under its UNIFORM
+> DEFAULT no family blocks on an author reply, so nothing here waited on an inbox.
+>
+> **What the lock does NOT cover.** The native quotient operators for M4 and M5 (§§ 6.1-6.2),
+> the native-M7 Hodge decomposition (§ 6.3), and the Zenodo-deposit byte-check of the
+> mass-spectrum source (§ 1) are execution-appendix content under § 7: core-internal, not
+> author-gated, and gating the first target-bearing run of each family (M8.4) rather than this
+> lock. § 8 tracks them per module.
 >
 > | Component | State |
 > | --- | --- |
@@ -34,7 +40,7 @@
 Certification targets and code are pinned as immutably as the claims they anchor. The family CODE
 is pinned at `c9dc3796ba7812a9ddd607647de945abff806057` (abbrev `c9dc3796`): the version actually
 read, characterized, and redlined, i.e. the FROZEN family-code version under test, independent of
-the branch's rebase onto current upstream. A targeted pin audit (2026-07-28) against current
+the branch's rebase onto current upstream. A targeted pin audit (2026-07-27) against current
 upstream confirmed the pinned paths: the M4 engine, M5 engine files, M7 functional, and the M8.1
 note are byte-identical; the M5 canonical has only documentation additions since (a notation
 clarification consistent with our handling, plus one new physics-finding row), the model object
@@ -72,7 +78,7 @@ against the immutable Zenodo deposit is available on request.
 Freeze only what MIT already claims; never count an installed input as an output.
 
 **Governing standard.** This program runs under the platform standing rule
-[`dev_docs/CROSS_MODEL_TESTING.md`](../../../../dev_docs/CROSS_MODEL_TESTING.md). Its operative
+[`dev_docs/CROSS_MODEL_TESTING.md`](../../../../../dev_docs/CROSS_MODEL_TESTING.md). Its operative
 clauses, which Precondition A and the family modules implement: (i) **uniform default**, a
 borrowed family is native and untwisted unless its author declares an internal representation or
 a soldering prescription is supplied and pre-registered; (ii) **what counts as a declaration**,
@@ -147,7 +153,7 @@ every σ); M5 spin-2 block `κ_σ =` its separately derived 5-dimensional coeffi
 representation (σ-dependent, pending V1b). `entry(d)` is set by the operator class: 0-form
 (function tower) `entry(d) = d` (eigenvalue `d(d+2)/R²`); coexact 1-form `entry(d) = d`
 (`d≥2`), `2` (`d=0`), `3` (`d=1`). Tables are computed and self-checked in
-[`scripts/m8_2_first_occurrence.py`](scripts/m8_2_first_occurrence.py) (orthonormality
+[`scripts/m8_2_first_occurrence.py`](../scripts/m8_2_first_occurrence.py) (orthonormality
 1.1e-15; `Sym²Q=R3`, `Sym²Q'=R4`; M4 reproduces mass-spectrum § 4 exactly). No universal
 `λ = g(d)` law is frozen.
 
@@ -312,7 +318,7 @@ conjugation ruled out on the loop, M5.20.5); and the canonical positive-kinetic 
 unit-inertia ladder. V1b must name the exact operator being certified: (1) the potential Hessian
 alone; (2) the `gen-eig(Hess_V, K10)` degenerate-kinetic problem; (3) the BVP second variation;
 (4) the regularized diagnostic stack; or several, clearly separated. These carry different null
-spaces, signs, and spectra. **@JarekDuda follow-up (2026-07-25):** the author is not certain of the
+spaces, signs, and spectra. **@JarekDuda follow-up (2026-07-26):** the author is not certain of the
 potential details, holds the potential FORM as a choice "based on agreements" and effective (a
 deeper physics presumably sets the anisotropy), and notes Skyrmion-type EXTRA KINETIC TERMS may be
 worth including if the current kinetic proves insufficient. So the § 7 execution appendix pins the exact tested
