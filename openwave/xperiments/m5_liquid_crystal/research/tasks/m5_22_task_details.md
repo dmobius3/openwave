@@ -82,6 +82,8 @@ The 2026-07-27 afternoon reply ([`m5_22_convo.md § 2026-07-27 afternoon`](m5_22
 
 **Unblocked verdict**: rung 1 is fully unblocked (seed recipe + escalation path). Rung 2 is directionally unblocked (route named, detail deferred until rung 1 lands). Rungs 3-4 are unchanged (their anchors were already pre-registered). The declared defaults above are the only assumptions in play.
 
+**Close-out routing (user, 2026-07-27)**: the method note for this task goes to the author cc'ing the colleague from the 2026-07-27 reply (the nuclei-interested third party; address kept off the public repo, on local file). Resource-contributor outreach stays HELD until the user calls its moment.
+
 ## The M5.27 hand-off: the sharpened 4×4 problem statement (2026-07-24)
 
 [M5.27](m5_27_task_details.md) (the background-scalar entrainment pilot, the third fork branch of the 4×4 case) closed with a structural null that SHARPENS the 4×4 blocker this task exists to recruit help for. This section is the carrier: the recruitment brief and any 4×4 side-work run under this task inherit it, so the Lagrangian-level scope has a live trigger and does not sit only in a change-log.
