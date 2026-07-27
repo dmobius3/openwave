@@ -16,7 +16,8 @@ from openwave.common import colormap
 # Module-level Constants (computed once at import)
 # ================================================================
 
-_MODULE_DIR = Path(__file__).parent
+# The model root, one level above utils/, so data and plots stay where they always were.
+_MODULE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = _MODULE_DIR / "data"
 PLOT_DIR = _MODULE_DIR / "plots"
 
