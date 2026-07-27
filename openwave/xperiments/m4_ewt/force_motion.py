@@ -56,10 +56,6 @@ ELECTRON_ORBITAL_G = constants.ELECTRON_ORBITAL_G
 VELOCITY_DAMPING_DEFAULT = 0.999
 
 
-# ================================================================
-# PRESSURE FORCE FROM VACUUM (V_MODE >= 4)
-# ================================================================
-
 @ti.func
 def compute_density_gradient(
     wave_field: ti.template(),
@@ -115,6 +111,57 @@ def compute_density_gradient(
     # Gradient: ∇ρ = (dρ/dr) * r_hat
     grad_rho = drho_dr * r_hat
     return grad_rho
+
+# ================================================================
+# PRESSURE FORCE FROM VACUUM (V_MODE >= 4)
+# ================================================================
+
+@ti.kernel
+def add_pressure_force(
+    wave_center: ti.template(),
+    wave_field: ti.template(),
+    pressure_strength: ti.f32,
+    v_mode: ti.i32,
+    r_soliton: ti.f32,
+    sigma: ti.f32,
+    deficit_depth: ti.f32,
+    r_wall: ti.f32,
+    wall_height: ti.f32,
+):
+    """
+    Add vacuum pressure force to each active WC.
+    F_pressure = -pressure_strength * ∇ρ(r)
+    
+    Since ∇ρ points outward, -∇ρ points inward → binding force.
+    """
+    # Warn once per call if v_mode is not handled by compute_density_gradient.
+    # Taichi kernels cannot raise Python exceptions; this is the best-effort
+    # guard against silent fallback to zero force.
+    if v_mode not in [0, 1, 4, 5, 6, 7, 9, 10]:
+        print("[WARNING] add_pressure_force: unhandled v_mode =", v_mode,
+              "- pressure force disabled for this step.")
+
+    for wc_idx in range(wave_center.num_sources):
+        if wave_center.active[wc_idx] == 0:
+            continue
+        
+        # Skip if density is uniform (V_MODE=0 or 1)
+        if v_mode == 0 or v_mode == 1:
+            continue
+        
+        pos = wave_center.position_float[wc_idx]
+        grad_rho = compute_density_gradient(
+            wave_field, pos, r_soliton, sigma, deficit_depth, r_wall, wall_height, v_mode
+        )
+        
+        # Pressure force: F = -strength * grad_rho
+        # Points inward (toward center)
+        F_pressure = -pressure_strength * grad_rho
+        
+        # Add to existing force (from energy gradient)
+        wave_center.force[wc_idx][0] += F_pressure[0]
+        wave_center.force[wc_idx][1] += F_pressure[1]
+        wave_center.force[wc_idx][2] += F_pressure[2]
 
 
 @ti.kernel
@@ -332,7 +379,7 @@ def integrate_motion_euler(
     wave_field: ti.template(),  # type: ignore
     wave_center: ti.template(),  # type: ignore
     dt_rs: ti.f32,  # type: ignore
-    damping: ti.f32,  # type: ignore  [A2] now passed as parameter
+    damping: ti.f32,  # type: ignore 
 ):
     """
     Integrate particle motion using Euler method.

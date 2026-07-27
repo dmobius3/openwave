@@ -43,7 +43,7 @@ XPARAMETERS = {
         "V_MODE": 10,                    # Gaussian + saturation
         "V_C1": -0.3,                    # focusing (cubic)
         "V_C2": 0.05,                    # saturation (quintic)
-        "WC_INTERACT_MODE": 0,
+        "WC_INTERACT_MODE": 3,
         "WC_BOOST": 1.0,
         "WC_RADIUS": 2,
         "WC_SIGMA": 1.5,
