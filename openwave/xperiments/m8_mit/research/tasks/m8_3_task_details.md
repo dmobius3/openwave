@@ -20,7 +20,7 @@ McKay distances from the 2I McKay graph (buildable from the character table of t
 binary icosahedral group), Reidemeister torsions from the three flat connections of
 S³/2I, Kostant weights C_geom from their definition, and the anchors (μ_Λ from
 measured Λ, m_e as normalization) declared as INPUTS. PDG values are the comparison
-set. This is the [`ONBOARDING_MODELS.md § 6`](../../../../../ONBOARDING_MODELS.md)
+set. This is the [`ONBOARDING_MODELS.md STEP 0`](../../../../../ONBOARDING_MODELS.md)
 "independent recomputer" pass applied to the analytic sector, the same category the
 platform scores EWT's analytic masses under.
 

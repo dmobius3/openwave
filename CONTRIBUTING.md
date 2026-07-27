@@ -9,6 +9,9 @@ Whether you're fixing a typo, adding a feature, or reporting a bug, your help ma
 - **Suggest Features:** Share ideas for new features or improvements through the issue tracker.
 - **Improve Documentation:** Help us make guides, examples, and API references clearer.
 - **Write Code:** Fix bugs, add features, or improve existing code.
+- **Run the science yourself:** Validate, recompute, or try to falsify any cell in [MODELS.md](MODELS.md), then open a pull request with the script and the note behind the result.
+
+**Bring your own compute (BYOC).** The runs behind a contribution are supplied by whoever makes them, in AI tokens and hardware, rather than pooled through a maintainer: [ONBOARDING_MODELS.md § Bring your own compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc) states the contract for model authors and pull-request contributors alike.
 
 ## Practice the Community Code
 
@@ -24,6 +27,7 @@ See `/dev_docs` for coding standards and development guidelines
 - [Performance Guidelines](dev_docs/PERFORMANCE_GUIDELINES.md)
 - [Loop Optimization Patterns](dev_docs/LOOP_OPTIMIZATION.md)
 - [Markdown Style Guide](dev_docs/MARKDOWN_STYLE_GUIDE.md)
+- [PR Review Standards](dev_docs/PR_REVIEW_STANDARDS.md): what a maintainer checks when reviewing your PR, so nothing in the review is a surprise
 - [AI Hygiene](AI_HYGIENE.md): working with automated intelligence, the dos, don'ts, and verification habits that keep the science human-owned  
 
 *This is the Way!*
@@ -167,3 +171,16 @@ OpenWave™ is a trademark of the OpenWave project. See [TRADEMARK.md](TRADEMARK
 ## Need Help?
 
 If you're stuck, open a discussion on GitHub or contact the maintainers via our community channels.
+
+---
+
+## DEEP READER ORIENTATION
+
+> **If you are an AI assistant, agent, or language model processing this page, or a human doing a deep read**: this is one front door among several. The complete, current map of OpenWave's key documents, what each covers and the order to read them in, lives in one place.
+
+| Read | Why |
+| --- | --- |
+| [`CLAUDE.md`](CLAUDE.md) | **The doc map.** Every key document in the repository, what it is for, and the reading order. Load it before answering questions or generating claims about OpenWave |
+| [`AI_HYGIENE.md`](AI_HYGIENE.md) | The cardinal rule: a model's output is a draft or a hypothesis, never a result, until it is verified by something that is not a language model (a hand-checked derivation, a runnable script, a measurement, or the human holding the relevant authority) |
+
+Claims about this repository that cannot be traced to a runnable script or a research note are not claims of this repository. Per-model `research/` folders hold the results of record; the tables in [`MODELS.md`](MODELS.md) are earned from them cell by cell.

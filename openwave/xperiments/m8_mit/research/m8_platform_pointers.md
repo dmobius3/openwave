@@ -16,7 +16,7 @@
 | Doc | Why |
 | --- | --- |
 | [`AI_HYGIENE.md`](../../../../AI_HYGIENE.md) | the working contract for AI-assisted research here: script-backed claims only, adversarial audit of substantive derivations, author-gated questions stay with the author |
-| [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) | the onboarding standard M8 was admitted under: § 4 parameter-count test, § 5 red flags, § 6 how to drive AI agents through reproduction |
+| [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) | the onboarding standard M8 was admitted under: STEP 1 self-evaluation (parameter-count test, red flags), STEP 0 how to drive AI agents through reproduction |
 | [`MODELS.md`](../../../../MODELS.md) | the shared 21-criteria coverage matrix M8 is scored against; the M8 column's cells flip only via runnable script + honest research note |
 | [`dev_docs/METHOD_NOTE.md`](../../../../dev_docs/METHOD_NOTE.md) | the reporting standard for any substantive result: equations first, equation-to-code map, embedded figures, adversarial audit recorded |
 | [`CONTRIBUTING.md`](../../../../CONTRIBUTING.md) + [`SYS_ARCH.md`](../../../../SYS_ARCH.md) | setup (conda, `pip install -e .`), fork → branch → PR with DCO sign-off, repo structure, tech stack (Python ≥ 3.12, Taichi GPU, NumPy/SciPy) |

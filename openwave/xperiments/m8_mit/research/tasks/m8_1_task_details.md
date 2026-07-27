@@ -17,7 +17,7 @@ across the cone's self-adjoint extensions. This is the M8 column's certification
 either outcome is a result and informs everything downstream (Λ = 3/R² rides this
 eigenvalue).
 
-### The independence protocol (per ONBOARDING_MODELS.md § 6)
+### The independence protocol (per ONBOARDING_MODELS.md STEP 0)
 
 | Role | Sees | Does not see |
 | --- | --- | --- |
