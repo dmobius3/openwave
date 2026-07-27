@@ -27,7 +27,7 @@ A documented negative is a merge-worthy contribution. An overstated positive is 
 | [4. Gate B: scope containment](#4-gate-b-scope-containment) | model-folder discipline, shared files, root documents |
 | [5. Gate C: claim to artifact](#5-gate-c-claim-to-artifact) | recompute the headline number from the shipped data yourself |
 | [6. Gate D: the adversarial pass](#6-gate-d-the-adversarial-pass) | is the mechanism wired, is the signal above the noise, do the knobs manufacture the result |
-| [7. Gate E: MODELS.md cell changes](#7-gate-e-modelsmd-cell-changes) | the evidence bar for moving a cell |
+| [7. Gate E: MODELS.md cell changes](#7-gate-e-modelsmd-cell-changes) | the evidence bar for moving a cell, and the linter a maintainer runs (§ 7.1) |
 | [8. Gate F: other authors' work](#8-gate-f-other-authors-work) | not damaging a column you do not own |
 | [9. Gate G: policy sweep](#9-gate-g-policy-sweep) | AI hygiene, conduct, contributing, reproduce, onboarding, style |
 | [10. Maintainer edits](#10-maintainer-edits) | when to fix it yourself instead of asking, and how to push to a fork |
@@ -121,6 +121,7 @@ Gate C asks whether the numbers are real. Gate D asks whether they mean what the
 | D7 | **Do any two runs agree suspiciously well?** | Bit-identical trajectories from configurations that should differ are a wiring diagnostic, not a coincidence |
 | D8 | **Are the controls controls?** | A control must differ from the test case in exactly the intended variable. Check the configuration files, not the file names |
 | D9 | **What would falsify this?** | If the note cannot say, ask. A model author who can name the falsifier is describing a result; one who cannot is describing a hope |
+| D10 | **Can the shipped self-checks fail?** | Mutation-test every line a script prints as PASS: change the thing it checks to something wrong and confirm it goes red. A check whose two sides evaluate the same expression always passes, and to a later reader it is indistinguishable from a verified result. Where a quantity has no independent target to compare against, the honest label is *asserted*, not a self-check that cannot discriminate |
 
 Findings from this gate are **questions to the author**, not verdicts. The author owns the physics; the reviewer owns the demand that the claim and the artifact agree.
 
@@ -137,7 +138,23 @@ Findings from this gate are **questions to the author**, not verdicts. The autho
 | The result **contradicts an existing cell in the same column** | Both cells are the author's. Route through the column's author before either changes |
 | The PR is **mid-flight work** | 🔶 lives on per-model pages, not in the shared matrix. 🚧 stays until something runnable exists |
 
-Before approving any cell move, run `python3 dev_docs/check_models_md.py` and confirm the summary counts still add up.
+### 7.1 The MODELS.md linter
+
+**Run `python3 dev_docs/check_models_md.py` before merging anything that touches [`MODELS.md`](../MODELS.md), and read its output rather than only its exit code.** Nothing else enforces it: the repository has no CI, so this script runs when a reviewer runs it and at no other time. That is a deliberate choice (the checks are instant and a reviewer is already at a terminal), and it has one failure mode, which has already happened once: the `regime` column was added, the script's positional table detection stopped finding the summary-status table, and it sat reporting 131 violations that nobody saw because nobody invoked it. A check that is not part of a procedure is not a check.
+
+What it covers, so a reviewer knows what it does not:
+
+| # | Check | Catches |
+| --- | --- | --- |
+| 1 | Cell budget | A per-model summary cell over 55 words of prose (links, status tag and `<br>→` pointer tails excluded) |
+| 2 | Icon sync | The at-a-glance matrix disagreeing with the same criterion's status tag in the model's own table, in either direction, including rows missing from one side |
+| 3 | Score-board | A count that does not equal the tally of that icon over that model's rows, a total that does not equal the criteria count, or an icon used in rows with no score-board row |
+| 4 | Regime | A criterion whose `regime` is not `static`, `dynamic` or `both` |
+| 5 | Row shape | A data row whose cell count differs from its header, which is what an unescaped `\|` inside a cell looks like from the parser's side |
+
+It does **not** check prose accuracy, link targets, or whether a cell's claim is supported by the artifact it links. Those are [Gate C](#5-gate-c-claim-to-artifact) and [Gate E](#7-gate-e-modelsmd-cell-changes), and they are yours.
+
+Two operational notes. A clean run prints `clean` and exits 0; anything else lists line-numbered violations. And if a PR legitimately introduces a new criterion-level column (the way `regime` was), the script will refuse it by name until the column is registered in `REGIMES`-style fashion beside it, which is intentional: adding a column must not be able to silently switch a check off.
 
 ## 8. Gate F: other authors' work
 
@@ -339,7 +356,7 @@ Style and import sanity, on the PR worktree:
 ```bash
 cat filelist.txt | tr '\n' '\0' | xargs -0 python3 -m black --check
 python3 -m py_compile <changed files>
-python3 dev_docs/check_models_md.py
+python3 dev_docs/check_models_md.py    # mandatory when MODELS.md is touched, see 7.1
 ```
 
 ### Recording the verdict: submit it as a review, not as a comment
@@ -383,6 +400,9 @@ One row per PR that taught us something. Newest at the bottom.
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | First run under § 10. Maintainer edits collapsed a three-round review into one pass, and the two defects that mattered most were found by running the thing: a `os.execv` xperiment-switch path that skipped every teardown and orphaned a GUI child process, and the compile error above. Neither is visible in a diff. Also, relocating modules broke `Path(__file__).parent` resolution in three of them, the reviewer's own breakage, caught before the commit | § 10.2, Gate D |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | The first name chosen for the support-module folder, `lib/`, collided with `.gitignore` line 20 inherited from the Python template for build output. Committing it would have deleted `instrumentation.py` from four models and silently ignored the replacement. Caught by `git check-ignore` before the commit and resolved by renaming to `utils/` rather than adding ignore negations: a negation covers only the exact depths it names, and the failure it hides is silent | Gate A row A7 command, the `utils/` convention |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | The verdict went out as a conversation comment rather than a submitted review, so the PR sat at `REVIEW_REQUIRED` while its body said changes requested. The merge gate held on CODEOWNERS regardless, but the contributor never got the signal. Fixed with `gh pr review --request-changes` and written into the appendix | § 13 "Recording the verdict" |
+| [#350](https://github.com/openwave-labs/openwave/pull/350) | A shipped script printed a PASS line that could not fail: its two sides evaluated the same expression, so replacing the rule under test with deliberate nonsense still reported PASS while the table filled with wrong values. Nothing downstream depended on it, but under a verification banner it reads exactly like a certified result. Mutation-testing every PASS line is now part of the adversarial pass | Gate D row D10 |
+| [#350](https://github.com/openwave-labs/openwave/pull/350) | What made this review conclusive was recomputing the headline table by a genuinely different method rather than re-running the contributor's script: the group rebuilt as explicit quaternions with characters from Burnside class-sums, against the PR's McKay recursion. Agreement on 9/9 rows then meant something. "Recompute, do not read" is only as strong as the independence of the second route | Gate C, the recompute rule |
+| [#350](https://github.com/openwave-labs/openwave/pull/350) | Also the good case worth naming: the contributor raised a cross-model question as a platform issue *before* the work depended on the answer, and took the two family questions to the column authors directly. That is what made the author-gated findings empty and the review light. Sequencing, not effort, is what keeps [Gate F](#8-gate-f-other-authors-work) cheap | Gate F § 8.1, as the worked example |
 
 ---
 
