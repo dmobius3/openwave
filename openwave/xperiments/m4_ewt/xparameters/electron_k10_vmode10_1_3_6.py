@@ -30,11 +30,11 @@ XPARAMETERS = {
     "engine": {
         "SEED_MODE": 2,
         "SEED_BOOST": 0.01,
-        "V_MODE": 10,
-        "V_C1": -0.3,
-        "V_C2": 0.05,
-        "WC_INTERACT_MODE": 0,
-        "WC_BOOST": 1.0,
+        "V_MODE": 1,
+        "V_C1": -0.1,
+        "V_C2": 0.1,
+        "WC_INTERACT_MODE": 2,
+        "WC_BOOST": 0.01,
         "WC_RADIUS": 2,
         "WC_SIGMA": 1.5,
         "R_WALL": 100.0,
@@ -42,9 +42,9 @@ XPARAMETERS = {
         "DEFICIT_DEPTH": 0.9,
         "R_SOLITON": 35.0,
         "SIGMA": 3.0,
-        "PRESSURE_STRENGTH": 0.001,
+        "PRESSURE_STRENGTH": 0.0,
         "CFL_SAFETY": 0.1,
-        "VELOCITY_DAMPING": 0.990
+        "VELOCITY_DAMPING": 0.95
     },
     "ui_defaults": {
         "SHOW_AXIS": False,
