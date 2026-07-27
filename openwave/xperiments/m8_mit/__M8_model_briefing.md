@@ -116,7 +116,7 @@ Full program with gates and ownership: [`research/m8_roadmap.md`](research/m8_ro
 | Task | What lands |
 | --- | --- |
 | M8.1 | ✅ DONE (2026-07-21): the certification gate PASSED: independent blind eigensolve + adversarial audit confirmed 2/R², the wide branch, the 2R/e threshold and the defect-state asymptotic at 10-digit precision ([`research/findings/m8_1_method_note.md`](research/findings/m8_1_method_note.md)) |
-| M8.2 | Pre-registration lock for the field-dynamics program (targets + success criteria BEFORE any run) |
+| M8.2 | ✅ DONE (2026-07-27): the field-dynamics pre-registration LOCKED, a modular contract (immutable core + per-family modules + signed execution appendices carrying the numerics) with targets, success ladder, four-axis outcome language and the no-search rule frozen before any run ([`research/findings/m8_2_preregistration.md`](research/findings/m8_2_preregistration.md)) |
 | M8.3 | Mass-formula reproducer: every constant recomputed from its definition, assembly scripted |
 | M8.4 | Lagrangian-family survey on S³/2I (candidates drawn from M4/M5/M7; Derrick analysis on a compact arena) |
 | M8.5 | Quotient-manifold simulation engineering (2I-equivariant grid vs spectral basis) |
