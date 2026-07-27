@@ -146,7 +146,7 @@ Theory and code are two ways in. This is the third: the science here is limited 
 
 | Lane | What it looks like |
 | --- | --- |
-| Sponsorship | Funding applied to what the platform actually spends on: AI usage, GPU and cloud time, storage, and maintainer hours |
+| [Sponsorship](https://github.com/sponsors/openwave-labs) | Funding applied to what the platform actually spends on: AI usage, GPU and cloud time, storage, and maintainer hours. Monthly or one-time: [github.com/sponsors/openwave-labs](https://github.com/sponsors/openwave-labs) |
 | Infrastructure | Lending compute directly: GPU or cluster hours, a server that accepts jobs, an HPC allocation |
 | Usage grants | AI token budgets or API credits assigned to a named model or a named calculation |
 
@@ -171,7 +171,7 @@ Where the cost sits right now, for anyone deciding what to back:
 - **Cross-model validation.** Every criteria cell that reads 🚧 in [MODELS.md](MODELS.md) is a calculation nobody has paid for yet.
 - **Integration capacity.** Onboarding a new model and reviewing a large pull request take multiple rounds of maintainer time, and that queue is what decides how fast the table grows.
 
-To offer resources, open an issue or contact the maintainers; say what you can bring and it will be matched to the runs blocked on exactly that. The default for authors and code contributors stays [bring-your-own-compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc); this lane exists for people who want to fund the science without running it themselves.
+To sponsor the project directly: **[github.com/sponsors/openwave-labs](https://github.com/sponsors/openwave-labs)**. To offer infrastructure or token grants instead, open an issue or contact the maintainers; say what you can bring and it will be matched to the runs blocked on exactly that. The default for authors and code contributors stays [bring-your-own-compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc); this lane exists for people who want to fund the science without running it themselves.
 
 | Contributor | Contribution |
 | --- | --- |
@@ -355,7 +355,7 @@ Working with AI assistance, or pointing an AI assistant at this repo? Read [AI_H
 ### WITH RESOURCES
 
 - **Bring your own compute (BYOC).** Runs here are funded by whoever makes them: a model author supplies the AI tokens and hardware behind their own column, and anyone contributing by pull request does the same for whatever they take on. Rather than pooling resources through a maintainer, spend the budget on your own runs and submit the script and the note behind the result. The full contract, and why it works this way: [ONBOARDING_MODELS.md § Bring your own compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc)
-- **Resource contributions.** Not running the science yourself, but able to pay for it: sponsorship, GPU or cluster hours, AI token grants. What each lane covers, where the cost currently sits, and how contributions are credited: [§ Resource Contributors](#resource-contributors)
+- **Resource contributions.** Not running the science yourself, but able to pay for it: [sponsor the project](https://github.com/sponsors/openwave-labs), lend GPU or cluster hours, or grant AI tokens. What each lane covers, where the cost currently sits, and how contributions are credited: [§ Resource Contributors](#resource-contributors)
 
 ## LICENSE & ATTRIBUTION
 

@@ -1,11 +1,9 @@
 # Supported funding platforms for the repository's Sponsor button.
 # What a contribution buys and how it is credited: README.md#resource-contributors
 #
-# Route chosen: GitHub Sponsors for the ORGANIZATION (openwave-labs), so sponsorship goes
-# to the project rather than to a personal account. Uncomment the line below once the
-# organization's Sponsors listing is approved (application + Stripe Connect payout account
-# + tax form; docs.github.com/sponsors, "Setting up GitHub Sponsors for your organization").
-# Publishing the handle before approval renders a dead button.
+# Route: GitHub Sponsors for the ORGANIZATION (openwave-labs), live since 2026-07-27, so
+# sponsorship goes to the project rather than to a personal account.
+# The button also requires the repository's Sponsorships feature: Settings > General > Features.
 
 github: openwave-labs
 
