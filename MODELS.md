@@ -40,35 +40,35 @@ Every file reference is an active link to the file in this repository (under `op
 
 Each icon is earned by the matching row in that model's own table (column headers jump there); the per-model row carries the summary and the evidence links.
 
-| Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) |
-| --- | --- | --- | --- | --- | --- |
-| **PARTICLES** | | | | | |
-| Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 |
-| Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 |
-| de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 |
-| Particle stability (Derrick escape) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 |
-| Magnetic moment μ (g ≈ 2) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 |
-| Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 |
-| Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 |
-| Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 |
-| Neutrinos | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 |
-| Lepton mass spectrum (μ, τ) | ⚠️ | 🚧 | ❌ | ❌ | 🚧 |
-| Quarks | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 |
-| Baryons (p, n) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 |
-| Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 |
-| Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 |
-| | | | | | |
-| **FORCES** | | | | | |
-| Electric force (Coulomb 1/r) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 |
-| Magnetic force | ⚠️ | 🚧 | 🚧 | ⚠️ | 🚧 |
-| Gravity | ⚠️ | 🚧 | 🚧 | 🚧 | ⚠️ |
-| Strong force / confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 |
-| Weak force | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 |
-| | | | | | |
-| **WAVES + QUANTUM EMERGENCE** | | | | | |
-| EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 |
-| Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 |
-| Orbital quantization (atomic structure) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 |
+| Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) | field |
+| --- | --- | --- | --- | --- | --- | --- |
+| **PARTICLES** | | | | | | |
+| Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 | static |
+| Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 | static |
+| de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 | static |
+| Particle stability (Derrick escape) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic |
+| Magnetic moment μ (g ≈ 2) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
+| Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
+| Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 | dynamic |
+| Neutrinos | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | static |
+| Lepton mass spectrum (μ, τ) | ⚠️ | 🚧 | ❌ | ❌ | 🚧 | static |
+| Quarks | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Baryons (p, n) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static |
+| Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 | static |
+| Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 | static |
+| | | | | | | |
+| **FORCES** | | | | | | |
+| Electric force (Coulomb 1/r) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 | static |
+| Magnetic force | ⚠️ | 🚧 | 🚧 | ⚠️ | 🚧 | dynamic |
+| Gravity | ⚠️ | 🚧 | 🚧 | 🚧 | ⚠️ | dynamic |
+| Strong force / confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Weak force | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| | | | | | | |
+| **WAVES + QUANTUM EMERGENCE** | | | | | | |
+| EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic |
+| Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 | dynamic |
+| Orbital quantization (atomic structure) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static |
 
 ## RESULTS BY MODEL
 
