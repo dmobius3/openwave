@@ -37,8 +37,8 @@ The author's group reply to the M5.21 close-out (full decode: [`m5_22_convo.md`]
 
 | Rung | Target | Read / anchor |
 | --- | --- | --- |
-| 1 | Proton analog (hedgehog + surrounding loop) | protected minimum exists |
-| 2 | Neutron analog (charge-compensated) | HEAVIER than the proton analog (compensation argument); positive core / negative shell (Wilson PRL 7, 144) |
+| 1 | Proton analog (seed = two vortices along different axes; § The seed prescription below, superseding the earlier hedgehog+loop guess) | protected minimum exists |
+| 2 | Neutron analog (charge-compensated; route = field rotations to zero net charge, § The seed prescription below) | HEAVIER than the proton analog (compensation argument); positive core / negative shell (Wilson PRL 7, 144) |
 | 3 | Deuteron | simplest nuclear binding; **electric quadrupole moment**, experimentally known = the first quantitative anchor |
 | 4 | **Beta decay of a kicked neutron** (NEW arm) | the [M5.21.6](m5_21_6_task_details.md) kick protocol transplanted; decay must also release a fast electron; the experimentally known β energy probability distribution = the second quantitative anchor |
 | 5 | Tritium → He3 | the analogous beta decay at A = 3 |
@@ -57,6 +57,32 @@ The 2026-07-27 exchange with Adrian Sulich on the group list ([`m5_22_convo.md �
 | The mass ordering is not a separate posit | Rung 2's pre-registered read (neutron-analog heavier) is a PREDICTION of the charge-quantization structure, not an independent assumption. If the census finds the ordering, the note can say why; if it finds the opposite, the failure is structural, not cosmetic |
 | Two external questions now ride the ladder | [Q37](../m5_question_tracker.md#q37-detail) (why is a composite's charge magnitude exactly the electron's, and can the winding instrument show it) and [Q38](../m5_question_tracker.md#q38-detail) (the ~1 GeV/fm Cornell cost of fractional charge, against the linear string term already measured at [M5.21.4](m5_21_4_task_details.md)). Both are answerable on the certified 3D stack, and both are group-visible asks |
 | The beta-decay mechanism is specified, not just named | The author's 2026-07-27 panel draws rung 4 as a sequence: neutron → shift → split with energy release → reconnection → proton + electron + neutrino, with the electron as a vortex INSIDE and the muon as a vortex loop AROUND. That is the protocol shape for the kicked-neutron arm (local-only sketch: [`../../theory/duda_2026-07-27_baryons_knots_beta_decay.png`](../../theory/duda_2026-07-27_baryons_knots_beta_decay.png)) |
+
+## The seed prescription (2026-07-27 author reply, captured): the go-pack for rungs 1-2
+
+The 2026-07-27 afternoon reply ([`m5_22_convo.md § 2026-07-27 afternoon`](m5_22_convo.md)) answered the pre-run questions with an operational recipe rather than point-by-point. This section is what the run consumes.
+
+| Piece | Prescription |
+| --- | --- |
+| Proton seed (rung 1) | Two vortices along DIFFERENT axes: the straight vortex (the lightest excitation) along the LONGEST axis, the second-lightest vortex looping around it. Their interaction suggests the different-axes arrangement. Prepare both, run energy minimization; the expected outcome is a stable configuration corresponding to the proton. This supersedes the earlier hedgehog+loop seed reading of the 2026-07-19 picture: the hedgehog is what the vortex interaction DEFORMS the field toward (the charge-quantization frame above), not what gets seeded. Cross-section panel local-only: [`../../theory/duda_2026-07-27_proton_two_vortex_seed.png`](../../theory/duda_2026-07-27_proton_two_vortex_seed.png) |
+| Neutron route (rung 2) | Built AFTER the proton lands, by adding field rotations to bring the total electric charge to 0. Detail deferred by the author to that point |
+| The Cornell arm (NEW, feeds [Q38](../m5_question_tracker.md#q38-detail)) | On the neutron analog, try shifting its quarks and read the energy cost of the displacement, aiming at the ~1 GeV/fm Cornell scale. This is the author's own in-model version of the fractional-charge cost question, and it composes with the [M5.21.4](m5_21_4_task_details.md) string-tension instrument. The 14:06 question (is our measured linear string term the same object as the Cornell tension?) is still open; the quark-shift scan is how it gets an in-model answer |
+| Escalation path | "If there are issues, please let me know and I will try to formalize it tomorrow": a same-week formalization channel is explicitly open for the seed construction. Use it instead of guessing past a blocker |
+
+**Status of the six pre-run questions (asked 2026-07-27 14:06).** None was answered point by point; the ledger below states what replaces each, so the run starts on declared defaults instead of silent ones.
+
+| # | Question | Status → what the run does |
+| --- | --- | --- |
+| 1 | What separates the two vortex types in the field | OPEN as theory; OPERATIONALLY REPLACED: the recipe says "the lightest" and "the second lightest" vortex excitations, so the run identifies them by relaxed energy on the certified stack, not by a priori classification |
+| 2 | Expected loop radius vs core scale | ANSWERED implicitly: energy minimization selects it; no target imposed |
+| 3 | Neutron: three cores vs one core + shells | DEFERRED by the author to after the proton lands (the field-rotation route replaces seed-level structure); do not build a neutron seed before then |
+| 4 | Sector parameters for nuclear runs | OPEN → DEFAULT: same (1, δ, 0) spectrum and toy δ as the lepton work, stated as an assumption in the note; revisit only if the proton seed fails to stabilize |
+| 5 | Charge instrument = far-field degree / Gauss law | OPEN → DEFAULT: yes, the winding/degree instrument as in the author's sketch; neutron reads 0 in total, core/shell structure read from the radial profile |
+| 6 | Deuteron binding readable at toy parameters, or sign only | OPEN → DEFAULT: report both the sign and the magnitude, claim only the sign (qualitative grade per the 2026-07-23 posture) |
+
+**Unblocked verdict**: rung 1 is fully unblocked (seed recipe + escalation path). Rung 2 is directionally unblocked (route named, detail deferred until rung 1 lands). Rungs 3-4 are unchanged (their anchors were already pre-registered). The declared defaults above are the only assumptions in play.
+
+**Close-out routing (user, 2026-07-27)**: the method note for this task goes to the author cc'ing the colleague from the 2026-07-27 reply (the nuclei-interested third party; address kept off the public repo, on local file). Resource-contributor outreach stays HELD until the user calls its moment.
 
 ## The M5.27 hand-off: the sharpened 4×4 problem statement (2026-07-24)
 
