@@ -47,8 +47,19 @@ The author's group reply to the M5.21 close-out (full decode: [`m5_22_convo.md`]
 | 5 | Tritium → He3 | the analogous beta decay at A = 3 |
 | 6 | He4 | "the crucial alpha" |
 | 7 | Larger nuclei (far rung) | stable halo nuclei; alpha clusters (C12, O16), compared against the Skyrmion models of nuclei (the named baseline literature) |
+| 8 | Strange-baryon decay (far rung, added 2026-07-26) | decay releasing a pion or a kaon; the meson side of the same reconnection mechanism (the standing paper-level reading: pion = twist/reconnection of a vortex loop, kaon = a Möbius-like twisted loop with strangeness as the twist) |
 
 The 2026-07-23 1:1 follow-ups (summarized in the convo doc): if the 4×4 case stays stuck, nuclei-first is the sequencing; the user committed to starting the week of 2026-07-27; and the expected grade is restated honestly: even with inappropriate (toy) parameters, MANY QUALITATIVE agreements should be in reach, and that is the claim language this task carries (quantitative reads wait on the [Q33](../m5_question_tracker.md#q33-detail)/[M5.21.11](m5_21_11_task_details.md) bridge).
+
+## The charge-quantization frame (2026-07-26/27 group thread, captured)
+
+The 2026-07-27 exchange with Adrian Sulich on the group list ([`m5_22_convo.md § 2026-07-27`](m5_22_convo.md)) supplies the WHY behind rungs 1-3, and it is the frame the Phase-1 note should be written in. The author's argument, in one line: electric charge is the Gauss-law integral read as the degree of a deeper field (`∮_S E·dA = (e₀/4π) ∮ du dv (∂_u n̂ × ∂_v n̂)·n̂`, so charge is topological and cannot halve), the vortex interaction inside a baryon deforms the field toward a hedgehog, the proton closes that into one full elementary unit while the neutron has to compensate it, and the compensation is what makes the neutron heavier, gives it a positive core with a negative shell, and gives the deuteron its quadrupole moment. Three consequences for this task:
+
+| Consequence | What it changes |
+| --- | --- |
+| The mass ordering is not a separate posit | Rung 2's pre-registered read (neutron-analog heavier) is a PREDICTION of the charge-quantization structure, not an independent assumption. If the census finds the ordering, the note can say why; if it finds the opposite, the failure is structural, not cosmetic |
+| Two external questions now ride the ladder | [Q37](../m5_question_tracker.md#q37-detail) (why is a composite's charge magnitude exactly the electron's, and can the winding instrument show it) and [Q38](../m5_question_tracker.md#q38-detail) (the ~1 GeV/fm Cornell cost of fractional charge, against the linear string term already measured at [M5.21.4](m5_21_4_task_details.md)). Both are answerable on the certified 3D stack, and both are group-visible asks |
+| The beta-decay mechanism is specified, not just named | The author's 2026-07-27 panel draws rung 4 as a sequence: neutron → shift → split with energy release → reconnection → proton + electron + neutrino, with the electron as a vortex INSIDE and the muon as a vortex loop AROUND. That is the protocol shape for the kicked-neutron arm (local-only sketch: [`../../theory/duda_2026-07-27_baryons_knots_beta_decay.png`](../../theory/duda_2026-07-27_baryons_knots_beta_decay.png)) |
 
 ## The M5.27 hand-off: the sharpened 4×4 problem statement (2026-07-24)
 
