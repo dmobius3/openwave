@@ -12,7 +12,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [T1](tasks/t1_task_details.md) | MODELS.md criteria housekeeping: split the coarse rows, name the simplest passing test per row | Migrated 2026-07-28 (was M5.29). Docs-only: split the bundled criteria, give every row a simplest-passing-test entry, add the missing Lorentz covariance row, re-derive every count, checker green. No new runs, no icon upgrades. The author's priority-ranked properties-to-test slide ([`t1_convo.md`](tasks/t1_convo.md)) supplies most tests plus three candidate rows. Promoted ahead of [M5.22](../openwave/xperiments/m5_liquid_crystal/research/tasks/m5_22_task_details.md). | user "go" (docs-only; promoted ahead of M5.22, awaiting go) |
+| | | (between tasks) | |
 
 ## BACKLOG
 
@@ -45,7 +45,7 @@
 
 | TaskID | Title | Description | Completed |
 | --- | --- | --- | --- |
-| | | (none yet) | |
+| [T1](tasks/t1_task_details.md) | MODELS.md criteria housekeeping: split the coarse rows, name the simplest passing test per row | Criteria set 22 → 31 (was M5.29): bundled rows split (weak, baryons, neutrinos, gravity, strong), Lorentz covariance + running coupling + deuteron + nuclear structure added, every row names its simplest passing test (tier decode in the task doc), linter extended to guard the test column, all counts re-derived, no icon upgraded. | 2026-07-28 |
 
 ## CHANGE-LOG
 
