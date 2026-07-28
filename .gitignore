@@ -251,3 +251,7 @@ openwave/xperiments/*/theory/**
 # Agent resume checkpoints (session-local in-flight state for any Mx model task; not research
 # artifacts, never tracked). Findings live in the tracked tasks/ + data/ + plots/ instead.
 openwave/xperiments/*/research/checkpoints/
+
+# Live-monitor IPC scratch file: written continuously while a run is on,
+# read by the viewer process. Not an artifact.
+openwave/xperiments/*/data/_live_monitor_data.json

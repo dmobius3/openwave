@@ -29,6 +29,7 @@ _flush_interval: int = 100
 # Public API
 # ---------------------------------------------------------------------------
 
+
 def init_session(
     metadata: Dict[str, Any],
     data_dir: Path = Path("data"),
@@ -60,14 +61,15 @@ def init_session(
     _data_dir = Path(data_dir)
     _flush_interval = flush_interval
 
-    # Build filename
+    # Build filename with timestamp to avoid overwriting previous runs
     model = _meta.get("model", "unknown")
     xper = _meta.get("xperiment", "unknown")
     k = _meta.get("K")
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     if k is not None:
-        _filename = f"{model}_{xper}_K{k}.json"
+        _filename = f"{model}_{xper}_K{k}_{ts}.json"
     else:
-        _filename = f"{model}_{xper}.json"
+        _filename = f"{model}_{xper}_{ts}.json"
 
 
 def log_timestep(data: Dict[str, Any]) -> None:
@@ -91,6 +93,7 @@ def finalize() -> None:
 # Internal
 # ---------------------------------------------------------------------------
 
+
 def _flush() -> None:
     global _buffer, _meta, _filename, _data_dir
     if not _buffer or _filename is None:
@@ -101,9 +104,13 @@ def _flush() -> None:
 
     # Merge with existing file if it exists (resume after crash)
     if log_path.exists():
-        with open(log_path, "r") as fh:
-            doc = json.load(fh)
-        doc["data"].extend(_buffer)
+        try:
+            with open(log_path, "r") as fh:
+                doc = json.load(fh)
+            doc["data"].extend(_buffer)
+        except (json.JSONDecodeError, OSError):
+            # File is empty or corrupted – overwrite it
+            doc = {"metadata": _meta, "data": list(_buffer)}
     else:
         doc = {"metadata": _meta, "data": list(_buffer)}
 

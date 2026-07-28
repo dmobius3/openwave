@@ -12,6 +12,7 @@ import importlib
 import sys
 import os
 import time
+import subprocess
 from pathlib import Path
 
 import taichi as ti
@@ -24,7 +25,8 @@ import openwave.xperiments.m4_ewt.medium as medium
 import openwave.xperiments.m4_ewt.particle as particle
 import openwave.xperiments.m4_ewt.wave_engine as ewave
 import openwave.xperiments.m4_ewt.force_motion as force_motion
-import openwave.xperiments.m4_ewt.instrumentation as instrument
+import openwave.xperiments.m4_ewt.utils.instrumentation as instrument
+from openwave.xperiments.m4_ewt.utils import sampling
 
 # ================================================================
 # XPERIMENT PARAMETERS MANAGEMENT
@@ -36,7 +38,7 @@ class XperimentManager:
 
     def __init__(self):
         self.available_xperiments = self._discover_xperiments()
-        self.xperiment_display_names = {}  # Cache display names from meta
+        self.xperiment_display_names = {}
         self.current_xperiment = None
         self.current_xparameters = None
 
@@ -75,7 +77,7 @@ class XperimentManager:
         try:
             module_path = f"openwave.xperiments.m4_ewt.xparameters.{xperiment_name}"
             parameters_module = importlib.import_module(module_path)
-            importlib.reload(parameters_module)  # Reload for fresh parameters
+            importlib.reload(parameters_module)
 
             self.current_xperiment = xperiment_name
             self.current_xparameters = parameters_module.XPARAMETERS
@@ -96,7 +98,6 @@ class XperimentManager:
         if xperiment_name in self.xperiment_display_names:
             return self.xperiment_display_names[xperiment_name]
 
-        # Fallback: try to load just for the name
         try:
             module_path = f"openwave.xperiments.m4_ewt.xparameters.{xperiment_name}"
             parameters_module = importlib.import_module(module_path)
@@ -108,6 +109,8 @@ class XperimentManager:
             return " ".join(word.capitalize() for word in xperiment_name.split("_"))
 
 
+# ================================================================
+# ENGINE DEFAULTS
 # ================================================================
 # ENGINE DEFAULTS (fallback when an xperiment omits the "engine" section)
 # ================================================================
@@ -127,6 +130,8 @@ ENGINE_DEFAULTS = {
     "WC_BOOST": 1.0,  # WC drive amplitude multiplier
     "WC_RADIUS": 2,  # WC drive ball radius (voxels)
     "WC_SIGMA": 1.5,  # soft-mode Gaussian width (voxels)
+    # Wave-center motion
+    "VELOCITY_DAMPING": 0.999,  # fraction of velocity retained per step (1.0 = no damping)
 }
 
 
@@ -147,18 +152,23 @@ class SimulationState:
         self.amp_global_rms = constants.EWAVE_AMPLITUDE
         self.freq_global_avg = constants.EWAVE_FREQUENCY
         self.wavelength_global_avg = constants.EWAVE_LENGTH
-
+        self.R_WALL = 100.0
+        self.WALL_HEIGHT = 1.2
+        self.DEFICIT_DEPTH = 0.8
+        self.R_SOLITON = 20.0
+        self.SIGMA = 3.0
+        self.PRESSURE_STRENGTH = 0.0
+        self.CFL_SAFETY = 0.95
         # Current xperiment parameters
         self.X_NAME = ""
         self.CAM_INIT = [2.00, 1.50, 1.75]
         self.UNIVERSE_SIZE = []
-        self.TARGET_VOXELS = 1e8
+        self.TARGET_VOXELS = 3_500_000
         self.NUM_SOURCES = 1
         self.SOURCES_POSITION = []
         self.SOURCES_OFFSET_DEG = []
         self.INIT_VELOCITY = None
         self.APPLY_MOTION = True
-
         # UI control variables
         self.SHOW_AXIS = False
         self.TICK_SPACING = 0.25
@@ -176,16 +186,13 @@ class SimulationState:
         self.dt_rs = 0.0
         self.cfl_factor = 0.0
         self.PAUSED = False
-
         # Color control variables
         self.COLOR_THEME = "OCEAN"
         self.WAVE_MENU = 1
-
         # Data Analytics & video export toggles
         self.INSTRUMENTATION = False
         self.EXPORT_VIDEO = False
         self.VIDEO_FRAMES = 24
-
         # Engine config (from the xperiment "engine" section; see ENGINE_DEFAULTS)
         self.SEED_MODE = ENGINE_DEFAULTS["SEED_MODE"]
         self.SEED_BOOST = ENGINE_DEFAULTS["SEED_BOOST"]
@@ -196,12 +203,12 @@ class SimulationState:
         self.WC_BOOST = ENGINE_DEFAULTS["WC_BOOST"]
         self.WC_RADIUS = ENGINE_DEFAULTS["WC_RADIUS"]
         self.WC_SIGMA = ENGINE_DEFAULTS["WC_SIGMA"]
+        self.VELOCITY_DAMPING = ENGINE_DEFAULTS["VELOCITY_DAMPING"]
 
     def apply_xparameters(self, params):
         """Apply parameters from xperiment parameter dictionary."""
         # Meta
         self.X_NAME = params["meta"]["X_NAME"]
-
         # Camera
         self.CAM_INIT = params["camera"]["INITIAL_POSITION"]
 
@@ -229,7 +236,7 @@ class SimulationState:
         self.WARP_MESH = ui["WARP_MESH"]
         self.SHOW_GRANULES = ui.get("SHOW_GRANULES", False)
         self.PARTICLE_SHELL = ui["PARTICLE_SHELL"]
-        self.SIM_SPEED = ui.get("SIM_SPEED", 1.0)  # PDE wave-speed scale (TIMESTEP retired)
+        self.SIM_SPEED = ui.get("SIM_SPEED", 1.0)
         self.PAUSED = ui["PAUSED"]
 
         # Color defaults
@@ -254,6 +261,15 @@ class SimulationState:
         self.WC_BOOST = engine["WC_BOOST"]
         self.WC_RADIUS = engine["WC_RADIUS"]
         self.WC_SIGMA = engine["WC_SIGMA"]
+        self.VELOCITY_DAMPING = engine.get("VELOCITY_DAMPING", ENGINE_DEFAULTS["VELOCITY_DAMPING"])
+
+        self.R_WALL = engine.get("R_WALL", 100.0)
+        self.WALL_HEIGHT = engine.get("WALL_HEIGHT", 1.2)
+        self.DEFICIT_DEPTH = engine.get("DEFICIT_DEPTH", 0.8)
+        self.R_SOLITON = engine.get("R_SOLITON", 20.0)
+        self.SIGMA = engine.get("SIGMA", 3.0)
+        self.PRESSURE_STRENGTH = engine.get("PRESSURE_STRENGTH", 0.0)
+        self.CFL_SAFETY = engine.get("CFL_SAFETY", 0.95)
 
     def initialize_grid(self):
         """Initialize or reinitialize the wave-field grid and wave-centers."""
@@ -278,15 +294,10 @@ class SimulationState:
         ewave.seed_wave(self.wave_field, self.SEED_MODE, self.SEED_BOOST, self.dt_rs)
 
     def _compute_timestep(self):
-        """Derive the CFL-safe PDE timestep and wave speed (am/rs).
-
-        dt is set just inside the 3D Courant limit dt ≤ dx/(c·√3). SIM_SPEED scales
-        the rendered wave speed (c_amrs) without changing dt, so SIM_SPEED ≤ 1 stays stable.
-        """
-        CFL_SAFETY = 0.95  # margin below the 3D Courant boundary (1/√3)
+        """Derive the CFL-safe PDE timestep and wave speed (am/rs)."""
         c_phys_amrs = constants.WAVE_SPEED / constants.ATTOMETER * constants.RONTOSECOND
         self.c_amrs = c_phys_amrs * self.SIM_SPEED
-        self.dt_rs = CFL_SAFETY * self.wave_field.dx_am / (c_phys_amrs * (3**0.5))
+        self.dt_rs = self.CFL_SAFETY * self.wave_field.dx_am / (c_phys_amrs * (3**0.5))
         self.cfl_factor = round((self.c_amrs * self.dt_rs / self.wave_field.dx_am) ** 2, 7)
 
     def reset_sim(self):
@@ -367,20 +378,19 @@ def display_wave_menu(state):
             state.WAVE_MENU = 3
         if sub.checkbox("ENERGY (Field)", state.WAVE_MENU == 4):
             state.WAVE_MENU = 4
-        # Display gradient palette with 2× average range for headroom (allows peak visualization)
-        if state.WAVE_MENU == 1:  # Displacement on orange gradient
+        if state.WAVE_MENU == 1:
             render.canvas.triangles(og_palette_vertices, per_vertex_color=og_palette_colors)
             with render.gui.sub_window("displacement", 0.00, 0.74, 0.08, 0.06) as sub:
                 sub.text(f"0       {state.amp_global_rms*2/state.wave_field.scale_factor:.0e}m")
-        if state.WAVE_MENU == 2:  # Amplitude (EMA RMS) on ironbow gradient
+        if state.WAVE_MENU == 2:
             render.canvas.triangles(ib_palette_vertices, per_vertex_color=ib_palette_colors)
             with render.gui.sub_window("amplitude", 0.00, 0.74, 0.08, 0.06) as sub:
                 sub.text(f"0       {state.amp_global_rms*2/state.wave_field.scale_factor:.0e}m")
-        if state.WAVE_MENU == 3:  # Frequency (L&T) on blueprint gradient
+        if state.WAVE_MENU == 3:
             render.canvas.triangles(bp_palette_vertices, per_vertex_color=bp_palette_colors)
             with render.gui.sub_window("frequency", 0.00, 0.74, 0.08, 0.06) as sub:
                 sub.text(f"0       {state.freq_global_avg*2*state.wave_field.scale_factor:.0e}Hz")
-        if state.WAVE_MENU == 4:  # Energy on ironbow gradient
+        if state.WAVE_MENU == 4:
             render.canvas.triangles(ib_palette_vertices, per_vertex_color=ib_palette_colors)
             with render.gui.sub_window("energy", 0.00, 0.74, 0.08, 0.06) as sub:
                 sub.text(f"0       {state.energy_global_avg*2:.0e}J")
@@ -426,7 +436,7 @@ def display_data_dashboard(state):
         sub.text(f"Scale-up Factor: {state.wave_field.scale_factor:.1f}x")
         sub.text(f"eWave: {state.wave_field.ewave_res:.1f} voxels/wave (~12)")
         if state.wave_field.ewave_res < 10:
-            sub.text(f"*** WARNING: Undersampling! ***", color=(1.0, 0.0, 0.0))
+            sub.text("*** WARNING: Undersampling! ***", color=(1.0, 0.0, 0.0))
 
         sub.text("\n--- ENERGY-WAVE ---", color=colormap.LIGHT_BLUE[1])
         sub.text(f"Amplitude: {state.amp_global_rms/state.wave_field.scale_factor:.1e} m")
@@ -494,6 +504,11 @@ def compute_wave_oscillation(state):
         state.V_MODE,
         state.V_C1,
         state.V_C2,
+        state.R_WALL,
+        state.WALL_HEIGHT,
+        state.DEFICIT_DEPTH,
+        state.R_SOLITON,
+        state.SIGMA,
     )
 
     # Re-drive the wave centers on top of the base wave (P3). Mode 0 = free (no re-drive).
@@ -525,21 +540,24 @@ def compute_wave_oscillation(state):
             state.WC_RADIUS,
         )
 
-    # IN-FRAME DATA SAMPLING & ANALYTICS ==================================
-    # Frame skip reduces GPU->CPU transfer overhead
-    if state.frame % 60 == 0 or state.frame == 10:
-        ewave.sample_avg_trackers(state.wave_field, state.trackers)
-    state.amp_global_rms = state.trackers.amp_global_emarms_am[None] * constants.ATTOMETER  # m
-    state.freq_global_avg = state.trackers.freq_global_avg_rHz[None] / constants.RONTOSECOND  # Hz
-    state.energy_global_avg = state.trackers.energy_global_avg_aJ[None] * constants.ATTOJOULE  # J
-    state.wavelength_global_avg = constants.WAVE_SPEED / (
-        state.freq_global_avg or 1
-    )  # prevents 0 div
+    ewave.sample_avg_trackers(state.wave_field, state.trackers)
 
     if state.INSTRUMENTATION:
-        instrument.log_timestep_data(state.frame, state.wave_field, state.trackers)
-        if state.frame == 500:
-            instrument.plot_probe_wave_profile(state.wave_field)
+        if state.frame % 10 == 0 or state.frame == 1:
+            sampling.sample_for_plots(
+                state.frame,
+                state.wave_field,
+                state.trackers,
+            )
+        if state.frame % 60 == 0 or state.frame == 10:
+            instrument.log_timestep_data(
+                state.frame, state.wave_field, state.trackers, state.wave_center
+            )
+
+    state.amp_global_rms = state.trackers.amp_global_emarms_am[None] * constants.ATTOMETER
+    state.freq_global_avg = state.trackers.freq_global_avg_rHz[None] / constants.RONTOSECOND
+    state.energy_global_avg = state.trackers.energy_global_avg_aJ[None] * constants.ATTOJOULE
+    state.wavelength_global_avg = constants.WAVE_SPEED / (state.freq_global_avg or 1)
 
 
 def compute_force_motion(state):
@@ -563,21 +581,32 @@ def compute_force_motion(state):
         state.trackers,
         state.wave_center,
     )
+
+    if state.PRESSURE_STRENGTH > 0.0 and state.V_MODE >= 4:
+        force_motion.add_pressure_force(
+            state.wave_center,
+            state.wave_field,
+            state.PRESSURE_STRENGTH,
+            state.V_MODE,
+            state.R_SOLITON,
+            state.SIGMA,
+            state.DEFICIT_DEPTH,
+            state.R_WALL,
+            state.WALL_HEIGHT,
+        )
+
     if state.APPLY_MOTION:
         force_motion.integrate_motion_leapfrog(
             state.wave_field,
             state.wave_center,
             state.dt_rs,
+            state.VELOCITY_DAMPING,
         )
     else:
-        # Zero-out velocities if not integrating force to motion
         for wc_idx in range(state.wave_center.num_sources):
             state.wave_center.velocity_amrs[wc_idx] = ti.Vector([0.0, 0.0, 0.0], dt=ti.f32)
 
-    # Annihilation naturally occurs from wave physics, but needs numerical precision check
-    # Detect and handle particle annihilation (opposite phase WCs meeting)
-    # Threshold: WCs can be at grid diagonal positions and dt may cause larger jumps
-    annihilation_threshold = state.wave_field.ewave_res / 2.0  # in voxels
+    annihilation_threshold = state.wave_field.ewave_res / 2.0
     force_motion.detect_annihilation(state.wave_center, annihilation_threshold)
 
 
@@ -623,7 +652,7 @@ def render_elements(state):
                 constants.EWAVE_LENGTH
                 / state.wave_field.max_universe_edge
                 * state.wave_field.scale_factor
-                * 0.75  # adjusted for taichi particle rendering perspective projection
+                * 0.75
             )
             color = (
                 colormap.COLOR_PARTICLE[1]
@@ -637,8 +666,8 @@ def render_elements(state):
     # is sampled from full-grid displacement data)
     if state.SHOW_GRANULES and state.SHOW_FLUX_MESH > 0:
         max_particles = 401
-        granule_radius = 0.001  # in screen space (relative to max universe edge and scale factor)
-        amp_boost = state.WARP_MESH  # Boost granule displacement for better visibility
+        granule_radius = 0.001
+        amp_boost = state.WARP_MESH
         nx, ny = state.wave_field.nx, state.wave_field.ny
         stride = max(1, int(np.ceil(np.sqrt(nx * ny / max_particles))))
         sampled_nx = (nx + stride - 1) // stride
@@ -654,12 +683,31 @@ def render_elements(state):
 # ================================================================
 
 
+def stop_live_monitor(state):
+    """Terminate the external live-monitor process, if one is running.
+
+    Safe to call more than once. This MUST run before os.execv on the
+    xperiment-switch path: execv replaces the process image immediately, so
+    nothing after it executes and the viewer would be left orphaned, holding a
+    window that has to be force-quit.
+    """
+    proc = getattr(state, "_monitor_process", None)
+    if proc is None or proc.poll() is not None:
+        return
+    proc.terminate()
+    try:
+        proc.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        proc.wait()
+    state._monitor_process = None
+
+
 def main():
     """Main entry point for xperiment launcher."""
     selected_xperiment_arg = sys.argv[1] if len(sys.argv) > 1 else None
 
-    # Initialize Taichi
-    ti.init(arch=ti.gpu, log_level=ti.WARN)  # GPU preferred, suppress info logs
+    ti.init(arch=ti.gpu, log_level=ti.WARN)
 
     # Initialize xperiment manager and state
     xperiment_mgr = XperimentManager()
@@ -679,19 +727,31 @@ def main():
     state.initialize_grid()
     initialize_xperiment(state)
 
-    # ------------------------------------------------------------------
-    # Initialize JSON instrumentation
-    # ------------------------------------------------------------------
     if state.INSTRUMENTATION:
         xp_name = xperiment_mgr.current_xperiment or "unknown"
         instrument.init_instrumentation(state, xperiment_name=xp_name)
+        # Immediately clear old monitor data by saving empty buffers
+        sampling.save_monitor_data()
+
+    if state.INSTRUMENTATION:
+        monitor_data_path = Path(__file__).parent / "data" / "_live_monitor_data.json"
+        flags = subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0
+        state._monitor_process = subprocess.Popen(
+            [
+                sys.executable,
+                "-m",
+                "openwave.xperiments.m4_ewt.utils.live_monitor_viewer",
+                str(monitor_data_path),
+            ],
+            creationflags=flags,
+        )
 
     # Initialize GGUI rendering
     render.init_UI(state.UNIVERSE_SIZE, state.TICK_SPACING, state.CAM_INIT)
 
     # Main rendering loop
     while render.window.running:
-        render.init_scene(state.SHOW_AXIS)  # Initialize scene with lighting and camera
+        render.init_scene(state.SHOW_AXIS)
 
         # Handle ESC key for window close
         if render.window.is_pressed(ti.ui.ESCAPE):
@@ -712,6 +772,9 @@ def main():
             sys.stderr.flush()
             render.window.running = False
 
+            # Nothing after os.execv runs, so tear the monitor down here.
+            stop_live_monitor(state)
+
             # os.execv replaces current process (macOS may show harmless warning)
             os.execv(sys.executable, [sys.executable, __file__, new_xperiment])
 
@@ -719,7 +782,7 @@ def main():
             # Run simulation step and update time
             compute_wave_oscillation(state)
             compute_force_motion(state)
-            state.elapsed_t_rs += state.dt_rs  # Accumulate simulation time (PDE dt)
+            state.elapsed_t_rs += state.dt_rs
             state.frame += 1
 
         # Render scene elements
@@ -735,11 +798,11 @@ def main():
         if state.EXPORT_VIDEO:
             video.export_frame(state.frame, state.VIDEO_FRAMES)
 
-    # ------------------------------------------------------------------
-    # After the loop: generate plots (also finalizes the JSON logger)
-    # ------------------------------------------------------------------
     if state.INSTRUMENTATION:
-        instrument.generate_plots()
+        stop_live_monitor(state)
+        from openwave.xperiments.m4_ewt.utils.plotting import generate_plots
+
+        generate_plots()
 
 
 # ================================================================

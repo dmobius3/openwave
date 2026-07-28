@@ -144,18 +144,38 @@ def compute_laplacian(
 # The dynamics use dV_psi (the restoring force, entered as −dt²·dV in the leapfrog).
 # V_psi is the matching scalar potential, kept for offline energy diagnostics.
 # Coefficients (c1, c2) are passed at call time so potentials swap without
-# recompiling the rest. EDIT THESE TWO FUNCTIONS to test new V(ψ) forms.
+# recompiling the rest.
 #
-#   v_mode 0 linear      : V = 0                              dV = 0
-#   v_mode 1 cubic_nls   : V = (c1/4)·u²                      dV = c1·u·ψ            (c1 = k)
-#   v_mode 2 saturating  : V = (c1/4)·u² − (c2/6)·u³          dV = c1·u·ψ − c2·u²·ψ  (c1 = k, c2 = q)
-#   v_mode 3 double_well : V = −(c1/2)·u + (c2/4)·u²          dV = −c1·ψ + c2·u·ψ    (c1 = a, c2 = b)
-#   v_mode 4 density_mod : V = (c1/4)·u²·f(ρ)                 dV = c1·u·ψ·f(ρ)       (c1 = γ, f(ρ) = 1−ρ/ρ₀)
+#   v_mode  0 linear        : V = 0                                      dV = 0
+#   v_mode  1 cubic_nls     : V = (c1/4)·u²                              dV = c1·u·ψ            (c1 = k)
+#   v_mode  2 saturating    : V = (c1/4)·u² − (c2/6)·u³                  dV = c1·u·ψ − c2·u²·ψ  (c1 = k, c2 = q)
+#   v_mode  3 double_well   : V = −(c1/2)·u + (c2/4)·u²                  dV = −c1·ψ + c2·u·ψ    (c1 = a, c2 = b)
+#   v_mode  4 deficit       : V = (c1/4)·u²·mod(r)                       dV = c1·u·ψ·mod(r)     (c1 = γ, mod = 1−ρ/ρ₀, core deficit, no wall)
+#   v_mode  5 deficit+wall  : V = (c1/4)·u²·mod(r)                       dV = c1·u·ψ·mod(r)     (c1 = γ, mod = 1−ρ/ρ₀, core deficit + EMC wall)
+#   v_mode  6 flat          : V = (c1/4)·u²·mod_flat(r)                  dV = c1·u·ψ·mod_flat(r) (c1 = γ, constant deficit inside, sigmoid transition)
+#   v_mode  7 flat+wall     : V = (c1/4)·u²·mod_flat_wall(r)             dV = c1·u·ψ·mod_flat_wall(r) (c1 = γ, flat deficit + sigmoid + wall)
+#   v_mode  9 gaussian      : V = (c1/4)·u²·mod_gauss(r)                 dV = c1·u·ψ·mod_gauss(r) (c1 = γ, smooth Gaussian profile, no wall)
+#   v_mode 10 gaussian+satur: V = (c1/4)·u²·mod_gauss(r) − (c2/6)·u³·mod_gauss(r)  dV = c1·u·ψ·mod_gauss(r) − c2·u²·ψ·mod_gauss(r) (c1 = γ, c2 = q)
 #
-# For a FOCUSING (soliton-forming) cubic use c1 < 0; pure focusing collapses in 3D,
-# so mode 2 adds a defocusing quintic (c2 > 0) to arrest it. Magnitudes are tuned
-# empirically (the field is in scaled am, so the stable range depends on scale).
-# Mode 4 (Variant B) modulates nonlinearity by local EMC density proxy (energy_local_aJ).
+# Legend:
+#   u = ‖ψ‖²               = squared field magnitude (scalar invariant)
+#   mod(r)                 = spatial modulation factor (density deficit profile)
+#   mod_gauss(r)           = deficit_depth * exp(-(r / R_soliton)^2)
+#   mod_flat(r)            = 1 - rho_flat(r)/rho_0  (sigmoid transition)
+#   mod_flat_wall(r)       = 1 - rho_flat_wall(r)/rho_0  (flat + Gaussian wall)
+#
+# Modes 4-7 and 9-10 use a radial EMC density profile ρ(r) to modulate the nonlinearity.
+# The modulation factor is active only where the density is depleted relative to
+# the statutory background ρ₀ = N_nu_stat (vacuum equilibrium density).
+#
+# Mode 10 is the RECOMMENDED mode for electron soliton stability:
+#   - Gaussian profile creates a smooth potential well (no sharp gradients)
+#   - Quintic saturation prevents amplitude blow-up (physical limiting)
+#   - Vacuum pressure (PRESSURE_STRENGTH) is active (V_MODE >= 4)
+#
+# For a focusing (attractive) potential, use c1 < 0.
+# For saturation strength, c2 > 0 (quintic term) — larger values = stronger limiting.
+# Formalization in doc: https://doi.org/10.5281/zenodo.21557369
 # ================================================================
 
 
@@ -165,23 +185,135 @@ def V_psi(
     v_mode: ti.i32,  # type: ignore
     c1: ti.f32,  # type: ignore
     c2: ti.f32,  # type: ignore
-    rho_local: ti.f32,  # type: ignore  # for mode 4 only
+    rho_local: ti.f32,  # type: ignore  # for modes 4/5 only
 ):
     """Scalar non-linear potential V(ψ) on u = ‖ψ‖² (see table above). Offline diagnostics only."""
     u = psi.dot(psi)
     out = 0.0
     if v_mode == 1:
+        # V = (c1/4)·u²
         out = 0.25 * c1 * u * u
     elif v_mode == 2:
+        # V = (c1/4)·u² − (c2/6)·u³  [A4] fixed: now returns scalar, not vector
         out = 0.25 * c1 * u * u - (c2 / 6.0) * u * u * u
     elif v_mode == 3:
+        # V = −(c1/2)·u + (c2/4)·u²
         out = -0.5 * c1 * u + 0.25 * c2 * u * u
-    elif v_mode == 4:
-        # Density-modulated potential: V = (c1/4) * u² * modulation
-        RHO_0 = base_amplitude_am * base_amplitude_am  # reference energy scale
-        modulation = 1.0 - ti.min(rho_local / RHO_0, 1.0)
-        out = 0.25 * c1 * u * u * modulation
+    elif v_mode in (4, 5):
+        # Modulation depends on radial position, so we return 0.0 here.
+        # The physical effect is captured in dV_psi.
+        out = 0.0
+    elif v_mode == 10:
+        # Gaussian profile + quintic saturation
+        # Returns 0 here; physical effect is in dV_psi
+        out = 0.0
     return out
+
+
+# ================================================================
+# EMC DENSITY PROFILE (NEW for v_mode 4 and 5)
+# ================================================================
+# Provides a radial density profile ρ(r)/ρ₀ for the EMC medium.
+#   v_mode 4: core deficit only (ρ rises from 1−depth at r=0 to 1.0 at ∞)
+#   v_mode 5: core deficit + Gaussian EMC wall peak at r = r_wall
+# ================================================================
+
+
+@ti.func
+def emc_density_profile(
+    r: ti.f32,  # type: ignore
+    r_wall: ti.f32,  # type: ignore
+    wall_height: ti.f32,  # type: ignore
+    deficit_depth: ti.f32,  # type: ignore
+    v_mode: ti.i32,  # type: ignore
+) -> ti.f32:
+    """
+    Radial EMC density profile rho(r) / N_nu_stat.
+
+    Args:
+        r: distance from soliton centre (grid units)
+        r_wall: radius of the Degraded EMC Wall (grid units)
+        wall_height: peak density at the wall, relative to background (e.g. 1.2 = +20%)
+        deficit_depth: core density reduction (e.g. 0.8 = 80% below background)
+        v_mode: 4 = deficit only, 5 = deficit + wall
+
+    Returns:
+        Normalised EMC density ρ(r) / ρ₀
+    """
+    rho0 = 1.0  # statutory background (normalised)
+
+    if v_mode == 4:
+        # Core deficit, smooth asymptotic return to background
+        rho = rho0 - deficit_depth * ti.exp(-r / (r_wall * 0.3))
+    elif v_mode == 5:
+        # Core deficit + Gaussian wall peak
+        rho_core = rho0 - deficit_depth * ti.exp(-r / (r_wall * 0.3))
+        bump = (wall_height - 1.0) * ti.exp(-((r - r_wall) ** 2) / (2.0 * (r_wall * 0.1) ** 2))
+        rho = rho_core + bump
+    else:
+        rho = rho0  # fallback (no modulation)
+    return rho
+
+
+@ti.func
+def emc_density_profile_flat_with_wall(
+    r: ti.f32,
+    r_soliton: ti.f32,  # radius of the flat bottom
+    sigma: ti.f32,  # transition width (sigmoid)
+    deficit_depth: ti.f32,  # deficit depth at the centre
+    r_wall: ti.f32,  # wall radius (centre of the bump)
+    wall_height: ti.f32,  # wall height (rho_wall - rho0)
+    wall_sigma: ti.f32,  # wall width
+) -> ti.f32:
+    """
+    Flat-bottom density profile with outer wall.
+
+    r < r_soliton:        rho = 1 - deficit_depth (constant deficit)
+    r_soliton < r < r_wall: sigmoidal transition to rho = 1
+    r ≈ r_wall:           Gaussian wall (rho > 1)
+    """
+    rho0 = 1.0
+
+    # 1. Flat bottom inside soliton
+    rho_inner = rho0 - deficit_depth
+
+    # 2. Sigmoid transition from inner to vacuum
+    # Smoothstep: 0 at r = r_soliton, 1 at r = r_wall (approx)
+    # Using tanh for smooth transition
+    transition = 0.5 * (1.0 + ti.tanh((r - r_soliton) / sigma))
+
+    # 3. Outer wall (Gaussian bump)
+    wall = (wall_height - 1.0) * ti.exp(-((r - r_wall) ** 2) / (2.0 * wall_sigma**2))
+
+    # Combine: start with inner, transition to rho0, add wall
+    rho = rho_inner + (rho0 - rho_inner) * transition + wall
+
+    return rho
+
+
+# ================================================================
+# RESTORING FORCE dV/dψ (NEW spatial arguments for modes 4/5)
+# ================================================================
+
+
+@ti.func
+def emc_density_profile_flat(
+    r: ti.f32,
+    r_soliton: ti.f32,
+    sigma: ti.f32,
+    deficit_depth: ti.f32,
+) -> ti.f32:
+    """
+    Flat-bottom density profile: constant deficit inside soliton,
+    rapid rise to vacuum outside via sigmoid.
+
+    For r << r_soliton: rho ≈ 1 - deficit_depth (deficit)
+    For r >> r_soliton: rho ≈ 1 (vacuum)
+    """
+    rho0 = 1.0
+    # Sigmoid transition: smooth but steep rise at r = r_soliton
+    rho = rho0 - deficit_depth * (0.5 * (1.0 - ti.tanh((r - r_soliton) / sigma)))
+    return rho
 
 
 @ti.func
@@ -190,31 +322,165 @@ def dV_psi(
     v_mode: ti.i32,  # type: ignore
     c1: ti.f32,  # type: ignore
     c2: ti.f32,  # type: ignore
-    rho_local: ti.f32,  # type: ignore
+    rho_local: ti.f32,  # type: ignore  # for modes 4/5 only
+    # Spatial context for radial density profile (modes 4 and 5)
+    i: ti.i32,  # type: ignore
+    j: ti.i32,  # type: ignore
+    k: ti.i32,  # type: ignore
+    nx: ti.i32,  # type: ignore
+    ny: ti.i32,  # type: ignore
+    nz: ti.i32,  # type: ignore
+    r_wall: ti.f32,  # type: ignore
+    wall_height: ti.f32,  # type: ignore
+    deficit_depth: ti.f32,  # type: ignore
+    r_soliton: ti.f32,
+    sigma: ti.f32,
 ):
     """Restoring force dV/dψ (3-vector) for V_psi; enters the leapfrog as −dt²·dV_psi.
 
-    v_mode = 4 (Variant B): density-modulated cubic nonlinearity.
-      F = c1 * u * psi * (1 - rho_local / RHO_0)
-    where u = ||psi||², rho_local is the local energy density (proxy
-    for EMC density), and RHO_0 is a reference density scale.
+    v_mode = 4: density-modulated cubic with core deficit (no EMC wall).
+    v_mode = 5: density-modulated cubic with core deficit + EMC wall.
+    v_mode = 6: flat-bottom density profile (sigmoid transition, no wall).
+    v_mode = 7: flat-bottom density profile + sigmoid + EMC wall.
+    v_mode = 9: Gaussian density profile (smooth, no wall).
+    v_mode = 10: Gaussian density profile + quintic saturation (RECOMMENDED).
     """
     u = psi.dot(psi)
     out = ti.Vector([0.0, 0.0, 0.0])
+
     if v_mode == 1:
+        # Pure cubic nonlinearity (focusing if c1 < 0, defocusing if c1 > 0)
         out = c1 * u * psi
     elif v_mode == 2:
+        # Quintic saturation: cubic focusing + quintic limiting
+        # For small u: cubic term dominates (focusing)
+        # For large u: quintic term dominates (saturation, prevents blow-up)
         out = c1 * u * psi - c2 * u * u * psi
     elif v_mode == 3:
+        # Double-well potential: symmetry-broken vacuum
         out = -c1 * psi + c2 * u * psi
-    elif v_mode == 4:   # Variant B – density-modulated
-        # RHO_0 is the reference energy density at the statutory vacuum.
-        # We use the square of the base amplitude as a proxy for the background
-        # energy density. The modulation factor (1 - rho_local/RHO_0) ensures
-        # nonlinearity is active only where the EMC density is depleted (soliton core).
-        RHO_0 = base_amplitude_am * base_amplitude_am  # ~ (28.5 am)^2
-        modulation = 1.0 - ti.min(rho_local / RHO_0, 1.0)  # clip to 0 if rho_local > RHO_0
+    elif v_mode == 4 or v_mode == 5:
+        # V_MODE=4: Exponential density deficit (core only, no wall)
+        # V_MODE=5: Exponential density deficit + EMC wall (Gaussian bump)
+        # Compute radial distance from domain centre
+        cx = ti.cast(nx, ti.f32) * 0.5
+        cy = ti.cast(ny, ti.f32) * 0.5
+        cz = ti.cast(nz, ti.f32) * 0.5
+        dx = ti.cast(i, ti.f32) - cx
+        dy = ti.cast(j, ti.f32) - cy
+        dz = ti.cast(k, ti.f32) - cz
+        r = ti.sqrt(dx * dx + dy * dy + dz * dz)
+
+        # Get normalised EMC density at this voxel
+        rho_norm = emc_density_profile(r, r_wall, wall_height, deficit_depth, v_mode)
+
+        # Modulation: nonlinearity active only where density is below background
+        modulation = 1.0 - ti.min(rho_norm, 1.0)
         out = c1 * u * psi * modulation
+    elif v_mode == 6:
+        # V_MODE=6: Flat-bottom density profile (sigmoid transition, no wall)
+        # rho(r) = 1 - deficit * 0.5 * (1 - tanh((r - R_soliton) / sigma))
+        # Constant deficit inside soliton, smooth transition to vacuum outside
+        cx = ti.cast(nx, ti.f32) * 0.5
+        cy = ti.cast(ny, ti.f32) * 0.5
+        cz = ti.cast(nz, ti.f32) * 0.5
+        dx = ti.cast(i, ti.f32) - cx
+        dy = ti.cast(j, ti.f32) - cy
+        dz = ti.cast(k, ti.f32) - cz
+        r = ti.sqrt(dx * dx + dy * dy + dz * dz)
+
+        # Get flat-bottom density profile
+        rho_norm = emc_density_profile_flat(r, r_soliton, sigma, deficit_depth)
+
+        # Modulation: 1 - rho/rho0 (active only where rho < rho0)
+        modulation = 1.0 - ti.min(rho_norm, 1.0)
+
+        # Nonlinear term: c1 * u * psi * modulation
+        out = c1 * u * psi * modulation
+    elif v_mode == 7:
+        # V_MODE=7: Flat-bottom density profile + sigmoid + Gaussian EMC wall
+        # Combines constant deficit inside, sigmoid transition to vacuum,
+        # and a Gaussian wall (density bump) at r = r_wall
+        cx = ti.cast(nx, ti.f32) * 0.5
+        cy = ti.cast(ny, ti.f32) * 0.5
+        cz = ti.cast(nz, ti.f32) * 0.5
+        dx = ti.cast(i, ti.f32) - cx
+        dy = ti.cast(j, ti.f32) - cy
+        dz = ti.cast(k, ti.f32) - cz
+        r = ti.sqrt(dx * dx + dy * dy + dz * dz)
+
+        # Wall parameters for V_MODE=7:
+        # wall_sigma controls the width of the Gaussian wall.
+        # For simplicity we use wall_sigma = r_wall * 0.1 (constant).
+        wall_sigma = r_wall * 0.1
+
+        rho_norm = emc_density_profile_flat_with_wall(
+            r, r_soliton, sigma, deficit_depth, r_wall, wall_height, wall_sigma
+        )
+        modulation = 1.0 - ti.min(rho_norm, 1.0)
+        out = c1 * u * psi * modulation
+    elif v_mode == 9:
+        # V_MODE=9: Gaussian density profile (smooth, no wall)
+        # rho(r) = 1 - deficit_depth * exp(-(r / R_soliton)^2)
+        # Smooth, monotonic transition from core deficit to vacuum
+        cx = ti.cast(nx, ti.f32) * 0.5
+        cy = ti.cast(ny, ti.f32) * 0.5
+        cz = ti.cast(nz, ti.f32) * 0.5
+        dx = ti.cast(i, ti.f32) - cx
+        dy = ti.cast(j, ti.f32) - cy
+        dz = ti.cast(k, ti.f32) - cz
+        r = ti.sqrt(dx * dx + dy * dy + dz * dz)
+
+        rho = 1.0 - deficit_depth * ti.exp(-((r / r_soliton) ** 2))
+        modulation = 1.0 - ti.min(rho, 1.0)
+        out = c1 * u * psi * modulation
+    elif v_mode == 10:
+        # ------------------------------------------------------------------
+        # V_MODE=10: Gaussian density profile + quintic saturation
+        #
+        # Combines the smooth Gaussian profile (V_MODE=9) with the
+        # saturation mechanism (V_MODE=2). This creates a potential well
+        # (from the density deficit) while preventing amplitude blow-up
+        # (from the quintic term).
+        #
+        # Formula: out = c1 * u * psi * modulation - c2 * u * u * psi * modulation
+        # where modulation = deficit_depth * exp(-(r / R_soliton)^2)
+        #
+        # This is the most physically complete V_MODE, as it includes:
+        # - Vacuum density profile (Gaussian well)
+        # - Nonlinear saturation (quintic)
+        # - Pressure force (via PRESSURE_STRENGTH in force_motion)
+        #
+        # For electron (K=10) stability, recommended parameters:
+        #   c1 < 0 (focusing), c2 > 0 (saturation), R_soliton ~ 35
+        #
+        # FUTURE EXTENSION:
+        # The current implementation uses a fixed Gaussian profile.
+        # A future enhancement could make the profile selectable via an
+        # additional parameter (e.g., PROFILE_MODE), allowing V_MODE=10
+        # to use any of the density profiles defined in V_MODE=4-7:
+        #   - exponential (deficit only)
+        #   - exponential + EMC wall
+        #   - flat-bottom (sigmoid)
+        #   - flat-bottom + wall
+        # This would enable systematic comparison of different vacuum
+        # density profiles while retaining the saturation mechanism.
+        # Implementation: replace the modulation calculation below with
+        # a call to a profile function selected by PROFILE_MODE.
+        # ------------------------------------------------------------------
+        cx = ti.cast(nx, ti.f32) * 0.5
+        cy = ti.cast(ny, ti.f32) * 0.5
+        cz = ti.cast(nz, ti.f32) * 0.5
+        dx = ti.cast(i, ti.f32) - cx
+        dy = ti.cast(j, ti.f32) - cy
+        dz = ti.cast(k, ti.f32) - cz
+        r = ti.sqrt(dx * dx + dy * dy + dz * dz)
+
+        # Gaussian modulation: strongest at center, decays to zero
+        modulation = deficit_depth * ti.exp(-((r / r_soliton) ** 2))
+
+        # Cubic focusing + quintic saturation, both modulated by density profile
+        out = c1 * u * psi * modulation - c2 * u * u * psi * modulation
     return out
 
 
@@ -228,6 +494,12 @@ def propagate_wave(
     v_mode: ti.i32,  # type: ignore
     v_c1: ti.f32,  # type: ignore
     v_c2: ti.f32,  # type: ignore
+    # New profile parameters for modes 4 and 5
+    r_wall: ti.f32,  # type: ignore
+    wall_height: ti.f32,  # type: ignore
+    deficit_depth: ti.f32,  # type: ignore
+    r_soliton: ti.f32,
+    sigma: ti.f32,
 ):
     """
     Evolve ψ one step by leapfrog over all interior voxels (non-linear vector wave PDE).
@@ -247,8 +519,11 @@ def propagate_wave(
         c_amrs: wave speed (am/rs)
         dt_rs: timestep (rs)
         elapsed_t_rs: elapsed simulation time (rs)
-        v_mode: non-linear potential selector (0 linear, 1 cubic, 2 saturating, 3 double-well, 4 density-modulated)
+        v_mode: non-linear potential selector (0 linear, 1 cubic, 2 saturating, 3 double-well, 4 deficit, 5 deficit+wall)
         v_c1, v_c2: potential coefficients (see V_psi/dV_psi)
+        r_wall: EMC wall radius (grid units), for modes 4/5
+        wall_height: EMC wall peak density relative to background, for mode 5
+        deficit_depth: core density reduction, for modes 4/5
     """
     nx, ny, nz = wave_field.nx, wave_field.ny, wave_field.nz
     c2dt2 = (c_amrs * dt_rs) ** 2
@@ -265,12 +540,30 @@ def propagate_wave(
         psi_cur = wave_field.psi_am[i, j, k]
 
         # Leap-Frog update: ψ_new = 2ψ - ψ_prev + (c·dt)²·∇²ψ − dt²·dV(ψ)
-        # For v_mode=4 we pass the local energy density as a proxy for EMC density
+        # For v_mode 4/5 we pass the spatial indices and profile parameters
         psi_new = (
             2.0 * psi_cur
             - wave_field.psi_prev_am[i, j, k]
             + c2dt2 * laplacian
-            - dt2 * dV_psi(psi_cur, v_mode, v_c1, v_c2, trackers.energy_local_aJ[i, j, k])
+            - dt2
+            * dV_psi(
+                psi_cur,
+                v_mode,
+                v_c1,
+                v_c2,
+                trackers.energy_local_aJ[i, j, k],
+                i,
+                j,
+                k,
+                nx,
+                ny,
+                nz,
+                r_wall,
+                wall_height,
+                deficit_depth,
+                r_soliton,
+                sigma,
+            )
         )
         wave_field.psi_new_am[i, j, k] = psi_new
 
@@ -362,8 +655,10 @@ def interact_wc_dirichlet(
             (-radius, radius + 1), (-radius, radius + 1), (-radius, radius + 1)
         ):
             i, j, k = c[0] + di, c[1] + dj, c[2] + dk
-            inside = (0 < i < wave_field.nx - 1) and (0 < j < wave_field.ny - 1) and (
-                0 < k < wave_field.nz - 1
+            inside = (
+                (0 < i < wave_field.nx - 1)
+                and (0 < j < wave_field.ny - 1)
+                and (0 < k < wave_field.nz - 1)
             )
             d = ti.Vector([ti.cast(di, ti.f32), ti.cast(dj, ti.f32), ti.cast(dk, ti.f32)])
             r = d.norm()
@@ -409,8 +704,10 @@ def interact_wc_neumann(
             (-radius, radius + 1), (-radius, radius + 1), (-radius, radius + 1)
         ):
             i, j, k = c[0] + di, c[1] + dj, c[2] + dk
-            inside = (0 < i < wave_field.nx - 1) and (0 < j < wave_field.ny - 1) and (
-                0 < k < wave_field.nz - 1
+            inside = (
+                (0 < i < wave_field.nx - 1)
+                and (0 < j < wave_field.ny - 1)
+                and (0 < k < wave_field.nz - 1)
             )
             d = ti.Vector([ti.cast(di, ti.f32), ti.cast(dj, ti.f32), ti.cast(dk, ti.f32)])
             r = d.norm()
@@ -452,8 +749,10 @@ def interact_wc_soft(
             (-radius, radius + 1), (-radius, radius + 1), (-radius, radius + 1)
         ):
             i, j, k = c[0] + di, c[1] + dj, c[2] + dk
-            inside = (0 < i < wave_field.nx - 1) and (0 < j < wave_field.ny - 1) and (
-                0 < k < wave_field.nz - 1
+            inside = (
+                (0 < i < wave_field.nx - 1)
+                and (0 < j < wave_field.ny - 1)
+                and (0 < k < wave_field.nz - 1)
             )
             d = ti.Vector([ti.cast(di, ti.f32), ti.cast(dj, ti.f32), ti.cast(dk, ti.f32)])
             r = d.norm()
