@@ -436,7 +436,7 @@ def display_data_dashboard(state):
         sub.text(f"Scale-up Factor: {state.wave_field.scale_factor:.1f}x")
         sub.text(f"eWave: {state.wave_field.ewave_res:.1f} voxels/wave (~12)")
         if state.wave_field.ewave_res < 10:
-            sub.text(f"*** WARNING: Undersampling! ***", color=(1.0, 0.0, 0.0))
+            sub.text("*** WARNING: Undersampling! ***", color=(1.0, 0.0, 0.0))
 
         sub.text("\n--- ENERGY-WAVE ---", color=colormap.LIGHT_BLUE[1])
         sub.text(f"Amplitude: {state.amp_global_rms/state.wave_field.scale_factor:.1e} m")

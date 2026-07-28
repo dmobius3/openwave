@@ -14,7 +14,9 @@ m4_ewt (Energy Wave Theory) is the scientific-origin corpus for the wave-structu
 | Author(s) | Year | Title | Venue / ID |
 | --- | --- | --- | --- |
 | Butto, N. | 2021 | A New Theory for the Essence and Origin of Electron Spin | Journal of High Energy Physics, Gravitation and Cosmology, 7(4); DOI 10.4236/jhepgc.2021.74088 |
-| Łukasz Smoliński | 2026 | Nonlinear Stabilisation of the Electron Soliton: Documentation for the OpenWave M4 Implementation (v1.0.00) | OpenWave M4 author documentation, unpublished (?), DOI/arXiv n/a |
+| Smoliński, Ł. | 2026 | Formalization of Nonlinear Stabilisation Mechanisms for the Electron Soliton in the Energy Wave Theory Framework (v1.0) | Zenodo; DOI [10.5281/zenodo.21557369](https://doi.org/10.5281/zenodo.21557369). In-repo: [`research/M4_k_selectivity_Formalization.md`](../research/M4_k_selectivity_Formalization.md) |
+| Smoliński, Ł. | 2026 | Numerical Test Report (K-Selectivity Validation) | Zenodo; DOI [10.5281/zenodo.21591354](https://doi.org/10.5281/zenodo.21591354) |
+| Smoliński, Ł. | 2026 | The Geometric Identity of Gravity and Dimensional Unification Resolving α, Lepton (g−2)_l, Weinberg, and Cabibbo Mixing (v4.5.2) | Zenodo; DOI [10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657) |
 | Yee, J. | n/a | The Geometry of Spacetime and the Unification of Forces (v2.3) | author doc (EWT), energywavetheory.com; n/a |
 | Yee, J. | n/a | The Geometry of Particles and the Explanation of Their Creation and Decay (v2) | author doc (EWT), energywavetheory.com; n/a |
 | Yee, J. | n/a | The Physics of SubAtomic Particles | author doc (EWT), energywavetheory.com; n/a |

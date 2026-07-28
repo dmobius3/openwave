@@ -41,6 +41,16 @@ def tetrahedron_10(univ_edge, center=(0.5, 0.5, 0.5), rotation=(0, 0, 0), pertur
     """
     Generate proper 1-3-6 tetrahedral electron geometry.
     Returns 10 positions: 1 center, 3 inner, 6 outer.
+
+    Scaling note (maintainer, measured): r1 and r2 below are normalized
+    constants, not multiples of LOCK_SPACING, so this geometry does NOT scale
+    with univ_edge even though it takes it as an argument. Measured at
+    univ_edge = 1e-15, none of the 45 pair separations land on a lock-in well
+    r = n*lambda (they run 0.701 to 3.336 lambda); at 2e-15 the same
+    normalized coordinates come out doubled in units of lambda. Which radii the
+    1-3-6 electron should use is the model author's call, being explored across
+    the electron_k*_vmode10_* xparameters, so this is recorded rather than
+    changed. LOCK_SPACING is currently computed and unused.
     """
     import math
     import random
@@ -49,6 +59,9 @@ def tetrahedron_10(univ_edge, center=(0.5, 0.5, 0.5), rotation=(0, 0, 0), pertur
     # Normalized wavelength for scaling
     LOCK_SPACING = constants.EWAVE_LENGTH / univ_edge
     # Radii: inner ~0.015-0.02, outer ~0.03-0.04 (in normalized units)
+    # NOTE: normalized constants, NOT derived from LOCK_SPACING; see the
+    # scaling note in this function's docstring before reading a K=10 run
+    # as a lock-in result.
     r1 = 0.02  # inner radius
     r2 = 0.04  # outer radius
     h = r2 * math.sqrt(2 / 3)  # height offset for outer layer (approx 0.03266)

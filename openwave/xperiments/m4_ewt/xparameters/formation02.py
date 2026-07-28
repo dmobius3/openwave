@@ -11,15 +11,38 @@ dispatches on K:
   K=11:  a golden-angle (Fibonacci) sphere
   other: the golden-angle fallback, every point on a sphere of radius 0.35 lambda
 
-Spacing caveat: only K=10 spans the lock-in wells at r = n*lambda, the energy
-minima where same-phase wave centres hold. Under the fallback all pair
-separations land between 0.33 and 0.70 lambda, inside the first well, so K=2..9
-are not tested at the lock-in spacing. The named geometries this file used to
-build (line, triangle, tetrahedron, bipyramid, octahedron, cube, tricapped
-prism) are no longer generated.
+Spacing note, MEASURED (all 45 pair separations, univ_edge = 1e-15, in units of
+lambda). An earlier version of this note claimed only K=10 sits at the lock-in
+wells r = n*lambda; that was written without measuring and is backwards:
+
+  K=2..4    every pair exactly 1.000              fully at the first well
+  K=5..9    0.76 to 1.73, some pairs on wells     golden-angle fallback
+  K=10      0.701 to 3.336, NO pair on a well     the 1-3-6 tetrahedron
+  K=11      0.326 to 0.698, NO pair on a well     golden-angle sphere
+
+So K=10 is currently the case furthest from lock-in spacing, not the closest,
+and the 0.33-0.70 lambda band the old note attributed to K=2..9 is really K=11's.
+
+Two consequences worth knowing before reading a K=10 run as a lock-in result:
+tetrahedron_10 in utils/geometry.py sets its radii as normalized constants
+(r1 = 0.02, r2 = 0.04) instead of deriving them from LOCK_SPACING, so (a) none of
+its separations land on a well, and (b) the geometry does not scale with
+UNIVERSE_EDGE, so at 2e-15 every number above doubles in units of lambda. Which
+radii the 1-3-6 electron should use is the model author's call and is being
+explored across the electron_k*_vmode10_* xparameters; this note only records
+what the shipped generator currently does.
+
+Reproduce: generate_positions_by_EWT_geometry(1e-15, K, center=(0.5, 0.5, 0.5),
+rotation=(0, 0, 0), perturbation=0.0), then take math.dist over every pair and
+divide by constants.EWAVE_LENGTH / 1e-15.
+
+The named geometries this file used to build (line, triangle, tetrahedron,
+bipyramid, octahedron, cube, tricapped prism) are no longer generated.
 """
 
-from openwave.xperiments.m4_ewt.xparameters.utils.geometry import generate_positions_by_EWT_geometry
+from openwave.xperiments.m4_ewt.xparameters.utils.geometry import (
+    generate_positions_by_EWT_geometry,
+)
 
 UNIVERSE_EDGE = 1e-15  # m, universe edge length in meters
 TARGET_VOXELS = 75_000_000  # Target voxel count (impacts performance)
