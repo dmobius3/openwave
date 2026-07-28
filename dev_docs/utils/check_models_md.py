@@ -34,7 +34,7 @@ Model columns are located by INDEX in the header, not by assuming they run to
 the end of the row, so adding a criterion-level column cannot disable checks
 2 through 4 (it did, when `regime` was introduced).
 
-Usage: python3 dev_docs/check_models_md.py [limit]   (default 55)
+Usage: python3 dev_docs/utils/check_models_md.py [limit]   (default 55)
 Exit 0 = clean, 1 = violations (listed on stdout).
 """
 
@@ -42,7 +42,7 @@ import re
 import sys
 from pathlib import Path
 
-PATH = Path(__file__).resolve().parent.parent / "MODELS.md"
+PATH = Path(__file__).resolve().parents[2] / "MODELS.md"
 LIMIT = int(sys.argv[1]) if len(sys.argv) > 1 else 55
 
 LINK = re.compile(r"\[[^\]]*\]\([^)]*\)")

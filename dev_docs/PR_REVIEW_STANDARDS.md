@@ -140,7 +140,7 @@ Findings from this gate are **questions to the author**, not verdicts. The autho
 
 ### 7.1 The MODELS.md linter
 
-**Run `python3 dev_docs/check_models_md.py` before merging anything that touches [`MODELS.md`](../MODELS.md), and read its output rather than only its exit code.** Nothing else enforces it: the repository has no CI, so this script runs when a reviewer runs it and at no other time. That is a deliberate choice (the checks are instant and a reviewer is already at a terminal), and it has one failure mode, which has already happened once: the `regime` column was added, the script's positional table detection stopped finding the summary-status table, and it sat reporting 131 violations that nobody saw because nobody invoked it. A check that is not part of a procedure is not a check.
+**Run `python3 dev_docs/utils/check_models_md.py` before merging anything that touches [`MODELS.md`](../MODELS.md), and read its output rather than only its exit code.** Nothing else enforces it: the repository has no CI, so this script runs when a reviewer runs it and at no other time. That is a deliberate choice (the checks are instant and a reviewer is already at a terminal), and it has one failure mode, which has already happened once: the `regime` column was added, the script's positional table detection stopped finding the summary-status table, and it sat reporting 131 violations that nobody saw because nobody invoked it. A check that is not part of a procedure is not a check.
 
 What it covers, so a reviewer knows what it does not:
 
@@ -155,6 +155,12 @@ What it covers, so a reviewer knows what it does not:
 It does **not** check prose accuracy, link targets, or whether a cell's claim is supported by the artifact it links. Those are [Gate C](#5-gate-c-claim-to-artifact) and [Gate E](#7-gate-e-modelsmd-cell-changes), and they are yours.
 
 Two operational notes. A clean run prints `clean` and exits 0; anything else lists line-numbered violations. And if a PR legitimately introduces a new criterion-level column (the way `regime` was), the script will refuse it by name until the column is registered in `REGIMES`-style fashion beside it, which is intentional: adding a column must not be able to silently switch a check off.
+
+### 7.2 The roadmap linter
+
+**Run `python3 dev_docs/utils/check_roadmaps.py` before merging anything that touches a roadmap.** Same no-CI caveat as 7.1: it runs when a reviewer runs it. It enforces the word budgets in [`ROADMAP_STANDARDS.md`](ROADMAP_STANDARDS.md), whose premise is that a roadmap row is a preview and the task document is the record. A row that needs more than its budget is a row whose content belongs one link deeper, so the fix is almost never a bigger budget.
+
+The budgets it checks: description 65 words, title 15, every other cell in the row 35, section blockquote 50, intro blockquote 80, change-log entry 200. It also requires a column named exactly `Description` in each task table, and reports rows whose cell count does not match their header, which is what an unescaped `|` looks like from the parser's side. `ARCHIVE` and `LEGACY` sections are skipped as frozen history.
 
 ## 8. Gate F: other authors' work
 
@@ -356,7 +362,8 @@ Style and import sanity, on the PR worktree:
 ```bash
 cat filelist.txt | tr '\n' '\0' | xargs -0 python3 -m black --check
 python3 -m py_compile <changed files>
-python3 dev_docs/check_models_md.py    # mandatory when MODELS.md is touched, see 7.1
+python3 dev_docs/utils/check_models_md.py    # mandatory when MODELS.md is touched, see 7.1
+python3 dev_docs/utils/check_roadmaps.py     # mandatory when a roadmap is touched, see 7.2
 ```
 
 ### Recording the verdict: submit it as a review, not as a comment
