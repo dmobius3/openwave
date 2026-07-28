@@ -17,10 +17,13 @@ rule)"; the rest keep the derived tables honest:
    criterion row declares one of REGIMES. That column is a property of the
    criterion rather than of any model (MODELS.md "Summary Status"), so it is
    matched by NAME and never counted as a model column.
-5. Simplest test: if the summary-status table carries a `simplest test` column
-   (also criterion-level, matched by NAME), every criterion row must fill it:
-   a row with no named test violates the "every row names its simplest passing
-   test" rule that column exists to carry.
+5. Simplest test: the simplest-test companion table (header "| Criteria |
+   simplest test |") must fill a non-empty test for every criterion, and its
+   criteria set must match the summary-status table's, both directions: a row
+   with no named test (or a criterion missing from either side) violates the
+   "every row names its simplest passing test" rule that table exists to carry.
+   A `simplest test` column carried by the summary-status table itself (the
+   pre-companion layout) is checked the same way.
 6. Shape: every data row carries exactly as many cells as its table's header.
    This is what an unescaped "|" inside a cell looks like from here, and it is
    worth its own message because such a row otherwise parses by position and
@@ -31,7 +34,9 @@ silently disable a check:
   - score-board table    = header "| **SCORE-BOARD** | [.. (M5)](..) | ... |"
   - summary-status table = header "| Criteria | [M5](..) | ... |", two or more
     model-link columns; any further column is matched by name (see check 4)
-  - per-model table      = header "| Criteria | Status + result summary |"
+  - simplest-test table  = header "| Criteria | simplest test |" (two columns,
+    the second named exactly that)
+  - per-model table      = any other two-column header starting "| Criteria |"
     under the nearest "### <name> (M<n>)" heading.
 
 Model columns are located by INDEX in the header, not by assuming they run to
@@ -89,9 +94,10 @@ def is_rule(cells):
 status = {}  # (criterion, model) -> icon, from the summary-status table
 summary = {}  # (criterion, model) -> (icon, wordcount, lineno), per-model tables
 board = {}  # (icon or "total", model) -> (count, lineno), from the score-board
+tests = {}  # criterion -> lineno, from the simplest-test table (non-empty rows)
 errors = []
 
-mode = None  # "status" | "model" | "board" | None
+mode = None  # "status" | "model" | "board" | "tests" | None
 model = None  # current model id when mode == "model"
 model_cols = []  # (column index, model id) pairs when mode in ("status", "board")
 regime_col = None  # column index of the status table's `regime`, if it has one
@@ -127,6 +133,8 @@ for i, line in enumerate(PATH.read_text().splitlines(), 1):
                     " A criterion-level column must be registered here before use"
                     " (see `regime`), so that adding one cannot silently skip a check"
                 )
+        elif len(cells) == 2 and cells[1].strip("* `").lower() == "simplest test":
+            mode, width = "tests", len(cells)
         elif len(cells) == 2:
             mode, model, width = "model", seen_model, len(cells)
             if model is None:
@@ -186,6 +194,14 @@ for i, line in enumerate(PATH.read_text().splitlines(), 1):
                 f"L{i} simplest-test cell ({cells[0]}) is empty:"
                 " every criterion row must name its simplest passing test"
             )
+    elif mode == "tests":
+        if not cells[1].strip("* `"):
+            errors.append(
+                f"L{i} simplest-test cell ({cells[0]}) is empty:"
+                " every criterion row must name its simplest passing test"
+            )
+        else:
+            tests[cells[0]] = i
     elif mode == "model" and model:
         summary[(cells[0], model)] = (icon_of(cells[1]), len(prose_words(cells[1])), i)
 
@@ -231,9 +247,26 @@ else:
         "no SCORE-BOARD table found (header '| **SCORE-BOARD** | [.. (M5)](..) | ... |')"
     )
 
+crit_set = {c for c, _ in status}
+if tests:
+    for c in sorted(crit_set - set(tests)):
+        errors.append(f"criterion ({c}) missing from the simplest-test table")
+    for c in sorted(set(tests) - crit_set):
+        errors.append(
+            f"L{tests[c]} simplest-test row ({c}) has no criterion in the summary-status table"
+        )
+elif status and test_col is None:
+    errors.append(
+        "no simplest-test table found (header '| Criteria | simplest test |')"
+        " and the summary-status table carries no `simplest test` column"
+    )
+
 counts = sorted(n for _, n, _ in summary.values())
 models = sorted({m for _, m in summary})
-print(f"summary cells: {len(summary)} | status icons: {len(status)} | models: {','.join(models)}")
+print(
+    f"summary cells: {len(summary)} | status icons: {len(status)}"
+    f" | tests: {len(tests)} | models: {','.join(models)}"
+)
 if counts:
     print(f"limit {LIMIT} | max {counts[-1]}  median {counts[len(counts) // 2]}")
 if errors:
