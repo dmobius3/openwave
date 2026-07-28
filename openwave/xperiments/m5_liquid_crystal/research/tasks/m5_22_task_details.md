@@ -21,6 +21,8 @@ His picture ([`../../theory/duda_2026-07-19_baryons_vortex_knots.png`](../../the
 
 **Gated by**: user "go" (the M5.21 series is closed; the author-named main priority; start committed for the week of 2026-07-27).
 
+**Pre-run step (user, 2026-07-28)**: at "go", FIRST review the then-current state of the [`MODELS.md`](../../../../../MODELS.md) criteria table before locking the run list. [M5.29](m5_29_task_details.md) (promoted ahead of this task in the queue) restructures the rows this census reports into: the Baryons split (mass ordering + core/shell \| exact masses \| beta decay), the candidate deuteron-binding + quadrupole row, the candidate nuclear-structure row, and per-row author-named tests with priority tiers ([`m5_29_convo.md`](m5_29_convo.md)). The pre-registered reads and the claim language of this task must target the criteria rows as they stand on run day, not as they stood at staging; if M5.29 has not run yet, note the pending restructure in the task plan so the results file cleanly once it lands.
+
 ## The author's public framing question (2026-07-20, captured)
 
 On the 2026-07-20 group thread ([`m5_21_convo.md § 2026-07-20 13:44`](m5_21_convo.md)) the author posed Phase 1's program to the group verbatim: "Then there are various size knots, and various size nuclei - is there correspondence between them? How does it look like?". The knots-nuclei correspondence is now a publicly seeded community question, which strengthens the article case for the Phase 1 toy census ("even toy simulations definitely deserving article") and gives the eventual note its opening frame.
