@@ -1,0 +1,306 @@
+{
+  "anchors": {
+    "Lambda_per_m2": 1.0891388337006832e-52,
+    "mu_Lambda_GeV": 2.2394551644805497e-12,
+    "sqrt_Omega_Lambda": 1.0268549899573147e+61
+  },
+  "not_recomputed": [
+    "(rho, sigma) -> fermion identity: the page's ranked-table reading (assignment is a declared DATA INPUT, not re-derived from quantum-number gates here)",
+    "structural sector per fermion (e.g. the bottom quark's sector is R2, making its numerically compatible (R4,gal) address out-of-sector): declared per the page's sector-first rule",
+    "PDG comparison masses: measurement inputs",
+    "H0, Omega_L, G, c, hbar: the declared measurement inputs (Planck 2018 + CODATA); Lambda, mu_Lambda, and sqrt(Omega_Lambda) are recomputed from them (Part D), not declared inputs themselves",
+    "T^2(R0) = 1 non-acyclic ledger convention: ASSERTED per the page's own topological argument",
+    "overall torsion sign convention, fixed once on R7: declared, then every other closed form is a genuine independent check",
+    "mass-null-v1.1 / mass-null-v1.0 p_A figures and S1 statistics: quoted from the external null-test analysis (mass-null-test.md), not computed by this script; G3 checks only their internal consistency, not the null test itself",
+    "each fermion's SM_ASSIGN role bucket (assigned_within_x3 / assigned_outside_x3 / compatible_out_of_sector / unassigned): a declared label alongside the address and sector, not derived from the ratio at runtime (though adjudicated is always checked as a subset of the ratio-derived compatible set, so a mislabeled role cannot inflate the count)"
+  ],
+  "null_test": {
+    "v1_0_pre_correction": {
+      "S1_mean": 4.5,
+      "S1_obs": 6,
+      "p_A": 0.174,
+      "table": "pre-correction",
+      "tag": "mass-null-v1.0"
+    },
+    "v1_1_corrected": {
+      "S1_mean": 5.02,
+      "S1_obs": 5,
+      "p_A": 0.69,
+      "table": "corrected",
+      "tag": "mass-null-v1.1"
+    }
+  },
+  "ranked_entries": [
+    {
+      "mass_GeV": 8.724624582655043e-13,
+      "rank": 1,
+      "rho": "R1",
+      "sigma": "triv"
+    },
+    {
+      "mass_GeV": 7.30923638299886e-12,
+      "rank": 2,
+      "rho": "R1",
+      "sigma": "std"
+    },
+    {
+      "mass_GeV": 6.644385167380892e-11,
+      "rank": 3,
+      "rho": "R1",
+      "sigma": "gal"
+    },
+    {
+      "mass_GeV": 5.29790764601858e-10,
+      "rank": 4,
+      "rho": "R3",
+      "sigma": "std"
+    },
+    {
+      "mass_GeV": 4.4384327318465044e-09,
+      "rank": 5,
+      "rho": "R3",
+      "sigma": "triv"
+    },
+    {
+      "mass_GeV": 5.809983873803196e-08,
+      "rank": 6,
+      "rho": "R3",
+      "sigma": "gal"
+    },
+    {
+      "mass_GeV": 4.0771444617695135e-07,
+      "rank": 7,
+      "rho": "R6",
+      "sigma": "std"
+    },
+    {
+      "mass_GeV": 5.930057098732563e-07,
+      "rank": 8,
+      "rho": "R6",
+      "sigma": "triv"
+    },
+    {
+      "mass_GeV": 2.794516387233519e-06,
+      "rank": 9,
+      "rho": "R6",
+      "sigma": "gal"
+    },
+    {
+      "mass_GeV": 0.0005199246227025404,
+      "rank": 10,
+      "rho": "R7",
+      "sigma": "triv"
+    },
+    {
+      "mass_GeV": 0.0009243104402625606,
+      "rank": 11,
+      "rho": "R7",
+      "sigma": "std"
+    },
+    {
+      "mass_GeV": 0.0009243104402625606,
+      "rank": 12,
+      "rho": "R7",
+      "sigma": "gal"
+    },
+    {
+      "mass_GeV": 0.015019031234987575,
+      "rank": 13,
+      "rho": "R8",
+      "sigma": "gal"
+    },
+    {
+      "mass_GeV": 0.031456267398507834,
+      "rank": 14,
+      "rho": "R8",
+      "sigma": "triv"
+    },
+    {
+      "mass_GeV": 0.10294197151976589,
+      "rank": 15,
+      "rho": "R8",
+      "sigma": "std"
+    },
+    {
+      "mass_GeV": 0.4173705859010266,
+      "rank": 16,
+      "rho": "R5",
+      "sigma": "gal"
+    },
+    {
+      "mass_GeV": 4.872920437826409,
+      "rank": 17,
+      "rho": "R4",
+      "sigma": "gal"
+    },
+    {
+      "mass_GeV": 5.956127945181798,
+      "rank": 18,
+      "rho": "R4",
+      "sigma": "triv"
+    },
+    {
+      "mass_GeV": 7.946390427008902,
+      "rank": 19,
+      "rho": "R5",
+      "sigma": "triv"
+    },
+    {
+      "mass_GeV": 11.375192167361885,
+      "rank": 20,
+      "rho": "R4",
+      "sigma": "std"
+    },
+    {
+      "mass_GeV": 19.60753328831835,
+      "rank": 21,
+      "rho": "R5",
+      "sigma": "std"
+    },
+    {
+      "mass_GeV": 160.95410965855407,
+      "rank": 22,
+      "rho": "R2",
+      "sigma": "triv"
+    },
+    {
+      "mass_GeV": 196.73279764032094,
+      "rank": 23,
+      "rho": "R2",
+      "sigma": "gal"
+    },
+    {
+      "mass_GeV": 260.92097914714424,
+      "rank": 24,
+      "rho": "R2",
+      "sigma": "std"
+    }
+  ],
+  "schema_version": "m8.3-v1",
+  "scorecard": {
+    "adjudicated": [
+      "mu",
+      "s",
+      "t",
+      "tau"
+    ],
+    "assigned_outside_x3": [
+      "d"
+    ],
+    "compatible": [
+      "b",
+      "mu",
+      "s",
+      "t",
+      "tau"
+    ],
+    "out_of_sector": [
+      "b"
+    ],
+    "unassigned": [
+      "c",
+      "u"
+    ]
+  },
+  "sm_comparison": {
+    "b": {
+      "addr": [
+        "R4",
+        "gal"
+      ],
+      "mass_GeV": 4.872920437826409,
+      "ratio": 1.1657704396713897,
+      "raw_ratio": 1.1657704396713897,
+      "role": "compatible_out_of_sector",
+      "symm_ratio": 1.1657704396713897
+    },
+    "c": {
+      "addr": null,
+      "mass_GeV": null,
+      "ratio": null,
+      "raw_ratio": null,
+      "role": "unassigned",
+      "symm_ratio": null
+    },
+    "d": {
+      "addr": [
+        "R8",
+        "gal"
+      ],
+      "mass_GeV": 0.015019031234987575,
+      "ratio": 3.216066645607618,
+      "raw_ratio": 3.216066645607618,
+      "role": "assigned_outside_x3",
+      "symm_ratio": 3.216066645607618
+    },
+    "e": {
+      "addr": [
+        "R7",
+        "triv"
+      ],
+      "mass_GeV": 0.0005199246227025404,
+      "ratio": 1.0174650150734648,
+      "raw_ratio": 1.0174650150734648,
+      "role": "benchmark",
+      "symm_ratio": 1.0174650150734648
+    },
+    "mu": {
+      "addr": [
+        "R8",
+        "std"
+      ],
+      "mass_GeV": 0.10294197151976589,
+      "ratio": 1.026792069741005,
+      "raw_ratio": 0.9739070153241806,
+      "role": "assigned_within_x3",
+      "symm_ratio": 1.026792069741005
+    },
+    "s": {
+      "addr": [
+        "R8",
+        "std"
+      ],
+      "mass_GeV": 0.10294197151976589,
+      "ratio": 1.1021624359717976,
+      "raw_ratio": 1.1021624359717976,
+      "role": "assigned_within_x3",
+      "symm_ratio": 1.1021624359717976
+    },
+    "t": {
+      "addr": [
+        "R2",
+        "triv"
+      ],
+      "mass_GeV": 160.95410965855407,
+      "ratio": 0.9319867380344765,
+      "raw_ratio": 0.9319867380344765,
+      "role": "assigned_within_x3",
+      "symm_ratio": 1.072976641394019
+    },
+    "tau": {
+      "addr": [
+        "R4",
+        "gal"
+      ],
+      "mass_GeV": 4.872920437826409,
+      "ratio": 2.7422174664189134,
+      "raw_ratio": 2.7422174664189134,
+      "role": "assigned_within_x3",
+      "symm_ratio": 2.7422174664189134
+    },
+    "u": {
+      "addr": null,
+      "mass_GeV": null,
+      "ratio": null,
+      "raw_ratio": null,
+      "role": "unassigned",
+      "symm_ratio": null
+    }
+  },
+  "source": {
+    "concept_doi": "10.5281/zenodo.18603975",
+    "repo_commit": "13a5c2b",
+    "repo_url": "https://github.com/dmobius3/mode-identity-theory",
+    "version_doi": "10.5281/zenodo.21652153"
+  }
+}
