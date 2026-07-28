@@ -42,52 +42,95 @@ Each icon is earned by the matching row in that model's own table (column header
 
 The **regime** column is a property of the criterion, not of any model: it marks what a row demands of whatever framework attempts it. `static` means the row can be earned from structure or spectrum alone, with no time evolution. `dynamic` means it cannot. `both` means the row carries a static sub-question and a dynamic one (a state existing versus that state annihilating, a mass versus an oscillation, a static potential versus a full stress-energy source), so a model can earn part of it without dynamics and the rest only with.
 
-The **simplest test** column is also a property of the criterion: the cheapest concrete experiment that would earn the row, so every claim and every 🚧 alike names what would settle it. The priority ordering (which tests are most decisive to run first within each domain) and its provenance live in the platform task record ([`dev_docs/tasks/t1_task_details.md`](dev_docs/tasks/t1_task_details.md)).
+Each criterion's simplest passing test sits in its own companion table right below ([§ Simplest Test per Criterion](#simplest-test-per-criterion)), keeping this matrix to icons.
 
-| Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) | regime | simplest test |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| **PARTICLES** | | | | | | | |
-| Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 | static | integer topological charge; a split e → e/2 + e/2 impossible |
-| Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 | static | localized state anchored to 511 keV |
-| de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 | dynamic | self-starting frequency-rigid internal oscillation at ω = mc²/ℏ |
-| Particle stability (Derrick escape) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic | the particle state persists in free evolution |
-| Magnetic moment μ (g ≈ 2) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic | field-carried dipole with g ≈ 2 |
-| Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic | field-carried J = ℏ/2 on the electron state |
-| Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 | static | the field returns under a π rotation while its frame needs 2π |
-| Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 | both | pair annihilation to radiation; follow-on: positronium 2γ/3γ |
-| Neutrinos (neutral states) | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | both | light charge-0 states released in decays |
-| Neutrino oscillations (PMNS) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | both | 3 flavors + oscillation; the PMNS angles |
-| Lepton mass spectrum (μ, τ) | ⚠️ | 🚧 | ❌ | ❌ | 🚧 | static | exactly 3 charged-lepton minima; ratios 1 : 207 : 3477 |
-| Quarks | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static | fractional charge as partial winding on a quark string |
-| Baryons: bound state (p, n) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static | a stable three-quark composite |
-| Baryons: mass ordering + charge profile | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static | m_n > m_p; positive core, negative shell |
-| Baryons: exact masses | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static | 938.3 / 939.6 MeV from the field |
-| Deuteron (binding + quadrupole) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static | m_d < m_p + m_n; the electric quadrupole moment |
-| Nuclear structure (levels, halos) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both | binding curve, levels, halo-nuclei lifetimes |
-| Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 | static | π/K states; strange decays (Λ⁰ → p + π⁻) |
-| Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 | static | a stable neutral massive state |
-| | | | | | | | |
-| **FORCES** | | | | | | | |
-| Electric force (Coulomb 1/r) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 | static | far-field 1/r potential at charge e |
-| Lorentz covariance | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic | covariant dispersion; boosted states contract, c-limited |
-| Magnetic force | ⚠️ | 🚧 | 🚧 | ⚠️ | 🚧 | dynamic | Larmor precession of the dipole in an applied field |
-| Strong force: confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static | linear inter-charge potential, ~1 GeV/fm (Cornell) |
-| Running coupling | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static | coupling varies with scale (onset at the core radius) |
-| Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic | μ relaxes to e + neutral ejecta |
-| Weak force: beta decay (n → p) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic | n → p + e + ν̄, parity-violating (needs a neutron) |
-| Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | both | attractive 1/r² between masses, via the GEM route |
-| Gravity: metric phenomena | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | both | light bending, time dilation, Λ |
-| | | | | | | | |
-| **WAVES + QUANTUM EMERGENCE** | | | | | | | |
-| EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic | Maxwell recovered; transverse waves at c |
-| Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 | dynamic | emergent ω² = k² + m² for matter waves |
-| Orbital quantization (atomic structure) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static | hydrogen-like discrete levels from standing waves |
+| Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) | regime |
+| --- | --- | --- | --- | --- | --- | --- |
+| **PARTICLES** | | | | | | |
+| Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 | static |
+| Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 | static |
+| de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 | dynamic |
+| Particle stability (Derrick escape) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic |
+| Magnetic moment μ (g ≈ 2) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
+| Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
+| Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 | both |
+| Neutrinos (neutral states) | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | both |
+| Neutrino oscillations (PMNS) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | both |
+| Lepton mass spectrum (μ, τ) | ⚠️ | 🚧 | ❌ | ❌ | 🚧 | static |
+| Quarks | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Baryons: bound state (p, n) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static |
+| Baryons: mass ordering + charge profile | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Baryons: exact masses | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Deuteron (binding + quadrupole) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Nuclear structure (levels, halos) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
+| Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 | static |
+| Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 | static |
+| | | | | | | |
+| **FORCES** | | | | | | |
+| Electric force (Coulomb 1/r) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 | static |
+| Lorentz covariance | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
+| Magnetic force | ⚠️ | 🚧 | 🚧 | ⚠️ | 🚧 | dynamic |
+| Strong force: confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Running coupling | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| Weak force: beta decay (n → p) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | both |
+| Gravity: metric phenomena | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | both |
+| | | | | | | |
+| **WAVES + QUANTUM EMERGENCE** | | | | | | |
+| EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic |
+| Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 | dynamic |
+| Orbital quantization (atomic structure) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static |
+
+### Simplest Test per Criterion
+
+The cheapest concrete experiment that would earn each row, so every claim and every 🚧 alike names what would settle it. Like `regime`, the test is a property of the criterion, not of any model. The priority ordering (which tests are most decisive to run first within each domain) and its provenance live in the platform task record ([`dev_docs/tasks/t1_task_details.md`](dev_docs/tasks/t1_task_details.md)).
+
+| Criteria | simplest test |
+| --- | --- |
+| **PARTICLES** | |
+| Charge quantization | integer topological charge; a split e → e/2 + e/2 impossible |
+| Electron rest energy (mass) | localized state anchored to 511 keV |
+| de Broglie clock (Zitterbewegung) | self-starting frequency-rigid internal oscillation at ω = mc²/ℏ |
+| Particle stability (Derrick escape) | the particle state persists in free evolution |
+| Magnetic moment μ (g ≈ 2) | field-carried dipole with g ≈ 2 |
+| Angular momentum J (spin ℏ/2) | field-carried J = ℏ/2 on the electron state |
+| Spin-½ statistics (720° double cover) | the field returns under a π rotation while its frame needs 2π |
+| Antimatter + annihilation | pair annihilation to radiation; follow-on: positronium 2γ/3γ |
+| Neutrinos (neutral states) | light charge-0 states released in decays |
+| Neutrino oscillations (PMNS) | 3 flavors + oscillation; the PMNS angles |
+| Lepton mass spectrum (μ, τ) | exactly 3 charged-lepton minima; ratios 1 : 207 : 3477 |
+| Quarks | fractional charge as partial winding on a quark string |
+| Baryons: bound state (p, n) | a stable three-quark composite |
+| Baryons: mass ordering + charge profile | m_n > m_p; positive core, negative shell |
+| Baryons: exact masses | 938.3 / 939.6 MeV from the field |
+| Deuteron (binding + quadrupole) | m_d < m_p + m_n; the electric quadrupole moment |
+| Nuclear structure (levels, halos) | binding curve, levels, halo-nuclei lifetimes |
+| Mesons (π, K) | π/K states; strange decays (Λ⁰ → p + π⁻) |
+| Dark matter candidate | a stable neutral massive state |
+| --- | --- |
+| **FORCES** | |
+| Electric force (Coulomb 1/r) | far-field 1/r potential at charge e |
+| Lorentz covariance | covariant dispersion; boosted states contract, c-limited |
+| Magnetic force | Larmor precession of the dipole in an applied field |
+| Strong force: confinement | linear inter-charge potential, ~1 GeV/fm (Cornell) |
+| Running coupling | coupling varies with scale (onset at the core radius) |
+| Weak force: muon decay | μ relaxes to e + neutral ejecta |
+| Weak force: beta decay (n → p) | n → p + e + ν̄, parity-violating (needs a neutron) |
+| Gravity: Newton limit (GEM) | attractive 1/r² between masses, via the GEM route |
+| Gravity: metric phenomena | light bending, time dilation, Λ |
+| --- | --- |
+| **WAVES + QUANTUM EMERGENCE** | |
+| EM waves (Maxwell) | Maxwell recovered; transverse waves at c |
+| Quantum wave equation (Klein-Gordon) | emergent ω² = k² + m² for matter waves |
+| Orbital quantization (atomic structure) | hydrogen-like discrete levels from standing waves |
 
 ## RESULTS BY MODEL
 
 One table per model, column order of the matrix. Each row is the evidence behind that model's icon above: status tag, condensed summary (the 55-word rule), links to the record.
 
-**Cell format (the 55-word rule).** Every summary cell in the per-model tables below is a condensed summary, never a report: a status tag, then **at most 55 words** of prose, then the links. Detail (derivations, numbers, audit rounds, caveats, lineage) belongs in the linked findings note or script, which is the record the cell points at. When a cell cannot stay honest inside the budget, the fix is a sharper sentence plus a better link, not a longer cell. The at-a-glance matrix carries status icons only; each icon must match the status tag of the same criterion in the model's own table. Those two rules, the score-board tallies, the `regime` values, the non-empty `simplest test` column, and every row's column count are linted by [`dev_docs/utils/check_models_md.py`](dev_docs/utils/check_models_md.py), which a maintainer runs before merging anything that touches this file ([`dev_docs/PR_REVIEW_STANDARDS.md § 7.1`](dev_docs/PR_REVIEW_STANDARDS.md#71-the-modelsmd-linter)).
+**Cell format (the 55-word rule).** Every summary cell in the per-model tables below is a condensed summary, never a report: a status tag, then **at most 55 words** of prose, then the links. Detail (derivations, numbers, audit rounds, caveats, lineage) belongs in the linked findings note or script, which is the record the cell points at. When a cell cannot stay honest inside the budget, the fix is a sharper sentence plus a better link, not a longer cell. The at-a-glance matrix carries status icons only; each icon must match the status tag of the same criterion in the model's own table. Those two rules, the score-board tallies, the `regime` values, the simplest-test table (non-empty per criterion, criteria-synced with the matrix), and every row's column count are linted by [`dev_docs/utils/check_models_md.py`](dev_docs/utils/check_models_md.py), which a maintainer runs before merging anything that touches this file ([`dev_docs/PR_REVIEW_STANDARDS.md § 7.1`](dev_docs/PR_REVIEW_STANDARDS.md#71-the-modelsmd-linter)).
 
 ## Liquid Crystal (M5)
 
