@@ -1,6 +1,6 @@
 # T1: MODELS.md criteria housekeeping: split the coarse rows, name the simplest passing test per row
 
-**Status**: 🚧 STAGED 2026-07-27 (user decision, same day as the author proposal). Origin: the author's 2026-07-27 reply on the go-pack thread ([`m5_22_convo.md § 2026-07-27 afternoon`](../../openwave/xperiments/m5_liquid_crystal/research/tasks/m5_22_convo.md)), two structural asks about the [`MODELS.md`](../../MODELS.md) score-board. **Expanded 2026-07-28**: the author posted a priority-ranked properties-to-test slide to the group ([`t1_convo.md`](t1_convo.md)), with the MODELS.md matrix embedded in the public talk deck; the per-row test list this task was staged to build is now author-proposed almost in full (§ The author's test map below). Platform-wide housekeeping: the criteria rows are shared by ALL model columns, so every edit here touches the whole matrix, not just M5. Docs-only, no runs.
+**Status**: ✅ DONE 2026-07-28 (go 10:26 EDT, review approved same morning; staged 🚧 2026-07-27, user decision, same day as the author proposal). Origin: the author's 2026-07-27 reply on the go-pack thread ([`m5_22_convo.md § 2026-07-27 afternoon`](../../openwave/xperiments/m5_liquid_crystal/research/tasks/m5_22_convo.md)), two structural asks about the [`MODELS.md`](../../MODELS.md) score-board. **Expanded 2026-07-28**: the author posted a priority-ranked properties-to-test slide to the group ([`t1_convo.md`](t1_convo.md)), with the MODELS.md matrix embedded in the public talk deck; the per-row test list this task was staged to build is now author-proposed almost in full (§ The author's test map below). Platform-wide housekeeping: the criteria rows are shared by ALL model columns, so every edit here touches the whole matrix, not just M5. Docs-only, no runs.
 
 ## The two asks
 
@@ -57,6 +57,45 @@ What the slide changes for the scope:
 No physics runs, no new evidence, no icon upgrades. Splitting a row may DOWNGRADE the apparent coverage of a model (a bundled ⚠️ can become one ✅ sub-row and one 🚧 sub-row); that is the point, and the score-board counts move accordingly. Any run the new rows motivate (Larmor precession on the 3×3/4×4 stack) is staged separately.
 
 **Gated by**: user "go" (docs-only; can interleave between physics tasks). **Run-order promoted ahead of [M5.22](../../openwave/xperiments/m5_liquid_crystal/research/tasks/m5_22_task_details.md) (user decision 2026-07-28)**: no dependency on census results (missing-evidence rows enter 🚧), and freezing the criteria set first means the census files into stable rows and [T2](t2_task_details.md) reads a stable N. Awaiting the go.
+
+## DEVIATIONS LOG (2026-07-28 run)
+
+| Deviation | What and why |
+| --- | --- |
+| Beta decay gets ONE home | The staging scope listed beta decay in BOTH splits (Weak and Baryons). One experiment = one row, or the score-board double-counts it; it lands under Weak force (the author's 2026-07-27 framing: the hard sub-row that needs a proper neutron), and the Baryons rows do not repeat it |
+| Baryons split 3-way, not 2-way | The author's decomposition (ordering, core/shell, exact masses) leaves no honest home for M4's existing evidence (the K = 10 tetrahedron is a bound-state existence result, neither ordering nor masses). A `bound state` sub-row preserves it; the author's two items become the other two rows |
+| Priority marking kept OUT of the matrix | The slide carries three tiers (strong green / light green / unshaded). A bold crucial-tier marking was tried at execute and removed at review (user call): the test column stays plain, and the full tier decode lives in § The author's test map above |
+| Running coupling = one row, not two | The slide names running coupling in the charge/EM block AND the M5 strong-force cell carried a running-onset result. One criterion row (`Running coupling`, FORCES) serves both; the strong row narrows to confinement |
+| Neutrinos + Gravity split by the sweep | The staged sweep candidates confirmed: Neutrinos → neutral states \| oscillations (PMNS), Gravity → Newton limit (GEM) \| metric phenomena. Strong/confinement handled via the running-coupling extraction. M8's Λ evidence lands on the metric row, M5's boost-tilt evidence on the Newton row |
+| Sawada target relocated | M6's Sawada long-range nuclear anomaly (v(r) ~ −C/r⁶) is an internucleon-potential falsifier: it moves from the old Strong-force cell to the new Nuclear-structure row |
+
+## FINDINGS (2026-07-28)
+
+The criteria set went **22 → 31 rows**, every count re-derived, [`check_models_md.py`](../utils/check_models_md.py) green (155 cells, first try).
+
+| Deliverable | Landed as |
+| --- | --- |
+| Row splits | Weak force → muon decay ⚠️(M5) \| beta decay 🚧; Baryons → bound state \| mass ordering + charge profile \| exact masses; Neutrinos → neutral states \| oscillations (PMNS); Gravity → Newton limit (GEM) \| metric phenomena; Strong → confinement \| Running coupling |
+| The test table | Every one of the 31 criteria names its cheapest passing experiment in a dedicated two-column companion table right below the matrix (`§ Simplest Test per Criterion`), keeping the matrix itself to icons; the linter enforces non-empty tests and a criteria set synced with the matrix, both directions. Cells stay unmarked; the priority-tier decode lives in § The author's test map |
+| Lorentz covariance row | Added to FORCES: M5 ⚠️ (c tilt modes + relativistic KG dispersion = linearized sector measured; boosted defects untested), M7 ⚠️ (exact KG branches, harmonic-frame + tachyon caveat), M4/M6/M8 🚧 |
+| Chiral SU(2) | Resolved by test-naming rather than a row: the beta-decay row's test is `n → p + e + ν̄, parity-violating`, parity violation being the experimental face of the chiral question |
+| Candidate NEW rows | All three entered 🚧 across every model: Running coupling (M5 ⚠️: onset at r₀ measured), Deuteron (binding + quadrupole; M5.22 rung 3), Nuclear structure (levels, halos; M5.22.1 scope, M6's Sawada target) |
+| Score-board | M5 9✅ 10⚠️ 1❌ 11🚧 · M7 0/10/0/21 · M4 0/8/3/20 · M6 3/3/3/22 · M8 0/1/0/30; column order unchanged (✅+⚠️: 19/10/8/6/1) |
+| Honest downgrades (the point of the split) | M5's bundled Weak ⚠️ now shows beta decay 🚧; M5's bundled Gravity ⚠️ now shows metric phenomena 🚧; M5's bundled Baryons 🚧 stays 🚧 on all three sub-rows |
+| Linter | Docstring now six checks; `simplest test` registered as a named criterion-level column (the unknown-column guard still fires for anything unregistered) and an empty test cell is a violation |
+
+Icon provenance: no icon was upgraded anywhere; every ⚠️/✅/❌ on a split or new row is carried by evidence already linked in the pre-split cell (verifiable via git diff of this commit).
+
+## TASK REVIEW (2026-07-28)
+
+Task Duration: 00:15 (from 10:26 to 10:41 EDT)
+Usage Cap Triggered: NO
+
+Approved by the user same morning, with two adjustments at review: the bold crucial-tier marking was removed from the test cells (plain text; the tier decode lives in this doc only), and the test column moved OUT of the summary-status table into a dedicated companion table below it (`§ Simplest Test per Criterion`), so the matrix stays lean; the linter now parses that table and syncs its criteria set with the matrix both directions (mutation-tested: empty cell, missing criterion, orphan row all fail). Results: all deliverables ✅ (31-row criteria set, the simplest-test table, Lorentz covariance row, three candidate rows entered 🚧, score-board re-derived, no icon upgraded; `check_models_md.py` green first try at 155 cells, doc checker + roadmap linter clean). Issues: none blocking; one judgement call flagged (M7's Lorentz ⚠️ rests on the measured exact KG branches while the harmonic frame fixes ω by construction; 🚧 also defensible under a stricter read). Deviations: six, logged above. Follow-ons user-gated: a short reply to the author announcing the update was drafted at review (user-voice, user sends; drafted text stays out of repo docs) and the deck's "21 criterions" vs the live 31 is left to the author.
+
+**Findings**: splitting the coarse rows surfaced three hidden 🚧 inside M5's former ⚠️ bundles (beta decay, metric gravity) while every model kept the evidence it had actually earned; all 31 rows now name the cheapest experiment that would settle them, with parity violation answering the chiral-SU(2) test question.
+
+**Research docs created/updated**: this file (deviations log, findings, review) · [`MODELS.md`](../../MODELS.md) (the restructured matrix) · [`check_models_md.py`](../utils/check_models_md.py) (6th check) · [`platform_roadmap.md`](../platform_roadmap.md) (T1 → Done).
 
 ## Cross-links
 
