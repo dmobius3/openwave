@@ -133,3 +133,60 @@ def log_timestep_data(timestep: int, wave_field, trackers, wave_center=None) -> 
         log_entry["wc_positions"] = positions
 
     json_logger.log_timestep(log_entry)
+
+
+    import numpy as np
+
+_pairwise_ref = None
+_pairwise_ref_set = False
+
+def log_stability_metrics(timestep: int, wave_center) -> tuple:
+    """
+    Log WC stability metrics: mean pairwise distance drift and active WC count.
+    Returns (mean_drift, n_active) so that the caller can feed the live monitor.
+    """
+    import numpy as np
+
+    global _pairwise_ref, _pairwise_ref_set
+
+    positions = []
+    for i in range(wave_center.num_sources):
+        if wave_center.active[i] == 0:
+            continue
+        pos = wave_center.position_float[i]
+        x = float(pos[0])
+        y = float(pos[1])
+        z = float(pos[2])
+        if any(np.isnan([x, y, z])):
+            continue
+        positions.append([x, y, z])
+
+    n_active = len(positions)
+
+    if n_active < 2:
+        json_logger.log_timestep({
+            "timestep": timestep,
+            "mean_drift": None,
+            "active_wc": n_active,
+        })
+        return None, n_active
+
+    positions_np = np.array(positions, dtype=np.float64)
+    diff = positions_np[:, np.newaxis, :] - positions_np[np.newaxis, :, :]
+    dist = np.sqrt(np.sum(diff ** 2, axis=-1))
+
+    if not _pairwise_ref_set:
+        _pairwise_ref = dist.copy()
+        _pairwise_ref_set = True
+        mean_drift = 0.0
+    else:
+        drift_matrix = np.abs(dist - _pairwise_ref)
+        i_upper = np.triu_indices_from(drift_matrix, k=1)
+        mean_drift = float(np.mean(drift_matrix[i_upper]))
+
+    json_logger.log_timestep({
+        "timestep": timestep,
+        "mean_drift": mean_drift,
+        "active_wc": n_active,
+    })
+    return mean_drift, n_active
