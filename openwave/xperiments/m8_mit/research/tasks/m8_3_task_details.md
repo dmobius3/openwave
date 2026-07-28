@@ -54,7 +54,9 @@ platform scores EWT's analytic masses under.
 ### Ownership + gating
 
 Author-driven (the platform's pointer map and standards support it). Ungated: can run
-before or in parallel with M8.1/M8.2.
+before or in parallel with M8.1/M8.2. No independence firewall applies here (the author's
+2026-07-28 note): unlike M8.5's deliverable A, this task has no target the author's own
+context must be held away from, so it runs the normal fork → PR → review workflow.
 
 ## DEVIATIONS LOG
 

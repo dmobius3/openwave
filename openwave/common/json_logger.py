@@ -2,13 +2,18 @@
 COMMON JSON LOGGER - model-agnostic instrumentation sink.
 
 Every model (M3, M4, ...) calls init_session() once with a flat
-metadata dict, then log_timestep() for each data row.  The logger
-writes one JSON file per session, named:
+metadata dict, then log_timestep() for each data row, and finalize()
+at the end.  The logger writes one JSON file per session, named:
 
-    <model>_<xperiment>[_K<k>].json
+    <model>_<xperiment>[_K<k>]_<YYYYmmdd_HHMMSS>.json
 
 where the optional _K<k> suffix is added when the metadata contains
-a key "K" (wave-centre count).
+a key "K" (wave-centre count), and the trailing timestamp makes each
+run its own file rather than overwriting the previous one.
+
+Because the timestamp makes collisions practically impossible, the
+merge-with-existing-file branch in _flush() is a leftover from the
+pre-timestamp naming and effectively never triggers now.
 """
 
 import json
@@ -83,7 +88,19 @@ def log_timestep(data: Dict[str, Any]) -> None:
 
 
 def finalize() -> None:
-    """Flush any remaining records.  Call at end of simulation."""
+    """
+    Flush any remaining records and release the session's buffered state.
+    Call at end of simulation.
+
+    `_filename` and `_data_dir` are deliberately NOT reset: `generate_plots()`
+    calls this first and then reads `json_logger._filename` to locate the file
+    it just wrote (see m4_ewt/utils/plotting.py), so clearing it here would
+    break every post-run plot with `_data_dir / None`. Starting a new session
+    is `init_session()`'s job, and it resets all five module globals.
+
+    Safe to call more than once: `_flush()` returns early on an empty buffer.
+    """
+    global _buffer, _meta
     _flush()
     _buffer = []
     _meta = {}

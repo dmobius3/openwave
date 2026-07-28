@@ -382,6 +382,14 @@ gh pr view <N> --json reviewDecision,reviews      # verify the state actually la
 
 A long review body can be posted as a comment first and the state submitted separately with a one-line review pointing at it. Verify with the last command either way: the state is the part that is easy to lose.
 
+**Reconcile the state at merge, not only at review time.** A `CHANGES_REQUESTED` review is not retired by the changes being made, by a follow-up comment, or by the merge itself: it stands until a later review supersedes it. So a PR whose findings were resolved as [maintainer edits](#10-maintainer-edits) merges with its record still reading changes-requested, and a contributor looking back at their own merged work sees a rejection badge on it. The last thing before or after clicking merge is therefore an approving review, and `gh pr review <N> --approve` works on an already-merged PR, so this is fixable after the fact:
+
+```bash
+gh pr merge <N> --merge                                # or the UI
+gh pr review <N> --approve --body "Approving for the record: merged in <sha>. ..."
+gh pr view <N> --json reviewDecision                   # must read APPROVED
+```
+
 ## 14. Lessons log
 
 One row per PR that taught us something. Newest at the bottom.
@@ -403,6 +411,8 @@ One row per PR that taught us something. Newest at the bottom.
 | [#350](https://github.com/openwave-labs/openwave/pull/350) | A shipped script printed a PASS line that could not fail: its two sides evaluated the same expression, so replacing the rule under test with deliberate nonsense still reported PASS while the table filled with wrong values. Nothing downstream depended on it, but under a verification banner it reads exactly like a certified result. Mutation-testing every PASS line is now part of the adversarial pass | Gate D row D10 |
 | [#350](https://github.com/openwave-labs/openwave/pull/350) | What made this review conclusive was recomputing the headline table by a genuinely different method rather than re-running the contributor's script: the group rebuilt as explicit quaternions with characters from Burnside class-sums, against the PR's McKay recursion. Agreement on 9/9 rows then meant something. "Recompute, do not read" is only as strong as the independence of the second route | Gate C, the recompute rule |
 | [#350](https://github.com/openwave-labs/openwave/pull/350) | Also the good case worth naming: the contributor raised a cross-model question as a platform issue *before* the work depended on the answer, and took the two family questions to the column authors directly. That is what made the author-gated findings empty and the review light. Sequencing, not effort, is what keeps [Gate F](#8-gate-f-other-authors-work) cheap | Gate F § 8.1, as the worked example |
+| [#340](https://github.com/openwave-labs/openwave/pull/340) | The mirror image of the row above, on the same PR: this time the state was submitted correctly and then outlived the verdict. The findings were resolved as maintainer edits and the PR was merged, but no later review superseded the standing `CHANGES_REQUESTED`, so a first-time contributor's merged work carried a rejection badge. Nothing about making the changes, commenting, or merging retires a review state; only another review does | § 13 "Reconcile the state at merge" |
+| [#340](https://github.com/openwave-labs/openwave/pull/340) | A claim we had written ourselves, in a maintainer commit, was the thing that blocked the merge. The docstring asserted only K=10 sat at the lock-in wells; measuring all 45 pair separations showed the opposite (K=2..4 entirely on the well, K=10 at none of 45) and that the band we attributed to K=2..9 was really K=11's. `git blame` on the contradiction before routing it saved a review round, because the answer was that the wrong half was ours | Gate C, [§ 10](#10-maintainer-edits) |
 
 ---
 

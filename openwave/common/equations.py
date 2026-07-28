@@ -738,7 +738,7 @@ if __name__ == "__main__":
     photon_f = compute_photon_frequency(delta, r, r0)
     photon_lambda = compute_photon_wavelength(delta, r, r0)
 
-    print(f"\nExample 1: Electron transition n=2 to n=1 (emission)")
+    print("\nExample 1: Electron transition n=2 to n=1 (emission)")
     print(f"  r0={r0:.2e} m, r={r:.2e} m")
     print(f"  Photon Energy: {abs(photon_E):.2e} J ({abs(photon_E * utils.J2EV):.2f} eV)")
     print(f"  Photon Frequency: {abs(photon_f):.2e} Hz")
@@ -752,7 +752,7 @@ if __name__ == "__main__":
     photon_f2 = compute_photon_frequency(delta, r, r0)
     photon_lambda2 = compute_photon_wavelength(delta, r, r0)
 
-    print(f"\nExample 2: Electron transition n=1 to n=2 (absorption)")
+    print("\nExample 2: Electron transition n=1 to n=2 (absorption)")
     print(f"  r0={r0:.2e} m, r={r:.2e} m")
     print(f"  Photon Energy: {photon_E2:.2e} J ({photon_E2 * utils.J2EV:.2f} eV)")
     print(f"  Photon Frequency: {photon_f2:.2e} Hz")
@@ -764,7 +764,7 @@ if __name__ == "__main__":
     print(f"Speed of light c = {constants.WAVE_SPEED:.2e} m/s")
 
     # Electromagnetic spectrum context
-    print(f"\nElectromagnetic Spectrum Context:")
+    print("\nElectromagnetic Spectrum Context:")
     print(f"  Wavelength {abs(photon_lambda)*1e9:.1f} nm")
     print(f"  Frequency {abs(photon_f):.2e} Hz")
 
@@ -784,7 +784,7 @@ if __name__ == "__main__":
     print(f"  Spectrum region: {spectrum_region}")
 
     # Compare with known Lyman series (n→1 transitions in hydrogen)
-    print(f"\nComparison with Hydrogen Lyman Series:")
+    print("\nComparison with Hydrogen Lyman Series:")
     print(
         f"  Lyman alpha (n=2→1): {constants.WAVE_SPEED/constants.H_LYMAN_ALPHA_FREQUENCY*1e9:.1f} nm, 10.2 eV (observed)"
     )
@@ -855,7 +855,7 @@ if __name__ == "__main__":
     print(f"\n  Orbital Force (electron in H atom): {F_o:.2e} N")
 
     # Force ratios
-    print(f"\nForce Ratios at atomic scale:")
+    print("\nForce Ratios at atomic scale:")
     print(f"  F_electric / F_gravitational = {F_e/F_g:.2e}")
     print(f"  F_magnetic / F_electric = {F_m/F_e:.2e}")
 
@@ -865,7 +865,7 @@ if __name__ == "__main__":
     e_charge = 1.602e-19  # C
     k_coulomb = 8.99e9  # N·m²/C²
     F_coulomb = k_coulomb * e_charge**2 / r_atomic**2
-    print(f"\nElectric Force Comparison:")
+    print("\nElectric Force Comparison:")
     print(f"  Classical Coulomb: {F_coulomb:.2e} N")
     print(f"  EWT Calculation: {F_e:.2e} N")
     print(f"  Ratio (EWT/Classical): {F_e/F_coulomb:.2f}")
@@ -875,29 +875,29 @@ if __name__ == "__main__":
     G = 6.67430e-11  # N·m²/kg²
     m_electron = 9.10938356e-31  # kg
     F_newton = G * m_electron**2 / r_atomic**2
-    print(f"\nGravitational Force Comparison:")
+    print("\nGravitational Force Comparison:")
     print(f"  Classical Newton: {F_newton:.2e} N")
     print(f"  EWT Calculation: {F_g:.2e}")
     print(f"  Ratio (EWT/Classical): {F_g/F_newton:.2e}")
 
     # Known ratio of electromagnetic to gravitational force
-    print(f"\nFundamental Force Ratio (EM/Gravity):")
-    print(f"  Experimental: ~10^36")
+    print("\nFundamental Force Ratio (EM/Gravity):")
+    print("  Experimental: ~10^36")
     print(f"  EWT Calculation: {F_e/F_g:.2e}")
 
     # Centripetal force for electron in hydrogen
     # F = m*v^2/r
     F_centripetal = m_electron * v_electron**2 / r_atomic
-    print(f"\nOrbital Force Comparison (Hydrogen atom):")
+    print("\nOrbital Force Comparison (Hydrogen atom):")
     print(f"  Classical Centripetal: {F_centripetal:.2e} N")
     print(f"  EWT Orbital Force: {F_o:.2e} N")
     print(f"  Ratio (EWT/Classical): {F_o/F_centripetal:.2e}")
 
     # Strong force scale comparison
-    print(f"\nStrong Force at Nuclear Scale (1 fm):")
+    print("\nStrong Force at Nuclear Scale (1 fm):")
     print(f"  EWT Calculation: {F_s:.2e} N")
-    print(f"  Note: Strong force typically ~10^4 N at 1 fm")
-    print(f"  This agrees with nuclear binding energies")
+    print("  Note: Strong force typically ~10^4 N at 1 fm")
+    print("  This agrees with nuclear binding energies")
 
     #   The EWT force equations show remarkable agreement with experimental values:
     #   Key Findings:
@@ -952,7 +952,7 @@ if __name__ == "__main__":
         print(f"{v_fraction:<15.2f} {E_in:<15.2e} {E_out:<15.2e} {E_mag:<15.2e} {gamma:<15.2f}")
 
     # Compare with classical relativistic energy
-    print(f"\nComparison with Classical Relativity:")
+    print("\nComparison with Classical Relativity:")
     print(f"Rest energy (K=10): {rest_energy:.2e} J")
 
     # At 0.9c
@@ -961,7 +961,7 @@ if __name__ == "__main__":
     classical_E_90 = rest_energy * gamma_90
     ewt_E_90 = compute_longitudinal_in_wave_energy(K_electron, v_90)
 
-    print(f"\nAt 0.9c:")
+    print("\nAt 0.9c:")
     print(f"  Classical E = γmc² = {classical_E_90:.2e} J (γ = {gamma_90:.2f})")
     print(f"  EWT In-Wave Energy = {ewt_E_90:.2e} J")
     print(f"  Ratio (EWT/Classical) = {ewt_E_90/classical_E_90:.2e}")
