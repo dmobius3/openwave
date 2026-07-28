@@ -110,6 +110,18 @@ replaced by two checks that can fail, and do: `dims` against the affine E8 mark 
 The coexact entry rule itself is now labeled ASSERTED rather than certified, since unlike the
 0-form table it has no published target to check against.
 
+**Author close-out (2026-07-28, in the PR thread).** The author confirmed `m7_trivial_ok` as the
+one real defect, accepted the two replacement checks and the ASSERTED label for the coexact entry
+rule, and adopted "mutation-test every PASS line before it ships" as a standing rule of the
+column. The thread also produced one forward constraint that is NOT an amendment to the lock: the
+context that built M8.2 holds the target tables and fixtures, so it cannot serve as the
+independent reproducer that lock § 3 requires. M8.5 therefore runs protocol-first (author writes
+the frozen protocol including a context firewall; maintainers implement it in a fresh context)
+and its result is reported as independent-method reproduction rather than blind. Recorded in
+[`m8_5_task_details.md § Independent reproduction`](m8_5_task_details.md#independent-reproduction-deliverable-a-added-2026-07-28)
+and the roadmap standing rules. The lock's § 3 wording already required implementation
+independence and stands unchanged, so no addendum was opened.
+
 ### Findings
 
 M8.2 delivers a modular pre-registration whose core contract is frozen and whose per-family
