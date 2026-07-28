@@ -12,10 +12,12 @@ Checks, per roadmap file:
    unescaped "|" inside a cell looks like from here, and such a row otherwise
    parses by position and reports the wrong column's contents.
 
-ARCHIVE and LEGACY sections are frozen history (ROADMAP_STANDARDS.md section 7)
-and are skipped entirely: they preserve how the work read at the time.
+ARCHIVE, LEGACY and PRE-REGISTERED sections are frozen (ROADMAP_STANDARDS.md
+section 7) and are skipped entirely: they preserve how the work read, or what was
+filed, at the time.
 
-Usage: python3 dev_docs/utils/check_roadmaps.py [path ...]   (default: all)
+Usage: python3 dev_docs/utils/check_roadmaps.py [path ...]   (default: this repo's)
+Any roadmap path may be passed explicitly, including one outside this repository.
 Exit 0 = clean, 1 = violations (listed on stdout).
 """
 
@@ -32,7 +34,7 @@ CAPS = {
     "intro": 80,
     "changelog": 200,
 }
-FROZEN = ("ARCHIVE", "LEGACY")
+FROZEN = ("ARCHIVE", "LEGACY", "PRE-REGISTERED")
 
 LINK = re.compile(r"\[([^\]]*)\]\([^)]*\)")
 BREAK = re.compile(r"<br\s*/?>")
@@ -58,7 +60,7 @@ def cells_of(line):
 
 def check(path):
     errors = []
-    rel = path.relative_to(ROOT)
+    rel = path.relative_to(ROOT) if path.is_relative_to(ROOT) else path
     section = None  # nearest "## ..." heading
     frozen = False
     changelog = False

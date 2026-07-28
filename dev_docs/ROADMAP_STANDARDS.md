@@ -25,7 +25,7 @@ Sections in this order. Bracketed ones are optional; nothing else is a top-level
 | 5 | [`## CONVENTIONS`] | ID scheme, local reading rules, anything a newcomer needs before the tables make sense |
 | 6 | `## DONE` | closed tasks, appended in order of completion |
 | 7 | [`## CHANGE-LOG`] | dated prose entries: reorganizations, decisions, routing |
-| 8 | [`## ARCHIVE` / `## LEGACY DONE`] | frozen history, see § 7 |
+| 8 | [`## ARCHIVE` / `## LEGACY DONE` / `## PRE-REGISTERED ...`] | frozen content, see § 7 |
 
 **Table shape.** Live tables (IN PROGRESS, BACKLOG, phase tables) carry `| TaskID | Title | Description | Gated By |`; the fourth column may be renamed to the local gate vocabulary (`Gate`, `Validation gate`, `Owner` may be inserted before it). DONE tables carry `| TaskID | Title | Description | Completed |`. The column named `Description` is the one the budget below applies to, and it must be named exactly that so the checker can find it.
 
@@ -45,6 +45,8 @@ The hard rule, and the reason this document exists.
 | Section blockquote | 50 words | the median is 33 |
 | Intro blockquote (under the H1) | 80 words | it carries navigation, so it gets more room than a section note |
 | Change-log entry (one paragraph) | 200 words | the narrative home, and still not a findings note |
+
+**What the blockquote budgets do and do not cover.** They apply to a **section note**: the `>` block directly under a heading, above the table it introduces. They do not apply to body prose (a reading guide, a standing rule, a source-document table), which is reference material rather than a preview and carries no budget. So a standing rule belongs in body prose or in `CONVENTIONS`, never in a section note, and moving one there is a fix rather than an evasion.
 
 **How words are counted** (identical in the checker): markdown link *labels* count, link targets do not; `<br>` counts as a space; backticks, asterisks, underscores and hashes are stripped; everything else splits on whitespace. So `[M5.22](tasks/m5_22_task_details.md)` is one word, and formatting is never a way to buy room.
 
@@ -74,7 +76,15 @@ IDs are assigned in creation order and **never reused**, including after a renum
 
 ## 7. Frozen sections
 
-`ARCHIVE` and `LEGACY DONE` are historical: they preserve how the work read at the time. They are **exempt from every budget above** and are not rewritten to comply. The checker skips them. Editing them to meet a current standard would destroy the only thing they are for.
+Three section kinds are **exempt from every budget above**, are not rewritten to comply, and are skipped by the checker. Editing any of them to meet a current standard would destroy the only thing it is for.
+
+| Section | Why it is frozen |
+| --- | --- |
+| `ARCHIVE` | preserves how the work read at the time |
+| `LEGACY DONE` | the same, for a superseded record format |
+| `PRE-REGISTERED ...` | a protocol, outcome matrix or verdict definition **filed on a date, before the run it governs**. Its evidential value is that it was written down in advance and has not been edited since. Amendments are appended and dated, never applied in place, and a word budget cannot be allowed to force a silent rewrite |
+
+A `PRE-REGISTERED` section must carry its filing date in the heading, so a reader can see what was fixed when.
 
 ## 8. Enforcement
 
