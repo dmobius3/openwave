@@ -73,7 +73,7 @@ an arena whose headline eigenvalue failed certification).
 | 1 | **The lock exists and is modular.** Core contract (arena, bundles, the two preconditions, the certification gate, the success ladder, four-axis outcome language, the no-search rule) frozen 2026-07-27; per-family numerics deferred to signed execution appendices (§ 7) that gate M8.4, not this lock |
 | 2 | **The index question became a platform rule.** The audit behind this task produced [`dev_docs/CROSS_MODEL_TESTING.md`](../../../../../dev_docs/CROSS_MODEL_TESTING.md) (2026-07-24): uniform default, what counts as a declaration, the soldering clause, "not applicable" as neutral, author silence terminal. No family blocks on an inbox |
 | 3 | **Two author declarations landed, both confirming the default.** @jeffsyee: M4's `ψ` is a geometric spatial displacement, not an internal triplet ([#333](https://github.com/openwave-labs/openwave/discussions/333)). @JarekDuda: M5's `M` is a level-3 spacetime/frame tensor, with latitude to use M5 unmodified ([#334](https://github.com/openwave-labs/openwave/discussions/334)). The latitude is read as level-choice, NOT a soldering endorsement, so "M5 + P" stays M8-owned |
-| 4 | **The certification table is independently reproduced.** All 9 rows of the § 6.1 first-occurrence table verified by a maintainer implementation sharing no method with the shipped script (2I built as 120 explicit unit quaternions, conjugacy classes by brute-force conjugation, irreducible characters by Burnside class-sum diagonalization, versus the script's McKay recursion). Class sizes, irrep dimensions, `Sym²Q` / `Sym²Q'` and the McKay distances all recovered independently |
+| 4 | **The certification table is independently reproduced.** All 9 rows of the § 6.1 first-occurrence table verified by a maintainer implementation sharing no method with the shipped script (2I built as 120 explicit unit quaternions, conjugacy classes by brute-force conjugation, irreducible characters by Burnside class-sum diagonalization, versus the script's McKay recursion). Class sizes, irrep dimensions, `Sym²Q` / `Sym²Q'` and the McKay distances all recovered independently. Landed as a repository artifact at the author's request (2026-07-28): [`../scripts/m8_2_indep_reconstruction.py`](../scripts/m8_2_indep_reconstruction.py) + [`../findings/m8_2_indep_reconstruction_note.md`](../findings/m8_2_indep_reconstruction_note.md), 8 checks each mutation-tested. Scope: the 0-form table only, so the coexact 1-form entry rule stays ASSERTED |
 | 5 | **Provenance verified.** Both pinned SHAs resolve as described, and the § 1 pin audit is accurate: the M4 engine, both M5 engine files, the M7 functional and the M8.1 note are byte-identical at `c9dc3796`, with the M5 canonical's drift correctly characterized as documentation-only |
 
 ## TASK REVIEW (2026-07-27)
@@ -118,9 +118,24 @@ context that built M8.2 holds the target tables and fixtures, so it cannot serve
 independent reproducer that lock § 3 requires. M8.5 therefore runs protocol-first (author writes
 the frozen protocol including a context firewall; maintainers implement it in a fresh context)
 and its result is reported as independent-method reproduction rather than blind. Recorded in
-[`m8_5_task_details.md § Independent reproduction`](m8_5_task_details.md#independent-reproduction-deliverable-a-added-2026-07-28)
+[`m8_5_task_details.md § Independent reproduction`](m8_5_task_details.md#independent-reproduction-m85-a-added-2026-07-28)
 and the roadmap's [§ CONVENTIONS](../m8_roadmap.md#conventions). The lock's § 3 wording already required implementation
 independence and stands unchanged, so no addendum was opened.
+
+**Second close-out round (2026-07-28): the review verification became an artifact.** The
+maintainer's 9/9 reconstruction had been a throwaway outside the repository, so the claim had
+no artifact behind it. The author asked for it to be landed and quarantined rather than left
+uncommitted, and it now ships as
+[`../scripts/m8_2_indep_reconstruction.py`](../scripts/m8_2_indep_reconstruction.py) with
+[`../findings/m8_2_indep_reconstruction_note.md`](../findings/m8_2_indep_reconstruction_note.md),
+carrying source, environment, raw output, the commit verified against, a mutation test for every
+PASS line, and an explicit statement of what it does and does not verify. The author's scope
+correction is honored in both: the artifact reconstructs 2I, its characters, the McKay distances
+and the scalar first-occurrence table, and does NOT derive the coexact one-form entry rule, which
+stays ASSERTED. The M8.5 protocol now separates three objects (the M8.2 generator, this
+reconstruction, the fresh M8.5 implementation), forbids the first two to M8.5's implementer until
+that implementation's own source and raw output are committed, and reports subsequent agreement as
+**three-way agreement**, which raises provenance without raising the claim label.
 
 ### Findings
 
@@ -137,5 +152,7 @@ replies, and then drew two author declarations that independently confirmed that
 | --- | --- |
 | [`../findings/m8_2_preregistration.md`](../findings/m8_2_preregistration.md) | The lock (core contract §§ 1-5, family modules § 6, execution appendices § 7, definition of done § 8) |
 | [`../scripts/m8_2_first_occurrence.py`](../scripts/m8_2_first_occurrence.py) | The first-occurrence tables and their self-checks |
+| [`../findings/m8_2_indep_reconstruction_note.md`](../findings/m8_2_indep_reconstruction_note.md) | Method note for the review-time independent reconstruction: equations, equation-to-code map, the 9/9 result, the mutation matrix, the not-verified list |
+| [`../scripts/m8_2_indep_reconstruction.py`](../scripts/m8_2_indep_reconstruction.py) | That reconstruction as a landed artifact (`--mutation-tests` for the falsifiability suite); raw output + JSON under [`../data/`](../data/) |
 | [`../m8_roadmap.md`](../m8_roadmap.md) | M8.2 row moved to DONE; M8.4 / M8.5 remain gated |
 | [`dev_docs/CROSS_MODEL_TESTING.md`](../../../../../dev_docs/CROSS_MODEL_TESTING.md) | The platform standing rule this task produced (landed separately, 2026-07-24) |
