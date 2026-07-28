@@ -1,6 +1,6 @@
-# M5.30: MODELS.md normalized model score: a fair single number per column
+# T2: MODELS.md normalized model score: a fair single number per column
 
-**Status**: 🔶 DEFERRED 2026-07-28, the same day it was proposed (user decision). Parked at the Backlog tail with an explicit re-open trigger: **a critical mass of tested rows**. Platform-wide, docs-plus-linter, no physics runs. The intent was to add a derived score to the [`MODELS.md`](../../../../../MODELS.md) SCORE-BOARD so a reader could compare columns without counting icons; the analysis below is kept complete so the revisit starts from here rather than from scratch. When it does run it goes AFTER [M5.29](m5_29_task_details.md), which changes the criteria set and therefore every count the score is computed from.
+**Status**: 🔶 DEFERRED 2026-07-28, the same day it was proposed (user decision). Parked at the Backlog tail with an explicit re-open trigger: **a critical mass of tested rows**. Platform-wide, docs-plus-linter, no physics runs. The intent was to add a derived score to the [`MODELS.md`](../../MODELS.md) SCORE-BOARD so a reader could compare columns without counting icons; the analysis below is kept complete so the revisit starts from here rather than from scratch. When it does run it goes AFTER [T1](t1_task_details.md), which changes the criteria set and therefore every count the score is computed from.
 
 ## DECISION: deferred (2026-07-28, user)
 
@@ -34,7 +34,7 @@ The user's spreadsheet, verbatim in structure (the two bottom rows are the new o
 | # | Problem | Evidence in the current numbers |
 | --- | --- | --- |
 | 1 | **Untested scores as average, not as unknown.** 🚧 has weight 0 but the denominator is the FULL criteria set, so every untested row drags a column toward 5.0, which reads on a 0-10 scale as "middling model" rather than "not yet examined" | M8 has ONE attempted criterion out of 22 and scores **5.1**, one tenth of a point below M4, which has attempted 11 and carries 3 documented negatives. The score is measuring silence |
-| 2 | **Honest negatives score below silence.** ❌ = -1 is strictly worse than 🚧 = 0, so running a test and reporting failure costs a column more than never running it | Directly contradicts the file's own stated ethos ([`MODELS.md § Summary Count`](../../../../../MODELS.md#summary-count)): "A ❌ is a result, not an embarrassment ... documented negatives (with the scripts that produced them) are part of the platform's value." A published score that punishes them makes that sentence untrue |
+| 2 | **Honest negatives score below silence.** ❌ = -1 is strictly worse than 🚧 = 0, so running a test and reporting failure costs a column more than never running it | Directly contradicts the file's own stated ethos ([`MODELS.md § Summary Count`](../../MODELS.md#summary-count)): "A ❌ is a result, not an embarrassment ... documented negatives (with the scripts that produced them) are part of the platform's value." A published score that punishes them makes that sentence untrue |
 
 Both problems have one root: **coverage and performance are being collapsed into a single number**, and once collapsed, no choice of weights can separate "has not been tested" from "was tested and scored in the middle".
 
@@ -104,7 +104,7 @@ Only the ends are stable: M5 first and M4 last at every weight. **M6 versus M7 f
 | --- | --- |
 | Small-sample handling | Defect 3 must be closed BEFORE anything is published: a minimum-coverage gate, shrinkage, or a demonstration that coverage has risen far enough that neither is needed. No score ships while a one-row column can top the board |
 | MODELS.md rows | Two new SCORE-BOARD rows (`Attempted coverage` + `Score on attempted (0-10)`), a WEIGHT column on the icon rows so the formula is visible in the file, and a short paragraph under the table stating the formula, the ⚠️-weight sensitivity, and what the score is not |
-| Linter extension | [`dev_docs/check_models_md.py`](../../../../../dev_docs/check_models_md.py) currently rejects any score-board row that is neither an icon nor a total (L151-L153). Teach it the two derived rows, RECOMPUTE them from the tallies it already builds, and fail with the correct values printed on mismatch. The numbers must never be hand-maintained: M5.29 alone will move every one of them |
+| Linter extension | [`dev_docs/utils/check_models_md.py`](../utils/check_models_md.py) currently rejects any score-board row that is neither an icon nor a total (L151-L153). Teach it the two derived rows, RECOMPUTE them from the tallies it already builds, and fail with the correct values printed on mismatch. The numbers must never be hand-maintained: T1 alone will move every one of them |
 | Criteria-set stamp | The score is not comparable across criteria-set revisions (N changes when rows split). The row label or the caption carries the criteria-set date, so an old screenshot cannot be read as current |
 | Column ordering decision | State explicitly whether the score governs column order. Today the order is coverage-flavored (✅+⚠️ count, ties to more ✅ then fewer ❌), and the score DISAGREES with it: M4 is 3rd by the existing rule and last by score. Recommendation: **the existing order stands, the score does not reorder columns**, and the reason is written down so nobody later "fixes" the inconsistency by demoting a column for reporting negatives |
 | Regime cut | Option E above, if it fits the table width; otherwise recorded as a follow-on |
@@ -122,17 +122,17 @@ No physics runs, no new evidence, no icon changes, no cell rewrites, and **nothi
 | Hand-typed numbers drifting from the tallies | The linter recomputes them; mismatch is an error, not a warning |
 | The score being quoted without coverage | Publication rule stated above; the two rows sit adjacent so a crop of one is visibly missing the other |
 | Reading a 0.1 gap as an ordering | The sensitivity band is published with the score |
-| N changing under M5.29 mid-flight | This task is gated on M5.29 closing; the criteria-set stamp handles later revisions |
+| N changing under T1 mid-flight | This task is gated on T1 closing; the criteria-set stamp handles later revisions |
 | **Author friction exceeding the information gained**: a scalar that ranks other people's models is a standing invitation to dispute the weights rather than the physics, and at today's coverage the number mostly reports how little has been run | The 2026-07-28 deferral. The score-board's existing covered/not-covered split and column ordering already carry the useful content without the argument |
 | A one-row column topping the board | Defect 3 above; the coverage gate or shrinkage must be settled before publication, not after |
 
-**Gated by**: 🔶 DEFERRED. Re-open on a critical mass of tested rows (user call), then [M5.29](m5_29_task_details.md) (the criteria set must be final first) + user "go" (docs-only, can interleave).
+**Gated by**: 🔶 DEFERRED. Re-open on a critical mass of tested rows (user call), then [T1](t1_task_details.md) (the criteria set must be final first) + user "go" (docs-only, can interleave).
 
 ## Cross-links
 
 | Doc | Why |
 | --- | --- |
-| [`MODELS.md`](../../../../../MODELS.md) | The target doc (SCORE-BOARD + Summary Count) |
-| [M5.29](m5_29_task_details.md) | The gate: it changes the criteria set and every count feeding the score |
-| [`dev_docs/check_models_md.py`](../../../../../dev_docs/check_models_md.py) | The linter that must own the computation |
-| [`../m5_roadmap.md`](../m5_roadmap.md) | Roadmap row + the change-log entry |
+| [`MODELS.md`](../../MODELS.md) | The target doc (SCORE-BOARD + Summary Count) |
+| [T1](t1_task_details.md) | The gate: it changes the criteria set and every count feeding the score |
+| [`dev_docs/utils/check_models_md.py`](../utils/check_models_md.py) | The linter that must own the computation |
+| [`../m5_roadmap.md`](../../openwave/xperiments/m5_liquid_crystal/research/m5_roadmap.md) | Roadmap row + the change-log entry |

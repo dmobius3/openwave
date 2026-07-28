@@ -140,7 +140,7 @@ Findings from this gate are **questions to the author**, not verdicts. The autho
 
 ### 7.1 The MODELS.md linter
 
-**Run `python3 dev_docs/check_models_md.py` before merging anything that touches [`MODELS.md`](../MODELS.md), and read its output rather than only its exit code.** Nothing else enforces it: the repository has no CI, so this script runs when a reviewer runs it and at no other time. That is a deliberate choice (the checks are instant and a reviewer is already at a terminal), and it has one failure mode, which has already happened once: the `regime` column was added, the script's positional table detection stopped finding the summary-status table, and it sat reporting 131 violations that nobody saw because nobody invoked it. A check that is not part of a procedure is not a check.
+**Run `python3 dev_docs/utils/check_models_md.py` before merging anything that touches [`MODELS.md`](../MODELS.md), and read its output rather than only its exit code.** Nothing else enforces it: the repository has no CI, so this script runs when a reviewer runs it and at no other time. That is a deliberate choice (the checks are instant and a reviewer is already at a terminal), and it has one failure mode, which has already happened once: the `regime` column was added, the script's positional table detection stopped finding the summary-status table, and it sat reporting 131 violations that nobody saw because nobody invoked it. A check that is not part of a procedure is not a check.
 
 What it covers, so a reviewer knows what it does not:
 
@@ -356,7 +356,7 @@ Style and import sanity, on the PR worktree:
 ```bash
 cat filelist.txt | tr '\n' '\0' | xargs -0 python3 -m black --check
 python3 -m py_compile <changed files>
-python3 dev_docs/check_models_md.py    # mandatory when MODELS.md is touched, see 7.1
+python3 dev_docs/utils/check_models_md.py    # mandatory when MODELS.md is touched, see 7.1
 ```
 
 ### Recording the verdict: submit it as a review, not as a comment
