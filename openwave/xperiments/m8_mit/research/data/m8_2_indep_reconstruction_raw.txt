@@ -1,0 +1,116 @@
+==============================================================================
+INDEPENDENT RECONSTRUCTION of the M8.2 0-form first-occurrence table
+  explicit quaternions -> conjugacy classes -> Burnside class-sums
+  no method, no fixture and no import shared with m8_2_first_occurrence.py
+==============================================================================
+  repository commit : d6790eef13398b809ed1a13486ef179089eba9e7
+  environment       : python 3.13.9, numpy 2.3.5, macOS-26.5.2-arm64-arm-64bit-Mach-O
+  seed              : 11 (fixed; the Burnside mix only has to be generic)
+------------------------------------------------------------------------------
+  C1  120 quaternions form a group (order, closure)              PASS
+  C2  9 conjugacy classes, sizes divide and sum to 120           PASS
+  C3  derived character table orthonormal                        PASS
+  C4  the rep identified as Q has chi = 2 cos(theta)             PASS
+  C5  Sym^2 Q, Sym^2 Q' irreducible dim 3 and distinct           PASS
+  C6  derived dims satisfy A.dims = 2 dims (E8 marks)            PASS
+  C7  McKay distances defined, (dim, dist) signatures distinct   PASS
+  C8  all 9 rows of section 6.1 reproduced                       PASS
+
+DERIVED (nothing below is read from the M8.2 script or the document)
+  group order / closed under multiplication : 120 / True
+  conjugacy classes                         : 9
+  class sizes                               : [1, 1, 12, 12, 12, 12, 20, 20, 30]
+  irrep dims                                : [1, 2, 2, 3, 3, 4, 4, 5, 6]
+  sum of squared dims (= |G|)               : 120
+  orthonormality error                      : 2.36e-14
+  |chi_Q - 2cos(theta)|                     : 1.78e-15
+  McKay graph edges                         : 8
+  tau[trivial ] dim 1 -> irrep dims [1]
+  tau[standard] dim 3 -> irrep dims [3]
+  tau[galois  ] dim 3 -> irrep dims [3]
+
+RECONSTRUCTED TABLE, first-occurrence level n   [eigenvalue n(n+2)/R^2]
+   dim  dist   trivial  standard    galois
+     1     0         0         2         6
+     2     1         1         1         5
+     3     2         2         0         4
+     4     3         3         1         3
+     5     4         4         2         2
+     6     5         5         3         1
+     3     6         6         4         0
+     4     6         6         4         2
+     2     7         7         5         3
+
+COMPARISON against the pre-registration section 6.1
+  dim 1 d=0: target (0, 2, 6)  independent (0, 2, 6)  match
+  dim 2 d=1: target (1, 1, 5)  independent (1, 1, 5)  match
+  dim 2 d=7: target (7, 5, 3)  independent (7, 5, 3)  match
+  dim 3 d=2: target (2, 0, 4)  independent (2, 0, 4)  match
+  dim 3 d=6: target (6, 4, 0)  independent (6, 4, 0)  match
+  dim 4 d=3: target (3, 1, 3)  independent (3, 1, 3)  match
+  dim 4 d=6: target (6, 4, 2)  independent (6, 4, 2)  match
+  dim 5 d=4: target (4, 2, 2)  independent (4, 2, 2)  match
+  dim 6 d=5: target (5, 3, 1)  independent (5, 3, 1)  match
+
+VERDICT: 9/9 rows reproduced independently
+  claim label: independent-method reproduction, NOT blind
+  NOT verified here: the coexact 1-form entry rule (ASSERTED, no target)
+
+wrote data/m8_2_indep_reconstruction.json
+==============================================================================
+MUTATION TESTS: each check is shown to fail under a deliberate defect
+==============================================================================
+  baseline: 8/8 PASS
+
+  phi_wrong
+    defect        : golden ratio replaced by 1.6, so the icosians leave the group
+    target        : C1
+    went red      : C1   OK
+
+  conj_without_inverse
+    defect        : conjugation g x g instead of g x g^-1
+    target        : C2
+    went red      : C2   OK
+
+  perturb_char
+    defect        : one derived character row scaled by 1.05
+    target        : C3
+    went red      : C3   OK
+
+  q_is_qprime
+    defect        : the Galois partner Q' picked as the defining rep
+    target        : C4
+    went red      : C4   OK
+    also red      : C8
+
+  sym2_as_square
+    defect        : tau built as chi^2 instead of Sym^2(chi)
+    target        : C5
+    went red      : C5   OK
+    also red      : C8
+
+  edge_threshold
+    defect        : McKay edge accepted only at multiplicity > 1.5
+    target        : C6,C7
+    went red      : C6,C7   OK
+
+  bfs_forget_increment
+    defect        : BFS assigns the parent's distance, not parent + 1
+    target        : C7
+    went red      : C7   OK
+
+  chiv_offbyone
+    defect        : SU(2) character summed over n weights instead of n + 1
+    target        : C8
+    went red      : C8   OK
+
+  doc_typo
+    defect        : one transcribed target entry altered
+    target        : C8
+    went red      : C8   OK
+
+==============================================================================
+  checks with a failing mutation : 8/8
+  uncovered                      : (none)
+  mutations that did NOT redden their target : 0
+==============================================================================
