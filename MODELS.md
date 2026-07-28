@@ -46,7 +46,7 @@ Each criterion's simplest passing test sits in its own companion table right bel
 
 | Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) | regime |
 | --- | --- | --- | --- | --- | --- | --- |
-| **PARTICLES** | | | | | | |
+| **PARTICLE - ELECTRON** | | | | | | |
 | Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 | static |
 | Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 | static |
 | de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 | dynamic |
@@ -54,6 +54,8 @@ Each criterion's simplest passing test sits in its own companion table right bel
 | Magnetic moment μ (g ≈ 2) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
 | Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
 | Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| | | | | | | |
+| **PARTICLE - FULL SPECTRUM** | | | | | | |
 | Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 | both |
 | Neutrinos (neutral states) | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | both |
 | Neutrino oscillations (PMNS) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | both |
@@ -89,7 +91,7 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 
 | Criteria | simplest test |
 | --- | --- |
-| **PARTICLES** | |
+| **PARTICLE - ELECTRON** | |
 | Charge quantization | integer topological charge; a split e → e/2 + e/2 impossible |
 | Electron rest energy (mass) | localized state anchored to 511 keV |
 | de Broglie clock (Zitterbewegung) | self-starting frequency-rigid internal oscillation at ω = mc²/ℏ |
@@ -97,6 +99,8 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 | Magnetic moment μ (g ≈ 2) | field-carried dipole with g ≈ 2 |
 | Angular momentum J (spin ℏ/2) | field-carried J = ℏ/2 on the electron state |
 | Spin-½ statistics (720° double cover) | the field returns under a π rotation while its frame needs 2π |
+| | |
+| **PARTICLE - FULL SPECTRUM** | |
 | Antimatter + annihilation | pair annihilation to radiation; follow-on: positronium 2γ/3γ |
 | Neutrinos (neutral states) | light charge-0 states released in decays |
 | Neutrino oscillations (PMNS) | 3 flavors + oscillation; the PMNS angles |
@@ -109,7 +113,7 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 | Nuclear structure (levels, halos) | binding curve, levels, halo-nuclei lifetimes |
 | Mesons (π, K) | π/K states; strange decays (Λ⁰ → p + π⁻) |
 | Dark matter candidate | a stable neutral massive state |
-| --- | --- |
+| | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r) | far-field 1/r potential at charge e |
 | Lorentz covariance | covariant dispersion; boosted states contract, c-limited |
@@ -120,7 +124,7 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 | Weak force: beta decay (n → p) | n → p + e + ν̄, parity-violating (needs a neutron) |
 | Gravity: Newton limit (GEM) | attractive 1/r² between masses, via the GEM route |
 | Gravity: metric phenomena | light bending, time dilation, Λ |
-| --- | --- |
+| | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | Maxwell recovered; transverse waves at c |
 | Quantum wave equation (Klein-Gordon) | emergent ω² = k² + m² for matter waves |
@@ -138,7 +142,7 @@ Deep dive: [`m5_summary_report.md`](openwave/xperiments/m5_liquid_crystal/resear
 
 | Criteria | Status + result summary |
 | --- | --- |
-| **PARTICLES** | |
+| **PARTICLE - ELECTRON** | |
 | Charge quantization | ✅ [validated in-platform]<br>Topological winding number of the hedgehog defect (Gauss-Bonnet integer Q = ±1)<br>[`m5_1_winding.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_1_winding.py) |
 | Electron rest energy (mass) | ✅ [validated in-platform]<br>Hedgehog rest energy with Faber core regularization; mass pinned E ∝ 1/r₀, physical knob r₀ = 2.2132 fm → 0.511 MeV<br>[`m5_6_3b_faber_on_M.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_3b_faber_on_M.py) |
 | de Broglie clock (Zitterbewegung) | ✅ [validated in-platform]<br>Bounded, self-starting, frequency-rigid 3+1D time crystal, the energy-minimizing state (≈ 21% below clock-stopped). Rigidity MEASURED under drive: a background scalar in the spectrum cannot entrain the clock, eigenvalues track exactly, eigenframe torque zero (M5.27 structural null). **Absolute scale ✅:** geo-mean calibration recovers each lepton's ZBW to ~13%<br>[`m5_9_lepton_mass_clock_findings.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_9_lepton_mass_clock_findings.md), [`m5_27_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_27_note.md), [`m5_8_2u_clock_energy_minimum.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2u_clock_energy_minimum.py), [`m5_8_2z_length_anchor.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2z_length_anchor.py)<br>→ open issue: [#197](https://github.com/openwave-labs/openwave/issues/197) · calibration #208 / #217 / #218 / #220 ✅ |
@@ -146,6 +150,8 @@ Deep dive: [`m5_summary_report.md`](openwave/xperiments/m5_liquid_crystal/resear
 | Magnetic moment μ (g ≈ 2) | ❌ [honest negative, RE-BASED at verified-L 2026-07-21]<br>The μ channel exists (envelope-localized, radially converged; pure twist stays EM-silent) but the observable is a parity-cancellation residue tracking preparation basin across 4 orders. Under the first-principles bridge derived from the Coulomb anchor (no free factor) g spans 8.5e-4 to 1.45: no closure at 2.0023, and the canonical 1.97 is retro-flagged<br>[`m5_21_5_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_5_note.md)<br>→ closure route: μ on the long-evolution texture, [`m5_23_1_task_details.md`](openwave/xperiments/m5_liquid_crystal/research/tasks/m5_23_1_task_details.md) |
 | Angular momentum J (spin ℏ/2) | ⚠️ [partially validated: the state half, RE-BASED at verified-L 2026-07-21]<br>The fixed-J isorotation electron exists and HOLDS at three J rungs, clock thermodynamics exact (dE/dJ = ω\* at ~1%), now ported to the production engines (M5.23.1, selftests green). J is constraint-carried: rigid rotation and free descent both measured out, on both stacks. The ℏ/2 OBSERVABLE half stays open (the Larmor read is instrument-limited)<br>[`m5_21_9_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_9_note.md), [`m5_23_1_task_details.md`](openwave/xperiments/m5_liquid_crystal/research/tasks/m5_23_1_task_details.md) |
 | Spin-½ statistics (720° double cover) | ✅ [validated in-platform]<br>The field is apolar (ellipsoids): a π rotation returns M while the frame needs 2π, one frame revolution = two field periods, no belt-trick needed. Machine-exact on the production seed (1e-16), the same factor 2 as G7's ω_M = 2ω_clock. Deeper invariant: biaxial π₁ = Q₈ (NG-9)<br>[`m5_8_2s_spin_half_apolar.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2s_spin_half_apolar.py), [Wolfram animations](https://community.wolfram.com/groups/-/m/t/3398814) |
+| | |
+| **PARTICLE - FULL SPECTRUM** | |
 | Antimatter + annihilation | ✅ [validated in-platform, 2026-07-21]<br>Full 3D capture-to-annihilation on the verified-L stack (audited twice): charges exactly ±1 at seed, a clean sigmoid to ≤ 0.005 residual, energy ledger physical to 0.1%. Mechanism MEASURED: conduit annihilation through the connecting topological line (ballistic core-walk refuted). Caveat: the endpoint retains seed-inherited line flux<br>[`m5_21_4_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_4_note.md), [`m5_21_4_a_pair.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_4_a_pair.py); lineage [`m5_8_2v_pair_annihilation_budget.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2v_pair_annihilation_budget.py), [`m5_14_sine_gordon_annihilation.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_14_sine_gordon_annihilation.py)<br>→ open issue: [#198](https://github.com/openwave-labs/openwave/issues/198) |
 | Neutrinos (neutral states) | ⚠️ [partially validated]<br>Charge-0 loop states are the neutrino candidate, and the decay side is measured: kicked heavy-lepton minima release paired symmetric ejecta under damped evolution (real, not numerical); whether the ejecta ARE the loop states awaits the tracer (M5.21.10)<br>[`m5_21_10_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_10_note.md), [`m5_21_6_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_6_note.md) |
 | Neutrino oscillations (PMNS) | ⚠️ [partially validated]<br>Flavour oscillation = SO(3) spatial field rotation. **PMNS from SO(3) (#199 ✅):** tri-bimaximal + δ_CP = 180° parameter-free (θ₁₂ 35.26° vs NuFIT 33.7°, δ_CP ≈ 177°); θ₁₃ ≈ 8.5° = the SO(3)-breaking. FALSIFIER: δ_CP far from 180°. Oscillation dynamics not yet run<br>[`m5_11_pmns_findings.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_11_pmns_findings.md) · [`m5_11_theta13_findings.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_11_theta13_findings.md)<br>→ #199 ✅ 2026-06-18; follow-up = the charged-lepton matrix #200 |
@@ -158,9 +164,10 @@ Deep dive: [`m5_summary_report.md`](openwave/xperiments/m5_liquid_crystal/resear
 | Nuclear structure (levels, halos) | 🚧 [not yet tested]<br>Binding systematics, levels and halo nuclei (Boron-8, Ne-17, Li-11 lifetimes; Borromean/Efimov configurations; He-6 as He-4 + nn) are M5.22.1 scope<br>[`m5_22_1_task_details.md`](openwave/xperiments/m5_liquid_crystal/research/tasks/m5_22_1_task_details.md) |
 | Mesons (π, K) | 🚧 [not yet tested]<br>Pion as twist/reconnection of a vortex loop; kaon as a Möbius-like twisted loop (strangeness = the twist), suggested by their origin in strange-baryon decays; paper-level, lands with the 15a stage<br>[`m5_15a_composite_particles.md`](openwave/xperiments/m5_liquid_crystal/research/tasks/m5_15a_composite_particles.md) |
 | Dark matter candidate | 🚧 [not yet tested]<br>DM as thermal noise of the non-EM field sectors, the CMBR analog for weak/strong/gravitational degrees of freedom, thermalized over cosmic time or sourced by active regions (stellar halos); hopfions remain the particle-like candidate<br>[`m5_4c_convo_2026.06.08.md`](openwave/xperiments/m5_liquid_crystal/research/tasks/m5_4c_convo_2026.06.08.md) |
+| | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r) | ✅ [validated in-platform, evidence base restated 2026-07-21]<br>Field-level: the hedgehog's far energy density is the exact Coulomb form 8c₂/r⁴, anchored to exactly charge e, no free factor. Two-body: antipair BINDING measured at every separation, consistent with the derived −64πc₂/d; the 1/d exponent NOT confirmed at reachable boxes (local 1.4-1.7)<br>[`m5_21_5_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_5_note.md), [`m5_21_4_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_4_note.md); lineage [`m5_1_coulomb.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_1_coulomb.py), [`m5_4_coulomb_matrix.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_4_coulomb_matrix.py) |
-| Lorentz covariance | ⚠️ [partially validated]<br>The linearized sector is measured covariant: tilt modes propagate at c and the emergent Klein-Gordon dispersion is relativistic (geometric mass). Covariance of the full nonlinear sector, boosted defects on the 3×3 → 4×4 route, is the implementation path but not yet a measurement<br>[`m5_6_1_kg_operator_check.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_1_kg_operator_check.py), [`m5_6_4a_hydro_em.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_4a_hydro_em.py) |
+| Lorentz covariance | ⚠️ [partially validated]<br>Lagrangian-level invariance is machine-verified on the full 4×4 tensor theory (M5.18: 15/15 checks, invariance residual 1.3e-11), and the linearized sector is measured covariant: tilt modes propagate at c, emergent Klein-Gordon dispersion. What stays open is a dynamics measurement: boosted defects transforming covariantly in-sim<br>[`m5_18_verification_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_18_verification_note.md), [`m5_18_lorentz_check.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_18_lorentz_check.py), [`m5_6_1_kg_operator_check.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_1_kg_operator_check.py) |
 | Magnetic force | ⚠️ [partially validated]<br>The dual-F construction needs the spatial Γ_i AND the temporal Γ_0 supplied by the electron's de Broglie clock; the fixed-clock run computes exactly that: the dipole appears only through the clock's Γ_0, pure twist is EM-silent (analogs: Barnett, Aharonov-Bohm vorticity, Zeeman-as-Coriolis). The Larmor-precession read is pending<br>[`m5_8_2r_electron_id.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2r_electron_id.py), [`m5_question_tracker.md`](openwave/xperiments/m5_liquid_crystal/research/m5_question_tracker.md) § FORCES |
 | Strong force: confinement | ⚠️ [partially validated]<br>**A linear string term is MEASURED**: like charges string-confined by the required inter-core winding (E_int linear, ~20× Coulomb; FORM robust, tension ansatz-grade), merging into a charge-2 ring compound. The ~1 GeV/fm Cornell anchor is the string-tension instrument's target (Q38)<br>[`m5_21_4_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_4_note.md) |
 | Running coupling | ⚠️ [partially validated]<br>Short-range onset verified: the non-abelian ‖R‖·r² roll-off switches on at the core radius r₀, with Maxwell recovered as the abelian limit; no β-function or scale-dependence curve measured beyond the onset<br>[`m5_6_4b_faber_curvature_em.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_4b_faber_curvature_em.py) |
@@ -168,6 +175,7 @@ Deep dive: [`m5_summary_report.md`](openwave/xperiments/m5_liquid_crystal/resear
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Keeps the topology-reconnection picture (n → p + e + ν) but needs a proper neutron state, which no run has produced; the chiral / parity-violating structure (a chiral SU(2) mechanism) is the open mechanism question<br>[`m5_question_tracker.md`](openwave/xperiments/m5_liquid_crystal/research/m5_question_tracker.md) § FORCES |
 | Gravity: Newton limit (GEM) | ⚠️ [partially validated]<br>The coupling mechanism is measured: gravity enters only via the boost tilt of the time axis (GEM ∝ (b·g)², zero at zero boost, negative = the clock-fuel block); the attractive 1/r² inter-mass force itself is not yet computed<br>[`m5_8_2q_delta_scaling.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2q_delta_scaling.py) |
 | Gravity: metric phenomena | 🚧 [not yet tested]<br>Appears naturally going from LdG 3×3 tensors to 4×4 adding boosts, the implemented route, but no dynamical metric: light bending, time dilation and any Λ read await a stress-energy-sourced background<br>[`m5_8_2q_delta_scaling.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2q_delta_scaling.py) |
+| | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | ✅ [validated in-platform]<br>Maxwell recovered by two independent routes: the hydrodynamic dictionary (abelian) and Faber's curvature R = Γ×Γ; tilt modes propagate at c, with the divergence/curl (electric/magnetic) decomposition of each defect's outgoing wave<br>[`m5_6_4a_hydro_em.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_4a_hydro_em.py), [`m5_6_4b_faber_curvature_em.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_4b_faber_curvature_em.py) |
 | Quantum wave equation (Klein-Gordon) | ✅ [validated in-platform]<br>Klein-Gordon emerges from the biaxial twist with GEOMETRIC mass (minimal coupling to the hedgehog connection; the explicit mass term cancels, core regularization generates it)<br>[`m5_6_1_kg_operator_check.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_1_kg_operator_check.py), [`m5_6_1b_twist_evolution.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_1b_twist_evolution.py) |
@@ -179,7 +187,7 @@ Deep dive: [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research
 
 | Criteria | Status + result summary |
 | --- | --- |
-| **PARTICLES** | |
+| **PARTICLE - ELECTRON** | |
 | Charge quantization | ⚠️ [partially validated]<br>Helicity/linking gates existence (both zero-helicity parent seeds evaporate; measured); the RMS divergence charge is persistent, independent of linking; a net Gauss monopole exists via the fixed-`j0` reservoir (99.1% flux closure) but its value is source-set: quantization not yet emergent<br>[`m7_4_linked_vortex.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_4_linked_vortex.py), [`m7_6_observables.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_6_observables.py) |
 | Electron rest energy (mass) | ⚠️ [partially validated]<br>The M6 charged ledger H/Q = 1.6890 reproduced in full 3D to 4.7e-5, but measured WINDOW-defined (no decaying far-field channel at the canonical point): not a mass anchor. The stable rotating electron carries E = 6.3246 program units (grid-convergent 0.15%); absolute anchor pends the units contract<br>[`m7_3_ouroboros_3d.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_3_ouroboros_3d.py), [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research/m7_theory_canonical.md) |
 | de Broglie clock (Zitterbewegung) | ⚠️ [partially validated]<br>Fixed-ω harmonic frame by construction, PLUS two measured clock structures: the ω-Q_can Legendre conjugacy dE*/dω = Q_can (1-2% at every scan point) and the existence threshold ω* = 0.786 (solitons exist only above the vacuum's tachyonic band: the clock IS the stabilizer)<br>[`m7_5_clock_stability.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_5_clock_stability.py) |
@@ -187,6 +195,8 @@ Deep dive: [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research
 | Magnetic moment μ (g ≈ 2) | ⚠️ [partially validated]<br>μ is measured de-phased on the rotating electron (36.5 program units), but the μ_B comparison is blocked on the charge unit (the scalar sector's source is external): no g-factor read until the units contract closes<br>[`m7_6_observables.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_6_observables.py), [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research/m7_theory_canonical.md) |
 | Angular momentum J (spin ℏ/2) | ⚠️ [partially validated]<br>The rotating electron is a clean j_z = 1 per-quantum wave (0.9939/0.9934, A/J sectors), with Poynting L_z = 13.10 and the energy budget closing exactly. Whether that quantum reads as ℏ/2 or ℏ is the units-contract decision table, not yet settled<br>[`m7_6_observables.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_6_observables.py), [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research/m7_theory_canonical.md) |
 | Spin-½ statistics (720° double cover) | 🚧 [not yet tested]<br>Not addressed; the measured per-quantum j_z = 1 (photon-loop reading) leaves the double-cover question open either way<br>[`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research/m7_theory_canonical.md) |
+| | |
+| **PARTICLE - FULL SPECTRUM** | |
 | Antimatter + annihilation | 🚧 [not yet tested]<br>M7.18 target (soliton + anti-soliton, charge ledger); the real-time route is blocked by the vacuum tachyon (Q14) until the full model's cure is known<br>[`m7_question_tracker.md`](openwave/xperiments/m7_hydroboros/research/m7_question_tracker.md) |
 | Neutrinos (neutral states) | 🚧 [not yet tested]<br>M7.19 target: the lighter neutral loop of the lepton family<br>(none yet) |
 | Neutrino oscillations (PMNS) | 🚧 [not yet tested]<br>Not addressed; oscillation structure awaits the M7.19 neutral states<br>(none yet) |
@@ -199,6 +209,7 @@ Deep dive: [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research
 | Nuclear structure (levels, halos) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Mesons (π, K) | 🚧 [not yet tested]<br>M7.22 (composites)<br>(none yet) |
 | Dark matter candidate | 🚧 [not yet tested]<br>M7.20 target: the neutral helicity-only knot, inheriting M6's chaoiton<br>(none yet) |
+| | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r) | ⚠️ [partially validated]<br>Fixed-reservoir monopole: Gauss flux closes at 99.1%, far-field slope −2.14 (vs −2), two-charge splitting matches same-box Poisson at a constant 1.17 ± 0.02 dressing; bonus: neutral pairs interact via oscillatory RKKY-style exchange (period π/k). Caveat: the source is external, the self-consistent charge pends the scalar-sector cure<br>[`m7_6_observables.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_6_observables.py) |
 | Lorentz covariance | ⚠️ [partially validated]<br>Both transverse fluctuation branches are exact KG dispersions ω² = k² + m_eff², covariant in form and lattice-anchored via the measured rate. Caveat: the harmonic frame fixes ω by construction and the vacuum carries the tachyonic band (Q14), so covariance of the full dynamics pends the cure<br>[`m7_5_clock_stability.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_5_clock_stability.py), [`m7_6_observables.md`](openwave/xperiments/m7_hydroboros/research/tasks/m7_6_observables.md) |
@@ -209,6 +220,7 @@ Deep dive: [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>M7.17 target (topology-reconnection channel; the M7.4 reconnection observation is the seed)<br>[`m7_4_charged_soliton.md`](openwave/xperiments/m7_hydroboros/research/tasks/m7_4_charged_soliton.md) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>M7.16 target; honestly hard: the parent framework stops before gravity<br>(none yet) |
 | Gravity: metric phenomena | 🚧 [not yet tested]<br>Not addressed (see the Newton-limit row: the parent framework stops before gravity)<br>(none yet) |
+| | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | ⚠️ [partially validated]<br>A_μ is the Maxwell four-potential by construction, and the coupled vacuum's band structure is MEASURED (rate 0.785 vs analytic 0.786): a propagating KG branch plus an unconditional long-wavelength tachyonic band; the truncation's vacuum is not pure Maxwell, the open theory question (Q14)<br>[`m7_5_clock_stability.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_5_clock_stability.py) |
 | Quantum wave equation (Klein-Gordon) | ⚠️ [partially validated]<br>Both transverse fluctuation branches are exact KG dispersions ω² = k² + m_eff² with m_eff² = (1+√5)/2 (upper) and −(√5−1)/2 (the tachyonic band), lattice-anchored via the measured rate; the collective-coordinate (phase/twist) KG remains open<br>[`m7_6_observables.md`](openwave/xperiments/m7_hydroboros/research/tasks/m7_6_observables.md) |
@@ -220,7 +232,7 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 
 | Criteria | Status + result summary |
 | --- | --- |
-| **PARTICLES** | |
+| **PARTICLE - ELECTRON** | |
 | Charge quantization | ❌ [honest negative]<br>Charge sign imposed via `cos(source_offset)`, not emergent from wave physics<br>[`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md)<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
 | Electron rest energy (mass) | ⚠️ [partially validated]<br>Wave-center standing-wave lock-in demonstrated; mass values come from EWT's analytic equations, not yet from in-sim dynamics<br>[`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md)<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
 | de Broglie clock (Zitterbewegung) | 🚧 [not yet tested]<br>EWT carries particle frequency but no in-sim clock-propulsion mechanism<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
@@ -228,6 +240,8 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 | Magnetic moment μ (g ≈ 2) | 🚧 [not yet tested]<br>Bohr magneton listed as target, not yet attempted. Requires K=10 electron stability first.<br>[`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md)<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
 | Angular momentum J (spin ℏ/2) | 🚧 [not yet tested]<br>Not attempted in-sim; blocked behind the same K = 10 electron stability prerequisite as the magnetic moment<br>[`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md)<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
 | Spin-½ statistics (720° double cover) | 🚧 [not yet tested]<br>Scalar field carries no spinor structure<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
+| | |
+| **PARTICLE - FULL SPECTRUM** | |
 | Antimatter + annihilation | ⚠️ [partially validated]<br>Opposite-phase wave centers annihilate in-sim, with documented assists (0.5λ threshold, damping, velocity clamp)<br>[`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md)<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
 | Neutrinos (neutral states) | ⚠️ [partially validated]<br>The neutrino is EWT's fundamental wave-center unit (postulated as the substrate; magic-number K = 2, 8, 10 stability is the open target)<br>[`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md) |
 | Neutrino oscillations (PMNS) | 🚧 [not yet tested]<br>Not addressed; flavour structure not modeled<br>(none yet) |
@@ -240,6 +254,7 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 | Nuclear structure (levels, halos) | 🚧 [not yet tested]<br>Not modeled in-sim<br>(none yet) |
 | Mesons (π, K) | 🚧 [not yet tested]<br>Not modeled in-sim. Requires K=10 electron stability first.<br>(none yet) |
 | Dark matter candidate | 🚧 [not yet tested]<br>Theorized to be existing, neutral particles with mass (e.g. neutrino family). Experiment not conducted yet.<br> |
+| | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r) | ❌ [honest negative]<br>Sinc envelope barriers block far-field attraction/repulsion; signed envelope is a modeling choice<br>[`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_STATUS.md)<br>→ open issue: [#202](https://github.com/openwave-labs/openwave/issues/202), [#203](https://github.com/openwave-labs/openwave/issues/203) |
 | Lorentz covariance | 🚧 [not yet tested]<br>Not addressed as its own test; the scalar substrate is the classical wave equation (covariant in form), with no boosted-state measurement<br>[`0_WAVE_EQUATION.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_WAVE_EQUATION.md) |
@@ -250,6 +265,7 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not modeled (no in-sim neutron)<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
 | Gravity: metric phenomena | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
+| | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | ⚠️ [partially validated]<br>Scalar wave propagation only (no polarization structure)<br>[`research/`](openwave/xperiments/m3_wolff_lafreniere/research/)<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
 | Quantum wave equation (Klein-Gordon) | ⚠️ [partially validated]<br>The scalar wave equation is the postulated substrate, not an emergent result<br>[`0_WAVE_EQUATION.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_WAVE_EQUATION.md)<br>→ open issue: [#203](https://github.com/openwave-labs/openwave/issues/203) |
@@ -261,7 +277,7 @@ Deep dive: [`m6_theory_canonical.md`](openwave/xperiments/m6_ouroboros/research/
 
 | Criteria | Status + result summary |
 | --- | --- |
-| **PARTICLES** | |
+| **PARTICLE - ELECTRON** | |
 | Charge quantization | ⚠️ [partially validated]<br>Mutual Chern-Simons linking number of A and J flux lines; the "elementary charge within 0.6%" claim is arithmetically the H/Q gap restated (M6.1 C3) and Lean 4 artifacts are statement-level; in-platform Q_CS (M6.3).2 branch-(b) close<br>[`0d_canonical.md`](openwave/xperiments/m6_ouroboros/research/archive/0d_canonical.md), [`m6_1_v11_convention_sheet.md`](openwave/xperiments/m6_ouroboros/research/m6_1_v11_convention_sheet.md) |
 | Electron rest energy (mass) | ❌ [honest negative]<br>M6.2 decision gate (pre-registered, audited 8/8): the benchmark H/Q ≈ 1.689 is a code artifact: H is not the published Lagrangian's energy, Q is no Noether charge (no internal U(1)), the ODE implements a different mass term, the calibration state is non-localized (16% window drift)<br>[`m6_2_method_note.md`](openwave/xperiments/m6_ouroboros/research/findings/m6_2_method_note.md) |
 | de Broglie clock (Zitterbewegung) | ⚠️ [partially validated]<br>Time-periodicity is built into the ansatz (e^{iωt}) rather than emergent; the L/Q = ω relation is definitional (v11's own footnote concedes it, and M6.2 proved the theory has no internal U(1), so the Q in it is a coded convention, not a Noether charge)<br>[`m6_2_method_note.md`](openwave/xperiments/m6_ouroboros/research/findings/m6_2_method_note.md) |
@@ -269,6 +285,8 @@ Deep dive: [`m6_theory_canonical.md`](openwave/xperiments/m6_ouroboros/research/
 | Magnetic moment μ (g ≈ 2) | 🚧 [not yet tested]<br>No per-defect magnetic moment computed; the framework carries magnetism only in the A_μ Maxwell sector by construction (see Magnetic force)<br>(none yet) |
 | Angular momentum J (spin ℏ/2) | 🚧 [not yet tested]<br>Spin from chaoiton field rotation is paper-level, not yet in-platform<br>(none yet) |
 | Spin-½ statistics (720° double cover) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
+| | |
+| **PARTICLE - FULL SPECTRUM** | |
 | Antimatter + annihilation | 🚧 [not yet tested]<br>Q_CS = −1 positron analog identified, not yet computed numerically<br>(none yet) |
 | Neutrinos (neutral states) | 🚧 [not yet tested]<br>Not addressed; where active neutrinos fit is an open question in the framework<br>(none yet) |
 | Neutrino oscillations (PMNS) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
@@ -281,6 +299,7 @@ Deep dive: [`m6_theory_canonical.md`](openwave/xperiments/m6_ouroboros/research/
 | Nuclear structure (levels, halos) | 🚧 [not yet tested]<br>Sawada long-range nuclear anomaly v(r) ~ −C/r⁶ identified as falsifiability target, not yet tested<br>(none yet) |
 | Mesons (π, K) | ❌ [honest negative]<br>The ω = 15.0 pion candidate rides the same invalidated H/Q machinery and non-localized charged-state family as the lepton ladder (M6.2); M6.4: ω = 15 sits above every localization window of the frozen spec<br>[`m6_2_method_note.md`](openwave/xperiments/m6_ouroboros/research/findings/m6_2_method_note.md), [`m6_4_method_note.md`](openwave/xperiments/m6_ouroboros/research/findings/m6_4_method_note.md) |
 | Dark matter candidate | ✅ [validated in-platform]<br>Neutral chaoiton: m_χ = 0.460 MeV with mediator m_J = 0.6184 MeV parameter-free via the exact scaling symmetry; canonical β(r) profile + dipole form factor independently computed in-platform<br>[`sandbox_v11/`](openwave/xperiments/m6_ouroboros/research/archive/sandbox_v11/), [`dm_paper_supplement/`](openwave/xperiments/m6_ouroboros/research/archive/sandbox_v11/dm_paper_supplement/) |
+| | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r) | 🚧 [not yet tested]<br>Static two-charge derivation exists at paper level; force-level Coulomb between chaoitons not yet tested in-platform<br>(none yet) |
 | Lorentz covariance | 🚧 [not yet tested]<br>Not measured; the Lagrangian is written covariantly while the e^{iωt} ansatz fixes a frame by construction<br>[`0d_canonical.md`](openwave/xperiments/m6_ouroboros/research/archive/0d_canonical.md) |
@@ -291,6 +310,7 @@ Deep dive: [`m6_theory_canonical.md`](openwave/xperiments/m6_ouroboros/research/
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not in the Lagrangian (the framework explicitly stops before gravity)<br>(none yet) |
 | Gravity: metric phenomena | 🚧 [not yet tested]<br>Not in the Lagrangian<br>(none yet) |
+| | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | ✅ [validated in-platform]<br>A_μ is the electromagnetic four-potential by construction; delocalized J-field wave modes coexist with solitons<br>[`0d_canonical.md`](openwave/xperiments/m6_ouroboros/research/archive/0d_canonical.md) |
 | Quantum wave equation (Klein-Gordon) | 🚧 [not yet tested]<br>QM not derived; the classical field carries the e^{iωt} ansatz, quantum behavior is outside current scope<br>(none yet) |
@@ -302,7 +322,7 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 
 | Criteria | Status + result summary |
 | --- | --- |
-| **PARTICLES** | |
+| **PARTICLE - ELECTRON** | |
 | Charge quantization | 🚧 [not yet tested]<br>Group-theoretic assignment from the 2I stabilizer structure (Z₃ face stabilizers: color triplet vs singlet), not an integrated winding; the in-platform comparison with a winding-type charge rides the M8.4 lineage<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
 | Electron rest energy (mass) | 🚧 [not yet tested]<br>m_e is the mass-sector calibration anchor (benchmark input, not a prediction); the 24-entry analytic spectrum awaits the in-platform reproducer (M8.3), graded at the author's own ledger weight<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
 | de Broglie clock (Zitterbewegung) | 🚧 [not yet tested]<br>The Waltz clock dt/dτ = S^(−1/2) is assumed (exponent empirically forced at Δχ² > 60), not derived; deriving a clock from dynamics on the arena is part of the M8 program<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
@@ -310,6 +330,8 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | Magnetic moment μ (g ≈ 2) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Angular momentum J (spin ℏ/2) | 🚧 [not yet tested]<br>Not addressed (no dynamics to carry angular momentum)<br>(none yet) |
 | Spin-½ statistics (720° double cover) | 🚧 [not yet tested]<br>A structural home exists: the Möbius anti-periodic boundary condition (matter modes return only under the double cover); no field realization yet<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
+| | |
+| **PARTICLE - FULL SPECTRUM** | |
 | Antimatter + annihilation | 🚧 [not yet tested]<br>Not addressed (no dynamics to annihilate with)<br>(none yet) |
 | Neutrinos (neutral states) | 🚧 [not yet tested]<br>ν₂ = 8.6 meV is the sharp pre-registered falsifier (JUNO/DUNE); analytic only, no in-platform computation<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
 | Neutrino oscillations (PMNS) | 🚧 [not yet tested]<br>Not addressed in-platform; the analytic ladder carries the mass side only<br>(none yet) |
@@ -322,6 +344,7 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | Nuclear structure (levels, halos) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Mesons (π, K) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Dark matter candidate | 🚧 [not yet tested]<br>Rank-16 / dead-zone states named (~349 MeV; 6 states eV-keV) with an "unassigned" escape hatch the author's ledger itself flags; not computed<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
+| | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r) | 🚧 [not yet tested]<br>α read from the first Fibonacci well is input-and-output (the author's Cycle 2: a consistency check, not a prediction); no force-level computation<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
 | Lorentz covariance | 🚧 [not yet tested]<br>Not applicable yet: no field dynamics to be covariant; supplying a field equation on S³/2I is the M8.4 program<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
@@ -332,6 +355,7 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not separately addressed: Einstein's equations are imported unchanged, so the Newton limit is inherited rather than in-platform<br>[`m8_1_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_1_method_note.md) |
 | Gravity: metric phenomena | ⚠️ [partially validated]<br>The Λ-story spectral input is VALIDATED: M8.1 (blind two-agent eigensolve, audited 6/6) confirmed the twisted Möbius Laplacian's eigenvalue 2/R², the α₀(α₀+1)/R² branch, the 2R/e threshold and the −4e^(−2γ)/δ₀² defect state at 10-digit precision. Einstein's equations imported unchanged; Gauss-Codazzi + the R-problem stay open<br>[`m8_1_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_1_method_note.md), [`m8_1_eigensolve.py`](openwave/xperiments/m8_mit/research/scripts/m8_1_eigensolve.py), [`m8_1_audit_eigensolve.py`](openwave/xperiments/m8_mit/research/scripts/m8_1_audit_eigensolve.py) |
+| | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | 🚧 [not yet tested]<br>No field model of radiation (photon massless at the edge-only layer level, a structural label)<br>(none yet) |
 | Quantum wave equation (Klein-Gordon) | 🚧 [not yet tested]<br>No native field equation exists; supplying one on S³/2I is the M8 program's central goal (the M8.4 Lagrangian-family survey)<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
