@@ -1,6 +1,6 @@
 """Lint MODELS.md: the 55-word cell budget + status/score-board consistency.
 
-Five checks. The first two are defined in MODELS.md "Cell format (the 55-word
+Six checks. The first two are defined in MODELS.md "Cell format (the 55-word
 rule)"; the rest keep the derived tables honest:
 1. Budget: every summary cell in the per-model RESULTS BY MODEL tables carries
    at most LIMIT words of prose. Prose = cell text minus the status tag
@@ -17,7 +17,11 @@ rule)"; the rest keep the derived tables honest:
    criterion row declares one of REGIMES. That column is a property of the
    criterion rather than of any model (MODELS.md "Summary Status"), so it is
    matched by NAME and never counted as a model column.
-5. Shape: every data row carries exactly as many cells as its table's header.
+5. Simplest test: if the summary-status table carries a `simplest test` column
+   (also criterion-level, matched by NAME), every criterion row must fill it:
+   a row with no named test violates the "every row names its simplest passing
+   test" rule that column exists to carry.
+6. Shape: every data row carries exactly as many cells as its table's header.
    This is what an unescaped "|" inside a cell looks like from here, and it is
    worth its own message because such a row otherwise parses by position and
    silently reports the wrong column's contents.
@@ -91,6 +95,7 @@ mode = None  # "status" | "model" | "board" | None
 model = None  # current model id when mode == "model"
 model_cols = []  # (column index, model id) pairs when mode in ("status", "board")
 regime_col = None  # column index of the status table's `regime`, if it has one
+test_col = None  # column index of the status table's `simplest test`, if it has one
 width = None  # cell count of the current table's header row
 seen_model = None  # nearest "### ... (Mn)" heading above
 
@@ -113,8 +118,9 @@ for i, line in enumerate(PATH.read_text().splitlines(), 1):
             mode, model_cols, width = "status", cols, len(cells)
             named = {c.strip("* `").lower(): j for j, c in enumerate(cells) if j}
             regime_col = named.get("regime")
+            test_col = named.get("simplest test")
             spare = [j for j in range(1, len(cells)) if j not in {k for k, _ in cols}]
-            unknown = [cells[j] for j in spare if j != regime_col]
+            unknown = [cells[j] for j in spare if j not in (regime_col, test_col)]
             if unknown:
                 errors.append(
                     f"L{i} summary-status header has unrecognized column(s): {unknown}."
@@ -175,6 +181,11 @@ for i, line in enumerate(PATH.read_text().splitlines(), 1):
                     f"L{i} regime cell ({cells[0]}) is {cells[regime_col]!r},"
                     f" expected one of {sorted(REGIMES)}"
                 )
+        if test_col is not None and not cells[test_col].strip("* `"):
+            errors.append(
+                f"L{i} simplest-test cell ({cells[0]}) is empty:"
+                " every criterion row must name its simplest passing test"
+            )
     elif mode == "model" and model:
         summary[(cells[0], model)] = (icon_of(cells[1]), len(prose_words(cells[1])), i)
 
