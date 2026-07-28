@@ -384,7 +384,7 @@ All dependencies use licenses compatible with Apache 2.0.
 
 ### Trademark
 
-OpenWave™ is a trademark of the OpenWave project. See [TRADEMARK.md](TRADEMARK.md) for usage guidelines.
+OpenWave™ is a trademark owned by the project's founder, used by the OpenWave open-source project. See [TRADEMARK.md](TRADEMARK.md) for usage guidelines.
 
 ---
 

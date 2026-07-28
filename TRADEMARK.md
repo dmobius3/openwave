@@ -2,7 +2,7 @@
 
 ## Trademark Ownership
 
-"OpenWave" and the OpenWave logo (if applicable) are trademarks of the OpenWave project ("we" or "us").
+"OpenWave" and the OpenWave logo (if applicable) are trademarks owned by the project's founder, used by the OpenWave open-source project ("we" or "us").
 
 ## Purpose
 
@@ -87,4 +87,4 @@ We may update this trademark policy. Check this file periodically for changes.
 
 ---
 
-**Last Updated:** 2026-07-25
+**Last Updated:** 2026-07-27
