@@ -30,12 +30,13 @@ OpenWave investigates, in one integrated simulator, four primary domains: **matt
 | 10 | [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) | **MANDATORY** reporting standard for model-owner-facing output: equations first, equation-to-code map, adversarial audit recorded |
 | 11 | [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) | Borrowing one column's field family into another's framework; how author-gated questions are routed |
 | 12 | [`dev_docs/PR_REVIEW_STANDARDS.md`](dev_docs/PR_REVIEW_STANDARDS.md) | The maintainer-side review procedure: blast-radius tiers, the claim-to-artifact recompute, the adversarial pass, and the evidence bar for moving a `MODELS.md` cell |
-| 13 | [`dev_docs/`](dev_docs/) | Coding, performance, markdown, coordinate, and precision standards (listed under Code Style below); [`dev_docs/platform_roadmap.md`](dev_docs/platform_roadmap.md) tracks **platform-wide tasks** (`T<n>` IDs: MODELS.md structure, shared standards, the [`dev_docs/utils/`](dev_docs/utils/) checkers), as opposed to one model's physics |
-| 14 | `openwave/xperiments/<model>/__M<x>_model_briefing.md` | Each column's own front door: identity, profile, honest status, help wanted |
-| 15 | `openwave/xperiments/<model>/research/` | **The results of record**: roadmaps, question trackers, task documents, findings, scripts, data, plots |
-| 16 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Community expectations |
+| 13 | [`dev_docs/ROADMAP_STANDARDS.md`](dev_docs/ROADMAP_STANDARDS.md) | **MANDATORY** shape and word budgets for every roadmap (a row is a preview, the task document is the record); enforced by [`dev_docs/utils/check_roadmaps.py`](dev_docs/utils/check_roadmaps.py) |
+| 14 | [`dev_docs/`](dev_docs/) | Coding, performance, markdown, coordinate, and precision standards (listed under Code Style below); [`dev_docs/platform_roadmap.md`](dev_docs/platform_roadmap.md) tracks **platform-wide tasks** (`T<n>` IDs: MODELS.md structure, shared standards, the [`dev_docs/utils/`](dev_docs/utils/) checkers), as opposed to one model's physics |
+| 15 | `openwave/xperiments/<model>/__M<x>_model_briefing.md` | Each column's own front door: identity, profile, honest status, help wanted |
+| 16 | `openwave/xperiments/<model>/research/` | **The results of record**: roadmaps, question trackers, task documents, findings, scripts, data, plots |
+| 17 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Community expectations |
 
-Claims about this repository that cannot be traced to a runnable script or a research note under row 15 are not claims of this repository.
+Claims about this repository that cannot be traced to a runnable script or a research note under row 16 are not claims of this repository.
 
 ### Theoretical Advisors and Candidate Frameworks
 

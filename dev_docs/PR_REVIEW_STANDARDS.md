@@ -156,6 +156,12 @@ It does **not** check prose accuracy, link targets, or whether a cell's claim is
 
 Two operational notes. A clean run prints `clean` and exits 0; anything else lists line-numbered violations. And if a PR legitimately introduces a new criterion-level column (the way `regime` was), the script will refuse it by name until the column is registered in `REGIMES`-style fashion beside it, which is intentional: adding a column must not be able to silently switch a check off.
 
+### 7.2 The roadmap linter
+
+**Run `python3 dev_docs/utils/check_roadmaps.py` before merging anything that touches a roadmap.** Same no-CI caveat as 7.1: it runs when a reviewer runs it. It enforces the word budgets in [`ROADMAP_STANDARDS.md`](ROADMAP_STANDARDS.md), whose premise is that a roadmap row is a preview and the task document is the record. A row that needs more than its budget is a row whose content belongs one link deeper, so the fix is almost never a bigger budget.
+
+The budgets it checks: description 65 words, title 15, every other cell in the row 35, section blockquote 50, intro blockquote 80, change-log entry 200. It also requires a column named exactly `Description` in each task table, and reports rows whose cell count does not match their header, which is what an unescaped `|` looks like from the parser's side. `ARCHIVE` and `LEGACY` sections are skipped as frozen history.
+
 ## 8. Gate F: other authors' work
 
 Every column carries a person's name. Protecting that is a maintainer duty, and it is the part of review an author cannot do for themselves.
@@ -357,6 +363,7 @@ Style and import sanity, on the PR worktree:
 cat filelist.txt | tr '\n' '\0' | xargs -0 python3 -m black --check
 python3 -m py_compile <changed files>
 python3 dev_docs/utils/check_models_md.py    # mandatory when MODELS.md is touched, see 7.1
+python3 dev_docs/utils/check_roadmaps.py     # mandatory when a roadmap is touched, see 7.2
 ```
 
 ### Recording the verdict: submit it as a review, not as a comment

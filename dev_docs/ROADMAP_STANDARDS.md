@@ -1,0 +1,86 @@
+# ROADMAP STANDARDS
+
+> How every roadmap in this repository is structured and how much it is allowed to say. Binds the [platform roadmap](platform_roadmap.md) and every model roadmap (`openwave/xperiments/<model>/research/m<n>_roadmap.md`). Enforced by [`utils/check_roadmaps.py`](utils/check_roadmaps.py), which a maintainer runs before merging any roadmap edit ([`PR_REVIEW_STANDARDS.md`](PR_REVIEW_STANDARDS.md)). There is no CI: the checker runs when someone runs it.
+
+## 1. What a roadmap is, and what it is not
+
+| A roadmap IS | A roadmap is NOT |
+| --- | --- |
+| The index of work: what is running, what is queued, what closed | The record of results |
+| One row per task, each row a **preview** that gets a reader to the right document | A findings note, a task review, or a lab log |
+| The place to see run order and gates at a glance | The place to read what was measured |
+
+Every row links its task document, and **that document is the record**. If a fact matters and does not fit the row, it belongs in the task document, not in a longer row. A roadmap row that has to be read slowly has already failed.
+
+## 2. Required structure
+
+Sections in this order. Bracketed ones are optional; nothing else is a top-level section.
+
+| # | Section | Contents |
+| --- | --- | --- |
+| 1 | `# <NAME> ROADMAP` + intro blockquote | one blockquote: what this roadmap covers, links to its own sections |
+| 2 | `## IN PROGRESS` | the single running task (empty table when between tasks) |
+| 3 | `## BACKLOG` | queued tasks, **row order = run sequence** |
+| 4 | [`## STATUS AT A GLANCE`] | dated snapshot, question-and-answer table |
+| 5 | [`## CONVENTIONS`] | ID scheme, local reading rules, anything a newcomer needs before the tables make sense |
+| 6 | `## DONE` | closed tasks, appended in order of completion |
+| 7 | [`## CHANGE-LOG`] | dated prose entries: reorganizations, decisions, routing |
+| 8 | [`## ARCHIVE` / `## LEGACY DONE`] | frozen history, see § 7 |
+
+**Table shape.** Live tables (IN PROGRESS, BACKLOG, phase tables) carry `| TaskID | Title | Description | Gated By |`; the fourth column may be renamed to the local gate vocabulary (`Gate`, `Validation gate`, `Owner` may be inserted before it). DONE tables carry `| TaskID | Title | Description | Completed |`. The column named `Description` is the one the budget below applies to, and it must be named exactly that so the checker can find it.
+
+**Blockquote placement.** One blockquote directly under the heading it explains, before the table. Never between the header row and the data rows, never after a table.
+
+**Escaped pipes.** A literal `|` inside a cell is written `\|`. An unescaped one silently shifts every later column.
+
+## 3. Word budgets
+
+The hard rule, and the reason this document exists.
+
+| Element | Cap | Grounding |
+| --- | --- | --- |
+| **`Description` cell** | **65 words** | half the length of the row that triggered the rule; M7's closed rows already run at a 21-word median, so the budget is proven livable rather than aspirational |
+| Row `Title` cell | 15 words | the 90th percentile across all roadmaps is 13 |
+| Every other cell in the row (`Gated By`, `Gate`, `Owner`, `Completed`) | 35 words | these are pointers, not records; the median is 1 word. Without this cap the description budget is avoidable by moving the text one column right, which is what one roadmap had already done |
+| Section blockquote | 50 words | the median is 33 |
+| Intro blockquote (under the H1) | 80 words | it carries navigation, so it gets more room than a section note |
+| Change-log entry (one paragraph) | 200 words | the narrative home, and still not a findings note |
+
+**How words are counted** (identical in the checker): markdown link *labels* count, link targets do not; `<br>` counts as a space; backticks, asterisks, underscores and hashes are stripped; everything else splits on whitespace. So `[M5.22](tasks/m5_22_task_details.md)` is one word, and formatting is never a way to buy room.
+
+## 4. What belongs in a Description cell
+
+| Include | Leave to the task document |
+| --- | --- |
+| Status icon and, for a closed row, the close date | run logs, durations, cap events |
+| One sentence on what the task does or found | the method, the ladder of sub-results, the deferred items |
+| The single decisive number or verdict, if there is one | every other number |
+| What it unblocks or is blocked by, when not already in `Gated By` | the blindspots table, the audit record, the cross-links |
+
+Anti-patterns, all of them observed in this repository before the rule existed: a row that reproduces its own title; a row that enumerates every sub-result of a closed run; a row that narrates how the task came to exist (that is a change-log entry); a row that carries measured values a reader cannot check without opening the task document anyway.
+
+## 5. DONE rows
+
+Appended at the **end** of the table, so it reads in order of completion. A closed row states the verdict, not the evidence for it: `✅ Closed <date>. <one-sentence verdict, with the decisive number if there is one>. Full record: [note] + [task doc].` The temptation to keep the full close-out summary in the row is what produced the 288-word rows this standard replaces; the summary already exists, in the task document's `TASK REVIEW` section.
+
+## 6. Task IDs
+
+| Scheme | Used by |
+| --- | --- |
+| `M<model>.<n>[.<m>]` | model roadmaps, e.g. `M5.21.11` |
+| `T<n>` | the platform roadmap |
+
+IDs are assigned in creation order and **never reused**, including after a renumber or a migration between roadmaps. A migrated task carries a `(was <old ID>)` note in its row and a change-log entry; records written before a renumber keep the old ID and are not rewritten.
+
+## 7. Frozen sections
+
+`ARCHIVE` and `LEGACY DONE` are historical: they preserve how the work read at the time. They are **exempt from every budget above** and are not rewritten to comply. The checker skips them. Editing them to meet a current standard would destroy the only thing they are for.
+
+## 8. Enforcement
+
+```bash
+python3 dev_docs/utils/check_roadmaps.py          # all roadmaps
+python3 dev_docs/utils/check_roadmaps.py <path>   # one file
+```
+
+Exit 0 clean, 1 with a line-numbered list of violations. Run it after any roadmap edit and before merging one. It checks the six budgets, the required `Description` column, and each row's cell count against its header (the unescaped-pipe bug). It does not check whether a row is *accurate*; that is what review is for.
