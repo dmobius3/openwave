@@ -81,7 +81,7 @@ M8.1 gate philosophy one level up.
 | Silent symmetry breaking by the grid (route a) | measure the certified spectrum's degeneracy splitting as the resolution ladder climbs; report it |
 | Band-limit truncation masquerading as physics (route b) | convergence in the band limit reported for every observable |
 | Deliverable A written up as blind, or A's implementer reusing the M8.2 context | the claim ceiling and the firewall are stated above; the protocol (step 1) fixes both before step 2 opens |
-| A PASS line that cannot go red | mutation-test every gate before it ships (roadmap standing rules; the M8.2 defect) |
+| A PASS line that cannot go red | mutation-test every gate before it ships ([roadmap § CONVENTIONS](../m8_roadmap.md#conventions); the M8.2 defect) |
 
 ### Ownership + gating
 

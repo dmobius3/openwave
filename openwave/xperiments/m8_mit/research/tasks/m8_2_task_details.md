@@ -119,7 +119,7 @@ independent reproducer that lock § 3 requires. M8.5 therefore runs protocol-fir
 the frozen protocol including a context firewall; maintainers implement it in a fresh context)
 and its result is reported as independent-method reproduction rather than blind. Recorded in
 [`m8_5_task_details.md § Independent reproduction`](m8_5_task_details.md#independent-reproduction-deliverable-a-added-2026-07-28)
-and the roadmap standing rules. The lock's § 3 wording already required implementation
+and the roadmap's [§ CONVENTIONS](../m8_roadmap.md#conventions). The lock's § 3 wording already required implementation
 independence and stands unchanged, so no addendum was opened.
 
 ### Findings
