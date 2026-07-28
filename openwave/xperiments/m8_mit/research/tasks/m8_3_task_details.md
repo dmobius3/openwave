@@ -66,6 +66,7 @@ context must be held away from, so it runs the normal fork → PR → review wor
 | --- | --- | --- |
 | 1 | `data/m8_3_masses.json` also carries the ranked table, the PDG scorecard, and null-test provenance, not only "every number" the formula outputs. | One artifact as the source of truth for anything downstream (MODELS.md, the method note) cites. |
 | 2 | The mutation-test registry (23 gates, coverage-enforced: every gate id attacked, every mutation red) goes beyond the docstring's original placeholder. | Already a standing M8 roadmap rule ("every PASS gate must be demonstrated to fail," precedent `m7_trivial_ok`); closing it finished the task to its own written standard. |
+| 3 | A completeness sweep found and corrected the same superseded mass-table statements in three living M8 background documents (`__M8_model_briefing.md`, `research/m8_theory_canonical.md`, `research/m8_background.md`). | No M8.2 or M8.5 computational artifact depended on the corrected torsion values; these were the only living (non-locked) documents still citing the pre-correction figures. |
 
 ## FINDINGS
 
@@ -74,6 +75,8 @@ context must be held away from, so it runs the normal fork → PR → review wor
 2. **Corrected result and null context.** Restoring the scalar term gives an exact closed form for every irrep, not just the four integer-spin ones the page previously had: `T^2(R1)=phi^-4/4`, `T^2(R2)=phi^4/4`, `T^2(R6)=1`, `T^2(R8)=4`. Reported upstream; mode-identity-theory corrected the page and re-ran its pre-registered null test as `mass-null-v1.1` (`p_A = 0.690`, corrected table, superseding `mass-null-v1.0`'s `p_A = 0.174` on the pre-correction table). Re-deposited at Zenodo [10.5281/zenodo.21652153](https://doi.org/10.5281/zenodo.21652153) (concept DOI 10.5281/zenodo.18603975).
 
 3. **Current scorecard.** With m_e as the calibration benchmark (not counted), of the remaining 8 charged fermions: 5 have a compatible entry within ×3 (μ, s, t, τ, b); 4 survive sector-first adjudication (μ, s, t, τ). Down is assigned but outside ×3 (3.22); up and charm are unassigned (up's former ~6% hit was the coexact-only artifact); bottom is compatible (1.17) but outside its own structural sector (R2). Full figures: `data/m8_3_masses.json`.
+
+4. **Known follow-up (not in this PR).** [`findings/m8_2_preregistration.md`](../findings/m8_2_preregistration.md) line 124 cites the superseded `mass-null-v1.0` figure (p = 0.174); that document is locked (merged via PR #350) and its freeze policy requires a dated addendum, not an in-place edit. Left untouched here; addendum text drafted, pending a small follow-up PR after this one merges.
 
 ## Links
 
