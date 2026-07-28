@@ -30,9 +30,7 @@ def main(data_path_str):
 
     plt.ion()
     plt.style.use("dark_background")
-    fig, (ax1, ax2, ax3) = plt.subplots(
-        3, 1, figsize=(12, 10), facecolor=colormap.DARK_GRAY[1]
-    )
+    fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 10), facecolor=colormap.DARK_GRAY[1])
     fig.suptitle("OPENWAVE Live Monitor (external)", fontsize=20, family="Monospace")
 
     # Panel 1: Displacement & Amplitude

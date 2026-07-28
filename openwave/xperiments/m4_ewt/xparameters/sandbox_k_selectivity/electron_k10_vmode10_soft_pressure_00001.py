@@ -1,4 +1,4 @@
-﻿# electron_k10_vmode10_soft_pressure_00001.py
+# electron_k10_vmode10_soft_pressure_00001.py
 """
 K=10, 1-3-6 geometry, soft interaction, V_MODE=10, ultra-low boost.
 Vacuum pressure force enabled (PRESSURE_STRENGTH=0.0001).
@@ -11,7 +11,7 @@ from openwave.common import constants
 UNIVERSE_EDGE = 2e-15
 TARGET_VOXELS = 55_000_000
 K = 10
-PERTURBATION = 0.1 
+PERTURBATION = 0.1
 POSITIONS = generate_positions_by_EWT_geometry(
     UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), perturbation=PERTURBATION
 )

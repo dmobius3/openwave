@@ -35,12 +35,12 @@ XPARAMETERS = {
         "SEED_BOOST": 0.01,
         "V_MODE": 10,
         "V_C1": -0.3,
-        "V_C2": 0.1,                  # stronger saturation
-        "WC_INTERACT_MODE": 3,        # soft mode
-        "WC_BOOST": 0.00001,           # ultra-low energy injection
+        "V_C2": 0.1,  # stronger saturation
+        "WC_INTERACT_MODE": 3,  # soft mode
+        "WC_BOOST": 0.00001,  # ultra-low energy injection
         "WC_RADIUS": 2,
-        "WC_SIGMA": 2.0,              # slightly wider gaussian
-        "VELOCITY_DAMPING": 0.95,     # stronger damping
+        "WC_SIGMA": 2.0,  # slightly wider gaussian
+        "VELOCITY_DAMPING": 0.95,  # stronger damping
         "R_WALL": 100.0,
         "WALL_HEIGHT": 1.2,
         "DEFICIT_DEPTH": 0.9,

@@ -134,11 +134,12 @@ def log_timestep_data(timestep: int, wave_field, trackers, wave_center=None) -> 
 
     json_logger.log_timestep(log_entry)
 
-
     import numpy as np
+
 
 _pairwise_ref = None
 _pairwise_ref_set = False
+
 
 def log_stability_metrics(timestep: int, wave_center) -> tuple:
     """
@@ -164,16 +165,18 @@ def log_stability_metrics(timestep: int, wave_center) -> tuple:
     n_active = len(positions)
 
     if n_active < 2:
-        json_logger.log_timestep({
-            "timestep": timestep,
-            "mean_drift": None,
-            "active_wc": n_active,
-        })
+        json_logger.log_timestep(
+            {
+                "timestep": timestep,
+                "mean_drift": None,
+                "active_wc": n_active,
+            }
+        )
         return None, n_active
 
     positions_np = np.array(positions, dtype=np.float64)
     diff = positions_np[:, np.newaxis, :] - positions_np[np.newaxis, :, :]
-    dist = np.sqrt(np.sum(diff ** 2, axis=-1))
+    dist = np.sqrt(np.sum(diff**2, axis=-1))
 
     if not _pairwise_ref_set:
         _pairwise_ref = dist.copy()
@@ -184,9 +187,11 @@ def log_stability_metrics(timestep: int, wave_center) -> tuple:
         i_upper = np.triu_indices_from(drift_matrix, k=1)
         mean_drift = float(np.mean(drift_matrix[i_upper]))
 
-    json_logger.log_timestep({
-        "timestep": timestep,
-        "mean_drift": mean_drift,
-        "active_wc": n_active,
-    })
+    json_logger.log_timestep(
+        {
+            "timestep": timestep,
+            "mean_drift": mean_drift,
+            "active_wc": n_active,
+        }
+    )
     return mean_drift, n_active

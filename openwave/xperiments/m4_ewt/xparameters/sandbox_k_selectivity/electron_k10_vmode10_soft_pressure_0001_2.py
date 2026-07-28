@@ -4,14 +4,16 @@ K=10, 1-3-6 geometry, soft interaction, V_MODE=10, ultra-low boost.
 Increased vacuum pressure (PRESSURE_STRENGTH=0.001) to test enhanced stability.
 """
 
-from openwave.xperiments.m4_ewt.xparameters.utils.geometry import generate_positions_by_EWT_geometry_locked
+from openwave.xperiments.m4_ewt.xparameters.utils.geometry import (
+    generate_positions_by_EWT_geometry_locked,
+)
 from openwave.common import constants
 
 UNIVERSE_EDGE = 4e-15
 TARGET_VOXELS = 55_000_000
 K = 10
 
-PERTURBATION = 0.1 
+PERTURBATION = 0.1
 POSITIONS = generate_positions_by_EWT_geometry_locked(
     UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), perturbation=PERTURBATION
 )

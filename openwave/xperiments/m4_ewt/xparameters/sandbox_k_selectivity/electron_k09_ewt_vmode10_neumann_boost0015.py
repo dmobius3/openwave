@@ -12,7 +12,9 @@ TARGET_VOXELS = 55_000_000
 K = 9
 PERTURBATION = 0.02
 
-POSITIONS = generate_positions_by_EWT_geometry(UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), perturbation=PERTURBATION)
+POSITIONS = generate_positions_by_EWT_geometry(
+    UNIVERSE_EDGE, K, center=(0.5, 0.5, 0.5), perturbation=PERTURBATION
+)
 PHASES = [180] * K
 
 XPARAMETERS = {

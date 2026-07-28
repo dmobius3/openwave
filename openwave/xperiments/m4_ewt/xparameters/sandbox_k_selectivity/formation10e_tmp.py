@@ -19,7 +19,9 @@ build (line, triangle, tetrahedron, bipyramid, octahedron, cube, tricapped
 prism) are no longer generated.
 """
 
-from openwave.xperiments.m4_ewt.xparameters.utils.geometry import generate_positions_by_EWT_geometry
+from openwave.xperiments.m4_ewt.xparameters.utils.geometry import (
+    generate_positions_by_EWT_geometry,
+)
 
 UNIVERSE_EDGE = 2e-15  # m, universe edge length in meters
 TARGET_VOXELS = 55_000_000  # Target voxel count (impacts performance)

@@ -15,6 +15,7 @@ _stability_active = []
 MONITOR_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "_live_monitor_data.json"
 SAVE_EVERY = 10  # write the shared file every 10 samples
 
+
 def sample_stability_metrics(timestep, mean_drift, active_wc):
     _stability_timesteps.append(timestep)
     _stability_drifts.append(mean_drift if mean_drift is not None else 0.0)
