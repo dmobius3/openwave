@@ -37,7 +37,7 @@ What that means in practice: you can ask an agent to navigate the platform, run 
 | --- | --- |
 | Orient | "Read README.md, MODELS.md, and CLAUDE.md, then summarize how this repo is laid out and how to run a model." |
 | Run | "Install OpenWave and launch the rendered xperiments selector; tell me what each collection does." |
-| Reproduce | "Open the script behind the M5 Coulomb cell in MODELS.md, run it headless, and show me the number and the plot." |
+| Reproduce | "Open the script behind the Coulomb row of the M5 results table in MODELS.md, run it headless, and show me the number and the plot." |
 | Validate | "Write a headless validation for [observable] on model [Mx], print the script and the result, and draft the research note." |
 | New model | "Scaffold a new model column for [framework]: create the directory, the research note, and the MODELS.md column with honest 🚧 cells." |
 
@@ -195,7 +195,7 @@ This is what fills a cell in [`MODELS.md`](MODELS.md). Every cell in that table 
 To reproduce or extend one:
 
 ```bash
-# Every MODELS.md cell links its backing script. Open a cell, follow the link, run it. Examples:
+# Every row of a MODELS.md per-model results table links its backing script. Follow the link, run it. Examples:
 python openwave/xperiments/m5_liquid_crystal/research/sandbox_v2/m5_1_coulomb.py
 python openwave/xperiments/m6_ouroboros/research/archive/sandbox_v8/ouroboros_benchmark.py
 ```
