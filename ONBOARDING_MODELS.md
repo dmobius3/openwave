@@ -439,6 +439,7 @@ A criterion is scored at one of those four in the [`MODELS.md`](MODELS.md) table
 | [`m7_hydroboros/theory/_CITATIONS.md`](openwave/xperiments/m7_hydroboros/theory/_CITATIONS.md) | The theory-corpus citations template (section 3.4) |
 | [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) | If the program tests another column's field family: what structure may be assumed, how a soldered family is scored, and how author-gated questions are routed |
 | [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) | The reporting standard for a substantive result: equations first, equation-to-code map, adversarial audit recorded |
+| [`dev_docs/AUTHOR_INVITATION.md`](dev_docs/AUTHOR_INVITATION.md) | Maintainer-side: the outreach that precedes this page. What an invitation to a model author should carry, with one real message kept as a reference |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Canonical setup, fork / branch / PR flow, DCO sign-off |
 | [`REPRODUCE.md`](REPRODUCE.md) | The clean-clone path from a published claim to the command that regenerates it |
 | [`SYS_ARCH.md`](SYS_ARCH.md) | Repository structure and tech stack |
