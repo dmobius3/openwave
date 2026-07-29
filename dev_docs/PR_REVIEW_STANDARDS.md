@@ -142,6 +142,8 @@ Findings from this gate are **questions to the author**, not verdicts. The autho
 
 **Run `python3 dev_docs/utils/check_models_md.py` before merging anything that touches [`MODELS.md`](../MODELS.md), and read its output rather than only its exit code.** Nothing else enforces it: the repository has no CI, so this script runs when a reviewer runs it and at no other time. That is a deliberate choice (the checks are instant and a reviewer is already at a terminal), and it has one failure mode, which has already happened once: the `regime` column was added, the script's positional table detection stopped finding the summary-status table, and it sat reporting 131 violations that nobody saw because nobody invoked it. A check that is not part of a procedure is not a check.
 
+**Its scope reaches past that one file.** The linter also fails when a model briefing or a model roadmap states a criteria count or a column tally that no longer matches the matrix, so run it on any PR touching those too. That check exists because the manual alternative had already failed twice in the same repository: two briefings kept quoting a 21-row tally after the criteria set grew to 31, and nothing surfaced it. Frozen records (task docs, findings, archives, theory) are not scanned, since they legitimately quote the count of their own day; a deliberately historical line inside a live doc opts out with `<!-- count:historical -->`.
+
 What it covers, so a reviewer knows what it does not:
 
 | # | Check | Catches |

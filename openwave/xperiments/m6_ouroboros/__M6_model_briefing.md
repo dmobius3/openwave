@@ -72,8 +72,8 @@ for static configurations while the solutions are time-periodic.
 
 ## Implementation Status
 
-After the 2026-07-20 refresh day: 3 ✅ / 3 ⚠️ / 3 ❌ / 12 🚧 on the 21
-[`MODELS.md`](../../../MODELS.md) criteria. The three honest negatives (electron mass,
+The 2026-07-20 refresh day settled which cells the column has earned; the live tally is
+the [`MODELS.md`](../../../MODELS.md) score-board. The three honest negatives (electron mass,
 lepton spectrum, pion) were earned by the M6.2 decision gate's pre-registered no-search
 re-derivation, exactly the "cells move in both directions" contract; the three ✅
 (neutral-sector stability, DM candidate, Maxwell-by-construction) are archive-era,
