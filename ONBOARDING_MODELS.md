@@ -50,7 +50,7 @@ It complements and does not replace: [`MODELS.md`](MODELS.md) (the comparison ta
 | [**STEP 0:<br>drive it with an AI agent**](#step-0-drive-it-with-an-ai-agent) | How the work runs here, and what the model author owns |
 | [**STEP 1:<br>self-evaluation**](#step-1-self-evaluation) | Does the model fit? Five criteria, the parameter-count test, the red flags, the hostile read |
 | [**STEP 2:<br>application**](#step-2-application) | One discussion in the New Model category, with the fields a maintainer needs |
-| [**STEP 3:<br>scaffolding and first PR**](#step-3-scaffolding-and-first-pr) | What a maintainer creates, what the author fills in, how the first pull request lands |
+| [**STEP 3:<br>scaffolding and first PR**](#step-3-scaffolding-and-first-pr) | What a maintainer creates, what the author fills in, how the first pull request lands, and the headless-first mode of work |
 | [Reference: status legend](#reference-status-legend) | The four icons a matrix cell can carry |
 | [See also](#see-also) | The rest of the doc set |
 | [DEEP READER ORIENTATION](#deep-reader-orientation) | For AI agents and deep readers landing on this page |
@@ -412,6 +412,31 @@ The `-s` flag adds the `Signed-off-by:` line that certifies the contributor has 
 **A good first PR** adds the column plus a model directory with one or two cells actually backed (a runnable script plus a note), and the rest marked 🚧 honestly. Finite-difference or first-pass now, fuller validation later, is fine and expected.
 
 A maintainer reviews with a **light PR review** focused on two things only: (1) a runnable script that reproduces the claim, and (2) a research note documenting pass or fail honestly. It is not ideological gatekeeping.
+
+### 3.6 Mode of work: headless first, rendering last
+
+Every column runs the same order, and it is worth stating because the appealing thing to do is the opposite one.
+
+OpenWave has two solvers over the same field equations. The **headless** solver (also called sandbox or research: plain scripts under a model's `research/scripts/`, no GUI) is where a question gets answered. The **rendered** solver (also called production, launcher, or GGUI: a model's `_launcher.py` and its `xparameters/` configs) is where an answered question gets shown. [`TUTORIAL.md § 3`](TUTORIAL.md#3-the-two-solvers-headless-sandbox-vs-rendered) lays out what each is good for.
+
+| | Headless solver | Rendered solver |
+| --- | --- | --- |
+| Answers | "which configuration is selected, and by how much" | "what does this mechanism look like, and how does it respond when perturbed" |
+| Runs as | `python script.py`, unattended, loopable over a parameter grid | `openwave -x`, one interactive window at a time |
+| Produces | numbers, JSON/CSV, PNGs, a written note anyone can regenerate | an on-screen render |
+
+**Do the research headless, port to the rendered engine afterwards.** Two reasons, and the first is the practical one:
+
+| Why | Detail |
+| --- | --- |
+| A rendered study does not leave a result behind | A parameter sweep driven through the launcher is one window per configuration, watched by a person. Its conclusion lives with whoever watched it. The same sweep as a script plus a loop runs unattended and ends in a table anyone can regenerate, which is the only form that can move a cell in [`MODELS.md`](MODELS.md) |
+| Rendering an unvalidated dynamics showcases nothing | Until there is a statement about what the simulation does, a viewer has no way to tell a result from an artifact, and neither does the person who built it |
+
+Where each column writes it down: M5 holds "rendering gates nothing" as a standing convention and reached its `_launcher.py` through headless rounds first; [M7](openwave/xperiments/m7_hydroboros/research/m7_roadmap.md) states "headless first, rendering graduates once the electron is canonical, no GUI work before the physics is canonical"; [M8](openwave/xperiments/m8_mit/research/m8_roadmap.md) makes its rendering port a task gated on validated dynamics, and the port instructions themselves open with "Do not start here".
+
+When a result does graduate, the launcher runs **the same kernels the headless work validated**. An interactive demo shows the physics of record, including its instabilities, rather than a prettier separate thing.
+
+This applies to contributions to existing columns exactly as it does to a new one. [`m4_ewt/research/README.md`](openwave/xperiments/m4_ewt/research/README.md) is a compact worked statement of the whole convention if a single page is more useful than this section.
 
 ---
 
