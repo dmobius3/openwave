@@ -198,7 +198,7 @@ Gaps phase F must close on REAL relaxed loops: loops were NOT stationary (`dE/dL
 | E | mass = regularized loop energy; the `E = λ·L = const` trajectory traced with `E(t)` conserved; `L_i ∝ 1/λ_i` ratios; Δm² hierarchy vs 33.6 honest pass/fail; absolute scale vs the ≥ 6.2 pm anchor; the compression reported as falsifier if unresolved |
 | F | the 4 PMNS parameters recomputed on stationary loops, provenance-labelled (derived / consequence / fit) vs NuFIT 6.0; PMNS also from the loop's preferred time derivatives (the owner-specified observable); θ₁₂ selection re-test; Gram vs Hessian; the δ_CP fork DECIDED in-model; the run doubles as the weak-sector (SO(3)) deliverable |
 
-### Card 7: blindspot pass (the unknowns quadrant map, per `_AI_flow.md § Unknowns discipline`)
+### Card 7: blindspot pass (the unknowns quadrant map)
 
 | Quadrant | Biggest known instance | Route |
 | --- | --- | --- |

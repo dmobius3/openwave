@@ -129,7 +129,7 @@ Each task filled specific cells, the running scoreboard of the program:
 | **M7.7 (milestone)** | consolidate the column + the M7 deep-dive ([`m7_theory_canonical.md`](m7_theory_canonical.md), the future "Per-model results of record" row) | `scripts/m7_7_canonical.py` + `scripts/m7_functional.py` |
 | **M7.8** | Spin-½ statistics · Magnetic moment μ + spin J (the `U₊/U₋` reading) | `scripts/m7_8_helicity_pair.py` |
 | **M7.9** | (validation infrastructure, no cell: the ChaosBook benchmark suite) | `scripts/m7_9_*.py` (orbits module + gates/benchmark/audit drivers) |
-| **M7.15** | Magnetic force | `scripts/m7_15_magnetic_force.py` |
+| **M7.15** | Magnetic moment μ, the intrinsic-magnetostatics completion (clock-carried per-defect B + Larmor response) | `scripts/m7_15_magnetic_force.py` |
 | **M7.16** | Gravity | `scripts/m7_16_gravity.py` |
 | **M7.17** | Strong force / confinement · Weak force | `scripts/m7_17_nuclear_forces.py` |
 | **M7.18** | Antimatter + annihilation | `scripts/m7_18_annihilation.py` |
@@ -137,7 +137,7 @@ Each task filled specific cells, the running scoreboard of the program:
 | **M7.20** | Dark matter candidate | `scripts/m7_20_dark_matter.py` |
 | **M7.22** | Quarks · Baryons (p, n) · Mesons (π, K) · Orbital quantization | `scripts/m7_22_composites.py` |
 
-All 21 MODELS.md criteria are covered: Phase 1 (M7.0-M7.7) earns the electron cells, **including Coulomb** (tied to the electron's charge, M5-style), and drafts the column at the M7.7 milestone (published to [`MODELS.md`](../../../../MODELS.md) at M7.21); Phase 2 (M7.15-M7.20) fills the remaining forces (magnetic, gravity, nuclear) + annihilation / neutrinos / dark matter, opening with the M7.8 helicity-pair check of the Fleury closure notes; Phase 3 (M7.21) publishes the column; Phase 4 (M7.22) fills the cells still 🚧 in M5 (quarks, baryons, mesons, orbital quantization). Each task upgrades its cells from 🚧 to a verified icon, as M5's column grew.
+The phase plan maps to the [`MODELS.md`](../../../../MODELS.md) criteria (live counts on its score-board; the shared set has grown since this plan was drafted): Phase 1 (M7.0-M7.7) earns the electron cells, **including Coulomb** (tied to the electron's charge, M5-style), and drafts the column at the M7.7 milestone (published at M7.21); Phase 2 (M7.15-M7.20) fills the remaining forces (magnetism, gravity, nuclear) + annihilation / neutrinos / dark matter, opening with the M7.8 helicity-pair check of the Fleury closure notes; Phase 3 (M7.21) publishes the column; Phase 4 (M7.22) fills the cells still 🚧 in M5 (quarks, baryons, mesons, orbital quantization). Each task upgrades its cells from 🚧 to a verified icon, as M5's column grew.
 
 ---
 

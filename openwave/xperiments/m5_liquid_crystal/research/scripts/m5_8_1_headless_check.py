@@ -8,7 +8,7 @@ from the spatial sub-block, g (time axis, index 0) stays constant, dynamics are 
 Catches compile errors + shape/index bugs before the on-screen GUI test (which is the
 GUI-only part the user runs). Run from the openwave repo root:
 
-    PYTHONPATH=/Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave \\
+    PYTHONPATH=~/Documents/source_code/OPENWAVE-LABS/openwave \\
         python -m openwave.xperiments.m5_liquid_crystal.research.sandbox_v8.m5_8_1_headless_check
 (or just: python m5_8_1_headless_check.py  with the repo root on sys.path — handled below)
 """

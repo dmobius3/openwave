@@ -126,7 +126,7 @@ The one-line verdict (audit-corrected): **arm C kills as scoped (with a structur
 
 **Deviations from plan**: six, logged in the [Deviations log](#deviations-log-execute-as-they-happen).
 
-**Action needed**: successor task = the corrected-functional extremal-orbit solve (**[M5.20.5](m5_20_5_task_details.md)**, PLAN written same day, top of Backlog); the Q24 outbound draft now carries three sharpened asks (BVP confirmation, elliptic-orbit class, γ = −1 admissibility), user-gated; no EXEC_SUMMARY / GOAL_TRACKER change (OpenWave-scoped physics, the M5.20.3-close pattern).
+**Action needed**: successor task = the corrected-functional extremal-orbit solve (**[M5.20.5](m5_20_5_task_details.md)**, PLAN written same day, top of Backlog); the Q24 outbound draft now carries three sharpened asks (BVP confirmation, elliptic-orbit class, γ = −1 admissibility), user-gated (the M5.20.3-close pattern).
 
 **Findings**: the formulation search eliminated the alternatives with structure instead of fizzles: single sanctioned terms cannot fix the kinetic form without destroying the loop (lemma + measurement), zero-energy Dirac data does not exist at the loop, and Duda's own least-action branch positively signals: free-period particle-clock roots exist on exactly periodic boost-conjugated orbits, the theory's negative kinetic directions doing the enabling, all surviving an adversarial audit that also contributed a candidate well-posed completion (γ = −1 Skyrme subtraction). The oscillation program is unblocked without waiting on Duda.
 

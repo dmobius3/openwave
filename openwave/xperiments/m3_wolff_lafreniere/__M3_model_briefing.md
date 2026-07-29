@@ -48,8 +48,9 @@ is no winding number, no vortex, unlike M5's defects or M7's toroidal knots):
 
 ## Implementation Status
 
-The EWT family shares one MODELS.md column, "EWT (M4)": **0 ✅, 8 ⚠️, 3 ❌, 10 🚧** (of 21).
-These are the results recorded on this scalar engine; the vector-PDE successor is M4.
+The EWT family shares one [`MODELS.md`](../../../MODELS.md) column, "EWT (M4)"; the live
+per-criterion counts are on its score-board. The recorded results were produced on this
+scalar engine; the vector-PDE successor is M4.
 
 | Sector | Status |
 | --- | --- |
