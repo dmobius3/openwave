@@ -4,7 +4,7 @@
 > field (extended to a 4×4 tensor, with a Skyrme kinetic term): the electron is a biaxial hedgehog whose de Broglie clock is the
 > energy-minimizing state, charge is the defect's topological winding, and the four
 > forces plus gravity emerge from the geometry of the same field. It is OpenWave's
-> most-validated model (16 of 21 [`MODELS.md`](../../../MODELS.md) cells).
+> most-validated model (live counts on the [`MODELS.md`](../../../MODELS.md) score-board).
 
 ![M5_hero](research/images/clock.gif)
 
@@ -72,13 +72,13 @@ large neutrino experiments.
 
 ## Implementation Status
 
-16 of 21 MODELS.md criteria carried (8 ✅ validated in-platform, 8 ⚠️ partial), 0 ❌,
-5 🚧 planned. It is the most-validated column in the coverage matrix. Phases M5.0 → M5.11
-complete.
+The most-validated column in the coverage matrix; the live per-criterion counts are on
+the [`MODELS.md`](../../../MODELS.md) score-board, and phase progress lives in
+[`research/m5_roadmap.md`](research/m5_roadmap.md).
 
 | Sector | Status |
 | --- | --- |
-| Electron (4 observables) | ✅ mass (Faber r₀ → 0.511 MeV), charge (winding), μ + spin, spin-½ (apolar 720°) |
+| Electron (4 observables) | ✅ mass (Faber r₀ → 0.511 MeV), charge (winding), spin-½ (apolar 720°); μ ❌ RE-BASED + J ⚠️ (see Falsifiable tests row) |
 | Coulomb 1/r | ✅ R² = 0.978 between two hedgehogs (pure topology) |
 | Maxwell EM | ✅ recovered two routes (hydrodynamic + Faber curvature) |
 | Klein-Gordon (QM) | ✅ geometric mass from biaxial twist (Fig 9) |

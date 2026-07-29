@@ -287,9 +287,15 @@ ROOT = PATH.parent
 EXEMPT = "<!-- count:historical -->"
 FROZEN = ("/archive/", "/theory/", "/tasks/", "/findings/", "/checkpoints/", "/ai_analysis/")
 STATED = re.compile(r"(\d+)\s+criteri(?:a|on|ons)\b")
-# "3 ✅ / 3 ⚠️ / 3 ❌ / 22 🚧", two to four buckets. Requires 🚧 so that a gate
-# suite's "4 ✅ / 1 ❌" is not mistaken for a column tally.
-TALLY = re.compile(r"\d+\s*(?:✅|⚠️|❌|🚧)(?:\s*/\s*\d+\s*(?:✅|⚠️|❌|🚧)){1,3}")
+# "21 MODELS.md criteria", "16 of 21 [`MODELS.md`](...) cells": a count directly
+# adjacent to the MODELS.md name, plain or in link markup.
+NEARMODELS = re.compile(r"(\d+)\s+\[?`?MODELS\.md`?\]?(?:\([^)]*\))?\s+(?:cells?\b|criteri\w*)")
+# "(of 21)": the bare parenthesized form; checked only on lines naming MODELS.md.
+PAREN_OF = re.compile(r"\(of\s+(\d+)\)")
+# "3 ✅ / 3 ⚠️ / 3 ❌ / 22 🚧" or comma-separated "0 ✅, 8 ⚠️, 3 ❌, 10 🚧", two to
+# four buckets. Requires 🚧 so that a gate suite's "4 ✅ / 1 ❌" is not mistaken
+# for a column tally.
+TALLY = re.compile(r"\d+\s*(?:✅|⚠️|❌|🚧)(?:\s*[/,]\s*\d+\s*(?:✅|⚠️|❌|🚧)){1,3}")
 
 n_crit = len(crit_set)
 live_docs = [
@@ -312,6 +318,17 @@ for doc in sorted(set(live_docs)):
                 errors.append(
                     f"{rel}:{ln} says '{m.group(0)}', the matrix has {n_crit}"
                 )
+        for m in NEARMODELS.finditer(line):
+            if n_crit and int(m.group(1)) != n_crit:
+                errors.append(
+                    f"{rel}:{ln} says '{m.group(0)}', the matrix has {n_crit}"
+                )
+        if "MODELS.md" in line:
+            for m in PAREN_OF.finditer(line):
+                if n_crit and int(m.group(1)) != n_crit:
+                    errors.append(
+                        f"{rel}:{ln} says '{m.group(0)}', the matrix has {n_crit}"
+                    )
         for m in TALLY.finditer(line):
             if "🚧" not in m.group(0):
                 continue
