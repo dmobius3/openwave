@@ -4,7 +4,7 @@
 
 OpenWave is an open-source platform for **testing candidate field-theoretic models of matter against empirical observation, uniformly**. It is not one theory with one substrate. It is a **model database**: each candidate framework becomes a **column** scored against a shared set of criteria (particles, forces, waves, quantum emergence) in [`MODELS.md`](MODELS.md), and every cell in that matrix is earned by a **runnable script plus an honest research note**, or it stays marked "not yet tested".
 
-The columns are deliberately heterogeneous. M5 is a 4x4 real symmetric tensor field. M6 is two coupled Lorenz-constrained vector fields. M8 is spectral geometry on a fixed quotient manifold with no dynamical field at all. Each model gets its own directory, its own solver, and its own roadmap. **A new framework does not have to look like any of the existing ones.**
+The columns are deliberately heterogeneous. M5 is a 4x4 real symmetric tensor field. M6 is two coupled Lorenz-constrained vector fields. M8 is spectral geometry on a fixed quotient manifold, admitted with no dynamical field of its own. Each model gets its own directory, its own solver, and its own roadmap. **A new framework does not have to look like any of the existing ones, and it does not have to arrive finished.**
 
 | The platform supplies | The model author supplies |
 | --- | --- |
@@ -219,7 +219,7 @@ A model that survives a genuine hostile pass is ready. One that has only been re
 
 Partial coverage is normal and welcome. Most cells in a new column begin as 🚧 "not yet tested in-platform" and deepen over time.
 
-**A model with no Lagrangian is still admissible.** M8 was admitted with no field Lagrangian and no equation of motion, scored honestly, with the missing dynamics named as its defining open problem and a field-dynamics collaboration set up around it. A framework that is not formulated as an action principle should say so plainly in the application rather than working around it. What the platform cannot substitute for is a **closed set of equations**: something that can be integrated, solved, or eigen-decomposed to produce a number.
+**A model with no Lagrangian is still admissible.** [M8](openwave/xperiments/m8_mit/__M8_model_briefing.md) was admitted with no field Lagrangian and no equation of motion, scored honestly, with the missing dynamics named as its defining open problem and a field-dynamics collaboration set up around it. That collaboration was not left as a promise: the contract the Lagrangian survey is graded against was pre-registered and locked before any numerics existed to tune it toward ([`m8_2_preregistration.md`](openwave/xperiments/m8_mit/research/findings/m8_2_preregistration.md)), contributed by the author's own first pull request. The author supplies the arena and the target structure; the platform supplies the candidate Lagrangians, the simulation engineering, and the grading. Where that program stands on any given day is in its roadmap ([`m8_roadmap.md`](openwave/xperiments/m8_mit/research/m8_roadmap.md)), not here. A framework that is not formulated as an action principle should say so plainly in the application rather than working around it. What the platform cannot substitute for is a **closed set of equations**: something that can be integrated, solved, or eigen-decomposed to produce a number.
 
 **The four tiers.** "Has a Lagrangian" is not the bar, and never was. Frameworks arrive at one of four tiers, and the first three are all admissible:
 
@@ -243,7 +243,7 @@ Tier 2 is ordinary physics, not a compromise. Maxwell's equations were written d
 
 None of that blocks admission. It changes what the column's method notes have to show: a tier-1 model may assert conservation, a tier-2 model has to demonstrate it.
 
-**Why tier 3 is bounded.** A spectral model produces real, checkable numbers, but its observables are the static catalogue: what states exist, what they weigh, what quantum numbers they carry. Anything about persistence, propagation or exchange (stability under perturbation, angular momentum, magnetic moment, annihilation, radiation, a clock rate) needs time evolution, which is why those rows sit at 🚧 in a tier-3 column and why the [`MODELS.md`](MODELS.md) coverage matrix carries a `regime` column marking which rows demand it. A tier-3 model is admitted on the understanding that the gap is named, not worked around.
+**Why tier 3 is bounded.** A spectral model produces real, checkable numbers, but its observables are the static catalogue: what states exist, what they weigh, what quantum numbers they carry. Anything about persistence, propagation or exchange (stability under perturbation, angular momentum, magnetic moment, annihilation, radiation, a clock rate) needs time evolution, which is why those rows sit at 🚧 in a tier-3 column and why the [`MODELS.md`](MODELS.md) coverage matrix carries a `regime` column marking which rows demand it. A tier-3 model is admitted on the understanding that the gap is named, not worked around. Naming it is also what opens the program to close it: a stated gap becomes a task with a pre-registration and a place on the roadmap, which is how a column moves up a tier.
 
 ---
 

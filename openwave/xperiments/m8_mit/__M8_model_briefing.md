@@ -18,9 +18,10 @@
 > cross-model pointers ([`research/m8_platform_pointers.md`](research/m8_platform_pointers.md)).
 > The first sector is now VALIDATED in-platform: M8.1 (2026-07-21) verified the
 > twisted-Möbius first-eigenvalue theorem at 10-digit precision, blind and audited.
-> The field-dynamics half is underway as well: the contract M8.4 will be graded
-> against is locked (M8.2, the author's first pull request), and the mass-formula
-> reproducer has landed (M8.3). MIT's other results remain analytic or externally
+> The field-dynamics half has its contract: the pre-registration the Lagrangian
+> survey is graded against was locked before any numerics existed to tune it toward
+> (M8.2, the author's first pull request). Task-by-task state is in the roadmap, not
+> restated here. MIT's other results remain analytic or externally
 > computed, and three of them are pre-registered documented negatives the author
 > reports as results. Work runs headless (scripts + research notes) first; the 3D
 > rendering port is a later stage, gated on field dynamics validating in-platform
@@ -77,7 +78,7 @@ any maintainer does. The honest summary, kept at the ledger's own weight:
 
 Standing demand of any particle model: *state the field configuration of each particle,
 and say whether it uses topological vortices.* MIT's honest answer is that it does
-**not** currently supply field configurations of that kind: its particles are
+**not** supply field configurations of that kind: its particles are
 representation-theory slots, not field defects. This is exactly the half of the program
 MIT lacks and the M8 program supplies
 (the gap map: [`research/m8_background.md`](research/m8_background.md)).
