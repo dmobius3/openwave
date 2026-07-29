@@ -1752,8 +1752,7 @@ def task_u4(G, SDs, names):
 
 
 # =================================================================== verdicts
-SOLVER_JSON = ('/private/tmp/claude-501/-Users-xrodz-Documents-source-code-'
-               'NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/'
+SOLVER_JSON = (os.environ.get('M8_SOLVER_SCRATCH', '.') + '/'
                'm8_1_1_work/solverB/m8_1_1_defect.json')
 
 

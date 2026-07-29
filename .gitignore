@@ -224,7 +224,7 @@ imgui.ini
 # the plots, the scripts, and the per-folder _DATASETS.md manifest that indexes every
 # local-only file with its producing script and the record holding its regen command.
 # Regenerate a manifest with:
-#   python3 ~/Documents/source_code/XRODZ/dotfiles/claude_projects/NEPTUNYA-SABER/scripts/gen_datasets_manifest.py <path/to/data> --write
+#   python3 dev_docs/utils/gen_datasets_manifest.py <path/to/data> --write
 # Untracked going forward; existing copies remain in pre-existing history (no rewrite).
 **/data/*.npz
 **/data/*.npy

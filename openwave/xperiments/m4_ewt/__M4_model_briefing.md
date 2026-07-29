@@ -62,10 +62,10 @@ selectivity and far-field EM *emerge*, but the electron-soliton core is not yet 
 
 ## Implementation Status
 
-The EWT family shares one MODELS.md column, "EWT (M4)": **0 ✅, 8 ⚠️, 3 ❌, 10 🚧** (of 21).
-The validation record is authored on the M3 scalar engine; M4 is the vector-PDE successor
-whose in-sim validation is in progress. The engine substrate upgrade (P0-P4) is complete;
-zero cells are yet fully validated in-platform.
+The EWT family shares one [`MODELS.md`](../../../MODELS.md) column, "EWT (M4)"; the live
+per-criterion counts are on its score-board. The validation record is authored on the M3
+scalar engine; M4 is the vector-PDE successor whose in-sim validation is in progress. The
+engine substrate upgrade (P0-P4) is complete.
 
 | Sector | Status |
 | --- | --- |
