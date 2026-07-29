@@ -116,8 +116,8 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 | | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r) | far-field 1/r potential at charge e |
-| Lorentz covariance | covariant dispersion; boosted states contract, c-limited |
-| Magnetic force | Larmor precession of the dipole in an applied field |
+| Lorentz covariance | Lorentz-invariant action, no preferred frame; boosted states contract, c-limited |
+| Magnetic force | boosted charge yields the B of relativistic EM; dipole Larmor precession |
 | Strong force: confinement | linear inter-charge potential, ~1 GeV/fm (Cornell) |
 | Running coupling | coupling varies with scale (onset at the core radius) |
 | Weak force: muon decay | μ relaxes to e + neutral ejecta |
@@ -145,7 +145,7 @@ One table per model, column order of the matrix. Each row is the evidence behind
 | [Simplest test per criterion](#simplest-test-per-criterion) | none needed: one short clause per row, observed maximum 12 words |
 | [Score-board](#summary-count) | none: counts only, each tallied against the rows |
 
-Each matrix icon must match the status tag of the same criterion in the model's own table. That rule, the score-board tallies, the `regime` values, the simplest-test table (non-empty per criterion, criteria-synced with the matrix), and every row's column count are linted by [`dev_docs/utils/check_models_md.py`](dev_docs/utils/check_models_md.py), which a maintainer runs before merging anything that touches this file ([`dev_docs/PR_REVIEW_STANDARDS.md § 7.1`](dev_docs/PR_REVIEW_STANDARDS.md#71-the-modelsmd-linter)).
+Each matrix icon must match the status tag of the same criterion in the model's own table. That rule, the score-board tallies, the `regime` values, the simplest-test table (non-empty per criterion, criteria-synced with the matrix), every row's column count, and every criteria count or column tally stated in a live doc elsewhere in the repository are linted by [`dev_docs/utils/check_models_md.py`](dev_docs/utils/check_models_md.py), which a maintainer runs before merging anything that touches this file or restates its counts ([`dev_docs/PR_REVIEW_STANDARDS.md § 7.1`](dev_docs/PR_REVIEW_STANDARDS.md#71-the-modelsmd-linter)).
 
 ## Liquid Crystal (M5)
 
