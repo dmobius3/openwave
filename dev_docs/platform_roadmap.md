@@ -12,6 +12,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
+| [T3](tasks/t3_task_details.md) | MODELS.md cell budget: re-derive the rule, expected 55 to 65 | The current 55 is inherited, not derived: it is the budget of the retired six-column layout, walked 55 → 45 → 55 by hand across the 2026-07-25 split into matrix plus per-model tables, with a fifth model and nine criteria added since. Re-derive it for the two-column tables, fix the stale wording, state which tables carry no budget | ✅ Both gates cleared 2026-07-28: [PR #362](https://github.com/openwave-labs/openwave/pull/362) merged with its cell trimmed to 55, and user "go" |
 
 ## BACKLOG
 
@@ -19,7 +20,6 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [T3](tasks/t3_task_details.md) | MODELS.md cell budget: re-derive the rule, expected 55 to 65 | The current 55 is inherited, not derived: it is the budget of the retired six-column layout, walked 55 → 45 → 55 by hand across the 2026-07-25 split into matrix plus per-model tables, with a fifth model and nine criteria added since. Re-derive it for the two-column tables, fix the stale wording, state which tables carry no budget | [PR #362](https://github.com/openwave-labs/openwave/pull/362) merged with its over-budget cell trimmed to 55, so the standard is never seen widening to pass a pending contribution, plus user "go" |
 | [T2](tasks/t2_task_details.md) | MODELS.md normalized score: a fair single number per column | 🔶 DEFERRED 2026-07-28, same day as the proposal (was M5.30): the score-board already separates covered from not-covered and orders the columns, so a scalar score waits for a critical mass of tested rows. The proposed formula scores silence as average and ranks ❌ below 🚧; the coverage-plus-score-on-attempted repair is unstable at small samples. Analysis and candidate cures in the task doc. | critical mass of tested rows (user call) + [T1](tasks/t1_task_details.md) final criteria set + user "go" |
 
 ## CONVENTIONS

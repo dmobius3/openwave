@@ -134,7 +134,20 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 
 One table per model, column order of the matrix. Each row is the evidence behind that model's icon above: status tag, condensed summary (the 55-word rule), links to the record.
 
-**Cell format (the 55-word rule).** Every summary cell in the per-model tables below is a condensed summary, never a report: a status tag, then **at most 55 words** of prose, then the links. Detail (derivations, numbers, audit rounds, caveats, lineage) belongs in the linked findings note or script, which is the record the cell points at. When a cell cannot stay honest inside the budget, the fix is a sharper sentence plus a better link, not a longer cell. The at-a-glance matrix carries status icons only; each icon must match the status tag of the same criterion in the model's own table. Those two rules, the score-board tallies, the `regime` values, the simplest-test table (non-empty per criterion, criteria-synced with the matrix), and every row's column count are linted by [`dev_docs/utils/check_models_md.py`](dev_docs/utils/check_models_md.py), which a maintainer runs before merging anything that touches this file ([`dev_docs/PR_REVIEW_STANDARDS.md § 7.1`](dev_docs/PR_REVIEW_STANDARDS.md#71-the-modelsmd-linter)).
+**Cell format (the 55-word rule).** Every summary cell in the per-model tables below is a condensed summary, never a report: a status tag, then **at most 55 words** of prose, then the links. Detail (derivations, numbers, audit rounds, caveats, lineage) belongs in the linked findings note or script, which is the record the cell points at. When a cell cannot stay honest inside the budget, the fix is a sharper sentence plus a better link, not a longer cell.
+
+**What the 55 counts.** Prose only. The status tag, every link (label and target alike), and any `<br>→` pointer tail are excluded, because the cell's job is to point at the record and taxing the pointers would discourage linking. So a cell at the cap renders at roughly 400 characters, which is the same rendered size as a roadmap `Description` cell at its own 65-word cap ([`dev_docs/ROADMAP_STANDARDS.md`](dev_docs/ROADMAP_STANDARDS.md), whose rule counts link labels and has no tag to exclude). The two numbers differ because the two counting rules differ; they already agree on the thing a reader sees. Measure before changing either, and do not simply equalize them: `python3 dev_docs/utils/models_cell_stats.py` (derivation of record: [T3](dev_docs/tasks/t3_task_details.md)).
+
+**Which tables carry a budget.** Only the per-model ones.
+
+| Table | Budget |
+| --- | --- |
+| Per-model tables in this section | 55 words of prose per summary cell |
+| At-a-glance matrix ([Summary Status](#summary-status)) | none: status icons, and no prose at all, which the linter enforces |
+| [Simplest test per criterion](#simplest-test-per-criterion) | none needed: one short clause per row, observed maximum 12 words |
+| [Score-board](#summary-count) | none: counts only, each tallied against the rows |
+
+Each matrix icon must match the status tag of the same criterion in the model's own table. That rule, the score-board tallies, the `regime` values, the simplest-test table (non-empty per criterion, criteria-synced with the matrix), and every row's column count are linted by [`dev_docs/utils/check_models_md.py`](dev_docs/utils/check_models_md.py), which a maintainer runs before merging anything that touches this file ([`dev_docs/PR_REVIEW_STANDARDS.md § 7.1`](dev_docs/PR_REVIEW_STANDARDS.md#71-the-modelsmd-linter)).
 
 ## Liquid Crystal (M5)
 

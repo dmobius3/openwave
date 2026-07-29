@@ -1,9 +1,11 @@
-# T3: MODELS.md cell budget, raise 55 to 65
+# T3: MODELS.md cell budget, re-derive the rule
 
-> Roadmap row: [`../platform_roadmap.md`](../platform_roadmap.md) T3 (BACKLOG, ahead of
-> [T2](t2_task_details.md)). Proposed by the user 2026-07-28 while
-> [PR #362](https://github.com/openwave-labs/openwave/pull/362) was open with one cell
-> over budget. Deliberately NOT executed that day; see § Gating.
+> Roadmap row: [`../platform_roadmap.md`](../platform_roadmap.md) T3. Proposed by the user
+> 2026-07-28 while [PR #362](https://github.com/openwave-labs/openwave/pull/362) was open
+> with one cell over budget, and run the same day once both gates cleared (§ Gating).
+>
+> **Outcome: the budget stays 55.** The expected raise to 65 rested on a premise the
+> measurement refutes, and the number is now derived rather than inherited (§ FINDINGS F1).
 
 ## TASK PLANNING
 
@@ -33,6 +35,11 @@ Files that change at minimum:
 
 Historical references to 55 in closed task records ([T1](t1_task_details.md) and the
 change-logs) are NOT rewritten: they record what the budget was at the time.
+
+⚠️ **The table above is the PLAN, and the run did not follow it.** The re-derivation kept
+the budget at 55, so no `LIMIT` moved and no number changed; what changed instead is what
+the rule says about itself, plus five stale-wording sites the plan did not anticipate.
+See § DEVIATIONS LOG entry 1 and § FINDINGS F1.
 
 ### Why this is a rendering rule, not a content rule
 
@@ -122,8 +129,165 @@ executed for tidiness.
 
 ## DEVIATIONS LOG
 
-(not started)
+| # | Deviation | Action taken |
+| --- | --- | --- |
+| 1 | **The re-derivation refutes the task's own expected answer.** The plan expected 55 → 65 for parity with the roadmap `Description` cap. The measurement says the two caps already produce the same rendered cell, so equalizing the numbers would widen this one by about a third | Kept 55, wrote the derivation down, and rewrote the rule so the next reader cannot repeat the inference. Reported as the headline result, not buried |
+| 2 | The plan named [`ONBOARDING_MODELS.md`](../../ONBOARDING_MODELS.md) and [`REPRODUCE.md`](../../REPRODUCE.md) as the two stale-wording sites. ONBOARDING is NOT stale ("the four icons a matrix cell can carry" is exactly right for the icon-only matrix), and four other root docs are | Left ONBOARDING alone; fixed `REPRODUCE.md` (two places), `AI_HYGIENE.md`, `TUTORIAL.md` (two places) and `CLAUDE.md` |
+| 3 | [`PR_REVIEW_STANDARDS.md § 7.1`](../PR_REVIEW_STANDARDS.md) listed five linter checks; the linter has carried six since [T1](t1_task_details.md) added the simplest-test check | Added the missing row, renumbered, and added the do-not-equalize warning where a reviewer reads § 7.1 and § 7.2 back to back |
+| 4 | Platform tasks had no checkpoint home: `.gitignore` covered `openwave/xperiments/*/research/checkpoints/` only | Added `dev_docs/checkpoints/` to the same rule and used it for this run |
+| 5 | Stale criteria counts (21 where the set has been 31 since T1) found in three model-owned docs | NOT fixed. Out of scope for a standards task and they are author-facing surfaces; listed at review for a follow-up decision (§ FINDINGS F7) |
 
 ## FINDINGS
 
-(not started)
+### F1. The number stays 55, and it is now derived
+
+The re-derivation was run over all 155 per-model summary cells and all 88 roadmap
+`Description` cells, with [`../utils/models_cell_stats.py`](../utils/models_cell_stats.py):
+
+| Question | Answer |
+| --- | --- |
+| Does any cell need more than 55? | No. Median 17, mean 21, max 55, and **0 of 155 cells** fall in the 56-65 band the raise would open |
+| Do the two caps already agree? | Yes, on the only thing a reader sees. MODELS.md cells at 51-55 counted words render at a median 404 characters; roadmap cells at 61-65 render at a median 413. A 2% difference |
+| So why are the numbers different? | Because the counting rules are. See F2 |
+
+The budget is therefore **confirmed at 55**, not replaced. Its history is still an
+inheritance (§ "The number is inherited"), but the number it inherited lands within 2% of
+the roadmap's on the rendered measure, so the honest verdict is that it was right by
+luck and is now right on evidence.
+
+### F2. The premise of the raise was arithmetically false
+
+"One budget across two files" assumed the two linters count the same thing. They do not:
+
+| Excluded from the count | [`check_models_md.py`](../utils/check_models_md.py) | [`check_roadmaps.py`](../utils/check_roadmaps.py) |
+| --- | --- | --- |
+| Link targets | yes | yes |
+| Link **labels** | yes | **no, they count** |
+| The leading `<icon> [status]` tag | yes | no such element |
+| `<br>→` pointer tails | yes | no such element |
+
+Measured effect: a MODELS.md cell reads as a median **1.33×** its counted words (max
+2.33×), a roadmap cell exactly **1.00×** by construction. The worst two cells in
+MODELS.md today count 45 and 51 words and read as **68**, already past the roadmap's
+65-word cap while sitting comfortably inside a 55-word budget. Raising to 65 would have
+permitted roughly 87 read-words, a third more than the roadmap allows, while the change
+was being justified as making the two equal.
+
+### F3. The roadmap corpus shows a budget becoming a target
+
+The blindspot the plan listed as a risk is already visible in the other file:
+
+| Corpus | Median counted | Share of its cap | Cells in the top band |
+| --- | --- | --- | --- |
+| Roadmap `Description` (cap 65) | 52 | 80% | 34 of 88 sit at 56-65 |
+| MODELS.md summary (cap 55) | 17 | 31% | 5 of 155 sit at 51-55 |
+
+MODELS.md cells are not pressing against their budget; roadmap rows are pressing against
+theirs. That is an argument against moving the MODELS.md number at all, in either
+direction, and it is the reason the rule keeps its "condensed summary, never a report"
+framing unchanged.
+
+### F4. What the rule now says
+
+[`MODELS.md`](../../MODELS.md) gained two short blocks under the existing cell-format
+paragraph: **what the 55 counts** (the exclusions, why they are deliberate, and the
+explicit warning that the number is not comparable to the roadmap's 65), and **which
+tables carry a budget**, as a four-row table so the absence reads as a decision:
+
+| Table | Budget |
+| --- | --- |
+| Per-model results tables | 55 words of prose per summary cell |
+| At-a-glance matrix | none: icons, and no prose at all, which the linter enforces |
+| Simplest-test companion | none needed: one short clause per row, observed maximum 12 words |
+| Score-board | none: counts only |
+
+The same warning is repeated in [`check_models_md.py`](../utils/check_models_md.py)'s
+docstring and in [`PR_REVIEW_STANDARDS.md § 7.1`](../PR_REVIEW_STANDARDS.md), which is
+where a reviewer comparing the two linters would otherwise draw the wrong conclusion.
+
+### F5. The boundary is enforced at the stated value (mutation check)
+
+Not a rename: the limit bites at exactly 55.
+
+```text
+python3 dev_docs/utils/check_models_md.py       ->  clean, exit 0   (max 55, median 17)
+python3 dev_docs/utils/check_models_md.py 54    ->  1 violation, exit 1
+                                                   L339 (Quarks, M8) over budget: 55 > 54
+```
+
+The cell that trips at 54 is the M8 quarks cell trimmed to exactly 55 during the
+[PR #362](https://github.com/openwave-labs/openwave/pull/362) maintainer edit, so the
+mutation runs against a real cell sitting on the boundary rather than a synthetic one.
+
+### F6. Wording review: one plan target was fine, four other docs were not
+
+| File | State | Change |
+| --- | --- | --- |
+| [`ONBOARDING_MODELS.md`](../../ONBOARDING_MODELS.md) | correct | none. "The four icons a matrix cell can carry" describes the icon-only matrix accurately, and the `regime` reference at line 246 is current |
+| [`REPRODUCE.md`](../../REPRODUCE.md) | stale, twice | the traversal table routed readers from a "coverage-matrix cell" to "the script it links"; the matrix links nothing. Repointed at the per-model results table, and the same fix applied to the "good first reproduction" line |
+| [`AI_HYGIENE.md`](../../AI_HYGIENE.md) | stale | "no cell in the coverage matrix rests on prose" now reads "no icon ... the per-model results table behind it links every claim" |
+| [`TUTORIAL.md`](../../TUTORIAL.md) | stale, twice | the agent-prompt example and the reproduction code comment both assumed a matrix cell carries a script link |
+| [`CLAUDE.md`](../../CLAUDE.md) | stale | the doc-map row claimed "every cell links the runnable script"; now names the two-layer structure |
+
+### F7. Found, not fixed: stale criteria counts in three model docs
+
+[T1](t1_task_details.md) took the criteria set from 22 to 31 and did not sweep the docs
+that state the count. Present tense and wrong today:
+
+| File | Line | Says | Should say |
+| --- | --- | --- | --- |
+| [`m8_platform_pointers.md`](../../openwave/xperiments/m8_mit/research/m8_platform_pointers.md) | 20 | "the shared 21-criteria coverage matrix" | 31 |
+| [`m6_roadmap.md`](../../openwave/xperiments/m6_ouroboros/research/m6_roadmap.md) | 7 | "21 criteria ... 3 ✅ / 3 ⚠️ / 3 ❌ / 12 🚧" | 31 criteria, 22 🚧 |
+| [`__M7_model_briefing.md`](../../openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) | 8 | "the 21-cell column" | 31 |
+
+Left alone deliberately: a standards task should not quietly edit three model authors'
+pages, and the fix belongs with whoever sweeps T1's tail. Historical statements ("published
+the 21-cell column", in closed task records) are correct as written and are not touched.
+
+### F8. The derivation is re-runnable
+
+[`../utils/models_cell_stats.py`](../utils/models_cell_stats.py) is the artifact that
+makes DoD 1 real: the next structural change to MODELS.md can test the number instead of
+inheriting it a second time. It reports both corpora under three measures, the histogram
+of each, the simplest-test companion table for the scope claim, and the head-to-head that
+decided this task. `--csv` dumps every cell.
+
+```bash
+python3 dev_docs/utils/models_cell_stats.py
+```
+
+### F9. Cross-check of the load-bearing claim
+
+Everything above rests on one measurement: that a MODELS.md cell at 55 and a roadmap row
+at 65 render the same size. Per the adversarial-audit rule
+([`AI_HYGIENE.md § 1`](../../AI_HYGIENE.md)), it was re-measured by a second route that
+imports none of the stats script: different regex order, link labels substituted before
+`<br>` handling, characters counted on the raw table line.
+
+| Cell | Visible words | Rendered characters |
+| --- | --- | --- |
+| MODELS.md M8 quarks, counted at exactly the 55 cap | 60 | 388 |
+| MODELS.md M5 quarks, counted at 39 | 61 | 396 |
+| M8 roadmap M8.1.1 row, counted at 64 of the 65 cap | 64 | 451 |
+| M8 roadmap M8.1 row, counted at 57 | 57 | 399 |
+
+Same size class, with the MODELS.md cell at its cap landing slightly BELOW the roadmap
+cell at its cap. The claim survives, and the direction of the residual argues against a
+raise rather than for one.
+
+**No method note is produced for this task**, deliberately: [`METHOD_NOTE.md`](../METHOD_NOTE.md)
+governs results reported to a model owner or an internal physics audit, and this is a
+documentation standard carrying no physics claim. The re-runnable script (F8) plus this
+cross-check are the equivalent audit surface.
+
+### Definition of done
+
+| # | Item | State |
+| --- | --- | --- |
+| 1 | Budget re-derived for the current layout, derivation written down | ✅ F1, F2, and the script (F8) |
+| 2 | Every file stating a cell budget carries the same value, repo-wide grep clean | ✅ 55 in `MODELS.md`, the linter default and § 7.1; no other number states a cell budget |
+| 3 | `check_models_md.py` exits 0 | ✅ clean, 155 cells |
+| 4 | Mutation check at the boundary | ✅ F5 |
+| 5 | Measurement re-run and recorded at execution time | ✅ F1, F3 |
+| 6 | Wording review done | ✅ F6, with the plan's own target list corrected |
+| 7 | The rule states which tables carry no budget | ✅ F4 |

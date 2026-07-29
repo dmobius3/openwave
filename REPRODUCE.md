@@ -29,14 +29,14 @@ The repository keeps reproduction information **single-source**: the command tha
 
 | You start from | Route to the command |
 | --- | --- |
-| A [`MODELS.md`](MODELS.md) coverage-matrix cell | The cell links its backing script or research doc directly; scripts live under `openwave/xperiments/<model>/research/scripts/` |
+| A [`MODELS.md`](MODELS.md) status icon | The at-a-glance matrix carries icons only. Follow the column header to that model's own results table, where the row for the same criterion carries the summary and links its backing script or research doc; scripts live under `openwave/xperiments/<model>/research/scripts/` |
 | A findings note (`research/findings/`) | The note links its task doc (`research/tasks/<taskID>_task_details.md`); task docs record the exact regeneration command(s) for their artifacts at close |
 | A data array (`.npz` and similar) | Heavy arrays are regenerable and not tracked in git; a `data/` folder that owns such arrays carries a `_DATASETS.md` manifest listing each array's regeneration script, mode, and runtime |
 | A plot (`research/plots/` or embedded in a doc) | Plots are tracked; the producing script shares the same task-id prefix in `research/scripts/` |
 
 The glue is the **task-id naming convention**: within a model, one task id prefixes the task doc, its scripts, its data, and its plots (for example `m5_21_2b_*`), so any artifact resolves to its task doc, and the task doc holds the commands.
 
-A good first reproduction: pick any ✅ cell in [`MODELS.md`](MODELS.md) and run the script it links. Task docs state runtimes where they are non-trivial.
+A good first reproduction: pick any ✅ row in a [`MODELS.md`](MODELS.md) per-model results table and run the script it links. Task docs state runtimes where they are non-trivial.
 
 ## 3. Per-model entry points
 

@@ -150,9 +150,12 @@ What it covers, so a reviewer knows what it does not:
 | 2 | Icon sync | The at-a-glance matrix disagreeing with the same criterion's status tag in the model's own table, in either direction, including rows missing from one side |
 | 3 | Score-board | A count that does not equal the tally of that icon over that model's rows, a total that does not equal the criteria count, or an icon used in rows with no score-board row |
 | 4 | Regime | A criterion whose `regime` is not `static`, `dynamic` or `both` |
-| 5 | Row shape | A data row whose cell count differs from its header, which is what an unescaped `\|` inside a cell looks like from the parser's side |
+| 5 | Simplest test | A criterion with an empty test, or a criteria set that does not match the matrix in either direction |
+| 6 | Row shape | A data row whose cell count differs from its header, which is what an unescaped `\|` inside a cell looks like from the parser's side |
 
 It does **not** check prose accuracy, link targets, or whether a cell's claim is supported by the artifact it links. Those are [Gate C](#5-gate-c-claim-to-artifact) and [Gate E](#7-gate-e-modelsmd-cell-changes), and they are yours.
+
+⚠️ **The 55 in check 1 and the 65 in [§ 7.2](#72-the-roadmap-linter) are not the same unit and must not be equalized.** This linter counts prose only; the roadmap linter counts link labels too and has no status tag to strip. At their respective caps the two produce a cell of the same rendered size, so aligning the numbers would silently widen this one by about a third. Measure first: `python3 dev_docs/utils/models_cell_stats.py` (derivation of record: [T3](tasks/t3_task_details.md)).
 
 Two operational notes. A clean run prints `clean` and exits 0; anything else lists line-numbered violations. And if a PR legitimately introduces a new criterion-level column (the way `regime` was), the script will refuse it by name until the column is registered in `REGIMES`-style fashion beside it, which is intentional: adding a column must not be able to silently switch a check off.
 

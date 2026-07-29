@@ -5,7 +5,12 @@ rule)"; the rest keep the derived tables honest:
 1. Budget: every summary cell in the per-model RESULTS BY MODEL tables carries
    at most LIMIT words of prose. Prose = cell text minus the status tag
    ("<icon> [status]"), minus every markdown link, minus "<br>-> ..." pointer
-   tail segments (mid-prose arrows still count).
+   tail segments (mid-prose arrows still count). Those exclusions are
+   deliberate: the cell exists to point at the record, so taxing its pointers
+   would discourage linking. They also mean LIMIT is NOT comparable to the
+   65-word Description cap in ROADMAP_STANDARDS.md, whose rule counts link
+   labels; 55 here and 65 there already render the same size of cell. Measure
+   before changing either (dev_docs/utils/models_cell_stats.py, T3).
 2. Sync: the summary-status table carries icons only, and each icon equals the
    status tag icon of the same criterion in the model's own table. Missing rows
    on either side are reported too.
