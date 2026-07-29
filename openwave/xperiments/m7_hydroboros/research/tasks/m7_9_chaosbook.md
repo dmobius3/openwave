@@ -105,7 +105,7 @@ Approved in-terminal 2026-07-07 evening. One adjustment at review: the index fil
 | E3 toolkit + benchmarks | ✅ `m7_9_orbits.py` + 5/5 green; **ex. 16.9 Rössler table 14/14** (worst point dev 2.0e-6, worst `Λ_e` rel 1.3e-6); counting integer-exact |
 | Adversarial audit | ✅ CONFIRMED, machinery-independent (LSODA + FD Jacobians + direct perturbation + brute-force necklaces) |
 | E4 + E5 | ✅ [benchmark report](m7_9_benchmark_report.md) (Marc + Burak session) · [reading digest](m7_9_reading_digest.md) |
-| Compliance | ✅ doc checker clean; invisibility NO-LEAKS; no artifacts > 1 MB (nothing deleted, nothing to document) |
+| Compliance | ✅ doc checker clean; scope check clean; no artifacts > 1 MB (nothing deleted, nothing to document) |
 
 Issues resolved in-run: B4 needed a second try (close-return dedupe too aggressive for n ≥ 5, `min_sep` parameter added); audit gate recalibrated to the FD noise floor (first pass flagged 5 high-`\|Λ\|` rows at devs 7e-5..6.6e-4 against a gate below the method's own floor; numbers unchanged); `poincare_section` t=0-crossing fix caught by gate G3. Deviations from plan: the 3-disk counting example became tables 18.2/18.3 (3-disk tables outside the working set); the author-sent book copy was not found locally, the public per-chapter webbook is the source of record.
 

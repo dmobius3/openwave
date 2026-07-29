@@ -31,7 +31,7 @@
    "trace_tail": [
     "    G, SD = main()",
     "            ~~~~^^",
-    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M1_char_value_negated/run.py\", line 930, in main",
+    "  File \"<scratch>/m8_1_1_work/auditB/mut/M1_char_value_negated/run.py\", line 930, in main",
     "    assert chk['row_orthonormal'] and chk['col_orthogonal']",
     "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
     "AssertionError"
@@ -44,9 +44,9 @@
    "script_died": true,
    "error": "AssertionError: 2O: sum dim^2 = 55 != 48",
    "trace_tail": [
-    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M2_dimension_falsified/run.py\", line 929, in main",
+    "  File \"<scratch>/m8_1_1_work/auditB/mut/M2_dimension_falsified/run.py\", line 929, in main",
     "    chk = verify_table(gd)",
-    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M2_dimension_falsified/run.py\", line 774, in verify_table",
+    "  File \"<scratch>/m8_1_1_work/auditB/mut/M2_dimension_falsified/run.py\", line 774, in verify_table",
     "    assert tot == gd.order, f'{gd.name}: sum dim^2 = {tot} != {gd.order}'",
     "           ^^^^^^^^^^^^^^^",
     "AssertionError: 2O: sum dim^2 = 55 != 48"
@@ -59,9 +59,9 @@
    "script_died": true,
    "error": "AssertionError: element is not rational",
    "trace_tail": [
-    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M3_chi_def_shifted/run.py\", line 896, in tensor_positivity",
+    "  File \"<scratch>/m8_1_1_work/auditB/mut/M3_chi_def_shifted/run.py\", line 896, in tensor_positivity",
     "    m = F.to_fraction(inner(gd, gd.chi_def, gd.chars[k]))",
-    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M3_chi_def_shifted/run.py\", line 173, in to_fraction",
+    "  File \"<scratch>/m8_1_1_work/auditB/mut/M3_chi_def_shifted/run.py\", line 173, in to_fraction",
     "    assert self.is_rational(a), 'element is not rational'",
     "           ~~~~~~~~~~~~~~~~^^^",
     "AssertionError: element is not rational"
@@ -76,7 +76,7 @@
    "trace_tail": [
     "    return F.to_fraction(acc)",
     "           ~~~~~~~~~~~~~^^^^^",
-    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M4_class_size_bumped/run.py\", line 173, in to_fraction",
+    "  File \"<scratch>/m8_1_1_work/auditB/mut/M4_class_size_bumped/run.py\", line 173, in to_fraction",
     "    assert self.is_rational(a), 'element is not rational'",
     "           ~~~~~~~~~~~~~~~~^^^",
     "AssertionError: element is not rational"
@@ -118,7 +118,7 @@
    "trace_tail": [
     "    return F.to_fraction(acc)",
     "           ~~~~~~~~~~~~~^^^^^",
-    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M6_chi_def_falsified_rational/run.py\", line 173, in to_fraction",
+    "  File \"<scratch>/m8_1_1_work/auditB/mut/M6_chi_def_falsified_rational/run.py\", line 173, in to_fraction",
     "    assert self.is_rational(a), 'element is not rational'",
     "           ~~~~~~~~~~~~~~~~^^^",
     "AssertionError: element is not rational"
@@ -133,7 +133,7 @@
    "trace_tail": [
     "    return F.to_fraction(acc)",
     "           ~~~~~~~~~~~~~^^^^^",
-    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M8_chi_def_permuted_2I/run.py\", line 173, in to_fraction",
+    "  File \"<scratch>/m8_1_1_work/auditB/mut/M8_chi_def_permuted_2I/run.py\", line 173, in to_fraction",
     "    assert self.is_rational(a), 'element is not rational'",
     "           ~~~~~~~~~~~~~~~~^^^",
     "AssertionError: element is not rational"

@@ -189,7 +189,7 @@ Bugs found (all documented, none fixed in frozen audited files): (1) `winding_me
 
 | Time (EDT) | Event |
 | --- | --- |
-| 2026-07-10 22:01 | GO. Resume ping armed (`SABER Resume: Task M5.20`, fires 02:55 EDT = reset+5); reset watchdog running to 02:50 EDT. Roadmap row added to IN PROGRESS |
+| 2026-07-10 22:01 | GO. Resume ping armed (`Resume: Task M5.20`, fires 02:55 EDT = reset+5); reset watchdog running to 02:50 EDT. Roadmap row added to IN PROGRESS |
 | 22:05-22:30 | PLAN persisted (this file); Duda reply captured + decoded (`m5_19_convo.md`); tracker restructured (Q16/Q21 → RESOLVED, Q20 partial, Q22 parked, Q23 opened) |
 | 22:10-22:27 | Phase A instrument built + ALL GATES GREEN (GF/GA0/GA1/GA2/GA3, `data/m5_20_a1_gates.json`); T = 200 diagnostic (done 22:22): closed-box conservative dynamics unwinds the q05 ansatz loop by t ≈ 160 (E conserved to 5e-6) |
 | 22:25 | Production fleet launched (6 × T = 2000: B1/B2 closed, C1/C2 sponge, P1/P2 corepin release); W-batch queued behind it (z-escaped seeds + dir arm + pulse3) |

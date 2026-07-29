@@ -222,7 +222,7 @@ Realistic read: a multi-month effort gated by two open research questions (N3, N
 
 ### Stage / tracking
 
-OpenWave issue [#236](https://github.com/openwave-labs/openwave/issues/236) (board: **In progress**; #200 moved to **Next**). Multi-session. Total invisibility upheld (public OpenWave physics only). Research body lands here (this plan + new scripts + a findings doc); the issue gets the distilled writeup updated as the work converges.
+OpenWave issue [#236](https://github.com/openwave-labs/openwave/issues/236) (board: **In progress**; #200 moved to **Next**). Multi-session. Public OpenWave physics only. Research body lands here (this plan + new scripts + a findings doc); the issue gets the distilled writeup updated as the work converges.
 
 ## Open questions for Dr. Duda (round 3, content bullets for the reply, not a draft)
 

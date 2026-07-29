@@ -116,7 +116,7 @@ A documented, energy-minimizing 4x4 simulation that: (a) reproduces the electron
 
 ### Stage / tracking
 
-OpenWave M5.9 sector, issue #200 (board: Next). Multi-session. Total invisibility upheld (public OpenWave physics only). The research body lands in `sandbox_v9/` (this plan + the new scripts + a findings doc); the issue gets the distilled writeup only after local work is solid and committed.
+OpenWave M5.9 sector, issue #200 (board: Next). Multi-session. Public OpenWave physics only. The research body lands in `sandbox_v9/` (this plan + the new scripts + a findings doc); the issue gets the distilled writeup only after local work is solid and committed.
 
 ## Open questions for Dr. Duda (content bullets for the maintainer's reply, not a draft)
 

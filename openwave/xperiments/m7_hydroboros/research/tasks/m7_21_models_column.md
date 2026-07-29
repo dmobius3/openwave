@@ -46,14 +46,14 @@ New column order: **M5, M6, M7, M4** (M4 moves from 3rd to 4th; M7 inserts at 3r
 - ✅ Column reorder applied by the ✅+⚠️ rule (tie-break: more ✅, then fewer ❌) → **M5 · M6 · M7 · M4**. M7 lands 3rd (ties M4 on 8 and on ✅ = 0, wins on ❌: 0 < 3).
 - ✅ M7 icon counts preserved from the M7.7 draft: **0✅ / 8⚠️ / 0❌ / 0🔶 / 13🚧** (script-extracted the M7 column and counted).
 - ✅ All 10 M7 link targets resolve, repo-root-relative; 0 missing across all 52 `openwave/` link targets (no M5/M6/M4 link broke).
-- ✅ 5-column consistency across the whole coverage region + summary count; doc checker `--changed` clean; no SABER/DHC/market leak (OpenWave public, total invisibility upheld).
+- ✅ 5-column consistency across the whole coverage region + summary count; doc checker `--changed` clean; scope check clean (physics only, no applied or commercial framing).
 - ✅ Prose synced: models list, column-order note, "Reading the table" (three → four), per-model record row, "beyond the N scored columns", and the stale "table spans three → four" line.
 
 **Issues / blockers:** none.
 
 **Deviations from plan:**
 - Roadmap framed M7.21 as issue + PR governance; run did the **content migration only** (M7 waiting, publish-directly call). GitHub issue + PR flow stays the maintainer's.
-- Fixed en route: task_details MODELS.md links were one level too shallow (`../../../../` → `../../../../../`); removed "SABER" + "user" phrasing from this OpenWave-public doc.
+- Fixed en route: task_details MODELS.md links were one level too shallow (`../../../../` → `../../../../../`); removed out-of-scope and second-person phrasing from this public doc.
 - **Post-approval addition (maintainer directive):** hard-deleted the M7.7-era `preview_models.md` to remove duplication risk, then repointed / reworded all **~20 inbound references** across 8 files (active: briefing, roadmap, question tracker, this doc; frozen history reworded to past tense: `m7_7_consolidation.md` ×5, `m7_phase1_report.md` ×2, `m7_7_call_prep.md` ×1). The gitignored `checkpoints/m7_7_progress.md` mention was left (local-only, plain text).
 - **Post-approval cleanup (maintainer directive):** swept the M7 folder's pre-existing dangling `theory/*` links (13, across `m7_background.md`, `m7_0_bootstrap.md`, `m7_1_infra.md`, `m7_2_fleury_torus.md`, `m7_6_observables.md`, `m7_question_tracker.md`), repointing each to the sibling `_CITATIONS.md` manifest (theory docs are local-only for copyright compliance; the manifest is the public index). Result: **zero broken relative links across all 42 M7 files**.
 
