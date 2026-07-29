@@ -1,11 +1,19 @@
-"""Lint MODELS.md: the 55-word cell budget + status/score-board consistency.
+"""Lint MODELS.md: the 65-word cell budget + status/score-board consistency.
 
-Six checks. The first two are defined in MODELS.md "Cell format (the 55-word
+Six checks. The first two are defined in MODELS.md "Cell format (the 65-word
 rule)"; the rest keep the derived tables honest:
 1. Budget: every summary cell in the per-model RESULTS BY MODEL tables carries
    at most LIMIT words of prose. Prose = cell text minus the status tag
    ("<icon> [status]"), minus every markdown link, minus "<br>-> ..." pointer
-   tail segments (mid-prose arrows still count).
+   tail segments (mid-prose arrows still count). Those exclusions are
+   deliberate: the cell exists to point at the record, so taxing its pointers
+   would discourage linking. LIMIT therefore is NOT the same unit as the
+   65-word Description cap in ROADMAP_STANDARDS.md even though the two numbers
+   now coincide: that rule counts link labels and has no status tag to strip,
+   so 65 here renders about a third larger than 65 there. That is intended and
+   derived, the two-column per-model table having 1.36x the column width of a
+   four-column roadmap row. Re-measure before moving it again
+   (dev_docs/utils/models_cell_stats.py, T3).
 2. Sync: the summary-status table carries icons only, and each icon equals the
    status tag icon of the same criterion in the model's own table. Missing rows
    on either side are reported too.
@@ -43,7 +51,7 @@ Model columns are located by INDEX in the header, not by assuming they run to
 the end of the row, so adding a criterion-level column cannot disable checks
 2 through 4 (it did, when `regime` was introduced).
 
-Usage: python3 dev_docs/utils/check_models_md.py [limit]   (default 55)
+Usage: python3 dev_docs/utils/check_models_md.py [limit]   (default 65)
 Exit 0 = clean, 1 = violations (listed on stdout).
 """
 
@@ -52,7 +60,7 @@ import sys
 from pathlib import Path
 
 PATH = Path(__file__).resolve().parents[2] / "MODELS.md"
-LIMIT = int(sys.argv[1]) if len(sys.argv) > 1 else 55
+LIMIT = int(sys.argv[1]) if len(sys.argv) > 1 else 65
 
 LINK = re.compile(r"\[[^\]]*\]\([^)]*\)")
 TAG = re.compile(r"^\s*[^\[]*\[[^\]]*\]")  # leading icon + [status]

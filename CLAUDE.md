@@ -19,7 +19,7 @@ OpenWave investigates, in one integrated simulator, four primary domains: **matt
 | # | Doc | What it is |
 | --- | --- | --- |
 | 1 | [`README.md`](README.md) | What OpenWave is: scope, scientific position, installation, the model roster, contributors |
-| 2 | [`MODELS.md`](MODELS.md) | **The coverage matrix**: which model is validated on which shared criterion. Every cell links the runnable script or research note that earned it |
+| 2 | [`MODELS.md`](MODELS.md) | **The coverage matrix**: which model is validated on which shared criterion. Icons at a glance, then one results table per model whose every row links the runnable script or research note that earned it |
 | 3 | [`AI_HYGIENE.md`](AI_HYGIENE.md) | **MANDATORY.** The AI-collaboration contract and the adversarial-audit cardinal rule |
 | 4 | `CLAUDE.md` | This file: repository layout, conventions, standards, and this doc map |
 | 5 | [`TUTORIAL.md`](TUTORIAL.md) | The contributor path: setup, run a simulation, test an existing model, open a PR |
