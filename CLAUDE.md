@@ -91,7 +91,14 @@ Absolute paths from a contributor's own machine (`/Users/<name>/...`, `/home/<na
 | A path in committed output or a generated header | A repo-relative path |
 | A path inside a captured log or traceback | A `<repo>/` placeholder |
 
-Enforced by [`dev_docs/utils/check_no_local.py`](dev_docs/utils/check_no_local.py), wired to `.githooks/pre-commit` (the repo sets `core.hooksPath=.githooks`, so it is active on clone with no setup). A path that genuinely has to stay is waived per line with `allow-local-path`, which stays visible in review.
+Enforced by [`dev_docs/utils/check_no_local.py`](dev_docs/utils/check_no_local.py), wired to `.githooks/pre-commit`. ⚠️ **It runs only once `core.hooksPath` points at `.githooks`**, which is the same one-time setup that enables the DCO sign-off hook, documented in [`CONTRIBUTING.md`](CONTRIBUTING.md):
+
+```bash
+git config core.hooksPath .githooks     # one-time, per clone
+git config --get core.hooksPath         # should print: .githooks
+```
+
+A clone that skips it gets no hook at all, so treat the audit command below as the backstop rather than assuming the commit path is covered. A path that genuinely has to stay is waived per line with `allow-local-path`, which stays visible in review.
 
 Audit the whole tree at any time: `python3 dev_docs/utils/check_no_local.py --tracked`.
 
