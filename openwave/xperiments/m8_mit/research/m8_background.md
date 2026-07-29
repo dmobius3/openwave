@@ -47,7 +47,7 @@ framework itself, and the M8 column adopts its verdicts as the grading baseline:
 | --- | --- | --- |
 | Structural results | the durable core | 3 generations from the 3 flat connections of S³/2I, the coexact mass gap 4/R², color from Z₃ stabilizers, chirality: retrodictions with zero adjustable freedom (the ledger's "bones") |
 | The 2/R² eigenvalue | decidable, unverified | analytic result awaiting independent recomputation; adopted as the M8.1 certification gate |
-| The 24-slot mass table | LOW evidential weight | the author's own pre-registered null: random torsion reassignment reproduces or beats the within-3× coverage at p = 0.174; the well set {13, 21, 34, 55} is never extremal under its own variational test (12.2 percentile); 8 slots unassigned; down 3.2×, top 3.9× residuals listed |
+| The 24-slot mass table | LOW evidential weight | the author's own pre-registered null on the corrected table (`mass-null-v1.1`, p_A = 0.690, superseding `mass-null-v1.0`'s p = 0.174 on the pre-correction table): the compatible-coverage count is typical under random torsion reassignment and carries no evidential weight for the torsion map; the well set {13, 21, 34, 55} is never extremal under its own variational test (12.2 percentile); 8 slots unassigned; down 3.2× residual, top compatible within ×3 (0.93, symmetrized 1.07) |
 | The calibration web | consistency, not prediction | α is input-and-output (Cycle 2); m_e ↔ Λ closes to ~11%; the two routes to R disagree ~4× (Cycle 7, the framework's flagged master-scale tension) |
 | Forward bets | the falsifiable layer | Euclid DR1 (mid 2027) pre-registered thresholds; ν₂ = 8.6 meV (JUNO/DUNE) |
 
