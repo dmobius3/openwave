@@ -41,4 +41,25 @@ The author replied 1:1 to the criteria update (summarized per the header rule): 
 | The worked example | M5.18: Lagrangian-level invariance machine-verified (15/15 identities, residual ~1e-11) and the linear sector measured covariant (tilt modes at c, Klein-Gordon dispersion); the boosted-defect measurement is the open item, hence the ⚠️ cell |
 | Question back | Does the two-tier reading match the slide's intent? If the criterion is meant strictly at equation level, the boosted-solution measurement would split into a separate, stricter row |
 
-**Pending on the author's answer** (user-gated platform work when it arrives): agreement = no edit; equation-level-only = reword the simplest-test row and possibly split the criterion into two rows (equation-level covariance; boosted-solution behavior).
+**Pending on the author's answer** (user-gated platform work when it arrives): agreement = no edit; equation-level-only = reword the simplest-test row and possibly split the criterion into two rows (equation-level covariance; boosted-solution behavior). Answered the same morning, below.
+
+## 2026-07-29 08:47 EDT (1:1): the answer, equation level preferred
+
+The author answered on four points (summarized per the header rule):
+
+| Point | Content |
+| --- | --- |
+| Slide intent | The line means Coulomb + Lorentz covariance gives magnetism, [relativistic electromagnetism](https://en.wikipedia.org/wiki/Relativistic_electromagnetism). The criterion was a step toward the magnetic sector, not a standalone covariance audit |
+| The lattice | Agrees a lattice violates covariance, but rules it an artifact of this type of simulation (avoidable by working on an ansatz); the author always assumed a continuous field, so the discretization should not count against the model |
+| The two tiers | "seem right", with one objection: they require also satisfying different and much harder properties, naming the particle clock |
+| The preferred bar | Deferred to us ("as you think"), while stating the standard way to test covariance "seems just checking Lagrangian, and lack of assumptions violating it like lattice" |
+
+**What the objection actually caught.** The clock clause was in the reply email, not in the row. But the row's own first clause, "covariant dispersion", is already scored by the `Quantum wave equation (Klein-Gordon)` row ("emergent ω² = k² + m² for matter waves"), and the clock is scored by `de Broglie clock (Zitterbewegung)`. The objection generalizes to a scoring rule: **a criterion row must not be gated on a property another row already owns.**
+
+**Why not the equation-level-only branch as pre-stated.** Taken alone, the Lagrangian check is passed by inspection for every model whose author wrote a covariant action (M4, M5, M6, M7 all qualify; only M8 has no field equation to check). The row would stop discriminating between columns, which is what the matrix is for.
+
+| Resolution (2026-07-29) | Edit |
+| --- | --- |
+| Lorentz covariance, simplest test | `covariant dispersion; boosted states contract, c-limited` → `Lorentz-invariant action, no preferred frame; boosted states contract, c-limited`. Adopts the author's bar as the leading clause, drops the clause that double-counts the KG row, keeps the boost clause (which needs no clock) as the stricter half |
+| Magnetic force, simplest test | `Larmor precession of the dipole in an applied field` → `boosted charge yields the B of relativistic EM; dipole Larmor precession`. The author's slide line made testable, and cheaper than the Larmor read |
+| Icons | None move. M5 stays ⚠️ on the same open item (the boosted-defect measurement); the lattice was never counted against it |
