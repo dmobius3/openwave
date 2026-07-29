@@ -146,7 +146,7 @@ What it covers, so a reviewer knows what it does not:
 
 | # | Check | Catches |
 | --- | --- | --- |
-| 1 | Cell budget | A per-model summary cell over 55 words of prose (links, status tag and `<br>→` pointer tails excluded) |
+| 1 | Cell budget | A per-model summary cell over 65 words of prose (links, status tag and `<br>→` pointer tails excluded) |
 | 2 | Icon sync | The at-a-glance matrix disagreeing with the same criterion's status tag in the model's own table, in either direction, including rows missing from one side |
 | 3 | Score-board | A count that does not equal the tally of that icon over that model's rows, a total that does not equal the criteria count, or an icon used in rows with no score-board row |
 | 4 | Regime | A criterion whose `regime` is not `static`, `dynamic` or `both` |
@@ -155,7 +155,7 @@ What it covers, so a reviewer knows what it does not:
 
 It does **not** check prose accuracy, link targets, or whether a cell's claim is supported by the artifact it links. Those are [Gate C](#5-gate-c-claim-to-artifact) and [Gate E](#7-gate-e-modelsmd-cell-changes), and they are yours.
 
-⚠️ **The 55 in check 1 and the 65 in [§ 7.2](#72-the-roadmap-linter) are not the same unit and must not be equalized.** This linter counts prose only; the roadmap linter counts link labels too and has no status tag to strip. At their respective caps the two produce a cell of the same rendered size, so aligning the numbers would silently widen this one by about a third. Measure first: `python3 dev_docs/utils/models_cell_stats.py` (derivation of record: [T3](tasks/t3_task_details.md)).
+⚠️ **Check 1's 65 and the roadmap linter's 65 ([§ 7.2](#72-the-roadmap-linter)) are the same number in different units.** This linter counts prose only; the roadmap linter counts link labels too and has no status tag to strip, so a cell at 65 here renders about a third larger than a row at 65 there. That is derived, not an accident: the two-column per-model table gives its summary column 1.36× the width of a four-column roadmap row, which absorbs the difference at equal rendered lines. Do not "fix" one to match the other. Measure: `python3 dev_docs/utils/models_cell_stats.py` (derivation of record: [T3](tasks/t3_task_details.md)).
 
 Two operational notes. A clean run prints `clean` and exits 0; anything else lists line-numbered violations. And if a PR legitimately introduces a new criterion-level column (the way `regime` was), the script will refuse it by name until the column is registered in `REGIMES`-style fashion beside it, which is intentional: adding a column must not be able to silently switch a check off.
 

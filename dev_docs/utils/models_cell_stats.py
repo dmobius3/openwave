@@ -26,6 +26,14 @@ Because MODELS.md excludes freight that roadmaps count, equal counted-word caps
 do NOT mean equal cells. The ratios printed per file are how much bigger a cell
 renders than its budget claims.
 
+The second half of the derivation is COLUMN GEOMETRY. A budget is a limit on how
+many rendered LINES a cell occupies, and lines = characters / column width. A
+browser sizes each column once for the whole table, roughly in proportion to its
+max-content, so the two-column per-model tables give their summary column a much
+larger share than a four-column roadmap gives its Description. Reading load and
+column geometry pull in opposite directions and the honest answer is a bracket,
+not a point; the report prints both ends.
+
 Usage: python3 dev_docs/utils/models_cell_stats.py [--csv]
 Reads MODELS.md and every roadmap check_roadmaps.py knows about. No writes.
 """
@@ -205,6 +213,82 @@ def histogram(counted, edges):
         lo = hi + 1
 
 
+def column_widths():
+    """Per-TABLE column max-content, which is what sizes a column in auto layout.
+
+    Returns (models_share, roadmap_share): the median fraction of its table's
+    width taken by the MODELS.md summary column and by the roadmap Description
+    column. Measured per table, never per row, because a browser sizes a column
+    once for the whole table.
+    """
+    mt = []
+    cur = None
+    mode = None
+    seen = None
+    for line in MODELS.read_text().splitlines():
+        head = MODEL_HEAD.match(line)
+        if head:
+            seen = head.group(1)
+        if not line.startswith("|"):
+            if line.startswith("#"):
+                if cur:
+                    mt.append(cur)
+                cur, mode = None, None
+            continue
+        cells = cells_of(line)
+        if not cells or RULE.match(line):
+            continue
+        if cells[0] == "Criteria":
+            if cur:
+                mt.append(cur)
+            cur = None
+            two_col = len(cells) == 2 and cells[1].strip("* `").lower() != "simplest test"
+            mode, cur = ("model", [0, 0]) if (two_col and seen) else (None, None)
+            continue
+        if mode == "model" and cur and len(cells) == 2:
+            cur = [max(cur[0], len(read_text(cells[0]))), max(cur[1], len(read_text(cells[1])))]
+    if cur:
+        mt.append(cur)
+
+    rt = []
+    for path in CR.roadmaps():
+        cur = idx = width = None
+        frozen = False
+        for line in path.read_text().splitlines():
+            if line.startswith("#"):
+                level = len(line) - len(line.lstrip("#"))
+                if level == 1:
+                    frozen = False
+                elif level == 2:
+                    frozen = any(w in line.strip("# ").upper() for w in CR.FROZEN)
+                if cur and idx is not None:
+                    rt.append((cur, idx))
+                cur = idx = None
+                continue
+            if frozen or not line.startswith("|") or RULE.match(line):
+                if not line.startswith("|"):
+                    if cur and idx is not None:
+                        rt.append((cur, idx))
+                    cur = idx = None
+                continue
+            cells = cells_of(line)
+            if "Description" in cells:
+                if cur and idx is not None:
+                    rt.append((cur, idx))
+                idx, width = cells.index("Description"), len(cells)
+                cur = [len(read_text(c)) for c in cells]
+                continue
+            if idx is None or len(cells) != width:
+                continue
+            cur = [max(a, len(read_text(c))) for a, c in zip(cur, cells)]
+        if cur and idx is not None:
+            rt.append((cur, idx))
+
+    ms = [t[1] / sum(t) for t in mt if sum(t)]
+    rs = [t[i] / sum(t) for t, i in rt if sum(t)]
+    return statistics.median(ms), statistics.median(rs), len(mt), len(rt)
+
+
 def companion_cells():
     """The simplest-test table: a scope check, it carries no budget by design."""
     out = []
@@ -233,8 +317,8 @@ def companion_cells():
 def main():
     m = models_cells()
     r = roadmap_cells()
-    mc, mpl, mw, _ = report("MODELS.md per-model summary cells", m, 55)
-    rc, rpl, rw, _ = report("Roadmap Description cells", r, 65)
+    mc, mpl, mw, mch = report("MODELS.md per-model summary cells", m, 65)
+    rc, rpl, rw, rch = report("Roadmap Description cells", r, 65)
 
     print("\nMODELS.md counted-word histogram")
     histogram(mc, [20, 35, 45, 50, 55, 65, 80, 200])
@@ -247,24 +331,42 @@ def main():
         f" median {statistics.median(tests):.0f}, max {max(tests)} visible words"
     )
 
-    print("\nDO THE TWO CAPS ALREADY RENDER THE SAME CELL? (the T3 question)")
+    print("\nHOW BIG IS A CELL AT ITS CAP, in each file?")
+    near_chars = {}
     for label, rows, lo, hi in (
-        ("MODELS.md at 55", m, 51, 55),
-        ("roadmap at 65 ", r, 61, 65),
+        ("MODELS.md 51-55", m, 51, 55),
+        ("roadmap  61-65", r, 61, 65),
     ):
         near = [x for x in rows if lo <= x[2] <= hi]
         rw_ = [x[4] for x in near]
-        rch = [x[5] for x in near]
+        rch_ = [x[5] for x in near]
+        near_chars[label] = statistics.median(rch_)
         print(
-            f"  {label}  cells counted {lo}-{hi}: n = {len(near)},"
+            f"  {label}: n = {len(near)},"
             f" read-words median {statistics.median(rw_):.0f} max {max(rw_)},"
-            f" read-chars median {statistics.median(rch):.0f} max {max(rch)}"
+            f" read-chars median {statistics.median(rch_):.0f} max {max(rch_)}"
         )
-    print(
-        "  If those two read-chars medians agree, the caps are already calibrated to"
-        " the same rendered cell and the different NUMBERS are the counting rules,"
-        " not a disagreement. Equalizing the numbers would break the equivalence."
+
+    m_share, r_share, n_mt, n_rt = column_widths()
+    ratio = m_share / r_share
+    road_cap_chars = near_chars["roadmap  61-65"]
+    chars_per_word = near_chars["MODELS.md 51-55"] / 53  # measured at the old 55 cap
+    load_cap = 65 * statistics.median([w / c for c, w in zip(rc, rw) if c]) / statistics.median(
+        [w / c for c, w in zip(mc, mw) if c]
     )
+    geom_cap = road_cap_chars * ratio / chars_per_word
+
+    print("\nCOLUMN GEOMETRY (per-table max-content share, n ="
+          f" {n_mt} model tables, {n_rt} roadmap tables)")
+    print(f"  MODELS.md summary column takes  {m_share:.3f} of its table's width")
+    print(f"  roadmap Description column takes {r_share:.3f} of its table's width")
+    print(f"  width ratio {ratio:.2f}x: the two-column layout is the room the split bought")
+
+    print("\nEQUIVALENT-CAP BRACKET for MODELS.md, against the roadmap's 65")
+    print(f"  reading load alone (geometry ignored):  {load_cap:.0f} counted words")
+    print(f"  column geometry alone (equal lines):    {geom_cap:.0f} counted words")
+    print("  The two pull opposite ways, so the answer is a bracket. The standard sits"
+          " at 65, inside it. Re-run this before moving the number again.")
 
     if "--csv" in sys.argv:
         print("\nkey,file_or_model,counted,prose_links,read_words,read_chars,links")

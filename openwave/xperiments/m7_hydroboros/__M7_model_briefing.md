@@ -5,7 +5,7 @@
 > self-confinement (1D radial) on OpenWave's M5-proven Taichi lattice, so the electron's
 > field configuration is both *specified* and *earned* as the energy-minimizer. **Phase 1
 > is complete (M7.0-M7.7, 2026-07-04)**: the canonical spec is
-> [`research/m7_theory_canonical.md`](research/m7_theory_canonical.md) and the 21-cell
+> [`research/m7_theory_canonical.md`](research/m7_theory_canonical.md) and the M7
 > column is PUBLISHED in
 > [`MODELS.md`](../../../MODELS.md) (M7.21, 2026-07-18), entered as the 3rd column
 > (order M5 · M6 · M7 · M4) at 0 ✅ / 8 ⚠️ / 13 🚧.
@@ -53,7 +53,7 @@ lepton / neutrino family (M7.19), quarks / baryons / mesons (M7.22).
 
 ## Implementation Status
 
-**Phase 1 complete (M7.0-M7.7, 2026-07-04); the 21-cell column is PUBLISHED in [`MODELS.md`](../../../MODELS.md)** (0 ✅ / 8 ⚠️ / 13 🚧, honest icons; entered at M7.21 (2026-07-18) as the 3rd column, order M5 · M6 · M7 · M4). Both parents
+**Phase 1 complete (M7.0-M7.7, 2026-07-04); the M7 column is PUBLISHED in [`MODELS.md`](../../../MODELS.md)** (entered at M7.21 (2026-07-18) as the 3rd column at 21 cells, 0 ✅ / 8 ⚠️ / 13 🚧; the shared criteria set has since grown to 31, so read the live score-board for today's icons). Both parents
 reproduced from one lattice code (Fleury's torus at 1.4e-4, M7.2; M6's charged `H/Q` in
 full 3D at 4.7e-5, M7.3), then the new physics earned: the first stable finite-size 3D
 soliton family (Taylor-dressed, `E = 0.802\|H_A\|`, M7.4), the vacuum-tachyon discovery +

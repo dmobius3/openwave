@@ -40,7 +40,7 @@ Every file reference is an active link to the file in this repository (under `op
 
 Each icon is earned by the matching row in that model's own table (column headers jump there); the per-model row carries the summary and the evidence links.
 
-The **regime** column is a property of the criterion, not of any model: it marks what a row demands of whatever framework attempts it. `static` means the row can be earned from structure or spectrum alone, with no time evolution. `dynamic` means it cannot. `both` means the row carries a static sub-question and a dynamic one (a state existing versus that state annihilating, a mass versus an oscillation, a static potential versus a full stress-energy source), so a model can earn part of it without dynamics and the rest only with.
+The **regime** column is a property of the criterion, not of any model: what a row demands of whatever attempts it. `static` = earnable from structure or spectrum alone, `dynamic` = not, `both` = the row has both sub-questions, so a model can earn part of it without dynamics.
 
 Each criterion's simplest passing test sits in its own companion table right below ([§ Simplest Test per Criterion](#simplest-test-per-criterion)), keeping this matrix to icons.
 
@@ -132,17 +132,15 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 
 ## RESULTS BY MODEL
 
-One table per model, column order of the matrix. Each row is the evidence behind that model's icon above: status tag, condensed summary (the 55-word rule), links to the record.
+One table per model, column order of the matrix. Each row is the evidence behind that model's icon above: status tag, condensed summary (the 65-word rule), links to the record.
 
-**Cell format (the 55-word rule).** Every summary cell in the per-model tables below is a condensed summary, never a report: a status tag, then **at most 55 words** of prose, then the links. Detail (derivations, numbers, audit rounds, caveats, lineage) belongs in the linked findings note or script, which is the record the cell points at. When a cell cannot stay honest inside the budget, the fix is a sharper sentence plus a better link, not a longer cell.
-
-**What the 55 counts.** Prose only. The status tag, every link (label and target alike), and any `<br>→` pointer tail are excluded, because the cell's job is to point at the record and taxing the pointers would discourage linking. So a cell at the cap renders at roughly 400 characters, which is the same rendered size as a roadmap `Description` cell at its own 65-word cap ([`dev_docs/ROADMAP_STANDARDS.md`](dev_docs/ROADMAP_STANDARDS.md), whose rule counts link labels and has no tag to exclude). The two numbers differ because the two counting rules differ; they already agree on the thing a reader sees. Measure before changing either, and do not simply equalize them: `python3 dev_docs/utils/models_cell_stats.py` (derivation of record: [T3](dev_docs/tasks/t3_task_details.md)).
+**Cell format (the 65-word rule).** Every summary cell below is a condensed summary, never a report: a status tag, **at most 65 words** of prose, then links; detail belongs in the linked record. The count excludes the tag, links and `<br>→` tails, so ⚠️ this 65 is **not** the 65 of [`dev_docs/ROADMAP_STANDARDS.md`](dev_docs/ROADMAP_STANDARDS.md): it permits about a third more, which the wider column earns. Re-measure before moving it: `python3 dev_docs/utils/models_cell_stats.py` ([T3](dev_docs/tasks/t3_task_details.md)).
 
 **Which tables carry a budget.** Only the per-model ones.
 
 | Table | Budget |
 | --- | --- |
-| Per-model tables in this section | 55 words of prose per summary cell |
+| Per-model tables in this section | 65 words of prose per summary cell |
 | At-a-glance matrix ([Summary Status](#summary-status)) | none: status icons, and no prose at all, which the linter enforces |
 | [Simplest test per criterion](#simplest-test-per-criterion) | none needed: one short clause per row, observed maximum 12 words |
 | [Score-board](#summary-count) | none: counts only, each tallied against the rows |
