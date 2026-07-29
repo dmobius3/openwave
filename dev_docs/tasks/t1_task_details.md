@@ -97,12 +97,16 @@ Approved by the user same morning, with two adjustments at review: the bold cruc
 
 **Research docs created/updated**: this file (deviations log, findings, review) · [`MODELS.md`](../../MODELS.md) (the restructured matrix) · [`check_models_md.py`](../utils/check_models_md.py) (6th check) · [`platform_roadmap.md`](../platform_roadmap.md) (T1 → Done).
 
+## Post-close follow-up (2026-07-29)
+
+The author replied 1:1 with one question on the new Lorentz covariance row: why test covariance in solutions rather than only in equations. The exchange record (the question, the sent reply, and what the answer decides) is in [`t1_convo.md § 2026-07-29`](t1_convo.md#2026-07-29-0354-edt-11-the-lorentz-covariance-question). No task action until the answer arrives; the possible edit (reword the simplest-test row, or split the criterion into equation-level and boosted-solution rows) is user-gated.
+
 ## Cross-links
 
 | Doc | Why |
 | --- | --- |
 | [`m5_22_convo.md`](../../openwave/xperiments/m5_liquid_crystal/research/tasks/m5_22_convo.md) | The 2026-07-27 proposal record + routing |
-| [`t1_convo.md`](t1_convo.md) | The 2026-07-28 group post: the properties-to-test slide, verbatim + decode |
+| [`t1_convo.md`](t1_convo.md) | The thread record: the 2026-07-28 slide post (verbatim + decode) + the 2026-07-29 Lorentz covariance follow-up (question, reply summary, pending decision) |
 | [`MODELS.md`](../../MODELS.md) | The target doc |
 | [M5.22](../../openwave/xperiments/m5_liquid_crystal/research/tasks/m5_22_task_details.md) | The thread the 2026-07-27 proposal arrived on; its results will feed the split Baryons rows and the candidate nuclear rows |
 | [`theory/_CITATIONS.md`](../../openwave/xperiments/m5_liquid_crystal/theory/_CITATIONS.md) | The deck citation (public URL + local snapshot) |
