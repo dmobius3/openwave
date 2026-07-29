@@ -37,8 +37,8 @@
 | --- | --- | --- | --- |
 | First positive eigenvalue | the twisted Laplacian on the conic Möbius band has first positive eigenvalue `λ₁ = 2/R²`, stable across the cone's self-adjoint extensions | SSRN 6968741 (author registry); operator statement: [first-eigenvalue.md](https://github.com/dmobius3/mode-identity-theory/blob/main/files/framework/files/bedrock/files/first-eigenvalue.md) (author repo, shared on #312, 2026-07-21) | ✅ VERIFIED IN-PLATFORM (M8.1, 2026-07-21): blind two-agent verification, adversarially audited; λ₁⁺ = 2/R² (narrow), α₀(α₀+1)/R² (wide), the 2R/e stability threshold and the −4e^(−2γ)/δ₀² defect state confirmed at 10-digit precision ([`findings/m8_1_method_note.md`](findings/m8_1_method_note.md)) |
 | Λ from the edge mode | `Λ = 3/R²`, the eigenvalue `2/R²` carried by the Gauss-Codazzi factor 3/2 (3 = Ricci trace derived, 1/2 imported from GR) | Λ ground-mode paper [10.5281/zenodo.18307314](https://doi.org/10.5281/zenodo.18307314) | 🚧 the 2/R² input is now verified (M8.1 ✅); the Gauss-Codazzi 3/2 step and the R-problem (§ 6) remain untested |
-| Coexact spectral gap | Yang-Mills-sector mass gap `4/R²` on S³/2I from McKay distance for flat bundles | SSRN 6968698 (author registry); YM paper [10.5281/zenodo.18463584](https://doi.org/10.5281/zenodo.18463584) | 🚧 eigensolve planned after M8.1 |
-| Galois pair | the affine rho-index conversion and the E8-filling Galois pair on the Poincaré homology sphere | SSRN 7129118 (author registry) | 🚧 has an author-side test script (`galois-pair.test.py`); not yet reproduced here |
+| Coexact spectral gap | Yang-Mills-sector mass gap `4/R²` on S³/2I from McKay distance for flat bundles | SSRN 6968698 (author registry); YM paper [10.5281/zenodo.18463584](https://doi.org/10.5281/zenodo.18463584) | ✅ VERIFIED IN-PLATFORM (M8.1.1, 2026-07-28): blind, adversarially audited. First occurrence equals McKay distance for all 344 irreducibles tested; the adjoint gap is `4/R²` for every irreducible flat SU(2) connection across the ADE family with exactly ONE exception, the Galois connection on S³/2I at `36/R²`, uniqueness holding over 41 connections ([`findings/m8_1_1_method_note.md`](findings/m8_1_1_method_note.md)) |
+| Galois pair | the affine rho-index conversion and the E8-filling Galois pair on the Poincaré homology sphere | SSRN 7129118 (author registry) | ✅ ARITHMETIC VERIFIED IN-PLATFORM (M8.1.1, 2026-07-28): blind, adversarially audited, the author's own test script quarantined and unused. Rho and character sums, the golden-class support, the charges, the vector `H` and its augmentation `−72`, and the E8 mod-2 package all reproduce exactly. ⚠️ The conversion identity itself is algebraically FORCED (§ 5.1 of the note), and the paper's § 7 topology proofs are outside a numerical check ([`findings/m8_1_1_method_note.md`](findings/m8_1_1_method_note.md)) |
 
 ## 4. The particle map (representation theory, not field configurations)
 
@@ -47,7 +47,7 @@
 | Particle | an irreducible representation of 2I at a McKay-lattice position (a mode slot, NOT a soliton or defect) | structural |
 | Generations | the same irrep read in the three flat connections of S³/2I (trivial, standard, Galois): exactly three, zero freedom | structural, the ledger's strongest class |
 | Color | the Z₃ face stabilizers of 2I: triplet vs singlet per irrep | structural |
-| Torsion-to-slot map | Reidemeister-torsion assignment of irreps to mass slots | ❌ author's pre-registered null (`mass-null-v1.0`: p = 0.174); the map is NOT evidence-bearing; slots are graded structurally only |
+| Torsion-to-slot map | Reidemeister-torsion assignment of irreps to mass slots | ❌ author's pre-registered null on the corrected table (`mass-null-v1.1`: p_A = 0.690, superseding `mass-null-v1.0`'s p = 0.174 on the pre-correction table); the compatible-coverage count is typical under random torsion reassignment and carries no evidential weight for the torsion map; slots are graded structurally only |
 | Unassigned | charm unplaced; 8 of 24 slots empty; rank-16 / dead-zone states named but uncomputed | open, listed honestly |
 
 ## 5. The mass formula (analytic sector)
@@ -75,8 +75,8 @@ bar; graded at the ledger weight regardless of hit rate (§ 6).
 | Cycle 2 (α) | α is input AND output: it calibrates R, then the scaling law "predicts" α. The 0.5% match is a consistency check; the non-circular content is Λ at ~24% downstream |
 | Cycle 7 (the R-problem) | the two independent routes to R disagree ~4× (coupling route ≈ 5.3 Gpc, mass route ≈ 20 Gpc; ~14× in Λ). Every R-dependent number inherits this until one route is shown correct (OQ2) |
 | m_e ↔ Λ | the closure loop holds only to ~11% |
-| Residuals | down quark 3.2×, top 3.9×, tau a soft miss; not smoothed |
-| Documented negatives | torsion null (p = 0.174), SPARC a₀(z) coherence-scale mechanism (falsified, pre-registered pipeline [10.5281/zenodo.20271702](https://doi.org/10.5281/zenodo.20271702)), H₀ bimodality (unimodal, p = 0.217) |
+| Residuals | down quark 3.2×, top compatible within ×3 (0.93, symmetrized 1.07), tau the weakest adjudicated within-×3 entry (~2.74×); not smoothed |
+| Documented negatives | torsion null (`mass-null-v1.1`, p_A = 0.690 on the corrected table; supersedes `mass-null-v1.0`'s p = 0.174 on the pre-correction table), SPARC a₀(z) coherence-scale mechanism (falsified, pre-registered pipeline [10.5281/zenodo.20271702](https://doi.org/10.5281/zenodo.20271702)), H₀ bimodality (unimodal, p = 0.217) |
 | Grading rule | platform tasks target the STRUCTURAL ladder (slot structure, gap ratios, generation count), never the 24-entry numeric table ([`m8_background.md § 3`](m8_background.md)) |
 
 ## 7. Consumption rules (standing)

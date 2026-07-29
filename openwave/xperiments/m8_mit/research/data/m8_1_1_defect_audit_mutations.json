@@ -1,0 +1,171 @@
+{
+ "baseline": {
+  "mutation": "BASE",
+  "script_died": false,
+  "U2_exact_identity_holds": true,
+  "U2_largest_numeric_deviation": "3.73380916672e-60",
+  "U12_all_agree": true,
+  "U3_nonzero_residuals": 0,
+  "U3_triple": {
+   "a": "1/1",
+   "b": "4/1",
+   "c": "-4/1"
+  },
+  "U11_roots": 240,
+  "U11_det": "1",
+  "U11_mod4_counts": {
+   "0": 136,
+   "2": 120
+  },
+  "U5_all_match": true,
+  "2I_D_defining": [
+   "73/144"
+  ]
+ },
+ "mutations": [
+  {
+   "mutation": "M1_char_value_negated",
+   "what": "negate one 2I character value -> row/column orthogonality must break",
+   "script_died": true,
+   "error": "AssertionError",
+   "trace_tail": [
+    "    G, SD = main()",
+    "            ~~~~^^",
+    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M1_char_value_negated/run.py\", line 930, in main",
+    "    assert chk['row_orthonormal'] and chk['col_orthogonal']",
+    "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "AssertionError"
+   ],
+   "detected": true
+  },
+  {
+   "mutation": "M2_dimension_falsified",
+   "what": "set one 2O irreducible degree from 3 to 4 -> sum of squares must break",
+   "script_died": true,
+   "error": "AssertionError: 2O: sum dim^2 = 55 != 48",
+   "trace_tail": [
+    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M2_dimension_falsified/run.py\", line 929, in main",
+    "    chk = verify_table(gd)",
+    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M2_dimension_falsified/run.py\", line 774, in verify_table",
+    "    assert tot == gd.order, f'{gd.name}: sum dim^2 = {tot} != {gd.order}'",
+    "           ^^^^^^^^^^^^^^^",
+    "AssertionError: 2O: sum dim^2 = 55 != 48"
+   ],
+   "detected": true
+  },
+  {
+   "mutation": "M3_chi_def_shifted",
+   "what": "add 1 to one 2T defining-character value -> tensor positivity must break",
+   "script_died": true,
+   "error": "AssertionError: element is not rational",
+   "trace_tail": [
+    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M3_chi_def_shifted/run.py\", line 896, in tensor_positivity",
+    "    m = F.to_fraction(inner(gd, gd.chi_def, gd.chars[k]))",
+    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M3_chi_def_shifted/run.py\", line 173, in to_fraction",
+    "    assert self.is_rational(a), 'element is not rational'",
+    "           ~~~~~~~~~~~~~~~~^^^",
+    "AssertionError: element is not rational"
+   ],
+   "detected": true
+  },
+  {
+   "mutation": "M4_class_size_bumped",
+   "what": "BD_4 class size off by one after the table checks -> U12 must go red",
+   "script_died": true,
+   "error": "AssertionError: element is not rational",
+   "trace_tail": [
+    "    return F.to_fraction(acc)",
+    "           ~~~~~~~~~~~~~^^^^^",
+    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M4_class_size_bumped/run.py\", line 173, in to_fraction",
+    "    assert self.is_rational(a), 'element is not rational'",
+    "           ~~~~~~~~~~~~~~~~^^^",
+    "AssertionError: element is not rational"
+   ],
+   "detected": true
+  },
+  {
+   "mutation": "M5_S_value_poisoned",
+   "what": "poison one S value in the U3 pool -> the residual test must go red",
+   "script_died": false,
+   "error": null,
+   "trace_tail": [],
+   "U2_exact_identity_holds": true,
+   "U2_largest_numeric_deviation": "3.73380916672e-60",
+   "U12_all_agree": true,
+   "U3_nonzero_residuals": 1,
+   "U3_triple": {
+    "a": "1/1",
+    "b": "4/1",
+    "c": "-4/1"
+   },
+   "U11_roots": 240,
+   "U11_det": "1",
+   "U11_mod4_counts": {
+    "0": 136,
+    "2": 120
+   },
+   "U5_all_match": true,
+   "2I_D_defining": [
+    "73/144"
+   ],
+   "detected": true
+  },
+  {
+   "mutation": "M6_chi_def_falsified_rational",
+   "what": "set one 2T defining-character value from 1 to 0 (stays rational, so no downstream rationality guard fires) -> does U2 notice?",
+   "script_died": true,
+   "error": "AssertionError: element is not rational",
+   "trace_tail": [
+    "    return F.to_fraction(acc)",
+    "           ~~~~~~~~~~~~~^^^^^",
+    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M6_chi_def_falsified_rational/run.py\", line 173, in to_fraction",
+    "    assert self.is_rational(a), 'element is not rational'",
+    "           ~~~~~~~~~~~~~~~~^^^",
+    "AssertionError: element is not rational"
+   ],
+   "detected": true
+  },
+  {
+   "mutation": "M8_chi_def_permuted_2I",
+   "what": "swap two 2I defining-character values after all table checks -> which guard catches it?",
+   "script_died": true,
+   "error": "AssertionError: element is not rational",
+   "trace_tail": [
+    "    return F.to_fraction(acc)",
+    "           ~~~~~~~~~~~~~^^^^^",
+    "  File \"/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-SABER/f3cebbf3-e046-4760-8dcd-6408211db94e/scratchpad/m8_1_1_work/auditB/mut/M8_chi_def_permuted_2I/run.py\", line 173, in to_fraction",
+    "    assert self.is_rational(a), 'element is not rational'",
+    "           ~~~~~~~~~~~~~~~~^^^",
+    "AssertionError: element is not rational"
+   ],
+   "detected": true
+  },
+  {
+   "mutation": "M7_wrong_dynkin_diagram",
+   "what": "replace E8 by D8 (still positive definite) -> does anything assert?",
+   "script_died": false,
+   "error": null,
+   "trace_tail": [],
+   "U2_exact_identity_holds": true,
+   "U2_largest_numeric_deviation": "3.73380916672e-60",
+   "U12_all_agree": true,
+   "U3_nonzero_residuals": 0,
+   "U3_triple": {
+    "a": "1/1",
+    "b": "4/1",
+    "c": "-4/1"
+   },
+   "U11_roots": 112,
+   "U11_det": "4",
+   "U11_mod4_counts": {
+    "0": 144,
+    "2": 112
+   },
+   "U5_all_match": true,
+   "2I_D_defining": [
+    "73/144"
+   ],
+   "detected": false
+  }
+ ]
+}

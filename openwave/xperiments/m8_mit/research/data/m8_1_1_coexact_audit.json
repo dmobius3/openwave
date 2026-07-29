@@ -1,0 +1,2770 @@
+{
+ "audit_of": "solverA/m8_1_1_coexact_solver.py + solverA/m8_1_1_coexact.json",
+ "method": {
+  "field": "GF(p), p = 10708457761 = 2*lcm(1..24,60)+1; all roots of unity, sqrt2, sqrt5, phi exact in GF(p). Boundary probe uses L = lcm(1..64), p = 50837476016421357502988548801.",
+  "group_construction": "exact closure under right multiplication, identity by dict equality (no tolerance, no epsilon)",
+  "irreducible_characters": "isotypic splitting of V_a by class sums acting on the module (exact GF(p) eigenspaces), multiplicities from the exact commutant dimension, Dixon Fourier lift to exact Z[zeta_M]; class-multiplication matrices never built",
+  "inner_products": "exact in Z[zeta_M], reduced mod Phi_M, Fraction results",
+  "invariant_dimensions": "three exact routes: character sum convention A, convention B, and the branching formula (m-1)*mult(tau* in V_m)+(m+1)*mult(tau* in V_(m-2)); plus exact GF(p) rank of the full unreduced projector",
+  "ranges": {
+   "symmetric_powers_a": [
+    0,
+    32
+   ],
+   "levels_m": [
+    2,
+    30
+   ],
+   "groups": "C_1..C_20, BD_2..BD_12, 2T, 2O, 2I (34 groups)"
+  }
+ },
+ "stage_logs": {
+  "group_construction_and_orders": {
+   "script": "part1.py",
+   "returncode": 0,
+   "seconds": 0.0,
+   "stdout_tail": "L = 5354228880  p = 10708457761  k = 2  (p-1)/L = 2\nfield ok: i,sqrt2,sqrt5,phi all exact in GF(p)\nC_1    built=1    expected=1    OK\nC_2    built=2    expected=2    OK\nC_3    built=3    expected=3    OK\nC_4    built=4    expected=4    OK\nC_5    built=5    expected=5    OK\nC_6    built=6    expected=6    OK\nC_7    built=7    expected=7    OK\nC_8    built=8    expected=8    OK\nC_9    built=9    expected=9    OK\nC_10   built=10   expected=10   OK\nC_11   built=11   expected=11   OK\nC_12   built=12   expected=12   OK\nC_13   built=13   expected=13   OK\nC_14   built=14   expected=14   OK\nC_15   built=15   expected=15   OK\nC_16   built=16   expected=16   OK\nC_17   built=17   expected=17   OK\nC_18   built=18   expected=18   OK\nC_19   built=19   expected=19   OK\nC_20   built=20   expected=20   OK\nBD_2   built=8    expected=8    OK\nBD_3   built=12   expected=12   OK\nBD_4   built=16   expected=16   OK\nBD_5   built=20   expected=20   OK\nBD_6   built=24   expected=24   OK\nBD_7   built=28   expected=28   OK\nBD_8   built=32   expected=32   OK\nBD_9   built=36   expected=36   OK\nBD_10  built=40   expected=40   OK\nBD_11  built=44   expected=44   OK\nBD_12  built=48   expected=48   OK\n2T     built=24   expected=24   OK\n2O     built=48   expected=48   OK\n2I     built=120  expected=120  OK\nMISMATCHES: []\n",
+   "stderr_tail": ""
+  },
+  "exact_arithmetic_selftests": {
+   "script": "part2.py",
+   "returncode": 0,
+   "seconds": 0.0,
+   "stdout_tail": "minpoly test: [10708457741, 24, 10708457752, 1]\nroots: [2, 5]\npart2 self-tests OK\n",
+   "stderr_tail": ""
+  },
+  "main_sweep_34_groups": {
+   "script": "sweep.py",
+   "returncode": 0,
+   "seconds": 13.1,
+   "stdout_tail": "C_1    N=1   nc=1  dims=[1]                            diam=0 A0=0  0.0s\nC_2    N=2   nc=2  dims=[1, 1]                         diam=1 A0=1  0.0s\nC_3    N=3   nc=3  dims=[1, 1, 1]                      diam=1 A0=1  0.0s\nC_4    N=4   nc=4  dims=[1, 1, 1, 1]                   diam=2 A0=2  0.0s\nC_5    N=5   nc=5  dims=[1, 1, 1, 1, 1]                diam=2 A0=2  0.0s\nC_6    N=6   nc=6  dims=[1, 1, 1, 1, 1, 1]             diam=3 A0=3  0.0s\nC_7    N=7   nc=7  dims=[1, 1, 1, 1, 1, 1, 1]          diam=3 A0=3  0.0s\nC_8    N=8   nc=8  dims=[1, 1, 1, 1, 1, 1, 1, 1]       diam=4 A0=4  0.1s\nC_9    N=9   nc=9  dims=[1, 1, 1, 1, 1, 1, 1, 1, 1]    diam=4 A0=4  0.1s\nC_10   N=10  nc=10 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=5 A0=5  0.1s\nC_11   N=11  nc=11 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=5 A0=5  0.1s\nC_12   N=12  nc=12 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=6 A0=6  0.1s\nC_13   N=13  nc=13 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=6 A0=6  0.2s\nC_14   N=14  nc=14 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=7 A0=7  0.3s\nC_15   N=15  nc=15 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=7 A0=7  0.4s\nC_16   N=16  nc=16 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=8 A0=8  0.4s\nC_17   N=17  nc=17 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=8 A0=8  0.5s\nC_18   N=18  nc=18 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=9 A0=9  0.6s\nC_19   N=19  nc=19 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=9 A0=9  0.7s\nC_20   N=20  nc=20 dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] diam=10 A0=10  0.8s\nBD_2   N=8   nc=5  dims=[1, 1, 1, 1, 2]                diam=2 A0=2  0.0s\nBD_3   N=12  nc=6  dims=[1, 1, 1, 1, 2, 2]             diam=3 A0=3  0.1s\nBD_4   N=16  nc=7  dims=[1, 1, 1, 1, 2, 2, 2]          diam=4 A0=4  0.1s\nBD_5   N=20  nc=8  dims=[1, 1, 1, 1, 2, 2, 2, 2]       diam=5 A0=5  0.2s\nBD_6   N=24  nc=9  dims=[1, 1, 1, 1, 2, 2, 2, 2, 2]    diam=6 A0=6  0.2s\nBD_7   N=28  nc=10 dims=[1, 1, 1, 1, 2, 2, 2, 2, 2, 2] diam=7 A0=7  0.4s\nBD_8   N=32  nc=11 dims=[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2] diam=8 A0=8  0.3s\nBD_9   N=36  nc=12 dims=[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2] diam=9 A0=9  0.9s\nBD_10  N=40  nc=13 dims=[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2] diam=10 A0=10  0.7s\nBD_11  N=44  nc=14 dims=[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] diam=11 A0=11  1.9s\nBD_12  N=48  nc=15 dims=[1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] diam=12 A0=12  1.1s\n2T     N=24  nc=7  dims=[1, 1, 1, 2, 2, 2, 3]          diam=4 A0=4  0.1s\n2O     N=48  nc=8  dims=[1, 1, 2, 2, 2, 3, 3, 4]       diam=6 A0=6  0.2s\n2I     N=120 nc=9  dims=[1, 2, 2, 3, 3, 4, 4, 5, 6]    diam=7 A0=7  0.8s\ntotal 11.1s\nEXACTRANK BD_3  m=4  sigma0  dimtau=1  dim=30   rank=3     charsum=3   agree=True idem=True\nEXACTRANK BD_3  m=5  sigma4  dimtau=2  dim=96   rank=14    charsum=14  agree=True idem=True\nEXACTRANK 2T    m=4  sigma0  dimtau=1  dim=30   rank=0     charsum=0   agree=True idem=True\nEXACTRANK 2T    m=5  sigma6  dimtau=3  dim=144  rank=0     charsum=0   agree=True idem=True\nEXACTRANK 2T    m=6  sigma6  dimtau=3  dim=210  rank=17    charsum=17  agree=True idem=True\nEXACTRANK 2I    m=6  sigma0  dimtau=1  dim=70   rank=0     charsum=0   agree=True idem=True\nEXACTRANK 2I    m=4  sigma3  dimtau=3  dim=90   rank=0     charsum=0   agree=True idem=True\nEXACTRANK 2O    m=4  sigma2  dimtau=2  dim=60   rank=0     charsum=0   agree=True idem=True\nEXACTRANK 2O    m=5  sigma5  dimtau=3  dim=144  rank=0     charsum=0   agree=True idem=True\nEXACTRANK BD_6  m=4  sigma4  dimtau=2  dim=60   rank=0     charsum=0   agree=True idem=True\nEXACTRANK C_5   m=4  sigma0  dimtau=1  dim=30   rank=8     charsum=8   agree=True idem=True\nEXACTRANK C_7   m=6  sigma0  dimtau=1  dim=70   rank=12    charsum=12  agree=True idem=True\nEXACTRANK BD_12 m=4  sigma4  dimtau=2  dim=60   rank=0     charsum=0   agree=True idem=True\nEXACTRANK 2I    m=5  sigma5  dimtau=4  dim=192  rank=6     charsum=6   agree=True idem=True\n",
+   "stderr_tail": ""
+  },
+  "compare_naive_signature_match": {
+   "script": "compare.py",
+   "returncode": 0,
+   "seconds": 0.0,
+   "stdout_tail": "DIFF: C_3 A[1][2] 1 vs 0\nDIFF: C_3 A[2][1] 1 vs 0\nDIFF: C_5 A[1][3] 0 vs 1\nDIFF: C_5 A[2][3] 1 vs 0\nDIFF: C_5 A[2][4] 0 vs 1\nDIFF: C_5 A[3][1] 0 vs 1\nDIFF: C_5 A[3][2] 1 vs 0\nDIFF: C_5 A[4][2] 0 vs 1\nDIFF: C_6 A[1][5] 1 vs 0\nDIFF: C_6 A[2][4] 1 vs 0\nDIFF: C_6 A[4][2] 1 vs 0\nDIFF: C_6 A[5][1] 1 vs 0\nDIFF: C_7 A[1][5] 0 vs 1\nDIFF: C_7 A[2][4] 0 vs 1\nDIFF: C_7 A[2][6] 0 vs 1\nDIFF: C_7 A[3][4] 1 vs 0\nDIFF: C_7 A[3][5] 0 vs 1\nDIFF: C_7 A[4][2] 0 vs 1\nDIFF: C_7 A[4][3] 1 vs 0\nDIFF: C_7 A[5][1] 0 vs 1\nDIFF: C_7 A[5][3] 0 vs 1\nDIFF: C_7 A[6][2] 0 vs 1\nDIFF: C_8 A[1][6] 0 vs 1\nDIFF: C_8 A[2][6] 1 vs 0\nDIFF: C_8 A[3][5] 1 vs 0\nDIFF: C_8 A[4][5] 0 vs 1\nDIFF: C_8 A[5][3] 1 vs 0\nDIFF: C_8 A[5][4] 0 vs 1\nDIFF: C_8 A[6][1] 0 vs 1\nDIFF: C_8 A[6][2] 1 vs 0\nDIFF: C_9 A[1][4] 1 vs 0\nDIFF: C_9 A[2][5] 1 vs 0\nDIFF: C_9 A[2][8] 0 vs 1\nDIFF: C_9 A[3][6] 1 vs 0\nDIFF: C_9 A[3][8] 1 vs 0\nDIFF: C_9 A[4][1] 1 vs 0\nDIFF: C_9 A[4][7] 1 vs 0\nDIFF: C_9 A[5][2] 1 vs 0\nDIFF: C_9 A[5][7] 0 vs 1\nDIFF: C_9 A[6][3] 1 vs 0\nDIFF: C_9 A[7][4] 1 vs 0\nDIFF: C_9 A[7][5] 0 vs 1\nDIFF: C_9 A[8][2] 0 vs 1\nDIFF: C_9 A[8][3] 1 vs 0\nDIFF: C_10 A[1][7] 1 vs 0\nDIFF: C_10 A[1][8] 0 vs 1\nDIFF: C_10 A[2][6] 1 vs 0\nDIFF: C_10 A[2][9] 0 vs 1\nDIFF: C_10 A[3][6] 0 vs 1\nDIFF: C_10 A[4][7] 0 vs 1\nDIFF: C_10 A[6][2] 1 vs 0\nDIFF: C_10 A[6][3] 0 vs 1\nDIFF: C_10 A[7][1] 1 vs 0\nDIFF: C_10 A[7][4] 0 vs 1\nDIFF: C_10 A[8][1] 0 vs 1\nDIFF: C_10 A[9][2] 0 vs 1\nDIFF: 2T A[1][5] 1 vs 0\nDIFF: 2T A[2][4] 1 vs 0\nDIFF: 2T A[4][2] 1 vs 0\nDIFF: 2T A[5][1] 1 vs 0\n\nTOTAL DIFFS vs agent A over the 18 spec groups: 60\nNOTES: ['C_3: agentA branching signatures not unique', 'C_4: agentA branching signatures not unique', 'C_5: agentA branching signatures not unique', 'C_6: agentA branching signatures not unique', 'C_7: agentA branching signatures not unique', 'C_8: agentA branching signatures not unique', 'C_9: agentA branching signatures not unique', 'C_10: agentA branching signatures not unique', 'BD_2: agentA branching signatures not unique', 'BD_3: agentA branching signatures not unique', 'BD_4: agentA branching signatures not unique', 'BD_5: agentA branching signatures not unique', 'BD_6: agentA branching signatures not unique', '2T: agentA branching signatures not unique']\n",
+   "stderr_tail": ""
+  },
+  "compare_rigorous_relabelling": {
+   "script": "compare2.py",
+   "returncode": 0,
+   "seconds": 0.0,
+   "stdout_tail": "C_1    adjacency relabelling found, A identical=True, other errors=0\nC_2    adjacency relabelling found, A identical=True, other errors=0\nC_3    adjacency relabelling found, A identical=True, other errors=0\nC_4    adjacency relabelling found, A identical=True, other errors=0\nC_5    adjacency relabelling found, A identical=True, other errors=0\nC_6    adjacency relabelling found, A identical=True, other errors=0\nC_7    adjacency relabelling found, A identical=True, other errors=0\nC_8    adjacency relabelling found, A identical=True, other errors=0\nC_9    adjacency relabelling found, A identical=True, other errors=0\nC_10   adjacency relabelling found, A identical=True, other errors=0\nBD_2   adjacency relabelling found, A identical=True, other errors=0\nBD_3   adjacency relabelling found, A identical=True, other errors=0\nBD_4   adjacency relabelling found, A identical=True, other errors=0\nBD_5   adjacency relabelling found, A identical=True, other errors=0\nBD_6   adjacency relabelling found, A identical=True, other errors=0\n2T     adjacency relabelling found, A identical=True, other errors=0\n2O     adjacency relabelling found, A identical=True, other errors=0\n2I     adjacency relabelling found, A identical=True, other errors=0\n\nALL MATCH: True\n",
+   "stderr_tail": ""
+  },
+  "pattern_attack": {
+   "script": "patterns.py",
+   "returncode": 0,
+   "seconds": 0.0,
+   "stdout_tail": "COVERAGE: {'groups': 34, 'irreps': 344, 'mu_rows': 11165, 'two_dim_det1_reps': 41}\nmax least_a over all groups: 12  max e: 12  max q: 6  (agent A ranges: a<=14, m<=12)\n\nq^2 VALUE HISTOGRAM over every 2-dim det-1 irrep of every group: {4: 40, 36: 1}\ndistinct q^2 values: [4, 36]\n\nPATTERN BREAK P2_e_formula                       count=2  examples=[('C_3', 1, 1, 2, 3), ('C_3', 2, 1, 2, 3)]\n\n2-dim det-1 reps with q^2 != 4:\n    {'group': '2I', 'rho_d': 7, 'constituent_dims_d': [(3, 6, 1)], 'q': 6, 'q2': 36, 'T7_least_k': 6, 'T7_k_k_plus_2': 48}\n\ncount of 2-dim det-1 reps per group:\n{'BD_2': 1, 'BD_3': 1, 'BD_4': 2, 'BD_5': 2, 'BD_6': 3, 'BD_7': 3, 'BD_8': 4, 'BD_9': 4, 'BD_10': 5, 'BD_11': 5, 'BD_12': 6, '2T': 1, '2O': 2, '2I': 2}\n",
+   "stderr_tail": ""
+  },
+  "general_rule_check": {
+   "script": "patterns2.py",
+   "returncode": 0,
+   "seconds": 0.0,
+   "stdout_tail": "P8 general rule  e(tau) = min{m>=2 : tau* in V_m or tau* in V_(m-2)}  violations: []\n\nmax distance per family (agent A: a<=14, m<=12):\n  2I     diam=7   max_d=7   max_least_a=7   max_e=7  \n  2O     diam=6   max_d=6   max_least_a=6   max_e=6  \n  2T     diam=4   max_d=4   max_least_a=4   max_e=4  \n  BD_10  diam=10  max_d=10  max_least_a=10  max_e=10 \n  BD_11  diam=11  max_d=11  max_least_a=11  max_e=11 \n  BD_12  diam=12  max_d=12  max_least_a=12  max_e=12 \n  BD_2   diam=2   max_d=2   max_least_a=2   max_e=3  \n  BD_3   diam=3   max_d=3   max_least_a=3   max_e=3  \n  BD_4   diam=4   max_d=4   max_least_a=4   max_e=4  \n  BD_5   diam=5   max_d=5   max_least_a=5   max_e=5  \n  BD_6   diam=6   max_d=6   max_least_a=6   max_e=6  \n  BD_7   diam=7   max_d=7   max_least_a=7   max_e=7  \n  BD_8   diam=8   max_d=8   max_least_a=8   max_e=8  \n  BD_9   diam=9   max_d=9   max_least_a=9   max_e=9  \n  C_1    diam=0   max_d=0   max_least_a=0   max_e=2  \n  C_10   diam=5   max_d=5   max_least_a=5   max_e=5  \n  C_11   diam=5   max_d=5   max_least_a=5   max_e=5  \n  C_12   diam=6   max_d=6   max_least_a=6   max_e=6  \n  C_13   diam=6   max_d=6   max_least_a=6   max_e=6  \n  C_14   diam=7   max_d=7   max_least_a=7   max_e=7  \n  C_15   diam=7   max_d=7   max_least_a=7   max_e=7  \n  C_16   diam=8   max_d=8   max_least_a=8   max_e=8  \n  C_17   diam=8   max_d=8   max_least_a=8   max_e=8  \n  C_18   diam=9   max_d=9   max_least_a=9   max_e=9  \n  C_19   diam=9   max_d=9   max_least_a=9   max_e=9  \n  C_2    diam=1   max_d=1   max_least_a=1   max_e=3  \n  C_20   diam=10  max_d=10  max_least_a=10  max_e=10 \n  C_3    diam=1   max_d=1   max_least_a=1   max_e=2  \n  C_4    diam=2   max_d=2   max_least_a=2   max_e=3  \n  C_5    diam=2   max_d=2   max_least_a=2   max_e=3  \n  C_6    diam=3   max_d=3   max_least_a=3   max_e=3  \n  C_7    diam=3   max_d=3   max_least_a=3   max_e=3  \n  C_8    diam=4   max_d=4   max_least_a=4   max_e=4  \n  C_9    diam=4   max_d=4   max_least_a=4   max_e=4  \n",
+   "stderr_tail": ""
+  },
+  "truncation_boundary_probe": {
+   "script": "probe.py",
+   "returncode": 0,
+   "seconds": 31.0,
+   "stdout_tail": "L = 1182266884102822267511361600  p = 50837476016421357502988548801  k = 43  (p-1)/L = 43\nfield ok: i,sqrt2,sqrt5,phi all exact in GF(p)\ngroup    max least_a  max e    diameter\nBD_13    13           13       13       e EXCEEDS agent A MMAX=12\nBD_14    14           14       14       e EXCEEDS agent A MMAX=12\nBD_15    15           15       15       least_a EXCEEDS agent A JMAX=14; e EXCEEDS agent A MMAX=12\nBD_16    16           16       16       least_a EXCEEDS agent A JMAX=14; e EXCEEDS agent A MMAX=12\nC_26     13           13       13       e EXCEEDS agent A MMAX=12\nC_28     14           14       14       e EXCEEDS agent A MMAX=12\nC_30     15           15       15       least_a EXCEEDS agent A JMAX=14; e EXCEEDS agent A MMAX=12\nC_32     16           16       16       least_a EXCEEDS agent A JMAX=14; e EXCEEDS agent A MMAX=12\n",
+   "stderr_tail": ""
+  },
+  "mutation_tests_round1": {
+   "script": "runmuts.py",
+   "returncode": 0,
+   "seconds": 1.7,
+   "stdout_tail": "\n[M1] corrupt one branching multiplicity Mult[5][0]+=1 (dim_check / gram_matches must go red)\n   -> RESULT {\"2T\": {\"dim_check\": false, \"gram_matches\": false, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}\n\n[M2] drop the complex conjugate in the isotypic projector (assert rk==ds must fire)\n   -> RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}\n\n[M3] corrupt one adjacency entry A[1][2]+=1 (A_symmetric / A_rowsum_ok must go red)\n   -> RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": false, \"A_rowsum_ok\": false, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}\n\n[M4] truncate the closed group by one element (does closed_under_multiplication ever report False?)\n   -> EXCEPTION RuntimeError: element not found, dist 0.707107\n\n[M5] replace chi_(E_m) by a NON-self-dual class function (does the convA==convB check notice?)\n   -> RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": false, \"mu_convA_vs_convB_all_equal\": false, \"T5\": {\"tau\": \"trivial\", \"q\": 4, \"q_squared\": 16, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}\n\n[M6] swap the tau/tau* convention in mu (convention A now uses conj(chi_tau)): does ANY check go red?\n   -> RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}\n\n[M7] T4: use Lambda^2 instead of Sym^2 for S(rho) (assert sum(dim*mult)==3 must fire)\n   -> EXCEPTION AssertionError: ('2T', 3, [{'sigma': 0, 'dim': 1, 'd': 0, 'mult': 1}])\n\n[M8] loosen SVD_TOL from 1e-8 to 1e-20 (does any check catch the inflated ranks?)\n   -> EXCEPTION AssertionError: ('2T', 4, 4, 2, array([1.00000000e+00, 1.00000000e+00, 4.88658995e-17, 2.95489725e-17]))\n\n[M9] tighten SVD_TOL to 0.5 (rank decision should be unaffected: sv are 1 vs ~1e-15)\n   -> RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}\n\n[M10] off-by-one in the symmetric-power level: chi_a built as Sym^(a+1) (many checks must go red)\n   -> EXCEPTION AssertionError: ('2T', 3, 0, 2, array([3.02011284e-51]))\n",
+   "stderr_tail": ""
+  },
+  "mutation_tests_round2": {
+   "script": "runmuts2.py",
+   "returncode": 0,
+   "seconds": 0.6,
+   "stdout_tail": "\n[M11] loosen SVD_TOL ONLY inside the T3 mu block (irrep extraction untouched)\n   -> RESULT {\"2T\": {\"irrep_char_err\": 5.551115123125783e-16, \"irrep_hom_err\": 4.163336342344337e-16, \"irrep_unitary_err\": 6.661338147750939e-16, \"mu_agree_all\": false, \"mu_rows_disagreeing\": [[\"sigma0\", 3, 0, 0, 4], [\"sigma0\", 5, 0, 0, 28], [\"sigma0\", 6, 5, 5, 30], [\"sigma0\", 7, 0, 0, 80], [\"sigma0\", 8, 16, 16, 89], [\"sigma0\", 9, 0, 0, 144]], \"T4\": [[3, 2, 4]], \"T5q\": 2}}\n\n[M12] corrupt ONE svd rank in the T3 mu block (does row['agree'] go red?)\n   -> RESULT {\"2T\": {\"irrep_char_err\": 5.551115123125783e-16, \"irrep_hom_err\": 4.163336342344337e-16, \"irrep_unitary_err\": 6.661338147750939e-16, \"mu_agree_all\": false, \"mu_rows_disagreeing\": [[\"sigma0\", 5, 0, 0, 1], [\"sigma1\", 5, 0, 0, 1], [\"sigma2\", 5, 0, 0, 1], [\"sigma3\", 5, 4, 4, 5], [\"sigma4\", 5, 10, 10, 11], [\"sigma5\", 5, 10, 10, 11]], \"T4\": [[3, 2, 4]], \"T5q\": 2}}\n\n[M13] is irrep_matrix_character_error ever asserted? mutate the extracted matrices by a phase\n   -> RESULT {\"2T\": {\"irrep_char_err\": 4.242640687119285, \"irrep_hom_err\": 1.4142135623730956, \"irrep_unitary_err\": 6.661338147750939e-16, \"mu_agree_all\": true, \"mu_rows_disagreeing\": [], \"T4\": [[3, 2, 4]], \"T5q\": 2}}\n",
+   "stderr_tail": ""
+  },
+  "mutation_tests_round3": {
+   "script": "runmuts3.py",
+   "returncode": 0,
+   "seconds": 6.3,
+   "stdout_tail": "\n[M14] swap two columns of the multiplicity matrix, i.e. relabel two irreducibles (does the exact cyclotomic Gram check gram_matches go red?)\n   -> RESULT {\"2T\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 4, 4, 1, 3, 3, 2], \"T1_least_a\": [0, 4, 4, 1, 3, 3, 2], \"T6_e\": [2, 4, 4, 3, 3, 3, 2]}}\n\n[M15] run agent A's analyse_group on C_30 (max d = 15 > JMAX = 14)\n   -> RESULT {\"C_30\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 7, 7, 13, 13, 11, 11, 1, 1, 5, 5, 3, 3, 9, 9, 15, 8, 8, 2, 2, 4, 4, 14, 14, 10, 10, 12, 12, 6, 6], \"T1_least_a\": [0, 7, 7, 13, 13, 11, 11, 1, 1, 5, 5, 3, 3, 9, 9, null, 8, 8, 2, 2, 4, 4, 14, 14, 10, 10, 12, 12, 6, 6], \"T6_e\": [2, 7, 7, null, null, 11, 11, 3, 3, 5, 5, 3, 3, 9, 9, null, 8, 8, 2, 2, 4, 4, null, null, 10, 10, 12, 12, 6, 6]}}\n\n[M16] run agent A's analyse_group on C_26 (max d = 13 > MMAX = 12, but <= JMAX)\n   -> RESULT {\"C_26\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 7, 7, 5, 5, 9, 9, 3, 3, 11, 11, 1, 1, 13, 6, 6, 8, 8, 4, 4, 10, 10, 2, 2, 12, 12], \"T1_least_a\": [0, 7, 7, 5, 5, 9, 9, 3, 3, 11, 11, 1, 1, 13, 6, 6, 8, 8, 4, 4, 10, 10, 2, 2, 12, 12], \"T6_e\": [2, 7, 7, 5, 5, 9, 9, 3, 3, 11, 11, 3, 3, null, 6, 6, 8, 8, 4, 4, 10, 10, 2, 2, 12, 12]}}\n\n[M17] run agent A's analyse_group on BD_13 (max d = 13 > MMAX = 12)\n   -> RESULT {\"BD_13\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 13, 13, 2, 7, 5, 9, 3, 11, 1, 6, 8, 4, 10, 2, 12], \"T1_least_a\": [0, 13, 13, 2, 7, 5, 9, 3, 11, 1, 6, 8, 4, 10, 2, 12], \"T6_e\": [2, null, null, 2, 7, 5, 9, 3, 11, 3, 6, 8, 4, 10, 2, 12]}}\n\n[M14b] 2O: swap Mult columns 2,3 -- two 2-dim irreps at DIFFERENT distances (5 and 1). Does gram_matches stay green while T1 least_a stops equalling d?\n   -> EXCEPTION AssertionError: ('2O', 2, 0, 2, array([1.03598081e-51, 1.03598081e-51]))\n\n[M18] agent A's script on BD_16 (2-dim irreps out to d = 15 > JMAX = 14)\n   -> EXCEPTION RuntimeError: BD_16: no multiplicity-one host for sigma 10\n\n[M19] agent A's script on BD_15 (2-dim irreps out to d = 15 > JMAX = 14)\n   -> RESULT {\"BD_15\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 15, 15, 2, 7, 13, 11, 1, 5, 3, 9, 8, 2, 4, 14, 10, 12, 6], \"T1_least_a\": [0, null, null, 2, 7, 13, 11, 1, 5, 3, 9, 8, 2, 4, 14, 10, 12, 6], \"T6_e\": [2, null, null, 2, 7, null, 11, 3, 5, 3, 9, 8, 2, 4, null, 10, 12, 6]}}\n",
+   "stderr_tail": ""
+  },
+  "independent_float_crosschecks": {
+   "script": "finalchecks.py",
+   "returncode": 0,
+   "seconds": 0.1,
+   "stdout_tail": "2I closure from the SPEC generators (independent float run): 120 elements\nexplicit spec 120-list: 120 elements, 120 of them found in the closure -> identical set: True\nmin pairwise element separation for 2I: 0.43701602444882115\nmin pairwise separation over ALL 18 spec groups (mine): 0.43701602444882115\nagent A reported                                       : 0.43701602444882115\n\nT4 twists: k(k+2) == q^2 + 2q  violations: []\nany case where q^2 == k(k+2): []\nT5 trivial: q^2={4} vs k(k+2)={0} for every group -> never equal\n",
+   "stderr_tail": ""
+  },
+  "verdict_table": {
+   "script": "mkverdicts.py",
+   "returncode": 0,
+   "seconds": 0.0,
+   "stdout_tail": "CONFIRMED group orders: C_n=n (n=1..10), BD_n=4n (n=2..6), 2T=24, 2O=48, 2I=120\nCONFIRMED 2I closure from the spec generators reaches 120 (no fallback list needed) and equals the explic\nCONFIRMED group exponents\nCONFIRMED -I in Gamma\nCONFIRMED irreducible dimensions (sum of squares = |Gamma|)\nCONFIRMED adjacency matrix A (McKay graph), symmetric, sum_sigma' A[s][s'] dim s' = 2 dim s\nCONFIRMED distance vector d(sigma) and graph diameter\nCONFIRMED T1: least a with <chi_sigma, chi_a> != 0 equals d(sigma) for every sigma of every group\nCONFIRMED T2: with -I in Gamma every occurrence of sigma in V_a has a = d(sigma) mod 2; without -I it fai\nCONFIRMED T3: the three routes to mu_tau(m) agree\nCONFIRMED T4: q and q^2 for every 2-dim determinant-one irreducible\nCONFIRMED T5: q = 2, q^2 = 4 for the trivial twist, every Gamma\nCONFIRMED T6: e(sigma) table\nCONFIRMED T7: least k and k(k+2)\nCONFIRMED T8: branching of V_a|2I into irreducibles for a = 0..8\nCONFIRMED T9: rank of the full unreduced projector equals the character sum\nCONFIRMED audit metric: min pairwise element distance over all groups = 0.43701602444882115\n",
+   "stderr_tail": ""
+  },
+  "defect_list": {
+   "script": "mkdefects.py",
+   "returncode": 0,
+   "seconds": 0.0,
+   "stdout_tail": "D1 [robustness only, changes no reported number] m8_1_1_coexact_solver.py, isotypic-block irrep extraction, `assert rk == ds`\nD2 [wording only] T3, `agree: (va == vb == rk)` and the reported pair char_tau / char_tau_conj\nD3 [wording only] `G.closed = True` with the comment 'closure is verified by idx() succeeding'\nD4 [robustness only] irrep_matrix_character_error / _homomorphism_error / _unitarity_error / sym_power_max_homomorphism_error\nD5 [scope limit, honestly reported as null but worth naming] JMAX = 14 and MMIN, MMAX = 2, 12\nD6 [wording only] T2 block, `parity_rule_holds`\nD7 [limitation of one check, not a defect in the result] `gram_matches = (Gram_exact == M M^T)`\nD8 [spec-compliance gap, minor] character table serialization, `exact_rational`\n",
+   "stderr_tail": ""
+  }
+ },
+ "exact_projector_rank_checks": [
+  {
+   "dim": 30,
+   "rank": 3,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "BD_3",
+   "m": 4,
+   "sigma": 0,
+   "dim_tau": 1,
+   "character_sum_convA": 3,
+   "agree": true
+  },
+  {
+   "dim": 96,
+   "rank": 14,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "BD_3",
+   "m": 5,
+   "sigma": 4,
+   "dim_tau": 2,
+   "character_sum_convA": 14,
+   "agree": true
+  },
+  {
+   "dim": 30,
+   "rank": 0,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "2T",
+   "m": 4,
+   "sigma": 0,
+   "dim_tau": 1,
+   "character_sum_convA": 0,
+   "agree": true
+  },
+  {
+   "dim": 144,
+   "rank": 0,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "2T",
+   "m": 5,
+   "sigma": 6,
+   "dim_tau": 3,
+   "character_sum_convA": 0,
+   "agree": true
+  },
+  {
+   "dim": 210,
+   "rank": 17,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "2T",
+   "m": 6,
+   "sigma": 6,
+   "dim_tau": 3,
+   "character_sum_convA": 17,
+   "agree": true
+  },
+  {
+   "dim": 70,
+   "rank": 0,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "2I",
+   "m": 6,
+   "sigma": 0,
+   "dim_tau": 1,
+   "character_sum_convA": 0,
+   "agree": true
+  },
+  {
+   "dim": 90,
+   "rank": 0,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "2I",
+   "m": 4,
+   "sigma": 3,
+   "dim_tau": 3,
+   "character_sum_convA": 0,
+   "agree": true
+  },
+  {
+   "dim": 60,
+   "rank": 0,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "2O",
+   "m": 4,
+   "sigma": 2,
+   "dim_tau": 2,
+   "character_sum_convA": 0,
+   "agree": true
+  },
+  {
+   "dim": 144,
+   "rank": 0,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "2O",
+   "m": 5,
+   "sigma": 5,
+   "dim_tau": 3,
+   "character_sum_convA": 0,
+   "agree": true
+  },
+  {
+   "dim": 60,
+   "rank": 0,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "BD_6",
+   "m": 4,
+   "sigma": 4,
+   "dim_tau": 2,
+   "character_sum_convA": 0,
+   "agree": true
+  },
+  {
+   "dim": 30,
+   "rank": 8,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "C_5",
+   "m": 4,
+   "sigma": 0,
+   "dim_tau": 1,
+   "character_sum_convA": 8,
+   "agree": true
+  },
+  {
+   "dim": 70,
+   "rank": 12,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "C_7",
+   "m": 6,
+   "sigma": 0,
+   "dim_tau": 1,
+   "character_sum_convA": 12,
+   "agree": true
+  },
+  {
+   "dim": 60,
+   "rank": 0,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "BD_12",
+   "m": 4,
+   "sigma": 4,
+   "dim_tau": 2,
+   "character_sum_convA": 0,
+   "agree": true
+  },
+  {
+   "dim": 192,
+   "rank": 6,
+   "trace_equals_rank": true,
+   "idempotent_exactly": true,
+   "reason": null,
+   "group": "2I",
+   "m": 5,
+   "sigma": 5,
+   "dim_tau": 4,
+   "character_sum_convA": 6,
+   "agree": true
+  }
+ ],
+ "comparison_naive_signature_match": {
+  "diffs": [
+   "C_3 A[1][2] 1 vs 0",
+   "C_3 A[2][1] 1 vs 0",
+   "C_5 A[1][3] 0 vs 1",
+   "C_5 A[2][3] 1 vs 0",
+   "C_5 A[2][4] 0 vs 1",
+   "C_5 A[3][1] 0 vs 1",
+   "C_5 A[3][2] 1 vs 0",
+   "C_5 A[4][2] 0 vs 1",
+   "C_6 A[1][5] 1 vs 0",
+   "C_6 A[2][4] 1 vs 0",
+   "C_6 A[4][2] 1 vs 0",
+   "C_6 A[5][1] 1 vs 0",
+   "C_7 A[1][5] 0 vs 1",
+   "C_7 A[2][4] 0 vs 1",
+   "C_7 A[2][6] 0 vs 1",
+   "C_7 A[3][4] 1 vs 0",
+   "C_7 A[3][5] 0 vs 1",
+   "C_7 A[4][2] 0 vs 1",
+   "C_7 A[4][3] 1 vs 0",
+   "C_7 A[5][1] 0 vs 1",
+   "C_7 A[5][3] 0 vs 1",
+   "C_7 A[6][2] 0 vs 1",
+   "C_8 A[1][6] 0 vs 1",
+   "C_8 A[2][6] 1 vs 0",
+   "C_8 A[3][5] 1 vs 0",
+   "C_8 A[4][5] 0 vs 1",
+   "C_8 A[5][3] 1 vs 0",
+   "C_8 A[5][4] 0 vs 1",
+   "C_8 A[6][1] 0 vs 1",
+   "C_8 A[6][2] 1 vs 0",
+   "C_9 A[1][4] 1 vs 0",
+   "C_9 A[2][5] 1 vs 0",
+   "C_9 A[2][8] 0 vs 1",
+   "C_9 A[3][6] 1 vs 0",
+   "C_9 A[3][8] 1 vs 0",
+   "C_9 A[4][1] 1 vs 0",
+   "C_9 A[4][7] 1 vs 0",
+   "C_9 A[5][2] 1 vs 0",
+   "C_9 A[5][7] 0 vs 1",
+   "C_9 A[6][3] 1 vs 0",
+   "C_9 A[7][4] 1 vs 0",
+   "C_9 A[7][5] 0 vs 1",
+   "C_9 A[8][2] 0 vs 1",
+   "C_9 A[8][3] 1 vs 0",
+   "C_10 A[1][7] 1 vs 0",
+   "C_10 A[1][8] 0 vs 1",
+   "C_10 A[2][6] 1 vs 0",
+   "C_10 A[2][9] 0 vs 1",
+   "C_10 A[3][6] 0 vs 1",
+   "C_10 A[4][7] 0 vs 1",
+   "C_10 A[6][2] 1 vs 0",
+   "C_10 A[6][3] 0 vs 1",
+   "C_10 A[7][1] 1 vs 0",
+   "C_10 A[7][4] 0 vs 1",
+   "C_10 A[8][1] 0 vs 1",
+   "C_10 A[9][2] 0 vs 1",
+   "2T A[1][5] 1 vs 0",
+   "2T A[2][4] 1 vs 0",
+   "2T A[4][2] 1 vs 0",
+   "2T A[5][1] 1 vs 0"
+  ],
+  "notes": [
+   "C_3: agentA branching signatures not unique",
+   "C_4: agentA branching signatures not unique",
+   "C_5: agentA branching signatures not unique",
+   "C_6: agentA branching signatures not unique",
+   "C_7: agentA branching signatures not unique",
+   "C_8: agentA branching signatures not unique",
+   "C_9: agentA branching signatures not unique",
+   "C_10: agentA branching signatures not unique",
+   "BD_2: agentA branching signatures not unique",
+   "BD_3: agentA branching signatures not unique",
+   "BD_4: agentA branching signatures not unique",
+   "BD_5: agentA branching signatures not unique",
+   "BD_6: agentA branching signatures not unique",
+   "2T: agentA branching signatures not unique"
+  ]
+ },
+ "comparison_rigorous_relabelling": {
+  "C_1": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_2": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_3": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_4": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_5": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_6": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_7": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_8": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_9": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "C_10": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "BD_2": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "BD_3": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "BD_4": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "BD_5": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "BD_6": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "2T": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "2O": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  },
+  "2I": {
+   "status": "MATCH",
+   "adjacency_isomorphic": true,
+   "other_errors": []
+  }
+ },
+ "pattern_analysis": {
+  "coverage": {
+   "groups": 34,
+   "irreps": 344,
+   "mu_rows": 11165,
+   "two_dim_det1_reps": 41
+  },
+  "q2_hist": {
+   "4": 40,
+   "36": 1
+  },
+  "q2_detail": [
+   {
+    "group": "BD_2",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_3",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_4",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_4",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_5",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      4,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_5",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_6",
+    "rho_d": 5,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_6",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_6",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      6,
+      1
+     ],
+     [
+      1,
+      6,
+      1
+     ],
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_7",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_7",
+    "rho_d": 5,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      4,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_7",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_8",
+    "rho_d": 5,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_8",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_8",
+    "rho_d": 7,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_8",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_9",
+    "rho_d": 5,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      8,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_9",
+    "rho_d": 7,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      4,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_9",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_9",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_10",
+    "rho_d": 7,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_10",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_10",
+    "rho_d": 9,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_10",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_10",
+    "rho_d": 5,
+    "constituent_dims_d": [
+     [
+      1,
+      10,
+      1
+     ],
+     [
+      1,
+      10,
+      1
+     ],
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_11",
+    "rho_d": 5,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      10,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_11",
+    "rho_d": 7,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      8,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_11",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_11",
+    "rho_d": 9,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      4,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_11",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_12",
+    "rho_d": 5,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      10,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_12",
+    "rho_d": 11,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_12",
+    "rho_d": 7,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      10,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_12",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_12",
+    "rho_d": 3,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "BD_12",
+    "rho_d": 9,
+    "constituent_dims_d": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      6,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "2T",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      3,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "2O",
+    "rho_d": 5,
+    "constituent_dims_d": [
+     [
+      3,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "2O",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      3,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "2I",
+    "rho_d": 1,
+    "constituent_dims_d": [
+     [
+      3,
+      2,
+      1
+     ]
+    ],
+    "q": 2,
+    "q2": 4,
+    "T7_least_k": 2,
+    "T7_k_k_plus_2": 8
+   },
+   {
+    "group": "2I",
+    "rho_d": 7,
+    "constituent_dims_d": [
+     [
+      3,
+      6,
+      1
+     ]
+    ],
+    "q": 6,
+    "q2": 36,
+    "T7_least_k": 6,
+    "T7_k_k_plus_2": 48
+   }
+  ],
+  "pattern_breaks": {
+   "P2_e_formula": [
+    [
+     "C_3",
+     1,
+     1,
+     2,
+     3
+    ],
+    [
+     "C_3",
+     2,
+     1,
+     2,
+     3
+    ]
+   ]
+  },
+  "max_least_a": 12,
+  "max_e": 12,
+  "max_q": 6
+ },
+ "mutation_tests": [
+  {
+   "tag": "M1",
+   "description": "corrupt one branching multiplicity Mult[5][0]+=1 (dim_check / gram_matches must go red)",
+   "result": "RESULT {\"2T\": {\"dim_check\": false, \"gram_matches\": false, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}"
+  },
+  {
+   "tag": "M2",
+   "description": "drop the complex conjugate in the isotypic projector (assert rk==ds must fire)",
+   "result": "RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}"
+  },
+  {
+   "tag": "M3",
+   "description": "corrupt one adjacency entry A[1][2]+=1 (A_symmetric / A_rowsum_ok must go red)",
+   "result": "RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": false, \"A_rowsum_ok\": false, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}"
+  },
+  {
+   "tag": "M4",
+   "description": "truncate the closed group by one element (does closed_under_multiplication ever report False?)",
+   "result": "EXCEPTION RuntimeError: element not found, dist 0.707107"
+  },
+  {
+   "tag": "M5",
+   "description": "replace chi_(E_m) by a NON-self-dual class function (does the convA==convB check notice?)",
+   "result": "RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": false, \"mu_convA_vs_convB_all_equal\": false, \"T5\": {\"tau\": \"trivial\", \"q\": 4, \"q_squared\": 16, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}"
+  },
+  {
+   "tag": "M6",
+   "description": "swap the tau/tau* convention in mu (convention A now uses conj(chi_tau)): does ANY check go red?",
+   "result": "RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}"
+  },
+  {
+   "tag": "M7",
+   "description": "T4: use Lambda^2 instead of Sym^2 for S(rho) (assert sum(dim*mult)==3 must fire)",
+   "result": "EXCEPTION AssertionError: ('2T', 3, [{'sigma': 0, 'dim': 1, 'd': 0, 'mult': 1}])"
+  },
+  {
+   "tag": "M8",
+   "description": "loosen SVD_TOL from 1e-8 to 1e-20 (does any check catch the inflated ranks?)",
+   "result": "EXCEPTION AssertionError: ('2T', 4, 4, 2, array([1.00000000e+00, 1.00000000e+00, 4.88658995e-17, 2.95489725e-17]))"
+  },
+  {
+   "tag": "M9",
+   "description": "tighten SVD_TOL to 0.5 (rank decision should be unaffected: sv are 1 vs ~1e-15)",
+   "result": "RESULT {\"2T\": {\"dim_check\": true, \"gram_matches\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"sum_dim_sq_ok\": true, \"closed\": true, \"order_ok\": true, \"mu_agree_all\": true, \"mu_convA_vs_convB_all_equal\": true, \"T5\": {\"tau\": \"trivial\", \"q\": 2, \"q_squared\": 4, \"T7_least_k\": 0, \"T7_k_k_plus_2\": 0}, \"T4\": [[3, 2, 4]]}}"
+  },
+  {
+   "tag": "M10",
+   "description": "off-by-one in the symmetric-power level: chi_a built as Sym^(a+1) (many checks must go red)",
+   "result": "EXCEPTION AssertionError: ('2T', 3, 0, 2, array([3.02011284e-51]))"
+  },
+  {
+   "tag": "M11",
+   "description": "loosen SVD_TOL ONLY inside the T3 mu block (irrep extraction untouched)",
+   "result": "RESULT {\"2T\": {\"irrep_char_err\": 5.551115123125783e-16, \"irrep_hom_err\": 4.163336342344337e-16, \"irrep_unitary_err\": 6.661338147750939e-16, \"mu_agree_all\": false, \"mu_rows_disagreeing\": [[\"sigma0\", 3, 0, 0, 4], [\"sigma0\", 5, 0, 0, 28], [\"sigma0\", 6, 5, 5, 30], [\"sigma0\", 7, 0, 0, 80], [\"sigma0\", 8, 16, 16, 89], [\"sigma0\", 9, 0, 0, 144]], \"T4\": [[3, 2, 4]], \"T5q\": 2}}"
+  },
+  {
+   "tag": "M12",
+   "description": "corrupt ONE svd rank in the T3 mu block (does row['agree'] go red?)",
+   "result": "RESULT {\"2T\": {\"irrep_char_err\": 5.551115123125783e-16, \"irrep_hom_err\": 4.163336342344337e-16, \"irrep_unitary_err\": 6.661338147750939e-16, \"mu_agree_all\": false, \"mu_rows_disagreeing\": [[\"sigma0\", 5, 0, 0, 1], [\"sigma1\", 5, 0, 0, 1], [\"sigma2\", 5, 0, 0, 1], [\"sigma3\", 5, 4, 4, 5], [\"sigma4\", 5, 10, 10, 11], [\"sigma5\", 5, 10, 10, 11]], \"T4\": [[3, 2, 4]], \"T5q\": 2}}"
+  },
+  {
+   "tag": "M13",
+   "description": "is irrep_matrix_character_error ever asserted? mutate the extracted matrices by a phase",
+   "result": "RESULT {\"2T\": {\"irrep_char_err\": 4.242640687119285, \"irrep_hom_err\": 1.4142135623730956, \"irrep_unitary_err\": 6.661338147750939e-16, \"mu_agree_all\": true, \"mu_rows_disagreeing\": [], \"T4\": [[3, 2, 4]], \"T5q\": 2}}"
+  },
+  {
+   "tag": "M14",
+   "description": "swap two columns of the multiplicity matrix, i.e. relabel two irreducibles (does the exact cyclotomic Gram check gram_matches go red?)",
+   "result": "RESULT {\"2T\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 4, 4, 1, 3, 3, 2], \"T1_least_a\": [0, 4, 4, 1, 3, 3, 2], \"T6_e\": [2, 4, 4, 3, 3, 3, 2]}}"
+  },
+  {
+   "tag": "M15",
+   "description": "run agent A's analyse_group on C_30 (max d = 15 > JMAX = 14)",
+   "result": "RESULT {\"C_30\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 7, 7, 13, 13, 11, 11, 1, 1, 5, 5, 3, 3, 9, 9, 15, 8, 8, 2, 2, 4, 4, 14, 14, 10, 10, 12, 12, 6, 6], \"T1_least_a\": [0, 7, 7, 13, 13, 11, 11, 1, 1, 5, 5, 3, 3, 9, 9, null, 8, 8, 2, 2, 4, 4, 14, 14, 10, 10, 12, 12, 6, 6], \"T6_e\": [2, 7, 7, null, null, 11, 11, 3, 3, 5, 5, 3, 3, 9, 9, null, 8, 8, 2, 2, 4, 4, null, null, 10, 10, 12, 12, 6, 6]}}"
+  },
+  {
+   "tag": "M16",
+   "description": "run agent A's analyse_group on C_26 (max d = 13 > MMAX = 12, but <= JMAX)",
+   "result": "RESULT {\"C_26\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 7, 7, 5, 5, 9, 9, 3, 3, 11, 11, 1, 1, 13, 6, 6, 8, 8, 4, 4, 10, 10, 2, 2, 12, 12], \"T1_least_a\": [0, 7, 7, 5, 5, 9, 9, 3, 3, 11, 11, 1, 1, 13, 6, 6, 8, 8, 4, 4, 10, 10, 2, 2, 12, 12], \"T6_e\": [2, 7, 7, 5, 5, 9, 9, 3, 3, 11, 11, 3, 3, null, 6, 6, 8, 8, 4, 4, 10, 10, 2, 2, 12, 12]}}"
+  },
+  {
+   "tag": "M17",
+   "description": "run agent A's analyse_group on BD_13 (max d = 13 > MMAX = 12)",
+   "result": "RESULT {\"BD_13\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 13, 13, 2, 7, 5, 9, 3, 11, 1, 6, 8, 4, 10, 2, 12], \"T1_least_a\": [0, 13, 13, 2, 7, 5, 9, 3, 11, 1, 6, 8, 4, 10, 2, 12], \"T6_e\": [2, null, null, 2, 7, 5, 9, 3, 11, 3, 6, 8, 4, 10, 2, 12]}}"
+  },
+  {
+   "tag": "M14b",
+   "description": "2O: swap Mult columns 2,3 -- two 2-dim irreps at DIFFERENT distances (5 and 1). Does gram_matches stay green while T1 least_a stops equalling d?",
+   "result": "EXCEPTION AssertionError: ('2O', 2, 0, 2, array([1.03598081e-51, 1.03598081e-51]))"
+  },
+  {
+   "tag": "M18",
+   "description": "agent A's script on BD_16 (2-dim irreps out to d = 15 > JMAX = 14)",
+   "result": "EXCEPTION RuntimeError: BD_16: no multiplicity-one host for sigma 10"
+  },
+  {
+   "tag": "M19",
+   "description": "agent A's script on BD_15 (2-dim irreps out to d = 15 > JMAX = 14)",
+   "result": "RESULT {\"BD_15\": {\"gram_matches\": true, \"dim_check\": true, \"sum_dim_sq_ok\": true, \"A_symmetric\": true, \"A_rowsum_ok\": true, \"dist\": [0, 15, 15, 2, 7, 13, 11, 1, 5, 3, 9, 8, 2, 4, 14, 10, 12, 6], \"T1_least_a\": [0, null, null, 2, 7, 13, 11, 1, 5, 3, 9, 8, 2, 4, 14, 10, 12, 6], \"T6_e\": [2, null, null, 2, 7, null, 11, 3, 5, 3, 9, 8, 2, 4, null, 10, 12, 6]}}"
+  }
+ ],
+ "defects_found": [
+  {
+   "id": "D1",
+   "severity": "robustness only, changes no reported number",
+   "where": "m8_1_1_coexact_solver.py, isotypic-block irrep extraction, `assert rk == ds`",
+   "finding": "The assertion checks only the RANK of the isotypic projector, so it cannot tell sigma from sigma*. Mutation M2 removed the complex conjugate in `cs = conj(chartab[s][...])`, which projects onto the sigma* block instead: the assertion stayed green and the script completed normally. The wrong-representation matrices were caught only by `irrep_matrix_character_error`, which jumped from 5.6e-16 to 1.7320508 for 2T. That quantity is written into the JSON but is never compared to any threshold anywhere in the script.",
+   "effect_on_numbers": "none: in the real run irrep_matrix_character_error = 1.4e-15 at worst, and my independent recomputation reproduces every reported number."
+  },
+  {
+   "id": "D2",
+   "severity": "wording only",
+   "where": "T3, `agree: (va == vb == rk)` and the reported pair char_tau / char_tau_conj",
+   "finding": "The spec asked for mu computed 'BOTH with chi_tau and with its complex conjugate (the tau versus tau* convention)'. Because chi_(E_m) is real for every m and every Gamma (E_m is a sum of restricted SU(2) symmetric powers, which are self-dual), the two conventions are FORCED to be equal, so `va == vb` is a check that cannot fail for the E_m actually used. Mutation M6 swapped the two conventions outright: every reported number was unchanged and no check went red. Mutation M5 replaced chi_(E_m) by a non-self-dual class function and the check DID go red, confirming that the only thing it tests is the reality of chi_(E_m), not the tau/tau* convention.",
+   "effect_on_numbers": "none. Convention A is the one the spec's definition of mu (invariants of E_m tensor V_tau) calls for, and that is the one `first_nonzero_m` uses, so q, q^2 and e are computed from the right side."
+  },
+  {
+   "id": "D3",
+   "severity": "wording only",
+   "where": "`G.closed = True` with the comment 'closure is verified by idx() succeeding'",
+   "finding": "`closed_under_multiplication` in the output JSON is a hard-coded literal True; there is no code path that can set it False. Mutation M4 dropped one element from the closed group: the script raised RuntimeError('element not found, dist 0.707107') rather than reporting closed=False. The property IS enforced (by the exception), but the JSON field is not evidence of it.",
+   "effect_on_numbers": "none"
+  },
+  {
+   "id": "D4",
+   "severity": "robustness only",
+   "where": "irrep_matrix_character_error / _homomorphism_error / _unitarity_error / sym_power_max_homomorphism_error",
+   "finding": "All are computed, stored and serialized, but never asserted. Mutation M13 multiplied the extracted irrep matrices by i: irrep_char_err went to 4.24 and irrep_hom_err to 1.41 and the script still completed with every boolean check green. In addition the homomorphism errors are sampled on a stride (range(0, N, N//6) and N//5), not over all pairs, so a homomorphism failure confined to unsampled pairs would go unseen. My audit verifies the homomorphism exactly for all pairs over GF(p).",
+   "effect_on_numbers": "none; the real values are ~1e-15"
+  },
+  {
+   "id": "D5",
+   "severity": "scope limit, honestly reported as null but worth naming",
+   "where": "JMAX = 14 and MMIN, MMAX = 2, 12",
+   "finding": "For the 18 groups the spec lists these bounds have headroom (largest least_a and largest e are both 7, at 2I). One step outside that list the bounds bite: I ran agent A's own analyse_group on wider members of the same families. C_26 -> T6 e is null for the irreducible at d = 13. BD_13 -> e null at d = 13. C_30 and BD_15 -> T1 least_a null at d = 15. BD_16 -> hard failure, RuntimeError('BD_16: no multiplicity-one host for sigma 10'), because no V_a with a <= 14 contains that 2-dim irreducible. The results for the spec's own groups are unaffected; the point is that the ranges are not stated as a limitation and the transition to null (and then to a crash) is one group away.",
+   "effect_on_numbers": "none within the spec's 18 groups"
+  },
+  {
+   "id": "D6",
+   "severity": "wording only",
+   "where": "T2 block, `parity_rule_holds`",
+   "finding": "For C_1, C_3, C_5, C_7, C_9 (the groups without -I) the JSON carries `parity_rule_holds: false` with n_violations of 7, 20, 29, 36, 39. The adjacent field `rule_applicable: false` says the spec never asked for it there, but a reader grepping the output for a false parity flag sees five apparent failures that are not failures. My run reproduces the same violation counts.",
+   "effect_on_numbers": "none"
+  },
+  {
+   "id": "D7",
+   "severity": "limitation of one check, not a defect in the result",
+   "where": "`gram_matches = (Gram_exact == M M^T)`",
+   "finding": "This is the strongest exact check in the script and it does fire: mutation M1 (corrupting one multiplicity) turned it red. But M M^T is invariant under ANY permutation of the columns of M, i.e. under relabelling the irreducibles, so the check by construction cannot validate which sigma is which, and therefore cannot validate the distance vector, the T1 least_a assignment or the A entries. Mutation M14 swapped two columns and gram_matches stayed green. In agent A's full pipeline a relabelling is caught downstream (M14b, on 2O, tripped `assert rk == ds`), so this is a scope note about the check, not a hole in the result.",
+   "effect_on_numbers": "none"
+  },
+  {
+   "id": "D8",
+   "severity": "spec-compliance gap, minor",
+   "where": "character table serialization, `exact_rational`",
+   "finding": "The spec says 'Exact rationals as strings like \"73/144\", never as floats'. 534 of 834 character-table entries carry an exact rational. The other 300 are null: 256 are genuinely complex and 44 are real but irrational (sqrt2 in BD_4, the golden ratio in BD_5 / BD_6 / 2I). For those 44 the only record in the JSON is a 30-digit decimal, so nothing in the file certifies that -1.4142135623730950488 is exactly -sqrt2. This audit's JSON gives every character value as exact Z[zeta_M] coefficients so the algebraic identity is checkable.",
+   "effect_on_numbers": "none; the values are correct"
+  }
+ ],
+ "verdicts": [
+  {
+   "claim": "group orders: C_n=n (n=1..10), BD_n=4n (n=2..6), 2T=24, 2O=48, 2I=120",
+   "agent_A": {
+    "C_1": 1,
+    "C_2": 2,
+    "C_3": 3,
+    "C_4": 4,
+    "C_5": 5,
+    "C_6": 6,
+    "C_7": 7,
+    "C_8": 8,
+    "C_9": 9,
+    "C_10": 10,
+    "BD_2": 8,
+    "BD_3": 12,
+    "BD_4": 16,
+    "BD_5": 20,
+    "BD_6": 24,
+    "2T": 24,
+    "2O": 48,
+    "2I": 120
+   },
+   "audit": {
+    "C_1": 1,
+    "C_2": 2,
+    "C_3": 3,
+    "C_4": 4,
+    "C_5": 5,
+    "C_6": 6,
+    "C_7": 7,
+    "C_8": 8,
+    "C_9": 9,
+    "C_10": 10,
+    "BD_2": 8,
+    "BD_3": 12,
+    "BD_4": 16,
+    "BD_5": 20,
+    "BD_6": 24,
+    "2T": 24,
+    "2O": 48,
+    "2I": 120
+   },
+   "verdict": "CONFIRMED",
+   "note": "recomputed with exact GF(p) closure, zero tolerance; all 18 identical"
+  },
+  {
+   "claim": "2I closure from the spec generators reaches 120 (no fallback list needed) and equals the explicit 120-quaternion list",
+   "agent_A": "120, fallback_used=False, closure_equals_explicit_spec_list=True",
+   "audit": "120 over GF(p); independent float rerun also 120 and set-identical to the explicit list",
+   "verdict": "CONFIRMED",
+   "note": ""
+  },
+  {
+   "claim": "group exponents",
+   "agent_A": {
+    "C_1": 1,
+    "C_2": 2,
+    "C_3": 3,
+    "C_4": 4,
+    "C_5": 5,
+    "C_6": 6,
+    "C_7": 7,
+    "C_8": 8,
+    "C_9": 9,
+    "C_10": 10,
+    "BD_2": 4,
+    "BD_3": 12,
+    "BD_4": 8,
+    "BD_5": 20,
+    "BD_6": 12,
+    "2T": 12,
+    "2O": 24,
+    "2I": 60
+   },
+   "audit": {
+    "C_1": 1,
+    "C_2": 2,
+    "C_3": 3,
+    "C_4": 4,
+    "C_5": 5,
+    "C_6": 6,
+    "C_7": 7,
+    "C_8": 8,
+    "C_9": 9,
+    "C_10": 10,
+    "BD_2": 4,
+    "BD_3": 12,
+    "BD_4": 8,
+    "BD_5": 20,
+    "BD_6": 12,
+    "2T": 12,
+    "2O": 24,
+    "2I": 60
+   },
+   "verdict": "CONFIRMED",
+   "note": ""
+  },
+  {
+   "claim": "-I in Gamma",
+   "agent_A": {
+    "C_1": false,
+    "C_2": true,
+    "C_3": false,
+    "C_4": true,
+    "C_5": false,
+    "C_6": true,
+    "C_7": false,
+    "C_8": true,
+    "C_9": false,
+    "C_10": true,
+    "BD_2": true,
+    "BD_3": true,
+    "BD_4": true,
+    "BD_5": true,
+    "BD_6": true,
+    "2T": true,
+    "2O": true,
+    "2I": true
+   },
+   "audit": {
+    "C_1": false,
+    "C_2": true,
+    "C_3": false,
+    "C_4": true,
+    "C_5": false,
+    "C_6": true,
+    "C_7": false,
+    "C_8": true,
+    "C_9": false,
+    "C_10": true,
+    "BD_2": true,
+    "BD_3": true,
+    "BD_4": true,
+    "BD_5": true,
+    "BD_6": true,
+    "2T": true,
+    "2O": true,
+    "2I": true
+   },
+   "verdict": "CONFIRMED",
+   "note": ""
+  },
+  {
+   "claim": "irreducible dimensions (sum of squares = |Gamma|)",
+   "agent_A": {
+    "C_1": [
+     1
+    ],
+    "C_2": [
+     1,
+     1
+    ],
+    "C_3": [
+     1,
+     1,
+     1
+    ],
+    "C_4": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_5": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_6": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_7": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_8": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_9": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_10": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "BD_2": [
+     1,
+     1,
+     1,
+     1,
+     2
+    ],
+    "BD_3": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     2
+    ],
+    "BD_4": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     2,
+     2
+    ],
+    "BD_5": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     2,
+     2,
+     2
+    ],
+    "BD_6": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    "2T": [
+     1,
+     1,
+     1,
+     2,
+     2,
+     2,
+     3
+    ],
+    "2O": [
+     1,
+     1,
+     2,
+     2,
+     2,
+     3,
+     3,
+     4
+    ],
+    "2I": [
+     1,
+     2,
+     2,
+     3,
+     3,
+     4,
+     4,
+     5,
+     6
+    ]
+   },
+   "audit": {
+    "C_1": [
+     1
+    ],
+    "C_2": [
+     1,
+     1
+    ],
+    "C_3": [
+     1,
+     1,
+     1
+    ],
+    "C_4": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_5": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_6": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_7": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_8": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_9": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "C_10": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "BD_2": [
+     1,
+     1,
+     1,
+     1,
+     2
+    ],
+    "BD_3": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     2
+    ],
+    "BD_4": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     2,
+     2
+    ],
+    "BD_5": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     2,
+     2,
+     2
+    ],
+    "BD_6": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    "2T": [
+     1,
+     1,
+     1,
+     2,
+     2,
+     2,
+     3
+    ],
+    "2O": [
+     1,
+     1,
+     2,
+     2,
+     2,
+     3,
+     3,
+     4
+    ],
+    "2I": [
+     1,
+     2,
+     2,
+     3,
+     3,
+     4,
+     4,
+     5,
+     6
+    ]
+   },
+   "verdict": "CONFIRMED",
+   "note": "my character table is built by a different algorithm and verified by EXACT row and column orthogonality"
+  },
+  {
+   "claim": "adjacency matrix A (McKay graph), symmetric, sum_sigma' A[s][s'] dim s' = 2 dim s",
+   "agent_A": "A as reported per group",
+   "audit": "identical up to the sigma relabelling found by search; A_symmetric and row-weight hold for all 34 groups",
+   "verdict": "CONFIRMED",
+   "note": "agent A and I order complex-conjugate irrep pairs differently; a consistent relabelling reproduces A exactly for all 18 groups"
+  },
+  {
+   "claim": "distance vector d(sigma) and graph diameter",
+   "agent_A": {
+    "C_1": [
+     [
+      0
+     ],
+     0
+    ],
+    "C_2": [
+     [
+      0,
+      1
+     ],
+     1
+    ],
+    "C_3": [
+     [
+      0,
+      1,
+      1
+     ],
+     1
+    ],
+    "C_4": [
+     [
+      0,
+      1,
+      1,
+      2
+     ],
+     2
+    ],
+    "C_5": [
+     [
+      0,
+      2,
+      2,
+      1,
+      1
+     ],
+     2
+    ],
+    "C_6": [
+     [
+      0,
+      1,
+      1,
+      3,
+      2,
+      2
+     ],
+     3
+    ],
+    "C_7": [
+     [
+      0,
+      3,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     3
+    ],
+    "C_8": [
+     [
+      0,
+      3,
+      3,
+      1,
+      1,
+      2,
+      2,
+      4
+     ],
+     4
+    ],
+    "C_9": [
+     [
+      0,
+      4,
+      4,
+      2,
+      2,
+      1,
+      1,
+      3,
+      3
+     ],
+     4
+    ],
+    "C_10": [
+     [
+      0,
+      3,
+      3,
+      1,
+      1,
+      5,
+      2,
+      2,
+      4,
+      4
+     ],
+     5
+    ],
+    "BD_2": [
+     [
+      0,
+      2,
+      2,
+      2,
+      1
+     ],
+     2
+    ],
+    "BD_3": [
+     [
+      0,
+      3,
+      3,
+      2,
+      1,
+      2
+     ],
+     3
+    ],
+    "BD_4": [
+     [
+      0,
+      2,
+      4,
+      4,
+      3,
+      1,
+      2
+     ],
+     4
+    ],
+    "BD_5": [
+     [
+      0,
+      5,
+      5,
+      2,
+      3,
+      1,
+      2,
+      4
+     ],
+     5
+    ],
+    "BD_6": [
+     [
+      0,
+      6,
+      6,
+      2,
+      5,
+      1,
+      3,
+      2,
+      4
+     ],
+     6
+    ],
+    "2T": [
+     [
+      0,
+      4,
+      4,
+      1,
+      3,
+      3,
+      2
+     ],
+     4
+    ],
+    "2O": [
+     [
+      0,
+      6,
+      5,
+      1,
+      4,
+      2,
+      4,
+      3
+     ],
+     6
+    ],
+    "2I": [
+     [
+      0,
+      7,
+      1,
+      2,
+      6,
+      3,
+      6,
+      4,
+      5
+     ],
+     7
+    ]
+   },
+   "audit": {
+    "C_1": [
+     [
+      0
+     ],
+     0
+    ],
+    "C_2": [
+     [
+      0,
+      1
+     ],
+     1
+    ],
+    "C_3": [
+     [
+      0,
+      1,
+      1
+     ],
+     1
+    ],
+    "C_4": [
+     [
+      0,
+      1,
+      1,
+      2
+     ],
+     2
+    ],
+    "C_5": [
+     [
+      0,
+      1,
+      2,
+      2,
+      1
+     ],
+     2
+    ],
+    "C_6": [
+     [
+      0,
+      1,
+      1,
+      3,
+      2,
+      2
+     ],
+     3
+    ],
+    "C_7": [
+     [
+      0,
+      1,
+      2,
+      3,
+      3,
+      2,
+      1
+     ],
+     3
+    ],
+    "C_8": [
+     [
+      0,
+      1,
+      3,
+      3,
+      1,
+      2,
+      2,
+      4
+     ],
+     4
+    ],
+    "C_9": [
+     [
+      0,
+      1,
+      4,
+      2,
+      2,
+      4,
+      1,
+      3,
+      3
+     ],
+     4
+    ],
+    "C_10": [
+     [
+      0,
+      3,
+      3,
+      1,
+      1,
+      5,
+      2,
+      2,
+      4,
+      4
+     ],
+     5
+    ],
+    "BD_2": [
+     [
+      0,
+      2,
+      2,
+      2,
+      1
+     ],
+     2
+    ],
+    "BD_3": [
+     [
+      0,
+      3,
+      3,
+      2,
+      1,
+      2
+     ],
+     3
+    ],
+    "BD_4": [
+     [
+      0,
+      2,
+      4,
+      4,
+      3,
+      1,
+      2
+     ],
+     4
+    ],
+    "BD_5": [
+     [
+      0,
+      5,
+      5,
+      2,
+      3,
+      1,
+      2,
+      4
+     ],
+     5
+    ],
+    "BD_6": [
+     [
+      0,
+      6,
+      6,
+      2,
+      5,
+      1,
+      3,
+      2,
+      4
+     ],
+     6
+    ],
+    "2T": [
+     [
+      0,
+      4,
+      4,
+      1,
+      3,
+      3,
+      2
+     ],
+     4
+    ],
+    "2O": [
+     [
+      0,
+      6,
+      5,
+      1,
+      4,
+      2,
+      4,
+      3
+     ],
+     6
+    ],
+    "2I": [
+     [
+      0,
+      1,
+      7,
+      6,
+      2,
+      3,
+      6,
+      4,
+      5
+     ],
+     7
+    ]
+   },
+   "verdict": "CONFIRMED",
+   "note": "matched under the same relabelling"
+  },
+  {
+   "claim": "T1: least a with <chi_sigma, chi_a> != 0 equals d(sigma) for every sigma of every group",
+   "agent_A": "holds for all 18 groups",
+   "audit": "holds for all 34 groups / 344 irreducibles, a<=32",
+   "verdict": "CONFIRMED",
+   "note": "widened search found no counterexample"
+  },
+  {
+   "claim": "T2: with -I in Gamma every occurrence of sigma in V_a has a = d(sigma) mod 2; without -I it fails",
+   "agent_A": "holds for all 8 groups with -I; violations reported for the 10 without",
+   "audit": "holds for all 21 groups with -I; fails for all 13 without, a<=32",
+   "verdict": "CONFIRMED",
+   "note": ""
+  },
+  {
+   "claim": "T3: the three routes to mu_tau(m) agree",
+   "agent_A": "char_tau == char_tau_conj == svd_rank in every row",
+   "audit": "convA == convB == branching formula in all 11165 rows over 34 groups, m<=30; and exact GF(p) projector rank agrees in 14 spot checks (dims 30..210), projectors exactly idempotent",
+   "verdict": "CONFIRMED",
+   "note": "see the mutation notes: convA==convB is forced by chi_(E_m) being real, so that half of the agreement is not evidence"
+  },
+  {
+   "claim": "T4: q and q^2 for every 2-dim determinant-one irreducible",
+   "agent_A": "q^2 = 4 for 12 of the 13 such reps; 2I has one with q = 6, q^2 = 36",
+   "audit": "q^2 = 4 for 40 of 41 such reps over 34 groups; the single exception is the same 2I rep, q = 6, q^2 = 36",
+   "verdict": "CONFIRMED",
+   "note": "distinct q^2 values found: [4, 36]"
+  },
+  {
+   "claim": "T5: q = 2, q^2 = 4 for the trivial twist, every Gamma",
+   "agent_A": "q=2, q^2=4 for all 18",
+   "audit": "q=2, q^2=4 for all 34",
+   "verdict": "CONFIRMED",
+   "note": ""
+  },
+  {
+   "claim": "T6: e(sigma) table",
+   "agent_A": {
+    "C_1": [
+     2
+    ],
+    "C_2": [
+     2,
+     3
+    ],
+    "C_3": [
+     2,
+     2,
+     2
+    ],
+    "C_4": [
+     2,
+     3,
+     3,
+     2
+    ],
+    "C_5": [
+     2,
+     2,
+     2,
+     3,
+     3
+    ],
+    "C_6": [
+     2,
+     3,
+     3,
+     3,
+     2,
+     2
+    ],
+    "C_7": [
+     2,
+     3,
+     3,
+     2,
+     2,
+     3,
+     3
+    ],
+    "C_8": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     2,
+     2,
+     4
+    ],
+    "C_9": [
+     2,
+     4,
+     4,
+     2,
+     2,
+     3,
+     3,
+     3,
+     3
+    ],
+    "C_10": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     5,
+     2,
+     2,
+     4,
+     4
+    ],
+    "BD_2": [
+     2,
+     2,
+     2,
+     2,
+     3
+    ],
+    "BD_3": [
+     2,
+     3,
+     3,
+     2,
+     3,
+     2
+    ],
+    "BD_4": [
+     2,
+     2,
+     4,
+     4,
+     3,
+     3,
+     2
+    ],
+    "BD_5": [
+     2,
+     5,
+     5,
+     2,
+     3,
+     3,
+     2,
+     4
+    ],
+    "BD_6": [
+     2,
+     6,
+     6,
+     2,
+     5,
+     3,
+     3,
+     2,
+     4
+    ],
+    "2T": [
+     2,
+     4,
+     4,
+     3,
+     3,
+     3,
+     2
+    ],
+    "2O": [
+     2,
+     6,
+     5,
+     3,
+     4,
+     2,
+     4,
+     3
+    ],
+    "2I": [
+     2,
+     7,
+     3,
+     2,
+     6,
+     3,
+     6,
+     4,
+     5
+    ]
+   },
+   "audit": {
+    "C_1": [
+     2
+    ],
+    "C_2": [
+     2,
+     3
+    ],
+    "C_3": [
+     2,
+     2,
+     2
+    ],
+    "C_4": [
+     2,
+     3,
+     3,
+     2
+    ],
+    "C_5": [
+     2,
+     3,
+     2,
+     2,
+     3
+    ],
+    "C_6": [
+     2,
+     3,
+     3,
+     3,
+     2,
+     2
+    ],
+    "C_7": [
+     2,
+     3,
+     2,
+     3,
+     3,
+     2,
+     3
+    ],
+    "C_8": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     2,
+     2,
+     4
+    ],
+    "C_9": [
+     2,
+     3,
+     4,
+     2,
+     2,
+     4,
+     3,
+     3,
+     3
+    ],
+    "C_10": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     5,
+     2,
+     2,
+     4,
+     4
+    ],
+    "BD_2": [
+     2,
+     2,
+     2,
+     2,
+     3
+    ],
+    "BD_3": [
+     2,
+     3,
+     3,
+     2,
+     3,
+     2
+    ],
+    "BD_4": [
+     2,
+     2,
+     4,
+     4,
+     3,
+     3,
+     2
+    ],
+    "BD_5": [
+     2,
+     5,
+     5,
+     2,
+     3,
+     3,
+     2,
+     4
+    ],
+    "BD_6": [
+     2,
+     6,
+     6,
+     2,
+     5,
+     3,
+     3,
+     2,
+     4
+    ],
+    "2T": [
+     2,
+     4,
+     4,
+     3,
+     3,
+     3,
+     2
+    ],
+    "2O": [
+     2,
+     6,
+     5,
+     3,
+     4,
+     2,
+     4,
+     3
+    ],
+    "2I": [
+     2,
+     3,
+     7,
+     6,
+     2,
+     3,
+     6,
+     4,
+     5
+    ]
+   },
+   "verdict": "CONFIRMED",
+   "note": "e(tau) = min{m>=2 : tau* in V_m or tau* in V_(m-2)} verified with zero violations over all 34 groups"
+  },
+  {
+   "claim": "T7: least k and k(k+2)",
+   "agent_A": "T4 twists: k=2 -> 8, and 2I's exception k=6 -> 48; trivial: k=0 -> 0",
+   "audit": "identical; over 34 groups k(k+2) = q^2 + 2q for every T4 twist (0 violations) but NOT for the trivial twist",
+   "verdict": "CONFIRMED",
+   "note": "q^2 is never equal to k(k+2) in any of the 41+34 cases"
+  },
+  {
+   "claim": "T8: branching of V_a|2I into irreducibles for a = 0..8",
+   "agent_A": "as reported",
+   "audit": "identical (dim, d, multiplicity) for every a",
+   "verdict": "CONFIRMED",
+   "note": ""
+  },
+  {
+   "claim": "T9: rank of the full unreduced projector equals the character sum",
+   "agent_A": "SVD rank == character sum in all 7 T9 cases and all 198 T9b cases, tol 1e-8",
+   "audit": "exact GF(p) rank == character sum in 14 independent cases; every projector exactly idempotent over GF(p)",
+   "verdict": "CONFIRMED",
+   "note": "tolerance is not load-bearing: smallest kept singular value ~1.0, largest dropped ~2.9e-15"
+  },
+  {
+   "claim": "audit metric: min pairwise element distance over all groups = 0.43701602444882115",
+   "agent_A": 0.43701602444882115,
+   "audit": 0.43701602444882115,
+   "verdict": "CONFIRMED",
+   "note": "independent float recomputation"
+  }
+ ],
+ "my_results_per_group": {
+  "_note": "The 34-group widened sweep (1.35 MB) is kept LOCAL, not tracked: it is a re-derivation, fully regenerable by running scripts/m8_1_1_audit_a/m8_1_1_coexact_audit.py. The verdicts, comparisons, pattern analysis, mutation records and defect list below are the auditable outputs and are tracked in full.",
+  "groups_covered": [
+   "2I",
+   "2O",
+   "2T",
+   "BD_10",
+   "BD_11",
+   "BD_12",
+   "BD_2",
+   "BD_3",
+   "BD_4",
+   "BD_5",
+   "BD_6",
+   "BD_7",
+   "BD_8",
+   "BD_9",
+   "C_1",
+   "C_10",
+   "C_11",
+   "C_12",
+   "C_13",
+   "C_14",
+   "C_15",
+   "C_16",
+   "C_17",
+   "C_18",
+   "C_19",
+   "C_2",
+   "C_20",
+   "C_3",
+   "C_4",
+   "C_5",
+   "C_6",
+   "C_7",
+   "C_8",
+   "C_9"
+  ]
+ }
+}

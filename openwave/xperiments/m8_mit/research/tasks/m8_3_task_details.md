@@ -1,8 +1,10 @@
 # M8.3: The mass-formula reproducer script
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 PLANNED. This is a
-> scaffold-stage planning aid written by the maintainers (2026-07-21); the author owns
-> the column and may amend everything here.
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: Implementation complete; PR
+> pending (2026-07-28, author-run, normal fork → PR → review workflow, no independence
+> firewall). Method note: [`../findings/m8_3_method_note.md`](../findings/m8_3_method_note.md).
+> This is a scaffold-stage planning aid written by the maintainers (2026-07-21); the author
+> owns the column and has amended it below with the executed findings.
 
 ## PLANNING
 
@@ -39,7 +41,7 @@ platform scores EWT's analytic masses under.
 | # | Item |
 | --- | --- |
 | 1 | `scripts/m8_3_mass_reproducer.py` runs standalone and regenerates every number; `data/m8_3_masses.json` |
-| 2 | Residual table published at the ledger's weight: the within-3× hit rate is REPORTED but explicitly NOT counted as evidence for the torsion map (the author's own pre-registered null, p = 0.174) |
+| 2 | Residual table published at the ledger's weight: the within-3× hit rate is REPORTED but explicitly NOT counted as evidence for the torsion map (the author's own pre-registered null, p = 0.174 [original planning value; superseded by the corrected table's `mass-null-v1.1`, `p_A = 0.690`, see FINDINGS below]) |
 | 3 | Any constant that could NOT be recomputed from a published definition is listed by name (that list is a deliverable, not a failure) |
 | 4 | Method note per [`dev_docs/METHOD_NOTE.md`](../../../../../dev_docs/METHOD_NOTE.md); MODELS.md mass-cell updated honestly |
 
@@ -60,8 +62,25 @@ context must be held away from, so it runs the normal fork → PR → review wor
 
 ## DEVIATIONS LOG
 
-(none)
+| # | Deviation | Reason |
+| --- | --- | --- |
+| 1 | `data/m8_3_masses.json` also carries the ranked table, the PDG scorecard, and null-test provenance, not only "every number" the formula outputs. | One artifact as the source of truth for anything downstream (MODELS.md, the method note) cites. |
+| 2 | The mutation-test registry (23 gates, coverage-enforced: every gate id attacked, every mutation red) goes beyond the docstring's original placeholder. | Already a standing M8 roadmap rule ("every PASS gate must be demonstrated to fail," precedent `m7_trivial_ok`); closing it finished the task to its own written standard. |
+| 3 | A completeness sweep found and corrected the same superseded mass-table statements in three living M8 background documents (`__M8_model_briefing.md`, `research/m8_theory_canonical.md`, `research/m8_background.md`). | No M8.2 or M8.5 computational artifact depended on the corrected torsion values; these were the only living (non-locked) documents still citing the pre-correction figures. |
 
 ## FINDINGS
 
-(pending)
+1. **Half-integer torsion defect discovered.** Building against the then-published mass-spectrum page, this script's own spectral-zeta computation of the four half-integer torsion singles (R1, R2, R6, R8) disagreed with the page. Root cause: those values were the coexact one-form contribution only, omitting the scalar tower's `-2*zeta'_scalar(0)` term (supported at half-integer j). Full diagnosis: [method note](../findings/m8_3_method_note.md) § 3.1.
+
+2. **Corrected result and null context.** Restoring the scalar term gives an exact closed form for every irrep, not just the four integer-spin ones the page previously had: `T^2(R1)=phi^-4/4`, `T^2(R2)=phi^4/4`, `T^2(R6)=1`, `T^2(R8)=4`. Reported upstream; mode-identity-theory corrected the page and re-ran its pre-registered null test as `mass-null-v1.1` (`p_A = 0.690`, corrected table, superseding `mass-null-v1.0`'s `p_A = 0.174` on the pre-correction table). Re-deposited at Zenodo [10.5281/zenodo.21652153](https://doi.org/10.5281/zenodo.21652153) (concept DOI 10.5281/zenodo.18603975).
+
+3. **Current scorecard.** With m_e as the calibration benchmark (not counted), of the remaining 8 charged fermions: 5 have a compatible entry within ×3 (μ, s, t, τ, b); 4 survive sector-first adjudication (μ, s, t, τ). Down is assigned but outside ×3 (3.22); up and charm are unassigned (up's former ~6% hit was the coexact-only artifact); bottom is compatible (1.17) but outside its own structural sector (R2). Full figures: `data/m8_3_masses.json`.
+
+4. **Known follow-up (not in this PR).** [`findings/m8_2_preregistration.md`](../findings/m8_2_preregistration.md) line 124 cites the superseded `mass-null-v1.0` figure (p = 0.174); that document is locked (merged via PR #350) and its freeze policy requires a dated addendum, not an in-place edit. Left untouched here; addendum text drafted, pending a small follow-up PR after this one merges.
+
+## Links
+
+- Script: [`scripts/m8_3_mass_reproducer.py`](../scripts/m8_3_mass_reproducer.py)
+- Data: [`data/m8_3_masses.json`](../data/m8_3_masses.json)
+- Method note: [`findings/m8_3_method_note.md`](../findings/m8_3_method_note.md)
+- PR: pending from branch `m8.3-mass-reproducer`
