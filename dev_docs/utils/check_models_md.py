@@ -1,6 +1,6 @@
 """Lint MODELS.md: the 65-word cell budget + status/score-board consistency.
 
-Six checks. The first two are defined in MODELS.md "Cell format (the 65-word
+Seven checks. The first two are defined in MODELS.md "Cell format (the 65-word
 rule)"; the rest keep the derived tables honest:
 1. Budget: every summary cell in the per-model RESULTS BY MODEL tables carries
    at most LIMIT words of prose. Prose = cell text minus the status tag
@@ -32,6 +32,13 @@ rule)"; the rest keep the derived tables honest:
    "every row names its simplest passing test" rule that table exists to carry.
    A `simplest test` column carried by the summary-status table itself (the
    pre-companion layout) is checked the same way.
+7. Stated counts: any criteria count or per-column icon tally written in a LIVE
+   doc (repo root, dev_docs, model briefings, model roadmaps) matches the live
+   criteria set. Frozen records (task docs, findings, archives, theory) quote
+   the count of their own day and are skipped; a deliberately historical line in
+   a live doc opts out with "<!-- count:historical -->". Without this, a tally
+   written when the set held 21 rows keeps reading as current after it grows,
+   and nothing flags it.
 6. Shape: every data row carries exactly as many cells as its table's header.
    This is what an unescaped "|" inside a cell looks like from here, and it is
    worth its own message because such a row otherwise parses by position and
@@ -269,11 +276,58 @@ elif status and test_col is None:
         " and the summary-status table carries no `simplest test` column"
     )
 
+# 7. Counts stated elsewhere in the repo track the live criteria set. A doc that
+#    describes the matrix goes stale silently: a tally written when the set held
+#    21 rows still reads as current after the set grows, and nothing flags it.
+#    Only LIVE docs are scanned (repo root, dev_docs, model briefings, model
+#    roadmaps). Frozen records (task docs, findings, archives, theory corpora)
+#    legitimately quote the count of their own day. A deliberately historical
+#    line inside a live doc opts out with the EXEMPT marker.
+ROOT = PATH.parent
+EXEMPT = "<!-- count:historical -->"
+FROZEN = ("/archive/", "/theory/", "/tasks/", "/findings/", "/checkpoints/", "/ai_analysis/")
+STATED = re.compile(r"(\d+)\s+criteri(?:a|on|ons)\b")
+# "3 ✅ / 3 ⚠️ / 3 ❌ / 22 🚧", two to four buckets. Requires 🚧 so that a gate
+# suite's "4 ✅ / 1 ❌" is not mistaken for a column tally.
+TALLY = re.compile(r"\d+\s*(?:✅|⚠️|❌|🚧)(?:\s*/\s*\d+\s*(?:✅|⚠️|❌|🚧)){1,3}")
+
+n_crit = len(crit_set)
+live_docs = [
+    *ROOT.glob("*.md"),
+    *ROOT.glob("dev_docs/*.md"),
+    *ROOT.glob("openwave/xperiments/*/__M*_model_briefing.md"),
+    *ROOT.glob("openwave/xperiments/*/research/m*_roadmap.md"),
+]
+scanned = 0
+for doc in sorted(set(live_docs)):
+    rel = doc.relative_to(ROOT).as_posix()
+    if any(seg in f"/{rel}" for seg in FROZEN):
+        continue
+    scanned += 1
+    for ln, line in enumerate(doc.read_text().splitlines(), 1):
+        if EXEMPT in line:
+            continue
+        for m in STATED.finditer(line):
+            if n_crit and int(m.group(1)) != n_crit:
+                errors.append(
+                    f"{rel}:{ln} says '{m.group(0)}', the matrix has {n_crit}"
+                )
+        for m in TALLY.finditer(line):
+            if "🚧" not in m.group(0):
+                continue
+            total = sum(int(x) for x in NUM.findall(m.group(0)))
+            if n_crit and total != n_crit:
+                errors.append(
+                    f"{rel}:{ln} tally '{m.group(0)}' sums to {total},"
+                    f" the matrix has {n_crit}"
+                )
+
 counts = sorted(n for _, n, _ in summary.values())
 models = sorted({m for _, m in summary})
 print(
     f"summary cells: {len(summary)} | status icons: {len(status)}"
     f" | tests: {len(tests)} | models: {','.join(models)}"
+    f" | live docs scanned for stated counts: {scanned}"
 )
 if counts:
     print(f"limit {LIMIT} | max {counts[-1]}  median {counts[len(counts) // 2]}")
