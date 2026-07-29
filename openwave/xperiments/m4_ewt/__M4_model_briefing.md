@@ -80,6 +80,19 @@ Deep dives: [`research/M4_engine_upgrade.md`](research/M4_engine_upgrade.md); th
 record under
 [`../m3_wolff_lafreniere/research/0_STATUS.md`](../m3_wolff_lafreniere/research/0_STATUS.md).
 
+## Mode of work
+
+Headless first: scripts, data, plots and a written note under
+[`research/`](research/), which carries its own
+[layout and conventions](research/README.md). The rendered launcher in this model root
+is the later step, and it runs the kernels the headless work has already validated. The
+two solvers and what each is for: [`TUTORIAL.md § 3`](../../../TUTORIAL.md#3-the-two-solvers-headless-sandbox-vs-rendered).
+
+The program lives in [`research/m4_roadmap.md`](research/m4_roadmap.md) and the spec of
+record in [`research/m4_theory_canonical.md`](research/m4_theory_canonical.md), both
+scaffolded as skeletons for whoever extends the model. AI agents bootstrap on this column
+by reading [`research/m4_agent_orientation.md`](research/m4_agent_orientation.md).
+
 ## Roadmap
 
 | Next | What lands |
