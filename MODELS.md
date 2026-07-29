@@ -116,8 +116,8 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 | | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r) | far-field 1/r potential at charge e |
-| Lorentz covariance | covariant dispersion; boosted states contract, c-limited |
-| Magnetic force | Larmor precession of the dipole in an applied field |
+| Lorentz covariance | Lorentz-invariant action, no preferred frame; boosted states contract, c-limited |
+| Magnetic force | boosted charge yields the B of relativistic EM; dipole Larmor precession |
 | Strong force: confinement | linear inter-charge potential, ~1 GeV/fm (Cornell) |
 | Running coupling | coupling varies with scale (onset at the core radius) |
 | Weak force: muon decay | μ relaxes to e + neutral ejecta |

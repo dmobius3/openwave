@@ -64,7 +64,7 @@ Reproduced as sent, with three changes: personal names replaced by `<<placeholde
 ```text
 Hi <<model_author>>, here is a detailed description and instructions for you, I hope it helps:
 
-OpenWave is an open-source platform, maintained by volunteers, for testing candidate field-theoretic models of matter: frameworks that claim to build particles, forces, and waves out of an underlying field, written down as a closed set of equations. It tests a model by running it: the author supplies the equations, and the workflow turns them into a lattice implementation whose behavior is then measured rather than asserted.
+OpenWave is an open-source platform, maintained by volunteers, for testing candidate field-theoretic models of matter: frameworks that claim to build particles, forces, and waves out of an underlying field, written down as a closed set of equations. It tests a model by running it: the model author supplies the equations, and the workflow turns them into a lattice implementation whose behavior is then measured rather than asserted.
 
 The loop <<fellow_author>> described is the standard one: implement the Lagrangian in a GPU solver, relax an ansatz by energy minimization to find which stable field configurations the model actually has, then run dynamics on those configurations (kick them, collide them, boost them) and read off observables: energies, spectra, dispersion relations, decay products. What the model paper says could exist, the lattice shows does or does not exist, and how it behaves. The page <<fellow_author>> linked is exactly one of the research notes such a run produces.
 
