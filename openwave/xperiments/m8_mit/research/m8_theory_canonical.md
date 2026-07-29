@@ -47,7 +47,7 @@
 | Particle | an irreducible representation of 2I at a McKay-lattice position (a mode slot, NOT a soliton or defect) | structural |
 | Generations | the same irrep read in the three flat connections of S³/2I (trivial, standard, Galois): exactly three, zero freedom | structural, the ledger's strongest class |
 | Color | the Z₃ face stabilizers of 2I: triplet vs singlet per irrep | structural |
-| Torsion-to-slot map | Reidemeister-torsion assignment of irreps to mass slots | ❌ author's pre-registered null (`mass-null-v1.0`: p = 0.174); the map is NOT evidence-bearing; slots are graded structurally only |
+| Torsion-to-slot map | Reidemeister-torsion assignment of irreps to mass slots | ❌ author's pre-registered null on the corrected table (`mass-null-v1.1`: p_A = 0.690, superseding `mass-null-v1.0`'s p = 0.174 on the pre-correction table); the compatible-coverage count is typical under random torsion reassignment and carries no evidential weight for the torsion map; slots are graded structurally only |
 | Unassigned | charm unplaced; 8 of 24 slots empty; rank-16 / dead-zone states named but uncomputed | open, listed honestly |
 
 ## 5. The mass formula (analytic sector)
@@ -75,8 +75,8 @@ bar; graded at the ledger weight regardless of hit rate (§ 6).
 | Cycle 2 (α) | α is input AND output: it calibrates R, then the scaling law "predicts" α. The 0.5% match is a consistency check; the non-circular content is Λ at ~24% downstream |
 | Cycle 7 (the R-problem) | the two independent routes to R disagree ~4× (coupling route ≈ 5.3 Gpc, mass route ≈ 20 Gpc; ~14× in Λ). Every R-dependent number inherits this until one route is shown correct (OQ2) |
 | m_e ↔ Λ | the closure loop holds only to ~11% |
-| Residuals | down quark 3.2×, top 3.9×, tau a soft miss; not smoothed |
-| Documented negatives | torsion null (p = 0.174), SPARC a₀(z) coherence-scale mechanism (falsified, pre-registered pipeline [10.5281/zenodo.20271702](https://doi.org/10.5281/zenodo.20271702)), H₀ bimodality (unimodal, p = 0.217) |
+| Residuals | down quark 3.2×, top compatible within ×3 (0.93, symmetrized 1.07), tau the weakest adjudicated within-×3 entry (~2.74×); not smoothed |
+| Documented negatives | torsion null (`mass-null-v1.1`, p_A = 0.690 on the corrected table; supersedes `mass-null-v1.0`'s p = 0.174 on the pre-correction table), SPARC a₀(z) coherence-scale mechanism (falsified, pre-registered pipeline [10.5281/zenodo.20271702](https://doi.org/10.5281/zenodo.20271702)), H₀ bimodality (unimodal, p = 0.217) |
 | Grading rule | platform tasks target the STRUCTURAL ladder (slot structure, gap ratios, generation count), never the 24-entry numeric table ([`m8_background.md § 3`](m8_background.md)) |
 
 ## 7. Consumption rules (standing)
