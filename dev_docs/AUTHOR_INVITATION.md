@@ -16,6 +16,7 @@ Ordered as they worked in the reference message: answer the question first, invi
 | How a model gets tested | The loop, concretely: implement the Lagrangian in a GPU solver, energy-minimize to find which stable configurations the model actually has, run dynamics on them, read off observables. The point to land: these are properties of *solutions*, not of the action, so they cannot be read off the paper by inspection |
 | Where results land | [`MODELS.md`](../MODELS.md): one column per framework, shared criteria rows, every cell earned by a runnable script plus a research note or left marked "not yet tested". Reproducibility, not orthodoxy; a documented negative counts as much as a positive |
 | That the arena is not fixed | Name the existing substrates and how unalike they are, so "my framework does not look like yours" stops being a reason not to apply. Pair it with the boundary: the equations stay the author's, and the platform cannot supply them |
+| That an incomplete model still qualifies | The entry bar is not a finished theory. M8 was accepted with no equation of motion at all, and supplying one became the program: the author brings the arena and the target structure, the platform brings Lagrangian candidates, simulation engineering and grading. Say it, because an author whose framework has a known gap will otherwise assume the gap disqualifies it |
 | The formal invitation | Say the slot is open and the invitation is formal. Mechanics in one line: one discussion post in the New Model category, no form, a maintainer picks it up |
 | The one page to read | [`ONBOARDING_MODELS.md`](../ONBOARDING_MODELS.md), plus the highest-leverage instruction available: point an AI assistant at it. Summarize its four steps rather than listing headings |
 | Bring your own compute | State it plainly and early enough to be fair. Runs are author-driven, on the author's own AI tokens and hardware; the platform supplies criteria, scaffold, review, standards and prior art. The column carries the author's name, so the author answers challenges to it |
@@ -25,7 +26,7 @@ Ordered as they worked in the reference message: answer the question first, invi
 
 **On the worked example.** Use whichever column is furthest along in onboarding at the time of writing, and cite it by its record rather than by adjectives: the application discussion, the scaffold date, what was verified and how, what the author has contributed since, and what remains untested. An invitation that only lists successes reads like recruitment; one that reports the open cells reads like the platform it is describing.
 
-**Register notes.** Answer the recipient's question before making any offer. Do not oversell: the sentence about what the platform cannot supply does more work than any claim about what it can. Never offer a call or a meeting; end on the technical next step. Keep every number checkable against the repository on the day it is sent.
+**Register notes.** Answer the recipient's question before making any offer. Do not oversell: the sentence about what the platform cannot supply does more work than any claim about what it can. Name a model's gap as a program with a task ID, never as a verdict on the model or its author; "no dynamical field at start" and "no dynamical field" read very differently to the person who wrote the theory. Never offer a call or a meeting; end on the technical next step. Keep every number checkable against the repository on the day it is sent.
 
 ## Links to embed
 
@@ -51,6 +52,7 @@ Any reused claim gets re-checked against the repository on the day it is sent. T
 | Two blind agents re-derived the bedrock eigenvalue theorem to 10-digit precision, unprompted by the printed constants | [M8.1](../openwave/xperiments/m8_mit/research/tasks/m8_1_task_details.md) certification gate, 2026-07-21, and its [method note](../openwave/xperiments/m8_mit/research/findings/m8_1_method_note.md) |
 | Two author pull requests merged in the first week | [PR #350](https://github.com/openwave-labs/openwave/pull/350) (M8.2) and [PR #362](https://github.com/openwave-labs/openwave/pull/362) (M8.3) |
 | One cell earned, the rest "not yet tested" | The M8 column in [`MODELS.md`](../MODELS.md) and its score-board |
+| M8 was onboarded without an equation of motion, and supplying one is the program | [`m8_roadmap.md`](../openwave/xperiments/m8_mit/research/m8_roadmap.md) opening line ("a field-dynamics collaboration"), [M8.2](../openwave/xperiments/m8_mit/research/tasks/m8_2_task_details.md) pre-registration locked 2026-07-27, [M8.4](../openwave/xperiments/m8_mit/research/tasks/m8_4_task_details.md) the Lagrangian-family survey |
 | Substrates named for M5, M6, M8 | The three model briefings; [`MODELS.md`](../MODELS.md) column headers |
 
 A fourth M8 fact was drafted and cut for length, worth restoring when the audience needs the strongest available evidence that the process corrects rather than confirms: the author's own reproducer script ([M8.3](../openwave/xperiments/m8_mit/research/tasks/m8_3_task_details.md)) found a dropped scalar-zeta term in the author's own published mass-formula page, which was then corrected upstream.
@@ -59,7 +61,9 @@ A fourth M8 fact was drafted and cut for length, worth restoring when the audien
 
 Sent to the Models-of-Particles list in reply to a model author's question, "Can someone explain to me how this system simulates or tests physical theories? My Lagrangian is in my paper but I don't understand how this system would test anything interesting."
 
-Reproduced as sent, with three changes: personal names replaced by `<<placeholders>>`, the third-person pronouns for the worked example's author replaced by "the author" (the repository convention for referring to a model author), and one transcription slip corrected, "no dynamical field at start" to "at all", which is what the [M8 briefing](../openwave/xperiments/m8_mit/__M8_model_briefing.md) says and what the sentence means.
+Reproduced as sent, with two changes: personal names replaced by `<<placeholders>>`, and the third-person pronouns for the worked example's author replaced by "the author" (the repository convention for referring to a model author).
+
+One phrase is deliberate and should survive reuse: "no dynamical field **at start**". That is the state M8 was accepted in, not a verdict on the model. Supplying the equation of motion is the program itself, and the author is working through it now: the [field-dynamics pre-registration](../openwave/xperiments/m8_mit/research/findings/m8_2_preregistration.md) is locked and was the author's own first pull request, with the Lagrangian-family survey ([M8.4](../openwave/xperiments/m8_mit/research/tasks/m8_4_task_details.md)) as the decisive science behind it.
 
 ```text
 Hi <<model_author>>, here is a detailed description and instructions for you, I hope it helps:
@@ -70,7 +74,7 @@ The loop <<fellow_author>> described is the standard one: implement the Lagrangi
 
 The results land in a shared comparison table, MODELS.md: each framework is a column scored against the same criteria (rows covering particles, forces, waves, and quantum emergence), and every cell is earned by a runnable script plus a research note, or it stays marked "not yet tested". The bar is reproducibility, not orthodoxy, and a documented negative counts as much as a positive.
 
-The platform is not one engine with one substrate. M5 is a 4x4 real symmetric tensor field, M6 is two coupled vector fields, M8 is spectral geometry on a fixed quotient manifold with no dynamical field at all. Each model gets its own directory, its own solver, and its own roadmap, so your framework does not have to look like any of the existing ones. What the platform cannot supply is the equations; that part stays yours, as the model author.
+The platform is not one engine with one substrate. M5 is a 4x4 real symmetric tensor field, M6 is two coupled vector fields, M8 is spectral geometry on a fixed quotient manifold with no dynamical field at start. Each model gets its own directory, its own solver, and its own roadmap, so your framework does not have to look like any of the existing ones. What the platform cannot supply is the equations; that part stays yours, as the model author.
 
 On <<fellow_author>>'s M9 suggestion: yes, the slot is open and the invitation is now formal. The application is one discussion post in the "New Model" category, no form; a maintainer picks it up from there. The one page to read is ONBOARDING_MODELS.md, and the most efficient thing you can do is point your AI assistant at it. It covers four steps: how to drive the work with an AI coding agent and what a model author owns, a self-evaluation to run on your own framework before anything else, the application itself, and what gets scaffolded if it lands.
 

@@ -7,7 +7,7 @@
 > starts from the topology and reads the spectrum off it: the couplings, the fermion
 > mass ratios, and Λ come from representation theory on S³/2I (McKay distance,
 > Reidemeister torsion, the 120-cell). It is strong on the origin of the numbers and
-> has no field dynamics of its own; supplying that dynamics IS the M8 program
+> does not yet carry field dynamics of its own; supplying them IS the M8 program
 > ([`research/m8_background.md`](research/m8_background.md)).
 >
 > **Status: scaffold stage, research mode first.** This column was scaffolded by the
@@ -18,10 +18,12 @@
 > cross-model pointers ([`research/m8_platform_pointers.md`](research/m8_platform_pointers.md)).
 > The first sector is now VALIDATED in-platform: M8.1 (2026-07-21) verified the
 > twisted-Möbius first-eigenvalue theorem at 10-digit precision, blind and audited.
-> MIT's other results remain analytic or externally computed, and three of them are
-> pre-registered documented negatives the author reports as results. Work runs
-> headless (scripts + research notes) first; the 3D rendering port is a later stage,
-> gated on field dynamics validating in-platform
+> The field-dynamics half is underway as well: the contract M8.4 will be graded
+> against is locked (M8.2, the author's first pull request), and the mass-formula
+> reproducer has landed (M8.3). MIT's other results remain analytic or externally
+> computed, and three of them are pre-registered documented negatives the author
+> reports as results. Work runs headless (scripts + research notes) first; the 3D
+> rendering port is a later stage, gated on field dynamics validating in-platform
 > ([`research/m8_roadmap.md`](research/m8_roadmap.md) M8.7).
 
 ![Möbius manifold topological universe blueprint, by Blake Shatto (asset from the author's mode-identity-theory repo, MIT license)](research/images/blueprint.png)
