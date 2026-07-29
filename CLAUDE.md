@@ -79,7 +79,25 @@ Those papers are **third-party copyrighted files: local-only and gitignored, nev
 
 Note: the legacy top-level `scientific_source/` folder was retired 2026-05-18; papers now live per-model.
 
-**Research `data/` folders follow the same local-only pattern (2026-07-20).** Heavy binary arrays (`.npz` `.npy` `.h5` `.pkl` `.pt` `.mat`) are gitignored and **kept on the working machine, never deleted** (this supersedes an earlier rule that deleted arrays over 1 MB at task close). What IS tracked, and what a reader on GitHub audits: the distilled summary `.json` / `.csv` / `.txt` beside them, the plots, the scripts that produce everything, and the per-folder **`_DATASETS.md`** manifest, which indexes every local-only file by task group with its producing script and the task record holding the exact regen command. Regenerate a manifest after any run that writes arrays: `python3 ~/Documents/source_code/XRODZ/dotfiles/claude_projects/NEPTUNYA-SABER/scripts/gen_datasets_manifest.py <path/to/data> --write`. Runs are deterministic from their fixed seeds and configs, so a clone rebuilds every array from tracked code.
+### No machine-local paths (MANDATORY)
+
+**This repository is public, and its git history is public with it.** A path committed by mistake is not removable in practice once pushed: clones and forks keep the old objects, and GitHub keeps blobs reachable by SHA. The only reliable control point is before the commit exists.
+
+Absolute paths from a contributor's own machine (`/Users/<name>/...`, `/home/<name>/...`, or a system temp directory) are meaningless to every other clone, and they publish a username and directory layout for no benefit. They arrive by accident rather than by decision: a hardcoded default in a script, a working directory captured in a run log, an exception traceback saved as test data, a generated file recording the command that produced it.
+
+| Instead of | Use |
+| --- | --- |
+| A hardcoded absolute path in a script | An environment variable with a sensible default: `os.environ.get("SCRATCH", ".")` |
+| A path in committed output or a generated header | A repo-relative path |
+| A path inside a captured log or traceback | A `<repo>/` placeholder |
+
+Enforced by [`dev_docs/utils/check_no_local.py`](dev_docs/utils/check_no_local.py), wired to `.githooks/pre-commit` (the repo sets `core.hooksPath=.githooks`, so it is active on clone with no setup). A path that genuinely has to stay is waived per line with `allow-local-path`, which stays visible in review.
+
+Audit the whole tree at any time: `python3 dev_docs/utils/check_no_local.py --tracked`.
+
+The same hook chains `$GIT_DIR/hooks/pre-commit.local` when a contributor has installed one. That file is never tracked, and a fresh clone simply has none.
+
+**Research `data/` folders follow the same local-only pattern (2026-07-20).** Heavy binary arrays (`.npz` `.npy` `.h5` `.pkl` `.pt` `.mat`) are gitignored and **kept on the working machine, never deleted** (this supersedes an earlier rule that deleted arrays over 1 MB at task close). What IS tracked, and what a reader on GitHub audits: the distilled summary `.json` / `.csv` / `.txt` beside them, the plots, the scripts that produce everything, and the per-folder **`_DATASETS.md`** manifest, which indexes every local-only file by task group with its producing script and the task record holding the exact regen command. Regenerate a manifest after any run that writes arrays: `python3 dev_docs/utils/gen_datasets_manifest.py <path/to/data> --write`. Runs are deterministic from their fixed seeds and configs, so a clone rebuilds every array from tracked code.
 
 ## Installation & Usage
 

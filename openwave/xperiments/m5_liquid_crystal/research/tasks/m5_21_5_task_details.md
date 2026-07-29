@@ -26,7 +26,7 @@
 
 ## TASK PLANNING (2026-07-21, at go)
 
-**Go-time**: 2026-07-21 10:55 EDT. Resume ping armed (`SABER Resume: Task M5.21.5`, fires 14:55 EDT = reset 14:50 + 5); reset-time watchdog running.
+**Go-time**: 2026-07-21 10:55 EDT. Resume ping armed (`Resume: Task M5.21.5`, fires 14:55 EDT = reset 14:50 + 5); reset-time watchdog running.
 
 ### The measurement, mapped onto the verified-L era
 

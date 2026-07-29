@@ -26,5 +26,5 @@ complete round. DEFER N5 (article) + N6 (masses) behind it.
   the two are distinct scales (N3 finding), reconciled by the chiral mechanism.
 
 ## Discipline
-Headless numpy f64, 16-core. Checkpoint each. #236 HELD, git untouched. Total invisibility. Cross-link
+Headless numpy f64, 16-core. Checkpoint each. #236 HELD, git untouched. Public OpenWave physics only. Cross-link
 n4b_findings <-> n4_findings <-> 10a <-> #199. Output: `n4b_findings.md` + scripts + a robustness figure.

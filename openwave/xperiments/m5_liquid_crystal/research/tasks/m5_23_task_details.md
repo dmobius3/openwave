@@ -169,7 +169,7 @@ Deferred and now TRACKED as their own roadmap task, **[M5.23.2](m5_23_2_task_det
 | Machine gate: `m5_23_ellipsoid_selftest.py` **14/14 ALL GREEN** at close (geometry, M·u reproduction, physics, hygiene, multi-center, rods, rings); taichi-first throughout (in-kernel Fibonacci + UV template + index pools, no host tables) | ✅ |
 | Follow-ups staged on the roadmap: [M5.24](m5_24_task_details.md) (production-engine catch-up, absorbs the former M5.8.3) → [M5.23.2](m5_23_2_task_details.md) (the disclination-line tracer on the measured λ₂−λ₃ criterion + the J/μ clock demo) | ✅ |
 
-**Model-doc sweep**: canonical [`m5_theory_canonical.md § 4`](../m5_theory_canonical.md) gained the rod-core uniaxial-escape anchor; [`m5_visualization.md`](../m5_visualization.md) gained the VIZ.5 standing row; the model briefing states nothing this review changes (skipped explicitly). SABER-side EXEC_SUMMARY / GOAL_TRACKER: unchanged (OpenWave-scoped rendering work, no SABER gate moved).
+**Model-doc sweep**: canonical [`m5_theory_canonical.md § 4`](../m5_theory_canonical.md) gained the rod-core uniaxial-escape anchor; [`m5_visualization.md`](../m5_visualization.md) gained the VIZ.5 standing row; the model briefing states nothing this review changes (skipped explicitly).
 
 **Findings:** The author's minimal render spec is fully live in the launcher: one value per 3D angle (the shell) and the vortex case done right (the rods + rings on the actual defect lines), composed exactly like the reference figure. The render also produced a measured substrate fact: the rod core's exact uniaxial escape, which is simultaneously why the rods look like rods and the detection criterion the future line tracer needs.
 

@@ -58,7 +58,7 @@ STEP 4 — Definitive profile at canonical (g=1, lambda*) for alpha_JN
   m_chi = 0.4600 MeV   m_J = 0.6184 MeV
   C = 770.2 MeV*fm  (K_1 fit residual 3.79e-02)
   peak beta = 0.6971 @ r = 1.781 (687.8 fm)   nodes = 0   tail/peak = 1.91e-07
-  Profile exported: /Users/xrodz/Documents/source_code/OPENWAVE-LABS/openwave/openwave/xperiments/m6_ouroboros/research/sandbox_v11/v11_canonical_beta_profile.csv  (4000 points)
+  Profile exported: <repo>/openwave/xperiments/m6_ouroboros/research/sandbox_v11/v11_canonical_beta_profile.csv  (4000 points)
 
 STEP 5 — Reproducing the v5a Technical-Note failure modes
 ------------------------------------------------------------------------------

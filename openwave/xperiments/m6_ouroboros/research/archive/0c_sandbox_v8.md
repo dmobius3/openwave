@@ -29,7 +29,7 @@ attribution.
 > *"The time delay is an issue. Still, I send what it sent me just now for
 > you. If it is useful, fine; if not, I continue on 9a."*
 >
-> *Attachment: `/Users/xrodz/Downloads/ouroboros_benchmark.py`*
+> *Attachment: `~/Downloads/ouroboros_benchmark.py`*
 
 ### Script header (verbatim)
 

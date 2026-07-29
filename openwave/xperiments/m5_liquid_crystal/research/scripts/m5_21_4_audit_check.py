@@ -831,8 +831,7 @@ def main():
 DEC = P.DEC
 SCRATCH = os.environ.get(
     "AUDIT_SCRATCH",
-    "/private/tmp/claude-501/-Users-xrodz-Documents-source-code-NEPTUNYA-"
-    "SABER/2a442551-3079-4299-8564-9369478bed29/scratchpad")
+    ".")
 
 
 def my_leap_step_tracked(M, V, cfg, free, gam, dt):
