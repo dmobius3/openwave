@@ -56,13 +56,15 @@ guidance on what a compact-arena port must avoid.
 | [`m7_5_clock_stability.py`](../../m7_hydroboros/research/scripts/m7_5_clock_stability.py) | the clock as stabilizer, measured: solitons exist only above the vacuum's tachyonic band (ω* = 0.786); the direct precedent for "the background mode gates existence" |
 | Compact-arena Derrick note | on S³/2I the Derrick dilation argument is modified (no global scaling freedom; R is a scale). Do the scaling analysis EXPLICITLY for each candidate family before numerics; do not import flat-space Derrick conclusions |
 
-## 5. The lepton-hierarchy target (task M8.6, pays off in two columns)
+## 5. The lepton-hierarchy target (task M8.6, GATED)
 
 | Pointer | Content |
 | --- | --- |
-| [M5 particle hunt](../../m5_liquid_crystal/research/m5_particle_hunt.md) | the MEASURED three-minima census (A < C < B, C/A ≈ 4.2, B/A ≈ 16.0) |
-| [M5 briefing](../../m5_liquid_crystal/__M5_model_briefing.md) + [M5.9 findings](../../m5_liquid_crystal/research/findings/m5_9_lepton_mass_clock_findings.md) | the open item M8's McKay rule is a candidate for: the eigenvalue hierarchy `1 : 5.9 : 15.1` with the mass law `E ∝ Λ³` already fixed (so the physical ratios 1 : 206.8 : 3477.2 come from Λ ratios) |
-| Discipline | pre-register the mapping (which McKay distances → which minima, and whether the comparison is at eigenvalue or mass level) BEFORE computing any number; report the result either way |
+| [M8.6 readiness note](findings/m8_6_readiness_note.md) | **READ FIRST.** The provenance audit that gated this task, and the seven conditions (§ 8) that reopen it. Written because the row below named a target that turned out to be circular |
+| ⚠️ [M5.9 findings](../../m5_liquid_crystal/research/findings/m5_9_lepton_mass_clock_findings.md) | **NOT an admissible target.** The eigenvalue hierarchy `1 : 5.9 : 15.1` is `Λ := m^(1/3)` from the charged-lepton masses, so comparing it against those masses compares a number to its own definition: the source calls it "near-tautological" and the values "Yukawa-like input". The mass law `E ∝ Λ³` is a real M5 result; the hierarchy VALUES are not |
+| [M5 particle hunt](../../m5_liquid_crystal/research/m5_particle_hunt.md) | the MEASURED three-minima census (A < C < B, C/A ≈ 4.2, B/A ≈ 16.0): the only non-circular M5 target, and not usable yet, since it is consistency-converged rather than value-converged and carries no physical-parameter bridge |
+| [M5.21.11](../../m5_liquid_crystal/research/tasks/m5_21_11_task_details.md) | the bridge M8.6 waits on: the realistic-parameter walk plus unit calibration that would produce a physically parameterized census to compare against |
+| Discipline | pre-register the mapping (which McKay distances → which minima, and at which level) BEFORE computing any number, and only once M5.21.11 has landed the bridge; report the result either way |
 
 ## 6. Quotient-manifold simulation engineering (task M8.5)
 
