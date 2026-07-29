@@ -135,7 +135,7 @@ OpenWave runs the **same underlying field equations** two complementary ways. Kn
 | --- | --- | --- |
 | What it is | Interactive Taichi GPU simulations with real-time 3D visualization | Plain Python scripts (NumPy / SciPy / Taichi-CPU) with no GUI |
 | How you run it | `openwave -x`, then pick a collection from the menu | `python path/to/script.py` |
-| Where it lives | `openwave/xperiments/<model>/` collections (each has a `_launcher.py`) | `openwave/xperiments/<model>/research/sandbox_v*/` |
+| Where it lives | `openwave/xperiments/<model>/` collections (each has a `_launcher.py`) | `openwave/xperiments/<model>/research/scripts/` |
 | Output | On-screen render, glyphs, flux meshes, exportable GIFs/PNGs | Numbers, Matplotlib PNGs, JSON/CSV checkpoints |
 | Best for | Seeing a mechanism, teaching, exploratory and cause-effect studies under perturbation | Quantitative validation, reproducibility, the numbers behind [`MODELS.md`](MODELS.md), AI-agent runs, CI |
 
@@ -202,7 +202,7 @@ python openwave/xperiments/m6_ouroboros/research/archive/sandbox_v8/ouroboros_be
 
 To add a **new** validation of an existing model:
 
-1. Write a runnable headless script under that model's `research/sandbox_v*/` folder that computes the observable from the model's own equations.
+1. Write a runnable headless script under that model's `research/scripts/` folder that computes the observable from the model's own equations.
 1. Write a short research note (a `.md` in the model's `research/`) documenting the method, the number, and an honest pass/fail against the shared criterion.
 1. Update the matching [`MODELS.md`](MODELS.md) cell with the correct status icon and a link to your script.
 
