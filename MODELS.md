@@ -349,7 +349,7 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | Electric force (Coulomb 1/r) | 🚧 [not yet tested]<br>α read from the first Fibonacci well is input-and-output (the author's Cycle 2: a consistency check, not a prediction); no force-level computation<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
 | Lorentz covariance | 🚧 [not yet tested]<br>Not applicable yet: no field dynamics to be covariant; supplying a field equation on S³/2I is the M8.4 program<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
 | Magnetic force | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
-| Strong force: confinement | 🚧 [not yet tested]<br>Yang-Mills mass gap 4/R² on S³/2I is analytic (the coexact-gap paper); the in-platform eigensolve is planned after the M8.1 gate<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
+| Strong force: confinement | 🚧 [not yet tested]<br>The analytic 4/R² adjoint gap on S³/2I is now verified in-platform (M8.1.1: blind, adversarially audited, with the single 36/R² exception across the whole ADE family). Icon stays 🚧 deliberately: that is a spectral gap at a flat connection, not the linear inter-charge potential this row tests<br>[`m8_1_1_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_1_1_method_note.md) |
 | Running coupling | 🚧 [not yet tested]<br>Not addressed; α itself is read from the first Fibonacci well (input-and-output, see Electric force)<br>(none yet) |
 | Weak force: muon decay | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |

@@ -10,7 +10,6 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [M5.22](tasks/m5_22_task_details.md) | Nuclei as vortex knots: the toy baryon census (the author's goal (e)) | 🚧 PLANNED, Backlog head, the main priority; far arc split to [M5.22.1](tasks/m5_22_1_task_details.md). Run ladder on the certified 3D instrument (seeding: author cross-sections, 2026-07-28): proton analog → neutron analog HEAVIER via charge compensation → deuteron (binding + quadrupole moment) → **beta decay of a kicked neutron**, then tritium → He3 → He4 as stretch rungs. Claim language stays QUALITATIVE at toy parameters. Carries the M5.27 hand-off | user "go" (start committed for the week of 2026-07-27) |
 
 ## BACKLOG
 
@@ -18,6 +17,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
+| [M5.22](tasks/m5_22_task_details.md) | Nuclei as vortex knots: the toy baryon census (the author's goal (e)) | 🚧 PLANNED, Backlog head, the main priority; far arc split to [M5.22.1](tasks/m5_22_1_task_details.md). Run ladder on the certified 3D instrument (seeding: author cross-sections, 2026-07-28): proton analog → neutron analog HEAVIER via charge compensation → deuteron (binding + quadrupole moment) → **beta decay of a kicked neutron**, then tritium → He3 → He4 as stretch rungs. Claim language stays QUALITATIVE at toy parameters. Carries the M5.27 hand-off | user "go" (start committed for the week of 2026-07-27) |
 | [M5.8.8](tasks/m5_8_8_task_details.md) | Disclination rod-localization energy check | After the 4D clock stabilizes the defect, recompute energyH and test whether the disclination rod localizes into a ring/shell (falsifiable, uncomputed). Now unblocked: the fixed-J clock exists ([M5.21.9](tasks/m5_21_9_task_details.md)); fed by the [M5.23.2](tasks/m5_23_2_task_details.md) tracer. | 4D clock stabilized ✅ (fixed-J, M5.21.9) + user "go" |
 | [M5.21.11](tasks/m5_21_11_task_details.md) | The realistic-parameter bridge: the mass-ratio read | 🚧 PLANNED STUB, the [Q33](m5_question_tracker.md#q33-detail) bridge home: walk the toy-parameter results toward the physical regime (δ ~ 1e-10, g ~ 1e10) by scaling-law ladders, plus the unit-calibration axis (the M5.16 Coulomb lock, the 511 keV anchor, ω ∝ m). Target read: 1 : 206.8 : 3477 / Koide on the census levels (toy 1 : 4.2 : 16.0). Numerics beyond lattice reach is the obstacle | the M5.21 core results + Q33 + user "go" |
 | [M5.10](tasks/m5_10_task_details.md) | Effective Dirac description (toward a SM effective Lagrangian) | Show the M5 defect reduces to an effective Dirac equation, the first step toward a Standard-Model effective Lagrangian for the deep model (#197). | the M5.21 lepton program (M5.9 absorbed 2026-07-19) |

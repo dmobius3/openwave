@@ -1,0 +1,410 @@
+
+==============================================================================
+GROUP CONSTRUCTION AND CHARACTER TABLES
+==============================================================================
+C_2    |G|=   2  classes= 2  exponent=  2  field=Q(zeta_4) deg= 2  Dixon p=  5  dims=[1, 1]  sum d^2=2  tensor-positivity=True
+C_3    |G|=   3  classes= 3  exponent=  3  field=Q(zeta_12) deg= 4  Dixon p=  7  dims=[1, 1, 1]  sum d^2=3  tensor-positivity=True
+C_4    |G|=   4  classes= 4  exponent=  4  field=Q(zeta_4) deg= 2  Dixon p= 13  dims=[1, 1, 1, 1]  sum d^2=4  tensor-positivity=True
+C_5    |G|=   5  classes= 5  exponent=  5  field=Q(zeta_20) deg= 8  Dixon p= 11  dims=[1, 1, 1, 1, 1]  sum d^2=5  tensor-positivity=True
+C_6    |G|=   6  classes= 6  exponent=  6  field=Q(zeta_12) deg= 4  Dixon p=  7  dims=[1, 1, 1, 1, 1, 1]  sum d^2=6  tensor-positivity=True
+C_7    |G|=   7  classes= 7  exponent=  7  field=Q(zeta_28) deg=12  Dixon p= 29  dims=[1, 1, 1, 1, 1, 1, 1]  sum d^2=7  tensor-positivity=True
+C_8    |G|=   8  classes= 8  exponent=  8  field=Q(zeta_8) deg= 4  Dixon p= 17  dims=[1, 1, 1, 1, 1, 1, 1, 1]  sum d^2=8  tensor-positivity=True
+C_9    |G|=   9  classes= 9  exponent=  9  field=Q(zeta_36) deg=12  Dixon p= 19  dims=[1, 1, 1, 1, 1, 1, 1, 1, 1]  sum d^2=9  tensor-positivity=True
+C_10   |G|=  10  classes=10  exponent= 10  field=Q(zeta_20) deg= 8  Dixon p= 11  dims=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]  sum d^2=10  tensor-positivity=True
+BD_2   |G|=   8  classes= 5  exponent=  4  field=Q(zeta_4) deg= 2  Dixon p= 13  dims=[1, 1, 1, 1, 2]  sum d^2=8  tensor-positivity=True
+BD_3   |G|=  12  classes= 6  exponent= 12  field=Q(zeta_12) deg= 4  Dixon p= 13  dims=[1, 1, 1, 1, 2, 2]  sum d^2=12  tensor-positivity=True
+BD_4   |G|=  16  classes= 7  exponent=  8  field=Q(zeta_8) deg= 4  Dixon p= 17  dims=[1, 1, 1, 1, 2, 2, 2]  sum d^2=16  tensor-positivity=True
+BD_5   |G|=  20  classes= 8  exponent= 20  field=Q(zeta_20) deg= 8  Dixon p= 41  dims=[1, 1, 1, 1, 2, 2, 2, 2]  sum d^2=20  tensor-positivity=True
+BD_6   |G|=  24  classes= 9  exponent= 12  field=Q(zeta_12) deg= 4  Dixon p= 13  dims=[1, 1, 1, 1, 2, 2, 2, 2, 2]  sum d^2=24  tensor-positivity=True
+2T     |G|=  24  classes= 7  exponent= 12  field=Q(zeta_12) deg= 4  Dixon p= 13  dims=[1, 1, 1, 2, 2, 2, 3]  sum d^2=24  tensor-positivity=True
+2O     |G|=  48  classes= 8  exponent= 24  field=Q(zeta_24) deg= 8  Dixon p= 73  dims=[1, 1, 2, 2, 2, 3, 3, 4]  sum d^2=48  tensor-positivity=True
+2I     |G|= 120  classes= 9  exponent= 60  field=Q(zeta_60) deg=16  Dixon p= 61  dims=[1, 2, 2, 3, 3, 4, 4, 5, 6]  sum d^2=120  tensor-positivity=True
+
+==============================================================================
+U1  --  S(alpha) and D(alpha) for every irreducible, every group
+==============================================================================
+
+C_2  |G|=2   S(1)=0/1   D(1)=1/8
+  irrep dim  S(alpha)              D(alpha)
+  0     1    0/1                   -1/8
+  1     1    0/1                   1/8 <- trivial
+
+C_3  |G|=3   S(1)=0/1   D(1)=2/9
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -1/3                  -1/9
+  1     1    -1/3                  -1/9
+  2     1    0/1                   2/9 <- trivial
+
+C_4  |G|=4   S(1)=0/1   D(1)=5/16
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -1/1                  -3/16
+  1     1    -1/2                  -1/16
+  2     1    -1/2                  -1/16
+  3     1    0/1                   5/16 <- trivial
+
+C_5  |G|=5   S(1)=0/1   D(1)=2/5
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -7/5                  -1/5
+  1     1    -7/5                  -1/5
+  2     1    -3/5                  0/1
+  3     1    -3/5                  0/1
+  4     1    0/1                   2/5 <- trivial
+
+C_6  |G|=6   S(1)=0/1   D(1)=35/72
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -2/1                  -19/72
+  1     1    -5/3                  -13/72
+  2     1    -5/3                  -13/72
+  3     1    -2/3                  5/72
+  4     1    -2/3                  5/72
+  5     1    0/1                   35/72 <- trivial
+
+C_7  |G|=7   S(1)=0/1   D(1)=4/7
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -17/7                 -2/7
+  1     1    -17/7                 -2/7
+  2     1    -13/7                 -1/7
+  3     1    -5/7                  1/7
+  4     1    -13/7                 -1/7
+  5     1    -5/7                  1/7
+  6     1    0/1                   4/7 <- trivial
+
+C_8  |G|=8   S(1)=0/1   D(1)=21/32
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -3/1                  -11/32
+  1     1    -11/4                 -9/32
+  2     1    -2/1                  -3/32
+  3     1    -3/4                  7/32
+  4     1    -11/4                 -9/32
+  5     1    -2/1                  -3/32
+  6     1    -3/4                  7/32
+  7     1    0/1                   21/32 <- trivial
+
+C_9  |G|=9   S(1)=0/1   D(1)=20/27
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -3/1                  -7/27
+  1     1    -31/9                 -10/27
+  2     1    -31/9                 -10/27
+  3     1    -3/1                  -7/27
+  4     1    -19/9                 -1/27
+  5     1    -19/9                 -1/27
+  6     1    -7/9                  8/27
+  7     1    -7/9                  8/27
+  8     1    0/1                   20/27 <- trivial
+
+C_10  |G|=10   S(1)=0/1   D(1)=33/40
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -4/1                  -17/40
+  1     1    -19/5                 -3/8
+  2     1    -19/5                 -3/8
+  3     1    -16/5                 -9/40
+  4     1    -11/5                 1/40
+  5     1    -16/5                 -9/40
+  6     1    -11/5                 1/40
+  7     1    -4/5                  3/8
+  8     1    -4/5                  3/8
+  9     1    0/1                   33/40 <- trivial
+
+BD_2  |G|=8   S(1)=0/1   D(1)=13/32
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -1/1                  -3/32
+  1     1    -1/1                  -3/32
+  2     1    -1/1                  -3/32
+  3     1    0/1                   13/32 <- trivial
+  4     2    -3/2                  -1/16 <- defining
+
+BD_3  |G|=12   S(1)=0/1   D(1)=71/144
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -3/2                  -19/144
+  1     1    -3/2                  -19/144
+  2     1    -1/1                  -1/144
+  3     1    0/1                   71/144 <- trivial
+  4     2    -8/3                  -13/72
+  5     2    -5/3                  5/72 <- defining
+
+BD_4  |G|=16   S(1)=0/1   D(1)=37/64
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -2/1                  -11/64
+  1     1    -2/1                  -11/64
+  2     1    -1/1                  5/64
+  3     1    0/1                   37/64 <- trivial
+  4     2    -15/4                 -9/32
+  5     2    -3/1                  -3/32
+  6     2    -7/4                  7/32 <- defining
+
+BD_5  |G|=20   S(1)=0/1   D(1)=53/80
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -5/2                  -17/80
+  1     1    -5/2                  -17/80
+  2     1    -1/1                  13/80
+  3     1    0/1                   53/80 <- trivial
+  4     2    -24/5                 -3/8
+  5     2    -21/5                 -9/40
+  6     2    -16/5                 1/40
+  7     2    -9/5                  3/8 <- defining
+
+BD_6  |G|=24   S(1)=0/1   D(1)=215/288
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -3/1                  -73/288
+  1     1    -3/1                  -73/288
+  2     1    -1/1                  71/288
+  3     1    0/1                   215/288 <- trivial
+  4     2    -16/3                 -49/144
+  5     2    -35/6                 -67/144
+  6     2    -9/2                  -19/144
+  7     2    -11/6                 77/144 <- defining
+  8     2    -10/3                 23/144
+
+2T  |G|=24   S(1)=0/1   D(1)=167/288
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -5/3                  -25/288
+  1     1    -5/3                  -25/288
+  2     1    0/1                   167/288 <- trivial
+  3     2    -19/6                 -19/144
+  4     2    -19/6                 -19/144
+  5     2    -11/6                 29/144 <- defining
+  6     3    -13/3                 -3/32
+
+2O  |G|=48   S(1)=0/1   D(1)=383/576
+  irrep dim  S(alpha)              D(alpha)
+  0     1    -2/1                  -49/576
+  1     1    0/1                   383/576 <- trivial
+  2     2    -11/3                 -25/288
+  3     2    -47/12                -43/288
+  4     2    -23/12                101/288 <- defining
+  5     3    -17/3                 -11/64
+  6     3    -14/3                 5/64
+  7     4    -43/6                 -19/144
+
+2I  |G|=120   S(1)=0/1   D(1)=1079/1440
+  irrep dim  S(alpha)              D(alpha)
+  0     1    0/1                   1079/1440 <- trivial
+  1     2    -59/30                73/144 <- defining
+  2     2    -131/30               -67/720
+  3     3    -73/15                9/32
+  4     3    -97/15                -19/160
+  5     4    -23/3                 29/360
+  6     4    -26/3                 -61/360
+  7     5    -31/3                 -25/288
+  8     6    -77/6                 -17/80
+
+==============================================================================
+U2  --  csc^2(phi_g/2) = 4/(2 - chi_defining(g)) elementwise
+==============================================================================
+exact identity csc^2 = cot^2 + 1 = 4/(2-chi) holds in the field for every class: True
+elements g != I checked: 309
+largest numeric deviation (mpmath, 60 dps): 3.7338092e-60   at ('2I', 2, 12)
+
+==============================================================================
+U5  --  (1/|G|) sum_{g!=I} cot^2(phi_g/2),  D(1),  D(1) + (1/8) sum
+==============================================================================
+  group  |G|   T = mean cot^2        D(1)            D(1)+T/8  comparison
+  C_2    2     0/1                   1/8             1/8       (#classes-1)/8 = 1/8  MATCH
+  C_3    3     2/9                   2/9             1/4       (#classes-1)/8 = 1/4  MATCH
+  C_4    4     1/2                   5/16            3/8       (#classes-1)/8 = 3/8  MATCH
+  C_5    5     4/5                   2/5             1/2       (#classes-1)/8 = 1/2  MATCH
+  C_6    6     10/9                  35/72           5/8       (#classes-1)/8 = 5/8  MATCH
+  C_7    7     10/7                  4/7             3/4       (#classes-1)/8 = 3/4  MATCH
+  C_8    8     7/4                   21/32           7/8       (#classes-1)/8 = 7/8  MATCH
+  C_9    9     56/27                 20/27           1/1       (#classes-1)/8 = 1/1  MATCH
+  C_10   10    12/5                  33/40           9/8       (#classes-1)/8 = 9/8  MATCH
+  BD_2   8     3/4                   13/32           1/2       (#classes-1)/8 = 1/2  MATCH
+  BD_3   12    19/18                 71/144          5/8       (#classes-1)/8 = 5/8  MATCH
+  BD_4   16    11/8                  37/64           3/4       (#classes-1)/8 = 3/4  MATCH
+  BD_5   20    17/10                 53/80           7/8       (#classes-1)/8 = 7/8  MATCH
+  BD_6   24    73/36                 215/288         1/1       (#classes-1)/8 = 1/1  MATCH
+  2T     24    49/36                 167/288         3/4       (#classes-1)/8 = 3/4  MATCH
+  2O     48    121/72                383/576         7/8       (#classes-1)/8 = 7/8  MATCH
+  2I     120   361/180               1079/1440       1/1       (#classes-1)/8 = 1/1  MATCH
+
+==============================================================================
+U12  --  second route: element sum vs class sum
+==============================================================================
+226 exact comparisons (S and D, every irrep, every group).
+all agree: True   disagreements: 0
+
+==============================================================================
+U3  --  is S(alpha) affine in (dim, D(alpha), dim*D(1)) for alpha with no trivial part?
+==============================================================================
+fit subset rows (0, 2, 7)  ->  (C_2,irr0), (C_3,irr0), (C_4,irr0)
+UNIVERSAL TRIPLE   a = 1/1   b = 4/1   c = -4/1
+rows in the no-trivial-constituent pool: 190  (irreps + 2-term sums)
+nonzero residuals against the universal triple: 0
+max |residual| = 0/1
+
+  per-group fits (columns dim and dim*D(1) are proportional within a group):
+  group  rows  rank3  rank2  A = a + c*D(1)      b       univ. resid
+  C_2    2     1      1      0/1 (+free)         0/1 (+free)0/1
+  C_3    5     1      1      -1/3 (+free)        0/1 (+free)0/1
+  C_4    9     2      2      -1/4                4/1     0/1
+  C_5    10    2      2      -3/5                4/1     0/1
+  C_6    11    2      2      -17/18              4/1     0/1
+  C_7    12    2      2      -9/7                4/1     0/1
+  C_8    13    2      2      -13/8               4/1     0/1
+  C_9    14    2      2      -53/27              4/1     0/1
+  C_10   15    2      2      -23/10              4/1     0/1
+  BD_2   10    2      2      -5/8                4/1     0/1
+  BD_3   11    2      2      -35/36              4/1     0/1
+  BD_4   12    2      2      -21/16              4/1     0/1
+  BD_5   13    2      2      -33/20              4/1     0/1
+  BD_6   14    2      2      -143/72             4/1     0/1
+  2T     12    2      2      -95/72              4/1     0/1
+  2O     13    2      2      -239/144            4/1     0/1
+  2I     14    2      2      -719/360            4/1     0/1
+
+==============================================================================
+U4  --  alpha containing the trivial rep with multiplicity m: signed discrepancy
+==============================================================================
+  multiplicity m -> set of signed discrepancies S(alpha) - RHS_U3 observed:
+    m = 1: ['-1/1']   (113 cases)
+    m = 2: ['-2/1']   (130 cases)
+    m = 3: ['-3/1']   (17 cases)
+
+  requested case 2I, alpha = P + 1 : dim=3  S=-59/30  D=201/160  RHS=-29/30  discrepancy=-1/1  (m = 1)
+
+==============================================================================
+U6  --  every 2-dimensional irreducible rho with det rho = 1
+==============================================================================
+  C_2     2-dim irreps: []   with det = 1: []   count = 0
+  C_3     2-dim irreps: []   with det = 1: []   count = 0
+  C_4     2-dim irreps: []   with det = 1: []   count = 0
+  C_5     2-dim irreps: []   with det = 1: []   count = 0
+  C_6     2-dim irreps: []   with det = 1: []   count = 0
+  C_7     2-dim irreps: []   with det = 1: []   count = 0
+  C_8     2-dim irreps: []   with det = 1: []   count = 0
+  C_9     2-dim irreps: []   with det = 1: []   count = 0
+  C_10    2-dim irreps: []   with det = 1: []   count = 0
+  BD_2    2-dim irreps: [4]   with det = 1: [4]   count = 1
+  BD_3    2-dim irreps: [4, 5]   with det = 1: [5]   count = 1
+  BD_4    2-dim irreps: [4, 5, 6]   with det = 1: [4, 6]   count = 2
+  BD_5    2-dim irreps: [4, 5, 6, 7]   with det = 1: [5, 7]   count = 2
+  BD_6    2-dim irreps: [4, 5, 6, 7, 8]   with det = 1: [5, 6, 7]   count = 3
+  2T      2-dim irreps: [3, 4, 5]   with det = 1: [5]   count = 1
+  2O      2-dim irreps: [2, 3, 4]   with det = 1: [3, 4]   count = 2
+  2I      2-dim irreps: [1, 2]   with det = 1: [1, 2]   count = 2
+
+  2I:  P = irrep index 1 (character = trace of the defining matrices), P-prime = irrep index 2
+  class  size  order  chi_defining              chi_P                     chi_P-prime
+  0      1     1      2/1                       2/1                       2/1
+  1      20    6      1/1                       1/1                       1/1
+  2      12    10     1/2 + (1/2)*sqrt(5)       1/2 + (1/2)*sqrt(5)       1/2 + (-1/2)*sqrt(5)
+  3      20    3      -1/1                      -1/1                      -1/1
+  4      30    4      0/1                       0/1                       0/1
+  5      12    5      -1/2 + (1/2)*sqrt(5)      -1/2 + (1/2)*sqrt(5)      -1/2 + (-1/2)*sqrt(5)
+  6      1     2      -2/1                      -2/1                      -2/1
+  7      12    5      -1/2 + (-1/2)*sqrt(5)     -1/2 + (-1/2)*sqrt(5)     -1/2 + (1/2)*sqrt(5)
+  8      12    10     1/2 + (-1/2)*sqrt(5)      1/2 + (-1/2)*sqrt(5)      1/2 + (1/2)*sqrt(5)
+  character values of P and P-prime generate: Q(sqrt(5))   (chi_P equals chi_defining on every class: True)
+
+==============================================================================
+U7  --  2I: S^2 P and S^2 P-prime; D and S for P, P-prime, S^2P, S^2P-prime
+==============================================================================
+  P           dim=2  <chi,chi>=1/1  irreducible=True  irrep index=1  D=73/144       S=-59/30
+  P-prime     dim=2  <chi,chi>=1/1  irreducible=True  irrep index=2  D=-67/720      S=-131/30
+  S^2P        dim=3  <chi,chi>=1/1  irreducible=True  irrep index=3  D=9/32         S=-73/15
+  S^2P-prime  dim=3  <chi,chi>=1/1  irreducible=True  irrep index=4  D=-19/160      S=-97/15
+
+==============================================================================
+U8  --  2I: class-by-class contributions to D for S^2P and S^2P-prime
+==============================================================================
+  class size  ord  chi_S2P                 contrib D(S^2P)               contrib D(S^2P-prime)
+  1     20    6    0/1                     0/1                           0/1
+  2     12    10   1/2 + (1/2)*sqrt(5)     1/5 + (1/10)*sqrt(5)          -1/20 + (-1/20)*sqrt(5)   <-- differs
+  3     20    3    0/1                     0/1                           0/1
+  4     30    4    -1/1                    -1/8                          -1/8
+  5     12    5    1/2 + (-1/2)*sqrt(5)    0/1 + (-1/50)*sqrt(5)         1/20 + (3/100)*sqrt(5)   <-- differs
+  6     1     2    3/1                     1/160                         1/160
+  7     12    5    1/2 + (1/2)*sqrt(5)     0/1 + (1/50)*sqrt(5)          1/20 + (-3/100)*sqrt(5)   <-- differs
+  8     12    10   1/2 + (-1/2)*sqrt(5)    1/5 + (-1/10)*sqrt(5)         -1/20 + (1/20)*sqrt(5)   <-- differs
+
+  classes that AGREE: [1, 3, 4, 6]
+  classes that DIFFER: [2, 5, 7, 8]
+  summed agreeing contribution   S^2P: -19/160   S^2P-prime: -19/160
+  summed differing contribution  S^2P: 2/5   S^2P-prime: 0/1
+  D(S^2P) = 9/32   D(S^2P-prime) = -19/160   difference D(S^2P-prime) - D(S^2P) = -2/5
+  S(S^2P) = -73/15   S(S^2P-prime) = -97/15   difference S(S^2P-prime) - S(S^2P) = -8/5
+
+==============================================================================
+U9  --  2I: k(alpha) = dim(alpha)*D(1) - D(alpha)
+==============================================================================
+  object      dim  D(alpha)      k(alpha)        fractional part decimal
+  P           2    73/144        119/120         119/120         0.9916666667
+  P-prime     2    -67/720       191/120         71/120          1.5916666667
+  S^2P        3    9/32          59/30           29/30           1.9666666667
+  S^2P-prime  3    -19/160       71/30           11/30           2.3666666667
+  k(P) - k(P-prime)          = -3/5   = -0.6000000000
+  k(S^2P-prime) - k(S^2P)    = 2/5   = 0.4000000000
+
+==============================================================================
+U10  --  2I: McKay matrix A, null vector delta, and (2Id - A) H = e_P - e_Pprime
+==============================================================================
+  A (rows = sigma, cols = sigma-prime), irreps ordered by index:
+           0   1   2   3   4   5   6   7   8     dim
+    0      0   1   0   0   0   0   0   0   0     1
+    1      1   0   0   1   0   0   0   0   0     2
+    2      0   0   0   0   0   0   1   0   0     2
+    3      0   1   0   0   0   1   0   0   0     3
+    4      0   0   0   0   0   0   0   0   1     3
+    5      0   0   0   1   0   0   0   1   0     4
+    6      0   0   1   0   0   0   0   0   1     4
+    7      0   0   0   0   0   1   0   0   1     5
+    8      0   0   0   0   1   0   1   1   0     6
+  A symmetric: True    BFS distances from trivial node 0: [0, 1, 7, 2, 6, 3, 6, 4, 5]
+  delta (null vector of 2Id - A, delta[trivial] = 1): ['1/1', '2/1', '2/1', '3/1', '3/1', '4/1', '4/1', '5/1', '6/1']
+  delta equals the vector of irrep dimensions: True
+  H (solution of (2Id - A) H = e_P - e_Pprime with H[trivial] = 0):
+  node  dim  dist  H entry       decimal
+  0     1    0     0/1           0.0000000000  <- trivial
+  1     2    1     0/1           0.0000000000  <- P
+  2     2    7     -2/1          -2.0000000000  <- P-prime
+  3     3    2     -1/1          -1.0000000000
+  4     3    6     -2/1          -2.0000000000
+  5     4    3     -2/1          -2.0000000000
+  6     4    6     -3/1          -3.0000000000
+  7     5    4     -3/1          -3.0000000000
+  8     6    5     -4/1          -4.0000000000
+  <H, delta> = -72/1   = -72.0000000000
+  |Gamma| * (D(P-prime) - D(P)) = 120 * (-67/720 - 73/144) = -72/1
+
+==============================================================================
+U11  --  the E8 root lattice from its (negative definite) Cartan matrix
+==============================================================================
+  E8 Dynkin edges (0-indexed Bourbaki nodes 1..8): [(0, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (1, 3)]
+  det(positive Cartan) = 1    det(negative form G = -Cartan) = 1
+  G (the negative definite Gram matrix used throughout):
+     -2   0   1   0   0   0   0   0
+      0  -2   0   1   0   0   0   0
+      1   0  -2   1   0   0   0   0
+      0   1   1  -2   1   0   0   0
+      0   0   0   1  -2   1   0   0
+      0   0   0   0   1  -2   1   0
+      0   0   0   0   0   1  -2   1
+      0   0   0   0   0   0   1  -2
+
+  lattice vectors of norm -2 : 240
+  distinct mod-2 classes among them : 120
+  fibre sizes : [(2, 120)]  (size -> how many classes)
+  every fibre is exactly a pair {alpha, -alpha} : True
+
+  mod-2 intersection form G mod 2:
+    0 0 1 0 0 0 0 0
+    0 0 0 1 0 0 0 0
+    1 0 0 1 0 0 0 0
+    0 1 1 0 1 0 0 0
+    0 0 0 1 0 1 0 0
+    0 0 0 0 1 0 1 0
+    0 0 0 0 0 1 0 1
+    0 0 0 0 0 0 1 0
+  alternating (x.x = 0 for all x in F_2^8, equivalently zero diagonal): True
+  nondegenerate (dim of radical = 0, det mod 2 = 1): True
+
+  mod-4 refinement P(x) = xi.xi mod 4, lift-independence verified on 6 shifts for all 256 classes: True
+  multiset of P over the 256 classes: {0: 136, 2: 120}
+  the P = 2 classes are exactly the 120 root classes: True
+
+  reflections s_alpha(x) = x + (x.alpha) alpha map roots to roots (all 240x240 = 57600 pairs): True
+  distinct mod-2 reflection matrices from the 240 roots: 120
+  orbits of the reflection group on the 120 classes with P = 2: 1 orbit(s), sizes [120]
+  (for context) orbits on all 256 classes: 3, sizes [135, 120, 1]
+
+wrote m8_1_1_defect.json
