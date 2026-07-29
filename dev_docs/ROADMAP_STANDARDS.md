@@ -19,7 +19,7 @@ Sections in this order. Bracketed ones are optional; nothing else is a top-level
 | # | Section | Contents |
 | --- | --- | --- |
 | 1 | `# <NAME> ROADMAP` + intro blockquote | one blockquote: what this roadmap covers, links to its own sections |
-| 2 | `## IN PROGRESS` | the single running task (empty table when between tasks) |
+| 2 | `## IN PROGRESS` | the single running task; **header row only when nothing is running**, never a `(none)` placeholder and never status prose parked in one (that belongs in the backlog row, the status snapshot, or the change-log) |
 | 3 | `## BACKLOG` | queued tasks, **row order = run sequence** |
 | 4 | [`## STATUS AT A GLANCE`] | dated snapshot, question-and-answer table |
 | 5 | [`## CONVENTIONS`] | ID scheme, local reading rules, anything a newcomer needs before the tables make sense |

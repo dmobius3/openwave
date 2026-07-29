@@ -14,7 +14,6 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| (none) | | the decidable core is DONE (M6.1/M6.2/M6.4); M6 returns to HOLD with the DM sector + the M7 lineage as its durable legacy (the branch-(b) contract); | |
 
 ## BACKLOG (the active, decidable core: frozen-spec work)
 
