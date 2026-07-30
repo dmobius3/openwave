@@ -131,6 +131,13 @@ labels).
 
 ## 8. Reopening conditions
 
+> **Amended 2026-07-29.** Condition 3 originally admitted only a direct run at physical
+> parameters. M5.21.11's own scope makes clear the physical regime (δ ~ 1e-10, g ~ 1e10)
+> is out of lattice reach by any direct method, so condition 3 now also admits a
+> preregistered extrapolation route, under guardrails that preserve the anti-circularity
+> requirement it was written to enforce — see the discussion on the M8.6 PR thread for
+> the full reasoning.
+
 M8.6 reopens only once ALL of the following hold. Conditions 1-3 are deliberately
 stronger than "attach units to the existing numbers": a uniform rescaling cannot change
 a ratio, so closing the roughly 49× (`C/A`) and 218× (`B/A`) gaps between the toy ratios
@@ -139,15 +146,26 @@ and the physical ones requires new physics inputs, not new labels (§4).
 1. M5.21.11 derives a common toy-to-physical specification at the level of the field
    functional, lattice spacing, couplings, and boundary conditions, using M5-side
    considerations independent of the lepton masses.
-2. That specification is frozen BEFORE rerunning or evaluating the A/C/B census against
-   it.
-3. The physical comparison uses the resulting stationary-state energies from a NEW
-   census run at the frozen physical parameters, directly. No state-by-state map or
-   free nonlinear transformation of the three EXISTING lattice energies (5.2611,
-   22.059, 84.085) is admissible — that would let an `E_physical = f(E_lattice)` curve
-   silently become a three-point mass fit.
-4. Grid refinement on that new census establishes a usable UNCERTAINTY on `E_C/E_A` and
-   `E_B/E_A`, not merely a stable ordering.
+2. That specification is frozen before the new A/C/B census ladder is run and before
+   any resulting physical-regime ratios are compared with the charged-lepton targets.
+3. **Physical-regime target.** The comparison uses either (a) stationary-state energies
+   from a new census run at independently fixed physical parameters, directly, or —
+   where such a run is computationally inaccessible — (b) a physical-regime
+   extrapolation from a fresh, preregistered census ladder. Under route (b): the
+   asymptotic functional form must be derived from M5-side theory independently of the
+   lepton target; the rung set, fitting procedure, holdout tests, branch-tracking
+   rules, and uncertainty model must be frozen BEFORE any M8.6 performance evaluation
+   against the charged-lepton target ratios is run;
+   the same frozen framework applies to all three branches (A, C, B); and the three
+   EXISTING toy lattice energies (5.2611, 22.059, 84.085) may not enter the new fit as
+   data points, an exponent search, or a post-hoc transformation — that would let an
+   `E_physical = f(E_lattice)` curve silently become a three-point mass fit under a
+   different name. Failure of the preregistered scaling law or the holdout gates
+   leaves M8.6 gated. The output of route (b) is classified as a model-based
+   physical-regime PREDICTION, not a directly simulated physical census: the affordable
+   rungs are measured censuses, the physical point is an extrapolation from them.
+4. Grid refinement (route a) or the frozen uncertainty model (route b) establishes a
+   usable UNCERTAINTY on `E_C/E_A` and `E_B/E_A`, not merely a stable ordering.
 5. The assignment `A→e, C→μ, B→τ` stays frozen from the pre-existing stability/decay
    rationale (§6), never re-derived from a mass match.
 6. No `1:5.9:15.1` Yukawa-derived figure enters the derivation, calibration, or
@@ -155,6 +173,13 @@ and the physical ones requires new physics inputs, not new labels (§4).
 7. The eventual comparison reports the result under the FIRST frozen specification,
    including a negative result, with no exponent search, permutation, or post-hoc
    rescaling.
+
+**Claim ceiling under route (b).** Even a fully successful extrapolation would
+establish that M5's independently derived and simulation-validated asymptotic bridge
+yields stationary-state energy ratios consistent with the charged-lepton hierarchy,
+under the pre-existing `A→e, C→μ, B→τ` assignment. It would not establish a direct
+physical simulation, derive the MIT generation mapping, or make `1:5.9:15.1`
+independent evidence.
 
 ## Not covered by this note
 
