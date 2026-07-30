@@ -76,7 +76,7 @@ context must be held away from, so it runs the normal fork → PR → review wor
 
 3. **Current scorecard.** With m_e as the calibration benchmark (not counted), of the remaining 8 charged fermions: 5 have a compatible entry within ×3 (μ, s, t, τ, b); 4 survive sector-first adjudication (μ, s, t, τ). Down is assigned but outside ×3 (3.22); up and charm are unassigned (up's former ~6% hit was the coexact-only artifact); bottom is compatible (1.17) but outside its own structural sector (R2). Full figures: `data/m8_3_masses.json`.
 
-4. **Known follow-up, now resolved.** [`findings/m8_2_preregistration.md`](../findings/m8_2_preregistration.md) line 124 cited the superseded `mass-null-v1.0` figure (p = 0.174); that document is locked (merged via PR #350), so the fix landed as a dated addendum rather than an in-place edit — see its "Addenda (post-freeze only)" section, added 2026-07-29.
+4. **Known follow-up, now resolved.** [`findings/m8_2_preregistration.md`](../findings/m8_2_preregistration.md) § 2 cited the superseded `mass-null-v1.0` figure (p = 0.174); that document is locked (merged via PR #350), so the fix landed as a dated addendum rather than an in-place edit: see its "Addenda (post-freeze only)" section, added 2026-07-29.
 
 ## Links
 
