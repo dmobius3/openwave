@@ -421,4 +421,8 @@ classification is settled for all three families; the native dynamics modules ar
 
 ## Addenda (post-freeze only)
 
-(none yet)
+**Post-lock note, 2026-07-29.** The mass-table null-test citation in § 2 refers to the
+superseded pre-correction run `mass-null-v1.0` (`p_A = 0.174`). The corrected-table
+rerun, `mass-null-v1.1`, gives `p_A = 0.690`, strengthening rather than weakening the
+statement that the 24-entry mass comparison is outside M8.2's evidential scope. No M8.2
+target, input, computation, or verdict changes.

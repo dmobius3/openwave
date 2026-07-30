@@ -123,7 +123,7 @@ Full program with gates and ownership: [`research/m8_roadmap.md`](research/m8_ro
 | M8.3 | Mass-formula reproducer: every constant recomputed from its definition, assembly scripted |
 | M8.4 | Lagrangian-family survey on S³/2I (candidates drawn from M4/M5/M7; Derrick analysis on a compact arena) |
 | M8.5 | Quotient-manifold simulation engineering (2I-equivariant grid vs spectral basis) |
-| M8.6 | McKay-distance rule vs M5's measured lepton hierarchy (bounded cross-check, no simulation needed) |
+| M8.6 | McKay-distance rule vs M5's measured lepton hierarchy — GATED pending M5.21.11 (a readiness audit found the named target mass-derived; see [`research/findings/m8_6_readiness_note.md`](research/findings/m8_6_readiness_note.md)) |
 | M8.7 | LATER, gated on validated field dynamics: the 3D rendering port (M5-style launcher + shared GGUI stack) |
 
 ## Help Wanted
