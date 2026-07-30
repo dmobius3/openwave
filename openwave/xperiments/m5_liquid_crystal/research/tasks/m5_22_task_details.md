@@ -207,3 +207,20 @@ Full record: [`findings/m5_22_note.md`](../findings/m5_22_note.md) (equations, g
 ![the seed gallery](../plots/m5_22_seed_gallery.png)
 
 ![the census panel, n = 32](../plots/m5_22_census_panel.png)
+
+## TASK REVIEW (2026-07-30)
+
+**Task Duration:** 02:52 (from 11:28 to 14:20 EDT)
+**Usage Cap Triggered:** NO
+
+**Results**: ✅ measured: protected proton-analog (fractional s = -1/2: E = 8.250 n = 48, \|Q\| = 1, residual force 5e-7, column + one ring) and neutron-analog (fractional s = -1: E = 12.719 exact f_tol, Q = 0, column + two rings), both perturbation-stable; mass ordering 1.54 (δ-robust: 1.55 at δ = 0.2); same-charge hierarchy 1.32; [Q37](../m5_question_tracker.md#q37-detail) RESOLVED (exactly equal integer degrees, different knots); the \|s\| = 1 escape (2D winding does not lift, exact analytic 0); [Q38](../m5_question_tracker.md#q38-detail) first data point (quark-shift 0.123/lattice unit vs tension 6.2-7.0: 50-57× apart); ✅ HONEST NEGATIVE: the central-π-step neutron candidate dissolves (24000 it, free BC → vacuum), the selection principle reassigned the title; 🔶 partial: core/shell profile (compound, Wilson signature unresolved); ✅ adversarial audit 9/9 confirmed, 0 refuted, two claims sharpened. New [Q39](../m5_question_tracker.md#q39-detail) (the lepton seed lands 8.6% below the certified 2b electron state).
+
+**Issues / blockers**: P+1/2 keeps xr ≈ 2 (reported as the conjugate partner, splitting 1.3% = discretization); N+0 / N+1/2 under-resolved, not-citable. None blocking.
+
+**Deviations from plan**: n = 32 census + n = 48 confirmations replaced "all 12 at n = 48" (seeds converged ~5× faster than calibrated; headliners got full n = 48 + extensions).
+
+**Action needed**: the census checkpoint note to the author (the direct ask answered; [M5.22.1](m5_22_1_task_details.md) gated on the state-identity review); the two MODELS.md baryon cells updated at this close; [Q39](../m5_question_tracker.md#q39-detail) is a self-contained machine-checkable follow-up.
+
+**Findings**: The toy baryon census delivered the author's two headline predictions at qualitative grade: protected proton and neutron analog states exist on the certified 3×3 stack, the neutral one is heavier (ratio 1.54, δ-robust), and the proton carries exactly the lepton's quantized charge with different knot content. The one honest negative is structural: the central-π-step neutron seed is not protected at toy parameters; the census's own selection principle recovered a protected neutral state from the escaped s = -1 fractional seed instead.
+
+**Research docs created / updated**: [`findings/m5_22_note.md`](../findings/m5_22_note.md) (the census note) · this doc § FINDINGS · [`m5_question_tracker.md`](../m5_question_tracker.md) (Q37 ✅, Q38 data point, Q39 new) · scripts [`m5_22_a_seeds.py`](../scripts/m5_22_a_seeds.py) · [`m5_22_b_census.py`](../scripts/m5_22_b_census.py) · [`m5_22_c_rank.py`](../scripts/m5_22_c_rank.py) · [`m5_22_d_slices.py`](../scripts/m5_22_d_slices.py) · [`m5_22_e_audit.py`](../scripts/m5_22_e_audit.py) · data [`m5_22_census.json`](../data/m5_22_census.json) + [`m5_22_audit.json`](../data/m5_22_audit.json) + [`_DATASETS.md`](../data/_DATASETS.md) · plots: [`m5_22_seed_gallery.png`](../plots/m5_22_seed_gallery.png) · [`m5_22_census_panel.png`](../plots/m5_22_census_panel.png) · the state slices (`m5_22_slice_*.png`)
