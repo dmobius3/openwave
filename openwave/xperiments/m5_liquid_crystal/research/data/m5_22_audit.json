@@ -1,0 +1,324 @@
+{
+ "C1": {
+  "verdict": "CONFIRMED",
+  "worst_abs_err": 4.329556765991782e-06,
+  "detail": {
+   "N_s-1": {
+    "mine": 1.0127306982018016,
+    "author": 1.01273,
+    "abs_err": 6.982018017076541e-07
+   },
+   "N_s-0.5": {
+    "mine": 0.01273069820188165,
+    "author": 0.0127307,
+    "abs_err": 1.7981183486615038e-09
+   },
+   "N_s0": {
+    "mine": -0.9872693017980381,
+    "author": -0.987269,
+    "abs_err": 3.017980381159191e-07
+   },
+   "N_s0.5": {
+    "mine": -1.9872693017979577,
+    "author": -1.98727,
+    "abs_err": 6.982020424040059e-07
+   },
+   "N_s1": {
+    "mine": -2.9872693017978773,
+    "author": -2.98727,
+    "abs_err": 6.982021227841528e-07
+   },
+   "P_s-1": {
+    "mine": 1.999914329556445,
+    "author": 1.99991,
+    "abs_err": 4.3295564449152835e-06
+   },
+   "P_s-0.5": {
+    "mine": 0.9999143295565249,
+    "author": 0.999914,
+    "abs_err": 3.295565249583632e-07
+   },
+   "P_s0": {
+    "mine": -8.56704433947117e-05,
+    "author": -8.57e-05,
+    "abs_err": 2.955660528829076e-08
+   },
+   "P_s0.5": {
+    "mine": -1.0000856704433145,
+    "author": -1.00009,
+    "abs_err": 4.329556685389591e-06
+   },
+   "P_s1": {
+    "mine": -2.000085670443234,
+    "author": -2.00009,
+    "abs_err": 4.329556765991782e-06
+   },
+   "E_s-0.5": {
+    "mine": 0.9999999999998488,
+    "expected": 1.0
+   },
+   "E_s0.5": {
+    "mine": -0.9999999999998488,
+    "expected": -1.0
+   }
+  },
+  "method": "analytic d(ang)/dphi integrated (trapezoid, 8e5 pts)"
+ },
+ "instrument": {
+  "edge_convention_scan": {
+   "pad0": {
+    "E_u_fwd": 6.393249446,
+    "E_u_bwd": 6.393249451,
+    "err_vs_row": 3.7e-08
+   },
+   "clamp": {
+    "E_u_fwd": 6.462676826,
+    "E_u_bwd": 6.462676831,
+    "err_vs_row": 0.069427418
+   },
+   "crop": {
+    "E_u_fwd": 5.983642664,
+    "E_u_bwd": 5.983642669,
+    "err_vs_row": 0.409606745
+   },
+   "wrap": {
+    "E_u_fwd": 358.424136086,
+    "E_u_bwd": 358.424136091,
+    "err_vs_row": 352.030886677
+   }
+  },
+  "chosen_convention": "pad0",
+  "E_v_check": {
+   "mine": 1.8587972664298573,
+   "row": 1.8587972676203255
+  },
+  "charge_method": "orientation lift (max-|dot| Prim) + exact quad solid angles (van Oosterom-Strackee), NOT the note's FD flux",
+  "caveats": [
+   "Edge convention: the note's equations do not pin the one-sided stencils' boundary handling; pad0 (missing edge derivative = 0) is the implemented convention. clamp/crop shift E_u by 0.07-0.41 (~1-6%), so the convention is load-bearing and should be stated.",
+   "Charge reads 0.995/1.002 are FD-flux discretization error, not physics: the solid-angle degree of the same lifted fields is EXACTLY -1.000000 at every half-width for both states. The note's '0.7% apart' (read vi) quantifies the instrument, not the states: proton and lepton far-field degrees are exactly equal integers.",
+   "Row n_conflicts (2016/1918) is not a far-surface property: the far-cube lift is cleanly orientable (0 conflicts at w = 13.5, 16.5, 19.5 with a max-|dot|-first lift).",
+   "float32 endpoint storage sets a stationarity re-verification floor: a true f_tol state reads max|force| ~ 2e-7 from the npz (claimed 1e-8); smoothing-type probes bottom out at ~5e-4/unit."
+  ]
+ },
+ "C2": {
+  "verdict": "CONFIRMED",
+  "worst_rel_err": 2.4608128026425938e-08,
+  "edge_convention": "pad0",
+  "detail": {
+   "P-0.5_plane_sc6_n48_pinned_d0.3": {
+    "mine": 8.25204671489347,
+    "row": 8.252046678846625,
+    "note": 8.252,
+    "rel_err": 4.3682309263847436e-09
+   },
+   "P-1_plane_sc6_n48_pinned_d0.3": {
+    "mine": 12.71847190890881,
+    "row": 12.718471823690646,
+    "note": 12.719,
+    "rel_err": 6.7003462483878316e-09
+   },
+   "E-0.5_plane_sc6_n48_pinned_d0.3": {
+    "mine": 6.253036396118237,
+    "row": 6.253036423821989,
+    "note": 6.253,
+    "rel_err": 4.43044791417721e-09
+   },
+   "N-0.5_plane_sc6_n48_pinned_d0.3": {
+    "mine": 2.058279583691464,
+    "row": 2.0582796343418726,
+    "note": 2.058,
+    "rel_err": 2.4608128026425938e-08
+   },
+   "P-0.5_plane_sc6_n32_pinned_d0.3": {
+    "mine": 8.496216773442569,
+    "row": 8.496216768542302,
+    "note": 8.496,
+    "rel_err": 5.767586906559669e-10
+   },
+   "P-1_plane_sc6_n32_pinned_d0.3": {
+    "mine": 12.729649568805833,
+    "row": 12.729649565298047,
+    "note": 12.73,
+    "rel_err": 2.7556030066851726e-10
+   },
+   "E+0.5_plane_sc6_n32_pinned_d0.3": {
+    "mine": 6.029174360441996,
+    "row": 6.0291744032789225,
+    "note": 6.029,
+    "rel_err": 7.104940747982859e-09
+   }
+  }
+ },
+ "C3": {
+  "verdict": "CONFIRMED",
+  "hedgehog": {
+   "Q": 0.9999999999999938,
+   "conflicts": 0
+  },
+  "degree2": {
+   "Q": 1.999999999999994,
+   "conflicts": 0
+  },
+  "endpoints": {
+   "P-0.5_plane_sc6_n48_pinned_d0.3": {
+    "claimed_absQ": 0.995,
+    "profile": {
+     "13.5": {
+      "Q": -1.0000000000000018,
+      "conflicts": 0
+     },
+     "16.5": {
+      "Q": -0.9999999999999949,
+      "conflicts": 0
+     },
+     "19.5": {
+      "Q": -0.9999999999999966,
+      "conflicts": 0
+     }
+    },
+    "mine_absQ_far": 0.9999999999999966
+   },
+   "E-0.5_plane_sc6_n48_pinned_d0.3": {
+    "claimed_absQ": 1.002,
+    "profile": {
+     "13.5": {
+      "Q": -1.0000000000000002,
+      "conflicts": 0
+     },
+     "16.5": {
+      "Q": -1.0000000000000033,
+      "conflicts": 0
+     },
+     "19.5": {
+      "Q": -0.9999999999999994,
+      "conflicts": 0
+     }
+    },
+    "mine_absQ_far": 0.9999999999999994
+   }
+  }
+ },
+ "C4": {
+  "verdict": "CONFIRMED",
+  "detail": {
+   "q2d_P_s-1": 1.999914329556445,
+   "deg3d_w13.5": {
+    "Q": -3.590202946100799e-16,
+    "conflicts": 0
+   },
+   "deg3d_w16.5": {
+    "Q": -1.762833475793798e-16,
+    "conflicts": 0
+   },
+   "deg3d_w19.5": {
+    "Q": 1.8912152402799557e-17,
+    "conflicts": 0
+   },
+   "deg3d_P_s-0.5_w19.5": {
+    "Q": 1.0000000000000007,
+    "conflicts": 0
+   }
+  },
+  "note": "2D winding +2 (1.99991) does not lift: 3D degree ~ 0; the s=-1/2 seed lifts to |Q3d| ~ 1"
+ },
+ "C5": {
+  "verdict": "CONFIRMED",
+  "E_P1_minus_EP05_n48": 4.46642519401534,
+  "E_P1_minus_EP05_n32": 4.233432795363264
+ },
+ "C6": {
+  "verdict": "CONFIRMED",
+  "grad_fd_gate": 2.7435866494534187e-09,
+  "descent_N05_n48": {
+   "E_start": 2.058279583691464,
+   "E_end_probe": 2.058279390021421,
+   "dE_total": 1.9367004266968024e-07,
+   "dE_last25": 3.164216533235731e-08,
+   "fmax_start": 2.237926371684306e-05,
+   "fmax_end": 2.1815178016802725e-05,
+   "steps": 150,
+   "alpha_final": 0.02
+  },
+  "descent_P1_n48": {
+   "E_start": 12.71847190890881,
+   "E_end_probe": 12.718471908903139,
+   "dE_total": 5.671907388205e-12,
+   "dE_last25": 1.4033219031261979e-13,
+   "fmax_start": 2.0330451282925678e-07,
+   "fmax_end": 1.0177553184145512e-08,
+   "steps": 150,
+   "alpha_final": 0.02
+  },
+  "dE_ratio_N_over_P": 34145.4874725963,
+  "smoothing_probe_N": {
+   "E0": 2.058279583691464,
+   "dE_dt": -0.004978842441394349,
+   "dE_dt_per_unit": -0.0005423313643765728,
+   "curvature": 6.770694819381261,
+   "dir_norm": 9.1804434860921
+  },
+  "smoothing_probe_P": {
+   "E0": 12.71847190890881,
+   "dE_dt": -0.0020630638617902264,
+   "dE_dt_per_unit": -0.0004719864143665573,
+   "curvature": 2.6262858469081602,
+   "dir_norm": 4.371023823978111
+  },
+  "smoothing_probe_caveat": "float32 storage floor ~5e-4/unit dominates both states; not discriminating",
+  "E_N05_n48_mine": 2.058279583691464,
+  "E_N05_n32_mine": 2.338388154569789,
+  "E_N05_n48_row": 2.0582796343418726,
+  "E_N05_n32_row": 2.338388138435895,
+  "still_sliding": true
+ },
+ "C7": {
+  "verdict": "CONFIRMED",
+  "mine_E_lepton_n48": 6.253036396118237,
+  "certified_2b_row": 6.842211659664797,
+  "certified_2b_all": 6.842211659664797,
+  "w2_2b": 0.0027581,
+  "fraction_below": 0.08610889181049165
+ },
+ "C8": {
+  "verdict": "CONFIRMED",
+  "E_mine": [
+   8.496413218260429,
+   8.768844277293704,
+   8.973102718779943,
+   9.130095373259133,
+   9.237932953451597
+  ],
+  "E_json": [
+   8.496413213390124,
+   8.768844249369728,
+   8.973102776931176,
+   9.130095410473345,
+   9.237932923637514
+  ],
+  "slope_mine_author_unit": 0.7377162265391062,
+  "slope_mine_lattice": 0.12295270442318436,
+  "slope_json": 0.7377162326393554,
+  "ratio_vs_m5214_tension": [
+   50.42589367258284,
+   56.9324605980774
+  ]
+ },
+ "C9": {
+  "verdict": "CONFIRMED",
+  "E_plus": 6.029174360441996,
+  "E_minus": 6.029174518496228,
+  "E_rel_diff": 2.621490495444898e-08,
+  "seed_best": {
+   "flip_axis": null,
+   "conj_axis": 2,
+   "rel_dist": 0.0,
+   "identity_rel": 0.7237465908100731
+  },
+  "end_best": {
+   "flip_axis": null,
+   "conj_axis": 2,
+   "rel_dist": 0.00019549606378176833,
+   "identity_rel": 0.6915857135567451
+  }
+ }
+}
