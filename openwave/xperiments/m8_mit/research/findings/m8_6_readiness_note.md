@@ -105,8 +105,8 @@ M5's `A<C<B` ordering has genuine non-mass rationale: A is the lowest-energy sta
 the three measured candidates (lowest = lightest, standard physics logic; the source
 does not claim global minimality over the full configuration space), and separately,
 M5.21.6 measured that the
-μ-candidate C decays toward A while the τ-candidate B drains; an independent
-stability/decay argument, not a permutation search against known masses.
+μ-candidate C decays toward A while the τ-candidate B drains. This supplies an
+independent stability/decay argument, not a permutation search against known masses.
 
 But MIT's side of any ordering test is not independent. The identities
 `e=(R7,triv), μ=(R8,std), τ=(R4,gal)` were assigned in M8.3 by matching to measured PDG
@@ -118,7 +118,8 @@ quantum number are told apart only by which entry the measured mass fits:
 whether the inherited MIT triple comes out light-middle-heavy in its own predicted
 masses is true by construction of the labeling, not a finding. At most, a match would
 show that M5's independent stability-based ordering agrees with the ordinary observed
-mass ordering; a possible M5-side note, not a cross-model validation of the McKay rule.
+mass ordering. That is a possible M5-side note, not a cross-model validation of the
+McKay rule.
 
 ## 7. Verdict
 
@@ -137,7 +138,7 @@ labels).
 > preregistered extrapolation route, under guardrails that preserve the anti-circularity
 > requirement it was written to enforce. Full reasoning: [PR #374](https://github.com/openwave-labs/openwave/pull/374).
 > The tension was first raised from the M5 side, in the design-question section of
-> [`m5_21_11_task_details.md`](../../m5_liquid_crystal/research/tasks/m5_21_11_task_details.md#design-question-resolved-2026-07-29-does-the-extrapolated-law-count-as-a-census-at-the-physical-parameters),
+> [`m5_21_11_task_details.md`](../../../m5_liquid_crystal/research/tasks/m5_21_11_task_details.md#design-question-resolved-2026-07-29-does-the-extrapolated-law-count-as-a-census-at-the-physical-parameters),
 > which also records this amendment's adoption.
 
 M8.6 reopens only once ALL of the following hold. Conditions 1-3 are deliberately
@@ -151,9 +152,9 @@ and the physical ones requires new physics inputs, not new labels (§4).
 2. That specification is frozen before the new A/C/B census ladder is run and before
    any resulting physical-regime ratios are compared with the charged-lepton targets.
 3. **Physical-regime target.** The comparison uses either (a) stationary-state energies
-   from a new census run at independently fixed physical parameters, directly, or (b),
-   where such a run is computationally inaccessible, a physical-regime extrapolation
-   from a fresh, preregistered census ladder. Under route (b): the
+   from a new census run directly at independently fixed physical parameters, or (b),
+   where direct simulation is computationally inaccessible, a physical-regime
+   extrapolation from a fresh, preregistered census ladder. Under route (b): the
    asymptotic functional form must be derived from M5-side theory independently of the
    lepton target; the rung set, fitting procedure, holdout tests, branch-tracking
    rules, and uncertainty model must be frozen BEFORE any M8.6 performance evaluation
@@ -168,12 +169,14 @@ and the physical ones requires new physics inputs, not new labels (§4).
    rungs are measured censuses, the physical point is an extrapolation from them.
 4. Grid refinement (route a) or the frozen uncertainty model (route b) establishes a
    usable UNCERTAINTY on `E_C/E_A` and `E_B/E_A`, not merely a stable ordering. Under
-   route (b), the uncertainty model must carry a per-rung DISCRETIZATION term
-   (established by grid refinement on at least a subset of rungs) alongside the
-   extrapolation error: §5's own finding that `E_A` drifts ~20% across three grid
-   resolutions at fixed δ, with B and C less consistency-converged than A, means
-   per-branch discretization error does not cancel in the ratio and cannot be absorbed
-   into the extrapolation-uncertainty term alone.
+   route (b), the uncertainty model must include a per-rung DISCRETIZATION term,
+   established by grid refinement of all three branches on a preregistered subset of
+   rungs spanning the ladder, together with a frozen rule for propagating that term to
+   unrefined rungs, alongside the extrapolation error: §5's own finding that `E_A`
+   drifts ~20% across three grid resolutions at fixed δ, with B and C less
+   consistency-converged than A, means branch-dependent discretization error cannot be
+   assumed to cancel in the ratios and cannot be absorbed into the
+   extrapolation-uncertainty term alone.
 5. The assignment `A→e, C→μ, B→τ` stays frozen from the pre-existing stability/decay
    rationale (§6), never re-derived from a mass match.
 6. No `1:5.9:15.1` Yukawa-derived figure enters the derivation, calibration, or
