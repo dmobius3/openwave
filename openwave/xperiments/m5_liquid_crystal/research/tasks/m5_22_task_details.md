@@ -183,3 +183,27 @@ Two framing changes ride the same mail. **The selection principle**: these are b
 | The consequence | Any working time-sector coupling must be NON-COMMUTING with `M`, which means changing the Lagrangian (the mixed block stabilized, or derivative/frame couplings), NOT designing a better background drive. The [M5.27.x series is PARKED](../m5_roadmap.md) on exactly this ground; the anti-recipe row is in [`../m5_theory_canonical.md § 6`](../m5_theory_canonical.md) |
 | The candidate cure | Skyrme-style extra Lagrangian terms (author-floated 2026-07-22, this task's § above), screened BEFORE any spend by the [M5.20.4](m5_20_4_task_details.md) arm-C lemmas + the [M5.20.5](m5_20_5_task_details.md) γ = −1 statics kill |
 | How this task triggers it | (a) The convince-others brief now states the concrete blocker in one sentence: the time sector needs a non-commuting coupling and the only known channel is unstable, soliton-specialist territory. (b) The M5.27 negative rides the next author-channel outbound batch (user-gated, queued in the [M5.27 review](m5_27_task_details.md)). (c) Any Skyrme-terms screening or mixed-block stabilization attempt during this task's arc runs as an M5.22-adjacent sub-task consuming this table as its problem statement |
+
+## FINDINGS (2026-07-30, the census run)
+
+Full record: [`findings/m5_22_note.md`](../findings/m5_22_note.md) (equations, gates, forks, census table, reads, Q38, audit). Data: [`data/m5_22_census.json`](../data/m5_22_census.json) (36 rows) + [`data/m5_22_audit.json`](../data/m5_22_audit.json). Adversarial audit: **9/9 claims confirmed, 0 refuted** (independent script, own methods).
+
+| Headline | Result |
+| --- | --- |
+| The baryon analogs EXIST | Proton-analog = the fractional-family s = −1/2 state: E = 8.250 (n = 48, residual force 5e-7), \|Q\| = 1, a central vortex column + one equatorial ring. Neutron-analog = the fractional-family s = −1 state: E = 12.719 at exact f_tol, Q = 0, scale-stable to 0.1%, a column + TWO rings. Both return exactly after a 2% perturbation kick |
+| Mass ordering ✅ (read ii) | Neutron-analog heavier: ratio 1.54 at δ = 0.3, 1.55 at δ = 0.2 (δ-robust, both f_tol); qualitative grade only |
+| Same-charge hierarchy ✅ (read v) | Proton-analog (8.250) heavier than the protocol-matched lepton state (6.253), ratio 1.32 at toy parameters |
+| Q37 answered ✅ (read vi) | Far-field degrees of the proton-analog and the lepton EXACTLY equal integers (solid-angle instrument, audit-confirmed), with DIFFERENT knot content: the Sulich challenge simulated |
+| HONEST NEGATIVE: the author's neutron candidate | The central-π-step s = −1/2 seed DISSOLVES (E slides 2.34 → 2.06 over 24000 iterations, cross-stencil ratio ~5; free BC → vacuum): not protected at toy parameters. The selection principle reassigned the neutron title to the census's own protected neutral state |
+| The \|s\| = 1 escape | Integer-wound cross-sections (2D charge ±2, ±3) do NOT carry their charge into 3D (exact analytic degree 0, audit-confirmed): no charge-2 candidates from this seed set; the escaped P −1 seed is HOW the census found its neutron-analog |
+| Q38 first data point | In-baryon quark-shift cost 0.123/lattice unit vs the M5.21.4 string tension 6.2-7.0: a 50-57× separation: the two linear terms are NOT the same object at this rung |
+| Side-finding → [Q39](../m5_question_tracker.md#q39-detail) | The lepton seed relaxes 8.6% BELOW the certified M5.21.2b electron state at identical config: the lightest known charged state moved |
+| Pre-run question #3 (cores vs shells) answered | Empirically: the neutron-analog is a compound of one axis column + two vortex rings with quadrupolar charge lobes netting zero, not a simple core/shell onion; the Wilson profile signature is not cleanly resolved at these sizes |
+
+![proton-analog, n = 48](../plots/m5_22_slice_P-0.5_plane_sc6_n48_pinned_d0.3.png)
+
+![neutron-analog, n = 48](../plots/m5_22_slice_P-1_plane_sc6_n48_pinned_d0.3.png)
+
+![the seed gallery](../plots/m5_22_seed_gallery.png)
+
+![the census panel, n = 32](../plots/m5_22_census_panel.png)
