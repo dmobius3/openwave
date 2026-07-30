@@ -49,6 +49,11 @@ the [PR #350](https://github.com/openwave-labs/openwave/pull/350) close-out thre
 | 1 | A frozen reproduction protocol: context firewall, operator conventions, result categories, mutation-tested gates, provenance requirements | the author, submitted as a document before any implementation exists |
 | 2 | Implementation of that protocol in a FRESH context with no M8.2 internals loaded | maintainers |
 
+**Step 1 ✅ LOCKED 2026-07-30**: [`../findings/m8_5a_reproduction_protocol.md`](../findings/m8_5a_reproduction_protocol.md),
+author-written and filed before any implementation existed, landed through
+[PR #380](https://github.com/openwave-labs/openwave/pull/380). It is the binding spec for step 2;
+where this planning doc and the protocol differ, the protocol governs. Step 2 is startable.
+
 Why the roles are this way round: the context that produced M8.2 holds the target tables and
 the derived fixtures, so it cannot serve as its own reproducer no matter how separately the
 second implementation is written. The author raised this rather than being asked.
@@ -78,13 +83,48 @@ claim label off independent-method reproduction.
 
 **What object 2 does not cover** (the author's scope point, 2026-07-28): it reconstructs 2I, its
 characters, the McKay distances and the scalar (0-form) first-occurrence table. It does not derive
-the coexact one-form entry rule, which stays **ASSERTED**. If M8.5-A's object needs the coexact
-table, its entry rule has no independent target in the repository and the protocol has to say
-what standing it can be given.
+the coexact one-form entry rule, which stays **ASSERTED**.
+
+**That standing question is answered** (protocol § 6, 2026-07-30). The coexact rule is not a
+certification target: it appears only as a separately labeled ASSERTED adjudication module,
+optional and pre-declared in the § 9 commitment, with four pre-declared verdicts. The hard rule
+is that numerical agreement in any amount never upgrades the rule's standing and is never
+reported as independent verification; only a general argument from the operator and
+representation structure does, and a pattern interpolated from the computed range does not
+qualify however clean the fit.
 
 Object 2 was landed to the requirements the author set for it: source, environment, raw output,
 the commit verified against, a short method note, a mutation test for every PASS line, and an
 explicit statement of what it does and does not verify.
+
+#### What step 2 adds to the frozen minimum gate set (2026-07-30)
+
+The protocol's § 8 minimum set (G1-G10) covers the 2I group theory completely, and it maps onto
+six of object 2's eight checks. It does not gate the two constructions that sit between the group
+and the answer, which are exactly the two the earlier mutation suite found worth testing. § 8
+permits the implementer to add gates, so step 2 adds these and discloses them:
+
+| Gate | Content | The defect it catches |
+| --- | --- | --- |
+| G11 | `χ_{Sym²σ}(g) = (χ_σ(g)² + χ_σ(g²))/2` on every class | object 2's `sym2_as_square`: `τ` built as `χ²` instead of `Sym²(χ)`. A dimension-only check does not discriminate; this identity does |
+| G12 | `χ_{V_n}(e) = n+1` over the range actually searched | object 2's `chiv_offbyone`: the SU(2) character summed over `n` weights instead of `n+1` |
+
+Why it matters that these are gated rather than left to chance: both defects pass G1-G10 and
+land as a systematically shifted table, so they report as **partial disagreement** rather than
+structural failure. That is a false negative on reproduction, the expensive direction, since the
+fresh implementation reads as having failed to reproduce a correct table.
+
+Raised in the [PR #380](https://github.com/openwave-labs/openwave/pull/380) review. Whether they
+also enter the frozen floor as a § 11 dated addendum is the author's call; step 2 runs them
+either way.
+
+#### Operational items to settle before the clean room opens
+
+| Item | What needs deciding | Working assumption |
+| --- | --- | --- |
+| Clean-room location, and who commits | § 4 forbids access to the M8 tree beyond the audited packet, while § 9 requires source, output and manifest committed before anything is unsealed, and committing needs the repository | the implementation runs OUTSIDE the working tree and a maintainer performs the commit. For an AI implementer this is load-bearing: a session started inside the repo auto-loads `CLAUDE.md` and its M8 pointers |
+| Generic references | § 4 permits generic SU(2) representation-theory and harmonic-analysis references as construction inputs, then defines the audited packet as the protocol plus the group input, and § 6's module needs the implementer's own harmonic analysis | either they enter the packet and the audit covers them, or the maintainer-approved allowlist is the stated route |
+| The § 7 comparison harness | it transcribes the quarantined § 6.1, so it is necessarily written after the commitment, and § 9 covers post-commitment changes only as a dated rerun | the harness is a second, separately dated commitment, so the ordering record stays unambiguous |
 
 ### The certification benchmark (fix before building)
 
