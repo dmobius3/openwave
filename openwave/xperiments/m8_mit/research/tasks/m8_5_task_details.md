@@ -118,13 +118,35 @@ Raised in the [PR #380](https://github.com/openwave-labs/openwave/pull/380) revi
 also enter the frozen floor as a § 11 dated addendum is the author's call; step 2 runs them
 either way.
 
-#### Operational items to settle before the clean room opens
+#### Operational items, settled (2026-07-30)
 
-| Item | What needs deciding | Working assumption |
-| --- | --- | --- |
-| Clean-room location, and who commits | § 4 forbids access to the M8 tree beyond the audited packet, while § 9 requires source, output and manifest committed before anything is unsealed, and committing needs the repository | the implementation runs OUTSIDE the working tree and a maintainer performs the commit. For an AI implementer this is load-bearing: a session started inside the repo auto-loads `CLAUDE.md` and its M8 pointers |
-| Generic references | § 4 permits generic SU(2) representation-theory and harmonic-analysis references as construction inputs, then defines the audited packet as the protocol plus the group input, and § 6's module needs the implementer's own harmonic analysis | either they enter the packet and the audit covers them, or the maintainer-approved allowlist is the stated route |
-| The § 7 comparison harness | it transcribes the quarantined § 6.1, so it is necessarily written after the commitment, and § 9 covers post-commitment changes only as a dated rerun | the harness is a second, separately dated commitment, so the ordering record stays unambiguous |
+| Item | Decision |
+| --- | --- |
+| Clean-room location | OUTSIDE the repository tree, in a directory with no `CLAUDE.md` on any ancestor path and no git relationship to openwave. A git worktree does NOT qualify: it lives inside the tree, so an agent session started there auto-loads `CLAUDE.md` and its M8 pointers on the first turn, before any instruction is read |
+| Who commits | a maintainer copies the artifacts out of the clean room and performs the § 9 commit. The consulted-files manifest is generated inside the clean room and copied verbatim, never re-authored outside it |
+| Generic references | no web access, the first of the two routes § 4 allows. Generic finite-group and `SU(2)` representation theory comes from the implementer's own knowledge, and the manifest states that no external references were consulted, explicitly rather than by omission. The allowlist route is declined because any query specific enough to help here (`2I` harmonic analysis, the McKay correspondence) returns the answer key, and an allowlist would need a per-URL approval trail proving exclusion. If § 6's module cannot be built without a reference the implementer lacks, that is a `not resolved` verdict for the module, not a reason to open access mid-run |
+| The § 7 comparison harness | a second, separately dated commitment, written after the § 9 commitment is filed and § 6.1 is unsealed. Its commit names the § 9 commit it postdates. It may not modify object 3's source or raw output; any change to those is a dated rerun under § 3 |
+| Implementer eligibility | any context that has read object 1, object 2, or the pre-registration § 6.1 is permanently disqualified, whatever else it later forgets. That covers every maintainer session that has handled M8.2, M8.5, or this task document |
+
+**The packet's group input is not an open decision.** § 4 permits raw generators, and § 5.3
+identifies `Q` from the elements themselves through `χ_Q(g) = 2cos θ(g)` rather than by
+declaration, so the element set fixes the `standard` and `galois` column assignment with no
+free parameter left to whoever hands it over. The standard 120 icosians (8 units, 16 Hurwitz,
+96 golden-set even permutations) are what object 2 built, and its C4 and C8 confirm that set
+agrees with § 6.1 on all 9 rows. What remains is provenance rather than correctness: the
+protocol reads as the author supplying the packet and the maintainer auditing it, which keeps
+the audit a cross-check instead of a self-audit. Asked in
+[PR #382](https://github.com/openwave-labs/openwave/pull/382); if it goes unanswered, the
+maintainer assembles the packet from the public icosian construction and records the
+self-audit as a stated limitation, following this column's standing rule that author silence
+is a valid terminal state ([roadmap § CONVENTIONS](../m8_roadmap.md#conventions)).
+
+**Planned § 9 declaration: the § 6 coexact module RUNS.** Fixed at the commitment, before
+anything is unsealed, and unavailable afterwards. The cost is the implementer deriving the
+coexact one-form tower by its own harmonic analysis. The return is that
+`structurally derived and reproduced` is the only route that ever moves the rule off ASSERTED,
+and § 6's standing rule already blocks a bare numerical match from being oversold. Declining
+leaves the rule ASSERTED with no route open.
 
 ### The certification benchmark (fix before building)
 
