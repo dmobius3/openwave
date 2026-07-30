@@ -135,8 +135,10 @@ labels).
 > parameters. M5.21.11's own scope makes clear the physical regime (δ ~ 1e-10, g ~ 1e10)
 > is out of lattice reach by any direct method, so condition 3 now also admits a
 > preregistered extrapolation route, under guardrails that preserve the anti-circularity
-> requirement it was written to enforce — see the discussion on the M8.6 PR thread for
-> the full reasoning.
+> requirement it was written to enforce. Full reasoning: [PR #374](https://github.com/openwave-labs/openwave/pull/374).
+> The tension was first raised from the M5 side, in the design-question section of
+> [`m5_21_11_task_details.md`](../../m5_liquid_crystal/research/tasks/m5_21_11_task_details.md#design-question-resolved-2026-07-29-does-the-extrapolated-law-count-as-a-census-at-the-physical-parameters),
+> which also records this amendment's adoption.
 
 M8.6 reopens only once ALL of the following hold. Conditions 1-3 are deliberately
 stronger than "attach units to the existing numbers": a uniform rescaling cannot change
@@ -165,7 +167,13 @@ and the physical ones requires new physics inputs, not new labels (§4).
    physical-regime PREDICTION, not a directly simulated physical census: the affordable
    rungs are measured censuses, the physical point is an extrapolation from them.
 4. Grid refinement (route a) or the frozen uncertainty model (route b) establishes a
-   usable UNCERTAINTY on `E_C/E_A` and `E_B/E_A`, not merely a stable ordering.
+   usable UNCERTAINTY on `E_C/E_A` and `E_B/E_A`, not merely a stable ordering. Under
+   route (b), the uncertainty model must carry a per-rung DISCRETIZATION term
+   (established by grid refinement on at least a subset of rungs) alongside the
+   extrapolation error: §5's own finding that `E_A` drifts ~20% across three grid
+   resolutions at fixed δ, with B and C less consistency-converged than A, means
+   per-branch discretization error does not cancel in the ratio and cannot be absorbed
+   into the extrapolation-uncertainty term alone.
 5. The assignment `A→e, C→μ, B→τ` stays frozen from the pre-existing stability/decay
    rationale (§6), never re-derived from a mass match.
 6. No `1:5.9:15.1` Yukawa-derived figure enters the derivation, calibration, or
