@@ -1,8 +1,9 @@
 # M8.5-A Independent-Reproduction Protocol (context-isolated; scalar first-occurrence table)
 
-> **Status: DRAFT FOR FREEZE (filed 2026-07-30; author-written protocol; NO implementation
-> here).** Freezes HOW the M8.2 lock's § 3 reproduction obligation is discharged; does not
-> discharge it. On landing, this document is FROZEN: later changes enter only as dated addenda
+> **Status: LOCKED 2026-07-30** ([PR #380](https://github.com/openwave-labs/openwave/pull/380)).
+> Author-written protocol, filed before any implementation existed; NO implementation here.
+> Freezes HOW the M8.2 lock's § 3 reproduction obligation is discharged; does not
+> discharge it. FROZEN as of the lock date: later changes enter only as dated addenda
 > in § 11, never in place. Pairs with the maintainers' task spec
 > [`m8_5_task_details.md`](../tasks/m8_5_task_details.md) and the locked
 > [`m8_2_preregistration.md`](m8_2_preregistration.md).
