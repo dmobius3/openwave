@@ -20,10 +20,35 @@ physics and files on the [M8 roadmap](../../openwave/xperiments/m8_mit/research/
 under M8.5-A, where its planning already sits in
 [`m8_5_task_details.md`](../../openwave/xperiments/m8_mit/research/tasks/m8_5_task_details.md).
 
-**Deliverable**: a `dev_docs/` standard, written from an exercise rather than in the abstract,
-in the shape of [`METHOD_NOTE.md`](../METHOD_NOTE.md) and
-[`CROSS_MODEL_TESTING.md`](../CROSS_MODEL_TESTING.md). It is written after the first run, not
-before, so it records what actually held.
+**Deliverable**: `dev_docs/CLEAN_ROOM.md` (created at block E; linked from here when it
+exists), a standard written from an exercise rather than in the abstract, in the shape of [`METHOD_NOTE.md`](../METHOD_NOTE.md)
+and [`CROSS_MODEL_TESTING.md`](../CROSS_MODEL_TESTING.md). It is written after the first run,
+not before, so it records what actually held; if the M8.5-A run refutes the procedure, the
+finding is recorded here and no standard ships.
+
+### The name (decided 2026-07-31)
+
+**Clean room**, the term the protocol itself introduced (its § 4: "the packet that enters the
+clean room") and an established software-engineering term with decades of precedent: in
+clean-room reimplementation, one team writes a specification from the original and a second
+team implements from the specification alone, producing provably independent work. That
+two-team structure maps onto this procedure exactly, the answer-holding author writes the
+protocol, a fresh context implements from the packet alone.
+
+The terms are a ladder, not synonyms, and the standard keeps them distinct:
+
+| Term | What it names |
+| --- | --- |
+| clean room | the ENVIRONMENT and procedure: the isolated directory, the audited packet, the ordering record. What this standard specifies |
+| context firewall | the RULE SET the room enforces (protocol § 4's own heading): fresh context, no quarantined access, no web tools, the manifest |
+| context-isolated independent-method reproduction | the CLAIM a successful run earns (protocol § 2), and the ceiling |
+| blind | a STRONGER claim the room alone never grants. Blind is a property of what the verifying context has seen, not of the environment; a clean room makes isolation auditable, it cannot erase prior exposure, and for an AI implementer the opaque training corpus caps the label structurally |
+
+The last row is why the procedure is NOT named "blind agent" despite the temptation: this
+platform's own standing rule (roadmap CONVENTIONS, M8.2 close-out) reserves blind for runs
+whose targets were withheld from a context that had never seen them, and the M8.5-A protocol
+explicitly bans the word from its deliverable. A clean room is the machinery a blind run ALSO
+uses; the machinery does not make a run blind.
 
 ### The room
 
@@ -117,10 +142,11 @@ check it is an attestation, and this column already ruled against those.
 
 | # | Item |
 | --- | --- |
-| 1 | The `dev_docs/` standard exists and is written from the run, not from the plan |
+| 1 | `dev_docs/CLEAN_ROOM.md` exists and is written from the run, not from the plan |
 | 2 | It names the failure modes the exercise actually hit, including any this doc did not predict |
 | 3 | The ancestor-path check is stated as a procedure a reader can execute, not as advice |
 | 4 | It states which parts are protocol-specific to M8.5-A and which any column inherits |
+| 5 | It carries the reproduce-vs-derive ceiling ([`PR_REVIEW_STANDARDS.md`](../PR_REVIEW_STANDARDS.md) Gate B, obligations row): the platform reproduces computations to a frozen spec and does not derive on request; a part requiring original derivation is optional and declinable per run, with the § 6 coexact module's `not resolved` verdict as the worked instance |
 
 ### Blindspots
 
