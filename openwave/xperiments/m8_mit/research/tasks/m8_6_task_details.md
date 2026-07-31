@@ -1,4 +1,4 @@
-# M8.6: MIT-M5 lepton-hierarchy comparison — gated readiness audit
+# M8.6: MIT-M5 lepton-hierarchy comparison (gated readiness audit)
 
 > Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 GATED (2026-07-29),
 > pending M5.21.11. Moved from Backlog to [LATER (gated)](../m8_roadmap.md#later-gated)
@@ -8,12 +8,12 @@
 > author owns the MIT side; the M5 side is graded by the platform's M5 record. Joint
 > task.
 
-## ORIGINAL PLAN — NOW GATED
+## ORIGINAL PLAN (NOW GATED)
 
 > The plan below is the maintainers' original scaffold (2026-07-21). A readiness audit
 > (2026-07-29, see FINDINGS below) found it cannot run as written: the named target is
 > circular and the fallback is non-independent. Kept verbatim as the historical record;
-> do not read it as the live plan — [`findings/m8_6_readiness_note.md`](../findings/m8_6_readiness_note.md) is.
+> do not read it as the live plan: [`findings/m8_6_readiness_note.md`](../findings/m8_6_readiness_note.md) is.
 
 ### Original scope
 
@@ -27,7 +27,7 @@ the M5 lepton row), the mass law `E ∝ Λ³` already fixed, physical ratios
 mechanism currently on the table for exactly that open item; either outcome closes a
 live question in TWO columns.
 
-### Original preregistration design — not executed
+### Original preregistration design (not executed)
 
 All three choices below are made and frozen BEFORE any number is computed:
 
@@ -37,7 +37,7 @@ All three choices below are made and frozen BEFORE any number is computed:
 | The comparison level | eigenvalue-level (`1 : 5.9 : 15.1`, then cubed by M5's `E ∝ Λ³`) vs mass-level (`1 : 206.8 : 3477.2`); one is primary, stated in advance |
 | The tolerance | what counts as "reproduces" (a stated relative-error threshold) and what counts as refuted |
 
-### Original definition of done — superseded
+### Original definition of done (superseded)
 
 | # | Item |
 | --- | --- |
@@ -74,3 +74,7 @@ FINDINGS below and [`../m8_roadmap.md § LATER (gated)`](../m8_roadmap.md#later-
 3. **An ordering-only fallback was considered and rejected.** MIT's own charged-lepton identities (`e=(R7,triv), μ=(R8,std), τ=(R4,gal)`) were assigned in M8.3 by matching to measured PDG masses (`mass-spectrum.md`: "the gates fix the kind; the mass fixes the generation"). `m_e<m_μ<m_τ` is therefore already built into which slot carries which label; checking whether the inherited triple comes out light-middle-heavy is true by construction, not a finding.
 
 4. **Verdict: not yet well-posed, on either side.** Full provenance table, exact source citations, and the reopening conditions: [`findings/m8_6_readiness_note.md`](../findings/m8_6_readiness_note.md).
+
+5. **Condition 3 amended, 2026-07-29.** Cross-linking the gate surfaced a real tension: the original condition 3 admitted only a direct run at physical parameters, but M5.21.11's own scope states that regime (δ ~ 1e-10, g ~ 1e10) is out of lattice reach by any direct method: unsatisfiable as written. The readiness note's § 8 now also admits a preregistered extrapolation route, under guardrails (theory-derived asymptotic form, frozen rung set/fitting/holdout/uncertainty model, the three existing toy energies barred from the new fit) that keep the same anti-circularity requirement the original condition enforced.
+
+6. **Condition 4 strengthened, 2026-07-29.** Review of the condition-3 amendment found its uncertainty requirement, as first drafted, covered only extrapolation error along the g/δ ladder, leaving out the per-rung discretization error already visible at fixed δ (the readiness note's own finding, § 5, that `E_A` drifts ~20% across three grid resolutions at fixed δ, with B and C less consistency-converged than A). The readiness note's § 8 condition 4 now requires, under route (b), a per-rung discretization term established by grid refinement of all three branches on a preregistered subset of rungs spanning the ladder, together with a frozen rule for propagating that term to unrefined rungs, alongside the extrapolation-uncertainty term, since branch-dependent discretization error cannot be assumed to cancel in the ratios.

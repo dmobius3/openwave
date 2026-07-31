@@ -178,7 +178,7 @@ All 24 formula-computed masses, sorted, reproduce the canonical page's rank orde
 | `H0`, `Omega_L`, `G`, `c`, `hbar` | Declared measurement inputs (Planck 2018 + CODATA). `Lambda`, `mu_Lambda`, and `sqrt(Omega_Lambda)` are NOT in this row: they are recomputed from these five (§ 1.3, Part D), not quoted, and not derived from the postulate |
 | PDG comparison masses | Measurement inputs (the page's own declared figures) |
 | The dead-zone entries' physical status (sterile neutrino / warm dark matter candidates vs. structural residuals) | Open question on the source page itself; outside this script's scope, which is the formula's arithmetic and its comparison, not particle-physics interpretation |
-| Independent-method reproduction of the corrected torsion closed forms | The corrected closed forms are established by a single implementation (this script and the mode-identity-theory artifact use closely related but not disjoint methods); a genuinely independent-method reproduction is queued (M8.5) |
+| Independent-method reproduction of the corrected torsion closed forms | The corrected closed forms are established by a single implementation (this script and the mode-identity-theory artifact use closely related but not disjoint methods); a genuinely independent-method reproduction is tracked as [M8.8](../m8_roadmap.md#backlog), placed outside both M8.5 sub-deliverables by the [M8.5-A protocol § 0](m8_5a_reproduction_protocol.md) |
 
 ## 5. Adversarial audit record
 

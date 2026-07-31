@@ -1,0 +1,50 @@
+{
+ "P-1_rc0.8": {
+  "q_far": -0.0354,
+  "conflicts": 896
+ },
+ "P-1_rc1.5": {
+  "q_far": -0.0354,
+  "conflicts": 896
+ },
+ "P-1_rc2": {
+  "q_far": -0.0354,
+  "conflicts": 896
+ },
+ "P-1_rc3": {
+  "q_far": -0.0354,
+  "conflicts": 896
+ },
+ "N+1_rc0.8": {
+  "q_far": 1.1872,
+  "conflicts": 1664
+ },
+ "N+1_rc1.5": {
+  "q_far": 1.1872,
+  "conflicts": 1664
+ },
+ "N+1_rc2": {
+  "q_far": 1.1872,
+  "conflicts": 1664
+ },
+ "N+1_rc3": {
+  "q_far": 1.1872,
+  "conflicts": 1664
+ },
+ "P-0.5_rc0.8": {
+  "q_far": -1.0119,
+  "conflicts": 512
+ },
+ "P-0.5_rc1.5": {
+  "q_far": -1.0119,
+  "conflicts": 512
+ },
+ "P-0.5_rc2": {
+  "q_far": -1.0119,
+  "conflicts": 512
+ },
+ "P-0.5_rc3": {
+  "q_far": -1.0119,
+  "conflicts": 512
+ }
+}

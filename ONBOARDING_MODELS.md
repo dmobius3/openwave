@@ -376,7 +376,7 @@ The one tracked artifact in `theory/` is `_CITATIONS.md`. It is the durable reco
 | --- | --- |
 | Never fabricate an identifier | Verify DOIs and arXiv IDs; unresolved becomes `n/a`, an author-shared draft becomes `author copy`, a guessed venue gets a trailing `(?)`. A wrong DOI is worse than an honest `n/a`. |
 | Keep the manifest matching disk | Add, remove, or rename a source file and `_CITATIONS.md` is updated in the same commit. Every `Path` in the Local corpus must resolve to a real file. |
-| ASCII, clean filenames | Prefer `YEAR - Author - Title.pdf`. No em or en dashes and no unicode ligatures in filenames or cells: they break byte-exact paths and violate the house style. |
+| ASCII, clean filenames | Prefer `YEAR - Author - Title.pdf`. No em or en dashes and no unicode ligatures in a source filename or in this manifest's cells: they break byte-exact paths, and a pasted `Path` value stops resolving. The scope is filenames and manifest cells. Prose elsewhere in the repo is not covered by this rule. |
 | One work, one Bibliography entry | If a work has more than one local file (e.g. a published PDF plus its LaTeX source), it is a single citation but multiple Local-corpus rows. |
 | Cite as Author (Year) | Other documents reference sources this way, so no separate citation-key column is needed. |
 

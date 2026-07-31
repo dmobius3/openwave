@@ -49,6 +49,11 @@ the [PR #350](https://github.com/openwave-labs/openwave/pull/350) close-out thre
 | 1 | A frozen reproduction protocol: context firewall, operator conventions, result categories, mutation-tested gates, provenance requirements | the author, submitted as a document before any implementation exists |
 | 2 | Implementation of that protocol in a FRESH context with no M8.2 internals loaded | maintainers |
 
+**Step 1 ✅ LOCKED 2026-07-30**: [`../findings/m8_5a_reproduction_protocol.md`](../findings/m8_5a_reproduction_protocol.md),
+author-written and filed before any implementation existed, landed through
+[PR #380](https://github.com/openwave-labs/openwave/pull/380). It is the binding spec for step 2;
+where this planning doc and the protocol differ, the protocol governs. Step 2 is startable.
+
 Why the roles are this way round: the context that produced M8.2 holds the target tables and
 the derived fixtures, so it cannot serve as its own reproducer no matter how separately the
 second implementation is written. The author raised this rather than being asked.
@@ -78,13 +83,94 @@ claim label off independent-method reproduction.
 
 **What object 2 does not cover** (the author's scope point, 2026-07-28): it reconstructs 2I, its
 characters, the McKay distances and the scalar (0-form) first-occurrence table. It does not derive
-the coexact one-form entry rule, which stays **ASSERTED**. If M8.5-A's object needs the coexact
-table, its entry rule has no independent target in the repository and the protocol has to say
-what standing it can be given.
+the coexact one-form entry rule, which stays **ASSERTED**.
+
+**That standing question is answered** (protocol § 6, 2026-07-30). The coexact rule is not a
+certification target: it appears only as a separately labeled ASSERTED adjudication module,
+optional and pre-declared in the § 9 commitment, with four pre-declared verdicts. The hard rule
+is that numerical agreement in any amount never upgrades the rule's standing and is never
+reported as independent verification; only a general argument from the operator and
+representation structure does, and a pattern interpolated from the computed range does not
+qualify however clean the fit.
 
 Object 2 was landed to the requirements the author set for it: source, environment, raw output,
 the commit verified against, a short method note, a mutation test for every PASS line, and an
 explicit statement of what it does and does not verify.
+
+#### G11 and G12: now part of the frozen floor (addendum 1, 2026-07-30)
+
+Raised in the [PR #380](https://github.com/openwave-labs/openwave/pull/380) review, accepted by
+the author into the § 8 minimum set as
+[addendum 1](../findings/m8_5a_reproduction_protocol.md#11-addenda-post-freeze-only), landed
+via [PR #385](https://github.com/openwave-labs/openwave/pull/385). The protocol is the binding
+statement of both gates; this section records only what the exchange decided and corrected.
+
+The gap they close: the original G1-G10 cover the 2I group theory completely and map onto six
+of object 2's eight mutation-tested checks, but not the two constructions between the group and
+the answer, `τ_σ = Sym²(σ)` and the `V_n` tower. Both corresponding defects
+(`sym2_as_square`, `chiv_offbyone`) pass G1-G10 and surface at § 7 as **partial disagreement**
+rather than structural failure, so a correct target table reads as a failed reproduction, the
+expensive direction.
+
+Three things settled in the exchange, all author-side improvements on the proposal:
+
+| Point | Resolution |
+| --- | --- |
+| Floor vs implementer-added | into the floor, on scope rather than severity: an implementer-added gate binds one implementation, the floor binds every implementation and every rerun |
+| The consumed-object requirement | both gates evaluate THE SAME constructed object the § 5.4 calculation consumes, never a parallel recomputation, with group squaring from the raw multiplication. As first proposed, G11 could have been satisfied by rebuilding an ideal `Sym²σ` and comparing the identity to itself, `m7_trivial_ok` in another costume |
+| The dimension-only claim, corrected | the proposal overstated it as "does not discriminate". The addendum has it right: a dimension check catches the defect in the nontrivial 2-dimensional columns (3 against 4 at the identity) but not in the trivial column, where `Sym²(σ)` and `χ_σ²` agree, and it never verifies the classwise construction |
+
+One preference carried into `TASK.md` rather than into any frozen text: build the symmetric
+square explicitly and take traces, rather than evaluating the character identity G11 checks.
+Where the two routes genuinely differ, G11 is a cross-check; where they coincide, it confirms
+the declared contract was applied but not its arithmetic. The route taken is disclosed in the
+method note either way.
+
+#### Operational items, settled (2026-07-30)
+
+| Item | Decision |
+| --- | --- |
+| Clean-room location | OUTSIDE the repository tree, in a directory with no `CLAUDE.md` on any ancestor path and no git relationship to openwave. A git worktree does NOT qualify: it lives inside the tree, so an agent session started there auto-loads `CLAUDE.md` and its M8 pointers on the first turn, before any instruction is read |
+| Who commits | a maintainer copies the artifacts out of the clean room and performs the § 9 commit. The consulted-files manifest is generated inside the clean room and copied verbatim, never re-authored outside it |
+| Generic references | no web access, the first of the two routes § 4 allows. Generic finite-group and `SU(2)` representation theory comes from the implementer's own knowledge, and the manifest states that no external references were consulted, explicitly rather than by omission. The allowlist route is declined because any query specific enough to help here (`2I` harmonic analysis, the McKay correspondence) returns the answer key, and an allowlist would need a per-URL approval trail proving exclusion. If § 6's module cannot be built without a reference the implementer lacks, that is a `not resolved` verdict for the module, not a reason to open access mid-run |
+| The § 7 comparison harness | a second, separately dated commitment, written after the § 9 commitment is filed and § 6.1 is unsealed. Its commit names the § 9 commit it postdates. It may not modify object 3's source or raw output; any change to those is a dated rerun under § 3 |
+| Implementer eligibility | any context that has read object 1, object 2, or the pre-registration § 6.1 is permanently disqualified, whatever else it later forgets. That covers every maintainer session that has handled M8.2, M8.5, or this task document |
+
+**The packet's group input is not an open decision.** § 4 permits raw generators, and § 5.3
+identifies `Q` from the elements themselves through `χ_Q(g) = 2cos θ(g)` rather than by
+declaration, so the element set fixes the `standard` and `galois` column assignment with no
+free parameter left to whoever hands it over. The standard 120 icosians (8 units, 16 Hurwitz,
+96 golden-set even permutations) are what object 2 built, and its C4 and C8 confirm that set
+agrees with § 6.1 on all 9 rows. What remained was provenance rather than correctness, and the
+author settled it in [PR #382](https://github.com/openwave-labs/openwave/pull/382)
+(2026-07-30): **the author supplies the raw embedded generators; the maintainer audits,
+canonicalizes, and hashes the packet.** The audit stays a cross-check rather than a self-audit,
+and the packet hash is an addition beyond § 4, which requires only the consulted-files
+manifest. Canonicalization is what makes the hash meaningful, since the components are
+irrational in `φ` and an uncanonicalized decimal rendering hashes differently for the same
+group. The maintainer's own pre-verified pair is retained as a cross-check on the supplied
+generators, never as the packet.
+
+**Landing map for the § 9 commitment** (fixed before the run so the copy-out is mechanical;
+one commit, nothing unsealed until it lands):
+
+| Clean-room file | Repo destination |
+| --- | --- |
+| `m8_5a_reproduction.py` | `../scripts/m8_5a_reproduction.py` |
+| `raw_output.txt`, `result.json` | `../data/m8_5a_raw_output.txt`, `../data/m8_5a_result.json` |
+| `environment.md`, `manifest.md` | folded into `../findings/m8_5a_commitment.md`, one file carrying the environment record, the consulted-files manifest, the raw output's SHA-256, the schema version, and the § 6 declaration (the module RUNS) |
+| `method_note_draft.md` | `../findings/m8_5a_method_note.md`, marked DRAFT until the adversarial audit is recorded in it |
+
+The § 7 comparison harness is NOT in this commit: it is written after unsealing, lands as
+`../scripts/m8_5a_adjudication.py` in a second, separately dated commit that names the
+commitment commit it postdates.
+
+**Planned § 9 declaration: the § 6 coexact module RUNS.** Fixed at the commitment, before
+anything is unsealed, and unavailable afterwards. The cost is the implementer deriving the
+coexact one-form tower by its own harmonic analysis. The return is that
+`structurally derived and reproduced` is the only route that ever moves the rule off ASSERTED,
+and § 6's standing rule already blocks a bare numerical match from being oversold. Declining
+leaves the rule ASSERTED with no route open.
 
 ### The certification benchmark (fix before building)
 
