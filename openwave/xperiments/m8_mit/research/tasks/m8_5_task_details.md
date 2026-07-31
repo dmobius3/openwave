@@ -151,6 +151,25 @@ irrational in `φ` and an uncanonicalized decimal rendering hashes differently f
 group. The maintainer's own pre-verified pair is retained as a cross-check on the supplied
 generators, never as the packet.
 
+**Delivered 2026-07-31** ([PR #386](https://github.com/openwave-labs/openwave/pull/386)
+thread), in two deliberately separate archives: the packet, and the author's own verification
+evidence marked to stay outside the room. The generators are exact in `Q(φ)` with every
+component written `(a + b·φ)/2` over integer `a` and `b`, so no decimal rendering exists to
+canonicalize away and the hash pins a group rather than a transcription. The author's
+separation of packet from evidence was unprompted, and it is the containment the protocol
+wanted; the audit still runs from the packet alone, per
+[`../../../../../dev_docs/tasks/t4_task_details.md`](../../../../../dev_docs/tasks/t4_task_details.md).
+
+**Landing map for the block A packet commit** (committed before the room opens, so the
+timestamp predates the run; contents subject to the block A leakage scan):
+
+| Artifact | Repo destination |
+| --- | --- |
+| the canonical packet | `../data/m8_5a_packet.json` |
+| the clean-room task file | `../data/m8_5a_cleanroom_task.md` |
+| the maintainer packet audit | `../scripts/m8_5a_packet_audit.py`, `../data/m8_5a_packet_audit.json` |
+| the author's verification evidence, as received | `../data/m8_5a_packet_author_evidence/` |
+
 **Landing map for the § 9 commitment** (fixed before the run so the copy-out is mechanical;
 one commit, nothing unsealed until it lands):
 
