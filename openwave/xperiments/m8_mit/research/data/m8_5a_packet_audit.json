@@ -1,0 +1,223 @@
+{
+  "what": "M8.5-A packet audit, run from the packet alone",
+  "packet_file": "m8_5a_packet.json",
+  "incoming_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+  "canonical_form": "json.dumps(sort_keys=True, indent=2, ensure_ascii=True) + LF",
+  "authoritative_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+  "canonicalization_changed_bytes": false,
+  "checks": [
+    {
+      "id": "A1",
+      "check": "declared keys, minimal polynomial, basis; every component is (a + b*phi)/2",
+      "pass": true,
+      "observed": {
+        "keys_match": true,
+        "minimal_polynomial": "phi^2 - phi - 1",
+        "basis_match": true,
+        "shape_2x4": true,
+        "components_parse": true,
+        "parse_error": null
+      }
+    },
+    {
+      "id": "A2",
+      "check": "both generators have quaternion norm exactly 1 in Q(phi)",
+      "pass": true,
+      "observed": {
+        "norms": [
+          "1 + 0*phi",
+          "1 + 0*phi"
+        ]
+      }
+    },
+    {
+      "id": "A3",
+      "check": "closure is finite, multiplicatively closed, of order exactly 120",
+      "pass": true,
+      "observed": {
+        "order": 120,
+        "closed_under_multiplication": true,
+        "error": null
+      }
+    },
+    {
+      "id": "A4",
+      "check": "identity present and every element has an inverse in the closure",
+      "pass": true,
+      "observed": {
+        "identity_present": true,
+        "all_invertible": true
+      }
+    },
+    {
+      "id": "A5",
+      "check": "center is exactly {+1, -1}",
+      "pass": true,
+      "observed": {
+        "center_order": 2
+      }
+    },
+    {
+      "id": "A6",
+      "check": "element-order census matches 2I and rules out A5 x C2 (30 elements of order 4)",
+      "pass": true,
+      "observed": {
+        "census": {
+          "1": 1,
+          "2": 1,
+          "3": 20,
+          "4": 30,
+          "5": 24,
+          "6": 20,
+          "10": 24
+        },
+        "expected": {
+          "1": 1,
+          "2": 1,
+          "3": 20,
+          "4": 30,
+          "5": 24,
+          "6": 20,
+          "10": 24
+        },
+        "order_4_population": 30
+      }
+    },
+    {
+      "id": "A7",
+      "check": "central quotient has order 60 with the A5 order profile",
+      "pass": true,
+      "observed": {
+        "quotient_order": 60,
+        "census": {
+          "1": 1,
+          "2": 15,
+          "3": 20,
+          "5": 24
+        },
+        "expected": {
+          "1": 1,
+          "2": 15,
+          "3": 20,
+          "5": 24
+        }
+      }
+    },
+    {
+      "id": "A8",
+      "check": "no leakage vocabulary and no key outside the declared set",
+      "pass": true,
+      "observed": {
+        "token_hits": [],
+        "stray_keys": []
+      }
+    }
+  ],
+  "detail": {
+    "generator_orders": [
+      6,
+      4
+    ],
+    "element_order_census": {
+      "1": 1,
+      "2": 1,
+      "3": 20,
+      "4": 30,
+      "5": 24,
+      "6": 20,
+      "10": 24
+    },
+    "quotient_order_census": {
+      "1": 1,
+      "2": 15,
+      "3": 20,
+      "5": 24
+    },
+    "group_order": 120,
+    "center_order": 2
+  },
+  "all_checks_pass": true,
+  "mutation_suite": [
+    {
+      "mutation": "denominator_not_2",
+      "expected_red": [
+        "A1"
+      ],
+      "observed_red": [
+        "A1"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "wrong_minimal_polynomial",
+      "expected_red": [
+        "A1"
+      ],
+      "observed_red": [
+        "A1"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "norm_not_unit",
+      "expected_red": [
+        "A2"
+      ],
+      "observed_red": [
+        "A2",
+        "A3"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "second_generator_replaced_by_i",
+      "expected_red": [
+        "A3"
+      ],
+      "observed_red": [
+        "A3"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "generators_collapsed_to_one",
+      "expected_red": [
+        "A3"
+      ],
+      "observed_red": [
+        "A3"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "dimension_labels_added",
+      "expected_red": [
+        "A8"
+      ],
+      "observed_red": [
+        "A1",
+        "A8"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "mckay_distance_added",
+      "expected_red": [
+        "A8"
+      ],
+      "observed_red": [
+        "A1",
+        "A8"
+      ],
+      "detected": true,
+      "error": null
+    }
+  ],
+  "mutation_suite_all_detected": true
+}

@@ -55,7 +55,7 @@ uses; the machinery does not make a run blind.
 | Setting | Decision |
 | --- | --- |
 | Location | any directory with no `CLAUDE.md` anywhere on its ancestor path, and outside every repository working tree. The concrete path is a local choice and stays out of the repository |
-| Launch | `claude --disallowedTools "WebSearch,WebFetch"` |
+| Launch | `claude --disallowedTools "WebSearch,WebFetch"`, in DEFAULT permission mode. Not a bypass mode: the approval prompt is what makes a tool call reaching outside the room visible to the operator, and it is the one containment guard that does not rely on the implementer's cooperation |
 | Write scope | the implementer writes only inside the room and never reaches the repository; a maintainer copies artifacts out and performs every commit |
 | Teardown | the room is deleted at the end of the run, block G below. Not before: a rerun under § 3 needs it, it is the only copy until block C has copied the artifacts out, and block F may need to check a detail against it |
 
@@ -67,10 +67,14 @@ sits under a 7-line `CLAUDE.md` whose entire content instructs the agent to go r
 have revealed the breach. Check the whole ancestor path, and check what the file says rather
 than only whether one exists.
 
-**What loads unavoidably**: `~/.claude/CLAUDE.md`, the user-level instructions. Grepped for the
-subject terms before the run and found nothing relevant, so it enters the consulted-files
-manifest as a disclosed load rather than an unmentioned one. Project memory is keyed to the
-working directory, so a new folder starts with none.
+**What loads unavoidably**: `~/.claude/CLAUDE.md`, the user-level instructions. It enters the
+consulted-files manifest as a disclosed load rather than an unmentioned one. Grep it for the
+subject terms before the run, and read the summary of that grep carefully: at block A it came
+back free of anything answer-bearing while still naming this repository several times in
+unrelated prose (DEVIATIONS LOG). "Nothing relevant" is the conclusion to be most careful with
+here, since the file is written for a general working context and nobody edits it with a clean
+room in mind. Project memory is keyed to the working directory, so a new folder starts with
+none.
 
 ### The packet, and who may write it
 
@@ -207,7 +211,45 @@ input is forced by protocol § 5.3, and the fallback for unanswered provenance i
 
 ## DEVIATIONS LOG
 
-(none)
+Kept from block A onward, and the raw material block F writes the standard from. Each entry is
+what actually happened, including where this plan was wrong.
+
+**2026-07-31, block A. The unavoidable user-level `CLAUDE.md` names the repository, and
+§ The room understated it.** That section records the file as grepped for the subject terms
+with nothing relevant found. Re-run at block A, the grep is accurate on targets and generous in
+its summary: the file carries no group theory, no character or distance data, nothing
+answer-bearing, and it names this repository four times in unrelated prose about writing style
+and project orientation. It does not hand over an answer, and it does shorten the distance
+between the room and a tree the implementer is forbidden to read.
+
+**The same entry, sharpened: the room is isolated by withheld tools and by instruction, not by
+a sandbox.** Web search and fetch are withheld, which closes the network route. The local
+filesystem is not closed: the implementer has a shell and the quarantined tree is on the same
+disk. This plan never claimed otherwise, and it never said it out loud either, which is the
+kind of gap a standard exists to close. Three guards, added at block A:
+
+| Guard | What it does |
+| --- | --- |
+| `TASK.md` states the boundary as an obligation | the room is the implementer's whole world by rule, with the out-of-room read named as recoverable and its concealment named as not. An unstated rule cannot be honored or breached |
+| the room session runs in default permission mode | any tool call reaching outside the room surfaces as an approval prompt to the operator, who declines it and logs it here. This is the guard that does not depend on the implementer |
+| the transcript is checked against `manifest.md` at block C | already planned as the manifest's corroboration; the out-of-room question is now something it is explicitly checked for |
+
+**2026-07-31, block A. The group order is withheld, tighter than protocol § 4 permits.** The
+protocol allows supplying 120 as a construction input. `GROUP_INPUT.md` withholds it so G1
+stays falsifiable, and says so in the file, so silence does not read as an incomplete packet.
+
+**2026-07-31, block A. Canonicalization turned out to be a no-op.** § The packet anticipated
+irrational components arriving as decimals, where a hash would pin a transcription. The author
+supplied exact `Q(φ)` arithmetic instead, and the delivered bytes were already canonical under
+the declared form, so the incoming and authoritative hashes are identical. The canonicalization
+step still ran and is still recorded: the chain from delivery to room has to be complete
+whether or not it moved.
+
+**2026-07-31, block A. The mutation suite caught a defect in the audit, not in the packet.**
+The leakage check ran last and was skipped whenever an earlier format check aborted the
+sequence, so a stray key carrying a target reddened the audit for the wrong reason. Fixed by
+computing the leakage scan first and appending it unconditionally. Worth carrying into the
+standard: the mutation suite earned its place by failing something.
 
 ## FINDINGS
 

@@ -167,8 +167,57 @@ timestamp predates the run; contents subject to the block A leakage scan):
 | --- | --- |
 | the canonical packet | `../data/m8_5a_packet.json` |
 | the clean-room task file | `../data/m8_5a_cleanroom_task.md` |
+| the clean-room group-input file | `../data/m8_5a_cleanroom_group_input.md` |
 | the maintainer packet audit | `../scripts/m8_5a_packet_audit.py`, `../data/m8_5a_packet_audit.json` |
 | the author's verification evidence, as received | `../data/m8_5a_packet_author_evidence/` |
+
+**Audit result, 2026-07-31.** [`m8_5a_packet_audit.py`](../scripts/m8_5a_packet_audit.py) run
+from the packet alone: eight checks green, seven mutations each reddening their target, exit 0.
+Exact arithmetic throughout, no tolerance anywhere.
+
+| Quantity | Observed |
+| --- | --- |
+| incoming SHA-256, as delivered | `e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9` |
+| canonical form | keys sorted, two-space indent, ASCII, LF, one trailing newline |
+| authoritative SHA-256 | identical to the incoming hash: the delivered bytes were already canonical, so canonicalization is a no-op here |
+| generator norms | exactly `1` in `Q(φ)`, both |
+| generator orders | 6 and 4 |
+| closure | finite, multiplicatively closed, order exactly 120 |
+| center | exactly `{+1, −1}` |
+| element-order census | 1, 1, 20, 30, 24, 20, 24 at orders 1, 2, 3, 4, 5, 6, 10 |
+| central quotient | order 60, profile 1, 15, 20, 24 at orders 1, 2, 3, 5 |
+| leakage scan | no label, dimension, distance or character vocabulary; no key outside the declared set |
+
+The element-order census is the audit's addition rather than a restatement of the author's
+gates. A center of order 2 over a quotient with the `A₅` profile is also satisfied by the
+direct product `A₅ × C₂`, which is not the binary icosahedral group; the order-4 population
+separates them, 30 against none. A finite subgroup of the unit quaternions cannot be
+`A₅ × C₂` for an independent reason, since `−1` is the only unit quaternion of order 2 while
+that product has 31 involutions, so the census is not the only thing standing between the two.
+It is the mechanical version of that argument, and this audit prefers a count to an appeal to a
+theorem.
+
+**Cross-check against the author's evidence, run only after the above was complete.** The
+author's report states the same packet hash, the same closure order, and its four gates true.
+The two runs agree, and they are not fully independent in method: both work exactly over
+`Q(φ)` through `fractions.Fraction`, which the packet format effectively forces. The checks
+differ, which is where the value is: the element-order census and the leakage scan are the
+maintainer side only, and the author's report carries an environment record the audit does not.
+
+**The room, as sealed before launch.** Four files, nothing else:
+
+| File | SHA-256 | Provenance |
+| --- | --- | --- |
+| `PROTOCOL.md` | `f7370de24ca26f78c4019bf30db30abe54810f83198f9bded39fd0c25e10bf96` | `diff`-identical to [the frozen protocol](../findings/m8_5a_reproduction_protocol.md) |
+| `m8_5a_packet.json` | `e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9` | the author's packet, byte-identical |
+| `GROUP_INPUT.md` | `8b5fb2a61cdfe82cfe90f6c57e1e02f283229b1dd30470c331774dc3fb12f837` | maintainer-written wrapper; names the packet, states its hash, restates the packet's own coefficient-format field, quotes the packet verbatim |
+| `TASK.md` | `c662fd06c334809f0f4cdeda0903967536564dae6d597d0db308257aa34210c8` | maintainer-written, operational only |
+
+**The group order is withheld, which is stricter than the protocol requires.** Protocol § 4
+lists the order, 120, among the permitted construction inputs. `GROUP_INPUT.md` does not supply
+it, so G1 stays a check that can fail rather than a restatement of something handed over. The
+withholding is stated in that file, so the implementer knows it is deliberate and does not
+spend the run wondering whether the packet is incomplete.
 
 **Landing map for the § 9 commitment** (fixed before the run so the copy-out is mechanical;
 one commit, nothing unsealed until it lands):
