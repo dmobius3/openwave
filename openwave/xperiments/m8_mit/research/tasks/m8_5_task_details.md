@@ -97,28 +97,34 @@ Object 2 was landed to the requirements the author set for it: source, environme
 the commit verified against, a short method note, a mutation test for every PASS line, and an
 explicit statement of what it does and does not verify.
 
-#### What step 2 adds to the frozen minimum gate set (2026-07-30)
+#### G11 and G12: now part of the frozen floor (addendum 1, 2026-07-30)
 
-The protocol's § 8 minimum set (G1-G10) covers the 2I group theory completely, and it maps onto
-six of object 2's eight checks. It does not gate the two constructions that sit between the group
-and the answer, which are exactly the two the earlier mutation suite found worth testing. § 8
-permits the implementer to add gates, so step 2 adds these and discloses them:
+Raised in the [PR #380](https://github.com/openwave-labs/openwave/pull/380) review, accepted by
+the author into the § 8 minimum set as
+[addendum 1](../findings/m8_5a_reproduction_protocol.md#11-addenda-post-freeze-only), landed
+via [PR #385](https://github.com/openwave-labs/openwave/pull/385). The protocol is the binding
+statement of both gates; this section records only what the exchange decided and corrected.
 
-| Gate | Content | The defect it catches |
-| --- | --- | --- |
-| G11 | `χ_{Sym²σ}(g) = (χ_σ(g)² + χ_σ(g²))/2` on every class | object 2's `sym2_as_square`: `τ` built as `χ²` instead of `Sym²(χ)`. A dimension-only check does not discriminate; this identity does |
-| G12 | `χ_{V_n}(e) = n+1` over the range actually searched | object 2's `chiv_offbyone`: the SU(2) character summed over `n` weights instead of `n+1` |
+The gap they close: the original G1-G10 cover the 2I group theory completely and map onto six
+of object 2's eight mutation-tested checks, but not the two constructions between the group and
+the answer, `τ_σ = Sym²(σ)` and the `V_n` tower. Both corresponding defects
+(`sym2_as_square`, `chiv_offbyone`) pass G1-G10 and surface at § 7 as **partial disagreement**
+rather than structural failure, so a correct target table reads as a failed reproduction, the
+expensive direction.
 
-Why it matters that these are gated rather than left to chance: both defects pass G1-G10 and
-land as a systematically shifted table, so they report as **partial disagreement** rather than
-structural failure. That is a false negative on reproduction, the expensive direction, since the
-fresh implementation reads as having failed to reproduce a correct table.
+Three things settled in the exchange, all author-side improvements on the proposal:
 
-Raised in the [PR #380](https://github.com/openwave-labs/openwave/pull/380) review; the author
-accepted them into the frozen floor as a narrow dated addendum (2026-07-30). The reason given
-is the one that matters and was not the reason they were proposed: an implementer-added gate
-binds one implementation, while the floor binds every implementation and every rerun, and these
-two catch defects that make a CORRECT target table appear not to reproduce.
+| Point | Resolution |
+| --- | --- |
+| Floor vs implementer-added | into the floor, on scope rather than severity: an implementer-added gate binds one implementation, the floor binds every implementation and every rerun |
+| The consumed-object requirement | both gates evaluate THE SAME constructed object the § 5.4 calculation consumes, never a parallel recomputation, with group squaring from the raw multiplication. As first proposed, G11 could have been satisfied by rebuilding an ideal `Sym²σ` and comparing the identity to itself, `m7_trivial_ok` in another costume |
+| The dimension-only claim, corrected | the proposal overstated it as "does not discriminate". The addendum has it right: a dimension check catches the defect in the nontrivial 2-dimensional columns (3 against 4 at the identity) but not in the trivial column, where `Sym²(σ)` and `χ_σ²` agree, and it never verifies the classwise construction |
+
+One preference carried into `TASK.md` rather than into any frozen text: build the symmetric
+square explicitly and take traces, rather than evaluating the character identity G11 checks.
+Where the two routes genuinely differ, G11 is a cross-check; where they coincide, it confirms
+the declared contract was applied but not its arithmetic. The route taken is disclosed in the
+method note either way.
 
 #### Operational items, settled (2026-07-30)
 
@@ -144,6 +150,20 @@ manifest. Canonicalization is what makes the hash meaningful, since the componen
 irrational in `φ` and an uncanonicalized decimal rendering hashes differently for the same
 group. The maintainer's own pre-verified pair is retained as a cross-check on the supplied
 generators, never as the packet.
+
+**Landing map for the § 9 commitment** (fixed before the run so the copy-out is mechanical;
+one commit, nothing unsealed until it lands):
+
+| Clean-room file | Repo destination |
+| --- | --- |
+| `m8_5a_reproduction.py` | `../scripts/m8_5a_reproduction.py` |
+| `raw_output.txt`, `result.json` | `../data/m8_5a_raw_output.txt`, `../data/m8_5a_result.json` |
+| `environment.md`, `manifest.md` | folded into `../findings/m8_5a_commitment.md`, one file carrying the environment record, the consulted-files manifest, the raw output's SHA-256, the schema version, and the § 6 declaration (the module RUNS) |
+| `method_note_draft.md` | `../findings/m8_5a_method_note.md`, marked DRAFT until the adversarial audit is recorded in it |
+
+The § 7 comparison harness is NOT in this commit: it is written after unsealing, lands as
+`../scripts/m8_5a_adjudication.py` in a second, separately dated commit that names the
+commitment commit it postdates.
 
 **Planned § 9 declaration: the § 6 coexact module RUNS.** Fixed at the commitment, before
 anything is unsealed, and unavailable afterwards. The cost is the implementer deriving the
