@@ -1,0 +1,34 @@
+{
+  "what": "M8.5-A section 7 adjudication",
+  "target": "pre-registration section 6.1 at ec877ee0, adjudicator's own transcription",
+  "commitment_commit": "dac2b6a1",
+  "result_file": "m8_5a_result.json",
+  "packet_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+  "structural_problems": [],
+  "category": "reproduced",
+  "mismatches": [],
+  "three_way": {
+    "object2_vs_result": "reproduced",
+    "object2_vs_target": "reproduced",
+    "agreement": true
+  },
+  "coexact_module": {
+    "declared_verdict": "structurally derived and reproduced",
+    "note": "echoed from the committed result; standing examined by the adversarial audit, never upgraded by numerical agreement"
+  },
+  "mutation_suite": [
+    {
+      "mutation": "doc_typo_target_cell",
+      "expected": "comparison goes red",
+      "observed_category": "partial disagreement",
+      "detected": true
+    },
+    {
+      "mutation": "result_typo_candidate_cell",
+      "expected": "comparison goes red",
+      "observed_category": "partial disagreement",
+      "detected": true
+    }
+  ],
+  "mutation_suite_all_detected": true
+}

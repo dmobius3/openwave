@@ -279,8 +279,29 @@ any certification claim for B waits on A.
 
 ## DEVIATIONS LOG
 
-(none)
+**2026-07-31, M8.5-A run.** Procedure-level deviations (the stalled permission prompt, the
+environment catch, the raw-output path redaction, the scratchpad writes) are logged in
+[T4's deviations log](../../../../../dev_docs/tasks/t4_task_details.md) and disclosed in
+[`m8_5a_commitment.md`](../findings/m8_5a_commitment.md) § 4-6. No protocol-level deviation:
+no mid-run relay, no packet amendment, no unsealing before the commitment.
 
 ## FINDINGS
 
-(pending)
+**M8.5-A adjudication, 2026-07-31: REPRODUCED.** The clean-room implementation
+([commitment](../findings/m8_5a_commitment.md) at `dac2b6a1`, merged `c3dc2b5f`) matches the
+pre-registration § 6.1 table at `ec877ee0` exactly: 9 label-free `(dim, distance)` signatures
+pairwise distinct on both sides, 27 cells equal under exact integer comparison, no tolerance.
+Three-way agreement holds: the clean-room result, § 6.1 (object 1's published table), and
+object 2's reconstruction agree cell for cell. Harness:
+[`m8_5a_adjudication.py`](../scripts/m8_5a_adjudication.py) (its § 6.1 transcription made
+independently of object 2's `DOC` fixture, label-to-dim map from object 1's literals, checked
+against the transcribed distances before use); record:
+[`m8_5a_adjudication.json`](../data/m8_5a_adjudication.json). Both transcription mutations
+(`doc_typo` on the target, its mirror on the candidate) redden the comparison, per G10.
+
+| Item | Outcome |
+| --- | --- |
+| scalar table | REPRODUCED, 27/27 cells, three-way agreement |
+| claim label | context-isolated independent-method reproduction, the § 2 ceiling, nothing stronger |
+| § 6 coexact module | ran as pre-declared; implementer verdict `structurally derived and reproduced`, echoed not adjudicated; the derivation goes to the block E adversarial audit, and per the standing rule the numerical match upgrades nothing on its own |
+| what remains for M8.5-A | block E: method note finalization + the adversarial audit of the § 6 derivation and the run record |
