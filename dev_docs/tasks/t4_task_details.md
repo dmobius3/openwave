@@ -136,6 +136,24 @@ record. An instruction delivered as chat text is invisible to the packet hash, a
 manifest, and composed by a context holding the targets, which is the one information channel
 § 4 forbids. The near-empty prompt is a firewall property, not a style preference.
 
+### The operator during the run
+
+The human at the room's keyboard is a firewall component, and the standard owes them a
+runbook, not just a launch flag. The permission rules (decided at block B, applied live):
+
+| Prompt or event | Operator action |
+| --- | --- |
+| at launch, before the opening prompt | verify the room's four file hashes against the sealed record; verify the session banner's working directory is the room; record the banner's model for the environment record |
+| permission prompt for a path inside the room, or for running the implementation there | approve |
+| permission prompt for any path outside the room, or any network call | decline, and log the prompt text in the deviations log |
+| no blanket grant | never pre-approve tool classes, never "don't ask again" on file access, never a bypass mode. Each prompt is read before it is answered; the reading is the guard |
+| the implementer asks a question | not answered from the operator's knowledge, however innocuous. Relayed to the maintainer session, answered from the protocol text or not at all, logged as a deviation |
+| the implementer finishes | its final message is relayed verbatim; nothing in the room is touched until block C copies it out |
+
+The declined prompt is evidence, not just prevention: a room session that ever asked for an
+outside path has stated something about its behavior under isolation, and the standard wants
+that recorded even when the answer was no.
+
 ### Running it beside a live maintainer session
 
 The two sessions are independent processes and may run side by side. The information rule is
