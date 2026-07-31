@@ -24,7 +24,7 @@ A documented negative is a merge-worthy contribution. An overstated positive is 
 | [1. Intake](#1-intake) | the five things to establish before reading a line of code |
 | [2. Blast-radius map](#2-blast-radius-map) | which paths get which level of scrutiny |
 | [3. Gate A: safety and hygiene](#3-gate-a-safety-and-hygiene) | large files, encoding, copyright, secrets, dangling references |
-| [4. Gate B: scope containment](#4-gate-b-scope-containment) | model-folder discipline, shared files, root documents |
+| [4. Gate B: scope containment](#4-gate-b-scope-containment) | model-folder discipline, shared files, root documents, the commitment sweep and its loud notification (§ 4.1) |
 | [5. Gate C: claim to artifact](#5-gate-c-claim-to-artifact) | recompute the headline number from the shipped data yourself |
 | [6. Gate D: the adversarial pass](#6-gate-d-the-adversarial-pass) | is the mechanism wired, is the signal above the noise, do the knobs manufacture the result |
 | [7. Gate E: MODELS.md cell changes](#7-gate-e-modelsmd-cell-changes) | the evidence bar for moving a cell, and the linter a maintainer runs (§ 7.1) |
@@ -89,6 +89,43 @@ The default expectation is that a model contribution touches only its own model 
 | Does the PR **remove an existing gate or option**? | Removing a flag (for example an instrumentation on/off switch) changes behaviour for everyone using that model. Ask for it to be preserved or for the removal to be stated as intentional |
 | Does the PR **silently change a tuning constant** used by existing results? | Any constant that existing published cells were earned under is load-bearing. Changing it invalidates those cells until re-run. Ask for it to be moved into the per-experiment configuration instead |
 | Does the PR **relocate, extract or replace a shared function**? | "Moved to a shared module" is a claim about behaviour, not a description of a diff. Reading the call sites cannot test it, because they look identical either way. Run the old implementation and the new one on the same inputs and compare the outputs numerically. A move that also rewrites the body is two changes wearing one commit message, and the second one is invisible |
+| Does the PR **create an obligation that someone other than the contributor must discharge**? (a reproduction requirement, a verification clause, a pre-registration binding future work) | Price it at review, not after the freeze: the document names who discharges each obligation, and that party accepts the workload in the thread BEFORE the merge. An obligation on the maintainers binds only on explicit maintainer acceptance. The scope ceiling applies to every accepted obligation: **the platform reproduces computations to a frozen spec; it does not derive on request.** Where discharge would require original derivation, that part is optional and declinable per run, and declining it is a recorded outcome, never a breach. Findings here feed the § 4.1 notification |
+
+### 4.1 The commitment sweep, and the loud notification
+
+The obligations row above prices work obligations. This sweep widens the question to EVERY
+responsibility a merge can create, and adds the delivery mechanism, because review here is
+usually run by an AI agent acting for a maintainer: a commitment the agent notices but
+mentions mid-prose is a commitment the human accepts without reading. Scan every PR for:
+
+| Commitment class | What to look for | What the merge binds |
+| --- | --- | --- |
+| Freeze acceptance | a self-declared freeze or lock header, addenda-only amendment rules, a pins table | the amendment discipline: in-place edits become breaches, pinned paths cannot move, and every future touch of the file inherits the append-only check |
+| Work obligations | "maintainers implement / verify / reproduce / audit", reproduction clauses, verification queues | maintainer labor; binds only on the explicit acceptance the obligations row requires |
+| Legal surface | `LICENSE`, `NOTICE`, `TRADEMARK.md`, `SECURITY.md` edits; copyright or provenance assertions; third-party material; patent, warranty, or indemnity language | the platform's legal posture. T4 shared-surface rules apply, and the default remains a separate maintainer PR |
+| Public promises | text speaking in the platform's voice: guarantees, review-standard promises, support or response commitments | the community holds the platform to it. [`MODELS.md`](../MODELS.md)'s light-review promise is the standing example of how binding such a sentence is |
+| Standing rules | new conventions that bind future reviews or future work | every future review inherits the cost, and maintaining the rule is itself maintainer workload |
+
+**The notification.** The moment the sweep finds anything, and again as the LAST block before
+the verdict, the reviewing agent prints an all-caps notice in the terminal:
+
+```text
+⚠️⚠️⚠️ MAINTAINER COMMITMENT NOTICE ⚠️⚠️⚠️
+MERGING PR #<N> CREATES THE FOLLOWING RESPONSIBILITIES:
+1. <CLASS>: <WHAT IT BINDS> / WHO PAYS: <PARTY> / COMES DUE: <TRIGGER>
+2. ...
+ACCEPTANCE HAPPENS AT MERGE. ANY LINE NOT ACCEPTED IS
+RENEGOTIATED NOW, BEFORE THE FREEZE, NOT AFTER.
+⚠️⚠️⚠️ END COMMITMENT NOTICE ⚠️⚠️⚠️
+```
+
+| Rule | Why |
+| --- | --- |
+| Fires at detection AND restates in full as the last block before the verdict | the merge decision must have the commitments as the freshest thing on screen, not something scrolled past an hour earlier |
+| Prints even when the verdict is approve | approval is exactly the moment acceptance happens; a clean review with a silent commitment is the failure mode this exists for |
+| One line per commitment: class, what it binds, who pays, when it comes due | a notice without the cost attached is a headline, not a notice |
+| A clean sweep reports as one quiet line, `commitment sweep: none` | the loud block stays meaningful only if it is rare; alarm fatigue is how loud notices die |
+| The posted review carries the same list in normal case, under its own heading | the thread is the durable record. ALL CAPS is for the terminal moment of decision, not for the permanent prose |
 
 ## 5. Gate C: claim to artifact
 
@@ -310,6 +347,7 @@ These exist so review stays honest in both directions.
 6. The physics questions from Gate D, framed as questions to the author.
 7. The **model-author note**, when the contributor is not the column's author ([§ 8.1](#81-when-the-contributor-is-not-the-model-author)): the author's `@handle` in the opening sentence so the notification actually fires, then which findings are the author's call.
 8. What you did not check.
+9. The **MAINTAINER COMMITMENT NOTICE** ([§ 4.1](#41-the-commitment-sweep-and-the-loud-notification)), when the sweep found anything: restated in full as the last block before the verdict, in the terminal, so it is the freshest thing on screen at the merge decision. In the posted review body the same list appears in normal case.
 
 Findings are about artifacts. "This table disagrees with the shipped data" is a finding; "you were careless" is not. Where a finding could read as a challenge to the author's model rather than to the artifact, say which one you mean.
 
@@ -425,6 +463,7 @@ One row per PR that taught us something. Newest at the bottom.
 | [#350](https://github.com/openwave-labs/openwave/pull/350) | Also the good case worth naming: the contributor raised a cross-model question as a platform issue *before* the work depended on the answer, and took the two family questions to the column authors directly. That is what made the author-gated findings empty and the review light. Sequencing, not effort, is what keeps [Gate F](#8-gate-f-other-authors-work) cheap | Gate F § 8.1, as the worked example |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | The mirror image of the row above, on the same PR: this time the state was submitted correctly and then outlived the verdict. The findings were resolved as maintainer edits and the PR was merged, but no later review superseded the standing `CHANGES_REQUESTED`, so a first-time contributor's merged work carried a rejection badge. Nothing about making the changes, commenting, or merging retires a review state; only another review does | § 13 "Reconcile the state at merge" |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | A claim we had written ourselves, in a maintainer commit, was the thing that blocked the merge. The docstring asserted only K=10 sat at the lock-in wells; measuring all 45 pair separations showed the opposite (K=2..4 entirely on the well, K=10 at none of 45) and that the band we attributed to K=2..9 was really K=11's. `git blame` on the contradiction before routing it saved a review round, because the answer was that the wrong half was ours | Gate C, [§ 10](#10-maintainer-edits) |
+| [#380](https://github.com/openwave-labs/openwave/pull/380) | The reproduction obligation an earlier author-written lock placed on a later task landed as maintainer labor, and the ownership split (author writes the protocol, maintainers implement) crystallized only in a close-out exchange, after the freeze. It worked because that exchange was good, not because any rule required it: at freeze time nothing had asked who pays. Obligations are now priced at review, with a named discharger, accepted workload, and the reproduce-vs-derive ceiling | Gate B, the obligations row |
 
 ---
 
