@@ -23,7 +23,7 @@ A documented negative is a merge-worthy contribution. An overstated positive is 
 | --- | --- |
 | [1. Intake](#1-intake) | the five things to establish before reading a line of code |
 | [2. Blast-radius map](#2-blast-radius-map) | which paths get which level of scrutiny |
-| [3. Gate A: safety and hygiene](#3-gate-a-safety-and-hygiene) | large files, encoding, copyright, secrets, dangling references |
+| [3. Gate A: safety and hygiene](#3-gate-a-safety-and-hygiene) | large files, encoding, copyright, secrets, dangling references, code intent |
 | [4. Gate B: scope containment](#4-gate-b-scope-containment) | model-folder discipline, shared files, root documents, the commitment sweep and its loud notification (§ 4.1) |
 | [5. Gate C: claim to artifact](#5-gate-c-claim-to-artifact) | recompute the headline number from the shipped data yourself |
 | [6. Gate D: the adversarial pass](#6-gate-d-the-adversarial-pass) | is the mechanism wired, is the signal above the noise, do the knobs manufacture the result |
@@ -76,6 +76,7 @@ Mechanical checks. Run them all; they take under a minute and they catch the thi
 | A6 | **Deleted files leave no dangling references, and no capability** | Every deletion is either unreferenced or every referencing import and link is repointed in the same PR. Then ask the second question: what did the deletion *remove*? A reference check is clean by construction when a file is self-contained, which is exactly the case for an xperiment configuration, a validation script, or a research note. Deleting one takes an entry off the menu and nothing complains | grep the deleted basenames across the PR branch, `.py` and `.md` both, then open each deleted file and ask what it did |
 | A7 | **New files follow the folder convention** | A new subfolder inside a model folder must match what the other columns use (`research/`, `theory/`, `data/`, `plots/`, `xparameters/`, `utils/`). A novel folder name is a convention fork. **The `utils/` rule holds at two levels.** At the model root: the launcher, the medium and the engines stay at the top, and supporting scripts (instrumentation, plotting, sampling, monitoring) go in `<model>/utils/`. Inside `xparameters/`: only launchable xperiment parameter modules, each defining `XPARAMETERS`, sit at the top level, and supporting scripts go in `xparameters/utils/`, because the launcher offers every top-level `.py` there as a selectable xperiment | `ls -d openwave/xperiments/*/*/` and compare, then `git check-ignore -v <new-folder>/<file>` on any folder name introduced by the PR |
 | A8 | **Repository language is English** | Code comments, docstrings, and documentation in English, so every author and cold reader can read every column | scan added comment lines for non-English text |
+| A9 | **Code intent review, BEFORE anything is executed** | Every added or modified executable line is read for what it does beyond the stated purpose. Red flags, each a stop-and-ask: network calls in research code (`requests`, `urllib`, `socket`, `curl` via `subprocess`) where the science needs none; file writes outside the model's own tree; `eval`/`exec`/`pickle.load` on data the PR also ships; encoded or compressed blobs decoded at runtime; environment or credential reads (`os.environ` beyond documented configuration); edits to `.github/` workflows, `pyproject.toml` hooks, or anything that runs at install or CI time with tokens (already T4 surfaces, named here because they execute). Obfuscation is itself a finding: research code has no reason to hide what it does | grep the diff for the tokens above, then read every hit in context. This check precedes Gate C by construction, see the execution rule there |
 
 ## 4. Gate B: scope containment
 
@@ -132,6 +133,8 @@ RENEGOTIATED NOW, BEFORE THE FREEZE, NOT AFTER.
 This is the gate [`REPRODUCE.md`](../REPRODUCE.md) and [`AI_HYGIENE.md`](../AI_HYGIENE.md) exist to enforce, and it is where most real problems surface.
 
 **The rule: do not read the numbers, recompute them.** If the PR ships the data, write your own short script, from the raw artifact, using your own definition of the metric, and compare. This is the [adversarial audit](../AI_HYGIENE.md#1-the-stance) applied to review.
+
+**The execution rule: running a contributed script is executing the PR, on your machine, before any merge.** This gate's recomputations and reruns therefore happen only after [A9](#3-gate-a-safety-and-hygiene) has read the code for intent. A payload in a plausible-looking research script fires at review time, not at merge time, and "it had not merged yet" protects nothing. Where A9 flagged something unresolved, recompute from the raw data with your own script and do not run the contributed one.
 
 | # | Check | Bar |
 | --- | --- | --- |

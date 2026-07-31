@@ -55,6 +55,7 @@ uses; the machinery does not make a run blind.
 | Setting | Decision |
 | --- | --- |
 | Location | any directory with no `CLAUDE.md` anywhere on its ancestor path, and outside every repository working tree. The concrete path is a local choice and stays out of the repository |
+| Python environment | must not have the platform installed or importable: an editable install makes the quarantined tree reachable through a bare `import` regardless of the room's location, and an environment named after the repository puts that name in the shell prompt. Verify from the room's shell before launch: the `import` fails, `pip show` returns nothing (DEVIATIONS LOG, block B) |
 | Launch | `claude --disallowedTools "WebSearch,WebFetch"`, in DEFAULT permission mode. Not a bypass mode: the approval prompt is what makes a tool call reaching outside the room visible to the operator, and it is the one containment guard that does not rely on the implementer's cooperation |
 | Write scope | the implementer writes only inside the room and never reaches the repository; a maintainer copies artifacts out and performs every commit |
 | Teardown | the room is deleted at the end of the run, block G below. Not before: a rerun under § 3 needs it, it is the only copy until block C has copied the artifacts out, and block F may need to check a detail against it |
@@ -134,6 +135,30 @@ Anything beyond this belongs in `TASK.md`, where it enters the audited packet an
 record. An instruction delivered as chat text is invisible to the packet hash, absent from the
 manifest, and composed by a context holding the targets, which is the one information channel
 § 4 forbids. The near-empty prompt is a firewall property, not a style preference.
+
+### The operator during the run
+
+The human at the room's keyboard is a firewall component, and the standard owes them a
+runbook, not just a launch flag. The permission rules (decided at block B, applied live):
+
+| Prompt or event | Operator action |
+| --- | --- |
+| at launch, before the opening prompt | verify the room's four file hashes against the sealed record; verify the session banner's working directory is the room; record the banner's model for the environment record |
+| permission prompt for a path inside the room, or for running the implementation there | approve |
+| permission prompt for any path outside the room, or any network call | decline, and log the prompt text in the deviations log |
+| no blanket grant | never pre-approve tool classes, never "don't ask again" on file access, never a bypass mode. Each prompt is read before it is answered; the reading is the guard |
+| the implementer asks a question | not answered from the operator's knowledge, however innocuous. Relayed to the maintainer session, answered from the protocol text or not at all, logged as a deviation |
+| the implementer finishes | its final message is relayed verbatim; nothing in the room is touched until block C copies it out |
+
+The declined prompt is evidence, not just prevention: a room session that ever asked for an
+outside path has stated something about its behavior under isolation, and the standard wants
+that recorded even when the answer was no.
+
+Remote approval (the operator answering prompts from a phone) is permitted: it relocates the
+operator's channel and grants the session nothing. The rules above apply unchanged on any
+device, and the two that erode on a small screen are the ones to hold consciously: every
+prompt is read in full before it is answered, and a question from the implementer is never
+answered from the phone, it is relayed and answered from the protocol text or not at all.
 
 ### Running it beside a live maintainer session
 
@@ -250,6 +275,26 @@ The leakage check ran last and was skipped whenever an earlier format check abor
 sequence, so a stray key carrying a target reddened the audit for the wrong reason. Fixed by
 computing the leakage scan first and appending it unconditionally. Worth carrying into the
 standard: the mutation suite earned its place by failing something.
+
+**2026-07-31, block B. The Python environment is part of the room, and the plan never said
+so.** Caught live at launch: the shell arrived in the room with a conda environment active
+whose site-packages carry this platform as an installed package, making the quarantined tree
+importable from inside the room through a bare `import`, its path discoverable through
+`pip show`, and the repository named in the shell prompt itself. The ancestor-path rule
+covers what loads by instruction; the interpreter is a second, independent route into the
+quarantined tree, and checking one says nothing about the other. Requirement for the
+standard: before launch, the active environment must not have the platform installed or
+importable, verified mechanically from the room's shell (`import` fails, `pip show` returns
+nothing), and the interpreter, versions, and available numerics libraries are recorded for
+the environment record. This run switched to the conda base environment, verified clean:
+the platform not importable, numerics and exact-arithmetic libraries present.
+
+**2026-07-31, block A/B, adjacent catch. A notification is not a record, and an edit is not
+a notification.** The block A audit reply was landed by editing a merged PR's body, which
+notifies nobody, and a mention added by edit does not notify either. The question that needed
+an answer was then re-sent as a new comment on the delivery thread, which does notify. For
+the standard's communications note: the PR body is the durable record, a new comment is the
+notification, and anything requiring a human's answer goes in a new comment.
 
 ## FINDINGS
 
