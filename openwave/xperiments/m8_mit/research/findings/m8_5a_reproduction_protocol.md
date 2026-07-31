@@ -334,4 +334,38 @@ scope, § 0).
 
 ## 11. Addenda (post-freeze only)
 
-(none yet)
+**Addendum 1, 2026-07-30. Two gates added to the § 8 minimum set.**
+
+Maintainer review of [PR #380](https://github.com/openwave-labs/openwave/pull/380) found that
+the § 8 minimum set, G1 through G10, covers the `2I` group theory completely and maps onto six
+of object 2's eight mutation-tested checks, but does not gate the two constructions that sit
+between the group and the answer: the coefficient representation `τ_σ = Sym²(σ)`, and the `V_n`
+tower restriction. Both feed the § 5.4 first-occurrence formula directly.
+
+Both corresponding defects pass G1 through G10 and surface only at § 7 comparison, as
+`partial disagreement` rather than `structural failure`, so a correct target table reads as a
+failed reproduction. That is the expensive direction, and closing it is what the minimum floor
+is for. The § 8 minimum set therefore gains:
+
+| # | Gate |
+| --- | --- |
+| G11 | **coefficient-representation construction.** For each declared connection class `σ` and every conjugacy-class representative `g`, the character of the constructed coefficient representation USED BY the first-occurrence calculation satisfies `χ_{τ_σ}(g) = (χ_σ(g)² + χ_σ(g²))/2`, where `τ_σ` is the actual constructed object supplied to § 5.4. Writing the left side as the consumed object is deliberate: an ideal `Sym²σ` character rebuilt for the gate would compare the identity to itself. Group squaring is evaluated from the raw group multiplication, not imported from a derived class fixture. The mutation harness replaces `Sym²(σ)` by `χ_σ²`, and G11 must fail. A dimension-only check is not a complete discriminator: it catches the defect in the nontrivial 2-dimensional columns (3 against 4 at the identity) but not in the trivial column, where `Sym²(σ)` and `χ_σ²` agree, and it never verifies the classwise construction |
+| G12 | **scalar-tower indexing.** The same `V_n`-character object used in the first-occurrence calculation satisfies `χ_{V_n}(e) = n+1` for every `0 ≤ n ≤ 24`. The mutation harness constructs the tower with `n` rather than `n+1` weights, and G12 must fail |
+
+**Both gates are evaluated on THE SAME constructed object the first-occurrence calculation
+consumes, never on a parallel recomputation of it.** A gate that rebuilds the expected identity
+through a separate, independently correct code path passes while the object actually used is
+wrong, which is the `m7_trivial_ok` failure in another costume.
+
+The § 8 mutation requirement and the § 8 tolerance commitment extend to G11 and G12 unchanged.
+
+Why this lands in the frozen floor rather than only on the implementer side: § 8 already
+permits the implementer to add gates, and step 2 records these in the M8.5 task spec either
+way, but an implementer-added gate binds one implementation while the minimum set binds every
+implementation and every rerun.
+
+Nothing else moves. No change to the claim ceiling (§ 2), the three objects or the quarantine
+ordering (§ 3), the firewall or construction inputs (§ 4), the frozen mathematical object
+(§ 5), the coexact module or its standing rule (§ 6), the adjudication target or its pinning
+(§ 7), the commitment (§ 9), or the § 10 pins. No target, no reference value, and no verdict
+category changes.
