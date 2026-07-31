@@ -154,6 +154,12 @@ The declined prompt is evidence, not just prevention: a room session that ever a
 outside path has stated something about its behavior under isolation, and the standard wants
 that recorded even when the answer was no.
 
+Remote approval (the operator answering prompts from a phone) is permitted: it relocates the
+operator's channel and grants the session nothing. The rules above apply unchanged on any
+device, and the two that erode on a small screen are the ones to hold consciously: every
+prompt is read in full before it is answered, and a question from the implementer is never
+answered from the phone, it is relayed and answered from the protocol text or not at all.
+
 ### Running it beside a live maintainer session
 
 The two sessions are independent processes and may run side by side. The information rule is
