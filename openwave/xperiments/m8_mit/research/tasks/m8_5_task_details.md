@@ -114,9 +114,11 @@ land as a systematically shifted table, so they report as **partial disagreement
 structural failure. That is a false negative on reproduction, the expensive direction, since the
 fresh implementation reads as having failed to reproduce a correct table.
 
-Raised in the [PR #380](https://github.com/openwave-labs/openwave/pull/380) review. Whether they
-also enter the frozen floor as a § 11 dated addendum is the author's call; step 2 runs them
-either way.
+Raised in the [PR #380](https://github.com/openwave-labs/openwave/pull/380) review; the author
+accepted them into the frozen floor as a narrow dated addendum (2026-07-30). The reason given
+is the one that matters and was not the reason they were proposed: an implementer-added gate
+binds one implementation, while the floor binds every implementation and every rerun, and these
+two catch defects that make a CORRECT target table appear not to reproduce.
 
 #### Operational items, settled (2026-07-30)
 
@@ -133,13 +135,15 @@ identifies `Q` from the elements themselves through `χ_Q(g) = 2cos θ(g)` rathe
 declaration, so the element set fixes the `standard` and `galois` column assignment with no
 free parameter left to whoever hands it over. The standard 120 icosians (8 units, 16 Hurwitz,
 96 golden-set even permutations) are what object 2 built, and its C4 and C8 confirm that set
-agrees with § 6.1 on all 9 rows. What remains is provenance rather than correctness: the
-protocol reads as the author supplying the packet and the maintainer auditing it, which keeps
-the audit a cross-check instead of a self-audit. Asked in
-[PR #382](https://github.com/openwave-labs/openwave/pull/382); if it goes unanswered, the
-maintainer assembles the packet from the public icosian construction and records the
-self-audit as a stated limitation, following this column's standing rule that author silence
-is a valid terminal state ([roadmap § CONVENTIONS](../m8_roadmap.md#conventions)).
+agrees with § 6.1 on all 9 rows. What remained was provenance rather than correctness, and the
+author settled it in [PR #382](https://github.com/openwave-labs/openwave/pull/382)
+(2026-07-30): **the author supplies the raw embedded generators; the maintainer audits,
+canonicalizes, and hashes the packet.** The audit stays a cross-check rather than a self-audit,
+and the packet hash is an addition beyond § 4, which requires only the consulted-files
+manifest. Canonicalization is what makes the hash meaningful, since the components are
+irrational in `φ` and an uncanonicalized decimal rendering hashes differently for the same
+group. The maintainer's own pre-verified pair is retained as a cross-check on the supplied
+generators, never as the packet.
 
 **Planned § 9 declaration: the § 6 coexact module RUNS.** Fixed at the commitment, before
 anything is unsealed, and unavailable afterwards. The cost is the implementer deriving the

@@ -26,6 +26,14 @@ point at.
 | Not in scope | the mass comparison itself (M8.3 verified its arithmetic), and the dead-zone entries' physical status (open on the source page) |
 | Precedent to follow | the M8.5-A shape: gates that can go red, a coverage-enforced mutation harness, an explicit list of what is not verified |
 
+**The implementer must be a fresh context** (author direction, 2026-07-30). Whoever runs this
+may not be the context that produced the M8.3 computation, on the same reasoning that shaped
+M8.5-A: a context holding the closed forms and their derived fixtures cannot serve as its own
+reproducer however separately the second implementation is written. The owner therefore stays
+deliberately unassigned rather than defaulting to the nearest available context. Protocol
+authorship can be assigned later without compromising the reproduction, and nothing on the
+dynamics path waits on either.
+
 **Gated by**: M8.3 ✅ (2026-07-28) and an owner. The sign convention is fixed once on the `R7`
 closed form and declared, so the remaining forms are genuine checks rather than circular
 ([`m8_3_method_note.md § 4`](../findings/m8_3_method_note.md)).

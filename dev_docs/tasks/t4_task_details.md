@@ -56,13 +56,20 @@ containment is that no part of the packet is capable of carrying a target:
 | Part | Audit |
 | --- | --- |
 | `PROTOCOL.md` | a verbatim copy of the frozen protocol, so `diff` against the repository file is the whole audit and no authorship enters |
-| `GROUP_INPUT.md` | two generators as unit quaternions. The audit is mechanical: closure gives exactly 120 elements, and the file carries no labels, dimensions, distances, or character values |
+| `GROUP_INPUT.md` | two generators as unit quaternions, supplied by the model author. The audit is mechanical: closure gives exactly the expected order, and the file carries no labels, dimensions, distances, or character values |
 | `TASK.md` | operational instructions only: the added gates, the § 6 declaration, output paths. Its mathematical content is generic identities, not values |
 
-**Generators, not the full element set.** G1 gates group order and closure. Handing over all
-120 icosians makes G1 true by construction, which is precisely the class of check the column
-banned after `m7_trivial_ok`. Handing two generators makes the agent build the closure and G1
-becomes a check that can fail.
+**Generators, not the full element set.** G1 gates group order and closure. Handing over the
+complete element set makes G1 true by construction, which is precisely the class of check the
+column banned after `m7_trivial_ok`. Handing two generators makes the agent build the closure
+and G1 becomes a check that can fail.
+
+**Canonicalize before hashing.** The packet hash is what preserves provenance across the run,
+and it is only meaningful if the same group always produces the same bytes. Generator
+components are generally irrational, so a supplied decimal rendering fixes a hash to a
+transcription rather than to a group. Canonicalization (a declared exact form, or a declared
+precision and ordering) happens in block A before the hash is taken, and the canonical form
+is what enters the room.
 
 **Implementer eligibility.** Any context that has read the M8.2 generator, the maintainer
 reconstruction, or the pre-registration § 6.1 is permanently disqualified, whatever it later
@@ -86,7 +93,7 @@ holding the targets defeats the firewall no matter how innocuous the sentence lo
 
 | Block | Work | Commit boundary |
 | --- | --- | --- |
-| A | assemble the packet, audit it (closure to exactly 120, no derived annotations, `diff` on the protocol copy) | the packet, committed first so its timestamp predates the run |
+| A | receive the author's generators; audit the packet (closure to the expected order, no derived annotations, `diff` on the protocol copy), canonicalize it, record its SHA-256 | the packet and its hash, committed first so the timestamp predates the run |
 | B | the clean-room session: implementation, gates, runnable mutation harness, the § 6 module, raw output and JSON | none; the agent writes only inside the room |
 | C | copy artifacts out, generate SHA-256, write the environment record and method-note draft | **the § 9 commitment.** Nothing is unsealed before it lands |
 | D | unseal; build the § 7 comparison harness with its transcription mutation; adjudicate | second, separately dated commit |
