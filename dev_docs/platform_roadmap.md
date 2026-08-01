@@ -20,6 +20,7 @@
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
 | [T2](tasks/t2_task_details.md) | MODELS.md normalized score: a fair single number per column | 🔶 DEFERRED 2026-07-28, same day as the proposal (was M5.30): the score-board already separates covered from not-covered and orders the columns, so a scalar score waits for a critical mass of tested rows. The proposed formula scores silence as average and ranks ❌ below 🚧; the coverage-plus-score-on-attempted repair is unstable at small samples. Analysis and candidate cures in the task doc. | critical mass of tested rows (user call) + [T1](tasks/t1_task_details.md) final criteria set + user "go" |
+| [T6](tasks/t6_task_details.md) | SMT-certified discrete topological invariants (contributor offer) | 🔶 DEFERRED 2026-08-01, on arrival (was issue #298): a contributor's z3 encodings prove per-plaquette winding bounds, torus charge-sum theorems and constructibility in milliseconds when the encoding mirrors the boundary operator. Credible for certified discrete initial conditions and impossibility checks on small lattices, not for the PDE solvers. No consumer in the current program. | a task whose verdict turns on a machine-checked discrete invariant, or wants a certified seed + the contributor's availability |
 
 ## CONVENTIONS
 
