@@ -226,7 +226,7 @@ questions and offers of contribution belong in Discussions, and become rows if t
 ### Close-out: every open issue got a roadmap home
 
 The condition on closing the issues was that no open one is the only record of its work. Audited
-2026-08-01 across all twelve open issues; three needed a new row, and two are not tasks at all.
+2026-08-01 across all twelve open issues; four needed a new row, and one is not a task.
 
 | Issue | Roadmap home | Kind |
 | --- | --- | --- |
@@ -240,11 +240,12 @@ The condition on closing the issues was that no open one is the only record of i
 | [#247](https://github.com/openwave-labs/openwave/issues/247) particle field configurations | not a task: adopted as a standing requirement, the per-particle field-config section every briefing carries ([`ONBOARDING_MODELS.md`](../../ONBOARDING_MODELS.md) § 3.3), and the prescription recorded in the M7 roadmap | standard, not a row |
 | [#248](https://github.com/openwave-labs/openwave/issues/248) collect the M6 author's papers | satisfied by the 2026-07-20 M6 refresh harvest: 29 latest-version records in [`_CITATIONS.md`](../../openwave/xperiments/m6_ouroboros/theory/_CITATIONS.md), including the primary dynamics paper | done |
 | [#290](https://github.com/openwave-labs/openwave/issues/290) regularized vortex-loop | M5.19, closed COMPLETE 2026-07-10 with three adversarial audits | done |
-| [#298](https://github.com/openwave-labs/openwave/issues/298) SMT solvers for combinatorial species | not a task: an outside offer of a contribution, which is Discussions material until someone scopes it | offer, not a row |
+| [#298](https://github.com/openwave-labs/openwave/issues/298) SMT solvers for combinatorial species | **new**: [T6](t6_task_details.md), deferred on arrival. The thread was already answered and acknowledged; the row exists because that answer promised a follow-up if a consumer appeared, and a closed issue is not where a promise survives | new row, deferred |
 | [#324](https://github.com/openwave-labs/openwave/issues/324) stiffness ladder | **new**: [M5.21.13](../../openwave/xperiments/m5_liquid_crystal/research/tasks/m5_21_13_task_details.md), with a premise check on the δ direction | new row + archive |
 
 Each new row's task document carries the issue body verbatim, so closing the issue destroys no
-record. The two non-tasks are not closed by this task; what happens to them is the user's call.
+record. The one non-task ([#247](https://github.com/openwave-labs/openwave/issues/247)) closes on
+the standard it became.
 
 ### One thing the exercise proved on its own
 
