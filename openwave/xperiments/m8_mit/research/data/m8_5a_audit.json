@@ -1,0 +1,135 @@
+{
+  "details": {
+    "C1_lemma1": {
+      "reason": "Support bound is airtight (subtraction cannot extend support; nonnegativity of v_n holds because each v_n is a genuine restriction multiplicity vector, independent of the recursion); at n = d the subtracted term v_{d-2}(rho) is exactly 0 by the support bound and (A v_{d-1})(rho) has a strictly positive geodesic-predecessor term, so cancellation cannot kill positivity. n_first(rho, trivial) = d(rho) verified for all 9 irreducibles from an independently built character table.",
+      "verdict": "CONFIRMED",
+      "witnesses": {
+        "V1_restricts_to_Q": true,
+        "all_v_nonnegative": true,
+        "geodesic_predecessor_positive_at_d_minus_1": true,
+        "n_first_trivial_equals_distance": true,
+        "no_cancellation_at_n_eq_d": true,
+        "recursion_v_n_eq_Av_prev_minus_v_prevprev": true,
+        "support_bound_d_le_n": true,
+        "v0_is_e_trivial": true,
+        "v1_is_e_Q": true
+      }
+    },
+    "C2_lemma2_parity": {
+      "reason": "Bipartiteness is not merely a computational witness: -1 is in the group, V_n(-1) = (-1)^n, and every irreducible has central sign (-1)^d, so every McKay edge flips the sign (tensoring with Q flips it) and v_n(rho) = 0 whenever n and d(rho) differ mod 2. The recursion route of the note also closes: both base cases v_0, v_1 have matching parity and the BFS 2-coloring propagates.",
+      "verdict": "CONFIRMED",
+      "witnesses": {
+        "central_sign_equals_minus1_pow_distance": true,
+        "every_edge_flips_central_sign": true,
+        "minus_one_in_group": true,
+        "parity_vanishing_all_n_le_24": true,
+        "tower_central_value": true
+      }
+    },
+    "C3_rule_rows": {
+      "reason": "All three rows hold with no silent graph-specific gap: d>=2 by Lemma 1 + support bound (both v_m and v_{m-2} vanish for m < d); d=0 fires at m=2 through the V_{m-2} bracket (v_0 = 1); d=1 (exactly one irreducible, Q): m=2 is excluded because v_0(Q) = 0 by distance AND v_2(Q) = 0 by parity, and m=3 fires via v_1(Q) = 1. The argument covers every irreducible by its distance; the only group-specific inputs (connectivity, bipartiteness) are themselves derived, which meets the protocol section 6 bar.",
+      "verdict": "CONFIRMED",
+      "witnesses": {
+        "d_ge_2_no_earlier_level": true,
+        "exactly_one_d1_irrep_and_it_is_Q": true,
+        "m_first_trivial_equals_rule_all_rows": true,
+        "neighbors_of_trivial_are_exactly_Q": true,
+        "v0_Q_zero": true,
+        "v1_Q_one": true,
+        "v2_Q_zero_by_parity": true
+      }
+    },
+    "C4_coexact_tower": {
+      "reason": "Peter-Weyl bookkeeping verified from exact Clebsch-Gordan polynomial identities: blocks are exactly V_a x V_b with |a-b| in {0,2}, each once, (0,0) absent; the (n,n) blocks have multiplicity exactly one, so d(functions) exhausts them and coexact = sum over m >= 2 of (V_m x V_{m-2}) + (V_{m-2} x V_m) with multiplicity 2(m^2-1) (= 6 at m = 2). The eigenvalue is re-derived by a route the note does not use: Kuga/Casimir on the bi-invariant S^3, normalized by the function sector (cas = n(n+2)/R^2), gives (cas(m) + cas(m-2))/2 = m^2/R^2 on the coexact blocks and reproduces n(n+2)/R^2 on the exact blocks (forced consistency with d commuting with Delta); the level-2 anchor Delta = 4/R^2 follows from [u_i, u_j] = 2 u_k computed here from raw quaternion algebra. The note's own curl-ladder step is thinner than its conclusion, but the conclusion is correct.",
+      "verdict": "CONFIRMED",
+      "witnesses": {
+        "CG_general": true,
+        "CG_p0": true,
+        "CG_p1": true,
+        "bidegree_blocks_each_once_no_00": true,
+        "coexact_multiplicity_2m2m1": true,
+        "commutator_constant_2": true,
+        "dim_conservation_3np1sq": true,
+        "kuga_coexact_eigenvalue_m_squared": true,
+        "kuga_exact_sector_consistency": true,
+        "level2_count_is_6": true,
+        "level2_delta_4_over_R2": true,
+        "nn_block_multiplicity_one": true,
+        "right_factor_multiplicities_positive": true
+      }
+    },
+    "C5_scope_reading": {
+      "reason": "Faithful. At every source (m8_2_first_occurrence.py L177-180, pre-registration section 3 'entry(d)' text, protocol section 6, m8_2_indep_reconstruction_note.md) the rule is stated per CONSTITUENT: an irreducible at McKay distance d enters the coexact tower at level rule(d), and the three columns are min-over-constituents of rho (x) tau_sigma. The per-constituent entry level IS m_first(rho, trivial) because tau_trivial is trivial, so adjudicating the trivial column tests the rule's entire content; verified here that every standard/galois cell equals min over constituents of the entry level (a pure min-exchange, no extra rule content). Neither too narrow nor too generous.",
+      "verdict": "CONFIRMED",
+      "witnesses": {
+        "columns_equal_min_entry_level_over_constituents": true,
+        "columns_equal_min_rule_over_constituents": true,
+        "trivial_column_equals_per_irrep_entry_level": true
+      }
+    },
+    "C6_realness": {
+      "reason": "A theorem for this group, not an accident of the run: the nine conjugacy classes are exactly the fibers of the trace (verified as full conjugation orbits), and inversion preserves the trace of a unit quaternion, so every class is inverse-closed and every character is real. Confirmed by three computational routes: trace-fiber inverse closure; the Burnside class algebra splits completely over the real field Q(phi) (nine 1-dim common eigenspaces, so no character value leaves Q(phi)); and every Frobenius-Schur indicator is +-1 (nonzero iff real character), with -1 exactly on the odd-distance (quaternionic) irreducibles.",
+      "verdict": "CONFIRMED",
+      "witnesses": {
+        "all_character_values_in_Q_phi_real": true,
+        "class_algebra_splits_over_Q_phi": true,
+        "classes_are_trace_fibers": true,
+        "every_class_inverse_closed": true,
+        "fs_indicators_all_pm1_nonzero": true,
+        "fs_pattern_info": "FS by (dim,dist): {'(2, 7)': '-1', '(4, 3)': '-1', '(2, 1)': '-1', '(6, 5)': '-1', '(4, 6)': '1', '(5, 4)': '1', '(3, 2)': '1', '(3, 6)': '1', '(1, 0)': '1'}",
+        "galois_permutes_character_rows": true,
+        "info_gal_G_equals_G": "gal(G) == G is False (not required)",
+        "nine_distinct_traces": true
+      }
+    },
+    "C7_peeling_completion": {
+      "reason": "Both halves hold. Spanning: chi_{V_n}|_G is a monic degree-n polynomial in t = 2cos(theta) and the nine classes have nine DISTINCT t values, so n <= 8 already spans (rank 9 verified); the n <= 24 bound is generous, and the fail-loud disjunction in the note is accurate. Norm-1 inference: a remainder is by construction a nonnegative-integer combination of not-yet-found irreducibles (v_n >= 0, orthonormal subtraction), so norm exactly 1 forces a single coefficient 1; it cannot fail to be a character. Pool: replayed on this audit's own data; norm >= 2 remainders appear (n = 6, 7) and resolve without deadlock; completion well inside the bound. Deadlock is not impossible a priori for a general group, but the algorithm fails loud in that case, and this run did not deadlock.",
+      "verdict": "CONFIRMED",
+      "witnesses": {
+        "degree_triangular_vandermonde_argument": true,
+        "norm1_inference_sound": true,
+        "replay_completes_all_9": true,
+        "replay_completion_n": 9,
+        "replay_no_deadlock": true,
+        "replay_pool_empty_at_end": true,
+        "replay_schedule": {
+          "irrep_(dim,dist)": {
+            "(1, 0)": "direct@n=0",
+            "(2, 1)": "direct@n=1",
+            "(2, 7)": "direct@n=7",
+            "(3, 2)": "direct@n=2",
+            "(3, 6)": "pool@n=8",
+            "(4, 3)": "direct@n=3",
+            "(4, 6)": "direct@n=8",
+            "(5, 4)": "direct@n=4",
+            "(6, 5)": "direct@n=5"
+          }
+        },
+        "span_rank9_at_n_le_8": true
+      }
+    },
+    "C8_run_record": {
+      "reason": "All 27 scalar n_first cells and all 27 coexact m_first cells of data/m8_5a_result.json (trivial, standard AND galois columns) match this audit's independently derived tables, rows matched label-free by (dim, McKay distance); group block matches too.",
+      "verdict": "CONFIRMED",
+      "witnesses": {
+        "coexact_cells_compared": 27,
+        "group_block_matches": true,
+        "mismatches": [],
+        "scalar_cells_compared": 27
+      }
+    }
+  },
+  "independence": "no import/call/copy of m8_5a_reproduction.py; icosian-list group construction + own packet closure; trace-fiber classes with full-orbit verification; Burnside class-algebra character table over exact Q(phi); Sym^2 via character identity + own power map; coexact eigenvalue re-derived via Kuga/Casimir + level-2 commutator anchor",
+  "overall": "PASS (no claim refuted)",
+  "verdicts": {
+    "C1_lemma1": "CONFIRMED",
+    "C2_lemma2_parity": "CONFIRMED",
+    "C3_rule_rows": "CONFIRMED",
+    "C4_coexact_tower": "CONFIRMED",
+    "C5_scope_reading": "CONFIRMED",
+    "C6_realness": "CONFIRMED",
+    "C7_peeling_completion": "CONFIRMED",
+    "C8_run_record": "CONFIRMED"
+  },
+  "what": "independent adversarial audit of the M8.5-A clean-room reproduction (protocol section 9); auditor brief: refute"
+}

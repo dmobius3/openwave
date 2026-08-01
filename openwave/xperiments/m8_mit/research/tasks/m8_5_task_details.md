@@ -304,4 +304,23 @@ against the transcribed distances before use); record:
 | scalar table | REPRODUCED, 27/27 cells, three-way agreement |
 | claim label | context-isolated independent-method reproduction, the § 2 ceiling, nothing stronger |
 | § 6 coexact module | ran as pre-declared; implementer verdict `structurally derived and reproduced`, echoed not adjudicated; the derivation goes to the block E adversarial audit, and per the standing rule the numerical match upgrades nothing on its own |
-| what remains for M8.5-A | block E: method note finalization + the adversarial audit of the § 6 derivation and the run record |
+| what remains for M8.5-A | ✅ none: block E closed 2026-08-01, see below |
+
+**M8.5-A block E, 2026-08-01: the audit refuted nothing, M8.5-A is complete.** The method
+note is finalized ([status block + §§ I-J](../findings/m8_5a_method_note.md): §§ A-H stay
+byte-frozen as committed, § I records the adjudication, § J records the audit). The
+adversarial audit ran as an independent second agent briefed to refute, with its own group
+construction (explicit icosian list checked equal to the packet closure), its own character
+table (Burnside class-algebra splitting, the route the implementation deliberately avoids),
+and its own tables ([`m8_5a_audit.py`](../scripts/m8_5a_audit.py),
+[`m8_5a_audit.json`](../data/m8_5a_audit.json), exit 0, re-run green by the maintainer).
+
+| Audit outcome | Detail |
+| --- | --- |
+| eight claims attacked, none refuted | both lemmas, the rule table including the `d = 1` case, the coexact tower and its `m²/R²` normalization by an independent Casimir route, the trivial-column scope reading verified faithful against every source statement, realness, peeling completion, and a full 54-cell run-record cross-check |
+| two claims strengthened | bipartiteness and realness are theorems here (central `−1`; inverse-closed classes), not merely computed witnesses |
+| six unflagged weaknesses recorded | § J table: one informational (the Galois map sends the group to its twin icosian copy, set-stability unneeded but unstated), four minor exposition gaps, one cosmetic; none affects a result |
+| standing consequence | `structurally derived and reproduced` stands on the derivation, per the § 6 rule; the numerical match contributed nothing |
+
+M8.5-B (the quotient backend) is the live remainder of M8.5; its certification gate (A
+before any claim that B is certified) is discharged.
