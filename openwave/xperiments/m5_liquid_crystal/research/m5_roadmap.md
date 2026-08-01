@@ -149,8 +149,7 @@
 
 **A CONTRIBUTOR PROPOSAL BECAME A ROW (2026-08-01).**
 [T5](../../../../dev_docs/tasks/t5_task_details.md) settled that tasks live in roadmaps and that
-GitHub issues are reserved for platform defects, so the stiffness-ladder proposal opened as issue
-#324 moved here as [M5.21.13](tasks/m5_21_13_task_details.md), protocol archived verbatim. It
+GitHub issues are reserved for platform defects, so the stiffness-ladder proposal opened as issue #324 moved here as [M5.21.13](tasks/m5_21_13_task_details.md), protocol archived verbatim. It
 carries a premise check ahead of its first rung: the proposal reads the physical corner as
 δ ~ 1e10, while this column works at `0 < δ ≪ 1 ≪ g`, so its δ = 1, 3, 10 rungs walk away from
 that corner and toward axis degeneracy, where the biaxial hierarchy that produces three lepton
