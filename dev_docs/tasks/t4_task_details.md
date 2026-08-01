@@ -1,7 +1,10 @@
 # T4: The context-isolated clean room
 
-> Roadmap row: [`../platform_roadmap.md`](../platform_roadmap.md). Status: 🚧 PLANNED
-> (filed 2026-07-30). Owner: maintainers.
+> Roadmap row: [`../platform_roadmap.md`](../platform_roadmap.md). Status: ✅ CLOSED
+> (filed 2026-07-30, closed 2026-08-01). Owner: maintainers. **Deliverable:**
+> [`CLEAN_ROOM_STANDARDS.md`](../CLEAN_ROOM_STANDARDS.md), written at block F from the M8.5-A run. This document
+> is the PLANNING record; where it and the standard disagree, the standard is what the run
+> validated and wins.
 
 ## PLANNING
 
@@ -20,7 +23,7 @@ physics and files on the [M8 roadmap](../../openwave/xperiments/m8_mit/research/
 under M8.5-A, where its planning already sits in
 [`m8_5_task_details.md`](../../openwave/xperiments/m8_mit/research/tasks/m8_5_task_details.md).
 
-**Deliverable**: `dev_docs/CLEAN_ROOM.md` (written at block F; linked from here when it
+**Deliverable**: `dev_docs/CLEAN_ROOM_STANDARDS.md` (written at block F; linked from here when it
 exists), a standard written from an exercise rather than in the abstract, in the shape of [`METHOD_NOTE.md`](../METHOD_NOTE.md)
 and [`CROSS_MODEL_TESTING.md`](../CROSS_MODEL_TESTING.md). It is written after the first run,
 not before, so it records what actually held; if the M8.5-A run refutes the procedure, the
@@ -183,7 +186,7 @@ holding the targets defeats the firewall no matter how innocuous the sentence lo
 | C | copy artifacts out, generate SHA-256, write the environment record and method-note draft | **the § 9 commitment.** Nothing is unsealed before it lands |
 | D | unseal; build the § 7 comparison harness with its transcription mutation; adjudicate | second, separately dated commit |
 | E | method note per [`METHOD_NOTE.md`](../METHOD_NOTE.md), then the adversarial audit by a second agent | M8.5-A close-out, in the M8 column |
-| F | **write the standard**: `dev_docs/CLEAN_ROOM.md` from the deviations log, the failure modes actually hit, and the manifest-against-transcript comparison. Amend or retract whatever this planning doc got wrong | T4 close-out, in `dev_docs/` |
+| F | **write the standard**: `dev_docs/CLEAN_ROOM_STANDARDS.md` from the deviations log, the failure modes actually hit, and the manifest-against-transcript comparison. Amend or retract whatever this planning doc got wrong | T4 close-out, in `dev_docs/` |
 | G | **delete the room.** Keep its session transcript | none |
 
 Blocks A through D are one sitting. Block E is not promised in the same sitting: an adversarial
@@ -212,7 +215,7 @@ check it is an attestation, and this column already ruled against those.
 
 | # | Item |
 | --- | --- |
-| 1 | `dev_docs/CLEAN_ROOM.md` exists and is written from the run, not from the plan |
+| 1 | `dev_docs/CLEAN_ROOM_STANDARDS.md` exists and is written from the run, not from the plan |
 | 2 | It names the failure modes the exercise actually hit, including any this doc did not predict |
 | 3 | The ancestor-path check is stated as a procedure a reader can execute, not as advice |
 | 4 | It states which parts are protocol-specific to M8.5-A and which any column inherits |
@@ -298,4 +301,21 @@ notification, and anything requiring a human's answer goes in a new comment.
 
 ## FINDINGS
 
-(pending)
+**T4 closed 2026-08-01: the standard exists and the run validated the procedure.**
+[`CLEAN_ROOM_STANDARDS.md`](../CLEAN_ROOM_STANDARDS.md) was written at block F, after the M8.5-A arc completed
+end to end (blocks A-E, PRs #389/#391/#392/#394, verdict REPRODUCED with the recorded
+adversarial audit refuting nothing), so it records what held. No refutation of the
+procedure emerged; what the exercise added instead was nine concrete failure modes
+(standard § 13), five caught by machinery and four by a person reading carefully, and the
+definition-of-done items all landed:
+
+| DoD item | Where |
+| --- | --- |
+| written from the run, not the plan | the standard's § 13 is the deviations log distilled; the sitting order (E then F) was preserved so the audit preceded the standard |
+| failure modes actually hit, including unpredicted ones | § 13, nine entries; four were not in this planning doc (the interpreter route, the stalled prompt, the absolute-path print, the notification-vs-record trap) |
+| ancestor-path check as an executable procedure | § 3.1, a runnable loop plus the read-the-content rule |
+| protocol-specific vs inherited | § 11 |
+| the reproduce-vs-derive ceiling with the § 6 worked instance | § 12 |
+
+Blocks F and G ran back to back on the user's call; the room was deleted at G after the
+standard landed, its transcript kept.
