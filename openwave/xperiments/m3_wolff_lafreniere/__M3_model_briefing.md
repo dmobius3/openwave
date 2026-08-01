@@ -88,7 +88,7 @@ Honest conclusion (`0_STATUS.md`): the scalar monochromatic model shows the *mec
 | An independent reproduction | re-run the lock-in / annihilation configs and confirm pass / fail |
 | A documented negative | a runnable "this does not work, here is why" is as valuable as a positive |
 
-Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
+Flow: open a discussion → fork → branch → PR with a DCO sign-off
 (`git commit -s`), under Apache 2.0. See [`../../../MODELS.md`](../../../MODELS.md)
 § Contributing, [`../../../ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md),
 [`../../../CONTRIBUTING.md`](../../../CONTRIBUTING.md). Model discussion runs in the

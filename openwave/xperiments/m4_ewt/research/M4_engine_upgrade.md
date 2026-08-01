@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Tracking issue | [#203](https://github.com/openwave-labs/openwave/issues/203) (M4 substrate: vector-field, non-linear PDE solver) |
-| Unblocks | [#201](https://github.com/openwave-labs/openwave/issues/201) (K-selectivity, needs the non-linearity) |
+| Unblocks | [M4.1](tasks/m4_1_task_details.md) (K-selectivity, needs the non-linearity; was issue #201) |
 | Scope of this cut | Vector + non-linear single-file PDE engine. NO vector calculus, NO director field, NO glyphs. |
 
 ## 1. Goal
@@ -198,7 +198,7 @@ Model-level specs to review (a PDE has requirements the analytical engine did no
 | ✅ P3 WC interaction modes | `interact_wc_dirichlet` / `_neumann` (bounded radiating pin) / `_soft` + free mode; launcher `WC_INTERACT_MODE`/`WC_BOOST`/`WC_RADIUS`/`WC_SIGMA` | headless (zero base field, 1 off-center WC): free=quiet, all 3 drives sustain the WC and stay bounded; dirichlet reflective (peak 3.1) vs neumann radiating (more E_tot, peak 1.8) vs soft back-reacting. Strict velocity-Neumann blew up → replaced by the bounded radiating pin |
 | ✅ P4 Launcher + viz + specs + cleanup | single psi, seed calls, no energy dashboard, no glyphs, scalar mesh + granule kept; removed dead `selected_voxels`; `TIMESTEP`→`SIM_SPEED`; dashboard shows dt/CFL². `SEED_`/`V_`/`WC_` configs promoted to a per-xperiment `engine` xparameter section (2026-06-18) | end-to-end ✅ (headless: seed→propagate→WC drive→force→motion; WC moved 2.9 vox, field bounded) |
 
-The M4 substrate upgrade is P0-P4 (done). The downstream physics (single-oscillon search → golden-angle K-selectivity) is **research, tracked in OpenWave issue [#201](https://github.com/openwave-labs/openwave/issues/201)** (see the [scoping comment](https://github.com/openwave-labs/openwave/issues/201#issuecomment-4746612842)), not a phase of this engineering plan.
+The M4 substrate upgrade is P0-P4 (done). The downstream physics (single-oscillon search → golden-angle K-selectivity) is **research, tracked as [M4.1](tasks/m4_1_task_details.md) on the [roadmap](m4_roadmap.md)** (see the [scoping comment](https://github.com/openwave-labs/openwave/issues/201#issuecomment-4746612842)), not a phase of this engineering plan.
 
 ### Post-P4 cleanup backlog
 
@@ -236,7 +236,7 @@ All items are done. The xparameters migration (deferred at P4) was completed 202
 | Source | Anchor |
 | --- | --- |
 | Upgrade proposal | issue [#203](https://github.com/openwave-labs/openwave/issues/203) |
-| Open problems | [#201](https://github.com/openwave-labs/openwave/issues/201) K-selectivity, [#202](https://github.com/openwave-labs/openwave/issues/202) Coulomb |
+| Open problems | [M4.1](tasks/m4_1_task_details.md) K-selectivity, [M4.2](tasks/m4_2_task_details.md) Coulomb |
 | M4 current core | `m4_ewt/wave_engine.py:31-102` (`select_voxels`), `:104-293` (`compute_voxel_wave`) |
 | M4 field | `m4_ewt/medium.py:115` (`displacement_am`), trackers `:450-460` |
 | M2 PDE template | `m2_free_wave/wave_engine.py:527` (laplacian), `:602` (`propagate_wave`), `:743-748` (swap), `:30/93` (`charge_full`/`charge_gaussian`) |

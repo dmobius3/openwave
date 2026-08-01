@@ -122,7 +122,7 @@ M5 is an open column in an open arena. Anyone can extend it, and a documented *n
 | A rival field configuration | propose an alternative ansatz for a particle, test it head-to-head |
 | A whole new model | a new `openwave/xperiments/<model>/` column, same shared criteria |
 
-Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
+Flow: open a discussion → fork → branch → PR with a DCO sign-off
 (`git commit -s`), under Apache 2.0. Light review checks only reproducibility + honest
 documentation, not orthodoxy. Start here: [`../../../MODELS.md`](../../../MODELS.md)
 § Contributing, [`../../../ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md),

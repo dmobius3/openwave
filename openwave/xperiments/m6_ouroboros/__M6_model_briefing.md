@@ -134,7 +134,7 @@ roadmap's re-derivations. A documented *negative* counts as much as a positive.
 | The solar-wind protocol | execute P1-P3 from [`research/ai_analysis/2026-07-11_1630_dm_solar_wind_review.md`](research/ai_analysis/2026-07-11_1630_dm_solar_wind_review.md) on public OMNI/L1 data (M6.6b) |
 | A full-3D validation | M7's program; see its roadmap |
 
-Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
+Flow: open a discussion → fork → branch → PR with a DCO sign-off
 (`git commit -s`), under Apache 2.0. See [`../../../MODELS.md`](../../../MODELS.md)
 § Contributing, [`../../../ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md),
 [`../../../CONTRIBUTING.md`](../../../CONTRIBUTING.md). Model discussion runs in the

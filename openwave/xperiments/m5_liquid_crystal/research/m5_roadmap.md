@@ -33,6 +33,7 @@
 | [M5.28](tasks/m5_28_task_details.md) | Composite-particles hunt: nuclei + electron (atomic orbitals; was M5.15) | The M5.28.x series head (renumbered from M5.15, 2026-07-23). The hopfion/knot-to-nuclei arm ABSORBED into [M5.22](tasks/m5_22_task_details.md) (2026-07-19); remaining scope: atomic orbitals + the Liu et al. 2026 lab anchor (research file 15a, program 15a.1→15a.5). | M5.22 Phase 1 |
 | [M5.8.6](tasks/m5_8_6_task_details.md) | 2+1D pilot-wave intermediate rung | The missing 2+1D middle rung: intrinsic-clock-sourced pilot waves reproducing hydrodynamic-Casimir / walking-droplet quantum analogs. | M5.8.0 integrator |
 | [M5.8.10](tasks/m5_8_10_task_details.md) | BEC vortex-kinetics literature anchor | Skim the long-lived-oscillation-mode / BEC-vortex-kinetics literature (Duda 2026-05-13 PRA cite); compact-manifold geometry as a third Derrick escape. | - |
+| [M5.21.13](tasks/m5_21_13_task_details.md) | The stiffness ladder: does the census survive δ = 1, 3, 10? | 🚧 PLANNED STUB (contributor proposal, was issue #324). Re-run the [M5.21.2b](tasks/m5_21_2b_task_details.md) census unchanged except for δ, recording the A/C/B ordering, the ratios, the topology signatures and the cross-stencil ratio at each rung. Cheap (3-6 re-runs, no new code) and non-gating. Carries a premise check: those rungs walk away from the physical corner. | the premise check (task doc) + user "go" |
 
 ---
 
@@ -145,6 +146,17 @@
 **THE CENSUS-CHECKPOINT REPLY: PROTON CONFIRMED, THE NEUTRAL STATE REREAD AS CANDIDATE DINEUTRON (2026-07-30, group + the vortex-knot lab authors cc'd).** The author's same-evening reply ([`tasks/m5_22_convo.md § 2026-07-30`](tasks/m5_22_convo.md)) endorses the census ("stable topological vortex knots") with the note cited publicly as the "Fable audit", confirms the charged single-ring state as the proton (the fractional structure read as quarks-by-vortex-interaction), and rereads the two-ring neutral state through ring count = baryon number: possibly a bineutron rather than the neutron (consistent with the measured core ledger). Four work items routed: the δ = 0.1 ladder + the kick-apart identity probe (self-runnable, [M5.22.1](tasks/m5_22_1_task_details.md) opening moves), an analytic deuteron seed announced (not yet received at capture), and the fusion/collision route ([M5.22.9](tasks/m5_22_9_task_details.md) rung F). The electric-charge convention fixed as REVERSED (positive topological = negative electric; [note § 7](findings/m5_22_note.md)); the energy-ladder caveat re-affirms [Q33](m5_question_tracker.md#q33-detail) with the mathematician ask widened. [M5.22.1](tasks/m5_22_1_task_details.md) is cleared on user "go".
 
 **M5.22.1 CLOSED: THE DEUTERON RUNG'S OPENING PROBES + CANDIDATE (2026-08-01, same-day run + close).** Go-to-review 02:40, audit 4 CONFIRMED / 2 QUALIFIED / 0 refuted ([note](findings/m5_22_1_note.md)). The author's two staged asks answered with data: the δ ladder measured (ratios do NOT converge by δ-steps alone, [Q33](m5_question_tracker.md#q33-detail) receipt) and the kick-apart run 4/4 (NO decay into two baryons; the neutral state is ONE bound object whose rings carry exactly opposite unit charges, a ring-antiring pair: [Q40](m5_question_tracker.md#q40-detail) opened, author-gated). Construction: five naive forks failed for measured reasons (escape-law charge cancellation; grafted far fields expel winding to a pin-boundary seam); the three-center one-far-field seed then produced a deuteron candidate (electric +1, A = 2 rings, internal +1/−1/+1 stack, 28% below the constituent sum) that fails the n = 32 citation bar (xr 1.70) and stays unsettled at n = 48; its electric quadrupole sign reads NEGATIVE at every resolution (vs the physical positive). The M5.22.1 checkpoint outbound (Q40 + the candidate + the sign read) is the next series step; the author's announced analytic deuteron seed folds in when it arrives.
+
+**A CONTRIBUTOR PROPOSAL BECAME A ROW (2026-08-01).**
+[T5](../../../../dev_docs/tasks/t5_task_details.md) settled that tasks live in roadmaps and that
+GitHub issues are reserved for platform defects, so the stiffness-ladder proposal opened as issue
+#324 moved here as [M5.21.13](tasks/m5_21_13_task_details.md), protocol archived verbatim. It
+carries a premise check ahead of its first rung: the proposal reads the physical corner as
+δ ~ 1e10, while this column works at `0 < δ ≪ 1 ≪ g`, so its δ = 1, 3, 10 rungs walk away from
+that corner and toward axis degeneracy, where the biaxial hierarchy that produces three lepton
+levels is gone by construction. Both readings and the scoping under each are in the task doc; the
+nearest measurement already on disk is the [M5.22.1](tasks/m5_22_1_task_details.md)
+δ = 0.3 → 0.1 ladder, which found the nuclear ratios do not converge by δ-steps alone.
 
 ## LEGACY DONE — the validated record (in order of completion)
 

@@ -1,9 +1,12 @@
 # T5: Evaluate issue-based task tracking (GitHub Issues + Projects v2)
 
-> Roadmap row: [`../platform_roadmap.md`](../platform_roadmap.md). Status: 🚧 EVALUATION
-> (filed 2026-07-31). Owner: maintainers. **An evaluation, not a migration plan**: declining
-> to migrate is a first-class outcome. Nothing migrates before the model authors are
-> consulted; the consultation is the first gate below.
+> Roadmap row: [`../platform_roadmap.md`](../platform_roadmap.md). Status: ✅ **CLOSED
+> 2026-08-01, DECLINED** (user decision). Owner: maintainers. Filed 2026-07-31 as an evaluation
+> in which declining to migrate was a first-class outcome, and that is how it closed: task
+> tracking stays in the repository roadmaps, and GitHub issues are reserved for platform
+> defects. The decision, its price, and the issue-by-issue coverage audit are in
+> [§ FINDINGS](#findings). Everything under PLANNING is the pre-decision record and is not
+> rewritten.
 
 ## PLANNING
 
@@ -172,8 +175,80 @@ no frozen document pinning a live task path.
 
 ## DEVIATIONS LOG
 
-(none)
+**2026-08-01. The rollout never reached step 1, and the author consultation did not happen.**
+§ Rollout made the consultation the first gate and a decline the closing condition. The decline
+arrived from the user instead, on the evaluation's own trade-off tables, which makes the
+consultation moot rather than skipped: there is nothing to consult about once the migration is
+off. What the authors were going to be asked (is this worth it under a no-triage intake model)
+is answered in the negative from the maintainer side, and the answer costs them nothing, since
+declining leaves their workflow exactly as it is.
 
 ## FINDINGS
 
-(pending)
+**DECISION, 2026-08-01 (user): DECLINED. Task tracking stays in the repository roadmaps, and
+GitHub issues are reserved for platform issues.**
+
+### Why
+
+Three reasons, and the first is the one the evaluation had underweighted:
+
+| Reason | Content |
+| --- | --- |
+| Version-tracked diffs are the product | A roadmap edit is a diff: attributable, reviewable, revertable, and readable as history, which is what matters when several authors touch the same files. An issue body edits in place and its edit history is deletable by the content author (§ Measured constraints). The evaluation had already routed every integrity-bearing artifact to git for that reason; the decision extends the same reasoning to the tracking layer rather than splitting it |
+| Author permissions were never the whole cost | The intake model fixed before any consultation (no author triage, no project write) means the author's column stays maintainer-OPERATED under either system. The migration was therefore never going to hand an author their own board, only a cheaper comment channel |
+| The maintainer cost survives the migration | § Intake called this "the evaluation's sharpest question" and it decides the outcome: every state change stays a maintainer transcription plus validation action, so the friction the task was filed on is relocated, not deleted, and a second system arrives to keep in sync |
+
+### What it costs, stated plainly
+
+The friction that opened the task is real and it stays. A fork-based author's tracking edit is
+fork → branch → commit → PR → DCO → merge, and that is the price of the tracked diff. Two things
+soften it and neither was a reason to migrate: the fork is one-time per author, and a tracking
+edit normally rides the same pull request that carries the work it describes.
+
+### What replaces the boundary rule
+
+The migration's boundary rule (an issue holds only what nothing cites) is void with the
+migration. The rule that replaces it is the reverse split, and it lives in the platform
+roadmap's [§ CONVENTIONS](../platform_roadmap.md#conventions) as the single source: **tasks are
+roadmap rows with a task document behind them; a GitHub issue is a platform defect or request,
+something reproducible and closable that is wrong with the platform itself.** Proposals,
+questions and offers of contribution belong in Discussions, and become rows if they become work.
+
+### What the decision cancels
+
+| Item in PLANNING | Status |
+| --- | --- |
+| § Rollout steps 2-6 (project audit, pilot, per-column opt-in, scaffolding sweep) | void |
+| § Retirement and handoff | void. [`ROADMAP_STANDARDS.md`](../ROADMAP_STANDARDS.md) and [`check_roadmaps.py`](../utils/check_roadmaps.py) stay in this repository, with their subject intact |
+| § Suggested definition of done, items 1-7 | void, superseded by the close-out below |
+| § Pins and freezes, and the M8-column gate that [T4](t4_task_details.md) released | moot: nothing migrates, so nothing has to wait for a frozen document to stop pinning a live path |
+
+### Close-out: every open issue got a roadmap home
+
+The condition on closing the issues was that no open one is the only record of its work. Audited
+2026-08-01 across all twelve open issues; three needed a new row, and two are not tasks at all.
+
+| Issue | Roadmap home | Kind |
+| --- | --- | --- |
+| [#197](https://github.com/openwave-labs/openwave/issues/197) effective Dirac | M5.10, backlog (body already archived 2026-07-02) | existing row |
+| [#198](https://github.com/openwave-labs/openwave/issues/198) 3D pair-annihilation | M5.14, retired 2026-07-23; scope delivered by M5.21.4, M5.21.6, M5.20 | done, at higher rigor |
+| [#200](https://github.com/openwave-labs/openwave/issues/200) lepton mass spectrum | M5.9, absorbed into the M5.21 electron hunt 2026-07-19; the live successor is M5.21.11 | existing home |
+| [#201](https://github.com/openwave-labs/openwave/issues/201) K-selectivity | **new**: [M4.1](../../openwave/xperiments/m4_ewt/research/tasks/m4_1_task_details.md) | new row + archive |
+| [#202](https://github.com/openwave-labs/openwave/issues/202) emergent Coulomb | **new**: [M4.2](../../openwave/xperiments/m4_ewt/research/tasks/m4_2_task_details.md) | new row + archive |
+| [#209](https://github.com/openwave-labs/openwave/issues/209) electron gravitational mass | M5.23.6, backlog | existing row |
+| [#213](https://github.com/openwave-labs/openwave/issues/213) dynamic demo suite | M5.23.3, backlog | existing row |
+| [#247](https://github.com/openwave-labs/openwave/issues/247) particle field configurations | not a task: adopted as a standing requirement, the per-particle field-config section every briefing carries ([`ONBOARDING_MODELS.md`](../../ONBOARDING_MODELS.md) § 3.3), and the prescription recorded in the M7 roadmap | standard, not a row |
+| [#248](https://github.com/openwave-labs/openwave/issues/248) collect the M6 author's papers | satisfied by the 2026-07-20 M6 refresh harvest: 29 latest-version records in [`_CITATIONS.md`](../../openwave/xperiments/m6_ouroboros/theory/_CITATIONS.md), including the primary dynamics paper | done |
+| [#290](https://github.com/openwave-labs/openwave/issues/290) regularized vortex-loop | M5.19, closed COMPLETE 2026-07-10 with three adversarial audits | done |
+| [#298](https://github.com/openwave-labs/openwave/issues/298) SMT solvers for combinatorial species | not a task: an outside offer of a contribution, which is Discussions material until someone scopes it | offer, not a row |
+| [#324](https://github.com/openwave-labs/openwave/issues/324) stiffness ladder | **new**: [M5.21.13](../../openwave/xperiments/m5_liquid_crystal/research/tasks/m5_21_13_task_details.md), with a premise check on the δ direction | new row + archive |
+
+Each new row's task document carries the issue body verbatim, so closing the issue destroys no
+record. The two non-tasks are not closed by this task; what happens to them is the user's call.
+
+### One thing the exercise proved on its own
+
+The audit found three open issues describing work already delivered (#198, #248, #290) and one
+whose scope had been absorbed under a different ID (#200). None of that drift was visible from
+the issue side, and all of it was visible from the roadmaps. That is the same argument as the
+first reason above, arriving as evidence instead of principle.
