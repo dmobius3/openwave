@@ -224,6 +224,14 @@ the folder holds the packet, the implementation, and the unsealed comparison. Ke
 session transcript; it lives under the agent's project-history directory, outside the room,
 and it is what makes the manifest checkable rather than an attestation.
 
+**Hash the transcript at teardown and record the hash in the task document.** The transcript
+itself may not belong in the repo: it embeds whatever instruction files the operator's agent
+loads, and a repo that is public, or that may become public, is the wrong home for those. A
+SHA-256 discloses nothing and costs one line, and without it the kept transcript is only as
+good as the word of whoever produces it later. Record the hash, where the file lives, and
+what backs it up. Do not record it in the run's checkpoint file: checkpoints are gitignored
+session state and are deleted at close, which is exactly how this rule was discovered.
+
 ## 11. What is inherited, and what was M8.5-A's
 
 | Any column inherits | M8.5-A-specific |
@@ -258,10 +266,17 @@ Every entry below happened during the first exercise; the standard exists becaus
 | 7 | the implementation printing the room's absolute path into committed output | copy-out | § 4 task-file small print; § 7 redaction rule |
 | 8 | the byte-identity double run writing to session temp space against an absolute "writes only inside the room" statement | transcript check | § 7, disclosed session-temp writes |
 | 9 | the audit reply landed as a merged-PR body edit, notifying nobody | close-out | § 9 communications rule |
+| 10 | the kept transcript's hash written only to the run's gitignored checkpoint | after close-out, by the operator asking why checkpoints are gitignored | § 10, hash at teardown and record it in the task document |
 
-None of the nine reached the result; five were caught by machinery (checks, mutation
-suites, the transcript audit), four by a person reading carefully. That ratio is the
+None of the ten reached the result; five were caught by machinery (checks, mutation
+suites, the transcript audit), five by a person reading carefully. That ratio is the
 argument for keeping both.
+
+Entry 10 generalizes past this procedure: **a disposable file is never the only home for a
+fact worth keeping.** Checkpoints exist so a stopped session can resume, they are gitignored
+for that reason, and anything in one at close either moves into the tracked record or is
+deliberately let go. Writing a terminal summary into a checkpoint reads like closing a task
+and is the opposite of it.
 
 ## 14. Checklist
 
@@ -275,4 +290,4 @@ argument for keeping both.
 | commit 2 | the commitment: hashes, environment, manifest, transcript check, redactions, pre-declarations, operator log; merged BEFORE unsealing |
 | commit 3 | adjudication naming commit 2; own transcription; two-sided comparison mutations; exact comparison |
 | close | method note draft frozen + maintainer layer; independent adversarial audit recorded; questions to humans in NEW comments |
-| teardown | per-run write-up done, then delete the room; keep the transcript |
+| teardown | per-run write-up done, then delete the room; keep the transcript, hash it, record the hash in the task document; nothing of record left only in the run's checkpoint |

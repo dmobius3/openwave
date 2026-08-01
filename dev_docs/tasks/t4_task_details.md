@@ -319,3 +319,20 @@ definition-of-done items all landed:
 
 Blocks F and G ran back to back on the user's call; the room was deleted at G after the
 standard landed, its transcript kept.
+
+**The kept transcript, hashed at teardown.** It stays outside the repo, under the agent's
+project-history directory for `_m85a_cleanroom`, because it embeds the operator's own
+instruction files. Its SHA-256 is recorded here instead, which is what makes it evidence
+later rather than an attestation that a file handed over years from now is the original:
+
+| Item | Value |
+| --- | --- |
+| transcript SHA-256 | `7b23a7e6ac9eec8027d89ace988f5a088a47d18e0869a9778053edfeca8625c7` |
+| location | agent project-history directory for the room's path, outside this repo |
+| backup | covered by the operator's weekly full-home backup, not by git |
+| what it corroborates | the § 4 manifest in [`m8_5a_commitment.md`](../../openwave/xperiments/m8_mit/research/findings/m8_5a_commitment.md): 19 tool calls, 0 web, no path outside the room |
+
+This step was missed at the first close-out: the hash was written only to the run's
+gitignored checkpoint, so deleting that file would have destroyed the one thing that keeps
+the transcript checkable. It is now a rule in the standard's § 10 rather than a fact about
+this run.
