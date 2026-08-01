@@ -137,7 +137,7 @@ M8.1 adopted by the maintainers:
 | Independent recompute of 2/R² | ✅ delivered as M8.1 (2026-07-21): script and number, blind and audited; the author's verification block is cleared |
 | Adversarial parameter count | a hostile § 4 pass on the mass and coupling sectors. The author's ledger already runs one and expects the freedom to be non-trivial; an independent counter is welcome to check it |
 
-Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
+Flow: open a discussion → fork → branch → PR with a DCO sign-off
 (`git commit -s`), under Apache 2.0. Light review checks only reproducibility + honest
 documentation, not orthodoxy. Start here: [`../../../MODELS.md`](../../../MODELS.md)
 § Contributing, [`../../../ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md),

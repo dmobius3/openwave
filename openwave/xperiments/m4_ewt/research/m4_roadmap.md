@@ -1,7 +1,8 @@
 # M4 / EWT, ROADMAP
 
-> The M4 program: what is running, what is queued, what is closed. This file is a
-> **skeleton**, deliberately empty of tasks. The people extending M4 fill it. Read
+> The M4 program: what is running, what is queued, what is closed. The
+> [BACKLOG](#backlog) rows are the column's two standing open problems, both unowned; the
+> people extending M4 pick one up or add their own. Read
 > [`## CONVENTIONS`](#conventions) first: it explains the ID scheme, how to add a task,
 > and which M8 documents to copy from. Model orientation lives in
 > [`README.md`](README.md) and [`../__M4_model_briefing.md`](../__M4_model_briefing.md).
@@ -18,6 +19,8 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
+| [M4.1](tasks/m4_1_task_details.md) | Golden-angle K-selectivity + perturbation-robust stability | Evaluate the contributor proposal that the `r⁵` vs `r³` energy-density non-linearity plus golden-angle (phyllotactic) placement with spin makes `K = 10` the unique perturbation-robust ground state, against today's flat landscape where every `K = 2..10` is degenerate. Harness merged in [PR #205](https://github.com/openwave-labs/openwave/pull/205), spec in [`M4_k_selectivity_Formalization.md`](M4_k_selectivity_Formalization.md). Was issue #201 | an owner: the column has no active author |
+| [M4.2](tasks/m4_2_task_details.md) | Emergent Coulomb force: far-field direction, sign, 1/r | Produce evidence that the electric force emerges from wave interference: two wave centers with a consistent far-field direction (same repels, opposite attracts), `~1/r` scaling, and an EMERGENT charge sign rather than an imposed `±1`. The sinc `λ/2` direction flip is the blocker; the 3D flux integral and the vector route are the open leads. Was issue #202 | an owner; shares the suspected missing physics with [M4.1](tasks/m4_1_task_details.md) |
 
 ## CONVENTIONS
 
@@ -71,6 +74,14 @@ table already carries several honest ❌ rows; each is a task waiting to be writ
 | --- | --- | --- | --- |
 
 ## CHANGE-LOG
+
+**TWO OPEN PROBLEMS BECAME ROWS (2026-08-01).**
+[T5](../../../../dev_docs/tasks/t5_task_details.md) settled that tasks live in roadmaps and
+that GitHub issues are reserved for platform defects, so the column's two standing open
+problems moved here from issues #201 (K-selectivity, the geometric proposal from Łukasz
+Smoliński) and #202 (emergent Coulomb), each with the issue body archived verbatim in its
+task document. Both rows are unowned: the M4 program still belongs to whoever extends the
+model, and these are the two places to start.
 
 **2026-07-29.** Roadmap created as a skeleton alongside the
 [`research/`](README.md) scaffold. No tasks planned: the program belongs to whoever

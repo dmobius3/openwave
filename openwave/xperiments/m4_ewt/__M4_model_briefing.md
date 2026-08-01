@@ -111,7 +111,7 @@ by reading [`research/m4_agent_orientation.md`](research/m4_agent_orientation.md
 | Verify the Smoliński stabilizer | test whether ψ³ with γ = 8π⁷ holds the 1-3-6 arrangement |
 | A documented negative | a runnable "this does not work, here is why" counts as much as a positive |
 
-Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
+Flow: open a discussion → fork → branch → PR with a DCO sign-off
 (`git commit -s`), under Apache 2.0. See [`../../../MODELS.md`](../../../MODELS.md)
 § Contributing, [`../../../ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md),
 [`../../../CONTRIBUTING.md`](../../../CONTRIBUTING.md). Model discussion runs in the
