@@ -1,9 +1,19 @@
-# M8.5-A method note (draft, pre-commitment)
+# M8.5-A method note
 
 Deliverable of the context-isolated independent-method reproduction specified in
 `PROTOCOL.md` (frozen 2026-07-30). Implementation: `m8_5a_reproduction.py`. Claim ceiling
 (§ 2): context-isolated independent-method reproduction, nothing stronger. Adjudication
 against the pinned § 6.1 table is the maintainers' step and is not performed here.
+
+> **Status.** §§ A-H are the implementer's clean-room draft, byte-committed in the § 9
+> commitment ([`m8_5a_commitment.md`](m8_5a_commitment.md), commit `dac2b6a1`, draft SHA-256
+> `c8ac98a218c0449ff0dfa28eb280b879d9ce44c742c94cf13e7e635ea60ce6a8`); that version is
+> retrievable at that commit, and nothing in §§ A-H has been edited since. The maintainer
+> layer (§§ I-J: the adjudication outcome and the recorded adversarial audit) was appended
+> 2026-08-01, which is what moves this note off DRAFT per the landing map in
+> [`../tasks/m8_5_task_details.md`](../tasks/m8_5_task_details.md). The § B line references
+> resolve against [`../scripts/m8_5a_reproduction.py`](../scripts/m8_5a_reproduction.py) as
+> committed at `dac2b6a1` (the file is frozen; any later edit would be a dated rerun per § 8).
 
 ## A. Equations first
 
@@ -308,3 +318,54 @@ This draft precedes the recorded adversarial audit required by § 9 before the
 deliverable crosses to the author. Items explicitly queued for that audit: the § C.2
 derivation (both lemmas and the scope reading), the realness assertion route, and the
 peeling algorithm's completion argument.
+
+## I. Adjudication outcome (maintainer layer, 2026-07-31)
+
+Recorded here so the note carries its own result; the § 7 record is canonical.
+
+| Item | Outcome |
+| --- | --- |
+| scalar table vs pre-registration § 6.1 at `ec877ee0` | **REPRODUCED**: 9 label-free signatures pairwise distinct both sides, 27/27 cells equal, exact integer comparison, no tolerance |
+| three-way agreement | holds: this run, § 6.1 (object 1's published table), object 2's reconstruction |
+| G10 under the maintainer harness | both transcription mutations redden the comparison |
+| harness + record | [`../scripts/m8_5a_adjudication.py`](../scripts/m8_5a_adjudication.py), [`../data/m8_5a_adjudication.json`](../data/m8_5a_adjudication.json), merged separately (#392) after the commitment (#391), ordering auditable |
+| claim label | context-isolated independent-method reproduction, the § 2 ceiling; the run does not earn "blind" and does not claim it |
+
+## J. Adversarial audit (§ 9, recorded 2026-08-01)
+
+Run by an independent second agent briefed to REFUTE, with its own scripts and its own
+methods: its group construction is an explicit icosian list checked equal to the packet
+closure, its classes are trace fibers verified as full conjugation orbits, its character
+table comes by Burnside class-algebra splitting over exact `Q(φ)` (the route this
+implementation deliberately does not use), and its tower, McKay matrix, and both
+first-occurrence tables are its own machinery. Script:
+[`../scripts/m8_5a_audit.py`](../scripts/m8_5a_audit.py) (headless, exit 0 only if nothing
+is refuted; re-run green by the maintainer); record:
+[`../data/m8_5a_audit.json`](../data/m8_5a_audit.json).
+
+| # | Claim attacked | Verdict |
+| --- | --- | --- |
+| 1 | Lemma 1, `n_first(ρ, trivial) = d(ρ)` | ✅ CONFIRMED: `v_{d-2}(ρ) = 0` exactly and the geodesic-predecessor term of `(A v_{d-1})(ρ)` is strictly positive; nonnegativity of every `v_n` holds because each is a genuine restriction-multiplicity vector, independent of the recursion. All 9 irreducibles verified from the audit's own table |
+| 2 | Lemma 2, parity vanishing | ✅ CONFIRMED, and strengthened: bipartiteness is a THEOREM here, not just a computed witness (`−1` is central, `V_n(−1) = (−1)^n`, every irrep carries central sign `(−1)^d`, every McKay edge flips it) |
+| 3 | The rule table, all three rows | ✅ CONFIRMED, including the `d = 1` row (exactly one irrep, `Q`: `m = 2` excluded by distance AND parity, `m = 3` fires via `v_1(Q) = 1`). The only graph-specific inputs, connectivity and bipartiteness, are themselves derived, so the protocol § 6 "full family from operator and representation structure" bar is met |
+| 4 | The coexact tower, `Δ = m²/R²`, multiplicity `2(m²−1)` | ✅ CONFIRMED by a route the note does not use: Casimir normalization anchored on the function sector, with the level-2 anchor `4/R²` recomputed from raw quaternion algebra; Peter-Weyl block bookkeeping verified from exact Clebsch-Gordan identities |
+| 5 | The trivial-column scope reading | ✅ CONFIRMED as faithful: every source statement of the asserted rule is per constituent, the per-constituent entry level IS `m_first(ρ, trivial)`, and every standard/galois cell was verified to be the min-over-constituents with no extra rule content |
+| 6 | Realness of all characters | ✅ CONFIRMED as a theorem (all classes inverse-closed) and by three computational routes (inverse closure, class algebra splitting over the real field, Frobenius-Schur indicators all `±1`) |
+| 7 | Peeling completion | ✅ CONFIRMED: rank 9 already at `n ≤ 8` (nine distinct trace values, monic polynomials), norm-1 remainders necessarily irreducible; the pool replay on the audit's own data resolved at `n = 8` with no deadlock |
+| 8 | Run-record consistency | ✅ CONFIRMED: all 27 scalar cells AND all 27 coexact cells of `result.json` match the audit's independently derived tables, label-free |
+
+**Standing consequence.** The § C.2 derivation held under independent attack, which is what
+the `structurally derived and reproduced` verdict was waiting on. Per the § 6 standing rule
+the numerical match contributed nothing; the derivation carried it.
+
+**Weaknesses the audit found that this note did not self-flag** (recorded per the audit's
+report; none affects a result):
+
+| Weakness | Severity |
+| --- | --- |
+| § A.5's phrasing invites the false reading that the Galois map fixes the group as a set; it maps it onto the twin icosian copy. The note's actual justification (ring automorphism, hence a genuine representation of the same abstract group) is correct and does not need set-stability, but the subtlety is unstated | informational |
+| Lemma 1 as written conflates two inductions (support on `n`, positivity on `d`); the repaired two-induction form is what proves it | minor, exposition |
+| Lemma 2's "by the same recursion" leaves base-case parity and connectivity implicit, and cites the computed bipartite witness where the one-line central-character proof exists | minor |
+| The `d ≥ 2` row's "no `m < d` can reach distance `d`" silently needs both `v_m` and `v_{m−2}` to vanish; true, but compressed | minor |
+| The peeling pool has no a-priori termination guarantee for a general group; only the fail-loud bound protects it. In this run it resolved at `n = 8`; the residual risk is unstated in § A.4 | minor |
+| The "`> 1/2` occurrence test applied to an exact integer" is just `> 0` | cosmetic |
