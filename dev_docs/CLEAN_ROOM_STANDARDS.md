@@ -110,6 +110,15 @@ handing the full object makes it true by construction. Where the protocol permit
 a derivable quantity (M8.5-A: the group order), withholding it is the stricter choice, and
 the withholding is STATED in the packet so silence does not read as an incomplete delivery.
 
+**A tightening beyond the protocol is raised with the supplier, not just stated in the
+packet.** Both sides agreed to the protocol, so withholding something it permits is the
+maintainer's unilateral change until the supplier says otherwise: name it at delivery and
+offer to supply the quantity and log a deviation. The run is valid either way, since the
+stricter side cannot make a gate easier, and the point of asking is that an unraised
+tightening turns into an argument about the input condition after the result exists. At
+M8.5-A the author's answer was that the packet had been limited to the generators for the
+same reason, which made the condition shared rather than assumed.
+
 **Author-side evidence is not the audit.** An author may ship a verification script and
 report alongside the packet; they stay outside the room, and the maintainer audit runs from
 the packet alone. An audit that reads the supplier's report and concurs is a review of the

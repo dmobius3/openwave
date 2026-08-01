@@ -265,6 +265,10 @@ kind of gap a standard exists to close. Three guards, added at block A:
 **2026-07-31, block A. The group order is withheld, tighter than protocol § 4 permits.** The
 protocol allows supplying 120 as a construction input. `GROUP_INPUT.md` withholds it so G1
 stays falsifiable, and says so in the file, so silence does not read as an incomplete packet.
+Raised with the author at delivery with an offer to supply it and log a deviation; the answer,
+2026-08-01, was that the packet was limited to the generators for the same reason, so the
+tightening was shared rather than unilateral and no deviation is recorded. The rule that came
+out of it is in the standard's packet section.
 
 **2026-07-31, block A. Canonicalization turned out to be a no-op.** § The packet anticipated
 irrational components arriving as decimals, where a hash would pin a transcription. The author

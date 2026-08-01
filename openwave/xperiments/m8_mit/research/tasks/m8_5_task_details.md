@@ -285,6 +285,15 @@ environment catch, the raw-output path redaction, the scratchpad writes) are log
 [`m8_5a_commitment.md`](../findings/m8_5a_commitment.md) § 4-6. No protocol-level deviation:
 no mid-run relay, no packet amendment, no unsealing before the commitment.
 
+**2026-08-01. The withheld group order was intentional on both sides, so nothing is recorded
+as a deviation.** The block A note asked the author whether omitting it from the packet was
+meant, offering to supply 120 and log the change
+([#386](https://github.com/openwave-labs/openwave/pull/386) thread, answered on
+[#394](https://github.com/openwave-labs/openwave/pull/394#issuecomment-5152324680)). The
+author's answer: the packet was limited to the generators so that G1's order result stayed a
+derived check rather than a restatement of supplied metadata. The stricter input condition was
+the intended one, and the run met it.
+
 ## FINDINGS
 
 **M8.5-A adjudication, 2026-07-31: REPRODUCED.** The clean-room implementation
