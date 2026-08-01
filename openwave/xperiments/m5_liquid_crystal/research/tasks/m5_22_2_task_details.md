@@ -10,6 +10,7 @@
 | Mechanism anchor | The author's 2026-07-27 panel: neutron → shift → split with energy release → reconnection → proton + electron + neutrino ([M5.22 § The charge-quantization frame](m5_22_task_details.md); sketch local-only in `theory/`) |
 | Reads | Decay products (proton-analog + fast escaping charged vortex + neutral ejecta); the β energy probability distribution SHAPE vs the experimentally known spectrum (shape only at toy parameters); the charge classes of all products by the winding/degree instrument |
 | The Sulich composite read | Does the neutron-analog decompose under the kick as proton + electron (+ antineutrino), per the 2026-07-28 09:05 group question? Reported qualitatively from the decay products |
+| The target identity | If the [M5.22.1](m5_22_1_task_details.md) kick-apart probe splits the two-ring neutral state (the author's 2026-07-30 dineutron reading, [`m5_22_convo.md § 2026-07-30`](m5_22_convo.md)), the decay target becomes its single-ring neutral product; that probe also gives the kick transplant its first exercise |
 
 ## Definition of done
 

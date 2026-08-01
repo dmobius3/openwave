@@ -13,7 +13,7 @@ The ladder is the author's ([`m5_22_convo.md § 2026-07-22`](m5_22_convo.md), ex
 | C | Alpha clusters | C12, O16, compared against the Skyrmion models of nuclei (the author's named baseline literature) |
 | D | Strange-baryon decay | decay releasing a pion or a kaon; the meson side of the same reconnection mechanism (pion = twist/reconnection of a vortex loop, kaon = a Möbius-like twisted loop with strangeness as the twist) |
 | E | The table of nuclides | the author's own far target: "trying to recreate <https://en.wikipedia.org/wiki/Table_of_nuclides> even with such toy model" ([`m5_22_convo.md § 2026-07-26 ps`](m5_22_convo.md)) |
-| F | Fusion and fission of knots | the experimental LC anchor: the Nature paper on fusion and fission of particle-like chiral nematic vortex knots, named by the author (X, 2026-07-18) as the style of nuclei model to build. Locate + file into `theory/` at PLAN |
+| F | Fusion and fission of knots | the experimental LC anchor: the Nature paper on fusion and fission of particle-like chiral nematic vortex knots, named by the author (X, 2026-07-18) as the style of nuclei model to build, its authors (with the follow-on PRResearch paper's) cc'd onto the program thread at the census checkpoint. Locate + file into `theory/` at PLAN. Route prescribed by the author 2026-07-30 ([`m5_22_convo.md § 2026-07-30`](m5_22_convo.md)): boost two proton configurations into collision, aiming at multi-ring (baryon-number) states on one vortex with photons + neutrinos (vortex loops) as the ejecta, the pp-chain as the anchor; flagged needs: larger lattices, and proton decay likely at toy parameters |
 
 ## What gates it
 
