@@ -171,7 +171,7 @@ Where the cost sits right now, for anyone deciding what to back:
 - **Cross-model validation.** Every criteria cell that reads 🚧 in [MODELS.md](MODELS.md) is a calculation nobody has paid for yet.
 - **Integration capacity.** Onboarding a new model and reviewing a large pull request take multiple rounds of maintainer time, and that queue is what decides how fast the table grows.
 
-To sponsor the project directly: **[github.com/sponsors/openwave-labs](https://github.com/sponsors/openwave-labs)**. To offer infrastructure or token grants instead, open an issue or contact the maintainers; say what you can bring and it will be matched to the runs blocked on exactly that. The default for authors and code contributors stays [bring-your-own-compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc); this lane exists for people who want to fund the science without running it themselves.
+To sponsor the project directly: **[github.com/sponsors/openwave-labs](https://github.com/sponsors/openwave-labs)**. To offer infrastructure or token grants instead, open a discussion or contact the maintainers; say what you can bring and it will be matched to the runs blocked on exactly that. The default for authors and code contributors stays [bring-your-own-compute](ONBOARDING_MODELS.md#bring-your-own-compute-byoc); this lane exists for people who want to fund the science without running it themselves.
 
 | Contributor | Contribution |
 | --- | --- |

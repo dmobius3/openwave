@@ -1,0 +1,17 @@
+{
+  "closure_order": 120,
+  "environment": {
+    "exact_arithmetic": "fractions.Fraction over Q(phi), no floating point",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "python": "3.13.13"
+  },
+  "gates": {
+    "P1_generators_unit_norm": true,
+    "P2_closure_order_120": true,
+    "P3_identity_inverses_center": true,
+    "P4_central_quotient_is_A5": true
+  },
+  "generator_count": 2,
+  "packet_format_version": "m8_5a-packet-v1",
+  "packet_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9"
+}

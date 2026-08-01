@@ -156,3 +156,7 @@ Independent second agent, own script ([`m5_22_e_audit.py`](../scripts/m5_22_e_au
 | C9 lepton mirror pair | ✅ CONFIRMED (sharpened) | M(E+½) = R M(E−½) R, R = diag(1, 1, −1), distance 2e-4: an exact INTERNAL reflection, no spatial flip |
 
 **Audit caveats adopted into this note**: the pad0 edge convention stated in § 1; the exact-degree upgrade of read (vi); `n_conflicts` in the row jsons is not a far-surface property (the far-cube lift is cleanly orientable, 0 conflicts); float32 archives floor stationarity re-verification at ~2e-7, so re-verification uses a short descent (as the audit's C6 probe does), not the archived force alone.
+
+## 7. Addendum: the electric-charge sign convention (the author's 2026-07-30 reply)
+
+All signed charge quantities in this note (the seed 2D windings, the 3D degrees, the flux-density panels) are the MATHEMATICAL topological charge. The author's reply to this note fixed the electric convention as REVERSED: leptons are viewed as hedgehogs (the outward hedgehog being the easiest defect to picture), which makes positive topological charge the negative elementary electric charge. Electric readings therefore NEGATE the signed values shown here; every \|Q\| statement is unaffected. Adopted for all M5.22.x successors; capture in [`../tasks/m5_22_convo.md § 2026-07-30`](../tasks/m5_22_convo.md).

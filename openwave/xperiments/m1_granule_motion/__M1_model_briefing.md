@@ -76,7 +76,7 @@ The value is clean, reusable wave mechanics. Useful contributions:
 | Reuse into the particle models | wire these seeders into M3-M7 (the M7 plan calls M1-M4 the library to mine) |
 | A doc / layout cleanup | reconcile `research/README.md` with the current file tree |
 
-Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
+Flow: open a discussion → fork → branch → PR with a DCO sign-off
 (`git commit -s`), under Apache 2.0. See [`../../../CONTRIBUTING.md`](../../../CONTRIBUTING.md)
 and [`../../../MODELS.md`](../../../MODELS.md). Model discussion runs in the
 Models-of-Particles group.

@@ -100,8 +100,8 @@ hydrodynamics / Beltrami and toroidal-electron communities.
 | Contribute a source or seeder | knotted-EM / Bateman / Trkalian seed generators |
 | Answer an open question | Q1-Q7, especially the substrate manifold (S² vs S³) and the `λ(x)` profile |
 
-Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
-(`git commit -s`), under Apache 2.0. New-model governance: open an issue first so a
+Flow: open a discussion → fork → branch → PR with a DCO sign-off
+(`git commit -s`), under Apache 2.0. New-model governance: open a discussion first so a
 maintainer adds the column at the M7.21 publication milestone (Phase 3). See
 [`../../../MODELS.md`](../../../MODELS.md) § Contributing,
 [`../../../ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md),

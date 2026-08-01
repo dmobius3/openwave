@@ -76,7 +76,7 @@ Useful contributions:
 | Wire the wave-center engine into the live loop | move the experimental `interact_wc_*` kernels from designed to running |
 | Reuse into the particle models | use the PDE substrate as a seeder for M7 (the M7 plan calls M1-M4 the library to mine) |
 
-Flow: open an issue or discussion → fork → branch → PR with a DCO sign-off
+Flow: open a discussion → fork → branch → PR with a DCO sign-off
 (`git commit -s`), under Apache 2.0. See [`../../../CONTRIBUTING.md`](../../../CONTRIBUTING.md)
 and [`../../../MODELS.md`](../../../MODELS.md). Model discussion runs in the
 Models-of-Particles group.

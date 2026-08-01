@@ -131,3 +131,50 @@ The announced "think further tomorrow" follow-up. The author's words (quoted ver
 | The measured charges, central-π-step family (13:20 "proton?") | {1.013, 0.013, -0.987, -1.987, -2.987} for s = {-1, -1/2, 0, 1/2, 1}, i.e. ≈ **-2s - 1**: the vortex pair contributes -2s, the central π step contributes -1 | **s = -1/2 is NEUTRAL (charge ≈ 0)**: the "previous upper" family is the NEUTRON candidate. Note the s = 0 row: the central π step ALONE carries charge ≈ -1 with no vortex pair |
 | The measured charges, fractional-step family (13:20 "neutron?") | {2.000, 1.000, -0.000, -1.000, -2.000}, i.e. ≈ **-2s exactly**: the fractional steps (-2π/3 central, +π/3 at x = ±1) cancel in the far field, leaving the pure vortex-pair winding | **s = -1/2 carries charge ≈ +1**: the "lower" family is the PROTON candidate. So the d-u-d fractional bar, the seed built to LOOK like compensation, is the charged one, and the single-full-π seed is the neutral one |
 | What the flip means for the census | The 13:20 candidacy caveat did its job: the labels were provisional, and the selection principle (lightest charged = proton-analog, lightest neutral = neutral-analog ranking) absorbs the swap without any protocol change. Seed-level charge class is now KNOWN analytically per seed; the run's winding/degree instrument still verifies each relaxed 3D state (the far-field 2D winding is a pre-rotation diagnostic, not the 3D degree read) | The seed grid also grew: 2 signs of the electron/positron family (13:20 PDF) + 5 signs × 2 baryon families (this PDF) = **12 seeds**, superseding "the six seeds" phrasing of the 13:20 round. Task-doc § The seeding update carries the operational state |
+
+## 2026-07-30 21:26 EDT (the census-checkpoint reply, group-cc'd wide): proton CONFIRMED, the neutral state reread as candidate DINEUTRON
+
+The reply to the census close-out send (thread "M5.22 census closed: baryon analogs measured"). The author widened the audience beyond the group: the authors of "Fusion and fission of particle-like chiral nematic vortex knots" (the Nature Physics lab anchor, [M5.22.9](m5_22_9_task_details.md) rung F) and of the more recent <https://journals.aps.org/prresearch/pdf/10.1103/fbxl-n36k>, including the Smalyukh (Colorado) and Dijkstra (Utrecht) groups, plus mathematician colleagues, with the census note's GitHub URL cited in-message as the "Fable audit". Group message, quoted verbatim (public among list members):
+
+> Hello,
+>
+> Thank you, looks good starting point, so let me cc e.g. models-of-particles and authors of very close "Fusion and fission of particle-like chiral nematic vortex knots" and more recent <https://journals.aps.org/prresearch/pdf/10.1103/fbxl-n36k> for discussion and help (Fable audit: <https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/findings/m5_22_note.md> ).
+>
+> You got stable topological vortex knots, the right one charged with single topological vortex ring, so I would interpret it as proton (charged like positron but heavier), also automatically getting fractional charge structure ("quarks") by vortex interactions as I expected:
+>
+> [inline image: the census slice portraits, annotated]
+>
+> In the left one I see two 1/2-vortex rings, which seems coming from decay of initial P=-1, and naively I would interpret number of such rings as baryon number, so I am not certain if we should interpret it as neutron, or maybe rather bineutron - very rare and unstable, but possible and observed e.g. <https://physicsworld.com/a/dineutron-emission-seen-for-the-first-time/>
+>
+> However, the energy ladder is very far - probably manly due to completely unphysical delta=0.3 instead of ~10^-10. Also this is simplified 3x3 case, while full 4x4 would add internal dynamics like angular momentums, which seem also crucial.
+>
+> Anyway, we are starting the most practical here: nuclear physics, hopefully to help with e.g. fusion optimizations ... but also the most difficult numerically - we need help both with resources for heavy simulations (Maciek? Sean? Marc?) ... but also help of mathematicians for practical approximations to reach physical parameters (delta ~ 10^-10, g ~ 10^10).
+>
+> Some basic ideas for further work here:
+>
+> - check energies for at least slightly smaller e.g. delta = 0.1
+>
+> - maybe try to decay this two vortex rings configuration (dineutron?) by kicking them apart, probably leading to 2 baryons,
+>
+> - I will think tomorrow about analytical initial configuration for deuteron,
+>
+> - the best would be getting deuteron and larger nuclei through fusion - boost two e.g. proton configurations into each other for collision, hopefully leading to configurations with multiple vortex rings (baryon number) on one topological vortex, releasing energy mainly as photons and neutrinos (as vortex loops) for <https://en.wikipedia.org/wiki/Proton%E2%80%93proton_chain> ... but it might require 3D lattices, also proton decay might be quite likely as energy differences are so small for these unphysical parameters.
+>
+> Thanks,
+> Jarek
+>
+> ps. Regarding the charge convention, for humans it is easiest to imagine hedgehogs, so it is more convenient to view leptons this way - but it means reversed charged convention: positive mathematical topological charge as negative electric elementary charge - maybe let's try to use this reversed electric convention: your \|Q\| seems right, but (c) density plots seems to be topological charge - for electric we should see as negated.
+
+| Item | Content | Decode / routing |
+| --- | --- | --- |
+| The endorsement + the public audit link | "looks good starting point"; the note cited by URL as the "Fable audit"; audience widened to the lab-paper authors and mathematician colleagues | The census note is now a reference cited OUTSIDE the repo: its path on main stays stable; the PRResearch paper joins the Nature Physics one on the rung-F theory shelf |
+| Proton identity CONFIRMED | "the right one charged with single topological vortex ring, so I would interpret it as proton (charged like positron but heavier)"; the fractional structure = quarks "by vortex interactions as I expected" | Census reads (ii)/(vi) author-endorsed; the charged deuteron constituent stands as measured (fractional family s = −1/2) |
+| The DINEUTRON reread | Two ½-vortex rings seen in the neutral state, "coming from decay of initial P=-1"; "naively I would interpret number of such rings as baryon number"; neutron vs "bineutron - very rare and unstable, but possible and observed" | Consistent with the census core ledger (column + TWO rings measured). The neutral constituent's identity is now OPEN (neutron vs dineutron) and machine-decidable: the kick-apart probe below. Ring count = baryon number becomes a STANDING read on every future endpoint |
+| The energy-ladder caveat | "the energy ladder is very far - probably manly due to completely unphysical delta=0.3 instead of ~10^-10"; 3×3 is simplified, full 4×4 would add angular-momentum internal dynamics, "also crucial" | [Q33](../m5_question_tracker.md#q33-detail) re-affirmed (receipt added); claim language stays qualitative; the 4×4 remark changes nothing now (the series stays 3×3 by scope) |
+| The resource + mathematician ask | Help sought with heavy-simulation resources (Maciek? Sean? Marc?) and with mathematicians for practical approximations toward δ ~ 1e-10, g ~ 1e10 | The author's own recruiting, run on his channel to the cc'd candidates; the resource-contributor outreach HOLD on our side is unchanged |
+| Work item 1: δ = 0.1 | "check energies for at least slightly smaller e.g. delta = 0.1" | Self-runnable: [M5.22.1](m5_22_1_task_details.md) opening move (extends the census δ-probe, which read ordering 1.55 at δ = 0.2) |
+| Work item 2: the kick-apart | "try to decay this two vortex rings configuration (dineutron?) by kicking them apart, probably leading to 2 baryons" | Self-runnable: [M5.22.1](m5_22_1_task_details.md) opening move via the [M5.21.6](m5_21_6_task_details.md) kick protocol; decides the dineutron question, and a split hands M5.22.1 its single-ring neutral constituent (and [M5.22.2](m5_22_2_task_details.md) its decay target) |
+| Work item 3: the deuteron seed | "I will think tomorrow about analytical initial configuration for deuteron" | ANNOUNCED, not yet arrived at capture (2026-08-01, thread checked); the M5.22.1 construction forks run regardless per the series exhaustion rule, and the seed folds in when it lands |
+| Work item 4: the fusion route | Boost two proton configurations into collision → multi-ring (baryon-number) states on one vortex, energy released mainly as photons and neutrinos (vortex loops), the pp-chain as the anchor; "might require 3D lattices", and proton decay "might be quite likely" at toy parameters | [M5.22.9](m5_22_9_task_details.md) rung F updated with the collision prescription |
+| ps: the REVERSED electric convention | Leptons viewed as hedgehogs ("for humans it is easiest to imagine hedgehogs"); positive mathematical topological charge = negative elementary electric charge; "your \|Q\| seems right", but the density plots read as topological, "for electric we should see as negated" | ADOPTED for all M5.22.x successors: signed charge plots/labels carry electric = NEGATED topological degree; the census note gains a § 7 addendum stating it; no census number changes (\|Q\| magnitudes untouched) |
+| The attachment | One PNG: the note's two (a) director-over-eigengap panels composed side by side (left = the neutral two-ring state P −1, its two rings crossing the meridional plane as four cores; right = the proton-analog P −0.5, one ring), the figure the "In the left one I see two 1/2-vortex rings" sentence reads from | Filed local-only (author material, gitignored): [`../../theory/duda_2026-07-30_census_reply_annotated_figure.png`](../../theory/duda_2026-07-30_census_reply_annotated_figure.png) |

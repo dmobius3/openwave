@@ -5,8 +5,9 @@ Whether you're fixing a typo, adding a feature, or reporting a bug, your help ma
 
 ## How You Can Contribute
 
-- **Report Issues:** If you find a bug, open an issue describing the problem and how to reproduce it.
-- **Suggest Features:** Share ideas for new features or improvements through the issue tracker.
+- **Report Issues:** If you find a bug, open an issue describing the problem and how to reproduce it. The issue tracker is for **platform issues**: something reproducible and closable that is wrong with the platform itself, such as an engine bug, a checker that misfires, an install or reproduction failure, or a document that states something untrue.
+- **Pick up open work:** Research tasks are not issues. Each model column keeps its own roadmap (`openwave/xperiments/<model>/research/<mid>_roadmap.md`, plus [`dev_docs/platform_roadmap.md`](dev_docs/platform_roadmap.md) for shared work), where every queued task links a task document with its scope and its pass/fail criteria. Say in a discussion which row you are taking, then open a pull request against it. The reason tracking lives in files: a roadmap edit is a tracked diff, which is what a file several authors touch needs.
+- **Suggest Features:** Share ideas for new features, improvements, or a research direction in [Discussions](https://github.com/openwave-labs/openwave/discussions); one becomes a roadmap row when someone scopes it into work.
 - **Improve Documentation:** Help us make guides, examples, and API references clearer.
 - **Write Code:** Fix bugs, add features, or improve existing code.
 - **Run the science yourself:** Validate, recompute, or try to falsify any cell in [MODELS.md](MODELS.md), then open a pull request with the script and the note behind the result.

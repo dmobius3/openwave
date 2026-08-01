@@ -151,6 +151,74 @@ irrational in `φ` and an uncanonicalized decimal rendering hashes differently f
 group. The maintainer's own pre-verified pair is retained as a cross-check on the supplied
 generators, never as the packet.
 
+**Delivered 2026-07-31** ([PR #386](https://github.com/openwave-labs/openwave/pull/386)
+thread), in two deliberately separate archives: the packet, and the author's own verification
+evidence marked to stay outside the room. The generators are exact in `Q(φ)` with every
+component written `(a + b·φ)/2` over integer `a` and `b`, so no decimal rendering exists to
+canonicalize away and the hash pins a group rather than a transcription. The author's
+separation of packet from evidence was unprompted, and it is the containment the protocol
+wanted; the audit still runs from the packet alone, per
+[`../../../../../dev_docs/tasks/t4_task_details.md`](../../../../../dev_docs/tasks/t4_task_details.md).
+
+**Landing map for the block A packet commit** (committed before the room opens, so the
+timestamp predates the run; contents subject to the block A leakage scan):
+
+| Artifact | Repo destination |
+| --- | --- |
+| the canonical packet | `../data/m8_5a_packet.json` |
+| the clean-room task file | `../data/m8_5a_cleanroom_task.md` |
+| the clean-room group-input file | `../data/m8_5a_cleanroom_group_input.md` |
+| the maintainer packet audit | `../scripts/m8_5a_packet_audit.py`, `../data/m8_5a_packet_audit.json` |
+| the author's verification evidence, as received | `../data/m8_5a_packet_author_evidence/` |
+
+**Audit result, 2026-07-31.** [`m8_5a_packet_audit.py`](../scripts/m8_5a_packet_audit.py) run
+from the packet alone: eight checks green, seven mutations each reddening their target, exit 0.
+Exact arithmetic throughout, no tolerance anywhere.
+
+| Quantity | Observed |
+| --- | --- |
+| incoming SHA-256, as delivered | `e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9` |
+| canonical form | keys sorted, two-space indent, ASCII, LF, one trailing newline |
+| authoritative SHA-256 | identical to the incoming hash: the delivered bytes were already canonical, so canonicalization is a no-op here |
+| generator norms | exactly `1` in `Q(φ)`, both |
+| generator orders | 6 and 4 |
+| closure | finite, multiplicatively closed, order exactly 120 |
+| center | exactly `{+1, −1}` |
+| element-order census | 1, 1, 20, 30, 24, 20, 24 at orders 1, 2, 3, 4, 5, 6, 10 |
+| central quotient | order 60, profile 1, 15, 20, 24 at orders 1, 2, 3, 5 |
+| leakage scan | no label, dimension, distance or character vocabulary; no key outside the declared set |
+
+The element-order census is the audit's addition rather than a restatement of the author's
+gates. A center of order 2 over a quotient with the `A₅` profile is also satisfied by the
+direct product `A₅ × C₂`, which is not the binary icosahedral group; the order-4 population
+separates them, 30 against none. A finite subgroup of the unit quaternions cannot be
+`A₅ × C₂` for an independent reason, since `−1` is the only unit quaternion of order 2 while
+that product has 31 involutions, so the census is not the only thing standing between the two.
+It is the mechanical version of that argument, and this audit prefers a count to an appeal to a
+theorem.
+
+**Cross-check against the author's evidence, run only after the above was complete.** The
+author's report states the same packet hash, the same closure order, and its four gates true.
+The two runs agree, and they are not fully independent in method: both work exactly over
+`Q(φ)` through `fractions.Fraction`, which the packet format effectively forces. The checks
+differ, which is where the value is: the element-order census and the leakage scan are the
+maintainer side only, and the author's report carries an environment record the audit does not.
+
+**The room, as sealed before launch.** Four files, nothing else:
+
+| File | SHA-256 | Provenance |
+| --- | --- | --- |
+| `PROTOCOL.md` | `f7370de24ca26f78c4019bf30db30abe54810f83198f9bded39fd0c25e10bf96` | `diff`-identical to [the frozen protocol](../findings/m8_5a_reproduction_protocol.md) |
+| `m8_5a_packet.json` | `e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9` | the author's packet, byte-identical |
+| `GROUP_INPUT.md` | `8b5fb2a61cdfe82cfe90f6c57e1e02f283229b1dd30470c331774dc3fb12f837` | maintainer-written wrapper; names the packet, states its hash, restates the packet's own coefficient-format field, quotes the packet verbatim |
+| `TASK.md` | `c662fd06c334809f0f4cdeda0903967536564dae6d597d0db308257aa34210c8` | maintainer-written, operational only |
+
+**The group order is withheld, which is stricter than the protocol requires.** Protocol § 4
+lists the order, 120, among the permitted construction inputs. `GROUP_INPUT.md` does not supply
+it, so G1 stays a check that can fail rather than a restatement of something handed over. The
+withholding is stated in that file, so the implementer knows it is deliberate and does not
+spend the run wondering whether the packet is incomplete.
+
 **Landing map for the § 9 commitment** (fixed before the run so the copy-out is mechanical;
 one commit, nothing unsealed until it lands):
 
@@ -211,8 +279,57 @@ any certification claim for B waits on A.
 
 ## DEVIATIONS LOG
 
-(none)
+**2026-07-31, M8.5-A run.** Procedure-level deviations (the stalled permission prompt, the
+environment catch, the raw-output path redaction, the scratchpad writes) are logged in
+[T4's deviations log](../../../../../dev_docs/tasks/t4_task_details.md) and disclosed in
+[`m8_5a_commitment.md`](../findings/m8_5a_commitment.md) § 4-6. No protocol-level deviation:
+no mid-run relay, no packet amendment, no unsealing before the commitment.
+
+**2026-08-01. The withheld group order was intentional on both sides, so nothing is recorded
+as a deviation.** The block A note asked the author whether omitting it from the packet was
+meant, offering to supply 120 and log the change
+([#386](https://github.com/openwave-labs/openwave/pull/386) thread, answered on
+[#394](https://github.com/openwave-labs/openwave/pull/394#issuecomment-5152324680)). The
+author's answer: the packet was limited to the generators so that G1's order result stayed a
+derived check rather than a restatement of supplied metadata. The stricter input condition was
+the intended one, and the run met it.
 
 ## FINDINGS
 
-(pending)
+**M8.5-A adjudication, 2026-07-31: REPRODUCED.** The clean-room implementation
+([commitment](../findings/m8_5a_commitment.md) at `dac2b6a1`, merged `c3dc2b5f`) matches the
+pre-registration § 6.1 table at `ec877ee0` exactly: 9 label-free `(dim, distance)` signatures
+pairwise distinct on both sides, 27 cells equal under exact integer comparison, no tolerance.
+Three-way agreement holds: the clean-room result, § 6.1 (object 1's published table), and
+object 2's reconstruction agree cell for cell. Harness:
+[`m8_5a_adjudication.py`](../scripts/m8_5a_adjudication.py) (its § 6.1 transcription made
+independently of object 2's `DOC` fixture, label-to-dim map from object 1's literals, checked
+against the transcribed distances before use); record:
+[`m8_5a_adjudication.json`](../data/m8_5a_adjudication.json). Both transcription mutations
+(`doc_typo` on the target, its mirror on the candidate) redden the comparison, per G10.
+
+| Item | Outcome |
+| --- | --- |
+| scalar table | REPRODUCED, 27/27 cells, three-way agreement |
+| claim label | context-isolated independent-method reproduction, the § 2 ceiling, nothing stronger |
+| § 6 coexact module | ran as pre-declared; implementer verdict `structurally derived and reproduced`, echoed not adjudicated; the derivation goes to the block E adversarial audit, and per the standing rule the numerical match upgrades nothing on its own |
+| what remains for M8.5-A | ✅ none: block E closed 2026-08-01, see below |
+
+**M8.5-A block E, 2026-08-01: the audit refuted nothing, M8.5-A is complete.** The method
+note is finalized ([status block + §§ I-J](../findings/m8_5a_method_note.md): §§ A-H stay
+byte-frozen as committed, § I records the adjudication, § J records the audit). The
+adversarial audit ran as an independent second agent briefed to refute, with its own group
+construction (explicit icosian list checked equal to the packet closure), its own character
+table (Burnside class-algebra splitting, the route the implementation deliberately avoids),
+and its own tables ([`m8_5a_audit.py`](../scripts/m8_5a_audit.py),
+[`m8_5a_audit.json`](../data/m8_5a_audit.json), exit 0, re-run green by the maintainer).
+
+| Audit outcome | Detail |
+| --- | --- |
+| eight claims attacked, none refuted | both lemmas, the rule table including the `d = 1` case, the coexact tower and its `m²/R²` normalization by an independent Casimir route, the trivial-column scope reading verified faithful against every source statement, realness, peeling completion, and a full 54-cell run-record cross-check |
+| two claims strengthened | bipartiteness and realness are theorems here (central `−1`; inverse-closed classes), not merely computed witnesses |
+| six unflagged weaknesses recorded | § J table: one informational (the Galois map sends the group to its twin icosian copy, set-stability unneeded but unstated), four minor exposition gaps, one cosmetic; none affects a result |
+| standing consequence | `structurally derived and reproduced` stands on the derivation, per the § 6 rule; the numerical match contributed nothing |
+
+M8.5-B (the quotient backend) is the live remainder of M8.5; its certification gate (A
+before any claim that B is certified) is discharged.

@@ -1,0 +1,80 @@
+===== main run: python3 m8_5a_reproduction.py (exit 0) =====
+M8.5-A context-isolated independent-method reproduction
+schema_version: m8_5a-v1
+packet: m8_5a_packet.json sha256 e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9
+env.hardware: arm64
+env.implementation: CPython
+env.interpreter: python 3.13.9
+env.libraries: standard library only (fractions, json, hashlib); no numpy
+env.os: Darwin 25.5.0
+env.seeds: none: the pipeline is deterministic and fully exact over Q(phi)
+
+group: order 120, 9 conjugacy classes, sizes [1, 1, 12, 12, 12, 12, 20, 20, 30]
+irreducible dimensions: [1, 2, 2, 3, 3, 4, 4, 5, 6]
+
+gates (every tolerance fixed at exactly 0; 811 multiplicities checked):
+  G1   PASS  constructed order 120 (required 120); closed under generators: True
+  G2   PASS  9 classes, sizes [1, 1, 12, 12, 12, 12, 20, 20, 30]: sum to 120, each divides 120, identity is a singleton, each class closed under conjugation
+  G3   PASS  character rows exactly orthonormal in <.,.>_G (tolerance 0, exact Q(phi) arithmetic); 9 irreducibles
+  G4   PASS  sum of squared dimensions [1, 2, 3, 4, 5, 6, 2, 4, 3] = 120 (group order 120)
+  G5   PASS  exactly one 2-dim irreducible has chi(g) = 2 cos theta(g) on every class under the packet embedding (that is Q); the constructed 'standard' rep has that character; the constructed 'galois' rep has the character of the unique other 2-dim irreducible (that is Q')
+  G6   PASS  McKay mark condition A.dims = 2.dims holds exactly
+  G7   PASS  graph distance defined for every irreducible; (dim, distance) signatures pairwise distinct: [(1, 0), (2, 1), (2, 7), (3, 2), (3, 6), (4, 3), (4, 6), (5, 4), (6, 5)]
+  G9   PASS  McKay tensor-multiplicity matrix is symmetric
+  G8   PASS  integer-nearness held for all 811 multiplicities computed (restriction, adjacency, first-occurrence), at tolerance exactly 0
+  G12  PASS  the consumed V_n character object satisfies chi_{V_n}(e) = n+1 for 0 <= n <= 24
+  G11  PASS  consumed tau_sigma character equals (chi_sigma(g)^2 + chi_sigma(g^2))/2 on every class for all three connection classes
+  G10  PASS  comparison harness: identity compares 'reproduced'; doc_typo transcription mutation compares 'partial disagreement' (['(dim=1,d=0) trivial: 0 vs 1'])
+
+scalar first-occurrence table (rows label-free, by (dim, McKay distance)):
+  dim  distance  trivial  standard  galois
+    1         0        0         2       6
+    2         1        1         1       5
+    3         2        2         0       4
+    4         3        3         1       3
+    5         4        4         2       2
+    6         5        5         3       1
+    3         6        6         4       0
+    4         6        6         4       2
+    2         7        7         5       3
+
+coexact module (section 6, ASSERTED rule; ran: True):
+  convention map: identity on levels: this implementation's level m maps to the source convention's coexact level m; both print eigenvalue m^2/R^2
+  m_first table:
+  dim  distance  trivial  standard  galois
+    1         0        2         2       6
+    2         1        3         3       5
+    3         2        2         2       4
+    4         3        3         3       3
+    5         4        4         2       2
+    6         5        5         3       3
+    3         6        6         4       2
+    4         6        6         4       2
+    2         7        7         5       3
+  rule adjudication (trivial column): all cells match
+  supporting checks: {'graph_bipartite': True, 'n_first_trivial_equals_mckay_distance': True}
+  verdict: structurally derived and reproduced
+  reason: general argument supplied (method_note_draft.md section C): n_first(rho, trivial) = McKay distance via the Clebsch-Gordan recursion, plus bipartite parity; coexact level-m content is V_m + V_{m-2} with m >= 2; computed table agrees cell-by-cell
+  standing: per PROTOCOL section 6, numerical agreement never upgrades the rule's standing; only the derivation can, and it is examined in the adversarial audit
+
+claim ceiling (section 2): context-isolated independent-method reproduction at most; adjudication against the pinned section 6.1 table is the maintainers' step and is NOT performed here.
+run status: completed; all gates PASS; awaiting section 7 adjudication
+result.json written: <clean-room-directory>/result.json
+
+===== mutation harness: python3 m8_5a_reproduction.py --mutation-tests =====
+== mutation harness ==
+G1_drop_element          target G1   -> reddened ['G1']                       OK   (one element removed from the closure result)
+G2_swap_elements         target G2   -> reddened ['G2']                       OK   (two elements swapped between conjugacy classes)
+G3_corrupt_char          target G3   -> reddened ['G3', 'G5']                 OK   (one character value shifted by +1)
+G4_drop_irrep            target G4   -> reddened ['G4']                       OK   (one irreducible removed from the extracted set)
+G5_swap_embeddings       target G5   -> reddened ['G5']                       OK   (standard and galois embeddings interchanged)
+G6_zero_entry            target G6   -> reddened ['G6', 'G7', 'G9']           OK   (one positive McKay adjacency entry zeroed)
+G7_disconnect            target G7   -> reddened ['G6', 'G7']                 OK   (one irreducible's adjacency row and column zeroed)
+G8_perturb_tower         target G8   -> reddened ['G8']                       OK   (a tower character value perturbed by +1/3)
+G9_asymmetric            target G9   -> reddened ['G6', 'G9']                 OK   (A[0][1] incremented, breaking symmetry)
+G10_sabotage_compare     target G10  -> reddened ['G10']                      OK   (comparison harness forced to report agreement)
+G11_chi_squared          target G11  -> reddened ['G11']                      OK   (Sym^2(sigma) replaced by chi_sigma^2 (Addendum 1))
+G12_n_weights            target G12  -> reddened ['G12']                      OK   (tower built with n rather than n+1 weights (Addendum 1))
+gates covered and reddened: ['G1', 'G10', 'G11', 'G12', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9']
+MUTATION HARNESS: PASS (12 mutations, all 12 gates covered, clean run green)
+===== mutation harness exit: 0 =====

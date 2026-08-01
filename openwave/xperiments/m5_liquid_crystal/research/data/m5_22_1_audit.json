@@ -1,0 +1,529 @@
+{
+ "controls": {
+  "hedgehog_Q": 1.0000000000000002,
+  "degree2_Q": 2.0,
+  "hedgehog_via_M": {
+   "Q": -1.0000000000000002,
+   "conflicts": 0,
+   "min_gap": 0.7000001908934578
+  },
+  "grad_fd_gate": 1.0406660306753177e-09
+ },
+ "C1": {
+  "verdict": "CONFIRMED",
+  "worst_rel_err": 7.104990648295336e-09,
+  "worst_xr_mine": 1.4833511886679756,
+  "ratios_mine": {
+   "neutral_over_proton_d0.3": 1.4982726910400999,
+   "proton_over_lepton_d0.3": 1.409184084384683,
+   "neutral_over_proton_d0.2": 1.5483694288420862,
+   "proton_over_lepton_d0.2": 1.4455249442911877,
+   "neutral_over_proton_d0.1": 1.5769197069942806,
+   "proton_over_lepton_d0.1": 1.4635873186477277
+  },
+  "ratios_note": {
+   "neutral_over_proton_d0.3": 1.498,
+   "neutral_over_proton_d0.2": 1.548,
+   "neutral_over_proton_d0.1": 1.577,
+   "proton_over_lepton_d0.3": 1.409,
+   "proton_over_lepton_d0.2": 1.446,
+   "proton_over_lepton_d0.1": 1.464
+  },
+  "detail": {
+   "P-0.5_d0.3": {
+    "mine": 8.496216773442569,
+    "row": 8.496216768542302,
+    "note": 8.496,
+    "rel_err": 5.767586906559669e-10,
+    "xr_mine": 1.199130682738598,
+    "xr_row": 1.1651213660174318,
+    "absQ_far_mine": 1.0,
+    "absQ_note": 1,
+    "far_conflicts": 0
+   },
+   "P-1_d0.3": {
+    "mine": 12.729649568805833,
+    "row": 12.729649565298047,
+    "note": 12.73,
+    "rel_err": 2.7556030066851726e-10,
+    "xr_mine": 1.272031126721748,
+    "xr_row": 1.244839325961922,
+    "absQ_far_mine": 3.533949646070574e-17,
+    "absQ_note": 0,
+    "far_conflicts": 0
+   },
+   "E-0.5_d0.3": {
+    "mine": 6.029174518496228,
+    "row": 6.029174561333457,
+    "note": 6.029,
+    "rel_err": 7.104990648295336e-09,
+    "xr_mine": 1.1072027409216454,
+    "xr_row": 1.0951969843416167,
+    "absQ_far_mine": 1.0,
+    "absQ_note": 1,
+    "far_conflicts": 0
+   },
+   "P-0.5_d0.2": {
+    "mine": 10.257044625485282,
+    "row": 10.25704459231037,
+    "note": 10.257,
+    "rel_err": 3.234353853886408e-09,
+    "xr_mine": 1.160841136612258,
+    "xr_row": 1.1264574016398596,
+    "absQ_far_mine": 1.0000000000000002,
+    "absQ_note": 1,
+    "far_conflicts": 0
+   },
+   "P-1_d0.2": {
+    "mine": 15.881694328370436,
+    "row": 15.881694333480986,
+    "note": 15.882,
+    "rel_err": 3.2178872719337547e-10,
+    "xr_mine": 1.3775585234440757,
+    "xr_row": 1.3486430092808805,
+    "absQ_far_mine": 0.0,
+    "absQ_note": 0,
+    "far_conflicts": 0
+   },
+   "E-0.5_d0.2": {
+    "mine": 7.095723021587025,
+    "row": 7.095723019645389,
+    "note": 7.096,
+    "rel_err": 2.7363472049144915e-10,
+    "xr_mine": 1.045801824635199,
+    "xr_row": 1.0417678573479483,
+    "absQ_far_mine": 1.0000000000000002,
+    "absQ_note": 1,
+    "far_conflicts": 0
+   },
+   "P-0.5_d0.1": {
+    "mine": 12.581554404166738,
+    "row": 12.581554415584725,
+    "note": 12.582,
+    "rel_err": 9.07517956771362e-10,
+    "xr_mine": 1.1957253526889562,
+    "xr_row": 1.1598027526793906,
+    "absQ_far_mine": 1.0000000000000002,
+    "absQ_note": 1,
+    "far_conflicts": 0
+   },
+   "P-1_d0.1": {
+    "mine": 19.840101084551215,
+    "row": 19.84010115927194,
+    "note": 19.84,
+    "rel_err": 3.7661463129992235e-09,
+    "xr_mine": 1.4833511886679756,
+    "xr_row": 1.452904855511492,
+    "absQ_far_mine": 7.067899292141149e-17,
+    "absQ_note": 0,
+    "far_conflicts": 0
+   },
+   "E-0.5_d0.1": {
+    "mine": 8.596381127291664,
+    "row": 8.596381139827209,
+    "note": 8.596,
+    "rel_err": 1.4582350356915617e-09,
+    "xr_mine": 1.0365638235534866,
+    "xr_row": 1.0334915832507436,
+    "absQ_far_mine": 1.0000000000000002,
+    "absQ_note": 1,
+    "far_conflicts": 0
+   }
+  },
+  "method": "own pad0 sym one-sided energy from npz M (float64 cast); own xr = max/min over E_u(fwd,bwd,2h,sub0,sub1)"
+ },
+ "C2": {
+  "verdict": "CONFIRMED",
+  "gauge": "volume lift sign fixed so upper half > 0 (global director sign is a gauge)",
+  "reads": {
+   "far_full": {
+    "Q": -3.533949646070574e-17,
+    "conflicts": 0,
+    "min_gap": 0.44953055273171605
+   },
+   "upper_half": {
+    "Q": 1.0000000000000002,
+    "conflicts": 0,
+    "min_gap": 0.44953055273171605
+   },
+   "lower_half": {
+    "Q": -1.0000000000000002,
+    "conflicts": 0,
+    "min_gap": 0.4495305529879634
+   }
+  },
+  "cap_scan": {
+   "kcap14_z-2.25": 1.0000000000000002,
+   "kcap15_z-0.75": 1.0000000000000002,
+   "kcap16_z+0.75": 1.0000000000000002,
+   "kcap17_z+2.25": 1.0000000000000002,
+   "kcap18_z+3.75": 1.0000000000000002
+  },
+  "lateral_scan": {
+   "halfwidth15.75": 1.0000000000000002,
+   "halfwidth17.25": 1.0000000000000002
+  },
+  "column_boxes": {
+   "upper": -2.3942163739858014e-19,
+   "lower": -5.521796321985272e-19,
+   "full": -5.521796321985272e-19
+  },
+  "surface_lift_reads": {
+   "far": {
+    "Q": -3.533949646070574e-17,
+    "conflicts": 0,
+    "min_gap": 0.44953055273171605
+   },
+   "upper": {
+    "Q": 1.0000000000000002,
+    "conflicts": 0,
+    "min_gap": 0.44953055273171605
+   },
+   "lower": {
+    "Q": -1.0000000000000002,
+    "conflicts": 0,
+    "min_gap": 0.4495305529879634
+   }
+  },
+  "z_ladder_lumps": [
+   {
+    "z_mid": -12.0,
+    "dQ": -1.0000000000000002
+   },
+   {
+    "z_mid": 12.0,
+    "dQ": 1.0000000000000002
+   }
+  ],
+  "p_z_ladder": 24.000000000000007,
+  "moments_volume": {
+   "q_vol": -0.01848264676820703,
+   "p_z": 21.628716493103887,
+   "Q2_zz": 20.238049149267106,
+   "volume_lift_conflicts": 1152
+  },
+  "ring_reads": {
+   "thr0.06": {
+    "n_rings": 0,
+    "z": []
+   },
+   "thr0.09": {
+    "n_rings": 16,
+    "z": [
+     -12.75,
+     -12.75,
+     -11.25,
+     -11.25,
+     -11.25,
+     -11.25,
+     -11.25,
+     -11.25,
+     11.25,
+     11.25,
+     11.25,
+     11.25,
+     11.25,
+     11.25,
+     12.75,
+     12.75
+    ]
+   },
+   "thr0.15": {
+    "n_rings": 2,
+    "z": [
+     -11.964285714285714,
+     11.964285714285714
+    ]
+   }
+  },
+  "method": "own BFS lift + exact van Oosterom-Strackee box degrees; z-cut ladder p_z (surface-only) + own volume div B moments"
+ },
+ "C3": {
+  "verdict": "QUALIFIED",
+  "detail": {
+   "parent_E_mine": 12.729649568805833,
+   "parent_E_note": 12.7296,
+   "den_relax_norm": 49.23055279438498,
+   "split_d3": {
+    "E_mine": 12.730826989752808,
+    "E_row": 12.730826989750687,
+    "E_note": 12.7308,
+    "q_far": -3.533949646070574e-17,
+    "dE_vs_parent": 0.0011774209469752606,
+    "dist_to_parent": 2.2725692097708916,
+    "dist_rel_to_relax": 0.04616176501739568,
+    "maxabs_dM": 0.20442438125610352,
+    "gap_rms_diff_core": 0.01816744106389873,
+    "gap_max_diff_core": 0.1647323611408157,
+    "q_upper": 1.0000000000000002,
+    "q_lower": -1.0000000000000002
+   },
+   "split_d6": {
+    "E_mine": 12.73082953216583,
+    "E_row": 12.730829532163714,
+    "E_note": 12.7308,
+    "q_far": 0.0,
+    "dE_vs_parent": 0.0011799633599967052,
+    "dist_to_parent": 2.2648506798680264,
+    "dist_rel_to_relax": 0.04600498168946714,
+    "maxabs_dM": 0.20439660549163818,
+    "gap_rms_diff_core": 0.01816601528612194,
+    "gap_max_diff_core": 0.1645821433220256,
+    "q_upper": 1.0000000000000002,
+    "q_lower": -1.0000000000000002
+   },
+   "kick_v0.5": {
+    "E_mine": 12.738484146876935,
+    "E_row": 12.7384841468748,
+    "E_note": 12.7385,
+    "q_far": 3.533949646070574e-17,
+    "dE_vs_parent": 0.008834578071102328,
+    "dist_to_parent": 2.870599939169018,
+    "dist_rel_to_relax": 0.05830931761335872,
+    "maxabs_dM": 0.49069347977638245,
+    "gap_rms_diff_core": 0.01805058638259186,
+    "gap_max_diff_core": 0.15719559431403496,
+    "q_upper": 1.0,
+    "q_lower": -1.0000000000000002
+   },
+   "kick_v1": {
+    "E_mine": 12.774563109352407,
+    "E_row": 12.774563109352263,
+    "E_note": 12.7746,
+    "q_far": 7.067899292141149e-17,
+    "dE_vs_parent": 0.04491354054657393,
+    "dist_to_parent": 6.25703314609221,
+    "dist_rel_to_relax": 0.127096544542678,
+    "maxabs_dM": 0.8953816182911396,
+    "gap_rms_diff_core": 0.0222334353464148,
+    "gap_max_diff_core": 0.2520382372419373,
+    "q_upper": 1.0,
+    "q_lower": -1.0000000000000002
+   },
+   "dist_split3_vs_split6_rel": 0.0038725044599651447,
+   "descent_parent": {
+    "E_start": 12.729649568805833,
+    "E_probe_end": 12.729649568803485,
+    "dE_total": 2.348343741687131e-12,
+    "dE_last20": 0.0,
+    "fmax_start": 1.4418390602919478e-07,
+    "fmax_end": 9.72069169815746e-09,
+    "steps": 400,
+    "alpha_final": 0.05
+   },
+   "descent_kick_v1": {
+    "E_start": 12.774563109352407,
+    "E_probe_end": 12.774563171997045,
+    "dE_total": -6.2644637921494e-08,
+    "dE_last20": 0.0,
+    "fmax_start": 6.311516022769268e-07,
+    "fmax_end": 3.891267993488302e-05,
+    "steps": 400,
+    "alpha_final": 0.025
+   },
+   "kick_v1_dist_after_descent": 6.257730820386483
+  },
+  "kick_v1_energy_gap": 0.04491354054657393,
+  "kick_v1_dist_rel": 0.127096544542678,
+  "method": "own energies; field distance on the free region normalized by the parent relaxation displacement ||Mp - M0p||; eigengap-field rms; own-gradient descent probe on parent + kick_v1"
+ },
+ "C4": {
+  "verdict": "CONFIRMED",
+  "E_mine": 15.047465000612096,
+  "E_row": 15.047465030207775,
+  "qfar_scan": {
+   "halfwidth11.25": {
+    "absQ": 0.0,
+    "conflicts": 0
+   },
+   "halfwidth14.25": {
+    "absQ": 7.067899292141149e-17,
+    "conflicts": 0
+   },
+   "halfwidth17.25": {
+    "absQ": 7.067899292141149e-17,
+    "conflicts": 0
+   }
+  },
+  "q_upper": 1.0,
+  "q_lower": -1.0000000000000002,
+  "far_surface_conflicts": 0,
+  "rings_thr0.15_z": [
+   -13.454819277108435,
+   13.454819277108435
+  ],
+  "winding_single": 0.9999143295566054,
+  "winding_composite": 1.999817963991653,
+  "p_z_volume": 24.884593702122537,
+  "binding_check": {
+   "E_pp": 15.047465000612096,
+   "twice_E_p": 16.992433546885138
+  },
+  "method": "own energy; own lift + box degrees at 3 radii; own incremental-unwrap 2D winding of the summed cross-section angle"
+ },
+ "C5": {
+  "verdict": "QUALIFIED",
+  "detail": {
+   "graft_p_below_n_above_z6_n32_d0.3": {
+    "E_mine": 10.869737043616308,
+    "E_row": 10.869737054831706,
+    "q_note": -0.88,
+    "q_row": -0.8844251182709495,
+    "scan": {
+     "halfwidth11.25": {
+      "absQ": 0.0,
+      "conflicts": 0,
+      "min_gap": 0.359222310999391
+     },
+     "halfwidth12.75": {
+      "absQ": 3.533949646070574e-17,
+      "conflicts": 0,
+      "min_gap": 0.2401644653305618
+     },
+     "halfwidth14.25": {
+      "absQ": 8.834874115176436e-17,
+      "conflicts": 0,
+      "min_gap": 0.15799174824943463
+     },
+     "halfwidth15.75": {
+      "absQ": 7.951386703658792e-17,
+      "conflicts": 0,
+      "min_gap": 0.0814107842422751
+     },
+     "halfwidth17.25": {
+      "absQ": 0.999999999999891,
+      "conflicts": 72,
+      "min_gap": 0.08717813840759425
+     },
+     "halfwidth18.75": {
+      "absQ": 0.9999999999997432,
+      "conflicts": 118,
+      "min_gap": 0.13546810645590845
+     },
+     "halfwidth20.25": {
+      "absQ": 0.9999999999998889,
+      "conflicts": 162,
+      "min_gap": 0.15067796112659115
+     }
+    },
+    "absQ_spread": 0.999999999999891,
+    "outer_conflict_zs": {
+     "count": 72,
+     "z_min": -17.25,
+     "z_max": -0.75
+    },
+    "outer_split": {
+     "full": 0.999999999999891,
+     "upper": 1.0,
+     "lower": 7.067899292141149e-17
+    }
+   },
+   "graft_p_below_n_above_z9_n32_d0.3": {
+    "E_mine": 10.666439351736203,
+    "E_row": 10.666439336975351,
+    "q_note": -0.85,
+    "q_row": -0.8473311713207015,
+    "scan": {
+     "halfwidth11.25": {
+      "absQ": 0.0,
+      "conflicts": 0,
+      "min_gap": 0.41706473104594005
+     },
+     "halfwidth12.75": {
+      "absQ": 8.834874115176436e-18,
+      "conflicts": 0,
+      "min_gap": 0.30254958493453804
+     },
+     "halfwidth14.25": {
+      "absQ": 8.834874115176436e-18,
+      "conflicts": 0,
+      "min_gap": 0.15900434578221156
+     },
+     "halfwidth15.75": {
+      "absQ": 3.533949646070574e-17,
+      "conflicts": 0,
+      "min_gap": 0.10820263104781735
+     },
+     "halfwidth17.25": {
+      "absQ": 1.0000000000002534,
+      "conflicts": 164,
+      "min_gap": 0.0709946191578873
+     },
+     "halfwidth18.75": {
+      "absQ": 0.9999999999999266,
+      "conflicts": 118,
+      "min_gap": 0.112609250584073
+     },
+     "halfwidth20.25": {
+      "absQ": 0.9999999999999301,
+      "conflicts": 162,
+      "min_gap": 0.151000922489132
+     }
+    },
+    "absQ_spread": 1.0000000000002534,
+    "outer_conflict_zs": {
+     "count": 164,
+     "z_min": -17.25,
+     "z_max": 17.25
+    },
+    "outer_split": {
+     "full": 1.0000000000002534,
+     "upper": 1.0000000000001488,
+     "lower": -9.718361526694079e-17
+    }
+   }
+  },
+  "inner_radii_clean_zero": true,
+  "outer_radius_charged": true,
+  "outer_radius_frustrated": true,
+  "finding": "the far field is LAYERED, not one fractional sector: exact degree 0 with zero lift conflicts at half-widths 11.25-15.75, then |Q| = 1 with a frustrated (non-orientable) seam at the outermost free surfaces next to the pinned shell; the rows' -0.88/-0.85 are the FD flux instrument smearing that seam, not a radius-stable fractional charge",
+  "method": "independent per-surface lift + exact solid-angle degree at 7 probe radii + broken-edge z map"
+ },
+ "C6": {
+  "verdict": "CONFIRMED",
+  "detail": {
+   "dn_-0.5at-2_+0.5at+0_-0.5at+2_n32_d0.3": {
+    "winding_2d_mine": 0.9996966893410802,
+    "z_ladder_lumps": [
+     {
+      "z_mid": -6.0,
+      "dQ": 1.0000000000002232
+     },
+     {
+      "z_mid": 0.0,
+      "dQ": -1.0000000000035412
+     },
+     {
+      "z_mid": 6.0,
+      "dQ": 1.0000000000001839
+     }
+    ],
+    "upper_box_cap_scan": {
+     "z-3.75": -1.2559657042134822e-13,
+     "z-2.25": -8.012170637571206e-13,
+     "z-0.75": -1.3972530110633836e-12,
+     "z+0.75": 1.0000000000021438,
+     "z+2.25": 1.0000000000005522,
+     "z+3.75": 0.9999999999998687,
+     "z+5.25": 1.0000000000001839
+    },
+    "E_mine": 15.244640747118298,
+    "E_row": 15.244640751177418,
+    "q_far_mine": 1.0000000000000002,
+    "q_far_row": -1.0069035533028814,
+    "q_upper": 1.0000000000021438,
+    "q_lower": 1.0000000000013973,
+    "far_surface_conflicts": 0,
+    "rings_z_mine": [
+     -6.159090909090909,
+     6.159090909090909
+    ],
+    "rings_rho_mine": [
+     11.352764234522255,
+     11.352764234522255
+    ],
+    "row_stop": "f_tol"
+   }
+  }
+ }
+}
