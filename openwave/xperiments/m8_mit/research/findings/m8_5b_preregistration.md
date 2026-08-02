@@ -1,9 +1,10 @@
 # M8.5-B Numerical Pre-registration (quotient backend: scalar and one-form infrastructure)
 
-> **Status: DRAFT FOR FREEZE (drafted 2026-07-30, parameter lock complete 2026-08-01 per § 6,
-> filed 2026-08-01; author-written pre-registration; NO
-> implementation code, and NO target or certification runs, in this document; the
-> non-evidentiary engineering pilot is reported in § 6).** Freezes WHAT the M8.5-B backend must demonstrate, HOW its
+> **Status: LOCKED 2026-08-01** ([PR #402](https://github.com/openwave-labs/openwave/pull/402)).
+> Author-written pre-registration, drafted 2026-07-30 with the § 6 parameter lock completed
+> 2026-08-01. NO implementation code, and NO target or certification runs, in this document;
+> the non-evidentiary engineering pilot is reported in § 6. FROZEN as of the lock date: later
+> changes enter only as dated addenda in § 12, never in place. Freezes WHAT the M8.5-B backend must demonstrate, HOW its
 > evidence is assembled, and what may be claimed at each stage; it does not build the backend.
 > Pilot-selected values are recorded in § 6, and published reference pins with their
 > convention maps are recorded in § 11. All slots are filled; after landing, this document is FROZEN and later changes enter only as
@@ -277,10 +278,28 @@ derive its order from the supplied generator pair without using `q` as an expect
 fixture; comparison with `q` is therefore a metadata-consistency check, while closure, the
 effective census, central-kernel deduplication and freeness remain derived gates. Second, the
 canonical Packet I and Packet II bytes are committed by publishing their SHA-256 hashes in
-this pre-registration before either packet opens; Packet II itself remains outside the public
-repository because committing its answer-bearing bytes would disclose the sealed case. Both
-packets are reproducible from the retained author-side source, verified byte-for-byte against
-the published hashes, so the commitment does not rest on a stored copy surviving.
+this pre-registration before either packet opens; Packet II itself stays outside the public
+repository until the adjudication is recorded, because committing its answer-bearing bytes
+any earlier would disclose the sealed case. Both packets are reproducible from the retained
+author-side source, verified byte-for-byte against the published hashes, so the commitment
+does not rest on a stored copy surviving.
+
+**Publication after adjudication (frozen).** Once the § 4.1 sequence completes and the
+adjudication is recorded, BOTH packets are published in the repository. The seal exists to
+stop either route being built toward a posted table, and that purpose is discharged the
+moment both routes have committed their raw outputs, so nothing is protected by keeping them
+sealed afterwards. Publication is what converts the two hashes from private commitments into
+checkable ones: the published bytes MUST reproduce the SHA-256 hashes frozen in § 6.1 and
+§ 11.7, and that verification is itself a reported gate, so a later reader can confirm the
+transcription of rung 3a against the packet it was transcribed from rather than taking it on
+the adjudicator's word. Publishing burns the case for reuse as an adjudication case, which
+costs nothing: § 4.1 records that the family is infinite, so a fresh case is always available.
+
+**Adjudicator.** The adjudicator is the author. M8.5-B makes no unseen-target claim (§ 0), so
+the frozen evidence class does not require an independent adjudicator; its force comes from
+exclusion from tuning, precommitment, preservation of the sealed packets, and comparison only
+after both routes' outputs are committed. § 4.2's separateness requirement applies to the
+evaluator's code and method, not to the identity of the person executing it.
 
 **Frozen sequence.**
 
@@ -292,6 +311,8 @@ the published hashes, so the commitment does not rest on a stored copy surviving
 5. The adjudicator performs rung 3a against the revealed reference values.
 6. The adjudicator runs the frozen 3b evaluator on the Packet I case input and compares its
    output against the ALREADY COMMITTED route outputs.
+7. Both packets are published in the repository, and their bytes are verified against the
+   SHA-256 hashes frozen in § 6.1 and § 11.7 as a reported gate.
 
 The 3b evaluator's code and its `Γ = 1` validation are pre-reveal (step 1); only its
 case-specific execution happens at step 6, after route outputs are fixed. At step 5 the
@@ -762,7 +783,7 @@ never remove these):
 | G2 | untwisted eigenvalue gates (rungs 1-2): computed eigenvalues match the pinned references, § 11.1 for the rung-1 scalar spectrum and § 11.2 for the rung-2 one-form towers, within the frozen tolerance, mutation-tested against perturbed references |
 | G3 | rung-2 structure gates, each separately mutation-tested: exact one-form multiplicities match the § 11.2 exact tower `λ = ℓ(ℓ+2)`, multiplicity `(ℓ+1)²`; coexact one-form multiplicities match the § 11.2 coexact tower `λ = m²`, multiplicity `2(m²−1)`; the gradient image and the nonconstant exact sector agree under the frozen subspace-comparison criterion (§ 6.3), evaluated only at levels the stopping rule reports as RESOLVED; the harmonic one-form dimension equals zero (§ 11.4); the exact/coexact orthogonality residual is within the frozen 1.5e-1 threshold under the § 6.3 definition (theorem pinned at § 11.3); the Weitzenböck residual is within the frozen 1e-7 absolute threshold under the § 6.3 definition and the declared sign and curvature convention (identity quoted at § 11.5, curvature substitution assembled per § 5) |
 | G4 | multiplicity integer-nearness (§ 5) for every measured and predicted multiplicity |
-| G5a | precommitted scalar adjudication (rung 3a): BOTH packet hashes verify at their reveal steps; the complete scalar spectrum and multiplicity sequence through the certified band matches Packet II's reference under its recorded indexing map; the comparison harness carries a transcription mutation; the § 4.1 step order is recorded, showing Packet II opened only after both routes' raw outputs were committed |
+| G5a | precommitted scalar adjudication (rung 3a): BOTH packet hashes verify at their reveal steps; the complete scalar spectrum and multiplicity sequence through the certified band matches Packet II's reference under its recorded indexing map; the comparison harness carries a transcription mutation; the packet field `case_id` and the § 5 core-output field `arena_case_id` are the SAME quantity under two frozen names, so the harness matches the packet's identifier against `arena_case_id` in route output and never searches that output for a `case_id` key; the § 4.1 step order is recorded, showing Packet II opened only after both routes' raw outputs were committed; and the § 4.1 step-7 publication verifies both published packets against their frozen hashes |
 | G5b | precommitted one-form theorem evaluation (rung 3b): the evaluator's code and its `Γ = 1` recovery of the rung-2 unit-`S³` tower are committed at § 4.1 step 1 (precondition); its case values, computed from Packet I at step 6, match both routes' already-committed outputs through the certified band; its transcription, group-action, and summation gates are each mutation-tested; the class-2 label, the § 0 claim ceiling, and the route-(b) overlap asymmetry are recorded with the result |
 | G6 | cross-route agreement gates for rungs 4-6: exact integer equality after integer-nearness, label-free row matching with signature distinctness checked, AND full-band completeness per § 4 (every level-by-sector cell present through the common band including zeros; every route (a) eigenvalue cluster mapped to an allowed level within tolerance; no missing expected cluster, unmatched cluster, omitted zero cell, or spurious sub-ceiling level) |
 | G7 | route (a): degeneracy splitting measured at every frozen resolution, with convergence judged only by the frozen statistic; route (b): exact in-band cutoff stability reported per observable, comparing the certification cutoff against twice that cutoff. Route (b) evaluates exact finite group sums, so it has no convergence sequence to report and is never judged by the convergence statistic |
@@ -805,9 +826,9 @@ routes at matched configurations with the resource measurements that back the co
 
 | What | Pin |
 | --- | --- |
-| pre-registration filed against | upstream main `ec877ee0` (2026-07-30; re-pinned at landing if main has moved) |
+| pre-registration filed against | upstream main `d99aa00f` (re-pinned at landing per this row; drafted against `ec877ee0`, 2026-07-30) |
 | M8.2 lock | landed `f18daf27`; close-out `269456b7`; post-lock addendum `0776cc19` (append-only) |
-| A protocol | [`m8_5a_reproduction_protocol.md`](m8_5a_reproduction_protocol.md) (landing commit recorded at B's landing) |
+| A protocol | [`m8_5a_reproduction_protocol.md`](m8_5a_reproduction_protocol.md), landed `cf8fb93d` (2026-07-30) |
 | task spec | [`m8_5_task_details.md`](../tasks/m8_5_task_details.md), route table + certification benchmark + DoD |
 | author-context reference code (post-run only, § 2) | `scripts/m8_2_first_occurrence.py` at `269456b7`; `scripts/m8_2_indep_reconstruction.py` at `12f4a94a`; `scripts/m8_3_mass_reproducer.py` at its merge commit, recorded at first post-run use |
 | procedure record | the PR #350 close-out thread (2026-07-28) |
