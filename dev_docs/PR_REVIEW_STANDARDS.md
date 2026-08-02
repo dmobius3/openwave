@@ -332,7 +332,11 @@ Two chains, both real, both from the same column:
 
 Four merges for one amendment, the last one existing only because the first two orphaned fixes between them. Five to agree on a single document. Measured across that column, 12 of 26 pull requests were sub-200-line document syncs, against roughly 4 of 25 on a single-author column at the same doc-to-code ratio ([T7](tasks/t7_task_details.md)). The expensive part is not the writing: every round trip is a full fork → branch → commit → PR → DCO → merge cycle for the contributor plus a review for the maintainer, and the total is linear in edits × authors.
 
-The habit behind it is **making the agreement in the merge history instead of in the PR thread**.
+The habit behind it is **making the agreement in the merge history instead of in the PR thread**. Stated as the swap:
+
+| Old habit | New habit |
+| --- | --- |
+| Merge fast, then serialize each point of agreement into its own PR afterwards | Settle it in the thread first, land the edits on the branch, merge **once** |
 
 | # | Rule | What it means at the keyboard |
 | --- | --- | --- |
@@ -340,6 +344,20 @@ The habit behind it is **making the agreement in the merge history instead of in
 | R2 | **Land the edit at merge** | Mechanical fixes go onto the branch under [§ 10](#10-maintainer-edits) and are announced. That is already [G3](#11-fairness-rules); what is added here is that it applies to the maintainer's OWN documents too, not only to a contributor's |
 | R3 | **Batch addenda** | A frozen document changes only by dated addendum. Addenda accumulate to a review point and land together. One addendum per pull request is the pattern that produced #385 and #386 |
 | R4 | **A follow-up PR is new work only** | If the point was visible in the diff during review, it does not get its own pull request afterwards. If it genuinely was not, it does, and that is legitimate |
+
+**Worked example: [#402](https://github.com/openwave-labs/openwave/pull/402), the first review run under this rule.** An author-written pre-registration, one file, +978 lines, freezing a numerical contract. The review found one blocking item, four requested items and two notes. Where each landed:
+
+| Item | Where it went | Under the old habit |
+| --- | --- | --- |
+| All findings: blocking, requested, notes | One submitted review, single pass | Drip-fed across several comments |
+| Citation registration (Gate A4), an internal date conflict (C5) | Pushed to the contributor's branch, announced in the review | 1 follow-up PR |
+| Re-pinning the base commit, the freeze stamp, an unfilled landing slot | Deferred to the merge, since the document itself defines them as landing-time | 2 follow-up PRs |
+| The one blocking question, an unnamed obligation holder | Asked in the thread, applied at merge on the author's in-thread authorization rather than requiring a commit | 1 PR from the author |
+| **Merges** | **1** | **about 5** |
+
+Two details that make it work. The blocking finding was answerable in one reply, which is what makes holding the merge cheap; and the fix for it did not need a commit from the author, because a maintainer edit applied at merge with the author's recorded consent discharges it under [R2](#103-one-document-one-merge). The approving review that follows the merge is not a second merge: it exists because a `CHANGES_REQUESTED` state outlives the changes ([§ 13](#13-command-appendix)), and without it the contributor's merged work keeps a rejection badge.
+
+**When NOT to hold the merge.** The rule is one merge, not merge-only-when-perfect. If a blocking finding needs real work rather than one reply, holding the whole contribution costs more than it saves: merge what is clean, and carry the rest as a [🚧 split](#12-verdict-and-how-to-write-it) or as a roadmap row per [§ 8.1](#81-when-the-contributor-is-not-the-model-author). The trigger is the size of the answer, not the severity of the finding.
 
 **The maintainer's own coordination PRs count.** #376, #383 and #384 were maintainer-authored clarifications to already-merged documents. Same failure in a different costume: a decision reached in conversation, then serialized into the history one merge at a time. Fold them into the next pull request that touches the file, or into the merge of the pull request that raised the question.
 
