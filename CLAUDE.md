@@ -29,7 +29,7 @@ OpenWave investigates, in one integrated simulator, four primary domains: **matt
 | 9 | [`SYS_ARCH.md`](SYS_ARCH.md) | Module structure and system architecture |
 | 10 | [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md) | **MANDATORY** reporting standard for model-owner-facing output: equations first, equation-to-code map, adversarial audit recorded |
 | 11 | [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) | Borrowing one column's field family into another's framework; how author-gated questions are routed |
-| 12 | [`dev_docs/PR_REVIEW_STANDARDS.md`](dev_docs/PR_REVIEW_STANDARDS.md) | The maintainer-side review procedure: blast-radius tiers, the claim-to-artifact recompute, the adversarial pass, and the evidence bar for moving a `MODELS.md` cell |
+| 12 | [`dev_docs/PR_REVIEW_STANDARDS.md`](dev_docs/PR_REVIEW_STANDARDS.md) | **MANDATORY** whenever a pull request is in play, loaded BEFORE the diff: blast-radius tiers, the claim-to-artifact recompute, the adversarial pass, the commitment sweep, the evidence bar for moving a `MODELS.md` cell, and the round-trip budget |
 | 13 | [`dev_docs/ROADMAP_STANDARDS.md`](dev_docs/ROADMAP_STANDARDS.md) | **MANDATORY** shape and word budgets for every roadmap (a row is a preview, the task document is the record); enforced by [`dev_docs/utils/check_roadmaps.py`](dev_docs/utils/check_roadmaps.py) |
 | 14 | [`dev_docs/`](dev_docs/) | Coding, performance, markdown, coordinate, and precision standards (listed under Code Style below); [`dev_docs/platform_roadmap.md`](dev_docs/platform_roadmap.md) tracks **platform-wide tasks** (`T<n>` IDs: MODELS.md structure, shared standards, the [`dev_docs/utils/`](dev_docs/utils/) checkers), as opposed to one model's physics |
 | 15 | `openwave/xperiments/<model>/__M<x>_model_briefing.md` | Each column's own front door: identity, profile, honest status, help wanted |
@@ -136,6 +136,7 @@ OpenWave implements classical-field-theory-with-topology-and-nonlinearity approa
 | [Wave Diagnostics](dev_docs/WAVE_DIAGNOSTICS.md) | Validation diagnostics |
 | [Method Note](dev_docs/METHOD_NOTE.md) | **MANDATORY** standard for any report/email to a model's theory owner or external physicist |
 | [AI Hygiene](AI_HYGIENE.md) | **MANDATORY** working contract for AI-assisted research: division of labor, failure modes, verification habits |
+| [PR Review Standards](dev_docs/PR_REVIEW_STANDARDS.md) | **MANDATORY** procedure for every pull request, read before the diff |
 
 ### AI hygiene (all AI-assisted work): MANDATORY
 
@@ -148,6 +149,16 @@ Before any substantive derivation, verification, or headline claim is trusted, r
 ### Method note (model-owner-facing output): MANDATORY
 
 Any report, summary doc, or email addressed to a model's theory owner (M5: Duda; M7: Fleury; any advisor) follows [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md): **equations first** (Hamiltonian / potential / observable definitions in math notation), an **equation-to-code map** with absolute GitHub hyperlinks (`#L` anchors; `blob/main` for frozen task-scoped files, commit-pinned only for live/evolving files like the root engines and production rendering code), the functional in a **small auditable module**, results after methods, a minimal physics-first inspection set, and the **adversarial audit recorded in the note**. Adopted 2026-07-03 after the M5.16 audit failure ("still I have no idea what does it calculate"): results a physicist cannot audit by reading carry no weight, regardless of correctness.
+
+### Pull-request review (any PR in play): MANDATORY
+
+**Load [`dev_docs/PR_REVIEW_STANDARDS.md`](dev_docs/PR_REVIEW_STANDARDS.md) BEFORE reading the diff, not after.** It is the standard for every pull request in this repository: an external contributor's, another agent's, and the maintainer's own. Review quality must not depend on which session is on duty, which is the whole reason the document exists.
+
+**The trigger is broader than the word "review".** It fires on "review PR #N", on "what do you think of #N", on being asked to summarize or characterize a pull request, and on any read whose output could inform a merge, an approval, or a comment. A characterization delivered without the gates having been run is a review wearing different clothes, and it reaches the same merge decision.
+
+What the document holds, so an agent knows what it is missing without it: intake and DCO ([§ 1](dev_docs/PR_REVIEW_STANDARDS.md#1-intake)), the blast-radius tiers that set how heavy the review is ([§ 2](dev_docs/PR_REVIEW_STANDARDS.md#2-blast-radius-map)), gates A through G including **code-intent review before anything is executed** ([A9](dev_docs/PR_REVIEW_STANDARDS.md#3-gate-a-safety-and-hygiene)) and **recompute the headline number yourself rather than reading it** ([§ 5](dev_docs/PR_REVIEW_STANDARDS.md#5-gate-c-claim-to-artifact)), the **commitment sweep and its loud maintainer notice** ([§ 4.1](dev_docs/PR_REVIEW_STANDARDS.md#41-the-commitment-sweep-and-the-loud-notification)), when to fix something yourself instead of asking plus the round-trip budget ([§ 10](dev_docs/PR_REVIEW_STANDARDS.md#10-maintainer-edits)), the verdict ladder and the rule that a verdict is submitted as a **review** and never as a plain comment ([§§ 12-13](dev_docs/PR_REVIEW_STANDARDS.md#12-verdict-and-how-to-write-it)).
+
+**It is a live file.** Any pull request that teaches something new gets a row in its [lessons log](dev_docs/PR_REVIEW_STANDARDS.md#14-lessons-log) before the pull request closes.
 
 ### Important: Markdown Linting Requirements
 
