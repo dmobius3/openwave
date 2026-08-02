@@ -413,6 +413,16 @@ git log main..pr-<N> --format='%H%n  %an <%ae>%n  signoff: %(trailers:key=Signed
 git worktree add --detach /tmp/pr-<N> pr-<N>     # review without disturbing your tree
 ```
 
+When the PR closes, merged or declined, the review worktree and its fetched branch ref are
+deleted in the same session, without being asked. A leftover worktree is a stale copy of the
+repository that a later command can silently resolve into (the editable-install `sys.path`
+trap), and the ref blocks a clean re-fetch if the PR reopens:
+
+```bash
+git worktree remove /tmp/pr-<N>     # --force only if the leftover state is confirmed disposable
+git branch -D pr-<N>
+```
+
 Blast radius and size:
 
 ```bash
@@ -515,6 +525,8 @@ One row per PR that taught us something. Newest at the bottom.
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | A claim we had written ourselves, in a maintainer commit, was the thing that blocked the merge. The docstring asserted only K=10 sat at the lock-in wells; measuring all 45 pair separations showed the opposite (K=2..4 entirely on the well, K=10 at none of 45) and that the band we attributed to K=2..9 was really K=11's. `git blame` on the contradiction before routing it saved a review round, because the answer was that the wrong half was ours | Gate C, [§ 10](#10-maintainer-edits) |
 | [#378](https://github.com/openwave-labs/openwave/pull/378) | Its own title is the finding: "recovering orphaned fixes from #374 and #375". One amendment took four merges because each point of agreement was serialized into the history instead of settled in the thread before merging. Measuring the column found 12 of 26 pull requests were sub-200-line document syncs, against roughly 4 of 25 where there is a single author and the same doc-to-code ratio. The overhead was the round trip, not the rigor, and no gate had to move to cut it | § 10.3, [T7](tasks/t7_task_details.md) |
 | [#380](https://github.com/openwave-labs/openwave/pull/380) | The reproduction obligation an earlier author-written lock placed on a later task landed as maintainer labor, and the ownership split (author writes the protocol, maintainers implement) crystallized only in a close-out exchange, after the freeze. It worked because that exchange was good, not because any rule required it: at freeze time nothing had asked who pays. Obligations are now priced at review, with a named discharger, accepted workload, and the reproduce-vs-derive ceiling | Gate B, the obligations row |
+| [#402](https://github.com/openwave-labs/openwave/pull/402) | An agreed merge edit named a gate ("the synthetic nonidentity fixture") that existed in no document. Stopping and asking, instead of transcribing the contrast into a file that freezes at merge, was right: the author confirmed it was a NEW requirement, not a rewording, and supplied the clause in his own words. An edit whose referent does not exist in the document is a question, not a transcription. The same close-out re-taught the propagation lesson at edit time: the author's new wording ("no manual transcription anywhere in the adjudication path") contradicted two other passages, so applying it meant sweeping the document for the claim it displaced | § 10.3, Gate B obligations row |
+| [#402](https://github.com/openwave-labs/openwave/pull/402) | First full run of § 10.3, and it held: one review carrying every finding, one in-thread answer to the one blocking item (the unnamed adjudicator, the #380 who-pays lesson caught BEFORE the freeze this time), maintainer edits and landing-time items applied on the branch, one merge. Separately verified: the Update branch button's unsigned merge commit does not trip the DCO check, since the probot app ignores merge commits, confirmed empirically on #399-#401, each of which merged carrying one. Updating a fork PR needs no signed local merge | § 10.3 worked example, § 13 |
 
 ---
 
