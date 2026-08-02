@@ -413,6 +413,8 @@ The `-s` flag adds the `Signed-off-by:` line that certifies the contributor has 
 
 A maintainer reviews with a **light PR review** focused on two things only: (1) a runnable script that reproduces the claim, and (2) a research note documenting pass or fail honestly. It is not ideological gatekeeping.
 
+Review runs on **one document, one merge**: comments are settled in the thread before merging, and a maintainer applies small fixes to the branch at merge rather than sending them back as another cycle, so a contribution does not land across a chain of follow-up pull requests. What that means case by case, including for a frozen document: [`CONTRIBUTING.md § How review works`](CONTRIBUTING.md#how-review-works).
+
 ### 3.6 Mode of work: headless first, rendering last
 
 Every column runs the same order, and it is worth stating because the appealing thing to do is the opposite one.

@@ -30,7 +30,7 @@ A documented negative is a merge-worthy contribution. An overstated positive is 
 | [7. Gate E: MODELS.md cell changes](#7-gate-e-modelsmd-cell-changes) | the evidence bar for moving a cell, and the linter a maintainer runs (§ 7.1) |
 | [8. Gate F: other authors' work](#8-gate-f-other-authors-work) | not damaging a column you do not own |
 | [9. Gate G: policy sweep](#9-gate-g-policy-sweep) | AI hygiene, conduct, contributing, reproduce, onboarding, style |
-| [10. Maintainer edits](#10-maintainer-edits) | when to fix it yourself instead of asking, and how to push to a fork |
+| [10. Maintainer edits](#10-maintainer-edits) | when to fix it yourself instead of asking, how to push to a fork, and the round-trip budget (§ 10.3) |
 | [11. Fairness rules](#11-fairness-rules) | measure against the enforced baseline, not the aspirational one |
 | [12. Verdict and how to write it](#12-verdict-and-how-to-write-it) | the ladder, and open-source review etiquette |
 | [13. Command appendix](#13-command-appendix) | copy-paste checks |
@@ -252,7 +252,7 @@ What that note routes is decided per finding, not per PR:
 
 **Where there is at least one author-gated finding, the author has the final say on those findings**, and the PR does not merge past them on the maintainer's opinion alone. The maintainer's own blocking findings (the ❌ rows above) stay the maintainer's and are fixed regardless.
 
-Author-gated does not mean author-blocked forever. If the author does not respond, the maintainer may merge the non-gated part and keep the gated part open as an issue, saying so in the thread.
+Author-gated does not mean author-blocked forever. If the author does not respond, the maintainer may merge the non-gated part and carry the gated part as a roadmap row ([T5](tasks/t5_task_details.md)), saying so in the thread.
 
 ## 9. Gate G: policy sweep
 
@@ -316,6 +316,35 @@ git push <contributor> <local-branch>:<their-head-ref>
 | **Relocating a module can change what it computes** | Anything resolving a path from `Path(__file__).parent` silently means something else once the file moves a level down. Before pushing a move, grep the moved files for `__file__` and re-verify every path they derive, including the ones a second module derives independently and expects to match |
 | **A fix that needs a guess is not mechanical** | If you cannot state why they wrote it that way, you are not fixing it, you are overwriting it |
 
+### 10.3 One document, one merge
+
+The rest of § 10 fixes the round trip *inside* a review. This fixes the one that happens *after* it: the point noticed during review that becomes its own pull request afterwards.
+
+Two chains, both real, both from the same column:
+
+```text
+#374 author amends condition 3  →  #375 author syncs the docs  →
+#376 maintainer clarifies the gate  →  #378 author "recovering orphaned fixes from #374 and #375"
+
+#382 freeze  →  #383 clarify  →  #384 adopt the author's three directions from #382  →
+#385 author addendum  →  #386 record the addendum as landed
+```
+
+Four merges for one amendment, the last one existing only because the first two orphaned fixes between them. Five to agree on a single document. Measured across that column, 12 of 26 pull requests were sub-200-line document syncs, against roughly 4 of 25 on a single-author column at the same doc-to-code ratio ([T7](tasks/t7_task_details.md)). The expensive part is not the writing: every round trip is a full fork → branch → commit → PR → DCO → merge cycle for the contributor plus a review for the maintainer, and the total is linear in edits × authors.
+
+The habit behind it is **making the agreement in the merge history instead of in the PR thread**.
+
+| # | Rule | What it means at the keyboard |
+| --- | --- | --- |
+| R1 | **Settle in the thread** | Findings are raised in one pass and answered before merge. A second review round is for what the first round asked for, never for what the first round did not read carefully enough |
+| R2 | **Land the edit at merge** | Mechanical fixes go onto the branch under [§ 10](#10-maintainer-edits) and are announced. That is already [G3](#11-fairness-rules); what is added here is that it applies to the maintainer's OWN documents too, not only to a contributor's |
+| R3 | **Batch addenda** | A frozen document changes only by dated addendum. Addenda accumulate to a review point and land together. One addendum per pull request is the pattern that produced #385 and #386 |
+| R4 | **A follow-up PR is new work only** | If the point was visible in the diff during review, it does not get its own pull request afterwards. If it genuinely was not, it does, and that is legitimate |
+
+**The maintainer's own coordination PRs count.** #376, #383 and #384 were maintainer-authored clarifications to already-merged documents. Same failure in a different costume: a decision reached in conversation, then serialized into the history one merge at a time. Fold them into the next pull request that touches the file, or into the merge of the pull request that raised the question.
+
+**What this never buys.** Not a gate, not a checker run, not an audit, not a claim-strength check. Every finding is still found and still fixed; batching moves *when* an edit lands, never *whether* it is checked. Where shortening a cycle would mean skipping something in [§§ 3-9](#3-gate-a-safety-and-hygiene), the cycle is the cheaper thing to spend.
+
 ## 11. Fairness rules
 
 These exist so review stays honest in both directions.
@@ -335,7 +364,7 @@ These exist so review stays honest in both directions.
 | Verdict | When | Action |
 | --- | --- | --- |
 | ✅ **Approve and merge** | All gates clear, or only notes remain | Merge. Record anything learned in the [lessons log](#14-lessons-log) |
-| 🔶 **Approve with follow-ups** | Gates clear; requested items are real but not load-bearing | Merge, and open issues for the follow-ups so they do not evaporate |
+| 🔶 **Approve with follow-ups** | Gates clear; requested items are real but not load-bearing | Merge, and file the follow-ups as roadmap rows so they do not evaporate. Not issues: a task is a roadmap row and an issue is a platform defect ([T5](tasks/t5_task_details.md)) |
 | ⚠️ **Changes requested** | Blocking findings exist, all of them fixable by the contributor | Post the findings with commands. Re-review only the deltas |
 | 🚧 **Split requested** | The contribution is sound but mixes tiers (model work plus shared-surface edits) | Ask for the shared-surface part to come out; merge the rest |
 | ❌ **Decline** | Provenance cannot be established, or the contribution cannot be made reproducible | Rare. Explain which gate failed and what would change the answer |
@@ -466,6 +495,7 @@ One row per PR that taught us something. Newest at the bottom.
 | [#350](https://github.com/openwave-labs/openwave/pull/350) | Also the good case worth naming: the contributor raised a cross-model question as a platform issue *before* the work depended on the answer, and took the two family questions to the column authors directly. That is what made the author-gated findings empty and the review light. Sequencing, not effort, is what keeps [Gate F](#8-gate-f-other-authors-work) cheap | Gate F § 8.1, as the worked example |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | The mirror image of the row above, on the same PR: this time the state was submitted correctly and then outlived the verdict. The findings were resolved as maintainer edits and the PR was merged, but no later review superseded the standing `CHANGES_REQUESTED`, so a first-time contributor's merged work carried a rejection badge. Nothing about making the changes, commenting, or merging retires a review state; only another review does | § 13 "Reconcile the state at merge" |
 | [#340](https://github.com/openwave-labs/openwave/pull/340) | A claim we had written ourselves, in a maintainer commit, was the thing that blocked the merge. The docstring asserted only K=10 sat at the lock-in wells; measuring all 45 pair separations showed the opposite (K=2..4 entirely on the well, K=10 at none of 45) and that the band we attributed to K=2..9 was really K=11's. `git blame` on the contradiction before routing it saved a review round, because the answer was that the wrong half was ours | Gate C, [§ 10](#10-maintainer-edits) |
+| [#378](https://github.com/openwave-labs/openwave/pull/378) | Its own title is the finding: "recovering orphaned fixes from #374 and #375". One amendment took four merges because each point of agreement was serialized into the history instead of settled in the thread before merging. Measuring the column found 12 of 26 pull requests were sub-200-line document syncs, against roughly 4 of 25 where there is a single author and the same doc-to-code ratio. The overhead was the round trip, not the rigor, and no gate had to move to cut it | § 10.3, [T7](tasks/t7_task_details.md) |
 | [#380](https://github.com/openwave-labs/openwave/pull/380) | The reproduction obligation an earlier author-written lock placed on a later task landed as maintainer labor, and the ownership split (author writes the protocol, maintainers implement) crystallized only in a close-out exchange, after the freeze. It worked because that exchange was good, not because any rule required it: at freeze time nothing had asked who pays. Obligations are now priced at review, with a named discharger, accepted workload, and the reproduce-vs-derive ceiling | Gate B, the obligations row |
 
 ---
