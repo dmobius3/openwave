@@ -1,6 +1,7 @@
 # M8.5-B Numerical Pre-registration (quotient backend: scalar and one-form infrastructure)
 
-> **Status: DRAFT FOR FREEZE (filed 2026-07-30; author-written pre-registration; NO
+> **Status: DRAFT FOR FREEZE (drafted 2026-07-30, parameter lock complete 2026-08-01 per § 6,
+> filed 2026-08-01; author-written pre-registration; NO
 > implementation code, and NO target or certification runs, in this document; the
 > non-evidentiary engineering pilot is reported in § 6).** Freezes WHAT the M8.5-B backend must demonstrate, HOW its
 > evidence is assembled, and what may be claimed at each stage; it does not build the backend.
