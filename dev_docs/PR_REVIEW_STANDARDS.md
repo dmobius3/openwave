@@ -421,7 +421,10 @@ trap), and the ref blocks a clean re-fetch if the PR reopens:
 ```bash
 git worktree remove /tmp/pr-<N>     # --force only if the leftover state is confirmed disposable
 git branch -D pr-<N>
+git remote remove <contributor>     # if § 10.1 added the fork as a remote; its tracking refs otherwise linger in every branch dropdown
 ```
+
+Do NOT delete the contributor's branch on their fork, even though maintainer-edit rights make it possible: post-merge branch deletion on a fork is the author's call, and GitHub offers them that button on the merged PR. (GitHub Desktop's branch-delete on a fork-remote ref does exactly this, which is why the remote is removed instead.)
 
 Blast radius and size:
 
