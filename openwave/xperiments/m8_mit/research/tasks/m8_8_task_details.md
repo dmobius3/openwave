@@ -22,7 +22,7 @@ point at.
 
 | Piece | Content |
 | --- | --- |
-| Target | the corrected torsion closed forms: the 9 irrep forms, both Galois ratios, both sector products |
+| Target | the corrected torsion closed forms: the irrep forms, both Galois ratios, both sector products. `T^2(R0) = 1` is carried as a declared convention rather than a gated form (see the 2026-08-03 section), matching [`m8_3_method_note.md § 4`](../findings/m8_3_method_note.md) |
 | Method | disjoint from [`m8_3_mass_reproducer.py`](../scripts/m8_3_mass_reproducer.py) and from the mode-identity-theory artifact; the overlap is disclosed, not assumed absent |
 | Not in scope | the mass comparison itself (M8.3 verified its arithmetic), and the dead-zone entries' physical status (open on the source page) |
 | Precedent to follow | the M8.5-A shape: gates that can go red, a coverage-enforced mutation harness, an explicit list of what is not verified |
@@ -52,6 +52,37 @@ firewall. Three maintainer calls were made with the go:
 The M8.5-A structural claim ceiling applies unchanged: the torsion closed forms are published
 on the source page, so prior corpus exposure cannot be excluded for an AI implementer, and
 isolation buys provenance rather than the label.
+
+## Construction input: the second packet (2026-08-03)
+
+Pre-draft recon raised a second input-boundary question
+([#402 comment](https://github.com/openwave-labs/openwave/pull/402#issuecomment-5166892675),
+2026-08-03). The M8.5-A packet pins the group, but a combinatorial torsion calculation also needs
+the 3-cell: a balanced presentation gives a 2-complex with `chi = 1` while the closed orientable
+quotient has `chi = 0`, so Fox calculus supplies `d1` and `d2` and the torsion product still
+consumes `d3`, which requires the identity among relations or an equivalent resolution.
+
+| Call | Decision |
+| --- | --- |
+| Construction packet | Go. A second public packet carrying a based cellular chain complex or a truncated periodic `Z[2I]`-resolution, boundary maps in abstract generators explicitly matched to the M8.5-A quaternion generators, carrying no evaluated irreducible matrices, determinants, torsion values, ratios, products, or target forms |
+| Reference-allowance alternative | Declined, on the precedent that already declined a web allowlist for M8.5-A: the literature carrying the period-4 resolution for this group carries the torsion formulas with it, so an allowance re-opens the leak the firewall exists to close |
+| Packet audit | Maintainer-side, independent, and mechanical, run from the packet alone, per the [M8.5-A § 4 rule](../findings/m8_5a_reproduction_protocol.md) that the author knows the answers and the audit is the guard against author-side leakage. Any author-side verification artifacts ship in a separate archive that stays outside the room and is set side by side afterwards, as in [M8.5-A](m8_5_task_details.md) |
+| Packet roles | The construction packet is public before the run because it is permitted input; the canonical answer packet stays quarantined until commitment because it is only an adjudication reference |
+| Claim | Narrows as the author states: an independent reproduction of the torsion calculation, not an independent derivation of the supplied model. The supplied complex is verified rather than trusted, since `d d = 0`, the rank and `chi` census, the integral homology of a `Z`-homology 3-sphere, and per-irrep acyclicity are all gates that can go red |
+
+**Why the disjointness is stronger than it looks.** M8.3 computed the torsions analytically, from
+the spectral-zeta definition (`log T^2 = zeta'_coexact(0) - 2 zeta'_scalar(0)`, the Ray-Singer
+combination on `S^3/2I`), not from any chain complex. Nothing in a construction packet was an
+input to M8.3, and the equality of the analytic and combinatorial routes is the Cheeger-Müller
+theorem rather than a shared construction, so a disagreement localizes an implementation error in
+one route instead of being unresolvable.
+
+Two protocol points settled before drafting, to keep them out of the freeze review:
+
+| Point | Content |
+| --- | --- |
+| Normalization anchor | Combinatorial torsion is pinned only once the basing is pinned. The packet supplies that, but the correspondence to M8.3's analytic normalization still needs one declared anchor. M8.3 fixed the overall sign once on the `R7` closed form and declared it, leaving the rest genuine checks; the protocol declares its anchor the same way and before the run |
+| The trivial representation | `T^2(R0) = 1` is a declared convention in M8.3, not a gated result, because the twisted complex is not acyclic for the trivial representation. The same obstruction appears in the combinatorial route, so `R0` is carried as convention there too rather than counted as a reproduced form |
 
 **Gated by**: M8.3 ✅ (2026-07-28) and an owner. The sign convention is fixed once on the `R7`
 closed form and declared, so the remaining forms are genuine checks rather than circular
