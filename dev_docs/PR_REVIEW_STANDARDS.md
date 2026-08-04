@@ -25,7 +25,7 @@ A documented negative is a merge-worthy contribution. An overstated positive is 
 | [2. Blast-radius map](#2-blast-radius-map) | which paths get which level of scrutiny |
 | [3. Gate A: safety and hygiene](#3-gate-a-safety-and-hygiene) | large files, encoding, copyright, secrets, dangling references, code intent |
 | [4. Gate B: scope containment](#4-gate-b-scope-containment) | model-folder discipline, shared files, root documents, the commitment sweep and its loud notification (§ 4.1) |
-| [5. Gate C: claim to artifact](#5-gate-c-claim-to-artifact) | recompute the headline number from the shipped data yourself |
+| [5. Gate C: claim to artifact](#5-gate-c-claim-to-artifact) | recompute the headline number from the shipped data yourself, and out-of-band deliveries from their manifest (C8) |
 | [6. Gate D: the adversarial pass](#6-gate-d-the-adversarial-pass) | is the mechanism wired, is the signal above the noise, do the knobs manufacture the result |
 | [7. Gate E: MODELS.md cell changes](#7-gate-e-modelsmd-cell-changes) | the evidence bar for moving a cell, and the linter a maintainer runs (§ 7.1) |
 | [8. Gate F: other authors' work](#8-gate-f-other-authors-work) | not damaging a column you do not own |
@@ -108,17 +108,36 @@ mentions mid-prose is a commitment the human accepts without reading. Scan every
 | Standing rules | new conventions that bind future reviews or future work | every future review inherits the cost, and maintaining the rule is itself maintainer workload |
 
 **The notification.** The moment the sweep finds anything, and again as the LAST block before
-the verdict, the reviewing agent prints an all-caps notice in the terminal:
+the verdict, the reviewing agent prints a boxed notice in the terminal:
+
+**The layout is fixed**, because the point of the notice is that it cannot be skimmed past. One
+box per commitment, boxes stacked, then a single table carrying one row per commitment in the
+same order, then the acceptance line. Reproduce it exactly:
 
 ```text
-⚠️⚠️⚠️ MAINTAINER COMMITMENT NOTICE ⚠️⚠️⚠️
-MERGING PR #<N> CREATES THE FOLLOWING RESPONSIBILITIES:
-1. <CLASS>: <WHAT IT BINDS> / WHO PAYS: <PARTY> / COMES DUE: <TRIGGER>
-2. ...
-ACCEPTANCE HAPPENS AT MERGE. ANY LINE NOT ACCEPTED IS
-RENEGOTIATED NOW, BEFORE THE FREEZE, NOT AFTER.
-⚠️⚠️⚠️ END COMMITMENT NOTICE ⚠️⚠️⚠️
+╔══════════════════════════════════════════════════════════════╗
+║  MAINTAINER COMMITMENT NOTICE                                ║
+║  CLASS: <class>                                              ║
+║  WHO PAYS: <party>                                           ║
+║  COMES DUE: <trigger>                                        ║
+╚══════════════════════════════════════════════════════════════╝
 ```
+
+Directly beneath the boxes, as a markdown table so the terminal renders it ruled:
+
+| What it actually is | Agent does | Maintainer does | Attention |
+| --- | --- | --- | --- |
+| <plain restatement> | <the machine half> | <the human-only half> | <sitting or decision count> |
+
+Then, as the closing line: **acceptance happens at merge, and any line not accepted is
+renegotiated now, before the freeze, not after.**
+
+| Layout rule | Why |
+| --- | --- |
+| The box is drawn, not an all-caps paragraph | a ruled block survives a scrollback in a way a wall of capitals does not, and this notice has to be findable after the fact |
+| Keep the box at a fixed narrow width, and continue a long value on its own line rather than widening it | a box wider than the terminal wraps, and a wrapped box reads as noise |
+| One box per commitment, never a numbered list inside one box | the boxes are what make the count visible at a glance, which is the number the decision turns on |
+| The four columns go directly beneath, as a table, never inside the box | the box carries what binds; the table carries what it costs. Merging them loses both |
 
 **The effort split.** Naming the class and the party is not enough to decide with. The party is
 almost always "maintainers", while the reviewing agent is itself doing most of the work the line
@@ -146,12 +165,12 @@ that is the half that binds both parties and has to survive in the durable recor
 | Fires at detection AND restates in full as the last block before the verdict | the merge decision must have the commitments as the freshest thing on screen, not something scrolled past an hour earlier |
 | Prints even when the verdict is approve | approval is exactly the moment acceptance happens; a clean review with a silent commitment is the failure mode this exists for |
 | One line per commitment: class, what it binds, who pays, when it comes due | a notice without the cost attached is a headline, not a notice |
-| In the terminal, the loud block is followed by the effort split, never replaced by it | the all-caps form has to stay short to stay readable, and the four columns are what the decision actually needs |
+| In the terminal, the boxed block is followed by the effort split, never replaced by it | the box has to stay short to stay readable, and the four columns are what the decision actually needs |
 | The effort split never leaves the terminal | it is a decision aid for the person deciding, not a term of the agreement. Posting it puts the maintainer's internal division of labor into a public thread, where it reads as part of what the contributor is signing up to and is not |
 | The notice states which obligations the merge itself triggers and which wait for a later deliberate act | a freeze that binds at a separate lock commit makes the merge nearly free, and when that is true it is the single most decision-relevant fact on the page |
 | Any obligation requiring execution of contributor-supplied code gets its own flagged line, with the mitigation named | it is a trust decision no agent can make on a maintainer's behalf, and [§ 5](#5-gate-c-claim-to-artifact)'s execution rule already puts it before the merge rather than after. Name the container |
 | A clean sweep reports as one quiet line, `commitment sweep: none` | the loud block stays meaningful only if it is rare; alarm fatigue is how loud notices die |
-| The posted review carries the same list in normal case, under its own heading | the thread is the durable record. ALL CAPS is for the terminal moment of decision, not for the permanent prose |
+| The posted review carries the same list in normal case, under its own heading | the thread is the durable record. The box is for the terminal moment of decision, not for the permanent prose |
 
 ## 5. Gate C: claim to artifact
 
@@ -170,6 +189,21 @@ This is the gate [`REPRODUCE.md`](../REPRODUCE.md) and [`AI_HYGIENE.md`](../AI_H
 | C5 | **Internal consistency** | The same quantity carries the same value in the abstract, the summary table, and the detail table. Cross-check them against each other before checking either against the data |
 | C6 | **The reproduction route is written down** | A reader with a clean clone can get from the claim to the command. Per [`REPRODUCE.md`](../REPRODUCE.md) that lives in the research note, once |
 | C7 | **Claim strength matches evidence strength** | "Within the explored parameter range, X" is a result. "Proof of X" from an empirical sweep is not. Words like *proof*, *confirmed*, *uniquely*, and *demonstrates* each need the artifact that earns them |
+| C8 | **An out-of-band delivery is recomputed, never read** | Where a clean-room protocol hands the derivation to the maintainer outside the repository, verify it with [`verify_provenance_archive.py`](utils/verify_provenance_archive.py) and treat any self-check shipped inside the archive as informational. Hash before rerunning anything: derivation scripts write their outputs beside themselves, so a rerun in the extracted tree can overwrite a manifest-listed file and fail the manifest with the audit itself as the cause |
+
+**On C8, the two checks a manifest cannot perform on itself.** Every listed file can hash correctly while the archive is still wrong, in two directions a per-file sweep does not look. *Closure*: a file present but unlisted rode along unhashed. *Orphan references*: a hash written anywhere in the archive that resolves to nothing the archive contains, which is what an artifact left over from a superseded run looks like from the outside. The script does both, and the second one is what caught a real case.
+
+**When running [`verify_provenance_archive.py`](utils/verify_provenance_archive.py) is required.** Same no-CI caveat as [7.1](#71-the-modelsmd-linter) and [7.2](#72-the-roadmap-linter): nothing invokes it but a reviewer, so it belongs to the procedure or it does not happen.
+
+| Trigger | Run it |
+| --- | --- |
+| A PR declares a provenance class whose obligation is a maintainer-side rerun of an author's derivation | on arrival of the delivery, before accepting the freeze |
+| Any artifact reaches the maintainer outside the repository: an archive, an encrypted blob, a link to bytes not in the PR | before reading anything inside it |
+| A published hash is restated, corrected, or moves for any reason | against the new value, in full. A hash that moved retires every check run against the old one |
+| Before rerunning anything from the archive, including the author's own recovery wrapper | first, always. A rerun can overwrite a listed file and fail the manifest with the audit as the cause |
+| The archive is rebuilt and redelivered | in full again. A partial recheck of "just the changed file" cannot see closure or an orphaned reference |
+
+The verdict is `--strict` when the delivery is being frozen, and default otherwise: an orphan reference is a warning while an archive is still moving, and a failure once it is meant to be final.
 
 ## 6. Gate D: the adversarial pass
 
@@ -498,6 +532,13 @@ python3 dev_docs/utils/check_models_md.py    # mandatory when MODELS.md is touch
 python3 dev_docs/utils/check_roadmaps.py     # mandatory when a roadmap is touched, see 7.2
 ```
 
+Out-of-band provenance delivery ([C8](#5-gate-c-claim-to-artifact)), before rerunning anything from it:
+
+```bash
+python3 dev_docs/utils/verify_provenance_archive.py --archive ARCHIVE.tar.gz \
+    --expect-sha <published sha256> --no-quantities
+```
+
 ### Recording the verdict: submit it as a review, not as a comment
 
 The [verdict](#12-verdict-and-how-to-write-it) has to be submitted as a **review**, which carries a state, and not as a conversation comment, which does not. GitHub makes this easy to get wrong: both render identically and both notify, but only a review sets `reviewDecision`, shows the status badge on the PR list, and satisfies or blocks the CODEOWNERS gate. A review body that says "changes requested" while the PR state says `REVIEW_REQUIRED` leaves the contributor without the signal they watch for.
@@ -558,6 +599,7 @@ One row per PR that taught us something. Newest at the bottom.
 | [#402](https://github.com/openwave-labs/openwave/pull/402) | First full run of § 10.3, and it held: one review carrying every finding, one in-thread answer to the one blocking item (the unnamed adjudicator, the #380 who-pays lesson caught BEFORE the freeze this time), maintainer edits and landing-time items applied on the branch, one merge. Separately verified: the Update branch button's unsigned merge commit does not trip the DCO check, since the probot app ignores merge commits, confirmed empirically on #399-#401, each of which merged carrying one. Updating a fork PR needs no signed local merge | § 10.3 worked example, § 13 |
 | [#408](https://github.com/openwave-labs/openwave/pull/408) | A gate the reviewer adds is itself a claim, and this one was wrong. The new integral check ran a fixed list of primes; scaling the contributed top boundary map by a prime outside that list passed every listed one while multiplying every value the run would report by that prime to a power. A finite list can only ever reject. The contributor spotted it first, in a protocol revision demoting the battery to a reject screen, which is what prompted the attack that reproduced it. An exact certificate replaced the accept side, and the mutation suite gained the case that reddens it | Gate D row D11 |
 | [#408](https://github.com/openwave-labs/openwave/pull/408) | The commitment notice fired correctly and still misinformed. Every line read `WHO PAYS: MAINTAINERS` against an obligation set that was almost entirely scripted reruns the reviewing agent would perform, so the maintainer read personal labor that was not there and hesitated over commitments that were nearly free. A notice built to prevent silent acceptance produced the opposite failure. The missing fact was also the cheapest one to state: the freeze bound at a later lock commit, so the merge itself committed almost nothing | § 4.1 effort split, three new § 4.1 rules |
+| [#408](https://github.com/openwave-labs/openwave/pull/408) | An archive delivered out of band passed all 21 of its manifest hashes and was still carrying a certificate pinned to a superseded object, concluding `NOT CERTIFIED`, unlabelled. Per-file hashes verify the files and not the story they tell, so the check that found it resolves every hash the archive *writes* against something the archive *contains*. Same run: that certificate recorded its own premises as satisfied because they were Python literals in the JSON write rather than the outcomes of the checks above them | Gate C row C8, [`verify_provenance_archive.py`](utils/verify_provenance_archive.py) |
 
 ---
 
