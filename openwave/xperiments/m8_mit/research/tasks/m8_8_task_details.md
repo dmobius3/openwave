@@ -74,8 +74,17 @@ consumes `d3`, which requires the identity among relations or an equivalent reso
 the spectral-zeta definition (`log T^2 = zeta'_coexact(0) - 2 zeta'_scalar(0)`, the Ray-Singer
 combination on `S^3/2I`), not from any chain complex. Nothing in a construction packet was an
 input to M8.3, and the equality of the analytic and combinatorial routes is the Cheeger-Müller
-theorem rather than a shared construction, so a disagreement localizes an implementation error in
-one route instead of being unresolvable.
+theorem rather than a shared construction, so a disagreement is ASSESSABLE instead of
+unresolvable.
+
+Assessable is not the same as attributable, and the protocol's § 1 is the stricter reading. A
+mismatch is assessed against a structured diagnostic partition of four preregistered branches:
+an implementation error in one route, a convention-bridge mismatch, a failed hypothesis of the
+theorem, and a supplied-model or provenance error. Each branch carries its own gate, every branch
+its evidence does not exclude is reported, and no unique attribution is forced. The fourth is
+bounded rather than excluded, since the packet is author-supplied and the model gates establish
+that the complex behaves correctly without identifying which model it is; the maintainer-side
+packet audit and the maintainer-held provenance record sit beside them for that reason.
 
 Two protocol points settled before drafting, to keep them out of the freeze review:
 
