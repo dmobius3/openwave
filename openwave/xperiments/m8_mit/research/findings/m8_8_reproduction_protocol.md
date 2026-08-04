@@ -215,10 +215,16 @@ FAITHFUL EXTRACTION from the cited source, not independent discovery of the reso
 derivation. The audit establishes REPRODUCIBLE DERIVATION AND STRUCTURAL VERIFICATION. It
 does NOT establish faithful extraction from literature, independent discovery of the
 topological model, or uniqueness of the derived complex. Where the derivation selects among
-structurally acceptable objects, it states the selection rule and the acceptance predicate,
-and the predicate must be answer-independent: it may read only structural properties, never
-a reproduced quantity or anything computed from one. The audit reproduces the selection; it
-makes no claim that alternative acceptable selections are equivalent to it.
+structurally acceptable objects, it states the selection rule and the acceptance predicate.
+The predicate must be answer-independent: it may read only structural properties, never a
+reproduced quantity or anything computed from one. It must ALSO be exact for the property it
+claims, not a finite-sample or finite-prime proxy for it. Answer-independence and
+sufficiency are separate requirements, and a rejected packet has already been admitted by a
+predicate that had the first and lacked the second: rank at one large prime certifies
+rational generation and is structurally blind to a finite index. Where the exact predicate
+is one-sided, the direction that can only reject must be reported as inconclusive rather
+than as a verdict. The audit reproduces the selection; it makes no claim that alternative
+acceptable selections are equivalent to it.
 
 Basis invariance is argued exactly, not numerically. A change of the top-cell basis by a
 unit `±g` multiplies the torsion by `det ρ(±g)^{±1}`. Every element of a finite group has
@@ -578,7 +584,8 @@ trusted, and each can go red:
 | --- | --- |
 | `∂ₙ ∂ₙ₊₁ = 0` over `Z[2I]` | the complex is a complex |
 | declared free ranks, and `χ = 0` | a closed 3-manifold's complex, not a presentation 2-complex |
-| `H_*(Z ⊗_{Z[2I]} C_*) ≅ (Z, 0, 0, Z)`, the trivial module applied through the declared augmentation, tensor side per the declared module convention | the homology of `S³/2I`; a necessary identity check that provenance and the audit complete (§ 1, branch four). Pinned as THIS computation because the free complex's plain `Z`-homology returns the same four groups here, and a gate ambiguous between two computations cannot be cleanly mutation-tested |
+| `H_*(Z ⊗_{Z[2I]} C_*) ≅ (Z, 0, 0, Z)`, the trivial module applied through the declared augmentation, tensor side per the declared module convention | the homology of `S³/2I`; a necessary identity check that provenance and the audit complete (§ 1, branch four). This gate and the universal-cover gate below are DIFFERENT computations on different objects, and neither implies the other. An earlier draft of this row asserted that the free complex's plain `Z`-homology returns the same four groups; that is false, and a rejected construction packet demonstrated it by passing this gate while failing the one below |
+| `H_*(C_*) ≅ (Z, 0, 0, Z)` for `C_*` read as a complex of free `Z`-modules, that is the universal cover `S³`. Established INTEGRALLY: `im ∂₃ = ker ∂₂` as lattices, certified by exhibiting a maximal minor of `∂₃` whose gcd with the others is 1, together with the chain relations and the exact ranks. A mod-`p` battery is a reject screen and is NOT sufficient on the accept side, since no finite prime set excludes an unseen index prime | that `C_*` is the chain complex of `S³` and not merely a complex with the right RATIONAL invariants. A complex can pass every other gate in this table while `im ∂₃` sits at finite index inside `ker ∂₂`: `∂₃ → k·∂₃` leaves `∂∂ = 0`, `ε(∂₃) = 0`, the augmented homology and per-irrep acyclicity all untouched, because each is a rank statement or is computed from `ε(∂₂)` alone, while multiplying every reproduced torsion by `k` to a power. This gate is the only one in the table that sees the integral lattice |
 | the terminal map `C₀ → Z` is the declared augmentation `ε` | the declared augmentation, which is `ε`, not `∂₁` |
 | `∂₁` matches the frozen 1-cell correspondence, and `ε ∂₁ = 0` | the generator correspondence, and exactness into the augmentation |
 | per-irrep acyclicity, with the EXPECTED results frozen: `R0` non-acyclic is PASS; every nontrivial irrep acyclic is PASS; a nontrivial irrep non-acyclic is `hypothesis failure` | the theorem's hypothesis, per § 1. An expected failure is a passing result, so a valid run never triggers the failure category |
