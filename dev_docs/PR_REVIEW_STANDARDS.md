@@ -125,8 +125,8 @@ almost always "maintainers", while the reviewing agent is itself doing most of t
 refers to, so a maintainer reading `WHO PAYS: MAINTAINERS` against an obligation set that is
 mostly scripted reruns reads personal labor that is not there. The notice then produces the
 opposite of its purpose: it exists to prevent silent acceptance, and instead causes hesitation
-over commitments that cost almost nothing. Directly after the loud block, and in the posted
-review's normal-case list, every commitment carries four columns:
+over commitments that cost almost nothing. Directly after the loud block, in the terminal and
+nowhere else, every commitment carries four columns:
 
 | Column | Content |
 | --- | --- |
@@ -135,12 +135,19 @@ review's normal-case list, every commitment carries four columns:
 | Maintainer does | the human-only half: judgment calls, trust decisions, and anything that leaves the machine, such as a merge, a post, or a signature |
 | Attention | rough sizing in decision points or sittings. Never an invented hour count |
 
+**The split is terminal-only.** It never goes in the posted review, the PR body, or any message
+leaving the repository. It describes how the maintainer's own labor divides with an agent acting
+for them, which is internal to the maintainer side and no part of what the contributor is being
+asked to agree to. What the thread gets is the commitment list itself, in normal case, because
+that is the half that binds both parties and has to survive in the durable record.
+
 | Rule | Why |
 | --- | --- |
 | Fires at detection AND restates in full as the last block before the verdict | the merge decision must have the commitments as the freshest thing on screen, not something scrolled past an hour earlier |
 | Prints even when the verdict is approve | approval is exactly the moment acceptance happens; a clean review with a silent commitment is the failure mode this exists for |
 | One line per commitment: class, what it binds, who pays, when it comes due | a notice without the cost attached is a headline, not a notice |
-| The loud block is followed by the effort split, never replaced by it | the all-caps form has to stay short to stay readable, and the four columns are what the decision actually needs |
+| In the terminal, the loud block is followed by the effort split, never replaced by it | the all-caps form has to stay short to stay readable, and the four columns are what the decision actually needs |
+| The effort split never leaves the terminal | it is a decision aid for the person deciding, not a term of the agreement. Posting it puts the maintainer's internal division of labor into a public thread, where it reads as part of what the contributor is signing up to and is not |
 | The notice states which obligations the merge itself triggers and which wait for a later deliberate act | a freeze that binds at a separate lock commit makes the merge nearly free, and when that is true it is the single most decision-relevant fact on the page |
 | Any obligation requiring execution of contributor-supplied code gets its own flagged line, with the mitigation named | it is a trust decision no agent can make on a maintainer's behalf, and [§ 5](#5-gate-c-claim-to-artifact)'s execution rule already puts it before the merge rather than after. Name the container |
 | A clean sweep reports as one quiet line, `commitment sweep: none` | the loud block stays meaningful only if it is rare; alarm fatigue is how loud notices die |
