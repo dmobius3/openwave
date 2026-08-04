@@ -226,13 +226,18 @@ is one-sided, the direction that can only reject must be reported as inconclusiv
 than as a verdict. The audit reproduces the selection; it makes no claim that alternative
 acceptable selections are equivalent to it.
 
-Basis invariance is argued exactly, not numerically. A change of the top-cell basis by a
-unit `±g` multiplies the torsion by `det ρ(±g)^{±1}`. Every element of a finite group has
-finite order, so `ρ(±g)` has finite order in `GL_d(ℂ)`, so `det ρ(±g)` is a root of unity
-and its modulus is exactly 1. Hence `T²_target(ρ) = |τ_ρ|²` is unchanged under the declared
-top-cell basis changes. This holds in any realization, unitary or not, and does not depend
-on the chosen basis. Numerical perturbation evidence is retained as an implementation check
-on the code, never as the basis of the claim.
+Basis invariance is argued exactly, not numerically, and it covers the TRIVIAL units ONLY.
+A change of the top-cell basis by a unit `±g` multiplies the torsion by `det ρ(±g)^{±1}`.
+Every element of a finite group has finite order, so `ρ(±g)` has finite order in `GL_d(ℂ)`,
+so `det ρ(±g)` is a root of unity and its modulus is exactly 1. Hence `T²_target(ρ)` is
+unchanged under the DECLARED top-cell basis changes. This holds in any realization, unitary
+or not, and does not depend on the chosen basis. Numerical perturbation evidence is retained
+as an implementation check on the code, never as the basis of the claim.
+
+Read the scope narrowly. This argument does NOT extend to a different choice of generator,
+because the units of `Z[2I]/(N)` are not exhausted by `±g`. That residue is item 6 of § 9's
+explicitly-not-verified list, and it is the sharper statement of the disclaimer above: the
+acceptance predicate pins the complex, not the reproduced quantity.
 
 Neither class discharges § 1 branch four on its own. Without the audit, branch four would be
 controlled only by internal consistency checks this protocol already concedes cannot
@@ -585,7 +590,7 @@ trusted, and each can go red:
 | `∂ₙ ∂ₙ₊₁ = 0` over `Z[2I]` | the complex is a complex |
 | declared free ranks, and `χ = 0` | a closed 3-manifold's complex, not a presentation 2-complex |
 | `H_*(Z ⊗_{Z[2I]} C_*) ≅ (Z, 0, 0, Z)`, the trivial module applied through the declared augmentation, tensor side per the declared module convention | the homology of `S³/2I`; a necessary identity check that provenance and the audit complete (§ 1, branch four). This gate and the universal-cover gate below are DIFFERENT computations on different objects, and neither implies the other. An earlier draft of this row asserted that the free complex's plain `Z`-homology returns the same four groups; that is false, and a rejected construction packet demonstrated it by passing this gate while failing the one below |
-| `H_*(C_*) ≅ (Z, 0, 0, Z)` for `C_*` read as a complex of free `Z`-modules, that is the universal cover `S³`. Established INTEGRALLY: `im ∂₃ = ker ∂₂` as lattices, certified by exhibiting a maximal minor of `∂₃` whose gcd with the others is 1, together with the chain relations and the exact ranks. A mod-`p` battery is a reject screen and is NOT sufficient on the accept side, since no finite prime set excludes an unseen index prime | that `C_*` is the chain complex of `S³` and not merely a complex with the right RATIONAL invariants. A complex can pass every other gate in this table while `im ∂₃` sits at finite index inside `ker ∂₂`: `∂₃ → k·∂₃` leaves `∂∂ = 0`, `ε(∂₃) = 0`, the augmented homology and per-irrep acyclicity all untouched, because each is a rank statement or is computed from `ε(∂₂)` alone, while multiplying every reproduced torsion by `k` to a power. This gate is the only one in the table that sees the integral lattice |
+| `H_*(C_*) ≅ (Z, 0, 0, Z)` for `C_*` read as a complex of free `Z`-modules, that is the universal cover `S³`. Established INTEGRALLY: `im ∂₃ = ker ∂₂` as lattices, from containment (`∂₃∂₂ = 0`), the exact ranks, and an exact SATURATION certificate for `im ∂₃`. Admission rule, stated as a property rather than a list: the certificate must determine the elementary divisors exactly, by integer arithmetic, with no prime and no sample on the accept side. Examples under that rule: a maximal minor of determinant `±1`, Smith or Hermite data, or a unimodular-elimination certificate. Note the asymmetry: a determinant route always returns a number, while an elimination route may stall, and a stalled elimination is INCONCLUSIVE rather than a pass. A mod-`p` battery is a reject screen and is NOT sufficient on the accept side, since no finite prime set excludes an unseen index prime | that `C_*` is the chain complex of `S³` and not merely a complex with the right RATIONAL invariants. A complex can pass every other gate in this table while `im ∂₃` sits at finite index inside `ker ∂₂`: `∂₃ → k·∂₃` leaves `∂∂ = 0`, `ε(∂₃) = 0`, the augmented homology and per-irrep acyclicity all untouched, because each is a rank statement or is computed from `ε(∂₂)` alone, while multiplying every reproduced torsion by `k` to a power. This gate is the only one in the table that sees the integral lattice |
 | the terminal map `C₀ → Z` is the declared augmentation `ε` | the declared augmentation, which is `ε`, not `∂₁` |
 | `∂₁` matches the frozen 1-cell correspondence, and `ε ∂₁ = 0` | the generator correspondence, and exactness into the augmentation |
 | per-irrep acyclicity, with the EXPECTED results frozen: `R0` non-acyclic is PASS; every nontrivial irrep acyclic is PASS; a nontrivial irrep non-acyclic is `hypothesis failure` | the theorem's hypothesis, per § 1. An expected failure is a passing result, so a valid run never triggers the failure category |
@@ -613,6 +618,16 @@ present and non-empty.
 3. The global orientation is selected at adjudication by the § 5.4 rule, not reproduced.
 4. The mass comparison, the fermion assignment, and the dead-zone entries' physical status.
 5. Absence of prior corpus exposure, which no procedure here can establish.
+6. **That the reproduced quantity is independent of WHICH generator was installed as `∂₃`.**
+   `C₃` has rank 1, so any two generators of `ker ∂₂` differ by `∂₃' = u·∂₃` for a unit `u`
+   of `Z[2I]/(N)`, and on every nontrivial irrep, which kills `N`, the torsion moves by
+   `det ρ(u)`. The basis-invariance argument covers only the TRIVIAL units `u = ±g`, where
+   finite order forces `|det ρ(±g)| = 1` exactly. It does not cover the rest, and the rest
+   are not empty: `2I` has 9 complex irreps in 7 Galois orbits with every character real, so
+   `rank Wh(2I) = 9 − 7 = 2` and nontrivial units exist, with no reason for `|det ρ(u)|` to
+   be 1. Under a `derived` packet the acceptance predicate therefore pins the COMPLEX and
+   not `T²_target`. Bounded searches have turned up no second accepted generator, which is
+   evidence about small support and not a theorem.
 
 ## 10. Provenance and the commitment
 
