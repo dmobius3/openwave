@@ -120,11 +120,29 @@ RENEGOTIATED NOW, BEFORE THE FREEZE, NOT AFTER.
 ⚠️⚠️⚠️ END COMMITMENT NOTICE ⚠️⚠️⚠️
 ```
 
+**The effort split.** Naming the class and the party is not enough to decide with. The party is
+almost always "maintainers", while the reviewing agent is itself doing most of the work the line
+refers to, so a maintainer reading `WHO PAYS: MAINTAINERS` against an obligation set that is
+mostly scripted reruns reads personal labor that is not there. The notice then produces the
+opposite of its purpose: it exists to prevent silent acceptance, and instead causes hesitation
+over commitments that cost almost nothing. Directly after the loud block, and in the posted
+review's normal-case list, every commitment carries four columns:
+
+| Column | Content |
+| --- | --- |
+| What it actually is | plain restatement. No document-internal jargon, and no section number standing in for the thing it points at |
+| Agent does | the machine half: scripts, reruns, harnesses, audits, transcription, recomputation |
+| Maintainer does | the human-only half: judgment calls, trust decisions, and anything that leaves the machine, such as a merge, a post, or a signature |
+| Attention | rough sizing in decision points or sittings. Never an invented hour count |
+
 | Rule | Why |
 | --- | --- |
 | Fires at detection AND restates in full as the last block before the verdict | the merge decision must have the commitments as the freshest thing on screen, not something scrolled past an hour earlier |
 | Prints even when the verdict is approve | approval is exactly the moment acceptance happens; a clean review with a silent commitment is the failure mode this exists for |
 | One line per commitment: class, what it binds, who pays, when it comes due | a notice without the cost attached is a headline, not a notice |
+| The loud block is followed by the effort split, never replaced by it | the all-caps form has to stay short to stay readable, and the four columns are what the decision actually needs |
+| The notice states which obligations the merge itself triggers and which wait for a later deliberate act | a freeze that binds at a separate lock commit makes the merge nearly free, and when that is true it is the single most decision-relevant fact on the page |
+| Any obligation requiring execution of contributor-supplied code gets its own flagged line, with the mitigation named | it is a trust decision no agent can make on a maintainer's behalf, and [§ 5](#5-gate-c-claim-to-artifact)'s execution rule already puts it before the merge rather than after. Name the container |
 | A clean sweep reports as one quiet line, `commitment sweep: none` | the loud block stays meaningful only if it is rare; alarm fatigue is how loud notices die |
 | The posted review carries the same list in normal case, under its own heading | the thread is the durable record. ALL CAPS is for the terminal moment of decision, not for the permanent prose |
 
@@ -162,8 +180,9 @@ Gate C asks whether the numbers are real. Gate D asks whether they mean what the
 | D8 | **Are the controls controls?** | A control must differ from the test case in exactly the intended variable. Check the configuration files, not the file names |
 | D9 | **What would falsify this?** | If the note cannot say, ask. A model author who can name the falsifier is describing a result; one who cannot is describing a hope |
 | D10 | **Can the shipped self-checks fail?** | Mutation-test every line a script prints as PASS: change the thing it checks to something wrong and confirm it goes red. A check whose two sides evaluate the same expression always passes, and to a later reader it is indistinguishable from a verified result. Where a quantity has no independent target to compare against, the honest label is *asserted*, not a self-check that cannot discriminate |
+| D11 | **Does a check YOU added accept, or does it only reject?** | A gate parameterized by a finite list, of primes, seeds, tolerances or sample points, can prove failure and cannot prove success: passing at every listed value never excludes the value nobody listed. Attack your own gate before trusting it, by constructing an input that satisfies the negation of the claim and passes anyway. Where the property has an exact certificate, that is the accept side, and the parameterized version stays the cheap reject screen it always was. D10 mutation-tests the contributor's checks; this is the same discipline turned on the reviewer's |
 
-Findings from this gate are **questions to the author**, not verdicts. The author owns the physics; the reviewer owns the demand that the claim and the artifact agree.
+Findings from this gate are **questions to the author**, not verdicts. The author owns the physics; the reviewer owns the demand that the claim and the artifact agree. D11 is the exception, since it is aimed at the reviewer's own work.
 
 ## 7. Gate E: MODELS.md cell changes
 
@@ -530,6 +549,8 @@ One row per PR that taught us something. Newest at the bottom.
 | [#380](https://github.com/openwave-labs/openwave/pull/380) | The reproduction obligation an earlier author-written lock placed on a later task landed as maintainer labor, and the ownership split (author writes the protocol, maintainers implement) crystallized only in a close-out exchange, after the freeze. It worked because that exchange was good, not because any rule required it: at freeze time nothing had asked who pays. Obligations are now priced at review, with a named discharger, accepted workload, and the reproduce-vs-derive ceiling | Gate B, the obligations row |
 | [#402](https://github.com/openwave-labs/openwave/pull/402) | An agreed merge edit named a gate ("the synthetic nonidentity fixture") that existed in no document. Stopping and asking, instead of transcribing the contrast into a file that freezes at merge, was right: the author confirmed it was a NEW requirement, not a rewording, and supplied the clause in his own words. An edit whose referent does not exist in the document is a question, not a transcription. The same close-out re-taught the propagation lesson at edit time: the author's new wording ("no manual transcription anywhere in the adjudication path") contradicted two other passages, so applying it meant sweeping the document for the claim it displaced | § 10.3, Gate B obligations row |
 | [#402](https://github.com/openwave-labs/openwave/pull/402) | First full run of § 10.3, and it held: one review carrying every finding, one in-thread answer to the one blocking item (the unnamed adjudicator, the #380 who-pays lesson caught BEFORE the freeze this time), maintainer edits and landing-time items applied on the branch, one merge. Separately verified: the Update branch button's unsigned merge commit does not trip the DCO check, since the probot app ignores merge commits, confirmed empirically on #399-#401, each of which merged carrying one. Updating a fork PR needs no signed local merge | § 10.3 worked example, § 13 |
+| [#408](https://github.com/openwave-labs/openwave/pull/408) | A gate the reviewer adds is itself a claim, and this one was wrong. The new integral check ran a fixed list of primes; scaling the contributed top boundary map by a prime outside that list passed every listed one while multiplying every value the run would report by that prime to a power. A finite list can only ever reject. The contributor spotted it first, in a protocol revision demoting the battery to a reject screen, which is what prompted the attack that reproduced it. An exact certificate replaced the accept side, and the mutation suite gained the case that reddens it | Gate D row D11 |
+| [#408](https://github.com/openwave-labs/openwave/pull/408) | The commitment notice fired correctly and still misinformed. Every line read `WHO PAYS: MAINTAINERS` against an obligation set that was almost entirely scripted reruns the reviewing agent would perform, so the maintainer read personal labor that was not there and hesitated over commitments that were nearly free. A notice built to prevent silent acceptance produced the opposite failure. The missing fact was also the cheapest one to state: the freeze bound at a later lock commit, so the merge itself committed almost nothing | § 4.1 effort split, three new § 4.1 rules |
 
 ---
 
