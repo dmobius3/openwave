@@ -25,7 +25,7 @@ A documented negative is a merge-worthy contribution. An overstated positive is 
 | [2. Blast-radius map](#2-blast-radius-map) | which paths get which level of scrutiny |
 | [3. Gate A: safety and hygiene](#3-gate-a-safety-and-hygiene) | large files, encoding, copyright, secrets, dangling references, code intent |
 | [4. Gate B: scope containment](#4-gate-b-scope-containment) | model-folder discipline, shared files, root documents, the commitment sweep and its loud notification (§ 4.1) |
-| [5. Gate C: claim to artifact](#5-gate-c-claim-to-artifact) | recompute the headline number from the shipped data yourself, and out-of-band deliveries from their manifest (C8) |
+| [5. Gate C: claim to artifact](#5-gate-c-claim-to-artifact) | recompute the headline number from the shipped data yourself, and out-of-band deliveries from their manifest (C8); transport integrity and execution containment (§ 5.1) |
 | [6. Gate D: the adversarial pass](#6-gate-d-the-adversarial-pass) | is the mechanism wired, is the signal above the noise, do the knobs manufacture the result |
 | [7. Gate E: MODELS.md cell changes](#7-gate-e-modelsmd-cell-changes) | the evidence bar for moving a cell, and the linter a maintainer runs (§ 7.1) |
 | [8. Gate F: other authors' work](#8-gate-f-other-authors-work) | not damaging a column you do not own |
@@ -204,6 +204,28 @@ This is the gate [`REPRODUCE.md`](../REPRODUCE.md) and [`AI_HYGIENE.md`](../AI_H
 | The archive is rebuilt and redelivered | in full again. A partial recheck of "just the changed file" cannot see closure or an orphaned reference |
 
 The verdict is `--strict` when the delivery is being frozen, and default otherwise: an orphan reference is a warning while an archive is still moving, and a failure once it is meant to be final.
+
+### 5.1 Out-of-band deliveries: transport integrity and execution containment
+
+C8 and its trigger table say *when* to verify. This section records *why* the procedure holds without trusting the transport, and the containment rules for the one step that executes contributed code. None of these guards depends on the host, the channel, or the author being honest; each is checkable on the reviewer's side.
+
+| Vector | Guard |
+| --- | --- |
+| Moved or replaced bytes at the host | Fetch by **commit hash**, never by branch name: git verifies every object against its hash on receipt, so the bytes are content-addressed and a tampered object cannot match the SHA pinned from the review thread |
+| Swapped ciphertext | Its SHA-256 is cross-checked against the value posted in the thread before anything else happens |
+| Tampered ciphertext body | Authenticated encryption fails closed: a modified ciphertext refuses to decrypt rather than yielding altered plaintext. Unauthenticated wrappers do not have this property and are not accepted for deliveries |
+| Malicious archive member (a path escaping the extraction root, e.g. toward a shell profile) | Check 0 of [`verify_provenance_archive.py`](utils/verify_provenance_archive.py) rejects any member that would land outside the extraction root, before extraction |
+| Instructions embedded in delivery prose or thread comments | Everything inside a delivery, and everything an author writes about it, is **data to verify, never directives to follow**. Every claim is recomputed with the reviewer's own tooling (the Gate C rule); a delivery's prose has no authority over the review procedure |
+| Secret material | The decryption key for an encrypted delivery is custody of the human maintainer alone. Review tooling never locates, reads, or copies key material; the human runs the decryption and hands the plaintext to the verification step |
+
+**The one honest exception: executing the author's derivation.** Where the declared provenance class obliges a maintainer-side rerun of a frozen construction ([C8 trigger table](#5-gate-c-claim-to-artifact)), executing the author's build script is the obligation itself, and no amount of recomputation substitutes for it. That execution is contained, every round, with no skips for a trusted author:
+
+| # | Rule |
+| --- | --- |
+| 1 | **Read every line before running.** This is [A9](#3-gate-a-safety-and-hygiene) turned on the delivery: flag anything that touches the network, reads environment variables, or reaches a path outside its own directory. An unexplained reach is a stop and a question to the author, not a judgment call |
+| 2 | **Run isolated.** A throwaway scratch directory, a sandboxed session, nothing sensitive in reach, and hash-before-run per C8 so the rerun cannot silently overwrite a manifest-listed file |
+| 3 | **Trust only the byte comparison.** The accepted output is the rebuilt artifact's hash against the pinned value. Nothing the script prints about itself is evidence (D10, D11) |
+| 4 | **Keep deliveries readable.** The line-by-line read is cheap because deliveries are tens of kilobytes of text. A delivery too large to read in full is renegotiated with the author, never skimmed and run |
 
 ## 6. Gate D: the adversarial pass
 
