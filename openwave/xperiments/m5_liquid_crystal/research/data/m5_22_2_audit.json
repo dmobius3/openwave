@@ -1,0 +1,318 @@
+{
+ "task": "M5.22.2 adversarial audit",
+ "verdicts": {
+  "A_hedgehog_calibration": {
+   "verdict": "PASS",
+   "measured": {
+    "analytic_identity_max_rel_dev": 3.5455458809564824e-16,
+    "fd_vs_coulomb_rel_median": 0.0070032654859790025,
+    "fd_vs_coulomb_rel_p90": 0.020128448179256405,
+    "flux_half12_run_convention": 1.0615944420947967,
+    "flux_half12_symmetric_box": 1.0584357395997006,
+    "q_vol_own_div": 0.9990642162570326
+   },
+   "claimed": {
+    "median": 0.007,
+    "p90": 0.02,
+    "flux_half12": 1.06
+   }
+  },
+  "B_instrument_identity": {
+   "verdict": "PASS",
+   "measured": {
+    "e_full_vs_mermin_B_max_abs_diff": 0.0,
+    "own_LeviCivita_vs_mermin_B_max_abs_diff": 0.0,
+    "field_scale": 0.04175230323199626
+   },
+   "note": "e_full delegates to PAIR.mermin_B in source; the identity is structural AND numerically exact"
+  },
+  "C_quantization_split": {
+   "verdict": "PASS",
+   "measured": {
+    "P-0.5_plane_sc6_n32_pinned_d0.3": {
+     "full": {
+      "q_vol": -0.9771274835474075,
+      "flux_half6": -0.4193649793700703,
+      "flux_half12": -1.0490596766224622,
+      "flux_half18": -1.020417566675893
+     },
+     "curv": {
+      "q_vol": 7.048554765123603,
+      "flux_half6": 4.097338226499237,
+      "flux_half12": 11.732105280259386,
+      "flux_half18": 10.710678401412732
+     }
+    },
+    "E+0.5_plane_sc6_n32_pinned_d0.3": {
+     "full": {
+      "q_vol": -0.9740857163487625,
+      "flux_half6": 0.010965677937916763,
+      "flux_half12": -1.0143657987434467,
+      "flux_half18": -1.0101107530866773
+     },
+     "curv": {
+      "q_vol": -4.431239213668953,
+      "flux_half6": 1.651237248777419,
+      "flux_half12": 0.667252278192292,
+      "flux_half18": -3.209250510932493
+     }
+    }
+   },
+   "claimed": {
+    "P-0.5_full_vol": -0.977,
+    "E+0.5_full_vol": -0.974,
+    "P-0.5_curv_vol": 7.05,
+    "P-0.5_curv_flux_6to12": [
+     2.2,
+     11.9
+    ]
+   }
+  },
+  "D_frame_axis_fork": {
+   "verdict": "PASS",
+   "measured": {
+    "long": {
+     "flux_half12": 1.0490596766224622,
+     "flux_half18": 1.020417566675893,
+     "orient_conflicts": 654
+    },
+    "middle": {
+     "flux_half12": -0.14952652202109706,
+     "flux_half18": -0.09849062761189666,
+     "orient_conflicts": 760
+    },
+    "short": {
+     "flux_half12": 0.04016715262174889,
+     "flux_half18": 0.02236122855985363,
+     "orient_conflicts": 106
+    }
+   },
+   "claimed": {
+    "long": -1.02,
+    "middle": 0.1,
+    "short": 0.005
+   },
+   "note": "claim text says half12 for (-1.02, 0.10, 0.005) but those are the HALF18 values in m5_22_2_dive_axes.json (half12: -1.051, 0.152, 0.010): label slip, substance unchanged; audit uses |flux| (the global director lift sign from eigh is unanchored, so per-axis signs can flip between constructions)"
+  },
+  "E_deuteron_quadrupole": {
+   "verdict": "PASS",
+   "measured": {
+    "n32": {
+     "Q2_zz": 21.765134845584324,
+     "q_vol": -0.8765020686935885,
+     "claimed_Q2_zz": 21.8
+    },
+    "n48_ext": {
+     "Q2_zz": 61.54260241716168,
+     "q_vol": -0.8932180079697952,
+     "claimed_Q2_zz": 61.5
+    }
+   },
+   "old_m5_22_1_moments_Q2_zz": {
+    "n32": 21.76513610883933,
+    "n48_ext": 61.54260257623686
+   },
+   "note": "electric reading = negated (convention), so -21.8/-61.5 electric follows from +21.8/+61.5 topological if the sign convention is granted"
+  },
+  "F_returned_verdicts": {
+   "verdict": "PARTIAL",
+   "E_start_refs": {
+    "P-1": {
+     "E_start_recomputed": 12.7296,
+     "claimed": 12.7296
+    },
+    "d2": {
+     "E_start_recomputed": 15.0475,
+     "claimed": 15.047
+    }
+   },
+   "measured": {
+    "P-1_K10.4_ext": {
+     "E_end": 12.8618,
+     "dE_vs_start": 0.1322,
+     "n_rings_thr0.15_minvox2": 3,
+     "n_rings_thr0.15_minvox4": 2,
+     "n_rings_thr0.15_minvox10": 2,
+     "ring_zs": [
+      -11.82,
+      2.25,
+      12.13
+     ],
+     "ring_voxels": [
+      79,
+      3,
+      75
+     ],
+     "q_upper": 1.0315,
+     "q_lower": -1.0339,
+     "E_ok": true,
+     "rings_ok_as_claimed": false,
+     "rings_ok_major_components": true,
+     "q_ok": true
+    },
+    "P-1_K30.15": {
+     "E_end": 12.7355,
+     "dE_vs_start": 0.0059,
+     "n_rings_thr0.15_minvox2": 2,
+     "n_rings_thr0.15_minvox4": 2,
+     "n_rings_thr0.15_minvox10": 2,
+     "ring_zs": [
+      -11.95,
+      12.04
+     ],
+     "ring_voxels": [
+      84,
+      84
+     ],
+     "q_upper": 1.0329,
+     "q_lower": -1.033,
+     "E_ok": true,
+     "rings_ok_as_claimed": true,
+     "rings_ok_major_components": true,
+     "q_ok": true
+    },
+    "P-1_K30.4": {
+     "E_end": 12.749,
+     "dE_vs_start": 0.0194,
+     "n_rings_thr0.15_minvox2": 2,
+     "n_rings_thr0.15_minvox4": 2,
+     "n_rings_thr0.15_minvox10": 2,
+     "ring_zs": [
+      -11.96,
+      12.05
+     ],
+     "ring_voxels": [
+      84,
+      83
+     ],
+     "q_upper": 1.0327,
+     "q_lower": -1.0325,
+     "E_ok": true,
+     "rings_ok_as_claimed": true,
+     "rings_ok_major_components": true,
+     "q_ok": true
+    },
+    "d2_K10.4_ext": {
+     "E_end": 15.0586,
+     "dE_vs_start": 0.0116,
+     "n_rings_thr0.15_minvox2": 2,
+     "n_rings_thr0.15_minvox4": 2,
+     "n_rings_thr0.15_minvox10": 2,
+     "ring_zs": [
+      -13.39,
+      13.44
+     ],
+     "ring_voxels": [
+      84,
+      83
+     ],
+     "q_upper": 1.0833,
+     "q_lower": -1.083,
+     "E_ok": true,
+     "rings_ok_as_claimed": true,
+     "rings_ok_major_components": true,
+     "q_ok": true
+    },
+    "d2_K30.15": {
+     "E_end": 15.0493,
+     "dE_vs_start": 0.0023,
+     "n_rings_thr0.15_minvox2": 2,
+     "n_rings_thr0.15_minvox4": 2,
+     "n_rings_thr0.15_minvox10": 2,
+     "ring_zs": [
+      -13.45,
+      13.52
+     ],
+     "ring_voxels": [
+      82,
+      86
+     ],
+     "q_upper": 1.0754,
+     "q_lower": -1.0755,
+     "E_ok": true,
+     "rings_ok_as_claimed": true,
+     "rings_ok_major_components": true,
+     "q_ok": true
+    },
+    "d2_K30.4": {
+     "E_end": 15.0593,
+     "dE_vs_start": 0.0123,
+     "n_rings_thr0.15_minvox2": 2,
+     "n_rings_thr0.15_minvox4": 2,
+     "n_rings_thr0.15_minvox10": 2,
+     "ring_zs": [
+      -13.45,
+      13.49
+     ],
+     "ring_voxels": [
+      82,
+      89
+     ],
+     "q_upper": 1.082,
+     "q_lower": -1.079,
+     "E_ok": true,
+     "rings_ok_as_claimed": true,
+     "rings_ok_major_components": true,
+     "q_ok": true
+    }
+   },
+   "claimed": {
+    "E_tol": 0.15,
+    "rings": 2,
+    "q": "+-1.04 (P-1) / +-1.08 (d2)"
+   }
+  },
+  "G_k1_envelope_gap": {
+   "verdict": "PASS",
+   "measured": {
+    "ring_rho": 10.1,
+    "ring_z": 11.96,
+    "ring_r": 15.66,
+    "w_K1_at_ring_center": 0.021713288285751423,
+    "w_K1_mean_over_ring_voxels": 0.03647821550901712,
+    "w_K3_at_ring_center": 1.0,
+    "w_K3_mean_over_ring_voxels": 0.8475849210284218
+   },
+   "claimed": {
+    "w_K1": "~0.02 or less",
+    "w_K3": "~1"
+   }
+  },
+  "H_energy_bookkeeping": {
+   "verdict": "PASS",
+   "measured": {
+    "E_start_recomputed": 12.7296,
+    "E_injected_replicated": {
+     "run_top_ring": {
+      "E_injected": 671.4243391429081,
+      "ring_pick": [
+       10.098,
+       11.964
+      ]
+     },
+     "own_ledger": {
+      "E_injected": 671.4243391429081,
+      "ring_pick": [
+       10.098,
+       11.964
+      ]
+     }
+    },
+    "rel_err_vs_claimed_671.42": 1e-05,
+    "row_E_end": 12.749022354293352,
+    "row_absorbed": 344.02371313150604,
+    "ledger_unaccounted": 327.38
+   },
+   "claimed": {
+    "E_injected": 671.42,
+    "absorbed": 344.02,
+    "E_end": 12.749
+   }
+  }
+ },
+ "defects": [
+  "claim D wording: claim text says half12 for (-1.02, 0.10, 0.005) but those are the HALF18 values in m5_22_2_dive_axes.json (half12: -1.051, 0.152, 0.010): label slip, substance unchanged",
+  "claim F ring count: rows with thr0.15 component count != 2 at min_vox=2: ['P-1_K10.4_ext'] (small spurious blobs below ~4 voxels; the run's own saved row for P-1 K10.4_ext already lists 3 components, incl. a 3-voxel blob at z=+2.25, gap_min 0.141 just under thr): threshold-sensitive bookkeeping, the two MAJOR rings and charges are intact",
+  "claim H bookkeeping: E_kicked - absorbed - E_end = 327.4 of 671.4 injected is NOT accounted by the sponge line-integral 'absorbed' (the leapfrog absorbed term gam*V^2*h^3*dt is a lower-bound estimate; ~half the injected energy leaves the ledger silently during evolve+FIRE): 'absorbed 344.02' is an instrument reading, not a closed energy budget"
+ ]
+}
