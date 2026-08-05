@@ -1,16 +1,18 @@
 # M5.22.2: beta decay of a kicked neutron-analog
 
-**Status**: 🚧 PLANNED STUB. Staged 2026-07-30 at the M5.22 series re-plan (rung 4 of the author ladder as its own checkpoint-bounded subtask); the series goals, borders, and checkpoint policy live in [M5.22 § TASK PLANNING](m5_22_task_details.md).
+**Status**: 🚧 PLANNED STUB. Staged 2026-07-30 at the M5.22 series re-plan (rung 4 of the author ladder as its own checkpoint-bounded subtask); the series goals, borders, and checkpoint policy live in [M5.22 § TASK PLANNING](m5_22_task_details.md). REFRESHED 2026-08-05 from the author's 2026-08-02 checkpoint reply ([`m5_22_convo.md § 2026-08-02`](m5_22_convo.md)): the expected decay channels named, the div E electric instrument staged as the opening move, the target set widened to both neutral states.
 
 ## Scope: rung 4, the second quantitative anchor
 
 | Piece | Content |
 | --- | --- |
+| OPENING MOVE: the div E electric instrument | The author's 2026-08-02 correction: the M5.22.1 moments read (ρ = div B/4π) is MAGNETIC charge; the electric read needs div E, with E = the curvature of the long axis, or the full form of arXiv 2108.07896. Build BOTH variants, cross-check on the proton-analog (known electric +1), then RECOMPUTE the census + deuteron-candidate moments (the negative quadrupole sign is unsettled until this runs; [note § 8](../findings/m5_22_1_note.md)) |
 | Protocol | The [M5.21.6](m5_21_6_task_details.md) kick protocol transplanted to the census neutron-analog; kick parameters self-scanned per the series exhaustion rule |
 | Mechanism anchor | The author's 2026-07-27 panel: neutron → shift → split with energy release → reconnection → proton + electron + neutrino ([M5.22 § The charge-quantization frame](m5_22_task_details.md); sketch local-only in `theory/`) |
-| Reads | Decay products (proton-analog + fast escaping charged vortex + neutral ejecta); the β energy probability distribution SHAPE vs the experimentally known spectrum (shape only at toy parameters); the charge classes of all products by the winding/degree instrument |
+| The expected channels (author, 2026-08-02) | Neutron target: beta decay to proton + electron + neutrino (the neutrino as a topological vortex knot). Ring-antiring target: bineutron → proton + neutron + electron, or two neutrons. Caveat attached: toy parameters + the missing 3×3 angular momenta "could qualitatively change behavior", so a non-decay is a reportable outcome, not a failure |
+| Reads | Decay products (proton-analog + fast escaping charged vortex + neutral ejecta); the β energy probability distribution SHAPE vs the experimentally known spectrum (shape only at toy parameters); the charge classes of all products by the winding/degree instrument + the new div E read |
 | The Sulich composite read | Does the neutron-analog decompose under the kick as proton + electron (+ antineutrino), per the 2026-07-28 09:05 group question? Reported qualitatively from the decay products |
-| The target identity | If the [M5.22.1](m5_22_1_task_details.md) kick-apart probe splits the two-ring neutral state (the author's 2026-07-30 dineutron reading, [`m5_22_convo.md § 2026-07-30`](m5_22_convo.md)), the decay target becomes its single-ring neutral product; that probe also gives the kick transplant its first exercise |
+| The target set | BOTH neutral states: the census neutron-analog (primary; the M5.22.1 kick-apart did NOT split the two-ring state, so it survives as its own object) AND the ring-antiring state itself, probed against the author's named bineutron channels; each outcome routes the [Q40](../m5_question_tracker.md#q40-detail) identity by its decay products |
 
 ## Definition of done
 
