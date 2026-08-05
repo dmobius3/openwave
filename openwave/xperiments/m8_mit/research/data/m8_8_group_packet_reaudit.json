@@ -75,6 +75,8 @@
         "lexicographically_ordered": true,
         "enumeration_sha256": "27ff780d28d5d854d464ead87e8fc20244fac8334bda9f0600c6ee1b3c89561e",
         "expected_sha256": "27ff780d28d5d854d464ead87e8fc20244fac8334bda9f0600c6ee1b3c89561e",
+        "encoding": "CANONICAL TUPLE: the element's four quaternion components in the packet's `quaternion_basis` order (1, i, j, k), each contributing the integer pair (A, B) of its `(A + B*phi)/2` numerator, rational part before phi part, the denominator fixed at 2 and dropped, giving 8 signed integers.  RANK: the 120 tuples sorted ascending in lexicographic order, compared entrywise as signed integers with the first entry most significant; rank is the 0-based position and is the element ID of section 4.2.  DIGEST INPUT: one JSON array of the 120 rank-ordered 8-integer arrays, rendered with no whitespace at all (JSON separators ',' and ':'), integers as bare decimal with '-' for negative, no '+', no leading zero, no exponent; ASCII; no trailing newline.  DIGEST: SHA-256 of those bytes, lowercase hex.",
+        "serialized_bytes": 2389,
         "error": null
       }
     }

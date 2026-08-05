@@ -36,7 +36,8 @@ WHAT THIS VERIFIES.  Five checks, each mutation-tested:
       torsion value need not be spelled with any forbidden word
   G5  the canonical element enumeration is the one the construction packet's element IDs
       address: 120 elements, ranked by lexicographic order of the canonical coordinate
-      tuple per the section 4.2 encoding rule, pinned by its own digest
+      tuple per the section 4.2 encoding rule, pinned by its own digest under the
+      serialization `ENUMERATION_ENCODING` declares and the artifact carries
 
 WHY G5 IS THIS RE-AUDIT'S ADDITION.  M8.5-A consumed the group as a group; nothing in it
 depended on WHICH element received which index.  M8.8's construction packet addresses
@@ -45,6 +46,16 @@ the same 120 quaternions in a different order would silently change what every b
 entry means.  The enumeration is a function of the packet alone, which G5 records as a
 frozen digest and the invariance test `generator_order_reversed` shows is independent of the
 order the packet happens to list its generators in.
+
+WHY THE ENCODING IS DECLARED AND EMITTED.  The first revision of this file pinned the digest
+while stating only the ORDERING, which left the number computable by one side alone: the
+four-plus plausible renderings of "120 tuples in rank order" (compact JSON, spaced JSON,
+trailing newline, flat integer list, component strings) each give a different SHA-256, and
+`27ff780d...` names exactly one of them.  A pin only its author can evaluate is an assertion
+wearing a hash, the same defect class as naming a file "at main" with no revision.
+`ENUMERATION_ENCODING` below therefore states the rule in section 4.2 register, the emitted
+artifact carries it beside the digest, and the byte length is recorded so a mismatching third
+party can localize rather than guess.
 
 WHAT THIS DOES NOT VERIFY.
 
@@ -97,6 +108,21 @@ import m8_8_packet_audit as m88  # noqa: E402
 EXPECTED_PACKET_SHA256 = "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9"
 EXPECTED_ENUMERATION_SHA256 = "27ff780d28d5d854d464ead87e8fc20244fac8334bda9f0600c6ee1b3c89561e"
 EXPECTED_ORDER = 120
+
+# The encoding the digest above is taken over, stated so both sides can compute it.  Emitted
+# into the artifact verbatim: the rule travels with the number rather than with this file.
+ENUMERATION_ENCODING = (
+    "CANONICAL TUPLE: the element's four quaternion components in the packet's "
+    "`quaternion_basis` order (1, i, j, k), each contributing the integer pair (A, B) of "
+    "its `(A + B*phi)/2` numerator, rational part before phi part, the denominator fixed "
+    "at 2 and dropped, giving 8 signed integers.  RANK: the 120 tuples sorted ascending in "
+    "lexicographic order, compared entrywise as signed integers with the first entry most "
+    "significant; rank is the 0-based position and is the element ID of section 4.2.  "
+    "DIGEST INPUT: one JSON array of the 120 rank-ordered 8-integer arrays, rendered with "
+    "no whitespace at all (JSON separators ',' and ':'), integers as bare decimal with '-' "
+    "for negative, no '+', no leading zero, no exponent; ASCII; no trailing newline.  "
+    "DIGEST: SHA-256 of those bytes, lowercase hex."
+)
 
 # Section 4.3's forbidden construction inputs, reduced to the words their objects are made
 # of: the M8.3 artifacts, the spectral side they were computed from, and the torsion-side
@@ -162,10 +188,19 @@ def enumeration(generators: list, cap: int = 5000) -> list:
     return sorted(seen)
 
 
+def enumeration_blob(keys: list) -> bytes:
+    """The exact bytes the digest is taken over, per `ENUMERATION_ENCODING`.
+
+    Separated from the hashing so the byte length reaches the artifact and so this one
+    expression, rather than a sentence about it, is what the declared encoding describes.
+    On the delivered packet the blob is 2389 bytes and runs
+    `[[-2,0,0,0,0,0,0,0],[-1,0,-1,0,-1,0,-1,0],` ... `,[1,0,1,0,1,0,1,0],[2,0,0,0,0,0,0,0]]`.
+    """
+    return json.dumps([list(k) for k in keys], separators=(",", ":")).encode("ascii")
+
+
 def enumeration_digest(keys: list) -> str:
-    return hashlib.sha256(
-        json.dumps([list(k) for k in keys], separators=(",", ":")).encode("ascii")
-    ).hexdigest()
+    return hashlib.sha256(enumeration_blob(keys)).hexdigest()
 
 
 def numeric_leaves(node: Any, path: str = "$") -> Iterator[tuple]:
@@ -256,10 +291,11 @@ def run_checks(raw: bytes, packet: dict) -> tuple:
     try:
         gens = [tuple(m88.parse_component(c) for c in g) for g in packet["generators"]]
         keys = enumeration(gens)
-        digest = enumeration_digest(keys)
+        blob = enumeration_blob(keys)
+        digest = hashlib.sha256(blob).hexdigest()
         error = None
     except (ValueError, KeyError, TypeError, RuntimeError) as exc:
-        keys, digest, error = [], None, f"{type(exc).__name__}: {exc}"
+        keys, blob, digest, error = [], b"", None, f"{type(exc).__name__}: {exc}"
     ordered = keys == sorted(keys)
     g5 = len(keys) == EXPECTED_ORDER and ordered and digest == EXPECTED_ENUMERATION_SHA256
     add(
@@ -271,6 +307,10 @@ def run_checks(raw: bytes, packet: dict) -> tuple:
             "lexicographically_ordered": ordered,
             "enumeration_sha256": digest,
             "expected_sha256": EXPECTED_ENUMERATION_SHA256,
+            # the rule and the length travel WITH the number, so the digest is checkable by
+            # a party that has only this artifact and the group packet
+            "encoding": ENUMERATION_ENCODING,
+            "serialized_bytes": len(blob),
             "error": error,
         },
     )
@@ -457,7 +497,10 @@ def main() -> int:
     print()
     for c in checks:
         print(f"  {'PASS' if c['pass'] else 'FAIL'}  {c['id']}  {c['check']}")
-        print(f"        {json.dumps(c['observed'])}")
+        # the declared encoding is a paragraph and belongs in the artifact, not in a
+        # terminal line; everything else in `observed` prints as it stands
+        terse = {k: v for k, v in c["observed"].items() if k != "encoding"}
+        print(f"        {json.dumps(terse)}")
     print()
     print(f"  enumeration agrees with the construction audit's Group class: {agrees}")
     if mut is not None:
