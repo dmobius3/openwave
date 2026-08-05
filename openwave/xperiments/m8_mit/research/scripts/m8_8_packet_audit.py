@@ -133,8 +133,14 @@ MAX_INT64_PRIME = 3_037_000_499
 # likely to need a second opinion
 BOUND_PRIME = 2_147_483_647
 # entries in the A11 elimination stay tiny on a real packet; a runaway means the greedy
-# pivot order met something pathological, and the honest answer there is "inconclusive"
-A11_GROWTH_CAP = 1 << 40
+# pivot order met something pathological, and the honest answer there is "inconclusive".
+# The cap must ALSO keep the row update itself exact in int64: one step subtracts a
+# product of two entries, so entries at the cap reach cap^2 + cap before the cap check
+# runs, and the earlier 2^40 cap let products wrap silently (demonstrated: a matrix with
+# entries at 2^39 certified SATURATED because -2^78 wraps to exactly 0 mod 2^64).
+# The exact maximum satisfying cap^2 + cap < 2^63 is 3_037_000_499, which is the
+# constant already defined above.
+A11_GROWTH_CAP = MAX_INT64_PRIME
 LEAKAGE_VOCABULARY = (
     "torsion",
     "character",
@@ -427,6 +433,10 @@ def saturation_certificate(matrix: np.ndarray) -> tuple[bool | None, dict[str, A
     fails closed.
     """
     a = np.array(matrix, dtype=np.int64)
+    # the cap check below runs AFTER each update, which is sound only if the entries
+    # going INTO the update already respect the cap; an over-cap input must refuse here
+    if a.size and int(np.abs(a).max()) > A11_GROWTH_CAP:
+        return None, {"pivots": 0, "outcome": "inconclusive: entry growth"}
     rows, cols = a.shape
     live_rows = list(range(rows))
     live_cols = list(range(cols))
@@ -942,8 +952,14 @@ def run_checks(
         acyclicity,
     )
 
-    prose = json.dumps(packet.get("basing", {})) + json.dumps(packet.get("top_closure", {}))
-    scanned = raw.replace(prose.strip("{}"), "")
+    # `basing` and `top_closure` are declared prose and exempt from the vocabulary scan;
+    # scan a serialization that omits them rather than substring-replacing them out of
+    # `raw`, which never matched (compact dump vs indented raw) and silently scanned the
+    # prose too. The decimal-literal check below stays on the full raw on purpose.
+    scanned = json.dumps(
+        {k: v for k, v in packet.items() if k not in ("basing", "top_closure")},
+        sort_keys=True,
+    )
     hits = [word for word in LEAKAGE_VOCABULARY if word in scanned.lower()]
     leakage_ok = not hits and not re.search(r"\d\.\d", raw) and set(packet) <= DECLARED_KEYS
     record(
@@ -1032,11 +1048,13 @@ def _scale_top_boundary(packet: dict[str, Any]) -> None:
 
 
 def _relabel_relator(packet: dict[str, Any]) -> None:
-    """Mislabel the FIRST relator, which is the one currently agreeing with its matrix.
+    """Mislabel the first relator: `s^3` becomes `s^4` in the declared basis order.
 
-    Mutating the second relator's label would not do: swapping `(st)` for `(ts)` there is
-    the correction, not a defect, and A10 goes green under it.  That asymmetry is itself the
-    causal demonstration that A10 reads the matrices rather than the prose.
+    An earlier version of this docstring claimed that swapping `(st)` for `(ts)` on the
+    second relator would leave A10 green.  That was true against the packet the mutation
+    was written for, whose second matrix row was the `(ts)` jacobian, and it is false
+    against the shipped packet, where the same swap reddens A10 (measured).  Either
+    relabel now demonstrates the same thing: A10 reads the matrices, not the prose.
     """
     packet["basing"]["basis_order"] = packet["basing"]["basis_order"].replace("s^3", "s^4")
 
