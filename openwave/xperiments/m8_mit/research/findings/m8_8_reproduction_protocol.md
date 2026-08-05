@@ -159,7 +159,7 @@ One JSON file, canonical form as § 10.2, exactly these keys:
 | --- | --- |
 | `format_version` | schema string |
 | `group_packet_sha256` | the group packet this is matched to |
-| `abstract_generators` | the presentation generators by name, each mapped to its canonical element ID in the group packet's closure. A presentation generator need not BE a packet generator: the packet generators have orders 6 and 4, while a standard balanced presentation of `2I` uses an order-10 generator |
+| `abstract_generators` | the presentation generators by name, each mapped to its canonical element ID in the group packet's closure. **These IDs name elements satisfying the DECLARED RELATORS. Do NOT read them as the group packet's listed generators, and do not treat a mismatch with those as a discrepancy.** A presentation generator need not BE a packet generator: the packet generators have orders 6 and 4, while a standard balanced presentation of `2I` uses an order-10 generator, so at least one ID here will differ from the packet's own list by construction. The IDs are also NOT uniquely determined by the relators: several elements typically satisfy them and generate, so this field records the choice made rather than a forced value, and the enumeration it addresses is fixed by the group packet's canonical ordering, not by this field |
 | `model_kind` | `finite_cellular` or `resolution_derived` |
 | `degree_range` | `[0, 3]`, frozen |
 | `free_ranks` | the based free `Z[2I]`-module rank in each degree |
