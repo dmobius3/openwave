@@ -107,7 +107,7 @@ record), [`research/m5_roadmap.md`](research/m5_roadmap.md) (full program),
 | Absolute-ω calibration (#220) | close the ZBW scale from a mass-family test + the Coulomb-unit map |
 | Neutrino field follow-up (#200) | the charged-lepton second-rotation matrix behind θ₁₃ |
 | Quarks / hadrons / nuclei (15a) | Cornell confinement via 1D vortex string; baryons / mesons as knots; nuclei (the most practical direction) |
-| Weak force | a clean SU(2) chiral reconnection mechanism (currently sketched) |
+| Weak force | a clean SU(2) chiral reconnection mechanism; the static-kick beta-decay probe measured NEGATIVE at the 3×3 truncation (the neutral states are deep minima), so the mechanism now rides the dynamical sector (ω-twist angular momenta) |
 | Orbital quantization | pilot-wave standing-wave resonance around the electron clock |
 
 ## Help Wanted
