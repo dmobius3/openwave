@@ -249,7 +249,40 @@ word-level encoding lets semantically identical objects differ in bytes. A group
 is therefore an ordered list of terms `(coefficient, element_id)`, where element IDs are
 assigned by the rank of each element's canonical exact coordinate tuple in lexicographic
 order over the group packet's 120-element closure; both sides derive the SAME enumeration
-from the group packet alone. Coefficients on identical IDs are combined, zero terms
+from the group packet alone.
+
+**THE ID SORT KEY, stated here because the nearest canonical form in this paragraph is a
+DIFFERENT one.** Take the four quaternion components in the group packet's
+`quaternion_basis` order. Each is `(A + B·φ)/2` with the denominator FIXED at 2 and NOT
+reduced, per the group packet's own `coefficient_form`. The key is the eight signed integers
+`A₁, B₁, A_i, B_i, A_j, B_j, A_k, B_k`, the numerator pair per component with the fixed
+denominator dropped, compared entrywise as SIGNED integers with the first entry most
+significant. Rank is the 0-based position and is the element ID.
+
+**This is NOT the normalized `Q(φ)` triple defined at the end of this paragraph.** That
+normalization governs `Q(φ)` VALUES and reduces by `gcd(a, b, c)`; applying it as the ID sort
+key instead renames **26 of the 120 IDs**, ranks 70 to 74 and 99 to 119, a block containing
+the identity and typically at least one declared generator. The misread is not
+self-announcing: element orders and `⟨s,t⟩ = 2I` are blind to it, and `ε(∂₁) = 0` is blind
+because `ε` sends every element to 1. What catches it is the relator check, where `order(st)`
+reads 6 rather than 4, and the identity failing to sit at rank 119.
+
+**The enumeration is checkable BEFORE anything is built.** SHA-256 over one JSON array of the
+120 rank-ordered eight-integer arrays, no whitespace (separators `,` and `:`), integers as
+bare decimal, ASCII, no trailing newline:
+
+```text
+27ff780d28d5d854d464ead87e8fc20244fac8334bda9f0600c6ee1b3c89561e   2389 bytes
+rank 0 [-2,0,0,0,0,0,0,0]   rank 118 [1,0,1,0,1,0,1,0]   rank 119 [2,0,0,0,0,0,0,0]
+```
+
+It is a function of the group packet alone, so it is derivable from a § 4.3 permitted input
+and quarantines nothing. Check it FIRST: a room that builds under the wrong key otherwise
+meets a relator failure against a correct packet with no way to tell whether the packet or
+its own enumeration is at fault, and the honest response to that dead end is a defect report
+against bytes that are right.
+
+Coefficients on identical IDs are combined, zero terms
 removed, terms sorted by ID. Source WORDS, where the construction's source gives them, live
 in the maintainer-side construction-audit artifact for provenance, never in the clean-room packet.
 Matrices declare their dimensions and are entry-ordered row-major. Every `Q(φ)` value is
