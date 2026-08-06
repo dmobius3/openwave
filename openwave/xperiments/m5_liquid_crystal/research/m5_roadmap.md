@@ -10,6 +10,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
+| [M5.21.11](tasks/m5_21_11_task_details.md) | The realistic-parameter bridge: the mass-ratio read | 🚧 PLANNED (2026-08-06), run scope = P0 ONLY: derive the asymptotic E(δ, g) forms from M5-side theory and freeze the pre-registered route-(b) framework (rung set, holdouts, branch rule, uncertainty model per the amended M8.6 condition); author-checked before freeze; NO rungs, fits, or ratios this run. The ladder compute is the follow-on | user "go" (P0); the ladder run gates on the FROZEN framework |
 
 ## BACKLOG
 
@@ -17,7 +18,6 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [M5.21.11](tasks/m5_21_11_task_details.md) | The realistic-parameter bridge: the mass-ratio read | 🚧 PLANNED STUB, the [Q33](m5_question_tracker.md#q33-detail) bridge home: walk the toy-parameter results toward the physical regime (δ ~ 1e-10, g ~ 1e10) by scaling-law ladders, plus the unit-calibration axis (the M5.16 Coulomb lock, the 511 keV anchor, ω ∝ m). Target read: 1 : 206.8 : 3477 / Koide on the census levels (toy 1 : 4.2 : 16.0). Numerics beyond lattice reach is the obstacle | the M5.21 core results + Q33 + user "go" |
 | [M5.21.13](tasks/m5_21_13_task_details.md) | The stiffness ladder: does the census survive δ = 1, 3, 10? | 🚧 PLANNED STUB (contributor proposal, was issue #324). Re-run the [M5.21.2b](tasks/m5_21_2b_task_details.md) census unchanged except for δ, recording the A/C/B ordering, the ratios, the topology signatures and the cross-stencil ratio at each rung. Cheap (3-6 re-runs, no new code) and non-gating. Carries a premise check: those rungs walk away from the physical corner. | the premise check (task doc) + user "go" |
 | [M5.22.3](tasks/m5_22_3_task_details.md) | The A = 3, 4 stretch: tritium → He3, He4 | 🚧 PLANNED STUB, CONDITIONAL (staged 2026-07-30): runs only if the feasibility gate (A = 3-4 fits box + budget, measured during the earlier subtasks) passes; otherwise rungs 5-6 fold into [M5.22.9](tasks/m5_22_9_task_details.md) and the toy series truncates | [M5.22.4](tasks/m5_22_4_task_details.md) first (its angular momenta could change what the stretch builds on) + measured feasibility + user "go" |
 | [M5.22.5](tasks/m5_22_5_task_details.md) | The knot-table probe: known Tait knots as seeds | 🚧 PLANNED STUB, CONDITIONAL (staged 2026-08-05 from the knot-periodic-table thread: reproduce the KNOWN stable knots before claiming new ones). Non-axisymmetric closed-curve seeding (trefoil, figure-eight, then the Tait table); survival + energy ordering + charge class; excitation spectra as stretch | user pick + the seeding feasibility spike (non-gating breadth) |
