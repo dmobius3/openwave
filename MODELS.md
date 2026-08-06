@@ -32,8 +32,8 @@ Every file reference is an active link to the file in this repository (under `op
 | --- | --- | --- | --- | --- | --- |
 | ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 |
 | ⚠️ partial / with caveats | 11 | 10 | 8 | 2 | 1 |
-| ❌ honest negative | 1 | 0 | 3 | 3 | 0 |
-| 🚧 planned / not tested | 9 | 20 | 19 | 22 | 29 |
+| ❌ honest negative | 2 | 0 | 3 | 3 | 0 |
+| 🚧 planned / not tested | 8 | 20 | 19 | 22 | 29 |
 | **Total criteria** | **30** | **30** | **30** | **30** | **30** |
 
 ### Summary Status
@@ -77,7 +77,7 @@ Each criterion's simplest passing test sits in its own companion table right bel
 | Strong force: confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
 | Running coupling | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
 | Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
-| Weak force: beta decay (n → p) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| Weak force: beta decay (n → p) | ❌ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
 | Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | both |
 | Gravity: metric phenomena | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | both |
 | | | | | | | |
@@ -182,7 +182,7 @@ Deep dive: [`m5_summary_report.md`](openwave/xperiments/m5_liquid_crystal/resear
 | Strong force: confinement | ⚠️ [partially validated]<br>**A linear string term is MEASURED**: like charges string-confined by the required inter-core winding (E_int linear, ~20× Coulomb; FORM robust, tension ansatz-grade), merging into a charge-2 ring compound. The ~1 GeV/fm Cornell anchor is the string-tension instrument's target (Q38)<br>[`m5_21_4_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_4_note.md) |
 | Running coupling | ⚠️ [partially validated]<br>Short-range onset verified: the non-abelian ‖R‖·r² roll-off switches on at the core radius r₀, with Maxwell recovered as the abelian limit; no β-function or scale-dependence curve measured beyond the onset<br>[`m5_6_4b_faber_curvature_em.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_4b_faber_curvature_em.py) |
 | Weak force: muon decay | ⚠️ [partially validated]<br>**Decay dynamics measured**, no longer only sketched: kicked heavy-lepton minima relax to the electron level and release structure (neutrino candidates) under damped evolution, energy ledger closed. Missing: any rate or coupling<br>[`m5_21_6_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_6_note.md) |
-| Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Keeps the topology-reconnection picture (n → p + e + ν) but needs a proper neutron state, which no run has produced; the chiral / parity-violating structure (a chiral SU(2) mechanism) is the open mechanism question<br>[`m5_question_tracker.md`](openwave/xperiments/m5_liquid_crystal/research/m5_question_tracker.md) § FORCES |
+| Weak force: beta decay (n → p) | ❌ [honest negative at the 3×3 truncation]<br>The census neutron-analog (bound ring-antiring pair, exact ±1 ring charges) survives EVERY decay probe: 20 kick runs, three kick families to 53× the state energy, all returning with charges intact; no n → p + e + ν channel at toy parameters. The constant-ω long-axis-twist probe also measured negative (no minimum at ω > 0 on any baryon-sector state); the parity-violating structure stays open<br>[`m5_22_2_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_22_2_note.md) · [`m5_22_4_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_22_4_note.md)<br>→ open route: free full-4×4 dynamics and/or physical parameters |
 | Gravity: Newton limit (GEM) | ⚠️ [partially validated]<br>The coupling mechanism is measured: gravity enters only via the boost tilt of the time axis (GEM ∝ (b·g)², zero at zero boost, negative = the clock-fuel block); the attractive 1/r² inter-mass force itself is not yet computed<br>[`m5_8_2q_delta_scaling.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2q_delta_scaling.py) |
 | Gravity: metric phenomena | 🚧 [not yet tested]<br>Appears naturally going from LdG 3×3 tensors to 4×4 adding boosts, the implemented route, but no dynamical metric: light bending, time dilation and any Λ read await a stress-energy-sourced background<br>[`m5_8_2q_delta_scaling.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2q_delta_scaling.py) |
 | | |
