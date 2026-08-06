@@ -1,0 +1,117 @@
+{
+ "A1_derrick": {
+  "exp_u_measured": -1.0,
+  "exp_u_expected": -1.0,
+  "exp_v_measured": 3.0,
+  "exp_v_expected": 3.0,
+  "algebra": "d/ds(Eu/s + s^3 Ev)|1 = -Eu + 3Ev = 0 => Eu = 3Ev; E = Eu + Ev = 4Ev = (4/3)Eu",
+  "pass": true,
+  "caveat": "exact only for a boundary-free dilation family; the pinned finite box breaks it (doc measures +0.034 residual and gates on 0.05, consistent)"
+ },
+ "A2_far_field": {
+  "commutator_identity_max_err": 0.0,
+  "dM_path_rel_err": 2.686489140714388e-11,
+  "E_u_at_delta0": 40642.976053959836,
+  "quartic_fit_rel_resid": 8.951064022136896e-16,
+  "c1_linear_over_const": -3.366503188910222,
+  "poly_coeffs_desc": [
+   48113.686471611494,
+   -144613.58834139342,
+   202424.30208918522,
+   -136824.7084924577,
+   40642.97605395987
+  ],
+  "E_V_max_over_deltas": 1.0500072748108976e-28,
+  "pass": true,
+  "note": "M is linear in delta, so lattice E_u is EXACTLY a quartic polynomial in delta; finite nonzero delta->0 limit; linear coefficient generically nonzero. E_V = 0 for the pure texture (eigenvalues equal targets)."
+ },
+ "A3_core_competition": {
+  "s_exp_used": 0.8,
+  "line_a_slope": -0.20000000000000004,
+  "line_a_expected": -0.2,
+  "line_e_slope": 0.3999999999999999,
+  "line_e_expected": 0.4,
+  "point_a_slope": -0.20000000000000004,
+  "point_a_expected": -0.2,
+  "point_e_slope": 0.19999999999999998,
+  "point_e_expected": 0.2,
+  "theta_eq_2nu_line": "theta = s/2 = 2*(s/4) = 2*nu confirmed",
+  "premises": "quartic-in-gradient density (Delta/a)^4 over a cross-section a^2 gives ku/a^2 per unit line length; over a volume a^3 gives ku/a for a point; T2 penalty w*delta^s over a^2 (line) or a^3 (point): both premises dimensionally correct",
+  "pass": true
+ },
+ "A4_artanh": {
+  "identity_max_rel_err_g_le_64": 3.55242453939581e-15,
+  "identity_rel_err_g1e6_float_cancellation": 5.634039648660101e-12,
+  "series_rel_err_at_g8": 4.9121523412660686e-05,
+  "series_next_term_over_at_g8": 4.85727434493161e-05,
+  "pass": true
+ },
+ "A5_evenness_gain": {
+  "minima_at_mstar_rel_err_max": 0.0005760794270550651,
+  "gain_slope_family_A_vs_g": -2.0000302044573552,
+  "expected_A": -2.0,
+  "gain_slope_family_B_vs_g": -4.000060027796959,
+  "expected_B": -4.0,
+  "verdict": "evenness + minima at m*(g)->0 do NOT imply gain = -kappa*m*^2 with fixed kappa: family B (quadratic coefficient softening, a pitchfork) satisfies the same empirical inputs and gives gain ~ -m*^4 ~ g^-4. The doc's O(m*^2) gain law is an extra assumption (fixed E''(0) < 0 as g varies), not a consequence; it must come from the measured g-arm.",
+  "consequence": "separability SURVIVES either way (g^-4 is even smaller than g^-2 at g ~ 1e10) but F4 as written could terminally fail route (b) on a healthy instrument if the true law is g^-4",
+  "pass_arithmetic": true
+ },
+ "A6_g_freeness": {
+  "base_cfg_keys": [
+   "L",
+   "aring",
+   "bc",
+   "delta",
+   "eps",
+   "h",
+   "maxit",
+   "n",
+   "seed",
+   "shift",
+   "snaps",
+   "stencil",
+   "tag",
+   "term",
+   "w2",
+   "wdet"
+  ],
+  "has_g_key": false,
+  "source_mentions_artanh_or_boostparam": false,
+  "pass": true,
+  "note": "T2 potential = w2 * sum_k (lam_k - v_k)^2 with v = sorted(1, delta, 0); curvature term parameter-free; no g anywhere in the instrument"
+ },
+ "A7_statistics": {
+  "points": 24,
+  "holdout": 6,
+  "fit_points": 18,
+  "params_shared_theta": 10,
+  "df": 8,
+  "df_claimed": 8,
+  "df_after_degeneracy_fallback": 12,
+  "refinement_runs": 27,
+  "beyond_production": 18,
+  "pass": true,
+  "determinism_gap": "the theta 68pct interval METHOD (delta-method vs profile) and whether the fit enforces theta <= 1 are not pinned; both affect whether the interval 'includes 1'"
+ },
+ "A8_internal_numbers": {
+  "a_005_nu02": 3.5774227027631387,
+  "doc_value": 3.6,
+  "L_over_a_nu02": 13.417480680414322,
+  "doc_value_La": 13,
+  "nu_refit_from_quoted_radii": 0.27445716033667333,
+  "a_005_nu_refit": 4.087984035996387,
+  "L_over_a_nu_refit": 11.741728827055143,
+  "delta_phys_pow_04": 9.999999999999995e-05,
+  "artanh_sq_at_gphys": 1.0000000000000001e-20,
+  "a_star_at_delta_phys_nu02": 196.50077139915572,
+  "box_L": 48.0,
+  "g_from_1e38_quarter": 3162277660.1683793,
+  "F2_false_alarm_prob_2of6_at_95pct": 0.03277382812500024,
+  "pass_arithmetic": true,
+  "catches": [
+   "nu point estimate from the quoted radii is 0.27, not 0.2 (inside the stated 0.2 +/- 0.1 band, but the central value the doc propagates is low)",
+   "a*(delta_phys) ~ 2.0e2 >> L = 48: the physical point is 8+ decades of delta beyond the measured window and the core does not fit any feasible box there; the prediction is pure functional-form extrapolation (doc partly concedes via 'numerically the E_inf limit')",
+   "F2 has a ~3.3 percent false-alarm probability from the >=2-of-6-at-2sigma clause alone if intervals are calibrated"
+  ]
+ }
+}
