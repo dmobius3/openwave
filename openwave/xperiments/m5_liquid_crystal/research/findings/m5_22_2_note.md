@@ -52,6 +52,8 @@ Controls with known electric content: the analytic hedgehog n̂ = r̂ (unit topo
 
 **The verdict this rung can state**: of the two named variants, only E_full (the paper's dual curvature of the long axis) passes the Gauss-law calibration; the literal field-line curvature does not quantize on any control. Since E_full is numerically the array the M5.22.1 instrument already computed, the correction lands as a REREAD, not a recompute: under the paper's dual mapping (space-space curvature = electric sector) the M5.22.1 moment VALUES are electric-sector reads as they stand. 🔶 The dual mapping itself (space-space ↔ electric, not magnetic, for these static states) is the author's to confirm at the checkpoint; the calibration evidence (hedgehog E_full = Coulomb with the elementary charge as its Gauss integral, the physics the author's own Gauss-law panel states) is what we can measure.
 
+**RESOLVED 2026-08-06** ([convo § 2026-08-06](../tasks/m5_22_convo.md)): the author confirms the electric read as the spatial F-tensor components, E = (F_23, F_31, F_12), with the longest-axis curvature as the basic form ("corresponding to Faber's n field"). The dual mapping stands; the residue is now instrumental only: the literal full-F object also carries contributions from the other eigenvalues and eigenvectors, staged as the [M5.22.4](../tasks/m5_22_4_task_details.md) opening add-on (expected near-identity for these states: the § 2 axis fork measured middle/short flux ≤ 0.34/0.01, an expectation to verify by diff, not assume).
+
 ## 3. The moment recompute (✅ measured)
 
 Both variants on the pre-registered target set ([`m5_22_2_dive_all.json`](../data/m5_22_2_dive_all.json)); electric values = negated topological:
@@ -63,7 +65,7 @@ Both variants on the pre-registered target set ([`m5_22_2_dive_all.json`](../dat
 | pp cousin | 0.000 | −0.37 (≈ 0) | +29.6 |
 | Deuteron candidate n32 / n48 | −0.877 / −0.893 (div underread of −1) | **−21.8 / −61.5** | +3.2 / −0.7 |
 
-**The § 8 question of the M5.22.1 note is answered**: the deuteron candidate's electric quadrupole sign stays NEGATIVE under the calibrated electric instrument at both resolutions. The tension vs the physical deuteron (+0.286 e·fm², positive) is real under this instrument and convention, not a magnetic-sector artifact; what remains author-gated is the dual mapping (§ 2) and the |Q2| magnitude (resolution-drifting 21.8 → 61.5, not citable as a number).
+**The § 8 question of the M5.22.1 note is answered**: the deuteron candidate's electric quadrupole sign stays NEGATIVE under the calibrated electric instrument at both resolutions. The tension vs the physical deuteron (+0.286 e·fm², positive) is real under this instrument and convention, not a magnetic-sector artifact; the dual mapping was author-confirmed 2026-08-06 (§ 2; [convo](../tasks/m5_22_convo.md)); what remains non-citable is the |Q2| magnitude (resolution-drifting 21.8 → 61.5).
 
 ## 4. The beta-decay probe (✅ measured: NO decay in 20 runs; the honest negative)
 
