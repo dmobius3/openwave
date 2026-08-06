@@ -1,0 +1,16 @@
+{
+  "n48_d0.1": {
+    "args": "seed=A term=T2 stencil=sym eps=0 n=48 delta=0.1 maxit=400 w2=0.002758100 tag=t11timing_n48",
+    "maxit": 400,
+    "wall_s": 124.33,
+    "s_per_iter": 0.3108,
+    "proj_rung_12k_min": 62.2
+  },
+  "n64_d0.3": {
+    "args": "seed=A term=T2 stencil=sym eps=0 n=64 delta=0.3 maxit=200 w2=0.002758100 tag=t11timing_n64",
+    "maxit": 200,
+    "wall_s": 145.44,
+    "s_per_iter": 0.7272,
+    "proj_rung_12k_min": 145.4
+  }
+}
