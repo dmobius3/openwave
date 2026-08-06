@@ -1,0 +1,7 @@
+  neut clock_local  kin +1.599477e-01 b +0.000e+00 k* -0.0000 dE(k*) +0.000e+00
+  neut plane_1d     kin +2.152350e-01 b +0.000e+00 k* -0.0000 dE(k*) +0.000e+00
+  neut rot_z        kin +1.731483e-01 b +0.000e+00 k* -0.0000 dE(k*) +0.000e+00
+  neut rot_x        kin +1.740685e-01 b -1.123e-13 k* +0.0000 dE(k*) -3.550e-26
+  neut boost_z      kin -5.151660e-02 b +0.000e+00 k* +0.0000 dE(k*) +0.000e+00
+  neut boost_x      kin -5.581377e-02 b +0.000e+00 k* +0.0000 dE(k*) +0.000e+00
+{"tag": "p2_neut", "min_kin": -0.05581376796402853, "argmin": "boost_x"}
