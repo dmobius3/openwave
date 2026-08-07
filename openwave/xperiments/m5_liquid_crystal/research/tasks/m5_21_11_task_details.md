@@ -114,7 +114,7 @@ Usage Cap Triggered: NO (resume ping armed 20:45 EDT, parked unfired at FINISH)
 
 Issues: none blocking. The roadmap row stays In Progress (the ID covers the ladder follow-on; the mass-ratio read is undelivered): the review's original "move to Done" wording was corrected at approval.
 
-Action at close: convo routing recorded ([`m5_22_convo.md`](m5_22_convo.md)); FREEZE waits on the author's reply or the user's call, then the framework gets its FROZEN header + pinning commit SHA; the ladder compute is the follow-on run on user "go".
+Action at close: convo routing recorded ([`m5_21_convo.md`](m5_21_convo.md); moved there from the M5.22 doc on the user's 2026-08-07 routing call, this being a 21-series thread); FREEZE waits on the author's reply or the user's call, then the framework gets its FROZEN header + pinning commit SHA; the ladder compute is the follow-on run on user "go".
 
 **Findings**: The route-(b) framework is complete at pre-freeze: the asymptotic form is derived from M5-side theory alone, and the g-axis collapses structurally (the census functional is g-free; the dressing correction dies at least as artanh(1/g)²), making the pre-registered ladder one-dimensional in δ at a measured ~50 CPU-hour cost. The adversarial audit refuted one drafted derivation step (the gain law is a measured q ∈ [2, 4] window, not a derived 1/g²) and the adopted fix makes F4 fail only on the case that genuinely breaks separability.
 
@@ -125,4 +125,10 @@ Action at close: convo routing recorded ([`m5_22_convo.md`](m5_22_convo.md)); FR
 - scripts [`m5_21_11_a_timing.py`](../scripts/m5_21_11_a_timing.py) · [`m5_21_11_e_audit.py`](../scripts/m5_21_11_e_audit.py)
 - data `m5_21_11_timing.json` · `m5_21_11_audit.json` + regenerated [`_DATASETS.md`](../data/_DATASETS.md)
 - [`m5_roadmap.md`](../m5_roadmap.md) (row → P0 DELIVERED; What-happens-next)
-- [`m5_22_convo.md`](m5_22_convo.md) (outbound routing entry)
+- [`m5_21_convo.md`](m5_21_convo.md) (outbound routing entry; relocated from the M5.22 doc 2026-08-07)
+
+## POST-CLOSE (2026-08-07): the author reply + the FREEZE
+
+The author's reply arrived 2026-08-07 03:17 EDT, PUBLIC (Models-of-particles cc'd + Filip Blaschke; the full sanity-check message now quoted in the public thread): the practical-approximation route endorsed in the author's own words, the three questions left unanswered, no objection to any derived form; full decode in [`m5_21_convo.md § 2026-08-07`](m5_21_convo.md). Since [framework § 1](../findings/m5_21_11_framework.md) covers every branch of the unanswered questions (θ unconstrained, gain exponent a measured q ∈ [2, 4] window, anchors order-of-magnitude), **the user called the FREEZE the same day**: the § 0 header is FROZEN 2026-08-07, with the pinning commit SHA recorded there by the sole permitted post-freeze edit. Downstream state: the [M8.6 gate record](../../../m8_mit/research/tasks/m8_6_task_details.md) carries the freeze in its FINDINGS; the ladder compute run gates on user "go" only. Instrument note (asked and answered at the freeze): the run stays on the CPU numpy instrument of record; a GPU port would be new energy code, which the frozen § 1.1 forbids ("this document introduces no new energy code"), and the measured ~50 CPU-h program parallelizes to one overnight batch (~5-6 h wall-clock at 8-10 processes on the 12-performance-core machine).
+
+**Standing action for the ladder close-out (user directive, 2026-08-07)**: if the ladder run completes with the holdout and terminal failure gates PASSED, release the [M8.6 roadmap row](../../../m8_mit/research/m8_roadmap.md) from LATER (gated) back to the Backlog (its input = this task's mass-ratio read) and record the release in the [gate record](../../../m8_mit/research/tasks/m8_6_task_details.md); a terminal failure leaves it gated (route (b) is the last admissible route).

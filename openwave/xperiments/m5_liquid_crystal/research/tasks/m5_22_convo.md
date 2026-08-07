@@ -261,12 +261,6 @@ The author's same-day follow-up to the user's 10:48 EDT reply (which carried the
 | Nuclei dynamics | Angular momentum "should come out automatically in 4x4 case", BUT "completely unphysical parameters could lead to qualitative differences - might require help to move forward" | The parameters caution attaches to the [M5.22.4 § 4](../findings/m5_22_4_note.md) honest negative (no minimum at ω > 0 under the constant-ω ansatz): the author pre-framed the toy-parameter risk before seeing the result. The pointed-at un-run arm = FREE full-4×4 dynamics (the electron version measured null in [M5.21.3](m5_21_3_task_details.md); the baryon version is a well-scoped follow-up arm). "Might require help to move forward" reads as a soft resource/collaboration opening: USER-GATED, no action from this capture |
 | Time-crystal positioning | The Wilczek time-crystal community "gave up and now claim it is impossible", while these are working constructions that "should be used to make them change their mind again" | Positioning context for the author + Maciej article (the M5.21.3 fixed-J record as the working counterexample); no ask on the user |
 
-## 2026-08-06 evening (outbound, user-sent): the M5.21.11 framework sanity-check
+## 2026-08-06 evening → 2026-08-07: the M5.21.11 framework thread (recorded on the 21-series doc)
 
-The user sent the trimmed FABLE-VOICE technical block from the [M5.21.11](m5_21_11_task_details.md) P0 close (drafted terminal-only per the standing rule; not reproduced here). Routing record:
-
-| Item | Content | Gate |
-| --- | --- | --- |
-| What went out | Three questions on the derived route-(b) forms, physics-first, one motivating sentence on the pre-measurement lock discipline: (1) partial vs clean 2-equal core rearrangement as δ → 0 (effective s ≈ 0.8-1.1 measured vs s = 2 clean); (2) the m = 0 curvature of the dressed E(m) as g grows (finite ⇒ gain ∝ m\*², vanishing ⇒ ∝ m\*⁴); (3) the order-of-magnitude physical anchors δ ~ 1e-10, g ~ 1e10 from the author's own paper hints | answers fold at arrival |
-| What it gates | The [framework](../findings/m5_21_11_framework.md) FREEZE (then FROZEN header + pinning commit SHA); the ladder compute runs only after the freeze | author reply OR user call |
-| Not sent | No lepton-target numbers, no M8/cross-model context, no framework document attached (offered on request) | standing invisibility + barred-inputs discipline |
+The M5.21.11 sanity-check outbound and the author's 2026-08-07 public reply are 21-series records: both live in [`m5_21_convo.md`](m5_21_convo.md), not here (user routing call, 2026-08-07).
