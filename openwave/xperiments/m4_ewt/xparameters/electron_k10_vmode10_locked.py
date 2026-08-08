@@ -5,11 +5,10 @@ from openwave.xperiments.m4_ewt.xparameters.utils.geometry import (
 
 # ================================================================
 # V_MODE=10: Gaussian profile + quintic saturation
-# K=9: Tricapped trigonal prism (EWT geometry)
 # ================================================================
 UNIVERSE_EDGE = 2e-15
 TARGET_VOXELS = 55_000_000
-K = 9
+K = 10
 PERTURBATION = 0.02
 
 POSITIONS = generate_positions_by_EWT_geometry_locked(
