@@ -18,7 +18,7 @@ PHASES = [180] * K
 
 XPARAMETERS = {
     "meta": {
-        "X_NAME": "Electron K=9 V_MODE=10 EWT Geometry (Tricapped Prism)",
+        "X_NAME": "Electron K=10 V_MODE=10",
         "DESCRIPTION": "K=9 tricapped trigonal prism with V_MODE=10",
     },
     "camera": {
