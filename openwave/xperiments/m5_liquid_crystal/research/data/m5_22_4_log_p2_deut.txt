@@ -1,0 +1,7 @@
+  deut clock_local  kin +6.386938e-01 b -2.247e-12 k* +0.0000 dE(k*) -2.559e-24
+  deut plane_1d     kin +6.880896e-01 b +4.494e-11 k* -0.0000 dE(k*) -9.024e-22
+  deut rot_z        kin +2.385280e-01 b +3.146e-12 k* -0.0000 dE(k*) -1.139e-23
+  deut rot_x        kin +7.728026e-01 b +2.146e-11 k* -0.0000 dE(k*) -1.853e-22
+  deut boost_z      kin -3.308679e-01 b +0.000e+00 k* +0.0000 dE(k*) +0.000e+00
+  deut boost_x      kin -1.500496e-01 b -1.123e-13 k* -0.0000 dE(k*) +2.509e-26
+{"tag": "p2_deut", "min_kin": -0.3308678677142547, "argmin": "boost_z"}

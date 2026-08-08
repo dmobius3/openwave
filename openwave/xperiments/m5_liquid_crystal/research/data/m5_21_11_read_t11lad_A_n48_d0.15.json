@@ -1,0 +1,261 @@
+{
+ "tag": "t11lad_A_n48_d0.15",
+ "branch": "A",
+ "n": 48,
+ "delta": 0.15,
+ "charge": {
+  "orient_conflicts": 9,
+  "q_flux_12": 1.0388832599669138,
+  "q_flux_18": 1.029613172237207,
+  "class_12": 1.0,
+  "class_18": 1.0,
+  "charge_class": 1.0
+ },
+ "census": {
+  "bulk_split": 0.14859582452921216,
+  "warn": [],
+  "n_lines": 18,
+  "verdicts": [
+   "closed-loop",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open",
+   "open"
+  ],
+  "lines": [
+   {
+    "n_vox": 143,
+    "verdict": "closed-loop",
+    "extent_h": 29.8496231131986
+   },
+   {
+    "n_vox": 136,
+    "verdict": "open",
+    "extent_h": 29.29163703175362
+   },
+   {
+    "n_vox": 43,
+    "verdict": "open",
+    "extent_h": 17.72004514666935
+   },
+   {
+    "n_vox": 13,
+    "verdict": "open",
+    "extent_h": 9.219544457292887
+   },
+   {
+    "n_vox": 11,
+    "verdict": "open",
+    "extent_h": 10.63014581273465
+   },
+   {
+    "n_vox": 10,
+    "verdict": "open",
+    "extent_h": 5.0
+   },
+   {
+    "n_vox": 5,
+    "verdict": "open",
+    "extent_h": 3.1622776601683795
+   },
+   {
+    "n_vox": 5,
+    "verdict": "open",
+    "extent_h": 4.69041575982343
+   },
+   {
+    "n_vox": 4,
+    "verdict": "open",
+    "extent_h": 3.1622776601683795
+   },
+   {
+    "n_vox": 4,
+    "verdict": "open",
+    "extent_h": 3.1622776601683795
+   },
+   {
+    "n_vox": 4,
+    "verdict": "open",
+    "extent_h": 3.605551275463989
+   },
+   {
+    "n_vox": 4,
+    "verdict": "open",
+    "extent_h": 2.23606797749979
+   },
+   {
+    "n_vox": 4,
+    "verdict": "open",
+    "extent_h": 3.1622776601683795
+   },
+   {
+    "n_vox": 3,
+    "verdict": "open",
+    "extent_h": 2.8284271247461903
+   },
+   {
+    "n_vox": 3,
+    "verdict": "open",
+    "extent_h": 1.7320508075688772
+   },
+   {
+    "n_vox": 3,
+    "verdict": "open",
+    "extent_h": 1.4142135623730951
+   },
+   {
+    "n_vox": 3,
+    "verdict": "open",
+    "extent_h": 2.8284271247461903
+   },
+   {
+    "n_vox": 2,
+    "verdict": "open",
+    "extent_h": 1.4142135623730951
+   }
+  ]
+ },
+ "core": {
+  "gap12_core": 0.12825156080674205,
+  "gap23_core": 0.193321043598416,
+  "core_class": "12",
+  "n_core_vox": 271
+ },
+ "flags": {
+  "bar": 0.024999999999999998,
+  "n_flagged": 0,
+  "n_contours": 16,
+  "contours": [
+   {
+    "z": -8.0,
+    "rho": 6.0,
+    "half_units": 1,
+    "min_gap": 0.03082,
+    "flag": false
+   },
+   {
+    "z": -8.0,
+    "rho": 10.0,
+    "half_units": 2,
+    "min_gap": 0.06339,
+    "flag": false
+   },
+   {
+    "z": -8.0,
+    "rho": 14.0,
+    "half_units": 2,
+    "min_gap": 0.10742,
+    "flag": false
+   },
+   {
+    "z": -8.0,
+    "rho": 18.0,
+    "half_units": 2,
+    "min_gap": 0.13368,
+    "flag": false
+   },
+   {
+    "z": -4.0,
+    "rho": 6.0,
+    "half_units": 2,
+    "min_gap": 0.0349,
+    "flag": false
+   },
+   {
+    "z": -4.0,
+    "rho": 10.0,
+    "half_units": 2,
+    "min_gap": 0.04849,
+    "flag": false
+   },
+   {
+    "z": -4.0,
+    "rho": 14.0,
+    "half_units": 2,
+    "min_gap": 0.09725,
+    "flag": false
+   },
+   {
+    "z": -4.0,
+    "rho": 18.0,
+    "half_units": 2,
+    "min_gap": 0.1292,
+    "flag": false
+   },
+   {
+    "z": 4.0,
+    "rho": 6.0,
+    "half_units": 2,
+    "min_gap": 0.06033,
+    "flag": false
+   },
+   {
+    "z": 4.0,
+    "rho": 10.0,
+    "half_units": 2,
+    "min_gap": 0.04555,
+    "flag": false
+   },
+   {
+    "z": 4.0,
+    "rho": 14.0,
+    "half_units": 2,
+    "min_gap": 0.09896,
+    "flag": false
+   },
+   {
+    "z": 4.0,
+    "rho": 18.0,
+    "half_units": 2,
+    "min_gap": 0.13226,
+    "flag": false
+   },
+   {
+    "z": 8.0,
+    "rho": 6.0,
+    "half_units": -2,
+    "min_gap": 0.06956,
+    "flag": false
+   },
+   {
+    "z": 8.0,
+    "rho": 10.0,
+    "half_units": 2,
+    "min_gap": 0.07792,
+    "flag": false
+   },
+   {
+    "z": 8.0,
+    "rho": 14.0,
+    "half_units": 2,
+    "min_gap": 0.09535,
+    "flag": false
+   },
+   {
+    "z": 8.0,
+    "rho": 18.0,
+    "half_units": 2,
+    "min_gap": 0.13459,
+    "flag": false
+   }
+  ]
+ },
+ "gap_guard": {
+  "bar": 0.0025,
+  "min_gap_end": 0.007036008421995643,
+  "silent": true
+ }
+}

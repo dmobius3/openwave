@@ -6,9 +6,10 @@
 > author's repo, [github.com/dmobius3/mode-identity-theory](https://github.com/dmobius3/mode-identity-theory),
 > whose `files/tools/files/DOIs.md` is the author-maintained registry this list was seeded from.
 
-Total: **16 works** as of 2026-07-21 (scaffold seeding); **0 local files** held yet. The
-Bibliography is the readable list; the Local corpus appendix will hold the gitignored-file
-inventory as papers are pulled down for tasks (filenames follow `YEAR - Author - Title`).
+Two lists: the **Bibliography** of the author's own works, and the **mathematical literature**
+that M8 task documents pin as external references. The Local corpus appendix will hold the
+gitignored-file inventory as papers are pulled down for tasks (filenames follow
+`YEAR - Author - Title`); **0 local files** held yet.
 
 Identifier policy per [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) section 3.4
 (never fabricate): all 10 Zenodo DOIs below were machine-verified resolving on 2026-07-21.
@@ -17,8 +18,8 @@ marked `(author registry)`; treat them as author-attested until first use.
 
 ## Bibliography
 
-All works are by Blake Shatto (independent researcher, sole author). Ordered by year and
-month ascending.
+All works in this section are by Blake Shatto (independent researcher, sole author). Ordered
+by year and month ascending. **16 works**, as of the 2026-07-21 scaffold seeding.
 
 | Author(s) | Year | Title | Venue / ID |
 | --- | --- | --- | --- |
@@ -42,6 +43,46 @@ month ascending.
 Note on venues: all entries are preprints (Zenodo / SSRN), none refereed; this is recorded
 per the [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) red-flag checklist sourcing row and
 is one reason the platform's own independent verification (M8.1 first) matters.
+
+## Mathematical literature
+
+Standard mathematical sources that M8 task documents pin as external references, as opposed
+to the author's own works above. Registered per Gate A4 of
+[`PR_REVIEW_STANDARDS.md`](../../../../dev_docs/PR_REVIEW_STANDARDS.md).
+
+**Identifier provenance.** These are transcribed from the pinning document's own reference
+section, which states that every entry was read from a page actually fetched and marks its own
+unverified fields as such. They were **not** independently machine-checked at registration, so
+treat them as author-attested until first use, on the same footing as the SSRN entries above.
+Where a pin carries no identifier, that is recorded rather than filled in, per the
+[`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) section 3.4 never-fabricate rule.
+
+| Author(s) | Year | Title | Venue / ID | Pinned by |
+| --- | --- | --- | --- | --- |
+| Polterovich | 2002 | Combinatorics of the Heat Trace on Spheres | *Canad. J. Math.* 54, no. 5, 1086-1099; DOI [10.4153/CJM-2002-040-4](https://doi.org/10.4153/CJM-2002-040-4) | M8.5-B § 11.1 |
+| Lehoucq, Weeks, Uzan, Gausmann, Luminet | 2002 | (eigenmodes of spherical spaces, § 2.2) | *Class. Quantum Grav.* 19, no. 18, 4683-4708; DOI [10.1088/0264-9381/19/18/305](https://doi.org/10.1088/0264-9381/19/18/305) | M8.5-B § 11.1, corroboration |
+| Iwasaki, Katase | 1979 | On the Spectra of Laplace Operator on `Λ*(S^n)` | *Proc. Japan Acad. Ser. A* 55, no. 4, 141-145; DOI [10.3792/pjaa.55.141](https://doi.org/10.3792/pjaa.55.141) | M8.5-B §§ 11.2, 11.9 |
+| Lauret | 2018 | The spectrum on p-forms of a lens space | *Geom. Dedicata* 197, 107-122; DOI [10.1007/s10711-018-0322-9](https://doi.org/10.1007/s10711-018-0322-9) | M8.5-B §§ 11.2, 11.8 |
+| Boucetta | 1999 | (spectra of the Hodge Laplacian on spheres, Thm 3.1 ii, Prop. 3.15 i) | *Publicacions Matemàtiques* 43, no. 2, 451-483; no DOI in the pin | M8.5-B §§ 11.2, 11.9 |
+| Capoferri, Vassiliev | 2026 | Beyond the Hodge theorem | *J. London Math. Soc.* 113, no. 1, e70431; DOI [10.1112/jlms.70431](https://doi.org/10.1112/jlms.70431) | M8.5-B § 11.3 |
+| Warner | 1983 | Foundations of Differentiable Manifolds and Lie Groups | Springer GTM 94; DOI [10.1007/978-1-4757-1799-0](https://doi.org/10.1007/978-1-4757-1799-0) | M8.5-B §§ 11.3, 11.4 |
+| Hatcher | 2002 | Algebraic Topology | Cambridge University Press; ISBN 0-521-79540-0 | M8.5-B § 11.4 |
+| Petersen | 2016 | Riemannian Geometry, 3rd edition | Springer; DOI [10.1007/978-3-319-26654-1](https://doi.org/10.1007/978-3-319-26654-1). ⚠️ The pin records the GTM volume number and the printed page of Thm 9.4.1 as UNVERIFIED; the theorem number is the citable locator | M8.5-B § 11.5 |
+| Petersen, Wink | 2020 | (Lichnerowicz Laplacian, Prop. 2.1a) | *SIGMA* 16, 064; DOI [10.3842/SIGMA.2020.064](https://doi.org/10.3842/SIGMA.2020.064) | M8.5-B § 11.5, corroboration |
+| Nicolaescu | n/a | Lectures on the Geometry of Manifolds | p. 540 cited; no edition or identifier in the pin | M8.5-B § 11.5, corroboration |
+| Homma | 2006 | (Weitzenböck formulae) | *Trans. AMS* 358, no. 1, 87-114; DOI [10.1090/S0002-9947-05-04068-7](https://doi.org/10.1090/S0002-9947-05-04068-7) | M8.5-B § 11.5, corroboration |
+| Semmelmann, Weingart | 2010 | (the Weitzenböck machine, eq. 3.10) | *Compositio Math.* 146, no. 2, 507-540; DOI [10.1112/S0010437X09004333](https://doi.org/10.1112/S0010437X09004333) | M8.5-B § 11.5, corroboration |
+| Lauret, Miatello, Rossetti | 2016 | (lens-space generator convention, eq. 3.2) | *IMRN* 2016, no. 4, 1054-1089; DOI [10.1093/imrn/rnv159](https://doi.org/10.1093/imrn/rnv159) | M8.5-B §§ 11.8, 11.9 |
+| Lauret, Miatello, Rossetti | 2015 | (Thm 1.1, named as an alternative route) | no identifier in the pin | M8.5-B § 11.9 |
+| Ikeda, Taniguchi | 1978 | (spectra and eigenforms of spheres and projective spaces) | *Osaka J. Math.* 15; no DOI in the pin | M8.5-B § 11.9, use-warning |
+| Nash, O'Connor | 1995 | (twisted-sector degeneracies) | *J. Math. Phys.* 36, no. 3, 1462-1505; DOI [10.1063/1.531134](https://doi.org/10.1063/1.531134) | M8.5-B § 11.9, use-warning |
+| Gallot, Meyer | n/a | (p-form multiplicity formulas; the pin records reported errors and restricts use to the curvature lower bound) | no identifier in the pin | M8.5-B § 11.9, use-warning |
+| Bär | n/a | (route for the curvature lower bound) | no identifier in the pin | M8.5-B § 11.9 |
+
+Four of these carry a **use-warning** in the pinning document: each is excluded from a stated
+gate because its indexing, bundle convention or dimensional notation does not match the
+protocol, and the warning is limited to that use rather than being a judgement on the source.
+Read the pin before citing any of them.
 
 ## Local corpus
 

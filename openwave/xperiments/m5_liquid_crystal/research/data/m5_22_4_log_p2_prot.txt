@@ -1,0 +1,7 @@
+  prot clock_local  kin +2.314001e-01 b +0.000e+00 k* -0.0000 dE(k*) +0.000e+00
+  prot plane_1d     kin +2.914666e-01 b +0.000e+00 k* -0.0000 dE(k*) +0.000e+00
+  prot rot_z        kin +1.995332e-01 b +0.000e+00 k* -0.0000 dE(k*) +0.000e+00
+  prot rot_x        kin +2.648337e-01 b +0.000e+00 k* -0.0000 dE(k*) +0.000e+00
+  prot boost_z      kin -8.619020e-02 b +0.000e+00 k* +0.0000 dE(k*) +0.000e+00
+  prot boost_x      kin -7.399092e-02 b -5.617e-14 k* -0.0000 dE(k*) +1.324e-26
+{"tag": "p2_prot", "min_kin": -0.08619019617623312, "argmin": "boost_z"}

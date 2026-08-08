@@ -101,12 +101,28 @@ See `/dev_docs` for coding standards and development guidelines
 - Commit with a clear, descriptive message.
 - Push your branch to your fork:
 
-```python
+```bash
    git push origin your-feature-name
    ```
 
 - Open a Pull Request (PR) on GitHub.
-- Be ready to discuss and revise your PR after review.
+- Enable **Allow edits by maintainers** on the PR, so small fixes can be applied at merge instead of sent back as a round trip.
+
+### How review works
+
+**One document, one merge.** Everything a reviewer wants changed is raised in the PR thread and settled before the merge, so a contribution lands once instead of across a chain of follow-up PRs. What that means in each case:
+
+| Case | What happens |
+| --- | --- |
+| A reviewer wants changes | Raised in the thread in one pass, not one point per comment, and settled before merge |
+| The change is small or mechanical: a date, a link, a stale pointer, a wording fix | A maintainer applies it to the branch at merge and says so in the thread |
+| The change is substantive, or the content is the author's to write | One review round, revised on the same branch |
+| The document was frozen at merge, such as a protocol or a pre-registration | It changes only by dated addendum, and addenda are batched to a review point rather than filed one at a time |
+| Something genuinely new is found after the merge | New work, and it gets its own PR |
+
+A follow-up PR is for new work, never for a point that was already visible during review. The reason is cost: every round trip is a full fork → branch → commit → PR → DCO → merge cycle for the contributor and a review for the maintainer, and the same review happens either way. Batching moves *when* the edit lands, never *whether* it is checked: no gate, checker, audit or claim-strength check is traded away to save a cycle.
+
+The reviewer's side of this, including what a maintainer may edit on your branch and what stays yours, is [`dev_docs/PR_REVIEW_STANDARDS.md § 10`](dev_docs/PR_REVIEW_STANDARDS.md#10-maintainer-edits).
 
 ## Sign-Off — Developer Certificate of Origin (DCO)
 

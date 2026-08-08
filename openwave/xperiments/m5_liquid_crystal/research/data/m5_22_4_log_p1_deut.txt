@@ -1,0 +1,13 @@
+  p1_deut it    500 E      14.988664 fmax 8.388e-03 [79s]
+  p1_deut it   1000 E      14.965504 fmax 8.160e-03 [156s]
+  p1_deut it   1500 E      14.942515 fmax 7.977e-03 [231s]
+  p1_deut it   2000 E      14.920111 fmax 7.812e-03 [307s]
+  p1_deut it   2500 E      14.898333 fmax 7.656e-03 [381s]
+  p1_deut it   3000 E      14.876958 fmax 5.201e-02 [455s]
+  p1_deut it   3500 E      14.857006 fmax 7.379e-03 [529s]
+  p1_deut it   4000 E      14.836707 fmax 7.252e-03 [604s]
+  p1_deut it   4500 E      14.816758 fmax 7.130e-03 [677s]
+  p1_deut it   5000 E      14.796905 fmax 2.553e-02 [751s]
+  p1_deut it   5500 E      14.777063 fmax 6.898e-03 [825s]
+  p1_deut it   6000 E      14.757781 fmax 6.789e-03 [899s]
+{"tag": "p1_deut", "E_seed": 18.78666890957378, "E_end": 14.757780653623135, "offblock_max": 0.0, "stop": "max_iter", "q_far_seed": -1.0022616770816664, "q_far_end": -1.0022379245752902}
