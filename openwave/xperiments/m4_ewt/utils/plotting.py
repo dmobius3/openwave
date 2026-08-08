@@ -220,60 +220,69 @@ def plot_live_values():
     plt.savefig(save_path, dpi=150, bbox_inches="tight")
     print("\nLive monitor plot saved to:\n", save_path, "\n")
 
+
 def plot_wc_drift():
     """Plot mean pairwise distance drift over time."""
     import json
+
     log_path = json_logger._data_dir / json_logger._filename
     if not log_path.exists():
         return
     with open(log_path) as f:
         doc = json.load(f)
-    
+
     drift_data = [d for d in doc["data"] if d.get("mean_drift") is not None]
     if not drift_data:
         print("[plot_wc_drift] No drift data in log.")
         return
-    
+
     ts = [d["timestep"] for d in drift_data]
     drift = [d["mean_drift"] for d in drift_data]
-    
+
     plt.style.use("dark_background")
     fig, ax = plt.subplots(figsize=(10, 4), facecolor=colormap.DARK_GRAY[1])
     ax.plot(ts, drift, color=colormap.viridis_palette[2][1], linewidth=2)
-    ax.set_xlabel("Timestep"); ax.set_ylabel("Mean Pairwise Drift [vox]")
-    ax.set_title("Pairwise Distance Drift"); ax.grid(True, alpha=0.3)
+    ax.set_xlabel("Timestep")
+    ax.set_ylabel("Mean Pairwise Drift [vox]")
+    ax.set_title("Pairwise Distance Drift")
+    ax.grid(True, alpha=0.3)
     plt.tight_layout()
     PLOT_DIR.mkdir(parents=True, exist_ok=True)
     plt.savefig(PLOT_DIR / "wc_drift.png", dpi=150, bbox_inches="tight")
     print(f"[plot_wc_drift] Saved to {PLOT_DIR / 'wc_drift.png'}")
 
+
 def plot_wc_active():
     """Plot number of active wave centers over time."""
     import json
+
     log_path = json_logger._data_dir / json_logger._filename
     if not log_path.exists():
         return
     with open(log_path) as f:
         doc = json.load(f)
-    
+
     active_data = [d for d in doc["data"] if "active_wc" in d]
     if not active_data:
         print("[plot_wc_active] No active WC data in log.")
         return
-    
+
     ts = [d["timestep"] for d in active_data]
     active = [d["active_wc"] for d in active_data]
-    
+
     plt.style.use("dark_background")
     fig, ax = plt.subplots(figsize=(10, 4), facecolor=colormap.DARK_GRAY[1])
     ax.plot(ts, active, color=colormap.ironbow_palette[2][1], linewidth=2)
-    ax.set_xlabel("Timestep"); ax.set_ylabel("Active WC count")
-    ax.set_title("Active Wave Centers"); ax.grid(True, alpha=0.3)
+    ax.set_xlabel("Timestep")
+    ax.set_ylabel("Active WC count")
+    ax.set_title("Active Wave Centers")
+    ax.grid(True, alpha=0.3)
     ax.set_ylim(bottom=0)
     plt.tight_layout()
     PLOT_DIR.mkdir(parents=True, exist_ok=True)
     plt.savefig(PLOT_DIR / "wc_active.png", dpi=150, bbox_inches="tight")
     print(f"[plot_wc_active] Saved to {PLOT_DIR / 'wc_active.png'}")
+
 
 def generate_plots():
     """Generate all instrumentation plots. Called after simulation ends."""
@@ -281,5 +290,5 @@ def generate_plots():
     plot_probe_values()
     plot_live_values()
     plot_wc_drift()
-    plot_wc_active() 
+    plot_wc_active()
     plt.show()

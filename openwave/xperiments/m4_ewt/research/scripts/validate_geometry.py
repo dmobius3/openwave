@@ -29,6 +29,7 @@ FAIL = 1
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def dist(p, q):
     """Euclidean distance between two 3-tuples."""
     return math.sqrt(sum((a - b) ** 2 for a, b in zip(p, q)))
@@ -42,6 +43,7 @@ def is_on_well(d, n, tol=1e-9):
 # ---------------------------------------------------------------------------
 # Tests for tetrahedron_10_locked
 # ---------------------------------------------------------------------------
+
 
 def test_locked_inner_on_well():
     """Inner 3 WCs are exactly 1-lambda from the centre."""
@@ -77,9 +79,9 @@ def test_locked_scale_invariant():
     for edge in (1e-12, 2e-15, 4e-15):
         lam = constants.EWAVE_LENGTH / edge
         pts = geom.tetrahedron_10_locked(edge)
-        d = sorted([dist(pts[i], pts[j]) / lam
-                    for i in range(len(pts))
-                    for j in range(i + 1, len(pts))])
+        d = sorted(
+            [dist(pts[i], pts[j]) / lam for i in range(len(pts)) for j in range(i + 1, len(pts))]
+        )
         if ref is None:
             ref = d
         else:
@@ -92,6 +94,7 @@ def test_locked_scale_invariant():
 # ---------------------------------------------------------------------------
 # Tests for generate_positions_by_EWT_geometry_locked
 # ---------------------------------------------------------------------------
+
 
 def test_locked_dispatcher_k10():
     """K=10 returns the same as tetrahedron_10_locked."""
@@ -122,8 +125,10 @@ def test_locked_dispatcher_delegates():
 # Tests for log_stability_metrics (B2 fix)
 # ---------------------------------------------------------------------------
 
+
 class _MockWC:
     """Minimal wave-centre stub for testing the drift metric."""
+
     def __init__(self, positions, active=None):
         self.num_sources = len(positions)
         self.position_float = positions
@@ -161,6 +166,7 @@ def test_stability_metric_survives_deactivation():
 # Runner
 # ---------------------------------------------------------------------------
 
+
 def main():
     tests = [
         ("tetrahedron_10_locked: inner 3 on 1*lambda well", test_locked_inner_on_well),
@@ -168,7 +174,10 @@ def main():
         ("tetrahedron_10_locked: scale invariant", test_locked_scale_invariant),
         ("locked dispatcher: K=10 -> tetrahedron_10_locked", test_locked_dispatcher_k10),
         ("locked dispatcher: K!=10 delegates to legacy", test_locked_dispatcher_delegates),
-        ("log_stability_metrics: survives WC deactivation", test_stability_metric_survives_deactivation),
+        (
+            "log_stability_metrics: survives WC deactivation",
+            test_stability_metric_survives_deactivation,
+        ),
     ]
 
     passed = 0

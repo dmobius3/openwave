@@ -549,7 +549,9 @@ def compute_wave_oscillation(state):
                 state.wave_field,
                 state.trackers,
             )
-            mean_drift, active_wc = instrument.log_stability_metrics(state.frame, state.wave_center)
+            mean_drift, active_wc = instrument.log_stability_metrics(
+                state.frame, state.wave_center
+            )
             sampling.sample_stability_metrics(state.frame, mean_drift, active_wc)
         if state.frame % 60 == 0 or state.frame == 10:
             instrument.log_timestep_data(

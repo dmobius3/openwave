@@ -130,11 +130,11 @@ def tetrahedron_10_locked(
     cx, cy, cz = center
     LOCK_SPACING = constants.EWAVE_LENGTH / univ_edge
 
-    # Radii in normalised units, chosen as multiples of the lock‑in spacing
-    r1 = 1.0 * LOCK_SPACING          # inner shell: exactly 1·λ
+    # Radii in normalised units, chosen as multiples of the lock-in spacing
+    r1 = 1.0 * LOCK_SPACING  # inner shell: exactly 1·λ
     # outer shell: exactly 2·λ from centre (solved from √(r2² + h²) = 2λ with h = r2·√(2/3))
     r2 = 2.0 * math.sqrt(3.0 / 5.0) * LOCK_SPACING
-    h  = r2 * math.sqrt(2.0 / 3.0)   # vertical offset for the outer layers
+    h = r2 * math.sqrt(2.0 / 3.0)  # vertical offset for the outer layers
 
     positions = []
 
@@ -144,28 +144,34 @@ def tetrahedron_10_locked(
     # 2. Inner 3 – equilateral triangle in the XY plane
     angles_inner = [math.radians(90), math.radians(210), math.radians(330)]
     for a in angles_inner:
-        positions.append([
-            cx + r1 * math.cos(a),
-            cy + r1 * math.sin(a),
-            cz,
-        ])
+        positions.append(
+            [
+                cx + r1 * math.cos(a),
+                cy + r1 * math.sin(a),
+                cz,
+            ]
+        )
 
     # 3. Outer 6 – two layers of 3, rotated 60° relative to the inner triangle
     angles_outer = [math.radians(30), math.radians(150), math.radians(270)]
     # Lower layer (Z = -h)
     for a in angles_outer:
-        positions.append([
-            cx + r2 * math.cos(a),
-            cy + r2 * math.sin(a),
-            cz - h,
-        ])
+        positions.append(
+            [
+                cx + r2 * math.cos(a),
+                cy + r2 * math.sin(a),
+                cz - h,
+            ]
+        )
     # Upper layer (Z = +h)
     for a in angles_outer:
-        positions.append([
-            cx + r2 * math.cos(a),
-            cy + r2 * math.sin(a),
-            cz + h,
-        ])
+        positions.append(
+            [
+                cx + r2 * math.cos(a),
+                cy + r2 * math.sin(a),
+                cz + h,
+            ]
+        )
 
     # ---- Apply rotation ----
     if rotation != (0, 0, 0):

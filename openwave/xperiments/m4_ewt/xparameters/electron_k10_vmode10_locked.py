@@ -1,4 +1,4 @@
-# electron_k09_vmode10_ewt_geometry.py
+# electron_k10_vmode10_locked.py
 from openwave.xperiments.m4_ewt.xparameters.utils.geometry import (
     generate_positions_by_EWT_geometry_locked,
 )
@@ -19,7 +19,7 @@ PHASES = [180] * K
 XPARAMETERS = {
     "meta": {
         "X_NAME": "Electron K=10 V_MODE=10",
-        "DESCRIPTION": "K=9 tricapped trigonal prism with V_MODE=10",
+        "DESCRIPTION": "K=10 1-3-6 tetrahedron locked on n*lambda wells, with V_MODE=10",
     },
     "camera": {
         "INITIAL_POSITION": [0.94, 0.91, 0.69],

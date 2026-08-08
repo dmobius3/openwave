@@ -30,8 +30,8 @@ from pathlib import Path
 #   parents[3] = xperiments/
 #   parents[4] = openwave/          ← the package
 #   parents[5] = <project_root>/    ← must be on sys.path
-_THIS_FILE   = Path(__file__).resolve()
-_PROJECT_ROOT = _THIS_FILE.parents[5]   # contains the `openwave` package
+_THIS_FILE = Path(__file__).resolve()
+_PROJECT_ROOT = _THIS_FILE.parents[5]  # contains the `openwave` package
 
 if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
@@ -45,6 +45,7 @@ _REQUIRED_KEYS = ("engine",)
 # ---------------------------------------------------------------------------
 # Discovery
 # ---------------------------------------------------------------------------
+
 
 def discover_xparameter_modules() -> list[tuple[str, Path]]:
     """Return sorted (stem, path) tuples for all xparameter modules."""
@@ -67,9 +68,11 @@ def discover_xparameter_modules() -> list[tuple[str, Path]]:
 
     return modules
 
+
 # ---------------------------------------------------------------------------
 # Individual checks
 # ---------------------------------------------------------------------------
+
 
 def check_compile(path: Path) -> tuple[bool, str]:
     """Syntax-check the file without importing it."""
@@ -108,9 +111,11 @@ def check_import(stem: str) -> tuple[bool, str]:
 
     return True, "OK"
 
+
 # ---------------------------------------------------------------------------
 # Runner
 # ---------------------------------------------------------------------------
+
 
 def main() -> None:
     modules = discover_xparameter_modules()
@@ -136,7 +141,7 @@ def main() -> None:
         status = "PASS" if ok else "FAIL"
 
         compile_cell = "OK" if ok_compile else f"FAIL ({msg_compile})"
-        import_cell  = msg_import if ok_import else f"FAIL: {msg_import}"
+        import_cell = msg_import if ok_import else f"FAIL: {msg_import}"
 
         print(f"  {stem:<{col_w}} [{status}]  compile: {compile_cell:<10}  import: {import_cell}")
         if ok:
@@ -148,9 +153,12 @@ def main() -> None:
         print(f"        {len(modules)-passed} failed")
         print(f"\nProject root used: {_PROJECT_ROOT}")
         print("If imports fail, verify that all __init__.py files exist:")
-        for part in ["openwave", "openwave/xperiments",
-                     "openwave/xperiments/m4_ewt",
-                     "openwave/xperiments/m4_ewt/xparameters"]:
+        for part in [
+            "openwave",
+            "openwave/xperiments",
+            "openwave/xperiments/m4_ewt",
+            "openwave/xperiments/m4_ewt/xparameters",
+        ]:
             p = _PROJECT_ROOT / part / "__init__.py"
             status = "✓" if p.exists() else "✗ MISSING"
             print(f"  {status}  {p.relative_to(_PROJECT_ROOT)}")

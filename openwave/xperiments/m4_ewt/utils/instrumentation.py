@@ -144,6 +144,7 @@ import numpy as np
 _pairwise_ref = {}  # (i, j) -> reference distance, keyed by original WC indices
 _pairwise_ref_set = False
 
+
 def log_stability_metrics(timestep: int, wave_center) -> tuple:
     """
     Log WC stability metrics: mean pairwise distance drift and active WC count.
@@ -169,11 +170,13 @@ def log_stability_metrics(timestep: int, wave_center) -> tuple:
         n_active += 1
 
     if n_active < 2:
-        json_logger.log_timestep({
-            "timestep": timestep,
-            "mean_drift": None,
-            "active_wc": n_active,
-        })
+        json_logger.log_timestep(
+            {
+                "timestep": timestep,
+                "mean_drift": None,
+                "active_wc": n_active,
+            }
+        )
         return None, n_active
 
     indices = sorted(positions.keys())
@@ -185,7 +188,7 @@ def log_stability_metrics(timestep: int, wave_center) -> tuple:
         for b in range(a + 1, len(indices)):
             j = indices[b]
             pj = positions[j]
-            d = np.sqrt((pi[0] - pj[0])**2 + (pi[1] - pj[1])**2 + (pi[2] - pj[2])**2)
+            d = np.sqrt((pi[0] - pj[0]) ** 2 + (pi[1] - pj[1]) ** 2 + (pi[2] - pj[2]) ** 2)
             dist[(i, j)] = d
 
     if not _pairwise_ref_set:
@@ -199,9 +202,11 @@ def log_stability_metrics(timestep: int, wave_center) -> tuple:
                 drifts.append(abs(d - _pairwise_ref[pair]))
         mean_drift = float(np.mean(drifts)) if drifts else None
 
-    json_logger.log_timestep({
-        "timestep": timestep,
-        "mean_drift": mean_drift,
-        "active_wc": n_active,
-    })
+    json_logger.log_timestep(
+        {
+            "timestep": timestep,
+            "mean_drift": mean_drift,
+            "active_wc": n_active,
+        }
+    )
     return mean_drift, n_active
