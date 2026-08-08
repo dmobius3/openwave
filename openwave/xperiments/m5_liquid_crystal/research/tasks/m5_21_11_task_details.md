@@ -56,3 +56,79 @@ Two constraints from § 8 hold unchanged and cost nothing to honor: the `A→e, 
 **The uncertainty gap, raised in review of the amendment and closed the same day.** Condition 4 as first amended covered extrapolation error along the ladder but not discretization error at each rung. The readiness note's own § 5 records `E_A` moving `4.920 → 5.261 → 5.921` across three grid rungs at fixed δ (~20%), with B (2.61) and C (2.35) exceeding the consistency bar where A does not, so branch-dependent error of that size cannot be assumed to cancel in a ratio. [#378](https://github.com/openwave-labs/openwave/pull/378) closed the gap, going further than the review asked: all three branches refined, a pre-registered subset spanning the ladder, and a frozen propagation rule (the `Discretization term` row above).
 
 **One scoping consequence for this task's PLAN.** Refining a rung costs roughly 8× that rung in 3D, and the ladder's top rung sits at the affordability ceiling by construction, so a refinement subset read as literally including the top rung meets the same affordability wall that made the original condition 3 unsatisfiable. The satisfiable reading is the propagation rule: measure the convergence order where three resolutions are affordable for all three branches, then propagate it upward to the unrefined rungs. Budget the ladder so that reading holds, and if the wording needs pinning down, raise it as a one-clause amendment before the ladder is frozen, not after.
+
+## TASK PLANNING (2026-08-06, at PLAN; run scope = P0 ONLY, user decision)
+
+**User decisions (2026-08-06 specs interview)**: (1) this run delivers ONLY the derivation + the frozen-framework document; the ladder compute is a separate follow-on run against the frozen doc (the terminal-failure risk gets a human gate before it is spent). (2) The derived asymptotic form goes to the author for a sanity check BEFORE the freeze (his 2026-08-06 "might require help to move forward" offer, [convo](m5_22_convo.md)); the freeze waits on his reply or the user's call to proceed.
+
+**Model/effort**: Fable / high (theory derivation, novel; the actors-table research default).
+
+**Scope**: produce the complete pre-registration artifact for the route-(b) regime walk, satisfying every § "amended condition 3" precondition, with ZERO rungs measured, ZERO fits run, ZERO ratios computed.
+
+| Phase | Content | Verdict artifact |
+| --- | --- | --- |
+| D1 the derivation | Candidate asymptotic forms E_branch(δ, g) derived from M5-side theory ONLY: the [M5.21.1](m5_21_1_task_details.md) P4 asymptotic laws, the [M5.21.8](m5_21_8_task_details.md) m\* law (0.009%, 1/g tracking 0.82-0.84 across g = 8-64), the [M5.21.2b](m5_21_2b_task_details.md) core-scale law (~δ^−0.2), Derrick/virial scaling of the T2 functional, the ω ∝ m covariance (#220). Separability of the δ and g axes is DERIVED or refuted, not assumed. Hand-checkable derivations, equations first | the framework doc § 1 |
+| D2 the framework | The frozen protocol: rung set + budget (affordability MEASURED by 1-2 timing relaxations, not assumed), the refinement subset + the convergence-order propagation rule (the § scoping-consequence reading; one-clause amendment raised BEFORE freeze if the wording needs pinning), holdout design (pre-registered out-of-sample rungs), the branch-identification rule (topology signatures: charge class + core topology, NEVER energy order: the 2b merge lesson), the uncertainty model (extrapolation + discretization terms) | the framework doc §§ 2-6 |
+| D3 the audits | Barred-inputs audit (the doc nowhere consumes 5.2611/22.059/84.085, any lepton ratio, or a Yukawa figure) + independent adversarial audit of the derivation (second agent, own re-derivation) | audit § in the doc |
+| D4 the author block | FABLE VOICE technical block drafted TERMINAL-ONLY for the user to send (the derived forms + the framework summary; NO lepton-target numbers in the block); the freeze mechanics stated: on reply or user call, the doc gets its FROZEN header and the pinning commit SHA | terminal draft at REVIEW |
+
+**DoD**: `findings/m5_21_11_framework.md` (tracked, the pre-registration artifact) carrying D1-D3 complete; the D4 draft presented in the terminal; the M8.6 [readiness-note § 8](../../../m8_mit/research/findings/m8_6_readiness_note.md) preconditions each mapped to the doc section satisfying it; doc checker clean; checkpoints on arrival. **Explicitly NOT this run**: any ladder rung, any fit, any mass-ratio read, the unit-calibration half (scoped in the doc as the follow-on's second arm, no compute).
+
+**Blindspot pass**: (i) small-δ instrument degradation: eigen-degeneracy at δ → 0 breaks orientation continuity, so the branch-ID rule must be tested-by-derivation against it; (ii) basin reordering/merging along the walk (the 2b point-hedgehog + ring merge precedent): the branch rule must handle a merge as a defined outcome, not a failure; (iii) FIRE stability at large g (stiff vacuum, dt scaling): the timing relaxations double as stability probes; (iv) box effects: L = 48 fixed vs the δ^−0.2 core growth and any large-g shell scale; the framework states the box policy per rung; (v) the affordability wall on the refinement subset (§ scoping consequence): resolve by the propagation-rule reading, amendment raised before freeze if needed.
+
+**Research-body destinations**: `findings/m5_21_11_framework.md` (the artifact), `scripts/m5_21_11_a_timing.py` (the D2 timing probes only), `tasks/m5_21_11_task_details.md` (this doc), checkpoint `checkpoints/m5_21_11_progress.md`.
+
+## FINDINGS (2026-08-06, P0 run)
+
+The pre-registration artifact: [`findings/m5_21_11_framework.md`](../findings/m5_21_11_framework.md) (PRE-FREEZE DRAFT; freezes on the author's reply to the D4 block or the user's call). Zero rungs, zero fits, zero ratios were computed, per scope.
+
+| # | Finding | Where |
+| --- | --- | --- |
+| 1 | **The derived asymptotic form**: E_br(δ) = E∞_br (1 + b_br δ^θ + c_br δ), from a far/core decomposition: the far-field density is EXACTLY a polynomial of degree ≤ 4 in δ (M linear in δ; audit fit residual 9e-16) with a finite δ → 0 limit, and the line-core curvature-vs-T2-penalty competition gives a\* ∝ δ^(−s/4), E_core ∝ δ^(s/2), hence θ = 2ν with the clean-merge bound θ ≤ 1; the measured core law (ν = 0.2 published, 0.27 audit refit) puts the expectation at θ ≈ 0.4-0.55 (partial core rearrangement) | framework § 1.3 |
+| 2 | **The g-axis separability, derived where it can be and measured where it must be**: the 3×3 census functional contains no g identically (structural, audit-confirmed from source), so all g-dependence is the additive 4D boost-dressing correction with m\*(g) = artanh(1/g); the audit REFUTED the drafted "gain ∝ m\*² derived" step (counterexamples give q = 2 or q = 4 with the same m\* law), so the framework carries gain ∝ artanh(1/g)^q, q ∈ [2, 4], with the g-arm measuring q and F4 firing only on a slower-than-quadratic fall. Under any q ≥ 2 the physical-point correction is ≤ ~1e-20 relative: **the pre-registered ladder is one-dimensional in δ** | framework § 1.4 |
+| 3 | **The frozen protocol**: 8 rungs δ ∈ [0.05, 0.30] × 3 branches at N = 48 (δ-continuation seeding, topology-only branch identity, merge = defined outcome), holdouts {0.20, 0.07} × 3 excluded from every fit, refinement subset {0.30, 0.12, 0.05} × N ∈ {32, 48, 64} × 3 with a branch-wise log-δ discretization propagation rule (+ stability guard), profile-likelihood degeneracy rule, terminal criteria F1-F4 with stated accepted risks (F2 noise ≈ 3.3%) | framework §§ 2-6 |
+| 4 | **Affordability MEASURED**: 0.311 s/iter (N = 48) and 0.727 s/iter (N = 64), ratio 2.34 vs volume prediction 2.37; production rung ≈ 62 min, refinement run ≈ 145 min, whole frozen program ≈ 50 CPU-hours, parallelizable to an overnight batch; the refinement subset satisfies the #378 wording under the propagation-rule reading with no further amendment needed | framework §§ 2-3, `data/m5_21_11_timing.json` |
+| 5 | **Compliance**: every amended-condition-3 precondition mapped to its satisfying section; barred-inputs sweep clean (no toy census energy, lepton ratio, or Yukawa figure anywhere; physical-point anchors are author-paper order-of-magnitude anchors, mass-independent); the 8-decade extrapolation gap stated plainly with the claim ceiling | framework §§ 7-8 |
+| 6 | **Adversarial audit (cardinal rule)**: 6 CONFIRMED, 1 REFUTED (the gain-law derivation step, finding 2), 2 PARTIAL (determinism pins, consistency numbers); every catch adopted into the pre-freeze draft; audit script + JSON kept | framework § 9, [`m5_21_11_e_audit.py`](../scripts/m5_21_11_e_audit.py) |
+
+## DEVIATIONS LOG
+
+| # | Deviation | Why |
+| --- | --- | --- |
+| 1 | The drafted § 1.4 claimed the 1/g² gain law as DERIVED; the audit refuted the derivation step (assumption E''(0) bounded) | fixed pre-freeze: q ∈ [2, 4] window + F4 re-specification; exactly what the audit exists to catch |
+| 2 | Timing probes left instrument-standard row JSONs + endpoint npz under `t11timing_*` tags | endpoints are non-physics by construction (400/200 iters); tags prevent confusion with ladder rungs; files kept per the dataset policy |
+
+## TASK REVIEW (2026-08-06)
+
+Task Duration: 0:55 (from 16:05 to 17:00 EDT)
+Usage Cap Triggered: NO (resume ping armed 20:45 EDT, parked unfired at FINISH)
+
+| # | Result | Status |
+| --- | --- | --- |
+| 1 | D1: E_br(δ) = E∞_br(1 + b_br δ^θ + c_br δ) derived (far field exactly polynomial deg ≤ 4 in δ; line-core competition θ = 2ν ≤ 1, expected 0.4-0.55) | ✅ audited |
+| 2 | g-axis: 3×3 functional g-free structurally; dressing gain = measured q ∈ [2, 4] window (the drafted "1/g² derived" REFUTED by the audit and fixed); ladder ONE-DIMENSIONAL in δ under any q ≥ 2 | ✅ audited post-fix |
+| 3 | D2: full frozen protocol (8 rungs, 6 holdout points, 27-run refinement subset + propagation rule, topology-only branch ID, terminal F1-F4 with stated accepted risks) | ✅ |
+| 4 | Affordability measured: 62 min/rung, ~50 CPU-h total, parallelizable; #378 satisfied under the propagation-rule reading | ✅ |
+| 5 | D3: barred-inputs sweep clean; § 8 condition mapping complete; adversarial audit 6C/1R/2P, all catches adopted | ✅ |
+| 6 | D4: author block drafted terminal-only; the user sent the TRIMMED 3-question version (process language reduced to one motivating sentence, physics questions leading) 2026-08-06 evening | ✅ sent by user |
+
+Issues: none blocking. The roadmap row stays In Progress (the ID covers the ladder follow-on; the mass-ratio read is undelivered): the review's original "move to Done" wording was corrected at approval.
+
+Action at close: convo routing recorded ([`m5_21_convo.md`](m5_21_convo.md); moved there from the M5.22 doc on the user's 2026-08-07 routing call, this being a 21-series thread); FREEZE waits on the author's reply or the user's call, then the framework gets its FROZEN header + pinning commit SHA; the ladder compute is the follow-on run on user "go".
+
+**Findings**: The route-(b) framework is complete at pre-freeze: the asymptotic form is derived from M5-side theory alone, and the g-axis collapses structurally (the census functional is g-free; the dressing correction dies at least as artanh(1/g)²), making the pre-registered ladder one-dimensional in δ at a measured ~50 CPU-hour cost. The adversarial audit refuted one drafted derivation step (the gain law is a measured q ∈ [2, 4] window, not a derived 1/g²) and the adopted fix makes F4 fail only on the case that genuinely breaks separability.
+
+**Research docs created/updated**:
+
+- this task_details (FINDINGS + deviations + this review)
+- [`findings/m5_21_11_framework.md`](../findings/m5_21_11_framework.md) (the pre-registration artifact, PRE-FREEZE DRAFT)
+- scripts [`m5_21_11_a_timing.py`](../scripts/m5_21_11_a_timing.py) · [`m5_21_11_e_audit.py`](../scripts/m5_21_11_e_audit.py)
+- data `m5_21_11_timing.json` · `m5_21_11_audit.json` + regenerated [`_DATASETS.md`](../data/_DATASETS.md)
+- [`m5_roadmap.md`](../m5_roadmap.md) (row → P0 DELIVERED; What-happens-next)
+- [`m5_21_convo.md`](m5_21_convo.md) (outbound routing entry; relocated from the M5.22 doc 2026-08-07)
+
+## POST-CLOSE (2026-08-07): the author reply + the FREEZE
+
+The author's reply arrived 2026-08-07 03:17 EDT, PUBLIC (Models-of-particles cc'd + Filip Blaschke; the full sanity-check message now quoted in the public thread): the practical-approximation route endorsed in the author's own words, the three questions left unanswered, no objection to any derived form; full decode in [`m5_21_convo.md § 2026-08-07`](m5_21_convo.md). Since [framework § 1](../findings/m5_21_11_framework.md) covers every branch of the unanswered questions (θ unconstrained, gain exponent a measured q ∈ [2, 4] window, anchors order-of-magnitude), **the user called the FREEZE the same day**: the § 0 header is FROZEN 2026-08-07, with the pinning commit SHA recorded there by the sole permitted post-freeze edit. Downstream state: the [M8.6 gate record](../../../m8_mit/research/tasks/m8_6_task_details.md) carries the freeze in its FINDINGS; the ladder compute run gates on user "go" only. Instrument note (asked and answered at the freeze): the run stays on the CPU numpy instrument of record; a GPU port would be new energy code, which the frozen § 1.1 forbids ("this document introduces no new energy code"), and the measured ~50 CPU-h program parallelizes to one overnight batch (~5-6 h wall-clock at 8-10 processes on the 12-performance-core machine).
+
+**Standing action for the ladder close-out (user directive, 2026-08-07)**: if the ladder run completes with the holdout and terminal failure gates PASSED, release the [M8.6 roadmap row](../../../m8_mit/research/m8_roadmap.md) from LATER (gated) back to the Backlog (its input = this task's mass-ratio read) and record the release in the [gate record](../../../m8_mit/research/tasks/m8_6_task_details.md); a terminal failure leaves it gated (route (b) is the last admissible route).
