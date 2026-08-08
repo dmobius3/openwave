@@ -1,0 +1,34 @@
+{"tag": "t11lad_A_n48_d0.05", "charge": 1.0, "n_lines": 6, "verdicts": ["open", "open", "open", "open", "open", "open"], "core": "12", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_A_n48_d0.07", "charge": 1.0, "n_lines": 5, "verdicts": ["chi=-7", "open", "open", "open", "open"], "core": "12", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_A_n48_d0.09", "charge": 1.0, "n_lines": 10, "verdicts": ["chi=-3", "chi=-3", "chi=-6", "open", "open", "open", "open", "open", "open", "open"], "core": "12", "flags": 2, "guard_silent": true}
+{"tag": "t11lad_A_n48_d0.12", "charge": 1.0, "n_lines": 8, "verdicts": ["chi=-1", "chi=-2", "open", "open", "open", "open", "open", "open"], "core": "12", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_A_n48_d0.15", "charge": 1.0, "n_lines": 18, "verdicts": ["closed-loop", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open"], "core": "12", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_A_n48_d0.2", "charge": 1.0, "n_lines": 3, "verdicts": ["chi=-2", "open", "open"], "core": "12", "flags": 1, "guard_silent": true}
+{"tag": "t11lad_A_n48_d0.25", "charge": 1.0, "n_lines": 2, "verdicts": ["chi=-1", "chi=-1"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_A_n48_d0.3", "charge": 1.0, "n_lines": 2, "verdicts": ["chi=-1", "chi=-2"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_A_n64_d0.05", "charge": 1.0, "n_lines": 3, "verdicts": ["open", "open", "open"], "core": "12", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_A_n64_d0.12", "charge": 1.0, "n_lines": 10, "verdicts": ["chi=-4", "chi=-6", "closed-loop", "open", "open", "open", "open", "open", "open", "open"], "core": "12", "flags": 2, "guard_silent": true}
+{"tag": "t11lad_A_n64_d0.3", "charge": 1.0, "n_lines": 2, "verdicts": ["chi=-2", "chi=-2"], "core": "23", "flags": 1, "guard_silent": true}
+{"tag": "t11lad_B_n48_d0.05", "charge": 0.0, "n_lines": 9, "verdicts": ["open", "open", "open", "open", "open", "open", "open", "open", "open"], "core": "12", "flags": 1, "guard_silent": true}
+{"tag": "t11lad_B_n48_d0.07", "charge": 0.0, "n_lines": 7, "verdicts": ["open", "open", "open", "open", "open", "open", "open"], "core": "12", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_B_n48_d0.09", "charge": 0.0, "n_lines": 7, "verdicts": ["open", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_B_n48_d0.12", "charge": 0.0, "n_lines": 7, "verdicts": ["open", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_B_n48_d0.15", "charge": 0.0, "n_lines": 5, "verdicts": ["open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_B_n48_d0.2", "charge": 0.0, "n_lines": 2, "verdicts": ["open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_B_n48_d0.25", "charge": 0.0, "n_lines": 1, "verdicts": ["closed-loop"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_B_n48_d0.3", "charge": 0.0, "n_lines": 1, "verdicts": ["closed-loop"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_B_n64_d0.05", "charge": 0.0, "n_lines": 7, "verdicts": ["closed-loop", "open", "open", "open", "open", "open", "open"], "core": "12", "flags": 1, "guard_silent": true}
+{"tag": "t11lad_B_n64_d0.12", "charge": 0.0, "n_lines": 2, "verdicts": ["closed-loop", "closed-loop"], "core": "23", "flags": 1, "guard_silent": true}
+{"tag": "t11lad_B_n64_d0.3", "charge": 0.0, "n_lines": 1, "verdicts": ["chi=-1"], "core": "23", "flags": 2, "guard_silent": true}
+{"tag": "t11lad_C_n48_d0.05", "charge": 0.0, "n_lines": 5, "verdicts": ["chi=-3", "chi=-5", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n48_d0.07", "charge": 0.0, "n_lines": 5, "verdicts": ["chi=-6", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n48_d0.09", "charge": 0.0, "n_lines": 2, "verdicts": ["chi=-8", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n48_d0.12", "charge": 0.0, "n_lines": 8, "verdicts": ["chi=-2", "chi=2", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n48_d0.15", "charge": 0.0, "n_lines": 8, "verdicts": ["closed-loop", "open", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n48_d0.2", "charge": 0.0, "n_lines": 12, "verdicts": ["open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n48_d0.25", "charge": 0.0, "n_lines": 12, "verdicts": ["closed-loop", "closed-loop", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n48_d0.3", "charge": 0.0, "n_lines": 10, "verdicts": ["chi=-2", "chi=-2", "open", "open", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n64_d0.05", "charge": 0.0, "n_lines": 4, "verdicts": ["open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n64_d0.12", "charge": 0.0, "n_lines": 11, "verdicts": ["open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+{"tag": "t11lad_C_n64_d0.3", "charge": 0.0, "n_lines": 35, "verdicts": ["chi=-1", "chi=-5", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open", "open"], "core": "23", "flags": 0, "guard_silent": true}
+collected 42 reads

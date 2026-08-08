@@ -1,14 +1,15 @@
 # Local-only datasets manifest
 
-> AUTO-GENERATED, do not hand-edit the table: `python3 dev_docs/utils/gen_datasets_manifest.py openwave/xperiments/m5_liquid_crystal/research/data --write`
+> AUTO-GENERATED, do not hand-edit the table: `python3 dev_docs/utils/gen_datasets_manifest.py data --write`
 
 Heavy binary arrays in this folder are **local-only**: gitignored, never deleted (policy 2026-07-20, which supersedes the earlier "delete raw data > 1 MB" rule). They stay on the working machine so later tasks can consume them directly, and they stay OUT of the repo so clones stay light. What IS tracked in git and readable on GitHub: the summary `.json` / `.csv` / `.txt` in this same folder, the plots, and the scripts that rebuild everything here.
 
-**Inventory**: 123 local-only files, 679.58 MB, in 10 task groups.
+**Inventory**: 165 local-only files, 925.43 MB, in 11 task groups.
 
 | Task group | Files | Size | Producing script(s) | Record (regen commands + context) |
 | --- | --- | --- | --- | --- |
 | `m5_21_10` | 3 | 293.47 MB | [`m5_21_10_a_decay64.py`](../scripts/m5_21_10_a_decay64.py) · [`m5_21_10_b_ring.py`](../scripts/m5_21_10_b_ring.py) · [`m5_21_10_c_panel.py`](../scripts/m5_21_10_c_panel.py) (+1 more) | [`m5_21_10_task_details.md`](../tasks/m5_21_10_task_details.md) |
+| `m5_21_11` | 42 | 245.85 MB | [`m5_21_11_a_timing.py`](../scripts/m5_21_11_a_timing.py) · [`m5_21_11_b_ladder.py`](../scripts/m5_21_11_b_ladder.py) · [`m5_21_11_c_readers.py`](../scripts/m5_21_11_c_readers.py) (+6 more) | [`m5_21_11_task_details.md`](../tasks/m5_21_11_task_details.md) |
 | `m5_21_2b` | 2 | 8.05 MB | [`m5_21_2b_a_instrument.py`](../scripts/m5_21_2b_a_instrument.py) · [`m5_21_2b_audit_check.py`](../scripts/m5_21_2b_audit_check.py) · [`m5_21_2b_b_split.py`](../scripts/m5_21_2b_b_split.py) (+2 more) | [`m5_21_2b_task_details.md`](../tasks/m5_21_2b_task_details.md) |
 | `m5_21_4` | 20 | 67.54 MB | [`m5_21_4_a_pair.py`](../scripts/m5_21_4_a_pair.py) · [`m5_21_4_audit_check.py`](../scripts/m5_21_4_audit_check.py) · [`m5_21_4_c_films.py`](../scripts/m5_21_4_c_films.py) (+2 more) | [`m5_21_4_task_details.md`](../tasks/m5_21_4_task_details.md) |
 | `m5_21_5` | 3 | 3.13 MB | [`m5_21_5_a_mu.py`](../scripts/m5_21_5_a_mu.py) · [`m5_21_5_b_ladder.py`](../scripts/m5_21_5_b_ladder.py) · [`m5_21_5_c_bridge.py`](../scripts/m5_21_5_c_bridge.py) (+2 more) | [`m5_21_5_task_details.md`](../tasks/m5_21_5_task_details.md) |

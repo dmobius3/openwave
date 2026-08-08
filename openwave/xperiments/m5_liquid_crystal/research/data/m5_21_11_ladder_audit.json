@@ -1,0 +1,776 @@
+{
+ "task": "M5.21.11 ladder-compute adversarial audit",
+ "date": "2026-08-07",
+ "auditor": "independent second agent, own recomputation (m5_21_11_i_audit.py); instruments imported: m5_21_2b_a_instrument, m5_21_3_a_4d, m5_21_8_b_lattice; run wrappers NOT imported",
+ "own_boost_gate": {
+  "expm_err": 2.220446049250313e-16,
+  "lorentz_err": 4.440892098500626e-16,
+  "grid_err": 0.0,
+  "pass": true
+ },
+ "claims": {
+  "C3": {
+   "verdict": "CONFIRMED",
+   "numbers": {
+    "table": {
+     "A_n48_d0.3": {
+      "E": 6.844572104634633,
+      "vir": 0.04571550631928602,
+      "xr": 1.1098909012291753,
+      "fmax_end": 1.2365177343574472e-06,
+      "stop": "max_iter",
+      "own_fails": [],
+      "run_fails": [],
+      "agree": true
+     },
+     "A_n48_d0.25": {
+      "E": 6.96116361277736,
+      "vir": 0.1794403185375982,
+      "xr": 1.0595405909184883,
+      "fmax_end": 5.885056737276514e-08,
+      "stop": "f_tol",
+      "own_fails": [
+       "virial"
+      ],
+      "run_fails": [
+       "virial"
+      ],
+      "agree": true
+     },
+     "A_n48_d0.2": {
+      "E": 7.3100315362424295,
+      "vir": 0.2775315273160267,
+      "xr": 1.0317682056325694,
+      "fmax_end": 3.4585710941004155e-08,
+      "stop": "f_tol",
+      "own_fails": [
+       "virial"
+      ],
+      "run_fails": [
+       "virial"
+      ],
+      "agree": true
+     },
+     "A_n48_d0.15": {
+      "E": 7.828500183708783,
+      "vir": 0.34203421370392606,
+      "xr": 1.0209235781953359,
+      "fmax_end": 4.637956088984242e-05,
+      "stop": "max_iter",
+      "own_fails": [
+       "virial"
+      ],
+      "run_fails": [
+       "virial"
+      ],
+      "agree": true
+     },
+     "A_n48_d0.12": {
+      "E": 8.19332015330006,
+      "vir": 0.37213344961277,
+      "xr": 1.012253719462339,
+      "fmax_end": 2.8114650198222352e-05,
+      "stop": "max_iter",
+      "own_fails": [
+       "virial"
+      ],
+      "run_fails": [
+       "virial"
+      ],
+      "agree": true
+     },
+     "A_n48_d0.09": {
+      "E": 8.589786150785184,
+      "vir": 0.38896267459147443,
+      "xr": 1.0096957004326088,
+      "fmax_end": 3.4593822020791577e-08,
+      "stop": "f_tol",
+      "own_fails": [
+       "virial"
+      ],
+      "run_fails": [
+       "virial"
+      ],
+      "agree": true
+     },
+     "A_n48_d0.07": {
+      "E": 8.869008866352443,
+      "vir": 0.3956363694475499,
+      "xr": 1.011263668933993,
+      "fmax_end": 2.0925517672222506e-08,
+      "stop": "f_tol",
+      "own_fails": [
+       "virial"
+      ],
+      "run_fails": [
+       "virial"
+      ],
+      "agree": true
+     },
+     "A_n48_d0.05": {
+      "E": 9.161105530858217,
+      "vir": 0.4011567144109416,
+      "xr": 1.0120126773449045,
+      "fmax_end": 1.665211539107281e-08,
+      "stop": "f_tol",
+      "own_fails": [
+       "virial"
+      ],
+      "run_fails": [
+       "virial"
+      ],
+      "agree": true
+     },
+     "C_n48_d0.3": {
+      "E": 24.121099051657193,
+      "vir": 0.8006690109829031,
+      "xr": 2.0702249411784353,
+      "fmax_end": 0.0006021887739902104,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "C_n48_d0.25": {
+      "E": 30.69855096439569,
+      "vir": 0.8247505841670845,
+      "xr": 2.1443186350536885,
+      "fmax_end": 0.0003049594094070474,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "C_n48_d0.2": {
+      "E": 38.7894062767283,
+      "vir": 0.8404574008299887,
+      "xr": 2.2046975517715866,
+      "fmax_end": 0.00036498381885260414,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "C_n48_d0.15": {
+      "E": 48.57995497267529,
+      "vir": 0.8515262983335382,
+      "xr": 2.2562736788304805,
+      "fmax_end": 0.00047359075649142037,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "C_n48_d0.12": {
+      "E": 55.34910089865402,
+      "vir": 0.8567618337504654,
+      "xr": 2.2841786421914048,
+      "fmax_end": 0.00031227614931290883,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "C_n48_d0.09": {
+      "E": 62.85538091378706,
+      "vir": 0.86114400304545,
+      "xr": 2.3097003208359177,
+      "fmax_end": 0.00039712682496930086,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "C_n48_d0.07": {
+      "E": 68.28828785344524,
+      "vir": 0.8637550844295844,
+      "xr": 2.3236708372356505,
+      "fmax_end": 0.0003144614968117456,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "C_n48_d0.05": {
+      "E": 74.0860871732523,
+      "vir": 0.8661597655155655,
+      "xr": 2.33263863613115,
+      "fmax_end": 0.00018272020374463484,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "B_n48_d0.3": {
+      "E": 84.83898092284106,
+      "vir": 0.978413297649757,
+      "xr": 2.4900619986888493,
+      "fmax_end": 0.0019790441731656594,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "B_n48_d0.25": {
+      "E": 85.04713347772498,
+      "vir": 0.9781037800850128,
+      "xr": 2.4132390277229967,
+      "fmax_end": 0.0013590531931613452,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "B_n48_d0.2": {
+      "E": 85.40725723953186,
+      "vir": 0.9757861416362744,
+      "xr": 2.397791983423723,
+      "fmax_end": 0.008379982092723207,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "B_n48_d0.15": {
+      "E": 85.86478295109907,
+      "vir": 0.9725728272823626,
+      "xr": 2.39518957365538,
+      "fmax_end": 0.00019419910288848022,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "B_n48_d0.12": {
+      "E": 86.17857835907185,
+      "vir": 0.9704331544892397,
+      "xr": 2.3710275552600977,
+      "fmax_end": 0.0002482880996178128,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "B_n48_d0.09": {
+      "E": 86.52498710248257,
+      "vir": 0.9680132707656794,
+      "xr": 2.3018890657118622,
+      "fmax_end": 0.0005796112079750865,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "B_n48_d0.07": {
+      "E": 86.77020361518268,
+      "vir": 0.9663419513159557,
+      "xr": 2.2319732653783273,
+      "fmax_end": 0.0007210981356125402,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     },
+     "B_n48_d0.05": {
+      "E": 87.02245415896678,
+      "vir": 0.9645603641817473,
+      "xr": 2.182719297090013,
+      "fmax_end": 0.00153491036260258,
+      "stop": "max_iter",
+      "own_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "run_fails": [
+       "fire",
+       "virial",
+       "xstencil"
+      ],
+      "agree": true
+     }
+    },
+    "usable_by_gates": {
+     "A": [
+      0.3
+     ],
+     "C": [],
+     "B": []
+    },
+    "A_virial_ladder": [
+     0.04571550631928602,
+     0.1794403185375982,
+     0.2775315273160267,
+     0.34203421370392606,
+     0.37213344961277,
+     0.38896267459147443,
+     0.3956363694475499,
+     0.4011567144109416
+    ],
+    "A_virial_monotone_growing": true,
+    "BC_xstencil_all_above_1p5": true,
+    "BC_virial_range": [
+     0.8006690109829031,
+     0.978413297649757
+    ],
+    "mismatches": []
+   },
+   "notes": "Virial |E_u - 3E_V|/E_u, xstencil max/min over the five stored consistency reads, FIRE, L/a* and the reader guards all recomputed with own formulas; gate-fail sets match the run's rung_state rung for rung. A usable only at delta = 0.30 (vir 0.0457); B/C usable nowhere; A's virial grows monotonically as delta falls."
+  },
+  "C4": {
+   "verdict": "CONFIRMED",
+   "numbers": {
+    "t11lad_A_n48_d0.05": {
+     "seed_kind": "continuation",
+     "shell_max_abs_dev": 0.0,
+     "n_shell_cells": 25408,
+     "interior_max_dev_vs_seed": 0.32352755418097856,
+     "pass": true
+    },
+    "t11lad_C_n48_d0.12": {
+     "seed_kind": "continuation",
+     "shell_max_abs_dev": 0.0,
+     "n_shell_cells": 25408,
+     "interior_max_dev_vs_seed": 0.9102674313752163,
+     "pass": true
+    },
+    "t11lad_B_n64_d0.05": {
+     "seed_kind": "continuation",
+     "shell_max_abs_dev": 0.0,
+     "n_shell_cells": 67032,
+     "interior_max_dev_vs_seed": 1.1463565851016173,
+     "pass": true
+    }
+   },
+   "notes": "All three continuation endpoints hold the pinned shell EXACTLY at the current-delta analytic T2 seed (deviation 0 to < 1e-12); the interior moved (sanity column), so the earlier shell-inheritance bug did not contaminate any surviving rung."
+  },
+  "C5": {
+   "verdict": "CONFIRMED",
+   "numbers": {
+    "A": {
+     "deltas": [
+      0.3,
+      0.25,
+      0.2,
+      0.15,
+      0.12,
+      0.09,
+      0.07,
+      0.05
+     ],
+     "E": [
+      6.844572104634633,
+      6.96116361277736,
+      7.3100315362424295,
+      7.828500183708783,
+      8.19332015330006,
+      8.589786150785184,
+      8.869008866352443,
+      9.161105530858217
+     ],
+     "monotone_E_rises_as_delta_falls": true,
+     "endpoints": [
+      6.844572104634633,
+      9.161105530858217
+     ],
+     "claimed": [
+      6.84,
+      9.16
+     ],
+     "match": true
+    },
+    "C": {
+     "deltas": [
+      0.3,
+      0.25,
+      0.2,
+      0.15,
+      0.12,
+      0.09,
+      0.07,
+      0.05
+     ],
+     "E": [
+      24.121099051657193,
+      30.69855096439569,
+      38.7894062767283,
+      48.57995497267529,
+      55.34910089865402,
+      62.85538091378706,
+      68.28828785344524,
+      74.0860871732523
+     ],
+     "monotone_E_rises_as_delta_falls": true,
+     "endpoints": [
+      24.121099051657193,
+      74.0860871732523
+     ],
+     "claimed": [
+      24.12,
+      74.09
+     ],
+     "match": true
+    },
+    "B": {
+     "deltas": [
+      0.3,
+      0.25,
+      0.2,
+      0.15,
+      0.12,
+      0.09,
+      0.07,
+      0.05
+     ],
+     "E": [
+      84.83898092284106,
+      85.04713347772498,
+      85.40725723953186,
+      85.86478295109907,
+      86.17857835907185,
+      86.52498710248257,
+      86.77020361518268,
+      87.02245415896678
+     ],
+     "monotone_E_rises_as_delta_falls": true,
+     "endpoints": [
+      84.83898092284106,
+      87.02245415896678
+     ],
+     "claimed": [
+      84.84,
+      87.02
+     ],
+     "match": true
+    }
+   },
+   "notes": "Per-branch E(delta) at N = 48 is strictly monotone decreasing in delta (E rises as delta falls) for all three branches; endpoints match the quoted values from the raw rows."
+  },
+  "C6": {
+   "verdict": "CONFIRMED",
+   "numbers": {
+    "own_usable_counts": {
+     "A": 1,
+     "C": 0,
+     "B": 0
+    },
+    "run_counts": {
+     "A": 1,
+     "C": 0,
+     "B": 0
+    },
+    "floor": 6,
+    "f3_fires": true,
+    "own_n_fit_points": 1,
+    "own_n_holdout_points": 0,
+    "run_n_fit_points": 1,
+    "f1_vacuous": true,
+    "f2_vacuous": true,
+    "run_failed": [
+     "F3_branch_integrity",
+     "F4_garm"
+    ]
+   },
+   "notes": "Usable counts from the own gate recomputation are A=1, C=0, B=0, all below the frozen floor of 6, so F3 fires; the single usable point (A, 0.30) is not a holdout, leaving a 1-point degenerate fit: F1 (chi2/df) and F2 (holdouts) are vacuous exactly as the run reports. Terminal failure = {F3, F4}."
+  },
+  "C2": {
+   "verdict": "CONFIRMED",
+   "numbers": {
+    "per_g": {
+     "g8": {
+      "E0_family": 62.851744331478166,
+      "E_min_own": 1.1439285097863947,
+      "m_at_min": -0.1,
+      "E_min_record": 1.143928509786395,
+      "family_gain": -61.707815821691774,
+      "rel_diff_Emin_vs_record": 1.941070644060559e-16
+     },
+     "g16": {
+      "E0_family": 62.851744331478166,
+      "E_min_own": 1.8534164079499864,
+      "m_at_min": -0.04999999999999999,
+      "E_min_record": 1.8534164079499864,
+      "family_gain": -60.99832792352818,
+      "rel_diff_Emin_vs_record": 0.0
+     },
+     "g32": {
+      "E0_family": 62.851744331478166,
+      "E_min_own": 2.180748207153326,
+      "m_at_min": -0.025000000000000022,
+      "E_min_record": 2.180748207153326,
+      "family_gain": -60.67099612432484,
+      "rel_diff_Emin_vs_record": 0.0
+     }
+    },
+    "E0_family_rel_spread": 0.0,
+    "gain_rel_spread": 0.016962087500729937
+   },
+   "notes": "E(0) of the ansatz family recomputed (g-independent to machine level) and the full m-curves re-scanned on a 2x-finer grid: the family gain is flat ~-61 across g = 8/16/32, corroborating the C1 flat-depth finding on an independent family."
+  },
+  "C1": {
+   "verdict": "PARTIAL",
+   "numbers": {
+    "arms": [
+     {
+      "branch": "A",
+      "g": 8.0,
+      "E0": 9.637752360310675,
+      "E0_run": 9.637752360310675,
+      "gain": -0.6306986711953346,
+      "gain_run": -0.6406782476629047,
+      "rel_diff": 0.015576580762612181,
+      "m_star": -0.02879675391508109,
+      "m_star_over_mhis": 0.22916912580039847,
+      "twin_minima": true,
+      "gain_neg_side": -0.6306986711953346,
+      "gain_pos_side": -0.6306986711953346,
+      "wall_s": 14.610788106918335
+     },
+     {
+      "branch": "A",
+      "g": 32.0,
+      "E0": 9.637752359894796,
+      "E0_run": 9.637752359894796,
+      "gain": -0.6586272137863372,
+      "gain_run": -0.6635926050162677,
+      "rel_diff": 0.007482589758227996,
+      "m_star": -0.007533827963526948,
+      "m_star_over_mhis": 0.24100399701096525,
+      "twin_minima": true,
+      "gain_neg_side": -0.6586272137863372,
+      "gain_pos_side": -0.6586272137863372,
+      "wall_s": 15.585638284683228
+     },
+     {
+      "branch": "C",
+      "g": 8.0,
+      "E0": 25.159620903936798,
+      "E0_run": 25.159620903936798,
+      "gain": -2.339318143960412,
+      "gain_run": -2.330044309791706,
+      "rel_diff": 0.003980110648425826,
+      "m_star": -0.03961263462430488,
+      "m_star_over_mhis": 0.31524361649485527,
+      "twin_minima": true,
+      "gain_neg_side": -2.339318143960412,
+      "gain_pos_side": -2.3393181439603374,
+      "wall_s": 15.590764999389648
+     },
+     {
+      "branch": "C",
+      "g": 32.0,
+      "E0": 25.15962090370801,
+      "E0_run": 25.15962090370801,
+      "gain": -2.1967454289477573,
+      "gain_run": -2.1852665890106735,
+      "rel_diff": 0.0052528327641162215,
+      "m_star": 0.010169170374113353,
+      "m_star_over_mhis": 0.3253074955138036,
+      "twin_minima": true,
+      "gain_neg_side": -2.196745428946116,
+      "gain_pos_side": -2.1967454289477573,
+      "wall_s": 15.522079944610596
+     },
+     {
+      "branch": "B",
+      "g": 8.0,
+      "E0": 85.80152403715522,
+      "E0_run": 85.80152403715523,
+      "gain": -0.7763532189046174,
+      "gain_run": -0.7827961143279225,
+      "rel_diff": 0.008230617532940528,
+      "m_star": -0.030138744446151076,
+      "m_star_over_mhis": 0.23984889886595426,
+      "twin_minima": true,
+      "gain_neg_side": -0.7763532189046174,
+      "gain_pos_side": -0.7763532189046174,
+      "wall_s": 15.55401611328125
+     },
+     {
+      "branch": "B",
+      "g": 32.0,
+      "E0": 85.8015240369799,
+      "E0_run": 85.80152403697991,
+      "gain": -0.7821493064937073,
+      "gain_run": -0.782399225590197,
+      "rel_diff": 0.0003194265642341649,
+      "m_star": -0.007855874906760098,
+      "m_star_over_mhis": 0.251306143664712,
+      "twin_minima": true,
+      "gain_neg_side": -0.7821493064937073,
+      "gain_pos_side": -0.782149306493622,
+      "wall_s": 15.696968078613281
+     }
+    ],
+    "fall_exponent_g8_g32": {
+     "A": -0.031145118757239885,
+     "C": 0.045199834280722204,
+     "B": -0.005346454951911517
+    },
+    "m_star_over_artanh_by_branch": {
+     "A": [
+      0.2292,
+      0.241
+     ],
+     "C": [
+      0.3152,
+      0.3253
+     ],
+     "B": [
+      0.2398,
+      0.2513
+     ]
+    },
+    "artanh2_would_require_fall_factor": 16.15816159791447
+   },
+   "notes": "Gains recomputed with own boost construction on an own 81-pt grid (spacing 0.015 m_his vs the run's 0.05): twin minima confirmed, depths g-independent (fall exponents ~0, far below the frozen q >= 2 bar), so F4 correctly FAILS: the substantive g-arm content stands. CATCH on the claim wording: the '|m*| ~ 0.2-0.25 x artanh(1/g)' band holds only for A (0.23-0.24) and B (0.24-0.25); branch C sits at 0.31-0.33 in BOTH the run's own garm.json and this recomputation. Any write-up must quote C's band separately."
+  }
+ },
+ "barred_inputs": {
+  "files_swept": [
+   "m5_21_11_b_ladder.py",
+   "m5_21_11_c_readers.py",
+   "m5_21_11_d_garm.py",
+   "m5_21_11_f_fit.py",
+   "m5_21_11_g_controls.py"
+  ],
+  "patterns": [
+   "5\\.2611",
+   "22\\.059",
+   "84\\.085",
+   "206\\.8",
+   "3477",
+   "5\\.9",
+   "15\\.1"
+  ],
+  "hits": [],
+  "clean": true
+ },
+ "notes": [
+  "FIRE-gate strictness: framework section 4 as frozen says 'FIRE reaches f_tol at depth' (f_tol = 1e-8); the run's operational pin (recorded pre-result in the fit header) accepts max_iter/plateau with final fmax <= 1e-4. Under the strict frozen reading even A at delta = 0.30 (stop = max_iter, fmax 1.2e-6) would be EXCLUDED, making the usable counts 0/0/0. Verdict-neutral: F3 fires either way (and harder), but the softening should be stated next to the usable-count table.",
+  "The fallback 'fit' block (E = Einf + c*delta through ONE usable point) is underdetermined: params A = (6.279, 1.884) satisfy 6.279 + 1.884*0.30 = 6.845 but are one of infinitely many solutions, so E_phys(A) = 6.28 +- 0.61 carries no information beyond the single rung. Verdict-neutral (the run already declares terminal failure), but the number should not be quoted as a prediction anywhere.",
+  "Barred-inputs sweep: grep-level clean on all five new scripts (no 5.2611 / 22.059 / 84.085 / 206.8 / 3477 / '5.9' / '15.1')."
+ ],
+ "summary": "5/6 claims CONFIRMED (C1:PARTIAL, C2:CONFIRMED, C3:CONFIRMED, C4:CONFIRMED, C5:CONFIRMED, C6:CONFIRMED); barred inputs clean; terminal-failure verdict (F3 + F4) independently reproduced. Catches: C1 m*-band wording wrong for branch C (0.31-0.33, not 0.2-0.25; gains and F4 failure fully confirmed); FIRE-gate softening vs the frozen f_tol wording (verdict-neutral, F3 fires harder strictly); underdetermined 1-point fallback fit (verdict-neutral).",
+ "wall_s": 109.02180409431458
+}

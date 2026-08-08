@@ -1,0 +1,76 @@
+{
+ "C1_vacuum_null": [
+  {
+   "g": 8.0,
+   "m_min": 0.0,
+   "E_min": 0.0,
+   "E_edge": 6546.680923199822,
+   "pass": true
+  },
+  {
+   "g": 32.0,
+   "m_min": 0.0,
+   "E_min": 0.0,
+   "E_edge": 5055.602740167898,
+   "pass": true
+  }
+ ],
+ "C2_field_identity": [
+  {
+   "g": 8.0,
+   "m": -0.025,
+   "field_diff_max": 7.105427357601002e-15,
+   "pass": true
+  },
+  {
+   "g": 16.0,
+   "m": -0.025,
+   "field_diff_max": 1.4210854715202004e-14,
+   "pass": true
+  },
+  {
+   "g": 32.0,
+   "m": -0.025,
+   "field_diff_max": 2.1316282072803006e-14,
+   "pass": true
+  }
+ ],
+ "C3_record_match": [
+  {
+   "g": 8.0,
+   "E_min_reproduced": 1.1439285097863943,
+   "E_min_recorded": 1.143928509786395,
+   "pass": true
+  },
+  {
+   "g": 16.0,
+   "E_min_reproduced": 1.853416407949986,
+   "E_min_recorded": 1.8534164079499864,
+   "pass": true
+  },
+  {
+   "g": 32.0,
+   "E_min_reproduced": 2.1807482071533264,
+   "E_min_recorded": 2.180748207153326,
+   "pass": true
+  }
+ ],
+ "family_gain_from_record": [
+  {
+   "g": 8.0,
+   "E0_family": 62.851744331478166,
+   "family_gain": -61.707815821691774
+  },
+  {
+   "g": 16.0,
+   "E0_family": 62.851744331478166,
+   "family_gain": -60.99832792352818
+  },
+  {
+   "g": 32.0,
+   "E0_family": 62.851744331478166,
+   "family_gain": -60.67099612432484
+  }
+ ],
+ "all_pass": true
+}

@@ -132,3 +132,114 @@ Action at close: convo routing recorded ([`m5_21_convo.md`](m5_21_convo.md); mov
 The author's reply arrived 2026-08-07 03:17 EDT, PUBLIC (Models-of-particles cc'd + Filip Blaschke; the full sanity-check message now quoted in the public thread): the practical-approximation route endorsed in the author's own words, the three questions left unanswered, no objection to any derived form; full decode in [`m5_21_convo.md § 2026-08-07`](m5_21_convo.md). Since [framework § 1](../findings/m5_21_11_framework.md) covers every branch of the unanswered questions (θ unconstrained, gain exponent a measured q ∈ [2, 4] window, anchors order-of-magnitude), **the user called the FREEZE the same day**: the § 0 header is FROZEN 2026-08-07, with the pinning commit SHA recorded there by the sole permitted post-freeze edit. Downstream state: the [M8.6 gate record](../../../m8_mit/research/tasks/m8_6_task_details.md) carries the freeze in its FINDINGS; the ladder compute run gates on user "go" only. Instrument note (asked and answered at the freeze): the run stays on the CPU numpy instrument of record; a GPU port would be new energy code, which the frozen § 1.1 forbids ("this document introduces no new energy code"), and the measured ~50 CPU-h program parallelizes to one overnight batch (~5-6 h wall-clock at 8-10 processes on the 12-performance-core machine).
 
 **Standing action for the ladder close-out (user directive, 2026-08-07)**: if the ladder run completes with the holdout and terminal failure gates PASSED, release the [M8.6 roadmap row](../../../m8_mit/research/m8_roadmap.md) from LATER (gated) back to the Backlog (its input = this task's mass-ratio read) and record the release in the [gate record](../../../m8_mit/research/tasks/m8_6_task_details.md); a terminal failure leaves it gated (route (b) is the last admissible route).
+
+## LADDER RUN (2026-08-07): the frozen program executed, TERMINAL FAILURE on F3 + F4
+
+The follow-on compute run against the FROZEN framework (SHA `7a4d2393`), on user "go"
+09:43 EDT. The frozen §§ 2-6 were executed verbatim: 42 instrument-of-record
+relaxations (24 production + 18 refinement, T2/sym/ε0, w2 = 0.002758100, FIRE 12000,
+δ-continuation), the § 5 readers on every endpoint, the § 2 g-arm, and the § 3/§ 6
+statistics. Runner wrappers (no new energy code, per frozen § 1.1): the chains import
+[`m5_21_2b_a_instrument.py`](../scripts/m5_21_2b_a_instrument.py) unchanged.
+
+![the close-out panel](../plots/m5_21_11_panel.png)
+
+### Verdict (frozen § 6, pre-committed)
+
+| Criterion | Measured outcome | Verdict |
+| --- | --- | --- |
+| F4 g-arm | The rigid Qb(m) dressing gain is FLAT in g: q_lsq = −0.03 / +0.05 / +0.00 (A/C/B), gains ≈ −0.65 / −2.2 / −0.78 across g = 8 → 32 (both (−g)^p signs at g = 8 agree to ~8%). The § 1.4 negligibility bound needed a fall at least ∝ artanh(1/g)² | ❌ **FAIL** |
+| F3 branch integrity | Usable rungs after the § 4 gates: A = 1, C = 0, B = 0 (floor: 6 per branch). B and C fail cross-stencil (2.1-2.5 vs the 1.5 bar) + virial (0.80-0.98) at EVERY rung; A passes only at δ = 0.30 (virial 0.046), its residual growing monotonically to 0.40 at δ = 0.05 | ❌ **FAIL** |
+| F1 fit quality | The joint fit was unreachable (1 usable non-holdout point vs 10 parameters) | vacuous |
+| F2 holdouts | No usable holdout predictions existed | vacuous |
+| **Route (b)** | any terminal criterion ⇒ fails, no second framework | ❌ **TERMINAL** |
+
+Full machine record: [`data/m5_21_11_fit.json`](../data/m5_21_11_fit.json) (per-rung
+gate fails, both identity readings, refinement solves, g-arm fits, criteria).
+
+### The two physics findings inside the negative
+
+1. **The boost-dressing gain does not die at large g** (the F4 measurement,
+   [`data/m5_21_11_garm.json`](../data/m5_21_11_garm.json)): the dressing minima sit at
+   m\* ≈ 0.23-0.25 × artanh(1/g) for A and B, ≈ 0.32 for C (the author's 1/g law holds for POSITION, branch-dependent prefactor) but the energy
+   gain at the minimum is g-independent. Instrument validated three ways before the
+   verdict was trusted ([`m5_21_11_g_controls.py`](../scripts/m5_21_11_g_controls.py) →
+   [`m5_21_11_garm_controls.json`](../data/m5_21_11_garm_controls.json): vacuum null
+   clean, field-identity with the M5.21.8 construction to 3e-14, the recorded gladder
+   E_min values reproduced exactly). Corroboration found in the PRE-EXISTING record:
+   the M5.21.8 ansatz-family gladder itself carries a flat gain (−61.7 / −61.0 / −60.7
+   at g = 8/16/32; E(0) = 62.85 vs E_min ≈ 1-2), unnoticed because that note quoted
+   only the m\* position law. Consequence: a branch-dependent O(1) additive 4D term
+   survives to the physical point, so no 3×3-only ladder can predict physical-regime
+   ratios on this instrument.
+2. **The heavy branches are not certifiable on the frozen instrument, and even A
+   loses scale-stationarity down the ladder** (the F3 measurement): under T2 at
+   N = 48 the B/C states hold cell-scale core structure at every δ (the census's
+   known contamination, now measured ladder-wide), and the A state's frozen-formula
+   virial residual grows 0.046 → 0.40 as δ falls 0.30 → 0.05 (the opposite of the
+   old T1 δ-trend). The E(δ) record itself (all 42 rows,
+   [`data/_DATASETS.md`](../data/_DATASETS.md)): E RISES as δ falls on every branch
+   (A: 6.84 → 9.16; C: 24.12 → 74.09; B: 84.84 → 87.02 at N = 48).
+
+### Consequence for M8.6 (the standing directive's negative arm)
+
+The release action does NOT fire. The [M8.6 row](../../../m8_mit/research/m8_roadmap.md)
+is CLOSED permanently under the amended condition 3 (retired to the M8 Done record
+2026-08-08, maintainer call): route (a) was already
+out of lattice reach, route (b) was the last admissible route, and its failure is
+terminal by the pre-registration's own § 6. Recorded in the
+[gate record](../../../m8_mit/research/tasks/m8_6_task_details.md) (finding 9).
+
+### Adversarial audit (ladder run; cardinal rule)
+
+Independent second agent, own script ([`m5_21_11_i_audit.py`](../scripts/m5_21_11_i_audit.py),
+no code shared with the run's wrappers), verdicts in
+[`m5_21_11_ladder_audit.json`](../data/m5_21_11_ladder_audit.json): **5 claims
+CONFIRMED, 1 PARTIAL on wording only** (the g-arm gains reproduced with an own boost construction on an own
+81-point grid to 0.4-1.6%, twin minima and the flat fall confirmed; the family
+corroboration re-scanned at 2× finer grid; every § 4 gate recomputed from raw rows
+with own formulas, usable counts 1/0/0 reproduced; the shell integrity of the
+surviving continuation endpoints verified exact; the E(δ) monotonicity confirmed;
+the F3 + F4 terminal verdict independently reproduced). Barred-inputs sweep over
+all five run scripts: clean. Three verdict-neutral catches adopted into this record: the m\*-band wording was wrong for branch C (minima at 0.315-0.325 × artanh(1/g), not the 0.23-0.25 band that holds for A and B; corrected above and in the canonical row);
+the run's FIRE-gate pin (fmax ≤ 1e-4 at max_iter) SOFTENS the frozen § 4 wording
+("FIRE reaches f_tol"), and a literal reading would only exclude MORE rungs
+(F3 fires harder, the verdict unchanged); and the fallback fit at 1 usable point
+is underdetermined, so its parameters carry no meaning and E_phys(A) is never quotable as a prediction (reported as vacuous, exactly as the criteria table states).
+
+### Deviations log (ladder run)
+
+| # | Deviation (as it happened) | Resolution |
+| --- | --- | --- |
+| 1 | The first continuation rungs landed with virial ~1.0-1.4: the runner had inherited the PINNED SHELL from the previous endpoint, leaving it at the δ = 0.30 far field while the potential targeted the current δ (a spurious (0.30 − δ)² shell penalty). The instrument of record pins the CURRENT-δ analytic far field | Caught at ~10:05 EDT on the first contaminated rung, chains killed, `run_one` fixed (continuation = interior only, shell re-seeded per rung, fix verified to 0.0 deviation), the two contaminated rungs deleted, all chains relaunched. No contaminated number entered any read, fit, or decision. Shell integrity of surviving rungs audited post-run |
+| 2 | All background chains were killed twice by the environment (~15:20 and ~16:00 EDT, blanket kills incl. the watchdog; the user was working on the machine, cause consistent with app/harness restarts) | Chains relaunched DETACHED (nohup + disown, nice 10) at 16:10; no further kills; 24/42 rows had landed pre-kill and the idempotent chains lost only in-flight iterations |
+| 3 | Two of the three § 5 reader operationalizations pinned pre-run measured instrument artifacts, not the frozen signatures: the raw tracer line count jitters 2-18 along one continuation chain (noise components), and the ABSOLUTE-gap core class flips at small δ because the bulk vacuum's own 12-gap IS δ | Both readings computed and reported ([`m5_21_11_fit.json`](../data/m5_21_11_fit.json): `identity_a_exclusions` vs the operative reading (b)); reading (b) re-operationalizes the SAME three frozen signatures by their pre-freeze semantics (shell contour winding = the 2b § 8 instrument the reference states were measured with, stable at [2,2,2,2] everywhere; relative-to-bulk core gap = the M5.23.2 tracer's own criterion, stable "23" everywhere). The route verdict is IDENTICAL under both readings (F4 is independent, and under (a) F3 only fails harder), so the repair steers nothing |
+
+## TASK REVIEW (2026-08-07, ladder run; approved 2026-08-08)
+
+Task Duration: 12:10 (from 09:43 to 21:53 EDT)
+Usage Cap Triggered: NO
+
+| # | Result | Status |
+| --- | --- | --- |
+| 1 | The frozen program executed verbatim (42 relaxations, § 5 readers, g-arm, §§ 3-6 statistics, ~50 CPU-h) | ✅ measured |
+| 2 | F4 TERMINAL: dressing gain FLAT in g (q ≈ 0 vs required ≥ 2); m\* position ∝ artanh(1/g) at 0.23-0.25× (A/B), 0.32× (C); the same flatness retro-read in the M5.21.8 family record | ✅ measured, audited |
+| 3 | F3 TERMINAL: usable rungs 1/0/0 (A/C/B) vs the 6-floor; B/C uncertifiable at every rung; A's virial 0.046 → 0.40 down-ladder | ✅ measured, audited |
+| 4 | F1/F2 vacuous; no ratio produced; route (b) CLOSED; M8.6 permanently gated | ✅ per frozen § 6 |
+| 5 | Adversarial audit 5 CONFIRMED / 1 PARTIAL (wording) / 0 REFUTED; barred inputs clean; three verdict-neutral catches adopted | ✅ |
+| 6 | E(δ) ladder record + shell-integrity checks archived | ✅ |
+
+Issues: two environment-level chain kills mid-run (survived by detaching; zero data loss). Deviations: three, logged above as they happened. Action at close: roadmap row → Done; no successor task staged (the mass-ratio ambition has no live route without a new instrument generation); author communication of the negative = user-gated.
+
+**Findings**: The pre-registered route-(b) bridge failed terminally on its own criteria, and the failure is physics: the 4D boost-dressing energy gain does not die at large g (measured flat on the census endpoints and, in retrospect, on the author's own ansatz family), so no 3×3-only ladder can reach the physical point, and the frozen instrument cannot certify the two heavier lepton candidates at any rung. The negative is fully audited and propagated to every doc where the old claims lived.
+
+**Research docs created / updated**: this task_details (§ LADDER RUN + this review) · scripts `m5_21_11_{b,c,d,f,g,h,i}_*.py` · data `m5_21_11_{fit,garm,garm_controls,ladder_audit}.json` + 42 local rows/endpoints + [`_DATASETS.md`](../data/_DATASETS.md) · [`plots/m5_21_11_panel.png`](../plots/m5_21_11_panel.png) · [`m5_roadmap.md`](../m5_roadmap.md) · [`m8_roadmap.md`](../../../m8_mit/research/m8_roadmap.md) · [`m8_6_task_details.md`](../../../m8_mit/research/tasks/m8_6_task_details.md) (finding 9) · [`MODELS.md`](../../../../../MODELS.md) · [`m5_particle_hunt.md`](../m5_particle_hunt.md) · [`m5_question_tracker.md`](../m5_question_tracker.md) (Q33) · [`m5_theory_canonical.md`](../m5_theory_canonical.md) · [`m8_background.md`](../../../m8_mit/research/m8_background.md) · [`m8_theory_canonical.md`](../../../m8_mit/research/m8_theory_canonical.md) · [`m8_platform_pointers.md`](../../../m8_mit/research/m8_platform_pointers.md)
+
+### Run mechanics
+
+| Item | Value |
+| --- | --- |
+| Compute | 42 relaxations, ~09:52 → 21:37 EDT wall (two external interruptions), 6-9 parallel chains, ~50 CPU-h as budgeted |
+| Artifacts (local, gitignored per dataset policy) | `data/m5_21_11_{row,end,read}_t11lad_*` (42 each), regen: the chain commands in [`m5_21_11_b_ladder.py`](../scripts/m5_21_11_b_ladder.py) headers (~62 min/rung N = 48, ~145 min N = 64, ~18 min N = 32) |
+| Tracked outputs | [`m5_21_11_fit.json`](../data/m5_21_11_fit.json) · [`m5_21_11_garm.json`](../data/m5_21_11_garm.json) · [`m5_21_11_garm_controls.json`](../data/m5_21_11_garm_controls.json) · [`m5_21_11_ladder_audit.json`](../data/m5_21_11_ladder_audit.json) · panel [`plots/m5_21_11_panel.png`](../plots/m5_21_11_panel.png) |
+| Scripts | [`m5_21_11_b_ladder.py`](../scripts/m5_21_11_b_ladder.py) (chains) · [`m5_21_11_c_readers.py`](../scripts/m5_21_11_c_readers.py) (§ 5 reads) · [`m5_21_11_d_garm.py`](../scripts/m5_21_11_d_garm.py) (g-arm) · [`m5_21_11_f_fit.py`](../scripts/m5_21_11_f_fit.py) (frozen §§ 3-6) · [`m5_21_11_g_controls.py`](../scripts/m5_21_11_g_controls.py) · [`m5_21_11_h_panel.py`](../scripts/m5_21_11_h_panel.py) · [`m5_21_11_i_audit.py`](../scripts/m5_21_11_i_audit.py) (independent audit) |
