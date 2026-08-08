@@ -543,16 +543,21 @@ def compute_wave_oscillation(state):
     ewave.sample_avg_trackers(state.wave_field, state.trackers)
 
     if state.INSTRUMENTATION:
-        if state.frame % 10 == 0 or state.frame == 1:
+        if state.frame % 10 == 0 or state.frame == 10:
             sampling.sample_for_plots(
                 state.frame,
                 state.wave_field,
                 state.trackers,
             )
+            mean_drift, active_wc = instrument.log_stability_metrics(
+                state.frame, state.wave_center
+            )
+            sampling.sample_stability_metrics(state.frame, mean_drift, active_wc)
         if state.frame % 60 == 0 or state.frame == 10:
             instrument.log_timestep_data(
                 state.frame, state.wave_field, state.trackers, state.wave_center
             )
+            sampling.save_monitor_data()
 
     state.amp_global_rms = state.trackers.amp_global_emarms_am[None] * constants.ATTOMETER
     state.freq_global_avg = state.trackers.freq_global_avg_rHz[None] / constants.RONTOSECOND

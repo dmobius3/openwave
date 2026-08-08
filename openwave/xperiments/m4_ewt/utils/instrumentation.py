@@ -133,3 +133,80 @@ def log_timestep_data(timestep: int, wave_field, trackers, wave_center=None) -> 
         log_entry["wc_positions"] = positions
 
     json_logger.log_timestep(log_entry)
+
+
+# ================================================================
+# WC Stability Metrics
+# ================================================================
+
+import numpy as np
+
+_pairwise_ref = {}  # (i, j) -> reference distance, keyed by original WC indices
+_pairwise_ref_set = False
+
+
+def log_stability_metrics(timestep: int, wave_center) -> tuple:
+    """
+    Log WC stability metrics: mean pairwise distance drift and active WC count.
+    Returns (mean_drift, n_active) so that the caller can feed the live monitor.
+
+    The reference is keyed by the original wave-centre index pair (i, j),
+    so deactivations do not cause shape mismatches or silent mismatches.
+    """
+    global _pairwise_ref, _pairwise_ref_set
+
+    positions = {}
+    n_active = 0
+    for i in range(wave_center.num_sources):
+        if wave_center.active[i] == 0:
+            continue
+        pos = wave_center.position_float[i]
+        x = float(pos[0])
+        y = float(pos[1])
+        z = float(pos[2])
+        if any(np.isnan([x, y, z])):
+            continue
+        positions[i] = (x, y, z)
+        n_active += 1
+
+    if n_active < 2:
+        json_logger.log_timestep(
+            {
+                "timestep": timestep,
+                "mean_drift": None,
+                "active_wc": n_active,
+            }
+        )
+        return None, n_active
+
+    indices = sorted(positions.keys())
+    # Build a dict of pairwise distances keyed by (i, j) with i < j
+    dist = {}
+    for a in range(len(indices)):
+        i = indices[a]
+        pi = positions[i]
+        for b in range(a + 1, len(indices)):
+            j = indices[b]
+            pj = positions[j]
+            d = np.sqrt((pi[0] - pj[0]) ** 2 + (pi[1] - pj[1]) ** 2 + (pi[2] - pj[2]) ** 2)
+            dist[(i, j)] = d
+
+    if not _pairwise_ref_set:
+        _pairwise_ref = dist.copy()
+        _pairwise_ref_set = True
+        mean_drift = 0.0
+    else:
+        drifts = []
+        for pair, d in dist.items():
+            if pair in _pairwise_ref:
+                drifts.append(abs(d - _pairwise_ref[pair]))
+        mean_drift = float(np.mean(drifts)) if drifts else None
+
+    json_logger.log_timestep(
+        {
+            "timestep": timestep,
+            "mean_drift": mean_drift,
+            "active_wc": n_active,
+        }
+    )
+    return mean_drift, n_active

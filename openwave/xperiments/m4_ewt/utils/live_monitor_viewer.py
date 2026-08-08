@@ -30,9 +30,10 @@ def main(data_path_str):
 
     plt.ion()
     plt.style.use("dark_background")
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 7), facecolor=colormap.DARK_GRAY[1])
+    fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 10), facecolor=colormap.DARK_GRAY[1])
     fig.suptitle("OPENWAVE Live Monitor (external)", fontsize=20, family="Monospace")
 
+    # Panel 1: Displacement & Amplitude
     (line_disp,) = ax1.plot(
         [], [], color=colormap.viridis_palette[2][1], linewidth=2, label="DISPLACEMENT (am)"
     )
@@ -54,6 +55,7 @@ def main(data_path_str):
     ax1.legend(loc="upper right")
     ax1.set_ylim(auto=True)
 
+    # Panel 2: Frequency
     (line_freq,) = ax2.plot(
         [], [], color=colormap.blueprint_palette[2][1], linewidth=2, label="FREQUENCY (rHz)"
     )
@@ -72,11 +74,19 @@ def main(data_path_str):
     ax2.legend(loc="upper right")
     ax2.set_ylim(auto=True)
 
+    # Panel 3: Pairwise Distance Drift
+    (line_drift,) = ax3.plot(
+        [], [], color=colormap.ironbow_palette[2][1], linewidth=2, label="MEAN DRIFT (vox)"
+    )
+    ax3.set_xlabel("Timestep", family="Monospace")
+    ax3.set_ylabel("Mean Pairwise Drift [vox]", family="Monospace")
+    ax3.set_title("PAIRWISE DISTANCE DRIFT", family="Monospace")
+    ax3.grid(True, alpha=0.3)
+    ax3.legend(loc="upper right")
+
     plt.tight_layout()
     fig.show()
 
-    # If the launcher dies without tearing us down (a crash, a force-quit), we
-    # get reparented and would otherwise loop forever holding a window open.
     parent_pid = os.getppid()
 
     while data_path.exists():
@@ -87,6 +97,8 @@ def main(data_path_str):
         try:
             with open(data_path, "r") as f:
                 data = json.load(f)
+
+            # Update panels 1-2
             ts = data.get("timesteps", [])
             if ts:
                 line_disp.set_data(ts, data.get("displacements", []))
@@ -98,7 +110,15 @@ def main(data_path_str):
                 ax1.autoscale_view(scaley=True)
                 ax2.relim()
                 ax2.autoscale_view(scaley=True)
-                fig.canvas.draw()
+
+            # Update panels 3-4
+            st_ts = data.get("stability_timesteps", [])
+            if st_ts:
+                line_drift.set_data(st_ts, data.get("mean_drifts", []))
+                ax3.set_xlim(st_ts[0], max(st_ts[-1], st_ts[0] + 1))
+                ax3.relim()
+                ax3.autoscale_view(scaley=True)
+            fig.canvas.draw()
         except Exception:
             pass
         plt.pause(0.5)
