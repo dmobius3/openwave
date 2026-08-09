@@ -357,3 +357,37 @@ The author replied to the M5.21.11 sanity-check send and TOOK THE EXCHANGE PUBLI
 | The unification arc | The perturbative quantum-phase picture neglects eigenspectrum deformations (the particle menagerie); classification of (meta)stable structures → Dirac as practical approximation → "this way we should finally derive the Standard Model Lagrangian" | The author's stated endgame frame for the program; context for how the M5.21.x bridge + Dirac work slots in |
 | Negative Hamiltonian terms | Gravity cannot be treated separately from particle physics here: it "seems crucial for negative Hamiltonian terms", which allow nonzero time derivatives by energy minimization (angular momenta of the electron and inside nuclei, neutrino oscillations) | Joins the standing [Q35](../m5_question_tracker.md#q35-detail) negative-Hamiltonian shelf; also re-frames why the 4×4 arm matters for the dynamical-baryon question |
 | The list question | "please sketch what's your plans for EM+QM+gravity unification?" addressed to the Models-of-particles group ("if only not paralyzing till the end of life on a single puzzle piece") | An open public question to the group, the user included; any public reply sketching the M5 plan = user-gated outbound, nothing sent from this capture |
+
+## 2026-08-08 10:49 EDT (outbound, user-sent, 1:1): the ladder close-out report
+
+**Context**: the user sent the terminal-verdict report directly to the author (1:1, no cc; user call), subject "Close M5.21.11: the route-(b) ladder ran and failed terminally (F3+F4)". Maintainer-voice opener (the pre-registration did its job; the two measured findings inside the negative feel more useful than the ratio not obtained) + the FABLE VOICE technical block (terminal-drafted per the standing rule; sent-record summary here).
+
+| Item | Content |
+| --- | --- |
+| Links sent | [`m5_21_11_task_details.md`](m5_21_11_task_details.md) (full record) + [`m5_21_11_framework.md`](../findings/m5_21_11_framework.md) (frozen protocol) + [`m5_21_11_panel.png`](../plots/m5_21_11_panel.png) (blob URLs) |
+| The verdict | 42 instrument-of-record relaxations executed verbatim; F3 + F4 fired; route (b) closed with no second framework, exactly as pre-committed |
+| Finding 1 (the g-arm) | the m\* = artanh(1/g) POSITION law holds on the relaxed lattice states (prefactor 0.23-0.25 light branches, 0.32 middle) but the energy GAIN is flat across g = 8-32, both signs, all branches; the same flatness retro-read in the M5.21.8 family record (previously unnoticed); consequence: no 3×3-only ladder reaches physical-regime energies or ratios; the fix has the shape of the author's optimized-b(r) sketch |
+| Finding 2 (branch integrity) | B/C fail the cross-stencil bar (2.1-2.5 vs 1.5) and the virial gate at every rung at N = 48; A's virial residual grows 0.046 → 0.40 down-ladder with E rising as δ falls on all branches; heavier lepton candidates not certifiable on this instrument generation |
+| Audit disclosure | independent adversarial audit (own code, own grids): gains reproduced to 0.4-1.6%, gate table matched on all 24 production rungs, terminal verdict reproduced from raw data; the barred-inputs rule held (no lepton mass, ratio, or Yukawa figure entered) |
+
+## 2026-08-09 02:23 EDT: the reply: the close ACCEPTED; the potential named "a first guess"; the symbolic (1/g) recipe
+
+**Context**: 1:1 reply (no cc), the author's morning. Per the two-tier convo rule this is the decode with minimal technical quotes; the full text stays in the mail thread. Nothing in the reply disputes the terminal verdict, the audit, or either finding, and no reopen is asked: the route-(b) close STANDS.
+
+**Decode/routing**:
+
+| Item | Decode | Route |
+| --- | --- | --- |
+| **THE POTENTIAL ADMISSION** | Testing lepton masses is "a natural approach", but their main energy contribution "should be potential for regularization, and we still need to find its details - the current one is just a first guess for preferred 4 different eigenvalues" | [Q25](../m5_question_tracker.md#q25-detail) receipt: the eigenvalue form is explicitly provisional on the author's side (T2 stays the measured well-posed base of record); contextualizes ladder finding 2: branch integrity sits on a V that may itself change, strengthening the new-instrument-generation reopen bar |
+| **THE SYMBOLIC RECIPE (task-shaped)** | Reach realistic parameters by practical approximation, especially for g: "start with working symbolically in 4x4 case" with at least radial dependence, spherical `MatrixExp[b(r) {x, y, z} . boostgenerators]`, and "find first nontrivial term in (1/g) expansion - to be included in further considered 3x3 case" | NEW task [M5.21.14](m5_21_14_task_details.md) (stub staged same day, user pick): the first rung of the dressing-carried-INSIDE-the-ladder route the close-out named; [Q33](../m5_question_tracker.md#q33-detail) receipt |
+| **THE PRE-STATED CRITERION** | the derived term "needs to have negative Hamiltonian contribution to get oscillations" | The author's own falsifiable gate, handed over before any computation; adopted as M5.21.14's pre-registered verdict axis; joins the standing [Q35](../m5_question_tracker.md#q35-detail) negative-Hamiltonian shelf |
+| **THE m\* CRITIQUE** | "This m* seems much too large, and the radius dependence seems more complicated - we should start with minimization of general at least radius dependent b(r)" | The rigid uniform-m Qb(m) read (the g-arm instrument) is SUPERSEDED for future work: variational b(r) minimization is the sequel inside M5.21.14's scope. The F4 verdict is unaffected (frozen scope, and the flatness itself is not disputed) |
+| The 3×3 critique, repeated | The author read the frozen [framework](../findings/m5_21_11_framework.md): it "mention only 3x3 case - which will miss angular momentums/oscillations by energy minimization" | Consistent with the standing dynamical-minima directive; the proposed mechanism is now the negative (1/g) dressing term, a DIFFERENT channel from the constant-ω long-axis twists [M5.22.4](m5_22_4_task_details.md) measured as an honest negative: no tension between the two records |
+
+### Notes
+
+| Item | Content |
+| --- | --- |
+| Tracker | [Q25](../m5_question_tracker.md#q25-detail) + [Q33](../m5_question_tracker.md#q33-detail) receipts appended (both remain open); no question resolved off this reply |
+| The close | Accepted without objection; the [M5.21.11](m5_21_11_task_details.md) record and its downstream consequences stand unchanged |
+| Next | [M5.21.14](m5_21_14_task_details.md) staged at the top of the roadmap Backlog as the author-proposed candidate NEXT; the pick (vs [M5.22.3](m5_22_3_task_details.md) / [M5.22.5](m5_22_5_task_details.md)) stays the user's; the standing user-gated flags (the Dirac ask, the help offer, the unification-plans question) are not raised in this reply and stay as they were |
