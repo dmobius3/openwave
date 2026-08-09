@@ -391,3 +391,24 @@ The author replied to the M5.21.11 sanity-check send and TOOK THE EXCHANGE PUBLI
 | Tracker | [Q25](../m5_question_tracker.md#q25-detail) + [Q33](../m5_question_tracker.md#q33-detail) receipts appended (both remain open); no question resolved off this reply |
 | The close | Accepted without objection; the [M5.21.11](m5_21_11_task_details.md) record and its downstream consequences stand unchanged |
 | Next | [M5.21.14](m5_21_14_task_details.md) staged at the top of the roadmap Backlog as the author-proposed candidate NEXT; the pick (vs [M5.22.3](m5_22_3_task_details.md) / [M5.22.5](m5_22_5_task_details.md)) stays the user's; the standing user-gated flags (the Dirac ask, the help offer, the unification-plans question) are not raised in this reply and stay as they were |
+
+## 2026-08-09 ~17:00 EDT (outbound, user-sent, 1:1): the M5.21.14 close-out: the (1/g) term delivered
+
+**Context**: same thread, 1:1 (no cc), the same-day answer to the author's symbolic recipe. The user's own words on top + the FABLE VOICE technical block (terminal-drafted per the standing rule; sent-record summary here, no draft text in the repo).
+
+| Item | Content |
+| --- | --- |
+| Links sent | [`m5_21_14_note.md`](../findings/m5_21_14_note.md) (full method note) + [`m5_21_14_panel.png`](../plots/m5_21_14_panel.png) (blob URLs) |
+| The delivery | the recipe ran end-to-end same day: the first nontrivial (1/g) term derived (T1_static; T1_kin = −8Σ\|Ṁ3v_i\|², the ω² multiplier), the ordering fact stated (nontrivial only in β = g·b; fixed-b density ~ g⁴; the author's m\* ~ 1/g law is exactly the finite-limit scaling), E_V exactly invariant under any b(r); triple-verified + independent adversarial audit 7C/2P/0R disclosed, including the evenness-exact-at-finite-g sharpening |
+| The criterion verdict | MET at the term level (T1_kin negative-semidefinite, strict where Ṁ3v_i ≠ 0); the kin flip measured BULK (net −6.1 per unit radius) with the certified 48-box exactly at threshold; the favorability-not-onset caveat + the fixed-J cure carried in the message |
+| The calibration reads | both the author's critiques confirmed by measurement: variational b(r) beats the rigid constant ×2.6 on the instrument (core-weighted, oscillatory optimum); the route-(b) flat gain DERIVED from the β = g·m collapse (the 0.82-0.84 m\* ratios fall out of the same collapse) |
+| The regularization hook | T1 alone unbounded below (pure-radial channel; exact-functional floor ∝ λ^−1.9): "the potential for regularization" now has a concrete measured job in this sector, the current eigenvalue potential being exactly blind to the dressing ([Q25](../m5_question_tracker.md#q25-detail)) |
+| THE ASK (open) | one author-gated fork, machine-checkable branches exhausted first: for the corrected-3×3 ladder, should the mandatory guard be a constrained smooth b(r) family now, or wait for the regularization potential's details? The answer routes to [Q25](../m5_question_tracker.md#q25-detail)/[Q33](../m5_question_tracker.md#q33-detail) and the ladder staging decision |
+
+### Notes
+
+| Item | Content |
+| --- | --- |
+| Task state | [M5.21.14](m5_21_14_task_details.md) CLOSED + APPROVED before the send; roadmap row in Done; Q33/Q35/Q25 receipts appended |
+| Pending on the reply | the guard-choice answer (the only open outbound question); the corrected-3×3 ladder stays UNSTAGED until the user picks it (alongside [M5.22.3](m5_22_3_task_details.md)/[M5.22.5](m5_22_5_task_details.md)) |
+| Standing flags | unchanged and unraised (the Dirac ask, the help offer, the unification-plans question) |

@@ -1,0 +1,51 @@
+{
+ "V0": {
+  "eta_preserved": true,
+  "inverse_is_minus_b": true
+ },
+ "T1": {
+  "t1_static_identity": true,
+  "t1_kin_identity": true,
+  "sign_knob_free_at_leading_order": true,
+  "t1_static_str": "4*sum_{i<j}[ 2<[G_i,G_j], v_j v_i^T - v_i v_j^T> + |v_j v_i^T - v_i v_j^T|^2 - 2|G_i v_j - G_j v_i|^2 ]",
+  "t1_kin_str": "-8*sum_i |Mdot3 v_i|^2  (omega^2 multiplier)"
+ },
+ "BR": [
+  {
+   "s": -1,
+   "ev_invariance_max_abs": 2.8451311993408992e-160,
+   "no_negative_eps_powers": true,
+   "t1_u_rel_residual": 6.089346381485282e-50,
+   "t1_k_rel_residual": 2.8460405891368677e-52,
+   "t1_u_value": -0.8314826187444952,
+   "t1_k_value": -0.5310227197676184
+  },
+  {
+   "s": 1,
+   "ev_invariance_max_abs": 2.2761049594727193e-159,
+   "no_negative_eps_powers": true,
+   "t1_u_rel_residual": 2.3547057095912244e-48,
+   "t1_k_rel_residual": 5.313682498368269e-50,
+   "t1_u_value": -0.5825186906630259,
+   "t1_k_value": -1.9616870922492093
+  }
+ ],
+ "ORD": {
+  "sigma_degree_at_fixed_b": 4,
+  "abs_coeffs": {
+   "sigma^4": 1.7212281571475592,
+   "sigma^3": 2.9935678363575304,
+   "sigma^2": 1.8821023575072133,
+   "sigma^1": 0.394557663775515,
+   "sigma^0": 0.02635890478333817
+  },
+  "reading": "at fixed b the static density GROWS as sigma^4: the (1/g) expansion is only nontrivial in the scaled variable beta = g*b, the regime the author's m* ~ 1/g law selects"
+ },
+ "gates": {
+  "V0": true,
+  "T1": true,
+  "BR": true
+ },
+ "all_green": true,
+ "runtime_s": 245.7
+}

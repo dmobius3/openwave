@@ -1,0 +1,286 @@
+{
+ "claims": {
+  "1": {
+   "verdict": "CONFIRMED",
+   "T1u_at_points": [
+    2.870246305433975,
+    0.5152819266956237,
+    -0.4406126224906537
+   ],
+   "T1k_at_points": [
+    -4.17287761990819,
+    -4.154180042844853,
+    -5.210252936491016
+   ],
+   "rows": {
+    "s-1": {
+     "err_u_by_g": {
+      "1000": 0.001056946853676356,
+      "10000": 0.00010564066508921021,
+      "100000": 1.0563526267238355e-05
+     },
+     "err_k_by_g": {
+      "1000": 0.001402317465905746,
+      "10000": 0.0001400750737354764,
+      "100000": 1.4005941176074975e-05
+     },
+     "slope_ratio_u": [
+      10.005113587497746,
+      10.000511421725093
+     ],
+     "extrap_res_u": 8.330133103147392e-10,
+     "extrap_res_k": 1.7402194708938345e-09
+    },
+    "s+1": {
+     "err_u_by_g": {
+      "1000": 0.0010557463054103246,
+      "10000": 0.0001056286596071363,
+      "100000": 1.0563406211756954e-05
+     },
+     "err_k_by_g": {
+      "1000": 0.0013988371595547175,
+      "10000": 0.00014004027065644164,
+      "100000": 1.4005593144659012e-05
+     },
+     "slope_ratio_u": [
+      9.994884999364302,
+      9.999488563601084
+     ],
+     "extrap_res_u": 8.327613377274925e-10,
+     "extrap_res_k": 1.7400876995716365e-09
+    }
+   },
+   "evenness_odd_part_rel": {
+    "1000": 0.0,
+    "10000": 0.0
+   },
+   "s_sign_diff_rel": {
+    "1000": 0.0021126931590866806,
+    "10000": 0.0002112693246963465
+   },
+   "t1_formula_evenness_abs": 0.0,
+   "sharpening": "the measured odd part is 0.0 EXACTLY at finite g: b -> -b is conjugation by J = diag(1,-1,-1,-1) (JKJ = -K, JM4J = M4 for block-diagonal M4), which the trace densities cannot see; the evenness is exact at ALL orders, stronger than the note's leading-order claim",
+   "route": "complex-step derivatives (exact), own fields, own builder, 1/g Richardson extrapolation",
+   "stage_runtime_s": 0.0
+  },
+  "2": {
+   "symbolic_eta_exact": true,
+   "expm_vs_closed_form_max": 1.3322676295501878e-15,
+   "expm_eta_residual_max": 1.7763568394002505e-15,
+   "trace_powers_rel_dev_50dig": 3.3391461798422942e-49,
+   "verdict": "CONFIRMED",
+   "note": "pointwise similarity => E_V invariant for ANY b(r): the invariance is pointwise, so it holds under any profile and any quadrature",
+   "stage_runtime_s": 0.7
+  },
+  "3": {
+   "W_zero_parallel_symbolic": true,
+   "neg_channel_hedgehog_radial_v": [
+    1.187250996015936,
+    1.3484162895927594
+   ],
+   "quartic_W2_radial_v_max": 2.6963019221421302e-33,
+   "descent_ladder": {
+    "k4": {
+     "T1_total": -546.4060910015212,
+     "cross": -2.3371223730565096,
+     "quartic": 35.00552217137571,
+     "negative": -579.0744907998405
+    },
+    "k8": {
+     "T1_total": -1101.647833786974,
+     "cross": -1.1681832630717914,
+     "quartic": 33.80976925716939,
+     "negative": -1134.2894197810715
+    },
+    "k16": {
+     "T1_total": -2223.718339339461,
+     "cross": -0.5841626896798503,
+     "quartic": 33.50991792106261,
+     "negative": -2256.6440945708437
+    },
+    "k32": {
+     "T1_total": -4474.210146874939,
+     "cross": -0.292077047643992,
+     "quartic": 33.434955112545076,
+     "negative": -4507.353024939841
+    },
+    "k64": {
+     "T1_total": -8978.433237944966,
+     "cross": -0.1460352903208902,
+     "quartic": 33.416214341848075,
+     "negative": -9011.703416996494
+    }
+   },
+   "descent_monotone": true,
+   "descent_growth_T64_over_T4": 16.4317956659088,
+   "verdict": "CONFIRMED",
+   "stage_runtime_s": 0.4
+  },
+  "4": {
+   "verdict": "CONFIRMED",
+   "rows": [
+    {
+     "lam": 2.0,
+     "A": 0.02,
+     "E_audit": -679.7113592155733,
+     "E_claimed": -633.7148199447367,
+     "rel_dev": 0.07258239482997689,
+     "same_sign": true
+    },
+    {
+     "lam": 1.0,
+     "A": 0.02,
+     "E_audit": -2430.5263927216015,
+     "E_claimed": -2229.470222205845,
+     "rel_dev": 0.09018114192026791,
+     "same_sign": true
+    },
+    {
+     "lam": 0.5,
+     "A": 0.02,
+     "E_audit": -9182.944307387066,
+     "E_claimed": -7809.37944646309,
+     "rel_dev": 0.17588655671560063,
+     "same_sign": true
+    },
+    {
+     "lam": 0.5,
+     "A": 0.1,
+     "E_audit": 677668.4407150631,
+     "E_claimed": 731879.1432492741,
+     "rel_dev": 0.07407056620514613,
+     "same_sign": true
+    }
+   ],
+   "lam_exponent_audit": -1.8779813288902,
+   "lam_exponent_claimed_from_BND": -1.811651126489507,
+   "note": "audit quadrature resolves the sawtooth (GL panels lam/6); the task grid is geomspace 72-pt, under-resolved for lam = 0.5 at r > 3.5",
+   "stage_runtime_s": 0.4
+  },
+  "5": {
+   "verdict": "CONFIRMED",
+   "audit_slopes": {
+    "base": 13.48120239508452,
+    "dressing": -19.60437452450189,
+    "net": -6.1231721294173695
+   },
+   "claimed_slopes": {
+    "base": 13.481202393263455,
+    "dressing": -19.604374521818748,
+    "net": -6.123172128555293
+   },
+   "window_radii": [
+    10.17850327470005,
+    10.932710904045502,
+    11.742803876531397,
+    12.61292318922065,
+    13.54751667914009,
+    14.551361759535089,
+    15.629589840837193,
+    16.7877125611786,
+    18.03164996053777,
+    19.367760742535324
+   ],
+   "note": "k(r) = r^2 * angular integral of the kin density, averaged over the task's own window radii; auditor fields + auditor quadrature",
+   "stage_runtime_s": 0.0
+  },
+  "6": {
+   "verdict": "CONFIRMED",
+   "E_corr_R2_audit": -159.73341456714374,
+   "E_corr_R2_claimed": -159.7334145671421,
+   "kin_corr_R2_audit": -264.61575489858933,
+   "rigid_gain_audit": -61.0913097176157,
+   "rigid_m_star": 0.026102829611464214,
+   "rigid_gain_claimed_V2_g32": -61.112549184653005,
+   "variational_over_rigid": 2.6146667227382188,
+   "const_b_equals_B8_dressed_max": 7.105427357601002e-15,
+   "stage_runtime_s": 11.3
+  },
+  "7": {
+   "verdict": "PARTIAL",
+   "masked_E_dev_n32_n64": [
+    0.3712798437704035,
+    0.09900619399297445
+   ],
+   "ratio": 3.7500668270992197,
+   "implied_exponent": 1.906916305012679,
+   "masked_kin_dev_n32_n64": [
+    0.03351362351914968,
+    0.01622843839887925
+   ],
+   "kin_ratio": 2.065116969077207,
+   "R3_full_ladder_E_corr": [
+    42.509140318877336,
+    -379.126602536071,
+    897.5697321020988
+   ],
+   "caveats": [
+    "two h points only: consistent with h^2 (exponent 1.91) but cannot distinguish nearby exponents",
+    "the kin deviation drops only ~2.1x (h^1), not h^2",
+    "the FULL-profile R3 ladder E_corr is non-monotone and sign-flipping (+42.5 / -379.1 / +897.6 vs continuum -4309.5): the discretization attribution holds only for the r > 3 masked region"
+   ],
+   "stage_runtime_s": 0.0
+  },
+  "8": {
+   "verdict": "CONFIRMED",
+   "rows": [
+    {
+     "g": 8.0,
+     "ratio_audit": 0.816766349436773,
+     "ratio_quartic_fit": 0.8179384952292114,
+     "gain_audit": -61.93114775236462
+    },
+    {
+     "g": 16.0,
+     "ratio_audit": 0.8274769367473074,
+     "ratio_quartic_fit": 0.8295045408750078,
+     "gain_audit": -61.348126953676626
+    },
+    {
+     "g": 32.0,
+     "ratio_audit": 0.832922766450665,
+     "ratio_quartic_fit": 0.8352130178782567,
+     "gain_audit": -61.112549184653005
+    }
+   ],
+   "gain_spread_audit": 1.0133949340787307,
+   "gain_spread_claimed": 1.0134,
+   "claimed_ratios": [
+    0.8168,
+    0.8275,
+    0.8329
+   ],
+   "m5_21_8_recorded": [
+    0.8177,
+    0.8287,
+    0.8328
+   ],
+   "nuance": "the ratio's 3rd digit is estimator-dependent at the +-0.002 level (parabola vs quartic fit); the 0.82-0.84 band and the 1.3% gain flatness are robust, but 'reproduced to 3 digits' should read 'to ~0.002'",
+   "stage_runtime_s": 0.0
+  },
+  "9": {
+   "verdict": "PARTIAL",
+   "fair": [
+    "'MET at the term level' is a fair reading of T1_kin = -8 sum|Md3 v_i|^2 <= 0 (identity, both routes + this audit's C1)",
+    "the boundedness row and the section 5 guard do state the T1_static runaway and the free-minimization ban where they are needed",
+    "the C row states constant-omega oscillations do not self-start globally (box-limited ledger)"
+   ],
+   "flags": [
+    "section 4 axis B says 'negative ... for any nonzero dressing': the correct qualifier (section 1.3 has it) is any dressing with Md3 v_i != 0 for some i; T1_kin = 0 exactly when all Md3 v_i = 0, e.g. any dressing supported where Mdot3 vanishes",
+    "negative kin_total means E(omega) descends as -|kin|*omega^2 without bound unless a stabilizer (fixed-J / constraint, the M5.21.8 section 6 convergence) is invoked; the note implies this via the C row but never states 'needs a stabilizer' explicitly for the flipped-sign regime: recommend one sentence in axis C or B"
+   ],
+   "stage_runtime_s": 0.0
+  }
+ },
+ "verdicts_summary": {
+  "1": "CONFIRMED",
+  "2": "CONFIRMED",
+  "3": "CONFIRMED",
+  "4": "CONFIRMED",
+  "5": "CONFIRMED",
+  "6": "CONFIRMED",
+  "7": "PARTIAL",
+  "8": "CONFIRMED",
+  "9": "PARTIAL"
+ }
+}
