@@ -332,4 +332,83 @@ The author's morning messages are replies to the v2 ellipsoid render on the 1:1 
 
 ## 2026-07-22 03:22: the close-out ANSWERED, thread continues as the M5.22 program
 
-The author's reply to the close-out send (the two blockers named author-open, the 4×4 green light, the Skyrme-terms hint, and **nuclei-first as the main priority** with the expanded run ladder incl. kicked-neutron beta decay) is decoded in [`m5_22_convo.md`](m5_22_convo.md), the thread record home from this point on; roadmap routing in the [CHANGE-LOG](../m5_roadmap.md#change-log).
+The author's reply to the close-out send (the two blockers named author-open, the 4×4 green light, the Skyrme-terms hint, and **nuclei-first as the main priority** with the expanded run ladder incl. kicked-neutron beta decay) is decoded in [`m5_22_convo.md`](m5_22_convo.md), the thread record home from this point on for the NUCLEI program; 21-series threads (below) return to this doc.
+
+## 2026-08-06 evening (outbound, user-sent): the M5.21.11 framework sanity-check
+
+The user sent the trimmed FABLE-VOICE technical block from the [M5.21.11](m5_21_11_task_details.md) P0 close (drafted terminal-only per the standing rule; not reproduced here). New 1:1 thread, subject "M5.21.11 route-(b) pre-registration framework". Routing record:
+
+| Item | Content | Gate |
+| --- | --- | --- |
+| What went out | Three questions on the derived route-(b) forms, physics-first, one motivating sentence on the pre-measurement lock discipline: (1) partial vs clean 2-equal core rearrangement as δ → 0 (effective s ≈ 0.8-1.1 measured vs s = 2 clean); (2) the m = 0 curvature of the dressed E(m) as g grows (finite ⇒ gain ∝ m\*², vanishing ⇒ ∝ m\*⁴); (3) the order-of-magnitude physical anchors δ ~ 1e-10, g ~ 1e10 from the author's own paper hints | answers fold at arrival |
+| What it gates | The [framework](../findings/m5_21_11_framework.md) FREEZE (then FROZEN header + pinning commit SHA); the ladder compute runs only after the freeze | author reply OR user call |
+| Not sent | No lepton-target numbers, no M8/cross-model context, no framework document attached (offered on request) | standing invisibility + barred-inputs discipline |
+
+## 2026-08-07 03:17 EDT (reply, PUBLIC): the realistic-parameters endorsement, the boost hedgehog, the Dirac ask
+
+The author replied to the M5.21.11 sanity-check send and TOOK THE EXCHANGE PUBLIC: cc to Models-of-particles plus a new recipient, Filip Blaschke (Silesian University in Opava, soliton/Skyrmion theory), retitling the thread "M5.21.11 framework ... practical approximations for EM+QM+GEM in single PDE?". The user's full 1:1 message (the three questions) is quoted in the public thread.
+
+| Item | Content | Decode / routing |
+| --- | --- | --- |
+| Route endorsement | "Indeed we should also focus on reaching realistic parameters"; EM, QM, GEM live at completely different energy levels yet sit in a single PDE, "making it numerically nearly impossible, requiring practical approximations" | The route-(b) premise (direct simulation at physical parameters unreachable; a principled approximation ladder is the way) endorsed in the author's own words, now publicly |
+| The three questions | NOT directly answered: no verdict on partial-vs-clean core rearrangement (Q1), no statement on the m = 0 curvature (Q2), no objection to the physical anchors (Q3) | The [framework](../findings/m5_21_11_framework.md) § 1 covers every branch of Q1/Q2 (θ unconstrained; the gain exponent a measured q ∈ [2, 4] window) and Q3 passed unchallenged, so with the reply in hand the user called the FREEZE same day (2026-08-07): FROZEN header + pinning commit SHA in the framework § 0 |
+| The boost hedgehog | Assume a boost hedgehog for particles as gravitational mass: `MatrixExp[b(x,y,z) {x, y, z} . boostgenerators]` with an optimized, e.g. spherically symmetric, b(r) profile; practically work on the 3×3 matrix field with the lowest-order nontrivial hedgehog terms added | Structurally the same practical split the framework derived (3×3 field + perturbative boost dressing), with a RICHER dressing than the rigid uniform Qb(m) read: an r-dependent optimized profile. No framework change (frozen); the hedgehog profile is a follow-on instrument candidate for the g-axis after the ladder |
+| The Dirac ask, named at the AI | Quantum phase = twist of the long axis (~1e21 Hz for the electron via E = mc² phase evolution); "there are many articles claiming derivation of Dirac equation, maybe Fable could try to fit some to electron model here?", bispinor encoding spin direction and boost | A direct, named request for AI-side work: survey the Dirac-derivation literature and test the fit to the M5 electron record. Candidate NEW task row on the M5 roadmap; acceptance and sequencing = user-gated, deliberately NOT staged at capture (user call: focus on the freeze + ladder first) |
+| The unification arc | The perturbative quantum-phase picture neglects eigenspectrum deformations (the particle menagerie); classification of (meta)stable structures → Dirac as practical approximation → "this way we should finally derive the Standard Model Lagrangian" | The author's stated endgame frame for the program; context for how the M5.21.x bridge + Dirac work slots in |
+| Negative Hamiltonian terms | Gravity cannot be treated separately from particle physics here: it "seems crucial for negative Hamiltonian terms", which allow nonzero time derivatives by energy minimization (angular momenta of the electron and inside nuclei, neutrino oscillations) | Joins the standing [Q35](../m5_question_tracker.md#q35-detail) negative-Hamiltonian shelf; also re-frames why the 4×4 arm matters for the dynamical-baryon question |
+| The list question | "please sketch what's your plans for EM+QM+gravity unification?" addressed to the Models-of-particles group ("if only not paralyzing till the end of life on a single puzzle piece") | An open public question to the group, the user included; any public reply sketching the M5 plan = user-gated outbound, nothing sent from this capture |
+
+## 2026-08-08 10:49 EDT (outbound, user-sent, 1:1): the ladder close-out report
+
+**Context**: the user sent the terminal-verdict report directly to the author (1:1, no cc; user call), subject "Close M5.21.11: the route-(b) ladder ran and failed terminally (F3+F4)". Maintainer-voice opener (the pre-registration did its job; the two measured findings inside the negative feel more useful than the ratio not obtained) + the FABLE VOICE technical block (terminal-drafted per the standing rule; sent-record summary here).
+
+| Item | Content |
+| --- | --- |
+| Links sent | [`m5_21_11_task_details.md`](m5_21_11_task_details.md) (full record) + [`m5_21_11_framework.md`](../findings/m5_21_11_framework.md) (frozen protocol) + [`m5_21_11_panel.png`](../plots/m5_21_11_panel.png) (blob URLs) |
+| The verdict | 42 instrument-of-record relaxations executed verbatim; F3 + F4 fired; route (b) closed with no second framework, exactly as pre-committed |
+| Finding 1 (the g-arm) | the m\* = artanh(1/g) POSITION law holds on the relaxed lattice states (prefactor 0.23-0.25 light branches, 0.32 middle) but the energy GAIN is flat across g = 8-32, both signs, all branches; the same flatness retro-read in the M5.21.8 family record (previously unnoticed); consequence: no 3×3-only ladder reaches physical-regime energies or ratios; the fix has the shape of the author's optimized-b(r) sketch |
+| Finding 2 (branch integrity) | B/C fail the cross-stencil bar (2.1-2.5 vs 1.5) and the virial gate at every rung at N = 48; A's virial residual grows 0.046 → 0.40 down-ladder with E rising as δ falls on all branches; heavier lepton candidates not certifiable on this instrument generation |
+| Audit disclosure | independent adversarial audit (own code, own grids): gains reproduced to 0.4-1.6%, gate table matched on all 24 production rungs, terminal verdict reproduced from raw data; the barred-inputs rule held (no lepton mass, ratio, or Yukawa figure entered) |
+
+## 2026-08-09 02:23 EDT: the reply: the close ACCEPTED; the potential named "a first guess"; the symbolic (1/g) recipe
+
+**Context**: 1:1 reply (no cc), the author's morning. Per the two-tier convo rule this is the decode with minimal technical quotes; the full text stays in the mail thread. Nothing in the reply disputes the terminal verdict, the audit, or either finding, and no reopen is asked: the route-(b) close STANDS.
+
+**Decode/routing**:
+
+| Item | Decode | Route |
+| --- | --- | --- |
+| **THE POTENTIAL ADMISSION** | Testing lepton masses is "a natural approach", but their main energy contribution "should be potential for regularization, and we still need to find its details - the current one is just a first guess for preferred 4 different eigenvalues" | [Q25](../m5_question_tracker.md#q25-detail) receipt: the eigenvalue form is explicitly provisional on the author's side (T2 stays the measured well-posed base of record); contextualizes ladder finding 2: branch integrity sits on a V that may itself change, strengthening the new-instrument-generation reopen bar |
+| **THE SYMBOLIC RECIPE (task-shaped)** | Reach realistic parameters by practical approximation, especially for g: "start with working symbolically in 4x4 case" with at least radial dependence, spherical `MatrixExp[b(r) {x, y, z} . boostgenerators]`, and "find first nontrivial term in (1/g) expansion - to be included in further considered 3x3 case" | NEW task [M5.21.14](m5_21_14_task_details.md) (stub staged same day, user pick): the first rung of the dressing-carried-INSIDE-the-ladder route the close-out named; [Q33](../m5_question_tracker.md#q33-detail) receipt |
+| **THE PRE-STATED CRITERION** | the derived term "needs to have negative Hamiltonian contribution to get oscillations" | The author's own falsifiable gate, handed over before any computation; adopted as M5.21.14's pre-registered verdict axis; joins the standing [Q35](../m5_question_tracker.md#q35-detail) negative-Hamiltonian shelf |
+| **THE m\* CRITIQUE** | "This m* seems much too large, and the radius dependence seems more complicated - we should start with minimization of general at least radius dependent b(r)" | The rigid uniform-m Qb(m) read (the g-arm instrument) is SUPERSEDED for future work: variational b(r) minimization is the sequel inside M5.21.14's scope. The F4 verdict is unaffected (frozen scope, and the flatness itself is not disputed) |
+| The 3×3 critique, repeated | The author read the frozen [framework](../findings/m5_21_11_framework.md): it "mention only 3x3 case - which will miss angular momentums/oscillations by energy minimization" | Consistent with the standing dynamical-minima directive; the proposed mechanism is now the negative (1/g) dressing term, a DIFFERENT channel from the constant-ω long-axis twists [M5.22.4](m5_22_4_task_details.md) measured as an honest negative: no tension between the two records |
+
+### Notes
+
+| Item | Content |
+| --- | --- |
+| Tracker | [Q25](../m5_question_tracker.md#q25-detail) + [Q33](../m5_question_tracker.md#q33-detail) receipts appended (both remain open); no question resolved off this reply |
+| The close | Accepted without objection; the [M5.21.11](m5_21_11_task_details.md) record and its downstream consequences stand unchanged |
+| Next | [M5.21.14](m5_21_14_task_details.md) staged at the top of the roadmap Backlog as the author-proposed candidate NEXT; the pick (vs [M5.22.3](m5_22_3_task_details.md) / [M5.22.5](m5_22_5_task_details.md)) stays the user's; the standing user-gated flags (the Dirac ask, the help offer, the unification-plans question) are not raised in this reply and stay as they were |
+
+## 2026-08-09 ~17:00 EDT (outbound, user-sent, 1:1): the M5.21.14 close-out: the (1/g) term delivered
+
+**Context**: same thread, 1:1 (no cc), the same-day answer to the author's symbolic recipe. The user's own words on top + the FABLE VOICE technical block (terminal-drafted per the standing rule; sent-record summary here, no draft text in the repo).
+
+| Item | Content |
+| --- | --- |
+| Links sent | [`m5_21_14_note.md`](../findings/m5_21_14_note.md) (full method note) + [`m5_21_14_panel.png`](../plots/m5_21_14_panel.png) (blob URLs) |
+| The delivery | the recipe ran end-to-end same day: the first nontrivial (1/g) term derived (T1_static; T1_kin = −8Σ\|Ṁ3v_i\|², the ω² multiplier), the ordering fact stated (nontrivial only in β = g·b; fixed-b density ~ g⁴; the author's m\* ~ 1/g law is exactly the finite-limit scaling), E_V exactly invariant under any b(r); triple-verified + independent adversarial audit 7C/2P/0R disclosed, including the evenness-exact-at-finite-g sharpening |
+| The criterion verdict | MET at the term level (T1_kin negative-semidefinite, strict where Ṁ3v_i ≠ 0); the kin flip measured BULK (net −6.1 per unit radius) with the certified 48-box exactly at threshold; the favorability-not-onset caveat + the fixed-J cure carried in the message |
+| The calibration reads | both the author's critiques confirmed by measurement: variational b(r) beats the rigid constant ×2.6 on the instrument (core-weighted, oscillatory optimum); the route-(b) flat gain DERIVED from the β = g·m collapse (the 0.82-0.84 m\* ratios fall out of the same collapse) |
+| The regularization hook | T1 alone unbounded below (pure-radial channel; exact-functional floor ∝ λ^−1.9): "the potential for regularization" now has a concrete measured job in this sector, the current eigenvalue potential being exactly blind to the dressing ([Q25](../m5_question_tracker.md#q25-detail)) |
+| THE ASK (open) | one author-gated fork, machine-checkable branches exhausted first: for the corrected-3×3 ladder, should the mandatory guard be a constrained smooth b(r) family now, or wait for the regularization potential's details? The answer routes to [Q25](../m5_question_tracker.md#q25-detail)/[Q33](../m5_question_tracker.md#q33-detail) and the ladder staging decision |
+
+### Notes
+
+| Item | Content |
+| --- | --- |
+| Task state | [M5.21.14](m5_21_14_task_details.md) CLOSED + APPROVED before the send; roadmap row in Done; Q33/Q35/Q25 receipts appended |
+| Pending on the reply | the guard-choice answer (the only open outbound question); the corrected-3×3 ladder stays UNSTAGED until the user picks it (alongside [M5.22.3](m5_22_3_task_details.md)/[M5.22.5](m5_22_5_task_details.md)) |
+| Standing flags | unchanged and unraised (the Dirac ask, the help offer, the unification-plans question) |

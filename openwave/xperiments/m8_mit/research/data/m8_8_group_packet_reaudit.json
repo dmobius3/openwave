@@ -1,0 +1,238 @@
+{
+  "what": "M8.8 group-packet re-audit, run from the group packet alone",
+  "why": "protocol section 4.3 requires the M8.5-A packet re-audited against M8.8's forbidden list rather than inherited on its M8.5-A audit; section 8 step 1 carries this record in the content commit",
+  "packet_file": "m8_5a_packet.json",
+  "inherited_record_not_relied_on": "m8_5a_packet_audit.json",
+  "forbidden_vocabulary": [
+    "torsion",
+    "reidemeister",
+    "singer",
+    "whitehead",
+    "zeta",
+    "spectral",
+    "spectrum",
+    "eigen",
+    "laplac",
+    "heat",
+    "determinant",
+    "character",
+    "irrep",
+    "irreducible",
+    "ratio",
+    "sector",
+    "sqrt",
+    "mass",
+    "answer",
+    "target"
+  ],
+  "vocabulary_note": "`phi` is absent from this list by decision: it is forbidden in the M8.8 CONSTRUCTION packet, which carries integers and element IDs only, and is the coefficient-field generator here.  Held by the extra_phi_occurrence_in_prose invariance rather than by a text subtraction.",
+  "checks": [
+    {
+      "id": "G1",
+      "check": "delivered bytes reproduce the protocol section 11 pin and are already canonical",
+      "pass": true,
+      "observed": {
+        "incoming_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+        "authoritative_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+        "expected_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+        "canonicalization_changed_bytes": false
+      }
+    },
+    {
+      "id": "G2",
+      "check": "the M8.5-A structural audit re-runs green on these bytes, A1 through A8",
+      "pass": true,
+      "observed": {
+        "m8_5a_checks_red": [],
+        "m8_5a_checks_run": 8
+      }
+    },
+    {
+      "id": "G3",
+      "check": "no section 4.3 answer-bearing vocabulary, under M8.8's list rather than M8.5-A's",
+      "pass": true,
+      "observed": {
+        "token_hits": [],
+        "tokens_scanned": 20,
+        "phi_occurrences_permitted": 12
+      }
+    },
+    {
+      "id": "G4",
+      "check": "no JSON numeric literal and no decimal or scientific rendering anywhere",
+      "pass": true,
+      "observed": {
+        "numeric_literals": [],
+        "decimal_renderings": []
+      }
+    },
+    {
+      "id": "G5",
+      "check": "canonical enumeration: 120 elements in lexicographic rank order, digest as pinned",
+      "pass": true,
+      "observed": {
+        "size": 120,
+        "lexicographically_ordered": true,
+        "enumeration_sha256": "27ff780d28d5d854d464ead87e8fc20244fac8334bda9f0600c6ee1b3c89561e",
+        "expected_sha256": "27ff780d28d5d854d464ead87e8fc20244fac8334bda9f0600c6ee1b3c89561e",
+        "encoding": "CANONICAL TUPLE: the element's four quaternion components in the packet's `quaternion_basis` order (1, i, j, k), each contributing the integer pair (A, B) of its `(A + B*phi)/2` numerator, rational part before phi part, the denominator fixed at 2 and dropped, giving 8 signed integers.  RANK: the 120 tuples sorted ascending in lexicographic order, compared entrywise as signed integers with the first entry most significant; rank is the 0-based position and is the element ID of section 4.2.  DIGEST INPUT: one JSON array of the 120 rank-ordered 8-integer arrays, rendered with no whitespace at all (JSON separators ',' and ':'), integers as bare decimal with '-' for negative, no '+', no leading zero, no exponent; ASCII; no trailing newline.  DIGEST: SHA-256 of those bytes, lowercase hex.",
+        "serialized_bytes": 2389,
+        "error": null
+      }
+    }
+  ],
+  "detail": {
+    "m8_5a_detail": {
+      "generator_orders": [
+        6,
+        4
+      ],
+      "element_order_census": {
+        "1": 1,
+        "2": 1,
+        "3": 20,
+        "4": 30,
+        "5": 24,
+        "6": 20,
+        "10": 24
+      },
+      "quotient_order_census": {
+        "1": 1,
+        "2": 15,
+        "3": 20,
+        "5": 24
+      },
+      "group_order": 120,
+      "center_order": 2
+    },
+    "enumeration_sha256": "27ff780d28d5d854d464ead87e8fc20244fac8334bda9f0600c6ee1b3c89561e",
+    "group_order": 120,
+    "agrees_with_construction_audit_group_class": true,
+    "identity_rank": 119
+  },
+  "all_checks_pass": true,
+  "enumeration_agrees_with_construction_audit": true,
+  "mutation_suite": [
+    {
+      "mutation": "format_version_string_changed",
+      "expected_red": [
+        "G1"
+      ],
+      "observed_red": [
+        "G1"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "torsion_word_in_declared_prose",
+      "expected_red": [
+        "G3"
+      ],
+      "observed_red": [
+        "G1",
+        "G3"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "decimal_rendering_in_declared_prose",
+      "expected_red": [
+        "G4"
+      ],
+      "observed_red": [
+        "G1",
+        "G4"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "numeric_literal_under_declared_key",
+      "expected_red": [
+        "G4"
+      ],
+      "observed_red": [
+        "G1",
+        "G4"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "norm_not_unit",
+      "expected_red": [
+        "G2",
+        "G5"
+      ],
+      "observed_red": [
+        "G1",
+        "G2",
+        "G5"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "generators_collapsed_to_one",
+      "expected_red": [
+        "G2",
+        "G5"
+      ],
+      "observed_red": [
+        "G1",
+        "G2",
+        "G5"
+      ],
+      "detected": true,
+      "error": null
+    },
+    {
+      "mutation": "stray_key_added",
+      "expected_red": [
+        "G2"
+      ],
+      "observed_red": [
+        "G1",
+        "G2",
+        "G4"
+      ],
+      "detected": true,
+      "error": null
+    }
+  ],
+  "mutation_suite_all_detected": true,
+  "invariance_suite": [
+    {
+      "invariance": "extra_phi_occurrence_in_prose",
+      "expected_green": [
+        "G3"
+      ],
+      "observed_green": [
+        "G2",
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "held": true,
+      "error": null
+    },
+    {
+      "invariance": "generator_order_reversed",
+      "expected_green": [
+        "G5"
+      ],
+      "observed_green": [
+        "G2",
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "held": true,
+      "error": null
+    }
+  ],
+  "invariance_suite_all_held": true,
+  "m8_5a_mutation_suite_all_detected": true
+}

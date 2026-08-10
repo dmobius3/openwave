@@ -20,7 +20,7 @@ free ranks [1, 2, 2, 1], boundary maps as matrices whose entries are group-ring 
 encoded as (coefficient, element_id) terms against the 120-element closure of the group
 packet.  Integers and element IDs only: no evaluated matrix, no decimal rendering.
 
-WHAT THIS VERIFIES.  Ten checks, each mutation-tested:
+WHAT THIS VERIFIES.  Eleven checks, each mutation-tested:
 
   A1  format: exactly the declared key set, degree_range [0, 3], truncation_rule consistent
       with model_kind, matrix dimensions matching free_ranks, every numeric leaf an integer
@@ -43,9 +43,11 @@ WHAT THIS VERIFIES.  Ten checks, each mutation-tested:
   A10 relator provenance: d1 is the (g - 1) correspondence, and each d2 row is the Fox
       jacobian of exactly one word in the two-syllable family over {s, t, st, ts}, whose
       rendering must appear in the packet's own declared basis_order
+  A11 exact top boundary: im(d3) = ker(d2) as integral lattices, certified with no prime
+      set on the accept side
 
-A7 IS THIS AUDIT'S ADDITION, AND IT IS THE ONE THAT MATTERS.  Every other model gate in the
-protocol is blind to an overall change of d3 inside ker(d2): eps(d3) = 0 either way, the
+A7 AND A11 ARE THIS AUDIT'S ADDITIONS, AND THE PAIR IS THE POINT.  Every other model gate in
+the protocol is blind to an overall change of d3 inside ker(d2): eps(d3) = 0 either way, the
 trivial-sector homology is computed from eps(d2) alone, and per-irrep acyclicity is a rank
 statement.  So `d3 -> 2 d3` passes A1 through A6 and A8 while multiplying every torsion
 value by 2^(+-dim).  Viewing C_* as a Z-complex restores the missing information: it is then
@@ -53,12 +55,32 @@ the cellular chain complex of the universal cover S^3, whose homology is (Z, 0, 
 every prime.  A rank drop mod p means im(d3) sits at finite index inside ker(d2), which is
 exactly the case a rational-rank acceptance predicate cannot see.
 
+A7 IS A REJECT SCREEN AND NOT AN ACCEPT CRITERION, WHICH IS WHY A11 EXISTS.  A drop at any
+tested prime proves a finite index, but passing at every tested prime proves nothing: no
+finite prime set can exclude an index supported elsewhere.  `d3 -> 11 d3` leaves all five of
+A7's Betti profiles correct while multiplying every torsion value by 11^(+-dim), and the
+mutation suite runs exactly that case.  A11 is the accept side and is prime-set independent:
+containment comes from d3 d2 = 0, the ranks are pinned by mod-p lower bounds meeting
+ceilings that the chain relations supply, and im(d3) is shown saturated by unit pivots
+alone.  Two saturated lattices of equal rank, one inside the other, are equal.
+
 WHAT THIS DOES NOT VERIFY.  That the packet came from where its provenance record says it
 did: the provenance material is held maintainer-side until commitment (section 4.2 check 6),
 and this audit checks the object, not its origin.  It does not verify any torsion value, and
 it evaluates none.  Nor does it establish that the complex is THE intended model rather than
-A model with the right invariants; A7 narrows that gap considerably but does not close it,
-which is why section 1 branch four stays open and bounded rather than excluded.
+A model with the right invariants; A7 and A11 narrow that gap considerably but do not close
+it, which is why section 1 branch four stays open and bounded rather than excluded.
+
+The residue is worth naming precisely, because A11 makes it sharper rather than smaller.
+C_3 has rank 1, so any two generators of ker(d2) differ by d3' = u d3 for a unit u of
+Z[2I]/(N), and for every nontrivial irrep rho, which kills N, the torsion moves by
+det rho(u).  The protocol's basis-invariance argument covers u = +-g, where det is a root of
+unity and the modulus is exactly 1.  It does not cover the rest: 2I has 9 complex irreps in
+7 Galois orbits with every character real, so the Whitehead group has rank 9 - 7 = 2 and
+nontrivial units exist.  A11 certifies that the packet's d3 GENERATES ker(d2); it does not
+certify WHICH generator, and the reproduced modulus depends on that choice.  Closing this
+needs provenance, not another gate, which is exactly the division of labour section 4.2 sets
+up between the model gates and the maintainer-side construction audit.
 
 USAGE.
     python3 m8_8_packet_audit.py                     audit, write JSON, exit 0 on all-pass
@@ -105,6 +127,20 @@ DECLARED_KEYS = {
 MODEL_KINDS = {"finite_cellular", "resolution_derived"}
 COVER_PRIMES = (2, 3, 5, 7, 10007)
 MUTATION_PRIMES = (2, 3)
+# largest p for which the int64 elimination in rank_mod_p is exact: (p-1)^2 < 2^63
+MAX_INT64_PRIME = 3_037_000_499
+# the rank lower bound for A11; any prime in range works, a large one is simply less
+# likely to need a second opinion
+BOUND_PRIME = 2_147_483_647
+# entries in the A11 elimination stay tiny on a real packet; a runaway means the greedy
+# pivot order met something pathological, and the honest answer there is "inconclusive".
+# The cap must ALSO keep the row update itself exact in int64: one step subtracts a
+# product of two entries, so entries at the cap reach cap^2 + cap before the cap check
+# runs, and the earlier 2^40 cap let products wrap silently (demonstrated: a matrix with
+# entries at 2^39 certified SATURATED because -2^78 wraps to exactly 0 mod 2^64).
+# The exact maximum satisfying cap^2 + cap < 2^63 is 3_037_000_499, which is the
+# constant already defined above.
+A11_GROWTH_CAP = MAX_INT64_PRIME
 LEAKAGE_VOCABULARY = (
     "torsion",
     "character",
@@ -333,7 +369,20 @@ def regular_evaluate(m: RingMatrix, group: Group) -> np.ndarray:
 
 
 def rank_mod_p(matrix: np.ndarray, p: int) -> int:
-    """Exact rank over F_p by Gaussian elimination on an int64 array."""
+    """Exact rank over F_p by Gaussian elimination on an int64 array.
+
+    The int64 path is exact only while the elimination's products fit: the update forms
+    `factor * pivot_row` with both below p, so p must satisfy (p-1)^2 < 2^63.  Above that
+    the products wrap SILENTLY and the function returns a wrong rank rather than raising,
+    which is the worst failure mode a gate can have.  Overflow is refused rather than
+    absorbed: every caller here is well inside the bound, and a caller that is not has made
+    a mistake worth hearing about.
+    """
+    if p > MAX_INT64_PRIME:
+        raise ValueError(
+            f"p={p} exceeds the int64-safe bound {MAX_INT64_PRIME}; "
+            "the elimination would overflow and return a wrong rank"
+        )
     a = np.mod(matrix, p).astype(np.int64)
     rows, cols = a.shape
     rank = 0
@@ -365,6 +414,103 @@ def cover_betti(
     r1, r2, r3 = (rank_mod_p(m, p) for m in matrices)
     c0, c1, c2, c3 = (r * size for r in ranks)
     return (c0 - r1, c1 - r1 - r2, c2 - r2 - r3, c3 - r3)
+
+
+def saturation_certificate(matrix: np.ndarray) -> tuple[bool | None, dict[str, Any]]:
+    """Is the row image of an integer matrix SATURATED, that is, a direct summand?
+
+    Equivalently: are all its elementary divisors 1?  Row and column operations used here
+    are unimodular, so the product of the pivots this elimination produces equals the
+    product of the elementary divisors up to sign.  Every pivot being +-1 therefore settles
+    the question, with no Smith form and no determinant of a 119 x 119 minor.
+
+    Three outcomes, and the third is deliberate.  True: the elimination cleared the matrix
+    using only +-1 pivots.  False: it stalled on a nonzero remainder whose entries share a
+    common factor, which IS an elementary divisor above 1.  None: it stalled with coprime
+    entries and no unit pivot, where this routine has not established either answer, and
+    section 4.2's own rule for a one-sided predicate applies: report inconclusive rather
+    than issue a verdict.  A None is treated as a red check by the caller, so the audit
+    fails closed.
+    """
+    a = np.array(matrix, dtype=np.int64)
+    # the cap check below runs AFTER each update, which is sound only if the entries
+    # going INTO the update already respect the cap; an over-cap input must refuse here
+    if a.size and int(np.abs(a).max()) > A11_GROWTH_CAP:
+        return None, {"pivots": 0, "outcome": "inconclusive: entry growth"}
+    rows, cols = a.shape
+    live_rows = list(range(rows))
+    live_cols = list(range(cols))
+    pivots = 0
+    while live_rows and live_cols:
+        block = a[np.ix_(live_rows, live_cols)]
+        if not block.any():
+            return True, {"pivots": pivots, "outcome": "cleared with unit pivots"}
+        units = np.argwhere(np.abs(block) == 1)
+        if units.size == 0:
+            common = int(np.gcd.reduce(np.abs(block[block != 0])))
+            if common > 1:
+                return False, {
+                    "pivots": pivots,
+                    "outcome": "elementary divisor above 1",
+                    "common_factor": common,
+                }
+            return None, {"pivots": pivots, "outcome": "inconclusive: no unit pivot"}
+        # prefer a unit sitting in a sparse row: the pivot row is added to every row it
+        # has to clear, so a dense one is what makes entries grow
+        weights = np.count_nonzero(block, axis=1)
+        bi, bj = min(((int(i), int(j)) for i, j in units), key=lambda ij: weights[ij[0]])
+        pivot_row, pivot_col = live_rows[bi], live_cols[bj]
+        pivot = int(a[pivot_row, pivot_col])
+        # only live rows matter: a retired row is a previous pivot row, and the column
+        # operations that would clear it touch nothing still in play
+        others = np.array([r for r in live_rows if r != pivot_row], dtype=np.intp)
+        factors = a[others, pivot_col]
+        touched = others[factors != 0]
+        if touched.size:
+            a[touched] -= np.outer(a[touched, pivot_col] * pivot, a[pivot_row])
+        if int(np.abs(a).max()) > A11_GROWTH_CAP:
+            return None, {"pivots": pivots, "outcome": "inconclusive: entry growth"}
+        live_rows.remove(pivot_row)
+        live_cols.remove(pivot_col)
+        pivots += 1
+    return True, {"pivots": pivots, "outcome": "cleared with unit pivots"}
+
+
+def exact_top_boundary_check(
+    matrices: Sequence[np.ndarray], ranks: Sequence[int], size: int, augmentation_is_zero: bool
+) -> tuple[bool, dict[str, Any]]:
+    """Certify `im d3 = ker d2` as integral lattices, with no prime set on the accept side.
+
+    A mod-p battery is a REJECT screen.  A rank drop at p proves a finite index, but no
+    finite prime set can exclude one: `d3 -> 11 d3` leaves every Betti number in A7 correct
+    at 2, 3, 5, 7 and 10007 while multiplying every torsion value by 11^(+-dim).  This check
+    is the accept side, and it is prime-set independent:
+
+      containment   from d3 d2 = 0, already exact over Z[2I] in A4
+      ranks         each mod-p lower bound is met by a ceiling from the chain relations:
+                    eps d1 = 0 caps rank d1, then d2 d1 = 0 caps rank d2, then d3 d2 = 0
+                    caps rank d3.  Meeting a ceiling turns a bound into an equality
+      saturation    of im d3, by unit pivots alone (see saturation_certificate)
+      ker d2        saturated automatically, being the kernel of an integer matrix
+
+    Two saturated lattices of equal rank, one inside the other, are equal.
+    """
+    d1, d2, d3 = matrices
+    c0, c1, c2 = (r * size for r in ranks[:3])
+    r1, r2, r3 = (rank_mod_p(m, BOUND_PRIME) for m in matrices)
+    ceilings = (c0 - 1 if augmentation_is_zero else c0, c1 - r1, c2 - r2)
+    closed = (r1, r2, r3) == ceilings
+    saturated, certificate = saturation_certificate(d3)
+    kernel_rank = c2 - r2
+    observed = {
+        "ranks": [r1, r2, r3],
+        "ceilings": list(ceilings),
+        "bounds_close": closed,
+        "rank_ker_d2": kernel_rank,
+        "im_d3_saturated": saturated,
+        "certificate": certificate,
+    }
+    return bool(closed and saturated is True and r3 == kernel_rank), observed
 
 
 # --------------------------------------------------------------------------------------
@@ -806,8 +952,14 @@ def run_checks(
         acyclicity,
     )
 
-    prose = json.dumps(packet.get("basing", {})) + json.dumps(packet.get("top_closure", {}))
-    scanned = raw.replace(prose.strip("{}"), "")
+    # `basing` and `top_closure` are declared prose and exempt from the vocabulary scan;
+    # scan a serialization that omits them rather than substring-replacing them out of
+    # `raw`, which never matched (compact dump vs indented raw) and silently scanned the
+    # prose too. The decimal-literal check below stays on the full raw on purpose.
+    scanned = json.dumps(
+        {k: v for k, v in packet.items() if k not in ("basing", "top_closure")},
+        sort_keys=True,
+    )
     hits = [word for word in LEAKAGE_VOCABULARY if word in scanned.lower()]
     leakage_ok = not hits and not re.search(r"\d\.\d", raw) and set(packet) <= DECLARED_KEYS
     record(
@@ -835,6 +987,20 @@ def run_checks(
         {"unique_match_per_row": unique, "matched_relators": matches},
     )
     detail["matched_relators"] = matches
+
+    if len(ranks) == 4:
+        exact_ok, exact_observed = exact_top_boundary_check(
+            cover_matrices, ranks, group.size, all(v == 0 for row in e1 for v in row)
+        )
+    else:
+        exact_ok, exact_observed = False, {"outcome": "free_ranks malformed"}
+    record(
+        "A11",
+        "exact top boundary: im d3 = ker d2 as lattices, certified without a prime set",
+        exact_ok,
+        exact_observed,
+    )
+    detail["exact_top_boundary"] = exact_observed
 
     return checks, detail
 
@@ -882,13 +1048,28 @@ def _scale_top_boundary(packet: dict[str, Any]) -> None:
 
 
 def _relabel_relator(packet: dict[str, Any]) -> None:
-    """Mislabel the FIRST relator, which is the one currently agreeing with its matrix.
+    """Mislabel the first relator: `s^3` becomes `s^4` in the declared basis order.
 
-    Mutating the second relator's label would not do: swapping `(st)` for `(ts)` there is
-    the correction, not a defect, and A10 goes green under it.  That asymmetry is itself the
-    causal demonstration that A10 reads the matrices rather than the prose.
+    An earlier version of this docstring claimed that swapping `(st)` for `(ts)` on the
+    second relator would leave A10 green.  That was true against the packet the mutation
+    was written for, whose second matrix row was the `(ts)` jacobian, and it is false
+    against the shipped packet, where the same swap reddens A10 (measured).  Either
+    relabel now demonstrates the same thing: A10 reads the matrices, not the prose.
     """
     packet["basing"]["basis_order"] = packet["basing"]["basis_order"].replace("s^3", "s^4")
+
+
+def _scale_top_boundary_offlist(packet: dict[str, Any]) -> None:
+    """Scale d3 by a prime OUTSIDE the A7 list, which is what makes A11 load-bearing.
+
+    A7 sees `2 d3` only because 2 is in its prime list.  Multiply by 11 instead and every
+    Betti number A7 computes is still (1, 0, 0, 1), at 2, 3, 5, 7 and 10007 alike, while
+    every torsion value is multiplied by 11^(+-dim).  Only A11 reddens here, and that is
+    the point of it: no finite prime set is a sufficient accept criterion.
+    """
+    packet["boundary_maps"]["d3"][0] = [
+        [[11 * c, g] for c, g in entry] for entry in packet["boundary_maps"]["d3"][0]
+    ]
 
 
 MUTATIONS: tuple[tuple[str, Callable[[dict[str, Any]], None], str], ...] = (
@@ -901,6 +1082,7 @@ MUTATIONS: tuple[tuple[str, Callable[[dict[str, Any]], None], str], ...] = (
     ("free_ranks top rank inflated", _inflate_rank, "A1"),
     ("d3 scaled to 2 d3 inside ker d2", _scale_top_boundary, "A7"),
     ("declared relator relabelled", _relabel_relator, "A10"),
+    ("d3 scaled to 11 d3, invisible to A7", _scale_top_boundary_offlist, "A11"),
 )
 
 

@@ -62,6 +62,24 @@ since it is the nearest measurement of what a δ walk does to a census result.
 Route: ask the proposer which reading is meant before the first rung. It costs one comment and
 decides the axis.
 
+### POST-M5.21.11 RE-SCOPE (2026-08-08, user-approved): the premise check is largely answered
+
+The [M5.21.11](m5_21_11_task_details.md) ladder run (2026-08-07, terminal on F3 + F4) resolves most
+of this task's premise questions from data rather than from the proposer:
+
+| Element above | State after M5.21.11 |
+| --- | --- |
+| Reading (a): the g axis | Fully covered without running anything here: [M5.21.8](m5_21_8_task_details.md) walked the m\* position law and the M5.21.11 g-arm measured the dressing GAIN, flat in g across 8-32. Nothing left for this task on that axis |
+| Reading (b): literal δ upward | The surviving scope, and the honest label is a DEGENERACY PROBE: at δ → 1 the target spectrum (0, δ, 1) degenerates and past δ = 1 the hierarchy inverts; the run measures how the census dies as biaxiality is removed, nothing about the physical corner |
+| Verdict "ordering stable = continuation evidence toward the stiff vacuum" | NOT earnable at any outcome: M5.21.11 measured the 4D dressing term O(1), branch-dependent, and g-flat, so no 3×3-only census walk in any δ direction is continuation evidence toward the physical vacuum. That verdict row is dead and must not be claimed from a run of this task |
+| Verdict "cross-stencil growth with δ" | Partially pre-answered downward: the ladder measured xstencil at 8 rungs (δ 0.30 → 0.05): B/C sit at 2.1-2.5 (beyond the 1.5 bar) at EVERY rung, roughly δ-flat, A at ~1.03-1.1. Only the upward direction stays unmeasured |
+| The "cheap test before the 4×4 investment" motivation | Moot: M5.21.11 settled that the 4×4 (dressing carried inside the ladder) is REQUIRED for any physical-regime claim regardless of stiffness-direction behavior |
+| Nearest related measurement | Now the M5.21.11 E(δ) record itself ([§ LADDER RUN](m5_21_11_task_details.md)): 8 gated rungs, E rising as δ falls on all branches, A < C < B holding at every rung, and the C-B margin collapsing downward (C/B 0.28 → 0.85 over δ 0.3 → 0.05, uncertified energies); the [M5.22.1](m5_22_1_task_details.md) pointer stays as secondary |
+
+Net: the task stays a valid, cheap, non-gating stub, but its scope shrinks to the reading-(b)
+degeneracy probe and two of the three pre-registered verdict rows are relabeled as above before any
+run. The proposer courtesy question stands, with the answer no longer changing the scope much.
+
 **Gated by**: the premise check above + user "go". Non-gating for the electron program: the census
 verdicts stand on their own arena, and this measures how far they travel.
 
