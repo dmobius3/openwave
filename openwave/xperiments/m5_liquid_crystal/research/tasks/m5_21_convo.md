@@ -412,3 +412,23 @@ The author replied to the M5.21.11 sanity-check send and TOOK THE EXCHANGE PUBLI
 | Task state | [M5.21.14](m5_21_14_task_details.md) CLOSED + APPROVED before the send; roadmap row in Done; Q33/Q35/Q25 receipts appended |
 | Pending on the reply | the guard-choice answer (the only open outbound question); the corrected-3×3 ladder stays UNSTAGED until the user picks it (alongside [M5.22.3](m5_22_3_task_details.md)/[M5.22.5](m5_22_5_task_details.md)) |
 | Standing flags | unchanged and unraised (the Dirac ask, the help offer, the unification-plans question) |
+
+## 2026-08-10 03:39 EDT: the reply: the close ACCEPTED; the minimum read as gravitational mass; the electron ω-minimum ask
+
+**Context**: 1:1 reply (no cc), same thread. Per the two-tier convo rule this is the decode with minimal technical quotes; the full text stays in the mail thread. Nothing in the reply disputes any M5.21.14 verdict, the audit, or the boundedness finding; the guard-choice question is NOT answered.
+
+**Decode/routing**:
+
+| Item | Decode | Route |
+| --- | --- | --- |
+| The acceptance | "looks good"; the author reads the delivered result as "clear energy minimum suggesting gravitational mass" | The M5.21.14 close STANDS unopposed; the gravitational-mass read of the dressed minimum E_corr[b\*] is an author interpretation receipt on [Q33](../m5_question_tracker.md#q33-detail) (boost dressing = the gravity sector), not a measured claim of ours |
+| **THE NEW ASK (task-shaped)** | "We also need (coupled) nonzero omega from energy minimization", for the electron, linking our own [`m5_21_3_note.md`](../findings/m5_21_3_note.md); a figure from that note pasted back with the read "it stopped minimization process, but visually there should be minimum for positive energy and nonzero omega (?) - worth finding this energy minimum: for electron analog with angular momentum" | NEW task [M5.21.15](m5_21_15_task_details.md) staged this capture: the fixed-J electron, the coupled nonzero-ω minimum quest. The M5.21.3 record already holds the two halves: free descent lands NO stationary ω (P3 ladder, rungs depth-bounded at max_iter, the read the author calls "stopped"), and the fixed-J isorotation construction (ω\* = J/(2·kin), E\* = E_stat + J²/(4·kin)) is the surviving route; M5.21.14 adds the guarded dressing whose T1_kin drives the ω² coefficient down (48-box at threshold) |
+| The guard question | Not addressed in the reply | The corrected-3×3 ladder stays UNSTAGED; the guard fork ([Q25](../m5_question_tracker.md#q25-detail)/[Q33](../m5_question_tracker.md#q33-detail)) stays the one open outbound question; the author's priority signal points at the 4×4 electron sector first |
+
+### Notes
+
+| Item | Content |
+| --- | --- |
+| Reply posture | HELD (user call, this capture): no answer goes back until [M5.21.15](m5_21_15_task_details.md) runs; checkpoint policy, machine-checkable branches first |
+| The author's "(?)" | A genuine open question, not a claim: whether a positive-energy nonzero-ω minimum exists. The honest baseline from [M5.21.3](m5_21_3_task_details.md): on the UNDRESSED functional no finite stationary ω exists in the probed range (equal-depth control subtraction); what the dressed and constraint-carried functionals do is exactly M5.21.15's measurement |
+| Standing flags | unchanged and unraised (the Dirac ask, the help offer, the unification-plans question) |
