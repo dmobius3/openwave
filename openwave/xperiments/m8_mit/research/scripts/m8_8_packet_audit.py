@@ -20,7 +20,7 @@ free ranks [1, 2, 2, 1], boundary maps as matrices whose entries are group-ring 
 encoded as (coefficient, element_id) terms against the 120-element closure of the group
 packet.  Integers and element IDs only: no evaluated matrix, no decimal rendering.
 
-WHAT THIS VERIFIES.  Eleven checks, each mutation-tested:
+WHAT THIS VERIFIES.  Twelve checks, each mutation-tested:
 
   A1  format: exactly the declared key set, degree_range [0, 3], truncation_rule consistent
       with model_kind, matrix dimensions matching free_ranks, every numeric leaf an integer
@@ -45,6 +45,24 @@ WHAT THIS VERIFIES.  Eleven checks, each mutation-tested:
       rendering must appear in the packet's own declared basis_order
   A11 exact top boundary: im(d3) = ker(d2) as integral lattices, certified with no prime
       set on the accept side
+  A12 exact lower boundaries: im(d1) and im(d2) saturated, so H_0 = Z is torsion-free and
+      H_1 = 0, the degree 0 and 1 counterparts of A11's degree 2
+
+A12 MIRRORS THE PROTOCOL'S WIDENED SECTION 9 GATE, AND IS LOAD-BEARING FOR THE SAME REASON
+A11 IS.  The gate as first filed stated its conclusion in all four degrees while naming an
+establishment procedure for degree 2 alone, leaving degrees 0 and 1 on the exact ranks, which
+are rational and blind to finite index.  `d2 -> (6 - 5z) d2` is the degree 1 instance: the
+factor is central with augmentation 1, so every chain relation and the whole trivial sector
+survive; it acts as 11 on every faithful irreducible, so A7's prime list cannot see it; and
+`H_1` acquires 11-torsion, which the mutation suite measures as a rank of 61 against 121.
+A12 is the check that reddens.
+
+ONE CONSTRUCTION THAT LOOKS LIKE THIS AND IS NOT.  Scaling a single d2 row and the
+complementary d3 column by `2 - z` also preserves d d = 0 and the augmentation, and
+multiplication by `2 - z` has determinant `3^60` on Z[2I], so it reads as the same kind of
+attack.  It is not one: d2 has rank 121 of 240 and ker(d2) absorbs the factor, leaving the
+image lattice, the homology and the rank mod 3 all unchanged.  The suite runs it too, and
+A12 stays green on it by design.  Only A10 reddens, on provenance.
 
 A7 AND A11 ARE THIS AUDIT'S ADDITIONS, AND THE PAIR IS THE POINT.  Every other model gate in
 the protocol is blind to an overall change of d3 inside ker(d2): eps(d3) = 0 either way, the
@@ -511,6 +529,50 @@ def exact_top_boundary_check(
         "certificate": certificate,
     }
     return bool(closed and saturated is True and r3 == kernel_rank), observed
+
+
+def exact_lower_boundaries_check(
+    matrices: Sequence[np.ndarray], ranks: Sequence[int], size: int, augmentation_is_zero: bool
+) -> tuple[bool, dict[str, Any]]:
+    """Certify `im d1` and `im d2` as saturated lattices, the degree 0 and 1 counterparts.
+
+    A11 certifies degree 2 and leaves degrees 0 and 1 resting on the exact ranks, which are
+    the RATIONAL statement and are blind to finite index.  The protocol section 9 gate was
+    widened for exactly that reason, and this is the audit-side counterpart of the widening:
+
+      H_0 = Z        `im d1` saturated in C_0, at rank c0 - 1.  Saturation is what makes the
+                     quotient torsion-free; the rank alone gives Z (x) torsion
+      H_1 = 0        `im d2` saturated, at the rank of `ker d1`.  Containment is exact from
+                     d2 d1 = 0 (A4), `ker d1` is saturated automatically as the kernel of an
+                     integer matrix, and two saturated lattices of equal rank, one inside the
+                     other, are equal
+
+    ON THE OVERLAP WITH A10, STATED PLAINLY.  The construction that motivated the widened
+    gate, scaling one d2 row and the COMPLEMENTARY d3 column by the central non-unit `2 - z`,
+    reddens A10 as well: a scaled row is no longer the Fox jacobian of any declared relator.
+    A12 does not repair a hole A10 left open.  It is a second and independent route to the
+    same rejection, by lattice certificate rather than by provenance, and it does not depend
+    on the declared relator family being the right family to check against.
+    """
+    d1, d2 = matrices[0], matrices[1]
+    c0, c1 = ranks[0] * size, ranks[1] * size
+    r1, r2 = rank_mod_p(d1, BOUND_PRIME), rank_mod_p(d2, BOUND_PRIME)
+    saturated_1, certificate_1 = saturation_certificate(d1)
+    saturated_2, certificate_2 = saturation_certificate(d2)
+    kernel_rank = c1 - r1
+    h0_rank_ok = r1 == (c0 - 1 if augmentation_is_zero else c0)
+    observed = {
+        "im_d1_saturated": saturated_1,
+        "im_d1_certificate": certificate_1,
+        "h0_rank_closes": h0_rank_ok,
+        "im_d2_saturated": saturated_2,
+        "im_d2_certificate": certificate_2,
+        "rank_ker_d1": kernel_rank,
+        "rank_d2": r2,
+        "h1_vanishes": saturated_2 is True and r2 == kernel_rank,
+    }
+    ok = saturated_1 is True and h0_rank_ok and saturated_2 is True and r2 == kernel_rank
+    return bool(ok), observed
 
 
 # --------------------------------------------------------------------------------------
@@ -1002,6 +1064,20 @@ def run_checks(
     )
     detail["exact_top_boundary"] = exact_observed
 
+    if len(ranks) == 4:
+        lower_ok, lower_observed = exact_lower_boundaries_check(
+            cover_matrices, ranks, group.size, all(v == 0 for row in e1 for v in row)
+        )
+    else:
+        lower_ok, lower_observed = False, {"outcome": "free_ranks malformed"}
+    record(
+        "A12",
+        "exact lower boundaries: im d1 and im d2 saturated, so H_0 = Z and H_1 = 0",
+        lower_ok,
+        lower_observed,
+    )
+    detail["exact_lower_boundaries"] = lower_observed
+
     return checks, detail
 
 
@@ -1072,6 +1148,75 @@ def _scale_top_boundary_offlist(packet: dict[str, Any]) -> None:
     ]
 
 
+def _central_scaler(
+    group: Group, unit_part: int, involution_part: int
+) -> Callable[[list[list[int]]], list[list[int]]]:
+    """Left multiplication by `unit_part + involution_part * z`, z the unique involution.
+
+    Any such element is CENTRAL, so it commutes past everything in the chain relations, and
+    its augmentation is the coefficient sum, which is what lets a mutation leave A6 alone.
+    """
+    identity = next(
+        i for i in range(group.size) if all(group.mul[i][j] == j for j in range(group.size))
+    )
+    central = next(i for i in range(group.size) if i != identity and group.mul[i][i] == identity)
+    factor = ((unit_part, identity), (involution_part, central))
+
+    def scaled(entry: list[list[int]]) -> list[list[int]]:
+        accumulator: dict[int, int] = {}
+        for coefficient, element in entry:
+            for multiplier, other in factor:
+                key = group.mul[other][element]
+                accumulator[key] = accumulator.get(key, 0) + multiplier * coefficient
+        return [[value, key] for key, value in sorted(accumulator.items()) if value]
+
+    return scaled
+
+
+def _scale_complementary_by_two_minus_z(packet: dict[str, Any], group: Group) -> None:
+    """A NULL transformation that looks like an attack, kept because it looks like one.
+
+    Scale one row of d2 and the COMPLEMENTARY column of d3 by the central non-unit `2 - z`.
+    Central, so d3 d2 = 0 survives: each term of the two-term product picks up exactly one
+    factor rather than one term picking up two.  Augmentation 1, so A6 does not move.  So far
+    this reads as a construction that slips past the model gates, and multiplication by
+    `2 - z` does have determinant `3^60` on Z[2I], which is where that reading comes from.
+
+    IT CHANGES NOTHING OBSERVABLE, AND THE POINT OF KEEPING IT IS THAT THE ARITHMETIC SAYS SO
+    AND INTUITION DOES NOT.  d2 is far from injective (rank 121 of 240), and ker(d2) absorbs
+    the factor: the image lattice is unchanged, so H_1 is unchanged, and rank over F_3 stays
+    121 against 121 over Q, measured.  The `3^60` is real in individual maximal minors and
+    never reaches the homology.  A12 stays GREEN, correctly.  Only A10 reddens, because a
+    scaled row is no longer the Fox jacobian of any declared relator.
+
+    The mutation below is the one that does reach H_1.
+    """
+    scaled = _central_scaler(group, 2, -1)
+    d2, d3 = packet["boundary_maps"]["d2"], packet["boundary_maps"]["d3"]
+    d2[0] = [scaled(entry) for entry in d2[0]]
+    d3[0][1] = scaled(d3[0][1])
+
+
+def _scale_d2_by_six_minus_five_z(packet: dict[str, Any], group: Group) -> None:
+    """The degree 1 counterpart of `d3 -> 11 d3`, and what makes A12 load-bearing.
+
+    Scale ALL of d2 by the central non-unit `6 - 5z`.  Augmentation 1, so A6 is untouched.
+    Every chain relation survives, since the factor commutes and multiplies an identity that
+    is already zero.  Invertible in every irreducible, so A8 is untouched.  It acts as 11 on
+    every faithful irreducible, so the index it introduces is a power of 11 and A7's prime
+    list {2, 3, 5, 7, 10007} cannot see it: mod 3 the ranks are 119, 121, 119, exactly the
+    rational ranks.
+
+    Mod 11 the rank of d2 falls to 61 from 121, so `H_1` acquires 11-torsion and the complex
+    is not the one of S^3.  A4, A5, A6, A7, A8 and A11 all stay green.  A12 is the structural
+    check that reddens, which is the same relationship A11 has to `d3 -> 11 d3` one degree up.
+    """
+    scaled = _central_scaler(group, 6, -5)
+    packet["boundary_maps"]["d2"] = [
+        [scaled(entry) for entry in row] for row in packet["boundary_maps"]["d2"]
+    ]
+
+
 MUTATIONS: tuple[tuple[str, Callable[[dict[str, Any]], None], str], ...] = (
     ("d3 coefficient off by one", _set_coefficient, "A4"),
     ("d3 two entries swapped", _swap_entries, "A4"),
@@ -1090,7 +1235,22 @@ def run_mutation_suite(
     packet: dict[str, Any], group_bytes: str, group: Group, reps: dict[str, list[CMatrix]]
 ) -> list[dict[str, Any]]:
     results: list[dict[str, Any]] = []
-    for label, mutate, expected in MUTATIONS:
+    # The `2 - z` entry is bound here rather than in MUTATIONS because it needs the Cayley
+    # table to name the involution; every other mutation edits the packet in place from the
+    # packet alone.
+    suite = MUTATIONS + (
+        (
+            "d2 row and complementary d3 column scaled by 2 - z (a null)",
+            lambda p: _scale_complementary_by_two_minus_z(p, group),
+            "A10",
+        ),
+        (
+            "d2 scaled by 6 - 5z, invisible to A7",
+            lambda p: _scale_d2_by_six_minus_five_z(p, group),
+            "A12",
+        ),
+    )
+    for label, mutate, expected in suite:
         mutated = copy.deepcopy(packet)
         mutate(mutated)
         raw = canonical_bytes(mutated)
