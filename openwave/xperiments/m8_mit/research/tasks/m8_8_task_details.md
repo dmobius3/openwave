@@ -97,6 +97,54 @@ Two protocol points settled before drafting, to keep them out of the freeze revi
 closed form and declared, so the remaining forms are genuine checks rather than circular
 ([`m8_3_method_note.md § 4`](../findings/m8_3_method_note.md)).
 
+## Protocol and construction packet landed (2026-08-11)
+
+The author filed both halves as a single pull request,
+[#408](https://github.com/openwave-labs/openwave/pull/408), merged 2026-08-11:
+[`m8_8_reproduction_protocol.md`](../findings/m8_8_reproduction_protocol.md) and
+[`m8_8_construction_packet.json`](../data/m8_8_construction_packet.json). The merge is not the
+freeze: § 12 binds from the § 8 lock commit, which has not been made.
+
+**Maintainer verification, run independently of the packet audit.** The review rebuilt the
+complex from the group packet and the construction packet alone: the 120-element closure from the
+two packet generators, the enumeration digest reproduced from the declared sort key, `d2` against
+the Fox jacobian of the two declared relators, `d d = 0` over `Z[2I]`, the augmented homology, the
+exact ranks, and exact maximal minors of determinant ±1 in all three degrees. 35 gates, each
+mutation-tested so a green result is not a check that cannot fail. No torsion value was computed
+or evaluated at any point, so nothing in the review can become target material in the base the
+clean room opens from.
+
+**The § 9 gap, and its fix.** The universal-cover gate stated its conclusion in all four degrees
+while naming an establishment procedure covering degree 2 alone (`im d3 = ker d2`), leaving
+degrees 0 and 1 resting on the exact ranks, which are the rational statement the row itself warns
+is blind to finite index. The gap is reachable. Scaling one row of `d2` and the COMPLEMENTARY
+column of `d3` by the central non-unit `2 - z` preserves `d3 d2 = 0` (each term of the two-term
+product picks up exactly one factor), has augmentation 1 so nothing computed through `eps` moves,
+and acts invertibly on every irrep, so it passes every model gate as written while `H1(C_*)`
+acquires order `3^60`, the determinant of multiplication by `2 - z` on `Z[2I]`. The merged gate
+now requires an exact saturation certificate for `im d1`, `im d2` and `im d3`.
+
+**What the existing audit already rejects.** Run against that mutant,
+[`m8_8_packet_audit.py`](../scripts/m8_8_packet_audit.py) FAILS A10 (each `d2` row must be the Fox
+jacobian of its declared relator) and PASSES A11, so the maintainer side already catches this
+construction, by provenance rather than by lattice certificate. An A12 mirroring the widened § 9
+in `im d1` and `im d2` is available hardening, not a repair.
+
+Two further changes landed. § 4.4's `convention_map` row, whose "the evaluation convention"
+phrasing had produced a real defect, now names four explicit items and states that the § 4.2
+basing reference and the `basing.evaluation` declaration are distinct, neither substituting for
+the other. And a new § 4 paragraph makes implementer ineligibility permanent for any context
+exposed to the target-source records or to the answer packet, no teardown or fresh prompt
+restoring it.
+
+**Open at landing**, all inside the pre-lock window where in-place edits are still legal:
+
+| Item | State |
+| --- | --- |
+| § 11 pins | five read `[PIN at landing]`; four are maintainer-derivable and were supplied at review, the answer-packet hash being the author's to record |
+| § 10.3 packaging | "one document, one merge", with the audit artifact entering the same pull request at step 9, no longer fits: the audit landed ahead of the protocol and the protocol has now merged, so the run's later commits need a stated home |
+| § 5.5 separation | confirmed at review rather than deferred to it: the `(dim, chi(s), chi(t), chi(st))` row signature separates all nine irreps, with `chi(t)` load-bearing (7 of 9 without it) and margin on the other two |
+
 ## DEVIATIONS LOG
 
 (none)
