@@ -55,5 +55,30 @@ openwave = [
     "LICENSE",
 ]
 
+[tool.pytest.ini_options]
+minversion = "8.0"
+
+# A bare `pytest` runs the maintained suite only. Without this, collection walked the whole
+# tree and picked up research sandboxes and dev_docs demo scripts: 27 tests from a single
+# scratch file, 70 seconds of collection spent importing taichi and GGUI demos, and one
+# module that imports pyautogui at module level (which fails on any headless runner and can
+# move the pointer on a desktop one).
+testpaths = ["tests"]
+
+# norecursedirs REPLACES pytest's defaults rather than extending them, so the standard
+# entries are repeated here. Patterns match a directory's basename, not its full path, so
+# "research" covers every xperiments/*/research/ at once.
+norecursedirs = [
+    ".*",
+    "*.egg",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "dev_docs",
+    "research",
+    "_archives",
+]
+
 [tool.black]
 line-length = 99
