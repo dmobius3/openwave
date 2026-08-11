@@ -575,13 +575,12 @@ evidentiary machinery does not stay fluid during the run.
 1. The maintainer records the CONTENT COMMIT: this protocol, the group-packet re-audit,
    the construction packet, the frozen SHA-256 of the maintainer-side construction-audit
    artifact, and the answer packet's hash. The audit ARTIFACT and the full citation stay
-   outside the room per § 4.2 and enter the pull request at step 9; committing them here
+   outside the room per § 4.2 and are published with the adjudication evidence at step 9; committing them here
    would place them in the base the room opens from.
 2. The maintainer records the LOCK COMMIT: a separate manifest naming the content commit,
    every packet and audit hash, and the clean-room base. **A commit cannot contain its own
    hash**, so the lock manifest, never this file, carries the commit identifiers. From the
-   lock commit the addenda-only rule of § 12 binds, whether or not the pull request has
-   merged. Any rebase, force-push or other history rewrite after the lock VOIDS the freeze
+   lock commit the addenda-only rule of § 12 binds, whether or not anything has merged. Any rebase, force-push or other history rewrite after the lock VOIDS the freeze
    and requires a new lock record and a clean-room restart; if the merge strategy could
    rewrite history, both commits are preserved through a durable tag or release object.
 3. The clean room opens from exactly the lock commit; the protocol text frozen by the
@@ -698,7 +697,7 @@ it carries no guarantee, and no ordering of merges establishes or defeats anythi
 document. **Nothing in this paragraph alters the ordering requirements of § 8**, which are
 frozen and which govern the order the work is DONE in.
 
-**The § 8 lock commit is the SOLE freeze boundary, and the merge event is not a boundary at
+**The § 8 lock commit is the SOLE freeze boundary, and merge events are not boundaries at
 all.** Binding is by the hash commitments and manifests § 8 requires, not by pull-request or
 merge co-location. Any protocol change AFTER the lock commit is a dated § 12 addendum, and any
 protocol change before it is an ordinary in-place edit, in both cases whatever the merge
@@ -718,8 +717,9 @@ history looks like.
 
 ## 12. Addenda (post-freeze only)
 
-From the § 8 lock commit this document is FROZEN; the merge records the freeze, it does
-not create it. Changes enter only as dated addenda in this section,
+From the § 8 lock commit this document is FROZEN. The lock commit and its LOCK MANIFEST
+record the freeze boundary; repository merge events neither create nor alter it.
+Changes enter only as dated addenda in this section,
 never in place. An in-place edit is a breach of the freeze, and the pinned paths of § 11 may
 not move.
 
