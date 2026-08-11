@@ -1,0 +1,13 @@
+{"J": 133.10472858194973, "bound": 0.01, "E_total": 196.71259922961278, "omega_star": 0.39274482702781954, "E_positive": true, "at_bound": true}
+{"J": 133.10472858194973, "bound": 0.02, "E_total": 33.249861628995276, "omega_star": 0.2771170512550039, "E_positive": true, "at_bound": true}
+{"J": 133.10472858194973, "bound": 0.05, "E_total": -456.4572807161376, "omega_star": 0.36267651741426354, "E_positive": false, "at_bound": true}
+{"J": 133.10472858194973, "bound": 0.15, "E_total": -1281.3043549388706, "omega_star": 0.4120786790727044, "E_positive": false, "at_bound": true}
+{"J": 133.10472858194973, "bound": 0.5, "E_total": -2572.288854054201, "omega_star": 0.37423568594888207, "E_positive": false, "at_bound": true}
+{"J": 133.10472858194973, "bound": 2.0, "E_total": -3724.581664004543, "omega_star": 0.8641681963821654, "E_positive": false, "at_bound": false}
+{"J": 332.7618214548743, "bound": 0.01, "E_total": 297.59871183153683, "omega_star": 0.6671379761011327, "E_positive": true, "at_bound": true}
+{"J": 332.7618214548743, "bound": 0.02, "E_total": 119.17992564671401, "omega_star": 0.5915216990116788, "E_positive": true, "at_bound": true}
+{"J": 332.7618214548743, "bound": 0.05, "E_total": -341.2605124513705, "omega_star": 0.7104142510927155, "E_positive": false, "at_bound": true}
+{"J": 332.7618214548743, "bound": 0.15, "E_total": -1160.6289108014107, "omega_star": 0.8171725207365568, "E_positive": false, "at_bound": true}
+{"J": 332.7618214548743, "bound": 0.5, "E_total": -2443.5156912229436, "omega_star": 0.9209477254635766, "E_positive": false, "at_bound": true}
+{"J": 332.7618214548743, "bound": 2.0, "E_total": -3828.705528296521, "omega_star": 1.2948321807210614, "E_positive": false, "at_bound": false}
+{"done": true, "runtime_s": 1231.1}

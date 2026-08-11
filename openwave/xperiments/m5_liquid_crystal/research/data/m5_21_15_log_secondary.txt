@@ -1,0 +1,21 @@
+{"tag": "s+1_g32_clock", "omega": 0.0, "E_env": -3901.8183535951002, "kin_tot": -21.19680517924752, "at_bound": false}
+{"tag": "s+1_g32_clock", "omega": 0.05, "E_env": -4193.688737932947, "kin_tot": -15.186488408440596, "at_bound": false}
+{"tag": "s+1_g32_clock", "omega": 0.1, "E_env": -4193.582505332108, "kin_tot": -16.496774233547512, "at_bound": false}
+{"tag": "s+1_g32_clock", "omega": 0.2, "E_env": -4194.282097058237, "kin_tot": -20.35653722357165, "at_bound": false}
+{"tag": "s+1_g32_clock", "omega": 0.4, "E_env": -4197.17898821003, "kin_tot": -37.77652178566393, "at_bound": false}
+{"tag": "s+1_g32_clock", "omega": 0.8, "E_env": -4221.357947943489, "kin_tot": -76.0099850028841, "at_bound": true}
+{"tag": "s+1_g32_clock", "omega": 1.2, "E_env": -5969.07461933542, "kin_tot": -7037.296245468899, "at_bound": false}
+{"tag": "s+1_g32_clock", "omega": 1.6, "E_env": -16943.890567013248, "kin_tot": -12495.906100238084, "at_bound": false}
+{"tag": "s+1_g32_clock", "omega": 2.0, "E_env": -39633.05983872057, "kin_tot": -19582.789377419165, "at_bound": false}
+{"tag": "s+1_g32", "minkin_clock": -763091465.046413}
+{"tag": "s-1_g8_clock", "omega": 0.0, "E_env": -3530.730242279306, "kin_tot": 173.61796989098528, "at_bound": true}
+{"tag": "s-1_g8_clock", "omega": 0.05, "E_env": -3530.284896575723, "kin_tot": 174.08381116847164, "at_bound": true}
+{"tag": "s-1_g8_clock", "omega": 0.1, "E_env": -3528.981615281276, "kin_tot": 174.0716725840798, "at_bound": true}
+{"tag": "s-1_g8_clock", "omega": 0.2, "E_env": -3523.7370303678917, "kin_tot": 173.67898478988857, "at_bound": true}
+{"tag": "s-1_g8_clock", "omega": 0.4, "E_env": -3532.58464903796, "kin_tot": -128.5253541836904, "at_bound": true}
+{"tag": "s-1_g8_clock", "omega": 0.8, "E_env": -4175.030257618868, "kin_tot": -2767.403849862904, "at_bound": true}
+{"tag": "s-1_g8_clock", "omega": 1.2, "E_env": -7743.587527025919, "kin_tot": -6389.102643619211, "at_bound": true}
+{"tag": "s-1_g8_clock", "omega": 1.6, "E_env": -18336.567519715845, "kin_tot": -13136.700913013361, "at_bound": false}
+{"tag": "s-1_g8_clock", "omega": 2.0, "E_env": -42911.836087063195, "kin_tot": -21827.402777588748, "at_bound": false}
+{"tag": "s-1_g8", "minkin_clock": -49457229.74258285}
+{"done": true, "runtime_s": 2089.0}

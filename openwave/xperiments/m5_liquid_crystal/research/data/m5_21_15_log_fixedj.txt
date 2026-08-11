@@ -1,0 +1,18 @@
+{"kin_base_clock": 332.7618214548743, "E_base_u": 470.5399951084214}
+{"EJ": {"J": 66.55236429097486, "E_total": -4114.020575778159, "omega_star": 0.7716590031828807, "kin_tot": 43.12291051906652, "E_positive": false, "at_bound": false}}
+{"EJ": {"J": 133.10472858194973, "E_total": -4057.2968166381993, "omega_star": 0.9466180868473837, "kin_tot": 70.3054011070302, "E_positive": false, "at_bound": false}}
+{"EJ": {"J": 332.7618214548743, "E_total": -3829.8815675187493, "omega_star": 1.3079012723663364, "kin_tot": 127.21213308892226, "E_positive": false, "at_bound": false}}
+{"EJ": {"J": 665.5236429097486, "E_total": -3313.8831232977222, "omega_star": 1.783381640680543, "kin_tot": 186.59035949696752, "E_positive": false, "at_bound": false}}
+{"EJ": {"J": 998.2854643646228, "E_total": -2647.8372508722796, "omega_star": 2.2356864437659048, "kin_tot": 223.26151038494015, "E_positive": false, "at_bound": false}}
+{"FOM": {"omega": 0.15, "E_over_base": -3816.7387697421805, "feasible": false}}
+{"FOM": {"omega": 0.2, "E_over_base": -3733.0313900972437, "feasible": false}}
+{"FOM": {"omega": 0.3, "E_over_base": -3669.2144441832343, "feasible": false}}
+{"FOM": {"omega": 0.4, "E_over_base": -3717.0889594987952, "feasible": false}}
+{"FOM": {"omega": 0.5, "E_over_base": -3850.858631141824, "feasible": false}}
+{"FOM": {"omega": 0.65, "E_over_base": -4084.6406791636655, "feasible": false}}
+{"FOM": {"omega": 0.8, "E_over_base": -4218.03718025513, "feasible": false}}
+{"FOM": {"omega": 1.0, "E_over_base": -4289.577708870156, "feasible": false}}
+{"FOM": {"omega": 1.25, "E_over_base": -4311.114359265154, "feasible": false}}
+{"FOM": {"omega": 1.5, "E_over_base": -4302.7447682726215, "feasible": false}}
+{"LAT": {"E_corr_lattice": -130.30525162644363, "kin_corr_lattice": -201.27952004578253, "kin_base_lattice": 426.5070121483972, "E_rel_dev": 0.9711588430826779, "kin_rel_dev": 0.020774384792873347, "gates": {"E": false, "kin": true}}}
+{"done": true, "runtime_s": 2629.4}

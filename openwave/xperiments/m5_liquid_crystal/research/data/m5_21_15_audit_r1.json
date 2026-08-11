@@ -1,0 +1,241 @@
+{
+ "task": "M5.21.15 adversarial audit round 1",
+ "auditor": "independent second agent",
+ "date": "2026-08-11",
+ "verdicts": {
+  "C1": {
+   "verdict": "CONFIRMED",
+   "reasoning": "The augmented energy is exactly E_stat + omega^2 * kin: a degree-4 fit leaves relative non-quadratic content 5.6e-15 (direct residual exactly 0); the auditor's independent time-sector energy (4 sum_i <comm_eta(Mdot, A_i)>^2 with Mdot = omega a0) matches omega^2 * kin_of to 1.8e-16; the naive extra F_0i pieces d_t A_i - d_i A_0 cancel identically on the lattice (relative residual 1.2e-13, pure rounding) because A_mu = d_mu M is a pure gradient in (x, t). kin rebuilt by the catalog recipe is invariant along an eta-preserving ROTATION orbit to 2.8e-16 and E_stat is orbit-invariant to 0.0e+00. NUANCE, not a refutation: along a BOOST orbit the unit-Frobenius normalization is not invariant (normalized-kin spread 2.21e-01 vs un-normalized 2.1e-15), so the boost-channel kin number depends on the orbit point through the normalization convention; within any single rung a0 is frozen, so exact quadraticity in omega is unaffected.",
+   "key_numbers": {
+    "direct_residual_max": 0.0,
+    "fit_coeffs_c0_to_c4": [
+     -5.1160093000397746e-15,
+     -1.1894743413900964e-13,
+     21.331710812167668,
+     -1.0295536857380231e-13,
+     -6.185934054231398e-14
+    ],
+    "beyond_quadratic_rel": 5.576085068205673e-15,
+    "own_formula_vs_kin_of_rel": 1.827666616978422e-16,
+    "mixed_partial_residual_rel": 1.2020673002746498e-13,
+    "rot_orbit_thetas": [
+     0.0,
+     0.4,
+     1.1,
+     2.0
+    ],
+    "rot_orbit_kin_normalized": [
+     102.24174536032528,
+     102.24174536032531,
+     102.24174536032528,
+     102.24174536032531
+    ],
+    "rot_orbit_kin_spread_rel": 2.7798537016596155e-16,
+    "rot_orbit_kin_unnorm_spread_rel": 4.055992728392336e-16,
+    "rot_orbit_Estat_spread_rel": 0.0,
+    "boost_orbit_kin_normalized": [
+     -2.521484895310559,
+     -2.440336604410722,
+     -2.009093467024243
+    ],
+    "boost_orbit_kin_norm_spread_rel": 0.22051255713087567,
+    "boost_orbit_kin_unnorm_spread_rel": 2.05056142633083e-15
+   }
+  },
+  "C2": {
+   "verdict": "CONFIRMED",
+   "reasoning": "Proof audit: for each fixed configuration M the map u -> E_stat(M) + u kin(M) is affine, hence concave; a pointwise infimum of concave functions over ANY index set is concave (E*(t u1 + (1-t) u2) = inf_M [t f_M(u1) + (1-t) f_M(u2)] >= t E*(u1) + (1-t) E*(u2)), with no attainment, compactness, or continuity assumption; this survives a0 = a0(M) and dressed b(r) configurations because kin(M, a0(M)) is still a single number per configuration, and even a multi-valued a0 choice only enlarges the affine family. Non-attainment / runaway to -infinity keeps concavity in the extended-real sense (the finiteness set is an interval) and cannot create an interior minimum. A concave function has no strict interior local minimum (f(u0) >= min(f(a), f(b)) with strict slack gives a contradiction), and u = omega^2 is a monotone bijection on omega > 0, so no strict interior omega-minimum at omega > 0; differentiable interior stationary points of a concave function are global maxima or lie on a flat affine segment. Numerical demo: envelope of 400 random affine functions has max second difference 3.6e-15 (concave) with argmin on the boundary. SCOPE CAVEAT (already flagged by the task itself): the theorem constrains the TRUE envelope E*; a finite-iteration measured ladder is only an upper bound and may show any shape, so the theorem cannot be used to certify measured curves, only to interpret them.",
+   "key_numbers": {
+    "n_affine": 400,
+    "max_second_difference": 3.552713678800501e-15,
+    "concave_numerically": true,
+    "envelope_argmin_at_boundary": true
+   }
+  },
+  "C3": {
+   "verdict": "CONFIRMED",
+   "reasoning": "Independent recomputation from m5_21_3_all.json: both p2 blocks have 4 rotation channels all kin > 0 and 2 boost channels all kin < 0; both p3 boost_z ladders are strictly decreasing in E with every post-reference rung stop == max_iter; the slopes dE/du between consecutive rungs increase strictly monotonically in both blocks (s+1: -31.10 -> -0.198; s-1: -52.01 -> -0.255). Every number and flag matches the baseline RECORD to better than 1e-12 relative (0 mismatches). Internal consistency E = E_u + E_v + omega^2 kin holds per rung to 0.0e+00 (s+1) and 0.0e+00 (s-1).",
+   "key_numbers": {
+    "mismatches_vs_RECORD": []
+   },
+   "recomputed": {
+    "s+1": {
+     "n_rot": 4,
+     "n_boost": 2,
+     "rot_kin_all_positive": true,
+     "boost_kin_all_negative": true,
+     "ladder_monotone_decreasing": true,
+     "all_rungs_max_iter": true,
+     "rung0_stop": "ref",
+     "u_slopes": [
+      -31.098687434496945,
+      -9.408988916221023,
+      -2.201365208859377,
+      -0.5681188447115588,
+      -0.19790363721864376
+     ],
+     "u_slopes_increasing": true,
+     "E_decomposition_max_absdev": 0.0
+    },
+    "s-1": {
+     "n_rot": 4,
+     "n_boost": 2,
+     "rot_kin_all_positive": true,
+     "boost_kin_all_negative": true,
+     "ladder_monotone_decreasing": true,
+     "all_rungs_max_iter": true,
+     "rung0_stop": "ref",
+     "u_slopes": [
+      -52.011681956048854,
+      -15.324045593457566,
+      -3.4527399988329908,
+      -0.833583743263011,
+      -0.2552357817302823
+     ],
+     "u_slopes_increasing": true,
+     "E_decomposition_max_absdev": 0.0
+    }
+   }
+  },
+  "C4": {
+   "verdict": "CONFIRMED",
+   "reasoning": "Evenness measured on ExactCorr (make_grid(32, 6, 12), s = -1, g = 32): plateau profile E_corr absdiff 0.000e+00 (rel 0.0e+00), kin_corr absdiff 0.000e+00; asymmetric multi-bump profile E_corr absdiff 0.000e+00 (rel 0.0e+00), kin_corr absdiff 0.000e+00. Auditor derivation of WHY it is exact: Qb(-b) = eta Qb(b) eta (verified to 0.0e+00), the base config and a0 are block diagonal (eta-even), and both densities are invariant under global conjugation by eta, so the b -> -b field is the eta-conjugate of the +b field pointwise and every integral coincides; in IEEE arithmetic the sign flips are exact, making the evenness bitwise. Since b_of is linear in avec, f(-avec) = f(avec) for the full coefficient vector, so every directional derivative at avec = 0 vanishes: measured central-difference gradient at zero, max |dE_corr/da| = 0.0e+00, max |dkin_corr/da| = 0.0e+00. The stationary-at-zero claim survives.",
+   "key_numbers": {
+    "plateau": {
+     "E_corr_plus": -105.61821779568395,
+     "E_corr_minus": -105.61821779568395,
+     "E_corr_absdiff": 0.0,
+     "E_corr_reldiff": 0.0,
+     "kin_corr_plus": -400.52739910257066,
+     "kin_corr_minus": -400.52739910257066,
+     "kin_corr_absdiff": 0.0,
+     "kin_corr_reldiff": 0.0
+    },
+    "asym_multibump": {
+     "E_corr_plus": -231.78544965864754,
+     "E_corr_minus": -231.78544965864754,
+     "E_corr_absdiff": 0.0,
+     "E_corr_reldiff": 0.0,
+     "kin_corr_plus": -48.05131789233678,
+     "kin_corr_minus": -48.05131789233678,
+     "kin_corr_absdiff": 0.0,
+     "kin_corr_reldiff": 0.0
+    },
+    "grad_at_zero_E_corr_max": 0.0,
+    "grad_at_zero_kin_corr_max": 0.0,
+    "Qb_minus_eq_etaQbeta_maxdev": 0.0
+   }
+  },
+  "C5": {
+   "verdict": "PARTIAL",
+   "reasoning": "The Legendre/Routhian algebra is CORRECT: with T = kin omega^2, J = dT/domega = 2 kin omega (checked to 3.7e-11), T = J^2/(4 kin) (identity to 0.0e+00), omega* = J/(2 kin), and on a smooth positive-kin toy family the envelope satisfies dE/dJ = omega* to 1.5e-09. No sign or factor errors. BUT the claimed MECHANISM has a precise loophole: J^2/(4 kin) penalizes only SMALL POSITIVE kin (+inf as kin -> 0+, a genuine barrier protecting the kin > 0 branch against continuous descent); on the negative-kin branch the same term is an unbounded REWARD (-inf as kin -> 0-, demonstrated: E = 1 + 1/(4 kin) = -2.5e5 at kin = -1e-6), so the global fixed-J infimum over any configuration set that reaches kin < 0 is -infinity and the fixed-J minimum is only well defined as a BRANCH-RESTRICTED minimum; a global search, a disconnected family, or a jump across kin = 0 lands on the runaway side. In the code this restriction is enforced by the hard KIN_FLOOR = 1.0 barrier, so the floor, not the J^2/(4 kin) term alone, carries the structural guarantee. Live-family probe (clock channel, modest grid, |a| <= 2): kin_base = 346.1; 1-D scans along the plateau and bump-3 coefficients reach min kin_tot = -5.703e+06 and -1.628e+04; below-zero reached: True / True. So even 1-D slices of the guarded family cross kin_tot = 0 well inside the trust region (plateau slice already below |a| = 0.25, bump-3 slice between 0.25 and 0.5): the loophole is LIVE in the actual family and the code's KIN_FLOOR barrier is doing real structural work. The claim should be stated as branch-restricted: fixed J protects only the kin > 0 branch, and only against CONTINUOUS descent through kin = 0+.",
+   "key_numbers": {
+    "J_eq_dT_domega_rel": 3.742267084151851e-11,
+    "T_eq_J2_over_4kin_rel": 0.0,
+    "omega_recovery_rel": 0.0,
+    "dEdJ_vs_omega_star_rel": 1.4810076492231117e-09,
+    "fixedJ_at_kin_plus": [
+     26.0,
+     2501.0,
+     250001.0
+    ],
+    "fixedJ_at_kin_minus": [
+     -24.0,
+     -2499.0,
+     -249999.0
+    ],
+    "kin_base_clock_modest_grid": 346.13710331759137,
+    "family_scans": {
+     "plateau_a0": {
+      "amps": [
+       -2.0,
+       -1.75,
+       -1.5,
+       -1.25,
+       -1.0,
+       -0.75,
+       -0.5,
+       -0.25,
+       0.0,
+       0.25,
+       0.5,
+       0.75,
+       1.0,
+       1.25,
+       1.5,
+       1.75,
+       2.0
+      ],
+      "kin_tot": [
+       -5702705.118516607,
+       -3390818.5397457415,
+       -1983182.1011495646,
+       -1127234.8369613995,
+       -608959.6612225529,
+       -299011.49934404047,
+       -120187.44321515237,
+       -28027.793478329906,
+       346.13710331759137,
+       -28027.793478329906,
+       -120187.44321515237,
+       -299011.49934404047,
+       -608959.6612225529,
+       -1127234.8369613995,
+       -1983182.1011495646,
+       -3390818.5397457415,
+       -5702705.118516607
+      ],
+      "min_kin_tot": -5702705.118516607,
+      "reaches_below_floor": true,
+      "reaches_below_zero": true
+     },
+     "bump_a3": {
+      "amps": [
+       -2.0,
+       -1.75,
+       -1.5,
+       -1.25,
+       -1.0,
+       -0.75,
+       -0.5,
+       -0.25,
+       0.0,
+       0.25,
+       0.5,
+       0.75,
+       1.0,
+       1.25,
+       1.5,
+       1.75,
+       2.0
+      ],
+      "kin_tot": [
+       -16283.627684102712,
+       -11875.107502044744,
+       -8318.496995387197,
+       -5491.750136975476,
+       -3298.579320819043,
+       -1664.765627796431,
+       -535.3234622664515,
+       127.59461555509455,
+       346.13710331759137,
+       127.59461555509455,
+       -535.3234622664515,
+       -1664.765627796431,
+       -3298.579320819043,
+       -5491.750136975476,
+       -8318.496995387197,
+       -11875.107502044744,
+       -16283.627684102712
+      ],
+      "min_kin_tot": -16283.627684102712,
+      "reaches_below_floor": true,
+      "reaches_below_zero": true
+     }
+    },
+    "kin_floor_in_code": 1.0
+   }
+  }
+ },
+ "runtime_s": 0.6
+}

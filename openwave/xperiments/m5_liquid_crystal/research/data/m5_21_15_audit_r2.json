@@ -1,0 +1,612 @@
+{
+ "task": "M5.21.15 adversarial audit round 2 (run data)",
+ "auditor": "independent second agent",
+ "date": "2026-08-11",
+ "E_base_recomputed": 470.5399951084214,
+ "verdicts": {
+  "D1": {
+   "verdict": "PARTIAL",
+   "reasoning": "STRUCTURAL CLAIM CONFIRMED, NOISE WORDING CORRECTED. Row consistency (E_env = E_corr + u kin_tot, J = 2 omega kin_tot) and the stored u-slopes reproduce exactly in all 5 ladders. Across the 5 ladders the auditor finds 2 chord violation(s) of concavity, the largest 218.9 energy units; the only interior-minimum candidate is the flagged s+1 rung at omega = 0.05 (depth 0.106, 2.5e-5 of the local |E| = 4194, exactly as the record states). The refined envelope built from the run's OWN stored configs (each rung's (E_corr, kin_tot) line evaluated at every u; concave by construction) dominates the measured ladder everywhere, has NO interior minimum in any block, and absorbs every violation: each interior-minimum depth is below its block's measured under-convergence. So no measured wiggle is evidence of a true interior minimum; the concavity theorem's prediction survives the data. CORRECTION to the 'noise-level' wording: the s+1 omega = 0 rung sits 291.8 energy units above the family's own better config (7.0e-2 of scale), a warm-start convergence failure, far above the record's stated ~0.02 optimizer noise; the apparent 'interior minimum' is entirely this one under-converged reference rung, not scatter of the scanned rungs. The g8 slope wiggle (+1.05 slope increment) and the g8 interior MAXIMUM are noise-scale and concavity-compatible respectively, as claimed.",
+   "key_numbers": {
+    "main_s-1_g32:clock": {
+     "row_consistency": {
+      "E_env_max_absdev": 0.0,
+      "kin_tot_max_absdev": 0.0,
+      "J_max_absdev": 0.0
+     },
+     "slopes_recomputed": [
+      8.229955726710612,
+      -5.174170531366446,
+      -13.745710197872537,
+      -24.460115827059777,
+      -52.74608701379861,
+      -3842.4157200237855,
+      -9145.34091110771,
+      -14982.656200187335
+     ],
+     "slopes_vs_stored_maxdev": 0.0,
+     "chord_violations": [],
+     "interior_min_candidates": [],
+     "slope_increments_positive": [],
+     "under_convergence_per_rung": [
+      0.0,
+      0.0640739322252557,
+      0.15576478196453536,
+      0.2653819909273807,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "max_under_convergence": 0.2653819909273807,
+     "refined_interior_min": false,
+     "refined_max_slope_increment": 1.212647759984975e-10,
+     "stored_flags": {
+      "concave_certified": true,
+      "interior_minimum_found": false,
+      "monotone": "mixed"
+     }
+    },
+    "main_s-1_g32:rot_z": {
+     "row_consistency": {
+      "E_env_max_absdev": 0.0,
+      "kin_tot_max_absdev": 0.0,
+      "J_max_absdev": 0.0
+     },
+     "slopes_recomputed": [
+      -9690.796634033903,
+      -11413.860553065022,
+      -12749.146506955849,
+      -13436.589675585428,
+      -13717.852788494964,
+      -13805.20789456103,
+      -13831.204924260432,
+      -13843.546499333146
+     ],
+     "slopes_vs_stored_maxdev": 0.0,
+     "chord_violations": [],
+     "interior_min_candidates": [],
+     "slope_increments_positive": [],
+     "under_convergence_per_rung": [
+      0.0,
+      0.5536500756470559,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "max_under_convergence": 0.5536500756470559,
+     "refined_interior_min": false,
+     "refined_max_slope_increment": -12.341575072714477,
+     "stored_flags": {
+      "concave_certified": true,
+      "interior_minimum_found": false,
+      "monotone": "decreasing"
+     }
+    },
+    "main_s-1_g32:boost_z": {
+     "row_consistency": {
+      "E_env_max_absdev": 0.0,
+      "kin_tot_max_absdev": 0.0,
+      "J_max_absdev": 0.0
+     },
+     "slopes_recomputed": [
+      -1807315.9303514624,
+      -3419826.6489500627,
+      -3479226.254422469,
+      -3479226.254422469,
+      -3479226.254422469,
+      -3479226.254422469,
+      -3479226.2544224695,
+      -3479226.2544224695
+     ],
+     "slopes_vs_stored_maxdev": 0.0,
+     "chord_violations": [],
+     "interior_min_candidates": [],
+     "slope_increments_positive": [],
+     "under_convergence_per_rung": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "max_under_convergence": 0.0,
+     "refined_interior_min": false,
+     "refined_max_slope_increment": 0.0,
+     "stored_flags": {
+      "concave_certified": true,
+      "interior_minimum_found": false,
+      "monotone": "decreasing"
+     }
+    },
+    "s+1_g32:clock": {
+     "row_consistency": {
+      "E_env_max_absdev": 0.0,
+      "kin_tot_max_absdev": 0.0,
+      "J_max_absdev": 0.0
+     },
+     "slopes_recomputed": [
+      -116748.15373513881,
+      14.164346778610097,
+      -23.31972420430853,
+      -24.140759598276414,
+      -50.37283277803983,
+      -2184.6458392399136,
+      -9798.942810426626,
+      -15756.367549796756
+     ],
+     "slopes_vs_stored_maxdev": 0.0,
+     "chord_violations": [
+      {
+       "omega": 0.05,
+       "depth": 218.929346403595,
+       "rel_localE": 0.05220448156376632
+      }
+     ],
+     "interior_min_candidates": [
+      {
+       "omega": 0.05,
+       "depth": 0.10623260083957575,
+       "rel_localE": 2.5331541627940986e-05
+      }
+     ],
+     "slope_increments_positive": [
+      {
+       "between_omegas": [
+        0.0,
+        0.1
+       ],
+       "delta_slope": 116762.31808191742
+      }
+     ],
+     "under_convergence_per_rung": [
+      291.8324181168264,
+      0.0,
+      0.22013126390356774,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "max_under_convergence": 291.8324181168264,
+     "refined_interior_min": false,
+     "refined_max_slope_increment": -2.425331047106738e-10,
+     "stored_flags": {
+      "concave_certified": false,
+      "interior_minimum_found": true,
+      "monotone": "mixed"
+     }
+    },
+    "s-1_g8:clock": {
+     "row_consistency": {
+      "E_env_max_absdev": 0.0,
+      "kin_tot_max_absdev": 0.0,
+      "J_max_absdev": 0.0
+     },
+     "slopes_recomputed": [
+      178.13828143316638,
+      173.77083925960804,
+      174.8194971128062,
+      -73.73015558390154,
+      -1338.4283512102245,
+      -4460.696586758815,
+      -9458.017850616,
+      -17066.158727324553
+     ],
+     "slopes_vs_stored_maxdev": 0.0,
+     "chord_violations": [
+      {
+       "omega": 0.1,
+       "depth": 0.006291947118825192,
+       "rel_localE": 1.7829356468108704e-06
+      }
+     ],
+     "interior_min_candidates": [],
+     "slope_increments_positive": [
+      {
+       "between_omegas": [
+        0.05,
+        0.2
+       ],
+       "delta_slope": 1.048657853198165
+      }
+     ],
+     "under_convergence_per_rung": [
+      0.0,
+      0.011300778855456883,
+      0.012447299120140087,
+      0.04849311577481785,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "max_under_convergence": 0.04849311577481785,
+     "refined_interior_min": false,
+     "refined_max_slope_increment": 0.0,
+     "stored_flags": {
+      "concave_certified": false,
+      "interior_minimum_found": false,
+      "monotone": "mixed"
+     }
+    }
+   }
+  },
+  "D2": {
+   "verdict": "CONFIRMED",
+   "reasoning": "Arithmetic verified: kin_target = J/(2 omega), E_total = E_base + E_corr + omega^2 kin_tot, mismatch and feasibility flags all reproduce (max dev 0.0e+00). The feasible rungs (omega = 0.50..0.62) have an interior minimum at omega = 0.59, E_total = +115.90, matching the EJ prediction omega* = 0.5915 within the 0.03 scan step. Sign robustness: the 1.9 percent constraint mismatch bounds the energy shift by omega^2 |kin_tot - kin_target| <= 2.04 on the feasible rungs, so worst-case E_min = 113.9 > 0; the alternative on-shell bookkeeping E_base + E_corr + J^2/(4 kin_tot) gives +119.6 at the minimum (spread 3.7, both positive, and consistent with the EJ value +119.2). The infeasible-flagged rungs cannot hide a lower minimum: even shifted fully in their favor, 0.66 gives 120.5 and 0.70 gives 125.6, both above the shifted minimum 117.9. CAVEAT on LOCATION (not sign): the neighbor gaps at the minimum (1.75 left, 2.28 right) are comparable to the 2.04 mismatch shift, so the minimum's location is pinned only to omega = 0.59 +- one 0.03 step; its existence, interiority, and positive sign are robust.",
+   "key_numbers": {
+    "arithmetic_max_dev": {
+     "kin_target": 0.0,
+     "E_total": 0.0,
+     "mismatch": 0.0
+    },
+    "feasible_flags_ok": true,
+    "feasible_omegas": [
+     0.5,
+     0.53,
+     0.56,
+     0.59,
+     0.62
+    ],
+    "feasible_E_totals": [
+     212.59946205788384,
+     126.87833357101208,
+     117.64994761637944,
+     115.89712898994063,
+     118.17478302150134
+    ],
+    "interior_minimum": true,
+    "omega_min": 0.59,
+    "E_min": 115.89712898994063,
+    "EJ_anchor": {
+     "omega_star": 0.5915216990116788,
+     "E_total": 119.17992564671401,
+     "omega_gap": 0.0015216990116788676,
+     "scan_step": 0.03,
+     "match_within_step": true
+    },
+    "per_row": [
+     {
+      "omega": 0.48,
+      "E_total": 493.14492908046594,
+      "shift_bound": 3.2623527964430745,
+      "E_alt_onshell": 499.80857564557164,
+      "feasible": false
+     },
+     {
+      "omega": 0.5,
+      "E_total": 212.59946205788384,
+      "shift_bound": 1.5922840202990187,
+      "E_alt_onshell": 215.81510148598431,
+      "feasible": true
+     },
+     {
+      "omega": 0.53,
+      "E_total": 126.87833357101208,
+      "shift_bound": 1.5308312948174554,
+      "E_alt_onshell": 129.96704077713554,
+      "feasible": true
+     },
+     {
+      "omega": 0.56,
+      "E_total": 117.64994761637944,
+      "shift_bound": 1.6205834419185448,
+      "E_alt_onshell": 120.91980060046438,
+      "feasible": true
+     },
+     {
+      "omega": 0.59,
+      "E_total": 115.89712898994063,
+      "shift_bound": 1.8193846983196227,
+      "E_alt_onshell": 119.57025562945759,
+      "feasible": true
+     },
+     {
+      "omega": 0.62,
+      "E_total": 118.17478302150134,
+      "shift_bound": 2.0436409467329497,
+      "E_alt_onshell": 122.30337006853436,
+      "feasible": true
+     },
+     {
+      "omega": 0.66,
+      "E_total": 122.78471490904461,
+      "shift_bound": 2.32337348410786,
+      "E_alt_onshell": 127.48168202240007,
+      "feasible": false
+     },
+     {
+      "omega": 0.7,
+      "E_total": 128.2286273288317,
+      "shift_bound": 2.597241775970703,
+      "E_alt_onshell": 133.48235124820815,
+      "feasible": false
+     }
+    ],
+    "max_shift_feasible": 2.0436409467329497,
+    "E_min_worst_case": 113.85348804320768,
+    "E_min_alt_onshell": 119.57025562945759,
+    "E_min_robustly_positive": true,
+    "infeasible_hidden_min": [
+     {
+      "omega": 0.48,
+      "E_total": 493.14492908046594,
+      "E_best_case": 489.8825762840229,
+      "could_undercut": false
+     },
+     {
+      "omega": 0.66,
+      "E_total": 122.78471490904461,
+      "E_best_case": 120.46134142493675,
+      "could_undercut": false
+     },
+     {
+      "omega": 0.7,
+      "E_total": 128.2286273288317,
+      "E_best_case": 125.63138555286099,
+      "could_undercut": false
+     }
+    ],
+    "location_gaps": {
+     "to_left": 1.7528186264388097,
+     "to_right": 2.277654031560715
+    },
+    "location_resolved": false
+   }
+  },
+  "D3": {
+   "verdict": "CONFIRMED",
+   "reasoning": "Arithmetic verified to 0.0e+00 (E_rot = J^2/(4 kin_tot), E_total = E_base + E_corr + E_rot, omega* = J/(2 kin_tot)). Sign pattern holds at both J: E_total positive at bounds 0.01-0.02, negative from 0.05 up. omega* exceeds the undressed J/(2 kin_base) in every row (equivalently kin_tot < kin_base everywhere). The omega*(guard) non-monotonicity at J = 133 (0.393 -> 0.277 -> 0.363) is NOT under-convergence severe enough to distrust the bracket: the minimized objective E_corr + E_rot IS strictly monotone in the bound at both J (nesting respected), the three minimizers are boundary-pinned with different avec sign patterns, and omega* = J/(2 kin_tot) at the argmin has no monotonicity theorem behind it. Independent re-minimization at the positive edge (bound 0.02) with differential evolution + bounded Nelder-Mead multistart: at J = 133.1 the objective improves by 3.13e-06 (E_total 33.25 vs stored 33.25); at J = 332.8 it improves by 1.71e-06 (E_total 119.18 vs stored 119.18). No sign flip in either case: the [0.02, 0.05] sign bracket survives a stronger minimizer (the negative side can only move further negative under better minimization).",
+   "key_numbers": {
+    "arithmetic_max_dev": 0.0,
+    "per_J": {
+     "J133.10": {
+      "bounds": [
+       0.01,
+       0.02,
+       0.05,
+       0.15,
+       0.5,
+       2.0
+      ],
+      "E_totals": [
+       196.71259922961278,
+       33.249861628995276,
+       -456.4572807161376,
+       -1281.3043549388706,
+       -2572.288854054201,
+       -3724.581664004543
+      ],
+      "omega_stars": [
+       0.39274482702781954,
+       0.2771170512550039,
+       0.36267651741426354,
+       0.4120786790727044,
+       0.37423568594888207,
+       0.8641681963821654
+      ],
+      "objs": [
+       -273.8273958788086,
+       -437.2901334794261,
+       -926.997275824559,
+       -1751.844350047292,
+       -3042.828849162622,
+       -4195.121659112964
+      ],
+      "at_bound": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       false
+      ]
+     },
+     "J332.76": {
+      "bounds": [
+       0.01,
+       0.02,
+       0.05,
+       0.15,
+       0.5,
+       2.0
+      ],
+      "E_totals": [
+       297.59871183153683,
+       119.17992564671401,
+       -341.2605124513705,
+       -1160.6289108014107,
+       -2443.5156912229436,
+       -3828.705528296521
+      ],
+      "omega_stars": [
+       0.6671379761011327,
+       0.5915216990116788,
+       0.7104142510927155,
+       0.8171725207365568,
+       0.9209477254635766,
+       1.2948321807210614
+      ],
+      "objs": [
+       -172.94128327688458,
+       -351.3600694617074,
+       -811.8005075597919,
+       -1631.1689059098321,
+       -2914.055686331365,
+       -4299.245523404943
+      ],
+      "at_bound": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       false
+      ]
+     }
+    },
+    "sign_pattern_ok": true,
+    "omega_star_wall_ok": true,
+    "objective_nesting_monotone": true,
+    "remin": {
+     "bound0.02_J133.1": {
+      "J": 133.10472858194973,
+      "bound": 0.02,
+      "stored_E_total": 33.249861628995276,
+      "stored_omega_star": 0.2771170512550039,
+      "stored_obj_on_opt_grid": -434.58942747630067,
+      "remin_obj_on_opt_grid": -434.58943060953555,
+      "obj_improvement": 3.133234883989644e-06,
+      "remin_E_total_full": 33.24938744636243,
+      "remin_kin_tot_full": 240.2047085448931,
+      "remin_omega_star": 0.2770651944923742,
+      "E_total_delta_vs_stored": -0.00047418263284981776,
+      "sign_flip": false,
+      "avec_best": [
+       0.0023889800485230894,
+       0.019999999999713663,
+       0.01999999999999999,
+       0.01999999999999999,
+       0.01999999999999999,
+       0.01999999999817542,
+       -0.01999999999999999,
+       -0.01999999999999999,
+       -0.01999999999999999,
+       -0.01999999999999999
+      ]
+     },
+     "bound0.02_J332.8": {
+      "J": 332.7618214548743,
+      "bound": 0.02,
+      "stored_E_total": 119.17992564671401,
+      "stored_omega_star": 0.5915216990116788,
+      "stored_obj_on_opt_grid": -349.50758876946924,
+      "remin_obj_on_opt_grid": -349.5075904746063,
+      "obj_improvement": 1.7051370377885178e-06,
+      "remin_E_total_full": 119.1794062991123,
+      "remin_kin_tot_full": 281.28794704277556,
+      "remin_omega_star": 0.5914967650645035,
+      "E_total_delta_vs_stored": -0.0005193476017097964,
+      "sign_flip": false,
+      "avec_best": [
+       0.008530499508265479,
+       0.01999999999999999,
+       0.01999999999999999,
+       0.01999999999999999,
+       0.01999999999999999,
+       0.01999999999999999,
+       -0.01999999999999999,
+       -0.01999999999999999,
+       -0.01999999999999999,
+       -0.01999999999999999
+      ]
+     }
+    }
+   }
+  },
+  "D4": {
+   "verdict": "CONFIRMED",
+   "reasoning": "Attack on the kin-ceiling: 450 random family points per bound regime (scales 0.1/0.3/1.0 of the bound) plus L-BFGS-B ascent on kin_corr from 7 starts, bounds 0.02 and 2.0. Best kin_corr (clock) found: 0 at bound 0.02 and 0 at bound 2.0 on the optimization grid, 0 and 0 re-evaluated on the full grid, against kin_base = 332.76; 0 of 900 random samples had kin_corr > 0. Within this search power the dressing never RAISES the clock kin: the ceiling kin_tot <= kin_base and the fixed-J feasibility wall omega >= J/(2 kin_base) survive. Stated as a search result, not a theorem: the 10-dim family was probed, not exhausted.",
+   "key_numbers": {
+    "bound_0.02": {
+     "n_random_samples": 450,
+     "n_samples_kin_corr_positive": 0,
+     "max_kin_corr_opt_grid": 0.0,
+     "max_kin_corr_full_grid": 0.0,
+     "kin_base_full": 332.7618214548743,
+     "ceiling_rise_rel": 0.0,
+     "omega_floor_lowering_rel": 0.0,
+     "avec_best": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bound_2": {
+     "n_random_samples": 450,
+     "n_samples_kin_corr_positive": 0,
+     "max_kin_corr_opt_grid": 0.0,
+     "max_kin_corr_full_grid": 0.0,
+     "kin_base_full": 332.7618214548743,
+     "ceiling_rise_rel": 0.0,
+     "omega_floor_lowering_rel": 0.0,
+     "avec_best": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "D5": {
+   "verdict": "PARTIAL",
+   "reasoning": "E(J) is strictly increasing and omega*(J) strictly increasing (E convex in J), as claimed. Auditor's own non-uniform 3-point central differences at the interior rows give dE/dJ / omega* deviations of 2.39, 1.11, 0.41 percent (J = 133.1, 332.8, 665.5), reproducing the stored np.gradient values. The LETTER of the '1-2 percent' claim fails at the coarsest interior stencil: 2.39 percent > 2. The SPIRIT survives: the deviation shrinks with stencil spacing (2.39 -> 1.11 -> 0.41 percent), the pattern expected from finite-difference truncation on a convex E(J) at coarse spacing, not from a violated identity; endpoints (one-sided, 10.5 and 10.5 percent) are outside the claim. Accurate restatement: the envelope identity dE/dJ = omega* holds to 0.4-2.4 percent on interior stencils at this spacing.",
+   "key_numbers": {
+    "E_strictly_increasing": true,
+    "omega_star_strictly_increasing": true,
+    "interior_stencils": [
+     {
+      "J": 133.10472858194973,
+      "dEdJ_fd": 0.923995575064239,
+      "omega_star": 0.9466180868473837,
+      "ratio": 0.9761017541313978,
+      "dev_pct": 2.389824586860223,
+      "stored_ratio": 0.9761017541313898
+     },
+     {
+      "J": 332.7618214548743,
+      "dEdJ_fd": 1.2933884638586082,
+      "omega_star": 1.3079012723663364,
+      "ratio": 0.9889037431078642,
+      "dev_pct": 1.109625689213578,
+      "stored_ratio": 0.9889037431078646
+     },
+     {
+      "J": 665.5236429097486,
+      "dEdJ_fd": 1.776111681740458,
+      "omega_star": 1.783381640680543,
+      "ratio": 0.9959234979354668,
+      "dev_pct": 0.40765020645332495,
+      "stored_ratio": 0.9959234979354673
+     }
+    ],
+    "max_interior_dev_pct": 2.389824586860223,
+    "min_interior_dev_pct": 0.40765020645332495,
+    "within_stated_1_2_pct": false,
+    "endpoint_dev_pct": [
+     10.452636809899696,
+     10.471820192626014
+    ],
+    "stored_dEdJ_matches_np_gradient": true
+   }
+  }
+ },
+ "runtime_s": 1892.7
+}

@@ -1,0 +1,10 @@
+{"omega": 0.48, "kin_tot": 332.4674, "E_total": 493.1449, "feasible": false, "mismatch_rel": 0.0408}
+{"omega": 0.5, "kin_tot": 326.3927, "E_total": 212.5995, "feasible": true, "mismatch_rel": 0.0191}
+{"omega": 0.53, "kin_tot": 308.4765, "E_total": 126.8783, "feasible": true, "mismatch_rel": 0.0174}
+{"omega": 0.56, "kin_tot": 291.9411, "E_total": 117.6499, "feasible": true, "mismatch_rel": 0.0174}
+{"omega": 0.59, "kin_tot": 276.7749, "E_total": 115.8971, "feasible": true, "mismatch_rel": 0.0185}
+{"omega": 0.62, "kin_tot": 263.0399, "E_total": 118.1748, "feasible": true, "mismatch_rel": 0.0198}
+{"omega": 0.66, "kin_tot": 246.7586, "E_total": 122.7847, "feasible": false, "mismatch_rel": 0.0212}
+{"omega": 0.7, "kin_tot": 232.3865, "E_total": 128.2286, "feasible": false, "mismatch_rel": 0.0223}
+{"LAT_narrow_n32": {"E_corr_lattice": -44.41787781255101, "kin_corr_lattice": -43.603516784009344, "kin_base_lattice": 426.5070121483972, "E_rel_dev": 0.9012448831371214, "kin_rel_dev": 0.15309512625399865, "gates": {"E": false, "kin": false}}}
+{"done": true, "runtime_s": 1876.0}
