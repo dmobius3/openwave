@@ -575,13 +575,13 @@ evidentiary machinery does not stay fluid during the run.
 1. The maintainer records the CONTENT COMMIT: this protocol, the group-packet re-audit,
    the construction packet, the frozen SHA-256 of the maintainer-side construction-audit
    artifact, and the answer packet's hash. The audit ARTIFACT and the full citation stay
-   outside the room per § 4.2 and enter the pull request at step 9; committing them here
-   would place them in the base the room opens from.
+   outside the room per § 4.2 and are published with the adjudication evidence at step 9;
+   committing them here would place them in the base the room opens from.
 2. The maintainer records the LOCK COMMIT: a separate manifest naming the content commit,
    every packet and audit hash, and the clean-room base. **A commit cannot contain its own
    hash**, so the lock manifest, never this file, carries the commit identifiers. From the
-   lock commit the addenda-only rule of § 12 binds, whether or not the pull request has
-   merged. Any rebase, force-push or other history rewrite after the lock VOIDS the freeze
+   lock commit the addenda-only rule of § 12 binds, whether or not anything has merged. Any
+   rebase, force-push or other history rewrite after the lock VOIDS the freeze
    and requires a new lock record and a clean-room restart; if the merge strategy could
    rewrite history, both commits are preserved through a durable tag or release object.
 3. The clean room opens from exactly the lock commit; the protocol text frozen by the
@@ -689,29 +689,40 @@ the bytes. A hash over an uncanonical rendering pins a transcription, not an obj
 
 ### 10.3 Packaging
 
-The protocol, the construction packet, its audit, and whatever else the run requires land as
-a SINGLE pull request. One document, one merge. **The freeze is the § 8 lock commit, not
-the merge event**: implementation and adjudication commits may accumulate in the same pull
-request after it, and any later protocol change is a dated § 12 addendum even before the
-merge.
+This protocol, the construction packet, the maintainer-side audit, § 8 step 2's LOCK
+MANIFEST, step 4's method-and-gate manifest, step 5's implementation and derivation record,
+and step 9's adjudication record and published answer packet MAY land across separate commits
+or separate pull requests, and their MERGE order need not match their § 8 EXECUTION order; no
+artifact needs to share a pull request with another to be bound. Packaging is not a control:
+it carries no guarantee, and no ordering of merges establishes or defeats anything in this
+document. **Nothing in this paragraph alters the ordering requirements of § 8**, which are
+frozen and which govern the order the work is DONE in.
+
+**The § 8 lock commit is the SOLE freeze boundary, and merge events are not boundaries at
+all.** Binding is by the hash commitments and manifests § 8 requires, not by pull-request or
+merge co-location. Any protocol change AFTER the lock commit is a dated § 12 addendum, and any
+protocol change before it is an ordinary in-place edit, in both cases whatever the merge
+history looks like.
 
 ## 11. Pins
 
 | Pin | Value |
 | --- | --- |
-| M8.3 method note and verification record (the obligation discharged; the § 1 analytic-side control) | [PIN at landing] |
+| M8.3 method note, including its § 3.2 gate results and its § 5 adversarial audit record (the obligation discharged; the § 1 analytic-side control) | `3e0c1901d4089991a1de7cff0b1cde453257a29891793249ce63955f144ef06d` |
 | group packet SHA-256 | `e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9` |
-| construction packet SHA-256 | [PIN at landing] |
-| answer packet SHA-256 | [PIN at landing] |
-| clean-room standard | [PIN at landing] |
-| repository commit this protocol was drafted against | [PIN at landing] |
+| construction packet SHA-256 | `df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06` |
+| answer packet SHA-256 | `744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e` |
+| clean-room standard | commit `e53a64d493c33324318c0b5b3007f566f4d82f5d` |
+| repository commit this protocol was drafted against | `a0c33e56a5df48dcd01c0a9d5d503694d8b80748` |
 | the § 8 content and lock commits | carried by the LOCK MANIFEST, never by this file: a commit cannot contain its own hash |
 
 ## 12. Addenda (post-freeze only)
 
-From the § 8 lock commit this document is FROZEN; the merge records the freeze, it does
-not create it. Changes enter only as dated addenda in this section,
-never in place. An in-place edit is a breach of the freeze, and the pinned paths of § 11 may
-not move.
+From the § 8 lock commit this document is FROZEN. The lock commit and its LOCK MANIFEST
+record the freeze boundary; repository merge events neither create nor alter it. Changes
+enter only as dated addenda in this section, never in place. An in-place edit is a breach
+of the freeze, and the pinned VALUES of § 11 may not change after the lock commit. Those
+values are content-addressed, so renaming or relocating a pinned artifact does not breach
+this; substituting a different artifact for a pinned one does.
 
 (none)
