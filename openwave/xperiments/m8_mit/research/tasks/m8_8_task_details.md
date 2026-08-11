@@ -130,6 +130,45 @@ jacobian of its declared relator) and PASSES A11, so the maintainer side already
 construction, by provenance rather than by lattice certificate. An A12 mirroring the widened § 9
 in `im d1` and `im d2` is available hardening, not a repair.
 
+⚠️ **The `2 - z` example above is WRONG, and the correction is below.** It is left standing
+because it is what review sent the author and what the merged § 9 analysis cell now carries.
+The gap it was offered as evidence for is real; the construction is not evidence for it.
+
+## Correction: the § 9 example does not reach the homology (2026-08-11)
+
+Adding A12 to the audit surfaced it. The mutation was written to make A12 go red and A12
+stayed GREEN, so either the new check or the old claim was wrong. It was the old claim.
+
+| Claim | Status |
+| --- | --- |
+| Scaling one `d2` row and the complementary `d3` column by `2 - z` preserves `d d = 0`, the augmentation, and per-irrep acyclicity | ✅ holds, measured |
+| `det` of multiplication by `2 - z` on `Z[2I]` is `3^60` | ✅ holds, and it does appear in individual maximal minors |
+| Therefore `H_1(C_*)` acquires order `3^60` | ❌ FALSE |
+
+`d2` has rank 121 of 240, and `ker(d2)` absorbs the factor: the image lattice is unchanged,
+so the homology is unchanged. Two independent measurements, one from the audit's unit-pivot
+certificate and one from a separately written elimination: rank over `F_3` is 119, 121, 119,
+exactly the rational ranks, for the mutant as much as for the packet. No 3-torsion anywhere.
+
+**Why review got it wrong.** The review-side check tested ONE maximal minor, at pivot
+positions taken from the baseline, and read `|det| != 1` as "not saturated". That inference is
+invalid in that direction: saturation is the gcd over ALL maximal minors, so `|det| = 1`
+proves saturation and `|det| != 1` proves nothing. The minor it happened to test was `3^60`,
+which is why the number looked confirmatory. The audit's `saturation_certificate` clears the
+same matrix with 121 unit pivots, which is a proof rather than a sample.
+
+**The gap is real, and here is a construction that reaches it.** Scale ALL of `d2` by the
+central non-unit `6 - 5z`. Augmentation 1, so the trivial sector does not move; central, so
+every chain relation survives; invertible in every irreducible, so acyclicity does not move.
+It acts as 11 on every faithful irreducible, so A7's prime list `{2, 3, 5, 7, 10007}` cannot
+see it: mod 3 the ranks are still 119, 121, 119. Mod 11 the rank of `d2` falls to 61 from 121,
+so `H_1` carries 11-torsion and the complex is not the one of `S^3`. A4, A5, A6, A7, A8 and
+A11 all stay green; A12 is the check that reddens. This is the exact degree 1 analogue of the
+`d3 -> 11 d3` case that made A11 load-bearing one degree up.
+
+So the widened § 9 gate is justified, by this construction rather than by the one review
+gave. What needs correcting is the EXAMPLE in the § 9 analysis cell, not the gate.
+
 Two further changes landed. § 4.4's `convention_map` row, whose "the evaluation convention"
 phrasing had produced a real defect, now names four explicit items and states that the § 4.2
 basing reference and the `basing.evaluation` declaration are distinct, neither substituting for
@@ -144,6 +183,36 @@ restoring it.
 | § 11 pins | five read `[PIN at landing]`; four are maintainer-derivable and were supplied at review, the answer-packet hash being the author's to record |
 | § 10.3 packaging | "one document, one merge", with the audit artifact entering the same pull request at step 9, no longer fits: the audit landed ahead of the protocol and the protocol has now merged, so the run's later commits need a stated home |
 | § 5.5 separation | confirmed at review rather than deferred to it: the `(dim, chi(s), chi(t), chi(st))` row signature separates all nine irreps, with `chi(t)` load-bearing (7 of 9 without it) and margin on the other two |
+
+The first two closed the same day, below. The third needed nothing.
+
+## Pre-lock cleanup: the pins filled, the packaging clause corrected (2026-08-11)
+
+[#430](https://github.com/openwave-labs/openwave/pull/430) merged 2026-08-11, protocol text
+only across three commits and two review rounds. The protocol is `a6730e82…` at the merge;
+both packets are untouched, so `df00c022…` and the answer packet's `adjudicates` commitment
+stand.
+
+| Change | Content |
+| --- | --- |
+| § 11 filled | five pins. Four maintainer-derivable values recomputed at the head, the answer-packet hash the author's to record. The method-note row was reworded as well as filled, since the "verification record" it named is not a separate artifact: M8.3's verification is the § 3.2 gate results and the § 5 audit record, inside the note |
+| § 11 drafted-against | `a0c33e56`, the parent of the `d866b0d9` that created the file, rather than #408's base. Verified an ancestor of `main`, so the pin resolves in this repository and not only in a fork |
+| § 10.3 rewritten | the run's artifacts MAY land across separate commits or pull requests, and merge order need not match § 8 execution order. Binding is by the hash commitments and manifests § 8 requires, never by co-location, and § 8's ordering is explicitly untouched |
+| referent sweep | with the single-pull-request clause gone, four definite references lost their antecedent (§ 8 steps 1 and 2, § 10.3, § 12). All four repaired; the two survivors are generic mass nouns |
+| § 12 corrected | "the pinned paths of § 11" had no referent in any of the eight versions of the file, § 11 having never carried a path. Now the pinned VALUES may not change after the lock commit, with renaming or relocating a pinned artifact explicitly not a breach and substituting one explicitly a breach |
+
+**Why the § 12 word was worth a round before the lock.** A defect deferred past the lock
+becomes a dated addendum, but anything cosmetic deferred past the lock becomes impossible,
+since the fix would be an in-place edit and § 12 forbids those outright. The same asymmetry
+took the two over-long lines the in-place edits had left; the file returned to the long-line
+profile it merged with.
+
+**Method note on the last round**, since a rewrap and a content change arrived in one commit.
+The check was mechanical rather than by reading: both versions unwrapped into blocks, holding
+fences and table rows verbatim, then diffed. Exactly one content block differed, and the
+structural census was identical across the two heads. One measurement in the thread counts
+lines in BYTES; in characters the prose count is four rather than six, the two that drop out
+being 93 and 91 characters made long by `∂` and subscript digits at three bytes each.
 
 ## DEVIATIONS LOG
 
