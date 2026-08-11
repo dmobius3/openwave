@@ -11,7 +11,7 @@
 | [1. The stance](#1-the-stance) | one paragraph: instruments vs authors |
 | [2. Do / Don't quick reference](#2-do--dont-quick-reference) | the rules at a glance |
 | [3. Division of labor](#3-division-of-labor) | what models do well vs what only humans can supply |
-| [4. Failure modes](#4-failure-modes) | the six ways AI quietly corrupts a research record |
+| [4. Failure modes](#4-failure-modes) | the seven ways AI quietly corrupts a research record |
 | [5. Safeguards already in force](#5-safeguards-already-in-force) | repo standards that operationalize this page |
 | [Details](#failure-mode-details) | anchored deep dives, one per failure mode, at the doc tail |
 
@@ -61,7 +61,7 @@ Two consequences worth making explicit:
 
 ## 4. Failure modes
 
-Six patterns account for most AI damage to research records. Lean table here; mechanics, symptoms, and countermeasures in the [anchored details](#failure-mode-details).
+Seven patterns account for most AI damage to research records. Lean table here; mechanics, symptoms, and countermeasures in the [anchored details](#failure-mode-details).
 
 | # | Failure mode | One line | Detail |
 | --- | --- | --- | --- |
@@ -71,6 +71,7 @@ Six patterns account for most AI damage to research records. Lean table here; me
 | 4 | Authority laundering | model text acquires the standing of the human who forwards it | [§ detail](#authority-laundering-detail) |
 | 5 | Relay drift | AI-to-AI chains lose information at every hop while gaining confidence | [§ detail](#relay-drift-detail) |
 | 6 | Publication slop | unverified model text leaking into venues, polluting the commons and the author's credibility | [§ detail](#publication-slop-detail) |
+| 7 | Displaced verification | the check landed beside the load-bearing step instead of on it, and everyone involved felt verified | [§ detail](#displaced-verification-detail) |
 
 ## 5. Safeguards already in force
 
@@ -140,6 +141,14 @@ These repo standards exist precisely to make AI-assisted research auditable. Use
 **Countermeasure.** OpenWave's bar for anything public, in rising order of strictness: internal docs may be AI-drafted freely (they are verified by use and by review); repository claims must be script-backed with honest icons; benchmark entries go through staged preview plus governance; anything aimed at the research community (papers, preprints, mailing lists, collaborator reports) must be **human-owned prose over verified results**, with AI assistance disclosed where the venue expects it, and formatted for auditability per [`dev_docs/METHOD_NOTE.md`](dev_docs/METHOD_NOTE.md). The test is simple: if the assistant vanished tomorrow, you could still defend every published sentence, because you verified each one while writing it.
 
 A special case is **positioning slop**: aggregate self-ranking against other research programs ("closer to a complete theory than anything else produced") is prose that no single artifact can back, and it reads as marketing even when the underlying work is sound. The house pattern is the [`MODELS.md`](MODELS.md) one: comparisons stay per-criterion, artifact-linked, and carry their conditions inline, or they stay unpublished. The platform's voice is the referee's, never a contestant's.
+
+### Displaced verification detail
+
+**Mechanism.** A composite claim decomposes into an ambient fact and an inferential step that carries that fact to the object at hand. The ambient fact is usually the cheap half and always the satisfying half: it is crisp, it computes, it returns a number, and checking it produces the felt sense of having checked the claim. The step that actually carries the claim, the "and therefore this holds for THIS map, THIS instance, THIS regime", is the expensive half and gets assumed. Automation sharpens the trap from both ends. A model states the composite fluently with the checkable part attached as its evidence, and a second party asked to confirm reaches for the same checkable part, so the claim collects independent confirmations that all land in the same place.
+
+**Symptom.** You can name precisely what was verified and it is not the claim. A confirmation arrives that restates your evidence rather than adding an independent one. Nobody has run the object itself through the gate the claim is about, usually because the composite read as settled once its arithmetic checked out. The tell is that the check which could have gone red was never the one performed.
+
+**Countermeasure.** Write the claim as premise, step, conclusion, and ask which of the three the evidence touches. Then run the check that can actually fail: put the real object through the real gate rather than confirming a fact about the neighbourhood it lives in. Worked instance, [M8.8 #408](https://github.com/openwave-labs/openwave/pull/408): `det(2 − z) = 3^60` on `Z[2I]` is true, was independently confirmed on both sides, and was offered as evidence that scaling by `2 − z` gives `H₁` order `3^60`. It does not. `∂₂` carries a 119-dimensional kernel that absorbs the factor, the homology is unchanged, and one run of the packet audit against the mutated packet showed the certificate green in seconds. Both parties verified the determinant and neither ran the mutant. **A true statement about an ambient module is not a statement about a map**, and only the second is what a claim about a map rests on.
 
 ---
 
