@@ -432,3 +432,26 @@ The author replied to the M5.21.11 sanity-check send and TOOK THE EXCHANGE PUBLI
 | Reply posture | HELD (user call, this capture): no answer goes back until [M5.21.15](m5_21_15_task_details.md) runs; checkpoint policy, machine-checkable branches first |
 | The author's "(?)" | A genuine open question, not a claim: whether a positive-energy nonzero-ω minimum exists. The honest baseline from [M5.21.3](m5_21_3_task_details.md): on the UNDRESSED functional no finite stationary ω exists in the probed range (equal-depth control subtraction); what the dressed and constraint-carried functionals do is exactly M5.21.15's measurement |
 | Standing flags | unchanged and unraised (the Dirac ask, the help offer, the unification-plans question) |
+
+## 2026-08-11 ~14:00 EDT: SENT: the M5.21.15 answer (the concavity theorem + the measured fixed-J minimum)
+
+**Context**: 1:1 reply on the same thread (no cc), sent by the user after [M5.21.15](m5_21_15_task_details.md) closed (approved 13:47 EDT) and [PR #433](https://github.com/openwave-labs/openwave/pull/433) merged to main. Sent-record: routing + content summary per the two-tier rule; the full text stays in the mail thread.
+
+**What was sent** (the Fable-voice technical block + the user's own opening):
+
+| Piece | Content summary |
+| --- | --- |
+| The structural half | free minimization can never select nonzero ω: E exactly affine in ω² per configuration (verified 1.3e-11) ⇒ every free envelope concave in ω² ⇒ no interior minimum, any family/dressing/box; the author's "it stopped minimization process" affirmed and sharpened (iteration-capped upper bounds; increasing ω²-slopes = the convergence diagnostic); the measured interior MAXIMUM at g = 8 noted as the one permitted shape |
+| The constructive half | the fixed-J minimum measured: interior minimum at ω = 0.59, E_total = +115.9 > 0 (family units, g = 32, δ = 0.3, guard 0.02), matching ω\* = J/(2·kin) = 0.592; dE/dJ = ω\* to 0.4-2.4 percent; E(J) convex; the dressing raises ω\* at fixed J |
+| The V hook | the energy sign at the minimum flips with the dressing-guard width in [0.02, 0.05]: named as the concrete number the regularization potential must answer (the [Q25](../m5_question_tracker.md#q25-detail) tie to the author's "just a first guess") |
+| The caveat | the rotation-sector ω² coefficients also flip negative DRESSED (the M5.21.3 rotations-positive statement is undressed-only) |
+| Verification status | two independent audit rounds, no structural refutation; kin sector lattice-certified at n = 32; the E-well subgrid at h = 1.5 (n ≥ 48 ladder named as the open step) |
+| Link + attachment | the note on main (`findings/m5_21_15_note.md`) + the 6-panel figure attached |
+
+### Notes
+
+| Item | Content |
+| --- | --- |
+| Asks in the message | NONE new; the guard-choice question was not re-asked directly (ask economy): the V-sign bracket re-surfaces it implicitly |
+| Standing flags | unchanged and unraised (the Dirac ask, the help offer, the unification-plans question) |
+| Next | await the author's read; the corrected-3×3 ladder stays unstaged pending the guard answer; Backlog head = [M5.21.13](m5_21_13_task_details.md) (courtesy-gated), user pick |
