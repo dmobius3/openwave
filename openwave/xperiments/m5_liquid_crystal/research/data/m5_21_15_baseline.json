@@ -1,0 +1,85 @@
+{
+ "RECORD": {
+  "s+1": {
+   "rot_kin_all_positive": true,
+   "rot_kin": {
+    "clock_local": 0.2946299579866355,
+    "plane_1d": 0.2694401886387086,
+    "rot_z": 0.25750939814530854,
+    "rot_x": 0.2718441617780694
+   },
+   "boost_kin_all_negative": true,
+   "boost_kin": {
+    "boost_z": -0.08344602895705688,
+    "boost_x": -0.0703888415620705
+   },
+   "ladder_monotone_decreasing": true,
+   "ladder_all_depth_bounded": true,
+   "u_slopes": [
+    -31.098687434496945,
+    -9.408988916221023,
+    -2.201365208859377,
+    -0.5681188447115588,
+    -0.19790363721864376
+   ],
+   "u_slopes_increasing": true,
+   "concavity_violated": true,
+   "reading": "slopes in u = omega^2 INCREASE: a true envelope is concave in u (min of affine functions), so the measured ladder is an under-converged upper bound per rung, not the envelope; consistent with every stop == max_iter"
+  },
+  "s-1": {
+   "rot_kin_all_positive": true,
+   "rot_kin": {
+    "clock_local": 0.296955480141499,
+    "plane_1d": 0.2717969309773032,
+    "rot_z": 0.26002298457160694,
+    "rot_x": 0.2737241740281626
+   },
+   "boost_kin_all_negative": true,
+   "boost_kin": {
+    "boost_z": -0.08322694435796972,
+    "boost_x": -0.07287919385046925
+   },
+   "ladder_monotone_decreasing": true,
+   "ladder_all_depth_bounded": true,
+   "u_slopes": [
+    -52.011681956048854,
+    -15.324045593457566,
+    -3.4527399988329908,
+    -0.833583743263011,
+    -0.2552357817302823
+   ],
+   "u_slopes_increasing": true,
+   "concavity_violated": true,
+   "reading": "slopes in u = omega^2 INCREASE: a true envelope is concave in u (min of affine functions), so the measured ladder is an under-converged upper bound per rung, not the envelope; consistent with every stop == max_iter"
+  },
+  "pass": true
+ },
+ "GATES": {
+  "g0_static": 1.0731728505566234e-14,
+  "g0_kin": 5.205119061105727e-16,
+  "g1_so13": 1.7657025672689452e-15,
+  "g1_negctrl": 437.2093170695088,
+  "g2_vac_s+1": [
+   0.0,
+   0.0
+  ],
+  "g2_vac_s-1": [
+   0.0,
+   0.0
+  ],
+  "g3_regression": 0.0,
+  "pass": true
+ },
+ "QUAD": {
+  "kin_t0": 338.2006543016164,
+  "kin_t0.7": 338.200654297167,
+  "kin_t_invariance_rel": 1.3156150216556461e-11,
+  "a0_fd_rel_dt0.01": 6.66652668471474e-05,
+  "a0_fd_rel_dt0.1": 0.006653345958633609,
+  "pass": true,
+  "reading": "kin is t-invariant along the clock orbit and dM/dt is the fixed a0 scaled by omega, so E(omega) at fixed config is EXACTLY E_stat + omega^2*kin (no higher omega terms): the premise of the envelope-concavity theorem; the small a0_fd deviations at dt = 0.1 are the o(dt^2) central-difference curvature of the orbit, not an omega^3 energy term (the energy is exactly quadratic in the VELOCITY)"
+ },
+ "all_green": true,
+ "deviation": "the M5.21.3 relaxed endpoints (npz) were deleted under the pre-2026-07-20 dataset rule, so A1 runs seed-free: the RECORD gate re-asserts the saved rows, the instrument gates use random smooth fields (field-agnostic checks), and the premise check runs on the analytic family",
+ "runtime_s": 0.1
+}

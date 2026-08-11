@@ -1,0 +1,30 @@
+{"tag": "main_s-1_g32_clock", "omega": 0.0, "E_env": -4625.272851220569, "kin_tot": -17.399617163292135, "at_bound": false}
+{"tag": "main_s-1_g32_clock", "omega": 0.05, "E_env": -4625.252276331252, "kin_tot": -17.445043604756393, "at_bound": false}
+{"tag": "main_s-1_g32_clock", "omega": 0.1, "E_env": -4625.291082610237, "kin_tot": -17.803158419828947, "at_bound": false}
+{"tag": "main_s-1_g32_clock", "omega": 0.2, "E_env": -4625.703453916173, "kin_tot": -20.866891976007707, "at_bound": false}
+{"tag": "main_s-1_g32_clock", "omega": 0.4, "E_env": -4628.63866781542, "kin_tot": -35.24391987956068, "at_bound": false}
+{"tag": "main_s-1_g32_clock", "omega": 0.8, "E_env": -4653.956789582044, "kin_tot": -78.25033744228534, "at_bound": true}
+{"tag": "main_s-1_g32_clock", "omega": 1.2, "E_env": -7727.889365601071, "kin_tot": -6715.963541898265, "at_bound": false}
+{"tag": "main_s-1_g32_clock", "omega": 1.6, "E_env": -17970.671186041713, "kin_tot": -11898.019119609477, "at_bound": false}
+{"tag": "main_s-1_g32_clock", "omega": 2.0, "E_env": -39545.69611431147, "kin_tot": -18620.60189477468, "at_bound": false}
+{"tag": "main_s-1_g32", "minkin": "clock", "kin_tot_min": -777544816.9516712, "turns_negative": true}
+{"tag": "main_s-1_g32_rot_z", "omega": 0.0, "E_env": -4625.272851220569, "kin_tot": -9912.256664292849, "at_bound": false}
+{"tag": "main_s-1_g32_rot_z", "omega": 0.05, "E_env": -4649.499842805653, "kin_tot": -11081.346207418374, "at_bound": false}
+{"tag": "main_s-1_g32_rot_z", "omega": 0.1, "E_env": -4735.103796953641, "kin_tot": -12228.81174500325, "at_bound": false}
+{"tag": "main_s-1_g32_rot_z", "omega": 0.2, "E_env": -5117.578192162317, "kin_tot": -13139.460181110599, "at_bound": false}
+{"tag": "main_s-1_g32_rot_z", "omega": 0.4, "E_env": -6729.968953232568, "kin_tot": -13585.989975176542, "at_bound": false}
+{"tag": "main_s-1_g32_rot_z", "omega": 0.8, "E_env": -13314.538291710152, "kin_tot": -13772.585144991892, "at_bound": false}
+{"tag": "main_s-1_g32_rot_z", "omega": 1.2, "E_env": -24358.704607358974, "kin_tot": -13819.134343761532, "at_bound": false}
+{"tag": "main_s-1_g32_rot_z", "omega": 1.6, "E_env": -39849.654122530665, "kin_tot": -13836.54998229041, "at_bound": false}
+{"tag": "main_s-1_g32_rot_z", "omega": 2.0, "E_env": -59784.36108157039, "kin_tot": -13844.96193686749, "at_bound": false}
+{"tag": "main_s-1_g32", "minkin": "rot_z", "kin_tot_min": 23.604644743124936, "turns_negative": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 0.0, "E_env": -4625.272851220569, "kin_tot": 89929068.9329923, "at_bound": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 0.05, "E_env": -9143.562677099226, "kin_tot": -3243706.2230264675, "at_bound": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 0.1, "E_env": -34792.2625442247, "kin_tot": -3479226.2544224695, "at_bound": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 0.2, "E_env": -139169.0501768988, "kin_tot": -3479226.2544224695, "at_bound": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 0.4, "E_env": -556676.2007075952, "kin_tot": -3479226.2544224695, "at_bound": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 0.8, "E_env": -2226704.802830381, "kin_tot": -3479226.2544224695, "at_bound": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 1.2, "E_env": -5010085.806368356, "kin_tot": -3479226.2544224695, "at_bound": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 1.6, "E_env": -8906819.211321523, "kin_tot": -3479226.2544224695, "at_bound": false}
+{"tag": "main_s-1_g32_boost_z", "omega": 2.0, "E_env": -13916905.017689878, "kin_tot": -3479226.2544224695, "at_bound": false}
+{"tag": "main_s-1_g32", "minkin": "boost_z", "kin_tot_min": -3479226.2544224695, "turns_negative": true}
