@@ -689,22 +689,31 @@ the bytes. A hash over an uncanonical rendering pins a transcription, not an obj
 
 ### 10.3 Packaging
 
-The protocol, the construction packet, its audit, and whatever else the run requires land as
-a SINGLE pull request. One document, one merge. **The freeze is the § 8 lock commit, not
-the merge event**: implementation and adjudication commits may accumulate in the same pull
-request after it, and any later protocol change is a dated § 12 addendum even before the
-merge.
+This protocol, the construction packet, the maintainer-side audit, § 8 step 2's LOCK
+MANIFEST, step 4's method-and-gate manifest, step 5's implementation and derivation record,
+and step 9's adjudication record and published answer packet MAY land across separate commits
+or separate pull requests, and their MERGE order need not match their § 8 EXECUTION order; no
+artifact needs to share a pull request with another to be bound. Packaging is not a control:
+it carries no guarantee, and no ordering of merges establishes or defeats anything in this
+document. **Nothing in this paragraph alters the ordering requirements of § 8**, which are
+frozen and which govern the order the work is DONE in.
+
+**The § 8 lock commit is the SOLE freeze boundary, and the merge event is not a boundary at
+all.** Binding is by the hash commitments and manifests § 8 requires, not by pull-request or
+merge co-location. Any protocol change AFTER the lock commit is a dated § 12 addendum, and any
+protocol change before it is an ordinary in-place edit, in both cases whatever the merge
+history looks like.
 
 ## 11. Pins
 
 | Pin | Value |
 | --- | --- |
-| M8.3 method note and verification record (the obligation discharged; the § 1 analytic-side control) | [PIN at landing] |
+| M8.3 method note, including its § 3.2 gate results and its § 5 adversarial audit record (the obligation discharged; the § 1 analytic-side control) | `3e0c1901d4089991a1de7cff0b1cde453257a29891793249ce63955f144ef06d` |
 | group packet SHA-256 | `e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9` |
-| construction packet SHA-256 | [PIN at landing] |
-| answer packet SHA-256 | [PIN at landing] |
-| clean-room standard | [PIN at landing] |
-| repository commit this protocol was drafted against | [PIN at landing] |
+| construction packet SHA-256 | `df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06` |
+| answer packet SHA-256 | `744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e` |
+| clean-room standard | commit `e53a64d493c33324318c0b5b3007f566f4d82f5d` |
+| repository commit this protocol was drafted against | `a0c33e56a5df48dcd01c0a9d5d503694d8b80748` |
 | the § 8 content and lock commits | carried by the LOCK MANIFEST, never by this file: a commit cannot contain its own hash |
 
 ## 12. Addenda (post-freeze only)
