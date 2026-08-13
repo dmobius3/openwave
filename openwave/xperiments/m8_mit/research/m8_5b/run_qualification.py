@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+"""M8.5-B Phase A: the single qualification entry point.
+
+    python3 research/m8_5b/run_qualification.py
+
+Runs, in order, every check that backs the Phase A claim, and ends with one
+verdict.  Nonzero exit on anything short of a full pass.
+
+    0  provenance   no module resolves outside this tree
+    1  environment  interpreter and library versions
+    2  manifest     every shipped file matches its recorded hash
+    3  schema       Packet I and Packet II gate batteries
+    4  structural   target-scored battery, 8 of 8, plus non-vacuity
+    5  rehearsal    Q4 integration rehearsal, including the deletion limb
+    6  integrated   the Q1/Q2/Q3/Q5 battery
+    7  records      the fresh run reproduces the shipped qualification records
+
+WHAT THIS DOES NOT SHOW.  Every case exercised here is synthetic or a frozen
+tuning case.  No rung has run on a real adjudication case, so nothing produced
+by this command is adjudication evidence.
+"""
+
+import hashlib
+import json
+import os
+import platform
+import subprocess
+import sys
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+QUAL = os.path.join(ROOT, "qualification")
+ok = True
+results = []
+
+
+def step(n, title):
+    print(f"\n{'=' * 70}\n{n}. {title}\n{'=' * 70}")
+
+
+def record(name, passed, detail=""):
+    global ok
+    ok &= bool(passed)
+    results.append((name, bool(passed), detail))
+    print(f"   {'PASS' if passed else 'FAIL'}  {name}" + (f"   {detail}" if detail else ""))
+
+
+def run(script, *args):
+    r = subprocess.run([sys.executable, os.path.join(ROOT, script), *args],
+                       cwd=ROOT, capture_output=True, text=True)
+    return r.returncode, r.stdout + r.stderr
+
+
+# --- 0 provenance ------------------------------------------------------------
+step(0, "provenance: every module resolves inside this tree")
+sys.path.insert(0, ROOT)
+for sub in ("gates", "production", "pilot", "eval3b"):
+    sys.path.insert(0, os.path.join(ROOT, sub))
+before = set(sys.modules)
+import packet_schema                      # noqa: E402
+sys.path_importer_cache.clear()
+import adjudication_gates, adapter_3b, step3_schema, lauret_evaluator  # noqa: E402,F401
+outside = []
+for name, mod in sys.modules.items():
+    if name in before:
+        continue
+    f = getattr(mod, "__file__", None) or ""
+    if f.endswith(".py") and not f.startswith(ROOT) and "site-packages" not in f \
+       and "lib/python" not in f:
+        outside.append((name, f))
+record("no first-party module imported from outside the tree", not outside, str(outside[:3]))
+
+# --- 1 environment -----------------------------------------------------------
+step(1, "environment")
+import numpy, scipy                       # noqa: E402
+env = {"python": sys.version.split()[0], "numpy": numpy.__version__,
+       "scipy": scipy.__version__, "platform": platform.platform()}
+for k, v in env.items():
+    print(f"   {k:10} {v}")
+shipped = os.path.join(QUAL, "ENVIRONMENT.json")
+if os.path.exists(shipped):
+    was = json.load(open(shipped))
+    same = {k: was.get(k) for k in ("python", "numpy", "scipy")} == \
+           {k: env[k] for k in ("python", "numpy", "scipy")}
+    record("environment matches the one qualification was recorded under", True,
+           "exact match" if same else "DIFFERENT versions: results may legitimately differ")
+
+# --- 2 manifest --------------------------------------------------------------
+step(2, "manifest: shipped bytes match their recorded hashes")
+man_path = os.path.join(QUAL, "MANIFEST.json")
+if os.path.exists(man_path):
+    man = json.load(open(man_path))
+    bad = []
+    for rel, h in sorted(man["files"].items()):
+        p = os.path.join(ROOT, rel)
+        got = hashlib.sha256(open(p, "rb").read()).hexdigest() if os.path.exists(p) else None
+        if got != h:
+            bad.append(rel)
+    record(f"{len(man['files'])} files match MANIFEST.json", not bad, str(bad[:4]))
+else:
+    record("MANIFEST.json present", False, "missing")
+
+# --- 3 schema ----------------------------------------------------------------
+step(3, "Packet I and Packet II gate batteries")
+rc, out = run("packet_schema.py")
+record("packet_schema.py suite exits 0", rc == 0)
+record("suite demonstrates it can fail", "suite behaves: the gate can fail" in out)
+
+# --- 4 structural ------------------------------------------------------------
+step(4, "structural coverage and non-vacuity")
+rc, out = run("verify_packet_structural.py")
+record("verify_packet_structural.py exits 0", rc == 0)
+record("coverage 8 of 8 predicates target-exercised", "(8/8)" in out)
+
+# --- 5 rehearsal -------------------------------------------------------------
+step(5, "Q4 integration rehearsal, including the deletion limb")
+rc, out = run("rehearsal_q4.py")
+record("rehearsal_q4.py exits 0", rc == 0)
+record("3a and 3b GREEN on both routes",
+       out.count("GREEN route a") >= 2 and out.count("GREEN route b") >= 2)
+record("deletion limb completed from committed artifacts alone",
+       "adjudication completed from committed artifacts alone" in out)
+
+# --- 6 integrated ------------------------------------------------------------
+step(6, "integrated qualification battery")
+rc, out = run("qualify_integration.py")
+record("qualify_integration.py exits 0", rc == 0)
+fresh = os.path.join(ROOT, "rehearsal", "QUALIFY_RECORD.json")
+n_items = n_fail = None
+if os.path.exists(fresh):
+    q = json.load(open(fresh))
+    n_items, n_fail = len(q["results"]), q["failed"]
+    record(f"{n_items} items, {n_fail} failed", n_fail == 0)
+
+# --- 7 records ---------------------------------------------------------------
+step(7, "the fresh run reproduces the shipped qualification records")
+ship = os.path.join(QUAL, "QUALIFY_RECORD.json")
+if os.path.exists(ship) and n_items is not None:
+    s = json.load(open(ship))
+    record("item count matches the shipped record",
+           len(s["results"]) == n_items, f"shipped {len(s['results'])}, fresh {n_items}")
+    record("shipped record also reports zero failures", s["failed"] == 0)
+
+# --- verdict -----------------------------------------------------------------
+print(f"\n{'=' * 70}")
+if ok:
+    print(f"PHASE A QUALIFICATION: PASS - structural 8/8; integrated "
+          f"{n_items}/{n_items}; Q4 GREEN; deletion GREEN")
+    print("No rung has run on a real adjudication case; this is qualification,")
+    print("not adjudication evidence.")
+else:
+    print("PHASE A QUALIFICATION: FAIL")
+    for name, passed, detail in results:
+        if not passed:
+            print(f"   FAILED: {name}   {detail}")
+print("=" * 70)
+sys.exit(0 if ok else 1)

@@ -1041,7 +1041,7 @@ These are the fixed points the packet contract composes against. None is new.
 | radius: all gates at unit radius; reported spectra are dimensionless `λ·R²` | § 5 |
 | level 0 is the constants; its quotient multiplicity is exactly 1 on every connected quotient (the constants are the whole `λ = 0` eigenspace) | protocol-level derivation, same standing as § 5's homothety note |
 | certification ceiling: `n_max` = the second smallest `n ≥ 1` with nonzero invariant scalar multiplicity | § 6.2, restated as a formula |
-| record surface: one record per `(harmonic_level, sector_id)`; scalar sector identifier `"scalar"`, one-form sector identifiers `"oneform_exact"`, `"oneform_coexact_up"`, `"oneform_coexact_down"` | § 5 schema as realized by the committed producers and qualification artifacts |
+| record surface FOR THE STEP-3 ADJUDICATION ARTIFACTS THIS ADDENDUM GOVERNS: one record per `(harmonic_level, sector_id)`; scalar sector identifier `"scalar"`, one-form sector identifiers `"oneform_exact"`, `"oneform_coexact_up"`, `"oneform_coexact_down"`. Rungs 4 to 6 add the coefficient sectors and the frozen connection classes to that key and are outside this addendum | § 5 schema as realized for the rung-3a/3b case |
 | null means NOT APPLICABLE; numeric zero means computed zero; omission is structural failure | § 5 |
 | § 6.1 sector ranges: exact at `n ≥ 1`; `coexact_up` at `n ≥ 0` with `λ·R² = (n+2)²`; `coexact_down` at `n ≥ 2` with `λ·R² = n²` | § 6.1, § 6.1b |
 | `case_id` (packet) and `arena_case_id` (route output) are one quantity under two frozen names | § 8 G5a |
@@ -1070,11 +1070,20 @@ These are the fixed points the packet contract composes against. None is new.
 
 | Field | Contract |
 | --- | --- |
-| `format_version` | exactly the string `"m8_5b-packet-II-2"`. Packet types are independently versioned (§ 4.1); this string is chosen distinct from every string any packet or fixture has previously carried, so nothing built earlier can validate by accident |
+| `format_version` | exactly the string `"m8_5b-packet-II-2"`. Packet types are independently versioned (§ 4.1); this string is chosen distinct from every string any packet or fixture has previously carried, so nothing built earlier can validate by accident. The prior sealed case, whose Packet II carries `m8_5b-packet-2`, is disposed of in § 12.1.8 |
 | `case_id` | string matching `^[A-Z0-9][A-Z0-9-]{2,31}$`; opaque per § 11.6. The prefix `SYN-` is RESERVED for unsealed qualification instances (12.1.6 Q2): the sealing gate refuses any production packet whose `case_id` begins `SYN-` |
 | `citation` | exactly the seven § 4.1 subfields `authors`, `title`, `venue`, `year`, `doi`, `table`, `row`. Types: `authors`, `title`, `venue` strings (L3 length cap applies); `year` integer in `[1800, 2100]`; `doi` a string beginning `10.`; `table`, `row` strings of at most 32 characters |
 | `indexing_map` | object with exactly the eight keys specified below |
 | `reference_values` | array of `[k, m]` pairs specified below |
+
+**`indexing_map` is the frozen container for the structured comparison
+metadata § 4.1 requires.** § 4.1 fixes Packet II's five top-level fields and
+names `indexing_map` as carrying "a structured index transform plus the sign,
+radius and multiplicity conventions, so a harness applies it rather than reading
+it". Three of the keys below (`unlisted_source_rows`, `off_image_levels`,
+`certified_band`) are coverage and band declarations rather than index or
+convention data; they live here because the top-level field list is frozen and
+they are exactly the metadata the comparison consumes.
 
 **`indexing_map`: exactly these eight keys.**
 
@@ -1241,7 +1250,7 @@ ambiguous packets cannot be sealed" means.
 | # | Predicate | Rejects when |
 | --- | --- | --- |
 | V1 | key exactness, recursive | any level carries an unknown key or lacks a required key |
-| V2 | types, enums, ranges | any value violates its stated type, closed vocabulary, integer strictness (R4), null ban (R5), or leanness (R6) |
+| V2 | types, enums, ranges, and entry ORDER | any value violates its stated type, closed vocabulary, integer strictness (R4), null ban (R5) or leanness (R6), or the `reference_values` entries are not strictly increasing in `k`. Ordering is V2's because it is a property of the transcription's shape; a DUPLICATE `k` is V4's, since that is an injectivity failure |
 | V3 | transform admissibility | `kind` outside the closed set, or `a < 1` |
 | V4 | domain containment and injectivity | some entry's `k` lies outside `K_band` (equivalently its `n = a*k + b` falls outside `[0, n_max]`), or two entries map to one level |
 | V5 | coefficient closure | the declared transform and the declared source eigenvalue convention are inconsistent (below) |
@@ -1272,6 +1281,14 @@ perturbed cell, and the sealer's verify-from-source obligation covers fidelity
 to the paper. V5 removes the class in between, where the packet disagrees with
 itself.
 
+**Source admissibility at level 0.** This format requires the cited
+published-value surface to provide the constant-mode row needed to transcribe
+the mandatory level-0 entry with multiplicity 1. A source that begins only at
+the first positive eigenvalue is not transcribable under this format version and
+requires a future § 12 extension; the sealer may not manufacture the missing row
+from the protocol-side constant-mode derivation, because rung 3a is a class-1
+transcription and a protocol-derived cell would not be one.
+
 **V6 note.** Level 0 is the constants and its multiplicity is 1 on every
 connected quotient (12.1.1). V6 is therefore a free integrity anchor: a shift
 error, a sign error, or a mis-based index that survives V5 by coincidence
@@ -1292,7 +1309,7 @@ canonical-bytes rule of § 11.7 continues to apply at both points.
 1. select the records with `sector_id = "scalar"`;
 2. enforce the identity metadata of every selected record:
    `arena_case_id` equal to the packet's `case_id` (§ 8; the observed side is
-   never searched for a `case_id` key), `schema_version = "m8_5b-step3-1"`,
+   never searched for a `case_id` key), `schema_version = "m8_5b-v1"`,
    `form_degree = 0`, `hodge_sector = null`, `rung = "3a"`. Any contradiction
    is a STRUCTURAL REFUSAL: a record does not participate merely because its
    `sector_id` says `"scalar"`;
@@ -1313,11 +1330,20 @@ canonical-bytes rule of § 11.7 continues to apply at both points.
 5. `eigenvalue_R2` is deliberately NOT consumed: it is a per-record
    measurement, legitimately `null` on a zero-multiplicity cell where no
    cluster exists, and its agreement with the level coordinate is owned by the
-   producers' § 6.3 assignment and stopping-rule gates. Consistency among
-   `quotient_multiplicity`, `measured_rank`, and `restriction_multiplicity` is
-   likewise owned upstream by G4 and G8. The comparator re-derives and
-   re-adjudicates neither: one quantity, one owner, so a conforming record
-   determines exactly one comparison integer with no adapter judgment.
+   producers' § 6.3 assignment and stopping-rule gates, which the comparator
+   does not re-derive.
+
+**No cross-field reconciliation is asserted.** `quotient_multiplicity`,
+`restriction_multiplicity` and `measured_rank` are distinct quantities with
+distinct applicability, and no equality among them is a protocol invariant.
+§ 5 requires restriction and quotient multiplicity "BOTH computed and reported,
+labeled, wherever they differ", and makes `restriction_multiplicity` NOT
+APPLICABLE outside `Γ = 2I`; `measured_rank` is a route-specific instrument
+reading, a branch rank under route (a) and `null` under route (b), which
+evaluates a closed form with no solver. Rung 3a consumes
+`quotient_multiplicity` because that is the quotient multiplicity the rung-3a
+adjudication target names. The other reported fields remain upstream
+diagnostics and are not adjudication inputs.
 
 **Rung labels on adjudication artifacts.** Records produced for the
 adjudication case carry `rung` `"3a"` on scalar records and `"3b"` on one-form
@@ -1396,18 +1422,37 @@ branch against `2k(k+2) = 2((k+1)² − 1)`, the full § 11.2 coexact tower valu
   `T(M)` against that value, exact integer equality after G4, per route, both
   routes required, every divergence reported.
 
+**Terminology, because one word would otherwise carry two meanings.**
+`lower_branch` and `upper_branch` name the EVALUATOR's emitted objects.
+`m_up` and `m_down` are the protocol's two CONTRIBUTORS to one physical
+eigenvalue. The hazards below concern contributors, not evaluator branches.
+
 **The two aggregation hazards, named as mandatory mutations.** (H1) comparing
-any single branch cell against the evaluator's total: the clean uniform
-factor-2 that mimics a real disagreement; it must red. (H2) the doubling
-shortcut, `2 ×` one branch: at `Γ = 1` the branches are equal and the shortcut
-passes for the wrong structural reason, so it must be exercised on a case where
-the branches differ, and such cases exist in the tuning family (the committed
-`L(7;1,2)` artifact carries `up = 2, down = 0` at `λ·R² = 9`); it must red
-there.
+any single contributor cell against the evaluator's total: the clean uniform
+factor-2 that mimics a real disagreement; it must red, and it must be exercised
+on a coordinate where the chosen contributor actually differs from that total,
+or the mutation is formally present and non-discriminating. (H2) the doubling
+shortcut, `2 ×` one contributor: at `Γ = 1` the two contributors are equal and
+the shortcut passes for the wrong structural reason, so it must be exercised on
+a case where they differ, and such cases exist in the tuning family (the
+committed `L(7,2)` artifact carries `m_up = 2, m_down = 0` at `λ·R² = 9`); it
+must red there.
 
 **Run configuration, pinned.** The step-6 runner invokes the evaluator at
 exactly `p = 1`, with `(q, s)` drawn from the opened Packet I,
-`kmax ≥ n_max`, and `mapping = "corrected"`. The `"as_printed"` mapping exists
+`kmax ≥ n_max`, and `mapping = "corrected"`.
+
+**Packet I's `parameters`, fixed here for the same reason the rest of this
+addendum exists.** For the lens-space adjudication family, `parameters` carries
+exactly the keys `q` and `s`: `q` an integer `≥ 1`, `s` an array of exactly two
+integers. The step-6 runner reads those two keys and nothing else, with no
+inference, aliases, fallback parsing or adapter-side transformation. Key
+exactness is enforced by the same predicate that enforces the top-level field
+list, and the types and arity by the Packet-I shape predicate, both before
+anything indexes the object; a defect in either is refused by the predicate that
+owns it rather than by a downstream read. This fixes the shape boundary only and
+changes no admissibility condition: which `(q, s)` are mathematically legal
+remains exactly what S1 through S6 already decide. The `"as_printed"` mapping exists
 only inside the evaluator's mutation battery and is never a production
 configuration.
 
@@ -1437,7 +1482,7 @@ consumed cells are exactly:
 | coexact `m_up(M−2)` | `(harmonic_level = M−2, sector_id = "oneform_coexact_up")` | `M = 2, ..., n_max` |
 | coexact `m_down(M)` | `(harmonic_level = M, sector_id = "oneform_coexact_down")` | `M = 2, ..., n_max` |
 
-Each consumed record must carry `schema_version = "m8_5b-step3-1"`,
+Each consumed record must carry `schema_version = "m8_5b-v1"`,
 `arena_case_id` equal to the packet's `case_id`, `form_degree = 1`,
 `rung = "3b"`, and `hodge_sector = "exact"` for the exact cell, `"coexact"`
 for both coexact cells; exactly one record per consumed coordinate. The
@@ -1539,7 +1584,7 @@ tuning case or synthetic.
   | --- | --- | --- |
   | IM1 | identity transform injected at the application point, downstream of completed validation (Q3 layering) | comparison red |
   | IM2 | preregistered admissible wrong transform injected at the application point, downstream of completed validation (Q3 layering) | comparison red |
-  | IM3 | single branch versus evaluator total (H1) | comparison red |
+  | IM3 | single CONTRIBUTOR versus evaluator total (H1), exercised on a coordinate where that contributor differs from the total, and asserted for BOTH contributor choices with a nonempty divergence list | comparison red |
   | IM4 | doubling shortcut (H2), on a branch-asymmetric case | comparison red |
   | IM5 | missing level-by-sector cell in an observed artifact | structural refusal |
   | IM6 | unknown field or extra coordinate, packet side | validator reject |
@@ -1578,11 +1623,44 @@ tuning case or synthetic.
   a new § 12-level operational control, acknowledged as such in 12.1.7, and
   it stays unless the author relaxes it explicitly.
 
+#### 12.1.8 Disposition of the prior sealed case
+
+`M85B-ADJ-01` predates this addendum. Its Packet II carries the earlier format
+version `m8_5b-packet-2`, which § 12.1.2 does not admit, so that packet cannot
+satisfy this contract and cannot be grandfathered into it.
+
+Both of its packets were opened. Packet I opened at § 4.1 step 2 and Packet II
+was hash-verified and parsed at step 4, after which the execution stopped
+structurally at step 5: the comparison never ran, no reference value was
+compared against any route output, and no adjudication result exists for that
+case. **It is therefore retired as burned**, not retired unopened, and it is
+not eligible for future adjudication under this contract.
+
+The two hashes recorded in § 6.1 and § 11.7 are not altered here and remain
+immutable historical commitments to the bytes that were sealed. They are not
+the operative commitments for any future case. A fresh Phase B case lands its
+own opaque identifier and its own two hashes as a further dated § 12 addendum
+before its § 4.1 sequence begins, and that addendum's hashes are the operative
+ones wherever § 4.1 refers to the adjudication-case commitments.
+
+**On publishing the retired bytes.** § 4.1 provides for publication, but
+conditions it on completion: "Once the § 4.1 sequence completes and the
+adjudication is recorded, BOTH packets are published." This sequence did not
+complete. Publishing the retired packets is therefore available and costs
+nothing evidentially, since the case is already burned and nothing is protected
+by continued withholding, but it is a fresh decision rather than the discharge
+of an existing provision, and this addendum does not make it. If taken, it is
+recorded as a historical-retirement publication with both files verified
+against the § 11.7 hashes as a reported gate. **This addendum does not
+authorize publication of the retired packet bytes; any later release of those
+bytes requires a separate dated § 12 decision.**
+
 #### 12.1.7 What this addendum does not do
 
 It creates no sealed case and carries no reference values. It does not
 anticipate any specific source, table, or case beyond the cyclic family § 4.1
-already discloses. It does not amend Packet I's schema, any frozen section, or
+already discloses. It states the status of the prior sealed case in § 12.1.8
+without altering the § 6.1 or § 11.7 entries that record it. It does not amend Packet I's schema, any frozen section, or
 any claim ceiling or label (§ 0, § 1, § 4.2). It DOES supplement the frozen
 contract: the internal schema, the two comparison surfaces, the qualification
 gates, and Q6's separation-of-duties control are new § 12-level obligations

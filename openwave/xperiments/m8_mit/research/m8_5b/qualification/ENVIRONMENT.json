@@ -1,0 +1,7 @@
+{
+  "note": "the environment Phase A qualification was recorded under; run_qualification.py reports the live environment and flags a difference",
+  "numpy": "2.5.0",
+  "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "python": "3.13.13",
+  "scipy": "1.18.0"
+}

@@ -1,0 +1,191 @@
+{
+  "failed": 0,
+  "results": [
+    {
+      "detail": "",
+      "item": "Q1 packet_schema suite exits 0 (all predicates fire, controls clean)",
+      "pass": true,
+      "required_layer": "validator"
+    },
+    {
+      "detail": "",
+      "item": "Q2 SYN-Q2-A accepted clean and seal-refused (L(3,1) values; identity transform; zeros listed; nonnegative; n_max 3)",
+      "pass": true,
+      "required_layer": "validator"
+    },
+    {
+      "detail": "",
+      "item": "Q2 SYN-Q2-B accepted clean and seal-refused (L(3,1) values; shift b=-2; nonpositive sign; zeros unlisted; n_max 3)",
+      "pass": true,
+      "required_layer": "validator"
+    },
+    {
+      "detail": "",
+      "item": "Q2 SYN-Q2-C accepted clean and seal-refused (L(2,1) values; stride a=2; off-image class {1,3} affirmed spectrum_excludes; n_max 4)",
+      "pass": true,
+      "required_layer": "validator"
+    },
+    {
+      "detail": "",
+      "item": "Q2 SYN-Q2-D accepted clean and seal-refused (L(4,1) values; identity transform; zeros unlisted; n_max 4)",
+      "pass": true,
+      "required_layer": "validator"
+    },
+    {
+      "detail": "{\"supplied\": {\"outcome\": \"GREEN\", \"divergences\": 0, \"example\": null, \"hash_verified_throughout\": true, \"injected\": false}, \"identity\": {\"outcome\": \"RED\", \"divergences\": 3, \"example\": \"level 0: reference 0 vs observed 1\", \"hash_verified_throughout\": true, \"injected\": true}, \"preregistered_wrong\": {\"outcome\": \"RED\", \"divergences\": 4, \"example\": \"level 0: reference 0 vs observed 1\", \"hash_verified_throughout\": true, \"injected\": true}}",
+      "item": "Q3 G5a passes: clean GREEN, identity RED, wrong RED",
+      "pass": true,
+      "required_layer": "comparison"
+    },
+    {
+      "detail": "",
+      "item": "Q3 no arm degraded to a refusal (injection is downstream of validation)",
+      "pass": true,
+      "required_layer": "comparison"
+    },
+    {
+      "detail": "",
+      "item": "Q3 fixture sanity: nonidentity, derangement, distinct values",
+      "pass": true,
+      "required_layer": "fixture"
+    },
+    {
+      "detail": "RED",
+      "item": "IM1 identity transform injected at application point reds",
+      "pass": true,
+      "required_layer": "comparison RED"
+    },
+    {
+      "detail": "clean=GREEN injected=RED",
+      "item": "IM1b stride packet: clean GREEN, identity injection RED",
+      "pass": true,
+      "required_layer": "comparison RED"
+    },
+    {
+      "detail": "RED",
+      "item": "IM2 preregistered wrong transform injected reds",
+      "pass": true,
+      "required_layer": "comparison RED"
+    },
+    {
+      "detail": "[]",
+      "item": "IM3/IM4 precondition: inhomogeneous L(7;1,2) clean 3b is GREEN",
+      "pass": true,
+      "required_layer": "comparison"
+    },
+    {
+      "detail": "up={2: 1.0000000000000002, 3: 1.9999999999999996} down={2: 1.0000000000000004, 3: -7.930164461608261e-16}",
+      "item": "IM3/IM4 precondition: branches differ at some in-band M",
+      "pass": true,
+      "required_layer": "fixture"
+    },
+    {
+      "detail": "{'up': ('RED', 1), 'down': ('RED', 2)}",
+      "item": "IM3 EACH single contributor vs evaluator total reds with a nonempty divergence list (both choices, H1)",
+      "pass": true,
+      "required_layer": "comparison RED"
+    },
+    {
+      "detail": "",
+      "item": "IM4 doubling shortcut reds on the branch-asymmetric case",
+      "pass": true,
+      "required_layer": "comparison RED"
+    },
+    {
+      "detail": "",
+      "item": "IM5 missing scalar cell refuses structurally (never a red)",
+      "pass": true,
+      "required_layer": "STRUCTURAL_REFUSAL"
+    },
+    {
+      "detail": "",
+      "item": "IM6 unknown packet field refuses at the packet-validation layer",
+      "pass": true,
+      "required_layer": "validator reject"
+    },
+    {
+      "detail": "",
+      "item": "IM7 packet in the burned-era fixture-private shape refuses loudly",
+      "pass": true,
+      "required_layer": "STRUCTURAL_REFUSAL"
+    },
+    {
+      "detail": "",
+      "item": "IM7b evaluator rows in a foreign shape refuse loudly",
+      "pass": true,
+      "required_layer": "STRUCTURAL_REFUSAL"
+    },
+    {
+      "detail": "",
+      "item": "IM12 canonical non-object Packet II refuses at packet validation, never crashes, on the real ingestion path",
+      "pass": true,
+      "required_layer": "STRUCTURAL_REFUSAL"
+    },
+    {
+      "detail": "",
+      "item": "IM8 precondition: the perturbed packet is still schema-valid",
+      "pass": true,
+      "required_layer": "fixture"
+    },
+    {
+      "detail": "g9=pass mutated_outcome=RED refusals=0",
+      "item": "IM8 G9: baseline green, one perturbed cell reds the comparison, and the mutated outcome IS a comparison RED with no refusal",
+      "pass": true,
+      "required_layer": "comparison RED"
+    },
+    {
+      "detail": "",
+      "item": "IM9 duplicate scalar record refuses structurally",
+      "pass": true,
+      "required_layer": "STRUCTURAL_REFUSAL"
+    },
+    {
+      "detail": "",
+      "item": "IM9b duplicate evaluator row refuses structurally",
+      "pass": true,
+      "required_layer": "STRUCTURAL_REFUSAL"
+    },
+    {
+      "detail": "refused: the clean baseline comparison is already red, so the mutation proves nothing",
+      "item": "IM10 harness refuses credit when the clean baseline is already red",
+      "pass": true,
+      "required_layer": "refusal, no credit"
+    },
+    {
+      "detail": "[\"FULL-BAND COMPLETENESS: 1 required level-by-sector cell(s) absent, e.g. [(0, 'oneform_exact')]. Section 5: an absent cell is a structural failure, not an implicit zero\"]",
+      "item": "IM11 removing the level-0 exact null cell reds the artifact validator",
+      "pass": true,
+      "required_layer": "artifact validator"
+    },
+    {
+      "detail": "3a=GREEN 3b=GREEN",
+      "item": "IM11b both adapters stay GREEN on that mutant (delegation load-bearing)",
+      "pass": true,
+      "required_layer": "adapters unaffected"
+    },
+    {
+      "detail": "",
+      "item": "BA1 claimed n_max contradicting own cells refuses structurally",
+      "pass": true,
+      "required_layer": "STRUCTURAL_REFUSAL"
+    },
+    {
+      "detail": "",
+      "item": "BA2 coverage refusal exercised (derived from IM5's result)",
+      "pass": true,
+      "required_layer": "STRUCTURAL_REFUSAL"
+    },
+    {
+      "detail": "[{\"level\": 1, \"reference\": 0, \"observed\": 7, \"reference_provenance\": \"entry\"}]",
+      "item": "BA3 self-consistent route with divergent band: RED with the mismatch reported, never a refusal",
+      "pass": true,
+      "required_layer": "comparison RED"
+    },
+    {
+      "detail": "",
+      "item": "BA4 pure in-band value divergence: RED, band consistent (the Q2 corrupted-artifact pairing)",
+      "pass": true,
+      "required_layer": "comparison RED"
+    }
+  ]
+}
