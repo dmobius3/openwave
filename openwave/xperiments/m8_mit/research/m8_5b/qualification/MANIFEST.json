@@ -1,11 +1,11 @@
 {
   "excluded": [
+    ".gitignore",
     "qualification/MANIFEST.json",
     "qualification/PHASE_A_FREEZE.md"
   ],
-  "file_count": 36,
+  "file_count": 35,
   "files": {
-    ".gitignore": "0af9191032acce90f45408f90e3d5cf6bf47e003d109267f2cbb2237e95eb1d1",
     "eval3b/gate_gamma1.py": "4bf69fe504bc244a657b6870c7bbe3876b821e07c2e8e26a2d751a46cceea32d",
     "eval3b/lauret_evaluator.py": "d58503b68a086d789b0fd13b9d398f1db2286d9ed0bcc81b5279f25c74c1af1f",
     "eval3b/mutations.py": "2da289c54f7f2de314405f42a4b982b37ead703e114b5dda92414ce9e9f48f57",
@@ -42,5 +42,5 @@
     "run_qualification.py": "e0cf7f77e41dd7e77115c1b20919c2a96922cf8ee4b06558c19a8429720b5706",
     "verify_packet_structural.py": "6af71e482b6ca2698d8dcaac29d25585b4a331cbd7479ff7be056db2551935b2"
   },
-  "note": "SHA-256 of every shipped file except two that cannot appear here. MANIFEST.json cannot contain its own hash. PHASE_A_FREEZE.md contains this manifest's hash, so hashing it here would be circular: the chain runs freeze -> manifest -> every other file, and the freeze record's own anchor is the commit that carries it."
+  "note": "SHA-256 of every shipped file except three. MANIFEST.json cannot contain its own hash. PHASE_A_FREEZE.md contains this manifest's hash, so hashing it here would be circular: the chain runs freeze -> manifest -> every other file, and the freeze record's own anchor is the commit that carries it. .gitignore is repository hygiene, not qualification evidence and not an input to any battery; repository policy marks it export-ignore, so it is absent from source archives, and pinning it made a correct exported tree fail this gate."
 }
