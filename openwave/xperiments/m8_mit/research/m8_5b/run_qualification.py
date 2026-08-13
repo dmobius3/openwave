@@ -6,11 +6,15 @@
 Runs, in order, every check that backs the Phase A claim, and ends with one
 verdict.  Nonzero exit on anything short of a full pass.
 
-    0  provenance   no module resolves outside this tree
+    0  provenance   subprocess path confinement (PYTHONPATH cleared,
+                    PYTHONNOUSERSITE set, targets under the tree,
+                    inherited) plus inspected first-party origins in
+                    the controlling process
     1  environment  interpreter and library versions
     2  manifest     every shipped file matches its recorded hash
     3  schema       Packet I and Packet II gate batteries
     4  structural   target-scored battery, 8 of 8, plus non-vacuity
+    4b evaluator    the rung-3b evaluator's own validation and mutations
     5  rehearsal    Q4 integration rehearsal, including the deletion limb
     6  integrated   the Q1/Q2/Q3/Q5 battery
     7  records      the fresh run reproduces the shipped qualification records
@@ -45,13 +49,32 @@ def record(name, passed, detail=""):
 
 
 def run(script, *args):
-    r = subprocess.run([sys.executable, os.path.join(ROOT, script), *args],
-                       cwd=ROOT, capture_output=True, text=True)
+    """Run a battery under subprocess path confinement.
+
+    `PYTHONPATH` is cleared and `PYTHONNOUSERSITE` is set, and the target is
+    required to live under this tree.  The environment is inherited, so the
+    confinement also covers the batteries' own subprocesses, which a
+    parent-side `sys.modules` scan cannot reach.
+
+    SCOPE, stated exactly.  This establishes that no qualification subprocess
+    inherits an external first-party path through `PYTHONPATH` or the user
+    site directory.  It is not a claim of absolute filesystem confinement:
+    system site-packages and any `.pth` configuration remain visible, as they
+    must be for NumPy and SciPy.  The complementary check is step 0, which
+    affirmatively inspects the origins of the modules the controlling process
+    imports.
+    """
+    target = os.path.join(ROOT, script)
+    if not os.path.abspath(target).startswith(ROOT + os.sep):
+        raise RuntimeError(f"refusing to run a script outside the tree: {script}")
+    env = {**os.environ, "PYTHONPATH": "", "PYTHONNOUSERSITE": "1"}
+    r = subprocess.run([sys.executable, target, *args],
+                       cwd=ROOT, capture_output=True, text=True, env=env)
     return r.returncode, r.stdout + r.stderr
 
 
 # --- 0 provenance ------------------------------------------------------------
-step(0, "provenance: every module resolves inside this tree")
+step(0, "provenance: imports confined to this tree")
 sys.path.insert(0, ROOT)
 for sub in ("gates", "production", "pilot", "eval3b"):
     sys.path.insert(0, os.path.join(ROOT, sub))
@@ -67,7 +90,10 @@ for name, mod in sys.modules.items():
     if f.endswith(".py") and not f.startswith(ROOT) and "site-packages" not in f \
        and "lib/python" not in f:
         outside.append((name, f))
-record("no first-party module imported from outside the tree", not outside, str(outside[:3]))
+record("no first-party module imported from outside the tree "
+       "(parent closure, inspected)", not outside, str(outside[:3]))
+record("subprocess path confinement: PYTHONPATH cleared, PYTHONNOUSERSITE set, "
+       "targets required under the tree, inherited by nested children", True)
 
 # --- 1 environment -----------------------------------------------------------
 step(1, "environment")
@@ -77,12 +103,17 @@ env = {"python": sys.version.split()[0], "numpy": numpy.__version__,
 for k, v in env.items():
     print(f"   {k:10} {v}")
 shipped = os.path.join(QUAL, "ENVIRONMENT.json")
+record("ENVIRONMENT.json present", os.path.exists(shipped))
 if os.path.exists(shipped):
     was = json.load(open(shipped))
     same = {k: was.get(k) for k in ("python", "numpy", "scipy")} == \
            {k: env[k] for k in ("python", "numpy", "scipy")}
-    record("environment matches the one qualification was recorded under", True,
-           "exact match" if same else "DIFFERENT versions: results may legitimately differ")
+    # Informational, never a verdict: qualification has reproduced off the
+    # recorded stack, so an exact version match is not required for a pass.
+    print(f"   INFO  recorded environment {'matches' if same else 'DIFFERS from'} "
+          f"the current one; qualification comparison continues regardless")
+else:
+    print("   INFO  no recorded environment to compare against")
 
 # --- 2 manifest --------------------------------------------------------------
 step(2, "manifest: shipped bytes match their recorded hashes")
@@ -96,6 +127,17 @@ if os.path.exists(man_path):
         if got != h:
             bad.append(rel)
     record(f"{len(man['files'])} files match MANIFEST.json", not bad, str(bad[:4]))
+    # the other half of the chain: the freeze record must pin THIS manifest
+    frz = os.path.join(QUAL, "PHASE_A_FREEZE.md")
+    if os.path.exists(frz):
+        import re as _re
+        pinned = _re.search(r"SHA-256 ([0-9a-f]{64})", open(frz).read())
+        live = hashlib.sha256(open(man_path, "rb").read()).hexdigest()
+        record("PHASE_A_FREEZE.md pins this manifest",
+               bool(pinned) and pinned.group(1) == live,
+               f"freeze {pinned.group(1)[:12] if pinned else 'absent'}, manifest {live[:12]}")
+    else:
+        record("PHASE_A_FREEZE.md present", False, "missing")
 else:
     record("MANIFEST.json present", False, "missing")
 
@@ -110,6 +152,13 @@ step(4, "structural coverage and non-vacuity")
 rc, out = run("verify_packet_structural.py")
 record("verify_packet_structural.py exits 0", rc == 0)
 record("coverage 8 of 8 predicates target-exercised", "(8/8)" in out)
+
+# --- 4b eval3b ---------------------------------------------------------------
+step("4b", "rung-3b evaluator: Gamma = 1 validation and mutation battery")
+rc, out = run("eval3b/gate_gamma1.py")
+record("gate_gamma1.py exits 0 (recovers the rung-2 tower)", rc == 0)
+rc, out = run("eval3b/mutations.py")
+record("eval3b mutation battery exits 0", rc == 0)
 
 # --- 5 rehearsal -------------------------------------------------------------
 step(5, "Q4 integration rehearsal, including the deletion limb")
@@ -126,6 +175,7 @@ rc, out = run("qualify_integration.py")
 record("qualify_integration.py exits 0", rc == 0)
 fresh = os.path.join(ROOT, "rehearsal", "QUALIFY_RECORD.json")
 n_items = n_fail = None
+record("the fresh battery wrote its record", os.path.exists(fresh))
 if os.path.exists(fresh):
     q = json.load(open(fresh))
     n_items, n_fail = len(q["results"]), q["failed"]
@@ -134,10 +184,14 @@ if os.path.exists(fresh):
 # --- 7 records ---------------------------------------------------------------
 step(7, "the fresh run reproduces the shipped qualification records")
 ship = os.path.join(QUAL, "QUALIFY_RECORD.json")
+record("the shipped qualification record is present",
+       os.path.exists(ship) and n_items is not None)
 if os.path.exists(ship) and n_items is not None:
     s = json.load(open(ship))
-    record("item count matches the shipped record",
-           len(s["results"]) == n_items, f"shipped {len(s['results'])}, fresh {n_items}")
+    fresh_q = json.load(open(fresh))
+    record("fresh results array equals the shipped one element-for-element",
+           s["results"] == fresh_q["results"],
+           f"shipped {len(s['results'])} items, fresh {n_items}")
     record("shipped record also reports zero failures", s["failed"] == 0)
 
 # --- verdict -----------------------------------------------------------------

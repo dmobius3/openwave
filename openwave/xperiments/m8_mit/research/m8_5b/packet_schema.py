@@ -524,7 +524,14 @@ def packet_ii_checks(packet):
     if a is None or b is None or n_max is None or entries is None:
         return bad
 
-    # V4 domain containment and injectivity, over K_band = {k : 0 <= a*k+b <= n_max}
+    # V4 domain containment over K_band = {k : 0 <= a*k+b <= n_max}.
+    #
+    # INJECTIVITY IS NOT CHECKED HERE, because it cannot fail: V2 requires k
+    # strictly increasing and V3 requires a >= 1, so k1 < k2 implies
+    # a*k1 + b < a*k2 + b and two entries can never share a level.  An earlier
+    # revision carried an injectivity branch and a contract sentence assigning
+    # duplicates to V4; both were removed once the branch was shown unreachable.
+    # A duplicate k is a strict-increase violation and is refused by V2.
     mapped, v4_bad = {}, False
     for k, m in entries:
         n = a * k + b
@@ -533,9 +540,6 @@ def packet_ii_checks(packet):
                        "(k outside K_band)")
             v4_bad = True
             continue
-        if n in mapped:
-            bad.append(f"V4 entries k={mapped[n][0]} and k={k}: both map to level {n}")
-            v4_bad = True
         mapped[n] = (k, m)
 
     # V5 coefficient closure: s*(A,B,C) == (a^2, 2a(b+1), b(b+2)) exactly
@@ -1097,9 +1101,9 @@ def main():
          vmut(lambda p: p["citation"].__setitem__("year", None))),
         ("V2", "negative multiplicity",
          vmut(lambda p: p["reference_values"].__setitem__(2, [2, -3]))),
-        ("V2", "k not strictly increasing (duplicate)",
+        ("V2", "duplicate k: a strict-increase violation, V2's not V4's",
          vmut(lambda p: p["reference_values"].__setitem__(1, [0, 0]))),
-        ("V2", "k distinct but UNSORTED: ordering is V2's, not V4's",
+        ("V2", "k distinct but unsorted: strict increase is V2's",
          vmut(lambda p: p.__setitem__("reference_values",
               [p["reference_values"][0], p["reference_values"][2],
                p["reference_values"][1], p["reference_values"][3]]))),

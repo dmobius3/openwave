@@ -3,8 +3,9 @@
     "qualification/MANIFEST.json",
     "qualification/PHASE_A_FREEZE.md"
   ],
-  "file_count": 35,
+  "file_count": 36,
   "files": {
+    ".gitignore": "0af9191032acce90f45408f90e3d5cf6bf47e003d109267f2cbb2237e95eb1d1",
     "eval3b/gate_gamma1.py": "4bf69fe504bc244a657b6870c7bbe3876b821e07c2e8e26a2d751a46cceea32d",
     "eval3b/lauret_evaluator.py": "d58503b68a086d789b0fd13b9d398f1db2286d9ed0bcc81b5279f25c74c1af1f",
     "eval3b/mutations.py": "2da289c54f7f2de314405f42a4b982b37ead703e114b5dda92414ce9e9f48f57",
@@ -13,7 +14,7 @@
     "gates/ingestion.py": "d8b8dca1f42ee252e45a18414889f9b133881665aea1b67a3b955f089cdb9499",
     "gates/route_gates.py": "4710988a1ffe8059c8ba2c8a8c1d615c7a751bd8b832e2e9576fde6957300849",
     "gates/synthetic_instances.py": "703864b81c7f495b5e530900b787542d1f2492541da4ef5bd69967e186f35d24",
-    "packet_schema.py": "78cc8e0f38bdafdc8e2fc0ce1c1affe0a438cf1db0fc60c1fe1ff8dde515e1e2",
+    "packet_schema.py": "d6089bccd53091bc82ecb8e48ad8d8871d4f1f52a133277466926f08910367d6",
     "pilot/route_a_hodge.py": "77966c32230033b5132e10e266499be2fd6af419d4fcc6239869f2ad29effaea",
     "pilot/route_a_nonabelian.py": "e55728534c6b1d611e364551297df7711b95cd87f73d3f97da753a743419931b",
     "pilot/route_a_oneform.py": "1f5c6aef11caee78a641a933a729a11dfdbd53374a326b61c67f4dd5be9f49dd",
@@ -38,7 +39,7 @@
     "qualify_integration.py": "fb1de8e1ded52d7ecfb2c1a9b1d692a052a6729fc5809a6e7499c7403f60026c",
     "rehearsal_deletion_check.py": "882e14b059dc0df7beaeb3c985fa62191276fe33beff5b27920d627bec0c6031",
     "rehearsal_q4.py": "2e0493486430be765c50a1d8def7c4c1d5b56f79158da0f86489f6ded0ae2960",
-    "run_qualification.py": "219d3fcbcf33c834693c9f893f63444561f7098566f9e33d30982a20e4cd38ea",
+    "run_qualification.py": "e0cf7f77e41dd7e77115c1b20919c2a96922cf8ee4b06558c19a8429720b5706",
     "verify_packet_structural.py": "6af71e482b6ca2698d8dcaac29d25585b4a331cbd7479ff7be056db2551935b2"
   },
   "note": "SHA-256 of every shipped file except two that cannot appear here. MANIFEST.json cannot contain its own hash. PHASE_A_FREEZE.md contains this manifest's hash, so hashing it here would be circular: the chain runs freeze -> manifest -> every other file, and the freeze record's own anchor is the commit that carries it."

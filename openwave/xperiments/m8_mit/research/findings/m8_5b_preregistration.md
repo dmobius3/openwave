@@ -1250,13 +1250,19 @@ ambiguous packets cannot be sealed" means.
 | # | Predicate | Rejects when |
 | --- | --- | --- |
 | V1 | key exactness, recursive | any level carries an unknown key or lacks a required key |
-| V2 | types, enums, ranges, and entry ORDER | any value violates its stated type, closed vocabulary, integer strictness (R4), null ban (R5) or leanness (R6), or the `reference_values` entries are not strictly increasing in `k`. Ordering is V2's because it is a property of the transcription's shape; a DUPLICATE `k` is V4's, since that is an injectivity failure |
+| V2 | types, enums, ranges, and entry ORDER | any value violates its stated type, closed vocabulary, integer strictness (R4), null ban (R5) or leanness (R6), or the `reference_values` entries are not strictly increasing in `k`. Strict increase is V2's, and it subsumes duplicates: a repeated `k` is a strict-increase violation and is refused here |
 | V3 | transform admissibility | `kind` outside the closed set, or `a < 1` |
-| V4 | domain containment and injectivity | some entry's `k` lies outside `K_band` (equivalently its `n = a*k + b` falls outside `[0, n_max]`), or two entries map to one level |
+| V4 | domain containment | some entry's `k` lies outside `K_band`, equivalently its `n = a*k + b` falls outside `[0, n_max]` |
 | V5 | coefficient closure | the declared transform and the declared source eigenvalue convention are inconsistent (below) |
 | V6 | zero-level anchor | no entry maps to level 0, or that entry's `m ≠ 1` |
 | V7 | band closure | after filling per the 12.1.2b partition: fewer than two levels `n ≥ 1` carry `m > 0`, or the second smallest such level differs from the declared `n_max` |
 | V8 | off-image declaration consistency | `off_image_levels` is `"empty"` while the off-image class is nonempty, or `"spectrum_excludes"` while it is empty |
+
+**Injectivity is derived, not separately scored.** Given V2's strict increase
+and V3's `a ≥ 1`, `k₁ < k₂` implies `a·k₁ + b < a·k₂ + b`, so the transform is
+injective on the transcription entries and two entries can never share a level.
+Injectivity is therefore a consequence of V2 and V3 rather than an independently
+falsifiable obligation, and no predicate is credited with enforcing it.
 
 **V5, stated exactly.** The protocol eigenvalue at the mapped level is
 `(a*k + b)(a*k + b + 2)`, which expands to
@@ -1623,7 +1629,7 @@ tuning case or synthetic.
   a new § 12-level operational control, acknowledged as such in 12.1.7, and
   it stays unless the author relaxes it explicitly.
 
-#### 12.1.8 Disposition of the prior sealed case
+#### 12.1.7 Disposition of the prior sealed case
 
 `M85B-ADJ-01` predates this addendum. Its Packet II carries the earlier format
 version `m8_5b-packet-2`, which § 12.1.2 does not admit, so that packet cannot
@@ -1655,16 +1661,18 @@ against the § 11.7 hashes as a reported gate. **This addendum does not
 authorize publication of the retired packet bytes; any later release of those
 bytes requires a separate dated § 12 decision.**
 
-#### 12.1.7 What this addendum does not do
+#### 12.1.8 What this addendum does not do
 
 It creates no sealed case and carries no reference values. It does not
 anticipate any specific source, table, or case beyond the cyclic family § 4.1
-already discloses. It states the status of the prior sealed case in § 12.1.8
-without altering the § 6.1 or § 11.7 entries that record it. It does not amend Packet I's schema, any frozen section, or
-any claim ceiling or label (§ 0, § 1, § 4.2). It DOES supplement the frozen
-contract: the internal schema, the two comparison surfaces, the qualification
-gates, and Q6's separation-of-duties control are new § 12-level obligations
-the frozen text did not carry. Supplementing through dated addenda is § 12's
+already discloses. It states the status of the prior sealed case in § 12.1.7
+without altering the § 6.1 or § 11.7 entries that record it. It does not amend Packet I's FROZEN TOP-LEVEL FIELD LIST, any frozen section,
+or any claim ceiling or label (§ 0, § 1, § 4.2). It DOES supplement the frozen
+contract: Packet II's internal schema, **Packet I's `parameters` internal
+shape** (§ 12.1.5, exactly as § 4.1 left `indexing_map`'s internal shape open),
+the two comparison surfaces, the qualification gates, and Q6's
+separation-of-duties control are new § 12-level obligations the frozen text did
+not carry. Supplementing through dated addenda is § 12's
 own mechanism; nothing frozen is altered in place, and no supplement here
 weakens a frozen requirement. Its closed vocabularies extend only through
 future dated § 12 addenda together with a new `format_version` string.
