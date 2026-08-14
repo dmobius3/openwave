@@ -92,8 +92,42 @@ for name, mod in sys.modules.items():
         outside.append((name, f))
 record("no first-party module imported from outside the tree "
        "(parent closure, inspected)", not outside, str(outside[:3]))
-record("subprocess path confinement: PYTHONPATH cleared, PYTHONNOUSERSITE set, "
-       "targets required under the tree, inherited by nested children", True)
+# Probed, not asserted.  This line used to pass a literal True, so the gate
+# could not detect its own regression: deleting `env=env` from `run()` left it
+# printing PASS.  The probe goes THROUGH `run()`, so it observes the environment
+# the batteries themselves receive, and it runs under a deliberately poisoned
+# parent, because a probe run under a clean environment cannot fail: with no
+# hostile PYTHONPATH to inherit, dropping the confinement would be
+# indistinguishable from enforcing it.
+POISON = "/nonexistent/m8_5b_confinement_probe_must_not_be_inherited"
+_saved = {k: os.environ.get(k) for k in ("PYTHONPATH", "PYTHONNOUSERSITE")}
+os.environ["PYTHONPATH"] = POISON
+os.environ["PYTHONNOUSERSITE"] = ""
+try:
+    _rc, _out = run("confinement_probe.py")
+finally:
+    for _k, _v in _saved.items():
+        if _v is None:
+            os.environ.pop(_k, None)
+        else:
+            os.environ[_k] = _v
+
+_report = [l for l in _out.splitlines() if l.startswith("CONFINEMENT_PROBE_JSON ")]
+if _rc == 0 and _report:
+    _seen = json.loads(_report[0].split(" ", 1)[1])
+    _bad = []
+    for _who, _v in _seen.items():
+        if _v["PYTHONPATH"] != "":
+            _bad.append(f"{_who} inherited PYTHONPATH={_v['PYTHONPATH']!r}")
+        if _v["PYTHONNOUSERSITE"] != "1":
+            _bad.append(f"{_who} PYTHONNOUSERSITE={_v['PYTHONNOUSERSITE']!r}")
+        if any(POISON in _p for _p in _v["sys_path"]):
+            _bad.append(f"{_who} carries the poisoned path on sys.path")
+    record("subprocess path confinement observed in a child AND a grandchild, "
+           "probed under a poisoned parent environment", not _bad, str(_bad[:3]))
+else:
+    record("subprocess path confinement probe reported", False,
+           f"rc={_rc}, no probe report on stdout")
 
 # --- 1 environment -----------------------------------------------------------
 step(1, "environment")

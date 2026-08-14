@@ -1070,7 +1070,7 @@ These are the fixed points the packet contract composes against. None is new.
 
 | Field | Contract |
 | --- | --- |
-| `format_version` | exactly the string `"m8_5b-packet-II-2"`. Packet types are independently versioned (§ 4.1); this string is chosen distinct from every string any packet or fixture has previously carried, so nothing built earlier can validate by accident. The prior sealed case, whose Packet II carries `m8_5b-packet-2`, is disposed of in § 12.1.8 |
+| `format_version` | exactly the string `"m8_5b-packet-II-2"`. Packet types are independently versioned (§ 4.1); this string is chosen distinct from every string any packet or fixture has previously carried, so nothing built earlier can validate by accident. The prior sealed case, whose Packet II carries `m8_5b-packet-2`, is disposed of in § 12.1.7 |
 | `case_id` | string matching `^[A-Z0-9][A-Z0-9-]{2,31}$`; opaque per § 11.6. The prefix `SYN-` is RESERVED for unsealed qualification instances (12.1.6 Q2): the sealing gate refuses any production packet whose `case_id` begins `SYN-` |
 | `citation` | exactly the seven § 4.1 subfields `authors`, `title`, `venue`, `year`, `doi`, `table`, `row`. Types: `authors`, `title`, `venue` strings (L3 length cap applies); `year` integer in `[1800, 2100]`; `doi` a string beginning `10.`; `table`, `row` strings of at most 32 characters |
 | `indexing_map` | object with exactly the eight keys specified below |
@@ -1103,7 +1103,7 @@ range. **This format version deliberately admits only monotone integer-affine
 addressing**: an origin shift `b` and a stride `a`, covering a source indexed
 from a different base and a source tabulating an arithmetic subsequence of
 levels. Non-affine addressings exist in the literature and are deliberately
-outside this version (12.1.7); within the admitted family, monotonicity plus
+outside this version (12.1.8); within the admitted family, monotonicity plus
 injectivity is what makes the addressing unambiguous. A finite lookup-table
 kind is deliberately NOT admitted: it cannot state its own out-of-range
 semantics, it reintroduces per-instance shape freedom, and it is unfalsifiable
@@ -1626,7 +1626,7 @@ tuning case or synthetic.
   B still has none, and this addendum does not create one. It guards the
   residual risk that this contract is itself incompletely closed, which is
   exactly the defect class that survived component-level testing once. It is
-  a new § 12-level operational control, acknowledged as such in 12.1.7, and
+  a new § 12-level operational control, acknowledged as such in 12.1.8, and
   it stays unless the author relaxes it explicitly.
 
 #### 12.1.7 Disposition of the prior sealed case
@@ -1666,13 +1666,24 @@ bytes requires a separate dated § 12 decision.**
 It creates no sealed case and carries no reference values. It does not
 anticipate any specific source, table, or case beyond the cyclic family § 4.1
 already discloses. It states the status of the prior sealed case in § 12.1.7
-without altering the § 6.1 or § 11.7 entries that record it. It does not amend Packet I's FROZEN TOP-LEVEL FIELD LIST, any frozen section,
-or any claim ceiling or label (§ 0, § 1, § 4.2). It DOES supplement the frozen
-contract: Packet II's internal schema, **Packet I's `parameters` internal
-shape** (§ 12.1.5, exactly as § 4.1 left `indexing_map`'s internal shape open),
-the two comparison surfaces, the qualification gates, and Q6's
-separation-of-duties control are new § 12-level obligations the frozen text did
-not carry. Supplementing through dated addenda is § 12's
-own mechanism; nothing frozen is altered in place, and no supplement here
-weakens a frozen requirement. Its closed vocabularies extend only through
-future dated § 12 addenda together with a new `format_version` string.
+without altering the § 6.1 or § 11.7 entries that record it. It does not amend
+Packet I's FROZEN TOP-LEVEL FIELD LIST, any frozen section, or any claim
+ceiling or label (§ 0, § 1, § 4.2). It DOES supplement the frozen contract:
+Packet II's internal schema, **Packet I's `parameters` internal shape**
+(§ 12.1.5, exactly as § 4.1 left `indexing_map`'s internal shape open), the two
+comparison surfaces, the qualification gates, and Q6's separation-of-duties
+control are new § 12-level obligations the frozen text did not carry.
+Supplementing through dated addenda is § 12's own mechanism; nothing frozen is
+altered in place, and no supplement here weakens a frozen requirement. Its
+closed vocabularies extend only through future dated § 12 addenda together with
+a new `format_version` string.
+
+**Deferred to the first Packet I format revision.** Packet I carries
+`m8_5b-packet-1` while Packet II now carries `m8_5b-packet-II-2`: two different
+naming schemes, and the superseded Packet II string `m8_5b-packet-2` read as a
+type ordinal rather than as a version. Packet I has no version slot of its own,
+so the next Packet I revision would inherit the ambiguity this addendum has
+just resolved for Packet II. Whoever writes that revision should give Packet I
+an explicit version slot in the `m8_5b-packet-I-<n>` form. It is recorded here
+rather than corrected here because altering Packet I's shape outside a format
+revision is the in-place amendment § 12 exists to prevent.

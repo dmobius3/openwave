@@ -4,8 +4,9 @@
     "qualification/MANIFEST.json",
     "qualification/PHASE_A_FREEZE.md"
   ],
-  "file_count": 35,
+  "file_count": 36,
   "files": {
+    "confinement_probe.py": "6e05a7b3b07d87c11c736efac89b7bdc3dd93b0693d597356d4c82e8b597e559",
     "eval3b/gate_gamma1.py": "4bf69fe504bc244a657b6870c7bbe3876b821e07c2e8e26a2d751a46cceea32d",
     "eval3b/lauret_evaluator.py": "d58503b68a086d789b0fd13b9d398f1db2286d9ed0bcc81b5279f25c74c1af1f",
     "eval3b/mutations.py": "2da289c54f7f2de314405f42a4b982b37ead703e114b5dda92414ce9e9f48f57",
@@ -39,7 +40,7 @@
     "qualify_integration.py": "fb1de8e1ded52d7ecfb2c1a9b1d692a052a6729fc5809a6e7499c7403f60026c",
     "rehearsal_deletion_check.py": "882e14b059dc0df7beaeb3c985fa62191276fe33beff5b27920d627bec0c6031",
     "rehearsal_q4.py": "2e0493486430be765c50a1d8def7c4c1d5b56f79158da0f86489f6ded0ae2960",
-    "run_qualification.py": "e0cf7f77e41dd7e77115c1b20919c2a96922cf8ee4b06558c19a8429720b5706",
+    "run_qualification.py": "29e0d13035ea6470c43bb769a4f6ffb047ed45e953e96126133722d5d5f940f9",
     "verify_packet_structural.py": "6af71e482b6ca2698d8dcaac29d25585b4a331cbd7479ff7be056db2551935b2"
   },
   "note": "SHA-256 of every shipped file except three. MANIFEST.json cannot contain its own hash. PHASE_A_FREEZE.md contains this manifest's hash, so hashing it here would be circular: the chain runs freeze -> manifest -> every other file, and the freeze record's own anchor is the commit that carries it. .gitignore is repository hygiene, not qualification evidence and not an input to any battery; repository policy marks it export-ignore, so it is absent from source archives, and pinning it made a correct exported tree fail this gate."
