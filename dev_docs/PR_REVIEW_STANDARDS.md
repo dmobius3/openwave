@@ -32,7 +32,7 @@ A documented negative is a merge-worthy contribution. An overstated positive is 
 | [9. Gate G: policy sweep](#9-gate-g-policy-sweep) | AI hygiene, conduct, contributing, reproduce, onboarding, style |
 | [10. Maintainer edits](#10-maintainer-edits) | when to fix it yourself instead of asking, how to push to a fork, and the round-trip budget (§ 10.3) |
 | [11. Fairness rules](#11-fairness-rules) | measure against the enforced baseline, not the aspirational one |
-| [12. Verdict and how to write it](#12-verdict-and-how-to-write-it) | the ladder, and open-source review etiquette |
+| [12. Verdict and how to write it](#12-verdict-and-how-to-write-it) | the ladder, finding tiers and the process-weight budget (§ 12.1, § 12.2), and open-source review etiquette |
 | [13. Command appendix](#13-command-appendix) | copy-paste checks |
 | [14. Lessons log](#14-lessons-log) | what past PRs taught us |
 
@@ -483,6 +483,40 @@ These exist so review stays honest in both directions.
 
 Findings are about artifacts. "This table disagrees with the shipped data" is a finding; "you were careless" is not. Where a finding could read as a challenge to the author's model rather than to the artifact, say which one you mean.
 
+### 12.1 Finding tiers: what may cost a round (adopted 2026-08-14)
+
+Words and rules are nearly free for a language model to produce and expensive for humans to process, so process text compounds unless it is priced. This section is that price, and it binds the AI agents on both sides of a review exactly as it binds the humans: an agent drafting a gate, a rule, or an addendum weighs it in reader-hours, not tokens.
+
+| Tier | What lands in it | What it may do |
+| --- | --- | --- |
+| **BLOCKING** | Wrong computation, wrong math, a false claim of fact, a gate that cannot fail, provenance that does not check out | The only tier that may cost a round (`CHANGES_REQUESTED`) |
+| **COMMENT** | Citations, numbering, cross-references, wording, rewraps, formatting, style | Recorded in the review body, fixed on next touch or by maintainer edit ([§ 10](#10-maintainer-edits)). Never triggers a round on its own |
+
+A review whose only findings are comment-tier submits as an approval carrying those comments, not as a change request. Verification effort follows the same split: aim it at what the artifact computes, and starve it of prose. Rigor on the computation is what makes results credible and what catches fabricated provenance; rigor on wording is where review rounds go to multiply.
+
+**Append-only, narrowed.** For freezes declared from 2026-08-14 on, only the pre-registered outcome matrix and commitments are append-only; the surrounding prose is editable in place like any other document, so a comment-tier defect never costs a dated addendum. Freezes declared earlier keep the mechanism they declared.
+
+### 12.2 The process-weight budget (the rule for ruling less)
+
+Adopted 2026-08-14 after measuring one column's recent history: fourteen days in which the only merged Python was audit scripts, 24 of 34 commit subjects process-flavored, and a pre-registration at 19,505 words, roughly twice a full paper. Every individual step had been locally defensible. The budget bounds the sum.
+
+| Rule | Concrete form |
+| --- | --- |
+| **Run-before-write** | No new process artifact (packet, addendum, freeze, audit) lands until the experiment the last one governs has RUN. Qualification without adjudication does not reset this clock |
+| **Word budget** | A pre-registration caps near paper length, about 8,000 words. Needing more means the experiment is too big and splits |
+| **Dashboard** | The measurement below, re-run monthly per active column, so the ratio is watched instead of felt |
+
+```bash
+# doc-vs-code lines added this month, and process-flavored commit share
+git log --since=<month-start> --numstat --format='C %h' -- <model-path> | awk '
+  NF==3 && $3 ~ /\.md$/ {md+=$1} NF==3 && $3 ~ /\.py$/ {py+=$1}
+  END {printf ".md %d  .py %d\n", md, py}'
+git log --since=<month-start> --format='%s' -- <model-path> | grep -ciE \
+  'record|pin|audit|freeze|correct|repair|rewrap|clarify|seal|lock|register|cleanup|sync'
+```
+
+A month where the `.md` line or the process-subject share dominates while no new result landed is the signal to stop writing rules and run something.
+
 ## 13. Command appendix
 
 Fetch and isolate the PR:
@@ -622,6 +656,8 @@ One row per PR that taught us something. Newest at the bottom.
 | [#408](https://github.com/openwave-labs/openwave/pull/408) | A gate the reviewer adds is itself a claim, and this one was wrong. The new integral check ran a fixed list of primes; scaling the contributed top boundary map by a prime outside that list passed every listed one while multiplying every value the run would report by that prime to a power. A finite list can only ever reject. The contributor spotted it first, in a protocol revision demoting the battery to a reject screen, which is what prompted the attack that reproduced it. An exact certificate replaced the accept side, and the mutation suite gained the case that reddens it | Gate D row D11 |
 | [#408](https://github.com/openwave-labs/openwave/pull/408) | The commitment notice fired correctly and still misinformed. Every line read `WHO PAYS: MAINTAINERS` against an obligation set that was almost entirely scripted reruns the reviewing agent would perform, so the maintainer read personal labor that was not there and hesitated over commitments that were nearly free. A notice built to prevent silent acceptance produced the opposite failure. The missing fact was also the cheapest one to state: the freeze bound at a later lock commit, so the merge itself committed almost nothing | § 4.1 effort split, three new § 4.1 rules |
 | [#408](https://github.com/openwave-labs/openwave/pull/408) | An archive delivered out of band passed all 21 of its manifest hashes and was still carrying a certificate pinned to a superseded object, concluding `NOT CERTIFIED`, unlabelled. Per-file hashes verify the files and not the story they tell, so the check that found it resolves every hash the archive *writes* against something the archive *contains*. Same run: that certificate recorded its own premises as satisfied because they were Python literals in the JSON write rather than the outcomes of the checks above them | Gate C row C8, [`verify_provenance_archive.py`](utils/verify_provenance_archive.py) |
+| [#436](https://github.com/openwave-labs/openwave/pull/436) | Renumbering sections in a document whose citations are load-bearing needs a same-commit sweep of the whole document for the old numbers: the author naturally fixes only the reference inside the section being edited. Three stale references survived a 12.1.7/12.1.8 swap, and under an append-only freeze a three-token defect justified a full review round | § 12.1 comment tier |
+| [#436](https://github.com/openwave-labs/openwave/pull/436) | The round that taught the tier split: three `CHANGES_REQUESTED` rounds on one PR, thousands of review words against a three-token blocking defect, inside a fortnight where the column merged only audit scripts. Each step was locally defensible, and that is the trap: a rule costs its author almost nothing and creates a compliance surface the other side's agent then audits, so findings beget fixes, fixes beget addenda, and addenda beget stale citations. The verification that mattered was computational (a dead branch proved unreachable by a 214,326-case sweep, a mutation that reddens a confinement gate) and none of it required the prose rounds | § 12.1, § 12.2 |
 
 ---
 
