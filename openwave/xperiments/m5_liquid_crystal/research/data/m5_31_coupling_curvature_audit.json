@@ -2,7 +2,7 @@
   "status": "independent adversarial audit complete; mathematical core confirmed with scope qualifications",
   "independence": {
     "primary_modules_imported": false,
-    "primary_json_treated_as_claims": "data/m5_coupling_curvature_scan.json",
+    "primary_json_treated_as_claims": "data/m5_31_coupling_curvature_scan.json",
     "routes": [
       "exact SymPy differentiation",
       "five-point fourth-order point derivatives on independently constructed grids",

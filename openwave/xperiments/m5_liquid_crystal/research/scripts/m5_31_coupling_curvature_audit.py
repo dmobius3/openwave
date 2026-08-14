@@ -8,7 +8,7 @@ CubicSpline derivative estimator.
 Run from the repository root:
 
     python3 openwave/xperiments/m5_liquid_crystal/research/scripts/\
-        m5_coupling_curvature_audit.py
+        m5_31_coupling_curvature_audit.py
 """
 
 from __future__ import annotations
@@ -23,8 +23,8 @@ from scipy.interpolate import CubicSpline
 
 HERE = Path(__file__).resolve().parent
 RESEARCH = HERE.parent
-PRIMARY_JSON = RESEARCH / "data" / "m5_coupling_curvature_scan.json"
-OUT_JSON = RESEARCH / "data" / "m5_coupling_curvature_audit.json"
+PRIMARY_JSON = RESEARCH / "data" / "m5_31_coupling_curvature_scan.json"
+OUT_JSON = RESEARCH / "data" / "m5_31_coupling_curvature_audit.json"
 
 
 def relative_l2(actual: np.ndarray, expected: np.ndarray) -> float:

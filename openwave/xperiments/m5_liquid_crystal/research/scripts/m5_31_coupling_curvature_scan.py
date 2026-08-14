@@ -1,6 +1,6 @@
 """Run the M5/Faber curvature scale scan and write its tracked evidence.
 
-This driver imports all physics from ``m5_coupling_curvature_field.py``.  It
+This driver imports all physics from ``m5_31_coupling_curvature_field.py``.  It
 measures the raw C(rho) curve, two explicitly conditional coupling
 interpretations, spatial/domain refinement, two derivative estimators, and a
 mutation that removes the q x dq term from Gamma.
@@ -8,7 +8,7 @@ mutation that removes the q x dq term from Gamma.
 Run from the repository root:
 
     python3 openwave/xperiments/m5_liquid_crystal/research/scripts/\
-        m5_coupling_curvature_scan.py
+        m5_31_coupling_curvature_scan.py
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np
 
-from m5_coupling_curvature_field import (
+from m5_31_coupling_curvature_field import (
     analytic_log_slope,
     analytic_proxy,
     coupling_interpretations,
@@ -31,8 +31,8 @@ from m5_coupling_curvature_field import (
 
 HERE = Path(__file__).resolve().parent
 RESEARCH = HERE.parent
-OUT_JSON = RESEARCH / "data" / "m5_coupling_curvature_scan.json"
-OUT_PLOT = RESEARCH / "plots" / "m5_coupling_curvature_scan.png"
+OUT_JSON = RESEARCH / "data" / "m5_31_coupling_curvature_scan.json"
+OUT_PLOT = RESEARCH / "plots" / "m5_31_coupling_curvature_scan.png"
 
 RHO = np.geomspace(0.6, 5.5, 25)
 SHELL_HALF_WIDTH = 0.16

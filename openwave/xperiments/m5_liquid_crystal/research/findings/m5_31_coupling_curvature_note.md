@@ -1,6 +1,6 @@
-# M5/Faber curvature scale curve: field measurement and coupling-convention boundary
+# M5.31 — M5/Faber curvature scale curve: field measurement and coupling-convention boundary
 
-**Status:** classical single-ansatz form-factor instrument complete and independently audited. It does not measure a renormalized coupling, does not change `MODELS.md`, and awaits task allocation/model-owner input on the missing source/action dictionary. Coordination and preregistration: [Discussion #438](https://github.com/openwave-labs/openwave/discussions/438).
+**Status:** classical single-ansatz form-factor instrument complete and independently audited. It does not measure a renormalized coupling, does not change `MODELS.md`, and awaits model-owner input on the missing source/action dictionary. Task record: [M5.31](../tasks/m5_31_task_details.md). Coordination and preregistration: [Discussion #438](https://github.com/openwave-labs/openwave/discussions/438).
 
 ## 1. Equations first
 
@@ -90,14 +90,14 @@ Here \(g_{ref}=1\) is only a dimensionless reference normalization. The M5 sourc
 
 | Object | Auditable implementation |
 | --- | --- |
-| \(q_0,\mathbf q\) | [`regularized_hedgehog`](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_field.py#L33-L44) |
-| Nonperiodic \(\partial_i\) | [`centered_difference`](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_field.py#L47-L57) |
-| \(\Gamma_i\) and \(R_{ij}\) | [`connection` and `curvature_magnitude`](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_field.py#L60-L86) |
-| Exact \(\lVert R\rVert,C,d\log C/d\log\mu\) | [`analytic_*`](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_field.py#L89-L103) |
-| Shell observable \(C\) | [`shell_profile`](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_field.py#L106-L124) |
-| Two conditional coupling readings and derivative methods | [`local_polynomial_derivative` and `coupling_interpretations`](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_field.py#L161-L197) |
-| Spatial ladder, fixed-\(h\) box-invariance check, and exact-shell gates | [`run`](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_scan.py#L53-L108) |
-| Load-bearing mutations | [`run`, mutation block](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_scan.py#L107-L146) |
+| \(q_0,\mathbf q\) | [`regularized_hedgehog`](../scripts/m5_31_coupling_curvature_field.py#L33-L44) |
+| Nonperiodic \(\partial_i\) | [`centered_difference`](../scripts/m5_31_coupling_curvature_field.py#L47-L57) |
+| \(\Gamma_i\) and \(R_{ij}\) | [`connection` and `curvature_magnitude`](../scripts/m5_31_coupling_curvature_field.py#L60-L86) |
+| Exact \(\lVert R\rVert,C,d\log C/d\log\mu\) | [`analytic_*`](../scripts/m5_31_coupling_curvature_field.py#L89-L103) |
+| Shell observable \(C\) | [`shell_profile`](../scripts/m5_31_coupling_curvature_field.py#L106-L124) |
+| Two conditional coupling readings and derivative methods | [`local_polynomial_derivative` and `coupling_interpretations`](../scripts/m5_31_coupling_curvature_field.py#L161-L197) |
+| Spatial ladder, fixed-\(h\) box-invariance check, and exact-shell gates | [`run`](../scripts/m5_31_coupling_curvature_scan.py#L53-L108) |
+| Load-bearing mutations | [`run`, mutation block](../scripts/m5_31_coupling_curvature_scan.py#L107-L146) |
 
 ## 3. Results against frozen gates
 
@@ -118,7 +118,7 @@ The deterministic run takes approximately 2.5 seconds on the contributor machine
 
 The measured raw field curve rises from \(C(0.6)=0.4240\) to \(C(5.5)=0.9982\): this is the resolved scale-dependence curve behind the earlier five-shell onset statement. It is a classical core form factor approaching a Coulomb plateau, not a constant one-loop slope. On the preregistered derivative interior, \(0.722\le\rho\le4.573\), the local-cubic inverse-coupling slope falls from 1.663 to 0.0122 under the energy/action reading and from 6.211 to 0.0243 under the amplitude reading. The two samples at either endpoint are diagnostic only. These dimensionless values are normalization- and scheme-conditional and are not \(b_0\).
 
-![Measured curvature scale curve and the two conditional inverse-coupling slopes](../plots/m5_coupling_curvature_scan.png)
+![Measured curvature scale curve and the two conditional inverse-coupling slopes](../plots/m5_31_coupling_curvature_scan.png)
 
 ## 4. Mutation sensitivity
 
@@ -152,17 +152,17 @@ No Substrate code or private URL is imported. The two conditional inverse-coupli
 From the repository root:
 
 ```bash
-python3 openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_scan.py
+python3 openwave/xperiments/m5_liquid_crystal/research/scripts/m5_31_coupling_curvature_scan.py
 ```
 
 Outputs:
 
-- [`m5_coupling_curvature_scan.json`](../data/m5_coupling_curvature_scan.json)
-- [`m5_coupling_curvature_scan.png`](../plots/m5_coupling_curvature_scan.png)
+- [`m5_31_coupling_curvature_scan.json`](../data/m5_31_coupling_curvature_scan.json)
+- [`m5_31_coupling_curvature_scan.png`](../plots/m5_31_coupling_curvature_scan.png)
 
 ## 7. Independent adversarial audit
 
-The audit imports neither contribution module. It rederives the identities exactly in SymPy, reconstructs the field with a five-point fourth-order stencil on fresh grids, differentiates with SciPy `CubicSpline`, applies wrong-scale and connection-term mutations, and reruns byte-for-byte determinism. Script: [`m5_coupling_curvature_audit.py`](https://github.com/vantasnerdan/openwave/blob/substrate-claim-dump/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_coupling_curvature_audit.py); record: [`m5_coupling_curvature_audit.json`](../data/m5_coupling_curvature_audit.json).
+The audit imports neither contribution module. It rederives the identities exactly in SymPy, reconstructs the field with a five-point fourth-order stencil on fresh grids, differentiates with SciPy `CubicSpline`, applies wrong-scale and connection-term mutations, and reruns byte-for-byte determinism. Script: [`m5_31_coupling_curvature_audit.py`](../scripts/m5_31_coupling_curvature_audit.py); record: [`m5_31_coupling_curvature_audit.json`](../data/m5_31_coupling_curvature_audit.json).
 
 All 16 mathematical gates pass. Claim-level verdicts are 5 CONFIRMED, 3 PARTIAL, and 1 REFUTED:
 
