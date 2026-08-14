@@ -1,0 +1,35 @@
+{
+  "case_id": "SYN-L31-Q4",
+  "configuration_id": "m8_5b-v1-rehearsal",
+  "packet_sha256": {
+    "I": "60bf3114109aa55d24b75ee34e6121a000dc611c355418d8cf2f52ae66c05bc6",
+    "II": "2d22e611a9eee92fe5756e6e0b2b3ca2a29f1f1615da7a6918ed0d6ba775f115"
+  },
+  "stages": {
+    "3a_route_a": "GREEN",
+    "3a_route_b": "GREEN",
+    "3b_route_a": "GREEN",
+    "3b_route_b": "GREEN",
+    "deletion_test": {
+      "files_physically_absent": [
+        "pilot/levels_routeb.py",
+        "pilot/route_b_oneform.py",
+        "pilot/route_b_spectral.py",
+        "production/route_b_core.py",
+        "production/route_b_producer.py"
+      ],
+      "mechanism": "files moved out of the tree; adjudication re-run in subprocess rehearsal_deletion_check.py against the committed artifacts; files restored afterwards",
+      "result": "PASS"
+    },
+    "step3": {
+      "a": {
+        "byte_length": 33445,
+        "sha256": "43f2b3eb4b7eba31bcaf35572cb153607e65e864f51a4353ba5e4a6bc1fe4f4a"
+      },
+      "b": {
+        "byte_length": 20300,
+        "sha256": "ab8cfc8119126017bbbaccb94b5533e130281097ef81581a4dc13639ae88a18a"
+      }
+    }
+  }
+}
