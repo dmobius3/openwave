@@ -455,3 +455,24 @@ The author replied to the M5.21.11 sanity-check send and TOOK THE EXCHANGE PUBLI
 | Asks in the message | NONE new; the guard-choice question was not re-asked directly (ask economy): the V-sign bracket re-surfaces it implicitly |
 | Standing flags | unchanged and unraised (the Dirac ask, the help offer, the unification-plans question) |
 | Next | await the author's read; the corrected-3×3 ladder stays unstaged pending the guard answer; Backlog head = [M5.21.13](m5_21_13_task_details.md) (courtesy-gated), user pick |
+
+## 2026-08-13 09:08 EDT: the reply: the boost problem OWNED as a sign error; the (Γ̃)² reversal quest ("maybe Fable could check it")
+
+The author's reply to the 2026-08-11 M5.21.15 send (cc: the group list + Faber + Blaschke + Maciej; attachment `Fmunu 4D Hamiltonian imaginary.pdf`, filed as [`theory/duda_fmunu_4d_hamiltonian_imaginary_2026_08_13.pdf`](../../theory/)). Verbatim spine (public thread):
+
+> "indeed there is some serious problem with boost treatment by current Lagrangian - but instead of missing higher order kinetic terms as they add in Skyrmion models, looks like there is wrong sign for time axis: like there should be reversed sign for Hamiltonian contributions of (\tilde{Gamma})^2 boost terms as in signature, what kind of means boosts being imaginary."
+
+> "what is preferred frequency? For electron and neutrinos there should be preferred omega = mc^2 / hbar. ... But for empty space, shouldn't preferred frequency be omega = 0? Definitely cannot be infinite."
+
+> "the second is reversed sign between Coulomb and Newton force: repulsion vs attraction for same charges/masses - naively we get wrong sign for Newton. We have discussed it with Manfried, I hoped that dynamical effects might repair it, but couldn't make it work ... but reversing (tilde{Gamma})^2 Hamiltonian would do it. Just checked that also using imaginary g and complex conjugation for second F in F_abcd F^abcd could do it."
+
+> "I plan to work on, it but maybe Fable could check it: modify Lagrangian and Hamiltonian for negative terms of (tilde{Gamma})^2, or imaginary g and conjugation - checking Coulomb vs Newton with signs, and if electron could get finite gravitational mass and frequency by energy minimization?"
+
+### Decode + routing
+
+| Item | Content |
+| --- | --- |
+| What it accepts | our measured boost-channel negatives + the runaway (his notebook independently derives the ω² coefficient = −2Σ(Γ̃)² at leading order, matching M5.20.2/M5.21.3/M5.21.15) |
+| What it proposes | reverse the (Γ̃)² Hamiltonian sign (= "time imaginary"), or equivalently imaginary g + conjugated second F; two arguments: vacuum must prefer ω = 0, and the naive Newton force sign is wrong (Faber discussion, dynamical repairs failed) |
+| The quest | explicit, addressed to Fable by name: run the modified functionals, check Coulomb vs Newton signs, and whether the electron gets finite gravitational mass + frequency by minimization |
+| Routed to | [M5.21.16](m5_21_16_task_details.md) (ran 2026-08-14): notebook reproduced exactly, flip == variant A, runaway + guard channel CLOSE, fixed-J electron finite-ω positive-E, Lorentz-invariance cost measured, Newton sign routed to the two-defect successor. Author question opened: [Q48](../m5_question_tracker.md#q48-detail) |
