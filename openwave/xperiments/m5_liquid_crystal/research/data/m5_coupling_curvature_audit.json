@@ -1,0 +1,205 @@
+{
+  "status": "independent adversarial audit complete; mathematical core confirmed with scope qualifications",
+  "independence": {
+    "primary_modules_imported": false,
+    "primary_json_treated_as_claims": "data/m5_coupling_curvature_scan.json",
+    "routes": [
+      "exact SymPy differentiation",
+      "five-point fourth-order point derivatives on independently constructed grids",
+      "SciPy CubicSpline differentiation",
+      "exact analytic load-bearing mutations"
+    ]
+  },
+  "symbolic_derivation": {
+    "gamma_identity": true,
+    "curvature_squared": "(3*r0**2 + x**2 + y**2 + z**2)/(r0**2 + x**2 + y**2 + z**2)**3",
+    "curvature_squared_identity": true,
+    "no_cross_curvature_squared": "3*r0**4/(r0**2 + x**2 + y**2 + z**2)**4",
+    "no_cross_curvature_squared_identity": true,
+    "dlogC_dlogmu": "-6/((rho**2 + 1)*(rho**2 + 3))",
+    "log_slope_identity": true
+  },
+  "exact_shell_reconstruction": [
+    {
+      "n": 41,
+      "max_abs_C_exact_shell_error": 2.220446049250313e-16,
+      "counts_match": true
+    },
+    {
+      "n": 61,
+      "max_abs_C_exact_shell_error": 3.3306690738754696e-16,
+      "counts_match": true
+    },
+    {
+      "n": 81,
+      "max_abs_C_exact_shell_error": 2.220446049250313e-16,
+      "counts_match": true
+    },
+    {
+      "n": 107,
+      "max_abs_C_exact_shell_error": 2.220446049250313e-16,
+      "counts_match": true
+    }
+  ],
+  "recomputed_primary_spatial_rel_l2_errors": [
+    0.02394314653263942,
+    0.010850622440073157,
+    0.006085612081080498,
+    0.0034785488357350915
+  ],
+  "independent_fourth_order_profiles": [
+    {
+      "n": 41,
+      "h_over_r0": 0.40000000000000036,
+      "fourth_order_vs_exact_shell_rel_l2": 0.0020372747766240163,
+      "primary_second_order_vs_fourth_order_rel_l2": 0.02257273188055994,
+      "minimum_shell_count": 20
+    },
+    {
+      "n": 61,
+      "h_over_r0": 0.2666666666666666,
+      "fourth_order_vs_exact_shell_rel_l2": 0.00035089042384433915,
+      "primary_second_order_vs_fourth_order_rel_l2": 0.010620231368698146,
+      "minimum_shell_count": 74
+    }
+  ],
+  "coupling_conventions": {
+    "units": {
+      "q": "dimensionless",
+      "Gamma": "length^-1",
+      "R": "length^-2",
+      "C": "dimensionless",
+      "d_inverse_g2_d_log_mu": "dimensionless, conditional on a dimensionless g_ref"
+    },
+    "schemes": {
+      "energy": {
+        "formula_power": 1.0,
+        "stored_inverse_g2_max_abs_error": 0.0,
+        "cubic_spline_vs_exact_slope_rel_l2_all": 0.0005641787749814014,
+        "cubic_spline_vs_exact_slope_rel_l2_interior": 6.333971537678191e-05,
+        "stored_local_cubic_vs_exact_slope_rel_l2_interior": 4.185559488427065e-05,
+        "exact_slope_first_last": [
+          3.1510511936111962,
+          0.005774436090225564
+        ],
+        "spline_slope_first_last": [
+          3.1480461391103978,
+          0.005826045416998077
+        ],
+        "wrong_mu_equals_r_signs_are_negative": true
+      },
+      "amplitude": {
+        "formula_power": 2.0,
+        "stored_inverse_g2_max_abs_error": 0.0,
+        "cubic_spline_vs_exact_slope_rel_l2_all": 0.0032054148803674323,
+        "cubic_spline_vs_exact_slope_rel_l2_interior": 0.00044777056105308735,
+        "stored_local_cubic_vs_exact_slope_rel_l2_interior": 0.0003616042098177777,
+        "exact_slope_first_last": [
+          15.124041105232216,
+          0.011548872180451128
+        ],
+        "spline_slope_first_last": [
+          15.054258656630289,
+          0.011653918991690474
+        ],
+        "wrong_mu_equals_r_signs_are_negative": true
+      }
+    },
+    "measured_endpoint_relative_errors_vs_same_shell_estimator": {
+      "energy": [
+        0.020988422036564147,
+        0.09561185800211325
+      ],
+      "amplitude": [
+        0.03241684246910115,
+        0.0956105059629937
+      ]
+    }
+  },
+  "mutations": {
+    "full_exact_far_exponent": -1.97325204802576,
+    "no_cross_exact_far_exponent": -3.726952429222851,
+    "exponent_change": -1.7537003811970908,
+    "stored_full_exponent_abs_error": 0.003277188668592501,
+    "stored_no_cross_exponent_abs_error": 0.0041885108030350615,
+    "scale_covariance_rel_l2": 1.4961986227029187e-16,
+    "connection_scale_identity": {
+      "lambda": 1.2,
+      "raw_C_ratio": 1.44,
+      "far_normalized_shape_residual": 0.0,
+      "audit_assessment": "algebraically true but tautological; it is not an independent shape mutation"
+    }
+  },
+  "scope_fixes_needed": [
+    "Call the fixed-h box ladder a box-invariance check, not substantive domain refinement.",
+    "Label the two endpoint slope values diagnostic or quote the interior range covered by the derivative gates.",
+    "Call gradient/local-cubic two estimators, not independent derivations; the audit CubicSpline is the independent estimator.",
+    "Keep 'running coupling' conditional: the deliverable is a classical ansatz form factor until an M5 source/action or stationary two-core dictionary selects g_R."
+  ],
+  "verdicts": [
+    {
+      "claim": "Displayed hedgehog implies the stated Gamma, curvature norm, C(rho), and logarithmic slope.",
+      "verdict": "CONFIRMED",
+      "reason": "Independent exact SymPy differentiation proves all four identities."
+    },
+    {
+      "claim": "The tracked second-order shell curve resolves the continuum ansatz profile and converges spatially.",
+      "verdict": "CONFIRMED",
+      "reason": "All stored shell oracles and errors reconstruct, while an independent fourth-order grid route converges and agrees with the n=61 stored curve within 2%."
+    },
+    {
+      "claim": "The fixed-h box ladder is domain-refinement evidence.",
+      "verdict": "PARTIAL",
+      "reason": "The reported near-zero spread is real, but all three odd grids share the same h and identical sample points on the measured shells; this local analytic stencil has no boundary solve, so the check is box invariance, not a nontrivial domain-convergence test."
+    },
+    {
+      "claim": "The energy/action and field-amplitude formulas are the two stated conditional inverse-coupling readings.",
+      "verdict": "CONFIRMED",
+      "reason": "Independent algebra and CubicSpline differentiation recover both powers, positive slopes for mu/mu0=1/rho, and the exact pointwise derivatives."
+    },
+    {
+      "claim": "The reported measured slope endpoints are validated by the frozen derivative gates.",
+      "verdict": "PARTIAL",
+      "reason": "The gates deliberately exclude two samples at each end.  The far-end measured local-cubic slopes differ from the same-shell estimator by about 9.6%, so endpoints should be labeled diagnostic or the quoted range should use the validated interior."
+    },
+    {
+      "claim": "Removing q cross dq destroys the Coulomb-like far-field plateau.",
+      "verdict": "CONFIRMED",
+      "reason": "The independent exact mutation gives |R|=sqrt(3) r0^2/(r^2+r0^2)^2 and reproduces the stored exponent change from approximately -1.97 to -3.73."
+    },
+    {
+      "claim": "Gamma rescaling is an independent load-bearing mutation.",
+      "verdict": "PARTIAL",
+      "reason": "R scales as lambda^2 and far normalization cancels it identically; the numbers are correct, but this is a dimensional identity rather than an independent sensitivity test."
+    },
+    {
+      "claim": "This scan measures an M5 renormalized running coupling or beta-function coefficient.",
+      "verdict": "REFUTED",
+      "reason": "Only a classical single-ansatz curvature form factor is fixed.  The source/action dictionary, stationary two-core scheme, field map, b0, and flavour fit are all absent; the note's explicit not-computed boundary correctly acknowledges this."
+    },
+    {
+      "claim": "The note's explicit not-computed list keeps the contribution within instrument scope.",
+      "verdict": "CONFIRMED",
+      "reason": "It does not select a coupling convention or claim b0, n_f, QCD matching, or a two-core force."
+    }
+  ],
+  "gates": {
+    "symbolic_gamma_identity": true,
+    "symbolic_curvature_identity": true,
+    "symbolic_no_cross_identity": true,
+    "symbolic_log_slope_identity": true,
+    "stored_exact_shells_reconstruct_to_1e_minus_14": true,
+    "stored_shell_counts_reconstruct": true,
+    "stored_spatial_errors_recompute_to_1e_minus_14": true,
+    "independent_fourth_order_converges": true,
+    "independent_n61_fourth_order_vs_exact_below_0p1pct": true,
+    "primary_n61_agrees_with_independent_route_below_2pct": true,
+    "both_inverse_coupling_formulas_match": true,
+    "independent_spline_slopes_match_exact_interior_below_0p1pct": true,
+    "wrong_mu_direction_flips_slope_sign": true,
+    "cross_term_mutation_changes_far_exponent_by_more_than_1": true,
+    "stored_mutation_exponents_match_exact_route_below_0p01": true,
+    "dimensionless_profile_is_scale_covariant": true
+  },
+  "all_mathematical_gates_pass": true
+}
