@@ -1,0 +1,84 @@
+{
+ "AU1": {
+  "ratio_ladder": {
+   "d_0.3": {
+    "eta": 0.9327741527605369,
+    "flip": 1.154268969855575
+   },
+   "d_0.1": {
+    "eta": 0.9898413793102903,
+    "flip": 1.019459879403211
+   },
+   "d_0.03": {
+    "eta": 0.9989916434846662,
+    "flip": 1.00184167998631
+   }
+  },
+  "au1_eta_pass": true,
+  "au1_flip_pass": true,
+  "bridge_rel": 2.9688593973436077e-16,
+  "au1_bridge_pass": true
+ },
+ "AU2": {
+  "kin_eta_own": -0.5147988229114223,
+  "kin_flip_own": 0.5147988229114223,
+  "claim_eta": -0.621622010419706,
+  "claim_flip": 0.6216220104197061,
+  "spatial_part_over_total": 0.0,
+  "au2_sign_pass": true,
+  "au2_match_pass": true,
+  "au2_flip_relation_pass": true
+ },
+ "AU3": {
+  "eta_E_corr_own": -2307.9110824863787,
+  "eta_claim": -2394.8898935285083,
+  "flip_E_corr_own": -103.58130980861031,
+  "flip_claim": -98.79716420947942,
+  "au3_eta_pass": true,
+  "au3_flip_pass": true
+ },
+ "AU4": {
+  "mutation_mislabel_reddens": true,
+  "mutation_corrupt_reddens": true
+ },
+ "AU5": {
+  "ladder": {
+   "amp_0.05": {
+    "eta": 10.384672944495211,
+    "flip": 10.387352412982555
+   },
+   "amp_0.1": {
+    "eta": 166.38846741355067,
+    "flip": 166.56021889631302
+   },
+   "amp_0.2": {
+    "eta": 2677.236557850178,
+    "flip": 2688.296890977324
+   }
+  },
+  "log2_slope_eta": [
+   4.002027756313843,
+   4.008117272536733
+  ],
+  "log2_slope_flip": [
+   4.003143985811294,
+   4.012576700845313
+  ],
+  "au5_quartic_pass": true
+ },
+ "gates": {
+  "au1_eta_pass": true,
+  "au1_flip_pass": true,
+  "au1_bridge_pass": true,
+  "au2_sign_pass": true,
+  "au2_match_pass": true,
+  "au2_flip_relation_pass": true,
+  "au3_eta_pass": true,
+  "au3_flip_pass": true,
+  "mutation_mislabel_reddens": true,
+  "mutation_corrupt_reddens": true,
+  "au5_quartic_pass": true
+ },
+ "all_pass": true,
+ "runtime_s": 0.3
+}

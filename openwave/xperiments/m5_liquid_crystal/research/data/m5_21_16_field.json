@@ -1,0 +1,111 @@
+{
+ "IDENT": {
+  "u_eta": 17.24105026098617,
+  "u_flip": 17.24105026098617,
+  "rel_diff": 0.0,
+  "pass": true
+ },
+ "INV": {
+  "eta": {
+   "so3_rot": 1.3970372329043047e-16,
+   "so13_boost": 2.9337781890990396e-15,
+   "so4_compact": 1.254402946450651
+  },
+  "flip": {
+   "so3_rot": 0.0,
+   "so13_boost": 0.2617182905369917,
+   "so4_compact": 0.27484974095255593
+  },
+  "pass": true,
+  "reading": "eta: SO(1,3)-invariant (certified); flip: SO(3) kept, boost invariance BROKEN (the signature surgery costs Lorentz invariance of the energy; the compact (0,1) rotation is not a symmetry of either since the bracket keeps eta)"
+ },
+ "CHAN": {
+  "rows": {
+   "clock_local": {
+    "kin_eta": 0.9330980660052386,
+    "kin_flip": 0.9330980660052384
+   },
+   "plane_1d": {
+    "kin_eta": 1.4421119210242819,
+    "kin_flip": 1.4421119210242819
+   },
+   "rot_z": {
+    "kin_eta": 1.3375798151056006,
+    "kin_flip": 1.337579815105601
+   },
+   "rot_x": {
+    "kin_eta": 1.948463027283738,
+    "kin_flip": 1.948463027283738
+   },
+   "boost_z": {
+    "kin_eta": -0.621622010419706,
+    "kin_flip": 0.6216220104197061
+   },
+   "boost_x": {
+    "kin_eta": -0.44526095391805887,
+    "kin_flip": 0.44526095391805876
+   }
+  },
+  "boost_kin_eta_all_negative": true,
+  "boost_kin_flip_all_positive": true,
+  "all_kin_flip_nonnegative": true,
+  "pass": true
+ },
+ "DRESS": {
+  "kin_base_eta": 341.4070837063188,
+  "kin_base_flip": 341.4070837063188,
+  "plateau_ladder": {
+   "amp_0.02": {
+    "E_corr_eta": -59.18436150072837,
+    "E_corr_flip": -11.424166031774893,
+    "kin_corr_eta": -175.40618283386195,
+    "kin_corr_flip": 194.60364007932657
+   },
+   "amp_0.05": {
+    "E_corr_eta": -43.34996809338885,
+    "E_corr_flip": 247.2651360066406,
+    "kin_corr_eta": -1097.0343681869326,
+    "kin_corr_flip": 1221.824021595693
+   },
+   "amp_0.1": {
+    "E_corr_eta": 4511.189489138381,
+    "E_corr_flip": 5569.729685751787,
+    "kin_corr_eta": -4398.804096979329,
+    "kin_corr_flip": 4967.039989668386
+   },
+   "amp_0.2": {
+    "E_corr_eta": 94232.4970070533,
+    "E_corr_flip": 97358.26676813336,
+    "kin_corr_eta": -17766.72241899411,
+    "kin_corr_flip": 21171.880306350355
+   },
+   "amp_0.4": {
+    "E_corr_eta": 1678069.0370478646,
+    "E_corr_flip": 1710459.31922498,
+    "kin_corr_eta": -73865.34941205189,
+    "kin_corr_flip": 107410.13714917905
+   }
+  },
+  "sawtooth_ladder": {
+   "A_0.05": {
+    "E_corr_eta": -2339.0663464710983,
+    "E_corr_flip": 21950.313670698924
+   },
+   "A_0.1": {
+    "E_corr_eta": 130033.96238510865,
+    "E_corr_flip": 216500.8557871978
+   },
+   "A_0.2": {
+    "E_corr_eta": 2770407.63680234,
+    "E_corr_flip": 3025316.570320702
+   },
+   "A_0.4": {
+    "E_corr_eta": 48396471.09561858,
+    "E_corr_flip": 53476399.15864001
+   }
+  },
+  "saw_eta_goes_negative": true,
+  "saw_flip_stays_positive": true
+ },
+ "runtime_s": 0.7
+}

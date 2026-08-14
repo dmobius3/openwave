@@ -1,0 +1,76 @@
+{
+ "cfg": {
+  "n": 48,
+  "L": 72.0,
+  "h": 1.5,
+  "g": 32.0,
+  "s": -1.0,
+  "delta": 0.3
+ },
+ "amp": 0.1,
+ "rho": 3.0,
+ "rows": [
+  {
+   "d": 10.0,
+   "E_int_eta": 1.109238230584765,
+   "E_int_flip": 1.1102183477674998
+  },
+  {
+   "d": 14.0,
+   "E_int_eta": 0.00563067825254393,
+   "E_int_flip": 0.005638196998120293
+  },
+  {
+   "d": 18.0,
+   "E_int_eta": 8.926865007197193e-07,
+   "E_int_flip": 8.935753612604458e-07
+  },
+  {
+   "d": 22.0,
+   "E_int_eta": 7.16227077646181e-12,
+   "E_int_flip": 7.389644451905042e-12
+  },
+  {
+   "d": 26.0,
+   "E_int_eta": 2.2737367544323206e-13,
+   "E_int_flip": -1.1368683772161603e-13
+  }
+ ],
+ "dEdd_eta": [
+  -0.27590188808305527,
+  -0.0014074463915108026
+ ],
+ "sign_eta": "repulsion",
+ "dEdd_flip": [
+  -0.2761450376923449,
+  -0.001409325855689758
+ ],
+ "sign_flip": "repulsion",
+ "single_bump_E": {
+  "eta": 269.0073233504688,
+  "flip": 269.4971118652291
+ },
+ "vacuum_kernel_ladder": {
+  "amp_0.05": {
+   "eta": 16.79923060584165,
+   "flip": 16.806870842605825
+  },
+  "amp_0.1": {
+   "eta": 269.0073233504688,
+   "flip": 269.4971118652291
+  },
+  "amp_0.2": {
+   "eta": 4318.204671804169,
+   "flip": 4349.760282216021
+  }
+ },
+ "kernel_amp_scaling_ratio": {
+  "eta": 16.013074030719363,
+  "flip": 16.034936805847725
+ },
+ "vacuum_kernel_positive_both": true,
+ "kernel_reading": "the amp-doubling ratio is 16 = 2^4 in BOTH metrics: the vacuum boost-bump energy is QUARTIC in amplitude (no quadratic vacuum boost kernel exists, consistent with the M5.20.2 purely-quartic-L finding), positive and flip-insensitive. The mediated mass-mass force sign therefore cannot be read from vacuum fluctuations; it lives on dressed DEFECT pairs, whose canonical two-center boost-dressed construction is the author-gated prerequisite. Seed-level verdict: the flip leaves this vacuum channel unchanged (0.09%); the Newton-sign measurement is the relaxed two-defect successor task",
+ "convention": "F = -dE_int/dd; dE_int/dd > 0 == attraction",
+ "charge_channel": "no run needed: arm B IDENT measured flip == eta exactly on static 3x3-embedded fields, so the Coulomb sector and its measured like-charge repulsion are invariant under the flip",
+ "runtime_s": 4.8
+}

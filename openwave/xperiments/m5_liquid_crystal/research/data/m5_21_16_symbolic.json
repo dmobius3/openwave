@@ -1,0 +1,16 @@
+{
+ "N1_baseline_lead": "-2*T1_2**2 - 2*T1_3**2 - 2*T2_2**2 - 2*T2_3**2 - 2*T3_2**2 - 2*T3_3**2",
+ "N1_matches_minus2six": true,
+ "N2_variantA_lead": "2*T1_2**2 + 2*T1_3**2 + 2*T2_2**2 + 2*T2_3**2 + 2*T3_2**2 + 2*T3_3**2",
+ "N2_matches_plus2six": true,
+ "N3_variantB_lead": "4*T0_2**2 + 4*T0_3**2 + 2*T1_2**2 + 2*T1_3**2 + 2*T2_2**2 + 2*T2_3**2 + 2*T3_2**2 + 2*T3_3**2",
+ "N3_matches_2_2T0_plus_six": true,
+ "N4_flip_lead": "2*T1_2**2 + 2*T1_3**2 + 2*T2_2**2 + 2*T2_3**2 + 2*T3_2**2 + 2*T3_3**2",
+ "N4_equals_variantA": true,
+ "N4_equals_variantB": false,
+ "N4_minus_variantB": "-4*T0_2**2 - 4*T0_3**2",
+ "B1_H_equals_sum_inner_eta": true,
+ "B2_Hflip_equals_sum_frobenius": true,
+ "all_pass": true,
+ "runtime_s": 1.9
+}
