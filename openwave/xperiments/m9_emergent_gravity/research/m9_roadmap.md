@@ -261,3 +261,7 @@ Paper 60.
 2026-08-15. Gauss from \(\sum\delta e\), no \(\kappa\):
 star \(-1.9979\), sea \(+0.967\), \(\alpha\)-spread
 \(10^{-13}\). Auditor CONFIRMED. Paper 61.
+
+2026-08-15. 216 balls, three \(\alpha\): \(P_{\mathrm{flat}}\)
+wins \(\delta S\) every time. CHM and \(T_K\) fall as
+\(\alpha\) grows. No flip. Paper 62.
