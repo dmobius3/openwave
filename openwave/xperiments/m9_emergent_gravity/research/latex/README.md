@@ -16,5 +16,6 @@
 | `19_deSitter_Is_the_Vacuum.tex` | Spinless Einstein+Λ vacuum is de Sitter. Torsion off the cosmological bar. Not a holographic selection and not a prize theorem |
 | `20_Derived_Sign_Einstein_Lambda.tex` | SdS: T dS + dM = 0 derived. Local Clausius ⇒ Einstein+Λ. Two signs, two surfaces. Not FGHMV in dS |
 | `21_A2_A1_Free_Fermion.tex` | A2 not refuted on 1d fermion (R ratio < 2). A1 UV α IR-independent. Not 4d |
+| `22_A2_Dirac_2d3d.tex` | Required A2: 2d/3d lattice Dirac pass locked gate. 1d scalar instrument rejected |
 
 Reconstructed files follow the PDF wording and equations. They are not a byte-for-byte dump of an unpublished compiler run.

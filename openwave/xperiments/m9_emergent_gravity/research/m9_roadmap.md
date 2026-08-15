@@ -88,3 +88,6 @@ copy remains obstructed.
 
 2026-08-15. A2 then A1 on a 1d free fermion. A2 not refuted
 (locked R ratio). A1 UV α independent of IR mass. Paper 21. Not 4d.
+
+2026-08-15. Required A2 on 2d/3d Dirac: C2 pass. 1d scalar
+instrument rejected. Paper 22.
