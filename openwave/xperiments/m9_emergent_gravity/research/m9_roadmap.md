@@ -181,3 +181,6 @@ Still not Clausius. Paper 43.
 
 2026-08-15. Two masses: all-ball CHM confirmed; both-inside
 Gauss not killed (auditor REFUTED C2b). Paper 44.
+
+2026-08-15. \(R=3\), \(69\) both-inside balls: flat beats
+CHM (\(R=0.053<0.298\)). Auditor REFUTED C2b. Paper 45.
