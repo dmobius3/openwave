@@ -178,3 +178,6 @@ has \(\delta A=0\). Paper 42.
 2026-08-15. Cut-correlator area moves at fixed \(H\), is
 not \(S\), tracks \(P_{\mathrm{CHM}}\) at \(\rho=-0.925\).
 Still not Clausius. Paper 43.
+
+2026-08-15. Two masses: all-ball CHM confirmed; both-inside
+Gauss not killed (auditor REFUTED C2b). Paper 44.
