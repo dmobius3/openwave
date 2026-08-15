@@ -9,6 +9,15 @@
 Bond-local \(\chi=\Delta S/\Delta t\) vs \(w\) has 1d \(\rho\approx 0.28\).
 \(\Delta C\) is nonlocal. That instrument is rejected.
 
+An independent adversary, own code, never saw the locked
+\(\mathrm{Tr}(K_{\mathrm{CHM}}\Delta C)\) test, attacked \(\chi\)
+anyway and **REFUTED** it: 1d \(\rho\le 0.42\) on four lattices;
+3d \(N=13\) \(\rho=0.21\); on the clean even grid \(\lvert\chi\rvert\)
+is *largest at the cut* (surface, not bulk-peaked CHM). Exterior
+\(\lvert\chi\rvert\) exceeds interior. That is area-law surface
+response, the opposite Clausius weight. It confirms the discard.
+It does not audit Paper 26's locked observable.
+
 A permutation of \(w\) is not a mutation: the intercept of
 \(K_{ij}=aw_{ij}+b\) dominates, so every NN kernel looks the same.
 
