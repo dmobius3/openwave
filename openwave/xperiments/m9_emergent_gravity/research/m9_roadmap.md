@@ -53,6 +53,7 @@ neighbors record \(I_B\) / axial negatives. Official M9.2 is Newton only.
 | [M9.4](tasks/m9_4_task_details.md) | Axial UV deformation | ✅ Closed 2026-08-15. Q4b tree-level r(k)=(3/16)/(1+k^2/M^2) audited. Q4a selected UV still [O], not invented. Full record: [note](findings/m9_4_uv_deformation_note.md) | 2026-08-15 |
 | [M9.5](tasks/m9_5_task_details.md) | Q4a holographic pair | ✅ Closed 2026-08-15. Selection-uniqueness negative: SM not a CFT, first law blind to flavor. Existence still [O]. Full record: [note](findings/m9_5_q4a_pair_note.md) | 2026-08-15 |
 | [M9.6](tasks/m9_6_task_details.md) | de Sitter FGHMV bar | ✅ Closed 2026-08-15. Copy obstructed: S=3π/(GΛ), dS/dΛ<0, so(1,4) too small. Einstein+Λ from a CFT not [P]. Full record: [note](findings/m9_6_ds_closure_note.md) | 2026-08-15 |
+| [M9.7](tasks/m9_7_task_details.md) | Jacobson substitute | ✅ Closed 2026-08-15. Not [P]: 1995 is Einstein+free Λ, no HD; 2016 conformal half misses the SM. Full record: [note](findings/m9_7_jacobson_note.md) | 2026-08-15 |
 
 ## CHANGE-LOG
 
@@ -75,3 +76,5 @@ still open. No CFT invented. Paper 16.
 
 2026-08-15. Q2 decided at the FGHMV bar: copy onto the cosmological
 horizon is obstructed (sign + isometries). No dual invented. Paper 17.
+
+2026-08-15. Jacobson is not a [P] substitute for Q2. Paper 18.

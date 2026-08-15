@@ -103,7 +103,8 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
 - FGHMV-standard de Sitter closure is obstructed (sign and isometries:
   [`findings/m9_6_ds_closure_note.md`](findings/m9_6_ds_closure_note.md)).
   Einstein+\(\Lambda\) from a cosmological CFT is not a theorem of this
-  program. Nonlinear Einstein-Cartan as a positive theorem, and the
+  program. Jacobson is not a [P] substitute
+  ([`findings/m9_7_jacobson_note.md`](findings/m9_7_jacobson_note.md)). Nonlinear Einstein-Cartan as a positive theorem, and the
   multi-digit coefficient of \(I_B\), remain open.
   Q4a selection-uniqueness of the holographic pair is answered in the
   negative ([`findings/m9_5_q4a_pair_note.md`](findings/m9_5_q4a_pair_note.md));

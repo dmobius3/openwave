@@ -12,5 +12,6 @@
 | `15_UV_Deformation_Axial.tex` | Q4 split. Selected UV (Q4a) not invented. Unique quadratic axial deformation (Q4b) tree-level matched to 3/16. Not a selected completion |
 | `16_Q4a_Holographic_Pair.tex` | Q4a in the monograph's sense. Selection-uniqueness negative. SM is not a holographic CFT. Existence of some pair still open |
 | `17_deSitter_FGHMV_Obstruction.tex` | Q2 decided at the FGHMV bar. Sign opposite, isometries too few. Not a cosmological Einstein theorem |
+| `18_Jacobson_Not_P_Substitute.tex` | [P] only. 1995 ⇒ Einstein, Λ free, no HD. 2016 conformal half does not apply to the SM. Not a Q2 substitute |
 
 Reconstructed files follow the PDF wording and equations. They are not a byte-for-byte dump of an unpublished compiler run.
