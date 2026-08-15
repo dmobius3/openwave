@@ -137,6 +137,11 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   That is not linearized Einstein. A point source makes the
   kernel \emph{enclosed energy}, not CHM
   ([`findings/m9_26_point_source_note.md`](findings/m9_26_point_source_note.md)).
+  The same operators fail the 1d CHM theorem case
+  ([`findings/m9_27_1d_point_chm_note.md`](findings/m9_27_1d_point_chm_note.md)):
+  \(\delta S=\mathrm{Tr}(K_{\mathrm{mid}}\Delta C)\), not a
+  local functional of vacuum modular energy. Paper 35 is not
+  a 3d no-go.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).

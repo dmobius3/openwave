@@ -144,3 +144,8 @@ Gaussian source (\(\rho_{\varepsilon}=1\),
 2026-08-15. Point source: flat/enclosed energy beats CHM
 (\(\rho_{\mathrm{flat}}=-0.83\) vs \(-0.47\)). Auditor
 REFUTED C2. Paper 35.
+
+2026-08-15. 1d CHM calibration of that instrument: flat
+still wins (\(\rho_{\mathrm{CHM}}=-0.054\)). \(\delta S\)
+tracks \(\mathrm{Tr}(K_{\mathrm{mid}}\Delta C)\), not the
+vacuum first law. Paper 35 is not a 3d no-go. Paper 36.
