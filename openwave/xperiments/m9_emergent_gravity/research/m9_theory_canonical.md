@@ -174,6 +174,11 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   Two packets: one enclosing ball and the one-mass \(\kappa\)
   read the pair; the midpoint cancels
   ([`findings/m9_40_pair_note.md`](findings/m9_40_pair_note.md)).
+  An extended source keeps growing; a star plateaus
+  ([`findings/m9_41_uniform_note.md`](findings/m9_41_uniform_note.md)).
+  Unequal masses cancel at the inverse-square point, not
+  the centre of mass
+  ([`findings/m9_42_bary_note.md`](findings/m9_42_bary_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);

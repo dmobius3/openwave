@@ -210,3 +210,12 @@ one enclosing ball reads the pair (\(0.84\%\)); midpoint
 cancels (\(4\times 10^{-5}\)); exterior matches two-point
 Coulomb (\(\le 0.8\%\)). Auditor CONFIRMED. Linear
 Poisson is not a discovery. Paper 50.
+
+2026-08-15. Wide vs compact: first law grows \(16\times\)
+on an extended source and plateaus on a star. Nested
+volume vs area withdrawn (collinear). Linear \(a\)
+FAIL --- not Newtonian \(\Lambda\). Paper 51.
+
+2026-08-15. Unequal masses: interior null is \(M/r^2\)
+(\(0.0025L\)), not the CM (\(0.16L\) away). Auditor
+side CONFIRMED, precision REFUTED. Paper 52.
