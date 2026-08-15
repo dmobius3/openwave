@@ -27,6 +27,15 @@ C0 used \(\rho>0.70\) not \(\lvert\rho\rvert\), so the instrument
 bit rejected a \(\rho=-0.951\) track. Bulk C3 **FAIL**. Surface
 numbers on this sample are **not** a pre-registered pass.
 
+An independent bulk adversary (\(N=11\) and even \(N=8\),
+\(R=3\)) **REFUTES** 3d bulk tracking: \(\lvert\rho\rvert\le 0.18\),
+\(R_{\mathrm{shape}}\ge 0.98\). C3 is vacuous when both residuals
+are noise, and **FAIL** on \(N=8\). Occupancy flickers on odd
+cubes; an even \(N=10\) identity control still has
+\(\rho_{\mathrm{CHM}}=-0.15\). 1d C0 sign is size-fragile
+(\(+0.925\) vs locked \(-0.953\)). This confirms the bulk
+negative. It does not audit Paper 27's surface C3.
+
 ## M9.18 surface on a new grid (locked)
 
 | Set | \(n\) | \(\rho_{\mathrm{CHM}}\) | \(R_{\mathrm{CHM}}\) | \(R_{\mathrm{flat}}\) | C3 |
