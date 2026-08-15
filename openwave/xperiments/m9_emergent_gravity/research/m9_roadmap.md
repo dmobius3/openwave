@@ -123,3 +123,7 @@ Paper 29.
 2026-08-15. \(R=5\) first-law attempt: \(25/30\) occupancy
 flips at \(\varepsilon=0.002\). Instrument rejected. Not
 Planck. Paper 30.
+
+2026-08-15. C4 scored at \(R=5\) by half-filling: TIE
+(\(n=30\), \(n_{\mathrm{flip}}=0\)). Tracking collapses.
+Paper 31.
