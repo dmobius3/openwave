@@ -10,6 +10,9 @@ Total: **0 local PDF files** as of 2026-08-15. Public PDFs live in the
 author's repo. Author LaTeX (own work) is tracked in
 [`../research/latex/`](../research/latex/) and at
 [n4hy/New_Model_Emergent_Gravity/research/latex](https://github.com/n4hy/New_Model_Emergent_Gravity/tree/main/research/latex).
+The 15 August 2026 open-questions note is
+[`../research/latex/11_Open_Questions_Attempts_and_Admissions.tex`](../research/latex/11_Open_Questions_Attempts_and_Admissions.tex).
+It does not move any Final Status \pO{} label.
 
 Citation identifiers below are either standard published records or
 author-stated Zenodo DOIs from that series. Author-stated IDs that this
