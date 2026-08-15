@@ -168,6 +168,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   Feeding \(M_{\mathrm{hat}}\) into the locked DST Poisson
   solver passes inherited C1
   ([`findings/m9_38_from_kappa_note.md`](findings/m9_38_from_kappa_note.md)).
+  The actual \(\delta e\) map sources far-field Newton with
+  mass \(\sum\delta e\), not \(M_{\mathrm{hat}}\)
+  ([`findings/m9_39_tail_note.md`](findings/m9_39_tail_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);

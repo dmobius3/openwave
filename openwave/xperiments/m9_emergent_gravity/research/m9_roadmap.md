@@ -198,3 +198,9 @@ inherited DST Poisson C1 PASS (\(n=65\) residuals
 \(\le 3.0\%\), slope \(-2.037\)). Auditor CONFIRMED.
 Entanglement supplies the mass; Einstein still does
 \(1/r^2\). Not a derived Poisson. Paper 48.
+
+2026-08-15. Real \(\delta e\) as \(\rho\): far-field Newton
+sees \(\sum\delta e\), not \(M_{\mathrm{hat}}\) (C_hat
+FAIL \(41\)--\(43\%\)). Packet is compact; the \(28\%\)
+gap is offset-ball bookkeeping. Auditor CONFIRMED.
+Paper 49.
