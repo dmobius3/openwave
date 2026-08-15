@@ -112,6 +112,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   envelope (\(\rho=-0.987\);
   [`findings/m9_15_chm_shape_note.md`](findings/m9_15_chm_shape_note.md)).
   That is not a derivation of \(G\).
+- The entanglement first law on hop perturbations tracks a local
+  kernel; a flat NN kernel beats the CHM envelope
+  ([`findings/m9_16_first_law_note.md`](findings/m9_16_first_law_note.md)).
+  Clausius here does not select the geometric weight.
 - FGHMV-standard de Sitter closure is obstructed (sign and isometries:
   [`findings/m9_6_ds_closure_note.md`](findings/m9_6_ds_closure_note.md)).
   Einstein+\(\Lambda\) from a cosmological CFT is not a theorem of this

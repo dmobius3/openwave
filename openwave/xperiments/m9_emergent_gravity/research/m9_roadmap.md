@@ -103,3 +103,7 @@ is not mean-zero curvature. Paper 24.
 2026-08-15. CHM shape of the modular hop on the diamond:
 \(\rho=-0.987\), \(R_{\mathrm{shape}}=0.162\). Auditor CONFIRMED.
 Not \(1/4G\). Paper 25.
+
+2026-08-15. First law: \(\delta S\) tracks a local kernel
+(\(\rho=0.85\)). CHM envelope loses to a flat hop kernel (C3
+FAIL, auditor CONFIRMED). Paper 26.
