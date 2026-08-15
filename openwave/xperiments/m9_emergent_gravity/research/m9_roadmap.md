@@ -157,3 +157,7 @@ select CHM (auditor CONFIRMED). Not Einstein. Paper 37.
 2026-08-15. Author guess (still a guess): need a shape,
 not a sphere. Cubes prefer a cube-native weight; exported
 CHM is not robust (auditor REFUTED C2e). Paper 38.
+
+2026-08-15. Geometric half: hop conformal \(\delta S\) tracks
+\(\delta A\) (\(\rho=0.918\)) but \(\eta\) is not constant
+(rel IQR \(3.17\)). Not Clausius. Not Einstein. Paper 39.
