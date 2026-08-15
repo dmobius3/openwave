@@ -237,3 +237,8 @@ Auditor CONFIRMED. Paper 55.
 2026-08-15. \(\sigma\)-scan: Gauss slope \(-1.87,-0.90,+0.40,+1.00\),
 sea \(+1.27\). All inward. Paper 54 ``Newtonian
 \(\Lambda\)'' withdrawn. Dust, not de Sitter. Paper 56.
+
+2026-08-15. Fermi-sea vacuum: \(E_{\mathrm{vac}}<0\)
+(cutoff, \(N\)-dependent). \(S\) tracks area, not
+volume. \(a_{\mathrm{try}}=-S/R^2\) slope \(0.26\).
+Not \(\Lambda\). Paper 57.

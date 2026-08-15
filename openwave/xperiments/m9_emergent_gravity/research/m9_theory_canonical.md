@@ -193,6 +193,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   The Gauss slope interpolates with packet width; every
   \(a\) is inward. That is dust, not \(\Lambda\)
   ([`findings/m9_46_sigma_note.md`](findings/m9_46_sigma_note.md)).
+  The unperturbed Fermi-sea vacuum has \(E_{\mathrm{vac}}<0\)
+  but area-law \(S\); the first law does not promote
+  \(E_{\mathrm{vac}}\) to \(\Lambda\)
+  ([`findings/m9_47_vacuum_note.md`](findings/m9_47_vacuum_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
