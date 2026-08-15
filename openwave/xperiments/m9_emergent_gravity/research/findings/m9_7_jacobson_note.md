@@ -13,8 +13,9 @@ identity: auditor kernel \((-1,1,1,1,0,0,0)\) after normalizing
 \(S_{00}=-1\). Jacobson 2016's conformal half requires a CFT;
 \(b_3=-7\) so it does not apply to NSM matter (*computed*). The
 2016 nonconformal half is a conjecture in Jacobson's own sentence
-and is not labeled [P]. Paper IX requires Einstein-Cartan plus
-Hehl-Datta. Therefore Jacobson is **not** a [P] substitute for Q2.
+and is not labeled [P]. Paper IX's cosmological bar is metric
+Einstein+\(\Lambda\). Jacobson does not meet that bar. Therefore
+Jacobson is **not** a [P] substitute for Q2.
 
 ## 1. Objects
 

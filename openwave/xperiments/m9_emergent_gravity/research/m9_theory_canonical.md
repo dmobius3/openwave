@@ -117,6 +117,8 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
 
 ## 7. Consumption rules
 
+- Cosmological questions are metric (Einstein+\(\Lambda\)). Torsion and
+  Hehl-Datta are not cosmological limitations: they vanish in vacuum.
 - Do not score a particle-row cell from this action: those fields are installed.
 - Do not cite FGHMV, Condition NL, or \(I_B\) as in-platform results.
 - A `MODELS.md` gravity cell requires a later lattice or analytic note of its

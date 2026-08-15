@@ -78,3 +78,7 @@ still open. No CFT invented. Paper 16.
 horizon is obstructed (sign + isometries). No dual invented. Paper 17.
 
 2026-08-15. Jacobson is not a [P] substitute for Q2. Paper 18.
+
+2026-08-15. Cosmological questions are metric only. Torsion removed
+from the Q2 bar. de Sitter is the spinless vacuum (Paper 19). FGHMV
+copy remains obstructed.
