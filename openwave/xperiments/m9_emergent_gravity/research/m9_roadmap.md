@@ -170,3 +170,7 @@ No MODELS.md. Paper 40.
 2026-08-15. Proper area \(1/t^2\) is linearly the same
 Clausius test as Paper 39's length. \(\eta\) still
 scatters (rel IQR \(3.17\)). Paper 41.
+
+2026-08-15. Hop-area vs CHM energy: \(\rho=0.996\).
+Area is the same conformal bump. Matter-only first law
+has \(\delta A=0\). Paper 42.
