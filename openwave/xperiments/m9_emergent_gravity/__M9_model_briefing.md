@@ -70,7 +70,8 @@ negatives; they are not cells.
 | --- | --- |
 | Hehl-Datta contact coefficient \(3\kappa/16\) | M9.1 gate PASS: on-shell ratio \(3/16\) in both signatures (scatter \(<10^{-15}\)), second-method audit CONFIRMED. Paper's printed \(s=-\frac14\varepsilon J_5\) FAIL: measured \(-\frac12\). Note: [`research/findings/m9_1_hehl_datta_note.md`](research/findings/m9_1_hehl_datta_note.md) |
 | Gravity: Newton limit (GEM) | 🚧 pre-registered 2026-08-15, **no run**. Attractive \(1/r^2\) from 3-d Poisson / geodesic of inherited Einstein, not the M5 GEM route. Gates locked: [`research/tasks/m9_2_task_details.md`](research/tasks/m9_2_task_details.md) |
-| Gravity: metric phenomena | 🚧 domain note written, **no cell**. Einstein+\(\Lambda\); FGHMV cited not re-proved; dS `[O]`; torsion out of scope. [`research/findings/m9_metric_phenomena_note.md`](research/findings/m9_metric_phenomena_note.md) |
+| Gravity: metric phenomena | 🚧 domain note written, **no cell**. Einstein+\(\Lambda\); FGHMV cited not re-proved; torsion out of scope. [`research/findings/m9_metric_phenomena_note.md`](research/findings/m9_metric_phenomena_note.md) |
+| de Sitter / FGHMV-standard cosmology | ❌ FGHMV copy obstructed (M9.6). \(S_{\mathrm{GH}}=3\pi/(G\Lambda)\), \(\partial S/\partial\Lambda<0\); CHM sign is opposite; \(\dim\mathfrak{so}(1,4)=10<15\). Einstein+\(\Lambda\) from a cosmological CFT is not `[P]`. [`research/findings/m9_6_ds_closure_note.md`](research/findings/m9_6_ds_closure_note.md) |
 | \(I_B\) multi-digit coefficient | ❌ documented negative (campaign, not a `MODELS.md` row). Hard-cutoff residue moves (`FAILED_MULTI_DIGIT`); hole-scheme \(r\) is source-dependent (`NOT_UNIVERSAL`); Mittag-Leffler / polygamma \(H(\tau)\) is complete and not proportional to a local kernel (`HADAMARD_COMPLETE_NOT_UNIVERSAL`). Scripts: `m9_2_ib_hadamard.py`, `m9_3_ib_analytic.py`, `m9_4_ib_hadamard_complete.py` |
 | Second-order Einstein-Cartan from entanglement | ❌ documented negative as a positive EC theorem. Metric Einstein through second order is cited (FHHPRV 2017). Axial matching is obstructed: CFT \(\langle J_5 J_5\rangle\) is nonlocal, algebraic torsion has no kinetic term (`STRUCTURE_ONLY`). Script: `m9_5_ec_symplectic.py`. Paper 14 |
 | Torsion (status, not a cell) | EC theorems: algebraic, vacuum-vanishing, non-propagating. Spacetime HD \(\sim G\) is not lab-visible. Spintronic Berry / SOC is not Palatini \(\omega\). A late-FLRW spin average is an estimate, not a cosmological no-go |
@@ -88,6 +89,7 @@ negatives; they are not cells.
 | M9.3 | Gravity-metric note: Einstein+\(\Lambda\), domain labels, no holographic overclaim (written) |
 | M9.4 | Axial UV deformation Q4b (written, audited) |
 | M9.5 | Q4a pair selection: uniqueness negative; existence still open |
+| M9.6 | de Sitter at FGHMV standard: copy obstructed (sign + isometries) |
 | Rendering | Not before a gravity cell exists. Headless first |
 
 Full row preview: [`research/m9_roadmap.md`](research/m9_roadmap.md).
@@ -115,4 +117,5 @@ M9.1 method note: [`research/findings/m9_1_hehl_datta_note.md`](research/finding
 Metric domain note: [`research/findings/m9_metric_phenomena_note.md`](research/findings/m9_metric_phenomena_note.md).
 UV deformation (Q4b): [`research/findings/m9_4_uv_deformation_note.md`](research/findings/m9_4_uv_deformation_note.md).
 Q4a pair selection: [`research/findings/m9_5_q4a_pair_note.md`](research/findings/m9_5_q4a_pair_note.md).
+de Sitter obstruction: [`research/findings/m9_6_ds_closure_note.md`](research/findings/m9_6_ds_closure_note.md).
 Author-gated questions stay with the author.
