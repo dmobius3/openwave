@@ -271,3 +271,8 @@ tracks \(f_E=P_{\mathrm{flat}}/M_{\mathrm{global}}\)
 (\(\rho=0.991,0.996,0.999\)). Centered ball recovers
 \(f\approx 1\). Source-inside C_enc FAIL (leak).
 Auditor \(\rho=0.998\). Paper 63.
+
+2026-08-15. Sea transfer, slabs break \(A\)/\(V\):
+grow \(2.59,2.55,2.51\) (volume \(3\), area \(1\)).
+\(\rho(f_S,f_E)=0.994\). Auditor grow \(2.56,2.47\).
+Paper 63 is not a packet artifact. Paper 64.

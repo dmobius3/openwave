@@ -221,6 +221,11 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   (\(\rho=0.991\)--\(0.999\)); \(f=1\) only on the
   ball that actually encloses the packet
   ([`findings/m9_53_enclose_note.md`](findings/m9_53_enclose_note.md)).
+  That fraction is not a packet artifact: on the
+  periodic band-edge transfer, slabs hold area fixed
+  and \(\delta S\) still grows with thickness
+  (grow \(2.55\) vs volume \(3\), area \(1\))
+  ([`findings/m9_54_sea_enclose_note.md`](findings/m9_54_sea_enclose_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
