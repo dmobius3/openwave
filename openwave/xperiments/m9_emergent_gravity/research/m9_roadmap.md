@@ -224,3 +224,8 @@ side CONFIRMED, precision REFUTED. Paper 52.
 moves \(0.14\%\) at \(m=0.25\) and \(0.60\%\) at
 \(m=0.50\). Auditor CONFIRMED (\(0.21\%\)). Not a
 massless-cube artifact. Paper 53.
+
+2026-08-15. Periodic band-edge transfer: \(\delta e\)
+flat to \(10^{-12}\). Volume first law on \(N=12\).
+Inherited \(a\propto r\) (slope \(1.029\)). Auditor
+volume law REFUTED on wrapping balls. Paper 54.

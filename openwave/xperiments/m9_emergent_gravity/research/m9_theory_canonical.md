@@ -182,6 +182,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   The same \(\kappa\) on the \(3+1\)D diamond waist moves
   \(0.6\%\) under staggered mass
   ([`findings/m9_43_diamond_kappa_note.md`](findings/m9_43_diamond_kappa_note.md)).
+  A periodic band-edge transfer is a valid fermion state
+  with uniform \(\delta e\); inherited Newton of that
+  density is \(a\propto r\)
+  ([`findings/m9_44_uniform_pbc_note.md`](findings/m9_44_uniform_pbc_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
