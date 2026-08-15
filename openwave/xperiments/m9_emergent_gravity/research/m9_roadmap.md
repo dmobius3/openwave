@@ -188,3 +188,7 @@ CHM (\(R=0.053<0.298\)). Auditor REFUTED C2b. Paper 45.
 2026-08-15. Gauss first-law constant \(\kappa\approx 0.97\),
 rel shift \(1.7\%\) one vs two masses. Auditor CONFIRMED.
 Paper 46.
+
+2026-08-15. \(\kappa\) weighs enclosed mass and locates the
+source (exact on \(N=12\); auditor off by one site).
+Paper 47.
