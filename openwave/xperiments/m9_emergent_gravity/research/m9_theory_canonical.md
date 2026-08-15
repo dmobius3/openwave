@@ -186,6 +186,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   with uniform \(\delta e\); inherited Newton of that
   density is \(a\propto r\)
   ([`findings/m9_44_uniform_pbc_note.md`](findings/m9_44_uniform_pbc_note.md)).
+  First-law \(M(R)\) plus spherical Gauss, with no Poisson
+  solver, already gives \(1/R^2\) for a star and \(a\propto R\)
+  for the sea
+  ([`findings/m9_45_gauss_force_note.md`](findings/m9_45_gauss_force_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
