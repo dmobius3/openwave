@@ -119,3 +119,7 @@ Paper 28.
 2026-08-15. Horizon C3 vs linear: radial weight beats flat at
 \(R=4\), \(n_{\mathrm{flip}}=0\). Parabola tied with \(R-r\).
 Paper 29.
+
+2026-08-15. \(R=5\) first-law attempt: \(25/30\) occupancy
+flips at \(\varepsilon=0.002\). Instrument rejected. Not
+Planck. Paper 30.
