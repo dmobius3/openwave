@@ -251,3 +251,9 @@ Sea subtracted, not repulsive Newton. Paper 58.
 2026-08-15. Complement of an enclosing ball:
 \(\delta S(B^c)\sim 10^{-5}\) vs \(\delta S(B)=0.196\).
 Not \(T\mathrm{d}S+\mathrm{d}M=0\). Paper 59.
+
+2026-08-15. \(\kappa\) vs \(\alpha\): rel range \(0.57\).
+Tracks \(2h(\alpha)/(\alpha\Delta E)\) at
+\(\rho=0.999998\). Paper 46 universality is
+fixed-\(\alpha\). Reusable mass is \(\sum\delta e\).
+Paper 60.

@@ -203,6 +203,11 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   The complement of an enclosing ball is not a cosmological
   horizon (\(\delta S(B^c)\) is four orders smaller)
   ([`findings/m9_49_complement_note.md`](findings/m9_49_complement_note.md)).
+  \(\kappa=\delta S/P_{\mathrm{flat}}\) runs with the
+  transfer size \(\alpha\); it is \(2h(\alpha)/(\alpha\Delta E)\),
+  not an \(\alpha\)-independent coupling
+  ([`findings/m9_50_alpha_note.md`](findings/m9_50_alpha_note.md)).
+  The reusable mass is \(\sum\delta e\).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
