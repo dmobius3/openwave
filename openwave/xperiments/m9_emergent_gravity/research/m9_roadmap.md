@@ -99,3 +99,7 @@ spacings at matched \(mL\). C2 pass; auditor CONFIRMED. Not
 2026-08-15. A1 on the same waist: area coefficient \(\alpha=0.245\),
 UV drift \(\le 4.3\%\). Unsubtracted sea \(\varepsilon\simeq -1\)
 is not mean-zero curvature. Paper 24.
+
+2026-08-15. CHM shape of the modular hop on the diamond:
+\(\rho=-0.987\), \(R_{\mathrm{shape}}=0.162\). Auditor CONFIRMED.
+Not \(1/4G\). Paper 25.

@@ -108,6 +108,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   log and for the \(3+1\)D diamond area law
   ([`findings/m9_14_A1_diamond_note.md`](findings/m9_14_A1_diamond_note.md)).
   That is not \(\eta=1/4G\) and not mean-zero foam.
+- The local modular *hop* on the diamond waist tracks the CHM
+  envelope (\(\rho=-0.987\);
+  [`findings/m9_15_chm_shape_note.md`](findings/m9_15_chm_shape_note.md)).
+  That is not a derivation of \(G\).
 - FGHMV-standard de Sitter closure is obstructed (sign and isometries:
   [`findings/m9_6_ds_closure_note.md`](findings/m9_6_ds_closure_note.md)).
   Einstein+\(\Lambda\) from a cosmological CFT is not a theorem of this
