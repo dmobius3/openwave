@@ -6,8 +6,10 @@
 > repo [github.com/n4hy/New_Model_Emergent_Gravity](https://github.com/n4hy/New_Model_Emergent_Gravity)
 > (`research/*.pdf`), or from the original venues (DOI / arXiv / Zenodo).
 
-Total: **0 local files** as of 2026-08-15. The public copies live in the
-author's repo, not in this tree.
+Total: **0 local PDF files** as of 2026-08-15. Public PDFs live in the
+author's repo. Author LaTeX (own work) is tracked in
+[`../research/latex/`](../research/latex/) and at
+[n4hy/New_Model_Emergent_Gravity/research/latex](https://github.com/n4hy/New_Model_Emergent_Gravity/tree/main/research/latex).
 
 Citation identifiers below are either standard published records or
 author-stated Zenodo DOIs from that series. Author-stated IDs that this
