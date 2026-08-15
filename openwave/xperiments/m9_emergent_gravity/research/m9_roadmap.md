@@ -204,3 +204,9 @@ sees \(\sum\delta e\), not \(M_{\mathrm{hat}}\) (C_hat
 FAIL \(41\)--\(43\%\)). Packet is compact; the \(28\%\)
 gap is offset-ball bookkeeping. Auditor CONFIRMED.
 Paper 49.
+
+2026-08-15. Two real packets, no \(M_{\mathrm{hat}}\):
+one enclosing ball reads the pair (\(0.84\%\)); midpoint
+cancels (\(4\times 10^{-5}\)); exterior matches two-point
+Coulomb (\(\le 0.8\%\)). Auditor CONFIRMED. Linear
+Poisson is not a discovery. Paper 50.
