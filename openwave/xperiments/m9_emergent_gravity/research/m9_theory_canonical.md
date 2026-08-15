@@ -118,7 +118,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   Clausius here does not select the geometric weight on the
   mixed-hop set. On the cut alone, C3 prefers CHM to flat
   ([`findings/m9_17_18_horizon_first_law_note.md`](findings/m9_17_18_horizon_first_law_note.md));
-  tracking floors still fail.
+  tracking floors still fail. On a second radius the parabola is
+  not selected over a linear \(R-r\) weight
+  ([`findings/m9_20_horizon_shape_note.md`](findings/m9_20_horizon_shape_note.md)).
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).

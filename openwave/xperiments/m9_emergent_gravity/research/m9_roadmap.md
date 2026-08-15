@@ -115,3 +115,7 @@ Paper 27.
 2026-08-15. \(S^3\) curvature axis: Ricci \(6/\rho^2\), Wick
 sign flip, Haar mean zero. The \(S^3\) picture is a guess.
 Paper 28.
+
+2026-08-15. Horizon C3 vs linear: radial weight beats flat at
+\(R=4\), \(n_{\mathrm{flip}}=0\). Parabola tied with \(R-r\).
+Paper 29.
