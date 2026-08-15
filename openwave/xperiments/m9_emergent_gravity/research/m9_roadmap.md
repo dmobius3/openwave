@@ -85,3 +85,6 @@ copy remains obstructed.
 
 2026-08-15. Derived the cosmological minus sign from SdS
 (T dS + dM = 0). Paper 20. Not FGHMV in dS.
+
+2026-08-15. A2 then A1 on a 1d free fermion. A2 not refuted
+(locked R ratio). A1 UV α independent of IR mass. Paper 21. Not 4d.
