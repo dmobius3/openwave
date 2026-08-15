@@ -215,6 +215,12 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   \(P_{\mathrm{flat}}\) at every \(\alpha\); CHM and
   \(\mathrm{Tr}(K\Delta C)\) lose
   ([`findings/m9_52_predictor_note.md`](findings/m9_52_predictor_note.md)).
+  The two are the same fraction:
+  \(\delta S/S_{\mathrm{global}}\) tracks
+  \(P_{\mathrm{flat}}/M_{\mathrm{global}}\)
+  (\(\rho=0.991\)--\(0.999\)); \(f=1\) only on the
+  ball that actually encloses the packet
+  ([`findings/m9_53_enclose_note.md`](findings/m9_53_enclose_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);

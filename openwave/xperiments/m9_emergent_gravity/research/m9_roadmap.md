@@ -265,3 +265,9 @@ star \(-1.9979\), sea \(+0.967\), \(\alpha\)-spread
 2026-08-15. 216 balls, three \(\alpha\): \(P_{\mathrm{flat}}\)
 wins \(\delta S\) every time. CHM and \(T_K\) fall as
 \(\alpha\) grows. No flip. Paper 62.
+
+2026-08-15. Enclosure identity: \(f_S=\delta S/S_{\mathrm{global}}\)
+tracks \(f_E=P_{\mathrm{flat}}/M_{\mathrm{global}}\)
+(\(\rho=0.991,0.996,0.999\)). Centered ball recovers
+\(f\approx 1\). Source-inside C_enc FAIL (leak).
+Auditor \(\rho=0.998\). Paper 63.
