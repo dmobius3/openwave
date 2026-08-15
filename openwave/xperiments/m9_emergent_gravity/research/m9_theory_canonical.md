@@ -160,10 +160,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   A cut-correlator area at fixed \(H\) is still an energy
   proxy
   ([`findings/m9_33_state_area_note.md`](findings/m9_33_state_area_note.md)).
-  Two masses well inside a ball: \(\delta S\) tracks enclosed
-  energy, not the CHM boost
-  ([`findings/m9_35_both_inside_note.md`](findings/m9_35_both_inside_note.md)).
-  That is not linearized Einstein.
+  Two masses well inside a ball: \(\delta S=\kappa M_{\mathrm{enc}}\)
+  with \(\kappa\approx 0.97\) universal to \(2\%\)
+  ([`findings/m9_36_kappa_note.md`](findings/m9_36_kappa_note.md)).
+  That is a Gauss first law, not linearized Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).
