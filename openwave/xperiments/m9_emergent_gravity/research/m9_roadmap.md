@@ -242,3 +242,8 @@ sea \(+1.27\). All inward. Paper 54 ``Newtonian
 (cutoff, \(N\)-dependent). \(S\) tracks area, not
 volume. \(a_{\mathrm{try}}=-S/R^2\) slope \(0.26\).
 Not \(\Lambda\). Paper 57.
+
+2026-08-15. First law tracks \(\delta e\)
+(\(\rho=0.99999\)), not raw \(e\) (\(\rho=-0.64\)).
+Vacuum energy is \(2762\times\) the packet.
+Sea subtracted, not repulsive Newton. Paper 58.

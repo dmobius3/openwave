@@ -197,6 +197,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   but area-law \(S\); the first law does not promote
   \(E_{\mathrm{vac}}\) to \(\Lambda\)
   ([`findings/m9_47_vacuum_note.md`](findings/m9_47_vacuum_note.md)).
+  \(\delta S\) tracks \(\delta e\), not raw \(e\): the sea
+  is subtracted and is not repulsive Newton
+  ([`findings/m9_48_subtract_note.md`](findings/m9_48_subtract_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
