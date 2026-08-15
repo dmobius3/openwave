@@ -247,3 +247,7 @@ Not \(\Lambda\). Paper 57.
 (\(\rho=0.99999\)), not raw \(e\) (\(\rho=-0.64\)).
 Vacuum energy is \(2762\times\) the packet.
 Sea subtracted, not repulsive Newton. Paper 58.
+
+2026-08-15. Complement of an enclosing ball:
+\(\delta S(B^c)\sim 10^{-5}\) vs \(\delta S(B)=0.196\).
+Not \(T\mathrm{d}S+\mathrm{d}M=0\). Paper 59.

@@ -200,6 +200,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   \(\delta S\) tracks \(\delta e\), not raw \(e\): the sea
   is subtracted and is not repulsive Newton
   ([`findings/m9_48_subtract_note.md`](findings/m9_48_subtract_note.md)).
+  The complement of an enclosing ball is not a cosmological
+  horizon (\(\delta S(B^c)\) is four orders smaller)
+  ([`findings/m9_49_complement_note.md`](findings/m9_49_complement_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
