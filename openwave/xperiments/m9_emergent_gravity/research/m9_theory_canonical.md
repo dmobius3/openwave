@@ -179,6 +179,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   Unequal masses cancel at the inverse-square point, not
   the centre of mass
   ([`findings/m9_42_bary_note.md`](findings/m9_42_bary_note.md)).
+  The same \(\kappa\) on the \(3+1\)D diamond waist moves
+  \(0.6\%\) under staggered mass
+  ([`findings/m9_43_diamond_kappa_note.md`](findings/m9_43_diamond_kappa_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);

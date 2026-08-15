@@ -219,3 +219,8 @@ FAIL --- not Newtonian \(\Lambda\). Paper 51.
 2026-08-15. Unequal masses: interior null is \(M/r^2\)
 (\(0.0025L\)), not the CM (\(0.16L\) away). Auditor
 side CONFIRMED, precision REFUTED. Paper 52.
+
+2026-08-15. Diamond waist, staggered \(m\): \(\kappa\)
+moves \(0.14\%\) at \(m=0.25\) and \(0.60\%\) at
+\(m=0.50\). Auditor CONFIRMED (\(0.21\%\)). Not a
+massless-cube artifact. Paper 53.
