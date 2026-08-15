@@ -145,7 +145,11 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   *does* obey \(\delta S=\mathrm{Tr}(K_{\mathrm{vac}}\Delta C)\);
   1d still selects enclosed energy, 3d balls select CHM
   ([`findings/m9_28_fixedh_state_note.md`](findings/m9_28_fixedh_state_note.md)).
-  That is not linearized Einstein.
+  Off the ball, a shape-native weight beats an exported
+  CHM kernel
+  ([`findings/m9_29_shape_note.md`](findings/m9_29_shape_note.md)).
+  That measurement does not make ``need a shape'' a gravity
+  theorem. That is not linearized Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).

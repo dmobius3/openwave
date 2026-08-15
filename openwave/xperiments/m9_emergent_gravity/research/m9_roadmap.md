@@ -153,3 +153,7 @@ vacuum first law. Paper 35 is not a 3d no-go. Paper 36.
 2026-08-15. Fixed-\(H\) occupation transfer: vacuum first
 law holds. 1d still selects enclosed energy. 3d balls
 select CHM (auditor CONFIRMED). Not Einstein. Paper 37.
+
+2026-08-15. Author guess (still a guess): need a shape,
+not a sphere. Cubes prefer a cube-native weight; exported
+CHM is not robust (auditor REFUTED C2e). Paper 38.
