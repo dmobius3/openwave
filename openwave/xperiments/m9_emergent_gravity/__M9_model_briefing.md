@@ -69,7 +69,7 @@ negatives; they are not cells.
 | Sector | Status |
 | --- | --- |
 | Hehl-Datta contact coefficient \(3\kappa/16\) | M9.1 gate PASS: on-shell ratio \(3/16\) in both signatures (scatter \(<10^{-15}\)), second-method audit CONFIRMED. Paper's printed \(s=-\frac14\varepsilon J_5\) FAIL: measured \(-\frac12\). Note: [`research/findings/m9_1_hehl_datta_note.md`](research/findings/m9_1_hehl_datta_note.md) |
-| Gravity: Newton limit (GEM) | 🚧 pre-registered 2026-08-15, **no run**. Attractive \(1/r^2\) from 3-d Poisson / geodesic of inherited Einstein, not the M5 GEM route. Gates locked: [`research/tasks/m9_2_task_details.md`](research/tasks/m9_2_task_details.md) |
+| Gravity: Newton limit (GEM) | ⚠️ inherited, C1 PASS / C2 FAIL. Attractive \(GM/r^2\) to \(\le 1.3\%\) on a Dirichlet cube; isolated \(\Phi=-GM/r\) fails (\(26\)--\(35\%\)) because the locked box is not isolated space. Not GEM, not FGHMV, no `MODELS.md` column. [`research/findings/m9_2_newton_note.md`](research/findings/m9_2_newton_note.md) |
 | Gravity: metric phenomena | 🚧 domain note written, **no cell**. Einstein+\(\Lambda\); FGHMV cited not re-proved; torsion out of scope. [`research/findings/m9_metric_phenomena_note.md`](research/findings/m9_metric_phenomena_note.md) |
 | de Sitter vacuum of the metric sector | ✅ `[P]` as Einstein+\(\Lambda\): spinless vacuum with \(\Lambda>0\) is de Sitter (\(a=e^{Ht}\), \(H^2=\Lambda/3\)). Torsion is not in the problem. Not a holographic selection. [`research/latex/19_deSitter_Is_the_Vacuum.tex`](research/latex/19_deSitter_Is_the_Vacuum.tex) |
 | de Sitter / FGHMV-standard cosmology | ❌ FGHMV copy obstructed (M9.6). Metric bar only: sign opposite, isometries too few. Torsion is not the missing piece. [`research/findings/m9_6_ds_closure_note.md`](research/findings/m9_6_ds_closure_note.md) |
@@ -106,7 +106,7 @@ Full row preview: [`research/m9_roadmap.md`](research/m9_roadmap.md).
 | --- | --- |
 | Application discussion | Posted: [discussion #442](https://github.com/openwave-labs/openwave/discussions/442). Maintainer admission and official ID still wanted |
 | Hostile recompute of Papers IV-VII | Whether Condition NL and the pure-information HD magnitude survive a second implementation |
-| Grid Newton-limit script | Execute the locked M9.2 gates. That, not this briefing, is what could earn the first gravity cell |
+| Official ID / MODELS.md | M9.2 C1 passed as inherited Newton; C2 failed. A cell needs a maintainer ID |
 
 Flow: [discussion #442](https://github.com/openwave-labs/openwave/discussions/442)
 → [PR #441](https://github.com/openwave-labs/openwave/pull/441) with DCO

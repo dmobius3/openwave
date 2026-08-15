@@ -183,7 +183,8 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
 - Do not cite FGHMV, Condition NL, or \(I_B\) as in-platform results.
 - A `MODELS.md` gravity cell requires a later lattice or analytic note of its
   own. M9.1 does not move one. M9.3 is a domain note and does not move one.
-  M9.2 may propose a Newton-limit cell only after its locked gates are run.
+  M9.2 has been run: C1 PASS, C2 FAIL. No `MODELS.md` column is
+  added without an official ID.
 - Official M9.2 is the Newton-limit task. Campaign files
   `m9_2_ib_hadamard.py`, `m9_3_ib_analytic.py`,
   `m9_4_ib_hadamard_complete.py`, and `m9_5_ec_symplectic.py` are

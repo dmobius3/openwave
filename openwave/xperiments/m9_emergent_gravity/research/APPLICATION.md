@@ -146,8 +146,8 @@ Zero free parameters is **not** claimed. The SM is not a prediction.
 - \(I_B\) / EC campaign scripts (documented negatives, not official gravity
   cells): `m9_2_ib_hadamard.py`, `m9_3_ib_analytic.py`,
   `m9_4_ib_hadamard_complete.py`, `m9_5_ec_symplectic.py`.
-- Newton-limit task is pre-registered and **not run**:
-  [`tasks/m9_2_task_details.md`](tasks/m9_2_task_details.md).
+- Newton-limit task run: C1 PASS, C2 FAIL. `scripts/m9_2_newton_limit.py`,
+  [`findings/m9_2_newton_note.md`](findings/m9_2_newton_note.md).
 - Metric-phenomena domain note (written; does not move `MODELS.md`):
   [`findings/m9_metric_phenomena_note.md`](findings/m9_metric_phenomena_note.md).
 - Axial UV deformation (Q4b only): `scripts/m9_4_uv_axial.py`,
@@ -208,7 +208,8 @@ PR #441.
   headless; no `MODELS.md`).
 - Independent recompute of Papers IV-VII (Condition NL, \(I_B\),
   pure-information HD magnitude).
-- A lattice or grid Newton-limit script that executes the locked M9.2 gates.
+- Maintainer decision on whether inherited Newton C1 (with C2 fail) may
+  propose a cell once an official M9 ID exists.
 - A hostile parameter-count pass on the holographic half.
 
 ## What the first PR is
@@ -217,5 +218,5 @@ Not a `MODELS.md` edit. The first in-platform artifact is M9.1: extract the
 HD coefficient from Palatini + Hermitian Dirac by stationarity, compare to
 \(3/16\) only after extraction, mutate the Palatini factor to prove the check
 can fail, and record an adversarial second-method audit. Holography is out of
-scope for that task. The Newton cell is pre-registered only. The metric note
+scope for that task. The Newton lock has been run (C1 PASS, C2 FAIL). The metric note
 is a domain statement, not a cell.

@@ -111,8 +111,19 @@ GEM, collider or astrophysical bounds, any particle-row cell.
 
 ## DEVIATIONS LOG
 
-None. This page is the lock. No script has been run against these gates.
+None to the locked gates. Implementation note 2026-08-15:
+grids \(n=65\) and \(n=97\) (both resolve \(R=0.04L\)).
+A trial \(n=41\) put the whole source in one cell (rms \(0\))
+and is not used. Acceleration is the discrete gradient
+interpolated to the probe, not a derivative of interpolated
+\(\Phi\).
 
 ## FINDINGS
 
-None. Pre-registration only. Status: **LOCKED 2026-08-15. NO RUN.**
+Run 2026-08-15. C1 PRIMARY **PASS** (finer residuals
+\(1.29\%\), \(1.04\%\), \(1.07\%\); \(\alpha=-2.008\)).
+C2 **FAIL** (Dirichlet images, \(26\)--\(35\%\)).
+C3 PASS. C4 PASS. C5 PASS. Auditor C1 CONFIRMED, C2
+REFUTED. Note:
+[`../findings/m9_2_newton_note.md`](../findings/m9_2_newton_note.md).
+Status: **RUN. C1 PASS. C2 FAIL. No MODELS.md edit.**
