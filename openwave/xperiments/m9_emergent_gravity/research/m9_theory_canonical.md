@@ -157,6 +157,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   ([`findings/m9_31_proper_area_note.md`](findings/m9_31_proper_area_note.md)).
   Hop-area is collinear with CHM energy
   ([`findings/m9_32_two_term_note.md`](findings/m9_32_two_term_note.md)).
+  A cut-correlator area at fixed \(H\) is still an energy
+  proxy
+  ([`findings/m9_33_state_area_note.md`](findings/m9_33_state_area_note.md)).
   That is not linearized Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign

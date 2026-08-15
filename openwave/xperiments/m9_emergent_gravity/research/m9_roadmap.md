@@ -174,3 +174,7 @@ scatters (rel IQR \(3.17\)). Paper 41.
 2026-08-15. Hop-area vs CHM energy: \(\rho=0.996\).
 Area is the same conformal bump. Matter-only first law
 has \(\delta A=0\). Paper 42.
+
+2026-08-15. Cut-correlator area moves at fixed \(H\), is
+not \(S\), tracks \(P_{\mathrm{CHM}}\) at \(\rho=-0.925\).
+Still not Clausius. Paper 43.
