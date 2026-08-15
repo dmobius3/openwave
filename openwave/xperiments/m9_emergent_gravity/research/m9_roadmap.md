@@ -111,3 +111,7 @@ FAIL, auditor CONFIRMED). Paper 26.
 2026-08-15. Horizon split. Bulk C3 fail. Surface C3: CHM beats
 flat (\(N=10\) and auditor \(N=12\)). Tracking floors fail.
 Paper 27.
+
+2026-08-15. \(S^3\) curvature axis: Ricci \(6/\rho^2\), Wick
+sign flip, Haar mean zero. Habitat of virtual modes is
+ontology. Paper 28.

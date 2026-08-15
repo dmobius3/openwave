@@ -119,6 +119,11 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   mixed-hop set. On the cut alone, C3 prefers CHM to flat
   ([`findings/m9_17_18_horizon_first_law_note.md`](findings/m9_17_18_horizon_first_law_note.md));
   tracking floors still fail.
+- An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
+  \(\rho\to i\ell\) flips the sign
+  ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).
+  Virtual modes living on that sphere, and \(X_4\) as curvature,
+  are author ontology. They do not close Q2.
 
 - FGHMV-standard de Sitter closure is obstructed (sign and isometries:
   [`findings/m9_6_ds_closure_note.md`](findings/m9_6_ds_closure_note.md)).
