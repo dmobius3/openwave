@@ -205,6 +205,9 @@ Zero free parameters is **not** claimed. The SM is not a prediction.
   [`findings/m9_36_kappa_note.md`](findings/m9_36_kappa_note.md).
 - Weigh and locate: `scripts/m9_37_weigh.py`,
   [`findings/m9_37_weigh_note.md`](findings/m9_37_weigh_note.md).
+- \(\kappa\to M_{\mathrm{hat}}\to\) inherited Newton:
+  `scripts/m9_38_from_kappa.py`,
+  [`findings/m9_38_from_kappa_note.md`](findings/m9_38_from_kappa_note.md).
 
 ## Which MODELS.md rows the model addresses
 

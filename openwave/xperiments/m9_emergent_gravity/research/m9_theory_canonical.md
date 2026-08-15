@@ -165,7 +165,11 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   ([`findings/m9_36_kappa_note.md`](findings/m9_36_kappa_note.md)).
   That \(\kappa\) weighs enclosed mass and locates the source
   ([`findings/m9_37_weigh_note.md`](findings/m9_37_weigh_note.md)).
-  That is a Gauss first law, not linearized Einstein.
+  Feeding \(M_{\mathrm{hat}}\) into the locked DST Poisson
+  solver passes inherited C1
+  ([`findings/m9_38_from_kappa_note.md`](findings/m9_38_from_kappa_note.md)).
+  That is a Gauss first law plus inherited Einstein, not a
+  derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).

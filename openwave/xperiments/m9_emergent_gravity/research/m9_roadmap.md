@@ -192,3 +192,9 @@ Paper 46.
 2026-08-15. \(\kappa\) weighs enclosed mass and locates the
 source (exact on \(N=12\); auditor off by one site).
 Paper 47.
+
+2026-08-15. Pipeline \(\delta S\to M_{\mathrm{hat}}\to\)
+inherited DST Poisson C1 PASS (\(n=65\) residuals
+\(\le 3.0\%\), slope \(-2.037\)). Auditor CONFIRMED.
+Entanglement supplies the mass; Einstein still does
+\(1/r^2\). Not a derived Poisson. Paper 48.

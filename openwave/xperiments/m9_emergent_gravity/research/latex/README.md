@@ -42,5 +42,6 @@
 | `45_Both_Inside_Gauss.tex` | R=3 both-inside: enclosed energy beats CHM |
 | `46_Kappa.tex` | Universal Gauss first-law constant κ≈0.97 |
 | `47_Weigh.tex` | κ weighs enclosed mass and locates the source |
+| `48_From_Kappa.tex` | Entanglement mass into inherited Newton; not derived Poisson |
 
 Reconstructed files follow the PDF wording and equations. They are not a byte-for-byte dump of an unpublished compiler run.
