@@ -1,7 +1,7 @@
 # M9.19: \(S^3\) with a curvature axis
 
-> Geometry of the author's 3-sphere picture. Wick sign-flip is
-> *derived*. Virtual particles living there is *conjectured*.
+> Geometry of a guess. Wick sign-flip is *derived*. Virtual
+> particles living there is *conjectured*, not a habitat.
 
 ## Equations
 
@@ -65,8 +65,8 @@ Paper 17 is unchanged.
 | Statement | Tag |
 | --- | --- |
 | Ricci, Wick sign, equator \(S^2\), Haar mean | *derived* / *computed* |
-| Virtual particles live on this \(S^3\) | *conjectured* (author) |
-| \(X_4\) *is* curvature | *conjectured* (author) |
+| Virtual particles live on this \(S^3\) | *guess* |
+| \(X_4\) *is* curvature | *guess* |
 | The two caps are dS / AdS *spacetime* | *not claimed* (this is 3-geometry) |
 | FGHMV in dS / selected \(\Lambda\) | *not claimed* |
 

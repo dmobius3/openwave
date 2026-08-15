@@ -22,6 +22,6 @@
 | `25_CHM_Shape_Diamond.tex` | Modular hop on the 3+1D waist is the CHM envelope. Not 1/4G |
 | `26_First_Law_Local_Not_CHM.tex` | First law tracks a local kernel; CHM envelope not selected |
 | `27_Horizon_Selects_CHM.tex` | Horizon C3: CHM beats flat on the cut, not in the bulk. Tracking weak |
-| `28_S3_Curvature_Axis.tex` | S3 Wick identities. Virtual-mode habitat is ontology, not a dual |
+| `28_S3_Curvature_Axis.tex` | S3 Wick identities. The virtual-mode picture is a guess |
 
 Reconstructed files follow the PDF wording and equations. They are not a byte-for-byte dump of an unpublished compiler run.
