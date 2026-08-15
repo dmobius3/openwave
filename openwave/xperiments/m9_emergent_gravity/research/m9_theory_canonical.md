@@ -131,6 +131,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   ([`findings/m9_23_bloch_note.md`](findings/m9_23_bloch_note.md)).
 - At fixed \(H\), region shape changes \(S\) beyond cut area
   ([`findings/m9_24_region_deform_note.md`](findings/m9_24_region_deform_note.md)).
+- \(\delta S\) of a family of balls is a linear functional of
+  local energy; the kernel is not uniquely CHM
+  ([`findings/m9_25_linear_functional_note.md`](findings/m9_25_linear_functional_note.md)).
+  That is not linearized Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).

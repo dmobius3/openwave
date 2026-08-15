@@ -136,3 +136,7 @@ Paper 32.
 2026-08-15. Fixed \(H\), deform the region. Cubes miss the ball
 area law (RMS \(5.67\) vs \(0.27\)). Same \(A_{\mathrm{cut}}\),
 different \(S\). Paper 33.
+
+2026-08-15. \(\delta S\) of \(512\) balls is linear in a
+Gaussian source (\(\rho_{\varepsilon}=1\),
+\(\rho_{\mathrm{CHM}}=-0.986\)). Kernel not unique. Paper 34.
