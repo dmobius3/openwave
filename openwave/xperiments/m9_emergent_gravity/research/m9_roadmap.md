@@ -233,3 +233,7 @@ volume law REFUTED on wrapping balls. Paper 54.
 2026-08-15. First-law mass plus Gauss, no DST:
 star slope \(-1.997\), sea slope \(+1.266\).
 Auditor CONFIRMED. Paper 55.
+
+2026-08-15. \(\sigma\)-scan: Gauss slope \(-1.87,-0.90,+0.40,+1.00\),
+sea \(+1.27\). All inward. Paper 54 ``Newtonian
+\(\Lambda\)'' withdrawn. Dust, not de Sitter. Paper 56.

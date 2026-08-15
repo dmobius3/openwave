@@ -190,6 +190,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   solver, already gives \(1/R^2\) for a star and \(a\propto R\)
   for the sea
   ([`findings/m9_45_gauss_force_note.md`](findings/m9_45_gauss_force_note.md)).
+  The Gauss slope interpolates with packet width; every
+  \(a\) is inward. That is dust, not \(\Lambda\)
+  ([`findings/m9_46_sigma_note.md`](findings/m9_46_sigma_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
