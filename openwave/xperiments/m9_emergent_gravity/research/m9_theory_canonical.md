@@ -152,8 +152,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   theorem. A hop conformal bump makes \(\delta S\) track a
   hop-length area
   ([`findings/m9_30_area_note.md`](findings/m9_30_area_note.md))
-  without a constant Clausius \(\eta\). That is not linearized
-  Einstein.
+  without a constant Clausius \(\eta\). Dual-face area is
+  linearly the same test
+  ([`findings/m9_31_proper_area_note.md`](findings/m9_31_proper_area_note.md)).
+  That is not linearized Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).

@@ -166,3 +166,7 @@ CHM is not robust (auditor REFUTED C2e). Paper 38.
 2026-08-15. M9.2 Newton lock run. C1 attractive \(1/r^2\)
 PASS. C2 isolated \(\Phi\) FAIL (Dirichlet box). Inherited.
 No MODELS.md. Paper 40.
+
+2026-08-15. Proper area \(1/t^2\) is linearly the same
+Clausius test as Paper 39's length. \(\eta\) still
+scatters (rel IQR \(3.17\)). Paper 41.
