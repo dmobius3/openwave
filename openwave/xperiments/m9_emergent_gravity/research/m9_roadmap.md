@@ -50,6 +50,7 @@ neighbors record \(I_B\) / axial negatives. Official M9.2 is Newton only.
 | --- | --- | --- | --- |
 | [M9.1](tasks/m9_1_task_details.md) | Hehl-Datta elimination | ✅ Closed 2026-08-15. Gate PASS r=3/16 both signatures (scatter <1e-15). Paper spin dual C2 FAIL (measured -1/2 not -1/4). Full record: [note](findings/m9_1_hehl_datta_note.md) + [task](tasks/m9_1_task_details.md) | 2026-08-15 |
 | [M9.3](tasks/m9_3_task_details.md) | Metric phenomena note | ✅ Closed 2026-08-15. Domain note only: Einstein+Lambda written, FGHMV cited, dS [O], torsion out of scope. Does not move MODELS.md. Full record: [note](findings/m9_metric_phenomena_note.md) | 2026-08-15 |
+| [M9.4](tasks/m9_4_task_details.md) | Axial UV deformation | ✅ Closed 2026-08-15. Q4b tree-level r(k)=(3/16)/(1+k^2/M^2) audited. Q4a selected UV still [O], not invented. Full record: [note](findings/m9_4_uv_deformation_note.md) | 2026-08-15 |
 
 ## CHANGE-LOG
 
@@ -62,3 +63,7 @@ assignment. No papers copied into `theory/`.
 attempts recorded as briefing negatives. M9.2 Newton gates locked with no
 run. M9.3 metric domain note written; MODELS.md untouched. Application
 body posted as discussion 442; PR 441 is the first package.
+
+2026-08-15. Q4 split. Selected UV (Q4a) not invented. Unique quadratic
+axial deformation (Q4b) constructed, tree-level matched to 3/16, audited.
+Final Status UV label for Q4a unchanged.

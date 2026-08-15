@@ -100,8 +100,12 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
 
 - Matter content is empirical input, not derived.
 - Linearized Einstein-Cartan from entanglement is claimed only in holographic AdS.
-- de Sitter / cosmology, nonlinear Einstein-Cartan, UV completion, and the
-  multi-digit coefficient of \(I_B\) are open in the author's Final Status table.
+- de Sitter / cosmology, nonlinear Einstein-Cartan, selected UV completion
+  (Q4a), and the multi-digit coefficient of \(I_B\) are open in the
+  author's Final Status table. A quadratic axial deformation (Q4b) that
+  recovers the M9.1 ratio and evades the contact obstruction is recorded
+  in [`findings/m9_4_uv_deformation_note.md`](findings/m9_4_uv_deformation_note.md);
+  it is not a selected completion and does not move the Q4a label.
 - The Hehl-Datta term is a theorem of Einstein-Cartan plus Dirac (Hehl-Datta
   1971). The program's distinctive claim is the *selection* of Einstein-Cartan,
   which this page does not certify.

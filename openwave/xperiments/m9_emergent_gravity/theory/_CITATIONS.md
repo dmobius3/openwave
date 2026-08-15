@@ -27,7 +27,10 @@ session did not resolve against the live Zenodo record are marked
 | Sciama | 1964 | The physical structure of general relativity | Rev. Mod. Phys. 36, 463; DOI [10.1103/RevModPhys.36.463](https://doi.org/10.1103/RevModPhys.36.463) |
 | Hehl, Datta | 1971 | Nonlinear spinor equation and asymmetric connection in general relativity | J. Math. Phys. 12, 1334; DOI [10.1063/1.1665738](https://doi.org/10.1063/1.1665738) |
 | Hehl, von der Heyde, Kerlick, Nester | 1976 | General relativity with spin and torsion | Rev. Mod. Phys. 48, 393; DOI [10.1103/RevModPhys.48.393](https://doi.org/10.1103/RevModPhys.48.393) |
+| Sezgin, van Nieuwenhuizen | 1980 | New ghost-free gravity Lagrangians with propagating torsion | Phys. Rev. D 21, 3269; DOI [10.1103/PhysRevD.21.3269](https://doi.org/10.1103/PhysRevD.21.3269) |
 | Jacobson | 1995 | Thermodynamics of spacetime: the Einstein equation of state | Phys. Rev. Lett. 75, 1260; DOI [10.1103/PhysRevLett.75.1260](https://doi.org/10.1103/PhysRevLett.75.1260) |
+| Witten | 1998 | Anti de Sitter space and holography | Adv. Theor. Math. Phys. 2, 253; arXiv [hep-th/9802150](https://arxiv.org/abs/hep-th/9802150) |
+| Shapiro | 2002 | Physical aspects of the space-time torsion | Phys. Rept. 357, 113; arXiv [hep-th/0103093](https://arxiv.org/abs/hep-th/0103093) |
 | Casini, Huerta, Myers | 2011 | Towards a derivation of holographic entanglement entropy | JHEP 05, 036; arXiv [1102.0440](https://arxiv.org/abs/1102.0440) |
 | Faulkner, Guica, Hartman, Myers, Van Raamsdonk | 2014 | Gravitation from entanglement in holographic CFTs | JHEP 03, 051; arXiv [1312.7856](https://arxiv.org/abs/1312.7856) |
 | Jacobson | 2016 | Entanglement equilibrium and the Einstein equation | Phys. Rev. Lett. 116, 201101; arXiv [1505.04753](https://arxiv.org/abs/1505.04753) |

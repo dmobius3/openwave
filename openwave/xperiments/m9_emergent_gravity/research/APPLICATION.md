@@ -100,7 +100,11 @@ Zero free parameters is **not** claimed. The SM is not a prediction.
   the first-law sign is not supplied.
 - Nonlinear Einstein-Cartan as a positive holographic theorem: remains
   `[O]`. Closed only as the axial obstruction above.
-- UV completion: open by construction.
+- UV completion (Q4a): open by construction. A CFT / compactification /
+  metric UV was not invented. The unique quadratic axial deformation
+  (Q4b) recovers \(3/16\) in the infrared and is Yukawa at finite \(M\);
+  that is a change of theory, not a selected completion
+  ([`findings/m9_4_uv_deformation_note.md`](findings/m9_4_uv_deformation_note.md)).
 - No dark-matter particle; no derivation of masses, mixings, generations,
   strong CP, or \(\Lambda\).
 - The HD contact is a 1971 theorem of Einstein-Cartan + Dirac. The distinctive
@@ -137,6 +141,8 @@ Zero free parameters is **not** claimed. The SM is not a prediction.
   [`tasks/m9_2_task_details.md`](tasks/m9_2_task_details.md).
 - Metric-phenomena domain note (written; does not move `MODELS.md`):
   [`findings/m9_metric_phenomena_note.md`](findings/m9_metric_phenomena_note.md).
+- Axial UV deformation (Q4b only): `scripts/m9_4_uv_axial.py`,
+  [`findings/m9_4_uv_deformation_note.md`](findings/m9_4_uv_deformation_note.md).
 
 ## Which MODELS.md rows the model addresses
 

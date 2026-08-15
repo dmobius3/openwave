@@ -75,6 +75,8 @@ negatives; they are not cells.
 | Second-order Einstein-Cartan from entanglement | ❌ documented negative as a positive EC theorem. Metric Einstein through second order is cited (FHHPRV 2017). Axial matching is obstructed: CFT \(\langle J_5 J_5\rangle\) is nonlocal, algebraic torsion has no kinetic term (`STRUCTURE_ONLY`). Script: `m9_5_ec_symplectic.py`. Paper 14 |
 | Torsion (status, not a cell) | EC theorems: algebraic, vacuum-vanishing, non-propagating. Spacetime HD \(\sim G\) is not lab-visible. Spintronic Berry / SOC is not Palatini \(\omega\). A late-FLRW spin average is an estimate, not a cosmological no-go |
 | Charge, masses, clock, \(\mu\), spectrum, confinement, weak decays, DM | 🚧 not derived. Do not score as emergence |
+| UV completion (selected pair / SM / metric) | 🚧 Q4a still `[O]` by construction. Not invented. SuperGrok does not fill this |
+| UV axial deformation (Q4b) | ⚠️ candidate, not a cell. Unique quadratic massive axial action recovers \(r=3/16\) as \(M\to\infty\) and is Yukawa (not a contact) at finite \(M\). Audited. Not EC at finite \(M\). [`research/findings/m9_4_uv_deformation_note.md`](research/findings/m9_4_uv_deformation_note.md) |
 | FGHMV / Condition NL | Not in-platform. Author `[P]`/`[O]` only |
 
 ## Roadmap
@@ -84,6 +86,7 @@ negatives; they are not cells.
 | M9.1 | Certification gate: independent Hehl-Datta elimination (closed 2026-08-15) |
 | M9.2 | Linearized Einstein / Newton \(1/r^2\). Pre-registered; not run |
 | M9.3 | Gravity-metric note: Einstein+\(\Lambda\), domain labels, no holographic overclaim (written) |
+| M9.4 | Axial UV deformation Q4b (written, audited). Q4a still open |
 | Rendering | Not before a gravity cell exists. Headless first |
 
 Full row preview: [`research/m9_roadmap.md`](research/m9_roadmap.md).
@@ -109,4 +112,5 @@ Application body: [`research/APPLICATION.md`](research/APPLICATION.md).
 Citations: [`theory/_CITATIONS.md`](theory/_CITATIONS.md).
 M9.1 method note: [`research/findings/m9_1_hehl_datta_note.md`](research/findings/m9_1_hehl_datta_note.md).
 Metric domain note: [`research/findings/m9_metric_phenomena_note.md`](research/findings/m9_metric_phenomena_note.md).
+UV deformation (Q4b): [`research/findings/m9_4_uv_deformation_note.md`](research/findings/m9_4_uv_deformation_note.md).
 Author-gated questions stay with the author.
