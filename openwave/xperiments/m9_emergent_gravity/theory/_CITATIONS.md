@@ -29,6 +29,7 @@ session did not resolve against the live Zenodo record are marked
 | Hehl, von der Heyde, Kerlick, Nester | 1976 | General relativity with spin and torsion | Rev. Mod. Phys. 48, 393; DOI [10.1103/RevModPhys.48.393](https://doi.org/10.1103/RevModPhys.48.393) |
 | Gibbons, Hawking | 1977 | Cosmological event horizons, thermodynamics, and particle creation | Phys. Rev. D 15, 2738; DOI [10.1103/PhysRevD.15.2738](https://doi.org/10.1103/PhysRevD.15.2738) |
 | Sezgin, van Nieuwenhuizen | 1980 | New ghost-free gravity Lagrangians with propagating torsion | Phys. Rev. D 21, 3269; DOI [10.1103/PhysRevD.21.3269](https://doi.org/10.1103/PhysRevD.21.3269) |
+| Bisognano, Wichmann | 1975 | On the duality condition for a Hermitian scalar field | J. Math. Phys. 16, 985; DOI [10.1063/1.522605](https://doi.org/10.1063/1.522605) |
 | Jacobson | 1995 | Thermodynamics of spacetime: the Einstein equation of state | Phys. Rev. Lett. 75, 1260; DOI [10.1103/PhysRevLett.75.1260](https://doi.org/10.1103/PhysRevLett.75.1260) |
 | Maldacena | 1998 | The large N limit of superconformal field theories and supergravity | Adv. Theor. Math. Phys. 2, 231; arXiv [hep-th/9711200](https://arxiv.org/abs/hep-th/9711200) |
 | Witten | 1998 | Anti de Sitter space and holography | Adv. Theor. Math. Phys. 2, 253; arXiv [hep-th/9802150](https://arxiv.org/abs/hep-th/9802150) |

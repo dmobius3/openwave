@@ -91,3 +91,7 @@ copy remains obstructed.
 
 2026-08-15. Required A2 on 2d/3d Dirac: C2 pass. 1d scalar
 instrument rejected. Paper 22.
+
+2026-08-15. A2 on a \(3+1\)D diamond waist (geodesic ball), two
+spacings at matched \(mL\). C2 pass; auditor CONFIRMED. Not
+\(a\to 0\) and not a de Sitter selection. Paper 23.
