@@ -208,6 +208,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   not an \(\alpha\)-independent coupling
   ([`findings/m9_50_alpha_note.md`](findings/m9_50_alpha_note.md)).
   The reusable mass is \(\sum\delta e\).
+  Gauss rebuilt from that energy alone keeps star
+  \(1/R^2\) and sea \(a\propto R\), independent of \(\alpha\)
+  ([`findings/m9_51_energy_gauss_note.md`](findings/m9_51_energy_gauss_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
