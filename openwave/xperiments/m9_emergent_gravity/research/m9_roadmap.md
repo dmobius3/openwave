@@ -149,3 +149,7 @@ REFUTED C2. Paper 35.
 still wins (\(\rho_{\mathrm{CHM}}=-0.054\)). \(\delta S\)
 tracks \(\mathrm{Tr}(K_{\mathrm{mid}}\Delta C)\), not the
 vacuum first law. Paper 35 is not a 3d no-go. Paper 36.
+
+2026-08-15. Fixed-\(H\) occupation transfer: vacuum first
+law holds. 1d still selects enclosed energy. 3d balls
+select CHM (auditor CONFIRMED). Not Einstein. Paper 37.

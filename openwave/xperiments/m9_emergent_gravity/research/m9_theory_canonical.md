@@ -141,7 +141,11 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   ([`findings/m9_27_1d_point_chm_note.md`](findings/m9_27_1d_point_chm_note.md)):
   \(\delta S=\mathrm{Tr}(K_{\mathrm{mid}}\Delta C)\), not a
   local functional of vacuum modular energy. Paper 35 is not
-  a 3d no-go.
+  a 3d no-go. At fixed \(H\), a localized occupation transfer
+  *does* obey \(\delta S=\mathrm{Tr}(K_{\mathrm{vac}}\Delta C)\);
+  1d still selects enclosed energy, 3d balls select CHM
+  ([`findings/m9_28_fixedh_state_note.md`](findings/m9_28_fixedh_state_note.md)).
+  That is not linearized Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).
