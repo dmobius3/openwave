@@ -1,8 +1,12 @@
-# Draft: New Model discussion body
+# New Model application: Emergent Gravity / NSM
 
-> Paste into
-> [github.com/openwave-labs/openwave/discussions/categories/new-model](https://github.com/openwave-labs/openwave/discussions/categories/new-model).
-> This is the author's application, not a maintainer admission.
+> Posted as
+> [discussion #442](https://github.com/openwave-labs/openwave/discussions/442)
+> in the
+> [New Model](https://github.com/openwave-labs/openwave/discussions/categories/new-model)
+> category. This is the author's application, not a maintainer admission.
+> First PR (proposed scaffold + Hehl-Datta gate, no `MODELS.md` edit):
+> [openwave-labs/openwave#441](https://github.com/openwave-labs/openwave/pull/441).
 
 ## Model name
 
@@ -12,13 +16,11 @@ Emergent Gravity / New Standard Model (NSM). Proposed short column name: M9
 ## Author
 
 Dr. Robert W. McGwier, PhD. CTO, Cohere Technology Group. Sole author of the
-14 August 2026 series.
+14-15 August 2026 series.
 
 ## Author contact
 
 GitHub: [@n4hy](https://github.com/n4hy)
-
-ORCID: **\<if any\>**
 
 ## Lineage
 
@@ -82,16 +84,32 @@ Zero free parameters is **not** claimed. The SM is not a prediction.
 
 ## Honest residuals
 
-- Multi-digit coefficient of \(I_B\): open (order-unity claimed; analytic
-  Hadamard expansion still required).
-- de Sitter / cosmology: open (Paper IX).
-- Nonlinear Einstein-Cartan from entanglement: open.
+- Multi-digit coefficient of \(I_B\): open as a positive number, and now a
+  documented in-column negative on three extraction routes
+  (`m9_2_ib_hadamard.py` `FAILED_MULTI_DIGIT`; `m9_3_ib_analytic.py`
+  `NOT_UNIVERSAL`; `m9_4_ib_hadamard_complete.py`
+  `HADAMARD_COMPLETE_NOT_UNIVERSAL`). The Mittag-Leffler expansion of the
+  kernel is complete; \(H(\tau)\) is not proportional to a local kernel, so
+  there is no single multi-digit coefficient independent of the source.
+- Second-order Einstein-Cartan from entanglement: metric Einstein through
+  second order is cited (FHHPRV 2017), not re-derived. Axial / Cartan matching
+  is obstructed (`m9_5_ec_symplectic.py` `STRUCTURE_ONLY`): CFT Fisher for a
+  conserved current is nonlocal and algebraic torsion has no bulk kinetic
+  term. Paper 14. No `[O]` moved to `[P]`.
+- de Sitter / cosmology: open (Paper IX). No CHM / dictionary / dual, and
+  the first-law sign is not supplied.
+- Nonlinear Einstein-Cartan as a positive holographic theorem: remains
+  `[O]`. Closed only as the axial obstruction above.
 - UV completion: open by construction.
 - No dark-matter particle; no derivation of masses, mixings, generations,
   strong CP, or \(\Lambda\).
 - The HD contact is a 1971 theorem of Einstein-Cartan + Dirac. The distinctive
   claim is the *selection* of Einstein-Cartan, which is not the first
   in-platform task.
+- Torsion: algebraic, vacuum-vanishing, non-propagating (EC theorem).
+  Spacetime HD is \(\sim G\) and is not a laboratory field. Spintronic
+  Berry / SOC geometry is not the Palatini \(\omega\). A late-universe spin
+  average is an estimate, not a cosmological no-go.
 
 ## Falsifiers
 
@@ -107,10 +125,18 @@ Zero free parameters is **not** claimed. The SM is not a prediction.
 - Author PDF series and this application:
   [github.com/n4hy/New_Model_Emergent_Gravity](https://github.com/n4hy/New_Model_Emergent_Gravity)
   (PDFs stay there; they are not committed to OpenWave).
-- This draft column: `openwave/xperiments/m9_emergent_gravity/`.
+- This proposed column: `openwave/xperiments/m9_emergent_gravity/`.
+- First PR: [openwave-labs/openwave#441](https://github.com/openwave-labs/openwave/pull/441).
 - M9.1 solver: `research/scripts/hehl_datta.py` +
-  `m9_1_hehl_datta_elimination.py`.
-- No \(I_B\) numerical campaign code is in the author repo.
+  `m9_1_hehl_datta_elimination.py` (gate PASS \(r=3/16\); paper spin dual C2
+  FAIL).
+- \(I_B\) / EC campaign scripts (documented negatives, not official gravity
+  cells): `m9_2_ib_hadamard.py`, `m9_3_ib_analytic.py`,
+  `m9_4_ib_hadamard_complete.py`, `m9_5_ec_symplectic.py`.
+- Newton-limit task is pre-registered and **not run**:
+  [`tasks/m9_2_task_details.md`](tasks/m9_2_task_details.md).
+- Metric-phenomena domain note (written; does not move `MODELS.md`):
+  [`findings/m9_metric_phenomena_note.md`](findings/m9_metric_phenomena_note.md).
 
 ## Which MODELS.md rows the model addresses
 
@@ -118,14 +144,17 @@ Native: Gravity: Newton limit; Gravity: metric phenomena. Possible later:
 Lorentz covariance (action-level, not a boosted-defect measurement).
 
 All particle, force-other-than-gravity, and wave-emergence rows: not derived.
-They should stay 🚧.
+They should stay 🚧. No `MODELS.md` cell is moved by this application or by
+PR #441.
 
 ## Help wanted
 
-- Maintainer scaffold and official ID if the discussion is accepted.
+- Maintainer scaffold and official ID; application is [discussion #442](https://github.com/openwave-labs/openwave/discussions/442).
+- Review of PR #441 as the author's proposed first package (DCO signed;
+  headless; no `MODELS.md`).
 - Independent recompute of Papers IV-VII (Condition NL, \(I_B\),
   pure-information HD magnitude).
-- A lattice Newton-limit script for the first gravity cell.
+- A lattice or grid Newton-limit script that executes the locked M9.2 gates.
 - A hostile parameter-count pass on the holographic half.
 
 ## What the first PR is
@@ -134,4 +163,5 @@ Not a `MODELS.md` edit. The first in-platform artifact is M9.1: extract the
 HD coefficient from Palatini + Hermitian Dirac by stationarity, compare to
 \(3/16\) only after extraction, mutate the Palatini factor to prove the check
 can fail, and record an adversarial second-method audit. Holography is out of
-scope for that task.
+scope for that task. The Newton cell is pre-registered only. The metric note
+is a domain statement, not a cell.
