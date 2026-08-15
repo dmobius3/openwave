@@ -82,3 +82,6 @@ horizon is obstructed (sign + isometries). No dual invented. Paper 17.
 2026-08-15. Cosmological questions are metric only. Torsion removed
 from the Q2 bar. de Sitter is the spinless vacuum (Paper 19). FGHMV
 copy remains obstructed.
+
+2026-08-15. Derived the cosmological minus sign from SdS
+(T dS + dM = 0). Paper 20. Not FGHMV in dS.
