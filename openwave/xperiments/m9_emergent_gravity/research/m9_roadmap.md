@@ -132,3 +132,7 @@ Paper 31.
 (\(1302+624\)). Bloch \(\lvert\rho\rvert\sim 0.03\), CHM
 \(\rho\sim -0.99\). Guess closed as a description of \(K\).
 Paper 32.
+
+2026-08-15. Fixed \(H\), deform the region. Cubes miss the ball
+area law (RMS \(5.67\) vs \(0.27\)). Same \(A_{\mathrm{cut}}\),
+different \(S\). Paper 33.

@@ -27,5 +27,6 @@
 | `30_Larger_Horizon_Instrument.tex` | R=5 hop first law dies on occupancy flips. Not a Planck result |
 | `31_C4_Scored_HalfFill.tex` | C4 scored at R=5 by half-fill: TIE. Tracking collapses |
 | `32_Bloch_Not_CHM.tex` | Complete ball covering: modular hop is CHM, not Bloch |
+| `33_Region_Shape.tex` | Fixed H, vary region: shape changes S beyond area |
 
 Reconstructed files follow the PDF wording and equations. They are not a byte-for-byte dump of an unpublished compiler run.
