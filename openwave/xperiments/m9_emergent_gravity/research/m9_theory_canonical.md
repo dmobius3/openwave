@@ -1,0 +1,114 @@
+# M9 Emergent Gravity / NSM — theory canonical (draft)
+
+> Proposed column. Canonical when later documents disagree. This draft records
+> only what the first task needs: the effective action, the conventions, and
+> what is *not* claimed. Holographic certificates stay outside this page until
+> they have in-platform scripts. Author papers:
+> [github.com/n4hy/New_Model_Emergent_Gravity](https://github.com/n4hy/New_Model_Emergent_Gravity).
+
+## 1. Arena
+
+Effective field theory on a 4-dimensional orientable spacetime. Gravitational
+variables are the coframe \(e^a\) and an independent Lorentz connection
+\(\omega^{ab}\). Matter is the empirically installed Standard Model (gauge
+group, representations, Yukawas, Higgs, three generations). Particles are not
+emergent defects of a lattice field.
+
+## 2. Effective action (specification of the first task)
+
+\[
+S_{\mathrm{NSM}}
+=
+\frac{1}{4\kappa}
+\int \varepsilon_{abcd}\, e^a\wedge e^b\wedge R^{cd}
+-
+\frac{\Lambda}{6}
+\int \varepsilon_{abcd}\, e^a\wedge e^b\wedge e^c\wedge e^d
++
+\int e\,\mathcal{L}_{\mathrm{SM}}[e,\omega,\psi,A,H],
+\]
+
+with \(\kappa = 8\pi G\), \(R^{ab} = d\omega^{ab} + \omega^a{}_c\wedge\omega^{cb}\),
+and \(\varepsilon^{0123} = +1\). The 4-form Palatini term equals
+\(\int e\, R/(2\kappa)\) when torsion vanishes.
+
+Fermions couple through the full connection
+
+\[
+D_\mu
+=
+\partial_\mu
++
+\frac{1}{4}\omega_\mu^{ab}\gamma_{ab}
++
+ig\cdot A_\mu,
+\qquad
+\gamma_{ab} := \tfrac{1}{2}[\gamma_a,\gamma_b].
+\]
+
+Gauge field strengths use the exterior derivative alone (torsion does not enter
+\(F\)). Scalars do not source torsion.
+
+The Hermitian Dirac kinetic term used by the certification scripts is
+
+\[
+\mathcal{L}_D
+=
+\frac{i}{2}\,e\,
+\bar\psi\gamma^\mu\overleftrightarrow{D}_\mu\psi
+-
+e\,m\,\bar\psi\psi.
+\]
+
+## 3. Algebraic Cartan equation
+
+Independent variation of \(\omega\) is algebraic. For a totally antisymmetric
+Dirac spin tensor the traces vanish and
+
+\[
+T^{\lambda\mu\nu} = \kappa\, s^{\lambda\mu\nu}.
+\]
+
+Contorsion of a totally antisymmetric torsion is \(K = T/2\).
+
+## 4. Claim under test (M9.1)
+
+Eliminating \(T\) produces Riemannian Einstein-Hilbert plus the Hehl-Datta
+contact term
+
+\[
+\mathcal{L}_{\mathrm{HD}}
+=
+-\frac{3\kappa}{16}\,J_5^\mu J_{5\mu},
+\qquad
+J_5^\mu = \sum_f \bar\psi_f\gamma^5\gamma^\mu\psi_f.
+\]
+
+M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
+
+## 5. Conventions locked for M9.1
+
+| Item | Lock |
+| --- | --- |
+| \(\kappa\) | \(8\pi G\) |
+| \(\varepsilon^{0123}\) | \(+1\) |
+| \(\gamma^5\) (mostly minus) | \(i\gamma^0\gamma^1\gamma^2\gamma^3\) |
+| Dirac kinetic term | Hermitian, as above |
+| Reported observable | dimensionless ratio \(\mathcal{L}_{\mathrm{int}}/(-\kappa\, J_5\cdot J_5)\) |
+
+## 6. Known tensions / declared opens (author)
+
+- Matter content is empirical input, not derived.
+- Linearized Einstein-Cartan from entanglement is claimed only in holographic AdS.
+- de Sitter / cosmology, nonlinear Einstein-Cartan, UV completion, and the
+  multi-digit coefficient of \(I_B\) are open in the author's Final Status table.
+- The Hehl-Datta term is a theorem of Einstein-Cartan plus Dirac (Hehl-Datta
+  1971). The program's distinctive claim is the *selection* of Einstein-Cartan,
+  which this page does not certify.
+
+## 7. Consumption rules
+
+- Do not score a particle-row cell from this action: those fields are installed.
+- Do not cite FGHMV, Condition NL, or \(I_B\) as in-platform results.
+- A `MODELS.md` gravity cell requires a later lattice or analytic note of its
+  own. M9.1 does not move one.

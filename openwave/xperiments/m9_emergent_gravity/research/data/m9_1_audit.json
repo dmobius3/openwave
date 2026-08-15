@@ -1,0 +1,67 @@
+{
+  "task": "m9.1_audit",
+  "method_summary": "Levi-Civita 3-index identity + Palatini 4-form factor + complete-the-square on K=*v; alpha measured in a Weyl Clifford (sympy), not imported from the solver",
+  "eps_lll_contraction": 6.0,
+  "eps_lll_contraction_sympy": 6,
+  "palatini_four_form": {
+    "four_form_over_vol": 5.427461356976954,
+    "R_scalar": 2.713730678488476,
+    "palatini_density": 1.3568653392442385,
+    "palatini_over_R": 0.5000000000000001,
+    "claimed_eR_over_2": 0.5
+  },
+  "Q_on_dual": {
+    "Q": 21.662625309982108,
+    "v2": 3.6104375516636855,
+    "Q_over_v2": 5.999999999999998,
+    "K2": 21.66262530998211
+  },
+  "weyl": {
+    "alpha_measured": -0.5,
+    "paper_alpha": -0.25,
+    "mixed_max": 8.881784197001252e-16,
+    "j5": [
+      10.43704224080457,
+      9.98057253120161,
+      -9.331258408482949,
+      0.29911094904561397
+    ]
+  },
+  "ratio_with_weyl_alpha": 0.18750000000000006,
+  "ratio_with_paper_alpha": 0.046875000000000014,
+  "ratio_mutated_palatini": 0.09375000000000003,
+  "claims": [
+    {
+      "id": "C1",
+      "verdict": "CONFIRMED",
+      "number": 0.18750000000000006,
+      "note": "complete-the-square with Weyl alpha=-0.500000 and Q/v^2=6.000000 gives r=0.18750000"
+    },
+    {
+      "id": "C2",
+      "verdict": "REFUTED",
+      "number": -0.5,
+      "note": "Weyl representation, s = (i/4) psibar {g^mu, g_ab} psi; paper prints -1/4, measured -0.5"
+    },
+    {
+      "id": "C3",
+      "verdict": "CONFIRMED",
+      "number": 8.881784197001252e-16,
+      "note": "mixed-symmetry residual of the Weyl spin tensor"
+    },
+    {
+      "id": "C4",
+      "verdict": "QUALIFIED",
+      "number": null,
+      "note": "ratio formula r = 9 alpha^2 / (2 Q/v^2) is algebraic in the eps identities and cancels the metric used to form J\u00b7J; this script did not re-run a second Clifford representation"
+    },
+    {
+      "id": "C5",
+      "verdict": "CONFIRMED",
+      "number": 0.09375000000000003,
+      "note": "doubling Q/v^2 (Palatini weight) moves r off 3/16"
+    }
+  ],
+  "overall": "C1 stands only if the Weyl alpha is the one used on-shell; C2 is refuted under the 2 dL/domega definition",
+  "what_would_refute_c1": "a Palatini 4-form that is not eR/(2 kappa), or an on-shell completion that drops L_D, or using paper alpha=-1/4 inside this note's s definition without changing Cartan"
+}
