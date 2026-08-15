@@ -29,8 +29,10 @@ session did not resolve against the live Zenodo record are marked
 | Hehl, von der Heyde, Kerlick, Nester | 1976 | General relativity with spin and torsion | Rev. Mod. Phys. 48, 393; DOI [10.1103/RevModPhys.48.393](https://doi.org/10.1103/RevModPhys.48.393) |
 | Sezgin, van Nieuwenhuizen | 1980 | New ghost-free gravity Lagrangians with propagating torsion | Phys. Rev. D 21, 3269; DOI [10.1103/PhysRevD.21.3269](https://doi.org/10.1103/PhysRevD.21.3269) |
 | Jacobson | 1995 | Thermodynamics of spacetime: the Einstein equation of state | Phys. Rev. Lett. 75, 1260; DOI [10.1103/PhysRevLett.75.1260](https://doi.org/10.1103/PhysRevLett.75.1260) |
+| Maldacena | 1998 | The large N limit of superconformal field theories and supergravity | Adv. Theor. Math. Phys. 2, 231; arXiv [hep-th/9711200](https://arxiv.org/abs/hep-th/9711200) |
 | Witten | 1998 | Anti de Sitter space and holography | Adv. Theor. Math. Phys. 2, 253; arXiv [hep-th/9802150](https://arxiv.org/abs/hep-th/9802150) |
 | Shapiro | 2002 | Physical aspects of the space-time torsion | Phys. Rept. 357, 113; arXiv [hep-th/0103093](https://arxiv.org/abs/hep-th/0103093) |
+| Heemskerk, Penedones, Polchinski, Sully | 2009 | Holography from conformal field theory | JHEP 10 (2009) 079; arXiv [0907.0151](https://arxiv.org/abs/0907.0151) |
 | Casini, Huerta, Myers | 2011 | Towards a derivation of holographic entanglement entropy | JHEP 05, 036; arXiv [1102.0440](https://arxiv.org/abs/1102.0440) |
 | Faulkner, Guica, Hartman, Myers, Van Raamsdonk | 2014 | Gravitation from entanglement in holographic CFTs | JHEP 03, 051; arXiv [1312.7856](https://arxiv.org/abs/1312.7856) |
 | Jacobson | 2016 | Entanglement equilibrium and the Einstein equation | Phys. Rev. Lett. 116, 201101; arXiv [1505.04753](https://arxiv.org/abs/1505.04753) |
