@@ -29,5 +29,6 @@
 | `32_Bloch_Not_CHM.tex` | Complete ball covering: modular hop is CHM, not Bloch |
 | `33_Region_Shape.tex` | Fixed H, vary region: shape changes S beyond area |
 | `34_Linear_Functional.tex` | Ball δS is a linear functional of local energy; kernel not unique CHM |
+| `35_Point_Source_Flat.tex` | Point source: δS tracks enclosed energy, not CHM |
 
 Reconstructed files follow the PDF wording and equations. They are not a byte-for-byte dump of an unpublished compiler run.

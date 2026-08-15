@@ -140,3 +140,7 @@ different \(S\). Paper 33.
 2026-08-15. \(\delta S\) of \(512\) balls is linear in a
 Gaussian source (\(\rho_{\varepsilon}=1\),
 \(\rho_{\mathrm{CHM}}=-0.986\)). Kernel not unique. Paper 34.
+
+2026-08-15. Point source: flat/enclosed energy beats CHM
+(\(\rho_{\mathrm{flat}}=-0.83\) vs \(-0.47\)). Auditor
+REFUTED C2. Paper 35.
