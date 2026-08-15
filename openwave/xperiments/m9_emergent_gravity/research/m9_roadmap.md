@@ -107,3 +107,7 @@ Not \(1/4G\). Paper 25.
 2026-08-15. First law: \(\delta S\) tracks a local kernel
 (\(\rho=0.85\)). CHM envelope loses to a flat hop kernel (C3
 FAIL, auditor CONFIRMED). Paper 26.
+
+2026-08-15. Horizon split. Bulk C3 fail. Surface C3: CHM beats
+flat (\(N=10\) and auditor \(N=12\)). Tracking floors fail.
+Paper 27.
