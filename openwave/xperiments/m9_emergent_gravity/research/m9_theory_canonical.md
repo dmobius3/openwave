@@ -104,6 +104,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   \(d=1,2,3\) or on a \(3+1\)D diamond waist at two spacings
   ([`findings/m9_13_A2_diamond_note.md`](findings/m9_13_A2_diamond_note.md)).
   That is not \(a\to 0\), not the SM, and not a selection of de Sitter.
+- A1 (UV entanglement coefficient) is IR-stable for the 1d fermion
+  log and for the \(3+1\)D diamond area law
+  ([`findings/m9_14_A1_diamond_note.md`](findings/m9_14_A1_diamond_note.md)).
+  That is not \(\eta=1/4G\) and not mean-zero foam.
 - FGHMV-standard de Sitter closure is obstructed (sign and isometries:
   [`findings/m9_6_ds_closure_note.md`](findings/m9_6_ds_closure_note.md)).
   Einstein+\(\Lambda\) from a cosmological CFT is not a theorem of this

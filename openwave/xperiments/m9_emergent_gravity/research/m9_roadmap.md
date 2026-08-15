@@ -95,3 +95,7 @@ instrument rejected. Paper 22.
 2026-08-15. A2 on a \(3+1\)D diamond waist (geodesic ball), two
 spacings at matched \(mL\). C2 pass; auditor CONFIRMED. Not
 \(a\to 0\) and not a de Sitter selection. Paper 23.
+
+2026-08-15. A1 on the same waist: area coefficient \(\alpha=0.245\),
+UV drift \(\le 4.3\%\). Unsubtracted sea \(\varepsilon\simeq -1\)
+is not mean-zero curvature. Paper 24.
