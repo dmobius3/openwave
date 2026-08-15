@@ -126,6 +126,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   That is not a Planck-scale result. Half-filling scores C4 at
   \(R=5\) as a tie
   ([`findings/m9_22_halffill_horizon_note.md`](findings/m9_22_halffill_horizon_note.md)).
+- A Bloch-like dimer coordinate does not predict the modular hop;
+  CHM does, on a complete covering of the ball
+  ([`findings/m9_23_bloch_note.md`](findings/m9_23_bloch_note.md)).
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).

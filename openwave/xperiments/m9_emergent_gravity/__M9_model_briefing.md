@@ -43,7 +43,7 @@
 | Attribute | M9 |
 | --- | --- |
 | Free parameters | SM content is input. The HD coefficient is not fit. The load-bearing choice is "Einstein-Cartan is the unique modular-selected coupling," which M9.1 does not test |
-| Honest residuals | Multi-digit \(I_B\) documented negative; FGHMV copy onto the cosmological horizon obstructed; the spinless vacuum of Einstein+\(\Lambda>0\) \emph{is} de Sitter (metric, not a holographic selection); nonlinear EC closed as an axial obstruction; UV pair not selected; an \(S^3\) curvature-axis picture is a guess (Paper 28); no DM particle; masses and generations unexplained |
+| Honest residuals | Multi-digit \(I_B\) documented negative; FGHMV copy onto the cosmological horizon obstructed; the spinless vacuum of Einstein+\(\Lambda>0\) \emph{is} de Sitter (metric, not a holographic selection); nonlinear EC closed as an axial obstruction; UV pair not selected; an \(S^3\)/Bloch picture is a guess; as a description of \(K\) it fails (Paper 32); no DM particle; masses and generations unexplained |
 | Formal artifacts | M9.1 extracts \(\mathcal{L}_{\mathrm{int}}/(-\kappa J_5\cdot J_5)\) by stationarity, compares to \(3/16\) only after extraction |
 | Falsifiable near-term tests | HD contact is Planck-suppressed (author: undetectable at colliders). GME experiments are the live gravitational-sector falsifier and are not an OpenWave lattice test |
 

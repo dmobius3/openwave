@@ -127,3 +127,8 @@ Planck. Paper 30.
 2026-08-15. C4 scored at \(R=5\) by half-filling: TIE
 (\(n=30\), \(n_{\mathrm{flip}}=0\)). Tracking collapses.
 Paper 31.
+
+2026-08-15. Bloch vs CHM on every dimer in the ball
+(\(1302+624\)). Bloch \(\lvert\rho\rvert\sim 0.03\), CHM
+\(\rho\sim -0.99\). Guess closed as a description of \(K\).
+Paper 32.
