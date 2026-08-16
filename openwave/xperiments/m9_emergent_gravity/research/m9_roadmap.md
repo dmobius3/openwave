@@ -299,3 +299,8 @@ sea \(+0.992\). Hop \(E_{\mathrm{int}}\) overlap at
 median \(10.75^\circ\) to \(M/r^2\), \(62^\circ\) to
 CM. Auditor direction CONFIRMED; axis-null
 REFUTED as under-resolved. Paper 69.
+
+2026-08-16. Exact 1d open-hop basis, \(dps=80\),
+no LAPACK: angle \(10.746^\circ\) unchanged.
+Additivity \(6\times 10^{-8}\) is pair ortho.
+Auditor \(N=11\) all CONFIRMED. Paper 70.

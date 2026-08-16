@@ -246,6 +246,9 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   \(\hat n=\nabla_c M_{AB}\); it tracks \(M/r^2\)
   superposition, not the centre of mass
   ([`findings/m9_59_direction_note.md`](findings/m9_59_direction_note.md)).
+  That direction is unchanged when the hop basis
+  is the exact 1d product, with no eigensolve
+  ([`findings/m9_60_exact_note.md`](findings/m9_60_exact_note.md)).
   That is Stokes plus a measured mass, not a
   derivation of Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
