@@ -242,6 +242,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   isotropic flux completion \(g=-M/A\); the hop
   two-packet energy is overlap, not \(1/r\)
   ([`findings/m9_58_flux_note.md`](findings/m9_58_flux_note.md)).
+  For two packets the direction is
+  \(\hat n=\nabla_c M_{AB}\); it tracks \(M/r^2\)
+  superposition, not the centre of mass
+  ([`findings/m9_59_direction_note.md`](findings/m9_59_direction_note.md)).
   That is Stokes plus a measured mass, not a
   derivation of Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);

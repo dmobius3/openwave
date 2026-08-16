@@ -294,3 +294,8 @@ Paper 67.
 2026-08-16. Flux law \(g=-M/A\): star \(-1.9998\),
 sea \(+0.992\). Hop \(E_{\mathrm{int}}\) overlap at
 \(d=2\) (\(2.8\%\)), not \(1/r\). Paper 68.
+
+2026-08-16. Pair direction \(\hat n=\nabla_c M_{AB}\):
+median \(10.75^\circ\) to \(M/r^2\), \(62^\circ\) to
+CM. Auditor direction CONFIRMED; axis-null
+REFUTED as under-resolved. Paper 69.
