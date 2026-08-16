@@ -39,6 +39,7 @@ import mpmath as mp
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+import m9_accel  # noqa: E402,F401
 import m9_60_exact as ex  # noqa: E402
 import m9_62_pair_ent as pe  # noqa: E402
 

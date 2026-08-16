@@ -18,6 +18,7 @@ import mpmath as mp
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+import m9_accel  # noqa: E402,F401
 import m9_60_exact as ex  # noqa: E402
 
 DATA = os.path.normpath(os.path.join(HERE, "..", "data"))

@@ -5,6 +5,9 @@ __pycache__/
 
 # C extensions
 *.so
+*.build/
+*.onefile-build/
+openwave/xperiments/m9_emergent_gravity/research/scripts/_nuitka/
 
 # macOS
 .DS_Store
