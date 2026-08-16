@@ -226,6 +226,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   and \(\delta S\) still grows with thickness
   (grow \(2.55\) vs volume \(3\), area \(1\))
   ([`findings/m9_54_sea_enclose_note.md`](findings/m9_54_sea_enclose_note.md)).
+  The leftover \(2.5\neq 3\) is not a universal
+  \(aV+bA\) area term: volume-only is as good, and
+  held-out rods miss by five
+  ([`findings/m9_55_twoterm_note.md`](findings/m9_55_twoterm_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);

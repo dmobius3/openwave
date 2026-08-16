@@ -276,3 +276,8 @@ Auditor \(\rho=0.998\). Paper 63.
 grow \(2.59,2.55,2.51\) (volume \(3\), area \(1\)).
 \(\rho(f_S,f_E)=0.994\). Auditor grow \(2.56,2.47\).
 Paper 63 is not a packet artifact. Paper 64.
+
+2026-08-15. Two-term \(\delta S=aV+bA\): in-sample
+rel RMS \(0.08\), same as volume-only. Held-out
+rods miss by \(5.2\). \(b\) flips sign. Not a
+horizon piece. Paper 65.
