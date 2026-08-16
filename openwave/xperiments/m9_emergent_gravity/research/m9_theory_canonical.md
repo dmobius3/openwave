@@ -256,6 +256,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   finite \(\delta S\) tracks \(M_{AB}\);
   \(\nabla\cdot\mathbf g\) is not a local Poisson law
   ([`findings/m9_62_pair_ent_note.md`](findings/m9_62_pair_ent_note.md)).
+  On a midpoint \(R=5\) ball that holds the pair
+  mass, \(f_S=f_E=0.99\); a ball that only
+  contains both source sites can still leak
+  ([`findings/m9_63_enclose_pair_note.md`](findings/m9_63_enclose_pair_note.md)).
   That is Stokes plus a measured mass, not a
   derivation of Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);

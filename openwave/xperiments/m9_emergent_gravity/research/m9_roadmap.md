@@ -314,3 +314,7 @@ masses, then one \(\nabla M\). Paper 71.
 exact. Enclosure \(\rho=0.957\). Both-inside leak.
 \(\nabla\cdot g\) not Poisson (auditor REFUTED).
 Paper 72.
+
+2026-08-16. Pair \(R=5\) midpoint: \(f_S=0.991\),
+\(f_E=0.988\). Axial offset leaks (\(0.886\)).
+Auditor perpendicular offset CONFIRMED. Paper 73.
