@@ -1687,3 +1687,51 @@ just resolved for Packet II. Whoever writes that revision should give Packet I
 an explicit version slot in the `m8_5b-packet-I-<n>` form. It is recorded here
 rather than corrected here because altering Packet I's shape outside a format
 revision is the in-place amendment § 12 exists to prevent.
+
+### Addendum 12.2 - fresh Phase B adjudication case commitment
+
+*Drafted 2026-08-16 by the Phase B Sealer Unit. Adopted 2026-08-16 by the
+commissioner following Redline review. This addendum is an operative commitment
+under § 12.*
+
+A fresh Phase B adjudication case has been sealed under the § 4.1 packet
+contract as supplemented by Addendum 12.1. It supersedes nothing: the retired
+case `M85B-ADJ-01` remains burned per § 12.1.7, and the § 6.1 and § 11.7 hashes
+recording it are unaltered historical commitments.
+
+**Opaque case identifier.** `M85B-ADJ-04`. The label is opaque and encodes
+nothing about the case.
+
+**Packet hashes, over canonical bytes (§ 11.7: keys sorted, two-space indent,
+ASCII, LF, single trailing newline).**
+
+Packet I (case-input), SHA-256
+`52eabe3fc1d045bde8efad888e23f6302123fafa4e0ef151b31382f4cd1307c2`.
+
+Packet II (answer), SHA-256
+`f000b895668f85c06da46f4ea80eaaa9eaa34b923516e5a264120724766d5fdd`.
+
+Listed separately; neither may be inferred from the other. These are the
+operative adjudication-case commitments wherever § 4.1 refers to them, in place
+of the § 6.1 and § 11.7 entries that record the retired case.
+
+**Status of the packets.** Both are sealed and unopened. Packet I opens at
+§ 4.1 step 2 and Packet II at § 4.1 step 4. Neither has been published, and
+Packet II's bytes remain outside the repository until the adjudication is
+recorded (§ 4.1).
+
+**Admissibility, as recorded at commissioning.** The case is non-`2I` and is
+distinct from every member of the § 6.1 pilot tuning set; it informed no pilot
+choice. Its cited source supports the § 4.1 and Addendum 12.1 requirements
+without adapter discretion.
+
+**Build conditions.** The packets were built in a clean two-stage session by a
+unit with no access to the adjudication or qualification machinery, satisfying
+the Q6 separation-of-duties control. Every supplied build-time gate (S0-S6,
+L1-L3, V1-V8, and the SYN- sealing reservation) was run unmodified and cleared
+before sealing, and the supplied self-batteries were run and read at Stage 0,
+before the case was disclosed. No validation gate was written, patched,
+supplemented or replaced at any point after the case was disclosed.
+
+**Not settled here.** This addendum records a commitment only. It orders no
+§ 4.1 execution, authorizes no route run, and states no adjudication result.
