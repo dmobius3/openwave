@@ -304,3 +304,8 @@ REFUTED as under-resolved. Paper 69.
 no LAPACK: angle \(10.746^\circ\) unchanged.
 Additivity \(6\times 10^{-8}\) is pair ortho.
 Auditor \(N=11\) all CONFIRMED. Paper 70.
+
+2026-08-16. Pair \(\mathbf g\) superposition: mass
+maps add (\(2\times 10^{-7}\)); \(\mathbf g\) residual
+\(0.255\) FAIL. Far angle \(0.008^\circ\). Add
+masses, then one \(\nabla M\). Paper 71.
