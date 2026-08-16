@@ -281,3 +281,7 @@ Paper 63 is not a packet artifact. Paper 64.
 rel RMS \(0.08\), same as volume-only. Held-out
 rods miss by \(5.2\). \(b\) flips sign. Not a
 horizon piece. Paper 65.
+
+2026-08-15. Hop virial stress: sea \(r=0\), star
+\(0.163\). C_lambda FAIL. Vacuum \(P/E=-0.88\)
+is not a source. Paper 66.

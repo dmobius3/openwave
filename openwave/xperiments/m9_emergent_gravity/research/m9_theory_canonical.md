@@ -230,6 +230,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   \(aV+bA\) area term: volume-only is as good, and
   held-out rods miss by five
   ([`findings/m9_55_twoterm_note.md`](findings/m9_55_twoterm_note.md)).
+  The hop-dispersion virial of the same transfer
+  has \(p/\rho=0\) on the sea and \(0.16\) on a
+  star; it is dust, not \(\Lambda\)
+  ([`findings/m9_56_stress_note.md`](findings/m9_56_stress_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
