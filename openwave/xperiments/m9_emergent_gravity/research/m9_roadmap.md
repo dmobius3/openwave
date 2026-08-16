@@ -290,3 +290,7 @@ is not a source. Paper 66.
 runs \(-58\to +0.07\) and crosses \(-1\) at \(T=0.5\).
 Auditor \(N=10\) all \(r>0\). Not \(\Lambda\).
 Paper 67.
+
+2026-08-16. Flux law \(g=-M/A\): star \(-1.9998\),
+sea \(+0.992\). Hop \(E_{\mathrm{int}}\) overlap at
+\(d=2\) (\(2.8\%\)), not \(1/r\). Paper 68.

@@ -238,8 +238,12 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   runs and is lattice-dependent; a crossing of
   \(-1\) is not a cosmological constant
   ([`findings/m9_57_thermal_note.md`](findings/m9_57_thermal_note.md)).
-  That is a Gauss first law plus inherited Einstein, not a
-  derivation of Poisson.
+  The radial field used from here is the unique
+  isotropic flux completion \(g=-M/A\); the hop
+  two-packet energy is overlap, not \(1/r\)
+  ([`findings/m9_58_flux_note.md`](findings/m9_58_flux_note.md)).
+  That is Stokes plus a measured mass, not a
+  derivation of Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
   \(\rho\to i\ell\) flips the sign
   ([`findings/m9_19_s3_curvature_note.md`](findings/m9_19_s3_curvature_note.md)).
