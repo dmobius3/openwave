@@ -252,6 +252,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   Pair mass maps add; the derived \(\mathbf g\)s
   do not, except far from both packets
   ([`findings/m9_61_super_note.md`](findings/m9_61_super_note.md)).
+  Pair \(S_{\mathrm{global}}=2h(\alpha_A)+2h(\alpha_B)\);
+  finite \(\delta S\) tracks \(M_{AB}\);
+  \(\nabla\cdot\mathbf g\) is not a local Poisson law
+  ([`findings/m9_62_pair_ent_note.md`](findings/m9_62_pair_ent_note.md)).
   That is Stokes plus a measured mass, not a
   derivation of Einstein.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);

@@ -309,3 +309,8 @@ Auditor \(N=11\) all CONFIRMED. Paper 70.
 maps add (\(2\times 10^{-7}\)); \(\mathbf g\) residual
 \(0.255\) FAIL. Far angle \(0.008^\circ\). Add
 masses, then one \(\nabla M\). Paper 71.
+
+2026-08-16. Pair \(S=2h(\alpha_A)+2h(\alpha_B)\)
+exact. Enclosure \(\rho=0.957\). Both-inside leak.
+\(\nabla\cdot g\) not Poisson (auditor REFUTED).
+Paper 72.
