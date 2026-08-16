@@ -285,3 +285,8 @@ horizon piece. Paper 65.
 2026-08-15. Hop virial stress: sea \(r=0\), star
 \(0.163\). C_lambda FAIL. Vacuum \(P/E=-0.88\)
 is not a source. Paper 66.
+
+2026-08-16. Thermal \(\mu=0\) scan: \(N=12\) \(r(T)\)
+runs \(-58\to +0.07\) and crosses \(-1\) at \(T=0.5\).
+Auditor \(N=10\) all \(r>0\). Not \(\Lambda\).
+Paper 67.

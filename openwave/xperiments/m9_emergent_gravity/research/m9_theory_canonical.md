@@ -234,6 +234,10 @@ M9.1 tests this algebra. It does not test why Einstein-Cartan was selected.
   has \(p/\rho=0\) on the sea and \(0.16\) on a
   star; it is dust, not \(\Lambda\)
   ([`findings/m9_56_stress_note.md`](findings/m9_56_stress_note.md)).
+  Heating that sea, \(\mu=0\), the excess \(r(T)\)
+  runs and is lattice-dependent; a crossing of
+  \(-1\) is not a cosmological constant
+  ([`findings/m9_57_thermal_note.md`](findings/m9_57_thermal_note.md)).
   That is a Gauss first law plus inherited Einstein, not a
   derivation of Poisson.
 - An \(S^3\) of radius \(\rho\) has \(\mathcal{R}=6/\rho^2\);
