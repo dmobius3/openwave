@@ -9,7 +9,7 @@
     Scope        the scalar and one-form adjudication machinery for rungs 3a
                  and 3b, as published in this directory
     Manifest     `qualification/MANIFEST.json`
-                 SHA-256 9e6dcd7b5d177040cf25f1eda0bb4614f4002cd85f25660ca9ec75dc9734d934
+                 SHA-256 f3b4b57e3da6375e2ff55212ec691723b03c59eaf5e9faf96b531e00e5c6d38f
     Reproduce    python3 run_qualification.py
 
 ## What is frozen
