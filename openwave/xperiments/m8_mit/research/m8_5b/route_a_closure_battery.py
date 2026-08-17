@@ -56,15 +56,25 @@ except ValueError as e:
 # which is sign-free: T[i][j] must index the element whose SO(4) matrix
 # equals the matrix product. This is correctness, not mere non-crashing.
 p712 = close_pairs(lens_gens(7, 1, 2))
-T = group_multiplication_table(p712)
-mats = [act_matrix(u, v) for u, v in p712]
-good = all(np.abs(mats[i] @ mats[j] - mats[T[i][j]]).max() < 1e-8
-           for i in range(len(p712)) for j in range(len(p712)))
-wraps = sum(1 for i in range(len(p712)) for j in range(len(p712))
-            if not (np.abs(qmul(p712[i][0], p712[j][0]) - p712[T[i][j]][0]).max() < 1e-9))
-ck("inhomogeneous L(7;1,2): every table entry matches the SO(4) ground truth", good)
-ck("central-partner products actually occur and resolve", wraps > 0,
-   f"{wraps} of {len(p712)**2} products land on the central partner")
+try:
+    T = group_multiplication_table(p712)
+except ValueError as e:
+    # the pre-repair state reaches here: report it as a scored FAIL rather
+    # than dying, so a reverted repair produces a readable battery, not a
+    # traceback. The exit code is nonzero either way.
+    T = None
+    ck("inhomogeneous L(7;1,2): every table entry matches the SO(4) ground truth",
+       False, f"table could not be built: {e}")
+    ck("central-partner products actually occur and resolve", False, "table absent")
+if T is not None:
+    mats = [act_matrix(u, v) for u, v in p712]
+    good = all(np.abs(mats[i] @ mats[j] - mats[T[i][j]]).max() < 1e-8
+               for i in range(len(p712)) for j in range(len(p712)))
+    wraps = sum(1 for i in range(len(p712)) for j in range(len(p712))
+                if not (np.abs(qmul(p712[i][0], p712[j][0]) - p712[T[i][j]][0]).max() < 1e-9))
+    ck("inhomogeneous L(7;1,2): every table entry matches the SO(4) ground truth", good)
+    ck("central-partner products actually occur and resolve", wraps > 0,
+       f"{wraps} of {len(p712)**2} products land on the central partner")
 
 # 5. mutation: the PRE-repair sign-exact lookup must FAIL here
 def sign_exact_table(pairs, tol=1e-9):
@@ -103,11 +113,17 @@ ck("cloud cardinality is seeds x effective order, with no coincident points",
 # 8. route (a) END TO END on the previously failing regime, frozen stencil
 # configuration at a reduced ladder rung, validated route-locally by the
 # frozen step-3 runner (which includes the full-band census)
-art_a = route_a.produce(p712, "requal-a-L712", "m8_5b-v1-requal", "SYN-L712-REQUAL",
-                        seeds=60, adjudication=False)
-probs = step3_runner._validate_one(art_a, p712, "route a")
-ck("route (a) traverses the stencil path end to end on L(7;1,2)",
-   not probs, "; ".join(probs[:2]))
+try:
+    art_a = route_a.produce(p712, "requal-a-L712", "m8_5b-v1-requal",
+                            "SYN-L712-REQUAL", seeds=60, adjudication=False)
+    probs = step3_runner._validate_one(art_a, p712, "route a")
+    ck("route (a) traverses the stencil path end to end on L(7;1,2)",
+       not probs, "; ".join(probs[:2]))
+except Exception as e:
+    # the pre-repair state cannot reach the end of this path; report it as a
+    # scored FAIL so the whole battery stays readable under a reverted repair
+    ck("route (a) traverses the stencil path end to end on L(7;1,2)", False,
+       f"{type(e).__name__}: {e}")
 
 # 9a. route (b) is UNCHANGED by this repair, proven at RUNTIME: a fresh
 # subprocess executes the same produce() path 9b tests, then asks whether

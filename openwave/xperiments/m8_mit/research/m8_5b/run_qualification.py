@@ -198,8 +198,10 @@ record("eval3b mutation battery exits 0", rc == 0)
 step("4c", "route (a) group-closure battery: central equivalence, both regimes")
 rc, out = run("route_a_closure_battery.py")
 record("route (a) closure battery exits 0", rc == 0)
+# The prefix is load-bearing: `ck` prints its label under PASS or FAIL
+# alike, so matching the bare label would be satisfied by the arm failing.
 record("closure battery demonstrates the repair is load-bearing",
-       "mutation: removing central equivalence makes L(7;1,2) fail" in out
+       "PASS  mutation: removing central equivalence makes L(7;1,2) fail" in out
        and "BATTERY PASS" in out)
 
 # --- 5 rehearsal -------------------------------------------------------------
