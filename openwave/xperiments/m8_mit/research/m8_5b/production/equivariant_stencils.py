@@ -61,8 +61,17 @@ RBF_FD_WEIGHT_COVARIANCE = {
 
 
 def group_multiplication_table(pairs, tol=1e-9):
+    # Addendum 12.3: lookup matches modulo the diagonal central kernel,
+    # (u, v) ~ (-u, -v), the SAME equivalence the effective-group closure
+    # uses to choose its representatives.  A product of two representatives
+    # can land on the central partner of a listed representative; that is
+    # the same effective element, and refusing it made route (a) unable to
+    # run any inhomogeneous cyclic case.  A product matching NO listed
+    # element in either sign is still refused: the table is closure
+    # verification, not nearest-match.
     def same(a, b):
-        return abs(a[0] - b[0]).max() < tol and abs(a[1] - b[1]).max() < tol
+        return ((abs(a[0] - b[0]).max() < tol and abs(a[1] - b[1]).max() < tol) or
+                (abs(a[0] + b[0]).max() < tol and abs(a[1] + b[1]).max() < tol))
 
     def idx_of(p):
         for i, q in enumerate(pairs):

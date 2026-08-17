@@ -19,9 +19,9 @@ verdict.  Nonzero exit on anything short of a full pass.
     6  integrated   the Q1/Q2/Q3/Q5 battery
     7  records      the fresh run reproduces the shipped qualification records
 
-WHAT THIS DOES NOT SHOW.  Every case exercised here is synthetic or a frozen
-tuning case.  No rung has run on a real adjudication case, so nothing produced
-by this command is adjudication evidence.
+WHAT THIS DOES NOT SHOW.  No qualification run in this tree is adjudication
+evidence; every case exercised by this command is synthetic or a frozen
+tuning case.
 """
 
 import hashlib
@@ -194,6 +194,14 @@ record("gate_gamma1.py exits 0 (recovers the rung-2 tower)", rc == 0)
 rc, out = run("eval3b/mutations.py")
 record("eval3b mutation battery exits 0", rc == 0)
 
+# --- 4c route (a) group-closure battery (Addendum 12.3) ----------------------
+step("4c", "route (a) group-closure battery: central equivalence, both regimes")
+rc, out = run("route_a_closure_battery.py")
+record("route (a) closure battery exits 0", rc == 0)
+record("closure battery demonstrates the repair is load-bearing",
+       "mutation: removing central equivalence makes L(7;1,2) fail" in out
+       and "BATTERY PASS" in out)
+
 # --- 5 rehearsal -------------------------------------------------------------
 step(5, "Q4 integration rehearsal, including the deletion limb")
 rc, out = run("rehearsal_q4.py")
@@ -233,8 +241,8 @@ print(f"\n{'=' * 70}")
 if ok:
     print(f"PHASE A QUALIFICATION: PASS - structural 8/8; integrated "
           f"{n_items}/{n_items}; Q4 GREEN; deletion GREEN")
-    print("No rung has run on a real adjudication case; this is qualification,")
-    print("not adjudication evidence.")
+    print("No qualification run in this tree is adjudication evidence; every case")
+    print("exercised by this command is synthetic or a frozen tuning case.")
 else:
     print("PHASE A QUALIFICATION: FAIL")
     for name, passed, detail in results:
