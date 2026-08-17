@@ -39,6 +39,7 @@ plus the platform contract, in one place):
 
 | Rule | What it means at the keyboard |
 | --- | --- |
+| GitHub thread FIRST, at every session start | before any other work, and before any commit, read the open PR's conversation and review state: `gh pr view 441 --repo openwave-labs/openwave --comments` and `gh pr view 441 --repo openwave-labs/openwave --json reviews,isDraft` (adjust the number to the live PR). Maintainer decisions, verified merge slices, and draft conversions land there; work done blind to that thread can void itself. If anything in the thread conflicts with the current plan, STOP and surface it to the author before proceeding |
 | One task, one PR | each roadmap task lands as its own pull request; nothing else rides along |
 | Draft until quiescent | while commits are still landing, the PR is marked draft; review runs on a settled head, and commits pushed mid-review void the parts of the review they touch |
 | Task ids resolve | a new campaign gets its roadmap row and `tasks/m9_<id>_task_details.md` BEFORE its scripts take the id; no artifact carries an id that names a different task or no task |
