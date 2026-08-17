@@ -40,8 +40,8 @@
     "qualify_integration.py": "fb1de8e1ded52d7ecfb2c1a9b1d692a052a6729fc5809a6e7499c7403f60026c",
     "rehearsal_deletion_check.py": "882e14b059dc0df7beaeb3c985fa62191276fe33beff5b27920d627bec0c6031",
     "rehearsal_q4.py": "2e0493486430be765c50a1d8def7c4c1d5b56f79158da0f86489f6ded0ae2960",
-    "route_a_closure_battery.py": "5ea14db85783a9313ba4a18fac86091d49988391bd70d4d24ae681b3fec7f1d9",
-    "run_qualification.py": "e7b18d81f9e111236461ae2c44380373f8473f66b914cda8159cd95126b46c74",
+    "route_a_closure_battery.py": "347090f5dc225e478924ae4c6e00d79dd98211fa52394b1706a9b4e91c7917ea",
+    "run_qualification.py": "fb4feda60a0db7d0862f6aded4d8ae9249cb9342c0446f258df892f23ce398b5",
     "verify_packet_structural.py": "6af71e482b6ca2698d8dcaac29d25585b4a331cbd7479ff7be056db2551935b2"
   },
   "note": "SHA-256 of every shipped file except three. MANIFEST.json cannot contain its own hash. PHASE_A_FREEZE.md contains this manifest's hash, so hashing it here would be circular: the chain runs freeze -> manifest -> every other file, and the freeze record's own anchor is the commit that carries it. .gitignore is repository hygiene, not qualification evidence and not an input to any battery; repository policy marks it export-ignore, so it is absent from source archives, and pinning it made a correct exported tree fail this gate."
