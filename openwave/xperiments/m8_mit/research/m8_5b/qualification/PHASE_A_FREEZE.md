@@ -9,7 +9,7 @@
     Scope        the scalar and one-form adjudication machinery for rungs 3a
                  and 3b, as published in this directory
     Manifest     `qualification/MANIFEST.json`
-                 SHA-256 2648611948b93b46fe70b3017b7953287ff1445a73cf553ffccf6cd54b410b87
+                 SHA-256 9e6dcd7b5d177040cf25f1eda0bb4614f4002cd85f25660ca9ec75dc9734d934
     Reproduce    python3 run_qualification.py
 
 ## What is frozen
@@ -35,7 +35,9 @@ shaped by an answer it had not seen.
 The qualification is reproducible, from a clean clone and from an exported
 source archive alike, by the single command above, which establishes, in
 order: no first-party module imported by the controlling process resolves
-outside this tree; the confinement those batteries run under, observed in a
+outside this tree; the route (a) group-closure battery added by Addendum
+12.3, whose mutation arm proves the central-equivalence repair is
+load-bearing; the confinement those batteries run under, observed in a
 child and a grandchild launched through the same helper they use and probed
 under a deliberately poisoned parent environment; the environment; the
 manifest; the Packet I and Packet II gate batteries; the structural battery
@@ -45,8 +47,11 @@ and the integrated battery.
 
 ## What the freeze does NOT claim
 
-**No rung has run on a real adjudication case.** Every case exercised here is
-synthetic or a frozen tuning case, so nothing in this directory is adjudication
-evidence, no external reference value has been compared to any route output, and
-no certification language from § 1 of the preregistration is engaged. The
-M8.5-A gate condition and every § 0 claim ceiling stand unchanged.
+**No qualification run in this tree is adjudication evidence.** `M85B-ADJ-04`
+invoked route (a) before this repair and stopped structurally before producing
+an output; it is retired under Addendum 12.3 and its Packet II remains sealed.
+Every case exercised by this qualification command is synthetic or a frozen
+tuning case, no external reference value has been compared to any route
+output, and no certification language from § 1 of the preregistration is
+engaged. The M8.5-A gate condition and every § 0 claim ceiling stand
+unchanged.
