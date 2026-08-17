@@ -4,7 +4,7 @@
     "qualification/MANIFEST.json",
     "qualification/PHASE_A_FREEZE.md"
   ],
-  "file_count": 36,
+  "file_count": 37,
   "files": {
     "confinement_probe.py": "6e05a7b3b07d87c11c736efac89b7bdc3dd93b0693d597356d4c82e8b597e559",
     "eval3b/gate_gamma1.py": "4bf69fe504bc244a657b6870c7bbe3876b821e07c2e8e26a2d751a46cceea32d",
@@ -25,7 +25,7 @@
     "pilot/route_a_twosided.py": "33a76e6018223b62d94bd196ca19ea8e36e53cf9139323f87e13037a82a342a0",
     "production/cl_descent.py": "1ecf742b0d64c09ee494fdd7a249866c2493cabb64cf090306b8706827832df1",
     "production/equivariant_oneform.py": "ff8b8a890523519b444567074766bec30825df9383faa04ba18beb15039673be",
-    "production/equivariant_stencils.py": "e99099baea55746956dd05a910cf2e939e85172f8e608eba017dd77ce2d0c1b9",
+    "production/equivariant_stencils.py": "c30cac01bed2da53980450035e3b823fa2ec3c17bae3d0487a000ec727a31520",
     "production/route_a_oneform_repn.py": "b98b79243d3dd64821a16b4e565fbebc7b1d553a29c960aa5afe0791d7532dd3",
     "production/route_a_producer.py": "a42f9c5ff2361192d94487273f130f14e0305da3831309079e2555043da40f95",
     "production/route_a_repn.py": "240575067f1ec92f0196d337f67ba9c99a2f82aa397e5fc189f5e7f7255043cb",
@@ -40,7 +40,8 @@
     "qualify_integration.py": "fb1de8e1ded52d7ecfb2c1a9b1d692a052a6729fc5809a6e7499c7403f60026c",
     "rehearsal_deletion_check.py": "882e14b059dc0df7beaeb3c985fa62191276fe33beff5b27920d627bec0c6031",
     "rehearsal_q4.py": "2e0493486430be765c50a1d8def7c4c1d5b56f79158da0f86489f6ded0ae2960",
-    "run_qualification.py": "29e0d13035ea6470c43bb769a4f6ffb047ed45e953e96126133722d5d5f940f9",
+    "route_a_closure_battery.py": "5ea14db85783a9313ba4a18fac86091d49988391bd70d4d24ae681b3fec7f1d9",
+    "run_qualification.py": "e7b18d81f9e111236461ae2c44380373f8473f66b914cda8159cd95126b46c74",
     "verify_packet_structural.py": "6af71e482b6ca2698d8dcaac29d25585b4a331cbd7479ff7be056db2551935b2"
   },
   "note": "SHA-256 of every shipped file except three. MANIFEST.json cannot contain its own hash. PHASE_A_FREEZE.md contains this manifest's hash, so hashing it here would be circular: the chain runs freeze -> manifest -> every other file, and the freeze record's own anchor is the commit that carries it. .gitignore is repository hygiene, not qualification evidence and not an input to any battery; repository policy marks it export-ignore, so it is absent from source archives, and pinning it made a correct exported tree fail this gate."

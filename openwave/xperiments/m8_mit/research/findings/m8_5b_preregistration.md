@@ -1687,3 +1687,98 @@ just resolved for Packet II. Whoever writes that revision should give Packet I
 an explicit version slot in the `m8_5b-packet-I-<n>` form. It is recorded here
 rather than corrected here because altering Packet I's shape outside a format
 revision is the in-place amendment § 12 exists to prevent.
+
+### Addendum 12.2 - fresh Phase B adjudication case commitment
+
+*Drafted 2026-08-16 by the Phase B Sealer Unit. Adopted 2026-08-16 by the
+commissioner following Redline review. This addendum is an operative commitment
+under § 12.*
+
+A fresh Phase B adjudication case has been sealed under the § 4.1 packet
+contract as supplemented by Addendum 12.1. It supersedes nothing: the retired
+case `M85B-ADJ-01` remains burned per § 12.1.7, and the § 6.1 and § 11.7 hashes
+recording it are unaltered historical commitments.
+
+**Opaque case identifier.** `M85B-ADJ-04`. The label is opaque and encodes
+nothing about the case.
+
+**Packet hashes, over canonical bytes (§ 11.7: keys sorted, two-space indent,
+ASCII, LF, single trailing newline).**
+
+Packet I (case-input), SHA-256
+`52eabe3fc1d045bde8efad888e23f6302123fafa4e0ef151b31382f4cd1307c2`.
+
+Packet II (answer), SHA-256
+`f000b895668f85c06da46f4ea80eaaa9eaa34b923516e5a264120724766d5fdd`.
+
+Listed separately; neither may be inferred from the other. These are the
+operative adjudication-case commitments wherever § 4.1 refers to them, in place
+of the § 6.1 and § 11.7 entries that record the retired case.
+
+**Status of the packets.** Both are sealed and unopened. Packet I opens at
+§ 4.1 step 2 and Packet II at § 4.1 step 4. Neither has been published, and
+Packet II's bytes remain outside the repository until the adjudication is
+recorded (§ 4.1).
+
+**Admissibility, as recorded at commissioning.** The case is non-`2I` and is
+distinct from every member of the § 6.1 pilot tuning set; it informed no pilot
+choice. Its cited source supports the § 4.1 and Addendum 12.1 requirements
+without adapter discretion.
+
+**Build conditions.** The packets were built in a clean two-stage session by a
+unit with no access to the adjudication or qualification machinery, satisfying
+the Q6 separation-of-duties control. Every supplied build-time gate (S0-S6,
+L1-L3, V1-V8, and the SYN- sealing reservation) was run unmodified and cleared
+before sealing, and the supplied self-batteries were run and read at Stage 0,
+before the case was disclosed. No validation gate was written, patched,
+supplemented or replaced at any point after the case was disclosed.
+
+**Not settled here.** This addendum records a commitment only. It orders no
+§ 4.1 execution, authorizes no route run, and states no adjudication result.
+
+### Addendum 12.3 - route (a) central-equivalence repair
+
+*Drafted 2026-08-16 by the adjudication side. Adopted 2026-08-16 by the
+commissioner following review. This addendum is an operative record under
+§ 12.*
+
+**What happened.** During blind execution of `M85B-ADJ-04`, before any Packet
+II access and before any route-output commitment, route (a) exposed an
+incompatibility between two conventions inside the frozen machinery: the
+effective-group closure identifies action pairs modulo the diagonal central
+kernel, `(u, v) ~ (-u, -v)`, choosing one representative per effective
+element, while the stencil layer's multiplication-table lookup required
+sign-exact equality of representatives. For an inhomogeneous cyclic case,
+products of representatives can land on the central partner of a listed
+representative, so the underlying group element exists but the lookup
+refuses, and route (a) stopped before producing an output. Execution stopped
+with it. No adjudication occurred, and the case's sealed commitments stand
+unaltered under Addendum 12.2.
+
+**The defect is latent, not case-induced.** The tuning-set member `L(7;1,2)`
+fails by the identical mechanism when driven through the same path, so the
+incompatibility predates the fresh case. It survived qualification because
+every case that previously reached the stencil path was sign-exact closed by
+accident of selection: the rehearsal case is homogeneous, and the pilot's
+binary polyhedral groups contain the central element natively.
+
+**What may change.** The production route may be repaired ONLY to make
+multiplication-table lookup respect the same diagonal central equivalence
+already used by the closure. No spectral formula, packet gate, comparator,
+indexing map, threshold, or answer-bearing logic may change.
+
+**What this obligates.** Requalification must add the missing diversity
+before any new case is selected: the homogeneous and binary-polyhedral
+regressions must still pass; `L(7;1,2)` must traverse the actual route-(a)
+stencil path; representative products landing on a central partner must
+resolve correctly; a deliberate mutation removing the central equivalence
+must make that check fail; a genuinely absent product must still be refused,
+so lookup does not become nearest-match; the orbit cloud's cardinality must
+remain the effective group order, proving no coincident sign-doubled points
+enter the stencils; and route (b), the Gamma = 1 validation, and the prior
+route-(a) controls must remain green. The repair and its requalification are
+subject to maintainer review before a fresh adjudication case is selected.
+
+**Disposition of `M85B-ADJ-04`.** Retired as the pre-reveal bug-discovery
+case. Its Packet II remains sealed and is not opened by this addendum or by
+the repair. Its commitments in Addendum 12.2 remain valid historical record.
