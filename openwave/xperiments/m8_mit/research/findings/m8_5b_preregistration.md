@@ -1735,3 +1735,50 @@ supplemented or replaced at any point after the case was disclosed.
 
 **Not settled here.** This addendum records a commitment only. It orders no
 § 4.1 execution, authorizes no route run, and states no adjudication result.
+
+### Addendum 12.3 - route (a) central-equivalence repair
+
+*Drafted 2026-08-16 by the adjudication side. Adopted 2026-08-16 by the
+commissioner following review. This addendum is an operative record under
+§ 12.*
+
+**What happened.** During blind execution of `M85B-ADJ-04`, before any Packet
+II access and before any route-output commitment, route (a) exposed an
+incompatibility between two conventions inside the frozen machinery: the
+effective-group closure identifies action pairs modulo the diagonal central
+kernel, `(u, v) ~ (-u, -v)`, choosing one representative per effective
+element, while the stencil layer's multiplication-table lookup required
+sign-exact equality of representatives. For an inhomogeneous cyclic case,
+products of representatives can land on the central partner of a listed
+representative, so the underlying group element exists but the lookup
+refuses, and route (a) stopped before producing an output. Execution stopped
+with it. No adjudication occurred, and the case's sealed commitments stand
+unaltered under Addendum 12.2.
+
+**The defect is latent, not case-induced.** The tuning-set member `L(7;1,2)`
+fails by the identical mechanism when driven through the same path, so the
+incompatibility predates the fresh case. It survived qualification because
+every case that previously reached the stencil path was sign-exact closed by
+accident of selection: the rehearsal case is homogeneous, and the pilot's
+binary polyhedral groups contain the central element natively.
+
+**What may change.** The production route may be repaired ONLY to make
+multiplication-table lookup respect the same diagonal central equivalence
+already used by the closure. No spectral formula, packet gate, comparator,
+indexing map, threshold, or answer-bearing logic may change.
+
+**What this obligates.** Requalification must add the missing diversity
+before any new case is selected: the homogeneous and binary-polyhedral
+regressions must still pass; `L(7;1,2)` must traverse the actual route-(a)
+stencil path; representative products landing on a central partner must
+resolve correctly; a deliberate mutation removing the central equivalence
+must make that check fail; a genuinely absent product must still be refused,
+so lookup does not become nearest-match; the orbit cloud's cardinality must
+remain the effective group order, proving no coincident sign-doubled points
+enter the stencils; and route (b), the Gamma = 1 validation, and the prior
+route-(a) controls must remain green. The repair and its requalification are
+subject to maintainer review before a fresh adjudication case is selected.
+
+**Disposition of `M85B-ADJ-04`.** Retired as the pre-reveal bug-discovery
+case. Its Packet II remains sealed and is not opened by this addendum or by
+the repair. Its commitments in Addendum 12.2 remain valid historical record.
