@@ -103,6 +103,14 @@ this case does NOT exercise the route-(a) central-equivalence repair
 adopted in Addendum 12.3; that repair rests on its own mutation-backed
 requalification and independent maintainer attack.
 
+**Identifier history, so the gaps in numbering stay intelligible.** Other
+identifiers were minted but never reached adjudication: `M85B-ADJ-02` was
+sealed and later retired with its case identity unrecoverable; `M85B-ADJ-03`
+was the void episode whose completion report proved unbacked by any packet;
+`M85B-ADJ-05` was withdrawn before commission and was never recycled.
+`M85B-ADJ-01` was burned per § 12.1.7 and `M85B-ADJ-04` retired per Addendum
+12.3.
+
 The case is now spent: its identity and its answer packet have been
 revealed and adjudicated, so no future blind use of it exists. The § 0
 claim ceilings and the M8.5-A gate condition are unchanged.
