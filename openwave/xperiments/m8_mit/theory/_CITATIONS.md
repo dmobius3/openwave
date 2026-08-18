@@ -84,6 +84,7 @@ disclosed the case before its commitment was published.
 | Nash, O'Connor | 1995 | (twisted-sector degeneracies) | *J. Math. Phys.* 36, no. 3, 1462-1505; DOI [10.1063/1.531134](https://doi.org/10.1063/1.531134) | M8.5-B § 11.9, use-warning |
 | Gallot, Meyer | n/a | (p-form multiplicity formulas; the pin records reported errors and restricts use to the curvature lower bound) | no identifier in the pin | M8.5-B § 11.9, use-warning |
 | Bär | n/a | (route for the curvature lower bound) | no identifier in the pin | M8.5-B § 11.9 |
+| Lachièze-Rey | 2004 | Laplacian eigenmodes for the three-Sphere | arXiv [math/0401153](https://arxiv.org/abs/math/0401153) (preprint; identifier and metadata machine-verified 2026-08-18) | [M8.4 kinematic close](../research/findings/m8_4_kinematic_close.md) § 4, corroboration: quotient eigenmodes are the Γ-invariant modes of S³ |
 
 Four of these carry a **use-warning** in the pinning document: each is excluded from a stated
 gate because its indexing, bundle convention or dimensional notation does not match the
