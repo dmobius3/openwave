@@ -1,0 +1,37 @@
+{
+  "case_id": "M85B-ADJ-07",
+  "outcome": "GREEN",
+  "per_route": {
+    "a": {
+      "aggregation_injected": false,
+      "coexact_divergences": [],
+      "evaluator_rows_ignored_above_band": 0,
+      "exact_divergences": [],
+      "independence_note": "class-2 theorem evaluation; against route (b) this is a theorem-consistency check overlapping its character machinery, never a third independent derivation (section 4.2)",
+      "outcome": "GREEN",
+      "refusals": [],
+      "run_configuration_required": {
+        "mapping": "corrected",
+        "p": 1
+      }
+    },
+    "b": {
+      "aggregation_injected": false,
+      "coexact_divergences": [],
+      "evaluator_rows_ignored_above_band": 0,
+      "exact_divergences": [],
+      "independence_note": "class-2 theorem evaluation; against route (b) this is a theorem-consistency check overlapping its character machinery, never a third independent derivation (section 4.2)",
+      "outcome": "GREEN",
+      "refusals": [],
+      "run_configuration_required": {
+        "mapping": "corrected",
+        "p": 1
+      }
+    }
+  },
+  "run_configuration": {
+    "mapping": "corrected",
+    "p": 1
+  },
+  "rung": "3b"
+}
