@@ -1782,3 +1782,66 @@ subject to maintainer review before a fresh adjudication case is selected.
 **Disposition of `M85B-ADJ-04`.** Retired as the pre-reveal bug-discovery
 case. Its Packet II remains sealed and is not opened by this addendum or by
 the repair. Its commitments in Addendum 12.2 remain valid historical record.
+
+### Addendum 12.4 - fresh Phase B adjudication case commitment
+
+*Drafted 2026-08-18 UTC by the Phase B Sealer Unit, whose environment runs UTC.
+Custody was verified by the commissioner at 2026-08-17 21:01 EDT, the same
+moment in commissioner-local time. Adopted 2026-08-17 EDT by the commissioner
+following review. This addendum is an operative commitment under § 12, and it
+is published BEFORE either packet opens, as § 4.1 requires.*
+
+A fresh Phase B adjudication case has been sealed under the § 4.1 packet
+contract as supplemented by Addendum 12.1. It supersedes nothing. The retired
+case `M85B-ADJ-01` remains burned per § 12.1.7, and `M85B-ADJ-04` remains
+retired as the pre-reveal bug-discovery case per Addendum 12.3; the § 6.1,
+§ 11.7 and Addendum 12.2 hashes recording those cases are unaltered historical
+commitments.
+
+**Opaque case identifier.** `M85B-ADJ-07`. The label is opaque and encodes
+nothing about the case.
+
+**Packet hashes, over canonical bytes (§ 11.7: keys sorted, two-space indent,
+ASCII, LF, single trailing newline).**
+
+Packet I (case-input), SHA-256
+`a2ea9172688df7c194ddf221824bf3d3fd69b462d5936f2e8efdd66b1fc4c4f2`.
+
+Packet II (answer), SHA-256
+`5fed19674928c2525e0b31476529195ccc88ba5dcba8e493163c87b84e4dbfcf`.
+
+Listed separately; neither may be inferred from the other. On adoption these
+become the operative adjudication-case commitments wherever § 4.1 refers to
+them, in place of the entries recording the retired cases.
+
+**Status of the packets.** Both are sealed and unopened. Packet II was not reopened after
+sealing. Packet I opens at § 4.1 step 2 and Packet II at § 4.1 step 4. Neither
+has been published, and Packet II's bytes remain outside the repository until
+the adjudication is recorded (§ 4.1).
+
+**Admissibility, as recorded at commissioning.** The case is non-`2I` and is
+distinct from every member of the § 6.1 pilot tuning set (`L(2,1)`, `L(3,1)`,
+`L(4,1)`, `L(7,2)`, `2T`); it informed no pilot choice. Its cited source
+supports the § 4.1 and Addendum 12.1 requirements without adapter discretion:
+the source provides the mandatory constant-mode row, its row index
+addresses the protocol level ladder under the admitted monotone integer-affine
+family, and its printed eigenvalue convention closes against that transform
+under V5.
+
+**Build conditions.** The packets were built in a clean two-stage session by a
+unit with no access to the adjudication or qualification machinery, satisfying
+the Q6 separation-of-duties control. The workspace carried no repository clone,
+comparator or adjudication tree, prior-case material or expected answers, and
+this was verified and reported before the case was disclosed. Every supplied
+build-time gate (S0-S6, L1-L3, V1-V8, and the SYN- sealing reservation) was run
+unmodified and cleared before sealing; the supplied self-batteries were run and
+read at Stage 0, before the case was disclosed, and re-run unchanged afterwards.
+No validation gate was written, patched, supplemented, replaced or reinterpreted
+at any point after the case was disclosed. External access during Stage 1 was
+limited to the single cited publication, and every resource consulted is named
+in the build record.
+
+**Not settled here.** This addendum records a commitment only. It orders no § 4.1
+execution, authorizes no route run, and states no adjudication result. It
+carries no reference values, no indexing map, no certified band and no source
+row contents.
