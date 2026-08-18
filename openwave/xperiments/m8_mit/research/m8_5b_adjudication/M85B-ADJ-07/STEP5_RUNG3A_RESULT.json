@@ -1,0 +1,38 @@
+{
+  "case_id": "M85B-ADJ-07",
+  "outcome": "GREEN",
+  "packet_ii_sha256": "5fed19674928c2525e0b31476529195ccc88ba5dcba8e493163c87b84e4dbfcf",
+  "per_route": {
+    "a": {
+      "band_authority": {
+        "artifact_claimed_n_max": 4,
+        "band_mismatch_vs_packet": false,
+        "note": "the packet's V7-derived n_max owns the comparison band; a self-consistent route ceiling differing from it can arise only through an in-band divergence, which the per-level comparison reports as the result",
+        "packet_n_max": 4,
+        "recomputed_from_artifact_cells": 4
+      },
+      "compared_levels": 5,
+      "divergences": [],
+      "ignored_above_band": 0,
+      "outcome": "GREEN",
+      "refusals": [],
+      "transform_injected": false
+    },
+    "b": {
+      "band_authority": {
+        "artifact_claimed_n_max": 4,
+        "band_mismatch_vs_packet": false,
+        "note": "the packet's V7-derived n_max owns the comparison band; a self-consistent route ceiling differing from it can arise only through an in-band divergence, which the per-level comparison reports as the result",
+        "packet_n_max": 4,
+        "recomputed_from_artifact_cells": 4
+      },
+      "compared_levels": 5,
+      "divergences": [],
+      "ignored_above_band": 0,
+      "outcome": "GREEN",
+      "refusals": [],
+      "transform_injected": false
+    }
+  },
+  "rung": "3a"
+}
