@@ -63,6 +63,35 @@ GATE PASS. A later reader can therefore check the rung-3a comparison
 against the very bytes the harness loaded, rather than against the
 adjudicator's word.
 
+## Process history carried here rather than in the pull request
+
+**The sealing unit STOPPED on a genuine source ambiguity.** The cited
+publication prints its analytic operator convention with one sign, at
+`-k(k+2)` in its section 4 and equation (7), and its spectral convention
+with the other at the commissioned loci, where section 9 and the Table 1
+caption both describe `k(k+2)` as the eigenvalue. No build-time gate could
+adjudicate that: V5 is a closure predicate, and a fully sign-reversed
+declaration with sign-reversed coefficients satisfies it identically. The
+unit ruled out a decoding artifact first, pinning the sign glyph by
+mathematics rather than by font tables, then brought both readings and
+resolved neither. The resolution came from Addendum 12.1.2 as already
+frozen: the field is the sign of the source's PRINTED spectrum, and Packet
+II transcribes that printed convention rather than an independent
+reconstruction of the operator convention. A later unit re-derived the
+same reading independently from the contract before proceeding.
+
+**An earlier case was retired pre-route on a commitment-order failure.**
+`M85B-ADJ-06` was sealed validly, and then Packet I was opened while its
+commitment addendum was still an unadopted draft. § 4.1 requires both
+packet hashes to be published before either packet opens, so the case was
+retired with no scientific result, its Packet II left sealed and unread
+permanently. No contamination occurred: no route ran and the opening
+disclosed only case input that had already been chosen. The commissioner
+side then wrote an explicit post-custody barrier, under the stop line
+SEALED != CLEARED TO OPEN PACKET I, requiring the commitment to be adopted,
+published, and read back from the public record before any packet opens.
+That barrier is what this case's ordering satisfies.
+
 ## What this case is not
 
 `M85B-ADJ-07` is a HOMOGENEOUS lens space, so its action pair carries
