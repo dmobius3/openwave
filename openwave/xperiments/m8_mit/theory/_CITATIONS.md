@@ -56,12 +56,18 @@ unverified fields as such. They were **not** independently machine-checked at re
 treat them as author-attested until first use, on the same footing as the SSRN entries above.
 Where a pin carries no identifier, that is recorded rather than filled in, per the
 [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) section 3.4 never-fabricate rule.
+The Lehoucq, Uzan and Weeks entry is an exception on both counts: its DOI and metadata were
+machine-verified at the publisher, and the sealing unit that transcribed from it verified the
+same identifiers independently before reading a value. It is registered only now because it
+was the sealed external reference for `M85B-ADJ-07`; registering it earlier would have
+disclosed the case before its commitment was published.
 
 | Author(s) | Year | Title | Venue / ID | Pinned by |
 | --- | --- | --- | --- | --- |
 | Polterovich | 2002 | Combinatorics of the Heat Trace on Spheres | *Canad. J. Math.* 54, no. 5, 1086-1099; DOI [10.4153/CJM-2002-040-4](https://doi.org/10.4153/CJM-2002-040-4) | M8.5-B § 11.1 |
 | Lehoucq, Weeks, Uzan, Gausmann, Luminet | 2002 | (eigenmodes of spherical spaces, § 2.2) | *Class. Quantum Grav.* 19, no. 18, 4683-4708; DOI [10.1088/0264-9381/19/18/305](https://doi.org/10.1088/0264-9381/19/18/305) | M8.5-B § 11.1, corroboration |
 | Iwasaki, Katase | 1979 | On the Spectra of Laplace Operator on `Λ*(S^n)` | *Proc. Japan Acad. Ser. A* 55, no. 4, 141-145; DOI [10.3792/pjaa.55.141](https://doi.org/10.3792/pjaa.55.141) | M8.5-B §§ 11.2, 11.9 |
+| Lehoucq, Uzan, Weeks | 2003 | Eigenmodes of lens and prism spaces | *Kodai Math. J.* 26, no. 1, 119-136; DOI [10.2996/kmj/1050496653](https://doi.org/10.2996/kmj/1050496653). Free access at the publisher; DOI and metadata machine-verified 2026-08-17 | M8.5-B rung 3a, the M85B-ADJ-07 external reference (Table 1) |
 | Lauret | 2018 | The spectrum on p-forms of a lens space | *Geom. Dedicata* 197, 107-122; DOI [10.1007/s10711-018-0322-9](https://doi.org/10.1007/s10711-018-0322-9) | M8.5-B §§ 11.2, 11.8 |
 | Boucetta | 1999 | (spectra of the Hodge Laplacian on spheres, Thm 3.1 ii, Prop. 3.15 i) | *Publicacions Matemàtiques* 43, no. 2, 451-483; no DOI in the pin | M8.5-B §§ 11.2, 11.9 |
 | Capoferri, Vassiliev | 2026 | Beyond the Hodge theorem | *J. London Math. Soc.* 113, no. 1, e70431; DOI [10.1112/jlms.70431](https://doi.org/10.1112/jlms.70431) | M8.5-B § 11.3 |
