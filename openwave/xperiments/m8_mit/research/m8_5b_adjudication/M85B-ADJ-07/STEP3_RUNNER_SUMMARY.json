@@ -1,0 +1,16 @@
+{
+  "committed": {
+    "a": {
+      "byte_length": 39719,
+      "sha256": "fcc0e128f7f5ad0e4cc5110690dc0d7dd2a1c7e59bfad27e8cd5d19de27b85ea"
+    },
+    "b": {
+      "byte_length": 24958,
+      "sha256": "8dd18cc394eb16393458578634592d82a3be5a06fe109635f4341a0aef29ade3"
+    }
+  },
+  "cross_route_checks_performed": "none, by design",
+  "forbidden_here": "compare routes, inspect multiplicity agreement, reconcile n_max, apply G2-G8, compute RESOLVED/UNRESOLVED, determine an achieved band, invoke the 3b evaluator, ingest Packet II, adjudicate",
+  "note": "both artifacts are now frozen evidence; step 4 opens Packet II and step 5 owns every cross-route question",
+  "step": 3
+}
