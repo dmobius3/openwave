@@ -2,12 +2,13 @@
 
 > **What this file is.** The canonical record of the five clean-room commissions run under
 > § 8 of the reproduction protocol. It exists so that one file answers three questions
-> without spelunking through commits: why five runs were made, why each was rejected, and why
-> the fifth is now the Phase A candidate.
+> without spelunking through commits: why five runs were made, why the first four were
+> retired, and why the fifth is held as the Phase A candidate.
 >
 > **The answer packet has never been opened.** No comparison has run against any attempt, no
-> orientation has been selected, and no verdict exists. Every retirement below is pre-reveal,
-> so the case is unconsumed and a conforming run remains fully available.
+> orientation has been selected, and no verdict exists. The four retirements below are all
+> pre-reveal, and the fifth commission is pre-reveal on qualification hold, so the case is
+> unconsumed and a conforming run remains fully available.
 >
 > Per-file hashes are re-derivable from the tree at each landed commit and are not restated
 > here. The one hash inventory that is operative rather than descriptive, Phase A's thirteen
@@ -22,11 +23,11 @@ construction packet, all three verified against the § 8 lock manifest before ev
 attempt was told that an earlier one existed, and no attempt received any artifact from a
 predecessor.
 
-Four of the five instructions differed from the one before it. Those revisions are recorded
-per attempt below; each closed an ambiguity that the previous run had exposed, and the fifth
-ran on an unamended instruction deliberately, to test whether a fresh implementer could
-comply with the mature contract as written rather than whether the contract could be tuned
-until something passed.
+Attempts 2 through 4 each received a revised `TASK.md` in response to the preceding
+retirement, and those revisions are recorded per attempt below; each closed an ambiguity the
+previous run had exposed. Attempt 5 deliberately reused attempt 4's instruction unchanged, to
+test whether a fresh implementer could comply with the mature contract as written rather than
+whether the contract could be tuned until something passed.
 
 ## The five commissions
 
@@ -49,9 +50,11 @@ Explicitly not the defect: the firewall held, all four seeded inputs byte-unchan
 computation was never suspected wrong; a run-order dependency in the output was disclosed and
 reproducible, with a leaf-level comparison finding 320 of 320 shared values equal.
 
-Because room modification times showed the manifest's final write postdating the
-implementation by thirteen seconds, this attempt also established that mtimes inside a room
-are not ordering evidence.
+Room modification times showed the manifest's final write postdating the implementation by
+thirteen seconds, which is how the amendment surfaced. The lesson carried forward is that
+mtimes alone are not sufficient ordering evidence: the causal order rested on the session
+record, and later instructions required the freeze to be an explicit declared event rather
+than something inferred from timestamps.
 
 ### Attempt 2, retired: the implementation departed from a frozen manifest instead of stopping
 
@@ -99,9 +102,9 @@ Second defect: the frozen mutation-coverage contract was not discharged. Fifteen
 instantiated and seven carried mutation arms, and more importantly coverage was not enforced
 at all, so nothing in the run could fail on incomplete coverage.
 
-Recorded against the commissioner rather than the run: the landing record for this attempt
-flagged gate sufficiency as a review question instead of answering it, when the contract is
-explicit and machine-checkable and the enumeration is one command.
+Commissioner-side process finding: the landing record for this attempt flagged gate
+sufficiency as a review question instead of answering it, when the contract is explicit and
+machine-checkable and the enumeration is one command. Later landings answer it directly.
 
 ### Attempt 4, retired: gate-contract violations against already-explicit requirements
 
@@ -132,7 +135,7 @@ coverage enforcement added for it verifies that a mutation key exists and reads 
 hard-coded literal satisfies exactly that, so the mechanism built to guarantee mutations exist
 cannot distinguish an executed mutation from an asserted one.
 
-### Attempt 5, held: the mathematics succeeded, the qualification did not
+### Attempt 5, held: the mathematical reproduction phase completed, qualification did not
 
 | Field | Value |
 | --- | --- |
@@ -162,22 +165,29 @@ refuses both in the same sentence.
 
 ## What the sequence shows
 
-Read in order, the five failures move upstream through the same structure:
+Read in order, the five outcomes move upstream through the same structure:
 
 ```text
 back-fit the manifest  ->  depart from it instead of stopping  ->  validate incompletely and
-enforce nothing  ->  violate explicit gate-contract requirements  ->  succeed mathematically
-with the mutation qualification incomplete
+enforce nothing  ->  violate explicit gate-contract requirements  ->  complete the
+mathematical phase with its internal mathematical gates satisfied while mutation
+qualification remained incomplete
 ```
 
-Every run was a fresh context with identical frozen inputs, and every one failed the same
-requirement class, § 9's demand that each gate carry a runnable mutation with enforced
-coverage and a nonzero exit. The forms differed; the class did not.
+Every run was a fresh context receiving the same three frozen technical inputs. Across the
+later commissions, and still after the earlier methodological defects had been independently
+repaired, the recurring unresolved requirement was § 9's executable-mutation and
+enforced-coverage contract. Attempts 1 and 2 were retired on manifest-order and
+manifest-departure grounds, and this record does not establish a § 9 finding against them;
+attempts 3, 4 and 5 each failed § 9 in a different form.
 
-The inference drawn from that, and it is deliberately narrow, is that the mutation requirement
-is not impractical but the monolithic single-context commissioning architecture is not
-reliably discharging it. Attempt 5 makes the diagnosis persuasive precisely because it
-repaired the substantive defects while independently repeating the qualification failure.
+Attempt 5 is the strongest evidence: on the unchanged mature instruction it repaired the
+substantive defects while leaving fifteen of nineteen declared mutations unexecuted.
+
+The inference drawn from that is deliberately narrow. The mutation requirement is not
+impractical; **for this task, the monolithic single-context commissioning architecture has
+not reliably discharged it.** That is an operational diagnosis about this workflow, not a
+general law derived from five heterogeneous runs.
 
 The standard is therefore preserved in full and only the division of labor changes. Addendum 1
 freezes attempt 5's artifacts as Phase A and commissions a separate pre-reveal Phase B whose

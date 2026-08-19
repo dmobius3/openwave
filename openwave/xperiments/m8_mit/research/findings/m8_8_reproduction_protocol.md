@@ -730,22 +730,26 @@ this; substituting a different artifact for a pinned one does.
 #### Why this addendum exists
 
 Five clean-room commissions have run under § 8 as written. Each was a genuinely fresh context
-receiving byte-identical frozen inputs, and each was retired pre-reveal. The per-attempt
-record, with the instruction each received, the commit its outputs landed at, its disposition
-and its retiring defect, is
+receiving the same three byte-identical frozen technical inputs, with operational `TASK.md`
+revisions recorded separately per attempt. **The first four were retired pre-reveal; the fifth
+remains pre-reveal on qualification hold as the Phase A candidate.** The per-attempt record,
+with the instruction each received, the commit its outputs landed at, its disposition and its
+retiring defect, is
 [`m8_8_cleanroom/COMMISSION_HISTORY.md`](../m8_8_cleanroom/COMMISSION_HISTORY.md), and is not
 retold here.
 
-The empirical basis for this addendum is the single pattern common to all five. Every run
-failed § 9's requirement that each gate carry a runnable mutation with enforced coverage and a
-nonzero exit, in a different form each time. The fifth is what makes the diagnosis persuasive:
-it repaired essentially every substantive defect its predecessors had shown, validating the
-representation construction before its manifest froze and supplying the exact integral
-saturation certificates this protocol demands, and it still left fifteen of nineteen declared
-mutations unexecuted.
+The empirical basis for this addendum is narrower than all five runs. Across the later
+commissions, and still after the earlier methodological defects had been independently
+repaired, the recurring unresolved requirement was § 9's executable-mutation and
+enforced-coverage contract. The fifth is the strongest evidence: on the unchanged mature
+instruction it repaired essentially every substantive defect its predecessors had shown,
+validating the representation construction before its manifest froze and supplying the exact
+integral saturation certificates this protocol demands, and it still left fifteen of nineteen
+declared mutations unexecuted.
 
-The inference is deliberately narrow. **The mutation requirement is not impractical; the
-monolithic single-context commissioning architecture is not reliably discharging it.** The
+The inference is deliberately narrow. The mutation requirement is not impractical; **for this
+task, the monolithic single-context commissioning architecture has not reliably discharged
+it.** That is an operational diagnosis about this workflow rather than a general law. The
 standard is therefore preserved in full, and the division of labor changes instead.
 
 A second reason is independent of the observed failures and is arguably stronger: an
@@ -850,10 +854,16 @@ gates yields a structural-failure or not-completed disposition with no reveal.
 #### Claim ceiling under this architecture
 
 If Phase B executes all nineteen precommitted mutations, proves exact registry coverage, and
-commits before any reveal, the existing claim ceiling stands unchanged. The record discloses
-the architecture plainly: a context-isolated independent-method computation was frozen first,
-and its preregistered gate and mutation contract was then qualified by a separate pre-reveal
-verification unit working against those immutable bytes.
+commits before any reveal, **and the subsequent § 8 adjudication then yields an outcome
+eligible for the existing successful-run label**, the claim ceiling stands unchanged. Phase B
+completes the pre-reveal qualification and nothing more; it does not determine whether the
+comparison yields `reproduced`, `convention difference`, or a disagreement category, and it
+cannot by itself earn any result label.
+
+Under such an outcome the record discloses the architecture plainly: a context-isolated
+independent-method computation was frozen first, and its preregistered gate and mutation
+contract was then qualified by a separate pre-reveal verification unit working against those
+immutable bytes.
 
 That remains a context-isolated independent-method reproduction. It is still not blind, for
 the standing reason that an AI implementer's training corpus is opaque. The supplied
