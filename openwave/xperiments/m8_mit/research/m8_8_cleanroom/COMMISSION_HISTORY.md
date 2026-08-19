@@ -188,7 +188,8 @@ context attacking the frozen implementation.
 
 ## Rooms, preserved off-tree
 
-Each retired room is kept intact rather than deleted, at
-`~/Desktop/OpenWave/M8.8_ATTEMPT{1,2,3,4}_RETIRED/`, alongside the commissioning record. The
-rooms are not in the repository because they are working state; the artifacts they produced
-are all here, per attempt, verbatim.
+Each retired room is kept intact rather than deleted, in the author's out-of-git working
+area alongside the commissioning record, one preserved directory per attempt. The rooms are
+not in the repository because they are working state rather than evidence; the artifacts they
+produced are all here, per attempt, verbatim, and each room's four seeded inputs were verified
+byte-unchanged against the § 8 lock manifest at the end of every run.
