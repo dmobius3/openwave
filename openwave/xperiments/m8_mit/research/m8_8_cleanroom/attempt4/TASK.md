@@ -78,6 +78,15 @@ production implementation code:
    not be written while any row is uncovered, and a row whose check exists only as prose is
    uncovered.**
 
+   **The manifest defines its constructions, its conventions, and its instantiated pre-reveal
+   gates through explicit ID-bearing registries. Explanatory prose may describe a registered
+   object but may not introduce a construction, convention, or gate that appears in no
+   registry. Before `MANIFEST STATUS: FINAL` is written, an automated validator must read the
+   manifest itself and prove exact set equality between the construction and convention
+   registry and the pre-implementation coverage table. Every checkable registry row must
+   carry an executed PASS from the validation artifact it names, and an omitted, duplicated,
+   failed, or prose-only row makes finalization fail.**
+
    **Pre-implementation manifest validation may use scratch calculations or validation
    scripts derived only from the permitted inputs. They are validation artifacts, not
    production implementation, and must be preserved and listed in the manifest. They may
@@ -117,9 +126,15 @@ it a check that cannot discriminate.
 **Coverage is enforced by the run, not by a later reader.** Before production output counts
 as complete, an automated coverage check must establish, for every pre-reveal gate your
 manifest instantiates, that a gate result exists, that the runnable mutation your manifest
-declared for it exists, and that the mutation's red outcome is recorded. Incomplete coverage
-must make the production run exit nonzero. A run may not report success, and may not print an
-all-pass summary, while any instantiated gate is missing its mutation evidence.
+declared for it exists, and that the mutation's red outcome is recorded.
+
+**That checker takes the frozen manifest's pre-reveal gate registry as its authoritative
+expected set, and may not reconstruct that set from its own runtime output.** A set derived
+from the results cannot detect a gate that was never run, which is the failure the registry
+exists to make visible. The checker proves exact coverage of the registry, so a missing entry
+and a duplicated one both fail. Incomplete coverage must make the production run exit
+nonzero, and the run may not report success or print an all-pass summary while any registered
+gate is missing its mutation evidence.
 
 **Stopping conditions.** Each of these is a legitimate, recorded outcome, and reporting one
 honestly is a better result than working around it:
