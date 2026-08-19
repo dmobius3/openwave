@@ -1,0 +1,243 @@
+{
+  "construction_packet_sha256": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06",
+  "derivation_artifacts": "33282cc900ba16090e4bb783f3a6606416ed59c04ad7ca9fc60a1587c93a35ce",
+  "gate_results": {
+    "D1_dd_zero_per_rep": "PASS (all 9 irreps)",
+    "D2_rank_per_rep": "PASS (all 8 nontrivial irreps)",
+    "D4_galois_consistency": "PASS",
+    "M1_dd_zero": "PASS",
+    "M1_mutation": "RED",
+    "M2_mutation": "RED",
+    "M2_ranks_chi": "PASS",
+    "M3_augmented_homology": "ranks_trivial_rep: D1=0 D2=2 D3=0",
+    "M4_mutation": "RED",
+    "M4_saturation_d1": "SATURATED (rank_p=119 for p in [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47])",
+    "M4_saturation_d2": "SATURATED (rank_p=121 for p in [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47])",
+    "M4_saturation_d3": "SATURATED (rank_p=119 for p in [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47])",
+    "M5_augmentation": "PASS",
+    "M5_mutation": "RED",
+    "M6_generator_correspondence": "PASS",
+    "M6_mutation": "RED",
+    "M7_per_irrep_acyclicity": "PASS (R0 non-acyclic expected; all nontrivial acyclic)",
+    "T1_mutation": "RED",
+    "T1_unitarity": "PASS",
+    "T2_row_identity": "PASS (all 9 signatures distinct)",
+    "T3_convention_fixture": "PASS (GREEN correct; RED each of 4 mutations)"
+  },
+  "group_packet_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+  "manifest_sha256": "b623535beb2d59f153725e22d05d97b306ea1c3709cd73ee0fb1d115d8fe840c",
+  "rows": [
+    {
+      "acyclic": false,
+      "character_s": [
+        1,
+        0,
+        1
+      ],
+      "character_st": [
+        1,
+        0,
+        1
+      ],
+      "character_t": [
+        1,
+        0,
+        1
+      ],
+      "dimension": 1
+    },
+    {
+      "T_sq": [
+        5,
+        -3,
+        4
+      ],
+      "acyclic": true,
+      "character_s": [
+        1,
+        0,
+        1
+      ],
+      "character_st": [
+        0,
+        0,
+        1
+      ],
+      "character_t": [
+        0,
+        1,
+        1
+      ],
+      "dimension": 2
+    },
+    {
+      "T_sq": [
+        2,
+        3,
+        4
+      ],
+      "acyclic": true,
+      "character_s": [
+        1,
+        0,
+        1
+      ],
+      "character_st": [
+        0,
+        0,
+        1
+      ],
+      "character_t": [
+        1,
+        -1,
+        1
+      ],
+      "dimension": 2
+    },
+    {
+      "T_sq": [
+        8,
+        -4,
+        5
+      ],
+      "acyclic": true,
+      "character_s": [
+        0,
+        0,
+        1
+      ],
+      "character_st": [
+        -1,
+        0,
+        1
+      ],
+      "character_t": [
+        0,
+        1,
+        1
+      ],
+      "dimension": 3
+    },
+    {
+      "T_sq": [
+        4,
+        4,
+        5
+      ],
+      "acyclic": true,
+      "character_s": [
+        0,
+        0,
+        1
+      ],
+      "character_st": [
+        -1,
+        0,
+        1
+      ],
+      "character_t": [
+        1,
+        -1,
+        1
+      ],
+      "dimension": 3
+    },
+    {
+      "T_sq": [
+        1,
+        0,
+        1
+      ],
+      "acyclic": true,
+      "character_s": [
+        -1,
+        0,
+        1
+      ],
+      "character_st": [
+        0,
+        0,
+        1
+      ],
+      "character_t": [
+        1,
+        0,
+        1
+      ],
+      "dimension": 4
+    },
+    {
+      "T_sq": [
+        25,
+        0,
+        9
+      ],
+      "acyclic": true,
+      "character_s": [
+        1,
+        0,
+        1
+      ],
+      "character_st": [
+        0,
+        0,
+        1
+      ],
+      "character_t": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 4
+    },
+    {
+      "T_sq": [
+        9,
+        0,
+        4
+      ],
+      "acyclic": true,
+      "character_s": [
+        -1,
+        0,
+        1
+      ],
+      "character_st": [
+        1,
+        0,
+        1
+      ],
+      "character_t": [
+        0,
+        0,
+        1
+      ],
+      "dimension": 5
+    },
+    {
+      "T_sq": [
+        4,
+        0,
+        1
+      ],
+      "acyclic": true,
+      "character_s": [
+        0,
+        0,
+        1
+      ],
+      "character_st": [
+        0,
+        0,
+        1
+      ],
+      "character_t": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 6
+    }
+  ],
+  "schema_version": "m8_8-raw-output-v1"
+}
