@@ -727,34 +727,33 @@ this; substituting a different artifact for a pinned one does.
 
 ### Addendum 1, 2026-08-19: gate qualification is a separate pre-reveal phase
 
-### Why this addendum exists
+#### Why this addendum exists
 
-Five clean-room commissions have run under § 8 as written. Each was a genuinely fresh
-context, each received the same frozen technical inputs, and each was retired pre-reveal.
-Four were retired for defects that later commissions independently repaired. The fifth
-repaired essentially every substantive defect its predecessors had shown: it validated the
-representation construction before the manifest froze, including the self-conjugacy fact
-whose absence had retired an earlier run, and it supplied the exact integral saturation route
-this protocol demands, obtaining unimodular minors for `im ∂₁`, `im ∂₂` and `im ∂₃`.
+Five clean-room commissions have run under § 8 as written. Each was a genuinely fresh context
+receiving byte-identical frozen inputs, and each was retired pre-reveal. The per-attempt
+record, with the instruction each received, the commit its outputs landed at, its disposition
+and its retiring defect, is
+[`m8_8_cleanroom/COMMISSION_HISTORY.md`](../m8_8_cleanroom/COMMISSION_HISTORY.md), and is not
+retold here.
 
-Every one of the five nonetheless failed the same requirement class: § 9's demand that every
-gate carry a runnable mutation, with enforced coverage and a nonzero exit. The failures
-differed in form, from absent coverage to attested verdicts to descriptions standing in for
-executions, but not in kind.
+The empirical basis for this addendum is the single pattern common to all five. Every run
+failed § 9's requirement that each gate carry a runnable mutation with enforced coverage and a
+nonzero exit, in a different form each time. The fifth is what makes the diagnosis persuasive:
+it repaired essentially every substantive defect its predecessors had shown, validating the
+representation construction before its manifest froze and supplying the exact integral
+saturation certificates this protocol demands, and it still left fifteen of nineteen declared
+mutations unexecuted.
 
-The inference this addendum draws is deliberately narrow. **The mutation requirement is not
-impractical; the monolithic single-context commissioning architecture is not reliably
-discharging it.** Combining a difficult mathematical reproduction with an exhaustive
-adversarial qualification suite in one fresh session has now failed five times on the
-qualification half while succeeding on the mathematical half. The standard is therefore
-preserved in full, and the division of labor changes instead.
+The inference is deliberately narrow. **The mutation requirement is not impractical; the
+monolithic single-context commissioning architecture is not reliably discharging it.** The
+standard is therefore preserved in full, and the division of labor changes instead.
 
-There is a second reason, independent of the observed failures and arguably stronger: an
-implementer grading the adequacy of its own complete test suite is a weaker arrangement than
-a separate context attacking the frozen implementation. This addendum makes that separation
+A second reason is independent of the observed failures and is arguably stronger: an
+implementer grading the adequacy of its own complete test suite is a weaker arrangement than a
+separate context attacking the frozen implementation. This addendum makes that separation
 structural.
 
-### What it does
+#### What it does
 
 § 8's sequence is unchanged in ordering and in every requirement. Step 5 is refined into two
 phases, both entirely pre-reveal and both completed before step 6.
@@ -768,7 +767,7 @@ satisfies § 9 or waives any part of it.
 **Phase B, gate qualification.** A separately commissioned unit whose only task is to build
 and execute the mutation machinery § 9 requires, against Phase A's immutable bytes.
 
-### Phase A, frozen by hash
+#### Phase A, frozen by hash
 
 | Artifact | SHA-256 |
 | --- | --- |
@@ -794,7 +793,7 @@ unchanged, as every Phase A byte does. For § 9 qualification the authoritative 
 record is `MUTATION_RESULTS.json`, produced by Phase B, and no reader should take a
 description in the frozen output as evidence that a mutation ran.
 
-### Phase B, the qualification unit
+#### Phase B, the qualification unit
 
 **Eligibility.** § 4's permanent ineligibility rule applies unchanged. The Phase B unit is
 quarantined from the canonical answer packet, from the M8.3 implementation, its outputs and
@@ -841,14 +840,14 @@ STRUCTURAL FAILURE under § 8's outcome table.** It is not authority to edit Pha
 grounds to substitute a different mutation, and not a reason to narrow the registry. The
 qualifier reports and stops.
 
-### What this does not change
+#### What this does not change
 
 No pinned value of § 11 moves. The § 8 ordering is untouched: everything above happens before
 step 6, so the answer packet is still opened only after the complete pre-reveal record is
 committed. The outcome categories are unchanged, and a Phase B that cannot close all nineteen
 gates yields a structural-failure or not-completed disposition with no reveal.
 
-### Claim ceiling under this architecture
+#### Claim ceiling under this architecture
 
 If Phase B executes all nineteen precommitted mutations, proves exact registry coverage, and
 commits before any reveal, the existing claim ceiling stands unchanged. The record discloses
