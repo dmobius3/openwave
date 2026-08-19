@@ -52,8 +52,29 @@ Author-driven with platform support (this is the collaboration's core). Gated by
 
 ## DEVIATIONS LOG
 
-(none)
+**2026-08-18, stage 6 retargeted; stages 1-5 decoupled.** As scaffolded, stage 6 presupposed
+that quotient states carry deck-isotypic slot content. The task's first result (FINDINGS 1)
+proves they cannot, for every native family and every transport convention, so the slot
+comparison retargets onto the M8-owned twisted object `M4_int`
+([`m8_2_preregistration.md § 6.1`](../findings/m8_2_preregistration.md)) across the three
+frozen flat connections, with `σ_0` the mandatory null control and a per-connection contract:
+each connection gets its own complete record and verdict, no post-hoc connection selection,
+no pooling that lets one connection rescue another, and any cross-connection claim
+pre-declared before the first target-bearing run. Stages 1-5 decouple from OQ1 and survive as
+an optional descriptive native-family survey (OQ5 census, existence, stability, Derrick on
+the compact arena). The frozen free per-connection tables become calibration gates earning
+zero evidentiary credit; target-bearing observables must be genuinely nonlinear. `M5 + P`
+and `M7_ad` stay outside the coming preregistration, with no contingency clause admitting
+them on an `M4_int` outcome.
 
 ## FINDINGS
 
-(pending)
+1. **THE KINEMATIC CLOSE (2026-08-18).** Native single-valued fields on S³/2I carry none of
+   the 8 nontrivial McKay slots at any harmonic level: every quotient field lifts
+   2I-invariant, and the isotypic projectors annihilate invariant content. The spinorial
+   half, the electron slot included, is absent by center parity alone; the control realizes
+   the full `n = d` ladder in the twisted sectors. OQ1's native branch closes negative by
+   theorem, with no dynamics run. Record:
+   [`../findings/m8_4_kinematic_close.md`](../findings/m8_4_kinematic_close.md) +
+   [`../scripts/m8_4_kinematic_check.py`](../scripts/m8_4_kinematic_check.py) (two
+   computationally separate routes, mutation-armed, exit 0).

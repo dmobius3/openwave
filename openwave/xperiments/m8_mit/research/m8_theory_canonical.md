@@ -93,7 +93,7 @@ bar; graded at the ledger weight regardless of hit rate (§ 6).
 
 | ID | Question | Route | Status |
 | --- | --- | --- | --- |
-| OQ1 | Does ANY reasonable nonlinear field equation on S³/2I have defect or standing-wave solutions whose energies realize the McKay slot structure? | M8.4 (the decisive science) | 🚧 open |
+| OQ1 | Does ANY reasonable nonlinear field equation on S³/2I have defect or standing-wave solutions whose energies realize the McKay slot structure? | M8.4 (the decisive science) | 🚧 open; the NATIVE branch closed by theorem 2026-08-18 ([kinematic close](findings/m8_4_kinematic_close.md)): single-valued quotient fields carry no nontrivial slot at any level, so the live branch runs on M8-owned twisted objects, `M4_int` first |
 | OQ2 | The R-problem: which of the two routes (coupling ≈ 5.3 Gpc vs mass ≈ 20 Gpc) is the correct determination of the master scale, and what breaks in the other? | author-side; platform can bound it once M8.1/M8.3 land | 🚧 open |
 | OQ3 | Can the Waltz exponent −1/2 be DERIVED from the embedding (or from a field dynamics) rather than empirically pinned? | M8.4 lineage | 🚧 open |
 | OQ4 | Does the McKay-distance rule map onto M5's lepton hierarchy? `1 : 5.9 : 15.1` is NOT the target (it is `Λ := m^(1/3)` from the masses); the admissible one is the measured A < C < B census, once physically parameterized | M8.6, CLOSED on the M5 side 2026-08-07: the bridge's last admissible route failed terminally ([finding 9](tasks/m8_6_task_details.md)) | ❌ closed as instrumented |
