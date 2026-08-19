@@ -1,0 +1,278 @@
+{
+  "construction_packet_sha256": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06",
+  "derivation_artifacts": "60b63ec577ca40ad0740c402c35bd06dddcc9a77d7f6631b83fa995097e33bad",
+  "gate_results": {
+    "D1_mutation": "detected=True",
+    "D2_mutation": "rank=0, detected=True",
+    "M1_mutation": "detected=True",
+    "M2_mutation": "chi=-1, detected=True",
+    "M3": "H_* = (Z,0,0,Z) verified",
+    "M4_d1_det": "-1",
+    "M4_d2_det": "1",
+    "M4_d3_det": "-1",
+    "M6_mutation": "detected=True",
+    "M7_mutation": "trivial rank=0, detected=True",
+    "T2_mutation": "detected=True",
+    "T3_instA_eval": "PASS (mutation detected)",
+    "T3_instB_direction": "PASS (dimension mismatch detected)",
+    "T3_instB_module": "PASS (mutation detected)",
+    "T3_instB_vector": "PASS (mutation detected)",
+    "galois_1_7": "True",
+    "galois_2_8": "True",
+    "galois_self_3": "True",
+    "galois_self_4": "True",
+    "galois_self_5": "True",
+    "galois_self_6": "True",
+    "rho0(triv,1)_acyclic": "NON-ACYCLIC (expected for trivial)",
+    "rho0(triv,1)_dd_zero": "True",
+    "rho1(fund,2)_acyclic": "ACYCLIC",
+    "rho1(fund,2)_dd_zero": "True",
+    "rho1(fund,2)_minor_indep": "True",
+    "rho1(fund,2)_torsion": "(8, 12, 1)",
+    "rho2(Sym2,3)_acyclic": "ACYCLIC",
+    "rho2(Sym2,3)_dd_zero": "True",
+    "rho2(Sym2,3)_minor_indep": "True",
+    "rho2(Sym2,3)_torsion": "(5, 5, 4)",
+    "rho3(Sym3,4)_acyclic": "ACYCLIC",
+    "rho3(Sym3,4)_dd_zero": "True",
+    "rho3(Sym3,4)_minor_indep": "True",
+    "rho3(Sym3,4)_torsion": "(1, 0, 1)",
+    "rho4(Sym4,5)_acyclic": "ACYCLIC",
+    "rho4(Sym4,5)_dd_zero": "True",
+    "rho4(Sym4,5)_minor_indep": "True",
+    "rho4(Sym4,5)_torsion": "(4, 0, 9)",
+    "rho5(Sym5,6)_acyclic": "ACYCLIC",
+    "rho5(Sym5,6)_dd_zero": "True",
+    "rho5(Sym5,6)_minor_indep": "True",
+    "rho5(Sym5,6)_torsion": "(1, 0, 4)",
+    "rho6(V1xV7,4)_acyclic": "ACYCLIC",
+    "rho6(V1xV7,4)_dd_zero": "True",
+    "rho6(V1xV7,4)_minor_indep": "True",
+    "rho6(V1xV7,4)_torsion": "(9, 0, 25)",
+    "rho7(fundG,2)_acyclic": "ACYCLIC",
+    "rho7(fundG,2)_dd_zero": "True",
+    "rho7(fundG,2)_minor_indep": "True",
+    "rho7(fundG,2)_torsion": "(20, -12, 1)",
+    "rho8(Sym2G,3)_acyclic": "ACYCLIC",
+    "rho8(Sym2G,3)_dd_zero": "True",
+    "rho8(Sym2G,3)_minor_indep": "True",
+    "rho8(Sym2G,3)_torsion": "(10, -5, 4)"
+  },
+  "group_packet_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+  "manifest_sha256": "22a7ec59b1be17a9960d5c3e66a14faa530e950d80511676921c5663214b8d38",
+  "rows": [
+    {
+      "acyclic": false,
+      "chi_s": [
+        1,
+        0,
+        1
+      ],
+      "chi_st": [
+        1,
+        0,
+        1
+      ],
+      "chi_t": [
+        1,
+        0,
+        1
+      ],
+      "convention": "T2(R0) = 1",
+      "dimension": 1
+    },
+    {
+      "T2_target": [
+        8,
+        12,
+        1
+      ],
+      "acyclic": true,
+      "chi_s": [
+        1,
+        0,
+        1
+      ],
+      "chi_st": [
+        0,
+        0,
+        1
+      ],
+      "chi_t": [
+        0,
+        1,
+        1
+      ],
+      "dimension": 2
+    },
+    {
+      "T2_target": [
+        5,
+        5,
+        4
+      ],
+      "acyclic": true,
+      "chi_s": [
+        0,
+        0,
+        1
+      ],
+      "chi_st": [
+        -1,
+        0,
+        1
+      ],
+      "chi_t": [
+        0,
+        1,
+        1
+      ],
+      "dimension": 3
+    },
+    {
+      "T2_target": [
+        1,
+        0,
+        1
+      ],
+      "acyclic": true,
+      "chi_s": [
+        -1,
+        0,
+        1
+      ],
+      "chi_st": [
+        0,
+        0,
+        1
+      ],
+      "chi_t": [
+        1,
+        0,
+        1
+      ],
+      "dimension": 4
+    },
+    {
+      "T2_target": [
+        4,
+        0,
+        9
+      ],
+      "acyclic": true,
+      "chi_s": [
+        -1,
+        0,
+        1
+      ],
+      "chi_st": [
+        1,
+        0,
+        1
+      ],
+      "chi_t": [
+        0,
+        0,
+        1
+      ],
+      "dimension": 5
+    },
+    {
+      "T2_target": [
+        1,
+        0,
+        4
+      ],
+      "acyclic": true,
+      "chi_s": [
+        0,
+        0,
+        1
+      ],
+      "chi_st": [
+        0,
+        0,
+        1
+      ],
+      "chi_t": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 6
+    },
+    {
+      "T2_target": [
+        9,
+        0,
+        25
+      ],
+      "acyclic": true,
+      "chi_s": [
+        1,
+        0,
+        1
+      ],
+      "chi_st": [
+        0,
+        0,
+        1
+      ],
+      "chi_t": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 4
+    },
+    {
+      "T2_target": [
+        20,
+        -12,
+        1
+      ],
+      "acyclic": true,
+      "chi_s": [
+        1,
+        0,
+        1
+      ],
+      "chi_st": [
+        0,
+        0,
+        1
+      ],
+      "chi_t": [
+        1,
+        -1,
+        1
+      ],
+      "dimension": 2
+    },
+    {
+      "T2_target": [
+        10,
+        -5,
+        4
+      ],
+      "acyclic": true,
+      "chi_s": [
+        0,
+        0,
+        1
+      ],
+      "chi_st": [
+        -1,
+        0,
+        1
+      ],
+      "chi_t": [
+        1,
+        -1,
+        1
+      ],
+      "dimension": 3
+    }
+  ],
+  "schema_version": "m8_8-raw-output-v1"
+}
