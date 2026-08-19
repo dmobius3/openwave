@@ -200,6 +200,8 @@ context attacking the frozen implementation.
 
 Each retired room is kept intact rather than deleted, in the author's out-of-git working
 area alongside the commissioning record, one preserved directory per attempt. The rooms are
-not in the repository because they are working state rather than evidence; the artifacts they
-produced are all here, per attempt, verbatim, and each room's four seeded inputs were verified
-byte-unchanged against the § 8 lock manifest at the end of every run.
+not in the repository because they are working state rather than evidence. The artifacts they
+produced are all here, per attempt, verbatim. At the end of every run the three frozen
+technical inputs were reverified byte-unchanged against the § 8 lock manifest, and that
+attempt's commissioned `TASK.md` was separately reverified against its own recorded
+instruction hash.
