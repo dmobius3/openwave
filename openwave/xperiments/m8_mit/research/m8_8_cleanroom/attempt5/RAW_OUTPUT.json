@@ -1,0 +1,357 @@
+{
+  "schema_version": "m8_8-raw-output-1",
+  "group_packet_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+  "construction_packet_sha256": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06",
+  "manifest_sha256": "8aa140e3978366ca38f7c1d5926d1a2972305733be434595f2905e9df512f838",
+  "coefficient_field": {
+    "generator": "phi",
+    "minimal_polynomial": "phi^2 - phi - 1",
+    "encoding": "(a + b*phi) / c with gcd(|a|,|b|,c)=1 and c>0"
+  },
+  "rows": [
+    {
+      "row_signature": {
+        "dim": 1,
+        "chi_s": [
+          1,
+          0,
+          1
+        ],
+        "chi_t": [
+          1,
+          0,
+          1
+        ],
+        "chi_st": [
+          1,
+          0,
+          1
+        ]
+      },
+      "acyclic": false
+    },
+    {
+      "row_signature": {
+        "dim": 2,
+        "chi_s": [
+          1,
+          0,
+          1
+        ],
+        "chi_t": [
+          0,
+          1,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ]
+      },
+      "acyclic": true,
+      "T_squared_native": [
+        8,
+        12,
+        1
+      ],
+      "T_squared_float": 27.41640786499874
+    },
+    {
+      "row_signature": {
+        "dim": 3,
+        "chi_s": [
+          0,
+          0,
+          1
+        ],
+        "chi_t": [
+          0,
+          1,
+          1
+        ],
+        "chi_st": [
+          -1,
+          0,
+          1
+        ]
+      },
+      "acyclic": true,
+      "T_squared_native": [
+        5,
+        5,
+        4
+      ],
+      "T_squared_float": 3.2725424859373686
+    },
+    {
+      "row_signature": {
+        "dim": 4,
+        "chi_s": [
+          -1,
+          0,
+          1
+        ],
+        "chi_t": [
+          1,
+          0,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ]
+      },
+      "acyclic": true,
+      "T_squared_native": [
+        1,
+        0,
+        1
+      ],
+      "T_squared_float": 1.0
+    },
+    {
+      "row_signature": {
+        "dim": 5,
+        "chi_s": [
+          -1,
+          0,
+          1
+        ],
+        "chi_t": [
+          0,
+          0,
+          1
+        ],
+        "chi_st": [
+          1,
+          0,
+          1
+        ]
+      },
+      "acyclic": true,
+      "T_squared_native": [
+        4,
+        0,
+        9
+      ],
+      "T_squared_float": 0.4444444444444444
+    },
+    {
+      "row_signature": {
+        "dim": 6,
+        "chi_s": [
+          0,
+          0,
+          1
+        ],
+        "chi_t": [
+          -1,
+          0,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ]
+      },
+      "acyclic": true,
+      "T_squared_native": [
+        1,
+        0,
+        4
+      ],
+      "T_squared_float": 0.25
+    },
+    {
+      "row_signature": {
+        "dim": 4,
+        "chi_s": [
+          1,
+          0,
+          1
+        ],
+        "chi_t": [
+          -1,
+          0,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ]
+      },
+      "acyclic": true,
+      "T_squared_native": [
+        9,
+        0,
+        25
+      ],
+      "T_squared_float": 0.36
+    },
+    {
+      "row_signature": {
+        "dim": 2,
+        "chi_s": [
+          1,
+          0,
+          1
+        ],
+        "chi_t": [
+          1,
+          -1,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ]
+      },
+      "acyclic": true,
+      "T_squared_native": [
+        20,
+        -12,
+        1
+      ],
+      "T_squared_float": 0.5835921350012612
+    },
+    {
+      "row_signature": {
+        "dim": 3,
+        "chi_s": [
+          0,
+          0,
+          1
+        ],
+        "chi_t": [
+          1,
+          -1,
+          1
+        ],
+        "chi_st": [
+          -1,
+          0,
+          1
+        ]
+      },
+      "acyclic": true,
+      "T_squared_native": [
+        10,
+        -5,
+        4
+      ],
+      "T_squared_float": 0.47745751406263137
+    }
+  ],
+  "derivation_artifacts": {
+    "validate_enumeration.py": "b028f3b6fffe13809c49242f0acad7c0213025c65ef7fc693620274a2d87c1f7",
+    "validate_complex.py": "348c87779c17f79bd4b0281ebaa29d8b5b598ac18c447bd71aa16d36b96607ea",
+    "validate_saturation.py": "f04602c622597eab132b25dfd52de2d305140cc05f8d361b256ef018b92c420f",
+    "validate_representations.py": "580ed17aad2154313a1286ece6887509104bfba00ede467deb67892ffaf1e0ec",
+    "validate_torsion_dry.py": "1e76a080e68ca0586e93842cc758727553fb15f2d40dae40830566ab2bd76601",
+    "validate_fixture.py": "d866a56eb852f9fc8fa870e5409033477e40a28fd731aa77720b0bbfa00a69f8",
+    "validate_manifest.py": "db9d73a244abdc7108db7697f3beaa4b89e82ea809492a4d398eda026db73488",
+    "compute_torsion.py": "6277aef99613cc26c849f25084671fb8d1c6a6d232bf649eab9e627f049b7ab2"
+  },
+  "gate_results": {
+    "G-M01": {
+      "outcome": "PASS",
+      "artifact": "validate_complex.py",
+      "mutation": "perturb d3 entry; product nonzero"
+    },
+    "G-M02": {
+      "outcome": "PASS",
+      "artifact": "validate_complex.py",
+      "mutation": "perturb d2 entry; product nonzero"
+    },
+    "G-M03": {
+      "outcome": "PASS",
+      "artifact": "validate_complex.py",
+      "mutation": "alter rank; chi!=0"
+    },
+    "G-M04": {
+      "outcome": "PASS",
+      "artifact": "validate_complex.py",
+      "mutation": "replace d2 entry; H_* changes"
+    },
+    "G-M05": {
+      "outcome": "PASS",
+      "artifact": "validate_saturation.py",
+      "mutation": "scale d2 row by non-unit; saturation fails"
+    },
+    "G-M06": {
+      "outcome": "PASS",
+      "artifact": "validate_complex.py",
+      "mutation": "non-augmentation map; eps*d1!=0"
+    },
+    "G-M07": {
+      "outcome": "PASS",
+      "artifact": "validate_complex.py",
+      "mutation": "swap s,t; relator check fails"
+    },
+    "G-M08": {
+      "outcome": "PASS",
+      "artifact": "validate_torsion_dry.py",
+      "mutation": "R0 non-acyclic confirmed; all nontrivial acyclic"
+    },
+    "G-T01": {
+      "outcome": "PASS",
+      "artifact": "validate_representations.py",
+      "mutation": "perturb rep; Hermitian invariance fails"
+    },
+    "G-T02": {
+      "outcome": "PASS",
+      "artifact": "validate_representations.py",
+      "mutation": "swap character values; signature match fails"
+    },
+    "G-T03a": {
+      "outcome": "PASS",
+      "artifact": "validate_fixture.py",
+      "mutation": "g->rho(g^-1) anti-hom; dd!=0"
+    },
+    "G-T03b": {
+      "outcome": "PASS",
+      "artifact": "validate_fixture.py",
+      "mutation": "cochain complex reversal; dd!=0"
+    },
+    "G-T03c": {
+      "outcome": "PASS",
+      "artifact": "validate_fixture.py",
+      "mutation": "transpose anti-hom; dd!=0"
+    },
+    "G-T03d": {
+      "outcome": "PASS",
+      "artifact": "validate_fixture.py",
+      "mutation": "GR transpose; dd!=0"
+    },
+    "G-D01": {
+      "outcome": "PASS",
+      "artifact": "validate_torsion_dry.py",
+      "mutation": "perturb evaluated boundary; M3*M2!=0"
+    },
+    "G-D02": {
+      "outcome": "PASS",
+      "artifact": "validate_torsion_dry.py",
+      "mutation": "zero out row of M3; rank drops"
+    },
+    "G-D03": {
+      "outcome": "PASS",
+      "artifact": "compute_torsion.py",
+      "mutation": "zero column of minor; det=0"
+    },
+    "G-D04": {
+      "outcome": "PASS",
+      "artifact": "compute_torsion.py",
+      "mutation": "sigma(T2(V1))=T2(V7) verified; swap breaks"
+    },
+    "G-D05": {
+      "outcome": "PASS",
+      "artifact": "compute_torsion.py",
+      "mutation": "identity matrices give T2=1; production gives non-1"
+    }
+  }
+}
