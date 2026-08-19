@@ -58,7 +58,7 @@ recorded outcome under § 4 below, not a reason to open access.
 
 The protocol's § 8 steps 4 and 5 fix the order, and the order is itself the evidence. Produce
 the method-and-gate manifest **first and completely**, as its own file, before you write
-implementation code:
+production implementation code:
 
 1. **`METHOD_AND_GATE_MANIFEST.md`**: the route you selected within the protocol's § 6 class,
    the instantiated route-native gates of its § 7, the conventions you consumed, and your
@@ -71,10 +71,18 @@ implementation code:
    during this pre-implementation validation may be corrected and recorded before
    implementation begins.**
 
-   **Once implementation begins, the manifest is immutable. If implementation exposes a
-   mismatch with it, either change the implementation to conform to the still-intended
-   manifest or STOP and report the mismatch; never amend the manifest to match
-   implementation.**
+   **Pre-implementation manifest validation may use scratch calculations or validation
+   scripts derived only from the permitted inputs. They are validation artifacts, not
+   production implementation, and must be preserved and listed in the manifest. They may
+   test the manifest's internal consistency but must not compute the task's final result or
+   populate `RAW_OUTPUT.json`. Production implementation begins only after the validated
+   manifest is declared final, and the manifest records that event with an explicit line
+   reading `MANIFEST STATUS: FINAL; pre-implementation validation complete.`**
+
+   **Once production implementation begins, the manifest is immutable. If implementation
+   exposes a mismatch with it, either change the implementation to conform to the
+   still-intended manifest or STOP and report the mismatch; never amend the manifest to
+   match implementation.**
 2. **The implementation**, as source files in this directory.
 3. **`ENVIRONMENT.md`**: interpreter version, library versions, platform, and anything else
    needed to rerun you.
