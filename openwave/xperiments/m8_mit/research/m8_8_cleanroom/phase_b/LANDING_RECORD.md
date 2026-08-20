@@ -1,68 +1,53 @@
-# M8.8 Phase B: the qualification output, landed unread against the answer packet
+# M8.8 Phase B: the repaired qualification, landed unread against the answer packet
 
 > **Claims no result.** The answer packet has not been opened, no comparison has run, and no
-> verdict exists. This commit discharges the ordering requirement that Phase B's deliverables
-> land before § 8 step 6.
+> verdict exists. Lands before § 8 step 6. The first Phase B landing, `f441e0ec`, is preserved
+> in history and is not rewritten.
 
 ## What landed
 
 | File | SHA-256 | Role |
 | --- | --- | --- |
-| `run_phase_b.py` | `cae7993897d483ab3ced79df1ade4f3e371569ed0d822955a674b742945ff772` | the qualifier: executes all nineteen declared mutations against the frozen machinery |
-| `MUTATION_RESULTS.json` | `a22e6da390ab31c477a97a0de29a3734ca2f7fda8c61d5dd08854860c4e59a7a` | the execution record, one per gate, with object mutated, predicate, baseline, mutated result and observed red |
-| `QUALIFICATION_RECORD.md` | `99fae82dc8a4369780d19ee842ebe4e7ee090bab5b88f592c06dea4834f3001a` | the qualifier's own summary |
+| `run_phase_b.py` | `3a621d0ebaa5a6b7819e4ad3f57825f1bda064684d36f49cdd4eb99d913bfba7` | the repaired qualifier: parses the § 4 registry at runtime, then executes all nineteen declared mutations |
+| `MUTATION_RESULTS.json` | `1540d2a53aaa63f5f6850544fc366df781773d3420425b2f30a0a5eb6836f460` | the execution record, schema 2, carrying the parsed, implemented and executed identifier sets |
+| `QUALIFICATION_RECORD.md` | `2fef2b8aacb35e1f9b0765c62f06ab37a999f010f2e2d6f9e264cd0d4d58f55f` | the qualifier's summary, its parsing statement now literally true |
 
-## Coverage, enumerated by the commissioner rather than reported
+## The mechanism nonconformance is cured
 
-Parsing the frozen manifest's § 4 registry independently and comparing against the execution
-record:
+The prior landing hard-coded its expected gate set while its record claimed runtime parsing.
+The qualifier now parses the frozen manifest's § 4 registry at runtime, extracting each gate
+identifier and its declared mutation, and rejects malformed rows, malformed identifiers,
+empty mutation declarations and duplicate identifiers. No hard-coded gate list remains
+anywhere in the file. The qualification record's parsing statement is now literally true.
+
+## Commissioner enumeration, run before this record was written
 
 | Check | Result |
 | --- | --- |
-| Registry gates, my own parse | 19 |
-| Executed mutation records | 19 |
-| Exact set equality | yes, no missing, no duplicate, no unregistered gate |
-| Records carrying all required fields | 19 of 19: object mutated, gate predicate, baseline result, mutated result, observed red |
-| Records with `red_outcome` true | 19 of 19 |
-| Records showing a PASS baseline moving to a FAIL under mutation | 19 of 19 |
-| Stub or empty mutation objects | none; each names a concrete mutation |
-| Phase A integrity | all 13 hashes verified before and after by the qualifier, and independently by me at this tip; no Phase A byte moved |
-| Reproduction | the qualifier reruns from the committed bytes at exit 0 |
-| A9 | standard library only, no network, no subprocess, no eval |
+| Phase A artifacts | 13 of 13 exact; no generated files under `phase_a_frozen/` |
+| Registry parsed at runtime | yes; the recorded `manifest_sha256` matches the pinned manifest |
+| Their parsed set against my own independent parse | identical, 19 and 19 |
+| parsed == implemented handlers == executed records | true, proven before execution and again after |
+| All nineteen mutations executed and red | yes; every record carries object mutated, predicate, a passing baseline, a failing mutated result and an observed red |
+| Reproduction | clean run exits 0 from a scratch copy |
 
-## The qualifier's own gate, mutation-tested by the commissioner
+## The linkage property, tested directly rather than inferred
 
-The qualifier is the object that certifies coverage, so its accept side was attacked
-directly. Three mutations, each applied to a scratch copy:
+The previous landing's self-attacks proved that the integrity layer fires. They did not prove
+that the parsed registry drives coverage once integrity has passed, which are separate
+properties. That property was tested here, below the integrity layer, by altering the parsed
+set after hash verification and after the qualifier's own self-test:
 
-| Mutation | Result |
+| Injection | Result |
 | --- | --- |
-| Append a byte to a frozen Phase A artifact | exit 1, `HASH MISMATCH: compute_torsion.py` |
-| Alter one gate row in the frozen manifest's registry | exit 1, `HASH MISMATCH: METHOD_AND_GATE_MANIFEST.md` |
-| Drop one executed record before the coverage comparison | exit 1, `MISSING: {'G-M03'}`, exact set equality false |
-| Force one mutation's `red_outcome` to false | exit 1, `G-M01: mutation did not redden` |
+| Remove one registered identifier from the parsed set | exit 1, `COVERAGE FAILURE`, naming `G-M03` as implemented but not parsed, `FATAL: Pre-execution coverage mismatch` |
+| Add an identifier no handler implements | exit 1, same fatal coverage mismatch |
+| Parser fed scratch text with a gate removed | returns 18 rather than 19 |
+| Parser fed a duplicated identifier | raises, `Duplicate gate identifier` |
+| Parser fed an empty mutation declaration | raises, `Empty mutation declaration` |
 
-The clean run returns to exit 0 after each. The coverage gate discriminates in every
-direction it is required to.
+Neither failing injection is a hash failure. The run stops on coverage, which is what
+establishes that the manifest parser, not a literal, is what qualification rests on.
 
-## One finding, stated rather than deferred
-
-**The expected gate set is a hard-coded Python list, not parsed from the manifest.**
-`run_phase_b.py` carries `MANIFEST_GATES` as a literal of nineteen identifiers. Addendum 1
-requires that the qualifier "parses the nineteen gate identifiers and their declared
-mutations from `METHOD_AND_GATE_MANIFEST.md` § 4", and `QUALIFICATION_RECORD.md` asserts that
-it did so. The mechanism is transcription.
-
-What is verified about it, so the finding is not overstated: the transcription is exactly
-correct, confirmed against an independent parse at nineteen of nineteen; and it is bound to
-the manifest by hash, since altering a single registry row in the manifest aborts the run
-with a hash mismatch before the list is used. The failure mode the rule exists to prevent, a
-duplicated list omitting the same gate the runtime omits, is therefore closed in this
-instance.
-
-What remains true regardless: the addendum specifies parsing, this transcribes, and the
-qualification record claims a mechanism the code does not use. An earlier attempt was retired
-in part for hard-coding an expected gate set, and a "the risk is closed here" argument of
-exactly this shape was raised and rejected once before in this task, on the grounds that it
-requires the commissioner to adjudicate after the fact whether a deviation was harmless
-enough. That adjudication is the adjudicator's, and this record does not make it.
+The qualifier's own parser-to-coverage self-test is retained, and no frozen byte was touched
+by any of this testing: `phase_a_frozen/` holds thirteen files and no bytecode afterward.

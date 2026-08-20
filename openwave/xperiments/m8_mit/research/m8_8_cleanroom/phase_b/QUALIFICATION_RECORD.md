@@ -2,14 +2,35 @@
 
 ## What was executed
 
-Phase B parsed 19 gate identifiers and their declared mutations from
-`METHOD_AND_GATE_MANIFEST.md` section 4 (SHA-256 `8aa140e3...`), then executed
-each mutation against scratch copies of the frozen Phase A machinery via
-`run_phase_b.py`. No Phase A artifact was modified at any point.
+Phase B read `METHOD_AND_GATE_MANIFEST.md` (SHA-256 `8aa140e3...`) from the
+frozen Phase A directory and parsed 19 gate identifiers and their declared
+mutations from the section 4 gate tables at runtime. That parsed registry was
+the authoritative expected set throughout; no hard-coded gate list was used.
 
-All 13 Phase A artifact SHA-256 hashes were verified before and after
-qualification against the table in PROTOCOL.md Addendum 1. Both public packet
-hashes were verified against section 11 pins.
+Before any mutation executed, exact set equality was proven between the parsed
+gate identifiers and the set of implemented mutation handlers. After all
+mutations executed, exact set equality was proven again between the parsed
+registry and the set of executed records, with every red outcome true.
+
+A self-test of the parser-to-coverage linkage ran on scratch copies of the
+manifest text (never modifying the frozen file):
+
+- **ADD test**: inserted a fake gate row (G-FAKE); parser returned 20 gates;
+  coverage check against the 19 implemented handlers correctly failed.
+- **REMOVE test**: deleted the G-M01 row; parser returned 18 gates; coverage
+  check correctly failed.
+- **DUPLICATE test**: inserted a duplicate G-M01 row; parser raised ValueError.
+- **EMPTY-MUTATION test**: inserted a row with empty mutation column; parser
+  raised ValueError.
+
+These tests prove that a change to the manifest's gate table changes the parsed
+expected set and causes coverage to exit nonzero, independent of Phase A hash
+verification.
+
+All 13 Phase A artifact SHA-256 hashes were verified against the protocol
+Addendum 1 table both before and after qualification. Python bytecode writing
+was disabled (`sys.dont_write_bytecode = True`) to prevent `.pyc` files from
+appearing in the frozen directory.
 
 ### Gates executed
 
@@ -41,16 +62,18 @@ hashes were verified against section 11 pins.
    to a scratch copy of the frozen Phase A machinery, caused its gate predicate
    to fail. No mutation was skipped, substituted, or narrowed.
 
-2. **Exact registry coverage.** The set of 19 executed gate identifiers equals
-   the set of 19 gate identifiers parsed from the frozen manifest. No missing
-   record, no duplicate, no unregistered gate.
+2. **Exact registry coverage, three ways.**
+   - Parsed manifest == implemented handlers (pre-execution)
+   - Parsed manifest == executed records (post-execution)
+   - Parser self-test confirms the linkage is sensitive to manifest changes
 
 3. **Phase A integrity preserved.** All 13 artifact hashes match the protocol
-   table both before and after qualification. Phase A was not altered.
+   table both before and after qualification. No `.pyc` files were generated.
 
 4. **Machine-readable record.** `MUTATION_RESULTS.json` carries per-gate
-   records with: gate_id, object_mutated, gate_predicate, baseline_result,
-   mutated_result, and red_outcome.
+   records with: gate_id, gate_name, declared_mutation (from parsed manifest),
+   object_mutated, gate_predicate, baseline_result, mutated_result, and
+   red_outcome.
 
 ## Disposition
 
