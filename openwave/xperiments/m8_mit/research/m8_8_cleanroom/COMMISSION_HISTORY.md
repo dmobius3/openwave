@@ -148,10 +148,12 @@ substantive defect its predecessors had shown. The representation constructions 
 before the manifest froze, including an explicit record that the self-conjugacy fact whose
 absence retired attempt 2 was checked. The exact integral saturation route this protocol
 demands was supplied, with unimodular minors obtained for all three nonzero boundary images.
-No verdict anywhere across nine scripts is a hard-coded literal. Only two coverage rows claim
-not-checkable, both because the torsion output is itself the target and cannot be checked
-target-blind. Ordering, the firewall, byte-identical reproduction and the intent scan all
-hold.
+Every gate predicate is computed and asserted in its named artifact, none merely attested; the
+`gate_results` summary block in `compute_torsion.py` transcribes those outcomes as literals and
+is not wired to the validators, which is part of what Phase B re-establishes from the manifest.
+Only two coverage rows claim not-checkable, both because the torsion output is itself the
+target and cannot be checked target-blind. Ordering, the firewall, byte-identical reproduction
+and the intent scan all hold.
 
 It falls short on one requirement. Fifteen of nineteen declared gate mutations were never
 executed: the `mutation` member of each gate result is a description rather than a record of
