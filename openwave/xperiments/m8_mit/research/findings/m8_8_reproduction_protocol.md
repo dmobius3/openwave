@@ -725,4 +725,148 @@ of the freeze, and the pinned VALUES of § 11 may not change after the lock comm
 values are content-addressed, so renaming or relocating a pinned artifact does not breach
 this; substituting a different artifact for a pinned one does.
 
-(none)
+### Addendum 1, 2026-08-19: gate qualification is a separate pre-reveal phase
+
+#### Why this addendum exists
+
+Five clean-room commissions have run under § 8 as written. Each was a genuinely fresh context
+receiving the same three byte-identical frozen technical inputs, with operational `TASK.md`
+revisions recorded separately per attempt. **The first four were retired pre-reveal; the fifth
+remains pre-reveal on qualification hold as the Phase A candidate.** The per-attempt record,
+with the instruction each received, the commit its outputs landed at, its disposition and its
+retiring defect, is
+[`m8_8_cleanroom/COMMISSION_HISTORY.md`](../m8_8_cleanroom/COMMISSION_HISTORY.md), and is not
+retold here.
+
+The empirical basis for this addendum is narrower than all five runs. Across the later
+commissions, and still after the earlier methodological defects had been independently
+repaired, the recurring unresolved requirement was § 9's executable-mutation and
+enforced-coverage contract. The fifth is the strongest evidence: on the unchanged mature
+instruction it repaired essentially every substantive defect its predecessors had shown,
+validating the representation construction before its manifest froze and supplying the exact
+integral saturation certificates this protocol demands, and it still left fifteen of nineteen
+declared mutations unexecuted.
+
+The inference is deliberately narrow. The mutation requirement is not impractical; **for this
+task, the monolithic single-context commissioning architecture has not reliably discharged
+it.** That is an operational diagnosis about this workflow rather than a general law. The
+standard is therefore preserved in full, and the division of labor changes instead.
+
+A second reason is independent of the observed failures and is arguably stronger: an
+implementer grading the adequacy of its own complete test suite is a weaker arrangement than a
+separate context attacking the frozen implementation. This addendum makes that separation
+structural.
+
+#### What it does
+
+§ 8's sequence is unchanged in ordering and in every requirement. Step 5 is refined into two
+phases, both entirely pre-reveal and both completed before step 6.
+
+**Phase A, mathematical reproduction.** The frozen artifacts of the fifth commission,
+identified by hash below. Phase A's mathematical reproduction artifacts are complete and
+immutable from the adoption of this addendum. **§ 8 step 5 is not complete until Phase B has
+discharged the qualification requirements below**, and nothing in this addendum retrospectively
+satisfies § 9 or waives any part of it.
+
+**Phase B, gate qualification.** A separately commissioned unit whose only task is to build
+and execute the mutation machinery § 9 requires, against Phase A's immutable bytes.
+
+#### Phase A, frozen by hash
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `TASK.md` | `e3d9b90861bb81862843988e8bd5da925b4d48bc48c0d2335becd3137df9cb17` |
+| `METHOD_AND_GATE_MANIFEST.md` | `8aa140e3978366ca38f7c1d5926d1a2972305733be434595f2905e9df512f838` |
+| `validate_enumeration.py` | `b028f3b6fffe13809c49242f0acad7c0213025c65ef7fc693620274a2d87c1f7` |
+| `validate_complex.py` | `348c87779c17f79bd4b0281ebaa29d8b5b598ac18c447bd71aa16d36b96607ea` |
+| `validate_saturation.py` | `f04602c622597eab132b25dfd52de2d305140cc05f8d361b256ef018b92c420f` |
+| `validate_representations.py` | `580ed17aad2154313a1286ece6887509104bfba00ede467deb67892ffaf1e0ec` |
+| `validate_torsion_dry.py` | `1e76a080e68ca0586e93842cc758727553fb15f2d40dae40830566ab2bd76601` |
+| `validate_fixture.py` | `d866a56eb852f9fc8fa870e5409033477e40a28fd731aa77720b0bbfa00a69f8` |
+| `validate_manifest.py` | `db9d73a244abdc7108db7697f3beaa4b89e82ea809492a4d398eda026db73488` |
+| `compute_torsion.py` | `6277aef99613cc26c849f25084671fb8d1c6a6d232bf649eab9e627f049b7ab2` |
+| `ENVIRONMENT.md` | `97637ba7192268d9fbfaa1813da5609d8f4b82febe5cb2edf1887f5d98a310e1` |
+| `RAW_OUTPUT.json` | `1a9b56ce70bae73e5cf8c4ef00f6e43bf76937afb9075801605f6bf5047d1002` |
+| `CONSULTED_FILES.md` | `650864857a50c266ad89d742346974b516521e08c6547d42a3643dc968a67652` |
+
+Committed as `ba38f2e5`, unread against the answer packet and never compared to anything.
+
+**The `mutation` fields already present in Phase A's `RAW_OUTPUT.json` are declarations and
+descriptions only, and receive no mutation-execution credit.** They remain frozen and
+unchanged, as every Phase A byte does. For § 9 qualification the authoritative execution
+record is `MUTATION_RESULTS.json`, produced by Phase B, and no reader should take a
+description in the frozen output as evidence that a mutation ran.
+
+#### Phase B, the qualification unit
+
+**Eligibility.** § 4's permanent ineligibility rule applies unchanged. The Phase B unit is
+quarantined from the canonical answer packet, from the M8.3 implementation, its outputs and
+its method note, from the mode-identity-theory artifact, and from every other item on § 4.3's
+forbidden list. It is a fresh context and it never sees a target value.
+
+**What it may read.** The Phase A artifacts above, the two public packets, and this protocol.
+Nothing else.
+
+**Phase A's `TASK.md` is an immutable artifact under test, not an instruction surface for the
+Phase B qualifier.** It is present in the room because it is part of the frozen set whose
+integrity Phase B verifies, and it addresses a different role. The governing instructions for
+Phase B are this protocol as amended by this addendum, and where the two appear to differ,
+this addendum governs Phase B and the difference is reported rather than resolved locally.
+
+**Its authoritative input is the frozen manifest, not the raw output.** It parses the
+nineteen gate identifiers and their declared mutations from
+`METHOD_AND_GATE_MANIFEST.md` § 4. Deriving the expected set from `RAW_OUTPUT.json` is
+prohibited, for the reason that a set read from the results cannot detect a gate that was
+never exercised.
+
+**It tests, it never repairs.** It may not modify any Phase A artifact. It verifies every
+Phase A hash before it begins, treats those bytes as the immutable system under test, and
+verifies every hash again afterward to demonstrate that Phase A was not altered by the
+qualification.
+
+**What it must establish, per gate.** For each of the nineteen: the object mutated, the gate
+predicate evaluated, the baseline result, the mutated result, and the observed red outcome.
+Mutations run against scratch copies of the frozen machinery or against it as imported, never
+against the originals in place.
+
+**Coverage is proven, not asserted.** Exact set equality between the nineteen gate
+identifiers in the frozen manifest and the nineteen executed mutation records. A missing
+record, a duplicate, a record for a gate not in the registry, a mutation that did not execute,
+and a mutation that executed without reddening each force a nonzero exit, and none of them may
+be reported as success.
+
+**Deliverables**, committed before § 8 step 6: `MUTATION_RESULTS.json` carrying the per-gate
+records above, and a compact qualification record stating what was executed and what it
+establishes.
+
+**If a declared mutation cannot be implemented against the frozen Phase A method, that is a
+STRUCTURAL FAILURE under § 8's outcome table.** It is not authority to edit Phase A, not
+grounds to substitute a different mutation, and not a reason to narrow the registry. The
+qualifier reports and stops.
+
+#### What this does not change
+
+No pinned value of § 11 moves. The § 8 ordering is untouched: everything above happens before
+step 6, so the answer packet is still opened only after the complete pre-reveal record is
+committed. The outcome categories are unchanged, and a Phase B that cannot close all nineteen
+gates yields a structural-failure or not-completed disposition with no reveal.
+
+#### Claim ceiling under this architecture
+
+If Phase B executes all nineteen precommitted mutations, proves exact registry coverage, and
+commits before any reveal, **and the subsequent § 8 adjudication then yields an outcome
+eligible for the existing successful-run label**, the claim ceiling stands unchanged. Phase B
+completes the pre-reveal qualification and nothing more; it does not determine whether the
+comparison yields `reproduced`, `convention difference`, or a disagreement category, and it
+cannot by itself earn any result label.
+
+Under such an outcome the record discloses the architecture plainly: a context-isolated
+independent-method computation was frozen first, and its preregistered gate and mutation
+contract was then qualified by a separate pre-reveal verification unit working against those
+immutable bytes.
+
+That remains a context-isolated independent-method reproduction. It is still not blind, for
+the standing reason that an AI implementer's training corpus is opaque. The supplied
+topological model remains verified rather than independently derived. The separation of
+computation from qualification is a strengthening rather than a weakening, since no context
+certifies the adequacy of its own test suite.

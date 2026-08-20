@@ -1,0 +1,380 @@
+{
+  "construction_packet_sha256": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06",
+  "derivation_artifacts": {
+    "R6": {
+      "D_dims": [
+        8,
+        4
+      ],
+      "T_squared_triple": [
+        25,
+        0,
+        9
+      ]
+    },
+    "R7": {
+      "D_dims": [
+        4,
+        2
+      ],
+      "T_squared_triple": [
+        2,
+        3,
+        4
+      ]
+    },
+    "R8": {
+      "D_dims": [
+        6,
+        3
+      ],
+      "T_squared_triple": [
+        4,
+        4,
+        5
+      ]
+    },
+    "Sym0": {
+      "D_dims": [
+        2,
+        1
+      ],
+      "T_squared_triple": null
+    },
+    "Sym1": {
+      "D_dims": [
+        4,
+        2
+      ],
+      "T_squared_triple": [
+        5,
+        -3,
+        4
+      ]
+    },
+    "Sym2": {
+      "D_dims": [
+        6,
+        3
+      ],
+      "T_squared_triple": [
+        8,
+        -4,
+        5
+      ]
+    },
+    "Sym3": {
+      "D_dims": [
+        8,
+        4
+      ],
+      "T_squared_triple": [
+        1,
+        0,
+        1
+      ]
+    },
+    "Sym4": {
+      "D_dims": [
+        10,
+        5
+      ],
+      "T_squared_triple": [
+        9,
+        0,
+        4
+      ]
+    },
+    "Sym5": {
+      "D_dims": [
+        12,
+        6
+      ],
+      "T_squared_triple": [
+        4,
+        0,
+        1
+      ]
+    }
+  },
+  "gate_results": {
+    "GATE-E01": "PASS",
+    "GATE-E02": "PASS",
+    "GATE-E03": "PASS",
+    "GATE-M01": "PASS",
+    "GATE-M02": "PASS",
+    "GATE-M03": "PASS",
+    "GATE-M04": "PASS",
+    "GATE-M05": "PASS",
+    "GATE-M06": "PASS",
+    "GATE-M07": "PASS",
+    "GATE-R01": "PASS",
+    "GATE-R01-R6": "PASS",
+    "GATE-R01-R7": "PASS",
+    "GATE-R01-R8": "PASS",
+    "GATE-R01-Sym0": "PASS",
+    "GATE-R01-Sym1": "PASS",
+    "GATE-R01-Sym2": "PASS",
+    "GATE-R01-Sym3": "PASS",
+    "GATE-R01-Sym4": "PASS",
+    "GATE-R01-Sym5": "PASS",
+    "GATE-R02": "PASS",
+    "GATE-R02-R6": "PASS",
+    "GATE-R02-R7": "PASS",
+    "GATE-R02-R8": "PASS",
+    "GATE-R02-Sym0": "PASS",
+    "GATE-R02-Sym1": "PASS",
+    "GATE-R02-Sym2": "PASS",
+    "GATE-R02-Sym3": "PASS",
+    "GATE-R02-Sym4": "PASS",
+    "GATE-R02-Sym5": "PASS",
+    "GATE-R03": "PASS",
+    "GATE-R04": "PASS",
+    "GATE-T01": "PASS",
+    "GATE-T01-R6": "PASS",
+    "GATE-T01-R7": "PASS",
+    "GATE-T01-R8": "PASS",
+    "GATE-T01-Sym0": "PASS",
+    "GATE-T01-Sym1": "PASS",
+    "GATE-T01-Sym2": "PASS",
+    "GATE-T01-Sym3": "PASS",
+    "GATE-T01-Sym4": "PASS",
+    "GATE-T01-Sym5": "PASS",
+    "GATE-T02": "PASS",
+    "GATE-T03": "PASS"
+  },
+  "group_packet_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+  "manifest_sha256": "0160305315cfb4f50d0650cdf2cd27773329197bb0fd24d718d9b3cecef2af8d",
+  "rows": [
+    {
+      "acyclic": false,
+      "signature": {
+        "chi_s": [
+          1,
+          0,
+          1
+        ],
+        "chi_st": [
+          1,
+          0,
+          1
+        ],
+        "chi_t": [
+          1,
+          0,
+          1
+        ],
+        "dimension": 1
+      }
+    },
+    {
+      "T_squared": [
+        5,
+        -3,
+        4
+      ],
+      "acyclic": true,
+      "signature": {
+        "chi_s": [
+          1,
+          0,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ],
+        "chi_t": [
+          0,
+          1,
+          1
+        ],
+        "dimension": 2
+      }
+    },
+    {
+      "T_squared": [
+        8,
+        -4,
+        5
+      ],
+      "acyclic": true,
+      "signature": {
+        "chi_s": [
+          0,
+          0,
+          1
+        ],
+        "chi_st": [
+          -1,
+          0,
+          1
+        ],
+        "chi_t": [
+          0,
+          1,
+          1
+        ],
+        "dimension": 3
+      }
+    },
+    {
+      "T_squared": [
+        1,
+        0,
+        1
+      ],
+      "acyclic": true,
+      "signature": {
+        "chi_s": [
+          -1,
+          0,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ],
+        "chi_t": [
+          1,
+          0,
+          1
+        ],
+        "dimension": 4
+      }
+    },
+    {
+      "T_squared": [
+        9,
+        0,
+        4
+      ],
+      "acyclic": true,
+      "signature": {
+        "chi_s": [
+          -1,
+          0,
+          1
+        ],
+        "chi_st": [
+          1,
+          0,
+          1
+        ],
+        "chi_t": [
+          0,
+          0,
+          1
+        ],
+        "dimension": 5
+      }
+    },
+    {
+      "T_squared": [
+        4,
+        0,
+        1
+      ],
+      "acyclic": true,
+      "signature": {
+        "chi_s": [
+          0,
+          0,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ],
+        "chi_t": [
+          -1,
+          0,
+          1
+        ],
+        "dimension": 6
+      }
+    },
+    {
+      "T_squared": [
+        25,
+        0,
+        9
+      ],
+      "acyclic": true,
+      "signature": {
+        "chi_s": [
+          1,
+          0,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ],
+        "chi_t": [
+          -1,
+          0,
+          1
+        ],
+        "dimension": 4
+      }
+    },
+    {
+      "T_squared": [
+        2,
+        3,
+        4
+      ],
+      "acyclic": true,
+      "signature": {
+        "chi_s": [
+          1,
+          0,
+          1
+        ],
+        "chi_st": [
+          0,
+          0,
+          1
+        ],
+        "chi_t": [
+          1,
+          -1,
+          1
+        ],
+        "dimension": 2
+      }
+    },
+    {
+      "T_squared": [
+        4,
+        4,
+        5
+      ],
+      "acyclic": true,
+      "signature": {
+        "chi_s": [
+          0,
+          0,
+          1
+        ],
+        "chi_st": [
+          -1,
+          0,
+          1
+        ],
+        "chi_t": [
+          1,
+          -1,
+          1
+        ],
+        "dimension": 3
+      }
+    }
+  ],
+  "schema_version": "m8_8-raw-output-v1"
+}
