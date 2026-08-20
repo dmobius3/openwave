@@ -29,7 +29,7 @@
     "spin_residual_max": 0.25000000000000017,
     "spin_dual_factor_mean": -0.5,
     "mixed_residual_max": 1.6721399795765403e-16,
-    "Q_alt_residual_max": 40.665398222728456,
+    "Q_alt_residual_max": 7.105427357601002e-15,
     "j5_sq_samples": [
       -27.39699767734495,
       -5.026758714916998,
@@ -67,7 +67,7 @@
     "spin_residual_max": 0.2500000000000001,
     "spin_dual_factor_mean": -0.5,
     "mixed_residual_max": 2.0506291540631232e-16,
-    "Q_alt_residual_max": 18.996466405854584,
+    "Q_alt_residual_max": 4.440892098500626e-15,
     "j5_sq_samples": [
       25.32862187235463,
       5.332869701432272,

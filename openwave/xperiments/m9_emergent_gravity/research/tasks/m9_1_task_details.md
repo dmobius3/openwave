@@ -105,7 +105,7 @@ Full record: [`../findings/m9_1_hehl_datta_note.md`](../findings/m9_1_hehl_datta
 | F2 | C2 FAILS as written. Dirac and Weyl both give \(s=-\frac12(*J_5)\), not the paper's \(-\frac14\). Convention: \(2\delta L/\delta\omega\) vs \(\delta L/\delta\omega\). Not folded into a silent redefinition |
 | F3 | C3 and C4 pass. Minimal Dirac spin is a 3-form. The ratio is signature-independent in the solver; the auditor left C4 QUALIFIED (one Clifford only) |
 | F4 | C5 passes. Double Palatini \(\to 3/32\). Paper \(\alpha\) used as if it were this \(s\) \(\to 3/64\) |
-| F5 | `palatini_quadratic_alt` disagrees with the primary \(Q\) and is not a check |
+| F5 | `palatini_quadratic_alt` was \(-Q\) from an index swap. Fixed: residual \(7\times 10^{-15}\). Not used in \(r\). \(3/16\) unchanged |
 
 Artifacts: `scripts/hehl_datta.py`, `m9_1_hehl_datta_elimination.py`,
 `m9_1_audit_hehl_datta.py`; `data/m9_1_hehl_datta.json`, `data/m9_1_audit.json`;

@@ -146,9 +146,13 @@ The driver only samples spinors, compares, and mutates.
 | C5 mutations | `mutated_ratio` | [L407-L470](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m9_emergent_gravity/research/scripts/hehl_datta.py#L407-L470) |
 | comparison / JSON | driver | [m9_1_hehl_datta_elimination.py](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m9_emergent_gravity/research/scripts/m9_1_hehl_datta_elimination.py) |
 
-`palatini_quadratic_alt` was written as a second contraction of \(Q\) and
-**disagrees** with `palatini_quadratic` (residuals \(O(10)\)). It is not used
-in \(r\). Do not treat it as a check.
+`palatini_quadratic_alt` is the same \(Q\) by explicit index
+sums. A previous contraction swapped the first two indices of
+the second factor and returned \(-Q\) for totally antisymmetric
+\(K\) (residuals \(O(10)\)). That spectator is fixed. Residual
+now \(7.1\times 10^{-15}\) (minus) and \(4.4\times 10^{-15}\)
+(plus). It is not used in \(r\). The ratio \(3/16\) is
+unchanged.
 
 ## 3. Pre-registered gates and results
 

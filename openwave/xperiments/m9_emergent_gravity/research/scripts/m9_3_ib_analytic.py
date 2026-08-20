@@ -162,11 +162,13 @@ def relative_residue(b: np.ndarray, u: np.ndarray, s_max: float = 3.0, n_s: int 
         return float(np.sum(c_shift * d) * du)
 
     s_vals = np.linspace(-s_max, s_max, n_s)
-    s_vals = s_vals[np.abs(s_vals) > 1e-8]
-    k = np.pi / (2.0 * np.cosh(np.pi * s_vals) ** 2)
-    diffs = np.array([q_diff(s) for s in s_vals])
+    k_all = np.pi / (2.0 * np.cosh(np.pi * s_vals) ** 2)
     ds = s_vals[1] - s_vals[0] if len(s_vals) > 1 else 0.0
-    # include a crude trapezoid; endpoints already ~0
+    kernel_int = float(np.sum(k_all) * ds)
+    # q_diff(0)=0; drop only that bin from the residue.
+    mask = np.abs(s_vals) > 1e-8
+    k = k_all[mask]
+    diffs = np.array([q_diff(s) for s in s_vals[mask]])
     residue = float(np.sum(k * diffs) * ds)
     q0 = q_full(0.0)
     # regularized local form: int C h(tau)  (the finite part of Q(0))
@@ -179,7 +181,7 @@ def relative_residue(b: np.ndarray, u: np.ndarray, s_max: float = 3.0, n_s: int 
         "residue": residue,
         "r_vs_Q0": rel_vs_q0,
         "r_vs_Q0_h": rel_vs_h,
-        "kernel_int": float(np.sum(k) * ds),
+        "kernel_int": kernel_int,
     }
 
 

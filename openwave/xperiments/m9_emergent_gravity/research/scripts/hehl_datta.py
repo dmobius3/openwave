@@ -249,18 +249,35 @@ def palatini_quadratic(sig: Signature, k_low: np.ndarray) -> float:
 
 
 def palatini_quadratic_alt(sig: Signature, k_low: np.ndarray) -> float:
-    """Independent contraction of the same Q, expanded on orthonormal components.
+    """Same Q as palatini_quadratic, explicit index sums.
 
-    Q = K^{mu c}_{mu} K_{c nu}^{nu} - K^{mu c nu} K_{c mu nu}.
-    Used as an internal cross-check, not as the auditor.
+    Independent of the einsum path. The previous contraction
+    K^{μcν}K_{cμν} had the second factor's first two indices
+    swapped and returned −Q for totally antisymmetric K.
     """
     eta = sig.eta
-    k_high = np.einsum("ap,bq,cr,pqr->abc", eta, eta, eta, k_low)
-    k_mu_c_mu = np.einsum("mcm->c", k_high)
-    k_c_tr = np.einsum("nr,cnr->c", eta, k_low)
-    term1 = float(np.dot(k_mu_c_mu, k_c_tr))
-    term2 = float(np.einsum("mcn,cmn->", k_high, k_low))
-    return term1 - term2
+    kup = np.einsum("ma,aln->mln", eta, k_low)
+    q = 0.0
+    for si in range(4):
+        for nu in range(4):
+            t1 = 0.0
+            t2 = 0.0
+            for la in range(4):
+                tr = (
+                    kup[0, la, 0]
+                    + kup[1, la, 1]
+                    + kup[2, la, 2]
+                    + kup[3, la, 3]
+                )
+                t1 += tr * kup[la, si, nu]
+                t2 += (
+                    kup[0, la, nu] * kup[la, si, 0]
+                    + kup[1, la, nu] * kup[la, si, 1]
+                    + kup[2, la, nu] * kup[la, si, 2]
+                    + kup[3, la, nu] * kup[la, si, 3]
+                )
+            q += eta[si, nu] * (t1 - t2)
+    return float(q)
 
 
 def k_from_vector(v: np.ndarray) -> np.ndarray:
