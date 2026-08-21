@@ -17,6 +17,7 @@ m4_ewt (Energy Wave Theory) is the scientific-origin corpus for the wave-structu
 | Smoliński, Ł. | 2026 | Formalization of Nonlinear Stabilisation Mechanisms for the Electron Soliton in the Energy Wave Theory Framework (v1.0) | Zenodo; DOI [10.5281/zenodo.21557369](https://doi.org/10.5281/zenodo.21557369). In-repo: [`research/M4_k_selectivity_Formalization.md`](../research/M4_k_selectivity_Formalization.md) |
 | Smoliński, Ł. | 2026 | Numerical Test Report (K-Selectivity Validation) | Zenodo; DOI [10.5281/zenodo.21591354](https://doi.org/10.5281/zenodo.21591354) |
 | Smoliński, Ł. | 2026 | The Geometric Identity of Gravity and Dimensional Unification Resolving α, Lepton (g−2)_l, Weinberg, and Cabibbo Mixing (v4.5.2) | Zenodo; DOI [10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657) |
+| Smoliński, Ł. | 2026 | The Geometric Identity of Gravity and Dimensional Unification Resolving α, Lepton (g−2)_l, Weinberg, and Cabibbo Mixing (v4.5.5, 2026-08-21; scripts + manuscript source at [MagnetismGravity 4.5.5](https://github.com/lsmolinski/MagnetismGravity/releases/tag/4.5.5)) | Zenodo; DOI [10.5281/zenodo.22042784](https://doi.org/10.5281/zenodo.22042784) |
 | Yee, J. | n/a | The Geometry of Spacetime and the Unification of Forces (v2.3) | author doc (EWT), energywavetheory.com; n/a |
 | Yee, J. | n/a | The Geometry of Particles and the Explanation of Their Creation and Decay (v2) | author doc (EWT), energywavetheory.com; n/a |
 | Yee, J. | n/a | The Physics of SubAtomic Particles | author doc (EWT), energywavetheory.com; n/a |
