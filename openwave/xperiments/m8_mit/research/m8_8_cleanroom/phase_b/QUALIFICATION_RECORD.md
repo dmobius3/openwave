@@ -53,14 +53,17 @@ appearing in the frozen directory.
 | G-D01 | Twisted dd=0 | M3[0][0] +1 | zero | nonzero | Yes |
 | G-D02 | Twisted ranks | M3 row zeroed | rank=d | rank<d | Yes |
 | G-D03 | Det sub-matrices | minor col zeroed | det!=0 | det=0 | Yes |
-| G-D04 | Galois consistency | sigma(T2_V2) for V1 | match | mismatch | Yes |
-| G-D05 | Code-path dependency | identity reps | T2=8+12phi | non-acyclic | Yes |
+| G-D04 | Galois consistency | mgal(V1) at character level | sigma(T2)=T2(V7) | sigma(T2)!=T2(V7) | Yes |
+| G-D05 | Code-path dependency | I_d at formula input boundary | T2=8+12phi | T2=1 | Yes |
 
 ## What this establishes
 
-1. **All 19 preregistered mutations reddened.** Each declared mutation, applied
-   to a scratch copy of the frozen Phase A machinery, caused its gate predicate
-   to fail. No mutation was skipped, substituted, or narrowed.
+1. **All 19 preregistered mutations reddened.** Each mutation, applied to a
+   scratch copy of the frozen Phase A machinery, caused its gate predicate to
+   fail. No mutation was skipped. Each result record carries both
+   `declared_mutation` (from the parsed manifest) and `implemented_mutation`
+   (what the harness code executed), so any divergence between declaration and
+   implementation is visible in the machine-readable record.
 
 2. **Exact registry coverage, three ways.**
    - Parsed manifest == implemented handlers (pre-execution)
@@ -72,8 +75,8 @@ appearing in the frozen directory.
 
 4. **Machine-readable record.** `MUTATION_RESULTS.json` carries per-gate
    records with: gate_id, gate_name, declared_mutation (from parsed manifest),
-   object_mutated, gate_predicate, baseline_result, mutated_result, and
-   red_outcome.
+   implemented_mutation (what the harness executed), object_mutated,
+   gate_predicate, baseline_result, mutated_result, and red_outcome.
 
 ## Disposition
 

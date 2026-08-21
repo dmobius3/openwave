@@ -83,7 +83,8 @@
       "red_outcome": true,
       "gate_id": "G-M01",
       "gate_name": "\u2202\u2082\u2202\u2083 = 0",
-      "declared_mutation": "Perturb one entry of d\u2083; verify product becomes nonzero"
+      "declared_mutation": "Perturb one entry of d\u2083; verify product becomes nonzero",
+      "implemented_mutation": "Added +1*e(eid 119) to d3[0][0] in Z[2I] scratch copy; computed d3*d2 and verified product is nonzero"
     },
     {
       "object_mutated": "d2[0][0]: added +1*e (eid 119)",
@@ -93,7 +94,8 @@
       "red_outcome": true,
       "gate_id": "G-M02",
       "gate_name": "\u2202\u2081\u2202\u2082 = 0",
-      "declared_mutation": "Perturb one entry of d\u2082; verify product becomes nonzero"
+      "declared_mutation": "Perturb one entry of d\u2082; verify product becomes nonzero",
+      "implemented_mutation": "Added +1*e(eid 119) to d2[0][0] in Z[2I] scratch copy; computed d2*d1 and verified product is nonzero"
     },
     {
       "object_mutated": "free_ranks[3]: 1 -> 2",
@@ -103,7 +105,8 @@
       "red_outcome": true,
       "gate_id": "G-M03",
       "gate_name": "Free ranks and \u03c7",
-      "declared_mutation": "Alter one rank; verify \u03c7 \u2260 0"
+      "declared_mutation": "Alter one rank; verify \u03c7 \u2260 0",
+      "implemented_mutation": "Changed free_ranks[3] from 1 to 2; recomputed chi = sum(-1)^k r_k and verified chi != 0"
     },
     {
       "object_mutated": "d2[0][0]: added +2*e (eid 119)",
@@ -113,7 +116,8 @@
       "red_outcome": true,
       "gate_id": "G-M04",
       "gate_name": "Augmented homology",
-      "declared_mutation": "Replace one entry of d\u2082; verify H_* changes"
+      "declared_mutation": "Replace one entry of d\u2082; verify H_* changes",
+      "implemented_mutation": "Added +2*e(eid 119) to d2[0][0] in scratch copy; recomputed det(d2_aug) and verified |det| != 1"
     },
     {
       "object_mutated": "d2 row 0 scaled by 2 (non-unit)",
@@ -123,7 +127,8 @@
       "red_outcome": true,
       "gate_id": "G-M05",
       "gate_name": "Universal-cover homology",
-      "declared_mutation": "Scale one row of d\u2082 by non-unit; verify saturation fails"
+      "declared_mutation": "Scale one row of d\u2082 by non-unit; verify saturation fails",
+      "implemented_mutation": "Scaled row 0 of d2 by 2 (non-unit) in scratch copy; expanded over Z, computed 121x121 pivot minor det, verified |det| != 1"
     },
     {
       "object_mutated": "eps: replaced with non-augmentation (e->1, others->2)",
@@ -133,7 +138,8 @@
       "red_outcome": true,
       "gate_id": "G-M06",
       "gate_name": "Augmentation is terminal map",
-      "declared_mutation": "Replace \u03b5 with a non-augmentation; verify \u03b5\u2202\u2081 \u2260 0"
+      "declared_mutation": "Replace \u03b5 with a non-augmentation; verify \u03b5\u2202\u2081 \u2260 0",
+      "implemented_mutation": "Replaced augmentation eps with non-augmentation (e->1, others->2); computed eps(d1) and verified eps(d1) != 0"
     },
     {
       "object_mutated": "Swapped s_id and t_id",
@@ -143,7 +149,8 @@
       "red_outcome": true,
       "gate_id": "G-M07",
       "gate_name": "Generator correspondence",
-      "declared_mutation": "Swap s and t IDs; verify relator check fails"
+      "declared_mutation": "Swap s and t IDs; verify relator check fails",
+      "implemented_mutation": "Swapped s_id and t_id generator identifiers; verified 2I relators s^3=(st)^2 and t^5=(st)^2 fail under the swap"
     },
     {
       "object_mutated": "V1 twisted M3: zeroed row 0",
@@ -153,7 +160,8 @@
       "red_outcome": true,
       "gate_id": "G-M08",
       "gate_name": "Per-irrep acyclicity",
-      "declared_mutation": "For a nontrivial irrep, confirm rank deficiency in mutated complex makes it non-acyclic"
+      "declared_mutation": "For a nontrivial irrep, confirm rank deficiency in mutated complex makes it non-acyclic",
+      "implemented_mutation": "Zeroed row 0 of V1 twisted M3 (evaluated boundary matrix); verified rank(M3) drops below d"
     },
     {
       "object_mutated": "V1: perturbed rho(s)[0][0] by +1/10",
@@ -163,7 +171,8 @@
       "red_outcome": true,
       "gate_id": "G-T01",
       "gate_name": "Unitarity",
-      "declared_mutation": "Perturb one representation matrix; verify Hermitian form invariance fails"
+      "declared_mutation": "Perturb one representation matrix; verify Hermitian form invariance fails",
+      "implemented_mutation": "Perturbed V1 rho(s)[0][0] by +1/10 in scratch copy; recomputed Hermitian form H and verified rho(s)^dag H rho(s) != H"
     },
     {
       "object_mutated": "V1: swapped chi(s) and chi(t)",
@@ -173,7 +182,8 @@
       "red_outcome": true,
       "gate_id": "G-T02",
       "gate_name": "Row signature identity",
-      "declared_mutation": "Swap two character values; verify signature match fails"
+      "declared_mutation": "Swap two character values; verify signature match fails",
+      "implemented_mutation": "Swapped chi(s) and chi(t) character values in V1 row signature; verified the signature changes"
     },
     {
       "object_mutated": "Fixture: g -> rho(g^-1) (anti-homomorphism)",
@@ -183,7 +193,8 @@
       "red_outcome": true,
       "gate_id": "G-T03a",
       "gate_name": "Convention: evaluation map",
-      "declared_mutation": "On fixture: replace g \u21a6 \u03c1(g) with g \u21a6 \u03c1(g\u207b\u00b9) (anti-homomorphism); verify \u2202\u2202\u22600 or T\u00b2 changes. All 2I irreps are self-contragredient, so g\u21a6\u03c1(g\u207b\u00b9)\u1d40 gives the same T\u00b2; the anti-homomorphism mutation is the correct causal test"
+      "declared_mutation": "On fixture: replace g \u21a6 \u03c1(g) with g \u21a6 \u03c1(g\u207b\u00b9) (anti-homomorphism); verify \u2202\u2202\u22600 or T\u00b2 changes. All 2I irreps are self-contragredient, so g\u21a6\u03c1(g\u207b\u00b9)\u1d40 gives the same T\u00b2; the anti-homomorphism mutation is the correct causal test",
+      "implemented_mutation": "On convention fixture: replaced g->rho(g) with g->rho(g^-1) (anti-homomorphism); verified dd != 0"
     },
     {
       "object_mutated": "Fixture: transposed boundary matrices (cochain)",
@@ -193,7 +204,8 @@
       "red_outcome": true,
       "gate_id": "G-T03b",
       "gate_name": "Convention: boundary direction",
-      "declared_mutation": "On fixture: transpose boundary matrices (left action instead of right); verify gate failure"
+      "declared_mutation": "On fixture: transpose boundary matrices (left action instead of right); verify gate failure",
+      "implemented_mutation": "On convention fixture: transposed boundary matrices (cochain reversal); verified dd != 0"
     },
     {
       "object_mutated": "Fixture: rho(g)^T (transpose = anti-homomorphism)",
@@ -203,7 +215,8 @@
       "red_outcome": true,
       "gate_id": "G-T03c",
       "gate_name": "Convention: module side",
-      "declared_mutation": "On fixture: use right-module action instead of left; verify gate failure"
+      "declared_mutation": "On fixture: use right-module action instead of left; verify gate failure",
+      "implemented_mutation": "On convention fixture: used rho(g)^T (transpose, i.e. right-module action); verified dd != 0"
     },
     {
       "object_mutated": "Fixture: transposed GR maps (column vectors)",
@@ -213,7 +226,8 @@
       "red_outcome": true,
       "gate_id": "G-T03d",
       "gate_name": "Convention: vector convention",
-      "declared_mutation": "On fixture: use column vectors instead of row; verify gate failure"
+      "declared_mutation": "On fixture: use column vectors instead of row; verify gate failure",
+      "implemented_mutation": "On convention fixture: transposed group-ring boundary maps and reversed degree ordering; verified dd != 0"
     },
     {
       "object_mutated": "V1 M3[0][0]: perturbed by +1",
@@ -223,7 +237,8 @@
       "red_outcome": true,
       "gate_id": "G-D01",
       "gate_name": "\u2202\u2202 = 0 per twisted complex",
-      "declared_mutation": "For one irrep, perturb evaluated boundary; verify M\u2083\u00b7M\u2082 \u2260 0"
+      "declared_mutation": "For one irrep, perturb evaluated boundary; verify M\u2083\u00b7M\u2082 \u2260 0",
+      "implemented_mutation": "Perturbed V1 M3[0][0] by +1 over GC; verified M3*M2 != 0 (twisted chain condition fails)"
     },
     {
       "object_mutated": "V1 M3: zeroed row 0",
@@ -233,7 +248,8 @@
       "red_outcome": true,
       "gate_id": "G-D02",
       "gate_name": "Twisted complex ranks",
-      "declared_mutation": "For one irrep, zero out a row of M\u2083; verify rank drops"
+      "declared_mutation": "For one irrep, zero out a row of M\u2083; verify rank drops",
+      "implemented_mutation": "Zeroed row 0 of V1 twisted M3; verified rank(M3) < d"
     },
     {
       "object_mutated": "V1 M3 minor: zeroed column 0",
@@ -243,23 +259,26 @@
       "red_outcome": true,
       "gate_id": "G-D03",
       "gate_name": "Determinant sub-matrices nonsingular",
-      "declared_mutation": "For one irrep, zero a column of the chosen minor; verify det = 0"
+      "declared_mutation": "For one irrep, zero a column of the chosen minor; verify det = 0",
+      "implemented_mutation": "Zeroed column 0 of V1 M3 minor (d*d determinant sub-matrix); verified det(minor) = 0"
     },
     {
-      "object_mutated": "Substituted sigma(T2(V2)) for sigma(T2(V1))",
-      "gate_predicate": "sigma(T2(V1)) = T2(V7)",
-      "baseline_result": "PASS (sigma(T2(V1)) = T2(V7))",
-      "mutated_result": "FAIL (sigma(T2(V2)) != T2(V7))",
+      "object_mutated": "V1 representation matrices: applied sigma (phi->1-phi) entry-wise via mgal",
+      "gate_predicate": "sigma(T2(V1)) = T2(V7) (Galois conjugacy of the pair)",
+      "baseline_result": "PASS (sigma(T2(V1))=(20+-12\u03c6) = T2(V7)=(20+-12\u03c6))",
+      "mutated_result": "FAIL (sigma(T2(sigma(V1)))=(8+12\u03c6) != T2(V7)=(20+-12\u03c6))",
+      "implemented_mutation": "Applied mgal (phi->1-phi) to all 120 V1 representation matrices, recomputed T2 through compute_torsion_sq, checked Galois relation against T2(V7)",
       "red_outcome": true,
       "gate_id": "G-D04",
       "gate_name": "Galois consistency",
       "declared_mutation": "Swap \u03c6 \u21a6 1\u2212\u03c6 on characters of one Galois pair; verify the two T\u00b2 values are no longer Galois conjugates"
     },
     {
-      "object_mutated": "Replaced V1 reps with identity matrices",
-      "gate_predicate": "T2 result changes when input changes",
-      "baseline_result": "PASS (T2_V1 = (8+12\u03c6))",
-      "mutated_result": "FAIL (Computation failed (non-acyclic with identities))",
+      "object_mutated": "Torsion formula determinant sub-matrices: all three replaced with I_d",
+      "gate_predicate": "T2 output changes when formula inputs change",
+      "baseline_result": "PASS (T2(V1) = (8+12\u03c6))",
+      "mutated_result": "FAIL (T2_identity = 1 != T2(V1) = (8+12\u03c6))",
+      "implemented_mutation": "Replaced the three d*d determinant sub-matrices (M1_minor, M2_minor, M3_minor) with I_d at the torsion formula input boundary; computed tau=det(I_d)/(det(I_d)*det(I_d)) and T2=|tau|^2 through Phase A det_gc",
       "red_outcome": true,
       "gate_id": "G-D05",
       "gate_name": "Torsion code-path dependency",

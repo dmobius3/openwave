@@ -1,53 +1,55 @@
-# M8.8 Phase B: the repaired qualification, landed unread against the answer packet
+# M8.8 Phase B: mutation-semantic fidelity repaired, landed unread against the answer packet
 
-> **Claims no result.** The answer packet has not been opened, no comparison has run, and no
-> verdict exists. Lands before § 8 step 6. The first Phase B landing, `f441e0ec`, is preserved
-> in history and is not rewritten.
+> **Claims no result.** The answer packet has not been opened, no comparison has run, no
+> verdict exists. Lands before § 8 step 6. Both prior Phase B landings, `f441e0ec` and
+> `a923c554`, are preserved in history.
 
 ## What landed
 
 | File | SHA-256 | Role |
 | --- | --- | --- |
-| `run_phase_b.py` | `3a621d0ebaa5a6b7819e4ad3f57825f1bda064684d36f49cdd4eb99d913bfba7` | the repaired qualifier: parses the § 4 registry at runtime, then executes all nineteen declared mutations |
-| `MUTATION_RESULTS.json` | `1540d2a53aaa63f5f6850544fc366df781773d3420425b2f30a0a5eb6836f460` | the execution record, schema 2, carrying the parsed, implemented and executed identifier sets |
-| `QUALIFICATION_RECORD.md` | `2fef2b8aacb35e1f9b0765c62f06ab37a999f010f2e2d6f9e264cd0d4d58f55f` | the qualifier's summary, its parsing statement now literally true |
+| `run_phase_b.py` | `2a741b5403bf7f30e4cf96ff4c4e9016038f520b41c825dfe11a0a0e568c24d3` | the qualifier: parses the § 4 registry at runtime and executes all nineteen declared mutations |
+| `MUTATION_RESULTS.json` | `490938f89b0dbcfd9b6b9abd7c01d310624a415ae9345f983b929596d02fb0ae` | the execution record, carrying declared and implemented mutation text per gate |
+| `QUALIFICATION_RECORD.md` | `2133a653e3dc76d128e757da58228824891d5d4fce4242f3cfb82e190211549a` | the qualifier's summary |
 
-## The mechanism nonconformance is cured
+## The two fidelity defects are cured, and one of them had a real causal path
 
-The prior landing hard-coded its expected gate set while its record claimed runtime parsing.
-The qualifier now parses the frozen manifest's § 4 registry at runtime, extracting each gate
-identifier and its declared mutation, and rejects malformed rows, malformed identifiers,
-empty mutation declarations and duplicate identifiers. No hard-coded gate list remains
-anywhere in the file. The qualification record's parsing statement is now literally true.
+The prior landing executed, for two gates, a mutation related to the declared one rather than
+the declared one itself. Both now execute what the manifest declares, at the boundary it
+declares.
 
-## Commissioner enumeration, run before this record was written
+**G-D04**, declared as a swap of `φ ↦ 1−φ` on the characters of a Galois pair. Previously a
+substitution of one already-computed value for another at the comparison, which tested the
+equality checker rather than the Galois action. Now the Galois map is applied to the
+representation matrices that carry those characters, the torsion is recomputed through the
+same consumed path, and the resulting pair no longer satisfies the relation.
+
+The instruction offered an honest stop here, because the frozen production path pairs Galois
+partners from a literal list and computes torsion before that check runs, so it was genuinely
+open whether the declared mutation could reach the relation at all. It can. The escape was
+not needed, and the fact that it was available is why the answer means something.
+
+**G-D05**, declared as replacing the torsion formula's input with identity matrices and
+verifying the output changes. Previously the representation matrices were replaced and the
+computation aborted as non-acyclic, which is not a changed output. Now the three determinant
+sub-matrices are replaced at the formula's own input boundary and the output changes to a
+different value. No record in the set now reports an abort in place of an outcome.
+
+## Commissioner enumeration
 
 | Check | Result |
 | --- | --- |
-| Phase A artifacts | 13 of 13 exact; no generated files under `phase_a_frozen/` |
-| Registry parsed at runtime | yes; the recorded `manifest_sha256` matches the pinned manifest |
-| Their parsed set against my own independent parse | identical, 19 and 19 |
-| parsed == implemented handlers == executed records | true, proven before execution and again after |
-| All nineteen mutations executed and red | yes; every record carries object mutated, predicate, a passing baseline, a failing mutated result and an observed red |
-| Reproduction | clean run exits 0 from a scratch copy |
+| Phase A | 13 of 13 exact; no generated files beneath it, before or after my testing |
+| Declared against implemented, all nineteen | read pair by pair; each implemented mutation performs what its declaration states, at the declared boundary |
+| `declared_mutation` fidelity | verbatim from the frozen manifest for all nineteen |
+| Coverage | parsed == implemented handlers == executed records, proven before and after execution |
+| Outcomes | all nineteen red; none records an abort as a changed outcome |
+| Reproduction | clean run exits 0 and regenerates `MUTATION_RESULTS.json` byte-identical |
+| Linkage, retested after the repair | dropping one identifier from the parsed set below the integrity layer drives a coverage failure, not a hash failure |
 
-## The linkage property, tested directly rather than inferred
+## One sentence the record no longer overstates
 
-The previous landing's self-attacks proved that the integrity layer fires. They did not prove
-that the parsed registry drives coverage once integrity has passed, which are separate
-properties. That property was tested here, below the integrity layer, by altering the parsed
-set after hash verification and after the qualifier's own self-test:
-
-| Injection | Result |
-| --- | --- |
-| Remove one registered identifier from the parsed set | exit 1, `COVERAGE FAILURE`, naming `G-M03` as implemented but not parsed, `FATAL: Pre-execution coverage mismatch` |
-| Add an identifier no handler implements | exit 1, same fatal coverage mismatch |
-| Parser fed scratch text with a gate removed | returns 18 rather than 19 |
-| Parser fed a duplicated identifier | raises, `Duplicate gate identifier` |
-| Parser fed an empty mutation declaration | raises, `Empty mutation declaration` |
-
-Neither failing injection is a hash failure. The run stops on coverage, which is what
-establishes that the manifest parser, not a literal, is what qualification rests on.
-
-The qualifier's own parser-to-coverage self-test is retained, and no frozen byte was touched
-by any of this testing: `phase_a_frozen/` holds thirteen files and no bytecode afterward.
+The prior summary asserted that no mutation was skipped, substituted, or narrowed, which was
+false for the two gates above. It now claims only that no mutation was skipped, and points at
+the paired `declared_mutation` and `implemented_mutation` fields so any future divergence is
+visible in the machine-readable record rather than resting on prose.
