@@ -23,10 +23,10 @@ THE SEQUENCE IMPLEMENTED, section 8 steps 6 to 8, in this order and no other:
            stating that canonicalization changed the bytes; any other outcome refuses.
   step 7   `adjudicates` is checked against the raw output's consumed packet hashes and
            both against the section 11 pins; the raw output's own bytes are checked against
-           the Addendum 1 pin; the indexing map is APPLIED to pair packet rows with
-           committed rows; the convention map is LOADED AND VALIDATED (four items, the
-           `basing_evaluation` item byte-equal to the construction packet's
-           `basing.evaluation`) without applying any orientation.
+           the Addendum 1 pin; the POSITIONAL indexing map is APPLIED to pair packet rows
+           with committed rows; the convention map is LOADED AND VALIDATED (four object
+           items, the `representation_evaluation` item carrying the construction packet's
+           `basing.evaluation` byte-equal) without applying any orientation.
   step 8   the section 5.4 selection at R7: exactly one of x = r, x^-1 = r must hold
            (both: INVALID ANCHOR; neither: DISAGREEMENT; no row comparison in either case).
            The selected identity or global inverse is applied to the COMMITTED rows, the
@@ -35,39 +35,59 @@ THE SEQUENCE IMPLEMENTED, section 8 steps 6 to 8, in this order and no other:
            compared POSITION-WISE (section 5.3).  Outcome recorded by section 8 category.
 
 THE PACKET SHAPE THIS HARNESS READS.  Section 4.4 fixes the key set and describes each
-value; it does not print a JSON skeleton.  The key-level shape below is this harness's
-reading of section 4.4, stated here so it can be confirmed by the author BEFORE reveal
-(keys and types only, no values) and so any post-reveal adapter change is visible as a
-diff against a committed file rather than a silent accommodation.
+value; it does not print a JSON skeleton.  The first committed reading of this harness
+(PR #452) guessed a signature-dispatched map; the author then extracted the packet's
+key-level shape mechanically (#451, 2026-08-21, keys and types only, no values) and it
+differs in five places, the substantive one being a POSITIONAL indexing map.  The shape
+below is the author-confirmed one; this adapter commit is the visible pre-reveal diff
+against #452, landed before any ciphertext exists.
 
   {
     "format_version": str,
     "target_id": str,
     "adjudicates": {"group_packet_sha256": hex, "construction_packet_sha256": hex},
     "rows": [ {"label": str,
-               "row_signature": {"dim": int, "chi_s": [a,b,c], "chi_t": [a,b,c],
-                                 "chi_st": [a,b,c]},
+               "signature": {"dimension": int, "s": [a,b,c], "t": [a,b,c], "st": [a,b,c]},
                "class": "declared_convention" | "free" | "free_orientation_selector",
                "T_squared": [a,b,c]}            x 9 ],
-    "identities": [ {"slot": str,
-                     "factors": [{"row_signature": {...}, "exponent": int,
+    "identities": [ {"position": int,
+                     "factors": [{"signature": {...}, "exponent": int,
                                   "conjugate": bool (optional, default false)}, ...],
                      "expected": [a,b,c]}        x 4 ],
-    "indexing_map": {"mode": "signature_identity"}
-                  | {"mode": "signature_table",
-                     "entries": [{"label": str, "row_signature": {...}}, ...]},
-    "convention_map": {"bridge": str, "anchor_rule": str,
-                       "basing_reference": str, "basing_evaluation": str}
+    "indexing_map": {"source_domain": str, "destination_domain": str, "zero_based": bool,
+                     "entries": [{"source_position": int, "destination_position": int}] x 9},
+    "convention_map": {"bridge": object, "orientation_anchor_rule": object,
+                       "basing_reference": object, "representation_evaluation": object}
   }
 
   Every Q(phi) value is the normalized triple (a, b, c) for (a + b*phi)/c, c > 0,
-  gcd(a, b, c) = 1, as section 4.2 fixes and the raw output already uses.  In
-  `signature_identity` mode a packet row is paired with the committed row carrying the
-  same signature.  In `signature_table` mode the packet's own row signatures are NOT
-  used for pairing: each packet row's label is looked up in `entries` and the signature
-  recorded THERE selects the committed row.  The synthetic fixture of the self-test uses
-  table mode with a derangement, which is how the map-processing path is proved operative
-  (section 4.4: a live map may be too simple to discriminate applying from ignoring it).
+  gcd(a, b, c) = 1, as section 4.2 fixes and the raw output already uses.  The committed
+  RAW_OUTPUT.json keeps its own field names (`row_signature` with `dim`, `chi_s`, `chi_t`,
+  `chi_st`); both spell the same section 5.5 signature and reduce to one key.
+
+  THE POSITIONAL MAP.  `entries` pairs packet row `source_position` with committed row
+  `destination_position`; `zero_based` fixes the base of both.  Source positions must
+  cover the nine packet rows exactly once, destination positions must be distinct and in
+  range (injectivity), and the pairing is DRIVEN BY THE MAP: the packet's own signatures
+  are checked to be distinct and present among the committed rows, and a row whose own
+  signature differs from the committed row the map pairs it with is RECORDED, never used
+  for pairing.  The self-test's nonidentity fixture (C3) permutes the seven free
+  positions nontrivially, and applying the map versus ignoring it must change the
+  adjudication outcome at the comparison, as section 4.4 demands.
+
+  PENDING FROM THE AUTHOR (asked on #451, keys and types only), each marked PENDING at
+  its point of use below, and EVERY pending reading FAILS CLOSED: (1) what the two
+  domain strings name.  The only implemented reading (source = the packet's own `rows`
+  order, destination = the committed RAW_OUTPUT.json `rows` order) is a placeholder
+  known to be insufficient: the packet was frozen 2026-08-10 and the raw output landed
+  2026-08-19, so the packet's map indexes some PUBLIC ordering fixed at freeze; any
+  other domain string is refused before pairing, and the author's answer lands as a
+  second visible commit.  (2) the inner keys of the four convention objects: the
+  reading here is that `representation_evaluation` carries EXACTLY ONE string field,
+  byte-equal to the construction packet's `basing.evaluation`, the field name recorded;
+  once the author names the field it is pinned.  (3) confirmation that the keys the
+  author did not list are unchanged: rows, identities and factors are held to exact key
+  sets, so an unlisted key refuses rather than passing silently.
 
 THE CONTROLS, section 4.4, run by --self-test and REQUIRED green before any live run.
 An independent adversarial audit of the first version found C1, C2 and C3 tautological
@@ -77,10 +97,17 @@ repaired set, each phrased so the named defect would fail it:
   C1  EACH of the eight nontrivial reference cells mutated in turn, downstream of the
       completed hash check: exactly that one label mismatches (R7: `disagreement`);
   C2  EACH committed raw cell mutated the same way, from the other side;
-  C3  synthetic NONIDENTITY indexing fixture (a derangement over the seven FREE labels,
-      R0 and R7 fixed): the supplied map is GREEN; ignoring the map and a preregistered
-      wrong map each fail AT THE COMPARISON with seven mismatches, not by an earlier
-      refusal; a map moving R0 onto an acyclic row refuses on class (C3d);
+  C3  synthetic NONIDENTITY positional fixture (the packet's rows in a cyclic shift over
+      the seven FREE positions, R0 and R7 fixed, the map restoring the pairing): the
+      supplied map is GREEN; ignoring the map (identity arm) and a preregistered wrong
+      permutation each fail AT THE COMPARISON with seven mismatches, not by an earlier
+      refusal; a map moving R0 onto an acyclic row refuses on class (C3d); a LIVE packet
+      whose own signatures contradict the map is refused naming both signatures, and the
+      same fixture as a self-test arm is green with the difference RECORDED on seven
+      rows (C3e); a one-based map is honored (C3f), a misdeclared base refuses on range
+      (C3g), a source position listed twice (C3h), a destination past the committed rows
+      (C3i) and a JSON boolean position (C3j) refuse; an unimplemented domain string is
+      refused before any pairing, the map FAILING CLOSED (C3k);
   C4  the global inverse of the committed table resolves to `convention difference`; the
       two sector-product expected values swapped redden BOTH slots on the identity and the
       inverted fixture, which is the position-wise rule of section 5.3 exercised on the
@@ -89,16 +116,20 @@ repaired set, each phrased so the named defect would fail it:
   C6  an R7 reference equal to neither x nor x^-1 resolves to `disagreement`;
   C7  a tampered identity `expected` reddens the identity layer alone;
   C8  tampered `adjudicates`, content-tampered bytes, a duplicate key in the delivered
-      bytes and a non-verbatim `basing_evaluation` each REFUSE; an uncanonical rendering
-      of the pinned object is accepted with the change recorded, and pin-matching bytes in
+      bytes, a `representation_evaluation` object with no verbatim field or with a
+      second string field beside it, and a convention item delivered as a bare string
+      each REFUSE; the verbatim field is recorded by name; an uncanonical rendering of
+      the pinned object is accepted with the change recorded, and pin-matching bytes in
       another canonicalizer's rendering are accepted with the form recorded; the bridge
-      and anchor prose are RECORDED, never gated (a second audit showed a substring check
-      refusing section 5.4's own wording);
+      and anchor-rule prose are RECORDED, never gated (a second audit showed a substring
+      check refusing section 5.4's own wording);
   C9  the selector class on any row but the dim-5 irrep refuses, even with a correct table;
-  C10 a non-injective map refuses;
-  C11 structurally trivial identities refuse;
+  C10 a non-injective map refuses (run as a self-test arm: on the live path the C3e
+      self-contradiction check is reached first, so a live non-injective map refuses there);
+  C11 structurally trivial identities refuse; two identities at one position, or a
+      position that is not an int, refuse;
   C12 a malformed but pinned packet yields a RECORDED structural failure, not a traceback;
-  C13 EXACTNESS: negation, Galois conjugation and a 1e-9 near-miss of one cell are each
+  C13 EXACTNESS: negation, Galois conjugation and a 1e-20 near-miss of one cell are each
       exactly one mismatch, so an approximate, sign-blind or conjugation-blind equality
       would fail here;
   C14 one control per identity rule (non-Galois ratio, overlapping products, R0 factor,
@@ -106,7 +137,10 @@ repaired set, each phrased so the named defect would fail it:
       conjugate as a string, exponent beyond the bound), plus a genuine conjugate factor
       honored;
   C15 the Phase B checker, each rule in isolation on a synthetic record;
-  C16 empty `target_id` and an own signature absent from the committed output refuse.
+  C16 empty `target_id`, an own signature absent from the committed output, a
+      declared-convention value other than 1, an extra key on a row, and the superseded
+      #452 signature spelling each refuse (rows, identities and factors carry exact key
+      sets).
   The fixtures are built from the committed raw table and public data only; they contain
   no reference value and prove nothing about the reproduction, only about the harness.
   `hypothesis failure` is unreachable with this raw output (R0 is its only non-acyclic row
@@ -164,9 +198,31 @@ PACKET_KEYS = {
     "indexing_map",
     "convention_map",
 }
-CONVENTION_KEYS = {"bridge", "anchor_rule", "basing_reference", "basing_evaluation"}
+CONVENTION_KEYS = {
+    "bridge",
+    "orientation_anchor_rule",
+    "basing_reference",
+    "representation_evaluation",
+}
+INDEXING_KEYS = {"source_domain", "destination_domain", "zero_based", "entries"}
+ENTRY_KEYS = {"source_position", "destination_position"}
+ROW_KEYS = {"label", "signature", "class", "T_squared"}
+IDENTITY_KEYS = {"position", "factors", "expected"}
+FACTOR_KEYS = {"signature", "exponent"}  # plus the optional `conjugate`
+# PENDING (author, #451): the domain strings and what they index.  The map FAILS CLOSED:
+# a packet naming any other domain is refused, never paired.  The ONE destination domain
+# implemented is the committed RAW_OUTPUT.json rows order, and it is known to be at best a
+# placeholder: the answer packet was frozen 2026-08-10 and the raw output landed
+# 2026-08-19, so the packet's map indexes some PUBLIC ordering fixed at freeze, which the
+# author has been asked to name.  When named, it lands here as a second visible commit.
+SOURCE_DOMAINS = {"answer_packet.rows"}
+# destination domain string -> the function producing that ordering of committed signature
+# keys; the order is looked up BY the string, so a vocabulary entry without its ordering
+# cannot silently reuse another domain's order (filled next to `committed_order` below).
+DESTINATION_ORDERS: dict = {}
 CLASSES = {"declared_convention", "free", "free_orientation_selector"}
-SIG_FIELDS = ("dim", "chi_s", "chi_t", "chi_st")
+SIG_FIELDS = ("dimension", "s", "t", "st")  # the answer packet's `signature` (author-confirmed)
+RAW_SIG_FIELDS = ("dim", "chi_s", "chi_t", "chi_st")  # the committed raw output's `row_signature`
 N_ROWS = 9
 N_IDENTITIES = 4
 R7_DIM = 5  # the orientation anchor is the dim-5 irrep (M8.5-A label map); public
@@ -348,23 +404,32 @@ def load_answer_packet_bytes(raw: bytes, pin: str = PIN_ANSWER_PACKET) -> tuple:
     return packet, rec
 
 
-def signature_key(sig: dict) -> tuple:
-    if not isinstance(sig, dict) or set(sig) != set(SIG_FIELDS):
+def signature_key(sig: dict, fields: tuple = SIG_FIELDS, what: str = "signature") -> tuple:
+    """The section 5.5 row signature as one hashable key, whichever spelling carries it.
+
+    The answer packet spells it `signature{dimension, s, t, st}` and the committed raw
+    output `row_signature{dim, chi_s, chi_t, chi_st}`; both reduce to
+    (dim, chi_s, chi_t, chi_st) with the characters as normalized triples.
+    """
+    if not isinstance(sig, dict) or set(sig) != set(fields):
         raise Refusal(
-            f"row_signature fields {sorted(sig) if isinstance(sig, dict) else sig!r}"
-            f" != {sorted(SIG_FIELDS)}"
+            f"{what} fields {sorted(sig) if isinstance(sig, dict) else sig!r} != {sorted(fields)}"
         )
-    dim = sig["dim"]
+    dim = sig[fields[0]]
     if not isinstance(dim, int) or isinstance(dim, bool) or dim <= 0:
-        raise Refusal(f"row_signature.dim not a positive int: {dim!r}")
-    return (dim,) + tuple(tuple(QPhi.from_triple(sig[f]).to_triple()) for f in SIG_FIELDS[1:])
+        raise Refusal(f"{what}.{fields[0]} not a positive int: {dim!r}")
+    return (dim,) + tuple(tuple(QPhi.from_triple(sig[f]).to_triple()) for f in fields[1:])
+
+
+def raw_key(r: dict) -> tuple:
+    return signature_key(r["row_signature"], RAW_SIG_FIELDS, "row_signature")
 
 
 def load_raw_rows(raw_output: dict) -> dict:
     """Committed rows keyed by signature -> {'acyclic': bool, 'value': QPhi|None}."""
     rows = {}
     for r in raw_output["rows"]:
-        key = signature_key(r["row_signature"])
+        key = raw_key(r)
         if key in rows:
             raise Refusal(f"raw output: duplicate row signature {key}")
         acyclic = bool(r.get("acyclic"))
@@ -375,6 +440,15 @@ def load_raw_rows(raw_output: dict) -> dict:
     if len(rows) != N_ROWS:
         raise Refusal(f"raw output: {len(rows)} rows != {N_ROWS}")
     return rows
+
+
+def committed_order(raw_output: dict) -> list:
+    """The committed rows' signature keys in FILE order: the one destination domain
+    implemented, a placeholder (PENDING: the author's `destination_domain`, docstring)."""
+    return [raw_key(r) for r in raw_output["rows"]]
+
+
+DESTINATION_ORDERS["RAW_OUTPUT.rows"] = committed_order
 
 
 def check_raw_output_structure(raw_output: dict) -> list:
@@ -489,86 +563,159 @@ def validate_convention_map(packet: dict, construction_packet: dict) -> dict:
             f" != {sorted(CONVENTION_KEYS)}"
         )
     for k, v in cm.items():
-        if not isinstance(v, str) or not v.strip():
-            raise Refusal(f"convention_map.{k}: empty or not a string")
+        if not isinstance(v, dict) or not v:
+            raise Refusal(f"convention_map.{k}: not a non-empty object")
+    # Section 4.4: the fourth item reproduces the construction packet's `basing.evaluation`
+    # VERBATIM and nothing else may be filled in against it.  The item is an object
+    # (author-confirmed); PENDING its inner key, the rule is that SOME string field of it
+    # is byte-equal to the declaration, and the matching field names are recorded.
     declared = construction_packet["basing"]["evaluation"]
-    if cm["basing_evaluation"] != declared:
+    ev = cm["representation_evaluation"]
+    string_fields = {k: v for k, v in ev.items() if isinstance(v, str)}
+    verbatim_fields = sorted(k for k, v in string_fields.items() if v == declared)
+    # FAIL CLOSED (PENDING the field name): the object's string fields must be exactly one
+    # and byte-equal to the declaration, so no second string can contradict it.
+    if len(string_fields) != 1 or not verbatim_fields:
         raise Refusal(
-            "convention_map.basing_evaluation is not the construction packet's "
-            "basing.evaluation verbatim"
+            "convention_map.representation_evaluation must carry exactly one string field, "
+            "byte-equal to the construction packet's basing.evaluation verbatim; "
+            f"string fields seen: {sorted(string_fields)}"
         )
     # The other three items are prose the protocol does not pin verbatim.  A free-text
     # check cannot tell a wrong bridge from a paraphrase (an earlier heuristic here refused
     # section 5.4's own wording), so they are RECORDED for the adjudication record and
     # judged by the adjudicator there, never gated by substring.
     return {
-        "validated": True,
+        "evaluation_verbatim_gated": True,
+        "other_items_gated": False,
         "orientation_applied": False,
-        "basing_evaluation": cm["basing_evaluation"],
+        "representation_evaluation": ev,
+        "evaluation_verbatim_fields": verbatim_fields,
         "bridge": cm["bridge"],
-        "anchor_rule": cm["anchor_rule"],
+        "orientation_anchor_rule": cm["orientation_anchor_rule"],
         "basing_reference": cm["basing_reference"],
     }
 
 
-def apply_indexing_map(packet: dict, raw_rows: dict, map_override: dict | None = None) -> dict:
-    """Pair each packet row with ONE committed row.  Returns label -> paired record.
+def identity_indexing_map(zero_based: bool = True) -> dict:
+    """The trivial positional map, used ONLY by self-test arms that simulate ignoring the
+    packet's map (pairing packet row i with committed row i)."""
+    base = 0 if zero_based else 1
+    return {
+        "source_domain": "answer_packet.rows",
+        "destination_domain": "RAW_OUTPUT.rows",
+        "zero_based": zero_based,
+        "entries": [
+            {"source_position": i + base, "destination_position": i + base} for i in range(N_ROWS)
+        ],
+    }
+
+
+def apply_indexing_map(
+    packet: dict, raw_rows: dict, raw_output: dict, map_override: dict | None = None
+) -> dict:
+    """Pair each packet row with ONE committed row BY THE POSITIONAL MAP.  Returns
+    label -> paired record.
 
     `map_override` is used ONLY by the self-test arms (identity arm, wrong-map arm); the
     live run always consumes the packet's own map.
     """
     imap = map_override if map_override is not None else packet["indexing_map"]
-    if not isinstance(imap, dict) or "mode" not in imap:
-        raise Refusal("indexing_map: missing mode")
+    if not isinstance(imap, dict) or set(imap) != INDEXING_KEYS:
+        raise Refusal(
+            f"indexing_map: key set {sorted(imap) if isinstance(imap, dict) else imap!r}"
+            f" != {sorted(INDEXING_KEYS)}"
+        )
+    # FAIL CLOSED on the domains (PENDING, see SOURCE_DOMAINS): an unrecognized domain
+    # string is refused, so the map is never applied under a guessed reading.
+    for k, allowed in (
+        ("source_domain", SOURCE_DOMAINS),
+        ("destination_domain", set(DESTINATION_ORDERS)),
+    ):
+        if not isinstance(imap[k], str) or imap[k] not in allowed:
+            raise Refusal(
+                f"indexing_map.{k} {imap[k]!r} is not an implemented domain {sorted(allowed)}; "
+                f"PENDING the author's naming, the map is not applied"
+            )
+    zero_based = imap["zero_based"]
+    if not isinstance(zero_based, bool):
+        raise Refusal("indexing_map.zero_based must be a JSON boolean")
+    base = 0 if zero_based else 1
+    raw_order = DESTINATION_ORDERS[imap["destination_domain"]](raw_output)
+
     rows = packet["rows"]
     if not isinstance(rows, list) or len(rows) != N_ROWS:
         raise Refusal(
             f"packet rows: {len(rows) if isinstance(rows, list) else rows!r} != {N_ROWS}"
         )
+    for r in rows:
+        if not isinstance(r, dict) or set(r) != ROW_KEYS:
+            raise Refusal(
+                f"packet row: key set {sorted(r) if isinstance(r, dict) else r!r} != {sorted(ROW_KEYS)}"
+            )
     labels = [need(r, "label", "packet row") for r in rows]
     if len(set(labels)) != N_ROWS or any(not isinstance(lab, str) for lab in labels):
         raise Refusal("packet rows: labels not nine distinct strings")
     # The packet's own signatures: pairwise distinct and each present among the committed
-    # signatures, in every mode, so a packet cannot carry rows that describe nothing.
-    own = {r["label"]: signature_key(need(r, "row_signature", f"row {r['label']}")) for r in rows}
+    # signatures, so a packet cannot carry rows that describe nothing.  They do NOT pair.
+    own = {r["label"]: signature_key(need(r, "signature", f"row {r['label']}")) for r in rows}
     if len(set(own.values())) != N_ROWS:
-        raise Refusal("packet rows: row signatures not pairwise distinct")
+        raise Refusal("packet rows: signatures not pairwise distinct")
     for lab, key in own.items():
         if key not in raw_rows:
             raise Refusal(f"row {lab}: own signature {key} absent from the committed output")
-    if imap["mode"] == "signature_identity":
-        lookup = dict(own)
-    elif imap["mode"] == "signature_table":
-        entries = imap.get("entries")
-        if not isinstance(entries, list) or len(entries) != N_ROWS:
-            raise Refusal("indexing_map.entries: not nine entries")
-        lookup = {}
-        for e in entries:
-            lab = need(e, "label", "indexing_map entry")
-            if lab in lookup:
-                raise Refusal(f"indexing_map.entries: duplicate label {lab}")
-            lookup[lab] = signature_key(need(e, "row_signature", f"indexing_map entry {lab}"))
-        if set(lookup) != set(labels):
-            raise Refusal("indexing_map.entries: label set != packet row labels")
-    else:
-        raise Refusal(f"indexing_map.mode {imap['mode']!r} unknown")
+
+    entries = imap["entries"]
+    if not isinstance(entries, list) or len(entries) != N_ROWS:
+        raise Refusal("indexing_map.entries: not nine entries")
+    src_to_dst = {}
+    for e in entries:
+        if not isinstance(e, dict) or set(e) != ENTRY_KEYS:
+            raise Refusal(f"indexing_map entry: key set != {sorted(ENTRY_KEYS)}")
+        for name in ENTRY_KEYS:
+            if not isinstance(e[name], int) or isinstance(e[name], bool):
+                raise Refusal(f"indexing_map entry: {name} must be an int")
+        s, d = e["source_position"] - base, e["destination_position"] - base
+        if not 0 <= s < N_ROWS:
+            raise Refusal(
+                f"indexing_map entry: source_position {e['source_position']} outside the "
+                f"packet rows (zero_based={zero_based})"
+            )
+        if not 0 <= d < N_ROWS:
+            raise Refusal(
+                f"indexing_map entry: destination_position {e['destination_position']} "
+                f"outside the committed rows (zero_based={zero_based})"
+            )
+        if s in src_to_dst:
+            raise Refusal(
+                f"indexing_map.entries: source_position {e['source_position']} listed twice"
+            )
+        src_to_dst[s] = d
+    # nine distinct in-range source positions cover the nine packet rows exactly once
 
     paired, used = {}, set()
-    for r in rows:
-        key = lookup[r["label"]]
-        if key not in raw_rows:
-            raise Refusal(
-                f"indexing map sends {r['label']} to a signature absent from the "
-                f"committed output: {key}"
-            )
+    for pos, r in enumerate(rows):
+        dst = src_to_dst[pos]
+        key = raw_order[dst]
         if key in used:
-            raise Refusal(f"indexing map is not injective at {key}")
+            raise Refusal(f"indexing map is not injective at committed position {dst + base}")
         used.add(key)
+        if map_override is None and own[r["label"]] != key:
+            # Section 5.5 makes the signature the row's identity.  A LIVE packet whose map
+            # pairs a row with a committed row of another signature contradicts itself and
+            # is refused, never silently categorized.  The self-test arms (map_override)
+            # keep the difference as a record so ignoring the map fails AT THE COMPARISON.
+            raise Refusal(
+                f"row {r['label']}: own signature {own[r['label']]} differs from the "
+                f"committed row the map pairs it with, {key}"
+            )
         cls = need(r, "class", f"row {r['label']}")
         if cls not in CLASSES:
             raise Refusal(f"row {r['label']}: class {cls!r} not in {sorted(CLASSES)}")
         paired[r["label"]] = {
             "signature": key,
+            "position": pos + base,
+            "committed_position": dst + base,
             "own_signature_differs_from_map": own[r["label"]] != key,
             "class": cls,
             "reference": QPhi.from_triple(need(r, "T_squared", f"row {r['label']}")),
@@ -676,13 +823,22 @@ def compute_identities(packet: dict, sel: dict) -> list:
     trivial_keys = {k for k, v in sel.items() if k[0] == 1}
     out, kinds, product_members, ratio_pairs = [], [], [], set()
     for slot_entry in ids:
-        slot = need(slot_entry, "slot", "identity")
+        if not isinstance(slot_entry, dict) or set(slot_entry) != IDENTITY_KEYS:
+            raise Refusal(f"identity entry: key set != {sorted(IDENTITY_KEYS)}")
+        position = need(slot_entry, "position", "identity")
+        if not isinstance(position, int) or isinstance(position, bool) or position < 0:
+            raise Refusal(f"identities: position must be a non-negative int, got {position!r}")
+        slot = f"position {position}"
         factors = need(slot_entry, "factors", f"identity {slot}")
-        if not isinstance(slot, str) or not isinstance(factors, list) or len(factors) < 2:
-            raise Refusal(f"identities: slot {slot!r} malformed or with fewer than two factors")
+        if not isinstance(factors, list) or len(factors) < 2:
+            raise Refusal(f"identities: {slot} malformed or with fewer than two factors")
         acc, keys, exps, conjs = ONE, [], [], []
         for f in factors:
-            key = signature_key(need(f, "row_signature", f"identity {slot} factor"))
+            if not isinstance(f, dict) or not FACTOR_KEYS <= set(f) <= FACTOR_KEYS | {"conjugate"}:
+                raise Refusal(
+                    f"identity {slot} factor: key set != {sorted(FACTOR_KEYS)} (+ conjugate)"
+                )
+            key = signature_key(need(f, "signature", f"identity {slot} factor"))
             if key not in sel:
                 raise Refusal(f"identity {slot}: factor signature {key} not among selected rows")
             if key in trivial_keys:
@@ -729,6 +885,7 @@ def compute_identities(packet: dict, sel: dict) -> list:
         expected = QPhi.from_triple(need(slot_entry, "expected", f"identity {slot}"))
         out.append(
             {
+                "position": position,
                 "slot": slot,
                 "kind": kinds[-1],
                 "recomputed": acc.to_triple(),
@@ -736,8 +893,8 @@ def compute_identities(packet: dict, sel: dict) -> list:
                 "equal": acc == expected,
             }
         )
-    if len({i["slot"] for i in out}) != N_IDENTITIES:
-        raise Refusal("identities: slots not distinct")
+    if len({i["position"] for i in out}) != N_IDENTITIES:
+        raise Refusal("identities: positions not distinct")
     if kinds.count("ratio") != 2 or kinds.count("product") != 2:
         raise Refusal(f"identities: need two Galois ratios and two sector products, got {kinds}")
     if product_members[0] & product_members[1]:
@@ -749,6 +906,7 @@ def compute_identities(packet: dict, sel: dict) -> list:
     nontrivial = {k for k in sel if k[0] != 1}
     out.append(
         {
+            "position": None,
             "slot": "_sector_coverage",
             "kind": "record",
             "rows_in_products": len(covered),
@@ -765,6 +923,8 @@ def rows_record(paired: dict) -> dict:
     return {
         lab: {
             "signature": list(p["signature"]),
+            "position": p["position"],
+            "committed_position": p["committed_position"],
             "class": p["class"],
             "own_signature_differs_from_map": p["own_signature_differs_from_map"],
         }
@@ -779,7 +939,7 @@ def adjudicate(
     check_adjudicates(packet, raw_output)
     raw_rows = load_raw_rows(raw_output)
     cm = validate_convention_map(packet, construction_packet)
-    paired = apply_indexing_map(packet, raw_rows, map_override)
+    paired = apply_indexing_map(packet, raw_rows, raw_output, map_override)
 
     hyp = [lab for lab, p in paired.items() if p.get("hypothesis_failure")]
     if hyp:
@@ -831,34 +991,45 @@ def adjudicate(
 # The self-test: section 4.4 controls on synthetic fixtures built from public data only.
 # ----------------------------------------------------------------------------------------
 def _sig_dict(key: tuple) -> dict:
-    return {"dim": key[0], "chi_s": list(key[1]), "chi_t": list(key[2]), "chi_st": list(key[3])}
+    return {"dimension": key[0], "s": list(key[1]), "t": list(key[2]), "st": list(key[3])}
 
 
 def build_fixture(
-    raw_output: dict, construction_packet: dict, *, invert: bool = False, derange: bool = False
+    raw_output: dict,
+    construction_packet: dict,
+    *,
+    invert: bool = False,
+    derange: bool = False,
+    zero_based: bool = True,
+    dishonest_signatures: bool = False,
 ) -> dict:
-    """A synthetic answer packet whose reference table IS the committed table (or its
-    global inverse).  It contains no reference value and proves only harness behavior.
+    """A synthetic answer packet IN THE AUTHOR-CONFIRMED SHAPE whose reference table IS the
+    committed table (or its global inverse).  It contains no reference value and proves
+    only harness behavior.
 
-    Labels follow M8.5-A's label-to-dimension map for readability; R0 is the trivial row,
-    R7 the dim-5 row.  With derange=True the packet's rows are labeled by a cyclic shift
-    and an explicit signature table restores the true pairing, so a harness that ignores
-    the table pairs every row wrongly.
+    Labels are for readability only: R0 is the trivial row, R7 the dim-5 row, and the
+    seven free rows take R1..R6, R8 in committed file order (NOT M8.5-A's label map).  With derange=True the packet lists its rows in a nontrivial
+    permutation of the committed order (a cyclic shift over the seven FREE positions, R0
+    and R7 fixed) and the positional map restores the true pairing, so a harness that
+    ignores the map pairs seven rows wrongly and fails AT THE COMPARISON.  With
+    dishonest_signatures=True each free row's own `signature` is the one of the committed
+    row at its packet position (the wrong row), while the map stays true: a harness that
+    paired by signature instead of by the map would fail, and the honest one records
+    `own_signature_differs_from_map` on seven rows.
     """
     raw_rows = load_raw_rows(raw_output)
-    keys = sorted(raw_rows)  # deterministic order
-    trivial = [k for k in keys if not raw_rows[k]["acyclic"]][0]
-    acyclic = [k for k in keys if raw_rows[k]["acyclic"]]
-    r7 = [k for k in acyclic if k[0] == 5][0]
-    labels = ["R0"] + [f"R{i}" for i in range(1, 9)]
-    order = (
-        [trivial]
-        + [k for k in acyclic if k != r7][:6]
-        + [r7]
-        + [k for k in acyclic if k != r7][6:]
-    )
-    # order: R0 trivial, R1..R6 six free rows, R7 the selector, R8 the seventh free row
-    assert len(order) == N_ROWS
+    order = committed_order(raw_output)
+    trivial = [k for k in order if not raw_rows[k]["acyclic"]][0]
+    r7 = [k for k in order if raw_rows[k]["acyclic"] and k[0] == R7_DIM][0]
+    free_keys = [k for k in order if k not in (trivial, r7)]
+    label_of = {trivial: "R0", r7: "R7"}
+    label_of.update(zip(free_keys, ["R1", "R2", "R3", "R4", "R5", "R6", "R8"]))
+    # packet position -> committed position
+    free_pos = [i for i, k in enumerate(order) if k in free_keys]
+    dst_of = {i: i for i in range(N_ROWS)}
+    if derange:
+        dst_of.update(zip(free_pos, free_pos[1:] + free_pos[:1]))
+    base = 0 if zero_based else 1
 
     def value_of(k):
         if k == trivial:
@@ -866,62 +1037,51 @@ def build_fixture(
         v = raw_rows[k]["value"]
         return v.inverse() if invert else v
 
-    true_pairs = dict(zip(labels, order))
-    # Derangement over the seven FREE labels only (R0 and R7 keep their signatures), so a
-    # harness that ignores the table reaches the comparison and fails THERE, on values,
-    # rather than being stopped earlier by a class refusal.
-    free_labels = [lab for lab in labels if lab not in ("R0", "R7")]
-    shifted = dict(zip(free_labels, free_labels[1:] + free_labels[:1]))
+    def cls_of(lab):
+        if lab == "R0":
+            return "declared_convention"
+        return "free_orientation_selector" if lab == "R7" else "free"
+
     rows, entries = [], []
-    for lab in labels:
-        true_key = true_pairs[lab]
-        shown_key = true_pairs[shifted[lab]] if (derange and lab in shifted) else true_key
-        cls = (
-            "declared_convention"
-            if lab == "R0"
-            else "free_orientation_selector" if lab == "R7" else "free"
-        )
+    for pos in range(N_ROWS):
+        key = order[dst_of[pos]]  # the committed row this packet position describes
+        lab = label_of[key]
+        shown = order[pos] if (dishonest_signatures and key in free_keys) else key
         rows.append(
             {
                 "label": lab,
-                "row_signature": _sig_dict(shown_key),
-                "class": cls,
-                "T_squared": value_of(true_key).to_triple(),
+                "signature": _sig_dict(shown),
+                "class": cls_of(lab),
+                "T_squared": value_of(key).to_triple(),
             }
         )
-        entries.append({"label": lab, "row_signature": _sig_dict(true_key)})
+        entries.append({"source_position": pos + base, "destination_position": dst_of[pos] + base})
 
-    # Four identity slots: two Galois-pair ratios (dims 2 and 3 pairs), two sector
-    # products over disjoint halves.  Slot membership here is synthetic; the live packet
+    # Four identity positions: two Galois-pair ratios (dims 2 and 3 pairs), two sector
+    # products over disjoint halves.  Membership here is synthetic; the live packet
     # declares its own.  Expected values are recomputed from the same table, so the
     # fixture is self-consistent by construction.
-    def ident(slot, spec):
+    def ident(position, spec):
         acc = ONE
         for k, e in spec:
             acc = acc * (value_of(k) ** e)
         return {
-            "slot": slot,
-            "factors": [{"row_signature": _sig_dict(k), "exponent": e} for k, e in spec],
+            "position": position,
+            "factors": [{"signature": _sig_dict(k), "exponent": e} for k, e in spec],
             "expected": acc.to_triple(),
         }
 
-    dim2 = [k for k in acyclic if k[0] == 2]
-    dim3 = [k for k in acyclic if k[0] == 3]
-    half_a = [order[1], order[2], order[3]]
-    half_b = [order[4], order[5], order[8]]
+    dim2 = [k for k in free_keys if k[0] == 2]
+    dim3 = [k for k in free_keys if k[0] == 3]
+    half_a, half_b = free_keys[:3], free_keys[3:6]
     identities = [
-        ident("galois_ratio_dim2", [(dim2[0], 1), (dim2[1], -1)]),
-        ident("galois_ratio_dim3", [(dim3[0], 1), (dim3[1], -1)]),
-        ident("sector_product_a", [(k, 1) for k in half_a]),
-        ident("sector_product_b", [(k, 1) for k in half_b]),
+        ident(base + 0, [(dim2[0], 1), (dim2[1], -1)]),
+        ident(base + 1, [(dim3[0], 1), (dim3[1], -1)]),
+        ident(base + 2, [(k, 1) for k in half_a]),
+        ident(base + 3, [(k, 1) for k in half_b]),
     ]
-    imap = (
-        {"mode": "signature_table", "entries": entries}
-        if derange
-        else {"mode": "signature_identity"}
-    )
     return {
-        "format_version": "m8_8-answer-FIXTURE-1",
+        "format_version": "m8_8-answer-FIXTURE-2",
         "target_id": "SELF-TEST FIXTURE, NOT THE CANONICAL PACKET",
         "adjudicates": {
             "group_packet_sha256": PIN_GROUP_PACKET,
@@ -929,12 +1089,25 @@ def build_fixture(
         },
         "rows": rows,
         "identities": identities,
-        "indexing_map": imap,
+        "indexing_map": {
+            "source_domain": "answer_packet.rows",
+            "destination_domain": "RAW_OUTPUT.rows",
+            "zero_based": zero_based,
+            "entries": entries,
+        },
         "convention_map": {
-            "bridge": "T^2_target(rho) := |tau_rho|^2, section 5.4; involution T^2 <-> 1/T^2",
-            "anchor_rule": "select at R7 between the committed table and its global inverse",
-            "basing_reference": "construction packet `basing`, protocol section 4.2",
-            "basing_evaluation": construction_packet["basing"]["evaluation"],
+            "bridge": {
+                "statement": "T^2_target(rho) := |tau_rho|^2, section 5.4; involution T^2 <-> 1/T^2"
+            },
+            "orientation_anchor_rule": {
+                "statement": "select at R7 between the committed table and its global inverse"
+            },
+            "basing_reference": {
+                "reference": "construction packet `basing`, protocol section 4.2"
+            },
+            "representation_evaluation": {
+                "evaluation": construction_packet["basing"]["evaluation"]
+            },
         },
     }
 
@@ -962,6 +1135,19 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
             }
         )
 
+    def sel_by_class(pkt, cls):
+        return [r for r in pkt["rows"] if r["class"] == cls][0]
+
+    def by_label(pkt, lab):
+        return [r for r in pkt["rows"] if r["label"] == lab][0]
+
+    def unequal_positions(out):
+        return sorted(
+            i["position"]
+            for i in (out.get("identities") or [])
+            if not i["equal"] and i["position"] is not None
+        )
+
     # Baseline: the committed table against itself must be `reproduced`.
     fx = build_fixture(raw_output, construction_packet)
     base = _run_fixture(fx, raw_output, construction_packet)
@@ -973,7 +1159,7 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
     nontrivial = [r["label"] for r in fx["rows"] if r["class"] != "declared_convention"]
     for lab in nontrivial:
         m = copy.deepcopy(fx)
-        row = [r for r in m["rows"] if r["label"] == lab][0]
+        row = by_label(m, lab)
         row["T_squared"] = (QPhi.from_triple(row["T_squared"]) * QPhi(2, 0)).to_triple()
         out = _run_fixture(m, raw_output, construction_packet)
         expected_cat = "disagreement" if lab == "R7" else "partial disagreement"
@@ -1000,77 +1186,200 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
             (out["category"], n_flagged),
         )
 
-    # C3: nonidentity (derangement over the seven free labels) indexing fixture, three
-    # arms.  The identity arm and the wrong arm must reach the comparison and fail there.
+    # C3: the NONIDENTITY positional fixture (section 4.4): the packet lists its rows in a
+    # nontrivial permutation of the committed order and the map restores the pairing.
+    # Applying the map must be GREEN; ignoring it (the identity arm) and a preregistered
+    # wrong permutation must each reach the comparison and fail THERE, on seven rows.
     dfx = build_fixture(raw_output, construction_packet, derange=True)
+    n_moved = sum(
+        1
+        for e in dfx["indexing_map"]["entries"]
+        if e["source_position"] != e["destination_position"]
+    )
+    record("C3 the derangement fixture moves exactly the seven free rows", 7, n_moved)
     supplied = _run_fixture(dfx, raw_output, construction_packet)
     identity_arm = _run_fixture(
-        dfx, raw_output, construction_packet, map_override={"mode": "signature_identity"}
+        dfx, raw_output, construction_packet, map_override=identity_indexing_map()
     )
     wrong = copy.deepcopy(dfx["indexing_map"])
-    free_idx = [i for i, e in enumerate(wrong["entries"]) if e["label"] not in ("R0", "R7")]
-    sigs = [wrong["entries"][i]["row_signature"] for i in free_idx]
-    for i, sig in zip(free_idx, sigs[2:] + sigs[:2]):
-        wrong["entries"][i]["row_signature"] = sig
+    moved = [e for e in wrong["entries"] if e["source_position"] != e["destination_position"]]
+    dsts = [e["destination_position"] for e in moved]
+    for e, d in zip(moved, dsts[2:] + dsts[:2]):
+        e["destination_position"] = d
     wrong_arm = _run_fixture(dfx, raw_output, construction_packet, map_override=wrong)
-    record("C3a derangement map, supplied", "reproduced", supplied["category"])
+    record("C3a derangement map, supplied (applied)", "reproduced", supplied["category"])
     record(
-        "C3b derangement map, identity arm (map ignored): red AT THE COMPARISON",
+        "C3b derangement map IGNORED (identity arm): red AT THE COMPARISON",
         ("partial disagreement", 7),
         (identity_arm["category"], len(identity_arm.get("row_mismatches") or [])),
     )
     record(
-        "C3c derangement map, preregistered wrong map: red AT THE COMPARISON",
+        "C3c derangement map, preregistered wrong permutation: red AT THE COMPARISON",
         ("partial disagreement", 7),
         (wrong_arm["category"], len(wrong_arm.get("row_mismatches") or [])),
     )
     # C3d: a map that moves R0 onto an acyclic row is refused on class, separately.
     r0move = copy.deepcopy(dfx["indexing_map"])
-    e0 = [e for e in r0move["entries"] if e["label"] == "R0"][0]
-    e1 = [e for e in r0move["entries"] if e["label"] == "R1"][0]
-    e0["row_signature"], e1["row_signature"] = e1["row_signature"], e0["row_signature"]
+    pos_r0 = dfx["rows"].index(by_label(dfx, "R0"))
+    pos_r1 = dfx["rows"].index(by_label(dfx, "R1"))
+    e0 = [e for e in r0move["entries"] if e["source_position"] == pos_r0][0]
+    e1 = [e for e in r0move["entries"] if e["source_position"] == pos_r1][0]
+    e0["destination_position"], e1["destination_position"] = (
+        e1["destination_position"],
+        e0["destination_position"],
+    )
     out = _run_fixture(dfx, raw_output, construction_packet, map_override=r0move)
-    record("C3d map moving R0 onto an acyclic row refused", "structural failure", out["category"])
+    record(
+        "C3d map moving R0 onto an acyclic row refused BY THE CLASS CHECK",
+        ("structural failure", True),
+        (out["category"], "is acyclic" in out.get("refusal", "")),
+    )
+    # C3e: a LIVE packet whose own signatures contradict the map (section 5.5 makes the
+    # signature the identity) is REFUSED naming both signatures; the same fixture run as a
+    # self-test arm (map_override) is green with the difference RECORDED on seven rows, so
+    # the live refusal and the comparison-level arms are both exercised.
+    sfx3 = build_fixture(raw_output, construction_packet, derange=True, dishonest_signatures=True)
+    out = _run_fixture(sfx3, raw_output, construction_packet)
+    record(
+        "C3e live packet with own signatures contradicting the map refused BY THAT CHECK",
+        ("structural failure", True),
+        (
+            out["category"],
+            "differs from the committed row the map pairs" in out.get("refusal", ""),
+        ),
+    )
+    out = _run_fixture(sfx3, raw_output, construction_packet, map_override=sfx3["indexing_map"])
+    record(
+        "C3e' the same fixture as a self-test arm: green, differences recorded on seven rows",
+        ("reproduced", 7),
+        (
+            out["category"],
+            sum(
+                1 for r in (out.get("rows") or {}).values() if r["own_signature_differs_from_map"]
+            ),
+        ),
+    )
+    # C3f: zero_based = false with both positions shifted by one is the same map.
+    ofx = build_fixture(raw_output, construction_packet, derange=True, zero_based=False)
+    out = _run_fixture(ofx, raw_output, construction_packet)
+    record("C3f one-based derangement map honored", "reproduced", out["category"])
+    # C3g: the base misdeclared (one-based positions under zero_based = true) refuses on
+    # range, never silently re-pairs.
+    mis = copy.deepcopy(ofx)
+    mis["indexing_map"]["zero_based"] = True
+    out = _run_fixture(mis, raw_output, construction_packet)
+    record(
+        "C3g misdeclared base refused ON RANGE",
+        ("structural failure", True),
+        (out["category"], "outside the" in out.get("refusal", "")),
+    )
+    # C3h: a source position listed twice (the entries no longer cover every packet row).
+    twice = copy.deepcopy(dfx)
+    twice["indexing_map"]["entries"][1]["source_position"] = twice["indexing_map"]["entries"][2][
+        "source_position"
+    ]
+    out = _run_fixture(twice, raw_output, construction_packet)
+    record(
+        "C3h source position listed twice refused BY THAT CHECK",
+        ("structural failure", True),
+        (out["category"], "listed twice" in out.get("refusal", "")),
+    )
 
-    # C4: the global inverse resolves to convention difference; the sector-product slots
-    # EXCHANGE values under inversion, and the harness compares them position-wise: swapping
-    # the two expected values reddens both slots, on the identity and the inverted fixture.
+    # C3i: a destination position past the last committed row refuses ON RANGE (not an
+    # IndexError); C3j: a JSON true in an entry is not an int; C3k: an unimplemented domain
+    # string is refused BEFORE any pairing (the map fails closed, PENDING the author).
+    oor = copy.deepcopy(dfx)
+    oor["indexing_map"]["entries"][0]["destination_position"] = N_ROWS
+    out = _run_fixture(oor, raw_output, construction_packet)
+    record(
+        "C3i destination position past the committed rows refused ON RANGE",
+        ("structural failure", True),
+        (out["category"], "outside the committed rows" in out.get("refusal", "")),
+    )
+    boo = copy.deepcopy(dfx)
+    boo["indexing_map"]["entries"][0]["destination_position"] = True
+    out = _run_fixture(boo, raw_output, construction_packet)
+    record(
+        "C3j JSON boolean as a position refused",
+        ("structural failure", True),
+        (out["category"], "must be an int" in out.get("refusal", "")),
+    )
+    for k in ("source_domain", "destination_domain"):
+        dom = copy.deepcopy(dfx)
+        dom["indexing_map"][k] = "m8_5a.label_order"
+        out = _run_fixture(dom, raw_output, construction_packet)
+        record(
+            f"C3k unimplemented {k} refused, map not applied (fails closed)",
+            ("structural failure", True),
+            (out["category"], "not an implemented domain" in out.get("refusal", "")),
+        )
+
+    # C3l: the destination order is looked up BY the domain string: binding a second
+    # string to an order with two free rows exchanged re-pairs exactly those two rows of
+    # the derangement fixture and fails at the comparison, so a vocabulary entry cannot
+    # silently reuse the raw order.
+    def _two_swapped(ro):
+        order = committed_order(ro)
+        a, b = [i for i, k in enumerate(order) if k[0] in (2, 3)][:2]
+        order[a], order[b] = order[b], order[a]
+        return order
+
+    DESTINATION_ORDERS["_selftest.two_swapped"] = _two_swapped
+    try:
+        rev = copy.deepcopy(dfx["indexing_map"])
+        rev["destination_domain"] = "_selftest.two_swapped"
+        out = _run_fixture(dfx, raw_output, construction_packet, map_override=rev)
+    finally:
+        del DESTINATION_ORDERS["_selftest.two_swapped"]
+    record(
+        "C3l a second domain string maps through ITS OWN order: red at the comparison",
+        ("partial disagreement", 2),
+        (out["category"], len(out.get("row_mismatches") or [])),
+    )
+
+    # C3m: no two registered destination domains may yield the same order on the committed
+    # table, so a future entry that merely aliases the raw order fails here.
+    orders = {name: tuple(fn(raw_output)) for name, fn in DESTINATION_ORDERS.items()}
+    record(
+        "C3m registered destination domains are pairwise distinct orders",
+        len(orders),
+        len(set(orders.values())),
+        {"domains": sorted(orders)},
+    )
+
+    # C4: the global inverse resolves to convention difference; the sector-product
+    # positions EXCHANGE values under inversion, and the harness compares them
+    # position-wise: swapping the two expected values reddens both positions, on the
+    # identity and the inverted fixture.
     ifx = build_fixture(raw_output, construction_packet, invert=True)
     out = _run_fixture(ifx, raw_output, construction_packet)
     record("C4a inverted fixture", "convention difference", out["category"])
     for name, base_fx in (("identity", fx), ("inverted", ifx)):
         sw = copy.deepcopy(base_fx)
-        ia = [i for i in sw["identities"] if i["slot"] == "sector_product_a"][0]
-        ib = [i for i in sw["identities"] if i["slot"] == "sector_product_b"][0]
+        ia = [i for i in sw["identities"] if i["position"] == 2][0]
+        ib = [i for i in sw["identities"] if i["position"] == 3][0]
         ia["expected"], ib["expected"] = ib["expected"], ia["expected"]
         out = _run_fixture(sw, raw_output, construction_packet)
         record(
             f"C4b sector expected values swapped on the {name} fixture: position-wise red",
-            ("partial disagreement", ["sector_product_a", "sector_product_b"], 0),
-            (
-                out["category"],
-                sorted(i["slot"] for i in (out.get("identities") or []) if not i["equal"]),
-                len(out.get("row_mismatches") or []),
-            ),
+            ("partial disagreement", [2, 3], 0),
+            (out["category"], unequal_positions(out), len(out.get("row_mismatches") or [])),
         )
 
     # C5: self-inverse anchor -> invalid anchor.  Force R7's reference AND committed to 1.
     sfx = copy.deepcopy(fx)
     sraw = copy.deepcopy(raw_output)
-    for r in sfx["rows"]:
-        if r["class"] == "free_orientation_selector":
-            r["T_squared"] = [1, 0, 1]
+    sel_by_class(sfx, "free_orientation_selector")["T_squared"] = [1, 0, 1]
     for r in sraw["rows"]:
-        if r.get("acyclic") and r["row_signature"]["dim"] == 5:
+        if r.get("acyclic") and r["row_signature"]["dim"] == R7_DIM:
             r["T_squared_native"] = [1, 0, 1]
     out = _run_fixture(sfx, sraw, construction_packet)
     record("C5 self-inverse anchor", "invalid anchor", out["category"])
 
     # C6: anchor equal to neither x nor x^-1 -> disagreement, no row comparison.
     nfx = copy.deepcopy(fx)
-    for r in nfx["rows"]:
-        if r["class"] == "free_orientation_selector":
-            r["T_squared"] = (QPhi.from_triple(r["T_squared"]) * QPhi(7, 0)).to_triple()
+    r = sel_by_class(nfx, "free_orientation_selector")
+    r["T_squared"] = (QPhi.from_triple(r["T_squared"]) * QPhi(7, 0)).to_triple()
     out = _run_fixture(nfx, raw_output, construction_packet)
     record(
         "C6 anchor matches neither orientation",
@@ -1087,14 +1396,8 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
     out = _run_fixture(tfx, raw_output, construction_packet)
     record(
         "C7 identity expected tampered",
-        "partial disagreement",
-        out["category"],
-        {
-            "row_mismatches": len(out.get("row_mismatches") or []),
-            "identities_unequal": [
-                i["slot"] for i in (out.get("identities") or []) if not i["equal"]
-            ],
-        },
+        ("partial disagreement", 0, [2]),
+        (out["category"], len(out.get("row_mismatches") or []), unequal_positions(out)),
     )
 
     # C8: refusals before comparison.
@@ -1143,29 +1446,47 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
         (rec.get("canonical_form_ok"), rec.get("canonicalization_changed_bytes")),
     )
     bad_cm = copy.deepcopy(fx)
-    bad_cm["convention_map"]["basing_evaluation"] = "g |-> rho(g^-1)"
+    bad_cm["convention_map"]["representation_evaluation"] = {"evaluation": "g |-> rho(g^-1)"}
     out = _run_fixture(bad_cm, raw_output, construction_packet)
-    record("C8e basing_evaluation not verbatim refused", "structural failure", out["category"])
-    para = copy.deepcopy(fx)
-    para["convention_map"][
-        "bridge"
-    ] = "|\\tau_\\rho|^2 with no field norm to a subfield (section 5.4)"
-    out = _run_fixture(para, raw_output, construction_packet)
     record(
-        "C8f bridge prose is recorded, never gated (a paraphrase of section 5.4 passes)",
-        ("reproduced", para["convention_map"]["bridge"]),
-        (out["category"], (out.get("convention_map") or {}).get("bridge")),
+        "C8e representation_evaluation with no verbatim field refused BY THAT CHECK",
+        ("structural failure", True),
+        (out["category"], "verbatim" in out.get("refusal", "")),
+    )
+    for item, text in (
+        ("bridge", "|\\tau_\\rho|^2 with no field norm to a subfield (section 5.4)"),
+        ("orientation_anchor_rule", "anchor: R7, compare x and 1/x (section 5.4)"),
+    ):
+        para = copy.deepcopy(fx)
+        para["convention_map"][item] = {"statement": text}
+        out = _run_fixture(para, raw_output, construction_packet)
+        record(
+            f"C8f {item} prose is recorded, never gated (a paraphrase of section 5.4 passes)",
+            ("reproduced", para["convention_map"][item]),
+            (out["category"], (out.get("convention_map") or {}).get(item)),
+        )
+    # C8e': the verbatim text in one field with a CONTRADICTING second string field.
+    two = copy.deepcopy(fx)
+    two["convention_map"]["representation_evaluation"] = {
+        "note": construction_packet["basing"]["evaluation"],
+        "evaluation": "g |-> rho(g^-1)",
+    }
+    out = _run_fixture(two, raw_output, construction_packet)
+    record(
+        "C8e' a second string field beside the verbatim one refused (fails closed)",
+        ("structural failure", True),
+        (out["category"], "exactly one string field" in out.get("refusal", "")),
     )
     # An IDENTICAL duplicate: without the hook the object would still equal the pinned one
     # and be accepted through the fallback, so this control is diagnostic of the hook.
-    dup = canonical_bytes(fx)[:-2] + b',\n  "format_version": "m8_8-answer-FIXTURE-1"\n}\n'
+    dup = canonical_bytes(fx)[:-2] + b',\n  "format_version": "m8_8-answer-FIXTURE-2"\n}\n'
     try:
         load_answer_packet_bytes(dup, sha256_bytes(canonical_bytes(fx)))
         record("C8g duplicate key in delivered bytes refused", "refused", "accepted")
     except Refusal:
         record("C8g duplicate key in delivered bytes refused", "refused", "refused")
     greek = copy.deepcopy(fx)
-    greek["convention_map"]["bridge"] = "T²_target(ρ) := |τ_ρ|², section 5.4"
+    greek["convention_map"]["bridge"] = {"statement": "T²_target(ρ) := |τ_ρ|², section 5.4"}
     utf8 = (json.dumps(greek, sort_keys=True, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
     _, rec = load_answer_packet_bytes(utf8, sha256_bytes(utf8))
     record(
@@ -1173,22 +1494,43 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
         (False, False),
         (rec.get("canonical_form_ok"), rec.get("canonicalization_changed_bytes")),
     )
+    # C8i: a convention item delivered as a bare string (the #452 reading) is refused: the
+    # author-confirmed items are objects, and a silent string fallback would hide a shape
+    # mismatch at the reveal.
+    strcm = copy.deepcopy(fx)
+    strcm["convention_map"]["basing_reference"] = "construction packet `basing`"
+    out = _run_fixture(strcm, raw_output, construction_packet)
+    record(
+        "C8i convention item as a bare string refused",
+        ("structural failure", True),
+        (out["category"], "non-empty object" in out.get("refusal", "")),
+    )
+    # C8j: the verbatim field is reported by name, and the evaluation text is the
+    # construction packet's declaration, so the record shows WHICH field carried it.
+    record(
+        "C8j verbatim evaluation field recorded by name",
+        ["evaluation"],
+        (base.get("convention_map") or {}).get("evaluation_verbatim_fields"),
+    )
 
     # C9: the selector class on a non-R7 row is refused, even with a correct table.
     sel9 = copy.deepcopy(fx)
-    r7 = [r for r in sel9["rows"] if r["class"] == "free_orientation_selector"][0]
-    r4 = [r for r in sel9["rows"] if r["row_signature"]["dim"] == 4][0]
+    r7 = sel_by_class(sel9, "free_orientation_selector")
+    r4 = [r for r in sel9["rows"] if r["signature"]["dimension"] == 4][0]
     r7["class"], r4["class"] = "free", "free_orientation_selector"
     out = _run_fixture(sel9, raw_output, construction_packet)
     record("C9 selector class on a non-R7 row refused", "structural failure", out["category"])
 
-    # C10: two labels sent to one committed signature is refused (injectivity).
+    # C10: two packet rows sent to one committed position is refused (injectivity).
     inj = copy.deepcopy(dfx)
     ents = inj["indexing_map"]["entries"]
-    e1 = [e for e in ents if e["label"] == "R1"][0]
-    e2 = [e for e in ents if e["label"] == "R2"][0]
-    e2["row_signature"] = copy.deepcopy(e1["row_signature"])
-    out = _run_fixture(inj, raw_output, construction_packet)
+    pos_r1 = inj["rows"].index(by_label(inj, "R1"))
+    pos_r2 = inj["rows"].index(by_label(inj, "R2"))
+    e1 = [e for e in ents if e["source_position"] == pos_r1][0]
+    e2 = [e for e in ents if e["source_position"] == pos_r2][0]
+    e2["destination_position"] = e1["destination_position"]
+    # run as an arm: on the live path the self-contradiction check (C3e) fires first
+    out = _run_fixture(dfx, raw_output, construction_packet, map_override=inj["indexing_map"])
     record(
         "C10 non-injective map refused BY THE INJECTIVITY CHECK",
         ("structural failure", True),
@@ -1197,11 +1539,11 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
 
     # C11: structurally trivial identities are refused (R0 factor; zero exponent; wrong kinds).
     triv = copy.deepcopy(fx)
-    r0sig = [r for r in triv["rows"] if r["class"] == "declared_convention"][0]["row_signature"]
+    r0sig = sel_by_class(triv, "declared_convention")["signature"]
     triv["identities"] = [
         {
-            "slot": f"x{i}",
-            "factors": [{"row_signature": r0sig, "exponent": 0}] * 2,
+            "position": i,
+            "factors": [{"signature": r0sig, "exponent": 0}] * 2,
             "expected": [1, 0, 1],
         }
         for i in range(4)
@@ -1210,9 +1552,25 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
     record("C11a trivial identities (R0^0) refused", "structural failure", out["category"])
     kinds = copy.deepcopy(fx)
     kinds["identities"][0] = copy.deepcopy(kinds["identities"][2])
-    kinds["identities"][0]["slot"] = "third_product"
+    kinds["identities"][0]["position"] = 0
     out = _run_fixture(kinds, raw_output, construction_packet)
     record("C11b three products and one ratio refused", "structural failure", out["category"])
+    dpos = copy.deepcopy(fx)
+    dpos["identities"][1]["position"] = 0
+    out = _run_fixture(dpos, raw_output, construction_packet)
+    record(
+        "C11c two identities at one position refused BY THAT CHECK",
+        ("structural failure", True),
+        (out["category"], "positions not distinct" in out.get("refusal", "")),
+    )
+    spos = copy.deepcopy(fx)
+    spos["identities"][1]["position"] = "1"
+    out = _run_fixture(spos, raw_output, construction_packet)
+    record(
+        "C11d identity position as a string refused",
+        ("structural failure", True),
+        (out["category"], "non-negative int" in out.get("refusal", "")),
+    )
 
     # C12: a malformed but otherwise pinned packet yields a recorded structural failure,
     # never a traceback.
@@ -1228,21 +1586,22 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
     # C13: EXACTNESS.  A comparison that were approximate, sign-blind or conjugation-blind
     # would pass C1; these three mutations of one free cell each require exactly one
     # mismatch: negation, Galois conjugation, and a near-miss rational.
-    target = [r for r in fx["rows"] if r["class"] == "free"][2]
+    # The target is a free row with a nonzero phi-part, so conjugation is a real mutation.
+    target = [
+        r for r in fx["rows"] if r["class"] == "free" and QPhi.from_triple(r["T_squared"]).y != 0
+    ][0]
     v = QPhi.from_triple(target["T_squared"])
     near = QPhi(v.x + Fraction(1, 10**20), v.y)  # beyond any float tolerance
     for name, mutant in (
         ("negation", QPhi(-v.x, -v.y)),
         ("Galois conjugation", v.conjugate()),
-        ("near-miss rational (1e-9 off)", near),
+        ("near-miss rational (1e-20 off)", near),
     ):
         if mutant == v:
             record(f"C13 exactness: {name} is a real mutation", True, False)
             continue
         ex = copy.deepcopy(fx)
-        [r for r in ex["rows"] if r["label"] == target["label"]][0][
-            "T_squared"
-        ] = mutant.to_triple()
+        by_label(ex, target["label"])["T_squared"] = mutant.to_triple()
         out = _run_fixture(ex, raw_output, construction_packet)
         record(
             f"C13 exactness: {name} of one cell is exactly one mismatch",
@@ -1272,17 +1631,17 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
         out = _run_fixture(z, raw_output, construction_packet)
         return out["category"], msg in out.get("refusal", "")
 
-    dim3 = [r["row_signature"] for r in fx["rows"] if r["row_signature"]["dim"] == 3]
-    r0sig = [r for r in fx["rows"] if r["class"] == "declared_convention"][0]["row_signature"]
+    dim3 = [r["signature"] for r in fx["rows"] if r["signature"]["dimension"] == 3]
+    r0sig = sel_by_class(fx, "declared_convention")["signature"]
 
     def non_galois(ids):  # dim-2 over dim-3: same exponents, not a pair
-        ids[0]["factors"][1]["row_signature"] = dim3[0]
+        ids[0]["factors"][1]["signature"] = dim3[0]
 
     def overlap(ids):  # product b re-uses a row of product a
-        ids[3]["factors"][0]["row_signature"] = ids[2]["factors"][0]["row_signature"]
+        ids[3]["factors"][0]["signature"] = ids[2]["factors"][0]["signature"]
 
     def r0_factor(ids):
-        ids[2]["factors"].append({"row_signature": r0sig, "exponent": 1})
+        ids[2]["factors"].append({"signature": r0sig, "exponent": 1})
 
     def zero_exp(ids):
         ids[2]["factors"][0]["exponent"] = 0
@@ -1322,12 +1681,12 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
     cj = copy.deepcopy(fx)
     f0 = cj["identities"][2]["factors"][0]
     f0["conjugate"] = True
-    key0 = signature_key(f0["row_signature"])
-    tbl = {signature_key(r["row_signature"]): QPhi.from_triple(r["T_squared"]) for r in cj["rows"]}
+    key0 = signature_key(f0["signature"])
+    tbl = {signature_key(r["signature"]): QPhi.from_triple(r["T_squared"]) for r in cj["rows"]}
     acc = ONE
     for f in cj["identities"][2]["factors"]:
-        val = tbl[signature_key(f["row_signature"])]
-        acc = acc * (val.conjugate() if signature_key(f["row_signature"]) == key0 else val)
+        val = tbl[signature_key(f["signature"])]
+        acc = acc * (val.conjugate() if signature_key(f["signature"]) == key0 else val)
     cj["identities"][2]["expected"] = acc.to_triple()
     out = _run_fixture(cj, raw_output, construction_packet)
     record("C14 genuine conjugate factor in a product is honored", "reproduced", out["category"])
@@ -1402,7 +1761,7 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
     except Refusal:
         record("C16a empty target_id refused", "refused", "refused")
     own99 = copy.deepcopy(fx)
-    own99["rows"][2]["row_signature"]["dim"] = 99
+    own99["rows"][2]["signature"]["dimension"] = 99
     out = _run_fixture(own99, raw_output, construction_packet)
     record(
         "C16b own signature absent from the committed output refused BY THAT CHECK",
@@ -1411,12 +1770,37 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
     )
     # C16c: T^2(R0) = 1 is a declared convention (section 9 item 2); any other value refuses.
     r0v = copy.deepcopy(fx)
-    [r for r in r0v["rows"] if r["class"] == "declared_convention"][0]["T_squared"] = [7, 0, 1]
+    sel_by_class(r0v, "declared_convention")["T_squared"] = [7, 0, 1]
     out = _run_fixture(r0v, raw_output, construction_packet)
     record(
         "C16c declared_convention row carrying a value other than 1 refused",
         ("structural failure", True),
         (out["category"], "is not 1" in out.get("refusal", "")),
+    )
+    # C16e: an extra key on a row (a stale `row_signature` beside `signature`) refuses.
+    extra = copy.deepcopy(fx)
+    extra["rows"][2]["row_signature"] = {"dim": 1}
+    out = _run_fixture(extra, raw_output, construction_packet)
+    record(
+        "C16e extra key on a packet row refused BY THE KEY-SET CHECK",
+        ("structural failure", True),
+        (out["category"], "packet row: key set" in out.get("refusal", "")),
+    )
+    # C16d: the #452 spelling of a signature (`row_signature` with `dim`/`chi_*`) is
+    # refused by the field check, so an old-shape packet cannot pass through by accident.
+    old = copy.deepcopy(fx)
+    sig = old["rows"][2].pop("signature")
+    old["rows"][2]["row_signature"] = {
+        "dim": sig["dimension"],
+        "chi_s": sig["s"],
+        "chi_t": sig["t"],
+        "chi_st": sig["st"],
+    }
+    out = _run_fixture(old, raw_output, construction_packet)
+    record(
+        "C16d the superseded #452 signature spelling refused",
+        ("structural failure", True),
+        (out["category"], "packet row: key set" in out.get("refusal", "")),
     )
     return results
 
