@@ -42,6 +42,12 @@ differs in five places, the substantive one being a POSITIONAL indexing map.  Th
 adapter (PR #453) bound that shape with three readings left PENDING and failing closed;
 the author answered all three on #451 (2026-08-21 14:28), and this second adapter pins
 them.  Both are visible pre-reveal diffs landed before any ciphertext exists.
+  A THIRD adapter (2026-08-22, POST-reveal, visible) changed two things and no semantics:
+  the source-domain STRING is the author's builder's own (`packet_rows_canonical_position`,
+  read off the delivered packet; the #453 placeholder `answer_packet.rows` is refused as
+  superseded), and the terminal summary no longer crashes on the `_sector_coverage` record
+  entry (the record was already written; only the exit code was lost).  C3k and C17 cover
+  both, and the committed harness's step-6 refusal record is published with the rerun.
 
   {
     "format_version": str,
@@ -54,7 +60,7 @@ them.  Both are visible pre-reveal diffs landed before any ciphertext exists.
     "identities": [ {"position": int,
                      "factors": [{"signature": {...}, "exponent": int}, ...]  (EXACT keys),
                      "expected_value": [a,b,c]}  x 4 ],
-    "indexing_map": {"source_domain": "answer_packet.rows",
+    "indexing_map": {"source_domain": SOURCE_DOMAIN,
                      "destination_domain": "m8_3_record_row_position", "zero_based": bool,
                      "entries": [{"source_position": int, "destination_position": int}] x 9},
     "convention_map": {
@@ -252,7 +258,12 @@ EVALUATION_FIELD = "convention"
 # `m8_3_record_row_position`, the M8.3 record's own row order R0..R8, derived below from the
 # two PUBLIC packets alone (`m8_3_record_order`), never from the committed array position.
 # The map FAILS CLOSED: any other domain string is refused before pairing.
-SOURCE_DOMAINS = {"answer_packet.rows"}
+# The SOURCE STRING is the author's builder's own, read off the delivered packet at step 6
+# (2026-08-22): `packet_rows_canonical_position`.  The #453 spelling `answer_packet.rows`
+# was a maintainer placeholder (the author's 2026-08-21 shape post gave keys and types
+# only, no values) and is refused as superseded; the semantics did not move.
+SOURCE_DOMAIN = "packet_rows_canonical_position"
+SOURCE_DOMAINS = {SOURCE_DOMAIN}
 DESTINATION_DOMAIN = "m8_3_record_row_position"
 # destination domain string -> the function producing that ordering of committed signature
 # keys; the order is looked up BY the string, so a vocabulary entry without its ordering
@@ -779,7 +790,7 @@ def identity_indexing_map(zero_based: bool = True) -> dict:
     packet's map (pairing canonical packet row i with M8.3 record row i)."""
     base = 0 if zero_based else 1
     return {
-        "source_domain": "answer_packet.rows",
+        "source_domain": SOURCE_DOMAIN,
         "destination_domain": DESTINATION_DOMAIN,
         "zero_based": zero_based,
         "entries": [
@@ -1277,7 +1288,7 @@ def build_fixture(
         "rows": rows,
         "identities": identities,
         "indexing_map": {
-            "source_domain": "answer_packet.rows",
+            "source_domain": SOURCE_DOMAIN,
             "destination_domain": DESTINATION_DOMAIN,
             "zero_based": zero_based,
             "entries": entries,
@@ -1521,6 +1532,7 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
     )
     for k, bad in (
         ("source_domain", "m8_5a.label_order"),
+        ("source_domain", "answer_packet.rows"),
         ("destination_domain", "RAW_OUTPUT.rows"),
     ):
         dom = copy.deepcopy(dfx)
@@ -2128,10 +2140,53 @@ def self_test(raw_output: dict, construction_packet: dict) -> list:
         ("structural failure", True),
         (out["category"], "packet row: key set" in out.get("refusal", "")),
     )
+
+    # C17: the terminal summary survives a SUCCESS-shaped result.  The honest fixture is
+    # the only self-test arm that reaches a success category, and its identities list ends
+    # with the `_sector_coverage` record entry, which carries no `recomputed`/`expected`;
+    # the 2026-08-22 step-6 diagnostic crashed exactly there, after the record was written
+    # and before the exit code.  The printer is pure, so it is called on the real result.
+    honest = build_fixture(raw_output, construction_packet)
+    out = _run_fixture(honest, raw_output, construction_packet)
+    try:
+        text = summary_lines(out)
+        printed = (out["category"] in SUCCESS, "_sector_coverage" in text, "identity" in text)
+    except Exception as e:  # noqa: BLE001
+        printed = (f"{type(e).__name__}: {e}", False, False)
+    record(
+        "C17 summary printer handles the coverage record on a success result",
+        (True, True, True),
+        printed,
+    )
     return results
 
 
 # ----------------------------------------------------------------------------------------
+def summary_lines(result: dict) -> str:
+    """The terminal summary of an adjudication result.  Pure: the record is already written
+    before this runs, so a failure here could only lose the exit code, which is why it is
+    exercised by the self-test (C17) on a success-shaped result that carries the
+    `_sector_coverage` record entry the identities list ends with."""
+    lines = [f"category     {result['category'].upper()}", f"orientation  {result.get('orientation')}"]
+    for m in result.get("row_mismatches") or []:
+        lines.append(
+            f"  mismatch {m['label']} {m['signature']}: reference {m['reference']} "
+            f"vs selected committed {m['selected_committed']}"
+        )
+    for i in result.get("identities") or []:
+        if i.get("kind") == "record":
+            lines.append(
+                f"  {i['slot']}: {i['rows_in_products']}/{i['nontrivial_rows']} nontrivial rows "
+                f"in the two sector products, uncovered {i['uncovered']}"
+            )
+            continue
+        lines.append(
+            f"  identity {i['slot']}: {'equal' if i['equal'] else 'UNEQUAL'} "
+            f"recomputed {i['recomputed']} expected {i['expected']}"
+        )
+    return "\n".join(lines)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--packet", type=Path, help="decrypted canonical answer packet (step 6)")
@@ -2221,18 +2276,7 @@ def main() -> int:
 
     record.update(result)
     args.json.write_text(json.dumps(record, indent=2, default=str) + "\n")
-    print(f"category     {result['category'].upper()}")
-    print(f"orientation  {result.get('orientation')}")
-    for m in result.get("row_mismatches") or []:
-        print(
-            f"  mismatch {m['label']} {m['signature']}: reference {m['reference']} "
-            f"vs selected committed {m['selected_committed']}"
-        )
-    for i in result.get("identities") or []:
-        print(
-            f"  identity {i['slot']}: {'equal' if i['equal'] else 'UNEQUAL'} "
-            f"recomputed {i['recomputed']} expected {i['expected']}"
-        )
+    print(summary_lines(result))
     print(f"written      {args.json}")
     if result["category"] in SUCCESS:
         return 0
