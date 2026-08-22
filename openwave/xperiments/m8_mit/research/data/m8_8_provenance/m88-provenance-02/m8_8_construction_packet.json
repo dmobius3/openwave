@@ -1,0 +1,150 @@
+{
+  "abstract_generators": {
+    "s": 118,
+    "t": 80
+  },
+  "basing": {
+    "augmentation": "eps: C_0 -> Z sends every group element to 1; eps is the terminal map and is NOT d_1",
+    "basis_order": "degree 1 basis (e_s, e_t) matches abstract_generators; degree 2 basis (f_1, f_2) matches the relators s^3 (st)^-2 and t^5 (st)^-2",
+    "boundary_direction": "chains are row vectors; boundary maps act on the RIGHT, so a chain c in C_n maps to c . d_n in C_{n-1}",
+    "evaluation": "g |-> rho(g); no inverse, transpose or dual variant",
+    "module_side": "left",
+    "vector_convention": "row"
+  },
+  "boundary_maps": {
+    "d1": [
+      [
+        [
+          [
+            1,
+            118
+          ],
+          [
+            -1,
+            119
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            80
+          ],
+          [
+            -1,
+            119
+          ]
+        ]
+      ]
+    ],
+    "d2": [
+      [
+        [
+          [
+            1,
+            20
+          ],
+          [
+            -1,
+            71
+          ],
+          [
+            1,
+            118
+          ]
+        ],
+        [
+          [
+            -1,
+            38
+          ],
+          [
+            -1,
+            118
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            -1,
+            71
+          ],
+          [
+            -1,
+            119
+          ]
+        ],
+        [
+          [
+            1,
+            28
+          ],
+          [
+            1,
+            80
+          ],
+          [
+            1,
+            94
+          ],
+          [
+            -1,
+            118
+          ],
+          [
+            1,
+            119
+          ]
+        ]
+      ]
+    ],
+    "d3": [
+      [
+        [
+          [
+            -1,
+            7
+          ],
+          [
+            1,
+            16
+          ]
+        ],
+        [
+          [
+            -1,
+            3
+          ],
+          [
+            1,
+            7
+          ]
+        ]
+      ]
+    ]
+  },
+  "degree_range": [
+    0,
+    3
+  ],
+  "format_version": "m8_8-construction-1",
+  "free_ranks": [
+    1,
+    2,
+    2,
+    1
+  ],
+  "group_packet_sha256": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+  "model_kind": "finite_cellular",
+  "provenance_id": {
+    "id": "M88-CONSTR-02",
+    "source_content_sha256": "8a3a1c87f54372a446356a5c2a5ece4d9b4ba7a32367ef129b8baf18b44733f6"
+  },
+  "top_closure": {
+    "basis_element": 0,
+    "orientation": "the single 3-cell, positively oriented; its basis element is the generator of C_3 and carries the fundamental class"
+  },
+  "truncation_rule": null
+}

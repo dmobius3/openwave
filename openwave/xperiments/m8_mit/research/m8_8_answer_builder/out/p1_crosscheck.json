@@ -1,0 +1,768 @@
+{
+  "_artifact_kind": "m8_8-p1-crosscheck",
+  "_banner": "QUARANTINED, ANSWER-BEARING.\nONE authorized destination: an author-side informed redline session, which\nis permanently author-side once it receives this. Nothing else.\nBARRED from the PR, commit messages, the protocol, the sidecar, the public\nciphertext README, the P5 independent reader, and any \u00a7 4.3 permitted input.\nDo not paste, quote or commit it anywhere.\n",
+  "_not_an_answer_packet": "P1 cross-check table. NOT the \u00a7 4.4 answer packet, which is closed at seven keys and is constructed and validated at P2.",
+  "adjudicates": {
+    "construction_packet": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06",
+    "group_packet": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9"
+  },
+  "checks": [
+    {
+      "detail": "e3b0c945bbbb15b4",
+      "id": "ADJ_GROUP",
+      "ok": true
+    },
+    {
+      "detail": "df00c0222f98c481",
+      "id": "ADJ_CONSTRUCTION",
+      "ok": true
+    },
+    {
+      "detail": "3/3 source records match their pins",
+      "id": "SRC_PINNED",
+      "ok": true
+    },
+    {
+      "detail": "120",
+      "id": "ENUM_ORDER",
+      "ok": true
+    },
+    {
+      "detail": "27ff780d28d5d854",
+      "id": "ENUM_DIGEST",
+      "ok": true
+    },
+    {
+      "detail": "2389",
+      "id": "ENUM_BYTES",
+      "ok": true
+    },
+    {
+      "detail": "3/3 pinned rank keys",
+      "id": "ENUM_RANK_KEYS",
+      "ok": true
+    },
+    {
+      "detail": "9",
+      "id": "SIG_COUNT",
+      "ok": true
+    },
+    {
+      "detail": "120",
+      "id": "SIG_SUMSQ",
+      "ok": true
+    },
+    {
+      "detail": "[1, 2, 2, 3, 3, 4, 4, 5, 6]",
+      "id": "SIG_DIMS",
+      "ok": true
+    },
+    {
+      "detail": "1",
+      "id": "SIG_LABELS_UNIQUE",
+      "ok": true
+    },
+    {
+      "detail": "9 distinct",
+      "id": "SIG_SEPARATION",
+      "ok": true
+    },
+    {
+      "detail": "{'s': 6, 't': 10, 'st': 4}",
+      "id": "SIG_ORDERS",
+      "ok": true
+    },
+    {
+      "detail": "GATES: 12/12 pass, 12 pinned ids matched",
+      "id": "SRC_RUN_THEORY",
+      "ok": true
+    },
+    {
+      "detail": "GATES: 23/23 pass, 23 pinned ids matched",
+      "id": "SRC_RUN_PLATFORM",
+      "ok": true
+    },
+    {
+      "detail": "0 unevaluable",
+      "id": "VAL_PARSE",
+      "ok": true
+    },
+    {
+      "detail": "none",
+      "id": "VAL_NO_INTRA_SOURCE_CONFLICT",
+      "ok": true
+    },
+    {
+      "detail": "A and B2 carry all 9",
+      "id": "VAL_REQUIRED_CARRIERS",
+      "ok": true
+    },
+    {
+      "detail": "both families on all 9",
+      "id": "VAL_FAMILIES",
+      "ok": true
+    },
+    {
+      "detail": "9/9",
+      "id": "VAL_AGREE",
+      "ok": true
+    },
+    {
+      "detail": "not self-inverse",
+      "id": "ANCHOR_NOT_SELF_INVERSE",
+      "ok": true
+    },
+    {
+      "detail": "6 admissible t derived from the presentation",
+      "id": "GEN_CANDIDATE_SET",
+      "ok": true
+    },
+    {
+      "detail": "class sizes [3, 3]",
+      "id": "GEN_CLASS_PARTITION",
+      "ok": true
+    },
+    {
+      "detail": "every member of a class behaves identically",
+      "id": "GEN_UNIFORM_IN_CLASS",
+      "ok": true
+    },
+    {
+      "detail": "identical signature set, so a join by signature still succeeds",
+      "id": "GEN_WRONG_CLASS_SAME_SIGSET",
+      "ok": true
+    },
+    {
+      "detail": "moved ['R1', 'R2', 'R3', 'R4']",
+      "id": "GEN_WRONG_CLASS_IS_GALOIS_PARTNER_MAP",
+      "ok": true
+    },
+    {
+      "detail": "4 identities, all factors are known rows",
+      "id": "IDY_PARSED",
+      "ok": true
+    },
+    {
+      "detail": "4 identities (4 unique), kinds ['product', 'product', 'ratio', 'ratio']; \u00a7 4.4 declares 4 slots",
+      "id": "IDY_SHAPE",
+      "ok": true
+    },
+    {
+      "detail": "4 hold, 4 evaluated, 4 parsed, 4 declared",
+      "id": "IDY_HOLDS",
+      "ok": true
+    },
+    {
+      "detail": "R1<->R2 bound by ['ratio:R1^1,R2^-1']; R3<->R4 bound by ['ratio:R3^1,R4^-1']",
+      "id": "IDY_PAIRWISE_SENSITIVITY",
+      "ok": true
+    }
+  ],
+  "generator_class_diagnostic": {
+    "admissible_t": [
+      78,
+      80,
+      85,
+      90,
+      93,
+      97
+    ],
+    "classes": [
+      {
+        "identical_rows": true,
+        "is_packet_class": true,
+        "members": [
+          78,
+          80,
+          85
+        ],
+        "moved": [],
+        "same_signature_set": true,
+        "uniform_within_class": true
+      },
+      {
+        "identical_rows": false,
+        "is_packet_class": false,
+        "members": [
+          90,
+          93,
+          97
+        ],
+        "moved": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ],
+        "same_signature_set": true,
+        "uniform_within_class": true
+      }
+    ],
+    "exchanged_pairs": [
+      [
+        "R1",
+        "R2"
+      ],
+      [
+        "R3",
+        "R4"
+      ]
+    ],
+    "galois_partner_map": {
+      "R0": "R0",
+      "R1": "R2",
+      "R2": "R1",
+      "R3": "R4",
+      "R4": "R3",
+      "R5": "R5",
+      "R6": "R6",
+      "R7": "R7",
+      "R8": "R8"
+    }
+  },
+  "generator_ids": {
+    "s": 118,
+    "st": 71,
+    "t": 80
+  },
+  "identities": [
+    {
+      "factors": [
+        [
+          "R3",
+          1
+        ],
+        [
+          "R4",
+          -1
+        ]
+      ],
+      "id": "ratio:R3^1,R4^-1",
+      "kind": "ratio",
+      "stated": "phi^-4"
+    },
+    {
+      "factors": [
+        [
+          "R1",
+          1
+        ],
+        [
+          "R2",
+          -1
+        ]
+      ],
+      "id": "ratio:R1^1,R2^-1",
+      "kind": "ratio",
+      "stated": "phi^-8"
+    },
+    {
+      "factors": [
+        [
+          "R3",
+          1
+        ],
+        [
+          "R7",
+          1
+        ],
+        [
+          "R5",
+          1
+        ],
+        [
+          "R4",
+          1
+        ]
+      ],
+      "id": "product:R3^1,R7^1,R5^1,R4^1",
+      "kind": "product",
+      "stated": "4"
+    },
+    {
+      "factors": [
+        [
+          "R1",
+          1
+        ],
+        [
+          "R2",
+          1
+        ],
+        [
+          "R6",
+          1
+        ],
+        [
+          "R8",
+          1
+        ]
+      ],
+      "id": "product:R1^1,R2^1,R6^1,R8^1",
+      "kind": "product",
+      "stated": "1/4"
+    }
+  ],
+  "identity_pairwise_sensitivity": [
+    {
+      "detects": false,
+      "identity": "ratio:R3^1,R4^-1",
+      "pair": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "detects": true,
+      "identity": "ratio:R1^1,R2^-1",
+      "pair": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "detects": false,
+      "identity": "product:R3^1,R7^1,R5^1,R4^1",
+      "pair": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "detects": false,
+      "identity": "product:R1^1,R2^1,R6^1,R8^1",
+      "pair": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "detects": true,
+      "identity": "ratio:R3^1,R4^-1",
+      "pair": [
+        "R3",
+        "R4"
+      ]
+    },
+    {
+      "detects": false,
+      "identity": "ratio:R1^1,R2^-1",
+      "pair": [
+        "R3",
+        "R4"
+      ]
+    },
+    {
+      "detects": false,
+      "identity": "product:R3^1,R7^1,R5^1,R4^1",
+      "pair": [
+        "R3",
+        "R4"
+      ]
+    },
+    {
+      "detects": false,
+      "identity": "product:R1^1,R2^1,R6^1,R8^1",
+      "pair": [
+        "R3",
+        "R4"
+      ]
+    }
+  ],
+  "orders": {
+    "s": 6,
+    "st": 4,
+    "t": 10
+  },
+  "registry": {
+    "declared": 30,
+    "duplicated": [],
+    "emitted": 30,
+    "missing": [],
+    "undeclared": []
+  },
+  "signatures": {
+    "R0": {
+      "built_as": "Sym^0",
+      "dimension": 1,
+      "s": [
+        1,
+        0,
+        1
+      ],
+      "st": [
+        1,
+        0,
+        1
+      ],
+      "t": [
+        1,
+        0,
+        1
+      ]
+    },
+    "R1": {
+      "built_as": "Sym^1",
+      "dimension": 2,
+      "s": [
+        1,
+        0,
+        1
+      ],
+      "st": [
+        0,
+        0,
+        1
+      ],
+      "t": [
+        0,
+        1,
+        1
+      ]
+    },
+    "R2": {
+      "built_as": "conj(Sym^1)",
+      "dimension": 2,
+      "s": [
+        1,
+        0,
+        1
+      ],
+      "st": [
+        0,
+        0,
+        1
+      ],
+      "t": [
+        1,
+        -1,
+        1
+      ]
+    },
+    "R3": {
+      "built_as": "Sym^2",
+      "dimension": 3,
+      "s": [
+        0,
+        0,
+        1
+      ],
+      "st": [
+        -1,
+        0,
+        1
+      ],
+      "t": [
+        0,
+        1,
+        1
+      ]
+    },
+    "R4": {
+      "built_as": "conj(Sym^2)",
+      "dimension": 3,
+      "s": [
+        0,
+        0,
+        1
+      ],
+      "st": [
+        -1,
+        0,
+        1
+      ],
+      "t": [
+        1,
+        -1,
+        1
+      ]
+    },
+    "R5": {
+      "built_as": "Sym^1(x)conj(Sym^1) residual",
+      "dimension": 4,
+      "s": [
+        1,
+        0,
+        1
+      ],
+      "st": [
+        0,
+        0,
+        1
+      ],
+      "t": [
+        -1,
+        0,
+        1
+      ]
+    },
+    "R6": {
+      "built_as": "Sym^3",
+      "dimension": 4,
+      "s": [
+        -1,
+        0,
+        1
+      ],
+      "st": [
+        0,
+        0,
+        1
+      ],
+      "t": [
+        1,
+        0,
+        1
+      ]
+    },
+    "R7": {
+      "built_as": "Sym^4",
+      "dimension": 5,
+      "s": [
+        -1,
+        0,
+        1
+      ],
+      "st": [
+        1,
+        0,
+        1
+      ],
+      "t": [
+        0,
+        0,
+        1
+      ]
+    },
+    "R8": {
+      "built_as": "Sym^5",
+      "dimension": 6,
+      "s": [
+        0,
+        0,
+        1
+      ],
+      "st": [
+        0,
+        0,
+        1
+      ],
+      "t": [
+        -1,
+        0,
+        1
+      ]
+    }
+  },
+  "sources": {
+    "A_theory": {
+      "sha256": "2662e4b56571f0278c7b9223d8682886612b79873640fc4da4bc2ff5e13d033f"
+    },
+    "B1_method_note": {
+      "sha256": "3e0c1901d4089991a1de7cff0b1cde453257a29891793249ce63955f144ef06d"
+    },
+    "B2_reproducer": {
+      "sha256": "cab9a6cd09c9943d21af636f9a1be56bf12b52f4954ecf78907fe5e1718871df"
+    }
+  },
+  "values": [
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "mp.mpf(1)",
+        "B1 platform/method-note-1.4": "1",
+        "B2 platform/reproducer-partE": "mp.mpf(1)"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R0",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "phi ** -4 / 4",
+        "B1 platform/method-note-1.4": "phi^-4/4",
+        "B2 platform/reproducer-partE": "phi ** -4 / 4"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R1",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        5,
+        -3,
+        4
+      ]
+    },
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "phi ** 4 / 4",
+        "B1 platform/method-note-1.4": "phi^4/4",
+        "B2 platform/reproducer-partE": "phi ** 4 / 4"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R2",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "mp.mpf(4) / 5 * phi ** -2",
+        "B1 platform/method-note-1.4": "(4/5)phi^-2",
+        "B2 platform/reproducer-partE": "mp.mpf(4) / 5 * phi ** -2"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R3",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        8,
+        -4,
+        5
+      ]
+    },
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "mp.mpf(4) / 5 * phi ** 2",
+        "B1 platform/method-note-1.4": "(4/5)phi^2",
+        "B2 platform/reproducer-partE": "mp.mpf(4) / 5 * phi ** 2"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R4",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        4,
+        4,
+        5
+      ]
+    },
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "mp.mpf(25) / 9",
+        "B1 platform/method-note-1.4": "25/9",
+        "B2 platform/reproducer-partE": "mp.mpf(25) / 9"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R5",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        25,
+        0,
+        9
+      ]
+    },
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "mp.mpf(1)",
+        "B1 platform/method-note-1.4": "1",
+        "B2 platform/reproducer-partE": "mp.mpf(1)"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R6",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "mp.mpf(9) / 4",
+        "B1 platform/method-note-1.4": "9/4",
+        "B2 platform/reproducer-partE": "mp.mpf(9) / 4"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R7",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        9,
+        0,
+        4
+      ]
+    },
+    {
+      "as_written": {
+        "A  theory/torsion-correction": "mp.mpf(4)",
+        "B1 platform/method-note-1.4": "4",
+        "B2 platform/reproducer-partE": "mp.mpf(4)"
+      },
+      "families": [
+        "platform",
+        "theory"
+      ],
+      "label": "R8",
+      "sources": [
+        "A  theory/torsion-correction",
+        "B1 platform/method-note-1.4",
+        "B2 platform/reproducer-partE"
+      ],
+      "triple": [
+        4,
+        0,
+        1
+      ]
+    }
+  ]
+}

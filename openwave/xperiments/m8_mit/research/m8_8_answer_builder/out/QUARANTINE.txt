@@ -1,0 +1,4 @@
+This directory was quarantined as answer-bearing from P1 (2026-08-10) until § 8 step 6.
+The answer packet it feeds was opened by the maintainer on 2026-08-22 and published at
+step 9 (PR #458), so the quarantine is discharged. The artifact here is the frozen P1
+cross-check the P2 emitter consumed; its hash is recorded in ../README.md.

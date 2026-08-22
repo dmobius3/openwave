@@ -1,0 +1,28 @@
+{
+  "coefficient_field": {
+    "generator": "phi",
+    "minimal_polynomial": "phi^2 - phi - 1"
+  },
+  "coefficient_form": "(a + b*phi)/2 with integer a and b; the denominator is fixed at 2 for every component and is not reduced",
+  "format_version": "m8_5a-packet-v1",
+  "generators": [
+    [
+      "(1 + 0*phi)/2",
+      "(1 + 0*phi)/2",
+      "(1 + 0*phi)/2",
+      "(1 + 0*phi)/2"
+    ],
+    [
+      "(0 + 0*phi)/2",
+      "(1 + 0*phi)/2",
+      "(-1 + 1*phi)/2",
+      "(0 + 1*phi)/2"
+    ]
+  ],
+  "quaternion_basis": [
+    "1",
+    "i",
+    "j",
+    "k"
+  ]
+}

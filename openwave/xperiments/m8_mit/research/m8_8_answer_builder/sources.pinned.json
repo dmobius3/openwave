@@ -1,0 +1,55 @@
+{
+  "_note": "Expected revisions AND gate inventories of the source records. p1.py gates SRC_PINNED and SRC_RUN_* against this. EXTERNAL TRUST ROOT: this file is caller-selectable, so a synchronized source-and-pin replacement is not detectable from inside P1. Its hash is recorded in the bundle manifest so a reviewer can pin the pin.",
+  "environment_when_pinned": {
+    "mpmath": "1.3.0",
+    "numpy": "2.5.0",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "python": "3.13.13"
+  },
+  "gate_ids": {
+    "repro": [
+      "A1_char_orthonormality",
+      "A2_e8_marks",
+      "A3_completeness",
+      "B1_kostant_exponents",
+      "C1_cgeom",
+      "D1_mu_lambda",
+      "D2_sqrt_omega",
+      "E_R1",
+      "E_R2",
+      "E_R3",
+      "E_R4",
+      "E_R5",
+      "E_R6",
+      "E_R7",
+      "E_R8",
+      "E_galois_R3R4",
+      "E_galois_R1R2",
+      "E_sector_products",
+      "F1_products24",
+      "G1_scorecard_counts",
+      "G2_ratios_match_declared",
+      "G3_null_test_provenance",
+      "G4_ranks_match_canonical"
+    ],
+    "theory": [
+      "char_orthonormality",
+      "e8_marks",
+      "r7_sign_calibration",
+      "int_closed_forms",
+      "half_closed_forms",
+      "galois_ratios",
+      "sector_products",
+      "tensor_N",
+      "diagnosis_coexact_only",
+      "transcription_masses",
+      "unchanged_products",
+      "splittings"
+    ]
+  },
+  "sources": {
+    "note": "3e0c1901d4089991a1de7cff0b1cde453257a29891793249ce63955f144ef06d",
+    "repro": "cab9a6cd09c9943d21af636f9a1be56bf12b52f4954ecf78907fe5e1718871df",
+    "theory": "2662e4b56571f0278c7b9223d8682886612b79873640fc4da4bc2ff5e13d033f"
+  }
+}

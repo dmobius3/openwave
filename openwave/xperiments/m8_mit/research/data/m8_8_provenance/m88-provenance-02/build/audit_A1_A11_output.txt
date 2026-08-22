@@ -1,0 +1,43 @@
+packet            m8_8_construction_packet.json
+incoming sha256   df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06
+authoritative     df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06
+canonicalization  no-op (already canonical)
+
+  PASS  A1   format: key set, degree range, truncation rule, shapes, integer leaves
+        {"keys_ok": true, "shapes": [[2, 1], [2, 2], [1, 2]], "expected_shapes": [[2, 1], [2, 2], [1, 2]], "model_kind": "finite_cellular"}
+  PASS  A2   canonicalization: delivered bytes are the declared canonical form
+        {"canonical_matches_delivered": true, "ascii": true, "crlf": false}
+  PASS  A3   group binding: hash, generator correspondence, relations, generation
+        {"group_hash_reproduces": true, "s": 118, "t": 80, "orders": [6, 10, 4], "relations_hold": true, "elements_generated": 120}
+  PASS  A4   the complex is a complex: d_(n+1) d_n = 0 over Z[2I]
+        {"d2_d1_zero": true, "d3_d2_zero": true}
+  PASS  A5   census: declared free ranks and chi = 0
+        {"free_ranks": [1, 2, 2, 1], "chi": 0}
+  PASS  A6   trivial sector: H_*(Z (x) C_*) = (Z, 0, 0, Z) through the declared eps
+        {"eps_d1": [[0], [0]], "eps_d2": [[1, -2], [-2, 3]], "eps_d2_det": -1, "eps_d3": [[0, 0]], "d1_is_the_1_cell_correspondence": true}
+  PASS  A7   universal cover: H_*(C_* (x) F_p) = (1, 0, 0, 1) at every tested prime
+        {"2": [1, 0, 0, 1], "3": [1, 0, 0, 1], "5": [1, 0, 0, 1], "7": [1, 0, 0, 1], "10007": [1, 0, 0, 1]}
+  PASS  A8   per-irrep acyclicity: trivial non-acyclic (expected), nontrivial acyclic
+        {"R0": false, "4a": true, "2a": true, "3a": true, "4b": true, "5": true, "6": true, "2b": true, "3b": true}
+  PASS  A9   leakage: no answer-bearing vocabulary, no decimal literal, no extra key
+        {"vocabulary_hits": [], "decimal_literal": false, "extra_keys": []}
+  PASS  A10  relator provenance: each d2 row is the Fox jacobian of its declared relator
+        {"unique_match_per_row": true, "matched_relators": [["s^3 (st)^-2"], ["t^5 (st)^-2"]]}
+  PASS  A11  exact top boundary: im d3 = ker d2 as lattices, certified without a prime set
+        {"ranks": [119, 121, 119], "ceilings": [119, 121, 119], "bounds_close": true, "rank_ker_d2": 119, "im_d3_saturated": true, "certificate": {"pivots": 119, "outcome": "cleared with unit pivots"}}
+
+  universal-cover Betti     {"2": [1, 0, 0, 1], "3": [1, 0, 0, 1], "5": [1, 0, 0, 1], "7": [1, 0, 0, 1], "10007": [1, 0, 0, 1]}
+  matched relators          [["s^3 (st)^-2"], ["t^5 (st)^-2"]]
+
+  DETECTED  d3 coefficient off by one          expected red A4, observed ['A11', 'A4', 'A6', 'A7']
+  DETECTED  d3 two entries swapped             expected red A4, observed ['A4']
+  DETECTED  d2 element id shifted              expected red A4, observed ['A10', 'A11', 'A4', 'A7', 'A8']
+  DETECTED  d2 sign flipped on one term        expected red A4, observed ['A10', 'A11', 'A4', 'A6', 'A7', 'A8']
+  DETECTED  d1 augmentation term dropped       expected red A6, observed ['A11', 'A4', 'A6', 'A7']
+  DETECTED  abstract generator s remapped      expected red A3, observed ['A10', 'A3', 'A6']
+  DETECTED  free_ranks top rank inflated       expected red A1, observed ['A1', 'A5', 'A7']
+  DETECTED  d3 scaled to 2 d3 inside ker d2    expected red A7, observed ['A11', 'A7']
+  DETECTED  declared relator relabelled        expected red A10, observed ['A10']
+  DETECTED  d3 scaled to 11 d3, invisible to A7 expected red A11, observed ['A11']
+
+ALL CHECKS PASS: True | MUTATIONS ALL DETECTED: True
