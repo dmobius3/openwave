@@ -9,6 +9,8 @@
 > the maintainer verification run recorded in that PR's review. The author owns the
 > science; corrections via PR or discussion are welcome.
 
+> **Archive pointer (2026-08-22).** Rows below that cite M9.3 to M9.73 results describe the author's parked campaign records, not files in the tree; they live in PR #441's branch history at `a5640709` and return as per-task PRs.
+
 ## 1. What NSM is
 
 NSM is an **effective-theory assembly, not an emergence program**: Palatini
@@ -36,9 +38,9 @@ the paper series lives in the author's repo
 | Particle rows out of reach by design | The SM is installed, so every particle, charge, and wave-emergence criterion stays 🚧 permanently for this column; scoring them would be a category error ([`m9_theory_canonical.md`](m9_theory_canonical.md) § 7) | Nothing. The column claims gravity rows only |
 | The selection claim is not in-platform | "Entanglement selects Einstein-Cartan" rests on holographic certificates (FGHMV-class) that exist as papers, not as platform scripts | Later tasks, one certificate at a time, each needing its own runnable artifact before anything is cited as in-platform |
 | Newton limit unproven here | Attractive \(1/r^2\) from the inherited Einstein equations is pre-registered (task M9.2) and not run | M9.2, on its locked gates |
-| de Sitter / cosmology obstructed | The FGHMV-standard copy onto the cosmological horizon fails on sign and isometries (M9.6); Jacobson 1995/2016 is not a substitute (M9.7); Einstein+\(\Lambda\) from a cosmological CFT is not claimed | Open. Recorded as documented negatives, which is the shape this platform wants |
-| \(I_B\) multi-digit coefficient | Negative on three extraction routes; no source-independent multi-digit coefficient exists | Open, with the negatives on record |
-| Second-order Einstein-Cartan | Metric Einstein at second order is cited (FHHPRV 2017), not re-derived; the axial matching is obstructed | Open |
+| de Sitter / cosmology obstructed | Parked campaign record: the FGHMV-standard copy onto the cosmological horizon fails on sign and isometries (M9.6); Jacobson 1995/2016 is not a substitute (M9.7); Einstein+\(\Lambda\) from a cosmological CFT is not claimed | Open. Recorded as documented negatives, which is the shape this platform wants |
+| \(I_B\) multi-digit coefficient | Parked campaign record: negative on three extraction routes; no source-independent multi-digit coefficient exists | Open, with the negatives on record |
+| Second-order Einstein-Cartan | Parked campaign record: metric Einstein at second order is cited (FHHPRV 2017), not re-derived; the axial matching is obstructed | Open |
 
 ## 3. Evidence weight (the grading the column starts with)
 

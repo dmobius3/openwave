@@ -1,12 +1,14 @@
-# M9 / EMERGENT GRAVITY, ROADMAP
+# M9 / NSM (EMERGENT GRAVITY), ROADMAP
 
-> Proposed column roadmap. Index of work only; results live in the task
+> Column roadmap. Index of work only; results live in the task
 > documents. Live: [IN PROGRESS](#in-progress). Queued: [BACKLOG](#backlog).
 > Closed: [DONE](#done). Reading rules: [§ CONVENTIONS](#conventions).
 
+> **Archive pointer (2026-08-22).** The campaign records this document cites (M9.3 to M9.73: notes, scripts, data, latex, APPLICATION) are not in the tree; they are parked in PR #441's branch history at `a5640709` and return as per-task PRs against registered roadmap rows. Their links below were reduced to plain text at the merge trim.
+
 ## IN PROGRESS
 
-> Nothing running. Newton is locked and queued. Metric note is closed as writing.
+> Nothing running.
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
@@ -14,25 +16,32 @@
 ## BACKLOG
 
 > Native gravity cell after the algebra gate. Headless only. Pre-registered.
+> Parked rows: work the author's agent produced before the column was registered; the records live in PR #441's branch history (`a5640709`) and each returns as its own per-task PR, at which point the row moves.
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
+| M9.3 | Metric phenomena note | Parked. Domain note: Einstein+Lambda, FGHMV cited, dS [O], torsion out of scope. Record at `a5640709` | author per-task PR |
+| M9.4 | Axial UV deformation | Parked. Q4b tree-level r(k)=(3/16)/(1+k^2/M^2). Record at `a5640709` | author per-task PR |
+| M9.5 | Q4a holographic pair | Parked. Selection-uniqueness negative; existence still [O]. Record at `a5640709` | author per-task PR |
+| M9.6 | de Sitter FGHMV bar | Parked. Copy obstructed (sign, isometries). Record at `a5640709` | author per-task PR |
+| M9.7 | Jacobson substitute | Parked. Not [P]. Record at `a5640709` | author per-task PR |
+| M9.8+ | Entanglement-gravity campaign | Parked. Papers 14 to 73 (A1/A2 ansatz, first law, Gauss and enclosed-energy results, vacuum-energy negatives); the author registers each as a task row before its PR. Record at `a5640709` | author per-task PR |
 
 
-## STATUS AT A GLANCE (2026-08-15)
+## STATUS AT A GLANCE (2026-08-22)
 
 | Question | Answer |
 | --- | --- |
-| Where is M9? | Author-side proposed column. Discussion 442 plus PR 441. No MODELS.md edit |
+| Where is M9? | Registered column (admission: discussion #442, 2026-08-15; activation merge: PR #441). MODELS.md column present, Hehl-Datta certification at ⚠️, every other cell 🚧 |
 | What kind of column? | Gravity-certification EFT. Matter installed. Closer to M8 than M5 |
-| What decides the first cell? | M9.2 C1 passed as inherited Newton; C2 failed. No MODELS.md column until an official ID exists |
+| What decides the first cell? | An in-platform gravity result against a pre-registered gate, landed by a per-task PR. M9.2 C1 passed only as inherited Newton, C2 failed, so the Newton cell stays 🚧 |
 
 ## CONVENTIONS
 
 > Standing reading rules. Dated events live in [§ CHANGE-LOG](#change-log).
 
 **Spec of record.** [`m9_theory_canonical.md`](m9_theory_canonical.md) wins when
-documents disagree. Application: [`APPLICATION.md`](APPLICATION.md).
+documents disagree. Application: [discussion #442](https://github.com/openwave-labs/openwave/discussions/442).
 
 **Mode of work.** Headless first. No launcher and no GUI until a gravity cell
 exists.
@@ -49,14 +58,14 @@ neighbors record \(I_B\) / axial negatives. Official M9.2 is Newton only.
 | TaskID | Title | Description | Completed |
 | --- | --- | --- | --- |
 | [M9.1](tasks/m9_1_task_details.md) | Hehl-Datta elimination | ✅ Closed 2026-08-15. Gate PASS r=3/16 both signatures (scatter <1e-15). Paper spin dual C2 FAIL (measured -1/2 not -1/4). Full record: [note](findings/m9_1_hehl_datta_note.md) + [task](tasks/m9_1_task_details.md) | 2026-08-15 |
-| [M9.2](tasks/m9_2_task_details.md) | Newton limit | ⚠️ Closed 2026-08-15. C1 PASS, C2 FAIL (Dirichlet images). Inherited Einstein, not GEM. No MODELS.md. [note](findings/m9_2_newton_note.md) | 2026-08-15 |
-| [M9.3](tasks/m9_3_task_details.md) | Metric phenomena note | ✅ Closed 2026-08-15. Domain note only: Einstein+Lambda written, FGHMV cited, dS [O], torsion out of scope. Does not move MODELS.md. Full record: [note](findings/m9_metric_phenomena_note.md) | 2026-08-15 |
-| [M9.4](tasks/m9_4_task_details.md) | Axial UV deformation | ✅ Closed 2026-08-15. Q4b tree-level r(k)=(3/16)/(1+k^2/M^2) audited. Q4a selected UV still [O], not invented. Full record: [note](findings/m9_4_uv_deformation_note.md) | 2026-08-15 |
-| [M9.5](tasks/m9_5_task_details.md) | Q4a holographic pair | ✅ Closed 2026-08-15. Selection-uniqueness negative: SM not a CFT, first law blind to flavor. Existence still [O]. Full record: [note](findings/m9_5_q4a_pair_note.md) | 2026-08-15 |
-| [M9.6](tasks/m9_6_task_details.md) | de Sitter FGHMV bar | ✅ Closed 2026-08-15. Copy obstructed: S=3π/(GΛ), dS/dΛ<0, so(1,4) too small. Einstein+Λ from a CFT not [P]. Full record: [note](findings/m9_6_ds_closure_note.md) | 2026-08-15 |
-| [M9.7](tasks/m9_7_task_details.md) | Jacobson substitute | ✅ Closed 2026-08-15. Not [P]: 1995 is Einstein+free Λ, no HD; 2016 conformal half misses the SM. Full record: [note](findings/m9_7_jacobson_note.md) | 2026-08-15 |
+| [M9.2](tasks/m9_2_task_details.md) | Newton limit | ⚠️ Closed 2026-08-15. C1 PASS, C2 FAIL (Dirichlet images). Inherited Einstein, not GEM; the MODELS.md Newton cell stays 🚧. [note](findings/m9_2_newton_note.md) | 2026-08-15 |
 
 ## CHANGE-LOG
+
+2026-08-22. Activation merge (PR #441) trimmed to the onboarding slice:
+scaffold, M9.1, M9.2. Campaign records M9.3 to M9.73, latex and the
+application body parked at `a5640709`, registered above as BACKLOG rows.
+MODELS.md column added (tag NSM). Official ID M9 since 2026-08-15.
 
 2026-08-15. Draft column opened from the author repo
 [n4hy/New_Model_Emergent_Gravity](https://github.com/n4hy/New_Model_Emergent_Gravity).

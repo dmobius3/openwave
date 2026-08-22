@@ -6,12 +6,13 @@
 > repo [github.com/n4hy/New_Model_Emergent_Gravity](https://github.com/n4hy/New_Model_Emergent_Gravity)
 > (`research/*.pdf`), or from the original venues (DOI / arXiv / Zenodo).
 
+> **Archive pointer (2026-08-22).** The campaign records this document cites (M9.3 to M9.73: notes, scripts, data, latex, APPLICATION) are not in the tree; they are parked in PR #441's branch history at `a5640709` and return as per-task PRs against registered roadmap rows. Their links below were reduced to plain text at the merge trim.
+
 Total: **0 local PDF files** as of 2026-08-15. Public PDFs live in the
-author's repo. Author LaTeX (own work) is tracked in
-[`../research/latex/`](../research/latex/) and at
+author's repo. Author LaTeX (own work) is parked in the PR #441 branch history (`a5640709`) and tracked at
 [n4hy/New_Model_Emergent_Gravity/research/latex](https://github.com/n4hy/New_Model_Emergent_Gravity/tree/main/research/latex).
 The 15 August 2026 open-questions note is
-[`../research/latex/11_Open_Questions_Attempts_and_Admissions.tex`](../research/latex/11_Open_Questions_Attempts_and_Admissions.tex).
+`../research/latex/11_Open_Questions_Attempts_and_Admissions.tex`.
 It does not move any Final Status \pO{} label.
 
 Citation identifiers below are either standard published records or
