@@ -1,0 +1,14 @@
+{
+  "_banner": "ISSUED, ANSWER-BEARING. IMMUTABLE from this record onward.\nThis record and the packet it names do not move. A change to either is an\nexplicit REISSUE, not a revision, and requires a new issuance record.\nIt supersedes the CANDIDATE pre-lock hash record for every operational\npurpose; that candidate is retained as history and governs nothing.\nPublished at the \u00a7 8 step 9 adjudication record, with its bytes verified\nagainst the frozen hash.\n",
+  "answer_packet_format_version": "m8_8-answer-packet-1",
+  "canonical_plaintext_byte_length": 12088,
+  "canonicalization_rule": "JSON, keys sorted, two-space indent, ASCII, LF, single trailing newline (protocol \u00a7 10.2)",
+  "expected_canonical_plaintext_sha256": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e",
+  "record_format_version": "m8_8-issuance-record-1",
+  "status": "ISSUED",
+  "supersedes": {
+    "record_format_version": "m8_8-prelock-hash-record-1",
+    "sha256": "76705591ee67390ce6572fc05cc9fcf40686a0c6ac109997b056b978ee622ba4",
+    "status": "CANDIDATE"
+  }
+}
