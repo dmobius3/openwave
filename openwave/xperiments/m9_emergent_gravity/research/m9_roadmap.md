@@ -3,7 +3,7 @@
 > Column roadmap. Index of work only; results live in the task
 > documents. Live: [IN PROGRESS](#in-progress). Queued: [BACKLOG](#backlog).
 > Closed: [DONE](#done). Reading rules: [§ CONVENTIONS](#conventions).
-
+>
 > **Archive pointer (2026-08-22).** The campaign records this document cites (M9.3 to M9.73: notes, scripts, data, latex, APPLICATION) are not in the tree; they are parked in PR #441's branch history at `a5640709` and return as per-task PRs against registered roadmap rows. Their links below were reduced to plain text at the merge trim.
 
 ## IN PROGRESS
@@ -26,7 +26,6 @@
 | M9.6 | de Sitter FGHMV bar | Parked. Copy obstructed (sign, isometries). Record at `a5640709` | author per-task PR |
 | M9.7 | Jacobson substitute | Parked. Not [P]. Record at `a5640709` | author per-task PR |
 | M9.8+ | Entanglement-gravity campaign | Parked. Papers 14 to 73 (A1/A2 ansatz, first law, Gauss and enclosed-energy results, vacuum-energy negatives); the author registers each as a task row before its PR. Record at `a5640709` | author per-task PR |
-
 
 ## STATUS AT A GLANCE (2026-08-22)
 

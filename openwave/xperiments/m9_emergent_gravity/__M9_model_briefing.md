@@ -6,7 +6,7 @@
 > the Hehl-Datta axial-axial contact, coefficient fixed by \(G\). This is a
 > gravity-certification column, closer to M8 than to M5. Model ID M9 was
 > assigned at admission (discussion #442, 2026-08-15).
-
+>
 > **Archive pointer (2026-08-22).** The campaign records this document cites (M9.3 to M9.73: notes, scripts, data, latex, APPLICATION) are not in the tree; they are parked in PR #441's branch history at `a5640709` and return as per-task PRs against registered roadmap rows. Their links below were reduced to plain text at the merge trim.
 
 ## Identity

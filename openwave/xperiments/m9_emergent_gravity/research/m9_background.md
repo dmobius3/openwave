@@ -8,7 +8,7 @@
 > first package ([PR #441](https://github.com/openwave-labs/openwave/pull/441)), and
 > the maintainer verification run recorded in that PR's review. The author owns the
 > science; corrections via PR or discussion are welcome.
-
+>
 > **Archive pointer (2026-08-22).** Rows below that cite M9.3 to M9.73 results describe the author's parked campaign records, not files in the tree; they live in PR #441's branch history at `a5640709` and return as per-task PRs.
 
 ## 1. What NSM is
