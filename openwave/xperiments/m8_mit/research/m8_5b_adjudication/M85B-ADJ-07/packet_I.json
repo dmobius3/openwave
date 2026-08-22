@@ -1,0 +1,29 @@
+{
+  "action_convention": "two_sided",
+  "case_id": "M85B-ADJ-07",
+  "family": "lens",
+  "format_version": "m8_5b-packet-1",
+  "generators": [
+    [
+      [
+        0.6234898018587335,
+        0.7818314824680298,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  ],
+  "parameters": {
+    "q": 7,
+    "s": [
+      1,
+      1
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "case_id": "M85B-ADJ-07",
+  "citation": {
+    "authors": "Roland Lehoucq, Jean-Philippe Uzan and Jeffrey Weeks",
+    "doi": "10.2996/kmj/1050496653",
+    "row": "L(7,1)",
+    "table": "Table 1",
+    "title": "Eigenmodes of lens and prism spaces",
+    "venue": "Kodai Mathematical Journal",
+    "year": 2003
+  },
+  "format_version": "m8_5b-packet-II-2",
+  "indexing_map": {
+    "certified_band": {
+      "n_max": 4
+    },
+    "index_transform": {
+      "a": 1,
+      "b": 0,
+      "kind": "affine"
+    },
+    "laplacian_sign": "nonnegative",
+    "multiplicity_convention": {
+      "counts": "per_protocol_level",
+      "source_dimension_field": "real"
+    },
+    "off_image_levels": "empty",
+    "radius_normalization": "unit_radius_dimensionless",
+    "source_eigenvalue": {
+      "A": 1,
+      "B": 2,
+      "C": 0,
+      "form": "quadratic"
+    },
+    "unlisted_source_rows": "zero_multiplicity"
+  },
+  "reference_values": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      5
+    ]
+  ]
+}
