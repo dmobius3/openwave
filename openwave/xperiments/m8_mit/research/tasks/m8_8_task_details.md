@@ -1,7 +1,7 @@
 # M8.8: Independent-method reproduction of the M8.3 torsion closed forms
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: ✅ DONE (2026-08-22),
-> § 8 category `convention difference`; record:
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: ✅ ADJUDICATION COMPLETE (2026-08-22),
+> CLOSEOUT PENDING the author's provenance layer; § 8 category `convention difference`; record:
 > [`../findings/m8_8_adjudication_record.md`](../findings/m8_8_adjudication_record.md).
 > Protocol author: the model author (2026-08-02); implementer: a fresh context
 > (commission 5, [history](../m8_8_cleanroom/COMMISSION_HISTORY.md)).
@@ -249,7 +249,7 @@ adopted: the seam belongs to the interface between the two sides, since the #451
 the destination literal and only prose for the source. The `p2_schema.py:205` pin is
 author-asserted until the builder bytes publish; the record says so.
 
-**Left to the author.** Publication of the provenance archive plaintext (hash on the #408
+**Left to the author (closeout pending on it).** Publication of the provenance archive plaintext (hash on the #408
 thread, ciphertext `2ba72660…` at tag `m8.8-provenance-02`), and the builder bytes that make
 the `p2_schema.py` pin checkable.
 

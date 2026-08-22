@@ -18,7 +18,7 @@ orientation is the opposite of the packet's. Under that selection the seven free
 the selected rows are position-wise equal, and the two sector products cover 8 of 8
 nontrivial rows. The § 2 claim ceiling applies as written; `blind` is not used.
 
-**Provenance sentence, fixed in the [#457](https://github.com/openwave-labs/openwave/pull/457) commit message before the official run on `main` and before any category was disclosed** (the maintainer's branch-side run had already executed, since that message reports its byte-identity to the scratch control; the disposition is therefore blind to the category in the public record and on the author's side, not on the maintainer's): the successful
+**Provenance sentence, fixed in the [#457](https://github.com/openwave-labs/openwave/pull/457) commit message before the official run on `main` and before any category was disclosed** (the maintainer's branch-side run had already executed, since that message reports its byte-identity to the scratch control; the disposition was therefore fixed without knowledge of the category in the public record and on the author's side, not on the maintainer's): the successful
 adjudication was obtained on a separately recorded rerun after the initially committed
 comparator refused pre-comparison on an exact packet-domain spelling mismatch; the
 post-reveal repair changed that frozen-builder literal only and altered neither the
@@ -86,6 +86,13 @@ mechanical fix; an adaptive comparator is exactly what the precommitment exists 
 
 ## Step 9: the published objects, each verified against its frozen hash
 
+Step 9 has two layers. The maintainer layer, published here: the canonical packet and the
+frozen construction-audit artifact against their pins, plus the two adjudication records.
+The author layer, following before final closeout: the provenance archive plaintext and the
+frozen builder behind the `p2_schema.py:205` pin, with its pinned inputs and recipe.
+
+**Maintainer layer (this pull request)**
+
 | Object | Path | SHA-256 | Frozen where |
 | --- | --- | --- | --- |
 | Canonical answer packet | [`../data/m8_8_answer_packet.json`](../data/m8_8_answer_packet.json), 12088 bytes | `744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e` | § 11 pin; [lock manifest](m8_8_lock_manifest.md); recorded by the author 2026-08-10 |
@@ -93,10 +100,15 @@ mechanical fix; an adaptive comparator is exactly what the precommitment exists 
 | Attempt-1 refusal record | [`../data/m8_8_adjudication_attempt1_refusal.json`](../data/m8_8_adjudication_attempt1_refusal.json) | `46be3d088681b37f28199081f0cfebfe3aa0d57176ba47b2a6c386cc3d121c48` | the 8-hex prefix on the [#408 thread](https://github.com/openwave-labs/openwave/pull/408) (2026-08-22 19:15:29Z, 24 s AFTER #457 was opened); the full digest is first published here. The record itself was written before the repair existed, which the commit graph cannot show and this file does not claim |
 | Attempt-2 adjudication record | [`../data/m8_8_adjudication.json`](../data/m8_8_adjudication.json) | `a60367443cf261f0208b6c827793a84adbb46c1948e0fbaf8774b4b36c32339f` | not frozen anywhere before this file: the #457 commit message asserts byte-identity to the scratch control without a digest. What binds it is reproducibility, the rerun recipe and the control below, from public objects |
 
-The construction packet's provenance record is the archive verified on the #408 thread
-(ciphertext `2ba72660…`, tag `m8.8-provenance-02`, [content-commit record](m8_8_content_commit.md)).
-Its plaintext is in the author's custody and its hash is on that thread; its publication is
-the author's step, not covered by this maintainer record.
+**Author layer (follows, before final closeout)**
+
+| Object | Frozen where | Status at this commit |
+| --- | --- | --- |
+| Provenance archive plaintext (ciphertext `2ba72660…`, tag `m8.8-provenance-02`) | hash on the [#408 thread](https://github.com/openwave-labs/openwave/pull/408), verified on decryption; [content-commit record](m8_8_content_commit.md) | in the author's custody; publication is the author's step |
+| Frozen packet builder behind the `p2_schema.py:205` pin, with pinned inputs and recipe | author-asserted on #457 | checkable from public objects once the builder bytes publish |
+
+Until the author layer merges, the adjudication is complete and the closeout is pending; the
+roadmap row carries that label.
 
 Pins consumed by the harness, all unchanged from § 11 and Addendum 1: answer packet
 `744c7f25…`, raw output `1a9b56ce…`, method-and-gate manifest `8aa140e3…`, group packet
