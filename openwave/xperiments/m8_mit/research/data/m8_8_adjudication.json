@@ -1,0 +1,438 @@
+{
+  "what": "M8.8 section 8 steps 6-8 adjudication",
+  "pins": {
+    "answer_packet": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e",
+    "raw_output": "1a9b56ce70bae73e5cf8c4ef00f6e43bf76937afb9075801605f6bf5047d1002",
+    "manifest": "8aa140e3978366ca38f7c1d5926d1a2972305733be434595f2905e9df512f838",
+    "group_packet": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+    "construction_packet": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06"
+  },
+  "delivered_bytes": {
+    "sha256": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e",
+    "length": 12088
+  },
+  "load": {
+    "delivered_sha256": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e",
+    "delivered_length": 12088,
+    "canonicalization_changed_bytes": false,
+    "canonical_form_ok": true,
+    "canonical_sha256": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e"
+  },
+  "target_id": "M88-ADJ-01",
+  "format_version": "m8_8-answer-packet-1",
+  "category": "convention difference",
+  "convention_map": {
+    "evaluation_verbatim_gated": true,
+    "other_items_gated": false,
+    "orientation_applied": false,
+    "representation_evaluation": {
+      "convention": "g |-> rho(g); no inverse, transpose or dual variant",
+      "protocol_section": "4.2",
+      "source": "quoted from the construction packet's `basing.evaluation`"
+    },
+    "evaluation_verbatim_fields": [
+      "convention"
+    ],
+    "bridge": {
+      "exclusivity": "the SOLE admitted convention bridge between the routes is the preregistered global sign of log T^2, equivalently the inversion T^2 <-> (T^2)^-1 applied to EVERY ROW AT ONCE and anchored once at R7; this is what 'global inverse' means wherever it appears here. Outputs not related by exactly that transformation are a DISAGREEMENT, never a convention difference",
+      "identification": "T^2_target(rho) := |tau_rho|^2",
+      "protocol_section": "5.4",
+      "statement": "the squared modulus of the Reidemeister torsion of the based acyclic complex in the declared bases, determinants over C in the evaluated representation; no field norm to a subfield, no absolute value elsewhere, no squaring beyond the displayed one; and the involution acting on T^2_target AFTER this identification, never before it"
+    },
+    "orientation_anchor_rule": {
+      "anchor_row_label": "R7",
+      "anchor_row_signature": {
+        "dimension": 5,
+        "s": [
+          -1,
+          0,
+          1
+        ],
+        "st": [
+          1,
+          0,
+          1
+        ],
+        "t": [
+          0,
+          0,
+          1
+        ]
+      },
+      "protocol_section": "5.4",
+      "rule": "the one-bit selection between the committed table and its global inverse is made by the ADJUDICATOR after this packet opens, never by the implementation",
+      "selection_mapping": "writing x for the committed native R7 value and r for this packet's R7 reference value, whichever orientation agrees at R7 is the selected one: x = r selects the COMMITTED table as committed, x^-1 = r selects its GLOBAL INVERSE, and the full comparison proceeds under the selected orientation",
+      "uniqueness_gate": "the selection must be unique and that is a gate, not an assumption: exactly one of x = r and x^-1 = r may hold. Both holding means r = r^-1, a self-inverse reference that cannot discriminate orientation, and the adjudicator records an INVALID ANCHOR and selects no orientation. Neither holding is a \u00a7 8 disagreement, never a convention difference"
+    },
+    "basing_reference": {
+      "construction_packet_sha256": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06",
+      "protocol_section": "4.2",
+      "source": "the construction packet's `basing` block"
+    }
+  },
+  "selection": {
+    "anchor": "R7",
+    "category": null,
+    "orientation": "global inverse"
+  },
+  "rows": {
+    "R0": {
+      "signature": [
+        1,
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "position": 0,
+      "file_position": 0,
+      "committed_position": 0,
+      "class": "declared_convention",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    },
+    "R1": {
+      "signature": [
+        2,
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "position": 1,
+      "file_position": 1,
+      "committed_position": 1,
+      "class": "free",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    },
+    "R2": {
+      "signature": [
+        2,
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "position": 2,
+      "file_position": 2,
+      "committed_position": 2,
+      "class": "free",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    },
+    "R3": {
+      "signature": [
+        3,
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "position": 3,
+      "file_position": 3,
+      "committed_position": 3,
+      "class": "free",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    },
+    "R4": {
+      "signature": [
+        3,
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "position": 4,
+      "file_position": 4,
+      "committed_position": 4,
+      "class": "free",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    },
+    "R5": {
+      "signature": [
+        4,
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "position": 6,
+      "file_position": 6,
+      "committed_position": 5,
+      "class": "free",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    },
+    "R6": {
+      "signature": [
+        4,
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "position": 5,
+      "file_position": 5,
+      "committed_position": 6,
+      "class": "free",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    },
+    "R7": {
+      "signature": [
+        5,
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "position": 7,
+      "file_position": 7,
+      "committed_position": 7,
+      "class": "free_orientation_selector",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    },
+    "R8": {
+      "signature": [
+        6,
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "position": 8,
+      "file_position": 8,
+      "committed_position": 8,
+      "class": "free",
+      "own_signature_differs_from_map": false,
+      "label_is_record_label": true
+    }
+  },
+  "orientation": "global inverse",
+  "row_mismatches": [],
+  "identities": [
+    {
+      "position": 0,
+      "slot": "position 0",
+      "kind": "ratio",
+      "recomputed": [
+        5,
+        -3,
+        1
+      ],
+      "expected": [
+        5,
+        -3,
+        1
+      ],
+      "equal": true
+    },
+    {
+      "position": 1,
+      "slot": "position 1",
+      "kind": "ratio",
+      "recomputed": [
+        34,
+        -21,
+        1
+      ],
+      "expected": [
+        34,
+        -21,
+        1
+      ],
+      "equal": true
+    },
+    {
+      "position": 2,
+      "slot": "position 2",
+      "kind": "product",
+      "recomputed": [
+        4,
+        0,
+        1
+      ],
+      "expected": [
+        4,
+        0,
+        1
+      ],
+      "equal": true
+    },
+    {
+      "position": 3,
+      "slot": "position 3",
+      "kind": "product",
+      "recomputed": [
+        1,
+        0,
+        4
+      ],
+      "expected": [
+        1,
+        0,
+        4
+      ],
+      "equal": true
+    },
+    {
+      "position": null,
+      "slot": "_sector_coverage",
+      "kind": "record",
+      "rows_in_products": 8,
+      "nontrivial_rows": 8,
+      "uncovered": [],
+      "equal": true
+    }
+  ],
+  "selected_table": {
+    "[1, (1, 0, 1), (1, 0, 1), (1, 0, 1)]": [
+      1,
+      0,
+      1
+    ],
+    "[2, (1, 0, 1), (0, 1, 1), (0, 0, 1)]": [
+      5,
+      -3,
+      4
+    ],
+    "[2, (1, 0, 1), (1, -1, 1), (0, 0, 1)]": [
+      2,
+      3,
+      4
+    ],
+    "[3, (0, 0, 1), (0, 1, 1), (-1, 0, 1)]": [
+      8,
+      -4,
+      5
+    ],
+    "[3, (0, 0, 1), (1, -1, 1), (-1, 0, 1)]": [
+      4,
+      4,
+      5
+    ],
+    "[4, (-1, 0, 1), (1, 0, 1), (0, 0, 1)]": [
+      1,
+      0,
+      1
+    ],
+    "[4, (1, 0, 1), (-1, 0, 1), (0, 0, 1)]": [
+      25,
+      0,
+      9
+    ],
+    "[5, (-1, 0, 1), (0, 0, 1), (1, 0, 1)]": [
+      9,
+      0,
+      4
+    ],
+    "[6, (0, 0, 1), (-1, 0, 1), (0, 0, 1)]": [
+      4,
+      0,
+      1
+    ]
+  }
+}

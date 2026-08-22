@@ -1,8 +1,10 @@
 # M8.8: Independent-method reproduction of the M8.3 torsion closed forms
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 PLANNED STUB
-> (2026-07-30). Protocol author: the model author (2026-08-02); implementer deliberately
-> unassigned (fresh context). Full PLAN at go.
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: ✅ DONE (2026-08-22, closeout complete
+> with the author's provenance layer, [#459](https://github.com/openwave-labs/openwave/pull/459)); § 8 category `convention difference`; record:
+> [`../findings/m8_8_adjudication_record.md`](../findings/m8_8_adjudication_record.md).
+> Protocol author: the model author (2026-08-02); implementer: a fresh context
+> (commission 5, [history](../m8_8_cleanroom/COMMISSION_HISTORY.md)).
 
 ## Why this task exists
 
@@ -214,10 +216,53 @@ structural census was identical across the two heads. One measurement in the thr
 lines in BYTES; in characters the prose count is four rather than six, the two that drop out
 being 93 and 91 characters made long by `∂` and subscript digits at three bytes each.
 
+## Adjudication, § 8 steps 6 to 9: reproduced under the global inverse (2026-08-22)
+
+The full record is [`../findings/m8_8_adjudication_record.md`](../findings/m8_8_adjudication_record.md);
+this section is the task-side summary and the sequence as it happened.
+
+| Step | What happened | Where |
+| --- | --- | --- |
+| 6 | the author delivered the packet ciphertext on an orphan commit of the fork (`9a0d3fd5`, ciphertext SHA-256 `6e0dea53…`, armored age, one X25519 stanza); decrypted by the maintainer alone; plaintext SHA-256 `744c7f25…` = the § 11 pin, 12088 bytes, canonical form unchanged | [#408](https://github.com/openwave-labs/openwave/pull/408) thread |
+| 7, attempt 1 | the committed harness (`ea3452d3`) REFUSED before applying the indexing map: the packet's `source_domain` is `packet_rows_canonical_position`, the harness accepted only the [#453](https://github.com/openwave-labs/openwave/pull/453) placeholder `answer_packet.rows`. § 8 category `structural failure`; nothing past the gate executed | [`../data/m8_8_adjudication_attempt1_refusal.json`](../data/m8_8_adjudication_attempt1_refusal.json), `46be3d08…` |
+| repair | [#457](https://github.com/openwave-labs/openwave/pull/457): the literal replaced (old spelling refused, C3k), the terminal printer extracted (C17), self-test 98/98, both controls redden; attempt 1's disposition fixed in the commit message before the official run on `main` and before any category was disclosed, at the author's request (the maintainer's branch-side run had already executed); merged `a3ae231d` | [#457](https://github.com/openwave-labs/openwave/pull/457) |
+| 7 and 8, attempt 2 | the official run on `main`: map applied, convention map validated, `R7` selection = GLOBAL INVERSE, 8/8 rows equal in `Q(φ)`, 4/4 identities equal, sector coverage 8/8. § 8 category `convention difference`, a success | [`../data/m8_8_adjudication.json`](../data/m8_8_adjudication.json), `a6036744…` |
+| control | `ea3452d3` + the one-string substitution writes the byte-identical record, then dies on the `ea3452d3` printer defect: the rerun's result is the one-string correction alone | [`../scripts/m8_8_control_byte_identity.py`](../scripts/m8_8_control_byte_identity.py) |
+| 9 | answer packet `744c7f25…` and the construction-audit artifact `d5bb04b9…` (held since 2026-08-11 on a maintainer-side orphan commit) published beside both attempt records, each verified against its frozen hash | [`../findings/m8_8_adjudication_record.md`](../findings/m8_8_adjudication_record.md) |
+
+**What the category means.** `convention difference` is not a caveat on the agreement: it
+is full agreement under the opposite native orientation, the two categories disjoint and
+both successes by the frozen § 8 table, with the orientation recorded. The implementer's
+§ 5.4 declared orientation and the packet's differ by the global inverse at `R7`, the
+selection rule resolves it, and every value then matches exactly.
+
+**Governance, recorded rather than amended.** The protocol did not address comparator repair
+after a post-reveal structural refusal. The record states the gap, the three facts that made
+this one repair acceptable (replacement literal frozen pre-reveal by the author's builder,
+attempt 1 stopped before any value comparison, mutation-backed semantic nonmovement), and
+that it is the last such repair: a second packet-facing incompatibility would have stopped
+the run. No § 11 pin and no protocol text changed; § 12 carries no addendum for it.
+
+**Provenance of the seam.** The refused string was the author's builder's own, frozen
+pre-reveal; the accepted one was a maintainer placeholder. The author's reading on #457 is
+adopted: the seam belongs to the interface between the two sides, since the #451 answer gave
+the destination literal and only prose for the source. The `p2_schema.py:205` pin is
+author-asserted until the builder bytes published in #459; the record says so.
+
+**Author layer, published ([#459](https://github.com/openwave-labs/openwave/pull/459)).** The provenance archive plaintext (hash on the #408
+thread, ciphertext `2ba72660…` at tag `m8.8-provenance-02`) at `data/m8_8_provenance/`, and
+the builder bytes behind the `p2_schema.py:205` pin at `m8_8_answer_builder/`; the chain
+regenerates the § 11 packet pin from the pinned sources. Nothing is left outstanding.
+
 ## DEVIATIONS LOG
 
-(none)
+| Date | Deviation | Disposition |
+| --- | --- | --- |
+| 2026-08-22 | post-reveal comparator repair (#457) after the step-7 refusal; not contemplated by the frozen protocol | accepted under three recorded facts, attempt 1 kept as `structural failure`, last such repair; [record](../findings/m8_8_adjudication_record.md) |
 
 ## FINDINGS
 
-(pending)
+| # | Finding | Evidence |
+| --- | --- | --- |
+| 1 | The M8.3 torsion closed forms are reproduced by a context-isolated independent-method run from a based chain complex, § 8 category `convention difference` (global inverse at `R7`, 8/8 rows and 4/4 identities exact in `Q(φ)`). The supplied topological model was verified, not independently derived; the § 2 ceiling applies | [`../data/m8_8_adjudication.json`](../data/m8_8_adjudication.json) `a6036744…`; [record](../findings/m8_8_adjudication_record.md) |
+| 2 | The pre-reveal harness failed closed on a one-string interface mismatch (attempt 1, `structural failure`); the repair moved no record byte, shown by a control reproducible from public objects | [`../data/m8_8_adjudication_attempt1_refusal.json`](../data/m8_8_adjudication_attempt1_refusal.json) `46be3d08…`; [`../scripts/m8_8_control_byte_identity.py`](../scripts/m8_8_control_byte_identity.py) |
