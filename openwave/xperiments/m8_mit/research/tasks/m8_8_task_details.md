@@ -1,7 +1,7 @@
 # M8.8: Independent-method reproduction of the M8.3 torsion closed forms
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: ✅ ADJUDICATION COMPLETE (2026-08-22),
-> CLOSEOUT PENDING the author's provenance layer; § 8 category `convention difference`; record:
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: ✅ DONE (2026-08-22, closeout complete
+> with the author's provenance layer, [#459](https://github.com/openwave-labs/openwave/pull/459)); § 8 category `convention difference`; record:
 > [`../findings/m8_8_adjudication_record.md`](../findings/m8_8_adjudication_record.md).
 > Protocol author: the model author (2026-08-02); implementer: a fresh context
 > (commission 5, [history](../m8_8_cleanroom/COMMISSION_HISTORY.md)).
@@ -247,11 +247,12 @@ the run. No § 11 pin and no protocol text changed; § 12 carries no addendum fo
 pre-reveal; the accepted one was a maintainer placeholder. The author's reading on #457 is
 adopted: the seam belongs to the interface between the two sides, since the #451 answer gave
 the destination literal and only prose for the source. The `p2_schema.py:205` pin is
-author-asserted until the builder bytes publish; the record says so.
+author-asserted until the builder bytes published in #459; the record says so.
 
-**Left to the author (closeout pending on it).** Publication of the provenance archive plaintext (hash on the #408
-thread, ciphertext `2ba72660…` at tag `m8.8-provenance-02`), and the builder bytes that make
-the `p2_schema.py` pin checkable.
+**Author layer, published ([#459](https://github.com/openwave-labs/openwave/pull/459)).** The provenance archive plaintext (hash on the #408
+thread, ciphertext `2ba72660…` at tag `m8.8-provenance-02`) at `data/m8_8_provenance/`, and
+the builder bytes behind the `p2_schema.py:205` pin at `m8_8_answer_builder/`; the chain
+regenerates the § 11 packet pin from the pinned sources. Nothing is left outstanding.
 
 ## DEVIATIONS LOG
 
