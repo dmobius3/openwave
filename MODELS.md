@@ -20,7 +20,8 @@ Current Models in the platform:
 - **[M5 - LC](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md)** (Liquid-Crystal topological defects, Jarek Duda, with Manfried Faber inputs);
 - **[M6 - Ouroboros](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md)** (Chaoiton framework, Paul Werbos);
 - **[M7 - HydroBoros](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md)** (Toroidal-Beltrami, Marc Fleury's toroidal electron fused with Paul Werbos's Ouroboros);
-- **[M8 - MIT](openwave/xperiments/m8_mit/__M8_model_briefing.md)** (Mode Identity Theory, Blake Shatto top-down model, spectral geometry + representation theory)
+- **[M8 - MIT](openwave/xperiments/m8_mit/__M8_model_briefing.md)** (Mode Identity Theory, Blake Shatto top-down model, spectral geometry + representation theory);
+- **[M9 - NSM](openwave/xperiments/m9_emergent_gravity/__M9_model_briefing.md)** (New Standard Model, Bob McGwier gravity-certification column: gravity as entanglement bookkeeping on the Standard Model minimally coupled to Einstein-Cartan)
 
 Every file reference is an active link to the file in this repository (under `openwave/xperiments/`). Rows are grouped by domain: particles, forces, waves + quantum emergence.
 
@@ -28,13 +29,13 @@ Every file reference is an active link to the file in this repository (under `op
 
 **Column order:** models are sequenced by their validated + partial count (✅ + ⚠️), highest first; ties break toward more ✅ (validated), then fewer ❌ (honest negatives). The order updates as validations land. A ❌ is a result, not an embarrassment: documented negatives (with the scripts that produced them) are part of the platform's value.
 
-| **MODEL SCORE-BOARD** | [Liquid Crystal<br>(M5)](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | [HydroBoros<br>(M7)](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) | [EWT<br>(M4)](openwave/xperiments/m4_ewt/__M4_model_briefing.md) | [Ouroboros<br>(M6)](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md) | [MIT<br>(M8)](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
-| --- | --- | --- | --- | --- | --- |
-| ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 |
-| ⚠️ partial / with caveats | 11 | 10 | 8 | 2 | 1 |
-| ❌ honest negative | 2 | 0 | 3 | 3 | 0 |
-| 🚧 planned / not tested | 8 | 20 | 19 | 22 | 29 |
-| **Total criteria** | **30** | **30** | **30** | **30** | **30** |
+| **MODEL SCORE-BOARD** | [Liquid Crystal<br>(M5)](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | [HydroBoros<br>(M7)](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) | [EWT<br>(M4)](openwave/xperiments/m4_ewt/__M4_model_briefing.md) | [Ouroboros<br>(M6)](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md) | [MIT<br>(M8)](openwave/xperiments/m8_mit/__M8_model_briefing.md) | [NSM<br>(M9)](openwave/xperiments/m9_emergent_gravity/__M9_model_briefing.md) |
+| --- | --- | --- | --- | --- | --- | --- |
+| ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 | 0 |
+| ⚠️ partial / with caveats | 11 | 10 | 8 | 2 | 1 | 1 |
+| ❌ honest negative | 2 | 0 | 3 | 3 | 0 | 0 |
+| 🚧 planned / not tested | 8 | 20 | 19 | 22 | 29 | 29 |
+| **Total criteria** | **30** | **30** | **30** | **30** | **30** | **30** |
 
 ### Summary Status
 
@@ -46,45 +47,45 @@ Magnetism carries no standalone row by design: the magnetic force of currents is
 
 Each criterion's simplest passing test sits in its own companion table right below ([§ Simplest Test per Criterion](#simplest-test-per-criterion)), keeping this matrix to icons.
 
-| Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) | regime |
-| --- | --- | --- | --- | --- | --- | --- |
-| **PARTICLE - ELECTRON** | | | | | | |
-| Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 | static |
-| Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 | static |
-| de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 | dynamic |
-| Particle stability (Derrick escape) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic |
-| Magnetic moment μ (g ≈ 2, magnetostatics) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
-| Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
-| Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 | static |
-| | | | | | | |
-| **PARTICLE - FULL SPECTRUM** | | | | | | |
-| Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 | both |
-| Neutrinos (neutral states) | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | both |
-| Neutrino oscillations (PMNS) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | both |
-| Lepton mass spectrum (μ, τ) | ⚠️ | 🚧 | ❌ | ❌ | 🚧 | static |
-| Quarks | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
-| Baryons: bound state (p, n) | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | static |
-| Baryons: mass ordering + charge profile | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
-| Baryons: exact masses | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
-| Deuteron (binding + quadrupole) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
-| Nuclear structure (levels, halos) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
-| Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 | static |
-| Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 | static |
-| | | | | | | |
-| **FORCES** | | | | | | |
-| Electric force (Coulomb 1/r, electrostatics) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 | static |
-| Lorentz covariance (+ Coulomb = EM) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
-| Strong force: confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
-| Running coupling | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | static |
-| Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
-| Weak force: beta decay (n → p) | ❌ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
-| Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | both |
-| Gravity: metric phenomena | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | both |
-| | | | | | | |
-| **WAVES + QUANTUM EMERGENCE** | | | | | | |
-| EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | dynamic |
-| Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 | dynamic |
-| Orbital quantization (atomic structure) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | static |
+| Criteria | [M5](#liquid-crystal-m5) | [M7](#hydroboros-m7) | [M4](#ewt-m4) | [M6](#ouroboros-m6) | [M8](#mit-m8) | [M9](#nsm-m9) | regime |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **PARTICLE - ELECTRON** | | | | | | | |
+| Charge quantization | ✅ | ⚠️ | ❌ | ⚠️ | 🚧 | 🚧 | static |
+| Electron rest energy (mass) | ✅ | ⚠️ | ⚠️ | ❌ | 🚧 | 🚧 | static |
+| de Broglie clock (Zitterbewegung) | ✅ | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | dynamic |
+| Particle stability (Derrick escape) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | 🚧 | dynamic |
+| Magnetic moment μ (g ≈ 2, magnetostatics) | ❌ | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| Angular momentum J (spin ℏ/2) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| Spin-½ statistics (720° double cover) | ✅ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| | | | | | | | |
+| **PARTICLE - FULL SPECTRUM** | | | | | | | |
+| Antimatter + annihilation | ✅ | 🚧 | ⚠️ | 🚧 | 🚧 | 🚧 | both |
+| Neutrinos (neutral states) | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | 🚧 | both |
+| Neutrino oscillations (PMNS) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
+| Lepton mass spectrum (μ, τ) | ⚠️ | 🚧 | ❌ | ❌ | 🚧 | 🚧 | static |
+| Quarks | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Baryons: bound state (p, n) | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | 🚧 | static |
+| Baryons: mass ordering + charge profile | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Baryons: exact masses | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Deuteron (binding + quadrupole) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Nuclear structure (levels, halos) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
+| Mesons (π, K) | 🚧 | 🚧 | 🚧 | ❌ | 🚧 | 🚧 | static |
+| Dark matter candidate | 🚧 | 🚧 | 🚧 | ✅ | 🚧 | 🚧 | static |
+| | | | | | | | |
+| **FORCES** | | | | | | | |
+| Electric force (Coulomb 1/r, electrostatics) | ✅ | ⚠️ | ❌ | 🚧 | 🚧 | 🚧 | static |
+| Lorentz covariance (+ Coulomb = EM) | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| Strong force: confinement | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Running coupling | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
+| Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| Weak force: beta decay (n → p) | ❌ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
+| Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
+| Gravity: metric phenomena | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | ⚠️ | both |
+| | | | | | | | |
+| **WAVES + QUANTUM EMERGENCE** | | | | | | | |
+| EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | 🚧 | dynamic |
+| Quantum wave equation (Klein-Gordon) | ✅ | ⚠️ | ⚠️ | 🚧 | 🚧 | 🚧 | dynamic |
+| Orbital quantization (atomic structure) | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | 🚧 | static |
 
 ### Simplest Test per Criterion
 
@@ -366,6 +367,50 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | EM waves (Maxwell) | 🚧 [not yet tested]<br>No field model of radiation (photon massless at the edge-only layer level, a structural label)<br>(none yet) |
 | Quantum wave equation (Klein-Gordon) | 🚧 [not yet tested]<br>No native field equation exists; supplying one on S³/2I is the M8 program's central goal (the M8.4 Lagrangian-family survey)<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
 | Orbital quantization (atomic structure) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
+
+## NSM (M9)
+
+Deep dive: [`m9_theory_canonical.md`](openwave/xperiments/m9_emergent_gravity/research/m9_theory_canonical.md) (spec of record) · [`m9_background.md`](openwave/xperiments/m9_emergent_gravity/research/m9_background.md) (the gap map + onboarding evaluation) · [`m9_roadmap.md`](openwave/xperiments/m9_emergent_gravity/research/m9_roadmap.md) (tasks, gates, parked campaign rows) · [`__M9_model_briefing.md`](openwave/xperiments/m9_emergent_gravity/__M9_model_briefing.md) (the one-page front door)
+
+| Criteria | Status + result summary |
+| --- | --- |
+| **PARTICLE - ELECTRON** | |
+| Charge quantization | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Electron rest energy (mass) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| de Broglie clock (Zitterbewegung) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Particle stability (Derrick escape) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Magnetic moment μ (g ≈ 2, magnetostatics) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Angular momentum J (spin ℏ/2) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Spin-½ statistics (720° double cover) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| | |
+| **PARTICLE - FULL SPECTRUM** | |
+| Antimatter + annihilation | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Neutrinos (neutral states) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Neutrino oscillations (PMNS) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Lepton mass spectrum (μ, τ) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Quarks | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Baryons: bound state (p, n) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Baryons: mass ordering + charge profile | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Baryons: exact masses | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Deuteron (binding + quadrupole) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Nuclear structure (levels, halos) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Mesons (π, K) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Dark matter candidate | 🚧 [not yet tested]<br>Not addressed; the Standard Model spectrum is taken as given<br>(none yet) |
+| | |
+| **FORCES** | |
+| Electric force (Coulomb 1/r, electrostatics) | 🚧 [not yet tested]<br>Inherited from the installed Standard Model; not an emergence claim<br>(none yet) |
+| Lorentz covariance (+ Coulomb = EM) | 🚧 [not yet tested]<br>Inherited: the Standard Model is minimally coupled to a covariant Einstein-Cartan background; nothing is derived in-platform<br>(none yet) |
+| Strong force: confinement | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Running coupling | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Weak force: muon decay | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
+| Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Inherited, not in-platform: Palatini Einstein-Cartan with a spinless source is Einstein-Hilbert, and the pre-registered Newton check passed the attractive 1/r² force (residuals ≤ 1.3%) but failed the isolated potential on a Dirichlet box. No entanglement-sourced Poisson equation in the tree<br>[`m9_2_newton_note.md`](openwave/xperiments/m9_emergent_gravity/research/findings/m9_2_newton_note.md), [`m9_2_newton_limit.py`](openwave/xperiments/m9_emergent_gravity/research/scripts/m9_2_newton_limit.py) |
+| Gravity: metric phenomena | ⚠️ [partially validated]<br>The one interaction beyond Einstein, the Hehl-Datta axial-axial contact, is VERIFIED in-platform: the blind elimination of the Einstein-Cartan contorsion gives the on-shell ratio 3/16 in both metric signatures (scatter < 10⁻¹⁵), adversarially audited. The paper's spin-dual coefficient −1/4 is measured as −1/2 (documented miss). Metric phenomena themselves (lensing, horizons, cosmology) are not computed in-platform<br>[`m9_1_hehl_datta_note.md`](openwave/xperiments/m9_emergent_gravity/research/findings/m9_1_hehl_datta_note.md), [`hehl_datta.py`](openwave/xperiments/m9_emergent_gravity/research/scripts/hehl_datta.py), [`m9_1_audit_hehl_datta.py`](openwave/xperiments/m9_emergent_gravity/research/scripts/m9_1_audit_hehl_datta.py) |
+| | |
+| **WAVES + QUANTUM EMERGENCE** | |
+| EM waves (Maxwell) | 🚧 [not yet tested]<br>Inherited from the installed Standard Model; not an emergence claim<br>(none yet) |
+| Quantum wave equation (Klein-Gordon) | 🚧 [not yet tested]<br>Inherited: Dirac and gauge fields are inputs on the Einstein-Cartan background, not emergent<br>(none yet) |
+| Orbital quantization (atomic structure) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
 
 ## Reading the table
 

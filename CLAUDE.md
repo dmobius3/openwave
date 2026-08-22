@@ -67,6 +67,7 @@ Claims about this repository that cannot be traced to a runnable script or a res
 | `openwave/xperiments/m6_ouroboros/` | Werbos chaoiton Lagrangian |
 | `openwave/xperiments/m7_hydroboros/` | Toroidal-Beltrami (Fleury) fused with the Ouroboros chaoiton |
 | `openwave/xperiments/m8_mit/` | Mode Identity Theory (Shatto), a top-down spectral-geometry column |
+| `openwave/xperiments/m9_emergent_gravity/` | NSM (McGwier), a gravity-certification column: entanglement bookkeeping on SM + Einstein-Cartan |
 | `openwave/common/`, `i_o/`, `validations/`, `video_export/` | Shared utilities, rendering, physics-invariant tests |
 
 Refer to `README.md` and `SYS_ARCH.md` for the full Modules Structure and Objects Map.

@@ -1,0 +1,117 @@
+{
+  "task": "m9.1",
+  "seed": 20260815,
+  "kappa": 1.0,
+  "n_samples_per_signature": 8,
+  "tolerance": 1e-12,
+  "target_ratio_compared_after_extraction": 0.1875,
+  "mostly_minus": {
+    "signature": "mostly_minus",
+    "clifford": {
+      "clifford_max": 0.0,
+      "gamma5_square_minus_I": 0.0,
+      "gamma5_anticommutator_max": 0.0
+    },
+    "n_samples": 8,
+    "ratios": [
+      0.1875000000000001,
+      0.18750000000000006,
+      0.187499999999999,
+      0.18750000000000006,
+      0.18750000000000025,
+      0.18749999999999997,
+      0.18749999999999958,
+      0.18750000000000003
+    ],
+    "ratio_mean": 0.1874999999999999,
+    "ratio_std": 3.780264565788126e-16,
+    "ratio_max_abs_dev_from_mean": 8.881784197001252e-16,
+    "spin_residual_max": 0.25000000000000017,
+    "spin_dual_factor_mean": -0.5,
+    "mixed_residual_max": 1.6721399795765403e-16,
+    "Q_alt_residual_max": 7.105427357601002e-15,
+    "j5_sq_samples": [
+      -27.39699767734495,
+      -5.026758714916998,
+      -0.38835321934330125,
+      -41.3452090606988,
+      -3.482086604912211,
+      -46.407297902670194,
+      -12.015397256684633,
+      -54.220530964686816
+    ],
+    "mutation_double_palatini_ratio": 0.09375,
+    "mutation_flip_spin_sign_ratio": 0.04687500000000003
+  },
+  "mostly_plus": {
+    "signature": "mostly_plus",
+    "clifford": {
+      "clifford_max": 0.0,
+      "gamma5_square_minus_I": 0.0,
+      "gamma5_anticommutator_max": 0.0
+    },
+    "n_samples": 8,
+    "ratios": [
+      0.18749999999999992,
+      0.18749999999999958,
+      0.18750000000000017,
+      0.18749999999999972,
+      0.18749999999999994,
+      0.18750000000000047,
+      0.1874999999999999,
+      0.1875000000000004
+    ],
+    "ratio_mean": 0.1875,
+    "ratio_std": 2.9027475788800786e-16,
+    "ratio_max_abs_dev_from_mean": 4.718447854656915e-16,
+    "spin_residual_max": 0.2500000000000001,
+    "spin_dual_factor_mean": -0.5,
+    "mixed_residual_max": 2.0506291540631232e-16,
+    "Q_alt_residual_max": 4.440892098500626e-15,
+    "j5_sq_samples": [
+      25.32862187235463,
+      5.332869701432272,
+      8.53835246368122,
+      19.087212268658504,
+      2.55619124440682,
+      1.6617940382417473,
+      18.035831446761105,
+      10.020462948060882
+    ],
+    "mutation_double_palatini_ratio": 0.09375000000000003,
+    "mutation_flip_spin_sign_ratio": 0.04687499999999999
+  },
+  "verdicts": {
+    "C1_PRIMARY": {
+      "pass": true,
+      "minus_ratio": 0.1874999999999999,
+      "plus_ratio": 0.1875,
+      "target": 0.1875
+    },
+    "C2_spin_identification": {
+      "pass": false,
+      "minus_residual": 0.25000000000000017,
+      "plus_residual": 0.2500000000000001,
+      "minus_dual_factor": -0.5,
+      "plus_dual_factor": -0.5,
+      "paper_factor": -0.25
+    },
+    "C3_no_mixed_symmetry": {
+      "pass": true,
+      "minus_residual": 1.6721399795765403e-16,
+      "plus_residual": 2.0506291540631232e-16
+    },
+    "C4_signature_independence": {
+      "pass": true,
+      "delta": 1.1102230246251565e-16
+    },
+    "C5_mutations_fail": {
+      "pass": true,
+      "double_palatini_minus": 0.09375,
+      "double_palatini_plus": 0.09375000000000003,
+      "flip_spin_minus": 0.04687500000000003,
+      "flip_spin_plus": 0.04687499999999999
+    }
+  },
+  "gate_pass": true
+}
