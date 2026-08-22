@@ -194,7 +194,7 @@
       "gate_id": "G-T03a",
       "gate_name": "Convention: evaluation map",
       "declared_mutation": "On fixture: replace g \u21a6 \u03c1(g) with g \u21a6 \u03c1(g\u207b\u00b9) (anti-homomorphism); verify \u2202\u2202\u22600 or T\u00b2 changes. All 2I irreps are self-contragredient, so g\u21a6\u03c1(g\u207b\u00b9)\u1d40 gives the same T\u00b2; the anti-homomorphism mutation is the correct causal test",
-      "implemented_mutation": "On convention fixture: replaced g->rho(g) with g->rho(g^-1) (anti-homomorphism); verified dd != 0"
+      "implemented_mutation": "On convention fixture via frozen validate_fixture.compute_torsion: replaced g->rho(g) with g->rho(g^-1) (anti-homomorphism); verified dd != 0"
     },
     {
       "object_mutated": "Fixture: transposed boundary matrices (cochain)",
@@ -205,7 +205,7 @@
       "gate_id": "G-T03b",
       "gate_name": "Convention: boundary direction",
       "declared_mutation": "On fixture: transpose boundary matrices (left action instead of right); verify gate failure",
-      "implemented_mutation": "On convention fixture: transposed boundary matrices (cochain reversal); verified dd != 0"
+      "implemented_mutation": "On convention fixture via frozen validate_fixture.compute_torsion: transposed boundary matrices (cochain reversal); verified dd != 0"
     },
     {
       "object_mutated": "Fixture: rho(g)^T (transpose = anti-homomorphism)",
@@ -216,7 +216,7 @@
       "gate_id": "G-T03c",
       "gate_name": "Convention: module side",
       "declared_mutation": "On fixture: use right-module action instead of left; verify gate failure",
-      "implemented_mutation": "On convention fixture: used rho(g)^T (transpose, i.e. right-module action); verified dd != 0"
+      "implemented_mutation": "On convention fixture via frozen validate_fixture.compute_torsion: used rho(g)^T (transpose, i.e. right-module action); verified dd != 0"
     },
     {
       "object_mutated": "Fixture: transposed GR maps (column vectors)",
@@ -227,7 +227,7 @@
       "gate_id": "G-T03d",
       "gate_name": "Convention: vector convention",
       "declared_mutation": "On fixture: use column vectors instead of row; verify gate failure",
-      "implemented_mutation": "On convention fixture: transposed group-ring boundary maps and reversed degree ordering; verified dd != 0"
+      "implemented_mutation": "On convention fixture via frozen validate_fixture.compute_torsion: transposed group-ring boundary maps and reversed degree ordering; verified dd != 0"
     },
     {
       "object_mutated": "V1 M3[0][0]: perturbed by +1",
@@ -274,11 +274,11 @@
       "declared_mutation": "Swap \u03c6 \u21a6 1\u2212\u03c6 on characters of one Galois pair; verify the two T\u00b2 values are no longer Galois conjugates"
     },
     {
-      "object_mutated": "Torsion formula determinant sub-matrices: all three replaced with I_d",
-      "gate_predicate": "T2 output changes when formula inputs change",
+      "object_mutated": "Frozen det_gc: substituted to return det(I_d) for every minor",
+      "gate_predicate": "T2 output changes when determinant inputs are replaced",
       "baseline_result": "PASS (T2(V1) = (8+12\u03c6))",
-      "mutated_result": "FAIL (T2_identity = 1 != T2(V1) = (8+12\u03c6))",
-      "implemented_mutation": "Replaced the three d*d determinant sub-matrices (M1_minor, M2_minor, M3_minor) with I_d at the torsion formula input boundary; computed tau=det(I_d)/(det(I_d)*det(I_d)) and T2=|tau|^2 through Phase A det_gc",
+      "mutated_result": "FAIL (T2_mutated = 1 != T2(V1) = (8+12\u03c6))",
+      "implemented_mutation": "Substituted det_gc on frozen module to return det(I_d) for every minor during one call to frozen compute_torsion_sq; intercepted exactly 3 calls (verified == 3); restored original in finally block; both baseline and mutated T2 returned by frozen compute_torsion_sq",
       "red_outcome": true,
       "gate_id": "G-D05",
       "gate_name": "Torsion code-path dependency",

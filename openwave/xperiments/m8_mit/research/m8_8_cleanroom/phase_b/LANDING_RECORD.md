@@ -1,55 +1,81 @@
-# M8.8 Phase B: mutation-semantic fidelity repaired, landed unread against the answer packet
+# M8.8 Phase B: G-D05 routed through the frozen path, landed unread against the answer packet
 
 > **Claims no result.** The answer packet has not been opened, no comparison has run, no
-> verdict exists. Lands before § 8 step 6. Both prior Phase B landings, `f441e0ec` and
-> `a923c554`, are preserved in history.
+> verdict exists. Lands before § 8 step 6. The three prior Phase B landings, `f441e0ec`,
+> `a923c554` and `bfdca08f`, are preserved in history.
 
 ## What landed
 
 | File | SHA-256 | Role |
 | --- | --- | --- |
-| `run_phase_b.py` | `2a741b5403bf7f30e4cf96ff4c4e9016038f520b41c825dfe11a0a0e568c24d3` | the qualifier: parses the § 4 registry at runtime and executes all nineteen declared mutations |
-| `MUTATION_RESULTS.json` | `490938f89b0dbcfd9b6b9abd7c01d310624a415ae9345f983b929596d02fb0ae` | the execution record, carrying declared and implemented mutation text per gate |
-| `QUALIFICATION_RECORD.md` | `2133a653e3dc76d128e757da58228824891d5d4fce4242f3cfb82e190211549a` | the qualifier's summary |
+| `run_phase_b.py` | `bcbf6543a98a81f765e28adccbd1841ec7e0ea3783184c6e251a4372a1cdec52` | the qualifier |
+| `MUTATION_RESULTS.json` | `f0a8b91038a3f7eebb7ac6a3accf85452c4eba492d87622b6ad51df895411a67` | the execution record |
+| `QUALIFICATION_RECORD.md` | `a11954b9d8b04d6d2c14fe32064565b0df6601c96fb81ee39f1b4a393ea4e52a` | the qualifier's summary |
 
-## The two fidelity defects are cured, and one of them had a real causal path
+## The blocking finding, and why the previous arm could not fail
 
-The prior landing executed, for two gates, a mutation related to the declared one rather than
-the declared one itself. Both now execute what the manifest declares, at the boundary it
-declares.
+The maintainer's review established that G-D05 as landed at `bfdca08f` computed
+`det(I)/(det(I)·det(I))` in the qualifier's own code and compared the result with the Phase A
+value. That comparison never entered the frozen `compute_torsion_sq`, which builds its three
+minors internally and exposes no parameter for them, so the "input boundary" the record named
+existed only in the qualifier's re-typed copy of the formula.
 
-**G-D04**, declared as a swap of `φ ↦ 1−φ` on the characters of a Galois pair. Previously a
-substitution of one already-computed value for another at the comparison, which tested the
-equality checker rather than the Galois action. Now the Galois map is applied to the
-representation matrices that carry those characters, the torsion is recomputed through the
-same consumed path, and the resulting pair no longer satisfies the relation.
+The consequence is worse than a fidelity defect. Simulated here before the repair: a Phase A
+that returns a stored value and consumes none of its determinants is reddened by the old arm
+and detected by the new one. The gate declares that derivation artifacts are consumed rather
+than bypassed, and the old arm passed the bypass it exists to catch.
 
-The instruction offered an honest stop here, because the frozen production path pairs Galois
-partners from a literal list and computes torsion before that check runs, so it was genuinely
-open whether the declared mutation could reach the relation at all. It can. The escape was
-not needed, and the fact that it was available is why the answer means something.
+The commissioner's earlier verification checked the mutation's description against the
+manifest declaration and did not check that the declared boundary existed in the frozen
+object. That is what let it land twice.
 
-**G-D05**, declared as replacing the torsion formula's input with identity matrices and
-verifying the output changes. Previously the representation matrices were replaced and the
-computation aborted as non-acyclic, which is not a changed output. Now the three determinant
-sub-matrices are replaced at the formula's own input boundary and the output changes to a
-different value. No record in the set now reports an abort in place of an outcome.
+## What the repair does
 
-## Commissioner enumeration
+The qualifier substitutes `det_gc` on the loaded frozen module for the duration of one call to
+the frozen `compute_torsion_sq`, returning the determinant of the same-dimension identity for
+every minor the frozen code hands it, and restores the original in a `finally` block. Both
+compared values are returned by the frozen function; the qualifier computes neither. The
+intercepted count is asserted to equal exactly three, which is structural rather than
+empirical: under identity substitution no determinant is zero, so the `M3` and `M1` minor
+searches each break on their first iteration and the central `M2` determinant is unconditional.
+
+The count is deliberately not compared against the unmutated path. That comparison was
+considered and rejected: the unmutated search length is data-dependent, running three, five or
+seven determinants depending on the irrep, so equality holds for V1 by coincidence and fails
+for four of the eight acyclic irreps.
+
+## Also in this landing
+
+The four convention gates now execute through the frozen `validate_fixture.compute_torsion`
+rather than a qualifier-local copy. That module builds its fixture inside `main()` and exposes
+no importable builder, so the qualifier reconstructs it; the reconstruction is verified faithful
+by reproducing the frozen module's own fixture baseline exactly. The qualification record gains
+a reproduction route, absent before. Four metadata fields that were written as literals now
+carry values returned by the checks.
+
+## Commissioner enumeration, pre-registered before the run
 
 | Check | Result |
 | --- | --- |
-| Phase A | 13 of 13 exact; no generated files beneath it, before or after my testing |
-| Declared against implemented, all nineteen | read pair by pair; each implemented mutation performs what its declaration states, at the declared boundary |
-| `declared_mutation` fidelity | verbatim from the frozen manifest for all nineteen |
-| Coverage | parsed == implemented handlers == executed records, proven before and after execution |
-| Outcomes | all nineteen red; none records an abort as a changed outcome |
-| Reproduction | clean run exits 0 and regenerates `MUTATION_RESULTS.json` byte-identical |
-| Linkage, retested after the repair | dropping one identifier from the parsed set below the integrity layer drives a coverage failure, not a hash failure |
+| Phase A | 13 of 13 exact against the Addendum 1 table; no generated files beneath the frozen directory |
+| G-D05 reaches the frozen path | instrumented the real run from above: five `compute_torsion_sq` invocations, exactly one with the substitution active, consuming three determinants |
+| That check can fail | reverting G-D05 to the `bfdca08f` arm drops the substituted-call count to zero and the check goes red |
+| The exactly-three assert is load-bearing | forcing a fourth determinant inside the substitution window fires it and the run dies nonzero |
+| Exception safety | a fault induced inside the mutated call propagates as a failure rather than a silent pass |
+| G-T03a to G-T03d | routed through the frozen fixture function; the reconstructed fixture reproduces the frozen module's own baseline |
+| `declared_mutation` fidelity | 19 of 19 verbatim-identical to the frozen manifest's § 4 table, by diff |
+| Outcomes | all nineteen red; coverage proven before and after execution |
+| Reproduction | the documented route run verbatim from a clean directory exits 0 and regenerates `MUTATION_RESULTS.json` byte-identical |
 
-## One sentence the record no longer overstates
+## Two things this record does not claim
 
-The prior summary asserted that no mutation was skipped, substituted, or narrowed, which was
-false for the two gates above. It now claims only that no mutation was skipped, and points at
-the paired `declared_mutation` and `implemented_mutation` fields so any future divergence is
-visible in the machine-readable record rather than resting on prose.
+The literal-field repair is partial. `pre_execution_set_equality` and
+`manifest_parsed_at_runtime` are computed comparisons, but `phase_a_hashes_verified_pre` and
+`parser_self_test_passed` now come from functions whose terminal statement is still
+`return True`, guarded by an earlier exit. The fields cannot read true while their checks fail,
+so the record is not misleading, but the shape is displaced one level rather than removed.
+
+Per-gate observation was not uniform. G-D05 was verified by instrumentation and the convention
+gates by routing and fixture equality. The remaining fourteen were verified as red with their
+declared mutations diffed against the manifest, resting on the maintainer's pair-by-pair read
+of all nineteen rather than on independent instrumentation of each.

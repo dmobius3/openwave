@@ -175,6 +175,7 @@ def self_test_parser_coverage(manifest_text, implemented_ids):
     print("  EMPTY-MUTATION test: parser correctly rejected empty mutation")
 
     print("  Parser-to-coverage self-test: ALL PASSED")
+    return True
 
 
 # ========== LOAD PHASE A MODULE ==========
@@ -596,12 +597,12 @@ def _make_handlers():
     H['G-T02'] = gt02
 
     def _fixture_test(c, gate_id, mutation_desc, obj_desc, make_rho, make_bmaps):
-        ct = c['ct']; fix = c['fixture_reps']
+        vf = c['vf']; fix = c['vf_fixture_reps']
         d1r = c['d1_raw']; d2r = c['d2_raw']; d3r = c['d3_raw']
-        T2_base = c['fixture_T2_base']
+        T2_base = c['vf_fixture_T2_base']
         rho_in = make_rho(fix, c) if make_rho else fix
         d1_in, d2_in, d3_in = make_bmaps(d1r, d2r, d3r) if make_bmaps else (d1r, d2r, d3r)
-        tau, acyc, msg = fixture_compute_torsion(rho_in, d1_in, d2_in, d3_in, 2, ct)
+        tau, acyc, msg = vf.compute_torsion(rho_in, d1_in, d2_in, d3_in, 2)
         if not acyc:
             return dict(object_mutated=obj_desc, gate_predicate='dd=0 and correct T2',
                         baseline_result='PASS (acyclic, T2 computed)',
@@ -727,20 +728,33 @@ def _make_handlers():
     def gd05(c):
         ct = c['ct']; d = c['dims']['V1']
         d1r = c['d1_raw']; d2r = c['d2_raw']; d3r = c['d3_raw']
-        T2_V1, tau_V1, diag = ct.compute_torsion_sq(c['reps']['V1'], d1r, d2r, d3r, d)
-        I_d = ct.mid(d)
-        det_id = ct.det_gc(I_d)
-        tau_mut = det_id / (det_id * det_id)
-        T2_mut_gc = tau_mut * tau_mut.conj()
-        T2_mut = T2_mut_gc.re
+        T2_V1, _, _ = ct.compute_torsion_sq(c['reps']['V1'], d1r, d2r, d3r, d)
+        original_det_gc = ct.det_gc
+        call_count = [0]
+        def det_gc_identity(M):
+            call_count[0] += 1
+            n = len(M)
+            I_n = ct.mid(n)
+            return original_det_gc(I_n)
+        ct.det_gc = det_gc_identity
+        try:
+            T2_mut, _, _ = ct.compute_torsion_sq(c['reps']['V1'], d1r, d2r, d3r, d)
+        finally:
+            ct.det_gc = original_det_gc
+        assert call_count[0] == 3, \
+            f"G-D05: expected exactly 3 det_gc calls under identity substitution, got {call_count[0]}"
         red = not (T2_mut == T2_V1)
-        return dict(object_mutated='Torsion formula determinant sub-matrices: all three replaced with I_d',
-                    gate_predicate='T2 output changes when formula inputs change',
-                    baseline_result=f'PASS (T2(V1) = {T2_V1})',
-                    mutated_result=(f'FAIL (T2_identity = {T2_mut} != T2(V1) = {T2_V1})' if red
-                                    else 'PASS (T2 unchanged)'),
-                    implemented_mutation='Replaced the three d*d determinant sub-matrices (M1_minor, M2_minor, M3_minor) with I_d at the torsion formula input boundary; computed tau=det(I_d)/(det(I_d)*det(I_d)) and T2=|tau|^2 through Phase A det_gc',
-                    red_outcome=red)
+        return dict(
+            object_mutated='Frozen det_gc: substituted to return det(I_d) for every minor',
+            gate_predicate='T2 output changes when determinant inputs are replaced',
+            baseline_result=f'PASS (T2(V1) = {T2_V1})',
+            mutated_result=(f'FAIL (T2_mutated = {T2_mut} != T2(V1) = {T2_V1})' if red
+                            else 'PASS (T2 unchanged)'),
+            implemented_mutation=(f'Substituted det_gc on frozen module to return det(I_d) for every minor '
+                                  f'during one call to frozen compute_torsion_sq; intercepted exactly '
+                                  f'{call_count[0]} calls (verified == 3); restored original in finally block; '
+                                  f'both baseline and mutated T2 returned by frozen compute_torsion_sq'),
+            red_outcome=red)
     H['G-D05'] = gd05
 
     return H
@@ -758,10 +772,10 @@ IMPLEMENTED_MUTATIONS = {
     'G-M08': 'Zeroed row 0 of V1 twisted M3 (evaluated boundary matrix); verified rank(M3) drops below d',
     'G-T01': 'Perturbed V1 rho(s)[0][0] by +1/10 in scratch copy; recomputed Hermitian form H and verified rho(s)^dag H rho(s) != H',
     'G-T02': 'Swapped chi(s) and chi(t) character values in V1 row signature; verified the signature changes',
-    'G-T03a': 'On convention fixture: replaced g->rho(g) with g->rho(g^-1) (anti-homomorphism); verified dd != 0',
-    'G-T03b': 'On convention fixture: transposed boundary matrices (cochain reversal); verified dd != 0',
-    'G-T03c': 'On convention fixture: used rho(g)^T (transpose, i.e. right-module action); verified dd != 0',
-    'G-T03d': 'On convention fixture: transposed group-ring boundary maps and reversed degree ordering; verified dd != 0',
+    'G-T03a': 'On convention fixture via frozen validate_fixture.compute_torsion: replaced g->rho(g) with g->rho(g^-1) (anti-homomorphism); verified dd != 0',
+    'G-T03b': 'On convention fixture via frozen validate_fixture.compute_torsion: transposed boundary matrices (cochain reversal); verified dd != 0',
+    'G-T03c': 'On convention fixture via frozen validate_fixture.compute_torsion: used rho(g)^T (transpose, i.e. right-module action); verified dd != 0',
+    'G-T03d': 'On convention fixture via frozen validate_fixture.compute_torsion: transposed group-ring boundary maps and reversed degree ordering; verified dd != 0',
     'G-D01': 'Perturbed V1 M3[0][0] by +1 over GC; verified M3*M2 != 0 (twisted chain condition fails)',
     'G-D02': 'Zeroed row 0 of V1 twisted M3; verified rank(M3) < d',
     'G-D03': 'Zeroed column 0 of V1 M3 minor (d*d determinant sub-matrix); verified det(minor) = 0',
@@ -777,7 +791,7 @@ def main():
 
     # ---- Step 0: Verify Phase A integrity ----
     print("\n--- Step 0: Verify Phase A artifact hashes ---")
-    verify_phase_a_hashes()
+    pre_hash_ok = verify_phase_a_hashes()
 
     # ---- Step 1: Parse gate registry from frozen manifest ----
     print("\n--- Step 1: Parse gate registry from frozen manifest ---")
@@ -793,7 +807,7 @@ def main():
 
     # ---- Step 2: Self-test parser-to-coverage linkage ----
     implemented_ids = set(HANDLER_TABLE.keys())
-    self_test_parser_coverage(manifest_text, implemented_ids)
+    self_test_ok = self_test_parser_coverage(manifest_text, implemented_ids)
 
     # ---- Step 3: Pre-execution coverage proof ----
     print("\n--- Step 3: Pre-execution coverage proof ---")
@@ -806,8 +820,9 @@ def main():
     print("  Exact set equality: parsed manifest == implemented handlers")
 
     # ---- Step 4: Setup ----
-    print("\n--- Loading Phase A computation module ---")
+    print("\n--- Loading Phase A computation modules ---")
     ct = _load_mod('ct', 'compute_torsion.py')
+    vf = _load_mod('vf', 'validate_fixture.py')
 
     print("\n--- Loading packets ---")
     with open(os.path.join(SCRIPT_DIR, 'm8_5a_packet.json')) as f:
@@ -846,27 +861,32 @@ def main():
             if mt[i][j] == e_id:
                 inv_map[i] = j; break
 
-    # Build fixture
-    print("\n--- Building convention fixture ---")
-    su2 = [ct.q2su2(q) for q in se]
-    P = [[ct.GC(ct.QG(2)), ct.GC(ct.QG(0), ct.QG(1))],
-         [ct.GC(), ct.GC(ct.QG(1))]]
-    Pi = minv_gc(P, ct.GC(ct.QG(1)), ct.GC())
-    fixture_reps = [ct.mmul(Pi, ct.mmul(su2[g], P)) for g in range(120)]
-    tau_base, acyc_base, msg_base = fixture_compute_torsion(
-        fixture_reps, d1_raw, d2_raw, d3_raw, 2, ct)
-    assert acyc_base, f"Fixture baseline not acyclic: {msg_base}"
-    T2_base_gc = tau_base * tau_base.conj()
-    assert T2_base_gc.im.is_zero(), "Baseline T2 not real"
-    fixture_T2_base = T2_base_gc.re
-    print(f"  Fixture baseline T2 = {fixture_T2_base}")
+    # Build convention fixture using frozen validate_fixture types
+    print("\n--- Building convention fixture (via frozen validate_fixture) ---")
+    def q2su2_vf(q):
+        return [[vf.GC(vf.QG(q.w.a, q.w.b), vf.QG(q.x.a, q.x.b)),
+                 vf.GC(vf.QG(q.y.a, q.y.b), vf.QG(q.z.a, q.z.b))],
+                [vf.GC(vf.QG(-q.y.a, -q.y.b), vf.QG(q.z.a, q.z.b)),
+                 vf.GC(vf.QG(q.w.a, q.w.b), vf.QG(-q.x.a, -q.x.b))]]
+    vf_su2 = [q2su2_vf(q) for q in se]
+    vf_P = [[vf.GC(vf.QG(2)), vf.GCI], [vf.GC0, vf.GC1]]
+    vf_Pi = vf.minv(vf_P)
+    vf_fixture_reps = [vf.mmul(vf_Pi, vf.mmul(vf_su2[g], vf_P)) for g in range(120)]
+    tau_vf_base, acyc_vf, msg_vf = vf.compute_torsion(
+        vf_fixture_reps, d1_raw, d2_raw, d3_raw, 2)
+    assert acyc_vf, f"VF fixture baseline not acyclic: {msg_vf}"
+    T2_vf_gc = tau_vf_base * tau_vf_base.conj()
+    assert T2_vf_gc.im.is_zero(), "VF baseline T2 not real"
+    vf_fixture_T2_base = T2_vf_gc.re
+    print(f"  Fixture baseline T2 = ({vf_fixture_T2_base.a}+{vf_fixture_T2_base.b}phi)")
 
     # Build context
     ctx = dict(ct=ct, se=se, mt=mt, s_id=s_id, t_id=t_id, e_id=e_id, st_id=st_id,
                cp=cp, d1_gr=d1_gr, d2_gr=d2_gr, d3_gr=d3_gr,
                d1_raw=d1_raw, d2_raw=d2_raw, d3_raw=d3_raw,
                reps=reps, dims=dims, inv_map=inv_map,
-               fixture_reps=fixture_reps, fixture_T2_base=fixture_T2_base)
+               vf=vf, vf_fixture_reps=vf_fixture_reps,
+               vf_fixture_T2_base=vf_fixture_T2_base)
 
     # ---- Step 5: Execute all handlers ----
     print("\n" + "=" * 60)
@@ -908,16 +928,16 @@ def main():
     # ---- Step 8: Write output ----
     output = {
         'schema_version': 'm8_8-phase-b-mutation-results-2',
-        'phase_a_hashes_verified_pre': True,
+        'phase_a_hashes_verified_pre': pre_hash_ok,
         'phase_a_hashes_verified_post': post_ok,
-        'manifest_parsed_at_runtime': True,
+        'manifest_parsed_at_runtime': len(parsed_registry) == 19,
         'manifest_sha256': hashlib.sha256(manifest_text.encode()).hexdigest(),
-        'parser_self_test_passed': True,
+        'parser_self_test_passed': self_test_ok,
         'registry_coverage': {
             'parsed_gate_ids': sorted(parsed_ids),
             'implemented_handler_ids': sorted(implemented_ids),
             'executed_gate_ids': sorted(executed_ids),
-            'pre_execution_set_equality': True,
+            'pre_execution_set_equality': pre_ok,
             'post_execution_set_equality': post_cov,
             'count': len(results),
         },

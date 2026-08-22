@@ -1,5 +1,22 @@
 # M8.8 Phase B Qualification Record
 
+## How to reproduce
+
+The qualification script expects the following layout beside itself:
+
+    M8.8_PHASEB/
+      run_phase_b.py
+      m8_5a_packet.json          (group packet, SHA-256 pinned in PROTOCOL.md § 11)
+      m8_8_construction_packet.json  (construction packet, SHA-256 pinned in PROTOCOL.md § 11)
+      phase_a_frozen/             (13 files, SHA-256 pinned in PROTOCOL.md Addendum 1)
+
+Run with bytecode writing disabled (the script sets `sys.dont_write_bytecode`):
+
+    python3 run_phase_b.py
+
+The script verifies all 13 frozen hashes before and after execution and will
+exit nonzero on any mismatch.
+
 ## What was executed
 
 Phase B read `METHOD_AND_GATE_MANIFEST.md` (SHA-256 `8aa140e3...`) from the
@@ -54,7 +71,27 @@ appearing in the frozen directory.
 | G-D02 | Twisted ranks | M3 row zeroed | rank=d | rank<d | Yes |
 | G-D03 | Det sub-matrices | minor col zeroed | det!=0 | det=0 | Yes |
 | G-D04 | Galois consistency | mgal(V1) at character level | sigma(T2)=T2(V7) | sigma(T2)!=T2(V7) | Yes |
-| G-D05 | Code-path dependency | I_d at formula input boundary | T2=8+12phi | T2=1 | Yes |
+| G-D05 | Code-path dependency | det_gc -> det(I_d) | T2=8+12phi | T2=1 | Yes |
+
+### Convention fixture gates (G-T03a through G-T03d)
+
+All four convention gates executed through the frozen
+`validate_fixture.compute_torsion` function on fixture representations built in
+that module's type system, not through a local copy of the torsion formula.
+
+### Determinant code-path gate (G-D05)
+
+The frozen `compute_torsion_sq` builds its three determinant sub-matrices
+internally and passes each to `det_gc`; it exposes no parameter for those
+minors. The mutation substituted `det_gc` on the loaded frozen module object
+for the duration of one call to `compute_torsion_sq`, making it return
+`det(I_d)` (the determinant of the identity matrix of the same dimension) for
+every minor it was handed. The original callable was restored in a `finally`
+block. Under identity substitution no determinant is zero, so both M3 and M1
+searches break on their first iteration; the intercepted call count was
+verified to equal exactly three (structural, not empirical). Both the baseline
+T2 and the mutated T2 were returned by the frozen `compute_torsion_sq`; the
+qualifier did not compute either value itself.
 
 ## What this establishes
 
@@ -76,7 +113,10 @@ appearing in the frozen directory.
 4. **Machine-readable record.** `MUTATION_RESULTS.json` carries per-gate
    records with: gate_id, gate_name, declared_mutation (from parsed manifest),
    implemented_mutation (what the harness executed), object_mutated,
-   gate_predicate, baseline_result, mutated_result, and red_outcome.
+   gate_predicate, baseline_result, mutated_result, and red_outcome. Four
+   metadata fields (`phase_a_hashes_verified_pre`, `manifest_parsed_at_runtime`,
+   `parser_self_test_passed`, `pre_execution_set_equality`) record their checked
+   values rather than literals.
 
 ## Disposition
 
