@@ -1,0 +1,485 @@
+{
+  "what": "M8.8 construction-packet audit, run from the two public packets alone",
+  "packet_file": "m8_8_construction_packet.json",
+  "group_packet_file": "m8_5a_packet.json",
+  "incoming_sha256": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06",
+  "canonical_form": "json.dumps(sort_keys=True, indent=2, ensure_ascii=True) + LF",
+  "authoritative_sha256": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06",
+  "canonicalization_changed_bytes": false,
+  "checks": [
+    {
+      "id": "A1",
+      "check": "format: key set, degree range, truncation rule, shapes, integer leaves",
+      "pass": true,
+      "observed": {
+        "keys_ok": true,
+        "shapes": [
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "expected_shapes": [
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "model_kind": "finite_cellular"
+      }
+    },
+    {
+      "id": "A2",
+      "check": "canonicalization: delivered bytes are the declared canonical form",
+      "pass": true,
+      "observed": {
+        "canonical_matches_delivered": true,
+        "ascii": true,
+        "crlf": false
+      }
+    },
+    {
+      "id": "A3",
+      "check": "group binding: hash, generator correspondence, relations, generation",
+      "pass": true,
+      "observed": {
+        "group_hash_reproduces": true,
+        "s": 118,
+        "t": 80,
+        "orders": [
+          6,
+          10,
+          4
+        ],
+        "relations_hold": true,
+        "elements_generated": 120
+      }
+    },
+    {
+      "id": "A4",
+      "check": "the complex is a complex: d_(n+1) d_n = 0 over Z[2I]",
+      "pass": true,
+      "observed": {
+        "d2_d1_zero": true,
+        "d3_d2_zero": true
+      }
+    },
+    {
+      "id": "A5",
+      "check": "census: declared free ranks and chi = 0",
+      "pass": true,
+      "observed": {
+        "free_ranks": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "chi": 0
+      }
+    },
+    {
+      "id": "A6",
+      "check": "trivial sector: H_*(Z (x) C_*) = (Z, 0, 0, Z) through the declared eps",
+      "pass": true,
+      "observed": {
+        "eps_d1": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "eps_d2": [
+          [
+            1,
+            -2
+          ],
+          [
+            -2,
+            3
+          ]
+        ],
+        "eps_d2_det": -1,
+        "eps_d3": [
+          [
+            0,
+            0
+          ]
+        ],
+        "d1_is_the_1_cell_correspondence": true
+      }
+    },
+    {
+      "id": "A7",
+      "check": "universal cover: H_*(C_* (x) F_p) = (1, 0, 0, 1) at every tested prime",
+      "pass": true,
+      "observed": {
+        "2": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "3": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "5": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "7": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "10007": [
+          1,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "A8",
+      "check": "per-irrep acyclicity: trivial non-acyclic (expected), nontrivial acyclic",
+      "pass": true,
+      "observed": {
+        "R0": false,
+        "4a": true,
+        "2a": true,
+        "3a": true,
+        "4b": true,
+        "5": true,
+        "6": true,
+        "2b": true,
+        "3b": true
+      }
+    },
+    {
+      "id": "A9",
+      "check": "leakage: no answer-bearing vocabulary, no decimal literal, no extra key",
+      "pass": true,
+      "observed": {
+        "vocabulary_hits": [],
+        "decimal_literal": false,
+        "extra_keys": []
+      }
+    },
+    {
+      "id": "A10",
+      "check": "relator provenance: each d2 row is the Fox jacobian of its declared relator",
+      "pass": true,
+      "observed": {
+        "unique_match_per_row": true,
+        "matched_relators": [
+          [
+            "s^3 (st)^-2"
+          ],
+          [
+            "t^5 (st)^-2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "A11",
+      "check": "exact top boundary: im d3 = ker d2 as lattices, certified without a prime set",
+      "pass": true,
+      "observed": {
+        "ranks": [
+          119,
+          121,
+          119
+        ],
+        "ceilings": [
+          119,
+          121,
+          119
+        ],
+        "bounds_close": true,
+        "rank_ker_d2": 119,
+        "im_d3_saturated": true,
+        "certificate": {
+          "pivots": 119,
+          "outcome": "cleared with unit pivots"
+        }
+      }
+    },
+    {
+      "id": "A12",
+      "check": "exact lower boundaries: im d1 and im d2 saturated, so H_0 = Z and H_1 = 0",
+      "pass": true,
+      "observed": {
+        "im_d1_saturated": true,
+        "im_d1_certificate": {
+          "pivots": 119,
+          "outcome": "cleared with unit pivots"
+        },
+        "h0_rank_closes": true,
+        "im_d2_saturated": true,
+        "im_d2_certificate": {
+          "pivots": 121,
+          "outcome": "cleared with unit pivots"
+        },
+        "rank_ker_d1": 121,
+        "rank_d2": 121,
+        "h1_vanishes": true
+      }
+    }
+  ],
+  "detail": {
+    "identity_element_id": 119,
+    "augmented_homology": "(Z, 0, 0, Z)",
+    "cover_betti": {
+      "2": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "3": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "5": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "7": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "10007": [
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    "cover_ranks": {
+      "2": [
+        119,
+        121,
+        119
+      ],
+      "3": [
+        119,
+        121,
+        119
+      ],
+      "5": [
+        119,
+        121,
+        119
+      ],
+      "7": [
+        119,
+        121,
+        119
+      ],
+      "10007": [
+        119,
+        121,
+        119
+      ]
+    },
+    "matched_relators": [
+      [
+        "s^3 (st)^-2"
+      ],
+      [
+        "t^5 (st)^-2"
+      ]
+    ],
+    "exact_top_boundary": {
+      "ranks": [
+        119,
+        121,
+        119
+      ],
+      "ceilings": [
+        119,
+        121,
+        119
+      ],
+      "bounds_close": true,
+      "rank_ker_d2": 119,
+      "im_d3_saturated": true,
+      "certificate": {
+        "pivots": 119,
+        "outcome": "cleared with unit pivots"
+      }
+    },
+    "exact_lower_boundaries": {
+      "im_d1_saturated": true,
+      "im_d1_certificate": {
+        "pivots": 119,
+        "outcome": "cleared with unit pivots"
+      },
+      "h0_rank_closes": true,
+      "im_d2_saturated": true,
+      "im_d2_certificate": {
+        "pivots": 121,
+        "outcome": "cleared with unit pivots"
+      },
+      "rank_ker_d1": 121,
+      "rank_d2": 121,
+      "h1_vanishes": true
+    }
+  },
+  "all_checks_pass": true,
+  "mutation_suite": [
+    {
+      "mutation": "d3 coefficient off by one",
+      "expected_red": "A4",
+      "observed_red": [
+        "A11",
+        "A4",
+        "A6",
+        "A7"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "d3 two entries swapped",
+      "expected_red": "A4",
+      "observed_red": [
+        "A4"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "d2 element id shifted",
+      "expected_red": "A4",
+      "observed_red": [
+        "A10",
+        "A11",
+        "A12",
+        "A4",
+        "A7",
+        "A8"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "d2 sign flipped on one term",
+      "expected_red": "A4",
+      "observed_red": [
+        "A10",
+        "A11",
+        "A12",
+        "A4",
+        "A6",
+        "A7",
+        "A8"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "d1 augmentation term dropped",
+      "expected_red": "A6",
+      "observed_red": [
+        "A11",
+        "A12",
+        "A4",
+        "A6",
+        "A7"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "abstract generator s remapped",
+      "expected_red": "A3",
+      "observed_red": [
+        "A10",
+        "A3",
+        "A6"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "free_ranks top rank inflated",
+      "expected_red": "A1",
+      "observed_red": [
+        "A1",
+        "A5",
+        "A7"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "d3 scaled to 2 d3 inside ker d2",
+      "expected_red": "A7",
+      "observed_red": [
+        "A11",
+        "A7"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "declared relator relabelled",
+      "expected_red": "A10",
+      "observed_red": [
+        "A10"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "d3 scaled to 11 d3, invisible to A7",
+      "expected_red": "A11",
+      "observed_red": [
+        "A11"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "d2 row and complementary d3 column scaled by 2 - z (a null)",
+      "expected_red": "A10",
+      "observed_red": [
+        "A10"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "d2 scaled by 6 - 5z, invisible to A7",
+      "expected_red": "A12",
+      "observed_red": [
+        "A10",
+        "A12"
+      ],
+      "detected": true
+    }
+  ],
+  "mutation_suite_all_detected": true
+}

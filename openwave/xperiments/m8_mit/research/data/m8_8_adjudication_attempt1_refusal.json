@@ -1,0 +1,25 @@
+{
+  "what": "M8.8 section 8 steps 6-8 adjudication",
+  "pins": {
+    "answer_packet": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e",
+    "raw_output": "1a9b56ce70bae73e5cf8c4ef00f6e43bf76937afb9075801605f6bf5047d1002",
+    "manifest": "8aa140e3978366ca38f7c1d5926d1a2972305733be434595f2905e9df512f838",
+    "group_packet": "e3b0c945bbbb15b4549fa641234c9461062c2337b3d1e372af621b614d4883a9",
+    "construction_packet": "df00c0222f98c481eb56b882cd867a6c3a4f8604b8633e81dec0cce1f8460a06"
+  },
+  "delivered_bytes": {
+    "sha256": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e",
+    "length": 12088
+  },
+  "load": {
+    "delivered_sha256": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e",
+    "delivered_length": 12088,
+    "canonicalization_changed_bytes": false,
+    "canonical_form_ok": true,
+    "canonical_sha256": "744c7f25e2312d90fc356b11510da685328f05e80ae62721d0a0f418dcf9697e"
+  },
+  "target_id": "M88-ADJ-01",
+  "format_version": "m8_8-answer-packet-1",
+  "category": "structural failure",
+  "refusal": "indexing_map.source_domain 'packet_rows_canonical_position' is not an implemented domain ['answer_packet.rows']; the map is not applied"
+}
