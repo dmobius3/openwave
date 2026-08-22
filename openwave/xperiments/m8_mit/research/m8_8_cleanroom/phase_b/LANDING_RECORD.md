@@ -75,7 +75,11 @@ The literal-field repair is partial. `pre_execution_set_equality` and
 `return True`, guarded by an earlier exit. The fields cannot read true while their checks fail,
 so the record is not misleading, but the shape is displaced one level rather than removed.
 
-Per-gate observation was not uniform. G-D05 was verified by instrumentation and the convention
-gates by routing and fixture equality. The remaining fourteen were verified as red with their
-declared mutations diffed against the manifest, resting on the maintainer's pair-by-pair read
-of all nineteen rather than on independent instrumentation of each.
+Per-gate evidence is not uniform, and it decomposes by what changed. G-D05 changed and was
+independently instrumented and mutation-attacked. The four convention handlers changed and were
+reverified against the frozen fixture path. The remaining fourteen handlers are unchanged since
+`bfdca08f` and inherit the maintainer's pair-by-pair read of eighteen of nineteen declared
+against implemented mutations at that commit, where G-D05 was the sole blocking item; here they
+are reconfirmed only as red with their declared mutations diffed verbatim against the manifest.
+That inheritance is stated rather than restated as fresh commissioner instrumentation, because
+nineteen independent instrumentations were not performed.
