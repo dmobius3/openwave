@@ -293,5 +293,14 @@ comment is not later read as a competing declaration.
 ## 13. Pins
 
 `m8_2_preregistration.md` §§ 2, 3, 6.1; `m8_2_first_occurrence.py`; `m8_5a_method_note.md`
-§§ A.5, A.6, B, D; `m8_4_kinematic_close.md` and `m8_4_kinematic_check.py`. Exact commit and hash
-pins are filled at filing.
+§§ A.5, A.6, B, D; `m8_4_kinematic_close.md` and `m8_4_kinematic_check.py`. Filled at filing
+(2026-08-23), all five against `main` @ `ab000cf1fa2d5ffea1515d95c8484b65afa759d9`, SHA-256 of
+the file bytes at that commit:
+
+| Pinned file | SHA-256 | Bytes |
+| --- | --- | --- |
+| `findings/m8_2_preregistration.md` | `e3b63b835529085a07a4898566d995a7a71e3c7a4abe9062a0c8005bdc803cff` | 34101 |
+| `scripts/m8_2_first_occurrence.py` | `47022da8a3c4a62a932dfd74cc36a060e7e2f6af382795ea3755450005a56220` | 9654 |
+| `findings/m8_5a_method_note.md` | `fd348320c4e597468040910b64e2b3eda94489004f619ce358c0e1b74594a805` | 23288 |
+| `findings/m8_4_kinematic_close.md` | `f0255cdb7bd8ae0988e8d2a49009835bbb9ece38fe4f3c191f84345129581d65` | 9137 |
+| `scripts/m8_4_kinematic_check.py` | `1458d94c25eb0617d2632f5750c012079b3a9fa68c43ac70c01c2cbaa64e1ec0` | 15262 |
