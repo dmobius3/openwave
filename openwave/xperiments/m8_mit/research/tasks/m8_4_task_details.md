@@ -67,6 +67,27 @@ zero evidentiary credit; target-bearing observables must be genuinely nonlinear.
 and `M7_ad` stay outside the coming preregistration, with no contingency clause admitting
 them on an `M4_int` outcome.
 
+**2026-08-23, stage 6 retargeted again, and the 2026-08-18 nomination corrected.** The entry
+above named `M4_int` across the three connections as the slot survey. That was too quick, and
+this task's own calculation is what corrects it: a field in `Ω⁰(X; E_{τ_σ})` has a section at
+level `n` exactly when the TRIVIAL isotype occurs in `V_n ⊗ τ_σ`, which is the certification
+table's `R_0` ROW read across the three columns. The eight nontrivial rows are the ambient
+decomposition of `V_n ⊗ τ_σ`, a fact about the cover, and not eight physical sectors of an
+`E_{τ_σ}`-valued field. Checked against the frozen table: the computed first section levels are
+0, 2 and 6 for the trivial, standard and Galois bundles, matching that row exactly. M8.2 § 3
+already says the gate "certifies the coefficient bundle only" and does not furnish a fluctuation
+spectrum.
+
+So **`M4_int` receives a STRUCTURAL N/A for the eight-slot physical-section question**, and the
+target-bearing object is `M4L_Erho`, one field per flat bundle `E_ρ` with `E_R0` the mandatory
+null control, filed as [`m8_4_preregistration.md`](../findings/m8_4_preregistration.md). Its
+ceiling is explicit and narrower than OQ1: the eight sectors are installed by construction, so it
+tests whether ONE nonlinear law acts coherently across them without per-sector tuning, never
+whether the dynamics selects them. The per-connection contract above does not carry over, because
+the connection axis does not survive the substitution: `σ` entered only through `κ_σ`, and in
+`E_ρ` the coefficient system is `ρ` itself. A genuine selection experiment needs a nonlinearity
+with a representation-changing term and is a separate object and preregistration.
+
 ## FINDINGS
 
 1. **THE KINEMATIC CLOSE (2026-08-18).** Native single-valued fields on S³/2I carry none of
