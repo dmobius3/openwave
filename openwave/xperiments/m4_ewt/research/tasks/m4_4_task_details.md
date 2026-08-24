@@ -1,10 +1,10 @@
-# M4.4 — Gravitational Time Dilation from the Internal EMC Soliton Clock
+# M4.4 - Gravitational Time Dilation from the Internal EMC Soliton Clock
 
 ## Status
 DONE (post-hoc)
 
 ## Criterion
-`Gravity: metric phenomena` — time dilation component
+`Gravity: metric phenomena` - time dilation component
 
 ## Objective
 Test whether the EMC lattice model reproduces the standard
@@ -43,4 +43,4 @@ Enhanced EWT manuscript, version 4.5.6:
 
 Relevant section:
 
-- “Mechanical Origin of Gravitational Redshift in the EMC Lattice”
+- "Mechanical Origin of Gravitational Redshift in the EMC Lattice"

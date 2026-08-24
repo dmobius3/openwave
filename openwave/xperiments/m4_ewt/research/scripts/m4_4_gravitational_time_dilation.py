@@ -20,7 +20,9 @@ Mechanism:
     In the weak-field limit this gives the standard gravitational
     redshift:
 
-        df/f = v_clock - 1 = sqrt(1 - 2*Phi_N) - 1 ≈ -Phi_N = -GM/(c^2 r).
+        df/f = (v_clock - c)/c = sqrt(1 - 2*Phi_N) - 1 ≈ -Phi_N,
+
+    with Phi_N = GM/(c^2 r) in SI units.
 
 This script computes the redshift at the solar limb and compares it
 with the standard GR value.

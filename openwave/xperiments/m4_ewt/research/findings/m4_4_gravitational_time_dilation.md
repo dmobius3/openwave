@@ -1,10 +1,13 @@
-# M4 Gravitational Time Dilation from the Internal EMC Soliton Clock
+# M4.4 Gravitational Time Dilation from the Internal EMC Soliton Clock
 
 ## Criterion
 Gravity: metric phenomena — time dilation component
 
 ## Status
 ✅ validated numerically
+
+This validates the gravitational time dilation component only; the
+light-bending component is covered separately in M4.3.
 
 ## Mechanism
 A clock is a standing-wave soliton. Its period is the time for an
@@ -30,6 +33,11 @@ The predicted fractional frequency shift is computed directly as
 \]
 
 not as an externally inserted metric formula.
+
+The script evaluates the formula in SI units for numerical
+convenience. The natural-unit argument in the manuscript establishes
+the dimensionless structure \(v_{\text{clock}}/c = \sqrt{\eta}\),
+so the conversion factors \(c\) and \(G\) cancel consistently.
 
 ## Method
 - Compute the EMC density ratio at the solar limb:
@@ -65,10 +73,11 @@ the Enhanced EWT lattice model:
 
 No free numerical parameters are introduced.
 
-## Derivation
-See manuscript Enhanced EWT v4.5.6, section
-“Mechanical Origin of Gravitational Redshift in the EMC Lattice”.
-
 ## Reference
-Enhanced EWT manuscript, version 4.5.6:
+
+Full derivation in the Enhanced EWT manuscript, version 4.5.6:
 [DOI: 10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657)
+
+Relevant section:
+
+- “Mechanical Origin of Gravitational Redshift in the EMC Lattice”

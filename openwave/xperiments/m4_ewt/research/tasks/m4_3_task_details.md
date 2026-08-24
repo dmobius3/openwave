@@ -93,7 +93,6 @@ remains open.
 - [`research/scripts/m4_3_light_bending_emc_displacement.py`](../scripts/m4_3_light_bending_emc_displacement.py)
 - [`research/findings/m4_3_light_bending_emc_displacement.md`](../findings/m4_3_light_bending_emc_displacement.md)
 
-- 
 ## Reference
 
 Manuscript: Enhanced EWT, version 4.5.6,
