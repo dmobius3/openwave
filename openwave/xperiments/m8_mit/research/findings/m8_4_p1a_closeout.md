@@ -49,8 +49,8 @@ whose mesh ratio is driven to 83.4 against a frozen ceiling of 20.0.
 Imaginary contamination. The continuum operator is self-adjoint, so any imaginary part in the
 computed spectrum is error. Measured on the target clusters at the production cloud, it ranges
 from `5.95e-14` on the `R_0` control to `1.8e-01` on `R_2`, and the pooled envelope needed to
-cover that spread is about 58,688 times its own fitted trend. Against the power gate frozen BEFORE the fit,
-`E(h) < 10·T(h)`, that fails, and a rule with no power issues no verdicts.
+cover that spread is about 58,688 times its own fitted trend. Against the power gate frozen
+BEFORE the fit, `E(h) < 10·T(h)`, that fails, and a rule with no power issues no verdicts.
 
 **The failure is substantive, not another instrument defect.** That distinction was established
 by a standalone localization test, run commissioner-side rather than by the qualification unit,
@@ -160,7 +160,8 @@ PYTHONPATH=.:../m8_5b/pilot:../m8_5b/production python3 localization/localizatio
 
 It carries a deliberately precision-sensitive control: the companion matrix of `(x-1)^10`, whose
 exact spectrum is real, so any computed imaginary component there is numerical error from the
-finite-precision eigensolve. The ladder must shrink it, and does, from `4.79e-02` to `1.17e-05`. Without that arm a persistence
+finite-precision eigensolve. The ladder must shrink it, and does, from `4.79e-02` to `1.17e-05`.
+Without that arm a persistence
 result would be indistinguishable from a broken ladder. The script exits nonzero if the arm
 fails.
 
