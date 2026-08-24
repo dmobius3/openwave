@@ -1,5 +1,10 @@
 # M4 Light Bending from EMC Density Gradient
 
+> This is an Enhanced EWT extension, authored by Łukasz Smoliński, as registered in
+> [`_CITATIONS.md`](../../theory/_CITATIONS.md) (The Geometric Identity of Gravity and
+> Dimensional Unification, v4.5.5, DOI
+> [10.5281/zenodo.22042784](https://doi.org/10.5281/zenodo.22042784)).
+
 ## Criterion
 Gravity: metric phenomena (light bending, with gravitational time
 dilation treated as the same EMC-deformation effect; Lambda omitted)
@@ -66,8 +71,8 @@ They are not independent phenomena.
 
 - Solar-limb bending angle:
   \(\Delta\theta = 1.751728\) arcsec
-- Observed value: \(1.75\) arcsec
-- Relative difference: \(0.099\%\)
+- Reference value (general-relativistic prediction): \(1.7517\) arcsec
+- Relative difference: \(0.0016\%\)
 
 ## Free choices
 
@@ -79,12 +84,15 @@ They are not independent phenomena.
 
 ## Interpretation
 
-The numerical result demonstrates that the EMC density-deficit
-mechanism reproduces the observed solar light bending without
-introducing spacetime curvature. Because the same mechanism also
-defines the local clock geometry through \(c \equiv \lambda_l/t_p\),
-the present test simultaneously covers the structural origin of
-gravitational time dilation in the EWT framework.
+The numerical result shows that once the EMC density deficit is
+encoded as \(n(r) = (N_\nu/N_{\text{stat}})^{-1/2} = (1 - 2r_s/r)^{-1/2}\),
+the standard ray integral reproduces the observed solar-limb bending.
+The encoding, not the bending, is the model-specific step: deriving
+\(n(r)\) from BCC lattice elasticity remains open (Free choices), so
+this is a consistency test of the encoding, not yet a derivation of
+light bending from the EMC mechanism. The same encoding is argued,
+via \(c \equiv \lambda_l/t_p\), to control clock rates; gravitational
+time dilation is not separately computed here.
 
 Formally, the ray bends because of the gradient of the phase
 velocity. In EWT, the physical carrier of this gradient is the

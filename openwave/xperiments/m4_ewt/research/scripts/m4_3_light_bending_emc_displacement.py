@@ -23,7 +23,7 @@ Mechanism:
     is the EMC displacement, not a generic optical slow-down.
 
     This script computes the solar-limb bending angle and compares
-    it with the observed 1.75 arcsec.
+    it with the general-relativistic prediction 1.7517 arcsec.
 """
 
 import math
@@ -33,16 +33,16 @@ import math
 # ----------------------------------------------------------------------
 print("[1/4] Loading physical constants and EWT density levels...")
 
-G      = 6.67430e-11          # m^3 kg^-1 s^-2
-c      = 299792458.0          # m/s
-M_sun  = 1.989e30             # kg
-R_sun  = 6.957e8              # m
+G = 6.67430e-11  # m^3 kg^-1 s^-2
+c = 299792458.0  # m/s
+M_sun = 1.989e30  # kg
+R_sun = 6.957e8  # m
 
 r_s = 2.0 * G * M_sun / (c * c)
 
 N_stat = 3.298651882390107e52  # statutory EMC density
-N_eff  = 6.252517621935487e48  # effective EMC density inside matter
-N_max  = 5.300415534439117e54  # absolute maximum EMC density
+N_eff = 6.252517621935487e48  # effective EMC density inside matter
+N_max = 5.300415534439117e54  # absolute maximum EMC density
 
 print(f"    G          = {G:.6e} m^3 kg^-1 s^-2")
 print(f"    c          = {c:.3f} m/s")
@@ -58,6 +58,7 @@ print(f"    N_max      = {N_max:.6e}")
 # ----------------------------------------------------------------------
 print("[2/4] Building EMC density profile and scalar encoding n(r)...")
 
+
 def N_nu(r):
     """
     Local EMC density outside the Sun.
@@ -70,6 +71,7 @@ def N_nu(r):
         raise ValueError("Deficit >= 1: invalid in this static profile")
     return N_stat * (1.0 - deficit)
 
+
 def n_index(r):
     """
     Scalar encoding of the EMC displacement.
@@ -80,6 +82,7 @@ def n_index(r):
     the same EMC density that defines the displacement field u(r).
     """
     return 1.0 / math.sqrt(1.0 - 2.0 * r_s / r)
+
 
 print(f"    N_nu(R_sun) / N_stat = {N_nu(R_sun)/N_stat:.12f}")
 print(f"    n(R_sun)              = {n_index(R_sun):.12f}")
@@ -97,14 +100,17 @@ print("[3/4] Integrating the light bending angle using u = R/r ...")
 #
 # This form is smooth at both limits (u=0 and u=1).
 
+
 def integrand_u(u):
     if u <= 0.0 or u >= 1.0:
         return 0.0
     factor = (1.0 - 2.0 * r_s * u / R_sun) ** (-1.5)
     return u * factor / math.sqrt(1.0 - u * u)
 
+
 try:
     from scipy.integrate import quad
+
     USE_SCIPY = True
 except ImportError:
     USE_SCIPY = False
@@ -138,12 +144,12 @@ print(f"    theta analytic      = {theta_expected_arcsec:.6f} arcsec")
 # ----------------------------------------------------------------------
 # 4. Comparison with observation
 # ----------------------------------------------------------------------
-print("[4/4] Comparing with observed solar-limb deflection...")
+print("[4/4] Comparing with the GR solar-limb prediction...")
 
-target_arcsec = 1.75
+target_arcsec = 1.7517
 rel_diff = abs(theta_arcsec - target_arcsec) / target_arcsec * 100.0
 
-print(f"    Observed target      = {target_arcsec:.2f} arcsec")
+print(f"    GR prediction        = {target_arcsec:.4f} arcsec")
 print(f"    EWT numeric result   = {theta_arcsec:.6f} arcsec")
 print(f"    Relative difference  = {rel_diff:.4f}%")
 
