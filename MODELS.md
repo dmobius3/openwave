@@ -124,7 +124,7 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 | Weak force: muon decay | μ relaxes to e + neutral ejecta |
 | Weak force: beta decay (n → p) | n → p + e + ν̄, parity-violating (needs a neutron) |
 | Gravity: Newton limit (GEM) | attractive 1/r² between masses, via the GEM route |
-| Gravity: metric phenomena | light bending, time dilation, Λ |
+| Gravity: metric phenomena | light bending, time dilation; Λ credited only when derived from the model's own mechanism, never fitted |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | Maxwell recovered; transverse waves at c |
