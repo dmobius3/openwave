@@ -88,6 +88,32 @@ the connection axis does not survive the substitution: `σ` entered only through
 `E_ρ` the coefficient system is `ρ` itself. A genuine selection experiment needs a nonlinearity
 with a representation-changing term and is a separate object and preregistration.
 
+**2026-08-24, P1A closed: estimator qualified, substrate not.** The engineering pilot's first
+phase ran and is recorded in [`m8_4_p1a_closeout.md`](../findings/m8_4_p1a_closeout.md). The
+invariant-subspace estimator the frozen § 7 observable needs is QUALIFIED: projector identities at
+1e-16, Schur against an independently preregistered Riesz contour agreeing to 4e-08, the three-way
+leakage identity closing to 8e-16, and spectral projector norms of 2.2 to 3.1 on the target
+clusters, so the operator's strong non-normality does not reach the subspaces M8.4 scores.
+
+What FAILED is the substrate's spectral-contamination qualification, globally, under a power gate
+frozen before the fit. The continuum operator is self-adjoint, so imaginary parts in the computed
+spectrum are error; they run from 9e-15 on `R_0` to 1.8e-01 on `R_2`, and the envelope needed to
+cover that spread is about 58,688 times its own trend, which is a rule with no discriminating
+power. No sector verdicts issued, P1A.5 was never opened, and **no nonlinear target configuration
+was ever run: no target sector has been spent.**
+
+A precision-ladder localization test, mutation-armed and reproducible from
+[`m8_4_p1a/localization/`](../m8_4_p1a/localization/), establishes that the failure is
+substantive rather than an instrument defect: with the assembled `L_h` held byte-for-byte fixed,
+the target imaginary parts are unchanged from float64 through 50-digit arithmetic. They belong to
+the matrix, not the eigensolver, so no numerical floor can reclassify them. The test separates
+solver from matrix; it does NOT identify whether the equivariant assembly or the underlying
+RBF-FD discretization is responsible, and nothing here claims to.
+
+**The nonlinear pilot is therefore blocked on the present discrete operator.** Continuing would
+require separately commissioned, independently justified structure-preserving assembly or
+discretization work, which is not a repair to P1A and does not reopen its outcome.
+
 ## FINDINGS
 
 1. **THE KINEMATIC CLOSE (2026-08-18).** Native single-valued fields on S³/2I carry none of
