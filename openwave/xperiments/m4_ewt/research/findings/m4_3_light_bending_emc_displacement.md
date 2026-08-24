@@ -98,3 +98,14 @@ Formally, the ray bends because of the gradient of the phase
 velocity. In EWT, the physical carrier of this gradient is the
 lattice deformation field \(\vec{u}(r)\), not an abstract optical
 property.
+
+## Reference
+
+Full derivation in the Enhanced EWT manuscript, version 4.5.6:
+[DOI: 10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657)
+
+Relevant sections:
+
+- “The Two Faces of EMC Displacement: Speed and Trajectory”
+- “Bridging the Vector Displacement to the Scalar Refractive Index”
+- “Asymptotic Continuous Limit and Schwarzschild Equivalence”

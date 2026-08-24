@@ -92,3 +92,15 @@ remains open.
 
 - [`research/scripts/m4_3_light_bending_emc_displacement.py`](../scripts/m4_3_light_bending_emc_displacement.py)
 - [`research/findings/m4_3_light_bending_emc_displacement.md`](../findings/m4_3_light_bending_emc_displacement.md)
+
+- 
+## Reference
+
+Manuscript: Enhanced EWT, version 4.5.6,
+DOI: 10.5281/zenodo.17654657.
+
+Relevant sections:
+
+- “The Two Faces of EMC Displacement: Speed and Trajectory”
+- “Bridging the Vector Displacement to the Scalar Refractive Index”
+- “Asymptotic Continuous Limit and Schwarzschild Equivalence”
