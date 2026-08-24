@@ -29,8 +29,9 @@ The invariant-subspace machinery works, and survived adversarial checking.
 | --- | --- |
 | projector idempotence `‖P² − P‖` | 2.4e-16 to 6.0e-16, all nine sectors |
 | `M_h`-symmetry `‖P†M_h − M_hP‖` | 1.2e-16 to 1.8e-16 |
-| RELATIVE invariance residual, `‖(I − P_Q)LQ‖_{M_h} / ‖LQ‖_{M_h}` | 3.9e-14 to 7.8e-13 across the eight nontrivial sectors; `R_0` sits at 4.6e-03 because its cluster is the constant, so numerator and denominator are both at discretization error |
-| Schur against Riesz, `θ_max`, contour preregistered from analytic levels | 0 to 3.9e-08 |
+| invariance residual `‖(I − P_Q)LQ‖_{M_h}`, ABSOLUTE | 2.6e-12 to 8.3e-12, all nine sectors |
+| the same residual RELATIVE to `‖LQ‖_{M_h}` | 3.9e-14 to 7.8e-13 across the eight nontrivial sectors. `R_0` reads 4.6e-03, and that is the metric, not the operator: its cluster is the constant at `λ = 0`, so `‖LQ‖` is 5.7e-10 against 4.2 for `R_1`, and a small-over-small ratio inflates while the absolute residual, 2.6e-12, stays in family |
+| Schur against Riesz, `θ_max`, contour preregistered from analytic levels | 0 to 3.3e-08 |
 | three-way leakage identity, projector against angle against overlap | max disagreement 8.1e-16 |
 | `‖P_spec‖` on the target clusters | **2.2 to 3.1** |
 
@@ -138,9 +139,16 @@ PYTHONPATH=.:../m8_5b/pilot:../m8_5b/production python3 regenerate_estimator_tab
 ```
 
 About four minutes: nine bundles at the 60-seed production cloud, each with a Schur extraction and
-a 128-point Riesz contour. Verified here to reproduce every quoted value, `R_0` at 4.63e-03 and
-`R_2` at 3.90e-14 among them. Running it is what showed the invariance-residual row above was
-misstated.
+a 128-point Riesz contour, on a 7200-node cloud at `k = 110`.
+
+**It corrected the table it was written to reproduce.** Four of the six rows reproduced exactly,
+idempotence, `M_h`-symmetry, the three-way identity and `‖P_spec‖`. Two did not, and both are
+corrected above rather than left standing. The invariance residual was quoted as
+"3.9e-14 to 9.7e-14" under an ABSOLUTE label while the figures were in fact relative, with an upper
+bound that was `R_8`'s value rather than the maximum and with `R_0` dropped from the range without
+saying so; it is now given in both metrics. `θ_max` was quoted as 3.9e-08 and measures 3.3e-08. The
+earlier note that carried the original figures was overwritten in the room, so the regenerated
+values are the ones with standing evidence and the discrepancies cannot be traced further.
 
 **Reproducing the localization test**, which is the claim-bearing piece of § "What failed":
 

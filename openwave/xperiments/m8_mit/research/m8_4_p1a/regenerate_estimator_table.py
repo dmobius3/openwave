@@ -38,8 +38,8 @@ def main():
 
     print(f"cloud {len(X)} nodes, k={K}\n")
     print(f"{'sector':7s} {'idem':>10} {'Mh-sym':>10} {'inv resid':>11} "
-          f"{'Riesz th':>10} {'3-way':>10} {'Henrici':>8} {'|P_spec|':>9}")
-    agg = {k: [] for k in ("idem", "sym", "inv", "riesz", "three", "hen", "pspec")}
+          f"{'inv rel':>11} {'Riesz th':>10} {'3-way':>10} {'Henrici':>8} {'|P_spec|':>9}")
+    agg = {k: [] for k in ("idem", "sym", "abs", "inv", "riesz", "three", "hen", "pspec")}
     for lab in LABELS:
         d = DIST[lab]; k = d + 1; lam0 = d * (d + 2)
         L = np.asarray(build_L_bundle(X, oid, gid, elems, reps[lab], k=K, m=RBF_M, p=RBF_P)[0])
@@ -51,14 +51,16 @@ def main():
         rz = riesz_crosscheck(L, Q, Mh, lam0, radius, k)
         pspec = riesz_projector_norm(riesz_projector(L, lam0, radius))
         hen = henrici_departure(L)
-        row = (pv["idempotence"], pv["mh_symmetry"], pv["invariance_residual_rel"],
+        row = (pv["idempotence"], pv["mh_symmetry"], pv["invariance_residual"],
+               pv["invariance_residual_rel"],
                rz["theta_max_schur_vs_riesz"], tw["max_disagreement"], hen, pspec)
         for key, v in zip(agg, row):
             agg[key].append(float(v))
-        print(f"{lab:7s} " + " ".join(f"{v:>10.2e}" for v in row[:5])
-              + f" {row[5]:>8.3f} {row[6]:>9.2f}")
+        print(f"{lab:7s} " + " ".join(f"{v:>10.2e}" for v in row[:6])
+              + f" {row[6]:>8.3f} {row[7]:>9.2f}")
     print("\nranges across the nine bundles:")
     for key, name in (("idem", "projector idempotence"), ("sym", "M_h-symmetry"),
+                      ("abs", "invariance residual (absolute)"),
                       ("inv", "invariance residual (relative)"), ("riesz", "Schur vs Riesz theta_max"),
                       ("three", "three-way leakage identity"), ("hen", "Henrici departure"),
                       ("pspec", "||P_spec|| on target clusters")):
