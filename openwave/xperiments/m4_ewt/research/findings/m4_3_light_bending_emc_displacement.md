@@ -74,13 +74,27 @@ They are not independent phenomena.
 - Reference value (general-relativistic prediction): \(1.7517\) arcsec
 - Relative difference: \(0.0016\%\)
 
-## Free choices
+## Model assumptions (derived, not fitted)
 
-- The profile \(N_\nu(r)\) is chosen as the simplest weak-field model
-  consistent with the EMC push-out mechanism.
-- \(n(r)\) is treated as the scalar encoding of the EMC displacement
-  field; its direct derivation from BCC lattice elasticity remains
-  open.
+The following are not free parameters but structural consequences of
+the Enhanced EWT lattice model:
+
+- The normalised EMC density profile
+  \(N_\nu(r)/N_{\text{stat}} = 1 - r_s/r\)
+  follows from the weak-field spherical deficit around a matter
+  soliton.
+- The radial displacement
+  \(u_r(r) = \int_r^\infty |\nabla(N_\nu/N_{\text{stat}})| dr'\)
+  is the cumulative structural response to that deficit.
+- The scalar index
+  \(n_\gamma(r) = 1 + u_r(r)\)
+  is the isotropic encoding of the displacement field.
+- The full expression
+  \(n_\gamma(r) = (1 - 2r_s/r)^{-1/2}\)
+  is the asymptotic continuous limit of the discrete BCC lattice
+  deformation, not an external metric import.
+
+No free numerical parameters are introduced.
 
 ## Interpretation
 

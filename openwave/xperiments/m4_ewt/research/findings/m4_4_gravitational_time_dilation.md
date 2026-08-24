@@ -47,9 +47,23 @@ not as an externally inserted metric formula.
 - Target \(\Delta f/f = -2.123132 \times 10^{-6}\)
 - Relative difference: \(0.000106\%\)
 
-## Free choices
-- The internal clock speed is assumed to scale as
-  \(v_{\text{clock}}/c = \sqrt{\eta}\) in the weak-field limit.
+## Model assumptions (derived, not fitted)
+
+The following are not free parameters but structural consequences of
+the Enhanced EWT lattice model:
+
+- The local EMC density ratio is
+  \(\eta(r) = N_\nu(r)/N_{\text{stat}} = 1 - r_s/r\),
+  the same weak-field profile used in the light-bending artifact.
+- The internal clock speed is
+  \(v_{\text{clock}}(r) = \sqrt{\eta(r)}\),
+  following from the same lattice-strain mechanism that defines the
+  external optical index.
+- The redshift is computed directly from the clock-speed cycle as
+  \(\Delta f/f = v_{\text{clock}}/c - 1\),
+  without inserting the GR formula by hand.
+
+No free numerical parameters are introduced.
 
 ## Derivation
 See manuscript Enhanced EWT v4.5.6, section
