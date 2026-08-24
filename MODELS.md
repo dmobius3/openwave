@@ -34,8 +34,8 @@ Every file reference is an active link to the file in this repository (under `op
 | ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 | 0 |
 | ⚠️ partial / with caveats | 11 | 10 | 8 | 2 | 1 | 1 |
 | ❌ honest negative | 2 | 0 | 3 | 3 | 0 | 0 |
-| 🚧 planned / not tested | 8 | 20 | 19 | 22 | 29 | 29 |
-| **Total criteria** | **30** | **30** | **30** | **30** | **30** | **30** |
+| 🚧 planned / not tested | 9 | 21 | 20 | 23 | 30 | 30 |
+| **Total criteria** | **31** | **31** | **31** | **31** | **31** | **31** |
 
 ### Summary Status
 
@@ -80,7 +80,8 @@ Each criterion's simplest passing test sits in its own companion table right bel
 | Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
 | Weak force: beta decay (n → p) | ❌ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
 | Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
-| Gravity: metric phenomena | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | ⚠️ | both |
+| Gravity: local metric phenomena | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | both |
+| Cosmology: Λ / cosmic acceleration | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | 🚧 | static |
 | | | | | | | | |
 | **WAVES + QUANTUM EMERGENCE** | | | | | | | |
 | EM waves (Maxwell) | ✅ | ⚠️ | ⚠️ | ✅ | 🚧 | 🚧 | dynamic |
@@ -124,7 +125,8 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 | Weak force: muon decay | μ relaxes to e + neutral ejecta |
 | Weak force: beta decay (n → p) | n → p + e + ν̄, parity-violating (needs a neutron) |
 | Gravity: Newton limit (GEM) | attractive 1/r² between masses, via the GEM route |
-| Gravity: metric phenomena | light bending, time dilation; Λ credited only when derived from the model's own mechanism, never fitted |
+| Gravity: local metric phenomena | light bending, gravitational time dilation / Shapiro delay |
+| Cosmology: Λ / cosmic acceleration | Λ from the model's own mechanism, never fitted; every remaining gap and a falsification named |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | Maxwell recovered; transverse waves at c |
@@ -185,7 +187,8 @@ Deep dive: [`m5_summary_report.md`](openwave/xperiments/m5_liquid_crystal/resear
 | Weak force: muon decay | ⚠️ [partially validated]<br>**Decay dynamics measured**, no longer only sketched: kicked heavy-lepton minima relax to the electron level and release structure (neutrino candidates) under damped evolution, energy ledger closed. Missing: any rate or coupling<br>[`m5_21_6_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_21_6_note.md) |
 | Weak force: beta decay (n → p) | ❌ [honest negative at the 3×3 truncation]<br>The census neutron-analog (bound ring-antiring pair, exact ±1 ring charges) survives EVERY decay probe: 20 kick runs, three kick families to 53× the state energy, all returning with charges intact; no n → p + e + ν channel at toy parameters. The constant-ω long-axis-twist probe also measured negative (no minimum at ω > 0 on any baryon-sector state); the parity-violating structure stays open<br>[`m5_22_2_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_22_2_note.md) · [`m5_22_4_note.md`](openwave/xperiments/m5_liquid_crystal/research/findings/m5_22_4_note.md)<br>→ open route: free full-4×4 dynamics and/or physical parameters |
 | Gravity: Newton limit (GEM) | ⚠️ [partially validated]<br>The coupling mechanism is measured: gravity enters only via the boost tilt of the time axis (GEM ∝ (b·g)², zero at zero boost, negative = the clock-fuel block); the attractive 1/r² inter-mass force itself is not yet computed<br>[`m5_8_2q_delta_scaling.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2q_delta_scaling.py) |
-| Gravity: metric phenomena | 🚧 [not yet tested]<br>Appears naturally going from LdG 3×3 tensors to 4×4 adding boosts, the implemented route, but no dynamical metric: light bending, time dilation and any Λ read await a stress-energy-sourced background<br>[`m5_8_2q_delta_scaling.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2q_delta_scaling.py) |
+| Gravity: local metric phenomena | 🚧 [not yet tested]<br>Appears naturally going from LdG 3×3 tensors to 4×4 adding boosts, the implemented route, but no dynamical metric: light bending and time dilation await a stress-energy-sourced background<br>[`m5_8_2q_delta_scaling.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_8_2q_delta_scaling.py) |
+| Cosmology: Λ / cosmic acceleration | 🚧 [not yet tested]<br>Not addressed (any Λ read awaits a stress-energy-sourced background)<br>(none yet) |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | ✅ [validated in-platform]<br>Maxwell recovered by two independent routes: the hydrodynamic dictionary (abelian) and Faber's curvature R = Γ×Γ; tilt modes propagate at c, with the divergence/curl (electric/magnetic) decomposition of each defect's outgoing wave<br>[`m5_6_4a_hydro_em.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_4a_hydro_em.py), [`m5_6_4b_faber_curvature_em.py`](openwave/xperiments/m5_liquid_crystal/research/scripts/m5_6_4b_faber_curvature_em.py) |
@@ -229,7 +232,8 @@ Deep dive: [`m7_theory_canonical.md`](openwave/xperiments/m7_hydroboros/research
 | Weak force: muon decay | 🚧 [not yet tested]<br>Not addressed; awaits the lepton family (M7.19)<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>M7.17 target (topology-reconnection channel; the M7.4 reconnection observation is the seed)<br>[`m7_4_charged_soliton.md`](openwave/xperiments/m7_hydroboros/research/tasks/m7_4_charged_soliton.md) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>M7.16 target; honestly hard: the parent framework stops before gravity<br>(none yet) |
-| Gravity: metric phenomena | 🚧 [not yet tested]<br>Not addressed (see the Newton-limit row: the parent framework stops before gravity)<br>(none yet) |
+| Gravity: local metric phenomena | 🚧 [not yet tested]<br>Not addressed (see the Newton-limit row: the parent framework stops before gravity)<br>(none yet) |
+| Cosmology: Λ / cosmic acceleration | 🚧 [not yet tested]<br>Not addressed (see the Newton-limit row: the parent framework stops before gravity)<br>(none yet) |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | ⚠️ [partially validated]<br>A_μ is the Maxwell four-potential by construction, and the coupled vacuum's band structure is MEASURED (rate 0.785 vs analytic 0.786): a propagating KG branch plus an unconditional long-wavelength tachyonic band; the truncation's vacuum is not pure Maxwell, the open theory question (Q14)<br>[`m7_5_clock_stability.py`](openwave/xperiments/m7_hydroboros/research/scripts/m7_5_clock_stability.py) |
@@ -273,7 +277,8 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 | Weak force: muon decay | 🚧 [not yet tested]<br>Expected to be a result of particle formation/instability and not a true force; not modeled<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not modeled (no in-sim neutron)<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
-| Gravity: metric phenomena | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
+| Gravity: local metric phenomena | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
+| Cosmology: Λ / cosmic acceleration | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | ⚠️ [partially validated]<br>Scalar wave propagation only (no polarization structure)<br>[`research/`](openwave/xperiments/m3_wolff_lafreniere/research/)<br>→ open work: [`m4_roadmap.md`](openwave/xperiments/m4_ewt/research/m4_roadmap.md) |
@@ -317,7 +322,8 @@ Deep dive: [`m6_theory_canonical.md`](openwave/xperiments/m6_ouroboros/research/
 | Weak force: muon decay | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not in the Lagrangian (the framework explicitly stops before gravity)<br>(none yet) |
-| Gravity: metric phenomena | 🚧 [not yet tested]<br>Not in the Lagrangian<br>(none yet) |
+| Gravity: local metric phenomena | 🚧 [not yet tested]<br>Not in the Lagrangian<br>(none yet) |
+| Cosmology: Λ / cosmic acceleration | 🚧 [not yet tested]<br>Not in the Lagrangian<br>(none yet) |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | ✅ [validated in-platform]<br>A_μ is the electromagnetic four-potential by construction; delocalized J-field wave modes coexist with solitons<br>[`0d_canonical.md`](openwave/xperiments/m6_ouroboros/research/archive/0d_canonical.md) |
@@ -361,7 +367,8 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | Weak force: muon decay | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not separately addressed: Einstein's equations are imported unchanged, so the Newton limit is inherited rather than in-platform<br>[`m8_1_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_1_method_note.md) |
-| Gravity: metric phenomena | ⚠️ [partially validated]<br>The Λ-story spectral input is VALIDATED: M8.1 (blind two-agent eigensolve, audited 6/6) confirmed the twisted Möbius Laplacian's eigenvalue 2/R², the α₀(α₀+1)/R² branch, the 2R/e threshold and the −4e^(−2γ)/δ₀² defect state at 10-digit precision. Einstein's equations imported unchanged; Gauss-Codazzi + the R-problem stay open<br>[`m8_1_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_1_method_note.md), [`m8_1_eigensolve.py`](openwave/xperiments/m8_mit/research/scripts/m8_1_eigensolve.py), [`m8_1_audit_eigensolve.py`](openwave/xperiments/m8_mit/research/scripts/m8_1_audit_eigensolve.py) |
+| Gravity: local metric phenomena | 🚧 [not yet tested]<br>No MIT-specific calculation of light bending, gravitational time dilation or Shapiro delay has been performed. MIT imports Einstein's equations unchanged, but importing field equations is not importing a solution: sources, boundary conditions and the local metric are still required. Standard GR results are intended to be inherited under those assumptions, not earned by MIT<br>(none yet) |
+| Cosmology: Λ / cosmic acceleration | ⚠️ [partially validated]<br>Spectral seed VALIDATED: M8.1 (blind two-agent eigensolve, audited 6/6) confirmed 2/R² at 10-digit precision. Under the stated Gauss lift, 6/R²; with the de Sitter ½ imported, the reference ΛR² = 3. Two gaps: scale R (two routes, ~4× apart) and physical identification, gated on an undetermined stress tensor. Pre-registered: Λ_obs R_ind² = 3; >5σ falsifies that identification, not the seed<br>[`m8_1_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_1_method_note.md), [`m8_1_eigensolve.py`](openwave/xperiments/m8_mit/research/scripts/m8_1_eigensolve.py), [`m8_1_audit_eigensolve.py`](openwave/xperiments/m8_mit/research/scripts/m8_1_audit_eigensolve.py) |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | 🚧 [not yet tested]<br>No field model of radiation (photon massless at the edge-only layer level, a structural label)<br>(none yet) |
@@ -405,7 +412,8 @@ Deep dive: [`m9_theory_canonical.md`](openwave/xperiments/m9_emergent_gravity/re
 | Weak force: muon decay | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not addressed: matter is installed (Standard Model fields), not emerged; the column claims gravity only<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Inherited, not in-platform: Palatini Einstein-Cartan with a spinless source is Einstein-Hilbert, and the pre-registered Newton check passed the attractive 1/r² force (residuals ≤ 1.3%) but failed the isolated potential on a Dirichlet box. No entanglement-sourced Poisson equation in the tree<br>[`m9_2_newton_note.md`](openwave/xperiments/m9_emergent_gravity/research/findings/m9_2_newton_note.md), [`m9_2_newton_limit.py`](openwave/xperiments/m9_emergent_gravity/research/scripts/m9_2_newton_limit.py) |
-| Gravity: metric phenomena | ⚠️ [partially validated]<br>The one interaction beyond Einstein, the Hehl-Datta axial-axial contact, is VERIFIED in-platform: the blind elimination of the Einstein-Cartan contorsion gives the on-shell ratio 3/16 in both metric signatures (scatter < 10⁻¹⁵), adversarially audited. The paper's spin-dual coefficient −1/4 is measured as −1/2 (documented miss). Metric phenomena themselves (lensing, horizons, cosmology) are not computed in-platform<br>[`m9_1_hehl_datta_note.md`](openwave/xperiments/m9_emergent_gravity/research/findings/m9_1_hehl_datta_note.md), [`hehl_datta.py`](openwave/xperiments/m9_emergent_gravity/research/scripts/hehl_datta.py), [`m9_1_audit_hehl_datta.py`](openwave/xperiments/m9_emergent_gravity/research/scripts/m9_1_audit_hehl_datta.py) |
+| Gravity: local metric phenomena | ⚠️ [partially validated]<br>The one interaction beyond Einstein, the Hehl-Datta axial-axial contact, is VERIFIED in-platform: the blind elimination of the Einstein-Cartan contorsion gives the on-shell ratio 3/16 in both metric signatures (scatter < 10⁻¹⁵), adversarially audited. The paper's spin-dual coefficient −1/4 is measured as −1/2 (documented miss). Metric phenomena themselves (lensing, horizons, cosmology) are not computed in-platform<br>[`m9_1_hehl_datta_note.md`](openwave/xperiments/m9_emergent_gravity/research/findings/m9_1_hehl_datta_note.md), [`hehl_datta.py`](openwave/xperiments/m9_emergent_gravity/research/scripts/hehl_datta.py), [`m9_1_audit_hehl_datta.py`](openwave/xperiments/m9_emergent_gravity/research/scripts/m9_1_audit_hehl_datta.py) |
+| Cosmology: Λ / cosmic acceleration | 🚧 [not yet tested]<br>Not computed in-platform<br>(none yet) |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | 🚧 [not yet tested]<br>Inherited from the installed Standard Model; not an emergence claim<br>(none yet) |
