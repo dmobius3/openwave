@@ -23,12 +23,13 @@ where
 \eta(r) = \frac{N_\nu(r)}{N_{\text{stat}}} = 1 - \frac{r_s}{r}.
 \]
 
-In the weak-field limit this gives the standard gravitational
-redshift:
+The predicted fractional frequency shift is computed directly as
 
 \[
-\frac{\Delta f}{f} = -\Phi_N(r) = -\frac{GM}{c^2 r}.
+\frac{\Delta f}{f} = \frac{v_{\text{clock}}(r)}{c} - 1,
 \]
+
+not as an externally inserted metric formula.
 
 ## Method
 - Compute the EMC density ratio at the solar limb:
@@ -36,25 +37,24 @@ redshift:
 - Compute the internal clock speed:
   \(v_{\text{clock}}/c = \sqrt{\eta}\).
 - Predict the gravitational redshift:
-  \(\Delta f/f = -\Phi_N\).
-- Compare with the standard GR value.
+  \(\Delta f/f = v_{\text{clock}}/c - 1\).
+- Compare with the standard GR value: \(-\Phi_N\).
 
 ## Result
 - \(\eta = 0.999995753735\)
 - \(v_{\text{clock}}/c = 0.999997876865\)
-- Predicted \(\Delta f/f = -2.123132 \times 10^{-6}\)
+- Predicted \(\Delta f/f = -2.123135 \times 10^{-6}\)
 - Target \(\Delta f/f = -2.123132 \times 10^{-6}\)
-- Relative difference: \(0.0000\%\)
+- Relative difference: \(0.000106\%\)
 
 ## Free choices
-- Linear internal wave-speed response to the local density ratio is
-  assumed in the weak-field limit.
+- The internal clock speed is assumed to scale as
+  \(v_{\text{clock}}/c = \sqrt{\eta}\) in the weak-field limit.
+
+## Derivation
+See manuscript Enhanced EWT v4.5.6, section
+“Mechanical Origin of Gravitational Redshift in the EMC Lattice”.
 
 ## Reference
-
-Full derivation in the Enhanced EWT manuscript, version 4.5.6:
+Enhanced EWT manuscript, version 4.5.6:
 [DOI: 10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657)
-
-Relevant section:
-
-- “Mechanical Origin of Gravitational Redshift in the EMC Lattice”
