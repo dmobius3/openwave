@@ -30,7 +30,7 @@ The invariant-subspace machinery works, and survived adversarial checking.
 | projector idempotence `‖P² − P‖` | 2.4e-16 to 6.0e-16, all nine sectors |
 | `M_h`-symmetry `‖P†M_h − M_hP‖` | 1.2e-16 to 1.8e-16 |
 | invariance residual `‖(I − P_Q)LQ‖_{M_h}`, ABSOLUTE | 2.6e-12 to 8.3e-12, all nine sectors |
-| the same residual RELATIVE to `‖LQ‖_{M_h}` | 3.9e-14 to 7.8e-13 across the eight nontrivial sectors. `R_0` reads 4.6e-03, and that is the metric, not the operator: its cluster is the constant at `λ = 0`, so `‖LQ‖` is 5.7e-10 against 4.2 for `R_1`, and a small-over-small ratio inflates while the absolute residual, 2.6e-12, stays in family |
+| the same residual RELATIVE to `‖LQ‖_{M_h}` | 3.9e-14 to 7.8e-13 across the eight nontrivial sectors, whose denominators sit at ordinary spectral scale. `R_0` reads 4.6e-03, and that is a NORMALIZATION artefact of the zero-mode control rather than an anomalous absolute residual: its cluster is the constant at `λ = 0`, so `‖LQ‖` is only 5.7e-10 against 4.2 for `R_1`, while its absolute residual, 2.6e-12, sits inside the all-sector family |
 | Schur against Riesz, `θ_max`, contour preregistered from analytic levels | 0 to 3.3e-08 |
 | three-way leakage identity, projector against angle against overlap | max disagreement 8.1e-16 |
 | `‖P_spec‖` on the target clusters | **2.2 to 3.1** |
@@ -48,8 +48,8 @@ whose mesh ratio is driven to 83.4 against a frozen ceiling of 20.0.
 
 Imaginary contamination. The continuum operator is self-adjoint, so any imaginary part in the
 computed spectrum is error. Measured on the target clusters at the production cloud, it ranges
-from `5.95e-14` on the `R_0` control to `1.8e-01` on `R_2`, and the pooled envelope needed to cover that spread
-is about 58,688 times its own fitted trend. Against the power gate frozen BEFORE the fit,
+from `5.95e-14` on the `R_0` control to `1.8e-01` on `R_2`, and the pooled envelope needed to
+cover that spread is about 58,688 times its own fitted trend. Against the power gate frozen BEFORE the fit,
 `E(h) < 10·T(h)`, that fails, and a rule with no power issues no verdicts.
 
 **The failure is substantive, not another instrument defect.** That distinction was established
@@ -93,19 +93,20 @@ whether THIS discrete operator supplies spectra controlled enough for M8.4 to us
 scientifically. The answer is no, on the frozen rules, and the localization test establishes that
 the answer cannot be changed by treating the observed complex parts as solver noise.
 
-**It is a preregistered outcome, not a breakdown.** Two anchors, and they are different in kind.
+**It is a governed outcome, not a breakdown.** Two sources, carrying different weight.
 
-In this repository: the filed pre-registration's § 10 requires every gate to be mutation-tested
-and states of the null arm that "any other output is an instrument defect and fails the run", and
-its § 7 fixes the scored observable while leaving the numerical estimator to the pilot. The
-qualification here failed a power gate frozen before the fit, and NO verdicts were issued, which
-is that principle applied to the estimator as a whole rather than to a single null arm.
+The outcome is CONSISTENT WITH the filed pre-registration's instrument-failure principle: § 10's
+G-NULL-a says of the null arm that "any other output is an instrument defect and fails the run",
+and § 7 fixes the mathematical observable while assigning the numerical estimator, the ladder and
+the thresholds to the pilot. The qualification here failed a power gate frozen before the fit, and
+no verdicts issued. G-NULL-a's text is narrower than the disposition below, and is not asked to
+carry it.
 
-The stronger rule, that numerical inability to resolve the cluster yields estimator-qualification
-failure and no scientific label rather than `destroy`, comes from the P1A commission, an EXTERNAL
-author-side document, and is stated here as its source rather than attributed to the filed
-contract. An earlier draft of this closeout cited it as "the contract's § 10"; that was wrong and
-is corrected.
+The disposition is GOVERNED BY the P1A commission, which requires numerical qualification failure
+to yield no scientific label rather than `destroy`. That commission is an external author-side
+document, issued after the contract was filed and before the P1A room was built, and it is named
+here as the source. An earlier draft of this closeout attributed the rule to "the contract's
+§ 10"; the filed § 10 contains no such provision, and that attribution was wrong.
 
 **M8.4's claim ceiling is untouched**, because nothing was claimed. No sector verdicts issued, no
 labels assigned, P1A.5 never opened.
@@ -165,9 +166,10 @@ fails.
 
 Commissioner adjudication history, the verification notes behind each of the three failed
 qualification rules, is an external author-side record and is deliberately NOT part of this
-evidence package. **One scoped exception, named rather than hidden**: the P1A commission is where
-the "no label, never `destroy`" rule was frozen, and § "What this does and does not mean" cites it
-as an external source. Every NUMBER in this closeout is reproducible from the package.
+evidence package. The two kinds of claim separate cleanly. The NUMERICAL closeout is
+independently reproducible from shipped material. The PROCEDURAL no-label disposition additionally
+cites the external P1A commission, named in § "What this does and does not mean", and nothing
+numerical rests on it.
 
 P0's bytes were verified intact on every P1A run, 10 of 10, and the ladder constants frozen
 before the first contamination value was computed were unchanged at every subsequent run,
