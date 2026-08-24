@@ -29,7 +29,7 @@ The invariant-subspace machinery works, and survived adversarial checking.
 | --- | --- |
 | projector idempotence `‖P² − P‖` | 2.4e-16 to 6.0e-16, all nine sectors |
 | `M_h`-symmetry `‖P†M_h − M_hP‖` | 1.2e-16 to 1.8e-16 |
-| invariance residual `‖(I − P_Q)LQ‖_{M_h}` | 3.9e-14 to 9.7e-14 |
+| RELATIVE invariance residual, `‖(I − P_Q)LQ‖_{M_h} / ‖LQ‖_{M_h}` | 3.9e-14 to 7.8e-13 across the eight nontrivial sectors; `R_0` sits at 4.6e-03 because its cluster is the constant, so numerator and denominator are both at discretization error |
 | Schur against Riesz, `θ_max`, contour preregistered from analytic levels | 0 to 3.9e-08 |
 | three-way leakage identity, projector against angle against overlap | max disagreement 8.1e-16 |
 | `‖P_spec‖` on the target clusters | **2.2 to 3.1** |
@@ -47,7 +47,7 @@ whose mesh ratio is driven to 83.4 against a frozen ceiling of 20.0.
 
 Imaginary contamination. The continuum operator is self-adjoint, so any imaginary part in the
 computed spectrum is error. Measured on the target clusters at the production cloud, it ranges
-from `9e-15` on `R_0` to `1.8e-01` on `R_2`, and the pooled envelope needed to cover that spread
+from `5.95e-14` on the `R_0` control to `1.8e-01` on `R_2`, and the pooled envelope needed to cover that spread
 is about 58,688 times its own fitted trend. Against the power gate frozen BEFORE the fit,
 `E(h) < 10·T(h)`, that fails, and a rule with no power issues no verdicts.
 
@@ -92,10 +92,19 @@ whether THIS discrete operator supplies spectra controlled enough for M8.4 to us
 scientifically. The answer is no, on the frozen rules, and the localization test establishes that
 the answer cannot be changed by treating the observed complex parts as solver noise.
 
-**It is a preregistered outcome, not a breakdown.** The contract's § 10 already provided that
-numerical inability to resolve the cluster yields estimator-qualification failure and NO
-scientific label, never `destroy`. That rule was frozen before any manufactured case was built,
-precisely so solver pathology could not become a physics result. It is now doing its job.
+**It is a preregistered outcome, not a breakdown.** Two anchors, and they are different in kind.
+
+In this repository: the filed pre-registration's § 10 requires every gate to be mutation-tested
+and states of the null arm that "any other output is an instrument defect and fails the run", and
+its § 7 fixes the scored observable while leaving the numerical estimator to the pilot. The
+qualification here failed a power gate frozen before the fit, and NO verdicts were issued, which
+is that principle applied to the estimator as a whole rather than to a single null arm.
+
+The stronger rule, that numerical inability to resolve the cluster yields estimator-qualification
+failure and no scientific label rather than `destroy`, comes from the P1A commission, an EXTERNAL
+author-side document, and is stated here as its source rather than attributed to the filed
+contract. An earlier draft of this closeout cited it as "the contract's § 10"; that was wrong and
+is corrected.
 
 **M8.4's claim ceiling is untouched**, because nothing was claimed. No sector verdicts issued, no
 labels assigned, P1A.5 never opened.
@@ -119,6 +128,20 @@ RBF-FD discretization, is the natural first step of any such effort, and is not 
 | [`../m8_4_p1a/notes/`](../m8_4_p1a/notes/) | the three qualification notes: P0, P1A.4a, P1A.4b, each carrying its frozen constants and hashes |
 | [`../m8_4_p1a/localization/`](../m8_4_p1a/localization/) | the localization finding and its runnable reproducer |
 
+**Reproducing the estimator-qualification block** of § "What qualified". The P1A.4a and P1A.4b
+notes record P1A.1 to P1A.3 as "PASS, unchanged, not rerun", and the earlier pass that produced
+those numbers was overwritten in the room, so the block had no shipped record. It regenerates:
+
+```bash
+cd openwave/xperiments/m8_mit/research/m8_4_p1a
+PYTHONPATH=.:../m8_5b/pilot:../m8_5b/production python3 regenerate_estimator_table.py
+```
+
+About four minutes: nine bundles at the 60-seed production cloud, each with a Schur extraction and
+a 128-point Riesz contour. Verified here to reproduce every quoted value, `R_0` at 4.63e-03 and
+`R_2` at 3.90e-14 among them. Running it is what showed the invariance-residual row above was
+misstated.
+
 **Reproducing the localization test**, which is the claim-bearing piece of § "What failed":
 
 ```bash
@@ -134,7 +157,9 @@ fails.
 
 Commissioner adjudication history, the verification notes behind each of the three failed
 qualification rules, is an external author-side record and is deliberately NOT part of this
-evidence package. Nothing in this closeout depends on it.
+evidence package. **One scoped exception, named rather than hidden**: the P1A commission is where
+the "no label, never `destroy`" rule was frozen, and § "What this does and does not mean" cites it
+as an external source. Every NUMBER in this closeout is reproducible from the package.
 
 P0's bytes were verified intact on every P1A run, 10 of 10, and the ladder constants frozen
 before the first contamination value was computed were unchanged at every subsequent run,

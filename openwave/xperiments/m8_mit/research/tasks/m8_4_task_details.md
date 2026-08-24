@@ -97,7 +97,7 @@ clusters, so the operator's strong non-normality does not reach the subspaces M8
 
 What FAILED is the substrate's spectral-contamination qualification, globally, under a power gate
 frozen before the fit. The continuum operator is self-adjoint, so imaginary parts in the computed
-spectrum are error; they run from 9e-15 on `R_0` to 1.8e-01 on `R_2`, and the envelope needed to
+spectrum are error; they run from 5.95e-14 on the `R_0` control to 1.8e-01 on `R_2`, and the envelope needed to
 cover that spread is about 58,688 times its own trend, which is a rule with no discriminating
 power. No sector verdicts issued, P1A.5 was never opened, and **no nonlinear target configuration
 was ever run: no target sector has been spent.**
