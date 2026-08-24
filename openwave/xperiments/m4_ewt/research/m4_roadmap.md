@@ -72,6 +72,7 @@ table already carries several honest ❌ rows; each is a task waiting to be writ
 
 | TaskID | Title | Description | Completed |
 | --- | --- | --- | --- |
+| [M4.3](tasks/m4_3_task_details.md) | Solar light bending from the EMC density encoding | Encodes the weak-field EMC density deficit as the index `n(r) = (N_nu/N_stat)^(-1/2)` and runs the standard ray integral: 1.751728 arcsec vs the GR 1.7517 (0.0016%). A consistency test of the encoding, not yet a derivation from lattice elasticity. Contributed by Łukasz Smoliński, [PR #462](https://github.com/openwave-labs/openwave/pull/462) | 2026-08-24 |
 
 ## CHANGE-LOG
 
