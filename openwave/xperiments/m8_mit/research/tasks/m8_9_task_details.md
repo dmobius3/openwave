@@ -1,8 +1,9 @@
 # M8.9: Discrete-spectrum source localization
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 BACKLOG (opened 2026-08-25,
-> [#469](https://github.com/openwave-labs/openwave/pull/469)); S1 not commissioned, governed by the
-> [filed S1 decision rule](../findings/m8_9_s1_decision_rule.md).
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🔶 OPEN (opened 2026-08-25,
+> [#469](https://github.com/openwave-labs/openwave/pull/469)); S1 ran 2026-08-25 under the
+> [filed S1 decision rule](../findings/m8_9_s1_decision_rule.md) and returned an instrument defect,
+> no branch issued ([S1 result](#s1-result-2026-08-25-instrument-defect)); the question is open.
 
 > **Diagnostic only.** M8.9 locates where the non-real spectrum enters the M8.4 substrate. It does
 > not repair anything, runs no nonlinear dynamics, and does not reopen M8.4 P1A, whose outcome is
@@ -50,3 +51,24 @@ placement even though its text says otherwise. M8.4 keeps its `pilot BLOCKED` st
 No M8.4 thresholds, no amplitude ladder, no label calibration, no nonlinear run on any bundle, no
 target sector spent. M8.9 reads a spectrum that already exists in shipped code and classifies it
 under a rule frozen in advance.
+
+## S1 RESULT (2026-08-25): INSTRUMENT DEFECT
+
+S1 ran under the filed rule with its freeze verified first. **G-MULT failed**, so no S1-A/B/C
+classification was issued and `I_star` was not formed. The `R_0` production block at 60 seeds does
+not reproduce the analytic decomposition the rule predicted. Stated in the frozen assignment
+windows, since G-MULT's failure is precisely the statement that level identities are NOT
+established: the `C_20` window holds 20 against a required 21 and spans 347.7 to 530.3, the `C_24`
+window holds 26 against 25 and spans 549.7 to 1319.0 where the block's analytic content stops at
+624, and complex-conjugate pairs appear already within the `C_12` window. The lowest mode stays
+clean at 5.954e-14 and matches the shipped P1A value.
+
+**No high-level localization conclusion is licensed, including from the apparently dirty `C_12`
+window.** `C_12` returned its exact count of 13 with `max|Im|` of 3.035, recorded as a
+non-adjudicative observation from an instrument-failed run and not read as S1-A:
+count-only safety is not subspace correctness, and the filed rule requires all four counts so that
+a partially-resolved spectrum cannot be mined for the branch its cleanest window supports.
+
+S1-B and S1-C route to S2; an instrument defect does not, so **S1 does not trigger S2** and M8.9's
+question is unanswered. Record: [`../m8_9/s1_note.md`](../m8_9/s1_note.md),
+reproducer [`../m8_9/s1_run.py`](../m8_9/s1_run.py).
