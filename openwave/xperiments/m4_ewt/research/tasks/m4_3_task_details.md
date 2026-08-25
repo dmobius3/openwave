@@ -13,7 +13,7 @@ review noted and accepted as honest filing for contributed work)
 
 ## Criterion
 
-`Gravity: metric phenomena` — light bending component
+`Gravity: local metric phenomena` — light bending component
 
 ## Objective
 
@@ -86,9 +86,23 @@ n(r) = \left(\frac{N_\nu(r)}{N_{\text{stat}}}\right)^{-1/2}.
 \]
 
 The derivation of \(n(r)\) from the underlying EMC displacement field
-remains open.
+is given in the manuscript v4.5.6 (Reference, added in
+[PR #466](https://github.com/openwave-labs/openwave/pull/466)); it is
+not recomputed in-platform.
 
 ## Artifacts
 
 - [`research/scripts/m4_3_light_bending_emc_displacement.py`](../scripts/m4_3_light_bending_emc_displacement.py)
 - [`research/findings/m4_3_light_bending_emc_displacement.md`](../findings/m4_3_light_bending_emc_displacement.md)
+
+## Reference
+
+Manuscript: Enhanced EWT, version 4.5.6,
+DOI [10.5281/zenodo.22086668](https://doi.org/10.5281/zenodo.22086668)
+(version DOI; concept DOI 10.5281/zenodo.17654657).
+
+Relevant sections:
+
+- “The Two Faces of EMC Displacement: Speed and Trajectory”
+- “Bridging the Vector Displacement to the Scalar Refractive Index”
+- “Asymptotic Continuous Limit and Schwarzschild Equivalence”

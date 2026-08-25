@@ -73,6 +73,7 @@ table already carries several honest ❌ rows; each is a task waiting to be writ
 | TaskID | Title | Description | Completed |
 | --- | --- | --- | --- |
 | [M4.3](tasks/m4_3_task_details.md) | Solar light bending from the EMC density encoding | Encodes the weak-field EMC density deficit as the index `n(r) = (N_nu/N_stat)^(-1/2)` and runs the standard ray integral: 1.751728 arcsec vs the GR 1.7517 (0.0016%). A consistency test of the encoding, not yet a derivation from lattice elasticity. Contributed by Łukasz Smoliński, [PR #462](https://github.com/openwave-labs/openwave/pull/462) | 2026-08-24 |
+| [M4.4](tasks/m4_4_task_details.md) | Gravitational time dilation from the EMC soliton clock | Encodes the same EMC density ratio `eta = 1 - r_s/r` into the internal clock speed `v_clock = sqrt(eta)`: the solar-limb redshift equals the exact Schwarzschild factor identically (the 0.0001% vs the first-order reference is that reference's truncation). Derivation of the encoding lives in the manuscript, not in-platform. Contributed by Łukasz Smoliński, [PR #466](https://github.com/openwave-labs/openwave/pull/466) | 2026-08-25 |
 
 ## CHANGE-LOG
 
