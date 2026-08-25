@@ -3,7 +3,7 @@
 M4/EWT - Gravitational time dilation from the internal EMC soliton clock.
 
 OpenWave criterion:
-    Gravity: metric phenomena
+    Gravity: local metric phenomena
     Test: gravitational time dilation / redshift
 
 Mechanism:
@@ -17,15 +17,18 @@ Mechanism:
 
     where eta(r) = N_nu(r) / N_stat = 1 - r_s/r.
 
-    In the weak-field limit this gives the standard gravitational
-    redshift:
+    The fractional frequency shift of a static clock is then
 
-        df/f = (v_clock - c)/c = sqrt(1 - 2*Phi_N) - 1 ≈ -Phi_N,
+        df/f = v_clock/c - 1 = sqrt(1 - r_s/r) - 1,
 
-    with Phi_N = GM/(c^2 r) in SI units.
+    which is identically the exact Schwarzschild redshift factor for a
+    static clock once eta = 1 - r_s/r is granted. Its weak-field
+    expansion is -Phi_N + O(Phi_N^2), with Phi_N = GM/(c^2 r).
 
-This script computes the redshift at the solar limb and compares it
-with the standard GR value.
+This script computes the redshift at the solar limb, checks the
+identity against the exact GR factor, and prints the first-order
+value -Phi_N as a labelled sanity line (the difference from it is the
+truncation error of the first-order reference, x/4 with x = r_s/r).
 """
 
 import math
@@ -35,10 +38,10 @@ import math
 # ----------------------------------------------------------------------
 print("[1/3] Loading physical constants...")
 
-G      = 6.67430e-11          # m^3 kg^-1 s^-2
-c      = 299792458.0          # m/s
-M_sun  = 1.989e30             # kg
-R_sun  = 6.957e8              # m
+G = 6.67430e-11  # m^3 kg^-1 s^-2
+c = 299792458.0  # m/s
+M_sun = 1.989e30  # kg
+R_sun = 6.957e8  # m
 
 r_s = 2.0 * G * M_sun / (c * c)
 
@@ -64,22 +67,34 @@ print(f"    Phi_N at limb     = {Phi_N:.6e}")
 # ----------------------------------------------------------------------
 # 3. Gravitational redshift
 # ----------------------------------------------------------------------
-print("[3/3] Computing gravitational redshift and comparing with standard...")
+print("[3/3] Computing gravitational redshift and comparing with GR...")
 
-# EWT prediction directly from internal clock speed cycle
+# EWT prediction directly from the internal clock speed
 df_f_ewt = v_clock_over_c - 1.0
 
-# Standard GR / target value (-Phi_N)
-df_f_target = -Phi_N
+# Exact GR value for a static clock in the Schwarzschild field, written in
+# the GR variable Phi_N (computed from G*M directly, not from r_s)
+df_f_gr_exact = math.sqrt(1.0 - 2.0 * Phi_N) - 1.0
 
-rel_diff = abs(df_f_ewt - df_f_target) / abs(df_f_target) * 100.0
+# First-order (weak-field) reference, for orientation only
+df_f_first_order = -Phi_N
 
-print(f"    EWT predicted df/f = {df_f_ewt:.6e}")
-print(f"    Target df/f        = {df_f_target:.6e}")
-print(f"    Relative difference = {rel_diff:.6f}%")
+abs_diff_exact = abs(df_f_ewt - df_f_gr_exact)
+rel_diff_first_order = abs(df_f_ewt - df_f_first_order) / abs(df_f_first_order) * 100.0
+truncation_ratio = (r_s / R_sun) / 4.0 * 100.0  # x/4, the first-order truncation
 
-if rel_diff < 0.1:
-    print("    RESULT: PASS (exact match)")
+print(f"    EWT predicted df/f        = {df_f_ewt:.6e}")
+print(f"    GR exact df/f             = {df_f_gr_exact:.6e}")
+print(f"    |EWT - GR exact|          = {abs_diff_exact:.3e}  (identity check)")
+print(f"    First-order -Phi_N        = {df_f_first_order:.6e}  (sanity line)")
+print(f"    Rel. diff. vs first-order = {rel_diff_first_order:.6f}%")
+print(f"    Expected truncation x/4   = {truncation_ratio:.6f}%")
+
+# The identity check: the encoding reproduces the exact factor at machine
+# precision. The sanity check: the departure from the first-order reference
+# is the reference's own truncation error, not a model discrepancy.
+if abs_diff_exact < 1e-12 and abs(rel_diff_first_order - truncation_ratio) < 1e-6:
+    print("    RESULT: PASS (exact GR factor reproduced; first-order residue = x/4)")
 else:
     print("    RESULT: FAIL")
 

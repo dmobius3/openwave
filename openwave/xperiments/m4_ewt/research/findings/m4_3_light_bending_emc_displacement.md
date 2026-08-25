@@ -2,12 +2,13 @@
 
 > This is an Enhanced EWT extension, authored by Łukasz Smoliński, as registered in
 > [`_CITATIONS.md`](../../theory/_CITATIONS.md) (The Geometric Identity of Gravity and
-> Dimensional Unification, v4.5.5, DOI
-> [10.5281/zenodo.22042784](https://doi.org/10.5281/zenodo.22042784)).
+> Dimensional Unification, v4.5.6, DOI
+> [10.5281/zenodo.22086668](https://doi.org/10.5281/zenodo.22086668)).
 
 ## Criterion
-Gravity: metric phenomena (light bending, with gravitational time
-dilation treated as the same EMC-deformation effect; Lambda omitted)
+Gravity: local metric phenomena (light bending component; gravitational
+time dilation is computed separately in M4.4, Shapiro delay is not
+computed)
 
 ## Status
 ⚠️ partial validation candidate
@@ -74,10 +75,11 @@ They are not independent phenomena.
 - Reference value (general-relativistic prediction): \(1.7517\) arcsec
 - Relative difference: \(0.0016\%\)
 
-## Model assumptions (derived, not fitted)
+## Model assumptions (derived in the manuscript, not fitted here)
 
 The following are not free parameters but structural consequences of
-the Enhanced EWT lattice model:
+the Enhanced EWT lattice model, derived in the cited manuscript sections
+(Reference) and not recomputed in-platform:
 
 - The normalised EMC density profile
   \(N_\nu(r)/N_{\text{stat}} = 1 - r_s/r\)
@@ -91,8 +93,9 @@ the Enhanced EWT lattice model:
   is the isotropic encoding of the displacement field.
 - The full expression
   \(n_\gamma(r) = (1 - 2r_s/r)^{-1/2}\)
-  is the asymptotic continuous limit of the discrete BCC lattice
-  deformation, not an external metric import.
+  is, per the manuscript section "Asymptotic Continuous Limit and
+  Schwarzschild Equivalence", the asymptotic continuous limit of the
+  discrete BCC lattice deformation, not an external metric import.
 
 No free numerical parameters are introduced.
 
@@ -101,11 +104,11 @@ No free numerical parameters are introduced.
 The numerical result shows that once the EMC density deficit is
 encoded as \(n(r) = (N_\nu/N_{\text{stat}})^{-1/2} = (1 - 2r_s/r)^{-1/2}\),
 the standard ray integral reproduces the observed solar-limb bending.
-The encoding, not the bending, is the model-specific step: deriving
-\(n(r)\) from BCC lattice elasticity remains open (Free choices), so
-this is a consistency test of the encoding, not yet a derivation of
-light bending from the EMC mechanism. The same encoding is argued,
-via \(c \equiv \lambda_l/t_p\), to control clock rates; gravitational
+The encoding, not the bending, is the model-specific step: the
+derivation of \(n(r)\) from lattice elasticity is given in the
+manuscript v4.5.6 (Reference); it is not recomputed in-platform, so
+in-platform this artifact remains a consistency test of the encoding.
+The same encoding is argued, via \(c \equiv \lambda_l/t_p\), to control clock rates; gravitational
 time dilation is not separately computed here.
 
 Formally, the ray bends because of the gradient of the phase
@@ -116,7 +119,7 @@ property.
 ## Reference
 
 Full derivation in the Enhanced EWT manuscript, version 4.5.6:
-[DOI: 10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657)
+[DOI: 10.5281/zenodo.22086668](https://doi.org/10.5281/zenodo.22086668) (version DOI; concept DOI 10.5281/zenodo.17654657)
 
 Relevant sections:
 
