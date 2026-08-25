@@ -476,3 +476,15 @@ The author's reply to the 2026-08-11 M5.21.15 send (cc: the group list + Faber +
 | What it proposes | reverse the (Γ̃)² Hamiltonian sign (= "time imaginary"), or equivalently imaginary g + conjugated second F; two arguments: vacuum must prefer ω = 0, and the naive Newton force sign is wrong (Faber discussion, dynamical repairs failed) |
 | The quest | explicit, addressed to Fable by name: run the modified functionals, check Coulomb vs Newton signs, and whether the electron gets finite gravitational mass + frequency by minimization |
 | Routed to | [M5.21.16](m5_21_16_task_details.md) (ran 2026-08-14): notebook reproduced exactly, flip == variant A, runaway + guard channel CLOSE, fixed-J electron finite-ω positive-E, Lorentz-invariance cost measured, Newton sign routed to the two-defect successor. Author question opened: [Q48](../m5_question_tracker.md#q48-detail) |
+
+## 2026-08-14 (outbound, user-sent, 1:1): the M5.21.16 answer: the flip verified, the guard moot, the invariance question back
+
+Sent as a To-Duda-only reply on the same thread (cc's deliberately dropped; forwarding to Faber/Maciej left to the author as the filter). RODRIGO VOICE intro + FABLE VOICE technical block; the two panel figures attached.
+
+| Item | Content |
+| --- | --- |
+| The block's spine | notebook CONFIRMED exactly (independent sympy, three ω² coefficients zero-residual); bridge exact (notebook H == `Σ⟨F,F⟩_η`; plain flip == variant A); all kin ≥ 0 under flip, the M5.21.14 runaway closes with NO guard (wells −2354 → −98.8), fixed-J electron finite ω* positive E; concavity theorem survives any metric (vacuum freely prefers ω = 0; the electron's ω rides fixed J, ZBW reading at J = ħ/2) |
+| Coulomb vs Newton | Coulomb closed by construction (flip == identity on the static 3×3 sector); Newton NOT decidable at vacuum level (quartic response, no quadratic kernel, overlap metric-insensitive): needs relaxed two-defect states → the canonical two-center composition question comes back |
+| The ask ([Q48](../m5_question_tracker.md#q48-detail)) | which variant is canonical (plain flip == A, or B with imaginary g + conjugation, untestable on the real stack), and is losing SO(1,3) invariance of the energy (26% measured) accepted physics or the thing variant B repairs |
+| Link | the note on main (`findings/m5_21_16_note.md`) |
+| Next | await the author's read; the two-defect Newton-sign successor stays gated on the two-center construction; variant B field implementation staged only if named canonical |
