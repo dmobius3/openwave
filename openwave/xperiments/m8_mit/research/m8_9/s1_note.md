@@ -56,7 +56,7 @@ from 168 to 305, across the frozen 304 midpoint, with every other eigenvalue unc
 
 Reported because the commission requires it, not because any of it licenses a branch.
 
-| cluster | center | Re spread | `max|Im lambda|` | Schur residual |
+| cluster | center | Re spread | `max\|Im lambda\|` | Schur residual |
 | --- | --- | --- | --- | --- |
 | `C_0` | -0.0000 | 0.000e+00 | 5.954e-14 | 2.641e-12 |
 | `C_12` | 168.7638 | 1.109e+01 | 3.035e+00 † | 7.001e-12 |

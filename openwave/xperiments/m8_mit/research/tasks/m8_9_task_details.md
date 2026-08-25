@@ -1,8 +1,9 @@
 # M8.9: Discrete-spectrum source localization
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 BACKLOG (opened 2026-08-25,
-> [#469](https://github.com/openwave-labs/openwave/pull/469)); S1 not commissioned, governed by the
-> [filed S1 decision rule](../findings/m8_9_s1_decision_rule.md).
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🔶 OPEN (opened 2026-08-25,
+> [#469](https://github.com/openwave-labs/openwave/pull/469)); S1 ran 2026-08-25 under the
+> [filed S1 decision rule](../findings/m8_9_s1_decision_rule.md) and returned an instrument defect,
+> no branch issued ([S1 result](#s1-result-2026-08-25-instrument-defect)); the question is open.
 
 > **Diagnostic only.** M8.9 locates where the non-real spectrum enters the M8.4 substrate. It does
 > not repair anything, runs no nonlinear dynamics, and does not reopen M8.4 P1A, whose outcome is
