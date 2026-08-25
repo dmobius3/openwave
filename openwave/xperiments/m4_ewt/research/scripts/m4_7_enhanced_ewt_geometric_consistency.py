@@ -27,6 +27,7 @@ This script reproduces the full numerical verification suite:
 
 import math
 
+
 def main():
     # --- 1. PHYSICAL CONSTANTS (CODATA 2022) ---
     c_0 = 299792458.0
@@ -53,9 +54,9 @@ def main():
     sq2 = math.sqrt(2.0)
     N_nu_geom = N_nu_statutory * (1.0 / sq2) * (1.0 - 1.0 / (2.0 * N_final))
 
-    epsilon_M_val = 1.0 / (N_final * (Pi ** 3))
+    epsilon_M_val = 1.0 / (N_final * (Pi**3))
     eps_M = epsilon_M_val
-    A_pi = 4 * (Pi ** 3) + (Pi ** 2) + Pi
+    A_pi = 4 * (Pi**3) + (Pi**2) + Pi
 
     # =====================================================
     # PART I: GRAVITY CONSISTENCY TEST
@@ -64,7 +65,7 @@ def main():
     print("I. GRAVITY CONSISTENCY TEST (OPERATOR U)")
     print("=====================================================")
 
-    G_Base = (c_0 ** 2 * r_e) / m_e
+    G_Base = (c_0**2 * r_e) / m_e
     print(f"G_Base (Soliton Base)            = {G_Base:.15e} m^3 kg^-1 s^-2")
 
     L_p = 1.1486801482
@@ -83,8 +84,16 @@ def main():
 
     X_raw = (A_pi * 3 * K_neutrinos * math.sqrt(2)) / C_Raw
     X_eff_geom = (A_pi * 3 * K_neutrinos * math.sqrt(2)) / C_Unif
-    G_EWT_raw = (G_Base / A_pi) * (1.0 / (N_final * A_pi) ** 3) * (1.0 / (K_neutrinos * math.sqrt(N_nu_statutory / X_raw)))
-    G_EWT_unified = (G_Base / A_pi) * (1.0 / (N_final * A_pi) ** 3) * (1.0 / (K_neutrinos * math.sqrt(N_nu_effective)))
+    G_EWT_raw = (
+        (G_Base / A_pi)
+        * (1.0 / (N_final * A_pi) ** 3)
+        * (1.0 / (K_neutrinos * math.sqrt(N_nu_statutory / X_raw)))
+    )
+    G_EWT_unified = (
+        (G_Base / A_pi)
+        * (1.0 / (N_final * A_pi) ** 3)
+        * (1.0 / (K_neutrinos * math.sqrt(N_nu_effective)))
+    )
 
     print(f"G_EWT_RAW (Pure K+1)           = {G_EWT_raw:.15e} m^3 kg^-1 s^-2")
     print(f"G_EWT_UNIFIED (Alpha-Link)     = {G_EWT_unified:.15e} m^3 kg^-1 s^-2")
@@ -96,7 +105,9 @@ def main():
     print("\n--- G-FACTOR VERIFICATION RESULT ---")
     print(f"Absolute Difference (|Model - CODATA|)   = {Error_abs_G:.20e}")
     print(f"Percentage Error relative to CODATA      = {Error_perc_G:.15f} %")
-    print(f"Raw Geometry Gap (Pre-Alpha)             = {(G_EWT_raw - G_CODATA)/G_CODATA*100:.10f} %")
+    print(
+        f"Raw Geometry Gap (Pre-Alpha)             = {(G_EWT_raw - G_CODATA)/G_CODATA*100:.10f} %"
+    )
     print("-----------------------------------------------------")
     print(f"EMC DILUTION (X_eff):          {X_eff_geom:.10f}")
     print(f"Lattice Projection (L_p):      {L_p:.10f}")
@@ -113,7 +124,11 @@ def main():
     C_Unif_geo = (1.0 / K_neutrinos) + 1.0 + (alpha_geom / (Pi * L_p_geo))
     X_eff_geo = (A_pi * 3 * K_neutrinos * math.sqrt(2)) / C_Unif_geo
     N_nu_effective_geo = N_nu_statutory / X_eff_geo
-    G_EWT_geo = (G_Base / A_pi) * (1.0 / (N_final * A_pi) ** 3) * (1.0 / (K_neutrinos * math.sqrt(N_nu_effective_geo)))
+    G_EWT_geo = (
+        (G_Base / A_pi)
+        * (1.0 / (N_final * A_pi) ** 3)
+        * (1.0 / (K_neutrinos * math.sqrt(N_nu_effective_geo)))
+    )
 
     Error_abs_G_geo = abs(G_EWT_geo - G_CODATA)
     Error_perc_G_geo = (Error_abs_G_geo / G_CODATA) * 100
@@ -125,7 +140,9 @@ def main():
     print(f"G_EWT_GEO                       = {G_EWT_geo:.15e} m^3 kg^-1 s^-2")
     print(f"G_CODATA                        = {G_CODATA:.15e} m^3 kg^-1 s^-2")
     print(f"Absolute difference             = {Error_abs_G_geo:.20e}")
-    print(f"Relative error                  = {Error_perc_G_geo:.12f} %  ({Error_perc_G_geo*1e4:.2f} ppm)")
+    print(
+        f"Relative error                  = {Error_perc_G_geo:.12f} %  ({Error_perc_G_geo*1e4:.2f} ppm)"
+    )
     print("=====================================================")
 
     # =====================================================
@@ -136,7 +153,7 @@ def main():
     print("=====================================================")
 
     r_nu_ratio_geometric = r_e / r_nu_val
-    K_nu_implied = r_nu_ratio_geometric ** 5
+    K_nu_implied = r_nu_ratio_geometric**5
 
     print(f"r_e (Classical Electron Radius)  = {r_e:.15e} m")
     print(f"r_nu_val (Model Statutory Value) = {r_nu_val:.15e} m")
@@ -165,7 +182,7 @@ def main():
 
     Ideal_Term = alpha / (2.0 * Pi)
     N_final_Deficit_Term = 1.0 / N_final
-    Geometric_Deficit_Term_Check = epsilon_M_val * (Pi ** 3)
+    Geometric_Deficit_Term_Check = epsilon_M_val * (Pi**3)
 
     print("--- IDENTITY CHECK: |epsilon_M| * pi^3 = 1/N_final ---")
     print(f"Calculated |epsilon_M| * pi^3 = {Geometric_Deficit_Term_Check:.15f}")
@@ -196,7 +213,7 @@ def main():
     print("IV. FINE-STRUCTURE CONSTANT (ALPHA) GEOMETRIC DERIVATION")
     print("=====================================================")
 
-    alpha_inv_base_term = 4 * (Pi ** 3) + (Pi ** 2) + Pi
+    alpha_inv_base_term = 4 * (Pi**3) + (Pi**2) + Pi
     print(f"Geometric Base Term (4*Pi^3 + Pi^2 + Pi) = {alpha_inv_base_term:.15f}")
 
     Correction_term_alpha = epsilon_M_val
@@ -238,7 +255,7 @@ def main():
 
     K_e = get_AMMi_K(1)
     M_e = 1.0
-    a_electron_total_ppm = (alpha / (2 * Pi)) * (1 - eps_M * (M_e * Pi ** 3)) * 1e6
+    a_electron_total_ppm = (alpha / (2 * Pi)) * (1 - eps_M * (M_e * Pi**3)) * 1e6
     err_ae = abs(a_electron_total_ppm - target_ae_total_ppm) / target_ae_total_ppm * 100
 
     print("GENERATION 1: ELECTRON (Full AMM)")
@@ -251,16 +268,16 @@ def main():
     K_mu_delta = K_mu_total - K_e
     M_mu_shell = K_mu_delta / K_e
 
-    B_mu_scale = (3 * A_pi * Pi ** 3) / (2 * L_mu_dim ** 2)
-    a_mu_shell_ppm = B_mu_scale * (1 - eps_M) ** (M_mu_shell * Pi ** 3)
+    B_mu_scale = (3 * A_pi * Pi**3) / (2 * L_mu_dim**2)
+    a_mu_shell_ppm = B_mu_scale * (1 - eps_M) ** (M_mu_shell * Pi**3)
 
     err_a_mu_shell = abs(a_mu_shell_ppm - target_a_mu_shell_ppm) / target_a_mu_shell_ppm * 100
 
-    muon_exponent_identity = M_mu_shell * Pi ** 3 * eps_M
+    muon_exponent_identity = M_mu_shell * Pi**3 * eps_M
     O_mu_from_epsM = muon_exponent_identity
-    O_mu_direct = 1.0 / (4 * Pi ** 2)
+    O_mu_direct = 1.0 / (4 * Pi**2)
 
-    a_mu_geometric_ppm = (alpha / (2 * Pi)) * (1 - eps_M * (M_e * Pi ** 3)) * 1e6
+    a_mu_geometric_ppm = (alpha / (2 * Pi)) * (1 - eps_M * (M_e * Pi**3)) * 1e6
     a_mu_shell_correction = a_mu_shell_ppm * O_mu_from_epsM
     a_mu_EWT_ppm = a_mu_geometric_ppm + a_mu_shell_correction
     a_mu_EWT = a_mu_EWT_ppm * 1e-6
@@ -291,17 +308,19 @@ def main():
     K_tau_delta = K_tau_total - K_mu_total
     M_tau_rel = K_tau_total / K_e
 
-    B_tau_base = ((3 * A_pi * Pi ** 3) / (8 * math.sqrt(2))) + (A_pi / 2)
-    a_tau_shell_raw_ppm = B_tau_base * (1 - eps_M) ** (M_tau_rel * Pi ** 3)
+    B_tau_base = ((3 * A_pi * Pi**3) / (8 * math.sqrt(2))) + (A_pi / 2)
+    a_tau_shell_raw_ppm = B_tau_base * (1 - eps_M) ** (M_tau_rel * Pi**3)
 
-    a_tau_shell_total_ppm = a_mu_shell_ppm + a_tau_shell_raw_ppm + L_mu_dim ** 2
-    err_a_tau_shell = abs(a_tau_shell_total_ppm - target_a_tau_shell_ppm) / target_a_tau_shell_ppm * 100
+    a_tau_shell_total_ppm = a_mu_shell_ppm + a_tau_shell_raw_ppm + L_mu_dim**2
+    err_a_tau_shell = (
+        abs(a_tau_shell_total_ppm - target_a_tau_shell_ppm) / target_a_tau_shell_ppm * 100
+    )
 
-    a_tau_geometric_ppm = (alpha / (2 * Pi)) * (1 - eps_M * (M_e * Pi ** 3)) * 1e6
+    a_tau_geometric_ppm = (alpha / (2 * Pi)) * (1 - eps_M * (M_e * Pi**3)) * 1e6
     O_tau = 1.0
     a_tau_shell_correction = (a_tau_shell_total_ppm - a_tau_geometric_ppm) * O_tau
     a_tau_EWT_ppm = a_tau_geometric_ppm + a_tau_shell_correction
-    a_tau_exp = 1177.210e-6
+    a_tau_exp = 1177.210e-6  # SM prediction; no measurement exists at this precision
     a_tau_EWT = a_tau_EWT_ppm * 1e-6
 
     print("GENERATION 3: TAU (Shell Contribution & Full Prediction)")
@@ -318,9 +337,11 @@ def main():
     print("  -----------------------------------------------------")
     print(f"  DYNAMIC FULL AMM PREDICTION (ppm):       {a_tau_EWT_ppm:.6f} ppm")
     print(f"  Value in dimensionless scale (a_tau_EWT):{a_tau_EWT:.14e}")
-    print(f"  Experimental Target (PDG):               {a_tau_exp:.14e}")
-    print(f"  Absolute Error vs Experimental Target:   {abs(a_tau_EWT - a_tau_exp):.6e}")
-    print(f"  Relative Error vs PDG:                   {abs(a_tau_EWT - a_tau_exp)/a_tau_exp*100:.4f} %")
+    print(f"  SM prediction (a_tau^SM):                {a_tau_exp:.14e}")
+    print(f"  Absolute Error vs SM prediction:         {abs(a_tau_EWT - a_tau_exp):.6e}")
+    print(
+        f"  Relative Error vs SM prediction:         {abs(a_tau_EWT - a_tau_exp)/a_tau_exp*100:.4f} %"
+    )
     print("=====================================================")
 
     # =====================================================
@@ -331,20 +352,20 @@ def main():
     print("    Validated against: Particle-Forces-Calculations-v7.1.xlsx")
     print("---------------------------------------------------------------")
 
-    rho_a = 3.8597645397410479e+22
+    rho_a = 3.8597645397410479e22
     A_long = 9.2154057079234868e-19
     L_long = 2.8540965006585549e-17
     c_light = 299792458.0
-    J_to_GeV = 6.24150934e+9
+    J_to_GeV = 6.24150934e9
 
     def get_Ol(K):
         Ol = 0.0
         for n in range(1, K + 1):
-            Ol += (n ** 3 - (n - 1) ** 3) / (n ** 4)
+            Ol += (n**3 - (n - 1) ** 3) / (n**4)
         return Ol
 
     def mass_spherical(K):
-        E_j = (rho_a * (4.0/3.0) * math.pi * (K ** 5) * (A_long ** 6) * (c_light ** 2)) / (L_long ** 3)
+        E_j = (rho_a * (4.0 / 3.0) * math.pi * (K**5) * (A_long**6) * (c_light**2)) / (L_long**3)
         return E_j * get_Ol(K) * J_to_GeV
 
     def mass_orbital(K):
@@ -359,12 +380,12 @@ def main():
     def mass_meson_style(K):
         m_e_GeV = 0.00051099895
         K_e = 10
-        return m_e_GeV * (K ** 5 / K_e ** 5)
+        return m_e_GeV * (K**5 / K_e**5)
 
     def K_from_mass(m_target):
         m_e_GeV = 0.00051099895
         K_e = 10
-        return K_e * (m_target / m_e_GeV) ** (1.0/5.0)
+        return K_e * (m_target / m_e_GeV) ** (1.0 / 5.0)
 
     data = [
         ("Neutrino", 1, 0.00000000238, "sph"),
@@ -411,7 +432,7 @@ def main():
     m_d_pdg = 0.004692
     m_s_pdg = 0.094954
 
-    C_gap = 1 + (math.pi ** 6) * C_local
+    C_gap = 1 + (math.pi**6) * C_local
     Mw_ewt_pred = M_Z_ref * math.sqrt((1 - sw2_target) * C_gap)
 
     abs_diff_cdf = abs(Mw_ewt_pred - M_W_CDFII)
@@ -437,7 +458,7 @@ def main():
 
     m_d_ewt = mass_spherical(15)
     m_s_ewt = mass_spherical(28)
-    C_fermion = (1 + (math.pi ** 5) * C_local) ** 2
+    C_fermion = (1 + (math.pi**5) * C_local) ** 2
 
     sc_ewt_A = math.sqrt(m_d_ewt / m_s_ewt) * C_fermion
     err_A = abs(sc_ewt_A - 0.2243) / 0.2243 * 100
@@ -482,10 +503,10 @@ def main():
 
     q_P_val = 1.87554603778e-18
     gv_factor = 0.983592
-    r_nu_statutory = (2 * q_P_val * (e_euler ** 2)) / gv_factor
+    r_nu_statutory = (2 * q_P_val * (e_euler**2)) / gv_factor
 
     r_ratio_final = r_e / r_nu_statutory
-    K_final_link = r_ratio_final ** 5
+    K_final_link = r_ratio_final**5
 
     print(f"Derived Statutory Radius (r_nu):  {r_nu_statutory:.10e} m")
     print(f"Reference Electron Radius (r_e):  {r_e:.10e} m")
@@ -511,8 +532,8 @@ def main():
     E_Z_calc = mass_spherical(110)
     E_H_calc = mass_spherical(117)
 
-    r_Z_pred = r_e * (E_Z_calc / E_e_ref) ** (1.0/5.0)
-    r_H_pred = r_e * (E_H_calc / E_e_ref) ** (1.0/5.0)
+    r_Z_pred = r_e * (E_Z_calc / E_e_ref) ** (1.0 / 5.0)
+    r_H_pred = r_e * (E_H_calc / E_e_ref) ** (1.0 / 5.0)
 
     print(f"Z-Boson (K=110) Predicted Radius: {r_Z_pred:.10e} m")
     print(f"Higgs   (K=117) Predicted Radius: {r_H_pred:.10e} m")
@@ -530,8 +551,8 @@ def main():
     print("X. THE ULTIMATE DETERMINISTIC PROOF (ZERO-PARAMETER)")
     print("=====================================================")
 
-    N_ideal = 8 * (Pi ** 4)
-    eps_M_pure = 1.0 / (8 * (Pi ** 7))
+    N_ideal = 8 * (Pi**4)
+    eps_M_pure = 1.0 / (8 * (Pi**7))
 
     print("--- MATHEMATICAL REDUCTION TO PURE TOPOLOGY ---")
     print("Starting with N_geometric = 8 * pi^4 (BCC Nodes * 4D Budget)")
@@ -541,8 +562,8 @@ def main():
     print("   eps_M = 1 / ( 8 * pi^7 )  <-- THE 7D WEAK FORCE ANCHOR")
     print(f"Value of eps_M: {eps_M_pure:.15e}")
 
-    A_core = 4 * (Pi ** 3) + (Pi ** 2) + Pi
-    alpha_inv_pure = A_core - (1.0 / (8 * (Pi ** 7)))
+    A_core = 4 * (Pi**3) + (Pi**2) + Pi
+    alpha_inv_pure = A_core - (1.0 / (8 * (Pi**7)))
 
     print("\n--- ALPHA-INVERSE (FINE STRUCTURE) DETERMINISM ---")
     print("Formula: alpha^-1 = (4pi^3 + pi^2 + pi) - (1 / 8*pi^7)")
@@ -576,9 +597,9 @@ def main():
     print("XI. UNIFIED GEOMETRIC AMM IDENTITY (DETERMINISTIC TEST)")
     print("=====================================================")
 
-    N_geo = 8 * (Pi ** 4)
+    N_geo = 8 * (Pi**4)
     Numerator = N_geo - 1
-    Denominator = 2 * Pi * (N_geo * A_core - (1.0 / Pi ** 3))
+    Denominator = 2 * Pi * (N_geo * A_core - (1.0 / Pi**3))
     ae_pure = Numerator / Denominator
     ae_target = a_e_CODATA_10_10 / 1e10
 
@@ -614,8 +635,8 @@ def main():
     alpha_geom = 1.0 / alpha_inv_pure
     r_e_geometric = 100 * r_nu_statutory
 
-    R_inf_pure = (alpha_geom ** 3) / (4 * math.pi * r_e_geometric)
-    a0_pure = r_e_geometric / (alpha_geom ** 2)
+    R_inf_pure = (alpha_geom**3) / (4 * math.pi * r_e_geometric)
+    a0_pure = r_e_geometric / (alpha_geom**2)
     lambda_C_pure = (2 * math.pi * r_e_geometric) / alpha_geom
 
     R_inf_target = 10973731.568157
@@ -631,21 +652,27 @@ def main():
     print(f"CODATA 2022 R_inf:                        {R_inf_target:.8f} m^-1")
     Error_R_inf_ppm = abs(R_inf_pure - R_inf_target) / R_inf_target * 1e6
     Error_R_inf_percent = abs(R_inf_pure - R_inf_target) / R_inf_target * 100
-    print(f"Relative error:                           {Error_R_inf_ppm:.6f} ppm  ({Error_R_inf_percent:.6f} %)")
+    print(
+        f"Relative error:                           {Error_R_inf_ppm:.6f} ppm  ({Error_R_inf_percent:.6f} %)"
+    )
     print()
 
     print(f"Predicted Bohr radius (a0):               {a0_pure:.15e} m")
     print(f"CODATA 2022 a0:                            {a0_target:.15e} m")
     Error_a0_ppm = abs(a0_pure - a0_target) / a0_target * 1e6
     Error_a0_percent = abs(a0_pure - a0_target) / a0_target * 100
-    print(f"Relative error:                           {Error_a0_ppm:.6f} ppm  ({Error_a0_percent:.6f} %)")
+    print(
+        f"Relative error:                           {Error_a0_ppm:.6f} ppm  ({Error_a0_percent:.6f} %)"
+    )
     print()
 
     print(f"Predicted Compton wavelength (lambda_C):  {lambda_C_pure:.15e} m")
     print(f"CODATA 2022 lambda_C:                      {lambda_C_target:.15e} m")
     Error_lC_ppm = abs(lambda_C_pure - lambda_C_target) / lambda_C_target * 1e6
     Error_lC_percent = abs(lambda_C_pure - lambda_C_target) / lambda_C_target * 100
-    print(f"Relative error:                           {Error_lC_ppm:.6f} ppm  ({Error_lC_percent:.6f} %)")
+    print(
+        f"Relative error:                           {Error_lC_ppm:.6f} ppm  ({Error_lC_percent:.6f} %)"
+    )
 
     print("\n--- PHYSICAL INTERPRETATION ---")
     print("All three atomic scales derive from the same two geometric inputs:")
@@ -657,7 +684,9 @@ def main():
     print("  lambda_C = 2*pi * r_e / alpha     (annihilation threshold)")
     print("demonstrate that spectroscopy, atomic structure, and particle annihilation")
     print("are unified under a single geometric framework.")
-    print(f"\nThe sub-ppm precision (approx. {Error_a0_ppm:.1f} ppm for a0, approx. {Error_lC_ppm:.1f} ppm for lambda_C, and {Error_R_inf_ppm:.1f} ppm for R_inf) confirms")
+    print(
+        f"\nThe sub-ppm precision (approx. {Error_a0_ppm:.1f} ppm for a0, approx. {Error_lC_ppm:.1f} ppm for lambda_C, and {Error_R_inf_ppm:.1f} ppm for R_inf) confirms"
+    )
     print("that these constants are not independent but necessary consequences of the")
     print("BCC lattice topology. The slightly larger error in R_inf reflects the cumulative")
     print("effect of the alpha^3 factor, consistent with the spherical packing impedance delta")
@@ -674,9 +703,15 @@ def main():
     def run_scan(particle_data):
         n = len(particle_data)
         print("\n--- FULL PARTICLE SCAN (K^5 MESON MODE) ---")
-        print("------------------------------------------------------------------------------------------------------")
-        print(f"{'Particle':<16} | {'Source':<12} | {'Target [GeV]':>14} | {'K_exact':>8} | {'K_int':>8} | {'m_int [GeV]':>12} | {'err_int %':>10}")
-        print("------------------------------------------------------------------------------------------------------")
+        print(
+            "------------------------------------------------------------------------------------------------------"
+        )
+        print(
+            f"{'Particle':<16} | {'Source':<12} | {'Target [GeV]':>14} | {'K_exact':>8} | {'K_int':>8} | {'m_int [GeV]':>12} | {'err_int %':>10}"
+        )
+        print(
+            "------------------------------------------------------------------------------------------------------"
+        )
 
         near_integer = []
         for name, source, m_t in particle_data:
@@ -684,20 +719,30 @@ def main():
             K_in = round(K_ex)
             m_int = mass_meson_style(K_in)
             err = abs(m_int - m_t) / m_t * 100
-            print(f"{name:<16} | {source:<12} | {m_t:14.8f} | {K_ex:8.4f} | {K_in:8d} | {m_int:12.6f} | {err:10.4f}")
+            print(
+                f"{name:<16} | {source:<12} | {m_t:14.8f} | {K_ex:8.4f} | {K_in:8d} | {m_int:12.6f} | {err:10.4f}"
+            )
 
             if abs(K_ex - K_in) < 0.15:
                 near_integer.append((name, source, K_ex, K_in, m_t, m_int, err))
 
-        print("------------------------------------------------------------------------------------------------------")
+        print(
+            "------------------------------------------------------------------------------------------------------"
+        )
         print("\n--- NEAR-INTEGER K RESONANCES (|K - round(K)| < 0.15) ---")
         print("Natural EWT lattice alignment without parameter adjustment.")
-        print("------------------------------------------------------------------------------------------------------")
+        print(
+            "------------------------------------------------------------------------------------------------------"
+        )
 
         for name, source, K_ex, K_in, m_t, m_int, err in near_integer:
-            print(f"*** {name:<16} [{source:<12}]  K={K_ex:.6f} -> K_int={K_in:3d}  m_int={m_int:.8f} GeV  err={err:.4f}%")
+            print(
+                f"*** {name:<16} [{source:<12}]  K={K_ex:.6f} -> K_int={K_in:3d}  m_int={m_int:.8f} GeV  err={err:.4f}%"
+            )
 
-        print("------------------------------------------------------------------------------------------------------")
+        print(
+            "------------------------------------------------------------------------------------------------------"
+        )
 
     particle_data = [
         # Leptons
@@ -778,8 +823,8 @@ def main():
     N_bcc = 8
     gv = 0.98359223
 
-    epsilon_M = 1.0 / (8 * (Pi ** 7))
-    alpha_inv_geo = (4*(Pi**3) + (Pi**2) + Pi) - epsilon_M
+    epsilon_M = 1.0 / (8 * (Pi**7))
+    alpha_inv_geo = (4 * (Pi**3) + (Pi**2) + Pi) - epsilon_M
 
     print("--- EWT: FINAL NEUTRINO RADIUS (r_nu) DERIVATION ---\n")
     print("1. Geometric fine-structure constant (inverse):")
@@ -800,7 +845,7 @@ def main():
     print("3. Neutrino radius:")
     print(f"   r_nu = q_P * K = {r_nu:.25e} m\n")
 
-    K_earlier = 2 * (e_euler ** 2) / gv
+    K_earlier = 2 * (e_euler**2) / gv
     print("4. Consistency with earlier derivation:")
     print(f"   Earlier K (2 e^2 / g_v)   = {K_earlier:.10f}")
     print(f"   Current K (sum)           = {K_final:.10f}")
@@ -812,14 +857,14 @@ def main():
 
     a_coef = math.sqrt(2) - 1
     b_coef = -(K_proj + e_euler + math.sqrt(2) - 1)
-    c_coef = 2 * e_euler ** 2
+    c_coef = 2 * e_euler**2
 
     print("   Quadratic coefficients:")
     print(f"   a = (sqrt(2)-1)             = {a_coef:.15f}")
     print(f"   b = -(alpha_inv/(8+pi) + e + sqrt(2) - 1) = {b_coef:.15f}")
     print(f"   c = 2*e^2                   = {c_coef:.15f}\n")
 
-    discriminant = b_coef ** 2 - 4 * a_coef * c_coef
+    discriminant = b_coef**2 - 4 * a_coef * c_coef
     print(f"   Discriminant (b^2 - 4ac)    = {discriminant:.15e}\n")
 
     if discriminant >= 0:
@@ -844,7 +889,7 @@ def main():
         delta_imp_pred = (1 - gv_predicted) * (math.sqrt(2) - 1)
         K_pred = K_proj + e_euler + delta_imp_pred
         r_nu_pred = qP * K_pred
-        K_dyn_pred = 2 * e_euler ** 2 / gv_predicted
+        K_dyn_pred = 2 * e_euler**2 / gv_predicted
 
         print("   Verification with predicted g_v:")
         print(f"   K (geometric sum)          = {K_pred:.15f}")
@@ -866,6 +911,7 @@ def main():
     print("   * Only one root satisfies 0 < g_v < 1.")
     print("   * This uniqueness suggests g_v is not a free parameter")
     print("     but a topological necessity of the vacuum lattice.")
+
 
 if __name__ == "__main__":
     main()

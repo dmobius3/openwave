@@ -14,6 +14,7 @@ m4_ewt (Energy Wave Theory) is the scientific-origin corpus for the wave-structu
 | Author(s) | Year | Title | Venue / ID |
 | --- | --- | --- | --- |
 | Butto, N. | 2021 | A New Theory for the Essence and Origin of Electron Spin | Journal of High Energy Physics, Gravitation and Cosmology, 7(4); DOI 10.4236/jhepgc.2021.74088 |
+| Smoliński, Ł. | 2026 | Scilab script: EWT model complete numerical calculator and consistency check (v4.5.2, 2026-07-23; `EWT_G_AMM_check.sc`, the source of the M4.7 Python port; later revisions ship with the manuscript releases) | Zenodo; DOI [10.5281/zenodo.21503571](https://doi.org/10.5281/zenodo.21503571) |
 | Smoliński, Ł. | 2026 | Formalization of Nonlinear Stabilisation Mechanisms for the Electron Soliton in the Energy Wave Theory Framework (v1.0) | Zenodo; DOI [10.5281/zenodo.21557369](https://doi.org/10.5281/zenodo.21557369). In-repo: [`research/M4_k_selectivity_Formalization.md`](../research/M4_k_selectivity_Formalization.md) |
 | Smoliński, Ł. | 2026 | Numerical Test Report (K-Selectivity Validation) | Zenodo; DOI [10.5281/zenodo.21591354](https://doi.org/10.5281/zenodo.21591354) |
 | Smoliński, Ł. | 2026 | The Geometric Identity of Gravity and Dimensional Unification Resolving α, Lepton (g−2)_l, Weinberg, and Cabibbo Mixing (v4.5.2) | Zenodo; DOI [10.5281/zenodo.17654657](https://doi.org/10.5281/zenodo.17654657) |

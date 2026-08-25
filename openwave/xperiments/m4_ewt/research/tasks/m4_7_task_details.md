@@ -7,7 +7,7 @@ DONE (post-hoc)
 Provide a complete, reproducible Python port of the Enhanced EWT
 geometric consistency suite originally implemented in Scilab.
 
-This task is the platformís entry point for Enhanced EWT. The
+This task is the platform's entry point for Enhanced EWT. The
 artifact is intended to be reused by later tasks as a shared
 geometric foundation.
 
@@ -31,20 +31,25 @@ quantities, including \(G\), \(\alpha^{-1}\), \(a_e\), \(a_\mu\),
 \(a_\tau\), particle masses, mixing angles, atomic scales, and
 \(r_\nu\).
 
+Maintainer note at merge: with the geometric constants (\(N = 8\pi^4\),
+\(L_p = 2/\sqrt{3}\)) the chain gives \(G\) to 4.78 ppm, \(\alpha^{-1}\) to
+1.9e-6 and \(a_e\) to 2.3e-4; the 13-digit \(G\) of Part I uses a calibrated
+`L_p`. The finding's "What enters as a number" table lists every numeric input.
+
 ## Role for future tasks
 This script is the reference implementation of the Enhanced EWT
 geometric core. It can be:
 
 - imported as a base module,
 - used to source formulas for isolated validation tasks,
-- cited as the in-platform implementation of the modelís geometry.
+- cited as the in-platform implementation of the model's geometry.
 
 Later tasks do not need to re-derive the base model.
 
 ## Attribution
 Some underlying formulas and wave constants originate from the
 foundational Energy Wave Theory work of Jeff Yee. The Enhanced EWT
-geometric formalization is provided by £ukasz SmoliÒski. See the
+geometric formalization is provided by ≈Åukasz Smoli≈Ñski. See the
 manuscript for details.
 
 ## Artifacts
