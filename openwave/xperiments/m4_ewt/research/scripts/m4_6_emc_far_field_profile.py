@@ -35,15 +35,15 @@ import math
 # ----------------------------------------------------------------------
 print("[1/4] Loading physical constants...")
 
-G      = 6.67430e-11          # m^3 kg^-1 s^-2
-c      = 299792458.0          # m/s
-M_sun  = 1.989e30             # kg
-R_sun  = 6.957e8              # m
+G = 6.67430e-11  # m^3 kg^-1 s^-2
+c = 299792458.0  # m/s
+M_sun = 1.989e30  # kg
+R_sun = 6.957e8  # m
 
 r_s = 2.0 * G * M_sun / (c * c)
 
-R_outer = 500.0 * R_sun        # far-field outer boundary
-N_steps = 20000                # integration grid steps
+R_outer = 500.0 * R_sun  # far-field outer boundary
+N_steps = 20000  # integration grid steps
 
 print(f"    G          = {G:.6e} m^3 kg^-1 s^-2")
 print(f"    c          = {c:.3f} m/s")
@@ -58,9 +58,11 @@ print(f"    N_steps    = {N_steps}")
 # ----------------------------------------------------------------------
 print("[2/4] Solving the radial Laplace equation...")
 
+
 def rhs(r, y):
     # y[0] = delta_eta, y[1] = d(delta_eta)/dr
     return [y[1], -2.0 * y[1] / r]
+
 
 def integrate(guess_delta):
     """
@@ -69,7 +71,7 @@ def integrate(guess_delta):
     """
     r = R_sun
     y0 = guess_delta
-    y1 = +r_s / (R_sun * R_sun)   # Gauss strain flux condition: d(-r_s/r)/dr = +r_s/r^2
+    y1 = +r_s / (R_sun * R_sun)  # Gauss strain flux condition: d(-r_s/r)/dr = +r_s/r^2
 
     dr = (R_outer - R_sun) / N_steps
 
@@ -85,12 +87,14 @@ def integrate(guess_delta):
 
     return y0, y1
 
+
 def target_residual(guess_delta):
     """
     Evaluates asymptotic BC residual: r * d(delta_eta)/dr + delta_eta = 0.
     """
     y0_end, y1_end = integrate(guess_delta)
     return R_outer * y1_end + y0_end
+
 
 # Bisection loop to find inner delta_eta(R_sun) satisfying asymptotic BC
 lo = -10.0 * r_s / R_sun
@@ -119,6 +123,7 @@ print("[3/4] Verifying numerical solution against analytic eta(r) profile...")
 
 max_rel_error = 0.0
 worst_r = 0.0
+max_rel_error_delta = 0.0  # error relative to delta_eta itself, not to eta ~ 1
 
 r = R_sun
 y0 = delta_sun
@@ -132,6 +137,9 @@ for _ in range(N_steps):
     if rel_err > max_rel_error:
         max_rel_error = rel_err
         worst_r = r
+    rel_err_delta = abs(y0 - (-r_s / r)) / (r_s / r)
+    if rel_err_delta > max_rel_error_delta:
+        max_rel_error_delta = rel_err_delta
 
     k1 = rhs(r, [y0, y1])
     k2 = rhs(r + 0.5 * dr, [y0 + 0.5 * dr * k1[0], y1 + 0.5 * dr * k1[1]])
@@ -144,6 +152,7 @@ for _ in range(N_steps):
 
 print(f"    Max relative error (eta) = {max_rel_error:.6e}")
 print(f"    at r                     = {worst_r:.3e} m")
+print(f"    Max relative error (delta_eta) = {max_rel_error_delta:.6e}   (eta-relative / (r_s/r))")
 
 # ----------------------------------------------------------------------
 # 4. Summary

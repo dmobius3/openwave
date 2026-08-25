@@ -30,11 +30,15 @@ analytic monopole form used in M4.3-M4.5.
 - \(A_{\text{numerical}} = 2.954126555055404 \times 10^{3}\ \text{m}\)
 - \(r_s = 2.954126555055405 \times 10^{3}\ \text{m}\)
 - Max relative error of \(\eta(r)\): \(5.7 \times 10^{-14}\)
+- Max relative error of \(\delta\eta(r)\) itself: \(2.5 \times 10^{-8}\) (RK4
+  truncation; see the finding)
 
 ## Interpretation
-The numerical solution reproduces the analytic monopole profile to
-machine precision. The profile is therefore not an arbitrary fitting
-ansatz but the far-field equilibrium solution of the EMC lattice.
+The numerical solution reproduces the analytic monopole profile: the
+\(1/r\) form is the harmonic solution of the radial Laplace equation. The
+amplitude is not derived here: \(r_s\) enters through the surface flux
+condition and comes back out as \(A\). The encoding itself stays derived
+in the manuscript, not in-platform (same standing as M4.3 to M4.5).
 
 ## Artifacts
 - `research/scripts/m4_6_emc_far_field_profile.py`
