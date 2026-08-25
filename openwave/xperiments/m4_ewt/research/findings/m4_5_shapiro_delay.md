@@ -1,7 +1,12 @@
 # M4.5 Shapiro Delay from the EMC Refractive Index
 
+> This is an Enhanced EWT extension, authored by Åukasz SmoliÅ„ski, as registered in
+> [`_CITATIONS.md`](../../theory/_CITATIONS.md) (The Geometric Identity of Gravity and
+> Dimensional Unification, v4.5.7, DOI
+> [10.5281/zenodo.22097316](https://doi.org/10.5281/zenodo.22097316)).
+
 ## Criterion
-Gravity: local metric phenomena — Shapiro delay component
+Gravity: local metric phenomena (Shapiro delay component)
 
 ## What was computed
 
@@ -57,13 +62,18 @@ standard logarithmic delay.
 
 ## Result
 
-- Integral one-way: \(7.75 \times 10^{4}\) m
-- Numerical round-trip delay: \(240.0\,\mu\text{s}\)
-- Standard round-trip delay: \(239.9\,\mu\text{s}\)
-- Relative difference: \(<0.1\%\)
+- Integral one-way: \(3.5827 \times 10^{4}\) m
+- Numerical round-trip delay: \(239.014\,\mu\text{s}\)
+- Standard round-trip delay: \(239.014\,\mu\text{s}\)
+- Relative difference: \(0.000075\%\)
 
-The numerical quadrature matches the standard Shapiro formula within
-the expected quadrature precision.
+The residue is not quadrature error. To first order in \(r_s/r\) the
+EMC index integrates exactly to the standard logarithmic formula; the
+\(0.000075\%\) is the sum of the index's higher-order terms
+(\(+0.00016\%\), of order \(r_s/b = 4.2 \times 10^{-6}\)) and the
+exact straight-path geometry, \(\operatorname{asinh}(L/b)\) against
+\(\ln(2\,\text{AU}/b)\) (\(-0.00009\%\)), both far below the
+\(0.1\%\) gate.
 
 ## Model assumptions (derived in the manuscript, not fitted here)
 
@@ -86,4 +96,4 @@ Full derivation in the Enhanced EWT manuscript, version 4.5.7:
 
 Relevant section:
 
-- “Shapiro Delay from the EMC Refractive Index”
+- "Shapiro Delay from the EMC Refractive Index"

@@ -30,14 +30,16 @@ standard weak-field result.
 
 ## Result
 
-- Numerical round-trip delay: \(240.0\,\mu\text{s}\)
-- Standard round-trip delay: \(239.9\,\mu\text{s}\)
-- Relative difference: \(<0.1\%\)
+- Numerical round-trip delay: \(239.014\,\mu\text{s}\)
+- Standard round-trip delay: \(239.014\,\mu\text{s}\)
+- Relative difference: \(0.000075\%\) (higher-order index terms plus exact path
+  geometry; see the finding)
 
 ## Interpretation
 
 The numerical quadrature of the EMC refractive index reproduces the
-standard Shapiro delay within quadrature precision. This is a
+standard Shapiro delay to first order in \(r_s/r\), with a \(0.000075\%\)
+residue from higher-order terms and path geometry. This is a
 consistency test of the encoding \(n_\gamma(r)\), not an in-platform
 derivation of the density profile itself.
 
@@ -50,7 +52,6 @@ derivation of the density profile itself.
 
 Enhanced EWT manuscript, version 4.5.7:
 [DOI: 10.5281/zenodo.22097316](https://doi.org/10.5281/zenodo.22097316)
-
 
 Relevant section:
 
