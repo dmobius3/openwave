@@ -77,7 +77,7 @@ All eighteen real candidates passed the gate. Discrimination was established by 
 
 ### Floor computation per observation
 
-| Sector | n | h | ||P_spec|| | max β | ε·||L|| | backward | F (corrected) | sep | pert/sep |
+| Sector | n | h | \|\|P_spec\|\| | max β | ε·\|\|L\|\| | backward | F (corrected) | sep | pert/sep |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | R0 | 72 | 0.1097 | 1.72 | 2.15e-12 | 4.29e-13 | 2.15e-12 | 3.69e-12 | 164.34 | 2.25e-14 |
 | R1 | 72 | 0.1097 | 1.71 | 3.18e-12 | 4.27e-13 | 3.18e-12 | 5.43e-12 | 138.69 | 3.92e-14 |
