@@ -51,7 +51,7 @@ Gate thresholds (frozen before running):
 - constant-function residual ||L·1||∞ ≤ 1e-06
 - polynomial reproduction residual ≤ 0.1
 
-| n | N | h | q | h/q | cond_max | reprod | const_res | h²||L|| | PASS |
+| n | N | h | q | h/q | cond_max | reprod | const_res | h²\|\|L\|\| | PASS |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 8 | 960 | 0.2163 | 0.039601 | 5.5 | 3.46e+07 | 7.89e-10 | 4.37e-09 | 11.69 | **PASS** |
 | 12 | 1440 | 0.2181 | 0.046244 | 4.7 | 7.25e+07 | 5.99e-10 | 3.08e-09 | 11.16 | **PASS** |
@@ -207,7 +207,7 @@ F = eps_mach * ||L||₂ * max(||P_spec||₂, 1)
 EXTRACTION_FAIL if ||P_spec|| < 0.5
 ```
 
-| Sector | n | h | ||L||₂ | P_spec | Floor | im_max | Regime |
+| Sector | n | h | \|\|L\|\|₂ | P_spec | Floor | im_max | Regime |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | R0 | 72 | 0.1097 | 1933.5 | 1.7 | 7.39e-13 | 2.81e-14 | FLOOR_LIMITED |
 | R1 | 72 | 0.1097 | 1922.1 | 1.7 | 7.30e-13 | 1.28e-10 | ABOVE_FLOOR |
