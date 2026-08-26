@@ -1,0 +1,7 @@
+Starting n=20 SVD at 10:43:08...
+Matrix will be 52920x441 with full_matrices=True
+Expected U allocation: ~44.8 GB
+n=20 SVD done in 3088.5s: dim=21, gap=2958163865.946767
+Cached to /Users/blake/Desktop/OpenWave/M8.9_S1B/qualification_runs/q3a/results/C_svd_n20.npy and /Users/blake/Desktop/OpenWave/M8.9_S1B/qualification_runs/q3a/results/svd_n20.json
+Hash: 8ba326e63d1c7d4b2f81d7dacdd9912595dd8f3004e9866175c370fbbc3e1aa1
+DONE

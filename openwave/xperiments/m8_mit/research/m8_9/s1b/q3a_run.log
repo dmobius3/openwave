@@ -1,0 +1,362 @@
+
+========================================================================
+  INFRASTRUCTURE
+========================================================================
+  2I elements: 120, left-action pairs: 120
+  cloud: 7200 nodes from 60 seeds
+  M_h: range [2.4545e-03, 2.9668e-03], kappa=1.2087
+  L_q: (60, 60), seed_orbits: 60
+  ||Ltilde - Ltilde^H||_2 = 3232.03
+  infrastructure time: 0.8s
+  [serialized -> results/infrastructure.json]
+
+========================================================================
+  G-REAL: pointwise realization
+========================================================================
+  worst_residual_correct:     1.79e-15 (need < 1e-10)
+  best_residual_no_transpose: 9.44e-01 (need > 1e-10)
+  PASS: True, time: 0.01s
+  [serialized -> results/G-REAL.json]
+
+## G-REAL
+- worst_correct: 1.79e-15
+- best_no_transpose: 9.44e-01
+- **PASS**
+
+  G-REAL mutation: no_transpose form
+    green: 1.79e-15
+    red:   9.44e-01
+    separation: 5.28e+14
+
+========================================================================
+  G-DISCRIM: K vs J discrimination
+========================================================================
+  green: ||K||_2=0.00e+00 (need <= 3.73e-12), J=0.00e+00 (need <= 1e-12)
+  arm A (nilpotent): ||K||_2=0.500000 (need |..-0.5|<1e-12), J=0.00e+00 (need <=1e-12)
+  arm B (antisym):   ||K||_2=2.000000 (need |..-2|<1e-12), J=2.000000 (need |..-2|<1e-12)
+  G-DISCRIM: PASS
+  [serialized -> results/G-DISCRIM.json]
+
+## G-DISCRIM
+- green: K=0.00e+00, J=0.00e+00
+- arm A: K=0.500000, J=0.00e+00
+- arm B: K=2.000000, J=2.000000
+- **PASS**
+
+========================================================================
+  LADDER CONTROLS (A1.1)
+========================================================================
+  k=2: J(64)=0.00e+00, J(30)=0.00e+00, J(50)=0.00e+00 -> COLLAPSES (rule 1)
+  k=3: J(64)=6.47e-06, J(30)=9.10e-11, J(50)=2.19e-17 -> AMBIGUOUS (rule 2)
+  synthetic (1e-8,1e-12,1e-12): -> COLLAPSES (rule 4)
+  edge ratio=2.0: J=(1e-08, 1e-12, 2e-12) -> COLLAPSES (rule 4)
+  edge ratio=0.5: J=(1e-08, 1e-12, 5e-13) -> COLLAPSES (rule 4)
+  rule-5 fall-through (1e-8,2e-11,2e-11): -> AMBIGUOUS (rule 5)
+  [serialized -> results/ladder_controls.json]
+
+## Ladder Controls (A1.1)
+- k=2: COLLAPSES via rule 1 (exact-zero control)
+- k=3: AMBIGUOUS via rule 2 (ill-conditioning refusal)
+- synthetic (1e-8,1e-12,1e-12): COLLAPSES via rule 4
+- edges at ratio 2.0 and 0.5: both COLLAPSES via rule 4
+- (1e-8,2e-11,2e-11): AMBIGUOUS via rule 5
+
+========================================================================
+  ADJUDICATOR OUTCOMES (Q7)
+========================================================================
+  S1b-DEFECT                     -> S1b-DEFECT (rule 1) OK
+  S1b-NO_LABEL (r2)              -> S1b-NO_LABEL (rule 2) OK
+  S1b-NO_LABEL (r3)              -> S1b-NO_LABEL (rule 3) OK
+  S1b-SPECTRAL                   -> S1b-SPECTRAL (rule 4) OK
+  S1b-NO_LABEL (r5)              -> S1b-NO_LABEL (rule 5) OK
+  S1b-ADJOINT                    -> S1b-ADJOINT (rule 6) OK
+  S1b-NULL                       -> S1b-NULL (rule 7) OK
+
+  Precedence collisions:
+  gate FAILS + SPECTRAL -> DEFECT                    -> S1b-DEFECT (r1) OK
+  AMBIGUOUS + PERSISTENT -> NO_LABEL                 -> S1b-NO_LABEL (r2) OK
+  J disagree + one SPECTRAL -> NO_LABEL              -> S1b-NO_LABEL (r3) OK
+  K disagree + one ADJOINT -> NO_LABEL               -> S1b-NO_LABEL (r5) OK
+  [serialized -> results/adjudicator.json]
+
+## Adjudicator (Q7)
+- All 7 outcomes reachable: YES
+- All 4 precedence collisions correct: YES
+
+========================================================================
+  G-ALIGN: cover-to-seed restriction
+========================================================================
+  seed_orbits == sorted(plan.keys()): True
+  r == (node_of[(o,0)])_{o in seed_orbits}: True
+  G-ALIGN: PASS
+  arm: r[0] 0->120, predicate fails: True
+  [serialized -> results/G-ALIGN.json]
+
+## G-ALIGN
+- structural predicate: True
+- arm (changed r[0]): predicate fails=True
+- **PASS**
+
+========================================================================
+  G-WIRE: n=0 machinery control
+========================================================================
+  n=0: dim=1, gap={'gap': inf, 'state': 'vacuous: one side of the cut is empty'}
+  ||L Q_0||_{M_h,F} = 5.46e-09 (gate: <= 1e-8)
+  G-WIRE: PASS
+  max |Im| on A_0: 0.00e+00 (recorded, not gated)
+  arm: ||L_mut Q_0|| = 1.00e-04 (expected >= 1e-04), red: True
+  [serialized -> results/G-WIRE.json]
+
+## G-WIRE
+- ||L Q_0||_{M_h,F} = 5.46e-09
+- arm: ||L_mut Q_0|| = 1.00e-04, red=True
+- **PASS**
+
+========================================================================
+  SVD at n=12 (EXPENSIVE — shipped full_matrices=True)
+========================================================================
+  shipped SVD (CACHED): dim=13, time=188.4s
+  gap: {'gap': 7218417941.362989, 'state': 'measured'}
+  hash: 10fdf4b8f95523d593b16caddc97122b8046242e0198b822281745e4408e8701
+  G-RANK n=12: dim=13 (expected 13) -> PASS
+  G-RANK arm: n=11 gives dim=0 != 13: True
+    (no-transpose form is character-equivalent; G-REAL separates realizations)
+  [serialized -> results/G-RANK_n12.json]
+
+## G-RANK n=12
+- dim=13 (expected 13)
+- gap={'gap': 7218417941.362989, 'state': 'measured'}
+- arm: n=11 gives dim=0
+- **PASS**
+  economy SVD: time=0.4s
+  bridge: dim_econ=13, basis bitwise match=True
+  [serialized -> results/bridge_n12.json]
+
+## SVD Bridge n=12
+- dim match: True
+- basis bitwise match: True
+- (diagnostic, routes nothing)
+  averaging: rank=13, time=0.1s
+  Pi diagnostics: {'idempotence_err': 7.485733525136394e-09, 'non_hermiticity': 39.038929403062326, 'Pi_norm': 7.721194628949948, 'rank_abs_1e8': 13}
+  theta_C (sine form): sin(theta_max) = 7.2888e-11 (gate: <= 1e-6)
+  G-SUBSPACE n=12: dims_agree=True, angle_ok=True -> PASS
+  [serialized -> results/G-SUBSPACE_n12.json]
+
+## G-SUBSPACE n=12
+- k_svd=13, rank_avg=13
+- sin(theta_C)=7.2888e-11 (gate <=1e-6)
+- **PASS**
+
+  G-SUBSPACE tilt arms (sine form):
+    sin(phi)=1e-04: sin(theta_max)=1.0000e-04, gate=RED, required=RED -> OK
+    sin(phi)=1e-07: sin(theta_max)=1.0000e-07, gate=green, required=green -> OK
+  G-SAMPLE n=12 svd: rank=13, kappa=3.7073e+01 -> PASS
+  [serialized -> results/G-SAMPLE_n12_svd.json]
+  G-SAMPLE n=12 avg: rank=13, kappa=3.7073e+01 -> PASS
+  [serialized -> results/G-SAMPLE_n12_avg.json]
+
+  G-SAMPLE mutation arm n=12:
+    zeroed column: rank=12 (expected 13), red=True
+
+  G-BASIS n=12:
+    svd: ||A'-U^H A U||/||A||=9.73e-16, ||P'-P||/scale=5.09e-16 -> PASS
+  [serialized -> results/G-BASIS_n12_svd.json]
+    avg: ||A'-U^H A U||/||A||=8.45e-16, ||P'-P||/scale=7.45e-16 -> PASS
+  [serialized -> results/G-BASIS_n12_avg.json]
+  G-BASIS mutation arm n=12:
+    non-isometric: ||P'-P||=3.00e+00, red=True
+
+## G-SAMPLE n=12
+- svd: kappa=3.7073e+01
+- avg: kappa=3.7073e+01
+- arm (zeroed column): rank=12, red=True
+
+## G-BASIS n=12
+- isometric rotation: covariance and projector invariant on both routes
+- arm (non-isometric): ||P'-P||=3.00e+00, red=True
+
+  theta_Q n=12: sin(theta_Q) = 2.1197e-10, 2sin(theta_Q/2) = 2.1197e-10
+  (recorded, NOT gated — deliberate per contract)
+
+  K_floor n=12:
+    term1 (arithmetic):  100*eps*max||A||_2 = 3.8899e-12
+    term2 (kappa):       10*eps*max_kappa*||B||_2 = 2.6606e-10
+    term3 (discrepancy): 2sin(theta_Q/2)*||B||_2 = 6.8509e-07
+    K_floor = 6.8509e-07, DOMINANT: discrepancy
+    ||K_12^svd||_2 = 3.6075e+00 > K_floor -> RESOLVED
+    ||K_12^avg||_2 = 3.6075e+00 > K_floor -> RESOLVED
+
+  Precision ladder n=12:
+    route svd: reforming A at 30/50 dps...
+    J(64)=2.2010e+00, J(30)=2.2010e+00, J(50)=2.2010e+00 -> PERSISTS (rule 3), 0.4s
+    route avg: reforming A at 30/50 dps...
+    J(64)=2.2010e+00, J(30)=2.2010e+00, J(50)=2.2010e+00 -> PERSISTS (rule 3), 0.4s
+    Bauer-Fike svd: kappa(V)=8.39e+00, J_bf=3.26e-11
+    Bauer-Fike avg: kappa(V)=8.39e+00, J_bf=3.26e-11
+  [serialized -> results/target_n12.json]
+
+## Target n=12
+- sin(theta_C)=7.2888e-11, sin(theta_Q)=2.1197e-10
+- K_floor=6.8509e-07 (dominant: discrepancy)
+- svd: ||K||=3.6075e+00, J=PERSISTS
+- avg: ||K||=3.6075e+00, J=PERSISTS
+
+========================================================================
+  SVD at n=20 (EXPENSIVE — shipped full_matrices=True)
+========================================================================
+  shipped SVD (CACHED): dim=21, time=3088.5s
+  gap: {'gap': 2958163865.946767, 'state': 'measured'}
+  hash: 8ba326e63d1c7d4b2f81d7dacdd9912595dd8f3004e9866175c370fbbc3e1aa1
+  G-RANK n=20: dim=21 (expected 21) -> PASS
+  G-RANK arm: n=19 gives dim=0 != 21: True
+    (no-transpose form is character-equivalent; G-REAL separates realizations)
+  [serialized -> results/G-RANK_n20.json]
+
+## G-RANK n=20
+- dim=21 (expected 21)
+- gap={'gap': 2958163865.946767, 'state': 'measured'}
+- arm: n=19 gives dim=0
+- **PASS**
+  economy SVD: time=3.4s
+  bridge: dim_econ=21, basis bitwise match=True
+  [serialized -> results/bridge_n20.json]
+
+## SVD Bridge n=20
+- dim match: True
+- basis bitwise match: True
+- (diagnostic, routes nothing)
+  averaging: rank=21, time=0.3s
+  Pi diagnostics: {'idempotence_err': 2.252847465397817e-07, 'non_hermiticity': 445.83405253491406, 'Pi_norm': 68.80095555810361, 'rank_abs_1e8': 21}
+  theta_C (sine form): sin(theta_max) = 8.0860e-11 (gate: <= 1e-6)
+  G-SUBSPACE n=20: dims_agree=True, angle_ok=True -> PASS
+  [serialized -> results/G-SUBSPACE_n20.json]
+
+## G-SUBSPACE n=20
+- k_svd=21, rank_avg=21
+- sin(theta_C)=8.0860e-11 (gate <=1e-6)
+- **PASS**
+
+  G-SUBSPACE tilt arms (sine form):
+    sin(phi)=1e-04: sin(theta_max)=1.0000e-04, gate=RED, required=RED -> OK
+    sin(phi)=1e-07: sin(theta_max)=1.0000e-07, gate=green, required=green -> OK
+  G-SAMPLE n=20 svd: rank=21, kappa=6.2781e+02 -> PASS
+  [serialized -> results/G-SAMPLE_n20_svd.json]
+  G-SAMPLE n=20 avg: rank=21, kappa=6.2781e+02 -> PASS
+  [serialized -> results/G-SAMPLE_n20_avg.json]
+
+  G-SAMPLE mutation arm n=20:
+    zeroed column: rank=20 (expected 21), red=True
+
+  G-BASIS n=20:
+    svd: ||A'-U^H A U||/||A||=5.70e-16, ||P'-P||/scale=6.85e-16 -> PASS
+  [serialized -> results/G-BASIS_n20_svd.json]
+    avg: ||A'-U^H A U||/||A||=5.91e-16, ||P'-P||/scale=7.11e-16 -> PASS
+  [serialized -> results/G-BASIS_n20_avg.json]
+  G-BASIS mutation arm n=20:
+    non-isometric: ||P'-P||=3.00e+00, red=True
+
+## G-SAMPLE n=20
+- svd: kappa=6.2781e+02
+- avg: kappa=6.2781e+02
+- arm (zeroed column): rank=20, red=True
+
+## G-BASIS n=20
+- isometric rotation: covariance and projector invariant on both routes
+- arm (non-isometric): ||P'-P||=3.00e+00, red=True
+
+  theta_Q n=20: sin(theta_Q) = 3.0711e-10, 2sin(theta_Q/2) = 3.0711e-10
+  (recorded, NOT gated — deliberate per contract)
+
+  K_floor n=20:
+    term1 (arithmetic):  100*eps*max||A||_2 = 1.1287e-11
+    term2 (kappa):       10*eps*max_kappa*||B||_2 = 4.5055e-09
+    term3 (discrepancy): 2sin(theta_Q/2)*||B||_2 = 9.9259e-07
+    K_floor = 9.9259e-07, DOMINANT: discrepancy
+    ||K_20^svd||_2 = 6.4410e+01 > K_floor -> RESOLVED
+    ||K_20^avg||_2 = 6.4410e+01 > K_floor -> RESOLVED
+
+  Precision ladder n=20:
+    route svd: reforming A at 30/50 dps...
+    J(64)=1.9254e+01, J(30)=1.9254e+01, J(50)=1.9254e+01 -> PERSISTS (rule 3), 1.2s
+    route avg: reforming A at 30/50 dps...
+    J(64)=1.9254e+01, J(30)=1.9254e+01, J(50)=1.9254e+01 -> PERSISTS (rule 3), 1.2s
+    Bauer-Fike svd: kappa(V)=1.29e+01, J_bf=1.46e-10
+    Bauer-Fike avg: kappa(V)=1.29e+01, J_bf=1.46e-10
+  [serialized -> results/target_n20.json]
+
+## Target n=20
+- sin(theta_C)=8.0860e-11, sin(theta_Q)=3.0711e-10
+- K_floor=9.9259e-07 (dominant: discrepancy)
+- svd: ||K||=6.4410e+01, J=PERSISTS
+- avg: ||K||=6.4410e+01, J=PERSISTS
+
+========================================================================
+  ADVERSARIAL VACUITY AUDIT (Q8)
+========================================================================
+
+  G-REAL: Can it pass for a reason other than the correct realization?
+    No: the no-transpose form is character-equivalent (same dimension) but fails pointwise at O(1). Only the pointwise test separates them, and it sweeps n>=3 to avoid the n=2 coincidence trap.
+
+  G-RANK: Can the dimension be right for a wrong basis?
+    Yes in principle (wrong realization preserves dimension). But G-RANK only checks dimension; G-REAL checks the realization separately. The two together are not vacuous.
+
+  G-SUBSPACE: Can the angle be small for a wrong reason?
+    The sine form returns ~7e-16 on identical subspaces and resolves 1e-7. The tilt arms verify discrimination at 1e-4 (RED) and 1e-7 (green). The absolute rank cutoff guards against the spurious-rank-on-zero-matrix trap.
+
+  G-ALIGN: Can the structural predicate pass trivially?
+    No: the predicate is exact (r == node_of[(o,0)]) and the arm shows a single changed entry fails it. No numerical tolerance involved.
+
+  G-SAMPLE: Can it pass after the step that guarantees it?
+    No: the gate tests W_n = M_h^{1/2} F_n^seed BEFORE orthonormalization. Testing Q_n after orthonormalization would be green-by-construction.
+
+  G-BASIS: Can it pass trivially at n=0?
+    Yes: A_0 is 1x1, so U^H A U = |u|^2 A = A for unit u. This is why the contract specifies G-BASIS at n=12,20, and G-WIRE handles n=0 separately.
+
+  G-DISCRIM: Can an implementation conflate K and J?
+    Arm A produces ||K||=0.5, J=0 (non-Hermitian but real spectrum). An implementation that equates non-Hermitian with complex-spectrum fails arm A.
+
+  G-WIRE: Can the constant-mode arm be vacuous?
+    The original permutation arm was vacuous (F_0 is constant, rows identical). The contracted L_mut arm has analytically forced effect: ||L_mut Q_0|| >= 1e-4 - 1e-8.
+  [serialized -> results/vacuity_audit.json]
+
+## Adversarial Vacuity Audit (Q8)
+- All 8 gates examined
+- Key finding: G-BASIS at n=0 has no power (contract addresses via G-WIRE)
+
+========================================================================
+  CONTRACT CONTRADICTIONS (Q9)
+========================================================================
+  No implementability-blocking contradictions found.
+
+  Examined and resolved:
+  1. theta_C vs theta_Q clearly distinguished; G-SUBSPACE gates theta_C, K_floor uses theta_Q
+  2. Route indexing: all downstream objects explicitly per-route, K_floor is the one common bar
+  3. Precision ladder: ordered rules with first-match-wins, rule 1 handles exact zero
+  4. Branch table: pass-7 fixed the G-SUBSPACE vs branch-table contradiction on route disagreement
+  5. Norms: all in operator 2-norm (pass-7 corrected earlier Frobenius/operator mixing)
+  6. Half-angle: 2*sin(theta/2) via arcsin, not the prohibited sqrt identity or arccos route
+  7. Addendum 2 correctly marks the evidence-transfer branch INOPERATIVE; bridge is diagnostic only
+  8. Addendum 3 correctly keys the ledger by attempt_id, resolving the fixed-directory incompatibility
+  [serialized -> results/contract_contradictions.json]
+
+## Contract Contradictions (Q9)
+- No blocking contradictions found
+- 8 items examined and resolved
+
+========================================================================
+  END-OF-RUN INPUT RE-VERIFICATION
+========================================================================
+  All manifest-pinned inputs unchanged since Q0: OK
+
+## End-of-run verification
+- All inputs unchanged: YES
+
+========================================================================
+  OUTPUT MANIFEST
+========================================================================
+  OUTPUT_MANIFEST.json written with 34 files
+  total wall time: 2240.5s
+
+## Output Manifest
+- 34 files
+- total time: 2240.5s

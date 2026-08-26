@@ -19,8 +19,10 @@ independently of the operator**, and its compressed action is emphatically non-r
 | `n = 12` | 168 | 175.18 | 3.607 | 6.85e-07 | 2.2010292238 | PERSISTS |
 | `n = 20` | 440 | 508.33 | 64.410 | 9.93e-07 | 19.2541741428 | PERSISTS |
 
-The `J` readings are stable to twelve significant figures across float64, 30 and 50 decimal digits
-and agree across both independent invariant-subspace constructions. Separately, and it is a
+The `J` readings are stable to thirteen significant figures at `n = 12` and fourteen at `n = 20`
+across the three precision rungs of one construction. ACROSS the two independent constructions the
+agreement is narrower, eight figures at `n = 12` and nine at `n = 20`, which is the
+subspace-construction discrepancy rather than a precision effect. Separately, and it is a
 different quantity against a different floor, `‖K_n‖_2` exceeds `K_floor` by roughly 5.3e+06 at
 `n = 12` and 6.5e+07 at `n = 20`. This is not a threshold-edge result.
 
@@ -37,7 +39,8 @@ the frozen rule licenses.
 
 **S1b-SPECTRAL does not trigger S2 or the reduction-mechanism successor.** The frozen routing sends
 `S1b-ADJOINT` and `S1b-NULL` onward to a separately frozen interaction or reduction comparison;
-SPECTRAL is not routed there, and its own text says this branch would substantially end the search.
+SPECTRAL is not routed there, and the rule is SILENT on its disposition. Closing M8.9 at the
+claim ceiling is this closeout's decision, not a sentence of the rule.
 **No further stage is commissioned by this outcome**, and the remaining base-versus-reduction
 distinction is left open rather than pursued.
 
@@ -88,8 +91,10 @@ The author had already read the exposed numbers and did not issue the branch. Tr
 
 **One correction to that adjudication document, which does not affect its verdict.** Its § 6 states
 that "both S1b-SPECTRAL and other outcomes leave M8.9 OPEN: a separately frozen interaction or
-reduction comparison MAY be commissioned". That is wrong on the frozen routing: ADJOINT and NULL
-are the branches routed there, and SPECTRAL is not. The rule-by-rule trace and the forced outcome
+reduction comparison MAY be commissioned". That over-reads the frozen routing: ADJOINT and NULL are
+the branches routed there, and the rule says nothing about SPECTRAL's disposition, so the
+open-or-closed question sits OUTSIDE the rule and is answered in § Status on this closeout's own
+authority. The rule-by-rule trace and the forced outcome
 are unaffected. The document is preserved unedited and the correction recorded here.
 
 **No blind rerun is possible and none will be claimed.** `J_12 = 2.201` and `J_20 = 19.254` have
@@ -114,7 +119,9 @@ record any branch rule reads:
 
 **The shipped package is fully manifest-verifiable.** All 34 entries are present, 32 hashing
 exactly. The two that differ, `q3a_qualification_note.md` and `q3a_run.log`, are the post-manifest
-appends documented in addendum 4 § A4.3: both were written to after the manifest was computed. The
+appends documented in addendum 4 § A4.3: both were written to after the manifest was computed. Both
+logs required `git add -f`, since `.gitignore` matches `*.log`, and an earlier commit claiming to
+ship them had in fact shipped only three of the five files it named. The
 note's append point is located exactly, since truncating immediately before its `## Output Manifest`
 section reproduces `098631325e9692033597ea3f63b0c5955178c929a9330570573f9767a362175c`. Both are
 forensic context and no branch rule takes an input from either.
