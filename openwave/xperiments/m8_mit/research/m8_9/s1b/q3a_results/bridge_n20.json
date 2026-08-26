@@ -1,0 +1,9 @@
+{
+  "dim_econ": 21,
+  "dim_shipped": 21,
+  "basis_bitwise_match": true,
+  "basis_fro_diff": 0.0,
+  "subspace_sin_angle": 0.0,
+  "economy_time_s": 3.4007439613342285,
+  "note": "diagnostic per A2; licenses nothing"
+}

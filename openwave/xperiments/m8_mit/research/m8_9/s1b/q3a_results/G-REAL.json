@@ -1,0 +1,12 @@
+{
+  "realization": "rho_n(v)^T kron rho_n(u), column-major vec (TWOSIDED_REALIZATION.md)",
+  "levels_swept": [
+    3,
+    4,
+    5
+  ],
+  "worst_residual_correct": 1.790180836524724e-15,
+  "best_residual_no_transpose": 0.9443319842269859,
+  "pass": true,
+  "note": "the no-transpose form is character-equivalent; only this pointwise evaluation separates them"
+}

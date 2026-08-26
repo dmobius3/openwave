@@ -1,0 +1,14 @@
+{
+  "n": 20,
+  "dim": 21,
+  "gap": {
+    "gap": 2958163865.946767,
+    "state": "measured"
+  },
+  "basis_shape": [
+    441,
+    21
+  ],
+  "basis_hash": "8ba326e63d1c7d4b2f81d7dacdd9912595dd8f3004e9866175c370fbbc3e1aa1",
+  "time_s": 3088.508488893509
+}

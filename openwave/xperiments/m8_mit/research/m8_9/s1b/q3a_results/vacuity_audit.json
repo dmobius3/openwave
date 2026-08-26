@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "gate": "G-REAL",
+      "question": "Can it pass for a reason other than the correct realization?",
+      "answer": "No: the no-transpose form is character-equivalent (same dimension) but fails pointwise at O(1). Only the pointwise test separates them, and it sweeps n>=3 to avoid the n=2 coincidence trap."
+    },
+    {
+      "gate": "G-RANK",
+      "question": "Can the dimension be right for a wrong basis?",
+      "answer": "Yes in principle (wrong realization preserves dimension). But G-RANK only checks dimension; G-REAL checks the realization separately. The two together are not vacuous."
+    },
+    {
+      "gate": "G-SUBSPACE",
+      "question": "Can the angle be small for a wrong reason?",
+      "answer": "The sine form returns ~7e-16 on identical subspaces and resolves 1e-7. The tilt arms verify discrimination at 1e-4 (RED) and 1e-7 (green). The absolute rank cutoff guards against the spurious-rank-on-zero-matrix trap."
+    },
+    {
+      "gate": "G-ALIGN",
+      "question": "Can the structural predicate pass trivially?",
+      "answer": "No: the predicate is exact (r == node_of[(o,0)]) and the arm shows a single changed entry fails it. No numerical tolerance involved."
+    },
+    {
+      "gate": "G-SAMPLE",
+      "question": "Can it pass after the step that guarantees it?",
+      "answer": "No: the gate tests W_n = M_h^{1/2} F_n^seed BEFORE orthonormalization. Testing Q_n after orthonormalization would be green-by-construction."
+    },
+    {
+      "gate": "G-BASIS",
+      "question": "Can it pass trivially at n=0?",
+      "answer": "Yes: A_0 is 1x1, so U^H A U = |u|^2 A = A for unit u. This is why the contract specifies G-BASIS at n=12,20, and G-WIRE handles n=0 separately."
+    },
+    {
+      "gate": "G-DISCRIM",
+      "question": "Can an implementation conflate K and J?",
+      "answer": "Arm A produces ||K||=0.5, J=0 (non-Hermitian but real spectrum). An implementation that equates non-Hermitian with complex-spectrum fails arm A."
+    },
+    {
+      "gate": "G-WIRE",
+      "question": "Can the constant-mode arm be vacuous?",
+      "answer": "The original permutation arm was vacuous (F_0 is constant, rows identical). The contracted L_mut arm has analytically forced effect: ||L_mut Q_0|| >= 1e-4 - 1e-8."
+    }
+  ]
+}

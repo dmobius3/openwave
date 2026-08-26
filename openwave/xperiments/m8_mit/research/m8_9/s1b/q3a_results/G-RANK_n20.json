@@ -1,0 +1,11 @@
+{
+  "dim": 21,
+  "expected": 21,
+  "gap": {
+    "gap": 2958163865.946767,
+    "state": "measured"
+  },
+  "pass": true,
+  "arm_n": 19,
+  "arm_dim": 0
+}
