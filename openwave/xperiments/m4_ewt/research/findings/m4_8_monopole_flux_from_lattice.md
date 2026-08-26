@@ -130,6 +130,7 @@ solution), not a physics test.
 
 | Check | Result |
 | --- | --- |
+| Status of \(\lambda_l\) | Primary lattice ansatz, per the author ([PR #479 thread](https://github.com/openwave-labs/openwave/pull/479#issuecomment-5425514570)): set to the Planck length as the natural scale of the lattice, not fitted and not derived from geometry, and no derivation is claimed. The measured \(G\) enters the chain once, here; downstream of it the chain is fixed by BCC geometry and \(\zeta\) |
 | Where the measured \(G\) enters | `lambda_l = 1.6162e-35` m is the Planck length \(\sqrt{\hbar G / c^3} = 1.616255 \times 10^{-35}\) m (the extension's own [`M4_k_selectivity_Formalization.md`](../M4_k_selectivity_Formalization.md) names it so). Through \(N_\nu \propto \lambda_l^{-3}\) and \(G_{\text{EWT}} \propto N_\nu^{-1/2}\), \(G_{\text{EWT}} \propto \lambda_l^{3/2} \propto G^{3/4}\); verified by scaling the input \(G\) by 0.5 and 2 (ratios 0.5946 and 1.6818, equal to \(f^{3/4}\)) |
 | Fixed-point reading | The parameter-free statement of the chain is \(G_\ast = G_{\text{EWT}}^4 / G_{\text{CODATA}}^3\) (the value that reproduces itself through \(\lambda_l\)): \(6.6774 \times 10^{-11}\), 467 ppm above CODATA with \(\zeta_{\text{est}}\); \(6.6292 \times 10^{-11}\), 6753 ppm below, with pure geometry |
 | Sensitivity to the 5-digit \(\lambda_l\) | With the CODATA Planck length \(1.616255 \times 10^{-35}\) m the \(\zeta\)-corrected \(G_{\text{EWT}}\) sits 117 ppm above CODATA (the 34 ppm truncation of \(\lambda_l\) moves \(G_{\text{EWT}}\) by 25 ppm) |
