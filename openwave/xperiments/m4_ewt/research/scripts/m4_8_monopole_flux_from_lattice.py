@@ -2,9 +2,10 @@
 """
 M4/EWT - Monopole flux from lattice geometry with derived zeta.
 
-OpenWave criterion:
-    Gravity: local metric phenomena
-    Test: foundational flux condition
+OpenWave criteria:
+    Gravity: local metric phenomena (the flux amplitude of M4.6)
+    Gravity: Newton limit (GEM), the strength (G) clause
+    Test: foundational flux condition, no criterion claimed
 
 Mechanism:
     The far-field EMC density profile is
@@ -24,10 +25,12 @@ Mechanism:
        N_zeta = N_ideal * (1 - zeta_est)
        G_EWT_zeta = f(N_zeta, L_p_geom)
 
-    The second test is the physical one. It uses no empirical G and no
-    alpha-calibrated N_final. The only lattice parameters are the BCC
-    coordination number, the ideal packing fraction, and the geometric
-    lattice projection factor.
+    The second test is the physical one. It uses no alpha-calibrated
+    N_final. The lattice parameters are the BCC coordination number, the
+    ideal packing fraction, and the geometric lattice projection factor;
+    the lattice length lambda_l is the Planck length sqrt(hbar G / c^3),
+    so the measured G enters the chain once, as G_EWT ~ lambda_l^(3/2)
+    ~ G^(3/4) (maintainer note in the finding).
 
     The monopole amplitude is then computed as
 
@@ -44,12 +47,12 @@ import math
 # ----------------------------------------------------------------------
 print("[1/4] Loading physical constants and EWT lattice parameters...")
 
-c      = 299792458.0          # m/s
-m_e    = 9.1093837015e-31     # kg
-r_e    = 2.8179403262e-15     # m
+c = 299792458.0  # m/s
+m_e = 9.1093837015e-31  # kg
+r_e = 2.8179403262e-15  # m
 
-M_sun  = 1.989e30             # kg
-R_sun  = 6.957e8              # m
+M_sun = 1.989e30  # kg
+R_sun = 6.957e8  # m
 
 pi = math.pi
 
@@ -76,7 +79,7 @@ K_neutrinos = 10
 
 # Background EMC density parameters
 r_nu_val = 2.81794e-17
-lambda_l = 1.6162e-35
+lambda_l = 1.6162e-35  # Planck length sqrt(hbar G / c^3), 5-digit value
 e_euler = math.e
 
 N_nu_statutory = (r_nu_val / (2.0 * lambda_l * e_euler)) ** 3
@@ -91,12 +94,14 @@ N_nu_effective_geo = N_nu_statutory / X_eff_geo
 # Base gravitational scale from electron soliton
 G_Base = (c * c * r_e) / m_e
 
+
 def compute_G(N_stiffness):
     return (
         (G_Base / A_pi)
         * (1.0 / (N_stiffness * A_pi) ** 3)
         * (1.0 / (K_neutrinos * math.sqrt(N_nu_effective_geo)))
     )
+
 
 G_EWT_pure = compute_G(N_ideal)
 G_EWT_zeta = compute_G(N_zeta)
@@ -146,8 +151,10 @@ print("\n[4/4] Solving radial Laplace equation with corrected geometric flux..."
 R_outer = 500.0 * R_sun
 N_steps = 20000
 
+
 def rhs(r, y):
     return [y[1], -2.0 * y[1] / r]
+
 
 dr = (R_outer - R_sun) / N_steps
 
@@ -187,8 +194,8 @@ print(f"    Robin relative residual    = {robin_rel_residual:.6e}")
 # Summary
 print("\nSummary...")
 
-pure_pass  = ppm_pure < 2000.0
-zeta_pass  = ppm_zeta < 100.0
+pure_pass = ppm_pure < 2000.0
+zeta_pass = ppm_zeta < 100.0
 profile_pass = max_rel_error_eta < 1e-10
 robin_pass = robin_rel_residual < 1e-8
 

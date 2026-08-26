@@ -1,11 +1,13 @@
 # M4.8 - Monopole Flux from Lattice Geometry with Derived Zeta
 
 ## Status
+
 DONE (post-hoc)
 
 ## Purpose
-Close the logical gap between the geometric derivation of \(G\) and
-the local metric boundary condition.
+
+Replace the CODATA \(G\) in the M4.6 flux amplitude with the geometric
+\(G\) chain of M4.7.
 
 Previous artifacts used the monopole amplitude \(A\) as an input.
 This task derives \(A\) from the BCC lattice geometry and then uses
@@ -45,8 +47,19 @@ The packing impedance correction, derived only from the BCC
 sphere-packing fraction, reduces the raw geometric discrepancy from
 about 1744 ppm to about 66 ppm.
 
-This shows that the flux condition is not an arbitrary input but a
-consequence of the lattice geometry.
+The value of \(G\) in the flux amplitude is thereby computed from the
+lattice chain rather than taken from CODATA; the form of the flux
+condition and the \(\eta\) encoding remain manuscript-derived. The
+measured \(G\) still enters once, through the Planck length
+\(\lambda_l\) (\(G_{\text{EWT}} \propto G^{3/4}\)); the fixed-point
+reading and the sensitivity to the 5-digit \(\lambda_l\) are in the
+finding's maintainer note.
+
+Maintainer note (PR #479 review): the criterion label
+`Fundamental constants: gravitational constant G` in the submitted
+text was replaced by `Gravity: Newton limit (GEM)`, whose definition
+carries the strength (\(G\)) clause since [PR #480](https://github.com/openwave-labs/openwave/pull/480)
+(issue #478 declined a dedicated constants row).
 
 ## Dependency
 
@@ -70,4 +83,4 @@ Enhanced EWT manuscript, version 4.5.9 or later:
 
 Relevant section:
 
-- „From Microscopic EMC Displacement to the Gravitational Radius”
+- "From Microscopic EMC Displacement to the Gravitational Radius"
