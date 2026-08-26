@@ -112,10 +112,17 @@ record any branch rule reads:
 | `q3a_results/target_n12.json` | `d96c7fdb3ab192b48f04c49040dbb8f6795379a35fb04330078bff22115a5b91` |
 | `q3a_results/target_n20.json` | `4e8c0c72fac0a8e2f127fc1629bb4afa4b2d90e9b12b9df97714d56b1057fed7` |
 
-`q3a_qualification_note.md` differs from its manifest entry by post-manifest appending, documented
-in addendum 4 § A4.3 and located exactly: truncating immediately before its `## Output Manifest`
-section reproduces `098631325e9692033597ea3f63b0c5955178c929a9330570573f9767a362175c`. It is
-forensic context and no branch rule takes an input from it.
+**The shipped package is fully manifest-verifiable.** All 34 entries are present, 32 hashing
+exactly. The two that differ, `q3a_qualification_note.md` and `q3a_run.log`, are the post-manifest
+appends documented in addendum 4 § A4.3: both were written to after the manifest was computed. The
+note's append point is located exactly, since truncating immediately before its `## Output Manifest`
+section reproduces `098631325e9692033597ea3f63b0c5955178c929a9330570573f9767a362175c`. Both are
+forensic context and no branch rule takes an input from either.
+
+`round1_s1b_qualification.py` is round-1 archival code, hashing to
+`5a9e04845375c4d12c3a475607f20a1d5f13cc82829d64caa022c82d5e784802` as addendum 2 § A2.1 cites. It
+is preserved as evidence of what round 1 ran and, per addendum 2 § A2.3, may not be executed: it
+authenticates the round-1 room manifest and cannot run anywhere that manifest is not current.
 
 ## Status
 
