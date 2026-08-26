@@ -118,13 +118,13 @@ The cheapest concrete experiment that would earn each row, so every claim and ev
 | Dark matter candidate | a stable neutral massive state |
 | | |
 | **FORCES** | |
-| Electric force (Coulomb 1/r, electrostatics) | far-field 1/r potential at charge e |
+| Electric force (Coulomb 1/r, electrostatics) | far-field 1/r potential at charge e; the strength (α) credited only when it follows from the model's own mechanism, never fitted |
 | Lorentz covariance (+ Coulomb = EM) | Lorentz-invariant action, no preferred frame; boosted states contract, c-limited |
 | Strong force: confinement | linear inter-charge potential, ~1 GeV/fm (Cornell) |
 | Running coupling | coupling varies with scale (onset at the core radius) |
 | Weak force: muon decay | μ relaxes to e + neutral ejecta |
 | Weak force: beta decay (n → p) | n → p + e + ν̄, parity-violating (needs a neutron) |
-| Gravity: Newton limit (GEM) | attractive 1/r² between masses, via the GEM route |
+| Gravity: Newton limit (GEM) | attractive 1/r² between masses, via the GEM route; the strength (G) credited only when it follows from the model's own mechanism, never fitted |
 | Gravity: local metric phenomena | light bending, gravitational time dilation / Shapiro delay |
 | Cosmology: Λ / cosmic acceleration | Λ from the model's own mechanism, never fitted; every remaining gap and a falsification named |
 | | |
