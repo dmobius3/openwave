@@ -1,0 +1,12 @@
+{
+  "k_svd": 13,
+  "rank_avg": 13,
+  "sin_theta_C": 7.28881075332769e-11,
+  "avg_diagnostics": {
+    "idempotence_err": 7.485733525136394e-09,
+    "non_hermiticity": 39.038929403062326,
+    "Pi_norm": 7.721194628949948,
+    "rank_abs_1e8": 13
+  },
+  "pass": true
+}

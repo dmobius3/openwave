@@ -72,3 +72,33 @@ a partially-resolved spectrum cannot be mined for the branch its cleanest window
 S1-B and S1-C route to S2; an instrument defect does not, so **S1 does not trigger S2** and M8.9's
 question is unanswered. Record: [`../m8_9/s1_note.md`](../m8_9/s1_note.md),
 reproducer [`../m8_9/s1_run.py`](../m8_9/s1_run.py).
+
+## S1b RESULT (2026-08-26): ADJUDICATED `S1b-SPECTRAL`
+
+S1 closed `INSTRUMENT DEFECT` because the global spectrum could not sort itself into continuum
+levels. **S1b removed that assumption**, constructing the invariant subspaces independently of `L`
+by two algebraically different routes, sampling them on the production cloud, and asking the shipped
+operator what it does to them. The non-real action was still there and still enormous: `J = 2.201`
+at `n = 12` and `J = 19.254` at `n = 20`, stable to thirteen figures at `n = 12` and fourteen at
+`n = 20` across the three precision rungs, and to eight and nine figures respectively across the
+two constructions. Separately, `‖K_n‖_2` clears `K_floor` by 5.3e+06 at `n = 12` and
+6.5e+07 at `n = 20`.
+
+**Licensed, and no more:** the trivial fibre alone can produce a non-real compressed action, so
+nontrivial fibre transport is NOT NECESSARY, and the base discretization or the scalar quotient
+reduction is strongly implicated. **That disjunction is not resolved.** S1b excluded a candidate; it
+did not separate the remaining two.
+
+**S2 is NOT triggered.** The frozen routing sends `S1b-ADJOINT` and `S1b-NULL` to a possible
+reduction-mechanism comparison; SPECTRAL is not routed there, the rule is SILENT on its
+disposition, and the closeout closes M8.9 at its claim ceiling on its own authority. No further
+stage is commissioned.
+
+**The qualification run that produced these numbers was NONCONFORMING**, having evaluated the live
+target it was forbidden to touch, under a contract that never drew the line between forming `A_n`
+for the gates and evaluating `K_n` and `J_n`. The measurements were retained rather than voided
+because every interpreting rule was frozen and hash-published beforehand, and the branch was issued
+by a separate adjudication unit with no computational authority. Full account, chain of custody and
+the correction to the adjudication document's routing paragraph:
+[`../findings/m8_9_s1b_closeout.md`](../findings/m8_9_s1b_closeout.md). Evidence package:
+[`../m8_9/s1b/`](../m8_9/s1b/).

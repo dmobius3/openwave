@@ -1,0 +1,56 @@
+{
+  "k2": {
+    "J": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "label": "COLLAPSES",
+    "rule": 1
+  },
+  "k3": {
+    "J": [
+      6.468555301378842e-06,
+      9.1009759553378e-11,
+      2.1929935006311607e-17
+    ],
+    "label": "AMBIGUOUS",
+    "rule": 2
+  },
+  "synthetic_rule4": {
+    "J": [
+      1e-08,
+      1e-12,
+      1e-12
+    ],
+    "label": "COLLAPSES",
+    "rule": 4
+  },
+  "edge_2_0": {
+    "J": [
+      1e-08,
+      1e-12,
+      2e-12
+    ],
+    "label": "COLLAPSES",
+    "rule": 4
+  },
+  "edge_0_5": {
+    "J": [
+      1e-08,
+      1e-12,
+      5e-13
+    ],
+    "label": "COLLAPSES",
+    "rule": 4
+  },
+  "rule5_fallthrough": {
+    "J": [
+      1e-08,
+      2e-11,
+      2e-11
+    ],
+    "label": "AMBIGUOUS",
+    "rule": 5
+  }
+}

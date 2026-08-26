@@ -1,0 +1,72 @@
+{
+  "outcomes": [
+    {
+      "case": "S1b-DEFECT",
+      "outcome": "S1b-DEFECT",
+      "rule": 1,
+      "ok": true
+    },
+    {
+      "case": "S1b-NO_LABEL (r2)",
+      "outcome": "S1b-NO_LABEL",
+      "rule": 2,
+      "ok": true
+    },
+    {
+      "case": "S1b-NO_LABEL (r3)",
+      "outcome": "S1b-NO_LABEL",
+      "rule": 3,
+      "ok": true
+    },
+    {
+      "case": "S1b-SPECTRAL",
+      "outcome": "S1b-SPECTRAL",
+      "rule": 4,
+      "ok": true
+    },
+    {
+      "case": "S1b-NO_LABEL (r5)",
+      "outcome": "S1b-NO_LABEL",
+      "rule": 5,
+      "ok": true
+    },
+    {
+      "case": "S1b-ADJOINT",
+      "outcome": "S1b-ADJOINT",
+      "rule": 6,
+      "ok": true
+    },
+    {
+      "case": "S1b-NULL",
+      "outcome": "S1b-NULL",
+      "rule": 7,
+      "ok": true
+    }
+  ],
+  "collisions": [
+    {
+      "desc": "gate FAILS + SPECTRAL -> DEFECT",
+      "outcome": "S1b-DEFECT",
+      "rule": 1,
+      "ok": true
+    },
+    {
+      "desc": "AMBIGUOUS + PERSISTENT -> NO_LABEL",
+      "outcome": "S1b-NO_LABEL",
+      "rule": 2,
+      "ok": true
+    },
+    {
+      "desc": "J disagree + one SPECTRAL -> NO_LABEL",
+      "outcome": "S1b-NO_LABEL",
+      "rule": 3,
+      "ok": true
+    },
+    {
+      "desc": "K disagree + one ADJOINT -> NO_LABEL",
+      "outcome": "S1b-NO_LABEL",
+      "rule": 5,
+      "ok": true
+    }
+  ]
+}

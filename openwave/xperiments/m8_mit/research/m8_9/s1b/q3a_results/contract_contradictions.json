@@ -1,0 +1,13 @@
+{
+  "blocking": [],
+  "examined_and_resolved": [
+    "theta_C vs theta_Q clearly distinguished; G-SUBSPACE gates theta_C, K_floor uses theta_Q",
+    "Route indexing: all downstream objects explicitly per-route, K_floor is the one common bar",
+    "Precision ladder: ordered rules with first-match-wins, rule 1 handles exact zero",
+    "Branch table: pass-7 fixed the G-SUBSPACE vs branch-table contradiction on route disagreement",
+    "Norms: all in operator 2-norm (pass-7 corrected earlier Frobenius/operator mixing)",
+    "Half-angle: 2*sin(theta/2) via arcsin, not the prohibited sqrt identity or arccos route",
+    "Addendum 2 correctly marks the evidence-transfer branch INOPERATIVE; bridge is diagnostic only",
+    "Addendum 3 correctly keys the ledger by attempt_id, resolving the fixed-directory incompatibility"
+  ]
+}
