@@ -56,7 +56,7 @@ guidance on what a compact-arena port must avoid.
 | [`m7_5_clock_stability.py`](../../m7_hydroboros/research/scripts/m7_5_clock_stability.py) | the clock as stabilizer, measured: solitons exist only above the vacuum's tachyonic band (ω* = 0.786); the direct precedent for "the background mode gates existence" |
 | Compact-arena Derrick note | on S³/2I the Derrick dilation argument is modified (no global scaling freedom; R is a scale). Do the scaling analysis EXPLICITLY for each candidate family before numerics; do not import flat-space Derrick conclusions |
 
-## 5. The lepton-hierarchy target (task M8.6, GATED)
+## 5. The lepton-hierarchy target (task M8.6, CLOSED WITHOUT RUNNING 2026-08-07)
 
 | Pointer | Content |
 | --- | --- |
