@@ -134,6 +134,36 @@ and never as evidence. The `M4_int` preregistration is the next artifact; `M5 + 
 
 **M8.8 ADJUDICATED: THE TORSION CLOSED FORMS REPRODUCED UNDER THE GLOBAL INVERSE (2026-08-22).** The author delivered the answer packet on an orphan commit ([#408](https://github.com/openwave-labs/openwave/pull/408) thread); the maintainer decrypted it alone and its plaintext hashed to the § 11 pin `744c7f25…`. The committed pre-reveal harness then REFUSED at the step-7 packet-domain gate on a one-string interface mismatch, a maintainer placeholder against the author's frozen builder literal: attempt 1 is on record as `structural failure`, nothing past the gate having run. [#457](https://github.com/openwave-labs/openwave/pull/457) replaced the literal and nothing else in the comparison, its commit message fixing attempt 1's disposition before any category was disclosed, and the official run on `main` returned **`convention difference`**: the global inverse at `R7`, then 8/8 rows and 4/4 identities exact in `Q(φ)`, record `a6036744…` byte-identical to a control built from the refused harness plus the one substitution. Step 9 published the packet and the construction-audit artifact `d5bb04b9…` against their frozen hashes. The protocol gap on post-reveal comparator repair is recorded, not amended, and declared the last such repair. Record: [`findings/m8_8_adjudication_record.md`](findings/m8_8_adjudication_record.md).
 
+**M8.4 P1A CLOSED: THE ESTIMATOR QUALIFIES, THE OPERATOR DOES NOT (2026-08-24, bookkeeping entry
+written 2026-08-26).** P1A was chartered to settle, before any threshold or amplitude was chosen,
+what "angle" and "leakage" mean for the discrete operator and whether they can be measured
+reliably. It answered both halves: the machinery qualifies and the operator does not supply
+spectra controlled enough for M8.4 to use. P0, the invariant-subspace estimator, the fixed-`k`
+refinement family and the cloud admissibility gate all PASS; `M_h` self-adjointness convergence is
+NEGATIVE and imaginary-contamination qualification FAILS globally, so no per-sector eligibility
+verdicts were issued. No nonlinear target configuration was ever run and no target sector was
+spent. Record: [`findings/m8_4_p1a_closeout.md`](findings/m8_4_p1a_closeout.md),
+[#468](https://github.com/openwave-labs/openwave/pull/468).
+
+**M8.9 S1 CLOSED: INSTRUMENT DEFECT (2026-08-25, bookkeeping entry written 2026-08-26).** The
+substrate-localization diagnostic ran under a decision rule filed and hash-verified before any
+spectrum was computed. G-MULT failed: the 60-seed `R_0` block does not reproduce its own analytic
+decomposition, so no S1-A/B/C classification was issued and `I_star` was never formed, the filed
+rule computing it only on a passing gate. S1 did not answer M8.9's question; it established that
+this control cannot answer it. Record: [`m8_9/s1_note.md`](m8_9/s1_note.md),
+[#472](https://github.com/openwave-labs/openwave/pull/472).
+
+**M8.9 ADJUDICATED `S1b-SPECTRAL` (2026-08-26, bookkeeping entry written 2026-08-26).** S1b removed
+S1's failed assumption by supplying the invariant subspaces independently of the operator, and was
+adjudicated by an independent unit on measurements exposed during a nonconforming qualification
+run. Three findings stand together: the instrument qualified, the execution exceeded its
+authorization, and the exposed reading mechanically satisfies the SPECTRAL branch under rules
+frozen and hash-published before it existed. Nontrivial fibre transport is NOT necessary for the
+non-real spectrum; base discretization versus scalar quotient reduction is left explicitly
+unseparated and S2 was not triggered. Record:
+[`findings/m8_9_s1b_closeout.md`](findings/m8_9_s1b_closeout.md),
+[#484](https://github.com/openwave-labs/openwave/pull/484).
+
 **M8.4 CLOSED UNRESOLVED: TWO INSTRUMENTS FAILED, THE SCIENCE NEVER RAN (2026-08-26).** The
 preregistration announced above was FILED 2026-08-23, and it did not name `M4_int`: § 10b amends
 that nomination. `M4L_Erho` is the target-bearing family: nine flat bundles `E_ρ`, one per irrep of
