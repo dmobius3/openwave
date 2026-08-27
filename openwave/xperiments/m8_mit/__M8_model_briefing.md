@@ -131,14 +131,15 @@ Full program with gates and ownership: [`research/m8_roadmap.md`](research/m8_ro
 
 ## Help Wanted
 
-M8 is an open column in an open arena; the author's original asks from #312 stand, with
-M8.1 adopted by the maintainers:
+M8 is an open column in an open arena. These asks replace the original #312 list. The
+independent recompute of `2/R²` is delivered and retired (M8.1, blind and audited), and the
+old catch-all "a field dynamics" is now split into questions specific enough to fail.
 
-| Contribution | What it would settle |
+| Ask | The test, stated so it can return NO |
 | --- | --- |
-| A field dynamics | the central gap: a Lagrangian whose defect or standing-wave spectrum on S³/2I matches the McKay-distance mass ladder. MIT supplies the target structure; it needs the equation of motion |
-| Independent recompute of 2/R² | ✅ delivered as M8.1 (2026-07-21): script and number, blind and audited; the author's verification block is cleared |
-| Adversarial parameter count | a hostile § 4 pass on the mass and coupling sectors. The author's ledger already runs one and expects the freedom to be non-trivial; an independent counter is welcome to check it |
+| **Does any field equation in this arena reproduce MIT's source fingerprint?** | Every other column here evolves a Lagrangian; MIT has none, and that is its central gap. What is new is that the target is now pinned instead of gestured at. Take your equation of motion, restrict it to the static `S³` or the `S³/2I` quotient, and read off the stress tensor it puts on the effective metric. To match, it must produce ONE tied object, `Ψ²/S³`, whose `S⁻³` and `S⁻¹` sectors carry coefficient ratio exactly `−1` rather than an independently normalized `w = −2/3` component; PLUS a separate genuine `w = −1` constant; with NO `S⁻²` sector on flat effective slices. The fingerprint and the placement it is conditional on are in [stress-tensor-bridge.md](https://github.com/dmobius3/mode-identity-theory/blob/main/files/framework/files/working/files/stress-tensor-bridge.md) § VI. A clean NO settles as much as a YES and will be recorded as one |
+| **Can `R` be fixed by anything that is not `Λ`, the CMB, or de Sitter?** | `Λ = 3/R²` is a forward prediction only if `R` arrives from elsewhere; reading `R` off `Λ` makes the whole chain a tautology. Two author-side routes are live: measured `α` → `Ω_Λ` → `R` at about 23%, and the fermion mass spectrum at order of magnitude. Wanted, either way round: a third route that touches none of the three excluded inputs, or a hostile audit that kills one of the two live routes by exhibiting a hidden dependence on them. [r-problem.md](https://github.com/dmobius3/mode-identity-theory/blob/main/files/framework/files/working/files/r-problem.md) |
+| **An adversarial parameter count** | A hostile § 4 pass on the mass and coupling sectors. The author runs a standing claim ledger and expects the freedom to be non-trivial; an independent counter is welcome to disagree with it |
 
 Flow: open a discussion → fork → branch → PR with a DCO sign-off
 (`git commit -s`), under Apache 2.0. Light review checks only reproducibility + honest
