@@ -1,19 +1,25 @@
 # M8.4 closeout: the dynamics program closes UNRESOLVED, on two instrument failures
 
-> **Closed 2026-08-26, unresolved.** Two numerical substrates were built and neither qualified.
-> **No M8.4 dynamics were ever run. No nontrivial sector was spent; all eight remain unspent.**
+> **Closed 2026-08-26, unresolved.** The one dynamics substrate that was built did not qualify,
+> and the alternate the M8.5 charter contemplated was never built as a dynamics substrate at all.
+> **No M8.4 target configuration was ever run. No nontrivial sector was spent; all eight remain
+> unspent.**
 > Nothing here is a verdict on MIT dynamics, and nothing here attributes the numerical defect to
 > a specific stage. The successor chassis is commissioned separately as M8.5-C, target-free.
 
 ## What this closeout does and does not say
 
-**Says:** this program did not produce a numerical substrate trustworthy enough to run the
-`M4L_Erho` experiment, so the experiment was never run.
+**Says:** the M8.4 preregistration was FILED 2026-08-23, naming `M4L_Erho`, one flat bundle `E_ρ`
+per irrep, as the target-bearing family. `M4_int` had already taken a structural N/A under that
+filing's § 2 and was never a dynamics object. This program then failed to produce a numerical
+substrate trustworthy enough to run `M4L_Erho`, so no target configuration was ever executed.
 
 **Does NOT say**, and no reader may infer:
 
 - that MIT dynamics is falsified, or that no field equation on S³/2I realizes the McKay structure.
-  OQ1 is untouched; it was never tested;
+  OQ1's TWISTED branch is untested; its NATIVE branch was already closed by the kinematic close,
+  and neither of those is a dynamics verdict. "Untested" is not a promise: even a successful
+  successor answers only the narrower question, per the ceiling at the end of this document;
 - that any sector was scored, spent, or partially spent. The `M4_int` structural N/A and the
   kinematic close stand as they were; the eight target bundles are unspent;
 - that the numerical defect is attributed. The S1b adjudication left base RBF-FD assembly versus
@@ -27,8 +33,10 @@
 ## The history, in two chassis
 
 **Chassis 1, RBF-FD on the M8.5-B quotient backend.** P1A
-([closeout](m8_4_p1a_closeout.md), #468) qualified the invariant-subspace estimator and FAILED the
-substrate's spectral qualification globally. Imaginary contamination ran from `5.95e-14` on the
+([closeout](m8_4_p1a_closeout.md), #468) ran as the pilot's chartered qualification phase and split
+its verdict: the invariant-subspace estimator PASSED, and the assembled operator FAILED spectral
+qualification globally. P1A's own adjudication is that this failure is SUBSTANTIVE rather than
+another defect of the measuring machinery. Imaginary contamination ran from `5.95e-14` on the
 `R_0` control to `1.8e-01` on `R_2`, and a precision ladder holding `L_h` byte-fixed showed it
 unchanged from float64 through 50-digit arithmetic: a property of the assembled matrix, not the
 eigensolver. The pilot was blocked with no target spent.
@@ -52,15 +60,21 @@ never gathered.**
 P1A tried the floor and the refinement family; S1 tried the spectrum; S1b removed the last
 confound. The `M_h`-adjoint defect is O(1), the same scale as the operator, and survives 50-digit
 arithmetic. No qualified refinement demonstrated recovery of the self-adjoint substrate the M8.4
-observables require. Another rung of seeds or precision is not the answer, and the chassis fork
+observables require. What the two closeouts do support is a partial localization: the defect sits
+in the assembled matrix rather than in the eigensolver or the estimator, and within that matrix it
+is unseparated between the base discretization and the scalar quotient reduction. No localized
+repair target inside the retired RBF-FD lineage was identified; that is narrower than saying no
+reformulation could exist. Another rung of seeds or precision is not the answer, and the chassis fork
 memo records the evidence bar under which the RBF-FD route could ever return.
 
-**M8.9's deferred question is answered here, since it is retired rather than left dangling.** The
-S1b closeout said whether the remaining base-versus-reduction distinction was worth a separately
-commissioned task was "a decision this closeout does not make." It is made now: **it is not
-commissioned.** That localization has decision value only if the RBF-FD lineage is retained for
-M8.4 dynamics, and it is not. The disjunction stays open on the record as an unanswered question,
-not as pending work.
+**M8.9's deferred COMMISSIONING DECISION is answered here, since it is retired rather than left
+dangling.** The S1b closeout said whether the remaining base-versus-reduction distinction was worth
+a separately commissioned task was "a decision this closeout does not make." It is made now: **it
+is not commissioned.** The technical disjunction itself remains UNANSWERED, and this closeout does
+not answer it. That localization carries decision value only while the RBF-FD lineage is a
+candidate for M8.4 dynamics, which it is not unless the chassis memo's two-condition readmission
+bar (structure AND consistency, separately frozen, pre-target) is met. The door is left ajar on
+those terms; nothing is pending behind it.
 
 ## What was learned, and it is not nothing
 
@@ -82,8 +96,8 @@ The negatives are narrowing rather than empty:
 | Item | Before | After |
 | --- | --- | --- |
 | M8.4 row | BACKLOG, pilot blocked | DONE, closed unresolved |
-| M8.9's deferred separation question | "a decision this closeout does not make" | not commissioned; retired with the lineage |
-| M8.7 gate | gated on an M8.4-lineage result | gated still, now via the M8.5-C reopening path rather than a closed lineage |
+| M8.9's deferred COMMISSIONING decision | "a decision this closeout does not make" | not commissioned; the technical base-vs-reduction question stays open and unanswered |
+| M8.7 gate | gated on an M8.4-lineage result | gated still, on the SAME condition; only the route changes, to M8.5-C then a fresh preregistration then a validated dynamics |
 | MODELS.md dynamics rows | verdicts `not yet tested`, prose naming M8.4 as the live program | verdicts UNCHANGED; prose repointed, since the program named there has closed |
 | The eight target sectors | unspent | unspent |
 
@@ -106,8 +120,24 @@ which covers every byte above the memo's boundary comment and is checked with
 The boundary convention is load-bearing: a range that includes the marker line yields a different
 digest. Text may be appended below the boundary without disturbing the freeze.
 
-**Option C, cubic only.** The spectral/Galerkin chassis is commissioned as **M8.5-C**, target-free
-simulation engineering under the charter that already names route (b). Its room contains no M8.4
+**Two errata are filed below that boundary, and this closeout inherits the corrected text, not the
+frozen text.** The memo's aperture table closes projector tolerance and oversampling by "gate 4,
+gate 11a", but the adopted decision is 11(b), which makes 11(a) inoperative; gate 4 is unaffected
+and still closes the aperture. And the Option C rationale reads "Two chassis failed", which
+contradicts the memo's own record that only the grid was built as a dynamics substrate. The
+corrected proposition is the one used throughout this document: the one chassis built failed
+qualification, the alternate was never built as a dynamics substrate, and no target sector was
+spent. Neither erratum changes the decision, and neither touches the hashed region; the digest
+above recomputes identical before and after both.
+
+The memo also asserted that `MODELS.md` needed no edit. It did: two prose lines named M8.4 as the
+live program. The verdict cells were correct and are untouched. Recorded here because this column
+corrects frozen documents on the record rather than routing around them.
+
+**Option C, cubic only.** The spectral/Galerkin chassis is elected as **M8.5-C**, target-free
+simulation engineering under the charter that already names route (b). Its protocol is a separate
+artifact and is NOT filed as of this closeout, so M8.5-C is an elected successor with its
+preregistration pending, not a running task; the roadmap row says so. Its room contains no M8.4
 target object and its qualification executable cannot load one; work at zero amplitude on any
 `E_ρ`, all work on `E_R0`, and manufactured operators are qualification. Two terminal outcomes,
 no repair round after execution begins:
@@ -118,6 +148,11 @@ no repair round after execution begins:
 - **`M8.5-C-FAILED`** publishes the failure and closes the spectral route; the M8.5 row then
   records the grid backend retained for what `M85B-ADJ-07` certified and excluded from
   M8.4-lineage dynamics, and the reopening path closes with it.
+
+**The chain to M8.7 has three links, and M8.5-C is only the first.** M8.5-C is target-free
+engineering and cannot by itself validate a dynamics. The precommitted route is: M8.5-C reaches
+`M8.5-C-QUALIFIED`; THEN a fresh preregistration under a new identity runs a target; THEN that
+validated in-platform dynamics opens M8.7's gate. A chassis qualification alone does not open it.
 
 A future M8.4-lineage question is therefore a fresh preregistration, not a resumption of this row.
 That is the point: the instrument gets built and judged somewhere the experiment cannot reach.

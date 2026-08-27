@@ -128,13 +128,17 @@ discretization work, which is not a repair to P1A and does not reopen its outcom
    [`../scripts/m8_4_kinematic_check.py`](../scripts/m8_4_kinematic_check.py) (two
    computationally separate routes, mutation-armed, exit 0).
 
-2. **CLOSED UNRESOLVED (2026-08-26).** The `M4_int` preregistration was filed and frozen, and
-   its pilot never ran. Two numerical substrates failed qualification for reasons internal to
-   the instrument: the RBF-FD quotient backend does not meet the M8.4 observables' accuracy
-   floor, and the [M8.9](m8_9_task_details.md) localization diagnostic (`S1b-SPECTRAL`) ruled
-   out fibre transport as the necessary defect without separating base from reduction, so no
-   repair target was identified. No field equation was integrated, no observable was estimated
-   on a candidate, and none of the 8 nontrivial sectors was spent. This is a chassis failure,
+2. **CLOSED UNRESOLVED (2026-08-26).** The preregistration was FILED 2026-08-23 and its § 10b
+   amended item 1's nomination: `M4_int` takes a structural N/A and `M4L_Erho`, one flat bundle
+   `E_ρ` per irrep, is the target-bearing family. The pilot ran and stopped at qualification.
+   P1A split its verdict, the invariant-subspace estimator passing and the assembled operator
+   failing spectral qualification globally, a failure P1A adjudicated SUBSTANTIVE rather than a
+   defect of the measuring machinery. The [M8.9](m8_9_task_details.md) diagnostic
+   (`S1b-SPECTRAL`) then ruled out fibre transport as the necessary defect without separating
+   base from reduction, so no localized repair target inside that lineage was identified. Only
+   ONE dynamics substrate was ever built; the alternate the M8.5 charter contemplated was never
+   built as one. No M8.4 target field equation was integrated, no observable was estimated on a
+   candidate, and none of the 8 nontrivial sectors was spent. This is a chassis failure,
    not a physics verdict: nothing here falsifies MIT dynamics and nothing supports it. The
    kinematic close in item 1 stands unchanged. Record, with the inheritance list and the
    reopening path: [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).

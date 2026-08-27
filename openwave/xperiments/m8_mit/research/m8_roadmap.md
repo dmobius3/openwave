@@ -18,6 +18,7 @@
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
 | [M8.5](tasks/m8_5_task_details.md) | Quotient-manifold simulation engineering | Simulate on S³/2I via (a) a 2I-equivariant grid or (b) a spectral method in 2I-symmetric harmonics; prototype both, choose on evidence (pointer map § 6). Carries the M8.2 lock § 3 reproduction obligation. **M8.5-A** ✅ REPRODUCED (2026-07-31, clean-room; [method note](findings/m8_5a_method_note.md) + § J audit), and **M8.5-B** the quotient backend is ✅ COMPLETE: sealed case `M85B-ADJ-07` adjudicated GREEN at both rungs, 2026-08-17 ([#446](https://github.com/openwave-labs/openwave/pull/446)) | protocol: author; reproduction: maintainers; simulation prototypes: author + platform support | M8.2 ✅ (2026-07-27); [protocol](findings/m8_5a_reproduction_protocol.md) ✅ LOCKED 2026-07-30; M8.5-A ✅ (2026-07-31); [B pre-registration](findings/m8_5b_preregistration.md) ✅ LOCKED 2026-08-01; M8.5-B adjudication ✅ (2026-08-17, `M85B-ADJ-07`) |
+| [M8.5-C](tasks/m8_5_task_details.md) | Spectral dynamics substrate for S³/2I | ⏸️ ELECTED 2026-08-26 (author's call), protocol PENDING. Route (b) of M8.5, built as an actual dynamics substrate for the first time, after M8.4 closed unresolved ([closeout](findings/m8_4_closeout.md)). Target-free: no M8.4 target object in the room. Terminal outcomes `M8.5-C-QUALIFIED` or `M8.5-C-FAILED`, no repair round once execution begins. | author | its own protocol, ⏸️ UNFILED |
 
 ## LATER (gated)
 
@@ -72,7 +73,7 @@
 | [M8.6](tasks/m8_6_task_details.md) | MIT-M5 lepton-hierarchy comparison (gated readiness audit) | ❌ CLOSED WITHOUT RUNNING, row retired to Done 2026-08-08 (maintainer call). Deliverable = the readiness audit + gate record: the named target proved circular (2026-07-29), the amended condition's last admissible route (M5.21.11 route (b)) failed terminally (2026-08-07), so the comparison is permanently inadmissible as instrumented ([finding 9](tasks/m8_6_task_details.md)) | 2026-08-07 |
 | [M8.8](tasks/m8_8_task_details.md) | Independent-method reproduction of the M8.3 torsion closed forms | ✅ REPRODUCED under the protocol's `convention difference` category (2026-08-22), closed out with the author's provenance layer ([#459](https://github.com/openwave-labs/openwave/pull/459)): a context-isolated fresh implementer rebuilt the torsion from the based chain complex; the § 8 adjudication found 8/8 rows and 4/4 identities exact in `Q(φ)` under the global inverse at `R7`. Attempt 1, a `structural failure` on a one-string interface mismatch, stays on record; [record](findings/m8_8_adjudication_record.md) | 2026-08-22 |
 | [M8.9](tasks/m8_9_task_details.md) | Discrete-spectrum source localization | ✅ ADJUDICATED [`S1b-SPECTRAL`](findings/m8_9_s1b_closeout.md): a trivial fibre at high harmonic level already gives a non-real compressed action, so nontrivial fibre transport is NOT NECESSARY. Base RBF-FD discretization or scalar quotient reduction implicated, NOT separated. S1 closed instrument defect; S2 not triggered; closed at that claim ceiling | 2026-08-26 |
-| [M8.4](tasks/m8_4_task_details.md) | Lagrangian-family survey on S³/2I | ✅ CLOSED UNRESOLVED [closeout](findings/m8_4_closeout.md): two numerical substrates built, neither qualified; NO dynamics run and NO sector spent, all eight unspent. Not a verdict on MIT dynamics and no attribution of the defect. Successor chassis commissioned target-free as M8.5-C | 2026-08-26 |
+| [M8.4](tasks/m8_4_task_details.md) | Lagrangian-family survey on S³/2I | ❌ CLOSED UNRESOLVED, row retired to Done 2026-08-26 (author's call) [closeout](findings/m8_4_closeout.md): preregistration FILED 2026-08-23 on `M4L_Erho`; the pilot ran and stopped at qualification, the one substrate built failing spectral qualification and the alternate spectral substrate never built; NO dynamics run and NO sector spent, all eight unspent. Not a verdict on MIT dynamics and no attribution of the defect. Successor chassis commissioned target-free as M8.5-C | 2026-08-26 |
 
 ## CHANGE-LOG
 
@@ -134,20 +135,24 @@ and never as evidence. The `M4_int` preregistration is the next artifact; `M5 + 
 **M8.8 ADJUDICATED: THE TORSION CLOSED FORMS REPRODUCED UNDER THE GLOBAL INVERSE (2026-08-22).** The author delivered the answer packet on an orphan commit ([#408](https://github.com/openwave-labs/openwave/pull/408) thread); the maintainer decrypted it alone and its plaintext hashed to the § 11 pin `744c7f25…`. The committed pre-reveal harness then REFUSED at the step-7 packet-domain gate on a one-string interface mismatch, a maintainer placeholder against the author's frozen builder literal: attempt 1 is on record as `structural failure`, nothing past the gate having run. [#457](https://github.com/openwave-labs/openwave/pull/457) replaced the literal and nothing else in the comparison, its commit message fixing attempt 1's disposition before any category was disclosed, and the official run on `main` returned **`convention difference`**: the global inverse at `R7`, then 8/8 rows and 4/4 identities exact in `Q(φ)`, record `a6036744…` byte-identical to a control built from the refused harness plus the one substitution. Step 9 published the packet and the construction-audit artifact `d5bb04b9…` against their frozen hashes. The protocol gap on post-reveal comparator repair is recorded, not amended, and declared the last such repair. Record: [`findings/m8_8_adjudication_record.md`](findings/m8_8_adjudication_record.md).
 
 **M8.4 CLOSED UNRESOLVED: TWO INSTRUMENTS FAILED, THE SCIENCE NEVER RAN (2026-08-26).** The
-`M4_int` preregistration announced above was filed and frozen, and its pilot never executed.
-Both numerical substrates built to carry it failed qualification for reasons internal to the
-instrument. The RBF-FD quotient backend, adjudicated green for its own M8.5-B target, does not
+preregistration announced above was FILED 2026-08-23, and it did not name `M4_int`: § 10b amends
+that nomination, giving `M4_int` a structural N/A and naming `M4L_Erho`, one flat bundle per irrep,
+as the target-bearing family. The pilot ran and stopped at qualification. Only ONE dynamics
+substrate was ever built, and it failed; the alternate the M8.5 charter contemplated was never
+built as a dynamics substrate at all, so no target configuration was executed. The RBF-FD quotient backend, adjudicated green for its own M8.5-B target, does not
 meet the M8.4 observables' accuracy floor; the substrate-localization diagnostic that followed
 ([M8.9](tasks/m8_9_task_details.md), `S1b-SPECTRAL`) established that fibre transport is not
-the necessary defect and left base-vs-reduction unseparated, so no repair target was ever
-identified. This closes the task on chassis grounds, not on physics: no field equation was
-integrated, no observable was estimated on a candidate, and none of the eight nontrivial McKay
+the necessary defect and left base-vs-reduction unseparated, so no localized repair target was
+identified inside that lineage. This closes the task on chassis grounds, not on physics: no M8.4
+target field equation was integrated, no observable was estimated on a candidate, and none of the eight nontrivial McKay
 sectors was spent, so every one remains available to a successor. Nothing here falsifies MIT
 dynamics and nothing here supports it. The structural results the task did produce stand
 unchanged and keep their own records: the kinematic close above remains a theorem, and the
 M8.9 negative and its instrument findings remain filed. Close-out with the full inheritance
 list, the reopening path, and the explicit non-claims:
-[`findings/m8_4_closeout.md`](findings/m8_4_closeout.md). Successor: the spectral chassis is
-commissioned target-free as M8.5-C, built and qualified with no M8.4 observable in the room,
-and a fresh preregistration is required before any target is attached. M8.7 stays gated on a
-validated in-platform dynamics, now routed through M8.5-C.
+[`findings/m8_4_closeout.md`](findings/m8_4_closeout.md). Successor: the spectral chassis is ELECTED
+target-free as M8.5-C, to be built and qualified with no M8.4 observable in the room; its protocol
+is unfiled as of this entry, so its row reads protocol pending. M8.7's gate is UNCHANGED and still
+requires a validated in-platform dynamics; only the route changes, and it has three links, M8.5-C
+qualifying, then a fresh preregistration under a new identity running a target, then that result
+opening the gate. A chassis qualification alone does not open M8.7.
