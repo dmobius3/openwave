@@ -1,0 +1,306 @@
+# M5.32: The Lagrangian hunt: an autonomous search for the corrected 4×4 M5 action
+
+> The successor of [M5.21.16](m5_21_16_task_details.md) and of [Q48](../m5_question_tracker.md#q48-detail). The author's quest (2026-08-17 to 2026-08-22, record: [`m5_32_convo.md`](m5_32_convo.md)): the current 4×4 Lagrangian `L = −F_abcd F^abcd − V(M)` is "definitely incorrect" on two counts (the Newton sign from boosts, the clock frequency diverging), the repair is "additional term(s), preferably Lorentz-covariant", and the author would rather the search ran on AI time ("I am just slow human ... AI should do it faster"). This task runs that search as ONE long autonomous rung ladder: no per-rung human or author checkpoint, an independent adversarial audit between rungs, and a stop only at a pre-registered breakthrough, at pre-registered exhaustion, or at a safety trigger.
+
+## TASK PLANNING (2026-08-27)
+
+**Scope**: find a Lorentz-covariant modification `L' = L_M5 + Σ_k c_k T_k` (with the potential `V` a search axis, not a constant) of the verified 4×4 action such that, measured on the certified instrument stack, (1) the Coulomb sector is preserved while the mass-mass (boost-mediated) interaction becomes attractive, and (2) the vacuum prefers ω = 0 while the electron hedgehog acquires a finite nonzero clock frequency at positive energy; keep everything the model already gets right. The search space, the rung order, the gates, and the stop rules are pre-registered below; the rung ladder beyond R5 is chosen by the agent from the audited ledger under the next-rung policy, never by a human mid-run.
+
+**Definition of done** (one of two, both closing with the full FINISH workflow: method note, one-script reproduction, terminal TASK REVIEW, mobile ping):
+
+| Outcome | Criterion |
+| --- | --- |
+| BREAKTHROUGH | one candidate `L'` passes the whole breakthrough battery (§ 8, G1 to G7) at instrument grade, in the STRONG clock form, and survives the three-lens breakthrough panel (no REFUTED verdict on a load-bearing claim) |
+| EXHAUSTION (the pre-committed terminal negative) | every term class of § 4 scanned to `exhausted`, the free-rung budget spent, no candidate alive; the deliverable is the term catalog with every sign structure measured and audited (a documented negative is a result, [`AI_HYGIENE.md` § 5](../../../../../AI_HYGIENE.md)) |
+
+A candidate passing G1 to G7 in the WEAK clock form is a `CANDIDATE, weak clock` (reported, the loop continues toward the strong form until exhaustion). Nothing is ADOPTED by this task: every candidate enters the canonical registry as "CANDIDATE variant, NOT adopted", the adoption decision is the author's, at the close.
+
+**Gating**: the M5.21.16 record (the certified 4D stack, the M5.21.15 fixed-J machinery, the M5.21.14 analytic dressed family); the user's "go" with a reset time; the 2026-08-20 WAIT posture lifted by the user on 2026-08-27 (§ 13). The author's 2026-08-17 Newton notebook is on disk (§ 14, filed 2026-08-27) and is R0's first reproduction.
+
+**Blindspot pass**: § 12 (unfamiliar territory: a term-space search run without checkpoints).
+
+**Research body**: this record (planning on top, the RUNG LOG appended by the run, the TASK REVIEW at the close); the mandate record [`m5_32_convo.md`](m5_32_convo.md); the method note `findings/m5_32_note.md` (equations first, equation-to-code map, audit recorded); the term catalog `findings/m5_32_term_catalog.md`; scripts / data / plots under `research/` with the `m5_32_` prefix (§ 15); checkpoints `research/checkpoints/m5_32_progress.md`; the tracked ledger `research/data/m5_32_ledger.json`.
+
+**Model / effort (evaluated, user 2026-08-27)**: Fable 5 / high for the run (the research default; the burn of a multi-day run sits in the subagent fan-outs and the context, not in reasoning depth, and higher effort would exhaust the weekly cap in about a day); the user may raise `/effort` for ONE bounded rung (R1's symbolic classification, the breakthrough panel) at a rung boundary and drop it back, the RUNG LOG recording the setting per rung; auditors are fresh Fable 5 subagents; mechanical scans may run as Opus / medium subagents; heavy reads stay in subagents and the main session compacts at rung boundaries.
+
+### 0. The 4×4 problem (what the hunt is about, and what it is not)
+
+The author's tiering of the model (the 2026-07-25 public statement, the 2026-08-19 three-tier separation, 2026-08-23): (1) EM-only, the Faber quaternion / Oseen-Frank level; (2) EM+QM, the 3×3 Landau-de Gennes field, where "up to 3x3 everything seems as expected" (Coulomb, charge quantization, Klein-Gordon, the three leptons, the baryon census); (3) EM+QM+GEM, the 4×4 tensor with the `(g, 1, δ, 0)` spectrum, which ADDS the time axis: boosts (gravitational mass, GEM) and clock propulsion (energy minimization preferring nonzero time derivatives). The 3×3 sector is the settled part; every measured negative of the record is a 4×4 fact (the indefinite H, the ill-posed free-EL IVP, the 24 negative time-mixing curvatures, the boost-channel runaway, the flat dressing gain, the Newton sign). The hunt is therefore ENTIRELY a search for the time-axis physics: which covariant term acting on the time-mixing sector (the `(0, i)` block `v` of `M = [[τ, vᵀ], [v, A]]`, the boost curvature R̃, the time-axis length g) gives the boost sector the right sign and the clock a finite frequency while leaving `A` (the 3×3 sector) alone.
+
+| Rule that follows | Content |
+| --- | --- |
+| 4×4-specific hypotheses | every rung's hypothesis names the 4×4 sector it acts on (the boost-curvature weight, the clock inertia, the time-axis length g, the mixed `(0, i)` block); a term with no 4×4-specific content is not a hypothesis |
+| The 3×3 reduction identity | every admissible term is evaluated on static uniform-time-row fields FIRST: it vanishes there (the strict identity) or changes the 3×3 sector only by a physically inert rescaling (the physical Coulomb gate); the identity status is a column of the term catalog |
+| No 3×3-only rungs | the 3×3 sector is re-run only as regression gates (G1, G6); the hunt spends no rung re-deriving 3×3 physics |
+| The Schur-block catalog | R1 also enumerates the covariant invariants built from what is ABSENT in 3×3: `v`, `τ`, their covariant derivatives and commutators, the Schur complement `τ − vᵀA⁻¹v`; the systematic way to list 4×4-only terms (class C2) |
+| Where the sign lives | the internal time-row components of F enter H with the η minus sign and on the boost hedgehog they are the whole curvature (spatial part measured 0); the sign map (R2) is a map of how each term re-weights exactly those components |
+| Realistic parameters | the author's 2026-08-07 "we should also focus on reaching realistic parameters": every sign result carries the (g, δ) mini-ladder; the physical point (g ~ 1e10, δ ~ 1e-10) stays Q33 |
+| The scorecard says the same | in [`m5_particle_hunt.md`](../m5_particle_hunt.md) every validated electron row is a 3×3 fact (charge, Coulomb, the 511 keV anchor, spin-½ statistics, annihilation) and every open row is a time-sector fact (the free clock, the J observable, the g-factor, beta decay, the oscillation dynamics); the M5.8-era self-starting clock existed only on the signed-quartic regulator `u + βu²` (cutoff-dependent β), the one precedent for a free finite ω on this field and the reason class C5 exists |
+
+### 1. The quest, in the author's words (the acceptance criteria are not ours to soften)
+
+| Date | Verbatim (public unless marked) |
+| --- | --- |
+| 2026-08-13 | "for empty space, shouldn't preferred frequency be omega = 0? Definitely cannot be infinite"; "For electron and neutrinos there should be preferred omega = mc² / hbar"; "naively we get wrong sign for Newton" |
+| 2026-08-17 (1:1 + Maciej; quoted in full by the author on the public 2026-08-18 list message) | "continue search for similar Lagrangian, preferably Lorentz invariant, satisfying: Coulomb remains, but Newton gets opposite sign - one can start with approximated ansatz, if it works there should be performed energy minimization to check if getting ~1/r effective Newton potential; energy minimization in empty vacuum doesn't lead to infinite omega, for hedgehog as electron leads to finite nonzero ... if successful, then for neutrino as topological vortex loop"; "maybe higher order terms will be required, but I still have hope to handle without"; "box boundary conditions need to be fixed to avoid approaching infinity" |
+| 2026-08-18 | "we need to reverse sign of squared boost curvature (R̃), but not spatial curvature (R) in Hamiltonian. Currently M5 EM+GEM is in (R² + g² R̃²)² Hamiltonian contributions ... imaginary g doesn't do it - as finally we always get g⁴ in Hamiltonian. But before searching for higher order terms (as Skyrme people do), just realized that there should be more curvature² current order Lorentz covariant terms to test. The current is F_abcd F^abcd, but there are also contractions, e.g. F_ab = F_abc^d then F_ab F^ab term, or F = F_ab^ab then F² term" |
+| 2026-08-20 (the PR #448 thread, forwarded to the group; also as a comment on substrate-framework issue #146) | "the current 4x4 Lagrangian is definitely incorrect - both the Newton e.g. sign, and omega frequency diverging to infinity"; "1) Coulomb from spatial dynamics needs to stay, but Newton from boosts needs to reverse sign, 2) energy minimization for electron as field hedgehog needs to lead to finite nonzero frequency omega, without particles cannot diverge to infinite omega"; "The modification should rather be additional term(s), preferably Lorentz-covartiant, added to current Lagrangian"; "I hope just more of current order curvature^2 terms should be sufficient"; "In Skyrme model there are considered higher order terms, which might be also required here, but we need to be careful not to deform Coulomb potential"; "which might be the final Lagrangian of physics" |
+| 2026-08-22 | "finding The Final Lagrangian (mine was only initial guess), then its consequences"; "without charge quantization there are no charged particles - e.g. electrons would explode"; "3 leptons - same quantized charge, just different mass - as hedgehog of 1 of 3 axes in 3D" |
+| 2026-08-23 | "you need all the particles/agreements at once - what quickly kill all bad ideas: gives natural selection"; "first qualitatively getting sketch of the entire physics, then focus on polishing the details - of e.g. potentials, adding more terms" |
+| 2026-08-24 / 26 (cc chains, routing only) | the author restated that the OpenWave M5 action "was just initial guess" and, after reviewing the parallel agent program (§ 3), wrote "currently I am out of ideas"; objected to that program's extra fields ("fundamentally there should be only M field") |
+
+Reading (evidence, not resolution): a NEIGHBORHOOD search (same field `M`, same derivative order first, covariance kept, functionals of `M` alone), the two named contractions first, higher-order terms as the fallback, the two-step Newton protocol (ansatz sign, then pinned-box minimization to a ~1/r effective potential), and the whole-scorecard rule (a term that wins one property by breaking another is "a single puzzle piece"). Q48's variant-B half is dead by the author's own g⁴ argument; its invariance half is answered by "preferably Lorentz invariant": the M5.21.16 flip (variant A, 26% SO(1,3) break) is the CONTROL row of this hunt, not a candidate.
+
+### 2. What the record already proves (the hunt starts here, not from zero)
+
+| Fact | Status | Consequence |
+| --- | --- | --- |
+| The certified functional is `H = Σ_{μ<ν} ⟨F_μν, F_μν⟩_η + V`, `⟨F,G⟩_η = tr(ηFηGᵀ)`, `F_μν = M_μ ξ M_ν − M_ν ξ M_μ`, and the author's notebook H is exactly this (bridge exact, 3e-16) | ✅ [M5.21.16](../findings/m5_21_16_note.md) | every candidate is a modification of ONE registry (the physics module), symbolic and lattice sharing the term definitions |
+| The boost channels' curvature is pure time-row (spatial part 0); their ω² coefficient is `−2Σ(Γ̃)²` at leading order; the M5.21.14 runaway is this term | ✅ [M5.21.14](../findings/m5_21_14_note.md), M5.21.16 | the sign target is the internal time-row weight of the boost-type components; a covariant term changes it only through its contraction structure |
+| The Coulomb sector lives on static 3×3-embedded fields; the flip is the identity there; a mixed contraction (`F_abc^b`) is generically NOT | ✅ M5.21.16; 🔶 the mixed-trace footprint (Q55) | a candidate's Coulomb footprint is computable symbolically (its restriction to block-diagonal static fields) and measured on the pair instrument before any 4D run |
+| The vacuum boost response is QUARTIC in amplitude (no quadratic kernel, ratio 16.0 = 2⁴); two-bump overlap repulsive, metric-insensitive | ✅ M5.21.16 § 3.5 | the Newton sign cannot be read at vacuum level under the current L; it needs relaxed two-defect boost-dressed states, or a term that restores a quadratic kernel (then a linear-response read exists and must be confirmed on the relaxed pair) |
+| Free minimization can never select interior nonzero ω when E is affine in ω² per configuration (the envelope-concavity theorem), under ANY internal metric | ✅ theorem, [M5.21.15](../findings/m5_21_15_note.md) § 1.2, M5.21.16 § 1.3 | every term quadratic in F is at most quadratic in Ṁ, and a Lagrangian piece LINEAR in ω (a mixed derivative-internal contraction can pair `F_i0c0 ∝ ω` with `F_ijcj ∝ ω⁰`) drops out of the Hamiltonian under the Legendre transform (`L = A + Bω + Cω²` gives `H = Cω² − A`), so the theorem's premise holds for the WHOLE current-order class: the free finite ω\* (the strong clock form) is provably unreachable there and needs ω⁴ content in H (curvature⁴, non-commutator quartics, saturation); an ω-odd piece still matters as a shift of the fixed-J relation `ω\* = (J − B)/(2C)` (the Q54 check) |
+| The fixed-J branch carries a finite ω\* at positive energy under the flip with the guard moot; under η the guard bracket [0.02, 0.05] decides the energy sign | ✅ M5.21.15/16 | the weak clock form is reachable now; the potential form `V` decides the energy sign ([Q25](../m5_question_tracker.md#q25-detail)), so `V` is a search axis |
+| The static 3D electron is well-posed only on the symmetrized stencil with the Eq-12 eigenvalue penalty (T2); other term sets hide curvature in stencil blind directions | ✅ [M5.21.2b](../findings/m5_21_2b_note.md) | every new term needs its own stencil-consistency gate (complex-step gradient, two-stencil agreement) before its numbers mean anything |
+| `m\* ≈ 1/g` is essentially exact and lattice-real; the boost-dressing gain is FLAT in g (q ≈ 0 vs the required ≥ 2) | ✅ [M5.21.8](../findings/m5_21_8_note.md), [M5.21.11](m5_21_11_task_details.md) | the "mass" of a Newton-test defect is the boost dressing at `m\*` (the M5.21.14 analytic family); the g-arm is the cheapest already-instrumented boost-sector discriminator (rerun per candidate) |
+| The free-EL initial-value problem of the purely quartic L is ill-posed; no commutator-class term lifts the η-null (lemma L1) | ✅ [M5.20.3](m5_20_3_task_details.md), [M5.20.4](m5_20_4_task_details.md) | dynamics is never the verdict instrument; statics, fixed-J families, and the symbolic ω-coefficient pipeline are |
+| The static anchors: Coulomb 1/r with `c₂ = αħc/64π`, `r_half = 2.926 fm`, the 3-lepton census A < C < B, exact far-field degrees ±1, the baryon-analog census | ✅ M5.16 to M5.22 | the collateral set (G6) that every candidate must keep |
+
+### 3. The parallel program (public, AI-agent-run): what it claims, what M5.32 verifies, the posture
+
+The author named the public repository `vantasnerdan/substrate-framework` as "currently searching for it" (2026-08-22) and commented on its issues [#146](https://github.com/vantasnerdan/substrate-framework/issues/146) (the candidate-directions RFC) and #177. Everything below is AI-agent output with public artifacts and no reproduction outside that repository: **evidence, not resolution** until an M5.32 script reproduces it with its own implementation. It is consumed as a claims list to confirm or refute, never as a starting point to transcribe.
+
+| Their claim (campaigns P239 to P246, 2026-08-20 to 27) | What M5.32 does with it | Rung |
+| --- | --- | --- |
+| With `F = [∂M, ∂M]_η` the parity-even quadratic invariants span SIX (`I1 = F_abcd F^abcd`, `I2 = F_abcd F^cdab`, `I3 = F_abcd F^acbd`, `I4 = R_ac R^ac`, `I5 = R_ac R^ca`, `I6 = R²`) plus four one-ε pseudoscalars; the subspace preserving the complete 3×3 action OFF SHELL is 3-dimensional and vanishes identically on an affine clock witness, so "no constant-coefficient curvature² term, the author's two included, can flip the clock sign" under that gate | re-derive the basis with our own enumeration in our own conventions (rank on random configurations, own witness set); decide the GATE explicitly: their off-shell identity is STRONGER than the author's "Coulomb remains"; the catalog reports both readings | R1 |
+| The author's collaborator (Mikulski) reports, relayed by the author to the list on 2026-08-21 (a private working repository, AI-assisted): the same no-go for the six quadratic invariants under the 3×3-preserving gate, extended to the parity-odd invariants and to the Newton sign and stability of the whole quadratic family on the author's boost-hedgehog ansatz; a "field-selected Euclideanizer" candidate with a finite ω\* whose local form delocalizes on the lattice | two independent AI-assisted implementations agree on the quadratic-family no-go under the strong gate: R1 is the third, our own, and adds the physical-gate reading; the Euclideanizer is a class C2 relative (a field-dependent internal metric), derived independently if the author supplies its definition | R1 / R2 |
+| The covariant internal metric `h^{ab}(M) = η^{ab} + 2 u^a u^b` (u = the timelike eigenvector of `η⁻¹M`, the "spectral-Cartan" contraction) is a Lorentz tensor, equals Frobenius in the vacuum eigenframe, flips the clock coefficient −2 → +2, keeps the 3×3 sector on uniform-time-row fields, `H ≥ 0` | the covariantized form of OUR M5.21.16 flip: the first named member of class C2; derived independently; the author's "only M field" objection is recorded as the author-gated question whether a spectral (non-polynomial) function of `M` is admissible | R1 / R2 |
+| A projector current `−κ η^{μν} q(∂_μP_t, ∂_νP_t)` is `O(ε²)` where curvature is `O(ε⁴)`: it restores a quadratic (massless Laplace) boost kernel | class C2 member; the linear-response Newton read becomes possible; the risk (a new massless mode in the time-axis sector) is a gate | R1 / R3 |
+| Fixed-J two-clock algebra: like clocks `ΔE_J = −j² C / [2 I₀ (I₀ + C)]`, attraction iff the cross-inertia `C(r) = A/r` has `A > 0`; the fixed-ω ensemble has the OPPOSITE leading sign; their boxed pair oracle could not measure `C` and found only a REPULSIVE static frame coupling `+456.6 d^−1.70` | the Newton observable is defined per ensemble; the fixed-J ensemble (each electron carries `J = ħ/2`) is pre-registered as physical, both reported; the cross-inertia `I₁₂(r)` of two separately relaxed fixed-J electrons with independent clock phases is one of R3's three constructions | R3 |
+| Their fixed-J hedgehog is a Morse-index-1 saddle at domain radius R = 6, marginally stable for R ≥ 7.5 with λ_min at +1e-5 ("close to the float64 noise floor"), λ_min(A) < 0 on every background ("structural marginality"); the electron exists only inside a box | the compact-arena false positive made concrete: G3 demands persistence across a domain ladder and a basis-free Morse certification (their radial-reduction protocol is imported as method, § 10) | R4 |
+| The P236 "GEM force curve, exponent driven to −2 across 24³ → 48³" relayed by email on 2026-08-20 | re-derived by the digest from stored rows (−2.03 / −2.04 / −2.06); it measures IMPOSED overlapping textures with one relaxed scalar on the UNCORRECTED action's negative time-mixing block, was disowned in-thread, and never reached OpenWave; not a Newton limit | none (context) |
+| The accepted "gravity" claims (`sign(1 − 6ξ)` map, `G_total = 46.8`, a horizon-bearing clock) | scalar heat-kernel (Sakharov) ledgers and torch numerics consuming the conditional candidate; strong coupling `GM/R = 213`; not an M5 boost-sector statement | none (context) |
+
+Posture (standing, user 2026-08-20 and this plan): independent run; no co-scoping; every external claim verified by an independent script before it steers a rung; provenance via `gh api` first for anything that lands as a PR; if their PR lands mid-run it is reviewed under [`PR_REVIEW_STANDARDS.md` § 12.1](../../../../../dev_docs/PR_REVIEW_STANDARDS.md); neither program's candidate is merged over the other's without the author's adoption call. Citations of their artifacts carry the path and the commit.
+
+### 4. Term classes (opened in this order; each closed by a bounded scan before the next opens)
+
+Admissibility boundary (the author's): a local Lorentz-covariant functional of `M` alone (spectral functions of `M` such as projectors are functionals of `M`, flagged as non-polynomial for the author's call), no auxiliary field, no imposed profile, no external phase charge.
+
+| Class | Content | Why here | ω-content expected | Tried before (do not rediscover) |
+| --- | --- | --- | --- | --- |
+| C0 the author's two | `R_ac R^ac` with `R_ac = F_abc^b` and `R²` with `R = F_ab^ab`; every non-vanishing index-pairing reading enumerated (the pure-internal and pure-derivative traces vanish for a doubly antisymmetric F, so the author's trace is a MIXED one) | named 2026-08-18 / 20 | ω² in H (an ω-odd Lagrangian piece, if any, shifts the fixed-J relation only) | never on this stack |
+| C1 the full quadratic basis | every full contraction of `F ⊗ F` with η's and with one ε, reduced by the two antisymmetries and the exchange to the independent set (rank measured); includes the pair-exchange `F_abcd F^cdab` and the cross `F_abcd F^acbd` | the complete current-order covariant neighborhood; C0 is a subset; the external six-plus-four count is the claim to confirm or refute | ω² in H; ω-odd Lagrangian pieces for mixed and ε pairings (fixed-J offsets) | never |
+| C2 field-dependent internal metrics | `h(M) = η + 2uu` (the covariantized flip); the interpolated `⟨F,F⟩_λ = (1−λ)η + λ Frob` (a diagnostic, not a candidate: covariance breaks for 0 < λ < 1); `M`- and `ηM`-inserted contractions (`tr(MFMF)`-type); projector-gradient terms `−κ η^{μν} q(∂_μP_t, ∂_νP_t)` | the author's picture (the field acts as the metric: gravity = the g-axis boost) makes them "similar"; the natural place to separate R̃² from R² | ω² in H | the plain flip = M5.21.16 (control) |
+| C3 the potential axis | the T2 eigenvalue-penalty coefficients (per eigenvalue); the covariant LdG lift (the external `V_G` form as a comparison; they flag the M5.17-vs-M5.18 potential difference off shell); the det-hedge with the spectrum shifted off zero; dressing-sensitive invariants (a `V` that sees `b(r)`); a velocity-coupled `V` (the theorem's named escape) | "V is just a first guess" (2026-08-09); Q25's guard bracket makes the electron energy sign V's decision | ω⁰ (ω² if velocity-coupled) | T1 / T2 / T3 discrimination (M5.21.2b); Eq.13 has no biaxial minimum (M5.6) |
+| C4 the lower-order term | `tr(η ∂_μM η ∂^μM)` and its trace variant | changes the Derrick balance (E₂ ∝ λ) and adds a positive ω² floor for uniform boost twists | ω² | the simple kinetic `½‖Ṁ‖²` was a documented REGULARIZATION, not the theory (M5.20.2) |
+| C5 curvature⁴ and saturation | `(F_abcd F^abcd)²`, `(R_ac R^ac)²`, `F⁴`-type contractions (c > 0 small); Born-Infeld-type saturation `b²(√(1 + F²/b²) − 1)` | the author's fallback ("as Skyrme people do"): a positive ω⁴ term turns a negative ω² coefficient into a FINITE preferred frequency (the regularized runaway); the M5.8-era molten clock (bounded, self-starting, frequency-rigid) lived on exactly such a regulator, so C5 tests whether its covariant relative delivers the strong form without a cutoff-dependent coefficient | ω⁴ | the signed quartic `u + βu²` (M5.8.2d) saturates but β runs with the cutoff (7× at 48³); the covariant `𝒮 + β𝒮²` was deferred (cubic in Ṁ) |
+| C6 non-commutator quartics | `[tr(∂_μM η ∂^μM η)]²`, `tr(∂_μM ∂_νM) tr(∂^μM ∂^νM)` | same derivative order as F², covariant, ω⁴ from first derivatives; class cost: quartic time derivatives (non-standard Hamiltonian), reported | ω⁴ | never |
+| C7 higher-order timelike-current / Skyrme contractions | the external L2 family: the sextic axis-weighted current `−κ n² P_t^{μν} tr([Y,Z_μ][Y,Z_ν])` (their claim: vanishes on all static 3×3 fields, inertia `∝ (λ_θ − λ_φ)⁴`), the BPS-alternating sextic; the exact fact that equal tangent eigenvalues give zero clock inertia | the Skyrme fallback in its time-mixing form | ω² in H (their reduction `A + 2Cω + Iω²` has the linear piece drop out of H; ω⁴ only from genuinely quartic-in-Ṁ members) | the Skyrme `β_E u_E²` saturates but damps the clock 10× (M5.8.2e); the single-term closure kills statics (M5.20.4/5) |
+| C8 cross-model imports | the vacuum-vanishing coefficient `c(M) = c₀ h(V(M))` (I3); auxiliary-mediator completions and the timelike dilaton (a NEW field: outside the boundary, reported as an extension, never run as a candidate) | the user's cross-pollination brief (§ 10) | per import | M7.11 planned, M4 imposed profile |
+| C9 signature variants (control) | variant A (the Frobenius flip) as the standing control row; variant B not built (author-retracted, g⁴) | calibrates every gate | ω² | M5.21.16 |
+
+### 5. The pre-registered skeleton R0 → R5
+
+| Rung | Content | Gates it owns | Envelope |
+| --- | --- | --- | --- |
+| R0 bootstrap | (a) the physics module `research/scripts/m5_32_lagrangian.py`: a term registry where each term has ONE definition with a sympy implementation (the notebook conventions: `Γ_μ` packing, `ξ = diag(−1,1,1,1)`, `coms`, `d = diag(g, 1, δ, 0)`) and a numpy implementation on the certified stencil, plus per-term selftests (I1 reproduces the certified `⟨F,F⟩_η` energies on stored fields to 1e-12; complex-step gradient; invariance table; a wrong-sign mutant reddens); (b) baseline reproduction on this machine: the M5.21.16 CHAN / INV / IDENT tables, the M5.21.15 fixed-J minimum (ω = 0.59, E = +115.9 at guard 0.02), the M5.17 / M5.21.4 like-charge repulsion, the M5.21.11 g-arm controls (vacuum null, field identity 3e-14, recorded E_min); (c) the author's 2026-08-17 Newton notebook (`theory/duda_2026-08-17_newton_for_boost_hedgehogs.pdf`, filed 2026-08-27) reproduced in sympy: `M0 = diag(g, 0, 0, 0)`, two boost hedgehogs `o₁,₂ = exp(m f(r±) (x, y, z ± d)·G_b)` to first order in m with `f(r) = 1/√r`, the product ansatz `o = o₁o₂`, `M = o M0 oᵀ`, the spatial-block curvature² `H_s = Σ com²` over the `(2,3), (3,4), (4,2)` entries to order m⁴, the integral over the half-plane with the 0.001 cutoff, and the fit `E(d) = 863.733 + 167.668/d` (the positive 1/d coefficient IS the "incorrect sign": the energy falls with separation, like charges); the reproduction gate is the fit's two coefficients to 1% and the sign exactly, and the construction then becomes R3's construction (i) with the full η-contraction, the full vacuum spectrum, and higher orders in m; (d) the conventions table LOCKED in the progress file (index-0 time, the η-spectrum vacuum `diag(−g, 1, δ, 0)`, `s = −1` main with `s = +1` carried, the F index reading, the two Coulomb gates, the fixed-J ensemble, the invariance bar, the box ladder); (e) the ledger and progress file initialized | selftests = the record numbers to ≤ 1e-3 relative (or the record's own tolerance) | ≤ 4 h |
+| R1 the covariant term basis | enumerate C0 + C1 (+ the C2 insertions) symbolically; rank on random configurations; per basis element: covariance (numerical SO(1,3) + SO(3) conjugations, the SO(4) probe), the ω⁰ / ω¹ / ω² content as forms in (Γ, Γ̃) on THREE backgrounds (the affine clock witness, the boost-dressed twisting hedgehog of the M5.21.14 family, vacuum perturbations per channel), the Coulomb footprint under BOTH gates (off-shell identity on static block-diagonal fields; the physical like-charge trend on the pair instrument at n = 32), the vacuum boost kernel order (quadratic vs quartic), the null-direction boundedness sketch | the catalog complete (rank check audited by an independent enumeration); the external no-go claim CONFIRMED / REFUTED / QUALIFIED under each gate; the Q54 ω-odd question answered per term (as a fixed-J offset, never as a free minimum: the Legendre argument of § 2 is re-verified symbolically on every term) | ≤ 1 day |
+| R2 the sign map | per term and per pair, the coefficient region where ALL kinetic channels are ≥ 0 (vacuum stable at ω = 0), the boost-sector static curvature weight is REVERSED relative to the spatial one (the author's R̃² vs R² target), and the Coulomb footprint keeps its sign; the lattice screen at the certified toy point (g = 32, δ = 0.3, s = −1, n = 32) for every surviving region; the boundedness probe (the M5.21.14 wide dressing family, the sawtooth family) with NO guard; the g-arm rerun; the coupling-switch attribution ladder | G4, G5, the sector half of G1 | ≤ 2 days |
+| R3 the Newton instrument | three constructions on two boost-dressed hedgehogs at `m\*` (the M5.21.14 family) at separations d: (i) the author's ansatz (superposition), sign of dE/dd; (ii) FULL lattice relaxation with Dirichlet (vacuum-pinned) frame boundaries and, separately, soliton-tail (Robin) boundaries so the far-field tail survives; box ladder (n = 32, 48; L ladder); charges and dressing amplitudes held; `E_int(d) = E(pair) − 2E(single)` fitted to `A + B/d` over the outer window, the d-scan spanning ≥ 2 wavelengths of the slowest channel; (iii) the fixed-J two-clock cross-inertia `I₁₂(r)` of two separately relaxed fixed-J electrons with independent clock phases (the M5.21.9/15 machinery), sign and 1/r trend, with the two-clock Legendre algebra re-derived; plus the linear-response read where a candidate restores a quadratic kernel (the dressed-background response operator: the Hessian about one relaxed defect, its massless branch and kernel sign); the like-charge pair on the SAME instrument as the control (must repel); the calibration control: under the current L the instrument must reproduce the author's WRONG sign before it is trusted; the mutation pair (vacuum null; coefficient flip must reverse the sign); the reference-matched Poisson / Yukawa comparison in the same box | G2, the pair half of G1 | ≤ 3 days |
+| R4 the clock instrument | per surviving candidate: (i) the fixed-J electron (J ladder, ω\*, E sign, guard need, `dE/dJ = ω\*` closure ≤ 3%, the tangent-eigenvalue splitting behind the inertia); (ii) the FREE ω scan with the concavity certificate (envelope slopes), so a free interior minimum is either measured or its absence proven per candidate; (iii) for ω-odd candidates the sign of ω\* vs the hedgehog chirality (particle / antiparticle) as the falsifiable by-product; (iv) the domain ladder (n = 32 → 48, L ladder) for any minimum claimed, with a basis-free Morse certification (radial reduction, nested-basis monotonicity, explicit trial-function Rayleigh quotient); (v) the radiation window ω\* < μ with the vacuum gap recomputed per candidate | G3 (strong or weak), G6's clock item | ≤ 2 days |
+| R5 synthesis | the surviving terms combined into the minimal candidate set; the full battery G1 to G7 on each; the collateral gates (3-lepton ordering, protection, degree, baryon-analog existence, the breather / fixed-J clock regression); the breakthrough panel on any candidate passing everything; the one-script reproduction | all | ≤ 3 days |
+| R6+ exploration | classes C2 → C8 in order, each bounded; free rungs from measured surprises; a class is `exhausted` after its scan and one free follow-up produce no gate progress | per rung | until a stop rule |
+
+Decision points written into R1 (pre-registered): if a constant-coefficient region flips the boost-sector sign under the physical Coulomb gate, C0 / C1 proceed to R2; if only the off-shell-identity gate kills them, the run proceeds under the author's physical gate and reports the identity status as a column; if NO region exists under either gate, C0 / C1 are exhausted at R1 (a headline finding with our own proof) and R2 opens C2 directly.
+
+### 6. The rung engine (how the hunt runs itself)
+
+The unit of autonomous work is a RUNG: one hypothesis about the Lagrangian carried from symbolic derivation to lattice measurement to an independent adversarial audit, then entered in the ledger. No rung consumes a human decision; the next rung is selected by the policy below from the AUDITED ledger, never from an unaudited number.
+
+| Stage | What happens | Artifact |
+| --- | --- | --- |
+| 1 Hypothesis | one term set (or construction, or potential form) with its coefficient range and the gates it targets, written BEFORE any number is produced | ledger entry (`status: open`) |
+| 2 Derive | symbolic: covariance, the ω-structure (ω⁰ / ω¹ / ω² / ω⁴ content), the Coulomb footprint, the vacuum boost kernel, all in sympy on the notebook conventions | `data/m5_32_r<k>_symbolic.json` |
+| 3 Screen | cheap lattice: per-channel kin table + vacuum + 3×3-embed identity at the certified toy point | `data/m5_32_r<k>_screen.json` |
+| 4 Measure | instrument grade: the gate battery the rung targets, box ladder where the gate demands it | `data/m5_32_r<k>_measure.json`, local `.npz`, plots |
+| 5 Audit | an independent agent instructed to REFUTE: own implementation (different stencil / quadrature / seed / construction), own hand re-derivation, verdict per claim CONFIRMED / REFUTED / QUALIFIED, mutation tests (a wrong-sign mutant must redden a gate); the auditor receives the term DEFINITION and the claims, never the producer's script | `data/m5_32_r<k>_audit.json` + the audit's own script |
+| 6 Verdict + ledger | the rung's claims with their audited status; the term's ledger row updated (`killed` / `survives` / `candidate`); the deviations log if the rung departed from its hypothesis | `data/m5_32_ledger.json` + `checkpoints/m5_32_progress.md` + one row in the RUNG LOG below |
+| 7 Select next | the policy applied to the ledger; the choice and its reason written into the progress file BEFORE the next rung starts | the progress file `next:` line |
+
+| Rule | Content |
+| --- | --- |
+| Pre-registration | gates and thresholds are written in stage 1; a rung never moves its own goalposts; a gate found wrong (an instrument defect) is fixed as a logged deviation and the rung re-run |
+| Try cap | machine-checkable gates get 3 tries; on the cap the rung STOPS and records the failing check (the goal-loop discipline), it never fiddles past it |
+| Exhaustion rule | a fork decidable by running is RUN as branches (both constructions, both signs of g, both Coulomb gates, both ensembles); a result that depends on the fork is reported convention-dependent, not resolved |
+| Steering discipline | only AUDITED rungs steer the next selection; an unaudited number is a draft ([`AI_HYGIENE.md` § 1](../../../../../AI_HYGIENE.md)) |
+| Ledger discipline | every term ever tried has one ledger row with its definition hash; a term is never re-tried silently; a re-try cites what changed; the tried-before column of § 4 is read before every hypothesis |
+| Checkpoint before fan-out | every completed sub-result is written to disk BEFORE the next fan-out launches |
+| Resolution honesty | every number carries its box (n, L) and stencil; a sign claim needs two boxes; a "converged" claim needs the ladder that shows it; a gate the instruments cannot decide is logged `undecidable at this resolution`, never `passed` |
+| Physics-first inspection set | each rung's note section lists ≤ 4 artifacts, the physics module first, the driver last |
+| Barred inputs | no lepton mass, mass ratio, g-factor, α, or Newton constant enters as a fit input; the criteria are structural (signs, finiteness, preservation of the locked anchors) |
+| The kill switch (user 2026-08-27) | the ONE control the user holds during the run: a message containing the keyword `killswitch` in any letter case (`KILLSWITCH`, `killswitch`, `Killswitch` all count). On receipt the agent launches nothing new, stops in-flight background chains (their partial output is discarded, the last checkpoint stands), writes `state: HALTED by user at <UTC>` with the preserved `next:` decision into the progress file, parks the resume ping, and replies with the totals; `go M5.32` resumes from the progress file. Any other mid-run message is logged and folded in at the next rung boundary without stopping. If a long foreground command is running, Esc first, then the keyword |
+| The rung notification (user 2026-08-27) | at every rung close the agent pushes ONE mobile notification: the rung's audited one-line verdict, the next rung's hypothesis, and the running totals `rungs / elapsed since go / GB of local arrays`; the user, not a cap, decides when the hunt is exhausted |
+
+Next-rung policy:
+
+| Priority | Rule |
+| --- | --- |
+| 1 | the skeleton R0 → R5 runs in order; a skeleton rung is skipped only if the ledger already holds its audited answer |
+| 2 | a CANDIDATE (a term set passing every gate it has met so far) is pushed through the remaining gates before any new class opens |
+| 3 | classes open in the § 4 order, each closed by its bounded scan before the next opens |
+| 4 | a free rung (an idea born from a measured result, not on the menu) is allowed at any time, logged as a deviation with its trigger, charged against the free-rung budget (12) |
+| 5 | ties break toward the cheaper rung; near a usage-window boundary, toward the rung that checkpoints sooner |
+
+### 7. Stop rules
+
+| Stop | Trigger | What happens |
+| --- | --- | --- |
+| BREAKTHROUGH | a candidate passes G1 to G7 at instrument grade in the STRONG clock form and the breakthrough panel (three independent auditors with distinct lenses: symbolic re-derivation, independent lattice implementation, a convention / units / sign hunt) returns no REFUTED verdict on a load-bearing claim | FINISH: the method note, the one-script reproduction, the terminal TASK REVIEW, the mobile ping; the result IS the workflow's escalation trigger ("a result that strongly supports the core hypothesis"), so the run stops here by design |
+| EXHAUSTION | every class scanned to `exhausted`, the free-rung budget spent, no candidate alive | FINISH with the negative map (the term catalog); the pre-committed terminal note |
+| SAFETY | any escalation trigger that is not the breakthrough itself (real money, outbound, git, a document contradiction, anything that would touch another repository) | stop and surface |
+| USER | the `killswitch` keyword, any case (§ 6); the user monitors the per-rung totals (rungs, elapsed time, GB) and is the only cap: no rung, wall-clock, or disk limit is pre-set (user 2026-08-27, "lets not spare resources") | halt as specified in § 6; the progress file is always resume-complete |
+
+There is no author checkpoint and no user checkpoint between rungs: every fork the tracker would have routed to the author is run as branches, and the batch of author-gated residue (which convention is canonical, whether a measured cost is accepted physics, whether a spectral function of `M` is admissible) is assembled ONCE, in the final method note, for the user to send. The tracker's outbound policy (one email per round, method-note-grade context) therefore applies to exactly one outbound: the close.
+
+### 8. The breakthrough battery (pre-registered gates)
+
+A candidate `L' = L_M5 + Σ_k c_k T_k` (with `V` possibly modified) is a BREAKTHROUGH only if it passes all seven at instrument grade, each with its own audited artifact. G1 to G3 are the author's two criteria made numeric; G4 to G7 are the conditions under which passing them means anything (the author's whole-scorecard rule).
+
+| Gate | Statement | Threshold | Instrument |
+| --- | --- | --- | --- |
+| G1 Coulomb kept | two like-charge hedgehogs REPEL with a 1/r trend; the static sector's sign structure unchanged; the far-field degree stays exactly ±1; the three axis hedgehogs keep equal degree with distinct energies | `E_int(d)` decreasing in d, 1/r fit R² ≥ 0.95 over the outer window, sign identical to the M5.17 / M5.21.4 record, at n = 32 and n = 48; degree within 1e-6 of ±1 on a converged grid; the off-shell identity status reported as a column | the certified two-hedgehog instrument under `L'`; the Q37 degree instrument |
+| G2 Newton reversed | two boost-dressed (massive) defects ATTRACT: `E_int(d)` INCREASES with d (force = −dE/dd toward each other) | sign robust across ≥ 2 of the three R3 constructions, 2 boxes, both boundary types, and a (g, δ) mini-ladder (g = 8, 32, 128; δ = 0.3, 0.1); the fixed-J ensemble is the physical reading, the fixed-ω reading reported; a linear-response read counts only when confirmed on the relaxed pair; the sign survives the reference-matched comparison and its own mutation pair | the R3 instrument |
+| G3 Electron clock | the electron hedgehog has a finite nonzero ω\* by energy minimization, at POSITIVE total energy, with the vacuum preferring ω = 0 | STRONG: a FREE interior minimum in ω, persisting across n = 32 → 48 and an L ladder, `E_total > 0`, Morse index certified basis-free (by the § 2 Legendre argument this form is reachable only by the ω⁴ classes C5, C6, and the quartic-in-Ṁ members of C7; a current-order candidate can meet the WEAK form at most; this is stated to the author in the close-out note only, no pre-run message, user decision 2026-08-27); WEAK: all kin ≥ 0 (vacuum stable at ω = 0) and the fixed-J minimum at `J = ħ/2` finite and positive without a guard, `dE/dJ = ω\*` ≤ 3%; either form inside the radiation window ω\* < μ | the R4 instrument |
+| G4 Covariance | SO(1,3) invariance of the energy functional by construction, verified numerically | ≤ 1e-10 relative under random boosts and rotations (the M5.21.16 INV stage) WITH the no-η negative control that must fail (the M5.18 pattern, drift 3.1e+4); the M5.18 battery re-passed at Lagrangian level | symbolic + lattice |
+| G5 Bounded | no runaway channel: the wide dressing family, the sawtooth family, the null-direction set, and the free lattice descent with pinned boundaries stay bounded below with NO guard | every start lands in a finite well; the sawtooth family closes; the descent plateaus on an L ladder | the R2 probes |
+| G6 Collateral | the certified positives survive: the 3-lepton census ordering A < C < B, topological protection, the fixed-J clock thermodynamics, the time-periodic escape (the breather / fixed-J regression), the baryon-analog census existence (a protected proton-analog minimum), the tilt modes at c; observed, not gated: whether the candidate moves the point-hedgehog vs charged-ring near-degeneracy (M5.21.10) and the ring radius against the Q30 scattering bound | each re-measured under `L'` at its record resolution; any loss is a fail | the record instruments, re-run |
+| G7 Parsimony + robustness | the fewest added terms; coefficients O(1) in the model's units; every sign outcome holds over a coefficient RANGE (≥ a factor 4), not at a tuned point; the sign-carrying term identified by the switch ladder; the functional depends on `M` alone | measured on the coefficient grid | the ledger |
+
+### 9. The harness (a long run that survives caps, compactions, and model switches)
+
+| Layer | Mechanism | Standing |
+| --- | --- | --- |
+| Correctness | `research/checkpoints/m5_32_progress.md` (rung-by-rung, resume-complete: the conventions table, state, the `next:` decision and its reason, in-flight work, the deviations table) + `research/data/m5_32_ledger.json` written at every rung boundary; local `.npz` arrays kept, gitignored, each with its regen command | the only layer that guarantees nothing is lost |
+| In-session cap survival | Claude Code `autoContinueAtUsageLimit` (v2.1.234+, installed 2.1.247, default ON): at a 5-hour or weekly cap the session WAITS and continues the same conversation with full context after the reset. Documented for interactive sessions; the fate of in-flight subagents is not documented, so a cap is treated as a possible loss of in-flight work: on continue, re-read the progress file, relaunch only dead work | the primary mechanism; the run stays in ONE interactive terminal session |
+| Out-of-session backstop | the server-side resume ping armed at `resets_at` + 5 min per the workflow recipe, with the reset-time watchdog; it covers a crashed or quit session (tap to resume) and doubles as the notice that a cap wait happened | convenience, never correctness |
+| Cap logging | every rung start / end timestamped UTC in the progress file; a gap > 30 min with no rung boundary is logged as a probable cap wait; the TASK REVIEW's `Usage Cap Triggered` line reports YES with the count if any wait or ping fire occurred; the usage caps themselves are the user's to watch (user 2026-08-27) | the workflow's two log lines |
+| Per-rung ping | the § 6 rung notification: verdict, next hypothesis, totals `rungs / elapsed / GB` (elapsed from the "go" timestamp in the progress file; GB from the `m5_32_` arrays under `research/data/`) | the user's exhaustion instrument |
+| Context | the conversation is not the state: a compaction or a fresh session resumes from the progress file + this plan + the ledger; the resume protocol is the progress file's header | cardinal for a multi-day run |
+| Model switch | a weekly cap may force a different model; the checkpoints carry definitions, conventions, and the next decision so a fresh model resumes without the conversation | |
+| Compute | M4 Max, 16 cores, 48 GB; the certified stack is numpy; sweeps parallelized with multiprocessing; per-rung envelopes (planning aids, not caps): screen ≤ 30 min, measure ≤ 6 h, a two-defect box ≤ 12 h; no total envelope (the user is the cap); long chains detached (`nohup`, nice 10) | no cloud spend without a user checkpoint |
+| Git | the user's, at the user's cadence; each rung close writes "rung R<k> commit-ready" in the progress file and appends its RUNG LOG row (tracked), so committed rung logs are the public progress record; nothing in the loop commits, pushes, posts, or emails | cardinal rule |
+| Doc checks at FINISH | the doc checker over every touched `.md`; `check_roadmaps.py` on the M5 roadmap; `check_models_md.py` if MODELS.md / the briefing / the roadmap move; `check_no_local.py --tracked`; `gen_datasets_manifest.py research/data --write` | mandatory |
+
+### 10. Cross-pollination imports (method imports used by every rung; term imports are class C8)
+
+| # | Import | From | Evidence there | Use here |
+| --- | --- | --- | --- | --- |
+| I1 | fixed-Noether-charge frame: extremize E at fixed Q, ω the multiplier, `dE\*/dω = Q` | M7.3 / M7.5; M6.2 | ✅ conjugacy 1-2% | the fixed-J branch IS this frame; `dE/dJ = ω\*` stays a PASS line that can fail |
+| I2 | vacuum spectrum FIRST: linearize about `M_vac`, every channel's dispersion, the ω-window where all channels decay | M7.5 / M7.6; M6.4 | ✅ ω_max = 0.786 by two derivations | per candidate: the kinetic operator's spectrum per sector, tilt modes still at c, the gap μ; a finite ω\* is certified only inside the decaying window |
+| I3 | vacuum-vanishing coefficient `c(M) = c₀ h(V(M))` | M7.11 (planned), M4 variants C-E, the author 2026-05-15 | M7.10 ✅ the binding bilinear is the tachyon source | class C8 candidate; M5 has the local order parameter to source it |
+| I4 | signature audit: derive under both (+,−,−,−) and (−,+,+,+); a sign that flips with the signature is a convention | M6.1, M6.2, M7.3 | ✅ each caught a real sign fault | R1 |
+| I5 | Legendre-inversion bookkeeping: read the sign from the force on a probe with the mediator solved, never from the raw minimized value | M7.6 § 4; M9.2 C5 | ✅ | R3 |
+| I6 | reference-matched box comparison (Poisson / Yukawa with the same sources and boundary; read forces, not potentials) | M7.6 (ratio 1.17 ± 0.02); M9.2 (Dirichlet images 26-35% on Φ, 1% on the force) | ✅ | R3, the DST-I Poisson reference ported from `m9_2_newton_limit.py` |
+| I7 | scaling-symmetry closure of the coefficient space before scanning | M6 § 3.7 | ✅ | R1 |
+| I8 | radiating-tail screen: a sign at one separation, or with a propagating channel at the clock ω, is not a sign; scan d over ≥ 2 wavelengths and 2 boxes | M3 / M4; M7.6 RKKY | ✅ | R3 gate |
+| I9 | dilation probe as the Derrick verification (E₄ ∝ μ⁻¹, E_V ∝ μ³, a 2-derivative term ∝ μ, a curvature⁴ term ∝ μ⁻⁵) | M7.4 `dilation_probe` | ✅ | every candidate hedgehog |
+| I10 | boundedness on null directions | M7.4 (E → −3.6e6 via null-J directions); the author 2026-04-29 | ✅ | R2, G5 |
+| I11 | constraint-projected relaxation (Gram-Schmidt tangent projection, exact restores) | M7.6 / M7.8 | ✅ | the fixed-J relaxer + the degree hold |
+| I12 | coupling-switch ladder: the sign-carrying term identified by measurement | M7.10 E4 | ✅ | R2 / R3, G7 |
+| I13 | source-sign × response-sign factorization with mutation gates (vacuum null, coefficient flip) | M9.2 (C3, C5) | ✅ | R3 gate pair |
+| I14 | derived coefficient by stationarity through an algebraic auxiliary (an extension, named as such) | M9.1 (3/16 both signatures) | ✅ | class C8 note |
+| I15 | gravity as clock slowing (one-body proxy): `δω/ω < 0` near mass ⇒ attraction | M4 Smoliński extension | ✅ arithmetic | R3 proxy, pre-registered as a CLAIM to test against the pair force |
+| I16 | mediator parity: even-spin exchange attracts like sources, odd-spin repels; the contraction decides which index structure propagates | standard field theory | ⚠️ | R1 / R3: the linearized boost-sector kernel decomposed into symmetric-tensor and antisymmetric channels; also the content bullet for the author's 2026-08-18 group question |
+| I17 | self-checks that can fail; blind vs independent-method labels; no calibrated conventions; grade the structural ladder | M8 conventions | standing | every PASS line mutation-tested |
+| I18 | precision then efficiency; run before write; conventions locked in a table before the run; an honest FAIL shipped as a scored gate | M9.1 / M9.2 | standing | R0 conventions table; f64 on every decisive number |
+| I19 | the flat boost-dressing gain in g as the cheapest boost-sector discriminator | M5.21.11 g-arm | ✅ | R2 |
+| I20 | degree conservation and the explosion test (`e → e/2 + e/2` must not undercut the point hedgehog without a barrier) | the author 2026-08-22; the Q37 instrument | ✅ degrees −1.000000 | G1 |
+| I21 | the radial-reduction stability protocol (1D Sturm-Liouville reduction, nested-basis monotonicity, basis-free trial-function Rayleigh quotient, aliasing gate) | substrate-framework attempt 0041 and their numerics skill (AI-derived methodology; the techniques are standard) | evidence | R4 Morse certification |
+| I22 | the fixed-J two-clock cross-inertia as a Newton observable and the fixed-J vs fixed-ω sign difference | substrate-framework P240 (algebra re-derived by our digest, 18/18) | evidence | R3 construction (iii), re-derived |
+
+### 11. Rigor checklist (pre-flight, every rung self-checks)
+
+| # | Rule | Applied as |
+| --- | --- | --- |
+| E1 | a borrowed structure carries only what its author declared; an assumed index reading is an unregistered assumption | every contraction reading enumerated; the intended one is author-gated residue; the default reading locked in R0 |
+| E2 | author silence is a terminal state; no program blocks on an inbox | the run never waits for the author |
+| E3 | author-gated questions travel author-to-author in public; relayed answers are hearsay | the final note carries the batch; the user sends |
+| E4 | program units on the certified stack; no physical units in the hunt | |
+| E5 | f64 on every decisive number; exact (sympy) where the object is exact | |
+| E6 | the adversarial audit on every headline claim, recorded in the deliverable | stage 5 of every rung; the breakthrough panel |
+| E7 | method-note shape, one small physics module | `m5_32_lagrangian.py` + `findings/m5_32_note.md` |
+| E8 | mutation-test every PASS line; label un-discriminating checks ASSERTED | the per-rung mutation set |
+| E9 | pre-register gates, conventions, search spaces, terminal criteria before numerics; forks reported with all numbers | this plan is the pre-registration; the ledger is the fork record |
+| E10 | Dirichlet images fake potentials; read forces; two spacings, a box ladder; probes inside r ≥ 0.30 L | R3 |
+| E11 | cross-stencil ratios before any absolute energy; refinement rungs; mirror tests by conjugation | per-term stencil gate |
+| E12 | deviations logged as they happen; contaminated rungs deleted before any read; long chains detached | the progress file's deviations table, open from R0 |
+| E13 | heavy arrays local + manifest; summary JSON + plots + scripts tracked | FINISH |
+| E14 | MODELS.md + roadmap linters clean; frozen docs may quote counts, live docs may not drift | close-out |
+| E15 | the roadmap row and this task doc exist before any `m5_32_` artifact | this PLAN |
+
+### 12. Blindspot pass (unknown unknowns) and the unknowns map
+
+| Blindspot | Route |
+| --- | --- |
+| Index-pairing ambiguity in the author's `F_ab = F_abc^b` (several pairings are non-vanishing) | enumerate every pairing, test all; report which does what; the intended one is author-gated residue |
+| Terms that vanish identically or are linearly dependent (Gauss-Bonnet-like combinations) | the rank check on random configurations; a term enters the catalog only with its independent content |
+| Term-fitting: with enough coefficients any two signs can be tuned | G7 and the collateral gates G6; a candidate needing a tuned point is reported as such |
+| Stencil blind directions for new terms (the M5.21.2 lesson) | per-term complex-step gradient gate + two-stencil agreement before any number is quoted |
+| The "attraction = energy rewards curvature" runaway (the author's own warning) | pinned frame boundaries, an L ladder, and the boundedness probe BEFORE the Newton read; a diverging relaxation kills the candidate, it is never fitted |
+| Which mass is held in the Newton test (gravitational `m\*` vs inertial E) and which ensemble (fixed J vs fixed ω) | both run; the difference reported; fixed J pre-registered as physical |
+| A finite box faking a mass gap and a finite-ω minimum (the external program's R-window) | every minimum claim carries the domain ladder and the basis-free Morse certificate |
+| Ostrogradsky-type instability for second-derivative or quartic-time-derivative terms (C6) | class-level: energy boundedness and a small-amplitude dynamics probe; reported as the class's cost |
+| The toy point (g = 32, δ = 0.3) is not the physical regime (Q33) | every sign result on the (g, δ) mini-ladder; a sign that flips along the ladder is `regime-dependent`, not a pass |
+| Silent re-tries across a multi-day run | the ledger's definition hash; the § 4 tried-before column; the progress file's `tried` list read before every hypothesis |
+| The audit agent inheriting the producer's mistake (relay drift) | the auditor gets the term definition and the claim, never the producer's script |
+| The potential-form dependence hiding a term's effect (Q25) | every candidate measured on the T2 base AND on one alternative `V` from C3 before a verdict |
+| Convention traps already paid for: `(−g)^p` vs `g^p`, index-0 time, the η-spectrum vacuum, the factor-2 bridge, electric charge = negated degree | the R0 conventions table; both g signs carried |
+
+| Quadrant | Content → route |
+| --- | --- |
+| Known knowns | the certified stack; the record facts of § 2; the author's criteria of § 1; the external claims of § 3 as claims |
+| Known unknowns, machine-checkable | the basis rank and the ω-parity content per term (Q54, as fixed-J offsets); the consequences of each Coulomb gate (Q55); the Newton sign per construction and ensemble (Q52); the stability window and Morse index; the potential-form sensitivity; the g / δ scaling of new terms (Q58); the radiation window (Q56); IVP well-posedness under a candidate (Q57); the η-null persistence (Q50) |
+| Known unknowns, author-gated (the batch in the final note) | the intended index pairing (Q49); the acceptance reading of criterion 2 (free vs fixed-J); the Coulomb gate (off-shell identity vs physical); the two-center construction (Q52); the energy-invariance bar (Q53); whether a spectral function of `M` is admissible; the potential form (Q25); the sign of g (Q27); the coefficient-selection principle (Q51) |
+| Known unknowns, nature-gated | the physical regime (Q33); compute for n ≥ 64 boxes |
+| Unknown unknowns | the table above; the deviations log; the adversarial audit per rung; the quiz gate at REVIEW before any outbound |
+
+### 13. Declared deviations from the standing workflow
+
+| Deviation | From | Mitigation |
+| --- | --- | --- |
+| No per-rung author checkpoint | the checkpoint-bounded series policy and the author's 2026-07-18 request for regular reports | the pre-committed terminal condition; the RUNG LOG rows are tracked and become the committed progress record at the user's commit cadence; one consolidated note at the close |
+| Planning and running on the 2026-08-20 quest | the user's 2026-08-20 WAIT posture ("the next move belongs to Vantasner or the author") | lifted by the user 2026-08-27 ("let's try something new ... a Lagrangian hunt"); recorded here and in the roadmap change-log |
+| Filing the 2026-08-17 to 2026-08-22 exchange retroactively | the convo-record discipline (capture at arrival) | filed at PLAN as [`m5_32_convo.md`](m5_32_convo.md) with the Q48 receipt |
+| A parallel contributor program on the same question | the no-co-scoping posture | independent run; their claims verified by our own scripts before they steer; if a PR lands it is reviewed under § 12.1 with provenance first; adoption stays the author's call |
+| No user checkpoint on surprising or negative results mid-run | the "proceed but flag" tier | every such result is flagged in the RUNG LOG and the progress file the moment it lands, and reaches the user through the mobile ping at rung close |
+
+### 14. Record bookkeeping owed at PLAN, and the user's downloads
+
+| Item | Action | Where |
+| --- | --- | --- |
+| The mandate exchange (2026-08-13 to 2026-08-27) | datestamped entries, verbatim spine for public messages, routing only for cc chains | [`m5_32_convo.md`](m5_32_convo.md) + a pointer at the tail of [`m5_21_convo.md`](m5_21_convo.md) |
+| Q48 receipt | the variant-B half SUPERSEDED (author-retracted, "always g⁴"); the invariance half answered by "preferably Lorentz invariant"; successor task M5.32 | [`m5_question_tracker.md`](../m5_question_tracker.md) |
+| New questions Q49 to Q59, opened at PLAN, not sent | the term-class definitions, the η-null persistence, the coefficient-selection principle, the Newton observable construction, the energy-invariance bar, the ω-odd premise, the static-sector footprint, the radiation window, IVP well-posedness, the g / δ scaling, the baryon consequences | tracker rows + details |
+| The author's corpus items from the exchange | FILED 2026-08-27 (user decision) with `_CITATIONS.md` rows (67 local-only documents): the 2026-08-17 Newton notebook (`duda_2026-08-17_newton_for_boost_hedgehogs.pdf`, reproduced at R0), the 2026-08-20 current-Lagrangian formula image, the 2026-08-23 score-board screenshot, the 2026-08-26 atomic-models campaign text, the 2026-08-27 negative-radiation-pressure slide, the 2026-08-27 BSE / SE "needed precise simulations" slide, and the row for Fleury's 2026-08-02 knot note (already local) | `theory/` (gitignored corpus) + `theory/_CITATIONS.md` (tracked) |
+| The M5 roadmap | the M5.32 row at the head of BACKLOG (moves to IN PROGRESS at "go"); a CHANGE-LOG entry | [`m5_roadmap.md`](../m5_roadmap.md) |
+| The canonical registry + briefing | untouched at PLAN (nothing measured); the sweep rides the close | |
+
+### 15. Artifact map
+
+| Artifact | Path |
+| --- | --- |
+| Physics module (the term registry, equations in the docstring) | `research/scripts/m5_32_lagrangian.py` |
+| Rung scripts | `research/scripts/m5_32_r<k>_<arm>_<name>.py` (audits: `m5_32_r<k>_audit_<name>.py`) |
+| Data | `research/data/m5_32_r<k>_*.json` (tracked), local `.npz` (gitignored, in `_DATASETS.md`), `research/data/m5_32_ledger.json` (tracked) |
+| Plots | `research/plots/m5_32_r<k>_*.png`, embedded in the note and the RUNG LOG |
+| Checkpoints | `research/checkpoints/m5_32_progress.md` (gitignored) |
+| Findings | `research/findings/m5_32_note.md` (method note), `research/findings/m5_32_term_catalog.md` |
+| Records | this file; [`m5_32_convo.md`](m5_32_convo.md) |
+
+## RUNG LOG
+
+> Appended by the run, one row per rung at its close (the deviations log lives here too). Empty at PLAN.
+
+| Rung | Start / end (UTC) | Hypothesis | Audited verdict | Gates moved | Deviation | Next |
+| --- | --- | --- | --- | --- | --- | --- |
