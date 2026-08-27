@@ -34,6 +34,12 @@ enough to choose one on evidence.
 | (a) 2I-equivariant grid | an S³ grid (embedding or intrinsic charts) with the 120-element identification imposed as an equivariance/ghost-cell map | the identification map bookkeeping; chart seams; where the Möbius edge / cone structure of the MIT arena lives on the grid |
 | (b) Spectral in 2I-symmetric harmonics | expand fields in S³ harmonics restricted to 2I-invariant (or covariant) subspaces; evolve coefficients | nonlinear terms need convolution handling (cost grows fast with band limit); but the basis IS the McKay representation theory, so slot structure is manifest |
 
+**Route (b) is elected as M8.5-C (2026-08-26, author's call; protocol PENDING).** After M8.4 closed
+unresolved with no dynamics run, route (b) was chosen to be built as an actual dynamics substrate,
+target-free by construction, under its own roadmap row. Its preregistration is not filed, so it is
+a successor with its protocol pending, not a running task. See the [M8.5-C roadmap
+row](../m8_roadmap.md) and [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
+
 ### Independent reproduction, M8.5-A (added 2026-07-28)
 
 The M8.2 lock § 3 puts an obligation on this task:
