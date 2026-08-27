@@ -129,16 +129,20 @@ discretization work, which is not a repair to P1A and does not reopen its outcom
    computationally separate routes, mutation-armed, exit 0).
 
 2. **CLOSED UNRESOLVED (2026-08-26).** The preregistration was FILED 2026-08-23 and its § 10b
-   amended item 1's nomination: `M4_int` takes a structural N/A and `M4L_Erho`, one flat bundle
-   `E_ρ` per irrep, is the target-bearing family. The pilot ran and stopped at qualification.
+   amended item 1's nomination. `M4L_Erho` is the target-bearing family: nine flat bundles `E_ρ`,
+   one per irrep, eight target-bearing plus the `E_R0` null control. `M4_int`'s eight-slot
+   physical-section comparison takes a structural N/A on the § 2 calculation and no `M4_int`
+   dynamics are executed under the filing, though § 0 keeps it as a scope and control object and
+   leaves a later three-sector study its own appendix. P1A, the pre-target qualification phase,
+   RAN and CLOSED; the nonlinear pilot is BLOCKED.
    P1A split its verdict, the invariant-subspace estimator passing and the assembled operator
    failing spectral qualification globally, a failure P1A adjudicated SUBSTANTIVE rather than a
    defect of the measuring machinery. The [M8.9](m8_9_task_details.md) diagnostic
    (`S1b-SPECTRAL`) then ruled out fibre transport as the necessary defect without separating
    base from reduction, so no localized repair target inside that lineage was identified. Only
    ONE dynamics substrate was ever built; the alternate the M8.5 charter contemplated was never
-   built as one. No M8.4 target field equation was integrated, no observable was estimated on a
-   candidate, and none of the 8 nontrivial sectors was spent. This is a chassis failure,
+   built as one. No M8.4 target field equation was integrated, no scored observable of § 7 was
+   estimated on a candidate, and none of the 8 nontrivial sectors was spent. This is a chassis failure,
    not a physics verdict: nothing here falsifies MIT dynamics and nothing supports it. The
    kinematic close in item 1 stands unchanged. Record, with the inheritance list and the
    reopening path: [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).

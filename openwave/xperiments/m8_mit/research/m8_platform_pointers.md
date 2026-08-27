@@ -86,8 +86,10 @@ was never gathered. It is now commissioned target-free as M8.5-C.
 ## 7. The 3D rendering port (LATER: gated on validated field dynamics, task M8.7)
 
 Do not start here. Rendering comes after an M8 dynamics validates in-platform
-(the [`m8_roadmap.md`](m8_roadmap.md) gate). No such dynamics exists yet: M8.4 closed
-unresolved on 2026-08-26 without a run, so the gate now waits on M8.5-C. When it does, this is the port path an AI
+(the [`m8_roadmap.md`](m8_roadmap.md) gate), a condition the M8.4 closure did not change.
+No such dynamics exists yet: M8.4 closed unresolved on 2026-08-26 with no target
+configuration executed. The route is M8.5-C, then a fresh preregistration, then a
+validated dynamics; M8.5-C alone does not open the gate. When it does, this is the port path an AI
 agent should follow:
 
 | Step | Pointer |

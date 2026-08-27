@@ -26,7 +26,7 @@
 
 | TaskID | Title | Description | Gate |
 | --- | --- | --- | --- |
-| [M8.7](tasks/m8_7_task_details.md) | The 3D rendering port | Port the M5-style interactive stack (per-model `_launcher.py` + `engine1-4` split + the shared GGUI rendering in `openwave/i_o/`) so the validated S³/2I dynamics runs as a live demo. Do NOT start this before the gate: rendering an unvalidated dynamics showcases nothing. Porting instructions for AI agents: [`m8_platform_pointers.md § 7`](m8_platform_pointers.md) | field dynamics validated in-platform. The M8.4 lineage CLOSED UNRESOLVED 2026-08-26, so this gate is now reached only through the [M8.5-C](findings/m8_4_closeout.md) reopening path, not by construction unreachable |
+| [M8.7](tasks/m8_7_task_details.md) | The 3D rendering port | Port the M5-style interactive stack (per-model `_launcher.py` + `engine1-4` split + the shared GGUI rendering in `openwave/i_o/`) so the validated S³/2I dynamics runs as a live demo. Do NOT start this before the gate: rendering an unvalidated dynamics showcases nothing. Porting instructions for AI agents: [`m8_platform_pointers.md § 7`](m8_platform_pointers.md) | field dynamics validated in-platform: CONDITION UNCHANGED, only the routing. Three links: M8.5-C qualifies, a fresh preregistration runs a target, that result opens this gate ([closeout](findings/m8_4_closeout.md)). Chassis qualification alone does not open it |
 
 ---
 
@@ -73,7 +73,7 @@
 | [M8.6](tasks/m8_6_task_details.md) | MIT-M5 lepton-hierarchy comparison (gated readiness audit) | ❌ CLOSED WITHOUT RUNNING, row retired to Done 2026-08-08 (maintainer call). Deliverable = the readiness audit + gate record: the named target proved circular (2026-07-29), the amended condition's last admissible route (M5.21.11 route (b)) failed terminally (2026-08-07), so the comparison is permanently inadmissible as instrumented ([finding 9](tasks/m8_6_task_details.md)) | 2026-08-07 |
 | [M8.8](tasks/m8_8_task_details.md) | Independent-method reproduction of the M8.3 torsion closed forms | ✅ REPRODUCED under the protocol's `convention difference` category (2026-08-22), closed out with the author's provenance layer ([#459](https://github.com/openwave-labs/openwave/pull/459)): a context-isolated fresh implementer rebuilt the torsion from the based chain complex; the § 8 adjudication found 8/8 rows and 4/4 identities exact in `Q(φ)` under the global inverse at `R7`. Attempt 1, a `structural failure` on a one-string interface mismatch, stays on record; [record](findings/m8_8_adjudication_record.md) | 2026-08-22 |
 | [M8.9](tasks/m8_9_task_details.md) | Discrete-spectrum source localization | ✅ ADJUDICATED [`S1b-SPECTRAL`](findings/m8_9_s1b_closeout.md): a trivial fibre at high harmonic level already gives a non-real compressed action, so nontrivial fibre transport is NOT NECESSARY. Base RBF-FD discretization or scalar quotient reduction implicated, NOT separated. S1 closed instrument defect; S2 not triggered; closed at that claim ceiling | 2026-08-26 |
-| [M8.4](tasks/m8_4_task_details.md) | Lagrangian-family survey on S³/2I | ❌ CLOSED UNRESOLVED, row retired to Done 2026-08-26 (author's call) [closeout](findings/m8_4_closeout.md): preregistration FILED 2026-08-23 on `M4L_Erho`; the pilot ran and stopped at qualification, the one substrate built failing spectral qualification and the alternate spectral substrate never built; NO dynamics run and NO sector spent, all eight unspent. Not a verdict on MIT dynamics and no attribution of the defect. Successor chassis commissioned target-free as M8.5-C | 2026-08-26 |
+| [M8.4](tasks/m8_4_task_details.md) | Lagrangian-family survey on S³/2I | ❌ CLOSED UNRESOLVED, row retired to Done 2026-08-26 (author's call) [closeout](findings/m8_4_closeout.md): preregistration FILED 2026-08-23 on `M4L_Erho`; P1A ran and closed, the nonlinear pilot BLOCKED, the one substrate built failing and the alternate never built; NO target configuration executed, NO sector spent. Not a verdict on MIT dynamics, no attribution of the defect. Successor elected target-free as M8.5-C | 2026-08-26 |
 
 ## CHANGE-LOG
 
@@ -166,15 +166,19 @@ unseparated and S2 was not triggered. Record:
 
 **M8.4 CLOSED UNRESOLVED: TWO INSTRUMENTS FAILED, THE SCIENCE NEVER RAN (2026-08-26).** The
 preregistration announced above was FILED 2026-08-23, and it did not name `M4_int`: § 10b amends
-that nomination, giving `M4_int` a structural N/A and naming `M4L_Erho`, one flat bundle per irrep,
-as the target-bearing family. The pilot ran and stopped at qualification. Only ONE dynamics
+that nomination. `M4L_Erho` is the target-bearing family: nine flat bundles `E_ρ`, one per irrep of
+2I, eight target-bearing plus the `E_R0` null control. `M4_int`'s eight-slot physical-section
+comparison takes a structural N/A on the § 2 calculation and the filing executes no `M4_int`
+dynamics, while § 0 preserves it as a scope and control object and leaves a later three-sector
+dynamical study to its own compact appendix. P1A, the pre-target qualification phase, RAN and
+CLOSED; the nonlinear pilot is BLOCKED. Only ONE dynamics
 substrate was ever built, and it failed; the alternate the M8.5 charter contemplated was never
 built as a dynamics substrate at all, so no target configuration was executed. The RBF-FD quotient backend, adjudicated green for its own M8.5-B target, does not
 meet the M8.4 observables' accuracy floor; the substrate-localization diagnostic that followed
 ([M8.9](tasks/m8_9_task_details.md), `S1b-SPECTRAL`) established that fibre transport is not
 the necessary defect and left base-vs-reduction unseparated, so no localized repair target was
 identified inside that lineage. This closes the task on chassis grounds, not on physics: no M8.4
-target field equation was integrated, no observable was estimated on a candidate, and none of the eight nontrivial McKay
+target field equation was integrated, no scored observable of the filing's § 7 was estimated on a candidate, and none of the eight nontrivial McKay
 sectors was spent, so every one remains available to a successor. Nothing here falsifies MIT
 dynamics and nothing here supports it. The structural results the task did produce stand
 unchanged and keep their own records: the kinematic close above remains a theorem, and the

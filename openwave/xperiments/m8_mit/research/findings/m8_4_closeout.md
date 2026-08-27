@@ -1,18 +1,22 @@
 # M8.4 closeout: the dynamics program closes UNRESOLVED, on two instrument failures
 
-> **Closed 2026-08-26, unresolved.** The one dynamics substrate that was built did not qualify,
-> and the alternate the M8.5 charter contemplated was never built as a dynamics substrate at all.
-> **No M8.4 target configuration was ever run. No nontrivial sector was spent; all eight remain
+> **Closed 2026-08-26, unresolved.** P1A, the pre-target qualification phase, RAN and CLOSED. The
+> nonlinear pilot is BLOCKED: the one dynamics substrate that was built did not qualify, and the
+> alternate the M8.5 charter contemplated was never built as a dynamics substrate at all.
+> **No target configuration was ever executed. No nontrivial sector was spent; all eight remain
 > unspent.**
 > Nothing here is a verdict on MIT dynamics, and nothing here attributes the numerical defect to
 > a specific stage. The successor chassis is commissioned separately as M8.5-C, target-free.
 
 ## What this closeout does and does not say
 
-**Says:** the M8.4 preregistration was FILED 2026-08-23, naming `M4L_Erho`, one flat bundle `E_ρ`
-per irrep, as the target-bearing family. `M4_int` had already taken a structural N/A under that
-filing's § 2 and was never a dynamics object. This program then failed to produce a numerical
-substrate trustworthy enough to run `M4L_Erho`, so no target configuration was ever executed.
+**Says:** the M8.4 preregistration was FILED 2026-08-23, naming `M4L_Erho` as the target-bearing
+family: NINE flat bundles `E_ρ`, one per irrep of 2I, of which eight are target-bearing and `E_R0`
+is the mandatory null control. Its § 2 gives `M4_int`'s eight-slot physical-section comparison a
+structural N/A, and the filing executes no `M4_int` dynamics; § 0 preserves `M4_int` as a scope and
+control object, and says a later three-sector dynamical study, if still worth doing, gets its own
+compact appendix. This program then failed to produce a numerical substrate trustworthy enough to
+run `M4L_Erho`, so no target configuration was ever executed.
 
 **Does NOT say**, and no reader may infer:
 
@@ -20,8 +24,11 @@ substrate trustworthy enough to run `M4L_Erho`, so no target configuration was e
   OQ1's TWISTED branch is untested; its NATIVE branch was already closed by the kinematic close,
   and neither of those is a dynamics verdict. "Untested" is not a promise: even a successful
   successor answers only the narrower question, per the ceiling at the end of this document;
-- that any sector was scored, spent, or partially spent. The `M4_int` structural N/A and the
-  kinematic close stand as they were; the eight target bundles are unspent;
+- that any sector was scored, spent, or partially spent. **No scored observable of the
+  preregistration's § 7 was estimated on any candidate.** P1A did ship per-sector numbers, the
+  `‖P_spec‖` of 2.2 to 3.1 and the invariance residuals across all nine sectors, but those are
+  free-limit estimator qualification, zero-credit and expressly permitted by § 8. The `M4_int`
+  structural N/A and the kinematic close stand as they were; the eight target bundles are unspent;
 - that the numerical defect is attributed. The S1b adjudication left base RBF-FD assembly versus
   scalar quotient reduction explicitly UNSEPARATED, and this closeout does not separate them
   either;
@@ -34,12 +41,15 @@ substrate trustworthy enough to run `M4L_Erho`, so no target configuration was e
 
 **Chassis 1, RBF-FD on the M8.5-B quotient backend.** P1A
 ([closeout](m8_4_p1a_closeout.md), #468) ran as the pilot's chartered qualification phase and split
-its verdict: the invariant-subspace estimator PASSED, and the assembled operator FAILED spectral
-qualification globally. P1A's own adjudication is that this failure is SUBSTANTIVE rather than
+its verdict. PASSED: P0 substrate qualification, the invariant-subspace estimator P1A.0 to P1A.3,
+the fixed-`k = 110` refinement family, and cloud admissibility with mutation discrimination.
+NEGATIVE: `M_h` self-adjointness convergence, the disposition most directly about the property this
+closure turns on. FAILED globally: imaginary-contamination qualification, so no per-sector
+scientific eligibility verdicts were issued. P1A's own adjudication is that this failure is SUBSTANTIVE rather than
 another defect of the measuring machinery. Imaginary contamination ran from `5.95e-14` on the
 `R_0` control to `1.8e-01` on `R_2`, and a precision ladder holding `L_h` byte-fixed showed it
 unchanged from float64 through 50-digit arithmetic: a property of the assembled matrix, not the
-eigensolver. The pilot was blocked with no target spent.
+eigensolver. That is where the nonlinear pilot stopped, with no target spent.
 
 **The localization, M8.9.** S1 ([note](../m8_9/s1_note.md), #472) closed INSTRUMENT DEFECT: the
 60-seed `R_0` block does not reproduce its own analytic decomposition, so the global spectrum
@@ -95,9 +105,10 @@ The negatives are narrowing rather than empty:
 
 | Item | Before | After |
 | --- | --- | --- |
-| M8.4 row | BACKLOG, pilot blocked | DONE, closed unresolved |
+| M8.4 row | BACKLOG, nonlinear pilot blocked | DONE, closed unresolved (author's call) |
 | M8.9's deferred COMMISSIONING decision | "a decision this closeout does not make" | not commissioned; the technical base-vs-reduction question stays open and unanswered |
-| M8.7 gate | gated on an M8.4-lineage result | gated still, on the SAME condition; only the route changes, to M8.5-C then a fresh preregistration then a validated dynamics |
+| M8.7 gate CONDITION | a validated in-platform dynamics | UNCHANGED, not touched by this closeout |
+| M8.7 gate ROUTING PROSE | pointed at an M8.4-lineage result | repointed: M8.5-C, then a fresh preregistration, then a validated dynamics |
 | MODELS.md dynamics rows | verdicts `not yet tested`, prose naming M8.4 as the live program | verdicts UNCHANGED; prose repointed, since the program named there has closed |
 | The eight target sectors | unspent | unspent |
 
@@ -120,19 +131,21 @@ which covers every byte above the memo's boundary comment and is checked with
 The boundary convention is load-bearing: a range that includes the marker line yields a different
 digest. Text may be appended below the boundary without disturbing the freeze.
 
-**Two errata are filed below that boundary, and this closeout inherits the corrected text, not the
-frozen text.** The memo's aperture table closes projector tolerance and oversampling by "gate 4,
+**THREE errata are filed below that boundary, and this closeout inherits the corrected text, not
+the frozen text.** (1) The aperture table closes projector tolerance and oversampling by "gate 4,
 gate 11a", but the adopted decision is 11(b), which makes 11(a) inoperative; gate 4 is unaffected
-and still closes the aperture. And the Option C rationale reads "Two chassis failed", which
-contradicts the memo's own record that only the grid was built as a dynamics substrate. The
-corrected proposition is the one used throughout this document: the one chassis built failed
-qualification, the alternate was never built as a dynamics substrate, and no target sector was
-spent. Neither erratum changes the decision, and neither touches the hashed region; the digest
-above recomputes identical before and after both.
+and still closes the aperture. (2) The Option C rationale reads "Two chassis failed", which
+contradicts the memo's own inputs table; corrected to the proposition used throughout this
+document, that the one chassis built failed qualification, the alternate was never built as a
+dynamics substrate, and no target sector was spent. (3) The execution sequence reads "MODELS.md
+untouched", and it was not: two prose lines named M8.4 as the live program and both were repointed.
+The narrower true statement is that its VERDICT CELLS are untouched, both already reading `🚧 not
+yet tested` and still doing so.
 
-The memo also asserted that `MODELS.md` needed no edit. It did: two prose lines named M8.4 as the
-live program. The verdict cells were correct and are untouched. Recorded here because this column
-corrects frozen documents on the record rather than routing around them.
+None of the three changes the decision, none touches the hashed region, and the digest above
+recomputes identical with all three present. All three are filed where the claims live rather than
+handled as commentary elsewhere, which is the same rule the #375 sweep applies to this column's own
+documents.
 
 **Option C, cubic only.** The spectral/Galerkin chassis is elected as **M8.5-C**, target-free
 simulation engineering under the charter that already names route (b). Its protocol is a separate
