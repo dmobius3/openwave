@@ -6,7 +6,8 @@
 > **No target configuration was ever executed. No nontrivial sector was spent; all eight remain
 > unspent.**
 > Nothing here is a verdict on MIT dynamics, and nothing here attributes the numerical defect to
-> a specific stage. The successor chassis is commissioned separately as M8.5-C, target-free.
+> a specific stage. The successor chassis is elected separately as M8.5-C, target-free, with its
+> protocol pending.
 
 ## What this closeout does and does not say
 
