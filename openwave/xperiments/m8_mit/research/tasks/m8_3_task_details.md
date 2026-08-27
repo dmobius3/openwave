@@ -1,8 +1,9 @@
 # M8.3: The mass-formula reproducer script
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: Implementation complete; PR
-> pending (2026-07-28, author-run, normal fork → PR → review workflow, no independence
-> firewall). Method note: [`../findings/m8_3_method_note.md`](../findings/m8_3_method_note.md).
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: ✅ COMPLETE, merged via
+> [#362](https://github.com/openwave-labs/openwave/pull/362) (2026-07-28, author-run, normal
+> fork → PR → review workflow, no independence firewall).
+> Method note: [`../findings/m8_3_method_note.md`](../findings/m8_3_method_note.md).
 > This is a scaffold-stage planning aid written by the maintainers (2026-07-21); the author
 > owns the column and has amended it below with the executed findings.
 
