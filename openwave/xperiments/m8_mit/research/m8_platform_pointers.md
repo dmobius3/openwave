@@ -69,7 +69,13 @@ guidance on what a compact-arena port must avoid.
 ## 6. Quotient-manifold simulation engineering (task M8.5)
 
 No existing column runs a curved compact arena, so this is new infrastructure. Two
-routes, both viable; prototype before committing:
+routes, both viable; prototype before committing.
+
+**Status 2026-08-26.** Route (a) was built and adjudicated (`M85B-ADJ-07`) and its dynamics
+substrate did NOT qualify for the M8.4 observables; see
+[`findings/m8_4_closeout.md`](findings/m8_4_closeout.md). Route (b) was never built as a
+simulation backend, only as character-averaging certification machinery, so its dynamics evidence
+was never gathered. It is now commissioned target-free as M8.5-C.
 
 | Route | How | Trade-offs |
 | --- | --- | --- |
@@ -80,7 +86,10 @@ routes, both viable; prototype before committing:
 ## 7. The 3D rendering port (LATER: gated on validated field dynamics, task M8.7)
 
 Do not start here. Rendering comes after an M8 dynamics validates in-platform
-(the [`m8_roadmap.md`](m8_roadmap.md) gate). When it does, this is the port path an AI
+(the [`m8_roadmap.md`](m8_roadmap.md) gate), a condition the M8.4 closure did not change.
+No such dynamics exists yet: M8.4 closed unresolved on 2026-08-26 with no target
+configuration executed. The route is M8.5-C, then a fresh preregistration, then a
+validated dynamics; M8.5-C alone does not open the gate. When it does, this is the port path an AI
 agent should follow:
 
 | Step | Pointer |
