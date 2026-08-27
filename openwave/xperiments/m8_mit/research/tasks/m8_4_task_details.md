@@ -1,7 +1,9 @@
 # M8.4: The Lagrangian-family survey on S³/2I
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 PLANNED, gated by
-> M8.2 + M8.5. This is a scaffold-stage planning aid written by the maintainers
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: ✅ CLOSED UNRESOLVED
+> (2026-08-26), on instrument grounds with no dynamics run:
+> [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md). The PLANNING text below is
+> preserved as filed and is no longer a live work order. This is a scaffold-stage planning aid written by the maintainers
 > (2026-07-21); the author owns the column and may amend everything here.
 
 ## PLANNING
@@ -125,3 +127,14 @@ discretization work, which is not a repair to P1A and does not reopen its outcom
    [`../findings/m8_4_kinematic_close.md`](../findings/m8_4_kinematic_close.md) +
    [`../scripts/m8_4_kinematic_check.py`](../scripts/m8_4_kinematic_check.py) (two
    computationally separate routes, mutation-armed, exit 0).
+
+2. **CLOSED UNRESOLVED (2026-08-26).** The `M4_int` preregistration was filed and frozen, and
+   its pilot never ran. Two numerical substrates failed qualification for reasons internal to
+   the instrument: the RBF-FD quotient backend does not meet the M8.4 observables' accuracy
+   floor, and the [M8.9](m8_9_task_details.md) localization diagnostic (`S1b-SPECTRAL`) ruled
+   out fibre transport as the necessary defect without separating base from reduction, so no
+   repair target was identified. No field equation was integrated, no observable was estimated
+   on a candidate, and none of the 8 nontrivial sectors was spent. This is a chassis failure,
+   not a physics verdict: nothing here falsifies MIT dynamics and nothing supports it. The
+   kinematic close in item 1 stands unchanged. Record, with the inheritance list and the
+   reopening path: [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).

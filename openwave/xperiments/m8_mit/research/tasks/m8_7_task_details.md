@@ -1,8 +1,10 @@
 # M8.7: The 3D rendering port (LATER, gated)
 
 > Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md) § LATER. Status: 🚧 GATED: do
-> not start before field dynamics validates in-platform (an M8.4-lineage result with
-> an audited method note). This is a scaffold-stage planning aid written by the
+> not start before field dynamics validates in-platform, with an audited method note.
+> The M8.4 lineage that was to supply it CLOSED UNRESOLVED 2026-08-26 with no dynamics
+> run ([closeout](../findings/m8_4_closeout.md)), so the gate now waits on the
+> target-free M8.5-C chassis; the gate itself is unchanged. This is a scaffold-stage planning aid written by the
 > maintainers (2026-07-21); the author owns the column and may amend everything here.
 
 ## PLANNING
