@@ -22,7 +22,7 @@ the closeout's account of it.
 ## These copies are verbatim bytes, so do not reformat them
 
 **Leave every file above untouched by any style or cleanup pass. This page is the only file here
-that may be edited.** The four briefs and the gate are byte-identical to the entries that
+that may be edited.** The three briefs and the gate are byte-identical to the entries that
 authenticate them: `qualification_TASK.md`, `round1_TASK.md` and `qualification_room_import_gate.py`
 against the qualification manifest's `TASK.md`, `prior/TASK_ROUND1.md` and `room_import_gate.py`,
 and `adjudication_TASK.md` against the adjudication manifest's `TASK.md`. The two manifests are
