@@ -1,26 +1,30 @@
 #!/usr/bin/env python3
-"""M4/EWT - Newtonian Force from EMC Push-Out Pressure (exact domain numerical integration)
+"""M4/EWT - Newtonian Force Mutual Consistency Check via EMC Push-Out
 
 OpenWave criterion:
     Gravity: Newton limit (GEM)
-    Test: attractive 1/r² between masses via numerical field overlap
+    Test: Mutual consistency of monopole amplitude A = 2GM/c², push-out
+          coupling K_emc = c⁴/(16πG), and 4π spatial overlap coefficient.
 
-Physics & Normalization:
-1. Shell Theorem Effect: The 3D overlap integral grad(-A1/r1) . grad(-A2/r2)
-   vanishes for r < R and yields 4*pi/r^2 for r >= R.
-2. Complete Spatial Quadrature: Transforming r -> R/(1-t) maps r in [R, inf)
-   to t in [0, 1), avoiding truncation errors at finite r_max.
+Physics & Structural Identification:
+1. Exact Domain Integration: Mapped radial integration r = R/(1-t) over
+   t in [0, 1) evaluates the pre-computed angular result J(r) = 4π/r² for r >= R.
+2. Algebraic Identity & Consistency Gate: G, c, M, and R cancel identically
+   in F_emc ≡ F_Newton. This script serves as a consistency check discriminating
+   against incorrect normalization parameters (e.g., angular factor 4π, amplitude
+   scaling, or stress-tensor coupling 16πG).
+3. Residual Floor: The reported ~1.2e-5 % difference represents accumulated
+   floating-point roundoff of the midpoint summation over a constant integrand,
+   not a physical residual.
 """
 
 import math
 
 
 def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
-    """Numerically evaluate the spatial overlap integral U_int(R) over the
+    """Evaluates the spatial overlap integral U_int(R) over r in [R, inf)
 
-    entire infinite domain r in [R, inf) via coordinate transformation t in [0, 1).
-
-    r(t) = R / (1 - t)  ==> dr = R / (1 - t)^2 dt
+    using coordinate transformation t in [0, 1).
     """
 
     def potential_energy_at(dist):
@@ -28,21 +32,16 @@ def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
         u_sum = 0.0
 
         for i in range(num_pts):
-            # Midpoint quadrature for t in [0, 1)
             t = (i + 0.5) * dt
-
-            # r maps from dist to infinity as t goes from 0 to 1
             r = dist / (1.0 - t)
             dr_dt = dist / ((1.0 - t) * (1.0 - t))
 
-            # Exact angular integral for r >= R is 4*pi / r^2
+            # Angularly integrated overlap for r >= R
             angular_integral = 4.0 * math.pi / (r * r)
-
             u_sum += angular_integral * dr_dt * dt
 
         return A1 * A2 * u_sum
 
-    # Numerical differentiation: F = -dU/dR
     dR = R * 1e-6
     u_plus = potential_energy_at(R + dR)
     u_minus = potential_energy_at(R - dR)
@@ -82,9 +81,10 @@ def main():
     print(f"    F_Newton          = {F_newton:.12e} N")
     print(f"    Rel. diff.        = {rel_diff:.12e}%")
 
+    # Gate threshold set to 1e-3% to verify mutual algebraic consistency
     if rel_diff < 1e-3:
         print(
-            "    RESULT: PASS (Newtonian 1/r² force perfectly recovered from field overlap)"
+            "    RESULT: PASS (Mutual consistency of A, K_emc, and 4π overlap verified)"
         )
     else:
         print("    RESULT: FAIL")
