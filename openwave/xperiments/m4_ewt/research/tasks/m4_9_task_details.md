@@ -1,13 +1,13 @@
-# M4.9 - Ab-Initio Emergent Encoding from Lattice Dynamics
+# M4.9 - Emergent Encoding from Lattice Dynamics
 
 ## Status
 DONE (post-hoc)
 
 ## Criterion
-`Gravity: local metric phenomena` ó foundational encoding derivation
+`Gravity: local metric phenomena` ‚Äî foundational encoding derivation
 
 ## Objective
-Show in-platform that the two metric encodings used in M4.3ñM4.5 emerge
+Show in-platform that the two metric encodings used in M4.3‚ÄìM4.5 emerge
 from lattice dynamics without being assumed.
 
 The required encodings are:
@@ -17,27 +17,28 @@ The required encodings are:
 
 ## Method
 
-1. Define a microscopic pair potential \(V(r) = -V_0 \ln r\).
+1. Define the microscopic pair potential \(V(r)=V_0/r\).
 2. Derive the lattice stiffness from
-   \(k(\eta) = d^2V/dr^2|_{r=1/\eta}\).
-3. Set the lattice mass density to \(m \propto \eta\).
-4. Simulate pulse propagation on a uniform lattice.
-5. Fit the wave-speed exponent \(\beta\).
-6. Simulate an oscillator in a density well.
-7. Fit the oscillator-frequency exponent \(\gamma\).
+   \(k(\eta)=d^2V/dr^2|_{r=1/\eta}\).
+3. Keep the mass per lattice site fixed at \(m_0\).
+4. Use physical wave speed
+   \(v_{\text{phys}}=a(\eta)\sqrt{k/m_0}\).
+5. Measure the wave-speed exponent \(\beta\).
+6. Derive the oscillator-frequency exponent from
+   \(f=v_{\text{phys}}/L\).
 
 ## Result
 
-- Stiffness exponent: \(\alpha = 1.999997\)
-- Wave-speed exponent: \(\beta = 0.502855\)
-- Oscillator exponent: \(\gamma = 0.498444\)
+- Stiffness exponent: \(\alpha = 3.000002\)
+- Wave-speed exponent: \(\beta = 0.501714\)
+- Oscillator exponent: \(\gamma = 0.501714\)
 
 All three are consistent with the expected values.
 
 ## Interpretation
 
-The encodings are emergent. They are derived from the microscopic
-lattice dynamics and are not inserted by hand.
+The encodings are emergent. They are derived from the corrected
+microscopic lattice dynamics.
 
 ## Artifacts
 
@@ -46,9 +47,9 @@ lattice dynamics and are not inserted by hand.
 
 ## Reference
 
-Enhanced EWT manuscript, version 4.5.11:
-[DOI: 10.5281/zenodo.22133680](https://doi.org/10.5281/zenodo.22133680)
+Enhanced EWT manuscript, version 4.5.12:
+[DOI: 10.5281/zenodo.22140646](https://doi.org/10.5281/zenodo.22140646)
 
 Relevant section:
 
-- ÑEmergent Metric Encodings from Lattice Dynamicsî
+- ‚ÄûEmergent Metric Encodings from Lattice Dynamics‚Äù

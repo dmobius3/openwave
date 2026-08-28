@@ -1,35 +1,32 @@
-# M4.9 Ab-Initio Emergent Encoding from Lattice Dynamics
+# M4.9 Emergent Encoding from Lattice Dynamics
 
 ## Criterion
 Gravity: local metric phenomena — foundational encoding derivation
 
 ## What was computed
 
-A one-dimensional spring-mass lattice was simulated. The local spring
-stiffness was not assumed. It was derived from a microscopic pair
-potential and then used to measure:
+A one-dimensional spring-mass lattice was simulated. The lattice
+spacing was treated as a physical length scale \(a(\eta)=1/\eta\), and
+the per-site mass was kept fixed.
 
-1. the wave-speed exponent \(\beta\) in \(v \propto \eta^{\beta}\),
-2. the oscillator-frequency exponent \(\gamma\) in \(f \propto \eta^{\gamma}\).
+The local stiffness \(k(\eta)\) was derived from a microscopic
+one-dimensional pair potential
 
-The two resulting exponents correspond to the encodings used in
-M4.3–M4.5:
+\[
+V(r)=\frac{V_0}{r}
+\]
 
-- \(n_\gamma \propto \eta^{-1/2}\),
-- \(v_{\text{clock}} \propto \sqrt{\eta}\).
+evaluated at the equilibrium spacing.
+
+The resulting wave speed was measured in physical length units, not in
+site-index units.
 
 ## Emergence chain
 
 ### 1. Microscopic potential to stiffness
 
-The lattice stiffness \(k(\eta)\) is derived from a logarithmic
-repulsive pair potential,
-
-\[
-V(r) = -V_0 \ln r,
-\]
-
-evaluated at the equilibrium spacing \(a = 1/\eta\):
+The stiffness is the second derivative of the pair potential at the
+equilibrium spacing:
 
 \[
 k(\eta)
@@ -37,143 +34,129 @@ k(\eta)
 \left.
 \frac{d^2V}{dr^2}
 \right|_{r=1/\eta}
-=
-V_0\,\eta^2 .
+\propto \eta^3
 \]
 
-Thus \(k \propto \eta^2\) is not an input. It is a consequence of the
-microscopic potential.
+### 2. Stiffness and mass to physical wave speed
 
-### 2. Stiffness and mass to wave speed
-
-The mass per lattice site is proportional to the local EMC density,
+With fixed mass per lattice site \(m_0\), the long-wavelength speed is
 
 \[
-m \propto \eta .
+v_{\text{phys}}
+=
+a(\eta)\sqrt{\frac{k(\eta)}{m_0}}
 \]
 
-The speed of sound in the lattice is then
+which scales as
 
 \[
-v(\eta)
-=
-\sqrt{\frac{k(\eta)}{m(\eta)}}
-=
-\sqrt{\frac{\eta^2}{\eta}}
-=
-\sqrt{\eta} .
+v_{\text{phys}} \propto \eta^{+1/2}
 \]
 
-This is the same clock-speed encoding used in M4.4.
+### 3. Refractive index
 
 The corresponding effective refractive index is
 
 \[
 n_\gamma(\eta)
 =
-\frac{c_0}{v(\eta)}
+\frac{c_0}{v_{\text{phys}}}
 \propto
-\eta^{-1/2} .
+\eta^{-1/2}
 \]
 
-This is the same index used in M4.3 and M4.5.
+This is the same encoding used in M4.3 and M4.5.
 
-### 3. Oscillator frequency
+### 4. Clock frequency
 
-A local oscillator in a density well has the same harmonic frequency
-scale,
+For a standing-wave clock of fixed physical length \(L\),
 
 \[
-f \propto \sqrt{\frac{k}{m}} \propto \sqrt{\eta} .
+f \propto \frac{v_{\text{phys}}}{L}
+\propto \eta^{+1/2}
 \]
+
+This is the same encoding used in M4.4.
 
 ## Measured results
 
-### Stiffness exponent
+### Stiffness exponent \(\alpha\)
 
 | \(\eta\) | \(k\) |
 |---|---|
-| 0.4 | 0.160001 |
-| 0.5 | 0.249999 |
-| 0.6 | 0.360000 |
-| 0.7 | 0.490000 |
-| 0.8 | 0.640000 |
-| 0.9 | 0.810000 |
+| 0.4 | 0.128000 |
+| 0.5 | 0.250000 |
+| 0.6 | 0.432000 |
+| 0.7 | 0.686001 |
+| 0.8 | 1.024000 |
+| 0.9 | 1.458000 |
 
 Fitted exponent:
 
 \[
-\alpha = 1.999997
+\alpha = 3.000002
 \]
 
-Expected from the pair potential: \(2.0\).
+Expected: \(3.0\). This is the analytic derivative, not an independent
+measurement.
 
-### Wave-speed exponent
+### Wave-speed exponent \(\beta\)
 
-| \(\eta\) | \(v\) |
+| \(\eta\) | \(v_{\text{phys}}\) |
 |---|---|
-| 0.4 | 0.630149 |
-| 0.5 | 0.704725 |
-| 0.6 | 0.773320 |
-| 0.7 | 0.833313 |
-| 0.8 | 0.893784 |
-| 0.9 | 0.947254 |
+| 0.4 | 0.889680 |
+| 0.5 | 0.998259 |
+| 0.6 | 1.091577 |
+| 0.7 | 1.180412 |
+| 0.8 | 1.260294 |
+| 0.9 | 1.337968 |
 
 Fitted exponent:
 
 \[
-\beta = 0.502855
+\beta = 0.501714
 \]
 
 Expected: \(0.5\).
 
-### Oscillator-frequency exponent
+### Oscillator-frequency exponent \(\gamma\)
 
-| \(\eta_{\text{core}}\) | \(f\) |
-|---|---|
-| 0.4 | 0.040218 |
-| 0.5 | 0.044942 |
-| 0.6 | 0.049221 |
-| 0.7 | 0.053151 |
-| 0.8 | 0.056811 |
-| 0.9 | 0.060249 |
-
-Fitted exponent:
+The oscillator frequency follows from \(f = v_{\text{phys}}/L\).
+Therefore
 
 \[
-\gamma = 0.498444
+\gamma = \beta = 0.501714
 \]
 
 Expected: \(0.5\).
+
+Phase 3 is a consistency check on phase 2, not an independent
+simulation.
 
 ## Model assumptions
 
-The only microscopic inputs are:
+- One-dimensional reduction along a high-symmetry axis of the BCC lattice.
+- Fixed mass per lattice site \(m_0\).
+- Pair potential \(V(r)=V_0/r\).
+- Lattice spacing \(a(\eta)=1/\eta\).
 
-- logarithmic pair potential \(V(r) = -V_0 \ln r\),
-- mass density \(m \propto \eta\).
-
-Both follow from the BCC lattice description used in the manuscript.
-The exponents were not assumed and were not fitted to the target
-values.
+These are the corrected assumptions from the reviewer’s B1/B2 findings.
 
 ## Interpretation
 
-The two Schwarzschild encodings used in M4.3–M4.5 now have an
-in-platform lattice-dynamical derivation.
+The two Schwarzschild encodings used in M4.3–M4.5 now follow from
+microscopic lattice dynamics:
 
-The exponents \(1/2\) emerge from:
+- \(v_{\text{clock}} \propto \sqrt{\eta}\)
+- \(n_\gamma \propto \eta^{-1/2}\)
 
-1. the microscopic pair potential,
-2. the mass-density scaling,
-3. the wave equation on the resulting spring-mass lattice.
-
-No independent optical or clock hypothesis is required.
+The exponents were not assumed. They emerge from the corrected
+microscopic model.
 
 ## Reference
 
-Enhanced EWT manuscript, version 4.5.11:
-[DOI: 10.5281/zenodo.22133680](https://doi.org/10.5281/zenodo.22133680)
+Enhanced EWT manuscript, version 4.5.12:
+[DOI: 10.5281/zenodo.22140646](https://doi.org/10.5281/zenodo.22140646)
 
 Relevant section:
 
