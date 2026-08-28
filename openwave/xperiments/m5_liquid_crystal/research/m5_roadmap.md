@@ -10,6 +10,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
+| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS since 2026-08-27 (go 17:03 UTC), the successor of [M5.21.16](tasks/m5_21_16_task_details.md) and [Q48](m5_question_tracker.md#q48-detail): the author's quest (Coulomb kept, Newton from boosts reversed, finite nonzero electron ω, Lorentz-covariant added terms) run as one autonomous rung ladder with an adversarial audit between rungs and pre-registered breakthrough, exhaustion, and safety stops; no per-rung author or user checkpoint. Term classes, gates, harness: the task doc | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
 
 ## BACKLOG
 
@@ -17,7 +18,6 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🚧 PLANNED 2026-08-27, the successor of [M5.21.16](tasks/m5_21_16_task_details.md) and [Q48](m5_question_tracker.md#q48-detail): the author's quest (Coulomb kept, Newton from boosts reversed, finite nonzero electron ω, Lorentz-covariant added terms) run as one autonomous rung ladder with an adversarial audit between rungs and pre-registered breakthrough, exhaustion, and safety stops; no per-rung author or user checkpoint. Term classes, gates, harness: the task doc | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
 | [M5.21.13](tasks/m5_21_13_task_details.md) | The stiffness ladder: does the census survive δ = 1, 3, 10? | 🚧 PLANNED STUB (contributor proposal, was issue #324), RE-SCOPED 2026-08-08 after [M5.21.11](tasks/m5_21_11_task_details.md): the honest label is a DEGENERACY PROBE (how the census dies as biaxiality is removed); the g-axis reading and the stiff-vacuum-continuation verdict are dead (task doc § re-scope). Cheap, non-gating | the proposer courtesy question (task doc) + user "go" |
 | [M5.22.3](tasks/m5_22_3_task_details.md) | The A = 3, 4 stretch: tritium → He3, He4 | 🚧 PLANNED STUB, CONDITIONAL (staged 2026-07-30): runs only if the feasibility gate (A = 3-4 fits box + budget, measured during the earlier subtasks) passes; otherwise rungs 5-6 fold into [M5.22.9](tasks/m5_22_9_task_details.md) and the toy series truncates | [M5.22.4](tasks/m5_22_4_task_details.md) first (its angular momenta could change what the stretch builds on) + measured feasibility + user "go" |
 | [M5.22.5](tasks/m5_22_5_task_details.md) | The knot-table probe: known Tait knots as seeds | 🚧 PLANNED STUB, CONDITIONAL (staged 2026-08-05 from the knot-periodic-table thread: reproduce the KNOWN stable knots before claiming new ones). Non-axisymmetric closed-curve seeding (trefoil, figure-eight, then the Tait table); survival + energy ordering + charge class; excitation spectra as stretch | user pick + the seeding feasibility spike (non-gating breadth) |

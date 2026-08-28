@@ -1,0 +1,845 @@
+{
+ "task": "M5.32 R0 (b) baseline reproduction",
+ "gate": {
+  "rel_tol": 0.001,
+  "abs_floor": 1e-12,
+  "skipped_keys": [
+   "note",
+   "reading",
+   "runtime_s",
+   "statement",
+   "wall_s"
+  ]
+ },
+ "versions": {
+  "python": "3.12.13",
+  "numpy": "2.4.3",
+  "scipy": "1.17.1",
+  "sympy": "1.14.0",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "machine": "arm64"
+ },
+ "items": {
+  "s16a": {
+   "item": "s16a",
+   "script": "m5_21_16_a_symbolic.py",
+   "reference_json": "m5_21_16_symbolic.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run s16a",
+   "reference_runtime_s": 1.9,
+   "runtime_s": 2.2,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 13,
+   "n_ok": 13,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 0.0,
+   "max_rel_diff_key": null,
+   "headlines": [
+    {
+     "key": "N1_baseline_lead",
+     "reference": "-2*T1_2**2 - 2*T1_3**2 - 2*T2_2**2 - 2*T2_3**2 - 2*T3_2**2 - 2*T3_3**2",
+     "reproduced": "-2*T1_2**2 - 2*T1_3**2 - 2*T2_2**2 - 2*T2_3**2 - 2*T3_2**2 - 2*T3_3**2",
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "N2_variantA_lead",
+     "reference": "2*T1_2**2 + 2*T1_3**2 + 2*T2_2**2 + 2*T2_3**2 + 2*T3_2**2 + 2*T3_3**2",
+     "reproduced": "2*T1_2**2 + 2*T1_3**2 + 2*T2_2**2 + 2*T2_3**2 + 2*T3_2**2 + 2*T3_3**2",
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "N4_equals_variantA",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "B1_H_equals_sum_inner_eta",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "B2_Hflip_equals_sum_frobenius",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "all_pass",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "s16b": {
+   "item": "s16b",
+   "script": "m5_21_16_b_field.py",
+   "reference_json": "m5_21_16_field.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run s16b",
+   "reference_runtime_s": 0.7,
+   "runtime_s": 1.2,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 59,
+   "n_ok": 59,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 3.320095031600055e-16,
+   "max_rel_diff_key": "CHAN.rows.rot_z.kin_eta",
+   "headlines": [
+    {
+     "key": "IDENT.u_eta",
+     "reference": 17.24105026098617,
+     "reproduced": 17.24105026098617,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "IDENT.u_flip",
+     "reference": 17.24105026098617,
+     "reproduced": 17.24105026098617,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "IDENT.rel_diff",
+     "reference": 0.0,
+     "reproduced": 0.0,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "INV.eta.so3_rot",
+     "reference": 1.3970372329043047e-16,
+     "reproduced": 1.3970372329043047e-16,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "INV.eta.so13_boost",
+     "reference": 2.9337781890990396e-15,
+     "reproduced": 2.654370742518179e-15,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "INV.eta.so4_compact",
+     "reference": 1.254402946450651,
+     "reproduced": 1.254402946450651,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "INV.flip.so3_rot",
+     "reference": 0.0,
+     "reproduced": 0.0,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "INV.flip.so13_boost",
+     "reference": 0.2617182905369917,
+     "reproduced": 0.2617182905369917,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "INV.flip.so4_compact",
+     "reference": 0.27484974095255593,
+     "reproduced": 0.27484974095255593,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "CHAN.rows.clock_local.kin_eta",
+     "reference": 0.9330980660052386,
+     "reproduced": 0.9330980660052386,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "CHAN.rows.boost_z.kin_eta",
+     "reference": -0.621622010419706,
+     "reproduced": -0.6216220104197061,
+     "rel_diff": 1.7860098355840992e-16,
+     "ok": true
+    },
+    {
+     "key": "CHAN.rows.boost_z.kin_flip",
+     "reference": 0.6216220104197061,
+     "reproduced": 0.6216220104197061,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "CHAN.rows.boost_x.kin_eta",
+     "reference": -0.44526095391805887,
+     "reproduced": -0.44526095391805887,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "CHAN.rows.boost_x.kin_flip",
+     "reference": 0.44526095391805876,
+     "reproduced": 0.44526095391805876,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "DRESS.kin_base_eta",
+     "reference": 341.4070837063188,
+     "reproduced": 341.4070837063188,
+     "rel_diff": 0.0,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "s15f": {
+   "item": "s15f",
+   "script": "m5_21_15_f_guard.py",
+   "reference_json": "m5_21_15_guard.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run s15f",
+   "reference_runtime_s": 1231.1,
+   "runtime_s": 1259.4,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 248,
+   "n_ok": 248,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 0.0,
+   "max_rel_diff_key": null,
+   "headlines": [
+    {
+     "key": "rows[7].E_total",
+     "reference": 119.17992564671401,
+     "reproduced": 119.17992564671401,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[7].omega_star",
+     "reference": 0.5915216990116788,
+     "reproduced": 0.5915216990116788,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[7].bound",
+     "reference": 0.02,
+     "reproduced": 0.02,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[1].E_total",
+     "reference": 33.249861628995276,
+     "reproduced": 33.249861628995276,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[1].omega_star",
+     "reference": 0.2771170512550039,
+     "reproduced": 0.2771170512550039,
+     "rel_diff": 0.0,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "s15g": {
+   "item": "s15g",
+   "script": "m5_21_15_g_fomnarrow.py",
+   "reference_json": "m5_21_15_fom_narrow.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run s15g",
+   "reference_runtime_s": 1876.0,
+   "runtime_s": 2063.2,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 152,
+   "n_ok": 152,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 0.0,
+   "max_rel_diff_key": null,
+   "headlines": [
+    {
+     "key": "omega_min",
+     "reference": 0.59,
+     "reproduced": 0.59,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "E_min_total",
+     "reference": 115.89712898994063,
+     "reproduced": 115.89712898994063,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "interior_minimum",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "E_min_positive",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "s15c": {
+   "item": "s15c",
+   "script": "m5_21_15_c_fixedj.py",
+   "reference_json": "m5_21_15_fixedj.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run s15c",
+   "reference_runtime_s": 2629.4,
+   "runtime_s": 2746.1,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 293,
+   "n_ok": 293,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 0.0,
+   "max_rel_diff_key": null,
+   "headlines": [
+    {
+     "key": "kin_base_clock",
+     "reference": 332.7618214548743,
+     "reproduced": 332.7618214548743,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "E_base_u",
+     "reference": 470.5399951084214,
+     "reproduced": 470.5399951084214,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "EJ[0].omega_star",
+     "reference": 0.7716590031828807,
+     "reproduced": 0.7716590031828807,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "EJ[0].E_total",
+     "reference": -4114.020575778159,
+     "reproduced": -4114.020575778159,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "EJ[1].omega_star",
+     "reference": 0.9466180868473837,
+     "reproduced": 0.9466180868473837,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "EJ[1].E_total",
+     "reference": -4057.2968166381993,
+     "reproduced": -4057.2968166381993,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "EJ[2].omega_star",
+     "reference": 1.3079012723663364,
+     "reproduced": 1.3079012723663364,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "EJ[2].E_total",
+     "reference": -3829.8815675187493,
+     "reproduced": -3829.8815675187493,
+     "rel_diff": 0.0,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "p4": {
+   "item": "p4",
+   "script": "m5_21_4_a_pair.py",
+   "reference_json": "m5_21_4_ladder_it120.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run p4",
+   "reference_runtime_s": null,
+   "runtime_s": 91.2,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 111,
+   "n_ok": 111,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 0.0,
+   "max_rel_diff_key": null,
+   "headlines": [
+    {
+     "key": "rows[0].E",
+     "reference": 1.84653310354201,
+     "reproduced": 1.84653310354201,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[1].E",
+     "reference": 3.4744924982039445,
+     "reproduced": 3.4744924982039445,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[2].E",
+     "reference": 4.887668070984184,
+     "reproduced": 4.887668070984184,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[3].E",
+     "reference": 14.925462442131355,
+     "reproduced": 14.925462442131355,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[4].E",
+     "reference": 15.015420198522937,
+     "reproduced": 15.015420198522937,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[5].E",
+     "reference": 15.00732840613134,
+     "reproduced": 15.00732840613134,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rows[3].charge.far[0]",
+     "reference": 2.0719899038806013,
+     "reproduced": 2.0719899038806013,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "E_single",
+     "reference": 4.93690277926674,
+     "reproduced": 4.93690277926674,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "c2_selfcal",
+     "reference": 0.3970668593705823,
+     "reproduced": 0.3970668593705823,
+     "rel_diff": 0.0,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "p17": {
+   "item": "p17",
+   "script": "m5_17_two_charge.py",
+   "reference_json": "m5_17_two_charge_fixed.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run p17",
+   "reference_runtime_s": 0.7,
+   "runtime_s": 0.8,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 129,
+   "n_ok": 129,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 0.0,
+   "max_rel_diff_key": null,
+   "headlines": [
+    {
+     "key": "E_single_same_box",
+     "reference": 17.664448078831747,
+     "reproduced": 17.664448078831747,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "curves.likepair.fit_A",
+     "reference": 215.9255425985859,
+     "reproduced": 215.9255425985859,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "curves.likepair.fit_E0",
+     "reference": 36.898615417142004,
+     "reproduced": 36.898615417142004,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "curves.likepair.sign_ok",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "curves.antipair.fit_A",
+     "reference": -422.64280700520817,
+     "reproduced": -422.64280700520817,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "curves.antipair.sign_ok",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "curves.likepair.A_over_prediction",
+     "reference": 1.0739255451363927,
+     "reproduced": 1.0739255451363927,
+     "rel_diff": 0.0,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "g11": {
+   "item": "g11",
+   "script": "m5_21_11_g_controls.py",
+   "reference_json": "m5_21_11_garm_controls.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run g11",
+   "reference_runtime_s": null,
+   "runtime_s": 12.4,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 44,
+   "n_ok": 44,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 6.109222629096113e-16,
+   "max_rel_diff_key": "C3_record_match[2].E_min_reproduced",
+   "headlines": [
+    {
+     "key": "C1_vacuum_null[0].E_min",
+     "reference": 0.0,
+     "reproduced": 0.0,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "C1_vacuum_null[1].E_min",
+     "reference": 0.0,
+     "reproduced": 0.0,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "C2_field_identity[0].field_diff_max",
+     "reference": 7.105427357601002e-15,
+     "reproduced": 7.105427357601002e-15,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "C2_field_identity[1].field_diff_max",
+     "reference": 1.4210854715202004e-14,
+     "reproduced": 1.4210854715202004e-14,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "C2_field_identity[2].field_diff_max",
+     "reference": 2.1316282072803006e-14,
+     "reproduced": 2.1316282072803006e-14,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "C3_record_match[0].E_min_reproduced",
+     "reference": 1.1439285097863943,
+     "reproduced": 1.1439285097863943,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "C3_record_match[1].E_min_reproduced",
+     "reference": 1.853416407949986,
+     "reproduced": 1.8534164079499857,
+     "rel_diff": 1.1980286997169128e-16,
+     "ok": true
+    },
+    {
+     "key": "C3_record_match[2].E_min_reproduced",
+     "reference": 2.1807482071533264,
+     "reproduced": 2.180748207153325,
+     "rel_diff": 6.109222629096113e-16,
+     "ok": true
+    },
+    {
+     "key": "all_pass",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "m14c": {
+   "item": "m14c",
+   "script": "m5_21_14_c_minimize.py",
+   "reference_json": "m5_21_14_minimize.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run m14c",
+   "reference_runtime_s": 86.3,
+   "runtime_s": 98.3,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 340,
+   "n_ok": 340,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 2.233093447389617e-15,
+   "max_rel_diff_key": "lattice_crosscheck.kin_rel_dev",
+   "headlines": [
+    {
+     "key": "verdicts.E_corr_at_bstar",
+     "reference": -4333.431513730582,
+     "reproduced": -4333.431513730582,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "verdicts.kin_corr_at_bstar",
+     "reference": -401.3264071328038,
+     "reproduced": -401.3264071328038,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rigid.E_rigid",
+     "reference": -423.5702670274956,
+     "reproduced": -423.5702670274956,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "rigid.b_const_best",
+     "reference": 0.030000000000000002,
+     "reproduced": 0.030000000000000002,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "g_flatness.g32.E_corr",
+     "reference": -4333.431513730582,
+     "reproduced": -4333.431513730582,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "g_flatness.g32.kin_corr",
+     "reference": -401.3264071328038,
+     "reproduced": -401.3264071328038,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "lattice_crosscheck.E_corr_lattice",
+     "reference": -14.903627280687026,
+     "reproduced": -14.903627280687012,
+     "rel_diff": 9.535165129644139e-16,
+     "ok": true
+    },
+    {
+     "key": "lattice_crosscheck.kin_corr_lattice",
+     "reference": -426.26724750100294,
+     "reproduced": -426.267247501003,
+     "rel_diff": 1.3335159854305782e-16,
+     "ok": true
+    },
+    {
+     "key": "DIAG.t1_reached",
+     "reference": -397590.34072294395,
+     "reproduced": -397590.34072294395,
+     "rel_diff": 0.0,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  },
+  "m14a": {
+   "item": "m14a",
+   "script": "m5_21_14_a_symbolic.py",
+   "reference_json": "m5_21_14_symbolic.json",
+   "command": "/opt/anaconda3/envs/openwave312/bin/python3 m5_32_r0_b_baseline.py run m14a",
+   "reference_runtime_s": 245.7,
+   "runtime_s": 273.7,
+   "versions": {
+    "python": "3.12.13",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64"
+   },
+   "n_leaves_compared": 31,
+   "n_ok": 31,
+   "n_fail": 0,
+   "n_missing_in_repro": 0,
+   "max_rel_diff": 0.0,
+   "max_rel_diff_key": null,
+   "headlines": [
+    {
+     "key": "T1.t1_kin_str",
+     "reference": "-8*sum_i |Mdot3 v_i|^2  (omega^2 multiplier)",
+     "reproduced": "-8*sum_i |Mdot3 v_i|^2  (omega^2 multiplier)",
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "T1.t1_kin_identity",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "T1.t1_static_identity",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    },
+    {
+     "key": "BR[0].t1_u_value",
+     "reference": -0.8314826187444952,
+     "reproduced": -0.8314826187444952,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "BR[0].t1_k_value",
+     "reference": -0.5310227197676184,
+     "reproduced": -0.5310227197676184,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "BR[1].t1_u_value",
+     "reference": -0.5825186906630259,
+     "reproduced": -0.5825186906630259,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "BR[1].t1_k_value",
+     "reference": -1.9616870922492093,
+     "reproduced": -1.9616870922492093,
+     "rel_diff": 0.0,
+     "ok": true
+    },
+    {
+     "key": "all_green",
+     "reference": true,
+     "reproduced": true,
+     "rel_diff": null,
+     "ok": true
+    }
+   ],
+   "failures": [],
+   "verdict": "PASS"
+  }
+ },
+ "all_pass": true
+}

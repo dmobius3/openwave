@@ -1,0 +1,470 @@
+{
+ "task": "M5.32",
+ "go_utc": "2026-08-27T17:03:00Z",
+ "conventions_locked": true,
+ "terms": [
+  {
+   "id": "I1",
+   "class": "base",
+   "status": "certified base / control",
+   "hash": "6a0f98b0566c"
+  },
+  {
+   "id": "I1_frob",
+   "class": "base",
+   "status": "certified base / control",
+   "hash": "52986e943822"
+  },
+  {
+   "id": "I2",
+   "class": "C0/C1",
+   "status": "killed at R1 (form-level no-go; G5 fail on every window)",
+   "hash": "dcdcbc8c288c"
+  },
+  {
+   "id": "I3",
+   "class": "C0/C1",
+   "status": "killed at R1 (form-level no-go; G5 fail on every window)",
+   "hash": "16127ef42812"
+  },
+  {
+   "id": "I4",
+   "class": "C0/C1",
+   "status": "killed at R1 (form-level no-go; G5 fail on every window)",
+   "hash": "7c07f9ce5fb2"
+  },
+  {
+   "id": "I5",
+   "class": "C0/C1",
+   "status": "killed at R1 (form-level no-go; G5 fail on every window)",
+   "hash": "4641b8bc272b"
+  },
+  {
+   "id": "I6",
+   "class": "C0/C1",
+   "status": "killed at R1 (form-level no-go; G5 fail on every window)",
+   "hash": "83beacf3db57"
+  },
+  {
+   "id": "V4",
+   "class": "base",
+   "status": "certified base / control",
+   "hash": "0f39a3433275"
+  },
+  {
+   "id": "E1",
+   "class": "C1 (parity-odd)",
+   "status": "killed at R1 (C = 0, pure fixed-J offset; inside the no-go)"
+  },
+  {
+   "id": "E2",
+   "class": "C1 (parity-odd)",
+   "status": "killed at R1"
+  },
+  {
+   "id": "E3",
+   "class": "C1 (parity-odd)",
+   "status": "killed at R1"
+  },
+  {
+   "id": "I1_h",
+   "class": "C2",
+   "status": "CANDIDATE (weak clock) as the lambda-family, lambda >= 1/2; G2/G6 open"
+  },
+  {
+   "id": "J1",
+   "class": "C2",
+   "status": "killed at R2 (cannot stabilize; deform the Coulomb sector)"
+  },
+  {
+   "id": "J2",
+   "class": "C2",
+   "status": "killed at R2 (cannot stabilize; deform the Coulomb sector)"
+  },
+  {
+   "id": "Pgrad",
+   "class": "C2",
+   "status": "killed at R2 (constant omega^2 coefficient = massless boost mode; cannot stabilize)"
+  },
+  {
+   "id": "L_lambda",
+   "class": "C2",
+   "definition": "-4[(1-lambda) I1 + lambda I1_h] - V4",
+   "status": "CLOSED as candidate (G2 failed R3, G3 failed R4); audited C2 control row: covariant, bounded by theorem for lambda >= 1/2, Coulomb kept, clock delocalized, Newton sign unchanged"
+  }
+ ],
+ "rungs": [
+  {
+   "id": "R0",
+   "start_utc": "2026-08-27T17:10:00Z",
+   "end_utc": "2026-08-27T18:20:00Z",
+   "status": "closed",
+   "hypothesis": "bootstrap: the term registry reproduces the certified stack; the record numbers reproduce on this machine; the author's 2026-08-17 Newton notebook reproduces to 1% with the sign exact",
+   "gates": [
+    "selftests <= 1e-3 relative or the record tolerance",
+    "notebook fit coefficients within 1%, sign exact"
+   ],
+   "claims": [
+    {
+     "id": "R0.1",
+     "claim": "the term registry (I1, I1_frob, I2..I6, V4) reproduces the certified stack (I1 0.0, CHAN 4.7e-14, invariance <= 2.4e-14, mutant reddens)",
+     "audit": "CONFIRMED",
+     "file": "data/m5_32_r0_audit.json"
+    },
+    {
+     "id": "R0.2",
+     "claim": "contraction rule DD eta, II eta, DI delta is the covariant one under M -> L M L^T",
+     "audit": "CONFIRMED, QUALIFIED: tied to that law; covariant-metric imports need M = eta h eta"
+    },
+    {
+     "id": "R0.3",
+     "claim": "one independent mixed trace; DD and II traces vanish; R not symmetric",
+     "audit": "CONFIRMED"
+    },
+    {
+     "id": "R0.4",
+     "claim": "static 3x3 sector: I1_frob == I1; I2..I6 nonzero, not proportional to I1",
+     "audit": "CONFIRMED + static rank 3: I1 = 2a, I2 = 4b, 2I3 = I1 + I2/2, 4I4 = 2I1 + I6, 4I5 = I2 + I6, I6 = 4c"
+    },
+    {
+     "id": "R0.5",
+     "claim": "all six terms quadratic in omega; B (omega-odd) = 0 for I1",
+     "audit": "CONFIRMED + B = O(1) for every I2..I6 on generic jets; B nonzero for I4, I5, I6 even on a static base"
+    },
+    {
+     "id": "R0.6",
+     "claim": "parity-even quadratic invariants of F: rank 6, no seventh",
+     "audit": "CONFIRMED (60 pairings reduce to +-I_k)"
+    },
+    {
+     "id": "R0.7",
+     "claim": "the record numbers reproduce on this machine (10 items, 1420 leaves)",
+     "audit": "reproduced to <= 2.2e-15 (black-box reruns of certified scripts)",
+     "file": "data/m5_32_r0_baseline.json"
+    },
+    {
+     "id": "R0.8",
+     "claim": "the author's 2026-08-17 notebook reproduces: A 863.733, B 167.668, sign +",
+     "audit": "CONFIRMED to 6 digits (own quadrature)",
+     "file": "data/m5_32_r0_audit_notebook.json"
+    },
+    {
+     "id": "R0.9",
+     "claim": "at the notebook's order the curvature has no time-row component; eta contraction = 2 Hs; full spectrum keeps sign +",
+     "audit": "CONFIRMED; time row first at m^3 in F when M is kept to O(m^2)"
+    },
+    {
+     "id": "R0.10",
+     "claim": "(audit finding) the notebook far field is (32 pi/3)(ln d)/d + beta/d, NOT 1/d; B is window- and cutoff-dependent; E(inf) = 8 pi/sqrt(cut2) = 794.77",
+     "audit": "MEASURED by the auditor (d E_int rising linearly in ln d, slope 33.59 vs 32 pi/3 = 33.51); the producer's 1/d reading REFUTED as a far-field law"
+    }
+   ],
+   "audit": {
+    "module": "data/m5_32_r0_audit.json",
+    "notebook": "data/m5_32_r0_audit_notebook.json"
+   },
+   "verdict": "R0 PASSED: stack certified on this machine, registry audited, notebook reproduced; two steering findings (static rank 3; omega-odd B in every mixed contraction) and one negative (the ansatz far field is log-enhanced, repulsive at every order it can see)",
+   "deviations": [
+    "plan \u00a7 5 (c) profile misread (1/r, plain commutator); the reproduction follows the PDF"
+   ]
+  },
+  {
+   "id": "R1",
+   "start_utc": "2026-08-27T18:25:00Z",
+   "status": "closed",
+   "hypothesis": "the covariant term basis C0 + C1 (+ C2 insertions + the epsilon pseudoscalars): per term the omega-content on three backgrounds, the Coulomb footprint under both gates, the vacuum boost kernel order, the boundedness sketch; the external no-go under each gate",
+   "gates": [
+    "catalog complete, rank audited",
+    "external no-go CONFIRMED/REFUTED/QUALIFIED under the off-shell gate AND the physical gate",
+    "Q54 per term as a fixed-J offset",
+    "decision point: a constant-coefficient region that flips the boost-sector sign under the physical gate -> R2 on C0/C1; none under either gate -> C0/C1 exhausted, R2 opens C2"
+   ],
+   "arms": {
+    "a": "symbolic: epsilon pseudoscalars + C2 insertions added; the static-preserving subspace and its clock-witness content; A/B/C omega-content per term on three backgrounds",
+    "b": "lattice: the physical Coulomb gate, like-charge pair under I1 + c I_k at n = 32",
+    "c": "lattice: per-channel kin table per term at the toy point; dressed-family kin; vacuum boost kernel order; boundedness sketch"
+   },
+   "end_utc": "2026-08-27T19:05:00Z",
+   "claims": [
+    {
+     "id": "R1.1",
+     "claim": "parity-odd quadratic rank 3 (E1-E3), all vanish on the static sector",
+     "audit": "CONFIRMED (210 contractions; trace convention qualified)"
+    },
+    {
+     "id": "R1.2",
+     "claim": "static-null subspace 3-dim mod I1: N1 = 4I3 - I2 - 2I1, N2 = 4I4 - I6 - 2I1, N3 = 4I5 - I2 - I6; does NOT vanish on the clock witness",
+     "audit": "CONFIRMED"
+    },
+    {
+     "id": "R1.3",
+     "claim": "form-level no-go: no constant coefficients give H2 >= 0 on every time channel (both gates)",
+     "audit": "CONFIRMED at (32,0.3), (8,0.3), (32,0.1), with eps terms, per channel, c_I1 = +-4; LP sanity control feasible for I1_frob; best t* = -4696 vs -8712"
+    },
+    {
+     "id": "R1.4",
+     "claim": "I1_h covariant, = I1_frob at vacuum, = I1 off shell on static sector, H2 PSD on all channels",
+     "audit": "CONFIRMED + COST: unbounded below at the eigenvector-degeneracy locus t* = (g+1)/2 along a boost-mixing path, undefined beyond"
+    },
+    {
+     "id": "R1.5",
+     "claim": "Pgrad restores an O(eps^2) static kernel",
+     "audit": "CONFIRMED; O(1) massless boost inertia on the bare vacuum"
+    },
+    {
+     "id": "R1.6",
+     "claim": "lattice reversal windows I3 [-2.415,-1.413], I5 <= -1.526, I4 marginal; none for I2, I6",
+     "audit": "numbers CONFIRMED on the record probe catalog; REFUTED as robust (probe a0 antisymmetric; one extra channel empties I4; tangent channels give I2/I6 windows too); union over channels: I2, I4, I6 empty"
+    },
+    {
+     "id": "R1.7",
+     "claim": "every reversal window is unbounded below on the wide dressing family (G5 fail)",
+     "audit": "CONFIRMED, converged n = 64/96/128 (0.25 %), leading coefficient negative, valid over the whole windows"
+    },
+    {
+     "id": "R1.8",
+     "claim": "static vacuum boost kernel quartic + repulsive for all terms; omega-bump quadratic + attractive for I2/I5/I6",
+     "audit": "REFUTED as construction-independent: order and sign depend on bump geometry; the omega-overlap is orientation-odd (a cross term), not a like-clock attraction"
+    },
+    {
+     "id": "R1.9",
+     "claim": "physical Coulomb gate: bounded regions I2 |c| <= 1/2, I6 c >= -1/6, I4 c >= -1/2; no 1/d window; I6 > 0 binds like charges",
+     "audit": "lattice-exact 19/19 vs the analytic bound; NOT independently audited (the instrument caveat: it = 120 control is flat, absolute G1 undecidable here)"
+    }
+   ],
+   "audit": {
+    "symbolic": "data/m5_32_r1_audit_symbolic.json",
+    "screen": "data/m5_32_r1_audit_screen.json"
+   },
+   "verdict": "C0/C1 EXHAUSTED under both gates at current order with constant coefficients (third independent implementation; adds the form-level Farkas certificate); R2 opens C2 with I1_h live and two known costs",
+   "deviations": [
+    "G1 undecidable on the it = 120 pair instrument; read relative to the control",
+    "the omega-overlap lead withdrawn after audit"
+   ]
+  },
+  {
+   "id": "R2",
+   "start_utc": "2026-08-27T19:10:00Z",
+   "status": "closed",
+   "hypothesis": "C2 sign map: the covariant lambda-family (1-lambda) I1 + lambda I1_h (boost weight prop. to 1 - 2 lambda, static sector = I1), J2 and Pgrad mixtures; per candidate: all-channel stability, boost reversal, the Coulomb footprint (off-shell identity holds for I1_h by construction), the degeneracy-locus boundedness on the dressing family + the fixed-J electron, the g-arm, the coupling switch",
+   "gates": [
+    "G4 (covariance) per candidate",
+    "G5 (bounded, no guard) incl. the degeneracy locus",
+    "the sector half of G1 (off-shell identity for the lambda-family; J2/Pgrad footprints)",
+    "all-channel stability with the boost weight reversed (tangent channels + the extra channels)",
+    "the g-arm"
+   ],
+   "arms": {
+    "a": "form-level LP over C2: lambda-family, J2, Pgrad, J1; the stability region; the coupling switch",
+    "b": "boundedness: wide/sawtooth families + free pinned descent + the locus distance; the fixed-J electron under the lambda-family",
+    "c": "lattice: tangent-channel CHAN for C2 terms; pair-instrument identity/footprint; the g-arm on the lambda-family"
+   },
+   "end_utc": "2026-08-27T20:45:00Z",
+   "claims": [
+    {
+     "id": "R2.1",
+     "claim": "H2(lambda) = 4[S - (1-2 lambda) T], S, T PSD => lambda* = 1/2 exactly on every channel",
+     "audit": "CONFIRMED (36 cases; explicit pure-time-row jets)"
+    },
+    {
+     "id": "R2.2",
+     "claim": "I1_h unique sign carrier in C2; J1, J2, Pgrad cannot stabilize",
+     "audit": "CONFIRMED (own LP with controls)"
+    },
+    {
+     "id": "R2.3",
+     "claim": "the degeneracy locus is unreachable by Lorentz dressings; energetically repelled",
+     "audit": "CONFIRMED + QUALIFIED: V4 wall ~1e3 per cell on the vacuum's connected u-sector (not 2.8e4); no-u fields with V4 ~ 1e-6 exist in another label sector"
+    },
+    {
+     "id": "R2.4",
+     "claim": "positivity theorem: lambda >= 1/2 => energy density >= 0 wherever u exists, any jet",
+     "audit": "CONFIRMED (0/27,560 negatives; u-frame identity 4e-14; internal SO(1,3) invariance 1e-11)"
+    },
+    {
+     "id": "R2.5",
+     "claim": "G5 lattice: wide/sawtooth/descent bounded at lambda = 0.75, 1; runaway at 0",
+     "audit": "CONFIRMED via L1 + L3 (kin > 0 on amp in [0,3])"
+    },
+    {
+     "id": "R2.6",
+     "claim": "fixed-J electron at lambda = 1: omega* 0.040/0.148/0.408, E 54.4/68.8/245.9 (n32 L48), guard-free",
+     "audit": "reproduced to 4 digits; QUALIFIED: omega*, E_total are box labels (kin ~ L; omega* ~ 1/L over L = 48/72/96); amp* 0.02-0.03 and the sign are physical"
+    },
+    {
+     "id": "R2.7",
+     "claim": "concavity: free minimum at omega = 0 for lambda >= 1/2 (G3 weak only)",
+     "audit": "CONFIRMED"
+    },
+    {
+     "id": "R2.8",
+     "claim": "g-arm: q flat at every lambda; gain shrinks, C/B m* = 0 at lambda = 1",
+     "audit": "CONFIRMED (record matched to 4 digits at lambda = 0)"
+    },
+    {
+     "id": "R2.9",
+     "claim": "Coulomb identity: lambda = 1 pair instrument == certified (1.3e-11)",
+     "audit": "CONFIRMED (density gap 4e-19 on the 3D field)"
+    },
+    {
+     "id": "R2.10",
+     "claim": "J2 footprint small monotone shift; Pgrad undecidable on the 3x3 instrument",
+     "audit": "not independently audited (secondary)"
+    }
+   ],
+   "audit": {
+    "formmap": "data/m5_32_r2_audit_formmap.json",
+    "lattice": "data/m5_32_r2_audit_lattice.json"
+   },
+   "verdict": "CANDIDATE, weak clock: the covariant lambda-family at lambda >= 1/2 passes G4, G5 (theorem), the sector half of G1, G3 in the WEAK form (omega* undecidable at this resolution), G7 (one term); G2 (R3) and G6 (R5) open",
+   "deviations": [
+    "J = hbar/2 undefined in program units (author-gated)",
+    "the notebook boost clock is not a symmetric tangent (author-gated convention)"
+   ]
+  },
+  {
+   "id": "R3",
+   "start_utc": "2026-08-27T20:18:00Z",
+   "status": "closed",
+   "hypothesis": "the Newton instrument on the covariant lambda-family (lambda in {0, 0.6, 0.75, 1}): three constructions ((i) the author's ansatz at finite m with the full eta/h contraction and the full spectrum; (ii) relaxed boost-dressed pairs with pinned and soliton-tail boundaries, box ladder; (iii) the fixed-J two-clock cross-inertia) + the like-charge control + the mutation pair; G2 and the pair half of G1",
+   "gates": [
+    "calibration: under lambda = 0 the instrument reproduces the author's wrong sign (repulsive) before it is trusted",
+    "G2: attraction robust across >= 2 constructions, 2 boxes, both boundary types, the (g, delta) mini-ladder",
+    "mutation pair: vacuum null; lambda flip must reverse the sign",
+    "reference-matched Poisson / Yukawa comparison"
+   ],
+   "end_utc": "2026-08-28T00:55:00Z",
+   "claims": [
+    {
+     "id": "R3.1",
+     "claim": "(i) the ansatz is repulsive at finite m for every lambda; T/S \u221d m^2",
+     "audit": "CONFIRMED with the qualifier rapidity < ~1 (at m = 2 lambda = 0 turns attractive via the eta-negative T)"
+    },
+    {
+     "id": "R3.2",
+     "claim": "(ii) the dressing part of E_int falls with d at every lambda; no boost-mediated attraction",
+     "audit": "QUALIFIED: non-monotone at lambda >= 0.75 in the outer window (seed feature in the time-row part, unrelaxed); G2 NOT met CONFIRMED on stronger grounds (n48 ladder, fits, the failed like-charge control)"
+    },
+    {
+     "id": "R3.3",
+     "claim": "(iii) cross-inertia undecidable un-relaxed",
+     "audit": "CONFIRMED (sign is a window and amplitude choice; no power-law tail)"
+    },
+    {
+     "id": "R3.4",
+     "claim": "amplitudes held; vacuum null; calibration lambda 0 repulsive",
+     "audit": "CONFIRMED (0.03 %)"
+    }
+   ],
+   "audit": {
+    "ansatz": "data/m5_32_r3_audit_ansatz.json",
+    "crossinertia": "data/m5_32_r3_audit_crossinertia.json",
+    "pair": "data/m5_32_r3_audit_pair.json"
+   },
+   "verdict": "G2 NOT MET on all three constructions; the lambda-family closed as a candidate (G2 + G3 failed), kept as the audited C2 control row",
+   "deviations": [
+    "heals non-converging at budget (UNRELAXED reads)",
+    "agent stall on a dead monitor",
+    "anti ladder + d = 18 at n = 48 dropped for the cap"
+   ]
+  },
+  {
+   "id": "R4",
+   "start_utc": "2026-08-27T20:50:00Z",
+   "status": "closed",
+   "hypothesis": "the clock instrument on the lambda-family (lambda in {0.75, 1}): a LOCALIZED fixed-J electron (the rigid family's inertia is IR-extensive), the J ladder, omega*, E sign, dE/dJ closure, the domain ladder (n and L), a basis-free Morse certification, the radiation window omega* < mu, the tangent-eigenvalue splitting behind the inertia; the free omega scan as the concavity certificate",
+   "gates": [
+    "G3 WEAK: all kin >= 0; fixed-J minimum finite and positive without a guard; dE/dJ = omega* <= 3 %; omega* stable across the domain ladder (not a box label); inside the radiation window",
+    "G6 clock item: dE/dJ closure"
+   ],
+   "end_utc": "2026-08-28T00:10:00Z",
+   "claims": [
+    {
+     "id": "R4.1",
+     "claim": "no localized fixed-J electron: R* = L/2 on every family, E_J(R) monotone",
+     "audit": "CONFIRMED on 3 boxes + 5 alternative families (no interior minimum anywhere)"
+    },
+    {
+     "id": "R4.2",
+     "claim": "omega* is a box label (-28 to -36 % per box step)",
+     "audit": "CONFIRMED (omega* L = 7.1 constant)"
+    },
+    {
+     "id": "R4.3",
+     "claim": "mechanism: kin IR-extensive at little static cost",
+     "audit": "QUALIFIED: the STATIC gain dominates at J = 200 (68 %) and grows with R without saturating at lambda >= 3/4; kin term dominates only at J = 800"
+    },
+    {
+     "id": "R4.4",
+     "claim": "lambda = 0 localizes (interior R*)",
+     "audit": "CONFIRMED with correction: amp* interior, not at the kin edge"
+    },
+    {
+     "id": "R4.5",
+     "claim": "vacuum kernel quartic, no gap",
+     "audit": "CONFIRMED + SHARPENED: single plane waves have F = 0 identically"
+    },
+    {
+     "id": "R4.6",
+     "claim": "relaxed fixed-J read plateau; Morse index 0 (boundary minimum); inertia 70 % in (1,delta)/(1,0) pairs",
+     "audit": "not independently audited (secondary)"
+    }
+   ],
+   "audit": {
+    "clock": "data/m5_32_r4_audit_clock.json"
+   },
+   "verdict": "G3 FAILED physically: the lambda-family delocalizes the boost dressing (static gain unbounded in R); the candidate has no localized clock",
+   "deviations": [
+    "agent stalled on a dead monitor (1 h 45 min); stall watchdog armed"
+   ]
+  },
+  {
+   "id": "R6",
+   "start_utc": "2026-08-28T00:15:00Z",
+   "status": "closed",
+   "hypothesis": "FREE RUNG (trigger: R4 measured kin \u221d delta^2.03 with the inertia in the far-field texture): (a) the delta-ladder of the fixed-J clock on the lambda-family: does the L-slope of kin scale as delta^2 (the far-field inertia a toy-point artifact) so that omega* converges as delta -> 0, and does the static dressing gain's growth with R also die with delta (localization restored toward the physical regime)? (b) C3 orbit-blindness: prove any Lorentz-invariant algebraic V(M) is a function of the M eta spectrum (constant along a Lorentz dressing), so C3 cannot localize the dressing; scan the T2 per-eigenvalue weights for completeness",
+   "gates": [
+    "(a) kin(L) slope vs delta: exponent measured; omega* drift across L at delta = 0.1, 0.03 (<= 10 % = localized clock at that delta)",
+    "(a) R* interior at small delta?",
+    "(b) the orbit-blindness theorem verified numerically on the dressing family for V4, the T2 penalty, the det-hedge"
+   ],
+   "end_utc": "2026-08-28T01:15:00Z",
+   "claims": [
+    {
+     "id": "R6.1",
+     "claim": "a0 = delta Qh (E23 + E32) Qh^T exactly; kin \u221d delta^2 everywhere; kin linear in L at every delta; the fixed-J electron at the wall with a delta-independent drift",
+     "audit": "CONFIRMED (identity exact at every boost amplitude; b \u221d delta^1.96; 24/24 at the wall; qualified: the J = 200 rows are delta-dependent; kin_core is not the intercept)"
+    },
+    {
+     "id": "R6.2",
+     "claim": "the static gain at lambda >= 3/4 is non-saturating at every delta; lambda 0 saturates by R = 12",
+     "audit": "CONFIRMED / QUALIFIED (lambda 0 plateaus within 2 %)"
+    },
+    {
+     "id": "R6.3",
+     "claim": "C3 orbit-blindness theorem; Derrick: only a positive 2-derivative term localizes boundedly",
+     "audit": "CONFIRMED (sympy + 20 dressings, V4/det variation <= 1e-9)"
+    }
+   ],
+   "audit": {
+    "r6": "data/m5_32_r6_audit.json"
+   },
+   "verdict": "hypothesis (a) REFUTED by identity; C3 KILLED as a localizer; the localization problem is a texture / derivative-term problem (C4 next)"
+  },
+  {
+   "id": "R7",
+   "start_utc": "2026-08-28T00:40:00Z",
+   "status": "HALTED by user pause 2026-08-28 00:35 UTC: arm a DONE (form-level), arm b STOPPED after its grids were checkpointed (checkpoints/m5_32_r7/grid_n32_L48.json, grid_n48_L72.json, box_*.json, scan_*.json); resume = post-processing of the grids (the refinement-branch bug 'use = m lacks R' was being fixed) + the localization table + the G7 range + the audit",
+   "hypothesis": "C4: the covariant PSD static-blind 2-derivative term K_T = 1/2 sum_mu eta^mumu [tr(h d_mu M h d_mu M) - tr(eta d_mu M eta d_mu M)] (the time-row gradient penalty in the u-frame) added to the lambda-family: L = -4[(1-lambda) I1 + lambda I1_h] - c2 K_T - V4, c2 > 0, lambda in {0.75, 1}: it penalizes wide boost dressings (Derrick E \u221d mu), leaves the static 3x3 sector untouched (vanishes when the time row of dM is zero), and adds an omega^2 floor only on time-row velocities; PREDICTION: an interior R* on the R4 instrument with omega* stable across L, all other gates unchanged",
+   "gates": [
+    "G4 covariance (K_T is a difference of two covariant scalars)",
+    "static identity on block-diagonal fields (exact)",
+    "R2 stability with the new term (LP; K_T PSD so it can only help)",
+    "R4 instrument: interior R*, omega* drift <= 10 % across L = 48 -> 72 for some c2 range >= factor 4 (G7)",
+    "the hedgehog exists and the Coulomb anchors unchanged (identity)",
+    "g-arm and the dressing gain saturation"
+   ]
+  }
+ ],
+ "free_rungs_used": 1
+}
