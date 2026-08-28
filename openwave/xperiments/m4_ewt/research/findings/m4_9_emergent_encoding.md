@@ -1,88 +1,75 @@
-# M4.9 Emergent Encoding from Lattice Dynamics
+# M4.9 Emergent Metric Encodings from Lattice Dynamics
 
 ## Criterion
 Gravity: local metric phenomena — foundational encoding derivation
 
 ## What was computed
 
-A one-dimensional spring-mass lattice was simulated. The lattice
-spacing was treated as a physical length scale \(a(\eta)=1/\eta\), and
-the per-site mass was kept fixed.
+A one-dimensional spring-mass lattice was simulated along a high-symmetry axis. The inter-site lattice spacing was treated as a physical length scale $a(\eta) = 1/\eta$, where $\eta$ represents the local linear site density along the propagation direction, and the per-site mass was kept fixed at $m_0$.
 
-The local stiffness \(k(\eta)\) was derived from a microscopic
-one-dimensional pair potential
+The local stiffness $k(\eta)$ was derived from a microscopic 1D pair potential
 
-\[
-V(r)=\frac{V_0}{r}
-\]
+$$V(r) = \frac{V_0}{r^n}$$
 
-evaluated at the equilibrium spacing.
+evaluated at the constrained lattice spacing $a(\eta) = 1/\eta$ (for the standard EMC interaction, $n = 1$).
 
-The resulting wave speed was measured in physical length units, not in
-site-index units.
+The resulting wave speed was measured in physical length units ($v_{\text{phys}} = a \cdot v_{\text{lattice}}$), not in discrete site-index units.
 
 ## Emergence chain
 
 ### 1. Microscopic potential to stiffness
 
-The stiffness is the second derivative of the pair potential at the
-equilibrium spacing:
+The stiffness is the second derivative of the pair potential $V(r) = V_0 / r^n$ evaluated at the constrained lattice spacing $a(\eta) = 1/\eta$:
 
-\[
-k(\eta)
-=
-\left.
-\frac{d^2V}{dr^2}
-\right|_{r=1/\eta}
-\propto \eta^3
-\]
+$$k(\eta) = \left. \frac{\mathrm{d}^2 V}{\mathrm{d}r^2} \right|_{r=1/\eta} = \frac{n(n+1) V_0}{a^{n+2}} \propto \eta^{n+2}$$
+
+For the 1/r EMC pair potential ($n=1$):
+
+$$k(\eta) \propto \eta^3$$
 
 ### 2. Stiffness and mass to physical wave speed
 
-With fixed mass per lattice site \(m_0\), the long-wavelength speed is
+With fixed mass per lattice site $m_0$, the long-wavelength physical wave speed is
 
-\[
-v_{\text{phys}}
-=
-a(\eta)\sqrt{\frac{k(\eta)}{m_0}}
-\]
+$$v_{\text{phys}} = a(\eta) \sqrt{\frac{k(\eta)}{m_0}}$$
 
-which scales as
+For a general potential $V(r) \propto r^{-n}$ under linear spacing $a(\eta) = 1/\eta$, this gives:
 
-\[
-v_{\text{phys}} \propto \eta^{+1/2}
-\]
+$$v_{\text{phys}} \propto \eta^{-1} \cdot \sqrt{\eta^{n+2}} = \eta^{n/2}$$
+
+For $n=1$, this scales as
+
+$$v_{\text{phys}} \propto \eta^{+1/2}$$
 
 ### 3. Refractive index
 
 The corresponding effective refractive index is
 
-\[
-n_\gamma(\eta)
-=
-\frac{c_0}{v_{\text{phys}}}
-\propto
-\eta^{-1/2}
-\]
+$$n_\gamma(\eta) = \frac{c_0}{v_{\text{phys}}} \propto \eta^{-1/2}$$
 
 This is the same encoding used in M4.3 and M4.5.
 
 ### 4. Clock frequency
 
-For a standing-wave clock of fixed physical length \(L\),
+For a standing-wave clock of fixed physical length $L$,
 
-\[
-f \propto \frac{v_{\text{phys}}}{L}
-\propto \eta^{+1/2}
-\]
+$$f \propto \frac{v_{\text{phys}}}{L} \propto \eta^{+1/2}$$
 
 This is the same encoding used in M4.4.
 
 ## Measured results
 
-### Stiffness exponent \(\alpha\)
+### Summary
 
-| \(\eta\) | \(k\) |
+| Metric / Quantity | Model Relation | Calculated / Measured Exponent | Result / Status |
+|---|---|---|---|
+| Stiffness exponent $\alpha$ | $k(\eta) \propto \eta^3 \implies n_\gamma \propto a^3$ | $\alpha = 3.000002$ | **PASS** |
+| Wave-speed exponent $\beta$ | $v_{\text{phys}}(\eta) \propto \eta^{0.5}$ | $\beta = 0.501714$ | **PASS** |
+| Clock-frequency exponent $\gamma$ | $\gamma \equiv \beta$ | $\gamma = 0.501714$ | **Derived** |
+
+### Stiffness exponent $\alpha$
+
+| $\eta$ | $k$ |
 |---|---|
 | 0.4 | 0.128000 |
 | 0.5 | 0.250000 |
@@ -93,16 +80,13 @@ This is the same encoding used in M4.4.
 
 Fitted exponent:
 
-\[
-\alpha = 3.000002
-\]
+$$\alpha = 3.000002$$
 
-Expected: \(3.0\). This is the analytic derivative, not an independent
-measurement.
+Expected: $3.0$. This is the analytic derivative of the potential at the constrained spacing, not an independent simulation measurement.
 
-### Wave-speed exponent \(\beta\)
+### Wave-speed exponent $\beta$
 
-| \(\eta\) | \(v_{\text{phys}}\) |
+| $\eta$ | $v_{\text{phys}}$ |
 |---|---|
 | 0.4 | 0.889680 |
 | 0.5 | 0.998259 |
@@ -113,45 +97,37 @@ measurement.
 
 Fitted exponent:
 
-\[
-\beta = 0.501714
-\]
+$$\beta = 0.501714$$
 
-Expected: \(0.5\).
+Expected: $0.5$.
 
-### Oscillator-frequency exponent \(\gamma\)
+### Oscillator-frequency exponent $\gamma$
 
-The oscillator frequency follows from \(f = v_{\text{phys}}/L\).
-Therefore
+The oscillator frequency follows directly from $f = v_{\text{phys}}/L$. Therefore
 
-\[
-\gamma = \beta = 0.501714
-\]
+$$\gamma = \beta = 0.501714$$
 
-Expected: \(0.5\).
+Expected: $0.5$.
 
-Phase 3 is a consistency check on phase 2, not an independent
-simulation.
+Phase 3 is an analytical consistency check on phase 2 ($\gamma \equiv \beta$), not an independent simulation.
 
 ## Model assumptions
 
-- One-dimensional reduction along a high-symmetry axis of the BCC lattice.
-- Fixed mass per lattice site \(m_0\).
-- Pair potential \(V(r)=V_0/r\).
-- Lattice spacing \(a(\eta)=1/\eta\).
-
-These are the corrected assumptions from the reviewer’s B1/B2 findings.
+- **1D Axial Reduction:** One-dimensional reduction along a high-symmetry axis of the 3D BCC lattice, where $\eta$ represents the local linear site density along the line of propagation.
+- **Fixed Site Mass:** Fixed mass per lattice site $m_0$.
+- **EMC Pair Potential:** Microscopic pair potential $V(r) = V_0 / r$ ($n=1$).
+- **Constrained Lattice Spacing:** Inter-site spacing $a(\eta) = 1/\eta$. Because $V(r)$ is purely repulsive ($V'(a) \neq 0$), the spacing $a$ is held by external lattice background pressure, not by an isolated potential minimum.
 
 ## Interpretation
 
-The two Schwarzschild encodings used in M4.3–M4.5 now follow from
-microscopic lattice dynamics:
+Given the $1/r$ EMC pair potential ($n=1$) and the 1D linear spacing reduction $a(\eta) = 1/\eta$, the physical wave speed scales as $v_{\text{phys}} \propto \eta^{n/2} = \eta^{+1/2}$. 
 
-- \(v_{\text{clock}} \propto \sqrt{\eta}\)
-- \(n_\gamma \propto \eta^{-1/2}\)
+This establishes how the Schwarzschild encodings used in M4.3–M4.5 map back to microscopic lattice parameters:
 
-The exponents were not assumed. They emerge from the corrected
-microscopic model.
+- $v_{\text{clock}} \propto \sqrt{\eta}$ ($\beta = 0.5$)
+- $n_\gamma \propto \eta^{-1/2}$ ($\alpha = 3.0$)
+
+The general functional relation is $\beta = n/2$ for a pair potential $V(r) \propto r^{-n}$. Under the physical assumption of a $1/r$ electrostatic-like EMC interaction, the target metric exponents $+1/2$ and $-1/2$ naturally emerge from the discrete lattice dynamics.
 
 ## Reference
 
