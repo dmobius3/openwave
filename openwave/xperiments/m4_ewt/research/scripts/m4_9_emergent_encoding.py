@@ -27,7 +27,7 @@ def pair_potential(r):
 
 def measure_lattice_stiffness(eta, delta=1e-5):
     """
-    Compute local spring stiffness k(eta) at equilibrium spacing
+    Compute local spring stiffness k(eta) at the constrained spacing
     a(eta) = 1/eta via central finite-difference of the pair potential.
     """
     a = 1.0 / eta
@@ -188,7 +188,6 @@ def main():
 
     alpha_pass = abs(alpha - 3.0) < 0.05
     beta_pass = abs(beta - 0.5) < 0.05
-    gamma_pass = abs(gamma - 0.5) < 0.05
 
     if alpha_pass:
         print(f"    Stiffness exponent:  PASS (alpha = {alpha:.4f})")
@@ -200,10 +199,9 @@ def main():
     else:
         print(f"    Wave-speed exponent: FAIL (beta = {beta:.4f})")
 
-    if gamma_pass:
-        print(f"    Oscillator exponent: PASS (gamma = {gamma:.4f})")
-    else:
-        print(f"    Oscillator exponent: FAIL (gamma = {gamma:.4f})")
+    # gamma is defined as beta (f = v_phys / L, fixed L), so it is not an
+    # independent measurement and carries no PASS of its own.
+    print(f"    Oscillator exponent: DERIVED (gamma = beta = {gamma:.4f})")
 
     print("=" * 64)
     print("\nDone.")

@@ -7,8 +7,10 @@ DONE (post-hoc)
 `Gravity: local metric phenomena` — foundational encoding derivation
 
 ## Objective
-Show in-platform that the two metric encodings used in M4.3–M4.5 emerge
-from lattice dynamics without being assumed.
+Demonstrate how macroscopic metric encodings ($n_\gamma \propto \eta^{-1/2}$,
+$v_{\text{clock}} \propto \sqrt{\eta}$) map directly to microscopic 1D lattice
+dynamics under an assumed $1/r$ EMC pair potential ($n=1$) and axial lattice
+compression ($q=1$).
 
 The required encodings are:
 
@@ -37,8 +39,10 @@ All three are consistent with the expected values.
 
 ## Interpretation
 
-The encodings are emergent. They are derived from the corrected
-microscopic lattice dynamics.
+Given a $1/r$ EMC pair potential ($n=1$) and axial lattice compression ($q=1$),
+the physical wave speed scales as $v_{\text{phys}} \propto \eta^{n/(2q)} =
+\eta^{+1/2}$. The Schwarzschild encodings used in M4.3–M4.5 reflect this
+underlying microscopic power-law relation ($\beta = n/(2q)$).
 
 ## Artifacts
 

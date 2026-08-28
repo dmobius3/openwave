@@ -63,7 +63,7 @@ This is the same encoding used in M4.4.
 
 | Metric / Quantity | Model Relation | Calculated / Measured Exponent | Result / Status |
 |---|---|---|---|
-| Stiffness exponent $\alpha$ | $k(\eta) \propto \eta^3 \implies n_\gamma \propto a^3$ | $\alpha = 3.000002$ | **PASS** |
+| Stiffness exponent $\alpha$ | $k(\eta) \propto \eta^3$ | $\alpha = 3.000002$ | **PASS** |
 | Wave-speed exponent $\beta$ | $v_{\text{phys}}(\eta) \propto \eta^{0.5}$ | $\beta = 0.501714$ | **PASS** |
 | Clock-frequency exponent $\gamma$ | $\gamma \equiv \beta$ | $\gamma = 0.501714$ | **Derived** |
 
@@ -114,6 +114,7 @@ Phase 3 is an analytical consistency check on phase 2 ($\gamma \equiv \beta$), n
 ## Model assumptions
 
 - **1D Axial Reduction:** One-dimensional reduction along a high-symmetry axis of the 3D BCC lattice, where $\eta$ represents the local linear site density along the line of propagation.
+- **Axial Compression ($q = 1$):** purely axial lattice strain along the propagation vector, so the axial spacing is $a_\parallel(\eta) = \eta^{-1}$.
 - **Fixed Site Mass:** Fixed mass per lattice site $m_0$.
 - **EMC Pair Potential:** Microscopic pair potential $V(r) = V_0 / r$ ($n=1$).
 - **Constrained Lattice Spacing:** Inter-site spacing $a(\eta) = 1/\eta$. Because $V(r)$ is purely repulsive ($V'(a) \neq 0$), the spacing $a$ is held by external lattice background pressure, not by an isolated potential minimum.
@@ -122,12 +123,14 @@ Phase 3 is an analytical consistency check on phase 2 ($\gamma \equiv \beta$), n
 
 Given the $1/r$ EMC pair potential ($n=1$) and the 1D linear spacing reduction $a(\eta) = 1/\eta$, the physical wave speed scales as $v_{\text{phys}} \propto \eta^{n/2} = \eta^{+1/2}$. 
 
+The mapping to M4.3–M4.5 assumes purely axial lattice strain along the propagation vector ($q=1$), yielding an effective axial spacing $a_\parallel(\eta) = \eta^{-1}$ and making the identification with $n_\gamma \propto \eta^{-0.5}$ exact. For a general compression geometry with $q$ compressing directions and potential exponent $n$, the closed-form scaling is $\beta = n / (2q)$.
+
 This establishes how the Schwarzschild encodings used in M4.3–M4.5 map back to microscopic lattice parameters:
 
 - $v_{\text{clock}} \propto \sqrt{\eta}$ ($\beta = 0.5$)
 - $n_\gamma \propto \eta^{-1/2}$ ($\alpha = 3.0$)
 
-The general functional relation is $\beta = n/2$ for a pair potential $V(r) \propto r^{-n}$. Under the physical assumption of a $1/r$ electrostatic-like EMC interaction, the target metric exponents $+1/2$ and $-1/2$ naturally emerge from the discrete lattice dynamics.
+For a pair potential $V(r) \propto r^{-n}$ this is $\beta = n/2$ at $q = 1$. Under the physical assumption of a $1/r$ electrostatic-like EMC interaction, the target metric exponents $+1/2$ and $-1/2$ naturally emerge from the discrete lattice dynamics.
 
 ## Reference
 
