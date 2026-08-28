@@ -27,7 +27,7 @@ push-out mechanism using exact-domain numerical field integration.
 
 6. Convert the geometric result to physical force with \(K_{\text{emc}}\).
 
-7. Compare with Newton’s law.
+7. Compare with Newton's law.
 
 ## Result
 
