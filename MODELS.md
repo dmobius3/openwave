@@ -16,7 +16,7 @@ Anybody can contribute to building these numerical validations. Every cell in th
 
 Current Models in the platform:
 
-- **[M4 - EWT](openwave/xperiments/m4_ewt/__M4_model_briefing.md)** (Energy Wave Theory, Jeff Yee, built on Milo Wolff and Gabriel LaFreniere pioneer work).
+- **[M4 - EWT](openwave/xperiments/m4_ewt/__M4_model_briefing.md)** (Energy Wave Theory, Jeff Yee, built on Milo Wolff and Gabriel LaFreniere pioneer work; Enhanced EWT extension co-authored by Łukasz Smoliński).
 - **[M5 - LC](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md)** (Liquid-Crystal topological defects, Jarek Duda, with Manfried Faber inputs);
 - **[M6 - Ouroboros](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md)** (Chaoiton framework, Paul Werbos);
 - **[M7 - HydroBoros](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md)** (Toroidal-Beltrami, Marc Fleury's toroidal electron fused with Paul Werbos's Ouroboros);
