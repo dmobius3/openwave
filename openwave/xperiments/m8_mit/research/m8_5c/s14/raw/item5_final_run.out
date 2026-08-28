@@ -1,0 +1,11 @@
+  arm P (s=0 gives exactly diag(9 - lambda)): max err 0.0 -> PASS
+  arm X (structured 50-dps vs generic float64 assembly at s=0.3): max abs diff 1.20e-14 -> PASS
+  s=0.1: sep 38.008 (>=10), position 0.97995240560798271458, splitting 0.04832364020382016096, leakage 5.134e-04, J-sym 0.0e+00, f64 diffs 6.7e-15/1.3e-14
+  s=0.3: sep 38.069 (>=10), position 0.81619177005422418170, splitting 0.45622199549391783078, leakage 5.687e-03, J-sym 0.0e+00, f64 diffs 2.6e-15/5.6e-15
+  s=0.5: sep 38.194 (>=10), position 0.47134118373051186485, splitting 1.36471321082274394520, leakage 2.016e-02, J-sym 0.0e+00, f64 diffs 2.4e-15/5.1e-15
+  arm B (nu-paired blocks vs float64 full-matrix eigenvalues): PASS
+  arm M (s-perturbation moves splitting by 3.20e-03): PASS
+  arm N (splitting, leakage nonzero at every s): PASS
+  controlA_references.json sha256 8fceb29984114c7ed86278558807e6ec59cf40708cd1386ef009d6ab886bec1f
+  wall 3s
+  ITEM 5 VERDICT: GREEN

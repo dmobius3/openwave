@@ -1,0 +1,71 @@
+{
+ "_field_semantics": {
+  "position/splitting": "50-dps nu-paired block eigenVALUES under the frozen S5 definitions; the object of record",
+  "f64_pos_diff/f64_spl_diff": "cross-EIGENSOLVER diagnostic: 50-dps block route vs one float64 LAPACK eigh of the full matrix; must sit at eigensolver rounding; its earlier 1e-4 values were the bug detector",
+  "arm_X": "ASSEMBLY comparison: structured 50-dps matrix vs generic float64 node-quadrature matrix, entrywise; a different object from the eigen diagnostic",
+  "protocol_sha": "b88fa741cc2940cb27518a32d358b19eb93dbbbf426ef0aae7e1195cd634abde"
+ },
+ "0.1": {
+  "s": 0.1,
+  "sym": 0.0,
+  "sep": 38.007670135177456,
+  "position": "0.979952405607982714589130765452",
+  "splitting": "0.0483236402038201609628810800725",
+  "leakage": 0.0005134382530027734,
+  "zero_count_ref": 0,
+  "min_abs_cluster": 0.9456730952480924,
+  "min_abs_block_nu": 0,
+  "route_per_quantity": {
+   "position": "50-dps |nu|-paired block eigenVALUES",
+   "splitting": "50-dps |nu|-paired block eigenVALUES",
+   "min_abs_cluster": "50-dps |nu|-paired block eigenVALUES; sits in the |nu| block recorded in min_abs_block_nu, and where that is a block the signed-nu bug never touched, its v2 bit-identity is explained, not suspicious",
+   "leakage": "the SPAN of the 50-dps cluster eigenVECTORS against the free block; a span is insensitive to rotations within the cluster, which is why the signed-nu bug moved it only at 1e-11",
+   "sep": "50-dps |nu|-paired block eigenVALUES",
+   "f64_pos_diff_and_spl_diff": "cross-EIGENSOLVER diagnostic only"
+  },
+  "f64_pos_diff": 6.661338147750939e-15,
+  "f64_spl_diff": 1.3010426069826053e-14
+ },
+ "0.3": {
+  "s": 0.3,
+  "sym": 0.0,
+  "sep": 38.069263947025526,
+  "position": "0.816191770054224181703761102746",
+  "splitting": "0.456221995493917830789738907563",
+  "leakage": 0.005687168497609593,
+  "zero_count_ref": 0,
+  "min_abs_cluster": 0.48953057845957393,
+  "min_abs_block_nu": 0,
+  "route_per_quantity": {
+   "position": "50-dps |nu|-paired block eigenVALUES",
+   "splitting": "50-dps |nu|-paired block eigenVALUES",
+   "min_abs_cluster": "50-dps |nu|-paired block eigenVALUES; sits in the |nu| block recorded in min_abs_block_nu, and where that is a block the signed-nu bug never touched, its v2 bit-identity is explained, not suspicious",
+   "leakage": "the SPAN of the 50-dps cluster eigenVECTORS against the free block; a span is insensitive to rotations within the cluster, which is why the signed-nu bug moved it only at 1e-11",
+   "sep": "50-dps |nu|-paired block eigenVALUES",
+   "f64_pos_diff_and_spl_diff": "cross-EIGENSOLVER diagnostic only"
+  },
+  "f64_pos_diff": 2.55351295663786e-15,
+  "f64_spl_diff": 5.6066262743570405e-15
+ },
+ "0.5": {
+  "s": 0.5,
+  "sym": 0.0,
+  "sep": 38.19354685600081,
+  "position": "0.471341183730511864858224503563",
+  "splitting": "1.36471321082274394520908235546",
+  "leakage": 0.02015913324647692,
+  "zero_count_ref": 0,
+  "min_abs_cluster": 0.07365071003642394,
+  "min_abs_block_nu": 0,
+  "route_per_quantity": {
+   "position": "50-dps |nu|-paired block eigenVALUES",
+   "splitting": "50-dps |nu|-paired block eigenVALUES",
+   "min_abs_cluster": "50-dps |nu|-paired block eigenVALUES; sits in the |nu| block recorded in min_abs_block_nu, and where that is a block the signed-nu bug never touched, its v2 bit-identity is explained, not suspicious",
+   "leakage": "the SPAN of the 50-dps cluster eigenVECTORS against the free block; a span is insensitive to rotations within the cluster, which is why the signed-nu bug moved it only at 1e-11",
+   "sep": "50-dps |nu|-paired block eigenVALUES",
+   "f64_pos_diff_and_spl_diff": "cross-EIGENSOLVER diagnostic only"
+  },
+  "f64_pos_diff": 2.3869795029440866e-15,
+  "f64_spl_diff": 5.10702591327572e-15
+ }
+}

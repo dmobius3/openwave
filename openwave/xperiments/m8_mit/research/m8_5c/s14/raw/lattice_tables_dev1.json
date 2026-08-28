@@ -1,0 +1,963 @@
+{
+ "0": {
+  "l": 0,
+  "spin": 0.0,
+  "classes": [
+   {
+    "class": "FULL",
+    "twist": "-",
+    "dimC": 1,
+    "orbit_dim": 1,
+    "rep": "the constant, canonical basis vector 1"
+   },
+   {
+    "class": "2T",
+    "twist": "chi_0 of Z3",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": false,
+    "rep_hash": "3239b05c38b825eb"
+   },
+   {
+    "class": "2O",
+    "twist": "chi_0 of Z2",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": false,
+    "rep_hash": "3239b05c38b825eb"
+   },
+   {
+    "class": "2I",
+    "twist": "chi_0 of Z1",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": false,
+    "rep_hash": "3239b05c38b825eb"
+   }
+  ]
+ },
+ "1": {
+  "l": 1,
+  "spin": 0.5,
+  "classes": [
+   {
+    "class": "W(|2m|=1)",
+    "twist": "phase-locked, weight 1/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 1 (canonical order)"
+   }
+  ]
+ },
+ "2": {
+  "l": 2,
+  "spin": 1.0,
+  "classes": [
+   {
+    "class": "W(|2m|=2)",
+    "twist": "phase-locked, weight 2/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 2 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=0)",
+    "twist": "phase-locked, weight 0/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 0 (canonical order)"
+   },
+   {
+    "class": "C2^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   }
+  ]
+ },
+ "3": {
+  "l": 3,
+  "spin": 1.5,
+  "classes": [
+   {
+    "class": "W(|2m|=3)",
+    "twist": "phase-locked, weight 3/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 3 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=1)",
+    "twist": "phase-locked, weight 1/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 1 (canonical order)"
+   },
+   {
+    "class": "C2^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C2^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   }
+  ]
+ },
+ "4": {
+  "l": 4,
+  "spin": 2.0,
+  "classes": [
+   {
+    "class": "W(|2m|=4)",
+    "twist": "phase-locked, weight 4/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 4 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=2)",
+    "twist": "phase-locked, weight 2/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 2 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=0)",
+    "twist": "phase-locked, weight 0/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 0 (canonical order)"
+   },
+   {
+    "class": "C2^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C2^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "2T",
+    "twist": "chi_1 of Z3",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "0fbd8f766e19ef40"
+   },
+   {
+    "class": "2T",
+    "twist": "chi_2 of Z3",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "9a639e15d88000d2"
+   }
+  ]
+ },
+ "5": {
+  "l": 5,
+  "spin": 2.5,
+  "classes": [
+   {
+    "class": "W(|2m|=5)",
+    "twist": "phase-locked, weight 5/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 5 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=3)",
+    "twist": "phase-locked, weight 3/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 3 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=1)",
+    "twist": "phase-locked, weight 1/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 1 (canonical order)"
+   },
+   {
+    "class": "C2^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C2^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   }
+  ]
+ },
+ "6": {
+  "l": 6,
+  "spin": 3.0,
+  "classes": [
+   {
+    "class": "W(|2m|=6)",
+    "twist": "phase-locked, weight 6/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 6 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=4)",
+    "twist": "phase-locked, weight 4/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 4 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=2)",
+    "twist": "phase-locked, weight 2/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 2 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=0)",
+    "twist": "phase-locked, weight 0/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 0 (canonical order)"
+   },
+   {
+    "class": "C2^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 4,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C2^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "2T",
+    "twist": "chi_0 of Z3",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "2ab40eaba1359f7e"
+   },
+   {
+    "class": "2O",
+    "twist": "chi_1 of Z2",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "47e974e6e26e457e"
+   }
+  ]
+ },
+ "7": {
+  "l": 7,
+  "spin": 3.5,
+  "classes": [
+   {
+    "class": "W(|2m|=7)",
+    "twist": "phase-locked, weight 7/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 7 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=5)",
+    "twist": "phase-locked, weight 5/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 5 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=3)",
+    "twist": "phase-locked, weight 3/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 3 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=1)",
+    "twist": "phase-locked, weight 1/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 1 (canonical order)"
+   },
+   {
+    "class": "C2^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 4,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C2^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 4,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k3",
+    "twist": "k=3 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C7^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   }
+  ]
+ },
+ "12": {
+  "l": 12,
+  "spin": 6.0,
+  "classes": [
+   {
+    "class": "W(|2m|=12)",
+    "twist": "phase-locked, weight 12/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 12 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=10)",
+    "twist": "phase-locked, weight 10/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 10 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=8)",
+    "twist": "phase-locked, weight 8/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 8 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=6)",
+    "twist": "phase-locked, weight 6/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 6 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=4)",
+    "twist": "phase-locked, weight 4/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 4 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=2)",
+    "twist": "phase-locked, weight 2/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 2 (canonical order)"
+   },
+   {
+    "class": "W(|2m|=0)",
+    "twist": "phase-locked, weight 0/2",
+    "dimC": 1,
+    "orbit_dim": 3,
+    "rep": "weight basis vector, index k with l-2k = 0 (canonical order)"
+   },
+   {
+    "class": "C2^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 7,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C2^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 6,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 5,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 4,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C3^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 4,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 4,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C4^k3",
+    "twist": "k=3 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k3",
+    "twist": "k=3 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C5^k4",
+    "twist": "k=4 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 3,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k3",
+    "twist": "k=3 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k4",
+    "twist": "k=4 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C6^k5",
+    "twist": "k=5 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C7^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C7^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C7^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C7^k3",
+    "twist": "k=3 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C7^k4",
+    "twist": "k=4 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C7^k5",
+    "twist": "k=5 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C8^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C8^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C8^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C8^k3",
+    "twist": "k=3 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C8^k4",
+    "twist": "k=4 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C9^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C9^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C9^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C9^k3",
+    "twist": "k=3 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C10^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C10^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C10^k2",
+    "twist": "k=2 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C11^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C11^k1",
+    "twist": "k=1 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "C12^k0",
+    "twist": "k=0 (index residue)",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "rep": "Reynolds_C-average of the first canonical vector, sign-fixed"
+   },
+   {
+    "class": "2T",
+    "twist": "chi_0 of Z3",
+    "dimC": 2,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "cc960f31632711b6"
+   },
+   {
+    "class": "2T",
+    "twist": "chi_1 of Z3",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "b817290f65253351"
+   },
+   {
+    "class": "2T",
+    "twist": "chi_2 of Z3",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "05109077f974cdd0"
+   },
+   {
+    "class": "2O",
+    "twist": "chi_0 of Z2",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "b9d699a676df3c81"
+   },
+   {
+    "class": "2O",
+    "twist": "chi_1 of Z2",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "823b27652e5a0d82"
+   },
+   {
+    "class": "2I",
+    "twist": "chi_0 of Z1",
+    "dimC": 1,
+    "orbit_dim": 4,
+    "two_route_rank_match": true,
+    "rep_fixed_by_class": true,
+    "rep_moved_by_nonmember": true,
+    "rep_hash": "e300f6461f2570fc"
+   }
+  ]
+ }
+}
