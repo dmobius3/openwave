@@ -96,13 +96,14 @@ See `/dev_docs` for coding standards and development guidelines
 
 ### Self-checks a script prints
 
-A line a script prints as `PASS`, `CONFIRMED`, or `-> arm goes red` is a claim about the run, and a later reader cannot tell a verified claim from an unfalsifiable one by reading the output. So before shipping a script, break the thing each such line checks and confirm the line actually goes red. Three shapes keep getting through:
+A line a script prints as `PASS`, `CONFIRMED`, or `-> arm goes red` is a claim about the run, and a later reader cannot tell a verified claim from an unfalsifiable one by reading the output. So before shipping a script, break the thing each such line checks and confirm the line actually goes red. Four shapes keep getting through:
 
 | Shape | Why it never fails | The fix |
 | --- | --- | --- |
 | Both sides of the comparison evaluate the same expression | The check is an identity, so replacing the rule under test with nonsense still prints `PASS` | Compare against something computed by a different route: an exact reference, an independent implementation, or a closed form |
 | The verdict word is printed unconditionally beside the number | Only the number moves; the label says the same thing whatever the run did | Compute the verdict, then print it: `ok = err < tol and mutation > 1e3 * err` |
 | A harness asserts a label appears in the output | `"my check" in out` is satisfied whether it printed `PASS my check` or `FAIL my check` | Match the prefixed form, `"PASS  my check"` |
+| The verdict is computed and printed, and the script still exits 0 | Anything reading exit status rather than stdout records a green run for a failed check, including your own rerun sweep and the record it writes | Carry the verdict in the exit status too, `sys.exit(0 if ok else 1)`, so the run is falsifiable without a human reading the output |
 
 Where a quantity has no independent target to compare against, the honest label is **asserted**, not a self-check. An asserted value is a perfectly good contribution; a self-check that cannot discriminate is not, because it reads exactly like a verified result.
 
