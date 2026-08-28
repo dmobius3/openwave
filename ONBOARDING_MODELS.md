@@ -15,12 +15,13 @@ The columns are deliberately heterogeneous. M5 is a 4x4 real symmetric tensor fi
 
 ### Bring your own compute (BYOC)
 
-That table is the platform's resource contract, and it is worth stating plainly because it decides what an author can plan around. There are three roles here, and each one brings something different:
+That table is the platform's resource contract, and it is worth stating plainly because it decides what an author can plan around. There are four roles here, and each one brings something different:
 
 | Role | What the role brings |
 | --- | --- |
 | **Platform maintainers** | The shared criteria and the honest status legend, the scaffold, the review, the best practices, the cross-model prior art, the onboarding of new models, and pull-request review |
 | **Model authors** | The runs behind their own column: their own AI tokens and their own hardware, plus the answers when a claim on that column is challenged |
+| **Model co-authors** | The same, over the scope named in that column's briefing ([§ Model co-authors](#model-co-authors)) |
 | **Anyone else, contributing by pull request** | The same, for whatever they take on: a validation, an independent recompute, a falsification attempt |
 | **Resource contributors** | Neither theory nor code, but what the runs cost: sponsorship, GPU or cluster hours, AI token grants, earmarked to named work and credited against it ([README § Resource Contributors](README.md#resource-contributors)) |
 
@@ -88,6 +89,20 @@ Being a column in OpenWave is a commitment, not a listing. Five things belong to
 | **Have a GitHub account** | Prerequisite for that invitation. An author without one creates it at [github.com/signup](https://github.com/signup) and posts the handle in the application discussion. It is the model briefing's **Author contact** field anyway, the route for author-gated questions |
 
 **Author-gated questions.** Some questions only the author can answer: what a term in the Lagrangian is intended to mean, which version of a paper is the specification of record, whether a step is forced by the structure or chosen. The repository routes those to the author rather than guessing, per [`dev_docs/CROSS_MODEL_TESTING.md`](dev_docs/CROSS_MODEL_TESTING.md) section 6. Expect them, and answer them in writing where the answer becomes part of the record.
+
+### Model co-authors
+
+A column can carry more than one name. When a contributor's work becomes a standing part of a column rather than a one-off contribution, the column's author can promote that contributor to **co-author** over a named scope. Three steps, and no other machinery:
+
+| Step | Who |
+| --- | --- |
+| Approve the promotion, in a public thread | the column's author |
+| Accept it, in the same thread | the contributor |
+| Turn the briefing's `Extension` row into a `Co-author` row, carrying the handle and the scope | a maintainer |
+
+A co-author carries the author's duties over that scope and no further: owns the claims inside it, answers the challenges to it, and receives its author-gated questions. Everything outside the scope stays the author's. The role takes effect on the briefing edit, and it is removed the way it was added, by the author saying so in a public thread.
+
+**What this changes for review.** An author-gated finding on a pull request opened by an author or co-author of that column goes to that person in the thread, and the review writes no model-author note at all ([`dev_docs/PR_REVIEW_STANDARDS.md`](dev_docs/PR_REVIEW_STANDARDS.md#81-when-the-contributor-is-not-an-author-of-the-column) section 8.1). A column can equally carry two authors from the start, as [M7](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) does, with a scope named against each handle; the routing is the same.
 
 ### Agent roles worth running (as separate, non-colluding passes)
 

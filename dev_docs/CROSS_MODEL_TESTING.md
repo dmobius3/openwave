@@ -117,7 +117,10 @@ column, and Q&A's accepted-answer marking produces exactly the canonical citable
 the pre-registration needs. If an answer then generates real platform work (implementing
 a prescription, adding an extension), that work opens as an issue at that point.
 
-Author contact handles are listed in each model briefing's Identity table.
+Author contact handles are listed in each model briefing's Identity table, and so is
+the `Co-author` row where a column carries one. A question inside a co-author's named
+scope goes to the co-author; anything else goes to the author. Where a column carries
+two authors instead, the `Author contact` row names the scope of each.
 
 ## See also
 

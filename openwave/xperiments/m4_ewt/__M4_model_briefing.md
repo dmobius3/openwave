@@ -16,7 +16,7 @@
 | Name | EWT (Energy Wave Theory) |
 | Author | Jeff Yee, built on Milo Wolff + Gabriel LaFreniere pioneer work |
 | Author contact | GitHub [@jeffsyee](https://github.com/jeffsyee), for author-gated questions (definitions, intent, what the model does and does not claim); routing convention in [`dev_docs/CROSS_MODEL_TESTING.md`](../../../dev_docs/CROSS_MODEL_TESTING.md) § 6 |
-| Extension | Łukasz Smoliński (ψ³ soliton stabilizer, the 1-3-6 arrangement) |
+| Co-author | Łukasz Smoliński, GitHub [@lsmolinski](https://github.com/lsmolinski). Scope: the Enhanced EWT extension (BCC lattice formulation, ψ³ soliton stabilizer, the 1-3-6 arrangement, and the M4.3 onward weak-field encoding chain). Author-gated questions inside that scope route here, per [`ONBOARDING_MODELS.md`](../../../ONBOARDING_MODELS.md#model-co-authors) |
 | Relationship | the vector-PDE successor to M3 (Wolff-LaFreniere scalar); same EWT family, shares the coverage column (see [`../m3_wolff_lafreniere/__M3_model_briefing.md`](../m3_wolff_lafreniere/__M3_model_briefing.md)) |
 | Primary sources | Yee energywavetheory.com papers (01-10 + supplements); Smoliński soliton paper (`theory/`) |
 | In-repo | `medium.py` + `particle.py` + `wave_engine.py` + `force_motion.py` + `_launcher.py`; `research/M4_engine_upgrade.md`; validation record under `../m3_wolff_lafreniere/research/` |
