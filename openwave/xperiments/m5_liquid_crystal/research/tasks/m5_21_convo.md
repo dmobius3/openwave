@@ -488,3 +488,7 @@ Sent as a To-Duda-only reply on the same thread (cc's deliberately dropped; forw
 | The ask ([Q48](../m5_question_tracker.md#q48-detail)) | which variant is canonical (plain flip == A, or B with imaginary g + conjugation, untestable on the real stack), and is losing SO(1,3) invariance of the energy (26% measured) accepted physics or the thing variant B repairs |
 | Link | the note on main (`findings/m5_21_16_note.md`) |
 | Next | await the author's read; the two-defect Newton-sign successor stays gated on the two-center construction; variant B field implementation staged only if named canonical |
+
+## 2026-08-27: the thread continues in the M5.32 record
+
+The author's replies after the 2026-08-14 outbound (2026-08-17 mandate, 2026-08-18 covariant contractions, 2026-08-20 public quest, 2026-08-22 "mine was only initial guess") and the user's 2026-08-27 staging decision are recorded in [`m5_32_convo.md`](m5_32_convo.md); the task is [M5.32](m5_32_task_details.md).

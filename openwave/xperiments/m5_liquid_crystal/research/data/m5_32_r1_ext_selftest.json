@@ -1,0 +1,541 @@
+{
+ "mutant": null,
+ "python": "/opt/anaconda3/envs/openwave312/bin/python3",
+ "terms": {
+  "E1": {
+   "definition": "E1 = F[pqrs] F[xyxy] eps[pqrs] (eps[F1.d0,F1.d1,F1.i2,F1.i3] (F2.d0-F2.i2) (F2.d1-F2.i3); slots 0,1 derivative, 2,3 internal; one Levi-Civita symbol; the R0 rule extended: eps-d eta, eps-i delta)",
+   "hash": "059cc0bfae29",
+   "kind": "curvature_ext",
+   "parity": "odd"
+  },
+  "E2": {
+   "definition": "E2 = F[pqrx] F[syxy] eps[pqrs] (eps[F1.d0,F1.d1,F1.i2,F2.d0] (F1.i3-F2.i2) (F2.d1-F2.i3); slots 0,1 derivative, 2,3 internal; one Levi-Civita symbol; the R0 rule extended: eps-d eta, eps-i delta)",
+   "hash": "ea9453dc7955",
+   "kind": "curvature_ext",
+   "parity": "odd"
+  },
+  "E3": {
+   "definition": "E3 = F[pqrx] F[xysy] eps[pqrs] (eps[F1.d0,F1.d1,F1.i2,F2.i2] (F1.i3-F2.d0) (F2.d1-F2.i3); slots 0,1 derivative, 2,3 internal; one Levi-Civita symbol; the R0 rule extended: eps-d eta, eps-i delta)",
+   "hash": "dcb9badc19c8",
+   "kind": "curvature_ext",
+   "parity": "odd"
+  },
+  "I1_h": {
+   "definition": "I1_h = sum_{mu<nu} eta^mu eta^nu tr(h_cov F h_cov F^T), h_cov = eta + 2 (eta u)(eta u)^T, u = timelike unit eigenvector of M eta (contravariant, u^T eta u = -1); = I1_frob in the vacuum eigenframe",
+   "hash": "302b3aef8ea8",
+   "kind": "curvature_ext",
+   "parity": "even"
+  },
+  "J1": {
+   "definition": "J1 = sum_{mu<nu} eta^mu eta^nu tr(F eta M eta F eta M eta) (contravariant F, M joined by eta; tr((FM)^2)-type)",
+   "hash": "28f8f8db5c9f",
+   "kind": "curvature_ext",
+   "parity": "even"
+  },
+  "J2": {
+   "definition": "J2 = sum_{mu<nu} eta^mu eta^nu tr(F eta F eta M eta M eta) (tr(F^2 M^2)-type)",
+   "hash": "ae480d4c2618",
+   "kind": "curvature_ext",
+   "parity": "even"
+  },
+  "Pgrad": {
+   "definition": "Pgrad = sum_mu eta^{mu mu} q(d_mu P_t, d_mu P_t), P_t = u u^T eta, q(X,Y) = sum_ab eta_a eta_b X[a,b] Y[a,b], d_mu u by first-order eigenvector perturbation of M eta along A_mu (the search knob -kappa is the coefficient)",
+   "hash": "36b5be64d04a",
+   "kind": "projector_ext",
+   "parity": "even"
+  }
+ },
+ "covariance": {
+  "per_term": {
+   "E1": {
+    "boost_0": 1.678411856491496e-15,
+    "boost_1": 7.459608251073316e-16,
+    "boost_2": 7.459608251073316e-16,
+    "rotation_0": 4.19602964122874e-16,
+    "rotation_1": 3.729804125536658e-16,
+    "rotation_2": 5.594706188304987e-16
+   },
+   "E2": {
+    "boost_0": 2.0199744649231353e-15,
+    "boost_1": 5.509021267972187e-16,
+    "boost_2": 6.427191479300884e-16,
+    "rotation_0": 5.509021267972187e-16,
+    "rotation_1": 7.345361690629583e-16,
+    "rotation_2": 4.590851056643489e-16
+   },
+   "E3": {
+    "boost_0": 3.366575914405333e-15,
+    "boost_1": 4.471233636319582e-16,
+    "boost_2": 6.312329839509999e-16,
+    "rotation_0": 3.1561649197549997e-16,
+    "rotation_1": 4.208219893006666e-16,
+    "rotation_2": 4.208219893006666e-16
+   },
+   "I1_h": {
+    "boost_0": 3.178782972939244e-15,
+    "boost_1": 2.170876176641435e-15,
+    "boost_2": 3.0237203888934274e-15,
+    "rotation_0": 1.550625840458168e-15,
+    "rotation_1": 2.791126512824702e-15,
+    "rotation_2": 1.3180319643894426e-15
+   },
+   "J1": {
+    "boost_0": 1.9111438652700623e-14,
+    "boost_1": 6.147735510658942e-15,
+    "boost_2": 4.944917693356106e-15,
+    "rotation_0": 6.949614055527499e-15,
+    "rotation_1": 5.212210541645625e-15,
+    "rotation_2": 3.073867755329471e-15
+   },
+   "J2": {
+    "boost_0": 7.577855924943099e-15,
+    "boost_1": 2.904844771228188e-15,
+    "boost_2": 1.6418687837376715e-15,
+    "rotation_0": 2.0207615799848265e-15,
+    "rotation_1": 1.0103807899924132e-15,
+    "rotation_2": 2.525951974981033e-15
+   },
+   "Pgrad": {
+    "boost_0": 3.7715109239036983e-14,
+    "boost_1": 2.933397385258432e-15,
+    "boost_2": 4.723912672364228e-15,
+    "rotation_0": 8.381135386452663e-16,
+    "rotation_1": 1.2190742380294782e-15,
+    "rotation_2": 1.8667074269826386e-15
+   }
+  },
+  "worst": 3.7715109239036983e-14
+ },
+ "parity": {
+  "per_term": {
+   "I1": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "I1_frob": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "I2": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "I3": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "I3_mixed_eta": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "I4": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "I5": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "I6": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "E1": {
+    "x_reflection": {
+     "flip_residual": 0.0,
+     "keep_residual": 2.0,
+     "parity": "odd"
+    },
+    "time_reversal": {
+     "flip_residual": 0.0,
+     "keep_residual": 2.0,
+     "parity": "odd"
+    }
+   },
+   "E2": {
+    "x_reflection": {
+     "flip_residual": 0.0,
+     "keep_residual": 2.0,
+     "parity": "odd"
+    },
+    "time_reversal": {
+     "flip_residual": 0.0,
+     "keep_residual": 2.0,
+     "parity": "odd"
+    }
+   },
+   "E3": {
+    "x_reflection": {
+     "flip_residual": 0.0,
+     "keep_residual": 2.0,
+     "parity": "odd"
+    },
+    "time_reversal": {
+     "flip_residual": 0.0,
+     "keep_residual": 2.0,
+     "parity": "odd"
+    }
+   },
+   "I1_h": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "J1": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "J2": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   },
+   "Pgrad": {
+    "x_reflection": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    },
+    "time_reversal": {
+     "flip_residual": 2.0,
+     "keep_residual": 0.0,
+     "parity": "even"
+    }
+   }
+  },
+  "worst_odd_flip": 0.0,
+  "worst_even_keep": 0.0
+ },
+ "sympy_vs_numpy": {
+  "per_term": {
+   "E1": [
+    {
+     "sympy": 7595.616401234568,
+     "numpy": 7595.616401234565,
+     "rel": 3.5921825974193556e-16
+    },
+    {
+     "sympy": 30.278543209876542,
+     "numpy": 30.278543209876545,
+     "rel": 1.1733436625978898e-16
+    }
+   ],
+   "E2": [
+    {
+     "sympy": 1933.4475532407407,
+     "numpy": 1933.44755324074,
+     "rel": 3.5280037732927464e-16
+    },
+    {
+     "sympy": -443.0972327160494,
+     "numpy": -443.0972327160495,
+     "rel": 2.565731160737583e-16
+    }
+   ],
+   "E3": [
+    {
+     "sympy": 4120.959323302469,
+     "numpy": 4120.959323302469,
+     "rel": 0.0
+    },
+    {
+     "sympy": -203.6677709876543,
+     "numpy": -203.66777098765414,
+     "rel": 8.372962288312226e-16
+    }
+   ],
+   "I1_h": [
+    {
+     "sympy": -991.0407042245371,
+     "numpy": -991.040704224539,
+     "rel": 1.950148195759265e-15
+    },
+    {
+     "sympy": -3270.5283229166666,
+     "numpy": -3270.528322916667,
+     "rel": 1.3904400328841032e-16
+    }
+   ],
+   "J1": [
+    {
+     "sympy": 21188.336745900655,
+     "numpy": 21188.33674590067,
+     "rel": 6.867889350107784e-16
+    },
+    {
+     "sympy": 38341.85424986837,
+     "numpy": 38341.85424986842,
+     "rel": 1.328357855813894e-15
+    }
+   ],
+   "J2": [
+    {
+     "sympy": -888400.9641765811,
+     "numpy": -888400.964176581,
+     "rel": 1.310391664588466e-16
+    },
+    {
+     "sympy": -1135344.2440159698,
+     "numpy": -1135344.2440159698,
+     "rel": 0.0
+    }
+   ],
+   "Pgrad": [
+    {
+     "sympy": -0.013602065633925076,
+     "numpy": -0.013602065633925117,
+     "rel": 3.060811831373986e-15
+    },
+    {
+     "sympy": -0.06418334662489379,
+     "numpy": -0.0641833466248939,
+     "rel": 1.729768052005178e-15
+    }
+   ]
+  },
+  "worst": 3.060811831373986e-15,
+  "runtime_s": 1.7
+ },
+ "vacuum_frame": {
+  "I1_h_vs_I1_frob_at_vac": 5.343508500926075e-16,
+  "I1_h_boosted_vs_I1_frob_unboosted": 3.053433429100614e-15,
+  "I1_frob_boosted_vs_unboosted_(control, breaks)": 2.0428575759430125,
+  "I1_h_vs_I1_at_vac_rel_diff": 1.884352525513671
+ },
+ "du": {
+  "fd_vs_formula_rel": 3.2819380309092606e-09,
+  "u_eta_u_plus_1": 4.440892098500626e-16,
+  "u_eta_du": 1.8743533366865285e-18
+ },
+ "eps": {
+  "n_patterns": 210,
+  "n_nonvanishing": 154,
+  "rank_eps": 3,
+  "singular_values": [
+   6.011115590015483,
+   5.053288614808593,
+   4.345115326816264,
+   1.038810416716028e-15,
+   7.050467404436875e-16
+  ],
+  "basis_patterns": [
+   "eps[F1.d0,F1.d1,F1.i2,F1.i3] (F2.d0-F2.i2) (F2.d1-F2.i3)",
+   "eps[F1.d0,F1.d1,F1.i2,F2.d0] (F1.i3-F2.i2) (F2.d1-F2.i3)",
+   "eps[F1.d0,F1.d1,F1.i2,F2.i2] (F1.i3-F2.d0) (F2.d1-F2.i3)"
+  ],
+  "basis_slots": [
+   [
+    "pqrs",
+    "xyxy",
+    "pqrs"
+   ],
+   [
+    "pqrx",
+    "syxy",
+    "pqrs"
+   ],
+   [
+    "pqrx",
+    "xysy",
+    "pqrs"
+   ]
+  ],
+  "rank_even6_plus_eps": 9,
+  "reduction_histogram": {
+   "0": 56,
+   "+1E1": 2,
+   "-1E1": 2,
+   "+1E2": 24,
+   "-1E2": 24,
+   "+1E3": 8,
+   "-1E3": 8,
+   "+1E1 -4E2": 2,
+   "-1E1 +4E2": 2,
+   "+0.5E1 -1E2": 8,
+   "-0.5E1 +1E2": 8,
+   "+0.5E1 -1E3": 8,
+   "-0.5E1 +1E3": 8,
+   "+0.5E2 -0.5E3": 8,
+   "+0.5E2 +0.5E3": 8,
+   "-0.5E2 +0.5E3": 8,
+   "-0.5E2 -0.5E3": 8,
+   "+0.5E1 -2E2 -1E3": 8,
+   "-0.5E1 +2E2 +1E3": 8,
+   "+2E1 -4E2 -4E3": 1,
+   "-2E1 +4E2 +4E3": 1
+  },
+  "max_reduction_residual": 9.011630455459626e-16
+ },
+ "mutation": {
+  "mutant": "eta_time_row",
+  "n_fail": 3,
+  "failed_lines": [
+   "FAIL  covariance: every ext term, SO(1,3)+SO(3), density             3.070e+01  (thr 1e-10)",
+   "FAIL  I1_h == I1_frob in the vacuum eigenframe                       1.738e+00  (thr 1e-12)",
+   "FAIL  I1_h(boosted) == I1_frob(vacuum frame) (covariantized flip)    1.445e+01  (thr 1e-10)"
+  ],
+  "returncode": 1
+ },
+ "selftest_lines": [
+  {
+   "name": "covariance: every ext term, SO(1,3)+SO(3), density",
+   "value": 3.7715109239036983e-14,
+   "threshold": 1e-10,
+   "pass": true
+  },
+  {
+   "name": "parity: every eps term flips sign (x-refl, T)",
+   "value": 0.0,
+   "threshold": 1e-10,
+   "pass": true
+  },
+  {
+   "name": "parity: every eta-only term keeps sign (x-refl, T)",
+   "value": 0.0,
+   "threshold": 1e-10,
+   "pass": true
+  },
+  {
+   "name": "sympy vs numpy, every ext term, 2 rational jets",
+   "value": 3.060811831373986e-15,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "I1_h == I1_frob in the vacuum eigenframe",
+   "value": 5.343508500926075e-16,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "I1_h(boosted) == I1_frob(vacuum frame) (covariantized flip)",
+   "value": 3.053433429100614e-15,
+   "threshold": 1e-10,
+   "pass": true
+  },
+  {
+   "name": "control: I1_frob itself breaks under the boost",
+   "value": 2.0428575759430125,
+   "threshold": 0.001,
+   "pass": true
+  },
+  {
+   "name": "d_mu u: perturbation formula vs central difference",
+   "value": 3.2819380309092606e-09,
+   "threshold": 1e-06,
+   "pass": true
+  },
+  {
+   "name": "u normalization: u eta u = -1, u eta du = 0",
+   "value": 4.440892098500626e-16,
+   "threshold": 1e-10,
+   "pass": true
+  },
+  {
+   "name": "eps: basis independent of the even six (rank 6 + r)",
+   "value": 0.0,
+   "threshold": 0.5,
+   "pass": true
+  },
+  {
+   "name": "eps: every pattern reduces on the basis",
+   "value": 9.011630455459626e-16,
+   "threshold": 1e-10,
+   "pass": true
+  },
+  {
+   "name": "mutation: eta_time_row mutant reddens >= 1 line",
+   "value": 3.0,
+   "threshold": 1.0,
+   "pass": true
+  }
+ ],
+ "all_pass": true,
+ "runtime_s": 6.1
+}

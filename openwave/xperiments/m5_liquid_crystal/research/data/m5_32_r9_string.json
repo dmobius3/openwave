@@ -1,0 +1,306 @@
+{
+ "task": "M5.32 R9 arm b: a string-free hedgehog and the clock are mutually exclusive",
+ "theorem": "M = Qh d4 Qh^T with three distinct spatial eigenvalues requires, beyond the hedgehog direction n-hat, a continuous placement of the perpendicular pair in the tangent plane of S^2, i.e. a nowhere-zero tangent vector field on the sphere, which does not exist (hairy ball). The obstruction disappears exactly when the perpendicular pair is degenerate, delta = 0, and the clock generator G1 rotates that same pair, so a string-free hedgehog has a0 = 0 identically.",
+ "equivalence": {
+  "delta_0_max_abs_deviation_from_frame_free_form": 6.661338147750939e-16,
+  "field_scale": 32.0,
+  "relative": 2.0816681711721685e-17,
+  "delta_0.3_same_comparison": 0.2998439937597504,
+  "form": "M = diag(d00,0,0,0) + lam_perp (I3 - n n^T) + (lam_par - lam_perp) n n^T",
+  "reading": "at delta = 0 the ansatz IS a function of n n^T alone, so it is smooth away from the origin and carries no string; at delta = 0.3 the same form fails, because the third eigenvalue needs a tangent frame the sphere does not admit"
+ },
+ "continuum_ring": {
+  "z": 12.0,
+  "rhos": [
+   0.01,
+   0.0001,
+   1e-06
+  ],
+  "rows": {
+   "delta_0": {
+    "spread_per_rho": [
+     0.0008333327546300982,
+     8.33333333287653e-06,
+     8.333333345600351e-08
+    ],
+    "radius_independent": false,
+    "spread_over_delta": null
+   },
+   "delta_0.003": {
+    "spread_per_rho": [
+     0.0014996527780189045,
+     0.0014999999652777782,
+     0.001499999999996528
+    ],
+    "radius_independent": false,
+    "spread_over_delta": 0.4999999884259261
+   },
+   "delta_0.01": {
+    "spread_per_rho": [
+     0.004999652778018906,
+     0.004999999965277779,
+     0.004999999999996529
+    ],
+    "radius_independent": false,
+    "spread_over_delta": 0.49999999652777793
+   },
+   "delta_0.03": {
+    "spread_per_rho": [
+     0.014999652778018907,
+     0.014999999965277783,
+     0.014999999999996532
+    ],
+    "radius_independent": false,
+    "spread_over_delta": 0.4999999988425928
+   },
+   "delta_0.1": {
+    "spread_per_rho": [
+     0.049999652778018926,
+     0.0499999999652778,
+     0.04999999999999655
+    ],
+    "radius_independent": false,
+    "spread_over_delta": 0.49999999965277797
+   },
+   "delta_0.3": {
+    "spread_per_rho": [
+     0.14999965277801894,
+     0.1499999999652778,
+     0.14999999999999655
+    ],
+    "radius_independent": false,
+    "spread_over_delta": 0.49999999988425936
+   },
+   "delta_1": {
+    "spread_per_rho": [
+     0.499999652778019,
+     0.4999999999652779,
+     0.4999999999999966
+    ],
+    "radius_independent": true,
+    "spread_over_delta": 0.4999999999652779
+   }
+  }
+ },
+ "ladder": {
+  "rows": {
+   "delta_0": {
+    "delta": 0.0,
+    "kin": -0.0,
+    "a0_max_abs": 0.0,
+    "phi_ring_spread": {
+     "z_6_rho_1.06066": 0.13725490196078433,
+     "z_12_rho_1.06066": 0.06607929515418508,
+     "z_18_rho_1.06066": 0.04331450094161961
+    },
+    "quartics": {
+     "Q_I1sq": {
+      "C4": 0.0,
+      "C2": 0.0,
+      "C4_tube_share": null,
+      "C2_tube_share": null
+     },
+     "Q_Fpair": {
+      "C4": 0.0,
+      "C2": 0.0,
+      "C4_tube_share": null,
+      "C2_tube_share": null
+     },
+     "Q_I4sq": {
+      "C4": 0.0,
+      "C2": 0.0,
+      "C4_tube_share": null,
+      "C2_tube_share": null
+     }
+    }
+   },
+   "delta_0.003": {
+    "delta": 0.003,
+    "kin": 0.04925675854234056,
+    "a0_max_abs": 0.00299688309606189,
+    "phi_ring_spread": {
+     "z_6_rho_1.06066": 0.13725490196078433,
+     "z_12_rho_1.06066": 0.06607929515418508,
+     "z_18_rho_1.06066": 0.04331450094161961
+    },
+    "quartics": {
+     "Q_I1sq": {
+      "C4": 8.6347747297184e-09,
+      "C2": -0.00025215089257403354,
+      "C4_tube_share": 0.579630093249944,
+      "C2_tube_share": 0.9351295015324531
+     },
+     "Q_Fpair": {
+      "C4": 4.6505093972019116e-09,
+      "C2": -5.9794952343995457e-05,
+      "C4_tube_share": 0.6088887542149669,
+      "C2_tube_share": 0.9669308243823619
+     },
+     "Q_I4sq": {
+      "C4": 2.4165470249005057e-10,
+      "C2": -7.019328305070788e-05,
+      "C4_tube_share": 0.987690720153852,
+      "C2_tube_share": 0.9886240152067245
+     }
+    }
+   },
+   "delta_0.01": {
+    "delta": 0.01,
+    "kin": 0.5434285433538325,
+    "a0_max_abs": 0.009989610320207745,
+    "phi_ring_spread": {
+     "z_6_rho_1.06066": 0.13725490196078433,
+     "z_12_rho_1.06066": 0.06607929515418508,
+     "z_18_rho_1.06066": 0.04331450094161961
+    },
+    "quartics": {
+     "Q_I1sq": {
+      "C4": 1.0494021003353783e-06,
+      "C2": -0.0027370642315829577,
+      "C4_tube_share": 0.5792440448725198,
+      "C2_tube_share": 0.9352003735363853
+     },
+     "Q_Fpair": {
+      "C4": 5.647081352468589e-07,
+      "C2": -0.0006506405918413519,
+      "C4_tube_share": 0.608184254781369,
+      "C2_tube_share": 0.9671702093927197
+     },
+     "Q_I4sq": {
+      "C4": 2.8904775805270396e-08,
+      "C2": -0.000754395473875375,
+      "C4_tube_share": 0.9875187158575732,
+      "C2_tube_share": 0.9885534469503093
+     }
+    }
+   },
+   "delta_0.03": {
+    "delta": 0.03,
+    "kin": 4.796494594577909,
+    "a0_max_abs": 0.029968830960623236,
+    "phi_ring_spread": {
+     "z_6_rho_1.06066": 0.13725490196078433,
+     "z_12_rho_1.06066": 0.06607929515418508,
+     "z_18_rho_1.06066": 0.04331450094161961
+    },
+    "quartics": {
+     "Q_I1sq": {
+      "C4": 8.141029930623173e-05,
+      "C2": -0.023072644118769157,
+      "C4_tube_share": 0.5788160258525001,
+      "C2_tube_share": 0.9354798258721541
+     },
+     "Q_Fpair": {
+      "C4": 4.3723674114772515e-05,
+      "C2": -0.005527807284943276,
+      "C4_tube_share": 0.6067693036609815,
+      "C2_tube_share": 0.9678846897192266
+     },
+     "Q_I4sq": {
+      "C4": 2.140205998011238e-06,
+      "C2": -0.006179808860900459,
+      "C4_tube_share": 0.9870050523207821,
+      "C2_tube_share": 0.9883618120380957
+     }
+    }
+   },
+   "delta_0.1": {
+    "delta": 0.1,
+    "kin": 50.28850272503228,
+    "a0_max_abs": 0.09989610320207853,
+    "phi_ring_spread": {
+     "z_6_rho_1.06066": 0.13725490196078433,
+     "z_12_rho_1.06066": 0.06607929515418508,
+     "z_18_rho_1.06066": 0.04840510366826157
+    },
+    "quartics": {
+     "Q_I1sq": {
+      "C4": 0.008903508586057525,
+      "C2": -0.20746014154972978,
+      "C4_tube_share": 0.5890224280865921,
+      "C2_tube_share": 0.9375130296368251
+     },
+     "Q_Fpair": {
+      "C4": 0.004802858327726532,
+      "C2": -0.051676055724171825,
+      "C4_tube_share": 0.614476096895496,
+      "C2_tube_share": 0.9706868758753214
+     },
+     "Q_I4sq": {
+      "C4": 0.00021321013259496428,
+      "C2": -0.050451299623599254,
+      "C4_tube_share": 0.9862150538609352,
+      "C2_tube_share": 0.9879258804106831
+     }
+    }
+   },
+   "delta_0.3": {
+    "delta": 0.3,
+    "kin": 426.5070121483972,
+    "a0_max_abs": 0.2996883096062345,
+    "phi_ring_spread": {
+     "z_6_rho_1.06066": 0.13795180722891565,
+     "z_12_rho_1.06066": 0.1465635738831615,
+     "z_18_rho_1.06066": 0.14840510366826154
+    },
+    "quartics": {
+     "Q_I1sq": {
+      "C4": 1.111569778752049,
+      "C2": -1.364175839400636,
+      "C4_tube_share": 0.8187419392247481,
+      "C2_tube_share": 0.9560309451777015
+     },
+     "Q_Fpair": {
+      "C4": 0.8238721864961895,
+      "C2": -0.43551242121700445,
+      "C4_tube_share": 0.8639523693824306,
+      "C2_tube_share": 0.9802247632305398
+     },
+     "Q_I4sq": {
+      "C4": 0.13424297629106371,
+      "C2": -0.3335247869700384,
+      "C4_tube_share": 0.9973808452355377,
+      "C2_tube_share": 0.9918625230027258
+     }
+    }
+   },
+   "delta_1": {
+    "delta": 1.0,
+    "kin": 10362.006357683782,
+    "a0_max_abs": 0.9989610320207793,
+    "phi_ring_spread": {
+     "z_6_rho_1.06066": 0.4879518072289156,
+     "z_12_rho_1.06066": 0.4965635738831615,
+     "z_18_rho_1.06066": 0.4984051036682616
+    },
+    "quartics": {
+     "Q_I1sq": {
+      "C4": 7848.536021059875,
+      "C2": -470.79423632843896,
+      "C4_tube_share": 0.9964722068498997,
+      "C2_tube_share": 0.9950439738464215
+     },
+     "Q_Fpair": {
+      "C4": 7726.543986851969,
+      "C2": -391.33172467181777,
+      "C4_tube_share": 0.9968492754254468,
+      "C2_tube_share": 0.9947718927045335
+     },
+     "Q_I4sq": {
+      "C4": 1929.4931712858427,
+      "C2": -221.47601137452588,
+      "C4_tube_share": 0.9983059415233002,
+      "C2_tube_share": 0.9955928035632573
+     }
+    }
+   }
+  },
+  "fit": {
+   "spread_exponent_in_delta": 0.16587539886725242,
+   "kin_exponent_in_delta": 2.067842261687437,
+   "kin_at_delta_0": -0.0,
+   "spread_at_delta_0": 0.13725490196078433
+  }
+ },
+ "runtime_s": 38.6
+}

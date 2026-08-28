@@ -1,0 +1,1126 @@
+{
+ "conventions": {
+  "eta": "diag(-1,1,1,1)",
+  "branch": "s = -1, M_vac = diag(g,1,delta,0)",
+  "jet": "general symmetric A_i, 30 real parameters",
+  "H2": "omega^2 coefficient of the Legendre energy H = C omega^2 - A of L_lambda = -4[(1-lambda) I1 + lambda I1_h] - V4",
+  "S_T": "S = (<F,F>_h + <F,F>_eta)/2, T = (<F,F>_h - <F,F>_eta)/2, summed over i",
+  "w": 0.000724023879,
+  "toy": {
+   "g": 32.0,
+   "delta": 0.3
+  },
+  "alt": {
+   "g": 8.0,
+   "delta": 0.3
+  }
+ },
+ "claims": {
+  "F1": {
+   "channels": [
+    "boost_1",
+    "boost_2",
+    "rot_12",
+    "rot_23",
+    "clock_tr"
+   ],
+   "n_jets_per_channel": 20,
+   "lambda_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0,
+    1.3
+   ],
+   "a0_asymmetry_|a0-a0T|/|a0|_per_channel": {
+    "boost_1": 0.0,
+    "boost_2": 0.0,
+    "boost_3": 0.0,
+    "rot_12": 0.0,
+    "rot_23": 0.0,
+    "rot_13": 0.0,
+    "clock_tr": 1.9995995652301448,
+    "clock_t": 2.0,
+    "clock_r": 0.0
+   },
+   "note_a0_symmetry": "coms(Gamma_0, M) with a boost part t is NOT symmetric (clock_t, clock_tr): not a tangent of a symmetric M; the frame-free S/T split still holds there, the antisymmetric-F entry formula T = 2 sum_b F[0,b]^2 does not",
+   "max_rel_dev_H2_vs_4[S-(1-2lam)T]": 2.0289467986545273e-14,
+   "max_rel_dev_slope_vs_8T": 1.1320732909774763e-13,
+   "max_rel_dev_H2(1/2)_vs_4S": 1.102939305909713e-14,
+   "max_abs_dev_framefree_vs_entry_split": 2.1827872842550278e-11,
+   "explicit_pure_time_row_jets": {
+    "boost_1: A_1 = e1 e1^T": {
+     "S": 0.0,
+     "T": 2178.0,
+     "F_01": [
+      [
+       0.0,
+       33.0,
+       0.0,
+       0.0
+      ],
+      [
+       -33.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "F_01[0,1] predicted (1+g)": 33.0
+    },
+    "rot_12: A_1 = e0 e1^T + e1 e0^T": {
+     "S": 0.0,
+     "T": 0.9799999999999999,
+     "F_01": [
+      [
+       0.0,
+       0.0,
+       -0.7,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.7,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     ],
+     "F_01[0,2] predicted (1-delta)": 0.7
+    }
+   },
+   "null_QS_search": {
+    "boost_1": {
+     "dim_null_QS": 24,
+     "max_T_on_null_QS": 4356.0,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0
+    },
+    "boost_2": {
+     "dim_null_QS": 24,
+     "max_T_on_null_QS": 4173.159999999998,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0
+    },
+    "boost_3": {
+     "dim_null_QS": 24,
+     "max_T_on_null_QS": 4096.0,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0
+    },
+    "rot_12": {
+     "dim_null_QS": 21,
+     "max_T_on_null_QS": 0.9799999999999999,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0
+    },
+    "rot_23": {
+     "dim_null_QS": 21,
+     "max_T_on_null_QS": 0.18,
+     "min_eig_QS": -5.93969318174459e-17,
+     "min_eig_QT": 0.0
+    },
+    "rot_13": {
+     "dim_null_QS": 21,
+     "max_T_on_null_QS": 2.0,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0
+    },
+    "clock_tr": {
+     "dim_null_QS": 12,
+     "max_T_on_null_QS": 5456.288269611649,
+     "min_eig_QS": -1.6766501728200986e-12,
+     "min_eig_QT": -1.3987569855165528e-12
+    },
+    "clock_t": {
+     "dim_null_QS": 21,
+     "max_T_on_null_QS": 8981.008316723823,
+     "min_eig_QS": -2.0864518862764716e-12,
+     "min_eig_QT": -1.3698938353582928e-12
+    },
+    "clock_r": {
+     "dim_null_QS": 21,
+     "max_T_on_null_QS": 1.528503454157455,
+     "min_eig_QS": -1.8972170814649734e-16,
+     "min_eig_QT": -2.742982310312888e-31
+    }
+   },
+   "verdict": "CONFIRMED"
+  },
+  "F2": {
+   "g=32": {
+    "boost_1": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -1742.3999999999996,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_2": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -1669.263999999999,
+      "0.5": 0.0,
+      "0.55": -2.2737367544323206e-13,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_3": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -1638.4,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "rot_12": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999997500005,
+     "dim_null_QT": 24,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -0.39199999999999985,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "rot_23": {
+     "mu": 0.0,
+     "lambda_star": 0.4999999999305556,
+     "dim_null_QT": 24,
+     "min_eig_QS": -5.93969318174459e-17,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -0.07199999999999998,
+      "0.5": -2.375877272697836e-16,
+      "0.55": -2.375877272697836e-16,
+      "0.6": -2.375877272697836e-16,
+      "1.0": -2.375877272697836e-16
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "rot_13": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999997500005,
+     "dim_null_QT": 24,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -0.7999999999999998,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_tr": {
+     "mu": -4.573487910998536e-13,
+     "lambda_star": 0.4999999999676694,
+     "dim_null_QT": 12,
+     "min_eig_QS": -1.6766501728200986e-12,
+     "min_eig_QT": -1.3987569855165528e-12,
+     "min_eig_H2_at": {
+      "0.45": -3589.0527998236653,
+      "0.5": -6.7066006912803944e-12,
+      "0.55": -2.1606350814475477e-12,
+      "0.6": -6.172719903011804e-13,
+      "1.0": -4.594500193395824e-12
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_t": {
+     "mu": -7.584498026724867e-32,
+     "lambda_star": 0.49999999998035805,
+     "dim_null_QT": 21,
+     "min_eig_QS": -2.0864518862764716e-12,
+     "min_eig_QT": -1.3698938353582928e-12,
+     "min_eig_H2_at": {
+      "0.45": -3592.403326689542,
+      "0.5": -8.345807545105886e-12,
+      "0.55": -8.915849503916508e-12,
+      "0.6": -1.0767207602427813e-11,
+      "1.0": -8.883123648955398e-12
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_r": {
+     "mu": -2.495873312539738e-43,
+     "lambda_star": 0.499999999974732,
+     "dim_null_QT": 21,
+     "min_eig_QS": -1.8972170814649734e-16,
+     "min_eig_QT": -2.742982310312888e-31,
+     "min_eig_H2_at": {
+      "0.45": -0.6114013816629817,
+      "0.5": -7.588868325859894e-16,
+      "0.55": -7.392141637875472e-16,
+      "0.6": -9.856443139904284e-16,
+      "1.0": -1.9845043102655738e-15
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_twisted": {
+     "mu": -2.0768064180730093e-32,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": -5.458036406958036e-13,
+     "min_eig_QT": -1.0118667383928108e-12,
+     "min_eig_H2_at": {
+      "0.45": -2088.7547844863093,
+      "0.5": -2.1832145627832146e-12,
+      "0.55": -2.299515496790038e-12,
+      "0.6": -2.601652003166129e-12,
+      "1.0": -2.9992572459671236e-12
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_1_rot23": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -1742.3999999999996,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_1_nonvac_bg": {
+     "mu": -2.2719222573713125e-16,
+     "lambda_star": 0.49999999998749967,
+     "dim_null_QT": 21,
+     "min_eig_QS": -1.2460971563162036e-12,
+     "min_eig_QT": -1.046324079170141e-12,
+     "min_eig_H2_at": {
+      "0.45": -1760.8676377103766,
+      "0.5": -4.9843886252648145e-12,
+      "0.55": -7.003681694397231e-12,
+      "0.6": -4.542864454411796e-12,
+      "1.0": -6.452249136597511e-12
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_random_nonvac_bg": {
+     "mu": -5.367775199740946e-15,
+     "lambda_star": 0.49999999997547306,
+     "dim_null_QT": 12,
+     "min_eig_QS": -4.073449140048966e-12,
+     "min_eig_QT": -8.317166064410143e-12,
+     "min_eig_H2_at": {
+      "0.45": -8864.45443470465,
+      "0.5": -1.6293796560195862e-11,
+      "0.55": -8.203057800226887e-12,
+      "0.6": 2.695596508739123e-12,
+      "1.0": -7.64688806651067e-12
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_random_0": {
+     "mu": -2.3438322175811465e-12,
+     "lambda_star": 0.4999999999696881,
+     "dim_null_QT": 12,
+     "min_eig_QS": -3.4231339247065755e-12,
+     "min_eig_QT": -2.1065261025989575e-12,
+     "min_eig_H2_at": {
+      "0.45": -5760.596689218051,
+      "0.5": -1.3692535698826302e-11,
+      "0.55": -2.8516859234981405e-12,
+      "0.6": -9.74972857663256e-12,
+      "1.0": -6.774702477546005e-12
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_random_1": {
+     "mu": -1.6703966438114846e-13,
+     "lambda_star": 0.4999999999746298,
+     "dim_null_QT": 12,
+     "min_eig_QS": -2.2340453282250907e-12,
+     "min_eig_QT": -6.150224244286072e-13,
+     "min_eig_H2_at": {
+      "0.45": -2194.801335811426,
+      "0.5": -8.936181312900363e-12,
+      "0.55": -1.7829485445808995e-12,
+      "0.6": -1.5805929980474932e-12,
+      "1.0": -5.463733182168735e-13
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_random_2": {
+     "mu": -1.3756153916013097e-13,
+     "lambda_star": 0.4999999999718399,
+     "dim_null_QT": 12,
+     "min_eig_QS": -1.4480233238221944e-12,
+     "min_eig_QT": -1.8626948631423655e-12,
+     "min_eig_H2_at": {
+      "0.45": -4986.221390184144,
+      "0.5": -5.7920932952887776e-12,
+      "0.55": -3.259416236825137e-12,
+      "0.6": -1.0435564919154915e-11,
+      "1.0": -4.035845439539136e-12
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_1_dressed_bg": {
+     "mu": -2.3223359790405344e-13,
+     "lambda_star": 0.49999999994358646,
+     "dim_null_QT": 21,
+     "min_eig_QS": -1.073388892581077e-11,
+     "min_eig_QT": -9.231388822109367e-12,
+     "min_eig_H2_at": {
+      "0.45": -6517.255274195478,
+      "0.5": -4.293555570324308e-11,
+      "0.55": -3.1397440844389406e-11,
+      "0.6": -2.421938457119178e-11,
+      "1.0": -5.15757758306873e-11
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "a0_random_symmetric": {
+     "mu": -3.968571936062728e-16,
+     "lambda_star": 0.4999999999868355,
+     "dim_null_QT": 21,
+     "min_eig_QS": -1.810107759247322e-14,
+     "min_eig_QT": -2.2002665304550958e-14,
+     "min_eig_H2_at": {
+      "0.45": -27.686514930518182,
+      "0.5": -7.240431036989288e-14,
+      "0.55": -5.229450252234107e-14,
+      "0.6": -9.539522262087557e-14,
+      "1.0": -9.964929416688786e-14
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    }
+   },
+   "g=8": {
+    "boost_1": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -129.59999999999997,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_2": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": -6.340594715936734e-14,
+     "min_eig_H2_at": {
+      "0.45": -110.22399999999999,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": -5.684341886080802e-14,
+      "1.0": -8.762768288761488e-14
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_3": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -102.4,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "rot_12": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999997500005,
+     "dim_null_QT": 24,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -0.39199999999999985,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "rot_23": {
+     "mu": 0.0,
+     "lambda_star": 0.4999999999305556,
+     "dim_null_QT": 24,
+     "min_eig_QS": -5.93969318174459e-17,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -0.07199999999999998,
+      "0.5": -2.375877272697836e-16,
+      "0.55": -2.375877272697836e-16,
+      "0.6": -2.375877272697836e-16,
+      "1.0": -2.375877272697836e-16
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "rot_13": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999997500005,
+     "dim_null_QT": 24,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -0.7999999999999998,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_tr": {
+     "mu": -1.951852345769205e-13,
+     "lambda_star": 0.4999999999676126,
+     "dim_null_QT": 12,
+     "min_eig_QS": -6.115896201950785e-14,
+     "min_eig_QT": -6.879678290637313e-14,
+     "min_eig_H2_at": {
+      "0.45": -249.0111714464564,
+      "0.5": -2.446358480780314e-13,
+      "0.55": -4.2375411330237573e-13,
+      "0.6": -3.9026201948884066e-13,
+      "1.0": -6.369361152275824e-13
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_t": {
+     "mu": -4.0329444476520937e-32,
+     "lambda_star": 0.49999999998018685,
+     "dim_null_QT": 21,
+     "min_eig_QS": -1.786837728561585e-13,
+     "min_eig_QT": -6.929313073679817e-14,
+     "min_eig_H2_at": {
+      "0.45": -252.34890420824564,
+      "0.5": -7.14735091424634e-13,
+      "0.55": -4.955746539154887e-13,
+      "0.6": -5.160665374591192e-13,
+      "1.0": -5.15969004793632e-13
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_r": {
+     "mu": -2.495873312539738e-43,
+     "lambda_star": 0.499999999974732,
+     "dim_null_QT": 21,
+     "min_eig_QS": -1.8972170814649734e-16,
+     "min_eig_QT": -2.742982310312888e-31,
+     "min_eig_H2_at": {
+      "0.45": -0.6114013816629817,
+      "0.5": -7.588868325859894e-16,
+      "0.55": -7.392141637875472e-16,
+      "0.6": -9.856443139904284e-16,
+      "1.0": -1.9845043102655738e-15
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_twisted": {
+     "mu": -2.2108113683719844e-32,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": -3.350302637478136e-14,
+     "min_eig_QT": -4.777464011970871e-14,
+     "min_eig_H2_at": {
+      "0.45": -139.76342989463112,
+      "0.5": -1.3401210549912544e-13,
+      "0.55": -9.515709902059159e-14,
+      "0.6": -1.5946241330473389e-13,
+      "1.0": -1.771158251761836e-13
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_1_rot23": {
+     "mu": 0.0,
+     "lambda_star": 0.49999999998750005,
+     "dim_null_QT": 21,
+     "min_eig_QS": 0.0,
+     "min_eig_QT": 0.0,
+     "min_eig_H2_at": {
+      "0.45": -129.59999999999997,
+      "0.5": 0.0,
+      "0.55": 0.0,
+      "0.6": 0.0,
+      "1.0": 0.0
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_1_nonvac_bg": {
+     "mu": -6.774047759471373e-12,
+     "lambda_star": 0.49999999998749833,
+     "dim_null_QT": 21,
+     "min_eig_QS": -9.121303102928851e-14,
+     "min_eig_QT": -8.977196665314635e-14,
+     "min_eig_H2_at": {
+      "0.45": -130.0117528925946,
+      "0.5": -3.6485212411715405e-13,
+      "0.55": -2.484323524683194e-13,
+      "0.6": -3.0602160421518695e-13,
+      "1.0": -4.321411917684637e-13
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_random_nonvac_bg": {
+     "mu": -7.882654142828428e-16,
+     "lambda_star": 0.49999999996249916,
+     "dim_null_QT": 12,
+     "min_eig_QS": -5.839757304495602e-14,
+     "min_eig_QT": -6.034095814647389e-14,
+     "min_eig_H2_at": {
+      "0.45": -127.68735658276375,
+      "0.5": -2.335902921798241e-13,
+      "0.55": -2.246683250924152e-13,
+      "0.6": -7.562146949241363e-14,
+      "1.0": -7.908591928777132e-14
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_random_0": {
+     "mu": -1.3499755329379405e-12,
+     "lambda_star": 0.49999999996612454,
+     "dim_null_QT": 12,
+     "min_eig_QS": -8.467367479873347e-14,
+     "min_eig_QT": -1.438858912911503e-13,
+     "min_eig_H2_at": {
+      "0.45": -396.3430359876857,
+      "0.5": -3.386946991949339e-13,
+      "0.55": -8.739828491518252e-14,
+      "0.6": -3.9217436619174093e-13,
+      "1.0": -4.280228643255912e-13
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_random_1": {
+     "mu": -1.9542341117621793e-12,
+     "lambda_star": 0.4999999999770305,
+     "dim_null_QT": 12,
+     "min_eig_QS": -5.595437171521326e-13,
+     "min_eig_QT": -1.7235911131087562e-13,
+     "min_eig_H2_at": {
+      "0.45": -738.3175527597637,
+      "0.5": -2.2381748686085304e-12,
+      "0.55": 1.979451890267437e-13,
+      "0.6": -1.5017920536226856e-13,
+      "1.0": -1.1889819774640913e-13
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "clock_random_2": {
+     "mu": -1.0889158458442914e-13,
+     "lambda_star": 0.4999999999793804,
+     "dim_null_QT": 12,
+     "min_eig_QS": -2.7308685122825966e-13,
+     "min_eig_QT": -3.4541525218400394e-13,
+     "min_eig_H2_at": {
+      "0.45": -1245.063738011759,
+      "0.5": -1.0923474049130386e-12,
+      "0.55": -4.704623862323512e-12,
+      "0.6": -4.974925142418385e-13,
+      "1.0": -1.4513901107170578e-12
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "boost_1_dressed_bg": {
+     "mu": -5.19652439171529e-14,
+     "lambda_star": 0.49999999998669176,
+     "dim_null_QT": 21,
+     "min_eig_QS": -9.493091183186202e-14,
+     "min_eig_QT": -8.229693694776396e-14,
+     "min_eig_H2_at": {
+      "0.45": -153.32448330058946,
+      "0.5": -3.7972364732744806e-13,
+      "0.55": -4.0701658429197565e-13,
+      "0.6": -3.4281784005591126e-13,
+      "1.0": -7.337750221959844e-13
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    },
+    "a0_random_symmetric": {
+     "mu": -5.453836325383043e-16,
+     "lambda_star": 0.4999999999832797,
+     "dim_null_QT": 21,
+     "min_eig_QS": -4.534863544232399e-15,
+     "min_eig_QT": -5.5760362223298554e-15,
+     "min_eig_H2_at": {
+      "0.45": -8.46975307078414,
+      "0.5": -1.8139454176929595e-14,
+      "0.55": -2.0319243706236153e-14,
+      "0.6": -1.6322577762806574e-14,
+      "1.0": -1.4953518627143034e-14
+     },
+     "predicted_lambda_star_(1-mu)/2": 0.5
+    }
+   },
+   "homogeneity_tangent_channels": {
+    "boost_1": {
+     "S(3x)/S(x)": 9.0,
+     "T(3x)/T(x)": 9.000000000000002
+    },
+    "boost_2": {
+     "S(3x)/S(x)": 9.0,
+     "T(3x)/T(x)": 8.999999999999996
+    },
+    "boost_3": {
+     "S(3x)/S(x)": 8.999999999999998,
+     "T(3x)/T(x)": 9.0
+    },
+    "rot_12": {
+     "S(3x)/S(x)": 8.999999999999996,
+     "T(3x)/T(x)": 9.0
+    },
+    "rot_23": {
+     "S(3x)/S(x)": 8.999999999999998,
+     "T(3x)/T(x)": 9.000000000000002
+    },
+    "rot_13": {
+     "S(3x)/S(x)": 8.999999999999998,
+     "T(3x)/T(x)": 8.999999999999998
+    },
+    "clock_tr": {
+     "S(3x)/S(x)": 8.999999999999998,
+     "T(3x)/T(x)": 9.0
+    },
+    "clock_t": {
+     "S(3x)/S(x)": 9.000000000000002,
+     "T(3x)/T(x)": 8.999999999999998
+    },
+    "clock_r": {
+     "S(3x)/S(x)": 9.000000000000002,
+     "T(3x)/T(x)": 9.0
+    }
+   },
+   "channels_lowering_threshold": [],
+   "channels_raising_threshold": [],
+   "channels_negative_above_half": [],
+   "clock_mu": {
+    "g=32": {
+     "clock_tr": -4.573487910998536e-13,
+     "clock_t": -7.584498026724867e-32,
+     "clock_r": -2.495873312539738e-43
+    },
+    "g=8": {
+     "clock_tr": -1.951852345769205e-13,
+     "clock_t": -4.0329444476520937e-32,
+     "clock_r": -2.495873312539738e-43
+    }
+   },
+   "verdict": "CONFIRMED"
+  },
+  "F3": {
+   "dressings": {
+    "n": 50,
+    "max_rel_spectrum_dev_and_V4": 2.907674101493285e-13,
+    "min_gap": 31.999999999998103,
+    "max_gap": 32.000000000011326,
+    "u_exists_always": true,
+    "expected_gap": 32.0
+   },
+   "path": [
+    {
+     "t": 0.0,
+     "V4": 0.0,
+     "spectrum_real": true,
+     "u0_gamma": 1.0,
+     "gap": 0.3,
+     "4*I1_h_static_on_fixed_jet": 432.0330520524046,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 4.0,
+     "V4": 2878904.849067363,
+     "spectrum_real": true,
+     "u0_gamma": 1.0076573893106724,
+     "gap": 0.20781059358212178,
+     "4*I1_h_static_on_fixed_jet": 452.7677633521683,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 8.0,
+     "V4": 43846390.11533755,
+     "spectrum_real": true,
+     "u0_gamma": 1.0352251523978109,
+     "gap": 0.3,
+     "4*I1_h_static_on_fixed_jet": 496.43793968378776,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 12.0,
+     "V4": 203889059.1239494,
+     "spectrum_real": true,
+     "u0_gamma": 1.1083739424877213,
+     "gap": 0.3,
+     "4*I1_h_static_on_fixed_jet": 599.9231854068967,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 15.0,
+     "V4": 454987509.81573266,
+     "spectrum_real": true,
+     "u0_gamma": 1.3039165603281364,
+     "gap": 0.3,
+     "4*I1_h_static_on_fixed_jet": 890.2326684995796,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 16.0,
+     "V4": 568458559.3871654,
+     "spectrum_real": true,
+     "u0_gamma": 1.5957985840080007,
+     "gap": 0.3,
+     "4*I1_h_static_on_fixed_jet": 1399.1200869876443,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 16.4,
+     "V4": 618112666.8882354,
+     "spectrum_real": true,
+     "u0_gamma": 2.246858302823017,
+     "gap": 0.3,
+     "4*I1_h_static_on_fixed_jet": 2892.2680729230105,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 16.49,
+     "V4": 629618200.9733416,
+     "spectrum_real": true,
+     "u0_gamma": 3.8553317732339676,
+     "gap": 0.3,
+     "4*I1_h_static_on_fixed_jet": 8737.983509764137,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 16.499,
+     "V4": 630775459.1938154,
+     "spectrum_real": true,
+     "u0_gamma": 6.776093522778904,
+     "gap": 0.3,
+     "4*I1_h_static_on_fixed_jet": 27226.084315679233,
+     "4*I1_static_on_fixed_jet": -171.62181846594098
+    },
+    {
+     "t": 16.5,
+     "V4": 630904118.6123995,
+     "spectrum_real": false
+    },
+    {
+     "t": 17.0,
+     "V4": 697105262.8286492,
+     "spectrum_real": false
+    },
+    {
+     "t": 20.0,
+     "V4": 1166574728.8302917,
+     "spectrum_real": false
+    }
+   ],
+   "t_star": 16.5,
+   "V4_at_t_star": 630904118.6123995,
+   "V4_min_on_2block_degeneracy_locus": {
+    "(-g) merges with 1": {
+     "m": -26.90758175804572,
+     "V4_min": 27948.492836979258
+    },
+    "(-g) merges with delta": {
+     "m": -26.90757556829151,
+     "V4_min": 27940.050290710285
+    },
+    "(-g) merges with 0": {
+     "m": -26.907575518963398,
+     "V4_min": 27939.85176331606
+    }
+   },
+   "V4_locus_min": 27939.85176331606,
+   "scales": {
+    "producer_stated_I1_h_dressed_electron": 10000.0,
+    "stored_electron_E_u_(g=8,n=32,undressed,integrated)": 4.860235754510436,
+    "note": "V4 here is a per-cell DENSITY; the 1e4 scale is an INTEGRATED energy: the ratio mixes units unless multiplied by the relaxing volume (h^3 per cell)"
+   },
+   "ratio_V4star_over_1e4": 63090.41186123995,
+   "ratio_V4locusmin_over_1e4": 2.793985176331606,
+   "I1_h_diverges_toward_locus": true,
+   "verdict": "QUALIFIED"
+  },
+  "F4": {
+   "boost_1": {
+    "C_P_Lagrangian_omega2_coeff_at_zero_jet": 2.0,
+    "norm_of_jet_dependent_form": 2.7194799110210365e-16,
+    "energy_H2_with_L=-kappa*Pgrad": "-kappa * 2"
+   },
+   "boost_3": {
+    "C_P_Lagrangian_omega2_coeff_at_zero_jet": 2.0,
+    "norm_of_jet_dependent_form": 2.7194799110210365e-16,
+    "energy_H2_with_L=-kappa*Pgrad": "-kappa * 2"
+   },
+   "rot_12": {
+    "C_P_Lagrangian_omega2_coeff_at_zero_jet": 0.0,
+    "norm_of_jet_dependent_form": 0.0,
+    "energy_H2_with_L=-kappa*Pgrad": "-kappa * 0"
+   },
+   "rot_23": {
+    "C_P_Lagrangian_omega2_coeff_at_zero_jet": 0.0,
+    "norm_of_jet_dependent_form": 0.0,
+    "energy_H2_with_L=-kappa*Pgrad": "-kappa * 0"
+   },
+   "clock_tr": {
+    "C_P_Lagrangian_omega2_coeff_at_zero_jet": 3.3000000000000007,
+    "norm_of_jet_dependent_form": 0.0,
+    "energy_H2_with_L=-kappa*Pgrad": "-kappa * 3.3"
+   },
+   "hand_boost_1": {
+    "q(dP,dP)": -2.0,
+    "C_P = eta^00 q": 2.0
+   },
+   "sign_reading": "C_P = +2 on boosts is the LAGRANGIAN omega^2 coefficient; the energy is H2 = c_P C_P, so with L = ... - kappa Pgrad (c_P = -kappa) the boost-channel energy gets -2 kappa omega^2: kappa > 0 REMOVES omega^2 energy, kappa < 0 adds a constant that cannot lift a jet-direction negative eigenvalue (the form is homogeneous in the jet, the constant is not)",
+   "verdict": "CONFIRMED"
+  },
+  "F5": {
+   "channels": [
+    "boost_1",
+    "boost_2",
+    "boost_3",
+    "rot_12",
+    "rot_23",
+    "rot_13",
+    "clock_tr",
+    "clock_t",
+    "clock_r",
+    "boost_twisted",
+    "boost_1_rot23",
+    "boost_1_nonvac_bg",
+    "clock_random_nonvac_bg",
+    "clock_random_0",
+    "clock_random_1",
+    "clock_random_2",
+    "boost_1_dressed_bg",
+    "a0_random_symmetric"
+   ],
+   "I1_h_alone": {
+    "minimize_c": {
+     "status": "FEASIBLE",
+     "c": {
+      "I1_h": -10000.0
+     },
+     "min_eig": -3.2027712447975454e-07,
+     "iterations": 0
+    },
+    "maximize_c": {
+     "status": "FEASIBLE",
+     "c": {
+      "I1_h": -4.0
+     },
+     "min_eig": -2.0265876585399073e-10,
+     "iterations": 1
+    }
+   },
+   "I1_h_scan_min_eig": {
+    "-3.9": -4467.693823893938,
+    "-4.0": -2.191246690987392e-10,
+    "-4.1": -1.1606425148658791e-10
+   },
+   "free_J1": {
+    "status": "INFEASIBLE",
+    "iterations": 0
+   },
+   "free_J2": {
+    "status": "INFEASIBLE",
+    "iterations": 0
+   },
+   "free_J1+J2": {
+    "status": "INFEASIBLE",
+    "iterations": 0
+   },
+   "controls": {
+    "I1_h+J1+J2": {
+     "status": "FEASIBLE",
+     "c": {
+      "I1_h": -10000.0,
+      "J1": 36.535230817507426,
+      "J2": -17.042403325304146
+     },
+     "min_eig": -0.006320148778038696,
+     "iterations": 29
+    },
+    "I1_frob": {
+     "status": "FEASIBLE",
+     "c": {
+      "I1_frob": -4.0
+     },
+     "min_eig": -2.511768932307969e-10,
+     "iterations": 1
+    },
+    "I1_h_vs_fixed_I1=+4 (sign-flipped control)": {
+     "status": "FEASIBLE",
+     "c": {
+      "I1_h": -4.0
+     },
+     "min_eig": -1.560703648643231e-10,
+     "iterations": 1
+    }
+   },
+   "form_values_on_pure_time_row_jet_boost_1_A1=e1e1": {
+    "I1": 2178.0,
+    "I1_h": -2178.0,
+    "J1": 69696.0,
+    "J2": -1116225.0
+   },
+   "LP_on_null_QS_of_boost_1_only": {
+    "J1": "INFEASIBLE",
+    "J2": "FEASIBLE",
+    "J1+J2": "FEASIBLE",
+    "I1_h": "FEASIBLE"
+   },
+   "verdict": "CONFIRMED"
+  }
+ },
+ "verdicts": {
+  "F1": "CONFIRMED",
+  "F2": "CONFIRMED",
+  "F3": "QUALIFIED",
+  "F4": "CONFIRMED",
+  "F5": "CONFIRMED"
+ },
+ "runtime_s": 60.67570090293884,
+ "log": [
+  "F1 a0 asymmetry per channel: {'boost_1': 0.0, 'boost_2': 0.0, 'boost_3': 0.0, 'rot_12': 0.0, 'rot_23': 0.0, 'rot_13': 0.0, 'clock_tr': 2.0, 'clock_t': 2.0, 'clock_r': 0.0}",
+  "F1 CONFIRMED: affine dev 2.0e-14, slope dev 1.1e-13, H2(1/2)=4S dev 1.1e-14; explicit jets: boost T=2178, rot T=0.98",
+  "   boost_1: dim null(Q_S)=24, max T on it=4356",
+  "   boost_2: dim null(Q_S)=24, max T on it=4173",
+  "   boost_3: dim null(Q_S)=24, max T on it=4096",
+  "   rot_12: dim null(Q_S)=21, max T on it=0.98",
+  "   rot_23: dim null(Q_S)=21, max T on it=0.18",
+  "   rot_13: dim null(Q_S)=21, max T on it=2",
+  "   clock_tr: dim null(Q_S)=12, max T on it=5456",
+  "   clock_t: dim null(Q_S)=21, max T on it=8981",
+  "   clock_r: dim null(Q_S)=21, max T on it=1.529",
+  "F2 g=32: boost_1                    mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=32: boost_2                    mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=-2.27e-13 H2(0.6)=+0.00e+00",
+  "F2 g=32: boost_3                    mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=32: rot_12                     mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=32: rot_23                     mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=-2.38e-16 H2(0.6)=-2.38e-16",
+  "F2 g=32: rot_13                     mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=32: clock_tr                   mu=-4.573e-13 lambda*=0.500000 mineig H2(0.55)=-2.16e-12 H2(0.6)=-6.17e-13",
+  "F2 g=32: clock_t                    mu=-7.584e-32 lambda*=0.500000 mineig H2(0.55)=-8.92e-12 H2(0.6)=-1.08e-11",
+  "F2 g=32: clock_r                    mu=-2.496e-43 lambda*=0.500000 mineig H2(0.55)=-7.39e-16 H2(0.6)=-9.86e-16",
+  "F2 g=32: boost_twisted              mu=-2.077e-32 lambda*=0.500000 mineig H2(0.55)=-2.30e-12 H2(0.6)=-2.60e-12",
+  "F2 g=32: boost_1_rot23              mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=32: boost_1_nonvac_bg          mu=-2.272e-16 lambda*=0.500000 mineig H2(0.55)=-7.00e-12 H2(0.6)=-4.54e-12",
+  "F2 g=32: clock_random_nonvac_bg     mu=-5.368e-15 lambda*=0.500000 mineig H2(0.55)=-8.20e-12 H2(0.6)=+2.70e-12",
+  "F2 g=32: clock_random_0             mu=-2.344e-12 lambda*=0.500000 mineig H2(0.55)=-2.85e-12 H2(0.6)=-9.75e-12",
+  "F2 g=32: clock_random_1             mu=-1.670e-13 lambda*=0.500000 mineig H2(0.55)=-1.78e-12 H2(0.6)=-1.58e-12",
+  "F2 g=32: clock_random_2             mu=-1.376e-13 lambda*=0.500000 mineig H2(0.55)=-3.26e-12 H2(0.6)=-1.04e-11",
+  "F2 g=32: boost_1_dressed_bg         mu=-2.322e-13 lambda*=0.500000 mineig H2(0.55)=-3.14e-11 H2(0.6)=-2.42e-11",
+  "F2 g=32: a0_random_symmetric        mu=-3.969e-16 lambda*=0.500000 mineig H2(0.55)=-5.23e-14 H2(0.6)=-9.54e-14",
+  "F2 g=8: boost_1                    mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=8: boost_2                    mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=-5.68e-14",
+  "F2 g=8: boost_3                    mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=8: rot_12                     mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=8: rot_23                     mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=-2.38e-16 H2(0.6)=-2.38e-16",
+  "F2 g=8: rot_13                     mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=8: clock_tr                   mu=-1.952e-13 lambda*=0.500000 mineig H2(0.55)=-4.24e-13 H2(0.6)=-3.90e-13",
+  "F2 g=8: clock_t                    mu=-4.033e-32 lambda*=0.500000 mineig H2(0.55)=-4.96e-13 H2(0.6)=-5.16e-13",
+  "F2 g=8: clock_r                    mu=-2.496e-43 lambda*=0.500000 mineig H2(0.55)=-7.39e-16 H2(0.6)=-9.86e-16",
+  "F2 g=8: boost_twisted              mu=-2.211e-32 lambda*=0.500000 mineig H2(0.55)=-9.52e-14 H2(0.6)=-1.59e-13",
+  "F2 g=8: boost_1_rot23              mu=+0.000e+00 lambda*=0.500000 mineig H2(0.55)=+0.00e+00 H2(0.6)=+0.00e+00",
+  "F2 g=8: boost_1_nonvac_bg          mu=-6.774e-12 lambda*=0.500000 mineig H2(0.55)=-2.48e-13 H2(0.6)=-3.06e-13",
+  "F2 g=8: clock_random_nonvac_bg     mu=-7.883e-16 lambda*=0.500000 mineig H2(0.55)=-2.25e-13 H2(0.6)=-7.56e-14",
+  "F2 g=8: clock_random_0             mu=-1.350e-12 lambda*=0.500000 mineig H2(0.55)=-8.74e-14 H2(0.6)=-3.92e-13",
+  "F2 g=8: clock_random_1             mu=-1.954e-12 lambda*=0.500000 mineig H2(0.55)=+1.98e-13 H2(0.6)=-1.50e-13",
+  "F2 g=8: clock_random_2             mu=-1.089e-13 lambda*=0.500000 mineig H2(0.55)=-4.70e-12 H2(0.6)=-4.97e-13",
+  "F2 g=8: boost_1_dressed_bg         mu=-5.197e-14 lambda*=0.500000 mineig H2(0.55)=-4.07e-13 H2(0.6)=-3.43e-13",
+  "F2 g=8: a0_random_symmetric        mu=-5.454e-16 lambda*=0.500000 mineig H2(0.55)=-2.03e-14 H2(0.6)=-1.63e-14",
+  "F2 CONFIRMED: lowered=[] raised=[] negative above 1/2=[]",
+  "F3 path t=  0.000: V4=0 real=True gamma(u)=1 4 I1_h=432",
+  "F3 path t=  4.000: V4=2.879e+06 real=True gamma(u)=1.008 4 I1_h=452.8",
+  "F3 path t=  8.000: V4=4.385e+07 real=True gamma(u)=1.035 4 I1_h=496.4",
+  "F3 path t= 12.000: V4=2.039e+08 real=True gamma(u)=1.108 4 I1_h=599.9",
+  "F3 path t= 15.000: V4=4.55e+08 real=True gamma(u)=1.304 4 I1_h=890.2",
+  "F3 path t= 16.000: V4=5.685e+08 real=True gamma(u)=1.596 4 I1_h=1399",
+  "F3 path t= 16.400: V4=6.181e+08 real=True gamma(u)=2.247 4 I1_h=2892",
+  "F3 path t= 16.490: V4=6.296e+08 real=True gamma(u)=3.855 4 I1_h=8738",
+  "F3 path t= 16.499: V4=6.308e+08 real=True gamma(u)=6.776 4 I1_h=2.723e+04",
+  "F3 path t= 16.500: V4=6.309e+08 real=False ",
+  "F3 path t= 17.000: V4=6.971e+08 real=False ",
+  "F3 path t= 20.000: V4=1.167e+09 real=False ",
+  "F3 QUALIFIED: V4(t*=16.5) = 6.309e+08 (ratio to 1e4: 6.31e+04); min V4 on the 2-block locus = 2.794e+04; I1_h on a fixed jet grows toward the locus: True",
+  "F4 boost_1: C_P = +2 (constant), ||jet form|| = 2.7e-16",
+  "F4 boost_3: C_P = +2 (constant), ||jet form|| = 2.7e-16",
+  "F4 rot_12: C_P = +0 (constant), ||jet form|| = 0.0e+00",
+  "F4 rot_23: C_P = +0 (constant), ||jet form|| = 0.0e+00",
+  "F4 clock_tr: C_P = +3.3 (constant), ||jet form|| = 0.0e+00",
+  "F4 CONFIRMED: C_P = +2 on boosts is the LAGRANGIAN omega^2 coefficient; the energy is H2 = c_P C_P, so with L = ... - kappa Pgrad (c_P = -kappa) the boost-channel energy gets -2 kappa omega^2: kappa > 0 REMOVES omega^2 energy, kappa < 0 adds a constant that cannot lift a jet-direction negative eigenvalue (the form is homogeneous in the jet, the constant is not)",
+  "F5 c_I1h alone: max feasible c = {'I1_h': -4.0}, min run -> {'I1_h': -10000.0} (box -1e4)",
+  "F5 free ['J1']: INFEASIBLE",
+  "F5 free ['J2']: INFEASIBLE",
+  "F5 free ['J1', 'J2']: INFEASIBLE",
+  "F5 control I1_h+J1+J2: FEASIBLE {'I1_h': -10000.0, 'J1': 36.535230817507426, 'J2': -17.042403325304146}",
+  "F5 control I1_frob: FEASIBLE {'I1_frob': -4.0}",
+  "F5 control I1_h_vs_fixed_I1=+4 (sign-flipped control): FEASIBLE {'I1_h': -4.0}",
+  "F5 LP restricted to null(Q_S) of boost_1: {'J1': 'INFEASIBLE', 'J2': 'FEASIBLE', 'J1+J2': 'FEASIBLE', 'I1_h': 'FEASIBLE'}",
+  "F5 CONFIRMED: scan min eig at c=-3.9/-4/-4.1: {'-3.9': -4467.693823893938, '-4.0': -2.191246690987392e-10, '-4.1': -1.1606425148658791e-10}"
+ ]
+}

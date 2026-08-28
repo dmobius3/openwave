@@ -1,0 +1,58 @@
+{
+ "G1_kin_density_vs_INS4": {
+  "mine": 195.80778725231318,
+  "ins4": 195.80778725231318,
+  "rel": 0.0
+ },
+ "G2_eu_density_vs_INS4": {
+  "mine": 58.51858568928709,
+  "ins4": 58.518585689287086,
+  "rel": 1.2142172053385395e-16
+ },
+ "G3_shell_partition": {
+  "cells_in_shells": 4096,
+  "cells_total": 4096,
+  "sum_in_shells": 195.80778725231318,
+  "kin_total": 195.80778725231318,
+  "rel": 0.0
+ },
+ "G4_degree_rigid": {
+  "half_width_cells": 4,
+  "Q": 1.0000000000000002,
+  "conflicts": 0,
+  "min_gap": 0.6999999999999993,
+  "median_gap": 0.7000000000000001
+ },
+ "mutations": {
+  "M1_kin_wrong_a0": {
+   "mine": 138.25404699163073,
+   "ins4": 195.80778725231318,
+   "rel": 0.2939297822027889
+  },
+  "M1_breaks": true,
+  "M2_eu_wrong_h": {
+   "mine": 55.7319863707496,
+   "ins4": 58.518585689287086,
+   "rel": 0.04761904761904767
+  },
+  "M2_breaks": true,
+  "M3_degree_uniform": {
+   "half_width_cells": 4,
+   "Q": -3.711781012357718e-36,
+   "conflicts": 0,
+   "min_gap": 0.6999999993288277,
+   "median_gap": 0.7000000000000001
+  },
+  "M3_breaks": true,
+  "M4_degree_parity": {
+   "half_width_cells": 4,
+   "Q": -1.0000000000000002,
+   "conflicts": 0,
+   "min_gap": 0.6999999999999993,
+   "median_gap": 0.7
+  },
+  "M4_breaks": true
+ },
+ "all_gates_pass": true,
+ "all_mutations_break": true
+}

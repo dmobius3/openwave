@@ -227,6 +227,10 @@ imgui.ini
 #   python3 dev_docs/utils/gen_datasets_manifest.py <path/to/data> --write
 # Untracked going forward; existing copies remain in pre-existing history (no rewrite).
 **/data/*.npz
+**/data/**/*.npz
+# M5.32: local-only reproduction copies of record JSONs and run logs (the comparison lives in m5_32_r0_baseline.json)
+openwave/xperiments/m5_liquid_crystal/research/data/m5_32_r0_b/
+openwave/xperiments/m5_liquid_crystal/research/data/m5_32_*_log*.txt
 **/data/*.npy
 **/data/*.npz.bak
 **/data/*.h5

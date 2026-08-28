@@ -5,7 +5,7 @@
 > manifest is the tracked record; obtain the papers from their original venues / authors.
 > Our own research notes (`.md`) and code remain tracked.
 
-Total: 60 local-only documents (as of 2026-08-14). The Golubich/Faber SU(2)-soliton sources shared by Dr. R. Golubich 2026-07-02 (see [`../research/tasks/m5_4g_convo_2026.07.02.md`](../research/tasks/m5_4g_convo_2026.07.02.md)) are the `golubich_faber_su2/*.tex` files; the same dipole paper is also present as two PDFs, so the Faber & Golubich 2026 work maps to three local files (one Bibliography entry, three Local corpus rows). ⚠️ **`faber_universe_2025.pdf` is a filename misnomer**: its content is the arXiv:2604.12021v1 preprint of that dipole paper (title page read 2026-07-25), not a Universe 2025 article; `DR14235.pdf` is the APS accepted version of the same work. The file is left under its original name because several research docs link it by path; use this row as the mapping.
+Total: 67 local-only documents (as of 2026-08-27). The Golubich/Faber SU(2)-soliton sources shared by Dr. R. Golubich 2026-07-02 (see [`../research/tasks/m5_4g_convo_2026.07.02.md`](../research/tasks/m5_4g_convo_2026.07.02.md)) are the `golubich_faber_su2/*.tex` files; the same dipole paper is also present as two PDFs, so the Faber & Golubich 2026 work maps to three local files (one Bibliography entry, three Local corpus rows). ⚠️ **`faber_universe_2025.pdf` is a filename misnomer**: its content is the arXiv:2604.12021v1 preprint of that dipole paper (title page read 2026-07-25), not a Universe 2025 article; `DR14235.pdf` is the APS accepted version of the same work. The file is left under its original name because several research docs link it by path; use this row as the mapping.
 
 Entries are ordered by year (ascending; undated last); the Bibliography is the readable list, and the "Local corpus" appendix preserves the gitignored-file inventory (path + size). The Bibliography has 57 works; the Local corpus has 59 files.
 
@@ -56,6 +56,13 @@ Entries are ordered by year (ascending; undated last); the Bibliography is the r
 | Baretz, Fieg, Ganesh, Ghosh, Knapp-Pérez, Rudolph & Whiteson | 2026 | Towards AI-assisted neutrino flavor theory design (AMBer: RL agent + physics-software pipeline searching neutrino flavor-symmetry model space; methodological benchmark, not LC physics: the 9-observable lepton scoreboard + KATRIN/KamLAND-ZEN/Planck bounds it fits against is the eventual falsification target for any 4×4 oscillation sector) | Commun. Phys. 9, 227; [DOI 10.1038/s42005-026-02627-2](https://doi.org/10.1038/s42005-026-02627-2); open access; shared by Duda to models-of-particles 2026-07-12 ("maybe let's try to work together before being overrun") |
 | Duda | 2026 | (How) could AI (help to) find deeper physics? (talk slides, 11 pages; the "Properties to test for SM + gravity?" slide = the author's priority-ranked test list for the criteria matrix, with the OpenWave `MODELS.md` matrix embedded; local copy = the 2026-07-28 snapshot) | public: [th.if.uj.edu.pl/~dudaj/AIphysics.pdf](https://th.if.uj.edu.pl/~dudaj/AIphysics.pdf); shared to models-of-particles 2026-07-28, see [convo](../../../../dev_docs/tasks/t1_convo.md) |
 | Duda | 2026 | Fmunu 4D Hamiltonian imaginary (Mathematica notebook, 6 pages: the omega^2 energy coefficient of the 4x4 boost hedgehog is -2*sum((tilde-Gamma)^2) at leading order; the imaginary-tilde-Gamma and imaginary-g + conjugated-F variants flip it positive; the source of the M5.21.16 quest, decoded in [the convo](../research/tasks/m5_21_convo.md)) | author copy, emailed 2026-08-13 on the M5.21.15 thread |
+| Duda | 2026 | newton for boost hedgehogs (Mathematica notebook, 2 pages: two first-order boost hedgehogs at ±d on the M0 = diag(g,0,0,0) axis frame with f(r) = 1/√r profiles, the spatial-block curvature² energy integrated and fitted to a + b/d, b = +167.7 > 0: the "incorrect sign" (repulsive) Newton read the author attached to the 2026-08-17 search mandate; reproduced at [M5.32](../research/tasks/m5_32_task_details.md) rung R0) | author copy, emailed 2026-08-17 on the M5.21.15 thread, see [convo](../research/tasks/m5_32_convo.md) |
+| Duda | 2026 | The current 4x4 M5 Lagrangian, `L = −F_μναβ F^μναβ − V_~Higgs(M)` for `F_μναβ = [∂_μM, ∂_νM]_αβ` (the formula image the author attached to the 2026-08-20 public quest) | author copy, emailed 2026-08-20 on the PR #448 thread and forwarded to models-of-particles, see [convo](../research/tasks/m5_32_convo.md) |
+| Duda | 2026 | OpenWave MODELS.md score-board screenshot (the 30-criteria snapshot the author posted on the knot-periodic-table thread) | author copy, emailed 2026-08-23 to models-of-particles |
+| Duda | 2026 | Atomic models campaign proposal (text, 1.5 KB: Bohr vs free-fall electron trajectories, Gryzinski, the parallel campaign the author proposed to the substrate-framework program) | author copy, emailed 2026-08-26 and re-sent 2026-08-27 on the "P240 current candidate" thread, see [convo](../research/tasks/m5_32_convo.md) |
+| Duda | 2026 | Cosmic sources of negative radiation pressure? (slide with the Henize 2-10 33 GHz continuum map, arXiv:2107.02695, and the coupled-resonator / reverse-bias analogies) | author copy, emailed 2026-08-27 to models-of-particles on the "P240 current candidate" thread |
+| Duda | 2026 | Needed precise simulations (slide: backscattered and secondary electron scattering, BSE / SE, with two trajectory plots; the LENR electron-screening direction) | author copy, emailed 2026-08-27 to models-of-particles on the "P240 current candidate" thread |
+| Fleury | 2026 | Maxwell Tait Knot Theory (note, the PS2 "reproduce the known stable Tait knots first" argument behind the M5.22.5 stub) | author copy, emailed 2026-08-02 to models-of-particles on the knot-periodic-table thread |
 | n/a | n/a | Equation of Everything | author copy; n/a |
 | n/a | n/a | Liquid crystal particles (source unresolved from filename) | n/a |
 | n/a | n/a | Negative radiation pressure (source unresolved from filename) | n/a |
@@ -121,6 +128,13 @@ Entries are ordered by year (ascending; undated last); the Bibliography is the r
 | Baretz et al. (2026) | `amber_neutrino_flavor_rl.pdf` | 1.6 MB |
 | Duda (2026) | `duda_2026-07-28_AIphysics_talk_slides.pdf` | 4.8 MB |
 | Duda (2026) | `duda_fmunu_4d_hamiltonian_imaginary_2026_08_13.pdf` | 120 KB |
+| Duda (2026) | `duda_2026-08-17_newton_for_boost_hedgehogs.pdf` | 92 KB |
+| Duda (2026) | `duda_2026-08-20_current_4x4_lagrangian.png` | 28 KB |
+| Duda (2026) | `duda_2026-08-23_models_scoreboard_screenshot.png` | 69 KB |
+| Duda (2026) | `duda_2026-08-26_atomic_models_campaign_proposal.txt` | 1.5 KB |
+| Duda (2026) | `duda_2026-08-27_negative_radiation_pressure_henize2-10.png` | 688 KB |
+| Duda (2026) | `duda_2026-08-27_needed_precise_simulations_bse_se.png` | 273 KB |
+| Fleury (2026) | `fleury_2026-08-02_maxwell_tait_knot_note.pdf` | 87 KB |
 | n/a (n/a) | `Equation-of-Everything.pdf` | 1.8 MB |
 | n/a (n/a) | `liquid_crystal_particles.pdf` | 16.8 MB |
 | n/a (n/a) | `negative_readiation_pressure.pdf` | 11.9 MB |

@@ -1,0 +1,562 @@
+{
+ "mutant": null,
+ "python": "/opt/anaconda3/envs/openwave312/bin/python3",
+ "terms": {
+  "I1": {
+   "definition": "I1 = sum_{mu<nu} eta^mu eta^nu <F_mu nu, F_mu nu>_eta, <F,G>_eta = tr(eta F eta G^T), F_mu nu = A_mu eta A_nu - A_nu eta A_mu; = (1/2) F_{mu nu a b} F^{mu nu a b}",
+   "hash": "6a0f98b0566c",
+   "kind": "curvature"
+  },
+  "I1_frob": {
+   "definition": "I1_frob = sum_{mu<nu} eta^mu eta^nu tr(F_mu nu F_mu nu^T) (Frobenius internal metric; M5.21.16 variant A; control)",
+   "hash": "52986e943822",
+   "kind": "curvature"
+  },
+  "I2": {
+   "definition": "I2 = F_{mu nu a b} F^{a b mu nu} (derivative pair of one F contracted with the internal pair of the other; mixed pairs use delta)",
+   "hash": "dcdcbc8c288c",
+   "kind": "curvature"
+  },
+  "I3": {
+   "definition": "I3 = F_{mu nu a b} F^{mu a nu b} (eta on the mu-mu and b-b pairs, delta on the mixed nu-a pairs)",
+   "hash": "16127ef42812",
+   "kind": "curvature"
+  },
+  "I3_mixed_eta": {
+   "definition": "I3_mixed_eta = sum eta_mu eta_nu eta_a eta_b F[mu nu a b] F[mu a nu b] (eta on the mixed pairs; NON-covariant control)",
+   "hash": "08d08b0a59bd",
+   "kind": "curvature"
+  },
+  "I4": {
+   "definition": "I4 = R_{nu a} R^{nu a} = sum eta_nu eta_a R[nu,a]^2, R[nu,a] = sum_mu F[mu nu a mu]",
+   "hash": "7c07f9ce5fb2",
+   "kind": "curvature"
+  },
+  "I5": {
+   "definition": "I5 = R_{nu a} R^{a nu} = sum_{nu a} R[nu,a] R[a,nu], R[nu,a] = sum_mu F[mu nu a mu]",
+   "hash": "4641b8bc272b",
+   "kind": "curvature"
+  },
+  "I6": {
+   "definition": "I6 = R^2, R = sum_nu R[nu,nu] = sum_{mu nu} F[mu nu nu mu]",
+   "hash": "83beacf3db57",
+   "kind": "curvature"
+  },
+  "V4": {
+   "definition": "V4 = w sum_{p=1..4} (tr((M eta)^p) - C_p)^2, C_p = (s g)^p + 1 + delta^p, M_vac = diag(-s g, 1, delta, 0)",
+   "hash": "0f39a3433275",
+   "kind": "potential"
+  }
+ },
+ "certified_coeffs": {
+  "I1": -4.0,
+  "V4": -1.0
+ },
+ "certified": {
+  "stored_field": "m5_21_11_end_t11lad_A_n32_d0.3.npz",
+  "E_u_registry": 4.860235754510436,
+  "E_u_certified_live": 4.860235754510436,
+  "rel_u": 0.0,
+  "E_V_registry": 4.3424988586211795,
+  "E_V_certified_live": 4.3424988586211795,
+  "rel_V": 0.0,
+  "E_u_stored": 4.860235754510436,
+  "rel_u_vs_stored": 0.0,
+  "ident_u_registry": 17.24105026098617,
+  "ident_u_stored": 17.24105026098617,
+  "rel_ident_eta": 0.0,
+  "rel_ident_frob": 0.0,
+  "chan": {
+   "boost_z": {
+    "kin_registry": -0.6216220104197063,
+    "kin_certified": -0.6216220104197061,
+    "kin_stored": -0.621622010419706,
+    "kin_frob_registry": 0.6216220104196921,
+    "kin_frob_stored": 0.6216220104197061,
+    "rel_live": 3.5720196711681984e-16,
+    "rel_stored": 5.358029506752298e-16,
+    "rel_frob_stored": 2.250372392835965e-14
+   },
+   "boost_x": {
+    "kin_registry": -0.44526095391805853,
+    "kin_certified": -0.44526095391805887,
+    "kin_stored": -0.44526095391805887,
+    "kin_frob_registry": 0.4452609539180443,
+    "kin_frob_stored": 0.44526095391805876,
+    "rel_live": 7.480263078465242e-16,
+    "rel_stored": 7.480263078465242e-16,
+    "rel_frob_stored": 3.241447334001606e-14
+   },
+   "clock_local": {
+    "kin_registry": 0.9330980660052433,
+    "kin_certified": 0.9330980660052386,
+    "kin_stored": 0.9330980660052386,
+    "kin_frob_registry": 0.9330980660052433,
+    "kin_frob_stored": 0.9330980660052384,
+    "rel_live": 4.9972632816489824e-15,
+    "rel_stored": 4.9972632816489824e-15,
+    "rel_frob_stored": 5.2352281998227445e-15
+   }
+  },
+  "chan_worst_rel": 3.241447334001606e-14,
+  "vacuum_abs": {
+   "s+1": 0.0,
+   "s-1": 0.0
+  },
+  "runtime_s": 6.5
+ },
+ "sympy_vs_numpy": {
+  "I1": [
+   {
+    "sympy": -671.7598067901234,
+    "numpy": -671.7598067901233,
+    "rel": 1.6923733241029555e-16
+   },
+   {
+    "sympy": -6947.444928549383,
+    "numpy": -6947.444928549382,
+    "rel": 1.3091067451798133e-16
+   }
+  ],
+  "I1_frob": [
+   {
+    "sympy": -7317.17634382716,
+    "numpy": -7317.176343827159,
+    "rel": 1.2429585663056851e-16
+   },
+   {
+    "sympy": 1320.6627986111112,
+    "numpy": 1320.6627986111107,
+    "rel": 3.443326724768078e-16
+   }
+  ],
+  "I2": [
+   {
+    "sympy": 3984.361637037037,
+    "numpy": 3984.3616370370382,
+    "rel": 3.423991537258923e-16
+   },
+   {
+    "sympy": -4378.336441975309,
+    "numpy": -4378.336441975307,
+    "rel": 4.1545217633508543e-16
+   }
+  ],
+  "I3": [
+   {
+    "sympy": 899.2049283950618,
+    "numpy": 899.2049283950619,
+    "rel": 1.2643039882413569e-16
+   },
+   {
+    "sympy": -4254.111255015432,
+    "numpy": -4254.111255015431,
+    "rel": 2.1379194084326528e-16
+   }
+  ],
+  "I3_mixed_eta": [
+   {
+    "sympy": 3258.8890185185187,
+    "numpy": 3258.8890185185187,
+    "rel": 0.0
+   },
+   {
+    "sympy": 3094.1298369598767,
+    "numpy": 3094.129836959877,
+    "rel": 1.4697099826078213e-16
+   }
+  ],
+  "I4": [
+   {
+    "sympy": 2025.238263580247,
+    "numpy": 2025.2382635802478,
+    "rel": 4.490803468057678e-16
+   },
+   {
+    "sympy": -7486.199946064815,
+    "numpy": -7486.199946064815,
+    "rel": 0.0
+   }
+  ],
+  "I5": [
+   {
+    "sympy": 2106.760062345679,
+    "numpy": 2106.760062345679,
+    "rel": 0.0
+   },
+   {
+    "sympy": -5791.099884259259,
+    "numpy": -5791.09988425926,
+    "rel": 1.57050425644534e-16
+   }
+  ],
+  "I6": [
+   {
+    "sympy": 4042.981575308642,
+    "numpy": 4042.9815753086423,
+    "rel": 1.1247821500441753e-16
+   },
+   {
+    "sympy": 334.4428160493827,
+    "numpy": 334.44281604938305,
+    "rel": 1.0197872305754303e-15
+   }
+  ],
+  "V4": [
+   {
+    "sympy": 24491453.9875227,
+    "numpy": 24491453.987523835,
+    "rel": 4.639224529542974e-14
+   },
+   {
+    "sympy": 18722865120.0388,
+    "numpy": 18722865120.038757,
+    "rel": 2.2411991782691453e-15
+   }
+  ]
+ },
+ "notebook_N1": {
+  "lead": "-2*T1_2**2 - 2*T1_3**2 - 2*T2_2**2 - 2*T2_3**2 - 2*T3_2**2 - 2*T3_3**2",
+  "stored": "-2*T1_2**2 - 2*T1_3**2 - 2*T2_2**2 - 2*T2_3**2 - 2*T3_2**2 - 2*T3_3**2",
+  "matches_minus2six": true,
+  "G0_1_linear_term_via_other_Gamma0_entries": true,
+  "frob_lead": "2*T1_2**2 + 2*T1_3**2 + 2*T2_2**2 + 2*T2_3**2 + 2*T3_2**2 + 2*T3_3**2",
+  "matches_plus2six": true,
+  "runtime_s": 1.2
+ },
+ "gradient_complex_step": {
+  "I1": 1.4870422922956775e-15,
+  "I1_frob": 3.4213207705581597e-15,
+  "I2": 3.839913456192286e-16,
+  "I3": 5.468863039328893e-16,
+  "I3_mixed_eta": 1.0834323896455184e-15,
+  "I4": 1.5955815028313844e-15,
+  "I5": 4.4279636018110484e-16,
+  "I6": 8.551489403956859e-16,
+  "V4": 7.341692548941541e-15
+ },
+ "gradient_runtime_s": 1.2,
+ "invariance": {
+  "per_term": {
+   "I1": {
+    "boost_0": 7.168159480867645e-15,
+    "boost_1": 7.22839611516065e-16,
+    "boost_2": 7.22839611516065e-16,
+    "rotation_0": 7.22839611516065e-16,
+    "rotation_1": 5.421297086370488e-16,
+    "rotation_2": 2.5600569574527307e-16
+   },
+   "I1_frob": {
+    "boost_0": 5.128871176103515,
+    "boost_1": 0.384240727105315,
+    "boost_2": 0.717493428644948,
+    "rotation_0": 4.0343521186309464e-16,
+    "rotation_1": 6.723920197718243e-16,
+    "rotation_2": 4.0343521186309464e-16
+   },
+   "I2": {
+    "boost_0": 6.829942349017049e-15,
+    "boost_1": 9.147244217433548e-16,
+    "boost_2": 1.0976693060920257e-15,
+    "rotation_0": 3.658897686973419e-16,
+    "rotation_1": 3.0490814058111823e-16,
+    "rotation_2": 2.439265124648946e-16
+   },
+   "I3": {
+    "boost_0": 4.2464244557362534e-15,
+    "boost_1": 7.657486723458817e-16,
+    "boost_2": 1.0442027350171114e-15,
+    "rotation_0": 5.569081253424595e-16,
+    "rotation_1": 4.176810940068446e-16,
+    "rotation_2": 3.4806757833903714e-16
+   },
+   "I3_mixed_eta": {
+    "boost_0": 32.655091246177165,
+    "boost_1": 1.8278452714664195,
+    "boost_2": 3.0027674438200243,
+    "rotation_0": 7.211628940000718e-16,
+    "rotation_1": 4.326977364000431e-16,
+    "rotation_2": 2.8846515760002876e-16
+   },
+   "I4": {
+    "boost_0": 2.4040595288033312e-14,
+    "boost_1": 9.032593605330435e-16,
+    "boost_2": 7.642963819894984e-16,
+    "rotation_0": 6.948148927177258e-16,
+    "rotation_1": 5.558519141741807e-16,
+    "rotation_2": 2.7792595708709033e-16
+   },
+   "I5": {
+    "boost_0": 1.9620870129470998e-14,
+    "boost_1": 1.3415979575706667e-15,
+    "boost_2": 1.8446971916596666e-15,
+    "rotation_0": 4.192493617408333e-16,
+    "rotation_1": 4.192493617408333e-16,
+    "rotation_2": 3.3539948939266667e-16
+   },
+   "I6": {
+    "boost_0": 3.01393288360168e-15,
+    "boost_1": 8.037154356271146e-16,
+    "boost_2": 4.018577178135573e-16,
+    "rotation_0": 2.5116107363347334e-16,
+    "rotation_1": 6.02786576720336e-16,
+    "rotation_2": 1.50696644180084e-16
+   },
+   "V4": {
+    "boost_0": 1.6970580862044818e-13,
+    "boost_1": 3.9912292027401703e-14,
+    "boost_2": 1.9131187221795893e-14,
+    "rotation_0": 3.928375199547412e-15,
+    "rotation_1": 5.6568602873482726e-15,
+    "rotation_2": 3.928375199547412e-15
+   }
+  },
+  "worst_covariant": 1.6970580862044818e-13,
+  "min_control_boost_drift": 0.384240727105315,
+  "I1_lattice_conjugation_rel": 3.5245300999736736e-16,
+  "I1_lattice_conjugation_stored_g1_so13": 3.040081825033414e-13,
+  "runtime_s": 0.1
+ },
+ "reduction_3x3": {
+  "column": {
+   "I1": {
+    "status": "= 1 * I1",
+    "ratio_to_I1": 1.0,
+    "values": [
+     4.059409508314808,
+     2.9657241003884276,
+     3.6185074710262586
+    ]
+   },
+   "I1_frob": {
+    "status": "= 1 * I1",
+    "ratio_to_I1": 1.0,
+    "values": [
+     4.059409508314808,
+     2.9657241003884276,
+     3.6185074710262586
+    ]
+   },
+   "I2": {
+    "status": "differs from I1",
+    "ratios_to_I1": [
+     0.7830692920858466,
+     0.7993142447617048,
+     0.7958759444097812
+    ],
+    "values": [
+     3.1787989299626314,
+     2.3705455194735623,
+     2.8798830508568725
+    ]
+   },
+   "I3": {
+    "status": "differs from I1",
+    "ratios_to_I1": [
+     0.6957673230214617,
+     0.6998285611904264,
+     0.6989689861024453
+    ],
+    "values": [
+     2.8244044866480618,
+     2.0754984300626047,
+     2.5292244982273475
+    ]
+   },
+   "I3_mixed_eta": {
+    "status": "differs from I1",
+    "ratios_to_I1": [
+     0.6957673230214617,
+     0.6998285611904264,
+     0.6989689861024453
+    ],
+    "values": [
+     2.8244044866480618,
+     2.0754984300626047,
+     2.5292244982273475
+    ]
+   },
+   "I4": {
+    "status": "differs from I1",
+    "ratios_to_I1": [
+     0.7055764251693414,
+     0.7149504045120042,
+     0.691788455410536
+    ],
+    "values": [
+     2.864223649175196,
+     2.120345645243706,
+     2.5032416942727402
+    ]
+   },
+   "I5": {
+    "status": "differs from I1",
+    "ratios_to_I1": [
+     0.4013437481908031,
+     0.41477896570243034,
+     0.3907574415129812
+    ],
+    "values": [
+     1.62921862750845,
+     1.2301199749178826,
+     1.4139587214738287
+    ]
+   },
+   "I6": {
+    "status": "differs from I1",
+    "ratios_to_I1": [
+     0.8223057006773655,
+     0.8598016180480165,
+     0.7671538216421437
+    ],
+    "values": [
+     3.338075580071168,
+     2.549934380197968,
+     2.775951835038443
+    ]
+   },
+   "V4": {
+    "status": "differs from I1",
+    "ratios_to_I1": [
+     0.6232213987664991,
+     0.5374631468245578,
+     0.4708583261386181
+    ],
+    "values": [
+     2.5299108719379806,
+     1.5939674076081949,
+     1.7038043709275084
+    ]
+   }
+  },
+  "I1_vs_plain_3D_rel": 2.454543556457617e-16,
+  "runtime_s": 0.7
+ },
+ "R_pairings": {
+  "R_reading_1 (slot0,slot3)": "= +R_reading_1",
+  "R_reading_2 (slot0,slot2)": "= -R_reading_1",
+  "R_reading_3 (slot1,slot3)": "= -R_reading_1",
+  "R_reading_4 (slot1,slot2)": "= +R_reading_1",
+  "trace_deriv_pair eta^{mu nu} F_{mu nu ab}": "vanishes identically",
+  "trace_int_pair eta_{ab} F_{mu nu ab}": "vanishes identically",
+  "R_reading_1 symmetric?": "no (max asym 0.897)"
+ },
+ "mutation": {
+  "mutant": "eta_time_row",
+  "n_fail": 4,
+  "failed_lines": [
+   "FAIL  I1 kin vs certified/stored CHAN (eta+frob, 3 ch.)          2.000e+00  (thr 1e-12)",
+   "FAIL  notebook N1: I1 omega^2 lead == -2*SIX (sympy)             1.000e+00  (thr 0.5)",
+   "FAIL  invariance: covariant terms, SO(1,3)+SO(3), density        5.129e+00  (thr 1e-10)",
+   "FAIL  I1 lattice internal-conjugation (g1_so13 pattern)          1.506e-02  (thr 1e-09)"
+  ],
+  "returncode": 1,
+  "runtime_s": 11.9
+ },
+ "selftest_lines": [
+  {
+   "name": "I1 E_u vs certified e_parts (stored field, n=32)",
+   "value": 0.0,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "V4 vs certified e_parts (stored field)",
+   "value": 0.0,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "I1 vs stored E_u (m5_21_11_row_t11lad_A_n32_d0.3)",
+   "value": 0.0,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "I1 vs stored M5.21.16 IDENT u_eta (regen)",
+   "value": 0.0,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "I1 kin vs certified/stored CHAN (eta+frob, 3 ch.)",
+   "value": 3.241447334001606e-14,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "vacuum energy == 0 (both s)",
+   "value": 0.0,
+   "threshold": 1e-16,
+   "pass": true
+  },
+  {
+   "name": "sympy vs numpy, every term, 2 rational jets",
+   "value": 4.639224529542974e-14,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "notebook N1: I1 omega^2 lead == -2*SIX (sympy)",
+   "value": 0.0,
+   "threshold": 0.5,
+   "pass": true
+  },
+  {
+   "name": "notebook N4: I1_frob omega^2 lead == +2*SIX (sympy)",
+   "value": 0.0,
+   "threshold": 0.5,
+   "pass": true
+  },
+  {
+   "name": "complex-step gradient, every term (static + clock)",
+   "value": 7.341692548941541e-15,
+   "threshold": 5e-09,
+   "pass": true
+  },
+  {
+   "name": "invariance: covariant terms, SO(1,3)+SO(3), density",
+   "value": 1.6970580862044818e-13,
+   "threshold": 1e-10,
+   "pass": true
+  },
+  {
+   "name": "invariance control: I1_frob / I3_mixed_eta boost drift",
+   "value": 0.384240727105315,
+   "threshold": 0.001,
+   "pass": true
+  },
+  {
+   "name": "I1 lattice internal-conjugation (g1_so13 pattern)",
+   "value": 3.5245300999736736e-16,
+   "threshold": 1e-09,
+   "pass": true
+  },
+  {
+   "name": "3x3 reduction: I1 == plain-commutator 3D read",
+   "value": 2.454543556457617e-16,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "3x3 reduction: I1_frob == I1 (identity)",
+   "value": 0.0,
+   "threshold": 1e-12,
+   "pass": true
+  },
+  {
+   "name": "R pairings: within-type traces vanish, 4 mixed = +-R",
+   "value": 0.0,
+   "threshold": 0.5,
+   "pass": true
+  },
+  {
+   "name": "mutation: eta_time_row mutant reddens >= 1 line",
+   "value": 4.0,
+   "threshold": 1.0,
+   "pass": true
+  }
+ ],
+ "all_pass": true,
+ "runtime_s": 21.6
+}
