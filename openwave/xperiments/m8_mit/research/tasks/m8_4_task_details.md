@@ -1,7 +1,9 @@
 # M8.4: The Lagrangian-family survey on S³/2I
 
 > Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: ❌ CLOSED UNRESOLVED
-> (2026-08-26), on instrument grounds with no dynamics run:
+> (2026-08-26), on chassis grounds with no target configuration executed. P1A adjudicated
+> its failure SUBSTANTIVE rather than a defect of the measuring machinery; the instrument
+> defect was M8.9 S1, a different finding:
 > [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md). The PLANNING text below is
 > preserved as filed and is no longer a live work order. This is a scaffold-stage planning aid written by the maintainers
 > (2026-07-21); the author owns the column and may amend everything here.
