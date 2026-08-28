@@ -1,4 +1,4 @@
-# M8.4 closeout: the dynamics program closes UNRESOLVED, on two instrument failures
+# M8.4 closeout: the dynamics program closes UNRESOLVED, with no target configuration executed
 
 > **Closed 2026-08-26, unresolved.** P1A, the pre-target qualification phase, RAN and CLOSED. The
 > nonlinear pilot is BLOCKED: the one dynamics substrate that was built did not qualify, and the
@@ -6,7 +6,8 @@
 > **No target configuration was ever executed. No nontrivial sector was spent; all eight remain
 > unspent.**
 > Nothing here is a verdict on MIT dynamics, and nothing here attributes the numerical defect to
-> a specific stage. The successor chassis is commissioned separately as M8.5-C, target-free.
+> a specific stage. The successor chassis is elected separately as M8.5-C, target-free, with its
+> protocol pending.
 
 ## What this closeout does and does not say
 
@@ -37,7 +38,7 @@ run `M4L_Erho`, so no target configuration was ever executed.
 
 **Closed, not abandoned.** The reopening path is pre-committed and named below.
 
-## The history, in two chassis
+## The two chassis paths
 
 **Chassis 1, RBF-FD on the M8.5-B quotient backend.** P1A
 ([closeout](m8_4_p1a_closeout.md), #468) ran as the pilot's chartered qualification phase and split
@@ -47,8 +48,9 @@ admissibility with mutation discrimination. NEGATIVE: `M_h` self-adjointness con
 disposition most directly about the property this closure turns on. FAILED GLOBALLY:
 imaginary-contamination qualification. NO VERDICTS ISSUED: per-sector scientific eligibility.
 UNINSPECTED, NOT REACHED: the P1A.5 manufactured label calibration. NOT AUTHORIZED: nonlinear
-target execution, which is the row that says in the phase's own table that no target ever ran. P1A's own adjudication is that this failure is SUBSTANTIVE rather than
-another defect of the measuring machinery. Imaginary contamination ran from `5.95e-14` on the
+target execution, which is the row that says in the phase's own table that no target ever ran.
+P1A's own adjudication is that this failure is SUBSTANTIVE rather than another defect of the
+measuring machinery. Imaginary contamination ran from `5.95e-14` on the
 `R_0` control to `1.8e-01` on `R_2`, and a precision ladder holding `L_h` byte-fixed showed it
 unchanged from float64 through 50-digit arithmetic: a property of the assembled matrix, not the
 eigensolver. That is where the nonlinear pilot stopped, with no target spent.
@@ -76,8 +78,8 @@ observables require. What the two closeouts do support is a partial localization
 in the assembled matrix rather than in the eigensolver or the estimator, and within that matrix it
 is unseparated between the base discretization and the scalar quotient reduction. No localized
 repair target inside the retired RBF-FD lineage was identified; that is narrower than saying no
-reformulation could exist. Another rung of seeds or precision is not the answer, and the chassis fork
-memo records the evidence bar under which the RBF-FD route could ever return.
+reformulation could exist. Another rung of seeds or precision is not the answer, and the chassis
+fork memo records the evidence bar under which the RBF-FD route could ever return.
 
 **M8.9's deferred COMMISSIONING DECISION is answered here, since it is retired rather than left
 dangling.** The S1b closeout said whether the remaining base-versus-reduction distinction was worth
@@ -93,8 +95,9 @@ those terms; nothing is pending behind it.
 The negatives are narrowing rather than empty:
 
 - the invariant-subspace estimator qualified and is reusable: `M_h`-orthogonal projectors with
-  idempotence 2.4e-16 to 6.0e-16 across all nine sectors, a verified three-way leakage identity, and `‖P_spec‖` of 2.2 to 3.1 on the
-  target clusters, so strong non-normality did NOT make the scored subspaces ill-conditioned,
+  idempotence 2.4e-16 to 6.0e-16 across all nine sectors, a verified three-way leakage identity,
+  and `‖P_spec‖` of 2.2 to 3.1 on the target clusters, so strong non-normality did NOT make the
+  scored subspaces ill-conditioned,
   which was the central worry;
 - the S1b instrument, its `K`/`J` witnesses, precision ladder and dual-construction agreement, is
   operator-agnostic and carries forward to any successor chassis;
