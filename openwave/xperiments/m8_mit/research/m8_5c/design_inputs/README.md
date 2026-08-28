@@ -39,6 +39,11 @@ discovered).
 752baa2de36dbaea9fe4108ec6df9121351b386453d01b06bd8111562de8f547  right_translation_check.py
 ```
 
+Those are the values AT SECURING. `jacobian_check.py` moved after it, at review, to
+`dce687ea793522be40c4d06d25df19a0dfb99c72309a19361e220077007eb9d8`: its two verdict labels
+printed unconditionally, so the gauge-breaking arm could not fail. The shipped pin for all
+five is the protocol's § 15 table.
+
 Run command for script 5 (same dependency):
 
 ```bash

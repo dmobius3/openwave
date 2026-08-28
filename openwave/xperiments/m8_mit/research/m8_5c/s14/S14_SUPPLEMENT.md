@@ -108,13 +108,16 @@ package's own artifacts, unknown until § 14 finished), the filing banner replac
 draft banner, the upstream-main pin, and the boundary marker with its freeze record. What
 was NOT touched: no gate, no threshold, no ladder, no definition, no commitment, no
 outcome sentence. The pin then moved from the whole file to the FROZEN REGION, every byte
-above the boundary, which is the object § 15 and the roadmap both quote:
+above the boundary. At filing that region hashed to
+
+    9bb8f0eefbf57001b9fe455b358cfc2c95bb1d532992dcbe756f5d1bbfa9ca81
+
+superseded once more at review by the maintainer's blocking finding below. The shipped
+frozen-region digest, the object § 15, the roadmap and the freeze record all quote, is
 
     e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b
 
-superseded once more at review by the maintainer's blocking finding below. The shipped
-frozen-region digest is the one in the protocol's own freeze record; it is the only hash a
-reader needs, and the earlier values in this file and in `DISPOSITIONS.md` are the dated
+It is the only hash a reader needs, and the earlier values in this file and in `DISPOSITIONS.md` are the dated
 record of how it got there.
 
 ## Maintainer review, the manifest finding, and what it cost
