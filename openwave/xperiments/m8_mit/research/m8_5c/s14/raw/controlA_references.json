@@ -3,7 +3,8 @@
   "position/splitting": "50-dps nu-paired block eigenVALUES under the frozen S5 definitions; the object of record",
   "f64_pos_diff/f64_spl_diff": "cross-EIGENSOLVER diagnostic: 50-dps block route vs one float64 LAPACK eigh of the full matrix; must sit at eigensolver rounding; its earlier 1e-4 values were the bug detector",
   "arm_X": "ASSEMBLY comparison: structured 50-dps matrix vs generic float64 node-quadrature matrix, entrywise; a different object from the eigen diagnostic",
-  "protocol_path": "../../findings/m8_5c_protocol.md"
+  "protocol_path": "../../findings/m8_5c_protocol.md",
+  "definitions_block_sha256": "823e90662450a0e83297b81d0b217d27c37a7dd8957e8607dcd2c8e316c60544"
  },
  "0.1": {
   "s": 0.1,

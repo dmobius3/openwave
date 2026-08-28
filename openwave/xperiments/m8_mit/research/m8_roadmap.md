@@ -195,7 +195,7 @@ opening the gate. A chassis qualification alone does not open M8.7.
 spectral chassis's ONE preregistered attempt is filed as
 [`findings/m8_5c_protocol.md`](findings/m8_5c_protocol.md): target-free, cubic only, two
 terminal outcomes, seventeen sections, frozen region SHA-256
-`cf5faa10401e02ed00bdfb92d8ee329fff5863b108f979d4c90abfe80e2b8138` above its single
+`e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b` above its single
 boundary marker, dated addenda only after merge. Filed beside it: the symmetry derivation
 note (the residual `(U(1) × SU(2)_right)/K_ρ` symmetry of every sector's problem, DERIVED,
 with the implementation armed by a separately shipped check suite), the five design-input

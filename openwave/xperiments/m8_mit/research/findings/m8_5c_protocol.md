@@ -851,14 +851,15 @@ by name so their absence is checkable, but their values live in the manifest.
 | `cascade_quad_check.py` | `7f31bc305150c9d5e37ec312fe8fd00060583a87427feb7a56d6743d2fd66bfa` |
 | `jacobian_check.py` | `dce687ea793522be40c4d06d25df19a0dfb99c72309a19361e220077007eb9d8` |
 | `right_translation_check.py` | `752baa2de36dbaea9fe4108ec6df9121351b386453d01b06bd8111562de8f547` |
+| § 5's observable-definitions block (its own sub-region digest, the object the § 14 records cite: NON-CIRCULAR by construction, since no § 15 edit can move it, unlike a whole-file or frozen-region hash which this table pins the records against) | `823e90662450a0e83297b81d0b217d27c37a7dd8957e8607dcd2c8e316c60544` |
 | the symmetry derivation note | filed beside this protocol at filing, named in § 2; SHA-256 `5b231af423066aa9b9902a4ca9b67f19a54158f6ab36339ae711992839820d1a`, recomputed at freeze if the note changes pre-freeze |
 | S1b decision rule (`K`/`J` instrument, G-DISCRIM) | frozen region `c44c603a…`, per its own boundary record |
 | M8.4 closeout, M8.9 records, M8.5-B preregistration (`M85B-ADJ-07` scope) | the merged findings files, referenced by name; outside the room |
 | the rulings record | `M8_5C_OPEN_DECISIONS.md`, author-side provenance, non-operative |
 | upstream main at filing | `9ba2a6646630015d41598e1206285748b740aed8` |
 | the isotropy lattice tables (§ 14 item 4, with the disposition split MAXIMAL / ABSORBED / GENERIC-STRATUM and the scope note on the generic stratum's reachability) | `efe6c2d64ba9664edaf8b49b9026a683bf93aa78c0c994f09f41bd5a63a7b504` |
-| Control A reference values (§ 14 item 5, per-quantity routes recorded) | `f1925b0a97eda9e62bbf6c5e10de2ba83ff6e59902f329ac078db0077145e568` |
-| the § 7 amendment's verification record (§ 14 item 6 v2, both analytic arms) | `ba809e65637698332fcb47a801af1a2ec0a71dcfcec4e07c23039cbd9b4cb09b` |
+| Control A reference values (§ 14 item 5, per-quantity routes recorded) | `dde909f6746994468805c55c1eae192b449b2eb4862e2432f61d55a9f3be4e44` |
+| the § 7 amendment's verification record (§ 14 item 6 v2, both analytic arms) | `6615b3966b063ee8c1498f050da559749d105b1cd116c51567f1886dbbcf28a2` |
 | design-input script 6, `s14_item4_lattice.py` (AUTHOR-SIDE; the script never enters the room, this hash is provenance) | `f2218ac3a9b2aa4c288463f9ed680aeae5bb457968538974e055fc8e27f0df6e` |
 | the § 14 package (provenance, dispositions, supplement, raw records) | ships with the filing under `research/m8_5c/s14/`; `raw/package_hashes.txt` inside it hashes every member |
 
@@ -884,7 +885,7 @@ command recorded beside the digest at filing.
 <!-- M85C-FREEZE-BOUNDARY -->
 
 **Freeze record.** The frozen region is every byte ABOVE the boundary marker line. SHA-256:
-`cf5faa10401e02ed00bdfb92d8ee329fff5863b108f979d4c90abfe80e2b8138`
+`e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b`
 
 ```bash
 sed '/^<!-- M85C-FREEZE-BOUNDARY -->$/,$d' m8_5c_protocol.md | shasum -a 256

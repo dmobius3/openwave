@@ -13,25 +13,27 @@ ARMS: (P) at s = 0 the assembled J equals diag(omega^2 - lambda) exactly (known 
 """
 import numpy as np, mpmath as mp, json, hashlib, time, sys
 
-def protocol_ref(default_rel="../../findings/m8_5c_protocol.md"):
-    """Self-describing provenance WITHOUT a hash cycle. The reviewer's finding was that
-    reading /tmp let an orphan hash reach the record. The naive repair, stamping H(protocol)
-    into this JSON, does not converge: protocol S 15 pins THIS file's hash, so each would
-    move the other forever. Resolution: the pinned JSON records the protocol PATH, which is
-    stable, and the RUN RECORD (.out, shipped beside it, not pinned in S 15) prints the
-    hash resolved at run time. Both halves are in the package; neither is circular."""
+DEFS_START = "**The observable definitions, frozen, because gate 9 scores nothing it cannot compute.**"
+DEFS_END   = "never a definitional dispute."
+
+def definitions_digest(default_rel="../../findings/m8_5c_protocol.md"):
+    """The NON-CIRCULAR provenance object (reviewer's fix): the SHA-256 of protocol S 5's
+    observable-definitions block alone, from its bold header through 'never a definitional
+    dispute.' inclusive. A whole-file or frozen-region hash cannot go in a record that S 15
+    pins, since each would move the other forever, and a run record printing one is always a
+    step behind. This sub-region is exactly the claim that must stay checkable, and no S 15
+    edit can move it, so it belongs in the record itself."""
     import sys, os, hashlib
     p = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), default_rel)
-    if os.path.exists(p):
-        h = hashlib.sha256(open(p, "rb").read()).hexdigest()
-        frozen = open(p, "rb").read().split(b"<!-- M85C-FREEZE-BOUNDARY -->")[0]
-        hf = hashlib.sha256(frozen).hexdigest()
-        print(f"  provenance: protocol {default_rel} (relative to this package)")
-        print(f"              whole-file sha256 {h}")
-        print(f"              frozen-region sha256 {hf}")
-    else:
-        print(f"  provenance: protocol NOT FOUND at {p}")
-    return default_rel
+    if not os.path.exists(p):
+        print(f"  provenance: protocol NOT FOUND at {default_rel}")
+        return {"protocol_path": default_rel, "definitions_block_sha256": "UNRESOLVED"}
+    t = open(p, encoding="utf-8").read()
+    i = t.index(DEFS_START); j = t.index(DEFS_END, i) + len(DEFS_END)
+    d = hashlib.sha256(t[i:j].encode()).hexdigest()
+    print(f"  provenance: protocol {default_rel} (relative to this package)")
+    print(f"              S 5 observable-definitions block sha256 {d}")
+    return {"protocol_path": default_rel, "definitions_block_sha256": d}
 from math import comb
 mp.mp.dps = 50
 t0 = time.time()
@@ -217,12 +219,12 @@ x_err = float(np.abs(Axf - Ag).max())
 print(f"  arm X (structured 50-dps vs generic float64 assembly at s=0.3): "
       f"max abs diff {x_err:.2e} -> {'PASS' if x_err < 1e-10 else 'FAIL'}", flush=True)
 
-PROTO_PATH = protocol_ref()
+PROV = definitions_digest()
 results = {"_field_semantics": {
   "position/splitting": "50-dps nu-paired block eigenVALUES under the frozen S5 definitions; the object of record",
   "f64_pos_diff/f64_spl_diff": "cross-EIGENSOLVER diagnostic: 50-dps block route vs one float64 LAPACK eigh of the full matrix; must sit at eigensolver rounding; its earlier 1e-4 values were the bug detector",
   "arm_X": "ASSEMBLY comparison: structured 50-dps matrix vs generic float64 node-quadrature matrix, entrywise; a different object from the eigen diagnostic",
-  "protocol_path": PROTO_PATH}}
+  **PROV}}
 for s in (0.1, 0.3, 0.5):
     results[str(s)] = references(s)
     r = results[str(s)]

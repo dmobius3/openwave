@@ -41,7 +41,7 @@ After M8.4 closed unresolved with no target configuration executed and no nontri
 spent, route (b) was chosen to be built as an actual dynamics substrate, target-free by
 construction, under its own roadmap row. The protocol is
 [`../findings/m8_5c_protocol.md`](../findings/m8_5c_protocol.md), frozen region SHA-256
-`cf5faa10401e02ed00bdfb92d8ee329fff5863b108f979d4c90abfe80e2b8138`, with the symmetry derivation note beside it, the five
+`e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b`, with the symmetry derivation note beside it, the five
 design-input scripts under [`../m8_5c/design_inputs/`](../m8_5c/design_inputs/), and the executed § 14
 pre-freeze package under `../m8_5c/s14/`. Next step: commission the Build Unit per protocol
 § 12. See also [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).

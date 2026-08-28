@@ -3,6 +3,5 @@
   arm R: |M1/M2| = 0.346253549511 vs tan(1/3) = 0.346253549511  PASS
   arm C: M3 = -17.5324386044 vs closed form -17.5324386044  PASS
   provenance: protocol ../../findings/m8_5c_protocol.md (relative to this package)
-              whole-file sha256 e35b2c198def3c8bbb4337c41330d98aaa0e5bc112e7814dd3715ffe75887ce5
-              frozen-region sha256 e1d914a3e2bbc895cddbb38607afad9760444354164ac5110c0091342b51c346
+              S 5 observable-definitions block sha256 823e90662450a0e83297b81d0b217d27c37a7dd8957e8607dcd2c8e316c60544
   ITEM 6 v2 VERDICT: GREEN

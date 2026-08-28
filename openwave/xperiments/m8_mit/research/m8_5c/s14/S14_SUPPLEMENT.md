@@ -110,7 +110,7 @@ was NOT touched: no gate, no threshold, no ladder, no definition, no commitment,
 outcome sentence. The pin then moved from the whole file to the FROZEN REGION, every byte
 above the boundary, which is the object § 15 and the roadmap both quote:
 
-    cf5faa10401e02ed00bdfb92d8ee329fff5863b108f979d4c90abfe80e2b8138
+    e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b
 
 superseded once more at review by the maintainer's blocking finding below. The shipped
 frozen-region digest is the one in the protocol's own freeze record; it is the only hash a
@@ -139,7 +139,13 @@ neutralized arm now printing "arm did NOT fire (broken arm)" and exiting 1. Two 
 scripts read a scratch `/tmp` file for the protocol hash they stamped into their records,
 which is the mechanism that put an unresolvable hash into the shipped JSONs. The naive
 repair, hashing the protocol at its repo path, does not converge, since § 15 pins those
-same JSONs and each would move the other forever; the records now carry the protocol PATH,
-which is stable, while the run records print the whole-file and frozen-region hashes
-resolved at run time. Both halves ship; neither is circular.
+same JSONs and each would move the other forever, and relocating the hash into the run
+records only moves the problem, because a run record printing a whole-file hash of a
+document that pins that run record is always one step behind, which is how the orphan
+arose in the first place. The escape is a SUB-REGION digest: the records now carry the
+protocol path plus the SHA-256 of § 5's observable-definitions block alone, which is
+exactly the claim that has to stay checkable ("computed under THESE definitions"), and
+which no § 15 edit can move. The digest is armed both ways: changing a definition moves it,
+changing a § 15 pin does not. It is pinned in § 15 as its own row, so a reader holding only
+a record file can check it against the protocol without recomputing anything else.
 
