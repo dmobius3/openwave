@@ -83,9 +83,7 @@ def main():
 
     # Gate threshold set to 1e-3% to verify mutual algebraic consistency
     if rel_diff < 1e-3:
-        print(
-            "    RESULT: PASS (Mutual consistency of A, K_emc, and 4π overlap verified)"
-        )
+        print("    RESULT: PASS (Mutual consistency of A, K_emc, and 4π overlap verified)")
     else:
         print("    RESULT: FAIL")
 
