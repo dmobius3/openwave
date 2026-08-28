@@ -1,0 +1,15 @@
+self-checks: characters orthonormal; first occurrence n=d_rho, mult 1, all nine sectors
+
+complex Galerkin modes in sector rho up to cutoff N (sum_n m_rho(n)(n+1)):
+sector dim d_rho | N=  10 N=  20 N=  30 N=  40 N=  60 N=  80 N= 100
+   R0   1     0 |      1     35     91    202    677   1551   2938
+   R1   2     1 |      2     48    150    362   1230   2938   5672
+   R3   3     2 |     14     82    271    604   1966   4568   8810
+   R6   4     3 |     14     94    328    762   2516   5870  11438
+   R7   5     4 |     25    148    447   1043   3310   7658  14773
+   R8   6     5 |     24    158    502   1156   3794   8872  17190
+   R4   3     6 |     18     90    283    620   1990   4600   8850
+   R5   4     6 |     16    120    367    813   2654   6134  11767
+   R2   2     7 |      8     60    168    386   1266   2986   5732
+
+asymptotic: ~ d_rho * N^3 / 360

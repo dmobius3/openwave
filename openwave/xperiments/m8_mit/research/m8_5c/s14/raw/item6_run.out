@@ -1,0 +1,7 @@
+  pinned phi = equal sum of the 13 canonical (weight) basis vectors
+  S_cons = 13.961481, threshold = 1.396e-05
+  M_1 = +0.000000e+00   ZERO / BELOW THRESHOLD
+  M_2 = +6.468186e+01   LIVE
+  M_3 = -1.122797e-15   ZERO / BELOW THRESHOLD
+  candidate amendment phi' ~ sum (1 + j/13) e^(i j/3) v_j: M = [+2.094e+01, +6.048e+01, -1.753e+01] -> ['LIVE', 'LIVE', 'LIVE']
+  ITEM 6 VERDICT: RED, protocol phi pin fails its own liveness assertion

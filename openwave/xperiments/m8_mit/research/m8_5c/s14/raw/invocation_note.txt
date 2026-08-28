@@ -1,0 +1,1 @@
+  (first attempt used PYTHONPATH=. in a directory without the dependency; recorded as an invocation note, not an item result)

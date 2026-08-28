@@ -1,0 +1,26 @@
+{
+ "M": [
+  0.0,
+  64.681858024821,
+  -1.122797465156993e-15
+ ],
+ "live": [
+  false,
+  true,
+  false
+ ],
+ "S_cons": 13.96148139681572,
+ "threshold": 1.396148139681572e-05,
+ "diagnosis": "pinned equal-weight phi: M1 = 0 exactly (real phi), M3 = 0 (weight symmetry)",
+ "amendment_candidate": "normalized sum of (1 + j/13) exp(i j/3) v_j",
+ "amendment_candidate_M": [
+  20.939755659677857,
+  60.47520867085957,
+  -17.53243860438842
+ ],
+ "amendment_live": [
+  true,
+  true,
+  true
+ ]
+}

@@ -1,0 +1,11 @@
+  2I trivial dims l=0..7,12: [1, 0, 0, 0, 0, 0, 0, 0, 1]
+  2T at l=12 trivial: 2; 2O at l=12 trivial: 1
+  arm A (2T-for-2I at l=12): RED-fires (good) (1 vs 2)
+  arm B (2T twists at l=4, non-vacuous): PASS [0, 1, 1]
+  arm C (icosahedral rep, parent then perturbed): PASS
+  arm D (COMPLETENESS: Q8 analytic (13+13+6)/8 = 4 -> char 4, reynolds 4; BD classes at l=12: 40): PASS
+  arm E (derivation corollary: no maximal finite class at l=1, no maximal acts-by-scalar class anywhere): PASS (l=1 finite-maximal: 0, scalar-maximal: [])
+  BD table at l=12 (family, twist, dimC, maximal): [('BD2', 'chi0', 4, True), ('BD2', 'chi1', 3, True), ('BD2', 'chi2', 3, True), ('BD2', 'chi3', 3, True), ('BD3', 'chi0', 3, True), ('BD3', 'chi1', 2, True), ('BD4', 'chi0', 2, True), ('BD4', 'chi1', 1, False), ('BD4', 'chi2', 2, True), ('BD4', 'chi3', 2, True), ('BD5', 'chi0', 2, True), ('BD5', 'chi1', 1, True), ('BD6', 'chi0', 2, True), ('BD6', 'chi1', 1, True)]
+  all two-route + rep checks: PASS
+  lattice_tables.json sha256 efe6c2d64ba9664edaf8b49b9026a683bf93aa78c0c994f09f41bd5a63a7b504
+  ITEM 4 v3 VERDICT: GREEN

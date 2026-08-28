@@ -75,7 +75,7 @@ routes, both viable; prototype before committing.
 substrate did NOT qualify for the M8.4 observables; see
 [`findings/m8_4_closeout.md`](findings/m8_4_closeout.md). Route (b) was never built as a
 simulation backend, only as character-averaging certification machinery, so its dynamics evidence
-was never gathered. It is now elected as M8.5-C, target-free with its protocol pending.
+was never gathered. It is now M8.5-C, target-free, with its qualification protocol FILED 2026-08-28 and frozen at merge ([protocol](findings/m8_5c_protocol.md)).
 
 | Route | How | Trade-offs |
 | --- | --- | --- |

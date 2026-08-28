@@ -1,0 +1,8 @@
+  N=3; cascade band = levels 4..9, 355 coefficients
+  nodes: 6N-exact 3610, production 4N 1183, reference 10976;  node ratio 6N/4N = 3.05
+  band coefficients, 6N rule vs reference        : max rel 6.02e-15
+  band coefficients, PRODUCTION 4N rule vs ref   : max rel 2.35e-01
+  monitor's own reading (band norm): ref 106.474998, under 4N rule 107.962911  (1.4% off)
+  wall 7.1s
+
+  VERDICT: CONFIRMED: the monitor needs its own 6N-exact rule; the production 4N rule aliases the very band the monitor exists to measure

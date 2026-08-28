@@ -2,8 +2,8 @@
 
 > Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 IN PARTS. Its gate
 > M8.2 closed ✅ 2026-07-27. **M8.5-A** ✅ REPRODUCED 2026-07-31; **M8.5-B** ✅ COMPLETE
-> 2026-08-17 (sealed case `M85B-ADJ-07`, GREEN at both rungs); **M8.5-C** ⏸️ ELECTED
-> 2026-08-26 with its protocol PENDING, § "Route (b)" below. This is a scaffold-stage
+> 2026-08-17 (sealed case `M85B-ADJ-07`, GREEN at both rungs); **M8.5-C** 🚧 protocol
+> ✅ FILED 2026-08-28, frozen at merge, § "Route (b)" below. This is a scaffold-stage
 > planning aid written by the maintainers (2026-07-21, § "Independent reproduction"
 > added 2026-07-28); the author owns the column and may amend everything here.
 
@@ -36,12 +36,15 @@ enough to choose one on evidence.
 | (a) 2I-equivariant grid | an S³ grid (embedding or intrinsic charts) with the 120-element identification imposed as an equivariance/ghost-cell map | the identification map bookkeeping; chart seams; where the Möbius edge / cone structure of the MIT arena lives on the grid |
 | (b) Spectral in 2I-symmetric harmonics | expand fields in S³ harmonics restricted to 2I-invariant (or covariant) subspaces; evolve coefficients | nonlinear terms need convolution handling (cost grows fast with band limit); but the basis IS the McKay representation theory, so slot structure is manifest |
 
-**Route (b) is elected as M8.5-C (2026-08-26, author's call; protocol PENDING).** After M8.4 closed
-unresolved with no target configuration executed and no nontrivial sector spent, route (b) was
-chosen to be built as an actual dynamics substrate,
-target-free by construction, under its own roadmap row. Its preregistration is not filed, so it is
-a successor with its protocol pending, not a running task. See the [M8.5-C roadmap
-row](../m8_roadmap.md) and [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
+**Route (b) is M8.5-C; its qualification protocol is FILED (2026-08-28), frozen at merge.**
+After M8.4 closed unresolved with no target configuration executed and no nontrivial sector
+spent, route (b) was chosen to be built as an actual dynamics substrate, target-free by
+construction, under its own roadmap row. The protocol is
+[`../findings/m8_5c_protocol.md`](../findings/m8_5c_protocol.md), frozen region SHA-256
+`e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b`, with the symmetry derivation note beside it, the five
+design-input scripts under [`../m8_5c/design_inputs/`](../m8_5c/design_inputs/), and the executed § 14
+pre-freeze package under `../m8_5c/s14/`. Next step: commission the Build Unit per protocol
+§ 12. See also [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
 
 ### Independent reproduction, M8.5-A (added 2026-07-28)
 

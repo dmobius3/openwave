@@ -1,0 +1,11 @@
+residual at the constructed solution: 3.3537189618722464e-16
+
+C1  ||J_true - J_naive||_2 / ||J_true||_2 = 1.000   (0 would mean the naive complex Jacobian is right)
+    eigenvalues, true real J : [-2. -0. -0. -0. -0. -0.  0.  0.  0.  0.  0.  0.]
+    eigenvalues, naive       : [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+
+C2  ||J @ (i*phi)|| / ||i*phi|| = 2.549e-09  -> exact kernel vector
+    count of near-zero eigenvalues of J: 11
+    i*phi lies inside the scored eigenspace H_{rho,d_rho}: True by construction (complex vector space, same level, same bundle)
+
+    mutation (gauge-breaking term): ||J_b @ (i*phi)||/||i*phi|| = 1.347e-01 -> arm goes red
