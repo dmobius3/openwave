@@ -91,6 +91,11 @@
    "class": "C2",
    "definition": "-4[(1-lambda) I1 + lambda I1_h] - V4",
    "status": "CLOSED as candidate (G2 failed R3, G3 failed R4); audited C2 control row: covariant, bounded by theorem for lambda >= 1/2, Coulomb kept, clock delocalized, Newton sign unchanged"
+  },
+  {
+   "id": "K_T",
+   "class": "C4",
+   "status": "killed as a G3 repair, kept as an audited C4 control row"
   }
  ],
  "rungs": [
@@ -454,7 +459,7 @@
   {
    "id": "R7",
    "start_utc": "2026-08-28T00:40:00Z",
-   "status": "HALTED by user pause 2026-08-28 00:35 UTC: arm a DONE (form-level), arm b STOPPED after its grids were checkpointed (checkpoints/m5_32_r7/grid_n32_L48.json, grid_n48_L72.json, box_*.json, scan_*.json); resume = post-processing of the grids (the refinement-branch bug 'use = m lacks R' was being fixed) + the localization table + the G7 range + the audit",
+   "status": "CLOSED 2026-08-28T13:57:00Z: C4 CLOSED, G3 still failed. Audited 13/13, 8 CONFIRMED / 5 QUALIFIED / 0 REFUTED (data/m5_32_r7_audit.json).",
    "hypothesis": "C4: the covariant PSD static-blind 2-derivative term K_T = 1/2 sum_mu eta^mumu [tr(h d_mu M h d_mu M) - tr(eta d_mu M eta d_mu M)] (the time-row gradient penalty in the u-frame) added to the lambda-family: L = -4[(1-lambda) I1 + lambda I1_h] - c2 K_T - V4, c2 > 0, lambda in {0.75, 1}: it penalizes wide boost dressings (Derrick E \u221d mu), leaves the static 3x3 sector untouched (vanishes when the time row of dM is zero), and adds an omega^2 floor only on time-row velocities; PREDICTION: an interior R* on the R4 instrument with omega* stable across L, all other gates unchanged",
    "gates": [
     "G4 covariance (K_T is a difference of two covariant scalars)",
@@ -463,8 +468,185 @@
     "R4 instrument: interior R*, omega* drift <= 10 % across L = 48 -> 72 for some c2 range >= factor 4 (G7)",
     "the hedgehog exists and the Coulomb anchors unchanged (identity)",
     "g-arm and the dressing gain saturation"
-   ]
+   ],
+   "end_utc": "2026-08-28T13:57:00Z",
+   "paused_utc": [
+    "2026-08-28T01:10:00Z",
+    "2026-08-28T13:09:00Z"
+   ],
+   "artifacts": [
+    "data/m5_32_r7_kt_form.json",
+    "data/m5_32_r7_kt_lattice.json",
+    "data/m5_32_r7_audit.json",
+    "scripts/m5_32_r7_a_kt_form.py",
+    "scripts/m5_32_r7_b_kt_lattice.py",
+    "scripts/m5_32_r7_audit.py",
+    "scripts/m5_32_r7_audit_merge.py",
+    "plots/m5_32_r7_kt_localization.png",
+    "plots/m5_32_r7_kt_gain.png",
+    "plots/m5_32_r7_kt_range.png"
+   ],
+   "claims": {
+    "A1_covariance": "CONFIRMED (auditor floor 3.9e-14 at rapidity 1, cosh^4 cancellation floor, 4 mutants O(1))",
+    "A2_zero_on_static": "QUALIFIED (identity exact 3.0e-17; the INFERENCE fails: 30 of 44 R3 pair anchors carry a time row, E_KT up to 3.9e4)",
+    "A3_no_omega2_on_R4_family": "CONFIRMED (structural zero; 9-sample degree-4 fit, quartic <= 4.1e-13)",
+    "A4_K0_constant": "CONFIRMED (K0 = 2(g + M_jj)^2 exactly, jet-independent to 4.5e-13)",
+    "A5_lambda_star_half": "CONFIRMED (lambda* = 1/2 for c2 in [0, 1000]; min-eig affine in lambda, c2 K0 a constant)",
+    "A6_Derrick_exponent_1": "QUALIFIED (continuum exponent 1; the producer's 1.087 is a lattice artifact, 1.021 at h/2; the R ladder has no single exponent, 2.01 down to 0.73)",
+    "B1_wall_at_c2_0": "CONFIRMED (R* = 24 / 36 on the auditor's own 16-point grid; omega* to 1.1e-3)",
+    "B2_interior_window": "QUALIFIED (interior R* real and reproduced, but it is the dressing dying: amp* 0.0251 -> 0.0141 -> 0, worth 23.3 % -> 0.96 % -> 0 of E_J; the c2 = 0.03 minimum is 0.43 % deep on a factor-2.3 plateau)",
+    "B3_large_c2_switches_off": "CONFIRMED (amp* = 0 exactly, E_J back on the undressed value to machine precision)",
+    "B4_G7": "QUALIFIED (G7_met false CONFIRMED, but the range half is MET: dense 33-point ladder gives factor 4.87; G7 fails solely on the drift gate, min |drift| 0.301 vs 0.10)",
+    "B5_mutation_reddens": "CONFIRMED (E_J -26.26 / -107.63, deepening with the box; matches to 0.74 %)",
+    "B6_controls": "CONFIRMED (E_KT 1.59e-15 against a trace scale 1.2e3; vacuum exactly null)",
+    "B7_IR_extensive_clock_inertia": "QUALIFIED, the rung's headline: kin = 9.66997 L - 37.78 (residual 3.1e-4, 11x better than any power law, asymptotic exponent exactly 1); |a0| exactly r-independent, gradient r^-0.983, density r^-1.973, flat shell plateau, 6 % inside r = 6 (tail-dominated); BIT IDENTICAL interior density between L = 48 and L = 120; omega* L -> 10.6. Only the word INDEPENDENT is struck (drift spread 14.4 %, every value 3x the gate)"
+   },
+   "audit_new_findings": {
+    "N1": "kin is AFFINE in L, not a power law (four boxes; the 1.07 exponent was a two-box artifact of the negative core intercept)",
+    "N2": "not a boundary or stencil artifact: interior kinetic density bit-identical between L = 48 and L = 120; fwd/bwd/sym agree to 1e-13",
+    "N3": "the whole IR divergence rides on the vacuum's delta: a0 identically 0 and kin exactly 0 at delta = 0, slope scaling delta^1.9987",
+    "N4": "radial fits of all three mechanism links plus the flat shell plateau and the 6 % core fraction (core-dominated reading refuted)",
+    "N5": "omega* L converges 11.254, 10.937, 10.781, 10.688 with increments halving, tracking the pure 1/L law to 2 %",
+    "N6": "the dressed-pair Coulomb anchors are NOT c2-independent: K_T shifts E_int by -1623 (d = 10) to -4730 (d = 24) per unit c2",
+    "N7": "past the degeneracy locus t* = (g+1)/2 = 16.5 the spectrum of M eta goes COMPLEX, so u, h_cov, I1_h and K_T are UNDEFINED there: a defect of the whole h_cov family, not of K_T (no stored anchor is near it, min gap 32)",
+    "N8": "the 31-channel LP list holds no channel built from the clock the model actually runs: a0_unit on the hedgehog is symmetric AND block diagonal, so K0 = 0 exactly and c2 gives literally zero omega^2 help on the realized clock channel",
+    "N9": "the Derrick 1.087 is a lattice artifact; the R ladder's pair slopes run 2.01 down to 0.73, so the localizer penalty is sublinear above R about 36",
+    "N10": "the c2 = 0.03 interior minimum is unresolved (0.43 % deep, factor-2.3 plateau, R* itself drifting 11 % between boxes)",
+    "N11": "the interior window coincides exactly with the death of the dressing",
+    "N12": "the producer's covariance floor 4.6e-9 measures an implementation, not the term (own floor 3.9e-14 at the same rapidity)",
+    "N13": "12 of 31 LP channels are antisymmetric a0 and are not tangent directions at all; excluding them is correct and is what makes 'c2 never hurts' true (each carries K0 < 0)",
+    "N14": "the G7 range failure was a c2-grid artifact (ladder spaced by exactly 3.33); a 33-point ladder measures 4.87 and MEETS the bar"
+   }
+  },
+  {
+   "id": "R8",
+   "start_utc": "2026-08-28T14:00:00Z",
+   "end_utc": "2026-08-28T14:55:00Z",
+   "status": "CLOSED: C6 closed cleanly, C5 UNDECIDABLE on the author's ansatz (no continuum limit), the degenerate-vacuum escape closed by theorem. Audited 10 claims, 4 CONFIRMED / 4 QUALIFIED / 2 REFUTED (data/m5_32_r8_audit.json).",
+   "hypothesis": "classes C5 (curvature^4, saturation) and C6 (non-commutator quartics): a quartic-in-Mdot term has a density quartic in the jets, so its clock inertia should be IR-convergent where the certified quadratic one is not; PREDICTION: this still cannot give a box-stable omega* because the extensive omega^2 term stays",
+   "gates": [
+    "the omega-decomposition exact to degree 4 (I1 control must return C4 = 0)",
+    "box scaling of A, C2, C4 at fixed h over L = 48, 72, 96",
+    "the c5 needed to flip the energy's omega^2 sign, and its growth with L",
+    "the fixed-J solve with the cubic term"
+   ],
+   "artifacts": [
+    "data/m5_32_r8_quartics.json",
+    "data/m5_32_r8_ir_theorem.json",
+    "data/m5_32_r8_audit.json",
+    "scripts/m5_32_r8_a_quartics.py",
+    "scripts/m5_32_r8_b_ir_theorem.py",
+    "scripts/m5_32_r8_c_collect.py",
+    "scripts/m5_32_r8_audit.py",
+    "scripts/m5_32_r8_audit_merge.py",
+    "plots/m5_32_r8_box_scaling.png",
+    "plots/m5_32_r8_tail.png"
+   ],
+   "claims": {
+    "C1_exactly_quartic_in_omega": "QUALIFIED (exact for the six polynomial terms, odd part 0.0; Born-Infeld is not polynomial, degree-6 content 1.6e-3 of its C4)",
+    "C2_C5_static_and_omega2_IR_finite": "QUALIFIED (true as integrals, but 80 to 86 % of the C5 omega^2 coefficients sit in the axis tube; Q_Fpair's shell slope -0.635 does not converge on its own)",
+    "C3_certified_control": "CONFIRMED (kin 426.50701214839734 vs the record 426.5070121483972, rel dev 2.7e-16; eta-mutation breaks it)",
+    "C4_C5_omega4_diverges_with_L": "QUALIFIED (the L exponent 0.609 reproduces exactly, but 78 % of C4 sits in 0.098 % of cells and C4 diverges as h^-1.645 at fixed L: not an IR statement)",
+    "C5_C6_volume_extensive": "CONFIRMED (exponent 3.0000 to 1e-13, ratio 8.000; h-exponent -3.6e-14; shell slope +1.990; the two C6 terms are one coefficient to 4e-16)",
+    "C6_mechanism_no_cancellation": "REFUTED (excluding rho < 2h restores the squared shell slope to -1.883; the divergence is the coordinate string, not a concentrated-but-physical density)",
+    "C7_no_generator_annihilates_the_vacuum": "QUALIFIED (conclusion holds; the producer's numbers came from X M - M X^T, not the tangent X M + M X^T, whose values are the spectral gaps 0.700 / 1.000 / 0.300 and sums 33.0 / 32.3 / 32.0)",
+    "C8_far_field_on_the_orbit": "CONFIRMED (jet exponent -0.9671, deviation exponent 3.5e-18 flat at 0.960902353693305, spectrum to 1.3e-15; a decay mutation gives -1.81)",
+    "C9_c5_must_grow_with_L": "REFUTED (c5_required scales as h^+2.99: 312.6 at h = 1.5, 39.8 at 0.75, 11.7 at 0.5, so it vanishes in the continuum; at delta = 1 its L exponent is 0.135)",
+    "C10_fixed_J_stays_1_over_L": "CONFIRMED (omega* L spread 1.04 at c5 = 0 and 1.31 at c5 = 300; the omega-match 13.851 reproduces exactly)"
+   },
+   "audit_new_findings": {
+    "S1": "the author's ansatz M = Qh d4 Qh^T is genuinely DISCONTINUOUS along the whole z axis (phi-ring spread of M 0.150 at rho = 1e-4, unchanged from z = 5 to 40): a coordinate string carried to the wall by the Euler-angle frame",
+    "S2": "that string, not an IR tail, carries the C5 divergence: 73.6 to 97.7 % of every C5 omega^4 coefficient sits in the 256 columns with rho < h",
+    "S3": "the C5 terms have NO continuum limit on this ansatz (C4 h^-1.65 to -2.03, C2 h^-3.0, static A h^-5.001) while the certified I1 is h-stable at h^-0.053",
+    "S4": "Q_C6a and Q_C6b are not two results: both omega^4 pieces reduce to h^3 sum tr(a0 eta a0 eta)^2 (agree to 4e-16)",
+    "S5": "the C5 C4 is stencil-branch-read dependent (exponent 0.609 -> 0.189 when the density is averaged before squaring): a quartic does not commute with the certified stencil average",
+    "S6": "ESCAPE THEOREM: on M = Q d4 Q^T with Q in SO(1,3) the co-moving flow is Q (X d4 + d4 X^T) Q^T, so a vacuum-annihilating generator annihilates the whole hedgehog and the clock inertia is exactly zero (measured at delta = 0). The degenerate-vacuum escape named at R7 is CLOSED",
+    "S7": "the C9 / C10 margins are delta-specific: at delta = 1 the c5 L-exponent is 0.135 and the omega-match is 0.813, 1.03x the radiation window",
+    "S8": "negative c5 and Born-Infeld open nothing and cost boundedness (C2_q < 0 for every C5 term, so H2 only grows; H4 turns negative, H(omega = 30) = -2.32e6 at c5 = -1)",
+    "S9": "the boundary explanation is eliminated, not merely unlikely: shared interior cells of the n = 32 and n = 64 boxes differ by exactly 0.0"
+   },
+   "producer_followup_same_day": {
+    "B7_survives_the_string": "the certified inertia's axis-tube fraction is 0.187, 0.166, 0.155 over L = 48, 72, 96 and falls to 0.145 under refinement, while the bulk outside the tube grows exactly linearly (346.571, 549.061, 752.161; increments 202.5 and 203.1): the extensivity is a bulk tail effect, not the coordinate string"
+   }
+  },
+  {
+   "id": "R9",
+   "start_utc": "2026-08-28T14:20:00Z",
+   "end_utc": "2026-08-28T16:15:00Z",
+   "free_rung": true,
+   "status": "CLOSED: the ansatz is not broken, the defect is PHYSICAL. Audited 9 claims, 5 CONFIRMED / 2 QUALIFIED / 2 REFUTED (data/m5_32_r9_audit.json).",
+   "hypothesis": "(a) excise the coordinate string at a fixed physical radius and re-decide whether the C5 omega^4 inertia is IR-convergent and h-stable; (b) ask whether a string-free hedgehog can exist at all. PRE-REGISTERED PREDICTION for (b): a string-free hedgehog and a nonzero clock are mutually exclusive (hairy ball on the perpendicular eigenvalue pair, which the clock generator rotates)",
+   "artifacts": [
+    "data/m5_32_r9_tube.json",
+    "data/m5_32_r9_string.json",
+    "data/m5_32_r9_audit.json",
+    "scripts/m5_32_r9_a_tube.py",
+    "scripts/m5_32_r9_b_string.py",
+    "scripts/m5_32_r9_audit.py",
+    "scripts/m5_32_r9_audit_merge.py",
+    "checkpoints/m5_32_r9/continuum_ring.json"
+   ],
+   "claims": {
+    "A1_C5_clean_after_excision": "QUALIFIED (h-stability CONFIRMED and better than claimed, +0.019 with the cut correctly centered, and the cure is axis-SPECIFIC: four volume-matched controls leave it at -1.6. But the producer's mask was off-center by (h/2, h/2), and the L exponent runs 0.115 to 0.400 over rho_cut, so IR-convergence is NOT established)",
+    "A2_Q_I4sq_stays_undecidable": "CONFIRMED (h-exponent +4.27 correctly centered; the L exponent even flips sign)",
+    "A3_certified_inertia_string_independent": "CONFIRMED (C2 h-exponent within 0.062 at every rho_cut; the L drift is reproduced by an equal-volume sphere, so it is volume not string). R7-B7 stands",
+    "A4_C6_untouched_by_excision": "CONFIRMED but VACUOUS (C4(Q_C6a) equals the derivative-free sum (tr(a0 eta a0 eta))^2 h^3 to 1.3e-15: a constant times the volume)",
+    "B1_frame_free_at_delta_0": "CONFIRMED (2.0817e-17 relative; the delta > 0 residual is EXACTLY delta)",
+    "B2_string_amplitude_delta_over_2": "CONFIRMED (spread / delta = 0.5000000000000002 at rho = 1e-9, both signs of z; the law is a z != 0 statement, the equatorial ring gives (1 - delta)/2)",
+    "B3_kin_zero_at_delta_0_and_delta_squared": "QUALIFIED (kin = 0.0 EXACTLY at delta = 0; the delta^2 law is asymptotic only, kin/delta^2 drifting 2.19x)",
+    "B4_string_free_and_clock_mutually_exclusive": "REFUTED, twice. (i) A FIRE relaxation resolves the line into a finite PHYSICAL core (radius 3.98 at h = 1.5, 3.58 at h = 0.75) by MELTING the biaxiality on the axis (on-axis gap 0.300 -> 0.166, far field 0.297, V4 1.7e-23 -> 0.26), not by escaping into the third dimension; the near-axis discontinuity disappears (ring spread ratio 1.031 before, 0.702 after) and the clock SURVIVES with an h-convergent inertia 351.17 / 351.14 against 426.51 / 445.22 rigid. (ii) At delta = 0 the radial boost K_1 has an exactly smooth orbit with a0 = 33 sym(e0 n-hat) nonzero; the null space over the whole algebra is 2-dimensional. The exclusion holds only inside the rigid eigenvalue-pinned family",
+    "B5_string_dominates_the_quartic": "REFUTED below delta = 0.3 (axis excess -0.0072 at delta = 0.003: the quartic weight sits at the ORIGIN core, not the line)"
+   },
+   "audit_new_findings": {
+    "T1": "the producer's excision mask was OFF-CENTER by (h/2, h/2), built on a cell-centered grid while the density lives on the certified offset grid, so its center moved with the lattice",
+    "T2": "the line is TOPOLOGICALLY PROTECTED: the stabilizer of d4 in SO(1,3)+ is the Klein four-group, so pi_1 = Q8 and the ansatz loop lifts to -1 in SU(2) (endpoint trace -2.0): a biaxial disclination",
+    "T3": "pi_2 = 0, so the hedgehog carries NO topological point charge at all: in this order-parameter space the protected objects are LINES, not points",
+    "T4": "two divergences, only one of them the string: E_static diverges as h^-1.03 at delta = 0 where the field is provably string-free, so the omega^0 divergence is the ORIGIN POINT CORE, which arm a's excision does not touch",
+    "T5": "certified-stack trap: gen_catalog normalizes a0 by max(norm, 1e-300), so at delta = 0 its clock_local becomes a unit-norm noise field reporting a phantom kin of 2.25; any delta -> 0 study routed through it sees a clock that is not there (PLATFORM ISSUE, to file)",
+    "T6": "every term is exactly quartic in omega: max degree-4 fit residual 2.8e-14 relative over every box, term and mask"
+   }
+  },
+  {
+   "id": "R10",
+   "start_utc": "2026-08-28T16:18:00Z",
+   "end_utc": "2026-08-28T17:55:00Z",
+   "status": "CLOSED, and the run STOPS here to surface: the obstruction is not a property of a soliton because there is no soliton. Audited 5 claims, 2 CONFIRMED / 3 REFUTED (data/m5_32_r10_audit.json).",
+   "hypothesis": "is the RELAXED, core-resolved soliton's clock inertia still extensive? PRE-REGISTERED PREDICTION: core resolution is a local repair, so the slope is unchanged and only the intercept moves (kin_relaxed(72) = 553.7 +- 15)",
+   "artifacts": [
+    "data/m5_32_r10_all.json",
+    "data/m5_32_r10_audit.json",
+    "scripts/m5_32_r10_relaxed_ladder.py",
+    "scripts/m5_32_r10_audit.py",
+    "checkpoints/m5_32_r10/"
+   ],
+   "claims": {
+    "R1_endpoint_reproduces": "CONFIRMED (rel dev 7.6e-14 on kin, 0.0 on E_u and V4, from the auditor's own rerun and own density)",
+    "R2_core_resolution_not_local": "CONFIRMED (fraction inside r = 6 is 0.573258; the producer's own pre-registered locality prediction is refuted by its own instrument)",
+    "R3_extensive_tail_flat_slope_converges": "REFUTED (tail tilt +0.149 %/unit r rigid then +0.651, +1.102, +1.931 at 3000/6000/12000, so flatness fails and worsens 13x; the direct 3-box relaxed slope is 8.7531 against the shell-inferred 7.417, 18.0 % low; the shell route is biased 18.5 % low by discarding the cube corners)",
+    "R4_converging_not_unwinding": "REFUTED (at the same budget and pin the degree-0 branch reaches E = 11.036 against 13.800, 20.0 % lower; the melt front advances +1.46 and +1.48 units of r per doubling and never saturates until it hits the pin)",
+    "R5_not_unwinding_topologically": "REFUTED (87 frustrated edges in the MIDDLE eigenvector on the half-width-18 surface the instrument calls conflict-free; the barrier to |Q| 1 -> 0 with the pin held is exactly 0.0)"
+   },
+   "audit_new_findings": {
+    "U1": "Q37 IS NOT A TOPOLOGICAL INVARIANT of this order-parameter space: read_charge_from_M takes V[..., -1], the leading eigenvector alone (verified by the producer in the source), an RP^2 degree of one eigenvector; pi_2(OPS) = 0 forces any CONTINUOUS map to have leading-eigenvector degree 0, so degree 1 is possible only through the ansatz's discontinuity on the measurement surface",
+    "U2": "the barrier to unwinding is EXACTLY 0.0 over five taper windows: a straight line holding the pinned shell carries the energy monotonically 62.852 -> 14.794 while |Q| goes 1 -> 0",
+    "U3": "the extensive inertia belongs to the BOUNDARY, not an object: a degree-0 configuration with an exactly vacuum interior out to r = 15 still carries kin 272.20, 78 % of the core-resolved 351.17, and 68.96 of kin sits in never-relaxed cube corners in every field",
+    "U4": "the frozen clock is an UPPER BOUND: kin is quadratic in a0 so any taper strictly lowers it; tapering at r = 12 leaves 32.9 % and makes it L-INDEPENDENT, so an upper bound that grows with L cannot establish that the fixed-J inertia grows with L",
+    "U5": "the flat tail is the UNRELAXED rigid ansatz, not the pin: shell ratios at r < 18 agree to six digits across pin depths 1.0, 1.6, 3.2 and with the pin removed; relaxation displacement falls 550x from core to r = 18-21",
+    "U6": "the shell route is structurally biased 18.5 % low (spherical shells discard 68.98 of rigid kin, 16.2 %, in the cube corners); the correct direct rigid slope is 9.6125, not 8.112",
+    "U7": "the relaxed slope RISES toward the rigid slope as the box grows (8.670, 8.837, 8.887 over L = 24 to 60 against rigid 9.591, 9.634, 9.653), so the 11 % reduction is a fixed-size core diluting in a growing rigid box",
+    "U8": "the escape is in progress and Q37 is blind to it: the TOP gap collapses 0.700, 0.128, 0.0995, 0.0775 and the isotropization front reaches r = 3.90, 5.36, 6.83, box-independent until it hits the wall",
+    "U9": "SCOPE: the whole R9/R10 core-melt effect is a g = 8 soft-potential artifact. At g = 32 with matched effective relaxation time, V4 stays 0.00097, the eigenvalues stay frozen on the vacuum manifold, the melt front radius is 0.000 and kin is 98.40 % of rigid against 80.49 % at g = 8. No g gives a core-resolved soliton with a stable degree and a converged extensive inertia (caveat: that run ends at fmax 72.8, unconverged; the robust part is V4 = 0.00097)"
+   },
+   "producer_corrections_mid_rung": {
+    "withdrawn": "'the slope converges to a nonzero value', withdrawn on the 12000-iteration point (decrements per doubling -0.185 then -0.222, not shrinking) and sent to the auditor as a claim to refute before it ruled"
+   }
   }
  ],
- "free_rungs_used": 1
+ "free_rungs_used": 1,
+ "stop": {
+  "rule": "SAFETY (plan section 7): a document contradiction reaching the OpenWave record's canonical claims",
+  "at": "2026-08-28T17:55:00Z",
+  "rung": "R10",
+  "reason": "the M5 hedgehog is not a protected soliton (Q37 is not an invariant of this space, the unwinding barrier is 0.0), so hunting Lagrangian terms to give its clock a finite frequency is premature; and the remaining classes cannot change this by R10's own criterion"
+ }
 }

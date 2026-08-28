@@ -10,7 +10,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS since 2026-08-27 (go 17:03 UTC), the successor of [M5.21.16](tasks/m5_21_16_task_details.md) and [Q48](m5_question_tracker.md#q48-detail): the author's quest (Coulomb kept, Newton from boosts reversed, finite nonzero electron ω, Lorentz-covariant added terms) run as one autonomous rung ladder with an adversarial audit between rungs and pre-registered breakthrough, exhaustion, and safety stops; no per-rung author or user checkpoint. Term classes, gates, harness: the task doc | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
+| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS, PAUSED 2026-08-28 after R10: 10 rungs closed and audited, stopped at the safety rule to surface a document contradiction (the hedgehog is not a protected soliton). The author's quest run as one autonomous rung ladder with an adversarial audit between rungs. Method note: [`findings/m5_32_method_note.md`](findings/m5_32_method_note.md). Classes, gates, harness, findings: the task doc | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
 
 ## BACKLOG
 
