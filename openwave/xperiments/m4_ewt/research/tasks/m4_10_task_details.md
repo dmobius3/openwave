@@ -37,9 +37,12 @@ push-out mechanism using exact-domain numerical field integration.
 
 ## Interpretation
 
-The Newtonian force law emerges from the EMC pressure mechanism.
+The \(1/r^2\) force law follows from the EMC field-overlap geometry.
 The \(4\pi\) factor comes from the angular integral, and the radial
-integral is performed numerically over the full domain.
+integral is performed numerically over the full domain. Because
+\(G\), \(c\), \(M\) and \(R\) cancel identically in
+\(F_{\text{EMC}} \equiv F_{\text{Newton}}\), the artifact is a
+normalization consistency gate, not a derivation of the strength.
 
 ## Artifacts
 

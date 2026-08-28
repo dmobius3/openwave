@@ -23,7 +23,7 @@ $$F_{\text{EMC}} = K_{\text{emc}} \cdot F_{\text{geom}} = \left(\frac{c^4}{16\pi
 Substituting the monopole amplitudes $A_i = \frac{2G M_i}{c^2}$ identifies $F_{\text{EMC}} \equiv \frac{G M_1 M_2}{R^2}$.
 
 ## Structural Discrimination Analysis
-Because $G$, $c$, $M$, and $R$ cancel identically in the formal equality $F_{\text{EMC}} \equiv F_{\text{Newton}}$, the artifact operates as a consistency gate verifying that three independent parameters ($A$, $K_{\text{emc}}$, and the spherical overlap factor $4\pi$) are correctly normalized.
+Because $G$, $c$, $M$, and $R$ cancel identically in the formal equality $F_{\text{EMC}} \equiv F_{\text{Newton}}$, the artifact operates as a consistency gate verifying that the combined normalization of $A$, $K_{\text{emc}}$, and the spherical overlap factor $4\pi$ is correct.
 
 Mutating any single structural input breaks the agreement:
 
