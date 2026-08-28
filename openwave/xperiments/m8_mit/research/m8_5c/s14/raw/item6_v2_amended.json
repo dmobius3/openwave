@@ -14,5 +14,5 @@
  "ratio": 0.34625354951057546,
  "tan_one_third": 0.34625354951057546,
  "M3_closed": -17.532438604388414,
- "protocol_sha": "b88fa741cc2940cb27518a32d358b19eb93dbbbf426ef0aae7e1195cd634abde"
+ "protocol_path": "../../findings/m8_5c_protocol.md"
 }

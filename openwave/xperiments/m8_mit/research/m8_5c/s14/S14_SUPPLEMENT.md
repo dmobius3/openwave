@@ -96,4 +96,50 @@ dropped couplings rotated eigenvectors within that span. The file's `route_per_q
 block states the route of each quantity and the reason for each near-invariance.
 References superseded: `raw/controlA_references.json`, sha `18414ff0…`.
 
-The protocol is UNTOUCHED this round; the true text remains `b88fa741…`.
+The protocol was UNTOUCHED by that round; the review chain's last full-file value was
+`b88fa741…`.
+
+## Closing the chain at the shipped text
+
+`b88fa741…` is a full-FILE hash of the pre-filing draft and resolves to no file in this
+repository, because filing changed the document in exactly three mechanical ways and then
+changed what is hashed. What was appended: § 15's freeze-time product hashes (this
+package's own artifacts, unknown until § 14 finished), the filing banner replacing the
+draft banner, the upstream-main pin, and the boundary marker with its freeze record. What
+was NOT touched: no gate, no threshold, no ladder, no definition, no commitment, no
+outcome sentence. The pin then moved from the whole file to the FROZEN REGION, every byte
+above the boundary, which is the object § 15 and the roadmap both quote:
+
+    cf5faa10401e02ed00bdfb92d8ee329fff5863b108f979d4c90abfe80e2b8138
+
+superseded once more at review by the maintainer's blocking finding below. The shipped
+frozen-region digest is the one in the protocol's own freeze record; it is the only hash a
+reader needs, and the earlier values in this file and in `DISPOSITIONS.md` are the dated
+record of how it got there.
+
+## Maintainer review, the manifest finding, and what it cost
+
+`raw/package_hashes.txt` shipped covering 18 of 30 tracked members, with six orphan hashes
+and three mislabels: the four artifacts regenerated after their first hashing (the lattice
+tables, the Control A references, and two of the item scripts) each kept a superseded hash
+under their own path name, and eight members had no line at all. The cause is precise and
+worth recording, because it is a variant of a failure this program has hit before: the
+manifest was built by APPENDING `shasum` runs at three different times rather than being
+regenerated, so every superseded value stayed under the same path and no member was ever
+retired. Recomputing a hash and appending it is not the same as recomputing the manifest.
+The manifest is now generated in one shot from `git ls-files` and verifies member for
+member with `shasum -c`.
+
+Three comment-tier items rode along, all of them real. `jacobian_check.py` printed two
+verdict labels unconditionally, so its gauge-breaking arm could not fail; the reviewer
+demonstrated it by zeroing the breaking coefficient and getting the same green. Both labels
+are now computed, the mutation is scored against the parent at a `1e3` ratio in the house
+pattern, and the script exits nonzero on failure; the fix was itself mutation-tested, the
+neutralized arm now printing "arm did NOT fire (broken arm)" and exiting 1. Two § 14
+scripts read a scratch `/tmp` file for the protocol hash they stamped into their records,
+which is the mechanism that put an unresolvable hash into the shipped JSONs. The naive
+repair, hashing the protocol at its repo path, does not converge, since § 15 pins those
+same JSONs and each would move the other forever; the records now carry the protocol PATH,
+which is stable, while the run records print the whole-file and frozen-region hashes
+resolved at run time. Both halves ship; neither is circular.
+
