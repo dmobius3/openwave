@@ -337,10 +337,10 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | Criteria | Status + result summary |
 | --- | --- |
 | **PARTICLE - ELECTRON** | |
-| Charge quantization | 🚧 [not yet tested]<br>Group-theoretic assignment from the 2I stabilizer structure (Z₃ face stabilizers: color triplet vs singlet), not an integrated winding; the in-platform comparison with a winding-type charge rides the M8.4 lineage<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
+| Charge quantization | 🚧 [not yet tested]<br>Group-theoretic assignment from the 2I stabilizer structure (Z₃ face stabilizers: color triplet vs singlet), not an integrated winding; the in-platform comparison with a winding-type charge rode the M8.4 lineage, which CLOSED UNRESOLVED 2026-08-26 with no target configuration executed<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
 | Electron rest energy (mass) | 🚧 [not yet tested]<br>m_e is the mass-sector calibration anchor (benchmark input, not a prediction): entering the calibration loop from measured Λ reproduces m_e to ~2%. The corrected 24-entry analytic spectrum is now reproduced in-platform (M8.3 ✅, 23/23 gates, mutation-tested), graded at the author's own ledger weight: 5 of 8 remaining charged fermions compatible within ×3, 4 adjudicated<br>[`m8_3_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_3_method_note.md) |
 | de Broglie clock (Zitterbewegung) | 🚧 [not yet tested]<br>The Waltz clock dt/dτ = S^(−1/2) is assumed (exponent empirically forced at Δχ² > 60), not derived; deriving a clock from dynamics on the arena is part of the M8 program<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
-| Particle stability (Derrick escape) | 🚧 [not yet tested]<br>Not applicable in current MIT (no soliton; stability asserted spectrally via the double-cover return); whether a field dynamics on S³/2I has stable localized states IS the M8.4 core question<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
+| Particle stability (Derrick escape) | 🚧 [not yet tested]<br>Not applicable in current MIT (no soliton; stability asserted spectrally via the double-cover return); whether a field dynamics on S³/2I has stable localized states was M8.4's core question; M8.4 CLOSED UNRESOLVED 2026-08-26 without reaching a target run, so the question stands untested<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
 | Magnetic moment μ (g ≈ 2, magnetostatics) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Angular momentum J (spin ℏ/2) | 🚧 [not yet tested]<br>Not addressed (no dynamics to carry angular momentum)<br>(none yet) |
 | Spin-½ statistics (720° double cover) | 🚧 [not yet tested]<br>A structural home exists: the Möbius anti-periodic boundary condition (matter modes return only under the double cover); no field realization yet<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
@@ -361,7 +361,7 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r, electrostatics) | 🚧 [not yet tested]<br>α read from the first Fibonacci well is input-and-output (the author's Cycle 2: a consistency check, not a prediction); no force-level computation<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
-| Lorentz covariance (+ Coulomb = EM) | 🚧 [not yet tested]<br>Not applicable yet: no field dynamics to be covariant; supplying a field equation on S³/2I was the M8.4 program, CLOSED UNRESOLVED 2026-08-26 on two instrument failures with no dynamics run; a target-free successor chassis is elected as M8.5-C, protocol pending<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
+| Lorentz covariance (+ Coulomb = EM) | 🚧 [not yet tested]<br>Not applicable yet: no field dynamics to be covariant; supplying a field equation on S³/2I was the M8.4 program, CLOSED UNRESOLVED 2026-08-26 with no target configuration executed and no nontrivial sector spent; a target-free successor chassis is elected as M8.5-C, protocol pending<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
 | Strong force: confinement | 🚧 [not yet tested]<br>The analytic 4/R² adjoint gap on S³/2I is now verified in-platform (M8.1.1: blind, adversarially audited, with the single 36/R² exception across the whole ADE family). Icon stays 🚧 deliberately: that is a spectral gap at a flat connection, not the linear inter-charge potential this row tests<br>[`m8_1_1_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_1_1_method_note.md) |
 | Running coupling | 🚧 [not yet tested]<br>Not addressed; α itself is read from the first Fibonacci well (input-and-output, see Electric force)<br>(none yet) |
 | Weak force: muon decay | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
@@ -372,7 +372,7 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
 | EM waves (Maxwell) | 🚧 [not yet tested]<br>No field model of radiation (photon massless at the edge-only layer level, a structural label)<br>(none yet) |
-| Quantum wave equation (Klein-Gordon) | 🚧 [not yet tested]<br>No native field equation exists; supplying one on S³/2I remains the M8 program's central goal, and its first vehicle, the M8.4 Lagrangian-family survey, CLOSED UNRESOLVED 2026-08-26 with no dynamics run and no sector spent<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
+| Quantum wave equation (Klein-Gordon) | 🚧 [not yet tested]<br>No native field equation exists; supplying one on S³/2I remains the M8 program's central goal, and its first vehicle, the M8.4 Lagrangian-family survey, CLOSED UNRESOLVED 2026-08-26 with no target configuration executed and no nontrivial sector spent<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
 | Orbital quantization (atomic structure) | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 
 ## NSM (M9)

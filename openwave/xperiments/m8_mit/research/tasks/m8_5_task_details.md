@@ -1,9 +1,11 @@
 # M8.5: Quotient-manifold simulation engineering
 
-> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 PLANNED; its gate
-> M8.2 closed ✅ 2026-07-27. This is a scaffold-stage planning aid written by the
-> maintainers (2026-07-21, § "Independent reproduction" added 2026-07-28); the author
-> owns the column and may amend everything here.
+> Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md). Status: 🚧 IN PARTS. Its gate
+> M8.2 closed ✅ 2026-07-27. **M8.5-A** ✅ REPRODUCED 2026-07-31; **M8.5-B** ✅ COMPLETE
+> 2026-08-17 (sealed case `M85B-ADJ-07`, GREEN at both rungs); **M8.5-C** ⏸️ ELECTED
+> 2026-08-26 with its protocol PENDING, § "Route (b)" below. This is a scaffold-stage
+> planning aid written by the maintainers (2026-07-21, § "Independent reproduction"
+> added 2026-07-28); the author owns the column and may amend everything here.
 
 ## PLANNING
 
@@ -35,7 +37,8 @@ enough to choose one on evidence.
 | (b) Spectral in 2I-symmetric harmonics | expand fields in S³ harmonics restricted to 2I-invariant (or covariant) subspaces; evolve coefficients | nonlinear terms need convolution handling (cost grows fast with band limit); but the basis IS the McKay representation theory, so slot structure is manifest |
 
 **Route (b) is elected as M8.5-C (2026-08-26, author's call; protocol PENDING).** After M8.4 closed
-unresolved with no dynamics run, route (b) was chosen to be built as an actual dynamics substrate,
+unresolved with no target configuration executed and no nontrivial sector spent, route (b) was
+chosen to be built as an actual dynamics substrate,
 target-free by construction, under its own roadmap row. Its preregistration is not filed, so it is
 a successor with its protocol pending, not a running task. See the [M8.5-C roadmap
 row](../m8_roadmap.md) and [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
