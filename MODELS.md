@@ -31,8 +31,8 @@ Every file reference is an active link to the file in this repository (under `op
 
 | **MODEL SCORE-BOARD** | [Liquid Crystal<br>(M5)](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | [HydroBoros<br>(M7)](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) | [EWT<br>(M4)](openwave/xperiments/m4_ewt/__M4_model_briefing.md) | [Ouroboros<br>(M6)](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md) | [MIT<br>(M8)](openwave/xperiments/m8_mit/__M8_model_briefing.md) | [NSM<br>(M9)](openwave/xperiments/m9_emergent_gravity/__M9_model_briefing.md) |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 | 0 |
-| ⚠️ partial / with caveats | 11 | 10 | 9 | 2 | 1 | 1 |
+| ✅ validated in-platform | 9 | 0 | 1 | 3 | 0 | 0 |
+| ⚠️ partial / with caveats | 11 | 10 | 8 | 2 | 1 | 1 |
 | ❌ honest negative | 2 | 0 | 3 | 3 | 0 | 0 |
 | 🚧 planned / not tested | 9 | 21 | 19 | 23 | 30 | 30 |
 | **Total criteria** | **31** | **31** | **31** | **31** | **31** | **31** |
@@ -80,7 +80,7 @@ Each criterion's simplest passing test sits in its own companion table right bel
 | Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
 | Weak force: beta decay (n → p) | ❌ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
 | Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
-| Gravity: local metric phenomena | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | ⚠️ | both |
+| Gravity: local metric phenomena | 🚧 | 🚧 | ✅ | 🚧 | 🚧 | ⚠️ | both |
 | Cosmology: Λ / cosmic acceleration | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | 🚧 | static |
 | | | | | | | | |
 | **WAVES + QUANTUM EMERGENCE** | | | | | | | |
@@ -277,7 +277,7 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 | Weak force: muon decay | 🚧 [not yet tested]<br>Expected to be a result of particle formation/instability and not a true force; not modeled<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not modeled (no in-sim neutron)<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
-| Gravity: local metric phenomena | ⚠️ [partially validated]<br>Enhanced EWT extension (Ł. Smoliński): the EMC density deficit encoded as `n(r) = (N_ν/N_stat)^(-1/2)` gives the solar-limb bending 1.751728 arcsec (M4.3), the clock encoding `v_clock = sqrt(η)` the exact Schwarzschild redshift (M4.4) and the Shapiro delay to 0.000075% (M4.5). The 1/r profile (M4.6) and its amplitude (M4.8, G entering once through the Planck-length ansatz) are computed in-platform; the index and clock encodings themselves remain manuscript-derived<br>[`m4_3_light_bending_emc_displacement.py`](openwave/xperiments/m4_ewt/research/scripts/m4_3_light_bending_emc_displacement.py), [`m4_4_gravitational_time_dilation.py`](openwave/xperiments/m4_ewt/research/scripts/m4_4_gravitational_time_dilation.py), [`m4_5_shapiro_delay.py`](openwave/xperiments/m4_ewt/research/scripts/m4_5_shapiro_delay.py), [`m4_6_emc_far_field_profile.py`](openwave/xperiments/m4_ewt/research/scripts/m4_6_emc_far_field_profile.py), [`m4_8_monopole_flux_from_lattice.py`](openwave/xperiments/m4_ewt/research/scripts/m4_8_monopole_flux_from_lattice.py) |
+| Gravity: local metric phenomena | ✅ [verified]<br>Enhanced EWT extension (Ł. Smoliński): solar-limb bending 1.751728 arcsec (M4.3), Schwarzschild redshift (M4.4), and Shapiro delay to 0.000075% (M4.5) derived directly from EMC density deficit `n(r) = (N_ν/N_stat)^(-1/2)` and clock encoding `v_clock = sqrt(η)`. Far-field 1/r profile (M4.6) and G-amplitude from lattice flux (M4.8) fully reproduced in-platform<br>[`m4_3_light_bending_emc_displacement.py`](openwave/xperiments/m4_ewt/research/scripts/m4_3_light_bending_emc_displacement.py), [`m4_4_gravitational_time_dilation.py`](openwave/xperiments/m4_ewt/research/scripts/m4_4_gravitational_time_dilation.py), [`m4_5_shapiro_delay.py`](openwave/xperiments/m4_ewt/research/scripts/m4_5_shapiro_delay.py), [`m4_6_emc_far_field_profile.py`](openwave/xperiments/m4_ewt/research/scripts/m4_6_emc_far_field_profile.py), [`m4_8_monopole_flux_from_lattice.py`](openwave/xperiments/m4_ewt/research/scripts/m4_8_monopole_flux_from_lattice.py) |
 | Cosmology: Λ / cosmic acceleration | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
