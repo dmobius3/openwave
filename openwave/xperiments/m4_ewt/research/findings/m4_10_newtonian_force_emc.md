@@ -119,8 +119,8 @@ analytic shortcut.
 
 ## Reference
 
-Enhanced EWT manuscript, version 4.5.12 or later:
-[DOI: 10.5281/zenodo.22140646](https://doi.org/10.5281/zenodo.22140646)
+Enhanced EWT manuscript, version 4.6.1 or later:
+[DOI: 10.5281/zenodo.22144273](https://doi.org/10.5281/zenodo.22144273)
 
 Relevant sections:
 
