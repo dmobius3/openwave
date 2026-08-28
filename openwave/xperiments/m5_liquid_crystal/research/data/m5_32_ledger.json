@@ -628,7 +628,7 @@
    },
    "audit_new_findings": {
     "U1": "Q37 IS NOT A TOPOLOGICAL INVARIANT of this order-parameter space: read_charge_from_M takes V[..., -1], the leading eigenvector alone (verified by the producer in the source), an RP^2 degree of one eigenvector; pi_2(OPS) = 0 forces any CONTINUOUS map to have leading-eigenvector degree 0, so degree 1 is possible only through the ansatz's discontinuity on the measurement surface",
-    "U2": "the barrier to unwinding is EXACTLY 0.0 over five taper windows: a straight line holding the pinned shell carries the energy monotonically 62.852 -> 14.794 while |Q| goes 1 -> 0",
+    "U2": "no energy barrier protects the ANSATZ's degree: a straight-line melt from the UNRELAXED ansatz to the degree-0 state never rises above its start (five melt windows, energy 62.852 at the start and 14.794 at the end, |Q| 1 -> 0). RE-SCOPED by the note audit (2026-08-28): the barrier from the RELAXED state was not computed; probes from it rise 0.73 to 4.49, and FIRE holds |Q| = 1 through 12000 iterations. The protection argument is pi_2 = 0, not a measured barrier",
     "U3": "the extensive inertia belongs to the BOUNDARY, not an object: a degree-0 configuration with an exactly vacuum interior out to r = 15 still carries kin 272.20, 78 % of the core-resolved 351.17, and 68.96 of kin sits in never-relaxed cube corners in every field",
     "U4": "the frozen clock is an UPPER BOUND: kin is quadratic in a0 so any taper strictly lowers it; tapering at r = 12 leaves 32.9 % and makes it L-INDEPENDENT, so an upper bound that grows with L cannot establish that the fixed-J inertia grows with L",
     "U5": "the flat tail is the UNRELAXED rigid ansatz, not the pin: shell ratios at r < 18 agree to six digits across pin depths 1.0, 1.6, 3.2 and with the pin removed; relaxation displacement falls 550x from core to r = 18-21",
@@ -647,6 +647,12 @@
   "rule": "SAFETY (plan section 7): a document contradiction reaching the OpenWave record's canonical claims",
   "at": "2026-08-28T17:55:00Z",
   "rung": "R10",
-  "reason": "the M5 hedgehog is not a protected soliton (Q37 is not an invariant of this space, the unwinding barrier is 0.0), so hunting Lagrangian terms to give its clock a finite frequency is premature; and the remaining classes cannot change this by R10's own criterion"
+  "reason": "the M5 hedgehog's degree is not an invariant of its order-parameter space (the instrument reads one eigenvector of the spatial block; pi_2 = 0) and no energy barrier protects the ansatz's degree, so hunting Lagrangian terms to give its clock a finite frequency is premature; and the remaining classes cannot change this by R10's own criterion"
+ },
+ "note_audit": {
+  "at": "2026-08-28",
+  "record": "data/m5_32_note_audit.json",
+  "instrument": "scripts/m5_32_note_audit.py",
+  "outcome": "6 load-bearing claims: 5 CONFIRMED, 1 QUALIFIED (the unwinding barrier, re-scoped); 6 blocking findings applied, 14 minor folded in; the note's section 9 records it"
  }
 }

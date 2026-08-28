@@ -29,7 +29,7 @@ lattice         h = L / n, certified symmetric stencil: the density is formed pe
 
 Contraction rule, locked at R0 and audited: a derivative-derivative index pair contracts with
 `eta`, an internal-internal pair with `eta`, and a MIXED derivative-internal pair with `delta`.
-The all-`eta` reading is not covariant (measured boost drift 32.7) and is retained only as the
+The all-`eta` reading is not covariant (measured boost drift 32.2, the R0 audit's figure) and is retained only as the
 control term `I3_mixed_eta`.
 
 ### 1.2 The certified action
@@ -105,12 +105,40 @@ ansatz       M = Q d4 Q^T ,  Q = Qb Qh ,  d4 = diag(-s g, 1, delta, 0)
              at m = 0 (used throughout R7 to R10) Q = Qh, the Euler frame alone
 relaxation   FIRE on E_static only (a0 = None, omega = 0), boundary shell pinned at the ansatz
              by ~pin_shell(n, h) with default depth 1.6
-degree Q37   read_charge_from_M: eigh(M), take V[..., -1] (the LEADING eigenvector),
-             lift its sign field over a centered cube surface, integrate the RP^2 degree
+degree       read_charge_from_M on the SPATIAL 3x3 block of M (every caller passes
+             M[..., 1:4, 1:4]): eigh, take V[..., -1] (the LEADING eigenvector, n-hat), lift
+             its sign field over a centered cube surface, integrate the RP^2 degree
 ```
 
 The last line is stated here in full because rung R10 turns on it: the instrument reads ONE
-eigenvector, not the full order parameter.
+eigenvector of the spatial block, not the full order parameter, and the time row is invisible to
+it. The sign of that degree is a lift convention, so it is reported as `+-1` throughout.
+
+### 1.6 The gate and class vocabulary used below
+
+The run pre-registered seven gates a candidate had to pass, and worked through term classes in a
+fixed order. Both are defined in full in the task record
+([`tasks/m5_32_task_details.md`](../tasks/m5_32_task_details.md), sections 4 and 8); the short
+form, so the tables below can be read without it:
+
+| Gate | Statement |
+| --- | --- |
+| G1 | Coulomb kept: like charges repel with a 1/r trend, the static sector unchanged |
+| G2 | Newton reversed: two boost-dressed defects attract |
+| G3 | Electron clock: a finite nonzero omega* at positive energy, the vacuum preferring omega = 0 |
+| G4 | Lorentz covariance of the energy functional, verified numerically |
+| G5 | Bounded below with no guard on every runaway family |
+| G6 | Collateral: the certified positives survive (census ordering, protection, the fixed-J clock) |
+| G7 | Parsimony and robustness: few terms, O(1) coefficients, every sign holding over a factor >= 4 |
+
+| Class | Content |
+| --- | --- |
+| C0, C1 | the author's two contractions, and the full quadratic basis of `F x F` |
+| C2 | field-dependent internal metrics (`h_cov`), `M`-inserted contractions, projector currents |
+| C3 | the potential axis: eigenvalue penalties, the LdG lift, dressing-sensitive `V` |
+| C4 | the lower-order 2-derivative term (`K_T`) |
+| C5, C6 | curvature^4 and saturation; non-commutator quartics |
+| C7, C8 | higher-order timelike-current / Skyrme contractions; cross-model imports (never opened) |
 
 ## 2. Equation-to-code map
 
@@ -142,7 +170,11 @@ Base: `https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m
 | the relaxation protocol | `relax` | [`#L92`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_r10_relaxed_ladder.py#L92-L125) |
 | FIRE, the pinned shell, `kin_of`, `e_parts` | `fire`, `pin_shell`, `kin_of`, `e_parts` | [`scripts/m5_21_3_a_4d.py#L327`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py#L327), [`#L109`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py#L109), [`#L274`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py#L274), [`#L179`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_3_a_4d.py#L179) |
 | the ansatz and the clock tangent | `dressed`, `a0_unit` | [`scripts/m5_21_8_b_lattice.py#L56`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_21_8_b_lattice.py#L56-L87) |
-| **the degree instrument** | `read_charge_from_M` | [`scripts/m5_22_e_audit.py#L192`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_22_e_audit.py#L192-L200) |
+| **the degree instrument** (the record's) | `read_charge_from_M` on the spatial 3x3 block | [`scripts/m5_22_e_audit.py#L192`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_22_e_audit.py#L192-L200), called through [`m5_32_r6_a_deltaladder.py#L156`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_r6_a_deltaladder.py#L156-L169) |
+| the R10 audit's own degree reader (a different lift and triangulation) | `directors`, `read_surface` | [`scripts/m5_32_r10_audit.py#L142`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_r10_audit.py#L142), [`#L247`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_r10_audit.py#L247) |
+| the degree-0 vacuum-interior seed (the 78 % figure) | `unwound_seed` | [`scripts/m5_32_r10_audit.py#L260`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_r10_audit.py#L260) |
+| the melt paths, the clock taper, the `g = 32` probe (the R10 audit's typed results) | the `zero_barrier_robustness`, `clock_taper`, `scope_g32` blocks | [`scripts/m5_32_r10_audit.py#L1036`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_r10_audit.py#L1036-L1092) |
+| the note audit's independent re-derivation of all of the above | `path_energy`, `stage_barrier`, `stage_boundary`, `stage_taper`, `stage_g32` | [`scripts/m5_32_note_audit.py#L446`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_note_audit.py#L446-L708) |
 
 ## 3. The physics module
 
@@ -159,29 +191,36 @@ it; no driver re-implements physics. Run `python3 scripts/m5_32_lagrangian.py --
 | --- | --- | --- | --- |
 | R0 | The stack, the record and the author's 2026-08-17 Newton notebook all reproduce | selftests within 1e-3 of the record | 17/17 selftests; 10/10 record items at <= 2.2e-15; notebook fit `A = 863.733`, `B = 167.668`, sign `+`, to six digits |
 | R1 | **The whole constant-coefficient current-order class is infeasible**: no coefficients make the energy's `omega^2` form PSD on every time channel with the boost weight reversed | a coefficient region existing under either Coulomb gate | Farkas / LP certificates at `(g, delta)` = (32, 0.3), (8, 0.3), (32, 0.1), with and without the parity-odd terms, on every channel alone, even at `c_I1 = +4` |
-| R2 | The covariant flip family `L_lambda` is bounded below for `lambda >= 1/2` by a pointwise theorem, keeps the static sector exactly, and gives `lambda* = 1/2` on every channel | G4, G5, the sector half of G1 | 0 negative densities in 27,560 random non-Lorentz samples; 36 channel x g cases; lattice probes bounded with no guard |
+| R2 | The covariant flip family `L_lambda` is bounded below for `lambda >= 1/2` by a pointwise theorem wherever `M eta` has a real timelike eigenvector, keeps the static sector exactly, and gives `lambda* = 1/2` on every channel | G4, G5, the sector half of G1 | 0 negative densities in 27,560 random non-Lorentz samples; 36 channel x g cases; lattice probes bounded with no guard |
 | R3 | G2 not met on any of three constructions | sign robust across 2 of 3 constructions, 2 boxes, both boundary types | ansatz repulsive at 348 reads; 44 relaxed pair heals; the cross-inertia undecidable at this resolution |
-| R4 | The fixed-J minimizer runs to the box wall on every localized family, `omega*` proportional to `1/L` | an interior `R*` with `omega*` stable across the domain ladder | 96/96 producer cases and every audit case; `omega* L` constant at 7.1 |
+| R4 | The fixed-J minimizer runs to the box wall on every localized dressing family, `omega*` proportional to `1/L` | an interior `R*` with `omega*` stable across the domain ladder | 96/96 producer cases and every audit case; `omega* L` constant at 7.1 |
 | R6 | **C3 orbit-blindness theorem**: any Lorentz-invariant derivative-free `V` is constant along a Lorentz dressing | a potential that localizes the dressing | variation <= 2e-7 on 50 dressed points and the whole R4 family up to rapidity 3; Euclidean controls O(1e4) |
-| R7 | `K_T` localizes the dressing but is exactly inert on the realized clock channel; G7 fails on the drift gate alone | interior `R*` with `omega*` drift <= 10 % over a c2 range >= factor 4 | interior at `c2` = 0.03 and 0.1 in both boxes; drift never below 0.301 against the 0.10 bar; the range half is MET on a dense ladder (factor 4.87) |
+| R7 | `K_T` moves the fixed-J minimizer off the box wall, but the audit found the interior minimum is the dressing switching off (0.43 % deep), and the term is exactly inert on the realized clock channel; G7 fails on the drift gate alone | interior `R*` with `omega*` drift <= 10 % over a c2 range >= factor 4 | interior at `c2` = 0.03 and 0.1 in both boxes; drift never below 0.301 against the 0.10 bar; the range half is MET on a dense ladder (factor 4.87) |
 | R8 | C6's `omega^4` inertia is exactly VOLUME extensive and h-independent | an IR-convergent `omega^4` inertia | L exponent 3.0000 to 1e-13, ratio 8.000 over a factor 2 in L; h exponent -3.6e-14 |
-| R9 | The ansatz carries a topologically protected biaxial disclination on the z axis; at `delta = 0` the field is exactly frame-free and the clock vanishes identically | a string-free hedgehog with a nonzero clock | frame-free identity to 2.08e-17 relative; continuum ring spread exactly `delta / 2` and radius-INDEPENDENT over a 1e4 shrink, against a spread proportional to the radius at `delta = 0` |
-| R10 | **The M5 hedgehog is not a protected soliton, and the extensive inertia is not a property of an object** | the relaxed core-resolved soliton's inertia still extensive | the unwinding barrier is exactly 0.0 over five taper windows, energy monotone 62.852 -> 14.794 while \|Q\| goes 1 -> 0; a degree-0 configuration with a vacuum interior out to `r = 15` still carries 78 % of the inertia; tapering the clock at `r = 12` leaves 32.9 % and makes it L-INDEPENDENT |
+| R9 | The ansatz carries a topologically protected biaxial disclination on the z axis; at `delta = 0` the field is exactly frame-free and the PERIODIC clock vanishes identically (a smooth radial-boost flow survives). The audit's headline: a relaxation resolves the line into a finite core (radius 3.98 at h = 1.5, 3.58 at h = 0.75) with the clock surviving at an h-convergent inertia 351.17 / 351.14, at `g = 8` | a string-free hedgehog with a nonzero clock | frame-free identity to 2.08e-17 relative; continuum ring spread exactly `delta / 2` and radius-INDEPENDENT over a 1e4 shrink, against a spread proportional to the radius at `delta = 0` |
+| R10 | **No energy barrier protects the ansatz's degree, and the extensive inertia is not a property of an object** | the relaxed core-resolved soliton's inertia still extensive (the producer's registered prediction; the unwinding and boundary claims below are the AUDIT's findings and carry no pre-registered gate of their own) | from the UNRELAXED ansatz, a straight-line melt to the degree-0 state never rises above its start (energy 62.852 at the start, 14.794 at the end, \|Q\| 1 -> 0 inside each of five melt windows, 201 points each); the barrier from the RELAXED state was not computed, and the probes run from it rise 0.73 to 4.49; a degree-0 configuration with a vacuum interior out to `r = 15` still carries 78 % of the inertia (272.20 of 351.17, equal-budget unconverged comparison); a linear taper of the clock flow over `r = 12` to `15` leaves 32.9 % and removes the box dependence, as any compactly supported clock on a box-independent interior must |
 
 ### 4.1 The two results that reverse earlier readings
 
 **The degree instrument is not an invariant of this order-parameter space.**
-`read_charge_from_M` takes `V[..., -1]`, the leading eigenvector alone, so it measures an `RP^2`
-degree of one eigenvector. The stabilizer of `d4` in `SO(1,3)+` is the Klein four-group, so
-`pi_1 = Q8` and `pi_2 = 0`. With `pi_2 = 0` and the eigenvalues frozen on the order-parameter space,
-any CONTINUOUS map `S^2 -> OPS` has leading-eigenvector degree 0; the degree-1 reading is possible
-only because the ansatz is discontinuous on the measurement surface. On the three surfaces the
-instrument calls conflict-free, the MIDDLE eigenvector carries 37, 30 and 87 frustrated edges.
+`read_charge_from_M` takes `V[..., -1]` of the spatial 3x3 block, the leading eigenvector alone, so
+it measures an `RP^2` degree of one eigenvector. The stabilizer of `d4` in `SO(1,3)+` is the Klein
+four-group (an `L` with `L^T eta L = eta` and `L d4 L^T = d4` must commute with `d4 eta`, whose
+spectrum is distinct, so `L` is a diagonal sign matrix; `det = +1` and `L_00 = +1` leave four), so
+`pi_1 = Q8` and `pi_2 = 0`. With `pi_2 = 0` and the eigenvalues frozen on the `SO(1,3)+` orbit of
+`d4`, any CONTINUOUS map `S^2 -> OPS` has leading-eigenvector degree 0; the degree `+-1` reading is
+possible only because the ansatz is discontinuous on the measurement surface. On the same three
+surfaces the instrument calls conflict-free, the MIDDLE eigenvector admits no consistent sign lift
+at all. What was measured about protection is narrower than a barrier: from the unrelaxed ansatz a
+straight-line melt to degree 0 never rises above its start, while the relaxed state's own barrier
+was not computed and FIRE holds `|Q| = 1` on every surface through 12000 iterations; the protection
+argument is `pi_2 = 0`, not a measured barrier.
 
 **The extensive clock inertia belongs to the boundary and the frozen-clock convention.**
 `kin` is quadratic in `a0`, so the frozen (non-tapering) clock flow is only an UPPER BOUND on the
 fixed-J inertia, and an upper bound that grows with `L` cannot establish that the inertia grows with
-`L`. Tapering the clock at `r = 12` leaves 32.9 % and removes the L-dependence entirely.
+`L`. A linear taper of the clock flow to zero over `r = 12` to `15` leaves 32.9 % of it, and a
+compactly supported clock on a box-independent interior is L-independent by construction.
 
 ## 5. Minimal inspection set (physics first, driver last)
 
@@ -189,8 +228,8 @@ fixed-J inertia, and an upper bound that grows with `L` cannot establish that th
 | --- | --- | --- |
 | 1 | [`scripts/m5_32_lagrangian.py`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_lagrangian.py) | the functional: every term's definition, sympy and numpy side by side |
 | 2 | [`scripts/m5_22_e_audit.py#L192`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_22_e_audit.py#L192-L200) | the degree instrument, because section 4.1 turns on what it measures |
-| 3 | [`data/m5_32_ledger.json`](../data/m5_32_ledger.json) | every rung's hypothesis, claims and audited verdicts in machine form |
-| 4 | [`scripts/m5_32_r10_relaxed_ladder.py`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_r10_relaxed_ladder.py) | the last driver, with its prediction registered in the header before the numbers |
+| 3 | [`scripts/m5_32_note_audit.py`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_note_audit.py) | the independent instrument behind section 9: its own ansatz, energy, clock tangent and degree reader, so every load-bearing number here has a second implementation to read against |
+| 4 | [`data/m5_32_ledger.json`](../data/m5_32_ledger.json) | every rung's hypothesis, claims and audited verdicts in machine form; the drivers are listed there and are the last thing to read |
 
 ## 6. What was NOT computed
 
@@ -198,9 +237,12 @@ fixed-J inertia, and an upper bound that grows with `L` cannot establish that th
 | --- | --- |
 | Any candidate carried through the full G1 to G7 battery | no candidate survived far enough; the `lambda`-family died at G2 and G3, `K_T` at G3 and G7 |
 | The classes C7 (higher-order timelike-current / Skyrme contractions) and C8 (cross-model imports) | never opened; R10's criterion says they cannot move G3, but that is an argument, not a measurement |
-| A relaxed two-box ladder at the toy point `g = 32` | every relaxation here is at `g = 8`, where `V4` is 4096x softer; the `g = 32` probe reached `V4 = 0.00097` and a melt-front radius of 0.000 but ended unconverged at `fmax` 72.8 |
+| A relaxed two-box ladder at the toy point `g = 32` | every relaxation here is at `g = 8`, where `V4` is 4096x softer; the `g = 32` probe reached `V4 = 0.00097` with no cell isotropized (the smallest top eigenvalue gap 0.616 against the 0.35 threshold that defines the melt front) but ended unconverged at `fmax` 5.14 |
 | Whether a protected object exists in this space at all | `pi_1 = Q8` suggests a disclination LOOP rather than a point hedgehog; not tested |
-| A converged relaxation anywhere | every FIRE run stops on `max_iter`; the 12000-iteration ladder shows slope decrements per doubling NOT shrinking (-0.185 then -0.222) |
+| A converged relaxation anywhere | every FIRE run stops on `max_iter`; the audited slope decrements per doubling depend on which box pair is read (-0.267 / -0.403 on (24, 36), -0.159 / -0.130 on (36, 48)), so neither convergence nor decay is established |
+| The unwinding barrier of the RELAXED state | only the melt from the unrelaxed ansatz was run; the probes from the relaxed state rise 0.73 to 4.49, and FIRE never moves the degree |
+| A degree instrument that sees the time row | the instrument reads the spatial 3x3 block only, so anything the relaxation does to the time row is invisible to it |
+| Converged comparisons behind the 78 % and 32.9 % figures | both are equal-budget, unconverged comparisons |
 | The physical clock localization | which clock flow is the physical one is a convention question the run could not settle from inside |
 | `J = hbar / 2` in program units | undefined in the record; never invented, so every fixed-J number is at an arbitrary `J` |
 | The Coulomb pair half of G1 on the 4x4 stack | the like-charge static control fails on this stack (the string form), so the instrument could not decide it |
@@ -242,4 +284,33 @@ it from inside, because the answer is a statement of intent or of convention abo
 | 3 | The intended reading of the mixed trace `R_ac` | exactly one independent mixed trace exists up to sign, and it is not symmetric, so `I4 != I5` |
 | 4 | `J = hbar / 2` in program units | undefined in the record; every fixed-J number is at an arbitrary `J` without it |
 | 5 | Whether a spectral function of `M` (a projector, `h_cov`) is admissible under the model's own boundary | `h_cov` is undefined past the degeneracy locus `t* = (g + 1) / 2`, where the spectrum of `M eta` goes complex |
-| 6 | Q49 to Q59, carried from earlier rungs | in the question tracker, unchanged |
+| 6 | The earlier open questions carried from the M5.21 series | in the model's question tracker ([`m5_question_tracker.md`](../m5_question_tracker.md)), unchanged |
+
+## 9. The pre-send audit of this note
+
+Per the standard, an independent agent (a different model from the one that produced the run)
+audited THIS DOCUMENT before it was sent: it re-derived the six load-bearing claims with its own
+ansatz, stencil energy, clock tangent, kin density, degree reader (a different sign lift and
+triangulation) and melt paths, traced every number in the note to its artifact, re-walked all rows
+of the equation-to-code map on the working tree, and checked every section 1 equation against the
+code term by term. Instrument: [`scripts/m5_32_note_audit.py`](https://github.com/openwave-labs/openwave/blob/main/openwave/xperiments/m5_liquid_crystal/research/scripts/m5_32_note_audit.py);
+record: [`data/m5_32_note_audit.json`](../data/m5_32_note_audit.json).
+
+| Load-bearing claim | Verdict | The auditor's own number |
+| --- | --- | --- |
+| the degree instrument reads one leading eigenvector | CONFIRMED, with a correction to the note's wording (it acts on the spatial 3x3 block; fed the 4x4 it raises) | `+-1` on three surfaces; the middle eigenvector admits no lift |
+| stabilizer = Klein four-group, `pi_1 = Q8`, `pi_2 = 0` | CONFIRMED by its own derivation | stabilizer order 4; the SU(2) lift closes on a non-abelian group of order 8 containing `-1` |
+| the unwinding barrier is exactly 0.0 | **QUALIFIED, and the note's lead claim was re-scoped on it**: the number reproduces exactly (five melt windows, 201 points each, endpoint 14.7940) but the path starts at the UNRELAXED ansatz; from the relaxed state the probes rise 0.73 to 4.49 and FIRE holds `\|Q\| = 1` through 12000 iterations | 0.0 from the rigid start; 0.725 / 3.037 / 4.490 from the relaxed states |
+| a degree-0 vacuum-interior state carries 78 % of the inertia | CONFIRMED from its own seed | 272.204 / 351.170 = 77.5 % |
+| a clock taper at `r = 12` leaves 32.9 %, L-independent | CONFIRMED, with the taper's shape made explicit (a linear ramp to zero over 12 to 15) | 115.385 / 351.170 = 32.86 %; L = 36 / 48 / 60 agree to 4 digits |
+| at `g = 32` the relaxation leaves `V4 = 0.00097` and no melt | CONFIRMED | own `V4` 0.000970; smallest top gap 0.616 against the 0.35 threshold |
+
+Beyond the six: all code-map anchors resolved to the named function; every section 1 equation
+matched the code (`I1 = (1/2) F_abcd F^abcd` to 8e-15, `E_cert = 4(U + omega^2 T) + V4` to 2e-16,
+both Legendre forms, `kin = -4 C(I1)`, the six quartics); the per-rung audit verdict counts matched
+the audit records. Six blocking findings were applied before sending (the barrier re-scope above,
+the instrument's input block, "monotone" replaced by "never above the start", the gate and class
+legend added as section 1.6, two transcription errors corrected: the boost drift figure and a
+mid-run `fmax` reported as an endpoint) and the fourteen minor findings were folded into the rows
+they concerned. The audit did not edit this note; the producer applied its findings and this
+section records them.
