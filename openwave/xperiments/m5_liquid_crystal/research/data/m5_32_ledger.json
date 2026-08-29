@@ -640,6 +640,69 @@
    "producer_corrections_mid_rung": {
     "withdrawn": "'the slope converges to a nonzero value', withdrawn on the 12000-iteration point (decrements per doubling -0.185 then -0.222, not shrinking) and sent to the auditor as a claim to refute before it ruled"
    }
+  },
+  {
+   "id": "R11",
+   "start_utc": "2026-08-29T15:12:00Z",
+   "end_utc": "2026-08-29T16:05:00Z",
+   "status": "CLOSED. Audited 4 claims, 4 CONFIRMED (one producer explanation REFUTED, six qualifiers), data/m5_32_r11_audit.json",
+   "hypothesis": "H-a the 08-29 PDF = the R0 fit negated; H-b the negated static sector has no floor on exact Lorentz orbits and the same-sign pair stays repulsive under the certified action; H-c (F_abcd F^abcd)^2 = Q_I1sq (C5) cannot hold a box-stable clock at fixed coefficient in either reading",
+   "artifacts": [
+    "data/m5_32_r11_samesign.json",
+    "data/m5_32_r11_audit.json",
+    "scripts/m5_32_r11_a_samesign.py",
+    "scripts/m5_32_r11_audit.py",
+    "plots/m5_32_r11_samesign.png",
+    "theory/duda_2026-08-29_newton_same_sign_boost_hedgehogs.pdf (local corpus)"
+   ],
+   "claims": {
+    "C1_pdf_is_negated_notebook": "CONFIRMED (line-by-line; A = 863.7326673, B = 167.6679374 by the auditor's own quadrature, rel 4e-7 to the print; negation exact)",
+    "C2_flip_has_no_floor": "CONFIRMED (m ladder bit-identical to -4.68e9 / -4.12e9; V4 < 3.8e-17 per cell; exact dilation identity exponent 1.000000000000001; V4 ~ s^-3 cannot rescue). Producer's squeeze-exponent explanation REFUTED: grid artifact (r_c below the grid), not far-field dominance",
+    "C3_samesign_pair_repulsive": "CONFIRMED (19892.00969126475 / 15645.225625736442 / 12698.095519581548 bit-identical; at h = 0.75: 20131.0 / 15802.4 / 13031.4)",
+    "C4_I1sq_no_fixed_coefficient_clock": "CONFIRMED with qualifiers (H2 = -4 C2_I1 rel 0.0; thresholds rel 0.0; drift 42.365 % in both readings; static energy driven negative at threshold; Q_I1sq = (1/4)(F.F)^2 in registry units; the R8 field is the undressed ansatz)"
+   },
+   "audit_new_findings": {
+    "U1": "the notebook's fit constants scale as 1/sqrt(cutoff) (Hs ~ r^-4 at the center): A = 1191 / 864 / 633 and B = 182 / 168 / 153 at cutoff 5e-4 / 1e-3 / 2e-3; not physical constants",
+    "U2": "the (F.F)^2 class scales as s^5 under dilation, so it is the one candidate that could restore a floor to a flipped static sector: worth a direct test rather than through the omega channel"
+   },
+   "gates": {
+    "Ha": true,
+    "Hb": true,
+    "Hc": true
+   },
+   "deviation": "arm-b probe changed after the first launch (random perturbation left the orbit; V4 stiff at g^4 stalled the descent) before any arm-b number was read"
+  },
+  {
+   "id": "R12",
+   "start_utc": "2026-08-29T15:55:00Z",
+   "end_utc": "2026-08-29T17:15:00Z",
+   "status": "CLOSED. Audited: instrument CONFIRMED; 'does not shrink' REFUTED (sub-grid drift -6.5 % decelerating); hedgehog energy lead REFUTED (stopping-point artifact); tapered-kin box equality a TAUTOLOGY; tapered localization REFUTED (peaks r 9-12, not the cord); seed-level fixed-J minimum REFUTED as a functional property (tracks w_c and the taper). data/m5_32_r12_audit.json",
+   "hypothesis": "H12-a instrument; H12-b the ring shrinks under statics (alt: holds); H12-c rigid kin extensive, tapered L-independent, no interior fixed-J minimum in the radiation window",
+   "artifacts": [
+    "data/m5_32_r12_ring.json",
+    "data/m5_32_r12_audit.json",
+    "scripts/m5_32_r12_a_ring.py",
+    "scripts/m5_32_r12_audit.py",
+    "plots/m5_32_r12_ring.png",
+    "checkpoints/m5_32_r12/ (relaxed fields, local)",
+    "checkpoints/m5_32_r12_audit/ (auditor's re-relaxed field, local)"
+   ],
+   "claims": {
+    "C1_instrument": "CONFIRMED (q = 0.5000000 on the auditor's own radii; sphere-Jacobian degree +0.9999; a0 identity rel 6.7e-9; the auditor's own seed reproduces the it1500 field with max|dM| = 0.0)",
+    "C2_no_shrink": "REFUTED (sub-grid cord 6.000 / 5.760 / 5.610 and 9.000 / 8.820 / 8.710; the grid-argmin reader returns 5.25 for any cord in [4.5, 6.0]); winding survival and energies CONFIRMED; hedgehog lead REFUTED as stated (hedgehog 11.04 at 6000, 9.05 at 12000)",
+    "C3_clock": "tapered box-equality QUALIFIED as a tautology (interiors identical to 6.7e-7); localization REFUTED (tapered shells 0.37 / 7.55 / 22.76 / 36.27 / 12.16, peak r 9-12; taper (16,20) gives 136.35); hedgehog reference QUALIFIED (like-for-like tapered 90.74, ring 79.11, -12.8 %); rigid kin reproduced",
+    "C4_fixed_J_seed_ladder": "arithmetic CONFIRMED; 'no interior minimum at J = 200' REFUTED (argmin a = 1.5 on the extended ladder); 'property of the functional' REFUTED (a* = 4.5 / 7.5 / 9.0 at w_c = 2 / 3 / 4; omega* 0.268 / 0.176 / 0.083 across tapers; a = 0 hedgehog limit has the highest E_stat 44.26)"
+   },
+   "audit_new_findings": {
+    "U1": "the extensive clock inertia has the same shell shape for ring and hedgehog: it is the rotating far field, a property of the clock convention, not of the object",
+    "U2": "the seed's far field deviates from the vacuum spectrum by up to 0.275 along the z axis (e_phi axis melt runs the whole axis)"
+   },
+   "gates": {
+    "H12a": "met at the record's finite-difference precision (kin rel 1.3e-8 vs a 1e-10 threshold set too tight)",
+    "H12b": "neither branch decided: shrinks slowly, decelerating",
+    "H12c": "rigid extensive TRUE; tapered L-independence tautological; no-minimum FALSE at the seed level for a seed-family reason"
+   },
+   "deviation": "under-resolved cord reader; H12-a threshold below the record's precision"
   }
  ],
  "free_rungs_used": 1,
@@ -654,5 +717,6 @@
   "record": "data/m5_32_note_audit.json",
   "instrument": "scripts/m5_32_note_audit.py",
   "outcome": "6 load-bearing claims: 5 CONFIRMED, 1 QUALIFIED (the unwinding barrier, re-scoped); 6 blocking findings applied, 14 minor folded in; the note's section 9 records it"
- }
+ },
+ "stop_2026_08_29": "R11 + R12 CLOSED after the author's reply; the run pauses again at the same structural point, now sharpened: the obstruction is the clock convention (Q60), not the object"
 }
