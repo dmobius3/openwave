@@ -31,8 +31,8 @@ Every file reference is an active link to the file in this repository (under `op
 
 | **MODEL SCORE-BOARD** | [Liquid Crystal<br>(M5)](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | [HydroBoros<br>(M7)](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) | [EWT<br>(M4)](openwave/xperiments/m4_ewt/__M4_model_briefing.md) | [Ouroboros<br>(M6)](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md) | [MIT<br>(M8)](openwave/xperiments/m8_mit/__M8_model_briefing.md) | [NSM<br>(M9)](openwave/xperiments/m9_emergent_gravity/__M9_model_briefing.md) |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ validated in-platform | 9 | 0 | 1 | 3 | 0 | 0 |
-| ⚠️ partial / with caveats | 11 | 10 | 8 | 2 | 1 | 1 |
+| ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 | 0 |
+| ⚠️ partial / with caveats | 11 | 10 | 9 | 2 | 1 | 1 |
 | ❌ honest negative | 2 | 0 | 3 | 3 | 0 | 0 |
 | 🚧 planned / not tested | 9 | 21 | 19 | 23 | 30 | 30 |
 | **Total criteria** | **31** | **31** | **31** | **31** | **31** | **31** |
@@ -80,7 +80,7 @@ Each criterion's simplest passing test sits in its own companion table right bel
 | Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
 | Weak force: beta decay (n → p) | ❌ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
 | Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
-| Gravity: local metric phenomena | 🚧 | 🚧 | ✅ | 🚧 | 🚧 | ⚠️ | both |
+| Gravity: local metric phenomena | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | ⚠️ | both |
 | Cosmology: Λ / cosmic acceleration | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | 🚧 | static |
 | | | | | | | | |
 | **WAVES + QUANTUM EMERGENCE** | | | | | | | |
@@ -277,7 +277,7 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 | Weak force: muon decay | 🚧 [not yet tested]<br>Expected to be a result of particle formation/instability and not a true force; not modeled<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not modeled (no in-sim neutron)<br>(none yet) |
 | Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
-| Gravity: local metric phenomena | ✅ [validated in-platform]<br>Enhanced EWT extension (Ł. Smoliński): solar deflection 1.751728" (M4.3), Schwarzschild redshift (M4.4), and Shapiro delay to 0.000075% (M4.5) derived via EMC density deficit `n(r)` and clock rate `v_clock`. Far-field 1/r profile (M4.6), G via Planck-length ansatz (M4.7), monopole flux (M4.8), and emergent encoding (M4.9) fully verified in-platform<br>[`m4_3_light_bending_emc_displacement.py`](openwave/xperiments/m4_ewt/research/scripts/m4_3_light_bending_emc_displacement.py), [`m4_4_gravitational_time_dilation.py`](openwave/xperiments/m4_ewt/research/scripts/m4_4_gravitational_time_dilation.py), [`m4_5_shapiro_delay.py`](openwave/xperiments/m4_ewt/research/scripts/m4_5_shapiro_delay.py), [`m4_6_emc_far_field_profile.py`](openwave/xperiments/m4_ewt/research/scripts/m4_6_emc_far_field_profile.py), [`m4_7_enhanced_ewt_geometric_consistency.py`](openwave/xperiments/m4_ewt/research/scripts/m4_7_enhanced_ewt_geometric_consistency.py), [`m4_8_monopole_flux_from_lattice.py`](openwave/xperiments/m4_ewt/research/scripts/m4_8_monopole_flux_from_lattice.py), [`m4_9_emergent_encoding.py`](openwave/xperiments/m4_ewt/research/scripts/m4_9_emergent_encoding.py) |
+| Gravity: local metric phenomena | ⚠️ [partially validated]<br>Enhanced EWT extension (Ł. Smoliński): EMC deficit `n(r) = (N_ν/N_stat)^(-1/2)` gives solar-limb bending 1.751728 arcsec (M4.3), `v_clock = sqrt(η)` exact Schwarzschild redshift (M4.4), Shapiro delay to 0.000075% (M4.5); profile (M4.6) and amplitude (M4.8, G entering once via the Planck-length ansatz) in-platform. Exponents follow from 1D lattice dynamics, `β = n/(2q)` (M4.9), given an assumed `1/r` pair potential and axial `q = 1`; amplitude supplied by `r_s = 2GM/c²`, not predicted<br>[`m4_3_light_bending_emc_displacement.py`](openwave/xperiments/m4_ewt/research/scripts/m4_3_light_bending_emc_displacement.py), [`m4_4_gravitational_time_dilation.py`](openwave/xperiments/m4_ewt/research/scripts/m4_4_gravitational_time_dilation.py), [`m4_5_shapiro_delay.py`](openwave/xperiments/m4_ewt/research/scripts/m4_5_shapiro_delay.py), [`m4_6_emc_far_field_profile.py`](openwave/xperiments/m4_ewt/research/scripts/m4_6_emc_far_field_profile.py), [`m4_8_monopole_flux_from_lattice.py`](openwave/xperiments/m4_ewt/research/scripts/m4_8_monopole_flux_from_lattice.py), [`m4_9_emergent_encoding.py`](openwave/xperiments/m4_ewt/research/scripts/m4_9_emergent_encoding.py) |
 | Cosmology: Λ / cosmic acceleration | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
 | | |
 | **WAVES + QUANTUM EMERGENCE** | |
@@ -361,7 +361,7 @@ Deep dive: [`m8_theory_canonical.md`](openwave/xperiments/m8_mit/research/m8_the
 | | |
 | **FORCES** | |
 | Electric force (Coulomb 1/r, electrostatics) | 🚧 [not yet tested]<br>α read from the first Fibonacci well is input-and-output (the author's Cycle 2: a consistency check, not a prediction); no force-level computation<br>[`__M8_model_briefing.md`](openwave/xperiments/m8_mit/__M8_model_briefing.md) |
-| Lorentz covariance (+ Coulomb = EM) | 🚧 [not yet tested]<br>Not applicable yet: no field dynamics to be covariant; supplying a field equation on S³/2I was the M8.4 program, CLOSED UNRESOLVED 2026-08-26 with no target configuration executed and no nontrivial sector spent; a target-free successor chassis is elected as M8.5-C, protocol pending<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
+| Lorentz covariance (+ Coulomb = EM) | 🚧 [not yet tested]<br>Not applicable yet: no field dynamics to be covariant; supplying a field equation on S³/2I was the M8.4 program, CLOSED UNRESOLVED 2026-08-26 with no target configuration executed and no nontrivial sector spent; a target-free successor chassis, M8.5-C, has its qualification protocol filed and frozen<br>[`m8_background.md`](openwave/xperiments/m8_mit/research/m8_background.md) |
 | Strong force: confinement | 🚧 [not yet tested]<br>The analytic 4/R² adjoint gap on S³/2I is now verified in-platform (M8.1.1: blind, adversarially audited, with the single 36/R² exception across the whole ADE family). Icon stays 🚧 deliberately: that is a spectral gap at a flat connection, not the linear inter-charge potential this row tests<br>[`m8_1_1_method_note.md`](openwave/xperiments/m8_mit/research/findings/m8_1_1_method_note.md) |
 | Running coupling | 🚧 [not yet tested]<br>Not addressed; α itself is read from the first Fibonacci well (input-and-output, see Electric force)<br>(none yet) |
 | Weak force: muon decay | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
