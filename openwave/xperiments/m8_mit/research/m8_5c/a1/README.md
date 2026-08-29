@@ -12,7 +12,7 @@ map, not a second account.
 | --- | --- |
 | `ledger/OUTPUT_LEDGER.jsonl` | the unit's append-only run ledger: 4 GATE, 4 RESOURCE, 1 STOP record; no gate-4 verdict of either color |
 | `ledger/COMMISSIONING.md` | preflight: provenance checks, launch-gate output, environment, input-manifest closing hash |
-| `ledger/INPUT_MANIFEST.json` | the § 12 input manifest, closed and hashed before the first GATE record |
+| `ledger/INPUT_MANIFEST.json` | the § 12 input manifest, closed and hashed before the first GATE record. Its `commissioning_hash` covers `COMMISSIONING.md` as it stood at manifest close: sections 1 to 3 as filed, plus a section 4 whose entire body was the placeholder line `(written after manifest is closed, before first GATE record)`, replaced after the close by the manifest's hash and followed by sections 5 and 6 during execution. Recompute from the filed bytes: `{ sed -n '1,/^## 4\. INPUT_MANIFEST closing hash$/p' ledger/COMMISSIONING.md; printf '\n(written after manifest is closed, before first GATE record)\n'; } \| shasum -a 256` gives `b5a0d622…db7cd`; verified at merge |
 | `A1_AUTHOR_ANNOTATION.md` | dated post-stop author annotation: two ledger-semantics corrections a mechanical reader needs, archive hashes, the denominator, post-stop provenance labels |
 | `00_COMMISSION.md` | the commission (NON-GOVERNING room mechanics, archived per § 12) |
 | `ROOM_MANIFEST.json` | the supplied-input whitelist with hashes, generated at commissioning |

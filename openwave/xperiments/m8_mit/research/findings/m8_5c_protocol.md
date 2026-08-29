@@ -914,7 +914,8 @@ clause demands O(1). Independently reproduced twice with separate code (author; 
 including the cross-parity leakage at O(1) where the true value is zero). The design-input
 record that certified the arm (`1.5e-01` at `N = 3`) drew mixed-parity fields, levels 0
 through 3, a configuration that cannot arise in any legal arena of this protocol. Gate 6's
-node-drop arm dies by the same argument, analytically as of this addendum. The unit
+node-drop arm dies by the same argument, analytically as of this addendum (the
+author's argument, not independently reproduced). The unit
 recorded a STOP naming the dead arm and no gate-4 verdict of either color; its stop was the
 unit's judgment under the commission's non-governing discipline, not a protocol clause.
 
