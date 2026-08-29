@@ -314,3 +314,15 @@ legend added as section 1.6, two transcription errors corrected: the boost drift
 mid-run `fmax` reported as an endpoint) and the fourteen minor findings were folded into the rows
 they concerned. The audit did not edit this note; the producer applied its findings and this
 section records them.
+
+## 10. Addendum (2026-08-29): the author's reply and the two rungs it triggered
+
+The author's reply to this note (record: [`m5_32_convo.md`](../tasks/m5_32_convo.md) § 2026-08-29) attached a same-sign version of the Newton notebook and proposed `(F_abcd F^abcd)^2` against the omega divergence; on the object question it named the charged ring as acceptable. Two rungs ran the same day, each with its independent audit; the rung rows and the record section are in the [task doc](../tasks/m5_32_task_details.md#r11--r12-record-2026-08-29-the-staged-rungs-after-the-authors-reply).
+
+| Rung | What was measured | Audited outcome |
+| --- | --- | --- |
+| R11 | the 08-29 notebook = the 08-17 notebook with the spatial density globally negated (same-sign centers in both); negating the static curvature sector has no floor on exact Lorentz orbits (`E_u[M_s] = s E_u[M]`, V4 ~ s^-3); the same-sign pair stays repulsive under the certified action; `(F_abcd F^abcd)^2` = the C5 quartic of § 4 (R8): its well-opening coefficient grows with L and the clock frequency at fixed coefficient drifts 42 % across the box ladder in both Hamiltonian readings, with the static energy driven negative at threshold | 4 / 4 CONFIRMED; one producer explanation refuted (a grid artifact); qualifiers: the notebook's fit constants scale as 1/sqrt(cutoff) |
+| R12 | the charged disclination ring (the M5.21.2 seed) under the § 1.5 relaxation protocol: half-winding q = 1/2 survives 3000 iterations at two radii and two boxes (a protected object exists here); the cord shrinks 6.5 % sub-grid and decelerating (park or collapse undecided); the rigid clock inertia is extensive exactly as for the hedgehog, and the tapered density peaks at r = 9-12 for both objects | instrument CONFIRMED; three producer readings REFUTED (no-shrink, energy lead, seed-level fixed-J minimum) |
+
+What changed in the reading of § 4.1: the extensive inertia has the same radial shape for the ring and the point, so it is a property of the clock CONVENTION (the rigid rotation of the vacuum frame), not of the object; the § 8 question 1 (which clock localization is physical) is now the load-bearing one, and a clock flow that vanishes in the vacuum is the candidate to build. Not computed here: the 12000-iteration ring ladder, relaxed-ring fixed J with a box-scaled taper, the direct dilation test of the (F·F)² class against a flipped static sector.
+

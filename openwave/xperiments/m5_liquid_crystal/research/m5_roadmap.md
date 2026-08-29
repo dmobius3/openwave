@@ -10,7 +10,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS, PAUSED 2026-08-28 after R10: 10 rungs closed and audited, stopped at the safety rule to surface a document contradiction (the hedgehog is not a protected soliton). The author's quest run as one autonomous rung ladder with an adversarial audit between rungs. Method note: [`findings/m5_32_method_note.md`](findings/m5_32_method_note.md). Classes, gates, harness, findings: the task doc | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
+| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS, PAUSED 2026-08-29 after R12 (12 rungs closed and audited): the hedgehog is not a protected soliton (R10), the ring is (R12), and the clock obstruction is the convention, not the object (Q60). The author's quest run as one autonomous rung ladder with an adversarial audit between rungs. Method note: [`findings/m5_32_method_note.md`](findings/m5_32_method_note.md). Classes, gates, harness, findings: the task doc | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
 
 ## BACKLOG
 

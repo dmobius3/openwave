@@ -129,6 +129,7 @@ Entries are ordered by year (ascending; undated last); the Bibliography is the r
 | Duda (2026) | `duda_2026-07-28_AIphysics_talk_slides.pdf` | 4.8 MB |
 | Duda (2026) | `duda_fmunu_4d_hamiltonian_imaginary_2026_08_13.pdf` | 120 KB |
 | Duda (2026) | `duda_2026-08-17_newton_for_boost_hedgehogs.pdf` | 92 KB |
+| Duda (2026) | `duda_2026-08-29_newton_same_sign_boost_hedgehogs.pdf` | 85 KB |
 | Duda (2026) | `duda_2026-08-20_current_4x4_lagrangian.png` | 28 KB |
 | Duda (2026) | `duda_2026-08-23_models_scoreboard_screenshot.png` | 69 KB |
 | Duda (2026) | `duda_2026-08-26_atomic_models_campaign_proposal.txt` | 1.5 KB |
