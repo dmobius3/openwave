@@ -17,7 +17,7 @@ map, not a second account.
 | `00_COMMISSION.md` | the commission (NON-GOVERNING room mechanics, archived per § 12) |
 | `ROOM_MANIFEST.json` | the supplied-input whitelist with hashes, generated at commissioning |
 | `room_import_gate.py` | the § 12 launch gate: per-module subprocess with sentinel, self-arming |
-| `in_room/` | every line the unit wrote in-room, as left at the stop (the room's `build/`; renamed here only because `build/` is gitignored platform-wide, bytes identical) |
+| `in_room/` | every line the unit wrote in-room, as left at the stop. This is the room's `build/`, renamed here only because `build/` is gitignored platform-wide; contents are byte-identical. The archived room documents keep their original wording (the commission's write-area rule, `ROOM_MANIFEST.json`'s `write_areas`, one line of the commissioning record all say `build/`), so a reader verifying the shipped LAYOUT against those texts will see the name mismatch by design; no per-file path in either manifest names `build/`, and content-level hash verification is the check that applies |
 
 The unit's files are byte-identical to the stopped room. The attempt never resumes, and
 nothing here carries execution credit into any successor.

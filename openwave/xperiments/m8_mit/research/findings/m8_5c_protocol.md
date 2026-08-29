@@ -899,7 +899,10 @@ The single commissioned attempt, A1, stopped mid-gate-4 and neither § 1 sentenc
 The archived record is [`../m8_5c/a1/`](../m8_5c/a1/); the governance thread is
 [#501](https://github.com/openwave-labs/openwave/issues/501). This addendum records the
 maintainer's ruling and changes no frozen text: the region above the boundary is
-byte-identical, digest `e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b`.
+byte-identical to the protocol as merged in
+[#496](https://github.com/openwave-labs/openwave/pull/496) (merge commit `357ea568`),
+digest `e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b` recomputed at
+that commit and on this filing with the freeze record's own command.
 
 **The defect.** Gate 4's frozen mutation arm, "node-drop to `2N` must err O(1)", states a
 mathematically false proposition on every arena the gate runs on. Level-`n` content has
@@ -943,5 +946,12 @@ disposition class outside the adjudication unit, requiring a demonstrated intern
 contradiction reproduced by the maintainer with independent code before ratification,
 terminating the attempt and permitting only a new protocol identity; and the two A1
 ledger-schema defects fixed (`cumulative_seconds` truly cumulative; `gates_completed`
-distinguishing parent-executed from arm-set-complete). The exact successor arms belong in
-the successor's own frozen text, not here.
+distinguishing parent-executed from arm-set-complete). The ruling's verification section
+carries two findings the successor's author needs beside the ratified items, recorded here
+so the addendum, not the issue thread, is sufficient: the maintainer's independent
+construction reproduced the even-`K` angular drop (`1.2e-01`, `6.3e-02`) but NOT the
+reduced-`u`-node drop, which measured `2.7e-15` at `N = 3` against `5.5e-03` at `N = 4`,
+so that candidate is rung-dependent and admissible only under the per-arm, per-arena
+demonstration rule above; and a third candidate comes free from the same measurement
+table, the cross-parity leakage itself, measured where the true value is zero. The exact
+successor arms belong in the successor's own frozen text, not here.
