@@ -892,3 +892,67 @@ sed '/^<!-- M85C-FREEZE-BOUNDARY -->$/,$d' m8_5c_protocol.md | shasum -a 256
 ```
 
 Filed 2026-08-28; frozen at merge; § 16 governs everything below this line thereafter.
+
+## Addendum 1 (2026-08-29): attempt A1 terminated without adjudication; post-execution supersession granted once
+
+The single commissioned attempt, A1, stopped mid-gate-4 and neither § 1 sentence issues.
+The archived record is [`../m8_5c/a1/`](../m8_5c/a1/); the governance thread is
+[#501](https://github.com/openwave-labs/openwave/issues/501). This addendum records the
+maintainer's ruling and changes no frozen text: the region above the boundary is
+byte-identical to the protocol as merged in
+[#496](https://github.com/openwave-labs/openwave/pull/496) (merge commit `357ea568`),
+digest `e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b` recomputed at
+that commit and on this filing with the freeze record's own command.
+
+**The defect.** Gate 4's frozen mutation arm, "node-drop to `2N` must err O(1)", states a
+mathematically false proposition on every arena the gate runs on. Level-`n` content has
+Hopf angular parity `n mod 2`; every sector is parity-pure (`ρ(−1) = ±I` is central, § 3.1),
+and the `2N` rule's aliasing lattice, multiples of the odd `K = 2N + 1`, sends every alias
+into the OPPOSITE parity, which a sector projector never computes; the cheapest same-parity
+alias sits at `4N + 2`, outside the degree-`4N` band. Measured in-room: `7.44e-15` where the
+clause demands O(1). Independently reproduced twice with separate code (author; maintainer,
+including the cross-parity leakage at O(1) where the true value is zero). The design-input
+record that certified the arm (`1.5e-01` at `N = 3`) drew mixed-parity fields, levels 0
+through 3, a configuration that cannot arise in any legal arena of this protocol. Gate 6's
+node-drop arm dies by the same argument, analytically as of this addendum (the
+author's argument, not independently reproduced). The unit
+recorded a STOP naming the dead arm and no gate-4 verdict of either color; its stop was the
+unit's judgment under the commission's non-governing discipline, not a protocol clause.
+
+**The ruling (maintainer, #501, quoted verbatim from its disposition and framing):**
+
+> Read mechanically, § 11's STOP-QUAL on a red arm, or § 13's missing-record clause, both
+> terminate in `M8.5-C-FAILED`. The reason that sentence does not issue is not that the
+> text is silent; it is that it would state a falsehood about the instrument. The `4N` rule
+> was exact to `7.7e-15` at `N = 24`; the chassis did what gate 4 claimed, and the arm that
+> was to prove the gate could go red was proven incapable of going red on any legal arena.
+> This ruling is therefore a post-execution supersession under a new identity, granted
+> once, on a demonstrated and independently reproduced mathematical falsity in a frozen
+> operative clause. It is named as such so it cannot be cited as "one attempt was waived".
+
+Ratified on that ground: A1 is TERMINATED and never resumes; no adjudication unit is
+commissioned and neither § 1 sentence issues; A1 carries no execution credit anywhere, and
+a successor starts at gate 1 in a new room under a NEW protocol identity. The A1 record
+stands permanently as the run that discovered the protocol defect, not as evidence for or
+against the spectral chassis. Ratification was conditioned on the A1 bytes being filed in
+the repository so the two archive hashes are checkable claims, which the filing carrying
+this addendum does.
+
+**What the successor must change, recorded here so the requirement survives this document:**
+both parity-dead node-drop arms replaced by mutation arms demonstrated live on the actual
+gate arenas; every mutation arm, and any design-input record standing in for a gate's
+evidence, demonstrated to fire on a field drawn from the arena its gate runs on BEFORE
+freeze, with the arena named per arm in the gate table; an administrative PROTOCOL-INVALID
+disposition class outside the adjudication unit, requiring a demonstrated internal
+contradiction reproduced by the maintainer with independent code before ratification,
+terminating the attempt and permitting only a new protocol identity; and the two A1
+ledger-schema defects fixed (`cumulative_seconds` truly cumulative; `gates_completed`
+distinguishing parent-executed from arm-set-complete). The ruling's verification section
+carries two findings the successor's author needs beside the ratified items, recorded here
+so the addendum, not the issue thread, is sufficient: the maintainer's independent
+construction reproduced the even-`K` angular drop (`1.2e-01`, `6.3e-02`) but NOT the
+reduced-`u`-node drop, which measured `2.7e-15` at `N = 3` against `5.5e-03` at `N = 4`,
+so that candidate is rung-dependent and admissible only under the per-arm, per-arena
+demonstration rule above; and a third candidate comes free from the same measurement
+table, the cross-parity leakage itself, measured where the true value is zero. The exact
+successor arms belong in the successor's own frozen text, not here.

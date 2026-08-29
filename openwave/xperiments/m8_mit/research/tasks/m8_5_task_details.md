@@ -43,8 +43,14 @@ construction, under its own roadmap row. The protocol is
 [`../findings/m8_5c_protocol.md`](../findings/m8_5c_protocol.md), frozen region SHA-256
 `e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b`, with the symmetry derivation note beside it, the five
 design-input scripts under [`../m8_5c/design_inputs/`](../m8_5c/design_inputs/), and the executed § 14
-pre-freeze package under `../m8_5c/s14/`. Next step: commission the Build Unit per protocol
-§ 12. See also [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
+pre-freeze package under `../m8_5c/s14/`. Attempt A1 was commissioned and TERMINATED
+WITHOUT ADJUDICATION 2026-08-29: gate 4's frozen node-drop arm is mathematically dead on
+the protocol's parity-pure arenas, the unit stopped with no gate-4 verdict, and the ruling
+([#501](https://github.com/openwave-labs/openwave/issues/501)) granted a once-only
+post-execution supersession under a new identity; the archived run is
+[`../m8_5c/a1/`](../m8_5c/a1/) and the canonical account is the protocol's addendum 1.
+Next step: the successor protocol under a NEW identity, four defect-driven changes only.
+See also [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
 
 ### Independent reproduction, M8.5-A (added 2026-07-28)
 
