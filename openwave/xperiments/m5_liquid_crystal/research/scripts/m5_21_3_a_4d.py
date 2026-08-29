@@ -236,6 +236,9 @@ def grad(M, cfg):
 
 
 # ================= kinetic sector =================
+GEN_NULL_TOL = 1e-10     # gen_catalog: relative norm below which a generator channel is null
+
+
 def gen_catalog(cfg, M):
     """named generator/velocity fields a0(x) (normalized below)."""
     n = cfg["n"]
@@ -264,10 +267,21 @@ def gen_catalog(cfg, M):
                    ("boost_z", Kz), ("boost_x", Kx)):
         out[nm] = np.broadcast_to(Gm, M.shape)
     a0s = {}
+    # A generator that vanishes IDENTICALLY on this field (e.g. the periodic
+    # clock at delta = 0, where the leading-eigenvector rotation commutes
+    # with M) must come back as zero, not as roundoff scaled to unit norm:
+    # the old `a0 / max(nrm, 1e-300)` manufactured a unit-norm generator
+    # out of noise and downstream kin read a phantom 2.25 (M5.32 R9 audit,
+    # 2026-08-28). Null test: Frobenius norm below NULL_TOL x the field's
+    # own envelope-weighted Frobenius norm.
+    ref = np.sqrt(np.sum((w * M) ** 2))
     for nm, Gm in out.items():
         a0 = w * (Gm @ M - M @ Gm.swapaxes(-1, -2))
         nrm = np.sqrt(np.sum(a0 * a0))
-        a0s[nm] = a0 / max(nrm, 1e-300)          # unit Frobenius norm
+        if nrm <= GEN_NULL_TOL * ref:
+            a0s[nm] = np.zeros_like(a0)          # identically null channel
+        else:
+            a0s[nm] = a0 / nrm                   # unit Frobenius norm
     return a0s
 
 
