@@ -1,0 +1,36 @@
+{
+ "commissioning_gate": "python3 room_import_gate.py --selftest, then python3 room_import_gate.py; both green at commissioning (python 3.13.13, numpy 2.5.0, scipy 1.18.0); bytecode suppressed so supplied dirs stay inventory-clean",
+ "governing_document": "openwave/xperiments/m8_mit/research/findings/m8_5c_protocol.md",
+ "layout_note": "supplied inputs mirror their repo-relative paths from the room root, so the README's documented run commands and every relative reference resolve unchanged",
+ "named_out": [
+  "m8_4_preregistration.md",
+  "MODELS.md",
+  "__M8_model_briefing.md",
+  "m8_2_first_occurrence.py and its shipped tables",
+  "M8.5-A artifacts",
+  "m8_4_closeout.md"
+ ],
+ "protocol_frozen_region_sha256": "e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b",
+ "purpose": "M8.5-C Build Unit room, protocol section 12 whitelist, commissioned 2026-08-28",
+ "room": "M8.5C_BUILD",
+ "source": "openwave-labs/openwave main at 26427487 (merge 357ea568, PR #496)",
+ "whitelist_files": {
+  "00_COMMISSION.md": "83fb78f7b47f74a30dc42b186ede7feddd027a3fb1a7f48e1e0b91897859a44c",
+  "openwave/xperiments/m8_mit/research/findings/m8_5c_protocol.md": "c8d9941e8c61795e524df365cd8d14ed1e2942d4e1101065d2ac0e3fe8159928",
+  "openwave/xperiments/m8_mit/research/findings/m8_5c_symmetry_derivation.md": "5b231af423066aa9b9902a4ca9b67f19a54158f6ab36339ae711992839820d1a",
+  "openwave/xperiments/m8_mit/research/m8_5b/pilot/route_a_nonabelian.py": "e55728534c6b1d611e364551297df7711b95cd87f73d3f97da753a743419931b",
+  "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/README.md": "86d8b6041effba2bf73e74d604e2d278398da1074a5cff0aa14ad47811fd4654",
+  "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/cascade_quad_check.py": "7f31bc305150c9d5e37ec312fe8fd00060583a87427feb7a56d6743d2fd66bfa",
+  "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/exact_quad_check.py": "51fa9b52bc9d3367fbb20baf084235da260c7f15b36fad1b78b31770e7f55ed7",
+  "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/jacobian_check.py": "dce687ea793522be40c4d06d25df19a0dfb99c72309a19361e220077007eb9d8",
+  "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/mode_count.py": "794d7063bea01ad3637a96c33e4e01e7fd71acfc636eb2d443c4f3cecb6959a6",
+  "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/right_translation_check.py": "752baa2de36dbaea9fe4108ec6df9121351b386453d01b06bd8111562de8f547",
+  "openwave/xperiments/m8_mit/research/m8_5c/s14/raw/controlA_references.json": "dde909f6746994468805c55c1eae192b449b2eb4862e2432f61d55a9f3be4e44",
+  "openwave/xperiments/m8_mit/research/m8_5c/s14/raw/lattice_tables.json": "efe6c2d64ba9664edaf8b49b9026a683bf93aa78c0c994f09f41bd5a63a7b504",
+  "room_import_gate.py": "097c5366867cbe6f3d3e63aa2ca8f4a01c2ed763fb9b5851b551031e6f056b9d"
+ },
+ "write_areas": [
+  "build/",
+  "ledger/"
+ ]
+}
