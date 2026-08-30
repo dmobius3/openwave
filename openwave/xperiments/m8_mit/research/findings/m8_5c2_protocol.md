@@ -1052,6 +1052,12 @@ sed '/^<!-- M85C2-FREEZE-BOUNDARY -->$/,$d' m8_5c2_protocol.md | shasum -a 256
 Derivation provenance: the frozen region above is DERIVED from the superseded M8.5-C
 protocol's ratified frozen region (`e253558b…`, its byte copy filed beside this document)
 by exactly the deviations in the filed derivation diff, every one authorized by the filed
-change register's classes; apply the diff to the base, append the single newline that
-separates the frozen text from the boundary marker, and the result is the frozen region
-byte-for-byte (the newline is the boundary's, not the derivation's).
+change register's classes. The joint is one command, run beside the filed derivation set:
+
+```bash
+{ patch -s -o - M8_5C2_BASE_FROZEN.md < M8_5C2_DERIVATION.diff; printf '\n'; } | shasum -a 256
+```
+
+which must print the frozen-region digest above exactly (the appended newline is the
+boundary's separator, not the derivation's; without it the command prints `a903f2ec…`,
+the arm that demonstrates the one-byte failure this record exists to prevent).

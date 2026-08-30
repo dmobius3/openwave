@@ -5,11 +5,23 @@ frozen region, extracted byte-exact from merged main at `0b7505b9` (the extracti
 to the frozen digest `e253558b…`, kept beside this register as `M8_5C2_BASE_FROZEN.md`).
 Every deviation is in `M8_5C2_DERIVATION.diff` (18 hunks, 208 content additions, 56 content deletions, file-header lines excluded), and every LINE of every hunk is authorized by
 a class below (a diff hunk may merge adjacent deviations from more than one class, so the
-authorization unit is the deviation, not the hunk; four hunks carry multi-class content), which are the #501 ruling's item 5 plus the two
+authorization unit is the deviation, not the hunk; on the filed diff FIVE hunks carry
+multi-class content, hunks 1, 2, 8, 10 and 17, the banner-and-genesis edits at freeze
+having merged into their neighbors), which are the #501 ruling's item 5 plus the two
 mechanical classes any refiling needs. The verification a reviewer runs: diff the base
 against the draft, confirm the hunk set matches this register, and confirm the base
-recomputes to `e253558b…`. The base ships IN this package as `M8_5C2_BASE_FROZEN.md`, so
-both halves run without any other artifact.
+recomputes to `e253558b…` (the value at BOTH the #496 merge `357ea568` and the #503 merge
+`0b7505b9`, addendum 1 sitting below that boundary; verified from git, not memory). The
+base ships IN this package as `M8_5C2_BASE_FROZEN.md`, so both halves run without any
+other artifact, and the joint from derivation to freeze digest is ONE command, not prose:
+
+```bash
+{ patch -s -o - M8_5C2_BASE_FROZEN.md < M8_5C2_DERIVATION.diff; printf '\n'; } | shasum -a 256
+```
+
+must print the frozen-region digest `aadf4d92…` exactly; run WITHOUT the `printf` it
+prints `a903f2ec…` instead, which is the command's own arm, that being the precise
+one-newline error the freeze verification caught and corrected.
 
 | class | authorization | hunks it owns |
 | --- | --- | --- |

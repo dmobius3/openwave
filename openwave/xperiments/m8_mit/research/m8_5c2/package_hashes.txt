@@ -3,7 +3,7 @@
 # stale-delivery finding, both). Each hash covers the file at the named repo path
 # as committed in the filing PR. Regenerate-and-compare, never append.
 e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b  derivation/M8_5C2_BASE_FROZEN.md
-cf557f4dc58bc37ffb1e29ad253a3bc7bdcbb4c2d8cf0383939aaf3f508fd79e  derivation/M8_5C2_CHANGE_REGISTER.md
+85a430b2cbdd6447cf7e6fa0b30e324f5e2f8c6fffa5ed84f54aebe6e16b2b8b  derivation/M8_5C2_CHANGE_REGISTER.md
 7cba529605864ee0b31d1951341bdf34ed99d39a2aacd440205198e32edab702  derivation/M8_5C2_DERIVATION.diff
 ba70c615422af93d58699c509d87648d27c8d18605e9b30b48d783927bf0ee7d  s14/00_PROVENANCE.md
 23346a1d06b15594f015032fcd6e46606876ee2c74338f8af009ce2fed5b9965  s14/c2_item10_audit.md
