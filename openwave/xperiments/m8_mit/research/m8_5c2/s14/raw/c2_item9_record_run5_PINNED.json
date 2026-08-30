@@ -1,0 +1,166 @@
+{
+ "item": "S14-C2 item 9",
+ "rung": 24,
+ "seed": 20260830,
+ "sections": {
+  "0-selfarms": {
+   "green": true,
+   "batched_vs_sym_power": 7.005357729181227e-14,
+   "group_census": {
+    "2": 1,
+    "5": 24,
+    "3": 20,
+    "10": 24,
+    "4": 30,
+    "6": 20,
+    "1": 1
+   },
+   "reynolds_negative_control_n6_dim": 0,
+   "note": "pinned-formula arm; 120-closure and order-census arm; n=6 empty-invariant arm"
+  },
+  "B-bases": {
+   "green": true,
+   "dims": {
+    "0": 1,
+    "12": 13,
+    "20": 21,
+    "24": 25
+   },
+   "gram_err": 5.739853037323052e-14,
+   "roundtrip_err": 8.49416981897493e-15,
+   "left_invariance_err": 5.397982708127467e-13,
+   "note": "Reynolds dims {1,13,21,25}; symmetric Lowdin (refined, still the canonical map); Gram, roundtrip, and DIRECT left-invariance at rounding"
+  },
+  "a-evenK-drop": {
+   "green": true,
+   "E_parent": 4.896832354972968e-14,
+   "E_mut": 0.09100620988076435,
+   "drop_nodes": 112896,
+   "note": "even-K angular drop (K=2N, u exact) on the arena-drawn field; parent = 4N-vs-8N agreement"
+  },
+  "b-crossparity-leakage": {
+   "green": true,
+   "E_parent": 7.753297396973062e-16,
+   "E_mut": 0.009234465293526773,
+   "read_levels": [
+    1,
+    3,
+    5
+   ],
+   "per_level": {
+    "1": 0.007077851103217629,
+    "3": 0.0083500989498062,
+    "5": 0.009234465293526773
+   },
+   "note": "arm-local scalar read at n in {1,3,5}, truth zero by parity; odd-K rule fires, exact rule at rounding"
+  },
+  "c-oddK-regression-CONTROL": {
+   "green": true,
+   "E": 1.458495150226264e-14,
+   "note": "superseded odd-K drop DEAD on arena fields; green condition IS machine zero (control, not an arm)"
+  },
+  "d-gate1-injection": {
+   "green": true,
+   "K_parent": 0.0,
+   "J_parent": 0.0,
+   "K_inj": 1.248,
+   "J_inj": 0.6240000000000094,
+   "threshold": 1.3855583347321954e-11,
+   "note": "built N=24 R0 diagonal; anti-Hermitian injection between two retained modes"
+  },
+  "e-gate2-mislabel": {
+   "green": true,
+   "measured": 167.99998575875543,
+   "true": 168.0,
+   "mislabel_claim": 440.0,
+   "note": "FD Casimir through the sampling map on a BUILT element; relabel 12->20 fires"
+  },
+  "k-nongradient": {
+   "green": true,
+   "parent_rel_asym": 6.256567007611909e-17,
+   "mut_rel_asym": 0.05000450855643218,
+   "note": "cubic Jacobian on the arena-drawn E_R0 state; parent within the frozen 1e-12 bound; a non-gradient term reds exactly that predicate"
+  },
+  "l-symbreak-coupling": {
+   "green": true,
+   "parent": 2.6710022166100132e-14,
+   "mut": 7.0729021622959504e-06,
+   "represented_action_unitarity_err": 6.539213615042172e-14,
+   "note": "E_R0 (x) C^2 arena-drawn state; cubic equivariance under a right translation; a non-invariant weight reds it"
+  },
+  "m-intralevel-break": {
+   "green": true,
+   "parent": 2.1290755043146757e-11,
+   "mut": 0.03566840269515736,
+   "note": "level-diagonal commutes with the measured right action; intra-level spread reds it"
+  },
+  "f-monitor-arms": {
+   "green": true,
+   "band_level": 30,
+   "E_parent_drop": 1.0997076442093049e-15,
+   "E_mut_drop": 0.004496007799812275,
+   "leak_parent": 1.8957003266765726e-12,
+   "leak_mut": 0.010431942134963519,
+   "leak_per_level": {
+    "25": 0.0005217985723276221,
+    "27": 0.003923207053639689,
+    "29": 0.010431942134963519
+   },
+   "read_levels": [
+    25,
+    27,
+    29
+   ],
+   "regression_CONTROL_substitution": 4.970063848070774e-15,
+   "injected_gain": 0.08075999244303503,
+   "note": "band content at n=30: even-K monitor drop fires; leakage under the 4N-for-6N substitution fires; the substitution itself is DEAD on the band read (control); injected high-band content at 2x threshold is read"
+  },
+  "g-controlA-return": {
+   "green": true,
+   "return_parent": 1.1003543528417499e-13,
+   "return_mut": 0.05942300119908222,
+   "s": 0.3,
+   "note": "perturbed seed returns to the exact path; a mutated operator does not"
+  },
+  "h-kickdrift": {
+   "green": true,
+   "contraction_parent_leapfrog": 3.9997511450966634,
+   "contraction_kickdrift": 2.0160816258589573,
+   "errors_leapfrog": [
+    3.585994547361526e-05,
+    8.965544148309412e-06,
+    2.241407054404121e-06
+   ],
+   "errors_kickdrift": [
+    0.007300757925496226,
+    0.0035924814133151683,
+    0.0017819126801399132
+   ],
+   "note": "control (ii): parent passes the 3x per-rung gate, first-order kick-drift fails it"
+  },
+  "i-noncontracting-tail": {
+   "green": true,
+   "note": "the frozen e/3 rule: contracting parent GREEN, injected non-contracting tail RED"
+  },
+  "j-stub-registry": {
+   "green": true,
+   "log": [
+    [
+     "REFUSED",
+     "A-SECTOR-R3-N24"
+    ],
+    [
+     "RAN",
+     "A-R0-N24"
+    ],
+    [
+     "RAN",
+     "A-R0C2-N24"
+    ]
+   ],
+   "note": "out-of-registry nonlinear call REFUSED and logged; skipped arena trips the two-sided coverage check"
+  }
+ },
+ "verdict": "GREEN",
+ "wall_seconds": 2469.7654972076416
+}

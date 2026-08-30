@@ -1,0 +1,35 @@
+{
+ "item": "S14-C2 item 9",
+ "rung": 24,
+ "seed": 20260830,
+ "sections": {
+  "0-selfarms": {
+   "green": true,
+   "batched_vs_sym_power": 7.005357729181227e-14,
+   "group_census": {
+    "2": 1,
+    "5": 24,
+    "3": 20,
+    "10": 24,
+    "4": 30,
+    "6": 20,
+    "1": 1
+   },
+   "reynolds_negative_control_n6_dim": 0,
+   "note": "pinned-formula arm; 120-closure and order-census arm; n=6 empty-invariant arm"
+  },
+  "B-bases": {
+   "green": true,
+   "dims": {
+    "0": 1,
+    "12": 13,
+    "20": 21,
+    "24": 25
+   },
+   "gram_err": 5.739853037323052e-14,
+   "roundtrip_err": 8.49416981897493e-15,
+   "left_invariance_err": 5.397982708127467e-13,
+   "note": "Reynolds dims {1,13,21,25}; symmetric Lowdin (refined, still the canonical map); Gram, roundtrip, and DIRECT left-invariance at rounding"
+  }
+ }
+}

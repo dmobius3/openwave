@@ -1,0 +1,16 @@
+== section 0: primitives and self-arms ==
+[     0.4s] 0-selfarms: GREEN  pinned-formula arm; 120-closure and order-census arm; n=6 empty-invariant arm
+== bases at N=24 ==
+[   105.9s] B-bases: GREEN  Reynolds dims {1,13,21,25}; symmetric Lowdin (refined, still the canonical map); Gram, roundtrip, and DIRECT left-invariance at rounding
+== (a)(b)(c) gate-4 arms ==
+[   239.6s] a-evenK-drop: GREEN  even-K angular drop (K=2N, u exact) on the arena-drawn field; parent = 4N-vs-8N agreement
+[   242.5s] b-crossparity-leakage: GREEN  arm-local scalar read at n in {1,3,5}, truth zero by parity; odd-K rule fires, exact rule at rounding
+[   242.5s] c-oddK-regression-CONTROL: GREEN  superseded odd-K drop DEAD on arena fields; green condition IS machine zero (control, not an arm)
+[   242.5s] d-gate1-injection: GREEN  built N=24 R0 diagonal; anti-Hermitian injection between two retained modes
+[   252.5s] e-gate2-mislabel: GREEN  FD Casimir through the sampling map on a BUILT element; relabel 12->20 fires
+== (k)(l)(m) gate-5 arms ==
+[   266.1s] k-nongradient: GREEN  cubic Jacobian on the arena-drawn E_R0 state; parent within the frozen 1e-12 bound; a non-gradient term reds exactly that predicate
+[   376.8s] l-symbreak-coupling: GREEN  E_R0 (x) C^2 arena-drawn state; cubic equivariance under a right translation; a non-invariant weight reds it
+[   376.8s] m-intralevel-break: GREEN  level-diagonal commutes with the measured right action; intra-level spread reds it
+== (f) gate-6 monitor arms (streamed) ==
+exit 143

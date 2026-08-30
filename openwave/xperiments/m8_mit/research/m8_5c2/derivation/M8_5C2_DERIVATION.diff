@@ -1,0 +1,445 @@
+--- M8_5C2_BASE_FROZEN.md	2026-08-29 11:04:13
++++ M8_5C2_PROTOCOL_DRAFT.md	2026-08-29 20:20:53
+@@ -1,31 +1,38 @@
+-# The M8.5-C protocol: target-free qualification of the spectral chassis
++# The M8.5-C2 protocol: target-free qualification of the spectral chassis, second filing
+ 
+-> **FILING TEXT, complete (§§ 0 to 16). The redline phase is CLOSED (R1, the seeded R2,
+-> both redline units' formal sign-off) and § 14 is EXECUTED (eight obligations, two REDs
+-> raised and resolved at cause). FROZEN at merge; dated addenda only thereafter (§ 16).**
+-> At filing this document lands as `research/findings/m8_5c_protocol.md`, is FROZEN at merge,
++> **FILING TEXT, complete (§§ 0 to 16). The C2 review phase is CLOSED (the scoped D-7
++> layers: two fresh-context derivation rooms, R1 PASS and the seeded R2 whose control
++> fired; three seeded arena-conformance rooms, the first VACATED by its own control, the
++> second catching its seed plus two real findings, the third catching its seed plus one;
++> the escalation reading; and both redline units' formal sign-off) and § 14 is EXECUTED
++> (ten obligations: 1, 2, 3, 8 fresh; 9, sub-items a through m, and 10 new; 4 through 7
++> inherited, item 5 mechanically by the § 5 definitions-block digest; item 9's five-run
++> chain preserved with run 1 RED by design and run 5 pinned all-green).**
++> At filing this document lands as `research/findings/m8_5c2_protocol.md`, is FROZEN at merge,
+ > and admits dated addenda only (§ 16). The freeze boundary, its marker string, the SHA-256 of
+ > every byte above it, and the exact check command are appended at filing per § 15. The marker
+ > invariant, everywhere in this protocol: the COMPLETE marker line appears exactly once in the
+ > file, at the boundary; every check matches the full line only, so inline backticked mentions
+ > are harmless.
+ >
+-> Genesis provenance, none of it operative here: the chassis decision memo (author-side,
+-> frozen region SHA-256 `44c664d1ceb17949da78e55dcc5fe322cd447375bfe91ab3d33256775f386f4b`,
+-> three errata below its boundary, all inherited in corrected form; per erratum 1 the
+-> projector aperture closes by gate 4 alone and no text here cites "gate 11a"), the fourteen
+-> author rulings D-1 to D-14, and the redline record. Everything operative is IN this document.
++> Genesis provenance, none of it operative here: the #501 ruling that authorized this
++> second identity (a post-execution supersession granted once), the superseded protocol's
++> addendum 1, the C2 rulings D-1 to D-7 with their conflict adjudications, the seven
++> review rooms' findings, and, inherited through the carried text, the chassis decision
++> memo (author-side, frozen region SHA-256
++> `44c664d1ceb17949da78e55dcc5fe322cd447375bfe91ab3d33256775f386f4b`) and the C1 rulings
++> D-1 to D-14. Everything operative is IN this document.
+ 
+ ## 0. Scope, outcome space, and containment
+ 
+-**What M8.5-C is.** The ONE preregistered qualification attempt for the spectral/Galerkin
++**What M8.5-C2 is.** The ONE preregistered qualification attempt for the spectral/Galerkin
+ chassis: route (b) of the M8.5 charter ("a spectral method in 2I-symmetric harmonics"), built
+ for the first time as an actual dynamics substrate, TARGET-FREE. The experiment is: determine
+ whether this chassis is numerically trustworthy, without possessing the target. It is not:
+ build a chassis capable of answering M8.4. Those are different experiments, and the difference
+ is the reason this task exists under an engineering charter rather than an M8.4 successor row.
+ 
+-**Outcome space.** Exactly two terminal outcomes, `M8.5-C-QUALIFIED` and `M8.5-C-FAILED`,
++**Outcome space.** Exactly two terminal outcomes, `M8.5-C2-QUALIFIED` and `M8.5-C2-FAILED`,
+ defined by the frozen sentences of § 1. ONE ATTEMPT: no repair round after execution begins.
+ If this protocol is found defective BEFORE execution begins, it is superseded and refiled as a
+ whole; after execution begins, one attempt means one attempt. Stop conditions and the
+@@ -50,11 +57,30 @@
+ themselves being unit-norm objects; everything on `E_R0` including nonlinear runs; and
+ manufactured operators. Enforcement is executable,
+ not prose: § 10. The room's enumerated file whitelist is § 12's.
++
++**Lineage, and what this second filing may change.** This protocol supersedes the M8.5-C
++protocol under the [#501](https://github.com/openwave-labs/openwave/issues/501) ruling: a
++post-execution supersession under a NEW identity, granted once, on a demonstrated and
++independently reproduced mathematical falsity in a frozen operative clause. The superseded
++protocol's attempt A1 stopped mid-gate-4 when its node-drop mutation arm, "must err O(1)"
++under an odd-`K` `2N` rule, measured `7.44e-15`: every sector of this problem is
++parity-pure (`ρ(−1)` is central), and an odd-`K` rule sends every alias into the opposite
++parity, which a sector projector never computes. A1 is archived at
++[`../m8_5c/a1/`](../m8_5c/a1/), is NON-ADJUDICATED, and carries NO execution credit here:
++this protocol's ONE attempt is its own, starts at gate 1 in a new room, and the room never
++reads the A1 archive or the superseded protocol (§ 12 names both OUT). The authorized
++changes from the superseded frozen text are exactly four, applied at cause and enumerated
++in the filed change register beside this protocol: the two parity-dead node-drop arms
++replaced by arms whose liveness on the actual arenas is arithmetic (§§ 4.1, 4.2); an
++arm-on-arena obligation binding every mutation arm and every design-input record standing
++in for a gate's evidence (§ 8's arena column, § 14 items 9 and 10); the administrative
++PROTOCOL-INVALID class (§ 11); and the three ledger-schema requirements (§ 13). Identity
++strings, this lineage statement, and the pin table moved with them; nothing else did.
+ 
+ **Standing relations.** M8.4 is CLOSED UNRESOLVED with no target configuration executed
+ ([closeout](m8_4_closeout.md)); this protocol neither reopens it nor inherits its identity.
+ The successor preregistration `M8.4-R1` is drafted in parallel by the author, held OUT of the
+-build room, and filed only on the day this protocol adjudicates `M8.5-C-QUALIFIED` with the
++build room, and filed only on the day this protocol adjudicates `M8.5-C2-QUALIFIED` with the
+ frozen cost estimate of § 11; nothing in this room may read it, and nothing in it may read
+ this room's outputs before adjudication. The grid backend's standing is unchanged: retained
+ for what `M85B-ADJ-07` certified, excluded from M8.4-lineage dynamics.
+@@ -70,21 +96,21 @@
+ of these, unmodified; every downstream surface quotes, never paraphrases.
+ 
+ ```text
+-M8.5-C-QUALIFIED. The spectral chassis demonstrated its numerical claims on target-free
++M8.5-C2-QUALIFIED. The spectral chassis demonstrated its numerical claims on target-free
+ controls under the frozen gates of this protocol. This is an engineering verdict about an
+ instrument. It says nothing about MIT dynamics, nothing about M8.4's question, and nothing
+ about any target observable.
+ ```
+ 
+ ```text
+-M8.5-C-FAILED. The spectral chassis did not demonstrate its numerical claims under the frozen
++M8.5-C2-FAILED. The spectral chassis did not demonstrate its numerical claims under the frozen
+ gates of this protocol. The spectral route closes. The grid backend remains retained for what
+ M85B-ADJ-07 certified and excluded from M8.4-lineage dynamics, and the M8.4 reopening path
+ closes with this verdict.
+ ```
+ 
+ **The inherited ceiling, quoted.** The M8.4 preregistration's § 1 governs every artifact this
+-task produces, quoted verbatim so no M8.5-C surface can drift above the successor's own
++task produces, quoted verbatim so no M8.5-C2 surface can drift above the successor's own
+ ceiling:
+ 
+ > **The limitation that matters most, stated before any run.** OQ1 asks whether a nonlinear
+@@ -102,7 +128,7 @@
+ The quotation above is reproduced as CEILING LANGUAGE: it carries no target content, and its
+ presence in this protocol is not an exception to § 0's containment.
+ 
+-**Sentences no M8.5-C artifact may contain, in any wording**: that the chassis is "ready to
++**Sentences no M8.5-C2 artifact may contain, in any wording**: that the chassis is "ready to
+ answer OQ1" or any equivalent; that any dynamics "selected", "realized", or "produced" the
+ McKay structure; any numerical value of an M8.4 § 7 scored observable on any candidate; any
+ comparison against a McKay target. The cubic-only narrowing is stated in every deliverable
+@@ -135,7 +161,7 @@
+ 
+ in the frozen unit convention `c = R = 1`, so `λ = n(n+2)` exactly and every frozen number in
+ this protocol reads in those units. Any other unit choice rescales the § 6 ladder and is
+-prohibited. The coupling is pinned for ALL M8.5-C qualification work: `c1 = +1`, the
++prohibited. The coupling is pinned for ALL M8.5-C2 qualification work: `c1 = +1`, the
+ restoring sign the § 7 elliptic control requires; `c1 = 0` appears only as the § 7 linear
+ manufactured operator; `M8.4-R1` is not bound by this pin.
+ 
+@@ -260,7 +286,7 @@
+ nontrivial `E_ρ` is the § 0 forbidden act. Gate 3 qualifies the nontrivial bases and their
+ right action entirely at zero amplitude, in § 0's operative sense: no nonlinear term is
+ formed on those spaces, the basis fields themselves being unit-norm; no nonzero-amplitude
+-nonlinear nontrivial-sector state exists anywhere inside M8.5-C. Port discipline: each
++nonlinear nontrivial-sector state exists anywhere inside M8.5-C2. Port discipline: each
+ ported check first reproduces
+ its green parent and
+ its red mutation on the scalar primitives in-room; a failure THERE is an instrument-port
+@@ -290,18 +316,76 @@
+ dense node-by-mode array out of reach, so the fast transform is load-bearing for the § 11
+ ceiling, not an optimization, and § 14's pre-freeze obligations include a MEASURED wall-clock
+ at the top rung of each ladder so the ceiling is a live constraint when it freezes.
+-Gate 4's arms: the node-drop mutation (a rule
+-exact only to `2N` must err at O(1)), and the dual-implementation agreement of § 4.3. The
+-design-input record, `1.5e-01` against `2.2e-15`, was taken at `N = 3`, which sits on neither
+-production ladder: it is layer-1 evidence about the primitives and nothing more. The
+-production implementation earns gate 4 in-room at every rung of both § 9 ladders.
++Gate 4's arms, replacing the superseded protocol's single node-drop, which was dead on
++every legal arena (sector parity purity plus an odd-`K` rule sends every alias into the
++opposite parity; the defect that terminated attempt A1): (a) the EVEN-`K` ANGULAR DROP,
++the production rule with the angular counts dropped from `4N + 1` to `2N` uniform points
++in each angle and the `u`-quadrature kept exact; its single-angle alias at `|k| = 2N` is
++even-parity and inside the degree-`4N` band at EVERY rung, so its liveness is arithmetic,
++not a property of one field set; it must err at relative error `≥ 1e3 ×
++max(parent agreement residual, 1e-16)`, never a bare O(1); (b) the CROSS-PARITY LEAKAGE
++reading, with its read space CONSTRUCTED here because nothing in § 3 builds it (the
++arena's own sectors carry no opposite-parity content at all, which is the point): the
++superseded odd-`K` `2N` rule is retained as a diagnostic mutation, and the arm evaluates
++the Galerkin coefficients of the cubic against the SCALAR full-S³ matrix-element
++harmonics at the three lowest opposite-parity levels, `n ∈ {1, 3, 5}`, built ARM-LOCALLY
++by the same `sym_power` primitive the design-input scripts use; this read basis enters no
++production path and § 4.4's exclusion is untouched. The true value of every such
++coefficient is zero by parity, so the arm's scores are defined without reference to
++truth: `E` is the max-abs coefficient of the read block normalized by the max-abs
++retained coefficient of the same field under the exact rule, `E_parent` computed under
++the production `4N` rule (rounding-level by exactness), `E_mut` under the retained
++odd-`K` rule, and the arm fires iff `E_mut ≥ 1e3 × max(E_parent, 1e-16)`. Arm (a) uses
++the same ratio form with `E` the relative disagreement against the exact-rule projection.
++The floor's coupling to the parent cannot run away: a parent above its own exactness
++threshold is already a red gate, so the floor never exceeds `1e3 ×` that threshold; (c)
++the dual-implementation agreement of § 4.3. The reduced-`u`-node drop is NOT an arm of
++this protocol, on a structural ground, not an empirical one: the production `u` rule's
++`2N + 1` Gauss-Legendre nodes are exact to degree `4N + 1` against an integrand of
++`u`-degree at most `2N`, so any node reduction leaves a finite exactness deficit whose
++firing rides on the top `u`-degree coefficients of the PARTICULAR field's integrand;
++liveness is per-field, and the arena fields come from a frozen RNG stream a future draw
++of which could silently kill it. The maintainer's halving measured exactly that:
++`2.7e-15` at `N = 3` against `5.5e-03` at `N = 4` on one recipe. Both live arms, and the
++deadness of the superseded odd-`K` drop on arena fields as a REGRESSION CONTROL (not an
++arm: its green condition is machine zero, so the fire requirement does not apply to it)
++so the defect cannot silently return, are demonstrated
++pre-freeze on arena-drawn parity-pure fields by § 14 item 9's armed record; the
++superseded design-input record (`1.5e-01` at `N = 3`) drew mixed-parity fields, levels 0
++through 3, a configuration no legal arena of this protocol can produce, and stands as
++layer-1 primitive evidence only. The production implementation earns gate 4 in-room at
++every rung of both § 9 ladders.
+ 
+ **4.2 The cascade monitor, gate 6, with its OWN rule.** Aliasing is retired by exactness;
+ cascade is physics: the cubic generates the band `N < n ≤ 3N` BEFORE projection, and the
+ monitor measures that ENTIRE band. Its integrands have degree `≤ 6N`, so the monitor carries
+-its own `6N`-exact rule with its own node-drop mutation (design-input record: `6.0e-15`
+-against `2.35e-01` under the production rule, whose use here would alias exactly the content
+-the monitor exists to see). The frozen reading is
++its own `6N`-exact rule. The monitor's mutation arms, replacing the superseded node-drop
++(the `4N`-for-`6N` substitution, whose odd-`K` alias is parity-dead on arena content by
++the same argument that killed gate 4's arm, found analytically during the A1 disposition
++and demonstrated by measurement pre-freeze here): (a) the EVEN-`K` MONITOR DROP, the
++monitor rule with angular counts dropped from `6N + 1` to `4N` uniform points per angle,
++`u` kept exact; the single-angle alias at `|k| = 4N` is even-parity and inside the
++degree-`6N` band at every rung, same arithmetic liveness; same `1e3 ×` floor against the
++monitor's exact-rule parent; (b) the CROSS-PARITY LEAKAGE reading under the retained
++`4N`-for-`6N` substitution: the same arm-local construction as § 4.1's arm (b) but at the
++RUNG-RELATIVE read levels `n ∈ {N+1, N+3, N+5}`, the three lowest opposite-parity levels
++above the substituted rule's exactness margin (the read must make the integrand's degree
++exceed what that rule integrates exactly: `3N + n > 4N` needs `n > N`; every production
++rung is even, so these are odd, opposite parity, and inside the band `n ≤ 3N`); at any
++FIXED low level the substituted rule becomes exact again at higher rungs, which is why
++the levels are a formula and never literals; the bottom member `N+1` aliases only at the
++top frequency and the demonstration records its measured margin per level; the § 14
++item-9 record carries the low-read-at-rounding versus high-read-firing distinction
++measured at `N = 24`, where the formula realizes as `{25, 27, 29}`; same scores, same
++`E_mut ≥ 1e3 × max(E_parent, 1e-16)` floor; both arms
++are ALLOCATED to the production rung spaces, exactly where this section's carried
++allocation sentence already puts the injected-content mutation, while Control B carries
++the live monitor reading and is not an arm target, the ledger recording which arm ran
++where as that sentence requires; with the
++superseded substitution's deadness on arena fields recorded as the REGRESSION CONTROL,
++exempt from the fire requirement by the same rule as § 4.1's. The superseded design-input record (`6.0e-15` against `2.35e-01`)
++drew mixed-parity fields and stands as layer-1 primitive evidence only; § 14 item 9
++carries the arena-drawn demonstrations of both arms. The frozen reading is
+ 
+     C_N = ‖P_{N<n≤3N} f(ψ)‖₂ / ‖P_{n≤3N} f(ψ)‖₂,
+ 
+@@ -614,22 +698,26 @@
+ 
+ ## 8. The gate table
+ 
+-| # | Gate | Check | Mutation arm | Green parent | Spec |
+-| --- | --- | --- | --- | --- | --- |
+-| 1 | G-LIN wiring | exact-zero `K`/`J` on the linear diagonal operator, per § 2's definitions and machine allowances | injected anti-Hermitian coupling between two retained modes must go red | the diagonal operator itself | § 2 (definitions); S1b provenance via § 15 |
+-| 2 | G-LABEL | Casimir / round Laplacian through the sampling map on EVERY retained basis element, eigenvalue AND sector, over `n ≤ 3N` | one deliberately mislabeled element must go red | certified § 3 bases | § 3 |
+-| 3 | sector bases | § 3.4 (a) to (e), including the ported symmetry-realization checks and the port discipline | each § 3.4 item's own arm; ports re-arm on scalar primitives first | § 14 suite greens (layer 1 only) | § 3 |
+-| 4 | projector exactness | production `4N` rule to rounding; § 4.3 dual-route agreement on the pinned field set | node-drop to `2N` must err O(1); route disagreement is STOP-QUAL | § 4.3 field packets, hash-pinned | § 4 |
+-| 5 | structural identities | BEFORE any integrator exists, and CONTAINED per § 0: the nonlinear identities run on `E_R0` and the manufactured `E_R0 ⊗ C²` extension ONLY, never on a nontrivial `E_ρ`, because no nonzero-amplitude nonlinear nontrivial-sector state exists anywhere inside M8.5-C. Semi-discrete equivariance under `G_ρ` (ported C3, on those spaces, at production rungs); Jacobian symmetry `‖J − Jᵀ‖ ≤ 1e-12 ‖J‖` (the residual is a gradient); Noether identities on frozen PHASE-SPACE states, `(ψ, ψ̇)` = the rung's § 4.3 scalar fields paired (0,3), (1,4), (2,5), since the pinned law is second order and `F` lives on `(ψ, ψ̇)`: `abs(⟨∇I, F⟩) / (‖∇I‖₂ ‖F‖₂) ≤ 1e-12` for each `I` in {E, Q, M₁, M₂, M₃}, no time integration involved (drift belongs to § 7 alone); zero-denominator convention, frozen WITHOUT any cross-dimensional state scale: the § 14 preflight runs the pairing on the three pinned pairs and confirms every denominator `D_I = ‖∇I‖₂ ‖F‖₂` nonzero (§ 4.3's unit normalization is what guarantees the state norms themselves); a pair with `D_I` exactly zero in float64, unreachable by construction and recorded for completeness, advances deterministically to the next pinned pair with the substitution in the ledger. DEGRADED per § 2 TRIGGER S: the conserved-set check runs on energy and charge alone, the equivariance and Jacobian-symmetry items unchanged. | non-gradient perturbation; symmetry-breaking coupling; intra-level spectrum break (ported C7) | § 14 suite greens (layer 1); § 3 bases | § 2, § 3.4(d) |
+-| 6 | cascade monitor | `C_N` with its OWN `6N` rule, band certified per § 3.4 | injected high-band content at `2×` threshold; node-drop on the `6N` rule | § 4.2 construction | § 4.2 |
+-| 7 | continuation controls | Control A against symbolic references; Control B mechanical consistency; zero-count gate; fold detector | gauge-breaking term (measured `1.3e-01` design input); seed-pinned prediction must red | Control A's exact `φ*(s)`, with the perturbed seed RETURNING to it as the parent check | §§ 5, 6 |
+-| 8 | time arm | both known trajectories within bounds; conservation split sharp/supportive; the full-width wiring check | kick-drift symplectic Euler on control (ii) must fail the `3×` contraction gate; broken-symmetry drift | RK45 reference on the same controls | § 7 |
+-| 9 | convergence | contraction machinery binds on the Control-B ladder (the converging observables live there); the agreement ladder provides rung coverage for gates 2, 4 and 6, which are pass-fail at rounding on every rung | injected non-contracting error above the floor must red | § 9 scales | § 9 |
+-| 10 | executable partition | qualification mode cannot load a target configuration; coverage check | deliberately injected violation must be caught | clean-room run record | § 10 |
+-| 11 | law scope (RECORD, not a check) | recorded DECIDED: option (b), cubic only; `saturating` out of scope | not applicable, a decision record | not applicable | § 0 |
++| # | Gate | Check | Mutation arm | Green parent | Spec | Arm arena + pre-freeze demonstration (§ 14) |
++| --- | --- | --- | --- | --- | --- | --- |
++| 1 | G-LIN wiring | exact-zero `K`/`J` on the linear diagonal operator, per § 2's definitions and machine allowances | injected anti-Hermitian coupling between two retained modes must go red | the diagonal operator itself | § 2 (definitions); S1b provenance via § 15 | the rung's assembled diagonal operator, all sectors; item 9(d), injection demo on the built `N = 24` `R_0` operator |
++| 2 | G-LABEL | Casimir / round Laplacian through the sampling map on EVERY retained basis element, eigenvalue AND sector, over `n ≤ 3N` | one deliberately mislabeled element must go red | certified § 3 bases | § 3 | the certified § 3 basis elements themselves; item 9(e), mislabel demo on a built basis element |
++| 3 | sector bases | § 3.4 (a) to (e), including the ported symmetry-realization checks and the port discipline | each § 3.4 item's own arm; ports re-arm on scalar primitives first | § 14 suite greens (layer 1 only) | § 3 | the `V_l` / `H_{ρ,l}` level spaces; arena-drawn via `right_translation_check.py` at its pinned hash, FRESH re-run record per § 14 item 1 |
++| 4 | projector exactness | production `4N` rule to rounding; § 4.3 dual-route agreement on the pinned field set | even-`K` angular drop (`2N` points per angle) at the `1e3 ×` floor; cross-parity leakage read where the true value is zero, same floor; odd-`K` REGRESSION CONTROL recorded (not an arm); route disagreement is STOP-QUAL | § 4.3 field packets, hash-pinned | § 4 | fields DRAWN from the rung's `E_R0` and `E_R0 ⊗ C²` packets (parity-pure by construction); the leakage arm READS the arm-local scalar levels `n ∈ {1, 3, 5}` per § 4.1(b), the one arm whose read space differs from its draw space; item 9(a) even-`K` drop, 9(b) leakage, 9(c) regression control |
++| 5 | structural identities | BEFORE any integrator exists, and CONTAINED per § 0: the nonlinear identities run on `E_R0` and the manufactured `E_R0 ⊗ C²` extension ONLY, never on a nontrivial `E_ρ`, because no nonzero-amplitude nonlinear nontrivial-sector state exists anywhere inside M8.5-C2. Semi-discrete equivariance under `G_ρ` (ported C3, on those spaces, at production rungs); Jacobian symmetry `‖J − Jᵀ‖ ≤ 1e-12 ‖J‖` (the residual is a gradient); Noether identities on frozen PHASE-SPACE states, `(ψ, ψ̇)` = the rung's § 4.3 scalar fields paired (0,3), (1,4), (2,5), since the pinned law is second order and `F` lives on `(ψ, ψ̇)`: `abs(⟨∇I, F⟩) / (‖∇I‖₂ ‖F‖₂) ≤ 1e-12` for each `I` in {E, Q, M₁, M₂, M₃}, no time integration involved (drift belongs to § 7 alone); zero-denominator convention, frozen WITHOUT any cross-dimensional state scale: the § 14 preflight runs the pairing on the three pinned pairs and confirms every denominator `D_I = ‖∇I‖₂ ‖F‖₂` nonzero (§ 4.3's unit normalization is what guarantees the state norms themselves); a pair with `D_I` exactly zero in float64, unreachable by construction and recorded for completeness, advances deterministically to the next pinned pair with the substitution in the ledger. DEGRADED per § 2 TRIGGER S: the conserved-set check runs on energy and charge alone, the equivariance and Jacobian-symmetry items unchanged. | non-gradient perturbation; symmetry-breaking coupling; intra-level spectrum break (ported C7) | § 14 suite greens (layer 1); § 3 bases | § 0 (containment, the domain restriction on the nonlinear arms), § 2, § 3.4(d) | one line per arm, each with its OWN arena-drawn item-9 demonstration: the non-gradient perturbation DRAWS on `E_R0` / `E_R0 ⊗ C²` states, item 9(k); the symmetry-breaking coupling DRAWS on the same spaces, item 9(l); the intra-level spectrum break (ported C7) runs, AS A GATE-5 ARM, on gate 5's own spaces `E_R0` / `E_R0 ⊗ C²`, item 9(m), re-armed in-room per the port discipline, while the ALL-sectors zero-amplitude C7 belongs to gate 3 (row 3), where § 3.4(d) governs; the fresh `right_translation_check.py` C3 and C7 records (§ 14 item 1) are layer-1 provenance beside these, never the arena credit |
++| 6 | cascade monitor | `C_N` with its OWN `6N` rule, band certified per § 3.4 | injected high-band content at `2×` threshold; even-`K` monitor drop (`4N` points per angle) at the `1e3 ×` floor; cross-parity leakage, same floor; superseded substitution recorded as REGRESSION CONTROL (not an arm) | § 4.2 construction | § 4.2 | all three arms DRAW on the production rung spaces (the § 4.2 allocation, same as the carried injected-content sentence; Control B carries the live monitor reading and is not an arm target); the certified `N < n ≤ 3N` band is the measured object; the leakage arm READS the § 4.2(b) arm-local levels `n ∈ {N+1, N+3, N+5}` at the rung, above the substituted rule's exactness margin, NOT § 4.1(b)'s low levels, which that rule integrates exactly at every rung; item 9(f) drop, leakage, regression control; the injected-content arm demonstrated in the same record |
++| 7 | continuation controls | Control A against symbolic references; Control B mechanical consistency; zero-count gate; fold detector | gauge-breaking term (measured `1.3e-01` design input); seed-pinned prediction must red | Control A's exact `φ*(s)`, with the perturbed seed RETURNING to it as the parent check | §§ 5, 6 | Control A's manufactured arena and `H_{R0,12}`; arena-drawn via `jacobian_check.py` (FRESH re-run per § 14 item 2); item 9(g), perturbed-seed return demo on Control A's exact path |
++| 8 | time arm | both known trajectories within bounds; conservation split sharp/supportive; the full-width wiring check | kick-drift symplectic Euler on control (ii) must fail the `3×` contraction gate | RK45 reference on the same controls | § 7 | control (ii)'s own trajectory; item 9(h), kick-drift contraction-failure demo on control (ii) at short horizon |
++| 9 | convergence | contraction machinery binds on the Control-B ladder (the converging observables live there); the agreement ladder provides rung coverage for gates 2, 4 and 6, which are pass-fail at rounding on every rung | injected non-contracting error above the floor must red | § 9 scales | § 9 | the Control-B ladder observable sequences; item 9(i), injected non-contracting tail demo on a ladder-shaped sequence |
++| 10 | executable partition | qualification mode cannot load a target configuration; coverage check | deliberately injected violation must be caught | clean-room run record | § 10 | the § 10 registry itself; item 9(j), both injections demonstrated against a stub registry pre-freeze, re-armed in-room |
++| 11 | law scope (RECORD, not a check) | recorded DECIDED: option (b), cubic only; `saturating` out of scope | not applicable, a decision record | not applicable | § 0 | not applicable, a decision record |
+ 
+ Every arm names its green parent per the standing rule; an arm whose parent is not green is
+-vacuous and does not count as run. Gates 1 through 10 must be able to go red; row 11 is a
++vacuous and does not count as run. Every arm also names its ARENA in the final column, with
++the § 14 record that demonstrated fire on a field drawn from THAT arena before freeze; an
++arm without an arena-drawn demonstration record does not freeze, which is the obligation
++attempt A1 taught this lineage (the superseded gate-4 evidence drew fields no legal arena
++can produce, and the arm it certified was dead on every arena the gate ran on). Gates 1 through 10 must be able to go red; row 11 is a
+ RECORD, not a check, kept in this table so the numbering matches the memo's eleven-gate
+ floor, and it is exempt by construction: nothing to implement, nothing to fail.
+ 
+@@ -702,12 +790,12 @@
+ 
+ **Dispositions, all three cases pinned (gate 10 sits outside STOP-QUAL's enumeration).**
+ (1) A COVERAGE failure, any registry arena never exercised: a qualification failure;
+-terminate, adjudicate `M8.5-C-FAILED`. (2) A REFUSED prohibited call arising outside an
++terminate, adjudicate `M8.5-C2-FAILED`. (2) A REFUSED prohibited call arising outside an
+ armed mutation context: the partition HELD, but a production code path attempted a
+-forbidden arena, which is an instrument defect; terminate, `M8.5-C-FAILED`, attribution
++forbidden arena, which is an instrument defect; terminate, `M8.5-C2-FAILED`, attribution
+ INSTRUMENT in the ledger. (3) An actual forbidden nonlinear evaluation EXECUTED, the
+ refusal missed, is the CONTAINMENT BREACH: immediate termination; the BREACH record in the
+-ledger as its own class; the attempt still adjudicates `M8.5-C-FAILED`, preserving § 0's
++ledger as its own class; the attempt still adjudicates `M8.5-C2-FAILED`, preserving § 0's
+ exactly-two terminal outcomes; and the consequence for `M8.4-R1`'s provenance pre-written
+ here: a breached room can no longer certify "a chassis that was never in a room with the
+ target," so the breach record and that voiding statement enter the filed record, and no
+@@ -729,8 +817,24 @@
+ disposition instead. Instrument-attributed failures (§ 3.4's port discipline, § 5's
+ basis-consistency mismatch) are STOP-QUAL with the attribution in the ledger.
+ 
++**PROTOCOL-INVALID, the administrative class this protocol's own lineage created.** If a
++frozen operative clause is demonstrated to state a mathematically false proposition on the
++protocol's own domain, or two frozen commitments are demonstrated to contradict, so that a
++unit cannot both follow the text and record a true result, the attempt terminates
++ADMINISTRATIVELY: the Build Unit stops at the demonstration and records it with no verdict
++of either color for the affected gate; the author files the claim in the open; the
++maintainer must REPRODUCE the contradiction with INDEPENDENT code before any ratification;
++and on ratification the attempt is PROTOCOL-INVALID, permanently terminated, with no
++adjudication unit commissioned, neither § 1 sentence issued, the ledger and room archived
++intact with no execution credit, and the only continuation a successor protocol under a
++NEW identity. This class sits OUTSIDE the Adjudication Unit and outside § 1's outcome
++space, and it licenses nothing for a defect that merely makes a gate hard, a threshold
++wrong, or a result unwelcome: those have execution paths and must be run. Wording source
++and precedent: the A1 ruling
++([#501](https://github.com/openwave-labs/openwave/issues/501)).
++
+ **TARGET-LOCK and COMMON-LAW**, recorded verbatim for inheritance since no target run
+-exists inside M8.5-C: once a first target-bearing residual is ever formed (in `M8.4-R1`,
++exists inside M8.5-C2: once a first target-bearing residual is ever formed (in `M8.4-R1`,
+ never here), no cutoff, `dt`, integrator, tolerance, normalization, amplitude ladder,
+ coupling, stopping rule, projector implementation, cascade threshold, branch procedure or
+ sector treatment may change, and any post-target change to a frozen element voids every
+@@ -749,7 +853,7 @@
+ maintainer reviews the filed record at merge. Both the adjudicator design and
+ the ceiling are inherited verbatim per the standing rulings.
+ 
+-**The reopening criterion, pre-committed.** `M8.5-C-QUALIFIED` plus a frozen cost estimate
++**The reopening criterion, pre-committed.** `M8.5-C2-QUALIFIED` plus a frozen cost estimate
+ under the ceiling files `M8.4-R1` as a fresh preregistration the day of the PASS
+ adjudication; anything else leaves the chassis as platform infrastructure and files
+ nothing. `R_0` results may inform the successor's design (M8.4 prereg § 8's pilot
+@@ -767,7 +871,10 @@
+ Control A reference values (§ 14 products, pinned pre-freeze); and the code the Build Unit
+ writes in-room. Named OUT, so the enumeration cannot be misread as an oversight:
+ `m8_4_preregistration.md`, `MODELS.md`, `__M8_model_briefing.md`, `m8_2_first_occurrence.py`
+-and its shipped tables, the M8.5-A artifacts, and `m8_4_closeout.md`. The room builds its
++and its shipped tables, the M8.5-A artifacts, `m8_4_closeout.md`, the SUPERSEDED M8.5-C
++protocol with its addenda, and the A1 archive `research/m8_5c/a1/` in its entirety: the
++room re-earns every green from gate 1, and reading a prior attempt's results is
++inherited-credit contamination even when the prior attempt carries no credit itself. The room builds its
+ own first-occurrence structure; the ADJUDICATION-side comparison against shipped M8.2
+ tables (§ 3.4) is the only place the two meet, preserving the M8.2 lock § 3 independence.
+ 
+@@ -785,7 +892,9 @@
+ line appears exactly once, at the boundary; every hash check matches the full marker line
+ only, so inline mentions are harmless.
+ 
+-**Commissioning.** A fresh-context Build Unit, commissioned per the S1b pattern; the
++**Commissioning.** A fresh-context Build Unit, commissioned per the S1b pattern, in a NEW
++room (A1's room is closed and archived; nothing is reused but the pattern and the launch
++gate's two-probe-class design, which the A1 archive carries as `room_import_gate.py`); the
+ commission is non-governing provenance and is archived after the run. The Adjudication
+ Unit is commissioned separately and receives only the three § 11 objects.
+ 
+@@ -808,6 +917,21 @@
+ ever). An adjudication cannot proceed on a ledger missing a required type for work that
+ ran; that is itself an instrument failure.
+ 
++**Ledger schema, three requirements from the A1 record.** (1) Every RESOURCE record
++carries BOTH `wall_clock_seconds` (this gate alone) and `cumulative_seconds` (the running
++total across the attempt, strictly nondecreasing); the adjudicator recomputes the sum
++identity across the ledger. (2) No record carries a bare list of "completed" gates: any
++terminal or summary record enumerates per-gate completion states from {COMPLETE,
++PARENT-ONLY, NOT-REACHED}, where COMPLETE means the parent AND every declared arm
++executed. (3) Every hash written into the ledger, either manifest, or any record NAMES THE
++BYTES IT COVERS: the file path and the event after which it was computed, or the
++reconstruction recipe; a hash without its coverage statement is a missing-record defect
++under this section's own clause. All three are the A1 archive's lessons, recorded there
++and codified here. Attempt identifiers are NAMESPACED by protocol identity: this
++protocol's one attempt is `C2-A1`, and the superseded protocol's terminated attempt is
++`C-A1` wherever both appear in one sentence; the bare "A1" in this document always means
++the superseded protocol's archived attempt.
++
+ **What ships.** The Build Unit ships the ledger, the logs, the input manifest, and every
+ hash. The Adjudication Unit ships the § 1 sentence and the per-gate verdict table, nothing
+ else. At merge the records land under `research/m8_5c/` beside the protocol's findings
+@@ -816,21 +940,42 @@
+ ## 14. Pre-freeze obligations
+ 
+ Named work that must land BEFORE this protocol freezes. BLOCKING items have no fallback;
+-FALLBACK-COVERED items degrade per § 2 if not green.
++FALLBACK-COVERED items degrade per § 2 if not green. INHERITED items are executed products
++of the superseded protocol's own § 14, carried at their pinned hashes because they are
++facts about the same mathematical objects, none is a gate result, and A1's
++no-execution-credit ruling binds gate greens, not pre-freeze author-side artifacts; each
++INHERITED row names its record, and any change to the build machine or the pinned
++dependencies voids the inheritance of items marked machine-bound.
+ 
+ | # | obligation | status class |
+ | --- | --- | --- |
+ | 1 | `right_translation_check.py` green at its pinned hash, re-run record | FALLBACK-COVERED (§ 2 TRIGGER S, the full degraded contract) |
+-| 2 | re-run records of the other four design-input scripts with the dependency pin | BLOCKING |
++| 2 | re-run records of the other four design-input scripts with the dependency pin, FRESH at this protocol's freeze | BLOCKING |
+ | 3 | measured wall-clock at the TOP RUNG of each ladder for the § 4.3 agreement gate, the § 4.2 monitor, and Control B, by author-side SCRATCH code, recorded and discarded, non-inheritable (Control A has no rung cost); this licenses FEASIBILITY of the ceiling only, never a prediction of the Build Unit's in-room cost, and crossing the ceiling is STOP-QUAL regardless of what the rehearsal showed | BLOCKING |
+ | 4 | the isotropy lattice tables for `l = 0..7` and `l = 12` with one canonical seed representative per class, computed by an ARMED derivation script (design-input script 6, AUTHOR-SIDE: the script never enters the room; its product tables and their hashes do, per § 12's whitelist) | FALLBACK-COVERED (§ 2 TRIGGER L, enumeration-only) |
+ | 5 | Control A's exact-arithmetic reference values at the three pinned `s`, by the implementation-disjoint route, ARMED, pinned | BLOCKING |
+ | 6 | control (i)'s nonzero-momenta setup assertion RUN on the pinned 13-vector `φ` | BLOCKING |
+ | 7 | gate 5's generic-pair denominators `D_I` confirmed nonzero on the three pinned pairs at EVERY rung of both § 9 ladders | BLOCKING |
+-| 8 | the fallback cross-check: § 2 (both triggers), § 5, gate 5's row, and § 14's own table carry the SAME two degraded contracts, verified by reading all four | BLOCKING |
++| 8 | the fallback cross-check: § 2 (both triggers), § 5, gate 5's row, and § 14's own table carry the SAME two degraded contracts, verified by reading all four, RE-READ against this protocol's text since the text moved | BLOCKING |
++| 9 | the ARM-ON-ARENA demonstration record, one armed script: (a) gate 4's even-`K` drop fires on arena-drawn parity-pure fields; (b) gate 4's cross-parity leakage reads `≥ 1e3 ×` floor where the true value is zero; (c) the superseded odd-`K` drop is DEAD on the same fields, the regression CONTROL; (d) gate 1's anti-Hermitian injection on the built `N = 24` `R_0` diagonal operator; (e) gate 2's mislabel on a built basis element; (f) gate 6's even-`K` monitor drop, leakage, and regression on band content; (g) gate 7's perturbed-seed return on Control A's exact path; (h) gate 8's kick-drift contraction failure on control (ii) at short horizon; (i) gate 9's injected non-contracting tail on a ladder-shaped sequence; (j) gate 10's two injections against a stub registry; (k) gate 5's non-gradient perturbation on an arena-drawn `E_R0` / `E_R0 ⊗ C²` state: the unmodified parent must satisfy the frozen Jacobian-symmetry bound `‖J − Jᵀ‖ ≤ 1e-12 ‖J‖`, and adding a non-gradient term to the residual must make exactly that predicate red (the pinned `jacobian_check.py` does NOT demonstrate this: inspection shows its mutation is the gauge-breaking term against the kernel predicate, so 9(k) is new evidence, not a relabel); (l) gate 5's symmetry-breaking coupling on the same arena-drawn spaces: the parent must satisfy the § 5 equivariance identity at its frozen tolerance, and the coupling must make exactly that predicate red; (m) gate 5's intra-level spectrum break on the same arena-drawn spaces: the parent must satisfy the semi-discrete equivariance-with-the-action predicate, and the break must red it; for both (l) and (m) the fresh `right_translation_check.py` C3 and C7 records are LAYER-1 PROVENANCE ONLY, per § 2's no-inherited-credit rule for the production system, and carry no arena-demonstration credit; every demonstration on a field drawn from the arena its gate runs on, the script itself mutation-armed, its record and hash pinned in § 15 | BLOCKING |
++| 10 | the per-arm arena AUDIT: § 8's final column complete, every ARM naming its arena (draw space, and read space where they differ) and either an item-9 letter or an arena-drawn record at a pinned hash; REGRESSION CONTROLS are named as controls and exempt from the fire requirement, their green condition being machine zero; verified by reading every row against the named records | BLOCKING |
+ 
+ A BLOCKING item not done means the protocol does not freeze; there is no partially frozen
+-state. Scratch code from item 3 never enters the room.
++state. Scratch code from item 3 never enters the room. Inheritance dispositions, explicit:
++items 4, 5, 6 and 7 are INHERITED at the pinned hashes of the superseded protocol's
++executed § 14 package (`research/m8_5c/s14/`, its manifest verifying 30 of 30); item 3 is
++FRESH, because its own operative text says the rehearsal is non-inheritable and overriding
++that would be a fifth change class for no scientific benefit; items 1, 2, 3, 8, 9 and 10
++therefore execute FRESH for this protocol. Item 5's
++inheritance is MECHANICAL, not textual: the reference file's own
++`definitions_block_sha256` must equal § 15's definitions-block row, recomputed on THIS
++protocol's § 5, which carries verbatim; a mismatch voids the inheritance and item 5 runs
++fresh. Item 9's
++measurements have pre-draft design inputs on the record with post-stop provenance: the
++author's `1.8e-01` (even-`K`) and the maintainer's independent `1.2e-01` / `6.3e-02`
++(even-`K`) and `7.4e-02` to `2.2e-01` (cross-parity), all taken while the A1 disposition
++was open and labeled successor design inputs there; item 9 replaces them with one armed,
++pinned record and inherits none of their numbers.
+ 
+ ## 15. Pins
+ 
+@@ -839,6 +984,10 @@
+ recorded in the input manifest, which is hashed before any gate runs; they are LISTED here
+ by name so their absence is checkable, but their values live in the manifest.
+ 
++Rows below marked INHERITED carry the superseded protocol's § 15 values unchanged: the
++artifacts are protocol-independent computations about the same objects, verified against
++the same hashes at this filing.
++
+ **Freeze-time:**
+ 
+ | what | pin |
+@@ -851,12 +1000,15 @@
+ | `cascade_quad_check.py` | `7f31bc305150c9d5e37ec312fe8fd00060583a87427feb7a56d6743d2fd66bfa` |
+ | `jacobian_check.py` | `dce687ea793522be40c4d06d25df19a0dfb99c72309a19361e220077007eb9d8` |
+ | `right_translation_check.py` | `752baa2de36dbaea9fe4108ec6df9121351b386453d01b06bd8111562de8f547` |
+-| § 5's observable-definitions block (its own sub-region digest, the object the § 14 records cite: NON-CIRCULAR by construction, since no § 15 edit can move it, unlike a whole-file or frozen-region hash which this table pins the records against) | `823e90662450a0e83297b81d0b217d27c37a7dd8957e8607dcd2c8e316c60544` |
++| § 5's observable-definitions block (its own sub-region digest, the object the § 14 records cite: NON-CIRCULAR by construction, since no § 15 edit can move it, unlike a whole-file or frozen-region hash which this table pins the records against). RECOMPUTATION, recorded so the digest is reproducible and the item-5 void condition demonstrable, not assertable: the block runs from the bold sentence beginning `The observable definitions, frozen,` through the sentence ending `a definitional dispute.` inclusive, anchored by the start string's FIRST occurrence in this file and the end string's FIRST occurrence AFTER it; that first-after-start rule, not global uniqueness, is the operative invariant, and it holds by construction because § 5 precedes every later section and addendum that might quote either phrase; command: `python3 -c "import hashlib;t=open('m8_5c2_protocol.md').read();S='**'+'The observable definitions, frozen, because gate 9 scores nothing it cannot compute.'+'**';E='never a definitional'+' dispute.';i=t.index(S);print(hashlib.sha256(t[i:t.index(E,i)+len(E)].encode()).hexdigest())"` (the command assembles BOTH anchors at run time so its own text contains neither; the value below is unchanged from the superseded protocol because § 5 carries verbatim, which is exactly what item 5's mechanical inheritance tests) | `823e90662450a0e83297b81d0b217d27c37a7dd8957e8607dcd2c8e316c60544` |
+ | the symmetry derivation note | filed beside this protocol at filing, named in § 2; SHA-256 `5b231af423066aa9b9902a4ca9b67f19a54158f6ab36339ae711992839820d1a`, recomputed at freeze if the note changes pre-freeze |
+ | S1b decision rule (`K`/`J` instrument, G-DISCRIM) | frozen region `c44c603a…`, per its own boundary record |
+ | M8.4 closeout, M8.9 records, M8.5-B preregistration (`M85B-ADJ-07` scope) | the merged findings files, referenced by name; outside the room |
+-| the rulings record | `M8_5C_OPEN_DECISIONS.md`, author-side provenance, non-operative |
+-| upstream main at filing | `9ba2a6646630015d41598e1206285748b740aed8` |
++| the rulings record | `M8_5C2_OPEN_DECISIONS.md` (the C2 rulings; the superseded protocol's `M8_5C_OPEN_DECISIONS.md` stands behind the carried text), author-side provenance, non-operative |
++| the SUPERSEDED M8.5-C protocol | frozen region `e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b` at merge `357ea568`, terminated per addendum 1 and [#501](https://github.com/openwave-labs/openwave/issues/501); OUT of the room |
++| the A1 archive | `research/m8_5c/a1/` at merge `0b7505b9`: ledger `794e2969f2ca3afe35a897ed22bd5102fe7e48e5951eecbb563f7b0b846491b0`, annotation `19d166ea864327a9cd4f86afc5deb2afbba034dfeb6b5dd01e79a1132039e092`; NON-ADJUDICATED, no execution credit, OUT of the room |
++| § 14 item 9's arm-demonstration script and record (thirteen arena-drawn demonstrations, run 5 of the preserved five-run chain, all green, wall 2470 s) | script `42ff8da8a3cf0d808ac4dad7bec8fac5a41cf5a686fbb82a576e47d3c6d2001e`; record `8ce491c2771813ea51f2708f2d1d4040585af3de485247e8f3126abbf2c9c302`; captured stdout `dc54f673f768d05d717b5bd965104d0179ab71edfa106a5464015b541b061c16` (the stdout is a MEASUREMENT record, wall-clock lines included, and does not re-run bit-identical; the JSON record's computed values do) |
++| upstream main at filing | `154825a4d67fd03d746dd455584061f8cf7a87ec` (the commit the filing PR branches from; the superseded protocol's value was `9ba2a664…`) |
+ | the isotropy lattice tables (§ 14 item 4, with the disposition split MAXIMAL / ABSORBED / GENERIC-STRATUM and the scope note on the generic stratum's reachability) | `efe6c2d64ba9664edaf8b49b9026a683bf93aa78c0c994f09f41bd5a63a7b504` |
+ | Control A reference values (§ 14 item 5, per-quantity routes recorded) | `dde909f6746994468805c55c1eae192b449b2eb4862e2432f61d55a9f3be4e44` |
+ | the § 7 amendment's verification record (§ 14 item 6 v2, both analytic arms) | `6615b3966b063ee8c1498f050da559749d105b1cd116c51567f1886dbbcf28a2` |
+@@ -878,7 +1030,7 @@
+ superseded digest are recorded in the same commit. A change to a commitment is not an
+ addendum and not a prose fix but a supersession, and after execution begins (§ 11's first
+ GATE ledger record) there is no supersession and no in-place change of any kind. The freeze boundary inserted at filing is the full line
+-`<!-- M85C-FREEZE-BOUNDARY -->`; that string appears in the body only inside this naming
++`<!-- M85C2-FREEZE-BOUNDARY -->`; that string appears in the body only inside this naming
+ sentence, which is safe because the check command matches the complete marker line alone,
+ and the frozen region is every byte above the marker, verified by the S1b-pattern `sed`
+ command recorded beside the digest at filing.
