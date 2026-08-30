@@ -1,0 +1,7 @@
+S14-C2 ITEM 5, mechanical inheritance test (per the § 14 dispositions paragraph):
+  definitions block recomputed on the C2 draft : 823e90662450a0e83297b81d0b217d27c37a7dd8957e8607dcd2c8e316c60544
+  § 15 pinned row                              : 823e90662450a0e83297b81d0b217d27c37a7dd8957e8607dcd2c8e316c60544
+  reference file's own definitions_block_sha256: 823e90662450a0e83297b81d0b217d27c37a7dd8957e8607dcd2c8e316c60544
+  ALL THREE EQUAL: True
+  VERDICT: INHERITANCE HOLDS, item 5 INHERITED MECHANICALLY
+exit 0

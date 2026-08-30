@@ -1,0 +1,5 @@
+== section 0: primitives and self-arms ==
+[     0.4s] 0-selfarms: GREEN  pinned-formula arm; 120-closure and order-census arm; n=6 empty-invariant arm
+== bases at N=24 ==
+[   105.2s] B-bases: GREEN  Reynolds dims {1,13,21,25}; symmetric Lowdin (refined, still the canonical map); Gram, roundtrip, and DIRECT left-invariance at rounding
+== (a)(b)(c) gate-4 arms ==

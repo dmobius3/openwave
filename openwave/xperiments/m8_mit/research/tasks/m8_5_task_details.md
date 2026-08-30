@@ -49,8 +49,13 @@ the protocol's parity-pure arenas, the unit stopped with no gate-4 verdict, and 
 ([#501](https://github.com/openwave-labs/openwave/issues/501)) granted a once-only
 post-execution supersession under a new identity; the archived run is
 [`../m8_5c/a1/`](../m8_5c/a1/) and the canonical account is the protocol's addendum 1.
-Next step: the successor protocol under a NEW identity, four defect-driven changes only.
-See also [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
+The successor M8.5-C2 is FILED 2026-08-29 and frozen at merge: the protocol is
+[`../findings/m8_5c2_protocol.md`](../findings/m8_5c2_protocol.md), frozen region SHA-256
+`aadf4d9218bc36cf4763b42ce587725c16f673b3a9e4272f19a33b6ec0fbd5ef`, DERIVED from the
+ratified C frozen region with the diff and register filed under
+[`../m8_5c2/derivation/`](../m8_5c2/derivation/) and the executed § 14 package under
+[`../m8_5c2/s14/`](../m8_5c2/s14/). Next step: commission the C2 Build Unit per protocol
+§ 12. See also [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
 
 ### Independent reproduction, M8.5-A (added 2026-07-28)
 
