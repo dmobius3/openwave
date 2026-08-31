@@ -425,3 +425,16 @@ Both staged rungs ran and closed in one session (go 15:12 UTC, reset 17:20 UTC, 
 
 **How to restart:** `go M5.32, reset <time>, ping me`; the agent re-reads the plan and `checkpoints/m5_32_progress.md`, re-arms the ping and watchdog, and starts at R13 unless the coordination issue has moved the question.
 
+
+## CORRECTION (2026-08-31, from the parallel program's review): the R12 radiation-window threshold was cross-model
+
+The parallel program's 2026-08-31 review of this record flagged that the R12 gate constant `OMEGA_RAD = 0.786` ([`scripts/m5_32_r12_a_ring.py`](../scripts/m5_32_r12_a_ring.py)) is not an M5.32 number: it is the M7 HydroBoros stability threshold `k* = 0.7862` ([M7.5](../../../m7_hydroboros/research/tasks/m7_5_clock_stability.md)), carried into the plan's I2 row as cross-pollination. The flag is CONFIRMED, and the underlying point is stronger: the M5.32 action currently has NO derived radiation threshold of its own, because the quadratic pencil about the vacuum is degenerate (the R4 receipt: any single plane wave has `F = 0` identically, crossed waves enter at quartic order, so there is no plane-wave gap to read).
+
+| Item | Amendment |
+| --- | --- |
+| Plan row I2 ("ω_max = 0.786 by two derivations") | the two derivations are M7 / M6 facts, not M5.32 facts; the row is DOWNGRADED to "no action-specific threshold derived" |
+| R12 comparisons of `omega*` against 0.786 | downgraded to kinematic context; no radiation-window verdict rides on them |
+| The R12 producer script | left unedited (it is the frozen record of what ran); the constant is removed from any FUTURE gate |
+| R13 validation | an action-specific channel-resolved asymptotic pencil must be derived from the M5.32 action itself before any radiation-window gate is applied; if the pencil is singular, that is recorded as a representation result, not a physical threshold |
+
+Also staged the same day: [`scripts/m5_32_p249_check.py`](../scripts/m5_32_p249_check.py), an independent re-derivation of the parallel program's P249 exterior-degenerate clock algebra (7/7 checks pass; the variational theorem bridge deliberately not checked).
