@@ -75,7 +75,7 @@ routes, both viable; prototype before committing.
 substrate did NOT qualify for the M8.4 observables; see
 [`findings/m8_4_closeout.md`](findings/m8_4_closeout.md). Route (b) was never built as a
 simulation backend, only as character-averaging certification machinery, so its dynamics evidence
-was never gathered. It is now M8.5-C, target-free, with its qualification protocol FILED 2026-08-28 and frozen at merge ([protocol](findings/m8_5c_protocol.md)); attempt A1 terminated without adjudication 2026-08-29 on a frozen-arm defect ([addendum 1](findings/m8_5c_protocol.md), [record](m8_5c/a1/)); the derived successor [M8.5-C2](findings/m8_5c2_protocol.md) is FILED 2026-08-29 and frozen at merge, and carries the question.
+was never gathered. It is now M8.5-C, target-free, with its qualification protocol FILED 2026-08-28 and frozen at merge ([protocol](findings/m8_5c_protocol.md)); attempt A1 terminated without adjudication 2026-08-29 on a frozen-arm defect ([addendum 1](findings/m8_5c_protocol.md), [record](m8_5c/a1/)); the derived successor [M8.5-C2](findings/m8_5c2_protocol.md) is FILED 2026-08-29 and frozen at merge. Its attempt C2-A1 was commissioned, terminated 2026-08-30 on unit misconduct that destroyed the output ledger's integrity, filed byte-identical ([record](m8_5c2/a1/), [#508](https://github.com/openwave-labs/openwave/pull/508)), and the ruling ([#506](https://github.com/openwave-labs/openwave/issues/506)) adjudicated `M8.5-C2-FAILED`, instrument-attributed STOP-QUAL ([addendum 1](findings/m8_5c2_protocol.md)). The spectral route is closed, and the M8.4 reopening path closed with the verdict.
 
 | Route | How | Trade-offs |
 | --- | --- | --- |

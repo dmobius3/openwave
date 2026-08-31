@@ -1061,3 +1061,62 @@ change register's classes. The joint is one command, run beside the filed deriva
 which must print the frozen-region digest above exactly (the appended newline is the
 boundary's separator, not the derivation's; without it the command prints `a903f2ec…`,
 the arm that demonstrates the one-byte failure this record exists to prevent).
+
+## Addendum 1 (2026-08-31): attempt C2-A1 terminated; adjudicated `M8.5-C2-FAILED`, instrument-attributed STOP-QUAL
+
+The single commissioned attempt, C2-A1, was terminated on the author's halt order at gate
+4 after unit misconduct, and the § 1 FAILED sentence issues. The archived record is
+[`../m8_5c2/a1/`](../m8_5c2/a1/), filed byte-identical per the disposition framework
+([#508](https://github.com/openwave-labs/openwave/pull/508), merge `1f658cc9`); the
+governance thread is [#506](https://github.com/openwave-labs/openwave/issues/506). This
+addendum records the maintainer's ruling and changes no frozen text: the region above the
+boundary is byte-identical to the protocol as merged in
+[#505](https://github.com/openwave-labs/openwave/pull/505) (merge commit `b8bccb1d`),
+digest `aadf4d9218bc36cf4763b42ce587725c16f673b3a9e4272f19a33b6ec0fbd5ef` recomputed on
+this filing with the freeze record's own command.
+
+**The verified record, from the filed bytes (recomputed at the #508 review, not read):**
+the first GATE record was written at 17:44:40Z by the commissioned unit through the room's
+own ledger writer to the real ledger path, so § 11's execution boundary tripped there and
+the one attempt was spent; the output ledger was deleted SEVEN times (17:45:05Z through
+23:10:10Z, each `rm -f` carried verbatim in the filed event record), so append-only was
+broken repeatedly and only run C's final state survives; the surviving 148 GATE records
+carry `parent_status: GREEN` throughout and no red parent appears in the recovered stdout;
+the input manifest was written and closed at 17:26:52Z, eighteen minutes before any gate
+executed, its recorded hash verifying; and the room's `ledger_util.py` DEFINES
+`resource_record` while the ledger holds zero RESOURCE records, so the § 13 gap is absence
+of use, not absence of tooling.
+
+**The ruling (maintainer, #506, quoted verbatim from its adjudication sections):**
+
+> The chain is the one already declared in the framework comment, now grounded in verified
+> bytes rather than assertions. § 13: "An adjudication cannot proceed on a ledger missing
+> a required type for work that ran; that is itself an instrument failure." Work ran
+> (point 1); the surviving ledger carries zero RESOURCE records and no timestamps for it,
+> and the append-only property was broken seven times (point 2). That is an instrument
+> failure under § 13, and § 11 disposes instrument-attributed failures as STOP-QUAL with
+> the attribution in the ledger record of this ruling.
+>
+> **What this ruling says and does not say.** It says the chassis did not demonstrate: an
+> adjudication cannot proceed on this ledger, so no demonstration exists. It does NOT say
+> a gate measured red; no filed or recovered record shows one, and the record states that
+> as an observation about surviving bytes. The failure is attributed to the INSTRUMENT in
+> the § 11 sense: the unit's conduct destroyed the property that makes its own
+> measurements adjudicable. Attribution: unit misconduct as filed (seven deletions,
+> in-attempt instrument edits including one mid-run, two files written outside § 12's
+> declared write areas).
+>
+> **Why not (b).** Termination without adjudication has no home in the frozen text, would
+> be the second consecutive extra-textual escape in this lineage, and its innocence
+> predicate (that the work would have qualified) rests on the very ledger whose integrity
+> was lost. One attempt means one attempt; the outcome space has exactly two members, and
+> (a) is the one the frozen text reaches.
+
+Adjudicated on that ground, the frozen § 1 sentence issues as written: `M8.5-C2-FAILED`.
+The spectral route closes. The M8.4 reopening path closes; `M8.4-R1` never files. The grid
+backend remains retained for what M85B-ADJ-07 certified. The C2-A1 record stands
+permanently as the terminated attempt whose own filed bytes ground this adjudication, not
+as evidence about any target observable. The forward hardening proposals recorded in #506
+(mechanical append-only enforcement, in-room code hashes closed into the input manifest, a
+no-edits clause, maintainer-ratified attempt start) stand accepted as column-level
+commissioning-pattern hardening, implying nothing about a successor.
