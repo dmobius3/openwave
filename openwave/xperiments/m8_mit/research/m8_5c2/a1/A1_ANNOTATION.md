@@ -19,18 +19,26 @@ no description at all.
    twice" were my misreading of `(gate_id, rung)` pairs without the arena field, and are
    withdrawn. What does hold: zero RESOURCE records and no timestamps, so the § 13
    nonconformance stands on those grounds.
-2. **Execution began at 17:44:40Z, not ~18:0x**, and there were FIVE ledger deletions,
-   not two. See the corrected timeline.
-3. **The first extraction was incomplete.** It globbed only the main session transcript
-   and missed every sidechain sub-agent transcript, which is where the build-phase gate
-   executions and three of the five deletions live. `recovered/discipline_events_extracted_v2.json`
-   re-extracts over all 8 sources (1 main, 7 sidechain): 120 events across 17 files, versus
-   104 across 13. The v1 file is retained under its own name as the record of what was
-   first filed. SCOPE, stated rather than claimed exhaustive: v2 covers every `Write`,
-   `Edit`, `MultiEdit` targeting a path under the room, and every `Bash` matching kill,
-   `rm`, or a run-script invocation, across those 8 transcripts. Anything a transcript
-   does not contain, or any file created by a mechanism other than those tools (a Bash
-   heredoc, for instance), is outside its reach.
+2. **Execution began at 17:44:40Z, not ~18:0x**, and there were SEVEN ledger deletions,
+   not two (and not the five this annotation claimed at its first correction; the v3
+   extraction below is what establishes seven). See the corrected timeline.
+3. **The extraction was incomplete TWICE, and the operative file is v3.** v1 globbed
+   only the main session transcript and missed every sidechain sub-agent transcript,
+   which is where the build-phase gate executions live. v2 added the sidechains but
+   filtered `Bash` commands on literal path prefixes (`rm -f ledger`), so it silently
+   dropped every deletion written with an ABSOLUTE path: the annotation's own corrected
+   timeline then cited events absent from the record filed to support it, which is the
+   defect class this filing exists to avoid, committed inside the correction of it. The
+   author's recheck against the pushed bytes caught it. `recovered/discipline_events_extracted_v3.json`
+   keys on BEHAVIOUR rather than path literals: 154 events (23 Write, 79 Edit, 52 Bash),
+   each Bash event carrying its classes (`LEDGER_DELETE`, `KILL`, `GATE_EXECUTION`,
+   `LEDGER_TOUCH`). v1 (104 events) and v2 (120) are retained under their own names as
+   the record of what was filed before. SCOPE, stated rather than claimed exhaustive: v3
+   scans 9 transcripts (1 main, 8 sidechain), of which 5 carry in-room events, and covers
+   every `Write`/`Edit`/`MultiEdit` targeting a path under the room plus every `Bash` that
+   touches the ledger, kills a process, or executes a gate. Anything a transcript does not
+   contain, or any file created by a mechanism other than those tools, is outside its
+   reach.
 
 ## The corrected timeline
 
@@ -44,10 +52,13 @@ no description at all.
 | 17:50:25Z | `rm -f` (deletion 2, "Clean test ledger") |
 | 17:50:32Z | `run_gate_10` executed, appending |
 | 17:50:40Z | `rm -f` (deletion 3, "Clean test ledger") |
-| ~18:0x to 22:39Z | run A (gates 1 to 4; PASS lines with wall times in `recovered/`) |
-| 22:39:03.858Z | `rm -f` (deletion 4), then run B starts (PID 86995) |
+| ~18:0x onward | run A's gate work begins (gates 1 to 4; PASS lines with wall times in `recovered/`) |
+| 18:22:46Z | further gate executions from the main session |
+| 18:29:42Z | `rm -f` (deletion 4) |
+| 19:13:16Z | `rm -f` (deletion 5, "Cleaned ledger") |
+| 22:39:03.858Z | `rm -f` (deletion 6, "Clean the old ledger before restart"), then run B starts (PID 86995) |
 | 23:09:40.455Z | run B killed |
-| 23:10:10.759Z | `rm -f` (deletion 5), then run C starts (PID 88270) |
+| 23:10:10.759Z | `rm -f` (deletion 7), then run C starts (PID 88270) |
 | 23:14:16Z | `gate_checks.py` edited WHILE run C executes; the running process holds the pre-edit bytes |
 | 23:29:56.597Z | run C killed on the author's halt order, at gate 4, N=44 |
 
@@ -58,7 +69,7 @@ real `ledger_util` writer, so under § 11's literal boundary the first GATE reco
 still building. Verification point 4 is unaffected: the manifest closed first, and its
 recorded hash verifies.
 
-## In-attempt writes and edits to in-room code (v2 extraction, 102 events across 17 files)
+## In-attempt writes and edits to in-room code (v3 extraction, 102 events across 17 files)
 
 | file | events | first | last |
 | --- | --- | --- | --- |
@@ -97,8 +108,12 @@ No record in the file denotes a failed parent check: all 148 carry `parent_statu
 RECOVERABLE, filed under `recovered/`: run A and run B stdout fragments with gate PASS
 lines and wall times; the pre-edit content of every edited hunk (each Edit event's
 `old_string`); the full event timeline; the sidechain transcripts themselves.
-NOT RECOVERABLE: the complete `OUTPUT_LEDGER.jsonl` bytes of any deleted state (five
-deletions; no tool result captured any of those files whole). The surviving ledger is run
+NOT RECOVERABLE: the complete `OUTPUT_LEDGER.jsonl` bytes of any deleted state (SEVEN
+deletions at 17:45:05Z, 17:50:25Z, 17:50:40Z, 18:29:42Z, 19:13:16Z, 22:39:03Z and
+23:10:10Z; no tool result captured any of those files whole). The run boundaries between
+the 18:0x and 22:39Z deletions are therefore less sharp than a three-run account
+suggests: what the record establishes is the deletion times and the surviving final
+state, not a clean partition of the work into exactly three runs. The surviving ledger is run
 C's, internally consistent as described above, and nonconforming under § 13 for the
 absence of RESOURCE records and timestamps.
 
