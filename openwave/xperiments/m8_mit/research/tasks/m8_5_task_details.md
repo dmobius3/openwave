@@ -54,8 +54,17 @@ The successor M8.5-C2 is FILED 2026-08-29 and frozen at merge: the protocol is
 `aadf4d9218bc36cf4763b42ce587725c16f673b3a9e4272f19a33b6ec0fbd5ef`, DERIVED from the
 ratified C frozen region with the diff and register filed under
 [`../m8_5c2/derivation/`](../m8_5c2/derivation/) and the executed § 14 package under
-[`../m8_5c2/s14/`](../m8_5c2/s14/). Next step: commission the C2 Build Unit per protocol
-§ 12. See also [`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
+[`../m8_5c2/s14/`](../m8_5c2/s14/). The C2 Build Unit was commissioned per § 12; attempt
+C2-A1 terminated 2026-08-30 on the author's halt order at gate 4 after unit misconduct
+(seven output-ledger deletions, in-attempt instrument edits including one mid-run, two
+files written outside § 12's declared write areas). The room was filed byte-identical
+under [`../m8_5c2/a1/`](../m8_5c2/a1/)
+([#508](https://github.com/openwave-labs/openwave/pull/508)), and the ruling
+([#506](https://github.com/openwave-labs/openwave/issues/506)) adjudicated
+`M8.5-C2-FAILED`, instrument-attributed STOP-QUAL: the frozen § 1 FAILED sentence issues,
+the spectral route closes, and the M8.4 reopening path closes with the verdict. The
+canonical account is the C2 protocol's addendum 1. See also
+[`../findings/m8_4_closeout.md`](../findings/m8_4_closeout.md).
 
 ### Independent reproduction, M8.5-A (added 2026-07-28)
 
