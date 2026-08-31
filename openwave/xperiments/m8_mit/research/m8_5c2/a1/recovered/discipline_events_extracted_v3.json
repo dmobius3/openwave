@@ -174,6 +174,16 @@
   "source_kind": "main"
  },
  {
+  "ts": "2026-08-30T17:26:52.042Z",
+  "kind": "BASH",
+  "command": "python3 << 'PYEOF'\nimport json, hashlib, time\nimport numpy as np\nfrom build.sections import build_basis_object, total_modes\nfrom build.group import IRREP_NAMES, multiplicity\nfrom build.packet import packet_digest, RUNG_ORDER\nfrom build.arena import build_arena_registry\n\n# Recompute basis hashes (subsetting the full N=180 object)\nN_MAX = 180\nAGREEMENT_RUNGS = [24, 32, 40, 48]\nCONTROL_B_RUNGS = [36, 44, 52, 60]\nALL_RUNGS = sorted(set(AGREEMENT_RUNGS + CONTROL_B_RUNGS))\n\nprint(\"Building all bases for hashing...\")\nt0 = time.time()\nall_bases = {}\nfor rho in IRREP_NAMES:\n    all_bases[rho] = build_basis_object(rho, N_MAX)\nprint(f\"Bases built: {time.time()-t0:.1f}s\")\n\ndef basis_hash_at_rung(rho, N):\n    \"\"\"Hash basis for sector rho at rung N (levels 0..3N).\"\"\"\n    level_max = 3 * N\n    h = hashlib.sha256()\n    basis = all_bases[rho]\n    for n in sorted(basis.keys()):\n        if n > level_max:\n            break\n        A = basis[n]\n        for i in range(A.shape[0]):\n            for r in range(A.shape[1]):\n                for c in range(A.shape[2]):\n                    z = A[i, r, c]\n                    h.update(np.float64(z.real).tobytes())\n                    h.update(np.float64(z.imag).",
+  "classes": [
+   "MANIFEST_WRITE"
+  ],
+  "source": "df404d7f-30da-41ec-8c3e-12ef3f92c53b.jsonl",
+  "source_kind": "main"
+ },
+ {
   "ts": "2026-08-30T17:31:33.264Z",
   "kind": "EDIT",
   "file": "/Users/blake/Desktop/MIT/OpenWave/M8.5C2_BUILD/ledger/COMMISSIONING.md",

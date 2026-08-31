@@ -30,9 +30,11 @@ no description at all.
    timeline then cited events absent from the record filed to support it, which is the
    defect class this filing exists to avoid, committed inside the correction of it. The
    author's recheck against the pushed bytes caught it. `recovered/discipline_events_extracted_v3.json`
-   keys on BEHAVIOUR rather than path literals: 154 events (23 Write, 79 Edit, 52 Bash),
-   each Bash event carrying its classes (`LEDGER_DELETE`, `KILL`, `GATE_EXECUTION`,
-   `LEDGER_TOUCH`). v1 (104 events) and v2 (120) are retained under their own names as
+   keys on BEHAVIOUR rather than path literals: 155 events, each carrying its classes
+   (`LEDGER_DELETE`, `KILL`, `GATE_EXECUTION`, `MANIFEST_WRITE`, `LEDGER_TOUCH`). Every
+   time cited in the timeline below resolves to an event in that file, checked
+   mechanically against the pushed bytes; the manifest-close entry was added for exactly
+   that reason, having been the one timeline anchor the previous rebuild did not carry. v1 (104 events) and v2 (120) are retained under their own names as
    the record of what was filed before. SCOPE, stated rather than claimed exhaustive: v3
    scans 9 transcripts (1 main, 8 sidechain), of which 5 carry in-room events, and covers
    every `Write`/`Edit`/`MultiEdit` targeting a path under the room plus every `Bash` that
