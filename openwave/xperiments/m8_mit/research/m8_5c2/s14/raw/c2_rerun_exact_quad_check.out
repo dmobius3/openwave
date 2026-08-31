@@ -1,0 +1,12 @@
+  N=3, modes=30;  nodes: exact-4N 1183, reference 8125, mutated 196
+  Gram vs Schur orthogonality (exact-4N rule): max err 5.00e-01
+  cubic Galerkin coefficients, exact-4N vs reference : max rel 2.22e-15
+  MUTATION, rule exact only to 2N vs reference       : max rel 1.48e-01
+  wall time 0.9s
+
+  VERDICT: CONFIRMED: degree-4N quadrature returns the projection to rounding, and under-resolution is DETECTED, not silent
+  Gram, exact-4N rule vs oversampled reference: max diff 3.08e-14
+  cross-level Gram entries (must vanish, levels are orthogonal): max 1.82e-15
+  within-level Gram is NOT the identity, consistent with S1b's finding that
+  sym_power is non-unitary; the basis is a non-orthonormal spanning set per level.
+exit 0

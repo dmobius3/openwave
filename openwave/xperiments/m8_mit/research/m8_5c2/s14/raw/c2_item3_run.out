@@ -1,0 +1,8 @@
+  agree_N48_4N: nodes 3,613,153  fft2 0.08s  cubic 0.01s  u-matmul 0.74s  per-evaluation 1.65s
+  ctrlB_N60_4N: nodes 7,027,801  fft2 0.17s  cubic 0.03s  u-matmul 1.85s  per-evaluation 4.05s
+  monitor_N60_6N: nodes 23,588,101  fft2 0.29s  cubic 0.10s  u-matmul 9.44s  per-evaluation 19.56s
+  Control B: eigh(1354) 0.17s, ldl(1354) 0.02s
+  composed (bounding everything by top-rung cost): agreement 0.72 h, monitor 1.74 h, Control B 1.74 h
+  TOTAL 4.20 h against the 48 h ceiling (margin 11x); FEASIBILITY-ONLY
+  ITEM 3 VERDICT: GREEN
+exit 0

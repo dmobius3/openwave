@@ -1,0 +1,24 @@
+== section 0: primitives and self-arms ==
+[     0.4s] 0-selfarms: GREEN  pinned-formula arm; 120-closure and order-census arm; n=6 empty-invariant arm
+== bases at N=24 ==
+[   105.4s] B-bases: GREEN  Reynolds dims {1,13,21,25}; symmetric Lowdin (refined, still the canonical map); Gram, roundtrip, and DIRECT left-invariance at rounding
+== (a)(b)(c) gate-4 arms ==
+[   225.9s] a-evenK-drop: GREEN  even-K angular drop (K=2N, u exact) on the arena-drawn field; parent = 4N-vs-8N agreement
+[   228.5s] b-crossparity-leakage: GREEN  arm-local scalar read at n in {1,3,5}, truth zero by parity; odd-K rule fires, exact rule at rounding
+[   228.5s] c-oddK-regression-CONTROL: GREEN  superseded odd-K drop DEAD on arena fields; green condition IS machine zero (control, not an arm)
+[   228.5s] d-gate1-injection: GREEN  built N=24 R0 diagonal; anti-Hermitian injection between two retained modes
+[   238.3s] e-gate2-mislabel: GREEN  FD Casimir through the sampling map on a BUILT element; relabel 12->20 fires
+== (k)(l)(m) gate-5 arms ==
+[   251.3s] k-nongradient: GREEN  cubic Jacobian on the arena-drawn E_R0 state; parent within the frozen 1e-12 bound; a non-gradient term reds exactly that predicate
+[   359.2s] l-symbreak-coupling: GREEN  E_R0 (x) C^2 arena-drawn state; cubic equivariance under a right translation; a non-invariant weight reds it
+[   359.2s] m-intralevel-break: GREEN  level-diagonal commutes with the measured right action; intra-level spread reds it
+== (f) gate-6 monitor arms (streamed) ==
+[  2468.1s] f-monitor-arms: GREEN  band content at n=30: even-K monitor drop fires; leakage under the 4N-for-6N substitution fires; the substitution itself is DEAD on the band read (control); injected high-band content at 2x threshold is read
+== (g) Control A ==
+[  2469.7s] g-controlA-return: GREEN  perturbed seed returns to the exact path; a mutated operator does not
+[  2469.8s] h-kickdrift: GREEN  control (ii): parent passes the 3x per-rung gate, first-order kick-drift fails it
+[  2469.8s] i-noncontracting-tail: GREEN  the frozen e/3 rule: contracting parent GREEN, injected non-contracting tail RED
+[  2469.8s] j-stub-registry: GREEN  out-of-registry nonlinear call REFUSED and logged; skipped arena trips the two-sided coverage check
+
+ITEM 9 VERDICT: GREEN, all thirteen demonstrations  wall 2469.8s
+exit 0

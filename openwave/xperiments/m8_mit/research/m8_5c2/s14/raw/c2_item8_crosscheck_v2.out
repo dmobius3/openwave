@@ -1,0 +1,12 @@
+  OK  (a) multi-seed no-symmetry @ § 2
+  OK  (a) multi-seed fallback @ § 5
+  OK  (b) measured-nullspace @ § 2
+  OK  (b) rank form @ § 5
+  OK  (c) energy and charge alone @ § 2
+  OK  (c) energy and charge alone @ gate-5 row
+  OK  TRIGGER L enumeration degrade @ § 2
+  OK  TRIGGER L keeps predicted-vs-measured @ § 2
+  OK  item 1 fallback class @ § 14
+  OK  item 4 fallback class @ § 14
+  VERDICT: GREEN, the same two degraded contracts at their assigned surfaces
+exit 0
