@@ -1,0 +1,59 @@
+============================================================
+CONTROL (i): linear standing wave on H_{R0,12}
+============================================================
+  omega = sqrt(168) = 12.961481
+  T = 0.484758
+  momenta = [ 20.93975566  60.47520867 -17.5324386 ]
+  dt=4.847583e-03  error=1.034508e-02
+  dt=2.423791e-03  error=2.584461e-03
+  dt=1.211896e-03  error=6.460019e-04
+  dt=6.059478e-04  error=1.614934e-04
+  PASS: finest rung error 1.61e-04 <= 1e-3
+  contraction rung 1: 4.00x
+  contraction rung 2: 4.00x
+  contraction rung 3: 4.00x
+  conservation: charge_rel=3.44e-15, momenta_rel=1.450451067868632e-14
+
+============================================================
+CONTROL (ii): nonlinear constant section on E_R0
+============================================================
+  omega = 1.000000, k^2 = 0.5
+  T_cn = 7.416299
+  RK45 vs exact cn: max|diff| = 7.78e-09
+  dt=7.416299e-02  error=4.432575e-03
+  dt=3.708149e-02  error=1.110835e-03
+  dt=1.854075e-02  error=2.778812e-04
+  dt=9.270373e-03  error=6.948629e-05
+  PASS: finest rung error 6.95e-05 <= 1e-3
+  contraction rung 1: 3.99x
+  contraction rung 2: 4.00x
+  contraction rung 3: 4.00x
+  conservation: charge_rel=0.00e+00, energy_envelope=4.56e-06
+
+============================================================
+MUTATION ARM: symplectic Euler on control (ii)
+============================================================
+  dt=7.416299e-02  error=6.585451e-02
+  dt=3.708149e-02  error=2.299478e-02
+  dt=1.854075e-02  error=9.024601e-03
+  dt=9.270373e-03  error=3.894814e-03
+  contraction rung 1: 2.86x
+  contraction rung 2: 2.55x
+  contraction rung 3: 2.32x
+  PASS: symplectic Euler fails 3x contraction (mutation detected)
+
+============================================================
+WIRING CHECKS (N=36)
+============================================================
+  Control (1): max_rel_error = 0.00e+00
+  PASS
+  Control (2): max_rel_error = 2.31e-15
+  PASS
+
+============================================================
+GATE 8: PASS
+============================================================
+
+GATE 8: PASS
+
+[exited with code 0]

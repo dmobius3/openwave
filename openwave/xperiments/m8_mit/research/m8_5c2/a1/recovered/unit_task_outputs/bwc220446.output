@@ -1,0 +1,65 @@
+============================================================
+CONTROL (i): linear standing wave on H_{R0,12}
+============================================================
+  omega = sqrt(168) = 12.961481
+  T = 0.484758
+  momenta = [ 20.93975566  60.47520867 -17.5324386 ]
+  dt=4.847583e-03  error=3.950012e-02
+  dt=2.423791e-03  error=1.671248e-02
+  dt=1.211896e-03  error=7.830502e-03
+  dt=6.059478e-04  error=3.993904e-03
+  FAIL: finest rung error 3.99e-03 > 1e-3
+  contraction rung 1: 2.36x
+  FAIL: contraction 2.36 < 3.0
+  contraction rung 2: 2.13x
+  FAIL: contraction 2.13 < 3.0
+  contraction rung 3: 1.96x
+  FAIL: contraction 1.96 < 3.0
+  conservation: charge_rel=3.44e-15, momenta_rel=1.450451067868632e-14
+
+============================================================
+CONTROL (ii): nonlinear constant section on E_R0
+============================================================
+  omega = 1.000000, k^2 = 0.5
+  T_cn = 7.416299
+  RK45 vs exact cn: max|diff| = 7.76e-09
+  dt=7.416299e-02  error=2.561821e-02
+  dt=3.708149e-02  error=9.954142e-03
+  dt=1.854075e-02  error=6.528790e-03
+  dt=9.270373e-03  error=3.012659e-03
+  FAIL: finest rung error 3.01e-03 > 1e-3
+  contraction rung 1: 2.57x
+  FAIL: contraction 2.57 < 3.0
+  contraction rung 2: 1.52x
+  FAIL: contraction 1.52 < 3.0
+  contraction rung 3: 2.17x
+  FAIL: contraction 2.17 < 3.0
+  conservation: charge_rel=0.00e+00, energy_envelope=4.56e-06
+
+============================================================
+MUTATION ARM: symplectic Euler on control (ii)
+============================================================
+  dt=7.416299e-02  error=8.450844e-02
+  dt=3.708149e-02  error=3.094073e-02
+  dt=1.854075e-02  error=1.427585e-02
+  dt=9.270373e-03  error=6.310582e-03
+  contraction rung 1: 2.73x
+  contraction rung 2: 2.17x
+  contraction rung 3: 2.26x
+  PASS: symplectic Euler fails 3x contraction (mutation detected)
+
+============================================================
+WIRING CHECKS (N=36)
+============================================================
+  Control (1): max_rel_error = 0.00e+00
+  PASS
+  Control (2): max_rel_error = 2.31e-15
+  PASS
+
+============================================================
+GATE 8: FAIL
+============================================================
+
+Gate 8: FAIL
+
+[exited with code 0]

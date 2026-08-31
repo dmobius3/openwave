@@ -1,0 +1,11 @@
+M8.5-C2 FULL QUALIFICATION RUN
+GATE 1: G-LIN (linear operator wiring)
+Gate 1: PASS  [1.1s]
+GATE 2: G-LABEL (Casimir labeling)
+Gate 2: PASS  [158.2s]
+GATE 3: G-SECTOR (sector bases)
+Gate 3: PASS  [202.3s]
+GATE 4: G-PROJECTOR (dual-route agreement)
+  Gate 4, N=24: PASS [dual_err=2.41e-14, drop_fires=True, 388.0s]
+
+[killed]

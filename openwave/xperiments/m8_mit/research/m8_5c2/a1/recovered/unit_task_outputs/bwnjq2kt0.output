@@ -1,0 +1,11 @@
+R0 (dim=1, modes=14): rel error = 6.71e-15  PASS
+R1 (dim=2, modes=14): rel error = 1.16e-14  PASS
+R2 (dim=2, modes=8): rel error = 1.15e-14  PASS
+R3 (dim=3, modes=27): rel error = 1.35e-14  PASS
+R4 (dim=3, modes=18): rel error = 1.24e-14  PASS
+R5 (dim=4, modes=29): rel error = 1.44e-14  PASS
+R6 (dim=4, modes=26): rel error = 1.89e-14  PASS
+R7 (dim=5, modes=38): rel error = 2.43e-14  PASS
+R8 (dim=6, modes=36): rel error = 2.42e-14  PASS
+
+[exited with code 0]

@@ -1,0 +1,916 @@
+{
+  "attempt_id": "C2-A1",
+  "created_after": "commissioning steps 1-7 and § 3 build complete",
+  "whitelist_files": {
+    "00_COMMISSION.md": "4338252b168a40f0c9f150975df0586ea668dee59419cd77f4461a5d2c6ed30c",
+    "openwave/xperiments/m8_mit/research/findings/m8_5c2_protocol.md": "6a58fe74b233f26157b28198f89e4f9386406e76153e366ee62dcdba3ca43db1",
+    "openwave/xperiments/m8_mit/research/findings/m8_5c_symmetry_derivation.md": "5b231af423066aa9b9902a4ca9b67f19a54158f6ab36339ae711992839820d1a",
+    "openwave/xperiments/m8_mit/research/m8_5b/pilot/route_a_nonabelian.py": "e55728534c6b1d611e364551297df7711b95cd87f73d3f97da753a743419931b",
+    "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/README.md": "86d8b6041effba2bf73e74d604e2d278398da1074a5cff0aa14ad47811fd4654",
+    "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/cascade_quad_check.py": "7f31bc305150c9d5e37ec312fe8fd00060583a87427feb7a56d6743d2fd66bfa",
+    "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/exact_quad_check.py": "51fa9b52bc9d3367fbb20baf084235da260c7f15b36fad1b78b31770e7f55ed7",
+    "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/jacobian_check.py": "dce687ea793522be40c4d06d25df19a0dfb99c72309a19361e220077007eb9d8",
+    "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/mode_count.py": "794d7063bea01ad3637a96c33e4e01e7fd71acfc636eb2d443c4f3cecb6959a6",
+    "openwave/xperiments/m8_mit/research/m8_5c/design_inputs/right_translation_check.py": "752baa2de36dbaea9fe4108ec6df9121351b386453d01b06bd8111562de8f547",
+    "openwave/xperiments/m8_mit/research/m8_5c/s14/raw/controlA_references.json": "dde909f6746994468805c55c1eae192b449b2eb4862e2432f61d55a9f3be4e44",
+    "openwave/xperiments/m8_mit/research/m8_5c/s14/raw/lattice_tables.json": "efe6c2d64ba9664edaf8b49b9026a683bf93aa78c0c994f09f41bd5a63a7b504",
+    "room_import_gate.py": "e0a1eef87169e23fa113f8347ee3d4e742dd9351c27e569be845da2364e53cde"
+  },
+  "whitelist_files_coverage": "verbatim from ROOM_MANIFEST.json; each hash covers the named file's bytes as copied at commissioning (§ 13)",
+  "arena_registry": [
+    {
+      "id": "A-R0-N24",
+      "arena": "E_R0 retained space at cutoff N=24",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..24, Galerkin projector P_N^R0"
+    },
+    {
+      "id": "A-R0-N32",
+      "arena": "E_R0 retained space at cutoff N=32",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..32, Galerkin projector P_N^R0"
+    },
+    {
+      "id": "A-R0-N36",
+      "arena": "E_R0 retained space at cutoff N=36",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..36, Galerkin projector P_N^R0"
+    },
+    {
+      "id": "A-R0-N40",
+      "arena": "E_R0 retained space at cutoff N=40",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..40, Galerkin projector P_N^R0"
+    },
+    {
+      "id": "A-R0-N44",
+      "arena": "E_R0 retained space at cutoff N=44",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..44, Galerkin projector P_N^R0"
+    },
+    {
+      "id": "A-R0-N48",
+      "arena": "E_R0 retained space at cutoff N=48",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..48, Galerkin projector P_N^R0"
+    },
+    {
+      "id": "A-R0-N52",
+      "arena": "E_R0 retained space at cutoff N=52",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..52, Galerkin projector P_N^R0"
+    },
+    {
+      "id": "A-R0-N60",
+      "arena": "E_R0 retained space at cutoff N=60",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..60, Galerkin projector P_N^R0"
+    },
+    {
+      "id": "A-R0C2-N24",
+      "arena": "E_R0 ⊗ C² manufactured extension at cutoff N=24",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..24 tensored with C², projector P_N^R0 ⊗ I_2"
+    },
+    {
+      "id": "A-R0C2-N32",
+      "arena": "E_R0 ⊗ C² manufactured extension at cutoff N=32",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..32 tensored with C², projector P_N^R0 ⊗ I_2"
+    },
+    {
+      "id": "A-R0C2-N36",
+      "arena": "E_R0 ⊗ C² manufactured extension at cutoff N=36",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..36 tensored with C², projector P_N^R0 ⊗ I_2"
+    },
+    {
+      "id": "A-R0C2-N40",
+      "arena": "E_R0 ⊗ C² manufactured extension at cutoff N=40",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..40 tensored with C², projector P_N^R0 ⊗ I_2"
+    },
+    {
+      "id": "A-R0C2-N44",
+      "arena": "E_R0 ⊗ C² manufactured extension at cutoff N=44",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..44 tensored with C², projector P_N^R0 ⊗ I_2"
+    },
+    {
+      "id": "A-R0C2-N48",
+      "arena": "E_R0 ⊗ C² manufactured extension at cutoff N=48",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..48 tensored with C², projector P_N^R0 ⊗ I_2"
+    },
+    {
+      "id": "A-R0C2-N52",
+      "arena": "E_R0 ⊗ C² manufactured extension at cutoff N=52",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..52 tensored with C², projector P_N^R0 ⊗ I_2"
+    },
+    {
+      "id": "A-R0C2-N60",
+      "arena": "E_R0 ⊗ C² manufactured extension at cutoff N=60",
+      "nonlinear_permitted": true,
+      "constructor": "R0 section basis levels 0..60 tensored with C², projector P_N^R0 ⊗ I_2"
+    },
+    {
+      "id": "A-CTRLA",
+      "arena": "Control A two-level full-S³ arena (levels 2 and 6), § 6",
+      "nonlinear_permitted": true,
+      "constructor": "full-S³ scalar harmonics at levels {2, 6}, manufactured projector P_{2,6}"
+    },
+    {
+      "id": "A-CTRLI",
+      "arena": "control (i) c1=0 linear operator on H_{R0,12}, § 7",
+      "nonlinear_permitted": true,
+      "constructor": "H_{R0,12} ≅ V_12^* (R0 level 12, dim 13), linear law c1=0"
+    },
+    {
+      "id": "A-SECTOR-R1-N24",
+      "arena": "nontrivial W_R1-valued bases and projectors at N=24",
+      "nonlinear_permitted": false,
+      "constructor": "R1 section basis levels 0..24, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R1-N32",
+      "arena": "nontrivial W_R1-valued bases and projectors at N=32",
+      "nonlinear_permitted": false,
+      "constructor": "R1 section basis levels 0..32, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R1-N36",
+      "arena": "nontrivial W_R1-valued bases and projectors at N=36",
+      "nonlinear_permitted": false,
+      "constructor": "R1 section basis levels 0..36, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R1-N40",
+      "arena": "nontrivial W_R1-valued bases and projectors at N=40",
+      "nonlinear_permitted": false,
+      "constructor": "R1 section basis levels 0..40, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R1-N44",
+      "arena": "nontrivial W_R1-valued bases and projectors at N=44",
+      "nonlinear_permitted": false,
+      "constructor": "R1 section basis levels 0..44, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R1-N48",
+      "arena": "nontrivial W_R1-valued bases and projectors at N=48",
+      "nonlinear_permitted": false,
+      "constructor": "R1 section basis levels 0..48, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R1-N52",
+      "arena": "nontrivial W_R1-valued bases and projectors at N=52",
+      "nonlinear_permitted": false,
+      "constructor": "R1 section basis levels 0..52, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R1-N60",
+      "arena": "nontrivial W_R1-valued bases and projectors at N=60",
+      "nonlinear_permitted": false,
+      "constructor": "R1 section basis levels 0..60, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R2-N24",
+      "arena": "nontrivial W_R2-valued bases and projectors at N=24",
+      "nonlinear_permitted": false,
+      "constructor": "R2 section basis levels 0..24, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R2-N32",
+      "arena": "nontrivial W_R2-valued bases and projectors at N=32",
+      "nonlinear_permitted": false,
+      "constructor": "R2 section basis levels 0..32, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R2-N36",
+      "arena": "nontrivial W_R2-valued bases and projectors at N=36",
+      "nonlinear_permitted": false,
+      "constructor": "R2 section basis levels 0..36, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R2-N40",
+      "arena": "nontrivial W_R2-valued bases and projectors at N=40",
+      "nonlinear_permitted": false,
+      "constructor": "R2 section basis levels 0..40, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R2-N44",
+      "arena": "nontrivial W_R2-valued bases and projectors at N=44",
+      "nonlinear_permitted": false,
+      "constructor": "R2 section basis levels 0..44, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R2-N48",
+      "arena": "nontrivial W_R2-valued bases and projectors at N=48",
+      "nonlinear_permitted": false,
+      "constructor": "R2 section basis levels 0..48, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R2-N52",
+      "arena": "nontrivial W_R2-valued bases and projectors at N=52",
+      "nonlinear_permitted": false,
+      "constructor": "R2 section basis levels 0..52, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R2-N60",
+      "arena": "nontrivial W_R2-valued bases and projectors at N=60",
+      "nonlinear_permitted": false,
+      "constructor": "R2 section basis levels 0..60, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R3-N24",
+      "arena": "nontrivial W_R3-valued bases and projectors at N=24",
+      "nonlinear_permitted": false,
+      "constructor": "R3 section basis levels 0..24, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R3-N32",
+      "arena": "nontrivial W_R3-valued bases and projectors at N=32",
+      "nonlinear_permitted": false,
+      "constructor": "R3 section basis levels 0..32, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R3-N36",
+      "arena": "nontrivial W_R3-valued bases and projectors at N=36",
+      "nonlinear_permitted": false,
+      "constructor": "R3 section basis levels 0..36, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R3-N40",
+      "arena": "nontrivial W_R3-valued bases and projectors at N=40",
+      "nonlinear_permitted": false,
+      "constructor": "R3 section basis levels 0..40, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R3-N44",
+      "arena": "nontrivial W_R3-valued bases and projectors at N=44",
+      "nonlinear_permitted": false,
+      "constructor": "R3 section basis levels 0..44, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R3-N48",
+      "arena": "nontrivial W_R3-valued bases and projectors at N=48",
+      "nonlinear_permitted": false,
+      "constructor": "R3 section basis levels 0..48, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R3-N52",
+      "arena": "nontrivial W_R3-valued bases and projectors at N=52",
+      "nonlinear_permitted": false,
+      "constructor": "R3 section basis levels 0..52, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R3-N60",
+      "arena": "nontrivial W_R3-valued bases and projectors at N=60",
+      "nonlinear_permitted": false,
+      "constructor": "R3 section basis levels 0..60, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R4-N24",
+      "arena": "nontrivial W_R4-valued bases and projectors at N=24",
+      "nonlinear_permitted": false,
+      "constructor": "R4 section basis levels 0..24, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R4-N32",
+      "arena": "nontrivial W_R4-valued bases and projectors at N=32",
+      "nonlinear_permitted": false,
+      "constructor": "R4 section basis levels 0..32, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R4-N36",
+      "arena": "nontrivial W_R4-valued bases and projectors at N=36",
+      "nonlinear_permitted": false,
+      "constructor": "R4 section basis levels 0..36, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R4-N40",
+      "arena": "nontrivial W_R4-valued bases and projectors at N=40",
+      "nonlinear_permitted": false,
+      "constructor": "R4 section basis levels 0..40, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R4-N44",
+      "arena": "nontrivial W_R4-valued bases and projectors at N=44",
+      "nonlinear_permitted": false,
+      "constructor": "R4 section basis levels 0..44, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R4-N48",
+      "arena": "nontrivial W_R4-valued bases and projectors at N=48",
+      "nonlinear_permitted": false,
+      "constructor": "R4 section basis levels 0..48, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R4-N52",
+      "arena": "nontrivial W_R4-valued bases and projectors at N=52",
+      "nonlinear_permitted": false,
+      "constructor": "R4 section basis levels 0..52, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R4-N60",
+      "arena": "nontrivial W_R4-valued bases and projectors at N=60",
+      "nonlinear_permitted": false,
+      "constructor": "R4 section basis levels 0..60, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R5-N24",
+      "arena": "nontrivial W_R5-valued bases and projectors at N=24",
+      "nonlinear_permitted": false,
+      "constructor": "R5 section basis levels 0..24, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R5-N32",
+      "arena": "nontrivial W_R5-valued bases and projectors at N=32",
+      "nonlinear_permitted": false,
+      "constructor": "R5 section basis levels 0..32, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R5-N36",
+      "arena": "nontrivial W_R5-valued bases and projectors at N=36",
+      "nonlinear_permitted": false,
+      "constructor": "R5 section basis levels 0..36, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R5-N40",
+      "arena": "nontrivial W_R5-valued bases and projectors at N=40",
+      "nonlinear_permitted": false,
+      "constructor": "R5 section basis levels 0..40, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R5-N44",
+      "arena": "nontrivial W_R5-valued bases and projectors at N=44",
+      "nonlinear_permitted": false,
+      "constructor": "R5 section basis levels 0..44, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R5-N48",
+      "arena": "nontrivial W_R5-valued bases and projectors at N=48",
+      "nonlinear_permitted": false,
+      "constructor": "R5 section basis levels 0..48, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R5-N52",
+      "arena": "nontrivial W_R5-valued bases and projectors at N=52",
+      "nonlinear_permitted": false,
+      "constructor": "R5 section basis levels 0..52, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R5-N60",
+      "arena": "nontrivial W_R5-valued bases and projectors at N=60",
+      "nonlinear_permitted": false,
+      "constructor": "R5 section basis levels 0..60, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R6-N24",
+      "arena": "nontrivial W_R6-valued bases and projectors at N=24",
+      "nonlinear_permitted": false,
+      "constructor": "R6 section basis levels 0..24, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R6-N32",
+      "arena": "nontrivial W_R6-valued bases and projectors at N=32",
+      "nonlinear_permitted": false,
+      "constructor": "R6 section basis levels 0..32, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R6-N36",
+      "arena": "nontrivial W_R6-valued bases and projectors at N=36",
+      "nonlinear_permitted": false,
+      "constructor": "R6 section basis levels 0..36, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R6-N40",
+      "arena": "nontrivial W_R6-valued bases and projectors at N=40",
+      "nonlinear_permitted": false,
+      "constructor": "R6 section basis levels 0..40, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R6-N44",
+      "arena": "nontrivial W_R6-valued bases and projectors at N=44",
+      "nonlinear_permitted": false,
+      "constructor": "R6 section basis levels 0..44, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R6-N48",
+      "arena": "nontrivial W_R6-valued bases and projectors at N=48",
+      "nonlinear_permitted": false,
+      "constructor": "R6 section basis levels 0..48, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R6-N52",
+      "arena": "nontrivial W_R6-valued bases and projectors at N=52",
+      "nonlinear_permitted": false,
+      "constructor": "R6 section basis levels 0..52, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R6-N60",
+      "arena": "nontrivial W_R6-valued bases and projectors at N=60",
+      "nonlinear_permitted": false,
+      "constructor": "R6 section basis levels 0..60, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R7-N24",
+      "arena": "nontrivial W_R7-valued bases and projectors at N=24",
+      "nonlinear_permitted": false,
+      "constructor": "R7 section basis levels 0..24, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R7-N32",
+      "arena": "nontrivial W_R7-valued bases and projectors at N=32",
+      "nonlinear_permitted": false,
+      "constructor": "R7 section basis levels 0..32, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R7-N36",
+      "arena": "nontrivial W_R7-valued bases and projectors at N=36",
+      "nonlinear_permitted": false,
+      "constructor": "R7 section basis levels 0..36, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R7-N40",
+      "arena": "nontrivial W_R7-valued bases and projectors at N=40",
+      "nonlinear_permitted": false,
+      "constructor": "R7 section basis levels 0..40, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R7-N44",
+      "arena": "nontrivial W_R7-valued bases and projectors at N=44",
+      "nonlinear_permitted": false,
+      "constructor": "R7 section basis levels 0..44, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R7-N48",
+      "arena": "nontrivial W_R7-valued bases and projectors at N=48",
+      "nonlinear_permitted": false,
+      "constructor": "R7 section basis levels 0..48, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R7-N52",
+      "arena": "nontrivial W_R7-valued bases and projectors at N=52",
+      "nonlinear_permitted": false,
+      "constructor": "R7 section basis levels 0..52, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R7-N60",
+      "arena": "nontrivial W_R7-valued bases and projectors at N=60",
+      "nonlinear_permitted": false,
+      "constructor": "R7 section basis levels 0..60, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R8-N24",
+      "arena": "nontrivial W_R8-valued bases and projectors at N=24",
+      "nonlinear_permitted": false,
+      "constructor": "R8 section basis levels 0..24, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R8-N32",
+      "arena": "nontrivial W_R8-valued bases and projectors at N=32",
+      "nonlinear_permitted": false,
+      "constructor": "R8 section basis levels 0..32, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R8-N36",
+      "arena": "nontrivial W_R8-valued bases and projectors at N=36",
+      "nonlinear_permitted": false,
+      "constructor": "R8 section basis levels 0..36, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R8-N40",
+      "arena": "nontrivial W_R8-valued bases and projectors at N=40",
+      "nonlinear_permitted": false,
+      "constructor": "R8 section basis levels 0..40, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R8-N44",
+      "arena": "nontrivial W_R8-valued bases and projectors at N=44",
+      "nonlinear_permitted": false,
+      "constructor": "R8 section basis levels 0..44, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R8-N48",
+      "arena": "nontrivial W_R8-valued bases and projectors at N=48",
+      "nonlinear_permitted": false,
+      "constructor": "R8 section basis levels 0..48, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R8-N52",
+      "arena": "nontrivial W_R8-valued bases and projectors at N=52",
+      "nonlinear_permitted": false,
+      "constructor": "R8 section basis levels 0..52, linear operations only"
+    },
+    {
+      "id": "A-SECTOR-R8-N60",
+      "arena": "nontrivial W_R8-valued bases and projectors at N=60",
+      "nonlinear_permitted": false,
+      "constructor": "R8 section basis levels 0..60, linear operations only"
+    }
+  ],
+  "arena_registry_coverage": "§ 10 arena-constructor registry, built by the Build Unit per § 10's enumerated table",
+  "packet_digest": "1210596955a2680f62e7f2b90ce19b95d0d8f6c168cf363f8322de6f52259aaf",
+  "packet_digest_coverage": "SHA-256 of the canonical serialization of the § 4.3 manufactured field set, generated from PCG64(20260901), 40 fields per rung in the prescribed draw order, each normalized to unit L2 norm",
+  "basis_hashes": {
+    "N24": {
+      "R0": {
+        "sha256": "27cf0109737883f2146c8e164814b35b17f7ac52c6f13f07455244f443384ce2",
+        "coverage": "SHA-256 of the § 3 basis object for sector R0 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 60
+      },
+      "R1": {
+        "sha256": "d9eb151a3977beeda0d6e0e57db76021f8ec5569b2fb6e379dcb851a8db3867b",
+        "coverage": "SHA-256 of the § 3 basis object for sector R1 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 94
+      },
+      "R2": {
+        "sha256": "8dcab3d2fbf311bed07beebd42409b560b0959e1bfcfd245201ad10e8a0ea4e5",
+        "coverage": "SHA-256 of the § 3 basis object for sector R2 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 84
+      },
+      "R3": {
+        "sha256": "7175f902ff65fdc2072541de54f0d011ea340b64a9cb438fd17e9fbaa595dc33",
+        "coverage": "SHA-256 of the § 3 basis object for sector R3 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 153
+      },
+      "R4": {
+        "sha256": "65eb5e33a9563fc247ae6a7458f47204ce4a88ceb33772c2c8152e51d08818a4",
+        "coverage": "SHA-256 of the § 3 basis object for sector R4 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 138
+      },
+      "R5": {
+        "sha256": "756e85df9140ab6ff7b14bbdf83f38bbd9ac4836e4974ca30a175c98c734682d",
+        "coverage": "SHA-256 of the § 3 basis object for sector R5 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 193
+      },
+      "R6": {
+        "sha256": "a11e26e081aa6e8e6c5a6a8a4bdc671625a1f30c2229ff6cb6e89e446341f058",
+        "coverage": "SHA-256 of the § 3 basis object for sector R6 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 186
+      },
+      "R7": {
+        "sha256": "82208a7039524ea88ccb94ee4064c0814946b1f67cbc0d4fd5561b96e9fa8e5e",
+        "coverage": "SHA-256 of the § 3 basis object for sector R7 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 244
+      },
+      "R8": {
+        "sha256": "b61926f63496360eae6fb3ad950eb1636a058ff795db68419081313c0639ae93",
+        "coverage": "SHA-256 of the § 3 basis object for sector R8 at rung N=24, levels 0..72, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 250
+      }
+    },
+    "N32": {
+      "R0": {
+        "sha256": "9057d72adf00ffa2cdc1d1d4320678d495fbb11d8073737e95fc24c8871db590",
+        "coverage": "SHA-256 of the § 3 basis object for sector R0 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 124
+      },
+      "R1": {
+        "sha256": "3b4eaf309afc7759d5c211c0cbd223559ad396d667344eba6d7f6988835006fd",
+        "coverage": "SHA-256 of the § 3 basis object for sector R1 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 214
+      },
+      "R2": {
+        "sha256": "a661bde0e4458c11320bc8d3167a5f8db5e9b088b719377833f7373613b5990e",
+        "coverage": "SHA-256 of the § 3 basis object for sector R2 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 200
+      },
+      "R3": {
+        "sha256": "003b09f23c7a955291e2e4b9c9b341354d15277ea28170027e50ff58a2fda445",
+        "coverage": "SHA-256 of the § 3 basis object for sector R3 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 337
+      },
+      "R4": {
+        "sha256": "56cdc9d0054811335aba47851f89fd2b6d8c026511324b51f8110580bd8c5bc1",
+        "coverage": "SHA-256 of the § 3 basis object for sector R4 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 316
+      },
+      "R5": {
+        "sha256": "3d85929bd5464af08eced8db7576784c5433c79e914d91afab6425deaf7d07dd",
+        "coverage": "SHA-256 of the § 3 basis object for sector R5 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 433
+      },
+      "R6": {
+        "sha256": "49513462b6a6e1d19e30825d76b888cdac282870154ac28e1116a9305760cf5b",
+        "coverage": "SHA-256 of the § 3 basis object for sector R6 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 392
+      },
+      "R7": {
+        "sha256": "692b05f95e138bfa1561c647c3ca896441e9c368bd71217841a6e6bed4ed0169",
+        "coverage": "SHA-256 of the § 3 basis object for sector R7 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 546
+      },
+      "R8": {
+        "sha256": "1583e64585789645c6272d0f165154d4e9e64109a8945c20585aee6af818d4a5",
+        "coverage": "SHA-256 of the § 3 basis object for sector R8 at rung N=32, levels 0..96, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 598
+      }
+    },
+    "N36": {
+      "R0": {
+        "sha256": "37034a8330ce229427b3083a0d31d38c06518539665ceddcb304a9549aabec9a",
+        "coverage": "SHA-256 of the § 3 basis object for sector R0 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 161
+      },
+      "R1": {
+        "sha256": "b5002a1e7ce0615f8b304e7eaeb5f2664be61c0d12ebeb45be00dec902c7f66f",
+        "coverage": "SHA-256 of the § 3 basis object for sector R1 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 284
+      },
+      "R2": {
+        "sha256": "1648d2804818d667d7fa315c2b9f66351fcc0c189276f2bb01b179bcad015bad",
+        "coverage": "SHA-256 of the § 3 basis object for sector R2 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 270
+      },
+      "R3": {
+        "sha256": "680e032ab0877904400132b9a7a689987d95e8af928ac0c42a7103b9fac77bff",
+        "coverage": "SHA-256 of the § 3 basis object for sector R3 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 444
+      },
+      "R4": {
+        "sha256": "b8ad58d99abfa2526f528d3cf8a4878a029a5df260ffb1ac41de306c24ba92e9",
+        "coverage": "SHA-256 of the § 3 basis object for sector R4 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 460
+      },
+      "R5": {
+        "sha256": "630998470b70a96943af28ee3fe2b21b01653fa59f9c207323a25bbdb726e29e",
+        "coverage": "SHA-256 of the § 3 basis object for sector R5 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 614
+      },
+      "R6": {
+        "sha256": "f2e6102c4fb6165f637a0d430d6b7e5eb7898e210879c4f3368bb283c9dcfff6",
+        "coverage": "SHA-256 of the § 3 basis object for sector R6 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 566
+      },
+      "R7": {
+        "sha256": "03b204bd031c7e42b57d4c1306569b4d70c8640ece8b18cc9d0c6126ca684d92",
+        "coverage": "SHA-256 of the § 3 basis object for sector R7 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 762
+      },
+      "R8": {
+        "sha256": "2d57d3e95bfd002fdaca1e44c8cb8ca5c3652bf5d51499e62ced56647dfadb2b",
+        "coverage": "SHA-256 of the § 3 basis object for sector R8 at rung N=36, levels 0..108, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 844
+      }
+    },
+    "N40": {
+      "R0": {
+        "sha256": "28773dd8d6918e29603e93990892fea0b6703958821781d2c9d182126380b045",
+        "coverage": "SHA-256 of the § 3 basis object for sector R0 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 202
+      },
+      "R1": {
+        "sha256": "765c7639570c72fe16c6334ca1b0500b22ccf087f7b3e6a286f1436a317a2b08",
+        "coverage": "SHA-256 of the § 3 basis object for sector R1 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 362
+      },
+      "R2": {
+        "sha256": "6536e260261b42439a9100633d66660edc757eefc2075da0deae0fb8a27d5f98",
+        "coverage": "SHA-256 of the § 3 basis object for sector R2 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 386
+      },
+      "R3": {
+        "sha256": "e89511ccae80c1d65fbc9a66883cd193164a0dbe239711d528abdcdcd0e46411",
+        "coverage": "SHA-256 of the § 3 basis object for sector R3 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 604
+      },
+      "R4": {
+        "sha256": "5369d8dcb6db16a9293c3cbcd2166ce3de52812d772727f114719a2e33d125de",
+        "coverage": "SHA-256 of the § 3 basis object for sector R4 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 620
+      },
+      "R5": {
+        "sha256": "78d549310376b5f3d3194ccd03ffbdf2fa80168a3d9c6e2e928d6eb805ae3c70",
+        "coverage": "SHA-256 of the § 3 basis object for sector R5 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 813
+      },
+      "R6": {
+        "sha256": "ede06c9d1a9d2c775bc7914696475aec1d8e621404d6377a713f00dd8f39eeeb",
+        "coverage": "SHA-256 of the § 3 basis object for sector R6 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 762
+      },
+      "R7": {
+        "sha256": "adb6b98578c427bc089c84df9e1a3e2056a28b5e41dad55cd868067a45f97486",
+        "coverage": "SHA-256 of the § 3 basis object for sector R7 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1043
+      },
+      "R8": {
+        "sha256": "775a6f009d1f0e649eab9486754e9acd2b64309bdecdf4aa7ebc5882acf51342",
+        "coverage": "SHA-256 of the § 3 basis object for sector R8 at rung N=40, levels 0..120, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1156
+      }
+    },
+    "N44": {
+      "R0": {
+        "sha256": "bea39b7db50cb19271903f28c50ddc40db07d6ebfdd269af9a552ef7371b6c3b",
+        "coverage": "SHA-256 of the § 3 basis object for sector R0 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 290
+      },
+      "R1": {
+        "sha256": "134cc04db5db393eb9fd70aff8805e4e90482810aa05aa2f7e472ec4a648ef2b",
+        "coverage": "SHA-256 of the § 3 basis object for sector R1 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 534
+      },
+      "R2": {
+        "sha256": "04670b7f12768a5f95dba3cc4ec649ff120524e822b48c544b55ade2a2d6704e",
+        "coverage": "SHA-256 of the § 3 basis object for sector R2 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 516
+      },
+      "R3": {
+        "sha256": "70331f71a5dd79a1d912087d4f22325fcf9a03b3cc2fc6c79e0f255d32cfeeed",
+        "coverage": "SHA-256 of the § 3 basis object for sector R3 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 823
+      },
+      "R4": {
+        "sha256": "983ec46e08b09317092b4f8bdff666e234a2e4c034cac8288aa2f56f00950091",
+        "coverage": "SHA-256 of the § 3 basis object for sector R4 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 796
+      },
+      "R5": {
+        "sha256": "bb1c99e8e26460d55148deaff70edd6bb71f68edab206b31d3dd659a18986f72",
+        "coverage": "SHA-256 of the § 3 basis object for sector R5 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1077
+      },
+      "R6": {
+        "sha256": "2f1a4d57d3815548faab7d37c646c7988fff3c01a20fd05288727d22b0efcbac",
+        "coverage": "SHA-256 of the § 3 basis object for sector R6 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1020
+      },
+      "R7": {
+        "sha256": "2ddde872b107a63d448163fc3fc61aee7e66a1a9bab6eaec8ec5ad2c231a3f2a",
+        "coverage": "SHA-256 of the § 3 basis object for sector R7 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1352
+      },
+      "R8": {
+        "sha256": "9ba30bf08543ef929cb2d8a485403898fabc9390cfbec3db4d4c9503dd1c765e",
+        "coverage": "SHA-256 of the § 3 basis object for sector R8 at rung N=44, levels 0..132, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1500
+      }
+    },
+    "N48": {
+      "R0": {
+        "sha256": "6a31e5c70e46eb7bb9220709b9775c88809473f3b4ddb04c445a2bd185a0ff49",
+        "coverage": "SHA-256 of the § 3 basis object for sector R0 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 339
+      },
+      "R1": {
+        "sha256": "155f6554e10d12e8ff4354b14aafd49378d6264b3aa2197ee44365df29228dbe",
+        "coverage": "SHA-256 of the § 3 basis object for sector R1 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 628
+      },
+      "R2": {
+        "sha256": "11e71c9e0660b380c63ccf7fde1977123cf9e554ca4947e03ed4c1f26324e98c",
+        "coverage": "SHA-256 of the § 3 basis object for sector R2 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 658
+      },
+      "R3": {
+        "sha256": "d9889de5d5b16658a50b9d4c333cc3fbebc2d7d1fdd2aa7c457084353430315f",
+        "coverage": "SHA-256 of the § 3 basis object for sector R3 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1015
+      },
+      "R4": {
+        "sha256": "58e4dcbba3008f2d64bf1c12ed3c2d8a1d6e55c4a8bf6d99bec0c82f3a6b6784",
+        "coverage": "SHA-256 of the § 3 basis object for sector R4 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1035
+      },
+      "R5": {
+        "sha256": "66cd6abd912702d5b21d12deb2437dedc1907d9598275c2d09b6843bd9253063",
+        "coverage": "SHA-256 of the § 3 basis object for sector R5 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1414
+      },
+      "R6": {
+        "sha256": "050f4fc7c26fb5a40c074c1a2d0a78ab4d9a52e682f6bedb9d5ef7c7636d824b",
+        "coverage": "SHA-256 of the § 3 basis object for sector R6 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1302
+      },
+      "R7": {
+        "sha256": "3f52178c3d52171ebee3f94bc6b25a8ef600791c3d94fef36f8ad7d53edf3b6e",
+        "coverage": "SHA-256 of the § 3 basis object for sector R7 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1736
+      },
+      "R8": {
+        "sha256": "3c1f6ef8d76ba84bda00d0370238357c00c6dd108724f2c0e09035680d4ba615",
+        "coverage": "SHA-256 of the § 3 basis object for sector R8 at rung N=48, levels 0..144, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1970
+      }
+    },
+    "N52": {
+      "R0": {
+        "sha256": "efa6f7aee7d61419a0d467bcc8f6ef2991594e8ca900b721fbc162dd99380257",
+        "coverage": "SHA-256 of the § 3 basis object for sector R0 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 443
+      },
+      "R1": {
+        "sha256": "c9eb9f5f6c42e7d4374eb9b1082572b39ee8e60212144e8b89a6eceea6c6d2a7",
+        "coverage": "SHA-256 of the § 3 basis object for sector R1 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 832
+      },
+      "R2": {
+        "sha256": "7c4151dc6726aac4312ac48a28e13173014c455d712533c6d347fb6ff992fe82",
+        "coverage": "SHA-256 of the § 3 basis object for sector R2 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 810
+      },
+      "R3": {
+        "sha256": "f5a5da38564404614f5ec81add3e13c22afee6187aee8f1a627f23956cd06284",
+        "coverage": "SHA-256 of the § 3 basis object for sector R3 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1327
+      },
+      "R4": {
+        "sha256": "52b0894cac8b3b69081022d3309b314596cd856f53b6edf1e30078a7d5a4e96a",
+        "coverage": "SHA-256 of the § 3 basis object for sector R4 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1294
+      },
+      "R5": {
+        "sha256": "600bda78e80d039b651a38af2388dba51850a01a8dd069b47f3e607c3e56d99b",
+        "coverage": "SHA-256 of the § 3 basis object for sector R5 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1726
+      },
+      "R6": {
+        "sha256": "d898de7482cb0374db9fec377bb28ac076eb9a8a46e670c1ee7e4a6544e17f36",
+        "coverage": "SHA-256 of the § 3 basis object for sector R6 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1660
+      },
+      "R7": {
+        "sha256": "8c9b695c9a3e248d580944faaa9a60c6451f76f69363c19b42afc9011934add4",
+        "coverage": "SHA-256 of the § 3 basis object for sector R7 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 2205
+      },
+      "R8": {
+        "sha256": "63c5dd618bb6889b9165596649e8f3938eccd63956e7fe304f10c843410216a6",
+        "coverage": "SHA-256 of the § 3 basis object for sector R8 at rung N=52, levels 0..156, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 2480
+      }
+    },
+    "N60": {
+      "R0": {
+        "sha256": "6d57f3acf3d5b5f543f626d22b5eb718cae31ef30445aeb018d941381b5f642f",
+        "coverage": "SHA-256 of the § 3 basis object for sector R0 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 677
+      },
+      "R1": {
+        "sha256": "feb61a2c29a0fba5e2ed6ca15a17e3a99b217893e252a341fa39fc27d8560af6",
+        "coverage": "SHA-256 of the § 3 basis object for sector R1 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1230
+      },
+      "R2": {
+        "sha256": "39e59d88a045b463decb4db5691b6a0f5448fedd385d16be179422fc5505363c",
+        "coverage": "SHA-256 of the § 3 basis object for sector R2 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1266
+      },
+      "R3": {
+        "sha256": "ce45f565ac2eff981a7616787dc2b6de960f3bba75f6bd9e4eb7ed2beb3b359a",
+        "coverage": "SHA-256 of the § 3 basis object for sector R3 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1966
+      },
+      "R4": {
+        "sha256": "1de90b369a5e2a14491b86070d4271412bb5d5b41f961c8869252511314155cf",
+        "coverage": "SHA-256 of the § 3 basis object for sector R4 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 1990
+      },
+      "R5": {
+        "sha256": "204aca65dd9e42362614892691dd618b6a69e0ed5e32991216d9c38f5f5c0ae9",
+        "coverage": "SHA-256 of the § 3 basis object for sector R5 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 2654
+      },
+      "R6": {
+        "sha256": "9112f8d2c484e7f79f0a07ea54860a3248ff9f56bd3b6aa80881af3d7519acf5",
+        "coverage": "SHA-256 of the § 3 basis object for sector R6 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 2516
+      },
+      "R7": {
+        "sha256": "db86bb08d70c1b33dc670eef2fe88f2f0fadebac16c2fca6ae01dedbc68644e6",
+        "coverage": "SHA-256 of the § 3 basis object for sector R7 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 3310
+      },
+      "R8": {
+        "sha256": "385a8a38bb01b93fa3a01cf9f27b3511544e87d08ed1334bcee95ec4629a0187",
+        "coverage": "SHA-256 of the § 3 basis object for sector R8 at rung N=60, levels 0..180, deterministic SVD + Lowdin + sign-fix construction, serialized as little-endian float64 (real, imag) pairs in level-major, intertwiner-index, row, column order",
+        "retained_modes": 3794
+      }
+    }
+  },
+  "controlA_references": {
+    "file": "openwave/xperiments/m8_mit/research/m8_5c/s14/raw/controlA_references.json",
+    "sha256": "dde909f6746994468805c55c1eae192b449b2eb4862e2432f61d55a9f3be4e44",
+    "coverage": "SHA-256 of the file's bytes as copied at commissioning; § 14 item 5 exact-arithmetic reference values"
+  },
+  "lattice_tables": {
+    "file": "openwave/xperiments/m8_mit/research/m8_5c/s14/raw/lattice_tables.json",
+    "sha256": "efe6c2d64ba9664edaf8b49b9026a683bf93aa78c0c994f09f41bd5a63a7b504",
+    "coverage": "SHA-256 of the file's bytes as copied at commissioning; § 14 item 4 isotropy lattice tables"
+  },
+  "commission_record": {
+    "file": "ledger/COMMISSIONING.md",
+    "sha256": "0f69bf3442201da4152a760453d8195e02ca524b507b6ffbb9e7493a95d12ba8",
+    "coverage": "SHA-256 of ledger/COMMISSIONING.md after bootstrap steps 1-7 complete, before INPUT_MANIFEST close"
+  },
+  "commission_document": {
+    "file": "00_COMMISSION.md",
+    "sha256": "4338252b168a40f0c9f150975df0586ea668dee59419cd77f4461a5d2c6ed30c",
+    "coverage": "SHA-256 of the commission document, also in whitelist_files"
+  },
+  "basis_hashes_coverage": "per-sector, per-rung § 3 basis-object hashes; each covers levels 0..3N for the named rung"
+}

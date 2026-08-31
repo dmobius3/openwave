@@ -1,0 +1,10 @@
+R0 at N=24: 60 modes
+Generator shapes: [(60, 60), (60, 60), (60, 60)]
+T1 anti-Hermiticity: 0.00e+00
+T2 anti-Hermiticity: 0.00e+00
+T3 anti-Hermiticity: 0.00e+00
+Jacobian symmetry: ratio=0.00e+00, K=0.00e+00, norm=4.58e+02, pass=True
+Noether results: {'E': np.float64(2.9519059809829574e-20), 'Q': np.float64(1.5589625331154142e-17), 'M1': np.float64(4.968429037706e-05), 'M2': np.float64(7.889446018253847e-06), 'M3': np.float64(1.0013581656034375e-17)}
+Noether pass: False
+
+[exited with code 0]

@@ -1,0 +1,6 @@
+GATE 1: G-LIN (linear operator wiring)
+Gate 1: PASS  [1.1s]
+GATE 2: G-LABEL (Casimir labeling)
+Gate 2: PASS  [184.8s]
+
+[killed]
