@@ -1,0 +1,4 @@
+N=32: modes=124, first=17.9s, second=11.1s, err=8.49e-14
+N=40: modes=202, first=69.0s, second=50.9s, err=6.57e-13
+
+[exited with code 0]

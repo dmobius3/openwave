@@ -1,0 +1,9 @@
+N=24, total modes = 60
+Synthesis: 0.15s, field shape (49, 97, 97, 1)
+Analysis: 0.16s
+Round-trip relative error: 5.09e-15
+Fast cubic: 0.31s
+Direct cubic: 1803.70s
+Cubic agreement: 2.00e-14
+
+[exited with code 0]
