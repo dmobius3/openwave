@@ -76,4 +76,4 @@ Enhanced EWT manuscript, version 4.6.1 or later:
 
 Relevant section:
 
-- „Newtonian Force from Interacting EMC Deficits”
+- "Newtonian Force from Interacting EMC Deficits"
