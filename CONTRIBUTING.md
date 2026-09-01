@@ -104,6 +104,7 @@ A line a script prints as `PASS`, `CONFIRMED`, or `-> arm goes red` is a claim a
 | The verdict word is printed unconditionally beside the number | Only the number moves; the label says the same thing whatever the run did | Compute the verdict, then print it: `ok = err < tol and mutation > 1e3 * err` |
 | A harness asserts a label appears in the output | `"my check" in out` is satisfied whether it printed `PASS my check` or `FAIL my check` | Match the prefixed form, `"PASS  my check"` |
 | The verdict is computed and printed, and the script still exits 0 | Anything reading exit status rather than stdout records a green run for a failed check, including your own rerun sweep and the record it writes | Carry the verdict in the exit status too, `sys.exit(0 if ok else 1)`, so the run is falsifiable without a human reading the output |
+| The case the check runs on makes the predicate hold by construction | The line is computed and conditional and still cannot move, because the test case forces it: a scalar that cancels exactly leaves a relative difference pinned at `1.000`, and a kernel that fills all but one dimension accepts any vector | Run it on a case where the right and wrong answers differ, and sweep the free parameters to confirm the number moves |
 
 Where a quantity has no independent target to compare against, the honest label is **asserted**, not a self-check. An asserted value is a perfectly good contribution; a self-check that cannot discriminate is not, because it reads exactly like a verified result.
 
