@@ -8,15 +8,47 @@ The 3D volumetric interaction energy between two displaced monopole deficits $\d
 
 $$\int d\Omega \frac{r - R \cos\theta}{\left(r^2 + R^2 - 2rR \cos\theta\right)^{3/2}} = \begin{cases} 0 & \text{for } r < R \\ \frac{4\pi}{r^2} & \text{for } r \ge R \end{cases}$$
 
-The total geometric overlap integral is evaluated over the spatial domain $r \in [R, \infty)$:
+The total geometric overlap integral $I(R)$ is evaluated over the spatial domain $r \in [R, \infty)$:
 
-$$I(R) = A_1 A_2 \int_{R}^{\infty} \frac{4\pi}{r^2} \, dr = \frac{4\pi A_1 A_2}{R}$$
+$$I(R) = \int \nabla \delta\eta_1 \cdot \nabla \delta\eta_2 \, dV = A_1 A_2 \int_{R}^{\infty} \frac{4\pi}{r^2} \, dr = \frac{4\pi A_1 A_2}{R}$$
 
-Differentiating with respect to $R$ gives the geometric force:
+Differentiating with respect to $R$ gives the geometric gradient magnitude:
 
 $$F_{\text{geom}} = -\frac{dI}{dR} = \frac{4\pi A_1 A_2}{R^2}$$
 
-The physical interaction energy and sign are defined in the next section.
+*(Note: $F_{\text{geom}}$ is a purely geometric intermediate gradient magnitude, superseded by the physical field-energy force $F_{\text{EMC}}$ in the next section.)*
+
+## Physical Interaction Energy and Sign Convention
+
+The physical interaction energy $U_{\text{int}}(R)$ follows from the negative-definite field energy functional of the overlapping EMC deficits, serving as the exact field-theoretic analogue of the negative Newtonian field energy $-\frac{1}{8\pi G}\int |\nabla\Phi|^2 dV$:
+
+$$
+U_{\text{int}}(R) = -\frac{1}{2} K_{\text{emc}} \int |\nabla \delta\eta|^2 \, dV
+$$
+
+For two superposed monopole deficits $\delta\eta = \delta\eta_1 + \delta\eta_2$, the cross term yields:
+
+$$
+U_{\text{int}}(R) = -\frac{1}{2} K_{\text{emc}} \cdot 2 \int \nabla \delta\eta_1 \cdot \nabla \delta\eta_2 \, dV = -K_{\text{emc}} I(R) = -\frac{4\pi K_{\text{emc}} A_1 A_2}{R}
+$$
+
+The minus sign is therefore derived from the energy functional, not imposed by hand.
+
+Differentiating with respect to $R$ defines the attractive physical force $F_{\text{EMC}}$:
+
+$$
+F_{\text{EMC}} = -\frac{dU_{\text{int}}}{dR} = -\frac{4\pi K_{\text{emc}} A_1 A_2}{R^2}
+$$
+
+which is strictly attractive ($F_{\text{EMC}} < 0$ pointing inward towards decreasing $R$). The shipped script reports magnitudes only; the sign is carried by the energy functional.
+
+Coupling this to the EMC pressure constant $K_{\text{emc}} = \frac{c^4}{16\pi G}$ and substituting the monopole amplitudes $A_i = \frac{2G M_i}{c^2}$ yields:
+
+$$
+F_{\text{EMC}} = -\frac{G M_1 M_2}{R^2}
+$$
+
+which matches the attractive Newtonian force $F_{\text{Newton}}$.
 
 ## Physical Interaction Energy and Sign Convention
 

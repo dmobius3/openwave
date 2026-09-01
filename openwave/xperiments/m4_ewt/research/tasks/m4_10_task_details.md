@@ -27,9 +27,9 @@ push-out mechanism using exact-domain numerical field integration.
 
 6. Convert the geometric result to physical force with \(K_{\text{emc}}\),
    using the negative-definite energy functional
-   \(U_{\text{int}} = -K_{\text{emc}} \int |\nabla\delta\eta|^2 dV\).
-   The script reports magnitudes only; the attractive sign is carried
-   by this functional.
+   \(U_{\text{int}} = -\frac{1}{2} K_{\text{emc}} \int |\nabla\delta\eta|^2 dV\).
+   The cross-term yields \(-K_{\text{emc}} I(R)\). The script reports
+   magnitudes only; the attractive sign is carried by this functional.
 
 7. Compare with Newton's law.
 
@@ -46,8 +46,8 @@ The \(4\pi\) factor comes from the angular integral, and the radial
 integral is performed numerically over the full domain.
 
 The minus sign in the physical force is derived from the negative-definite
-elastic energy functional, not imposed by hand. It is the field-theoretic
-analogue of the negative Newtonian field energy
+field energy functional \(U_{\text{int}} = -\frac{1}{2} K_{\text{emc}} \int |\nabla\delta\eta|^2 dV\),
+not imposed by hand. It is the field-theoretic analogue of the negative Newtonian field energy
 \(-\frac{|\nabla\Phi|^2}{8\pi G}\).
 
 Because \(G\), \(c\), \(M\) and \(R\) cancel identically in
