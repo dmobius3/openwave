@@ -22,6 +22,22 @@ $$F_{\text{EMC}} = K_{\text{emc}} \cdot F_{\text{geom}} = \left(\frac{c^4}{16\pi
 
 Substituting the monopole amplitudes $A_i = \frac{2G M_i}{c^2}$ identifies $F_{\text{EMC}} \equiv \frac{G M_1 M_2}{R^2}$.
 
+## Sign convention
+
+The apparent outward sign of the geometric derivative is resolved by
+the explicit minus sign in the interaction energy:
+
+\[
+U_{\text{int}}(R) = -K_{\text{emc}} \int \nabla(\delta\eta_1)\cdot\nabla(\delta\eta_2)\,dV
+\]
+
+This sign is not arbitrary. The EMC deficits \(\delta\eta_i = -A_i/r\)
+lower the elastic energy of the surrounding medium, so \(U_{\text{int}}\)
+must be negative for overlapping deficits. The minus sign in front of
+\(K_{\text{emc}}\) encodes the attractive nature of the push-out pressure.
+Consequently, \(F = -\frac{dU_{\text{int}}}{dR}\) yields the correct
+attractive Newtonian force.
+
 ## Structural Discrimination Analysis
 Because $G$, $c$, $M$, and $R$ cancel identically in the formal equality $F_{\text{EMC}} \equiv F_{\text{Newton}}$, the artifact operates as a consistency gate verifying that the combined normalization of $A$, $K_{\text{emc}}$, and the spherical overlap factor $4\pi$ is correct.
 
@@ -36,3 +52,12 @@ Mutating any single structural input breaks the agreement:
 
 ## Precision Note
 The residual of $\sim 1.203 \times 10^{-5}\%$ reported under the coordinate mapping $r(t) = \frac{R}{1-t}$ is due to accumulated floating-point roundoff from midpoint summation over a constant transformed integrand $\frac{4\pi}{R}$, rather than a physical error.
+
+## Reference
+
+Enhanced EWT manuscript, version 4.6.1 or later:
+[DOI: 10.5281/zenodo.22144273](https://doi.org/10.5281/zenodo.22144273)
+
+Relevant section:
+
+- „Newtonian Force from Interacting EMC Deficits”
