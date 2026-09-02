@@ -32,9 +32,9 @@ Every file reference is an active link to the file in this repository (under `op
 | **MODEL SCORE-BOARD** | [Liquid Crystal<br>(M5)](openwave/xperiments/m5_liquid_crystal/__M5_model_briefing.md) | [HydroBoros<br>(M7)](openwave/xperiments/m7_hydroboros/__M7_model_briefing.md) | [EWT<br>(M4)](openwave/xperiments/m4_ewt/__M4_model_briefing.md) | [Ouroboros<br>(M6)](openwave/xperiments/m6_ouroboros/__M6_model_briefing.md) | [MIT<br>(M8)](openwave/xperiments/m8_mit/__M8_model_briefing.md) | [NSM<br>(M9)](openwave/xperiments/m9_emergent_gravity/__M9_model_briefing.md) |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ validated in-platform | 9 | 0 | 0 | 3 | 0 | 0 |
-| ⚠️ partial / with caveats | 11 | 10 | 9 | 2 | 1 | 1 |
+| ⚠️ partial / with caveats | 11 | 10 | 10 | 2 | 1 | 1 |
 | ❌ honest negative | 2 | 0 | 3 | 3 | 0 | 0 |
-| 🚧 planned / not tested | 9 | 21 | 19 | 23 | 30 | 30 |
+| 🚧 planned / not tested | 9 | 21 | 18 | 23 | 30 | 30 |
 | **Total criteria** | **31** | **31** | **31** | **31** | **31** | **31** |
 
 ### Summary Status
@@ -79,7 +79,7 @@ Each criterion's simplest passing test sits in its own companion table right bel
 | Running coupling | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | static |
 | Weak force: muon decay | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
 | Weak force: beta decay (n → p) | ❌ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | dynamic |
-| Gravity: Newton limit (GEM) | ⚠️ | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 | both |
+| Gravity: Newton limit (GEM) | ⚠️ | 🚧 | ⚠️ | 🚧 | 🚧 | 🚧 | both |
 | Gravity: local metric phenomena | 🚧 | 🚧 | ⚠️ | 🚧 | 🚧 | ⚠️ | both |
 | Cosmology: Λ / cosmic acceleration | 🚧 | 🚧 | 🚧 | 🚧 | ⚠️ | 🚧 | static |
 | | | | | | | | |
@@ -276,7 +276,7 @@ Deep dive: [`0_STATUS.md`](openwave/xperiments/m3_wolff_lafreniere/research/0_ST
 | Running coupling | 🚧 [not yet tested]<br>Not addressed<br>(none yet) |
 | Weak force: muon decay | 🚧 [not yet tested]<br>Expected to be a result of particle formation/instability and not a true force; not modeled<br>(none yet) |
 | Weak force: beta decay (n → p) | 🚧 [not yet tested]<br>Not modeled (no in-sim neutron)<br>(none yet) |
-| Gravity: Newton limit (GEM) | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
+| Gravity: Newton limit (GEM) | ⚠️ [partially validated]<br>Enhanced EWT extension (Ł. Smoliński): EMC gradient-overlap geometry gives 1/r² form; negative-definite energy functional yields attractive sign; normalization-consistency gate, not a strength derivation (G cancels through A and K_emc); strength not credited per criterion's own clause (M4.10)<br>[`m4_10_newtonian_force_emc.py`](openwave/xperiments/m4_ewt/research/scripts/m4_10_newtonian_force_emc.py), [`m4_10_newtonian_force_emc.md`](openwave/xperiments/m4_ewt/research/findings/m4_10_newtonian_force_emc.md) |
 | Gravity: local metric phenomena | ⚠️ [partially validated]<br>Enhanced EWT extension (Ł. Smoliński): EMC deficit `n(r) = (N_ν/N_stat)^(-1/2)` gives solar-limb bending 1.751728 arcsec (M4.3), `v_clock = sqrt(η)` exact Schwarzschild redshift (M4.4), Shapiro delay to 0.000075% (M4.5); profile (M4.6) and amplitude (M4.8, G entering once via the Planck-length ansatz) in-platform. Exponents follow from 1D lattice dynamics, `β = n/(2q)` (M4.9), given an assumed `1/r` pair potential and axial `q = 1`; amplitude supplied by `r_s = 2GM/c²`, not predicted<br>[`m4_3_light_bending_emc_displacement.py`](openwave/xperiments/m4_ewt/research/scripts/m4_3_light_bending_emc_displacement.py), [`m4_4_gravitational_time_dilation.py`](openwave/xperiments/m4_ewt/research/scripts/m4_4_gravitational_time_dilation.py), [`m4_5_shapiro_delay.py`](openwave/xperiments/m4_ewt/research/scripts/m4_5_shapiro_delay.py), [`m4_6_emc_far_field_profile.py`](openwave/xperiments/m4_ewt/research/scripts/m4_6_emc_far_field_profile.py), [`m4_8_monopole_flux_from_lattice.py`](openwave/xperiments/m4_ewt/research/scripts/m4_8_monopole_flux_from_lattice.py), [`m4_9_emergent_encoding.py`](openwave/xperiments/m4_ewt/research/scripts/m4_9_emergent_encoding.py) |
 | Cosmology: Λ / cosmic acceleration | 🚧 [not yet tested]<br>Not modeled<br>(none yet) |
 | | |

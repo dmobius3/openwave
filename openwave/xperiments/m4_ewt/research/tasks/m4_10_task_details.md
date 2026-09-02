@@ -16,8 +16,8 @@ push-out mechanism using exact-domain numerical field integration.
 
 2. Use amplitude \(A = 2G_{\text{EWT, geo}}M/c^2\).
 
-3. Evaluate the gradient-overlap energy
-   \(\int \nabla\eta_1\cdot\nabla\eta_2\,dV\)
+3. Evaluate the geometric overlap integral
+   \(I(R) = \int \nabla\eta_1\cdot\nabla\eta_2\,dV\)
    over the entire infinite domain.
 
 4. Use the coordinate mapping \(r=R/(1-t)\) to avoid truncation
@@ -25,22 +25,33 @@ push-out mechanism using exact-domain numerical field integration.
 
 5. Compute the force by central numerical differentiation.
 
-6. Convert the geometric result to physical force with \(K_{\text{emc}}\).
+6. Convert the geometric result to physical force with \(K_{\text{emc}}\),
+   using the negative-definite energy functional
+   \(E[\delta\eta] = -\frac{1}{2} K_{\text{emc}} \int |\nabla\delta\eta|^2 dV\).
+   Its \(R\)-dependent cross term is \(U_{\text{int}} = -K_{\text{emc}} I(R)\).
+   The script reports magnitudes only; the attractive sign is carried by
+   this functional.
 
 7. Compare with Newton's law.
 
 ## Result
 
-- \(F_{\text{EMC}} = 3.542516096914 \times 10^{22}\ \text{N}\)
-- \(F_{\text{Newton}} = 3.542516523099 \times 10^{22}\ \text{N}\)
+- \(|F_{\text{EMC}}| = 3.542516096914 \times 10^{22}\ \text{N}\)
+- \(|F_{\text{Newton}}| = 3.542516523099 \times 10^{22}\ \text{N}\)
 - Relative difference: \(1.203 \times 10^{-5}\%\)
 
 ## Interpretation
 
 The \(1/r^2\) force law follows from the EMC field-overlap geometry.
 The \(4\pi\) factor comes from the angular integral, and the radial
-integral is performed numerically over the full domain. Because
-\(G\), \(c\), \(M\) and \(R\) cancel identically in
+integral is performed numerically over the full domain.
+
+The minus sign in the physical force is derived from the negative-definite
+field energy functional \(E[\delta\eta] = -\frac{1}{2} K_{\text{emc}} \int |\nabla\delta\eta|^2 dV\),
+not imposed by hand. It is the field-theoretic analogue of the negative Newtonian field energy
+\(-\frac{1}{8\pi G}\int |\nabla\Phi|^2 dV\).
+
+Because \(G\), \(c\), \(M\) and \(R\) cancel identically in
 \(F_{\text{EMC}} \equiv F_{\text{Newton}}\), the artifact is a
 normalization consistency gate, not a derivation of the strength.
 

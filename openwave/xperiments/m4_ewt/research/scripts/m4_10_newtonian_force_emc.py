@@ -19,17 +19,18 @@ Physics & Structural Identification:
 """
 
 import math
+import sys
 
 
 def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
-    """Evaluates the spatial overlap integral U_int(R) over r in [R, inf)
+    """Evaluates the spatial overlap integral I(R) over r in [R, inf)
 
     using coordinate transformation t in [0, 1).
     """
 
-    def potential_energy_at(dist):
+    def overlap_integral_at(dist):
         dt = 1.0 / num_pts
-        u_sum = 0.0
+        i_sum = 0.0
 
         for i in range(num_pts):
             t = (i + 0.5) * dt
@@ -38,15 +39,15 @@ def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
 
             # Angularly integrated overlap for r >= R
             angular_integral = 4.0 * math.pi / (r * r)
-            u_sum += angular_integral * dr_dt * dt
+            i_sum += angular_integral * dr_dt * dt
 
-        return A1 * A2 * u_sum
+        return A1 * A2 * i_sum
 
     dR = R * 1e-6
-    u_plus = potential_energy_at(R + dR)
-    u_minus = potential_energy_at(R - dR)
+    i_plus = overlap_integral_at(R + dR)
+    i_minus = overlap_integral_at(R - dR)
 
-    f_numeric = -(u_plus - u_minus) / (2.0 * dR)
+    f_numeric = -(i_plus - i_minus) / (2.0 * dR)
     return f_numeric
 
 
@@ -77,16 +78,18 @@ def main():
     F_newton = G_EWT_geo * M1 * M2 / (R * R)
     rel_diff = abs(F_emc - F_newton) / F_newton * 100.0
 
-    print(f"    F_EMC (numerical) = {F_emc:.12e} N")
-    print(f"    F_Newton          = {F_newton:.12e} N")
-    print(f"    Rel. diff.        = {rel_diff:.12e}%")
+    print(f"    |F_EMC| (numerical) = {F_emc:.12e} N")
+    print(f"    |F_Newton|          = {F_newton:.12e} N")
+    print(f"    Rel. diff.          = {rel_diff:.12e}%")
 
     # Gate threshold set to 1e-3% to verify mutual algebraic consistency
-    if rel_diff < 1e-3:
+    ok = rel_diff < 1e-3
+    if ok:
         print("    RESULT: PASS (Mutual consistency of A, K_emc, and 4π overlap verified)")
     else:
         print("    RESULT: FAIL")
+    return ok
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(0 if main() else 1)
