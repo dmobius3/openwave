@@ -20,13 +20,13 @@ $$F_{\text{geom}} = -\frac{dI}{dR} = \frac{4\pi A_1 A_2}{R^2}$$
 
 ## Physical Interaction Energy and Sign Convention
 
-The physical interaction energy $U_{\text{int}}(R)$ follows from the negative-definite field energy functional of the overlapping EMC deficits, serving as the exact field-theoretic analogue of the negative Newtonian field energy $-\frac{1}{8\pi G}\int |\nabla\Phi|^2 dV$:
+The physical interaction energy $U_{\text{int}}(R)$ follows from the negative-definite field energy functional $E[\delta\eta]$ of the overlapping EMC deficits, serving as the exact field-theoretic analogue of the negative Newtonian field energy $-\frac{1}{8\pi G}\int |\nabla\Phi|^2 dV$:
 
 $$
-U_{\text{int}}(R) = -\frac{1}{2} K_{\text{emc}} \int |\nabla \delta\eta|^2 \, dV
+E[\delta\eta] = -\frac{1}{2} K_{\text{emc}} \int |\nabla \delta\eta|^2 \, dV
 $$
 
-For two superposed monopole deficits $\delta\eta = \delta\eta_1 + \delta\eta_2$, the cross term yields:
+For two superposed monopole deficits $\delta\eta = \delta\eta_1 + \delta\eta_2$ the two self-energy terms are independent of $R$, so the interaction energy is the cross term of $E$:
 
 $$
 U_{\text{int}}(R) = -\frac{1}{2} K_{\text{emc}} \cdot 2 \int \nabla \delta\eta_1 \cdot \nabla \delta\eta_2 \, dV = -K_{\text{emc}} I(R) = -\frac{4\pi K_{\text{emc}} A_1 A_2}{R}

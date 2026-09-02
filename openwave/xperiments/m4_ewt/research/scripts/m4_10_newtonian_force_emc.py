@@ -19,6 +19,7 @@ Physics & Structural Identification:
 """
 
 import math
+import sys
 
 
 def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
@@ -77,16 +78,18 @@ def main():
     F_newton = G_EWT_geo * M1 * M2 / (R * R)
     rel_diff = abs(F_emc - F_newton) / F_newton * 100.0
 
-    print(f"    F_EMC (numerical) = {F_emc:.12e} N")
-    print(f"    F_Newton          = {F_newton:.12e} N")
-    print(f"    Rel. diff.        = {rel_diff:.12e}%")
+    print(f"    |F_EMC| (numerical) = {F_emc:.12e} N")
+    print(f"    |F_Newton|          = {F_newton:.12e} N")
+    print(f"    Rel. diff.          = {rel_diff:.12e}%")
 
     # Gate threshold set to 1e-3% to verify mutual algebraic consistency
-    if rel_diff < 1e-3:
+    ok = rel_diff < 1e-3
+    if ok:
         print("    RESULT: PASS (Mutual consistency of A, K_emc, and 4π overlap verified)")
     else:
         print("    RESULT: FAIL")
+    return ok
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(0 if main() else 1)
