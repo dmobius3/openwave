@@ -96,7 +96,7 @@ See `/dev_docs` for coding standards and development guidelines
 
 ### Self-checks a script prints
 
-A line a script prints as `PASS`, `CONFIRMED`, or `-> arm goes red` is a claim about the run, and a later reader cannot tell a verified claim from an unfalsifiable one by reading the output. So before shipping a script, break the thing each such line checks and confirm the line actually goes red. Four shapes keep getting through:
+A line a script prints as `PASS`, `CONFIRMED`, or `-> arm goes red` is a claim about the run, and a later reader cannot tell a verified claim from an unfalsifiable one by reading the output. So before shipping a script, break the thing each such line checks and confirm the line actually goes red. Five shapes keep getting through:
 
 | Shape | Why it never fails | The fix |
 | --- | --- | --- |
@@ -108,7 +108,7 @@ A line a script prints as `PASS`, `CONFIRMED`, or `-> arm goes red` is a claim a
 
 Where a quantity has no independent target to compare against, the honest label is **asserted**, not a self-check. An asserted value is a perfectly good contribution; a self-check that cannot discriminate is not, because it reads exactly like a verified result.
 
-The test takes a minute: change the constant, drop the term, or neuter the mutation, re-run, and watch the line turn red. If it stays green, the line was never testing anything. The reviewer's side of this is [`dev_docs/PR_REVIEW_STANDARDS.md`](dev_docs/PR_REVIEW_STANDARDS.md#6-gate-d-the-adversarial-pass) rows D10 and D11, and reviewers apply the same discipline to gates they add themselves.
+The test takes a minute: change the constant, drop the term, or neuter the mutation, re-run, and watch the line turn red. If it stays green, the line was never testing anything. The reviewer's side of this is [`dev_docs/PR_REVIEW_STANDARDS.md`](dev_docs/PR_REVIEW_STANDARDS.md#6-gate-d-the-adversarial-pass) rows D10 to D13, and reviewers apply the same discipline to gates they add themselves.
 
 ---
 
