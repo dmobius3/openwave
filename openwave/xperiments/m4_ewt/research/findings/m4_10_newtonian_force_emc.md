@@ -50,42 +50,6 @@ $$
 
 which matches the attractive Newtonian force $F_{\text{Newton}}$.
 
-## Physical Interaction Energy and Sign Convention
-
-The physical interaction energy follows from the negative-definite elastic energy functional of the overlapping EMC deficits:
-
-$$
-U_{\text{int}}(R) = -K_{\text{emc}} \int |\nabla \delta\eta|^2 \, dV
-$$
-
-For two superposed monopole deficits the cross term gives:
-
-$$
-U_{\text{int}}(R) = -K_{\text{emc}} I(R)
-= -\frac{4\pi K_{\text{emc}} A_1 A_2}{R}
-$$
-
-The minus sign is therefore derived from the energy functional, not imposed by hand.
-It is the field-theoretic analogue of the negative Newtonian field energy
-$-\frac{|\nabla\Phi|^2}{8\pi G}$.
-
-Differentiating with respect to $R$ gives the physical force:
-
-$$
-F = -\frac{dU_{\text{int}}}{dR}
-= -\frac{4\pi K_{\text{emc}} A_1 A_2}{R^2}
-$$
-
-which is attractive in the convention used here. The shipped script reports magnitudes only; the sign is carried by the energy functional.
-
-Coupling this to the EMC pressure constant $K_{\text{emc}} = \frac{c^4}{16\pi G}$ and substituting the monopole amplitudes $A_i = \frac{2G M_i}{c^2}$ yields:
-
-$$
-F = -\frac{G M_1 M_2}{R^2}
-$$
-
-which is the attractive Newtonian force.
-
 ## Structural Discrimination Analysis
 Because $G$, $c$, $M$, and $R$ cancel identically in the formal equality $F_{\text{EMC}} \equiv F_{\text{Newton}}$, the artifact operates as a consistency gate verifying that the combined normalization of $A$, $K_{\text{emc}}$, and the spherical overlap factor $4\pi$ is correct.
 
