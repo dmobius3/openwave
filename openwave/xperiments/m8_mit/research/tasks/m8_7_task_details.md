@@ -57,8 +57,9 @@ S³/2I is not a box, so the port is a design task, not a copy:
 
 ### Ownership + gating
 
-Author-driven with platform support. Gate: field dynamics validated in-platform
-(M8.4-lineage, audited).
+Author-driven with platform support. Gate: field dynamics validated in-platform,
+with an audited method note (the M8.4 lineage that was to supply it closed
+unresolved).
 
 ## DEVIATIONS LOG
 

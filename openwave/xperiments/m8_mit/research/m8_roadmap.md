@@ -17,6 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
+| [M8.10](tasks/m8_10_task_details.md) | First correction at the level-6 critical rays | The fourth bedrock paper's range equation (§ 6.2) carried one order at its four symmetry-pinned critical rays in sectors `3′` and `4`: eight formal branch expansions, with the first state correction and the eigenvalue coefficient `λ₄` supplied as candidate exact rationals for a maintainer-run recompute, blind in the recommended format. Analytic side of the closed spectral route; no branch, existence or stability claimed | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
 
 ## LATER (gated)
 
