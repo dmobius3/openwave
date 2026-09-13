@@ -40,7 +40,11 @@ import sys
 
 try:
     from m4_7_ewt_emergence_engine import (
-        PI, C0, M_E, R_E, E_CHARGE_CODATA,
+        PI,
+        C0,
+        M_E,
+        R_E,
+        E_CHARGE_CODATA,
         G_CODATA,
         BCC_IDEAL_PROJECTION_LP,
         compute_alpha_geometric,
@@ -51,14 +55,13 @@ try:
         gravity_sector,
     )
 except ImportError:
-    raise ImportError(
-        "This module requires m4_7_ewt_emergence_engine.py in the same directory."
-    )
+    raise ImportError("This module requires m4_7_ewt_emergence_engine.py in the same directory.")
 
 
 # ----------------------------------------------------------------------
 # 1. Geometric G from the self-consistent trinity
 # ----------------------------------------------------------------------
+
 
 def derive_G_geom():
     """Derive G_geom from the M4.7 self-consistent trinity.
@@ -127,6 +130,7 @@ def derive_G_geom():
 # 2. Exact-domain overlap integral
 # ----------------------------------------------------------------------
 
+
 def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
     """Evaluate the spatial overlap integral I(R) over r in [R, inf)
     using the coordinate transformation t in [0, 1).
@@ -158,6 +162,7 @@ def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
 # 3. Main
 # ----------------------------------------------------------------------
 
+
 def main():
     print("[1/5] Deriving G_geom from the M4.7 self-consistent trinity...")
     geom = derive_G_geom()
@@ -173,8 +178,7 @@ def main():
     print(f"    G_CODATA            = {G_CODATA:.15e} m^3 kg^-1 s^-2")
     print(f"    relative residual   = {geom['rel_err_vs_CODATA']*100:.6f} %")
     print(f"    CODATA rel. unc. on G = 22 ppm (2.2e-5)")
-    print(f"    residual / uncertainty = "
-          f"{geom['rel_err_over_uncertainty']:.1f}x")
+    print(f"    residual / uncertainty = " f"{geom['rel_err_over_uncertainty']:.1f}x")
     print("    Note: r_e, m_e, c are the dimensional anchors. The derivation")
     print("          produces G_geom as a dimensionless ratio against")
     print("          c^2 r_e / m_e, not G from nothing.")
