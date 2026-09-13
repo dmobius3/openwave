@@ -1,0 +1,65 @@
+{
+ "reproduction": {
+  "identical": true,
+  "n_differences": 0,
+  "differences": []
+ },
+ "M1_item9_residual_with_corrupted_N": {
+  "base": {
+   "exit": 0,
+   "max_casimir_resid": 7.86e-31,
+   "lambda4_first_rays": [
+    -9.529906869934451e-06,
+    -0.0010468871806891319,
+    -0.002150964312506196,
+    -0.0058531003233274845,
+    -0.0019205937739441023,
+    -1.658180802273543e-05,
+    -0.008155188574755537,
+    -0.002332446805421708,
+    -0.004186899977577459,
+    -0.004574061747755118
+   ],
+   "stderr_tail": ""
+  },
+  "mutant": {
+   "exit": 0,
+   "max_casimir_resid": 7.86e-31,
+   "lambda4_first_rays": [
+    -8.45743692274671e-06,
+    -0.00020669531075176076,
+    -0.0016070658837287852,
+    -0.004881256480163587,
+    -0.0015416710209124784,
+    -1.576000627247452e-05,
+    -0.008221656996163744,
+    -0.0008818999925408459,
+    -0.0032846353551300887,
+    -0.004804136769095513
+   ],
+   "stderr_tail": ""
+  }
+ },
+ "M2_identify_with_corrupted_value": {
+  "exit": 0,
+  "failures": [
+   "('3:R1 xi10', [Fraction(7, 195150384), None])",
+   "('3:R1', '10', None, '7/195150384')"
+  ],
+  "item4_value_written": "None"
+ },
+ "M3_quadrature_DN_broken": {
+  "exit_quadcheck": 0,
+  "exit_identify": 0,
+  "max_quadrature_vs_engine_abs_dev": 0.002718396191585171,
+  "failures": []
+ },
+ "M4_item5_control_at_zero_level": {
+  "exit": 0,
+  "control_lines": [
+   "   control R2 J=4: nonzero components exist: False",
+   "   control R3 J=7: nonzero components exist: True",
+   "   control R4 J=9: nonzero components exist: True"
+  ]
+ }
+}

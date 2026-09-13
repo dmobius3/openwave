@@ -1,0 +1,9 @@
+max |[v x v]_K'| for odd K': 3.11e-61
+M_0 = (sqrt(1/49)) B_0 + (sqrt(5/49)) B_2 + (sqrt(9/49)) B_4 + (sqrt(13/49)) B_6   [lstsq residual 3.66e-60]
+M_1 = (sqrt(3/49)) B_0 + (sqrt(135/784)) B_2 + (sqrt(3/196)) B_4 + (-sqrt(351/784)) B_6   [lstsq residual 3.22e-60]
+M_2 = (sqrt(5/49)) B_0 + (sqrt(361/7056)) B_2 + (-sqrt(45/196)) B_4 + (sqrt(1625/7056)) B_6   [lstsq residual 3.9e-60]
+M_3 = (sqrt(1/7)) B_0 + (-sqrt(5/252)) B_2 + (-sqrt(1/28)) B_4 + (-sqrt(13/252)) B_6   [lstsq residual 2.47e-60]
+M_4 = (sqrt(9/49)) B_0 + (-sqrt(45/196)) B_2 + (sqrt(9409/23716)) B_4 + (sqrt(117/23716)) B_6   [lstsq residual 3.19e-60]
+M_5 = (sqrt(11/49)) B_0 + (-sqrt(1375/7056)) B_2 + (-sqrt(289/2156)) B_4 + (-sqrt(13/77616)) B_6   [lstsq residual 2.71e-60]
+M_6 = (sqrt(13/49)) B_0 + (sqrt(1625/7056)) B_2 + (sqrt(117/23716)) B_4 + (sqrt(1/853776)) B_6   [lstsq residual 2.81e-60]
+max |M_K - sum W B| on fresh v with exact W: 2.66e-60

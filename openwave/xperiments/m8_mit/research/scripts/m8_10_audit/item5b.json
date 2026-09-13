@@ -1,0 +1,181 @@
+{
+ "l_J_unnormalised": {
+  "R1": {
+   "3": "1/1585584",
+   "4": "3/176176",
+   "5": "1/9009",
+   "6": "1/3388",
+   "7": "1125/2994992",
+   "8": "1/4368",
+   "9": "1/18564"
+  },
+  "R2": {
+   "3": "10000/99099",
+   "4": "0",
+   "5": "100/1287",
+   "6": "0",
+   "7": "2400/26741",
+   "8": "0",
+   "9": "400/2431"
+  },
+  "R3": {
+   "3": "4608/11011",
+   "4": "0",
+   "5": "0",
+   "6": "48/77",
+   "7": "11520/14399",
+   "8": "0",
+   "9": "144/221"
+  },
+  "R4": {
+   "3": "214369/198198",
+   "4": "975/1694",
+   "5": "350/1287",
+   "6": "81/1694",
+   "7": "5760/187187",
+   "8": "0",
+   "9": "6191/3094"
+  },
+  "R5": {
+   "3": "81/2275",
+   "4": "171/11375",
+   "5": "99/2275",
+   "6": "27/1750",
+   "7": "17217/386750",
+   "8": "711/22750",
+   "9": "5553/77350"
+  }
+ },
+ "theta_eigen": {
+  "R1": null,
+  "R2": 1,
+  "R3": 1,
+  "R4": -1,
+  "R5": null
+ },
+ "stabiliser_multiplicities": {
+  "R3": {
+   "order": 48,
+   "multiplicity_by_J": {
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1,
+    "7": 1,
+    "8": 0,
+    "9": 1
+   }
+  },
+  "R4": {
+   "order": 24,
+   "multiplicity_by_J": {
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 2
+   }
+  },
+  "R5": {
+   "order": 10,
+   "multiplicity_by_J": {
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2,
+    "7": 3,
+    "8": 4,
+    "9": 4
+   }
+  }
+ },
+ "checks": [
+  {
+   "label": "[a x b]_6 form == const * f_a f_b (const sqrt(231)/462)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add x^12/7 to the coupled form"
+  },
+  {
+   "label": "[F x f]_8 form == const * Jacobian(F, f) (const sqrt(546)/6552)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "couple F with a different f than the one in the Jacobian"
+  },
+  {
+   "label": "constants independent of the vectors (product sqrt(231)/462, Jacobian sqrt(546)/6552)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "compare the Jacobian constant with the product constant"
+  },
+  {
+   "label": "R2: Theta v = eps v, hence l_8(v) = 0 (Jacobian argument); computed l_8 = 0",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "use R1's l_8 (R1 is not a Theta eigenvector)"
+  },
+  {
+   "label": "R3: Theta v = eps v, hence l_8(v) = 0 (Jacobian argument); computed l_8 = 0",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "use R1's l_8 (R1 is not a Theta eigenvector)"
+  },
+  {
+   "label": "R4: Theta v = eps v, hence l_8(v) = 0 (Jacobian argument); computed l_8 = 0",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "use R1's l_8 (R1 is not a Theta eigenvector)"
+  },
+  {
+   "label": "R3: all 48 elements of H fix the ray up to a phase (err 2.2e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "test a generic rotation instead"
+  },
+  {
+   "label": "R3: no chi-semi-invariant in V_4, and l_4(v) == 0 exactly",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "use R1's l_J"
+  },
+  {
+   "label": "R3: no chi-semi-invariant in V_5, and l_5(v) == 0 exactly",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "use R1's l_J"
+  },
+  {
+   "label": "R3: no chi-semi-invariant in V_8, and l_8(v) == 0 exactly",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "use R1's l_J"
+  },
+  {
+   "label": "R4: all 24 elements of H fix the ray up to a phase (err 1.8e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "test a generic rotation instead"
+  },
+  {
+   "label": "R5: all 10 elements of H fix the ray up to a phase (err 2.0e-16)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "test a generic rotation instead"
+  }
+ ],
+ "all_ok": true
+}

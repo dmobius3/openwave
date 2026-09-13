@@ -1,0 +1,65 @@
+[PASS] commutant has exactly two eigenvalue clusters (spread 1.0e-15, gap 0.07)   | mutation: treat all 7 eigenvalues as one cluster -> mutant failed (good)
+[PASS] D^3(h) eta = eta sigma(h) for all 120 h, d=3 (err 6.1e-15)   | mutation: replace sigma(h) by identity -> mutant failed (good)
+[PASS] D^3(h) eta = eta sigma(h) for all 120 h, d=4 (err 6.2e-15)   | mutation: replace sigma(h) by identity -> mutant failed (good)
+[PASS] cubature reproduces Schur orthogonality up to J=10 (err 5.9e-14)   | mutation: drop the complex conjugate in the Schur integral -> mutant failed (good)
+[PASS] [secondary d=3 R1] Phi(gh) = Phi(g) sigma(h), all h (err 9.3e-15)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=3 R1] level-6 part of N and of DN is (fibre) x eta (err 1.9e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=3 R1] item 9 residual, Casimir (spin-J matrices), max 1.9e-14 (scale 0.89)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=3 R1] item 9 residual, finite differences on geodesics, max 4.6e-12   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=3 R1] equiv 9.3e-15 mult 1.000777000777 (|w_perp| 2.55e-16) lam4/g^2 -0.000016581808 (identity -0.000016581808) perp^2 1.034e-25 res9 cas 1.9e-14 fd 4.6e-12
+   ||Pi_n N||^2 by J: {0: '5.48946430042e-34', 1: '2.23406075163e-32', 2: '5.16718108854e-32', 3: '1.00155460528', 4: '4.87903743428e-29', 5: '0.000185948903898', 6: '4.01805997989e-30', 7: '0.000388657849277', 8: '0.000146639852522', 9: '3.91132733567e-05', 10: '7.17071109662e-30'}
+[PASS] [secondary d=3 R2] Phi(gh) = Phi(g) sigma(h), all h (err 9.1e-15)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=3 R2] level-6 part of N and of DN is (fibre) x eta (err 5.3e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=3 R2] item 9 residual, Casimir (spin-J matrices), max 1.8e-14 (scale 1.94)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=3 R2] item 9 residual, finite differences on geodesics, max 1.9e-10   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=3 R2] equiv 9.1e-15 mult 1.310800310800 (|w_perp| 4.46e-16) lam4/g^2 -0.008155188575 (identity -0.008155188575) perp^2 4.201e-19 res9 cas 1.8e-14 fd 1.9e-10
+   ||Pi_n N||^2 by J: {0: '2.61774568193e-32', 1: '2.13276311411e-29', 2: '4.39225063853e-31', 3: '1.71819745479', 4: '1.05740939993e-30', 5: '0.130164232728', 6: '1.07706259267e-30', 7: '0.0928633154539', 8: '2.55901605452e-30', 9: '0.119473271344', 10: '1.7891738661e-29'}
+[PASS] [secondary d=3 R3] Phi(gh) = Phi(g) sigma(h), all h (err 1.0e-14)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=3 R3] level-6 part of N and of DN is (fibre) x eta (err 1.6e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=3 R3] item 9 residual, Casimir (spin-J matrices), max 7.7e-15 (scale 1.39)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=3 R3] item 9 residual, finite differences on geodesics, max 4.0e-11   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=3 R3] equiv 1.0e-14 mult 1.223776223776 (|w_perp| 3.74e-15) lam4/g^2 -0.002332446805 (identity -0.002332446805) perp^2 1.101e-20 res9 cas 7.7e-15 fd 4.0e-11
+   ||Pi_n N||^2 by J: {0: '7.8255733271e-35', 1: '5.96496153215e-33', 2: '8.64307429498e-30', 3: '1.49762824588', 4: '1.30240489802e-29', 5: '4.61874751004e-30', 6: '1.24553629192e-29', 7: '0.103476265791', 8: '4.85627914231e-30', 9: '0.0591392693154', 10: '1.11446080166e-29'}
+[PASS] [secondary d=3 R4] Phi(gh) = Phi(g) sigma(h), all h (err 1.0e-14)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=3 R4] level-6 part of N and of DN is (fibre) x eta (err 1.8e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=3 R4] item 9 residual, Casimir (spin-J matrices), max 1.4e-14 (scale 2.31)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=3 R4] item 9 residual, finite differences on geodesics, max 3.0e-11   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=3 R4] equiv 1.0e-14 mult 1.359751359751 (|w_perp| 2.46e-15) lam4/g^2 -0.004186899978 (identity -0.004186899978) perp^2 1.118e-19 res9 cas 1.4e-14 fd 3.0e-11
+   ||Pi_n N||^2 by J: {0: '1.00406507723e-33', 1: '6.46876659794e-32', 2: '9.3520076391e-32', 3: '1.84892376035', 4: '2.47230810502e-29', 5: '0.0569468518186', 6: '6.22435697916e-30', 7: '0.00397985637659', 8: '4.35473414235e-30', 9: '0.181612706514', 10: '1.44945474446e-29'}
+[PASS] [secondary d=3 R5] Phi(gh) = Phi(g) sigma(h), all h (err 9.0e-15)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=3 R5] level-6 part of N and of DN is (fibre) x eta (err 1.1e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=3 R5] item 9 residual, Casimir (spin-J matrices), max 1.2e-14 (scale 2.54)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=3 R5] item 9 residual, finite differences on geodesics, max 6.3e-11   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=3 R5] equiv 9.0e-15 mult 1.184615384615 (|w_perp| 3.99e-15) lam4/g^2 -0.004574061748 (identity -0.004574061748) perp^2 3.067e-07 res9 cas 1.2e-14 fd 6.3e-11
+   ||Pi_n N||^2 by J: {0: '9.2298686072e-35', 1: '2.03391437465e-32', 2: '5.9731223678e-30', 3: '1.40331360947', 4: '1.23896489644e-29', 5: '0.072899408284', 6: '5.33779381627e-30', 7: '0.046061464753', 8: '0.0200180995475', 9: '0.052127041668', 10: '1.10833898469e-29'}
+[PASS] [secondary d=4 R1] Phi(gh) = Phi(g) sigma(h), all h (err 6.7e-15)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=4 R1] level-6 part of N and of DN is (fibre) x eta (err 2.9e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=4 R1] item 9 residual, Casimir (spin-J matrices), max 1.4e-14 (scale 0.90)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=4 R1] item 9 residual, finite differences on geodesics, max 1.6e-12   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=4 R1] equiv 6.7e-15 mult 1.000437062937 (|w_perp| 2.35e-16) lam4/g^2 -0.000009529907 (identity -0.000009529907) perp^2 9.823e-25 res9 cas 1.4e-14 fd 1.6e-12
+   ||Pi_n N||^2 by J: {0: '5.70664520887e-35', 1: '2.44868672584e-32', 2: '5.98920873525e-32', 3: '1.0008743169', 4: '1.20345126901e-05', 5: '1.43112054789e-29', 6: '0.000208598219962', 7: '0.00010150216153', 8: '9.99336494953e-05', 9: '2.15690495151e-05', 10: '6.42675648444e-30'}
+[PASS] [secondary d=4 R2] Phi(gh) = Phi(g) sigma(h), all h (err 8.6e-15)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=4 R2] level-6 part of N and of DN is (fibre) x eta (err 3.7e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=4 R2] item 9 residual, Casimir (spin-J matrices), max 9.9e-15 (scale 1.24)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=4 R2] item 9 residual, finite differences on geodesics, max 3.3e-11   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=4 R2] equiv 8.6e-15 mult 1.174825174825 (|w_perp| 3.12e-17) lam4/g^2 -0.001046887181 (identity -0.001046887181) perp^2 -1.313e-20 res9 cas 9.9e-15 fd 3.3e-11
+   ||Pi_n N||^2 by J: {0: '6.55726095064e-33', 1: '2.19698998279e-29', 2: '3.35089843045e-31', 3: '1.3802141914', 4: '4.97144857654e-31', 5: '3.79469722689e-29', 6: '6.14524281502e-31', 7: '0.0242522497949', 8: '1.5506679313e-30', 9: '0.0658836421553', 10: '1.14108716106e-29'}
+[PASS] [secondary d=4 R3] Phi(gh) = Phi(g) sigma(h), all h (err 8.0e-15)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=4 R3] level-6 part of N and of DN is (fibre) x eta (err 1.1e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=4 R3] item 9 residual, Casimir (spin-J matrices), max 2.1e-14 (scale 1.39)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=4 R3] item 9 residual, finite differences on geodesics, max 3.3e-11   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=4 R3] equiv 8.0e-15 mult 1.125874125874 (|w_perp| 1.79e-15) lam4/g^2 -0.002150964313 (identity -0.002150964313) perp^2 1.694e-20 res9 cas 2.1e-14 fd 3.3e-11
+   ||Pi_n N||^2 by J: {0: '2.89666384794e-34', 1: '9.12763619707e-33', 2: '1.85874942516e-29', 3: '1.26759254731', 4: '1.04660399856e-29', 5: '5.78067522742e-30', 6: '0.0550699300699', 7: '0.0270239354857', 8: '3.15327555029e-30', 9: '0.0326124028669', 10: '9.07964992776e-30'}
+[PASS] [secondary d=4 R4] Phi(gh) = Phi(g) sigma(h), all h (err 9.0e-15)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=4 R4] level-6 part of N and of DN is (fibre) x eta (err 9.3e-15)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=4 R4] item 9 residual, Casimir (spin-J matrices), max 7.0e-15 (scale 1.40)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=4 R4] item 9 residual, finite differences on geodesics, max 3.9e-11   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=4 R4] equiv 9.0e-15 mult 1.202360139860 (|w_perp| 1.52e-15) lam4/g^2 -0.005853100323 (identity -0.005853100323) perp^2 -4.743e-20 res9 cas 7.0e-15 fd 3.9e-11
+   ||Pi_n N||^2 by J: {0: '2.13865436393e-34', 1: '2.23035525158e-32', 2: '9.96332296808e-32', 3: '1.44566990592', 4: '0.0508458161157', 5: '5.47378658119e-30', 6: '0.00422411395423', 7: '0.00103938213407', 8: '2.71666437994e-30', 9: '0.100150489161', 10: '1.08020559403e-29'}
+[PASS] [secondary d=4 R5] Phi(gh) = Phi(g) sigma(h), all h (err 8.8e-15)   | mutation: drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g)) -> mutant failed (good)
+[PASS] [secondary d=4 R5] level-6 part of N and of DN is (fibre) x eta (err 1.8e-14)   | mutation: reintroduce the factor d in the fibre extraction (the bug found in the first run) -> mutant failed (good)
+[PASS] [secondary d=4 R5] item 9 residual, Casimir (spin-J matrices), max 8.3e-15 (scale 0.81)   | mutation: lambda_2 -> 1.001 lambda_2 -> mutant failed (good)
+[PASS] [secondary d=4 R5] item 9 residual, finite differences on geodesics, max 1.9e-11   | mutation: 48 -> 47 in (-Delta - 48) -> mutant failed (good)
+[secondary d=4 R5] equiv 8.8e-15 mult 1.103846153846 (|w_perp| 7.43e-15) lam4/g^2 -0.001920593774 (identity -0.001920593774) perp^2 4.044e-07 res9 cas 8.3e-15 fd 1.9e-11
+   ||Pi_n N||^2 by J: {0: '3.48097467232e-34', 1: '1.80589083586e-32', 2: '1.09181102511e-29', 3: '1.21847633136', 4: '0.010624260355', 5: '5.92287260057e-30', 6: '0.0109038461538', 7: '0.0120294450359', 8: '0.0136421423599', 9: '0.0287455036698', 10: '9.68873777135e-30'}
+ALL OK
