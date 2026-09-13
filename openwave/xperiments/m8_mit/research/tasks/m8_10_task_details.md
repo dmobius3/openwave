@@ -316,6 +316,7 @@ The frozen claims live in this file, in the maintainers' working tree. No agent 
 | 2026-09-13 | The auditor's eight console logs carried a `.log` extension, which the repository ignores | Landed byte-identical as `*_log.txt` under [`../scripts/m8_10_audit/`](../scripts/m8_10_audit/), the M8.1.2 raw-output naming; only the names moved. The returns `AUDIT_STAGE1.md`, `AUDIT_STAGE2.md` and the solver's `RETURN.md` landed renamed to `*_return.md`, content unchanged |
 | 2026-09-13 | The auditor's `METHOD.md` wrote literal `\|` inside table cells, which breaks its rows when rendered | In the landed copy, the pipes inside seven cells are escaped as `\|`, a rendering change only; every other agent file landed byte-identical, and the unedited bytes of all of them are hashed in the maintainer's run checkpoints |
 | 2026-09-13 | The designer's comparison script first read the solver's level keys as `j = n/2` and printed B1 as a failure | The keys are levels `n`; the script was corrected before any verdict was recorded, and the solver's B1 values were unchanged |
+| 2026-09-13 | The author's package landed with two of its sixteen pinned files, `audit_dryrun.py` and `dryrun/transcript.jsonl`, as privacy redactions instead of byte-identical ([#550](https://github.com/openwave-labs/openwave/pull/550)): local paths became placeholders, and the transcript's startup and account rate-limit records became marker lines carrying the SHA-256 of each removed line | Accepted by the maintainer. The other fourteen match their pins; the package's [`MANIFEST.md`](../scripts/m8_10_author/MANIFEST.md) gives both hashes of every file, and [`redact.py`](../scripts/m8_10_author/redact.py) is the whole transformation. The pinned bytes of the two files stay with the author and were not inspected by the maintainers; nothing in the verdict rests on the dry run |
 
 ## FINDINGS
 
@@ -330,6 +331,22 @@ Full record with the equations, the code map and the audit: [`../findings/m8_10_
 | F5 | ⚠️ **Four checks in the solver cannot fail.** Its order-`a³` residual cannot see an error in `N(Φ)` (it does catch a mislabeled level, which is what X4 asks), and three recorded failures never stop the run. No number is affected, since the auditor reproduced each by its own route |
 | F6 | **Level 16 vanishes by time reversal**, as B3b states, through a Jacobian identity the auditor derived; the solver proved the same zeros by exact cancellation without naming the mechanism |
 | F7 | **Containment held on the record.** The solver made no call outside its room in 49; the auditor's only outside references in 90 are the output files of its own background commands |
+
+## PROVENANCE COMPARISON (2026-09-13)
+
+Made by the designer after the verdict was recorded, against the author's package as landed in [#550](https://github.com/openwave-labs/openwave/pull/550) under [`../scripts/m8_10_author/`](../scripts/m8_10_author/). The package's code ran in a copy of the folder, under an OS sandbox that refused network access and every read outside the copy, with the copy hashed before the run.
+
+| Check | Result |
+| --- | --- |
+| Pins | fourteen of sixteen files byte-identical to the hashes above; two landed redacted, per the deviations log |
+| Regeneration | `python3 m810_results.py` rewrote `RESULTS.md` byte-identical to its pin in 19 s, every gate script ending on its pass line and both precisions giving identical fractions; no other file in the package changed |
+| Package against the frozen claims | 76 exact equalities and no mismatch: A2 eight, B2 36, C1 eight and C3 four, plus the identities `λ₄/g² = −3 Σ (n(n+2) − 48) ‖Π_n ξ‖²/g²`, `‖ξ‖² = Σ ‖Π_n ξ‖²` and the four ratios; the B3a zero census eight of eight |
+| Package against the blind agents | equal on every value, through the frozen claims both agents reproduced exactly (F1) |
+| Dry-run containment | the landed audit reports 55 tool calls, CLEAN, and the landed comparison 103 matches with its planted mutation firing. A maintainer audit keyed on the redaction's placeholders agrees: every home-directory path in a tool input lies in the dry-run room |
+
+**The asymmetry.** Agreement here is weak evidence. The frozen claims came from this package, so the third row shows only that they were frozen from the code that landed, and a convention error shared by the package and the worklist would survive the fourth. What rules that out is F1 and F2: two agents with separate implementations derived every value without seeing one. A disagreement at any row would have been strong evidence of a defect, and there is none.
+
+Two observations on the dry-run record, neither affecting a value. On the redacted transcript the landed `audit_dryrun.py` is weaker than its pinned original in two shapes: its shell-command pattern looks for `/Users` and its token list for `.claude/projects`, and the redaction rewrote both to placeholders; the maintainer audit above covers both. And the dry-run session compacted three times, each compaction summary naming the session's full transcript, a file outside the room; no tool call opened it.
 
 ## TASK REVIEW (2026-09-13)
 
@@ -350,7 +367,7 @@ Approved by the maintainer on 2026-09-13.
 
 | Remaining | Where |
 | --- | --- |
-| Provenance comparison against the author's package | its landing PR, against the 16 pinned hashes, with the agreement and disagreement asymmetry stated |
+| Provenance comparison against the author's package | ✅ done at its landing, [#550](https://github.com/openwave-labs/openwave/pull/550): [§ Provenance comparison](#provenance-comparison-2026-09-13) |
 
 **Findings.** The candidate rationals M8.10 filed are now exact results: two blind agents derived all 36 level norms and all eight `λ₄/g²` symbolically, both argued `λ₄ < 0`, and the fixed-ray expansion fails at the pentagonal pyramid as predicted. Branches at finite amplitude, existence and stability remain open.
 
