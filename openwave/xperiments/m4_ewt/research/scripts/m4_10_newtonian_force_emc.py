@@ -10,12 +10,12 @@ Purpose:
     both built from the self-consistent geometric trinity G_geom,
     hbar_geom, lambda_l derived in the M4.7 emergence engine.
 
-    The strength clause is closed on both halves:
+    The strength clause:
 
-      circularity : G_geom enters the force test directly, derived from
-                    BCC geometry, without re-entering through an input.
-      accuracy    : the G_geom residual is stated against the CODATA
-                    uncertainty on G.
+      circularity : discharged. G_geom is derived from BCC geometry
+                    without re-entering through an input.
+      accuracy    : stated and not met. The G_geom residual is 21.9x the
+                    CODATA uncertainty on G.
 
 Dimensional anchors:
     r_e, m_e, c are the measured anchors used to build the dimensionless
@@ -27,8 +27,9 @@ Physics & Structural Identification:
    t in [0, 1) evaluates the pre-computed angular result J(r) = 4pi/r^2
    for r >= R.
 2. Algebraic Identity: A = 2 G M / c^2 and K_emc = c^4 / (16 pi G) use
-   the same G_geom, so the test verifies the geometric amplitude
-   end-to-end rather than cancelling through a normalisation gate.
+   the same G_geom, so G_geom cancels identically in F_EMC = F_Newton.
+   The gate passes for any value of G_geom: it checks the normalization
+   of A, K_emc and 4pi, not G_geom.
 3. Residual Floor: the reported ~1.2e-5 % difference is accumulated
    floating-point roundoff of the midpoint summation over a constant
    integrand, not a physical residual.
@@ -208,8 +209,7 @@ def main():
 
     ok = rel_diff < 1e-3
     if ok:
-        print("    RESULT: PASS (G_geom drives A and K_emc; "
-              "Newtonian 1/r^2 recovered)")
+        print("    RESULT: PASS (normalization of A, K_emc and 4pi consistent; G_geom cancels)")
     else:
         print("    RESULT: FAIL")
     return ok

@@ -64,7 +64,9 @@ field energy functional $E[\delta\eta] = -\frac{1}{2} K_{\text{emc}} \int |\nabl
 not imposed by hand. It is the field-theoretic analogue of the negative Newtonian field energy
 $-\frac{1}{8\pi G}\int |\nabla\Phi|^2 dV$.
 
-The strength clause is discharged on both halves. Circularity: $G_{\text{geom}}$ is derived from BCC geometry without re-entering the chain through an input, since the Planck length has moved from input to output in the M4.7 trinity. Accuracy: the residual is stated against the CODATA uncertainty on $G$ itself.
+The circularity half of the strength clause is discharged, and the accuracy half is stated and not met: the residual is 21.9x the CODATA uncertainty on $G$. Circularity: $G_{\text{geom}}$ is derived from BCC geometry without re-entering the chain through an input, since the Planck length has moved from input to output in the M4.7 trinity.
+
+Because $G_{\text{geom}}$ enters both $A$ and $K_{\text{emc}}$, it cancels identically in $F_{\text{EMC}} \equiv F_{\text{Newton}}$, so the force comparison remains a normalization consistency gate, not a derivation of the strength.
 
 The dimensional anchors $r_e, m_e, c$ are the measured quantities used to build the dimensionless geometric ratio. The derivation produces $G_{\text{geom}}$ as a dimensionless ratio against $c^2 r_e / m_e$, not $G$ from nothing.
 
@@ -75,5 +77,5 @@ The dimensional anchors $r_e, m_e, c$ are the measured quantities used to build 
 
 ## Reference
 
-Enhanced EWT manuscript, version 5.0.0 or leter:
+Enhanced EWT manuscript, version 5.0.0 or later:
 [DOI: 10.5281/zenodo.22540635](https://doi.org/10.5281/zenodo.22540635)

@@ -128,7 +128,7 @@ one is not discharging the other:
 | Half | What discharges it |
 | --- | --- |
 | Circularity | The constant does not re-enter the chain through an input. Deriving `lambda_l` rather than setting it to the Planck length discharges this, since the Planck length carries `G` |
-| Accuracy | The derived value is compared against its target with the residual stated against the target's own uncertainty, never against a scan's resolution |
+| Accuracy | The derived value agrees with its target within the target's own uncertainty. The residual is stated against that uncertainty, never against a scan's resolution, and a residual outside it is reported as not met |
 
 A dimensional anchor is not a fitted parameter. A chain that predicts a
 dimensionless ratio and multiplies it by measured quantities is deriving, not
