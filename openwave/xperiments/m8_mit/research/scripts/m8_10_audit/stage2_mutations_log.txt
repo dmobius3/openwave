@@ -1,0 +1,7 @@
+reproduction: identical
+M1 base: exit 0, max Casimir residual 7.86e-31, lambda4 [-9.529906869934451e-06, -0.0010468871806891319, -0.002150964312506196]
+M1 mutant: exit 0, max Casimir residual 7.86e-31, lambda4 [-8.45743692274671e-06, -0.00020669531075176076, -0.0016070658837287852]
+M2: {'exit': 0, 'failures': ["('3:R1 xi10', [Fraction(7, 195150384), None])", "('3:R1', '10', None, '7/195150384')"], 'item4_value_written': 'None'}
+M3: {'exit_quadcheck': 0, 'exit_identify': 0, 'max_quadrature_vs_engine_abs_dev': 0.002718396191585171, 'failures': []}
+M4: {'exit': 0, 'control_lines': ['   control R2 J=4: nonzero components exist: False', '   control R3 J=7: nonzero components exist: True', '   control R4 J=9: nonzero components exist: True']}
+written stage2_mutations.json

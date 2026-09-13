@@ -1,0 +1,469 @@
+{
+ "item0": {
+  "order": [
+   "120",
+   "120"
+  ],
+  "derived": [
+   "120",
+   "120"
+  ],
+  "perfect": [
+   "True",
+   "True"
+  ],
+  "norms": [
+   "('(1 + 0*sqrt5)', '(1 + 0*sqrt5)')",
+   "('1', '1')"
+  ],
+  "cg_squared": [
+   "1/924",
+   "1/924"
+  ],
+  "cg_sign": [
+   "True",
+   "True"
+  ]
+ },
+ "item1": {
+  "identical": true
+ },
+ "item2": {
+  "coefficients": {
+   "3:K=0": [
+    "-3*sqrt(7)/7",
+    "-3*sqrt(7)/7"
+   ],
+   "3:K=6": [
+    "-4*sqrt(91)/91",
+    "-4*sqrt(91)/91"
+   ],
+   "4:K=0": [
+    "-4*sqrt(7)/7",
+    "-4*sqrt(7)/7"
+   ],
+   "4:K=6": [
+    "-3*sqrt(91)/91",
+    "-3*sqrt(91)/91"
+   ]
+  },
+  "W_table_verified_max_res": 0,
+  "rank_M_K": 4,
+  "singular_values": [
+   108.93997535562171,
+   40.72209461258357,
+   25.72532514892444,
+   23.682770382798857,
+   2.4729494428611387e-14,
+   3.70890352004623e-15,
+   2.1731137056005843e-15
+  ]
+ },
+ "items3to7": {
+  "3:R1": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    10,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "3:R2": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    10,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [
+    16
+   ],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "3:R3": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    10,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [
+    10,
+    16
+   ],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "3:R4": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    10,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [
+    16
+   ],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "3:R5": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    10,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "4:R1": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    8,
+    12,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "4:R2": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    8,
+    12,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [
+    8,
+    12,
+    16
+   ],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "4:R3": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    8,
+    12,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [
+    8,
+    16
+   ],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "4:R4": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    8,
+    12,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [
+    16
+   ],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  },
+  "4:R5": {
+   "item3": true,
+   "item4": true,
+   "item4_nonsector_zero_mine": true,
+   "item4_levels_compared": [
+    8,
+    12,
+    14,
+    16,
+    18
+   ],
+   "item5": true,
+   "item5_zeros": [],
+   "item6_along": true,
+   "item6_orth2": true,
+   "item7": true,
+   "item7_consistent_flag": true
+  }
+ },
+ "R5_orthogonal_sign": {
+  "3": {
+   "coefficient_along_e": "-7188839*sqrt(91)/81061695000",
+   "float": -0.0008459871625895553,
+   "residual_perp_to_e": "0"
+  },
+  "4": {
+   "coefficient_along_e": "19565553*sqrt(273)/384292480000",
+   "float": 0.0008412238260100632,
+   "residual_perp_to_e": "0"
+  }
+ },
+ "item8": {
+  "identical": true
+ },
+ "item9_theirs": {
+  "3:R1": {
+   "order3_residual_60": "5.98e-61",
+   "order3_residual_110": "1.11e-110",
+   "order3_residual_160": "4.77e-161",
+   "control_residual_with_wrong_factor_3_110": "0.00939"
+  },
+  "3:R2": {
+   "order3_residual_60": "4.67e-61",
+   "order3_residual_110": "8.14e-111",
+   "order3_residual_160": "4.59e-161",
+   "control_residual_with_wrong_factor_3_110": "0.205"
+  },
+  "3:R3": {
+   "order3_residual_60": "4.75e-61",
+   "order3_residual_110": "1.0e-110",
+   "order3_residual_160": "7.27e-161",
+   "control_residual_with_wrong_factor_3_110": "0.124"
+  },
+  "3:R4": {
+   "order3_residual_60": "5.74e-61",
+   "order3_residual_110": "1.28e-110",
+   "order3_residual_160": "7.57e-161",
+   "control_residual_with_wrong_factor_3_110": "0.159"
+  },
+  "3:R5": {
+   "order3_residual_60": "5.64e-61",
+   "order3_residual_110": "6.88e-111",
+   "order3_residual_160": "3.86e-161",
+   "control_residual_with_wrong_factor_3_110": "0.153"
+  },
+  "4:R1": {
+   "order3_residual_60": "4.23e-61",
+   "order3_residual_110": "5.57e-111",
+   "order3_residual_160": "2.03e-161",
+   "control_residual_with_wrong_factor_3_110": "0.00716"
+  },
+  "4:R2": {
+   "order3_residual_60": "4.06e-61",
+   "order3_residual_110": "4.44e-111",
+   "order3_residual_160": "3.18e-161",
+   "control_residual_with_wrong_factor_3_110": "0.0891"
+  },
+  "4:R3": {
+   "order3_residual_60": "3.82e-61",
+   "order3_residual_110": "3.34e-111",
+   "order3_residual_160": "6.63e-161",
+   "control_residual_with_wrong_factor_3_110": "0.11"
+  },
+  "4:R4": {
+   "order3_residual_60": "5.63e-61",
+   "order3_residual_110": "4.44e-111",
+   "order3_residual_160": "3.97e-161",
+   "control_residual_with_wrong_factor_3_110": "0.17"
+  },
+  "4:R5": {
+   "order3_residual_60": "2.75e-61",
+   "order3_residual_110": "3.49e-111",
+   "order3_residual_160": "1.44e-161",
+   "control_residual_with_wrong_factor_3_110": "0.102"
+  }
+ },
+ "their_identification_failures": [],
+ "checks": [
+  {
+   "label": "item 0: order, derived subgroup, norms, CG^2 and sign identical",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "pretend its order were 60"
+  },
+  {
+   "label": "item 1: all 38 Hom dimensions identical",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1 to its 4-dim n=8 entry"
+  },
+  {
+   "label": "item 2: coefficients of M_0, M_6 identical in both sectors (theirs sign*sqrt form)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "compare its 3-dim r_6 with my 4-dim kappa_6"
+  },
+  {
+   "label": "its W table reproduces every M_K from B_0,B_2,B_4,B_6 with my CG, exact v (max |res| 0.0e+00)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add B_6/10 to its M_6 row"
+  },
+  {
+   "label": "rank of span{M_0..M_6} = 4 (singular values 109, 40.7, 25.7, 23.7, 2.47e-14, 3.71e-15, 2.17e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "claim full rank 7"
+  },
+  {
+   "label": "item3: identical in all 10 (sector, ray) cases",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "flip the 3-dim R1 comparison to False"
+  },
+  {
+   "label": "item4: identical in all 10 (sector, ray) cases",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "flip the 3-dim R1 comparison to False"
+  },
+  {
+   "label": "item4_nonsector_zero_mine: identical in all 10 (sector, ray) cases",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "flip the 3-dim R1 comparison to False"
+  },
+  {
+   "label": "item5: identical in all 10 (sector, ray) cases",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "flip the 3-dim R1 comparison to False"
+  },
+  {
+   "label": "item6_along: identical in all 10 (sector, ray) cases",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "flip the 3-dim R1 comparison to False"
+  },
+  {
+   "label": "item6_orth2: identical in all 10 (sector, ray) cases",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "flip the 3-dim R1 comparison to False"
+  },
+  {
+   "label": "item7: identical in all 10 (sector, ray) cases",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "flip the 3-dim R1 comparison to False"
+  },
+  {
+   "label": "item7_consistent_flag: identical in all 10 (sector, ray) cases",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "flip the 3-dim R1 comparison to False"
+  },
+  {
+   "label": "item 7 comparison discriminates (its 3-dim values never equal my 4-dim values)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "pretend all five matched"
+  },
+  {
+   "label": "its R5 3-dim orthogonal norm (7188839/2078505000)/sqrt(39) squared == my exact norm^2",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "use sqrt(40) instead of sqrt(39)"
+  },
+  {
+   "label": "its R5 4-dim orthogonal norm (58696659/14780480000)/sqrt(39) squared == my exact norm^2",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "use sqrt(40) instead of sqrt(39)"
+  },
+  {
+   "label": "R5 3-dim: my orthogonal fibre vector is exactly parallel to sin t v_2 - cos t v_-3 (coef -8.459872e-04)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "subtract a wrong multiple"
+  },
+  {
+   "label": "R5 4-dim: my orthogonal fibre vector is exactly parallel to sin t v_2 - cos t v_-3 (coef 8.412238e-04)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "subtract a wrong multiple"
+  },
+  {
+   "label": "item 8: both ratio columns identical at all five rays",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "compare its R1 ratio with my R2 ratio"
+  }
+ ],
+ "all_ok": true
+}

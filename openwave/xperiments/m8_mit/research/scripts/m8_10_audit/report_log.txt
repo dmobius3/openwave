@@ -1,0 +1,10 @@
+[PASS] exact route == explicit-function route (primary identification), max rel dev 1.4e-14   | mutation: compare lambda_4 against the other sector's exact value -> mutant failed (good)
+[PASS] exact route == explicit-function route (secondary identification), max rel dev 2.2e-14   | mutation: compare lambda_4 against the other sector's exact value -> mutant failed (good)
+[PASS] exact values identical under the secondary quaternion identification (items 2,3,4,6,7)   | mutation: compare sector-3 lambda_4 against sector-4 lambda_4 -> mutant failed (good)
+item 8 R1: lambda4(3)/lambda4(4) = 3181358848/1828392507 = 1.73997587269701 ; (mult-1) ratio = 16/9
+item 8 R2: lambda4(3)/lambda4(4) = 4889504/627669 = 7.78994023920251 ; (mult-1) ratio = 16/9
+item 8 R3: lambda4(3)/lambda4(4) = 3596800/3316941 = 1.08437261922959 ; (mult-1) ratio = 16/9
+item 8 R4: lambda4(3)/lambda4(4) = 803291852800/1122966354231 = 0.715330294423727 ; (mult-1) ratio = 16/9
+item 8 R5: lambda4(3)/lambda4(4) = 699523712/293721633 = 2.38158730378569 ; (mult-1) ratio = 16/9
+one c for lambda_4 at every ray: False ; one c for (multiple - 1): True
+checks: 168 / 168 PASS; failed: []

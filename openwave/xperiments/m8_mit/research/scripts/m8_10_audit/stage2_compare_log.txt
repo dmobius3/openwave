@@ -1,0 +1,32 @@
+[PASS] item 0: order, derived subgroup, norms, CG^2 and sign identical   | mutation: pretend its order were 60 -> mutant failed (good)
+[PASS] item 1: all 38 Hom dimensions identical   | mutation: add 1 to its 4-dim n=8 entry -> mutant failed (good)
+[PASS] item 2: coefficients of M_0, M_6 identical in both sectors (theirs sign*sqrt form)   | mutation: compare its 3-dim r_6 with my 4-dim kappa_6 -> mutant failed (good)
+[PASS] its W table reproduces every M_K from B_0,B_2,B_4,B_6 with my CG, exact v (max |res| 0.0e+00)   | mutation: add B_6/10 to its M_6 row -> mutant failed (good)
+[PASS] rank of span{M_0..M_6} = 4 (singular values 109, 40.7, 25.7, 23.7, 2.47e-14, 3.71e-15, 2.17e-15)   | mutation: claim full rank 7 -> mutant failed (good)
+[PASS] item3: identical in all 10 (sector, ray) cases   | mutation: flip the 3-dim R1 comparison to False -> mutant failed (good)
+[PASS] item4: identical in all 10 (sector, ray) cases   | mutation: flip the 3-dim R1 comparison to False -> mutant failed (good)
+[PASS] item4_nonsector_zero_mine: identical in all 10 (sector, ray) cases   | mutation: flip the 3-dim R1 comparison to False -> mutant failed (good)
+[PASS] item5: identical in all 10 (sector, ray) cases   | mutation: flip the 3-dim R1 comparison to False -> mutant failed (good)
+[PASS] item6_along: identical in all 10 (sector, ray) cases   | mutation: flip the 3-dim R1 comparison to False -> mutant failed (good)
+[PASS] item6_orth2: identical in all 10 (sector, ray) cases   | mutation: flip the 3-dim R1 comparison to False -> mutant failed (good)
+[PASS] item7: identical in all 10 (sector, ray) cases   | mutation: flip the 3-dim R1 comparison to False -> mutant failed (good)
+[PASS] item7_consistent_flag: identical in all 10 (sector, ray) cases   | mutation: flip the 3-dim R1 comparison to False -> mutant failed (good)
+[PASS] item 7 comparison discriminates (its 3-dim values never equal my 4-dim values)   | mutation: pretend all five matched -> mutant failed (good)
+[PASS] its R5 3-dim orthogonal norm (7188839/2078505000)/sqrt(39) squared == my exact norm^2   | mutation: use sqrt(40) instead of sqrt(39) -> mutant failed (good)
+[PASS] its R5 4-dim orthogonal norm (58696659/14780480000)/sqrt(39) squared == my exact norm^2   | mutation: use sqrt(40) instead of sqrt(39) -> mutant failed (good)
+[PASS] R5 3-dim: my orthogonal fibre vector is exactly parallel to sin t v_2 - cos t v_-3 (coef -8.459872e-04)   | mutation: subtract a wrong multiple -> mutant failed (good)
+[PASS] R5 4-dim: my orthogonal fibre vector is exactly parallel to sin t v_2 - cos t v_-3 (coef 8.412238e-04)   | mutation: subtract a wrong multiple -> mutant failed (good)
+[PASS] item 8: both ratio columns identical at all five rays   | mutation: compare its R1 ratio with my R2 ratio -> mutant failed (good)
+{
+ "3": {
+  "coefficient_along_e": "-7188839*sqrt(91)/81061695000",
+  "float": -0.0008459871625895553,
+  "residual_perp_to_e": "0"
+ },
+ "4": {
+  "coefficient_along_e": "19565553*sqrt(273)/384292480000",
+  "float": 0.0008412238260100632,
+  "residual_perp_to_e": "0"
+ }
+}
+ALL OK

@@ -1,0 +1,22 @@
+||q1||^2 = (1 + 0*sqrt5)  ||q2||^2 = (1 + 0*sqrt5)
+order of Gamma = 120
+number of distinct commutators = 120  derived subgroup order = 120
+number of classes = 9  sizes = [1, 1, 12, 12, 12, 12, 20, 20, 30]
+class Re(q): [(1 + 0*sqrt5), (-1 + 0*sqrt5), (1/4 + 1/4*sqrt5), (-1/4 + 1/4*sqrt5), (1/4 + -1/4*sqrt5), (-1/4 + -1/4*sqrt5), (1/2 + 0*sqrt5), (-1/2 + 0*sqrt5), (0 + 0*sqrt5)]
+class element orders: [1, 2, 10, 5, 10, 5, 6, 3, 4]
+max |tr D^j - U_2j(Re q)| over classes, n<=18: 3.8365e-40
+eigenvalues of averaged Hermitian: ['1.74065887057', '1.74065887057', '1.74065887057', '1.74065887057', '2.82768364507', '2.82768364507', '2.82768364507']
+cluster dimensions: [3, 4]
+sector d=4: max invariance residual 2.3589e-40; imag parts max 2.2959e-41
+  character (exact, per class): [(4 + 0*sqrt5), (4 + 0*sqrt5), (-1 + 0*sqrt5), (-1 + 0*sqrt5), (-1 + 0*sqrt5), (-1 + 0*sqrt5), (1 + 0*sqrt5), (1 + 0*sqrt5), (0 + 0*sqrt5)]
+sector d=3: max invariance residual 3.4326e-40; imag parts max 5.1657e-41
+  character (exact, per class): [(3 + 0*sqrt5), (3 + 0*sqrt5), (1/2 + -1/2*sqrt5), (1/2 + 1/2*sqrt5), (1/2 + 1/2*sqrt5), (1/2 + -1/2*sqrt5), (0 + 0*sqrt5), (0 + 0*sqrt5), (-1 + 0*sqrt5)]
+<chi_3,chi_3> = (1 + 0*sqrt5)  chi(1) = (3 + 0*sqrt5)
+<chi_4,chi_4> = (1 + 0*sqrt5)  chi(1) = (4 + 0*sqrt5)
+chi_3 + chi_4 == chi_{V_3} exactly on every class: True
+level n:           [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+dim Hom(3-dim, V): [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1]
+dim Hom(4-dim, V): [0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 2]
+dim of invariants: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+<3 3; 3 -3 | 6 0> =  1/518400 * sqrt( 22394880000/77 )  = 0.03289758474798845
+Racah CG vs sympy CG: 426 coefficients compared, 0 mismatches

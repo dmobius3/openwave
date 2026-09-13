@@ -1,0 +1,25 @@
+{
+ "records": [
+  {
+   "label": "exact route == explicit-function route (primary identification), max rel dev 1.4e-14",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "compare lambda_4 against the other sector's exact value"
+  },
+  {
+   "label": "exact route == explicit-function route (secondary identification), max rel dev 2.2e-14",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "compare lambda_4 against the other sector's exact value"
+  },
+  {
+   "label": "exact values identical under the secondary quaternion identification (items 2,3,4,6,7)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "compare sector-3 lambda_4 against sector-4 lambda_4"
+  }
+ ]
+}

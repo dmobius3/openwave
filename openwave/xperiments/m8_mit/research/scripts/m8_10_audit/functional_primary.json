@@ -1,0 +1,818 @@
+{
+ "identification": "primary",
+ "3": {
+  "R1": {
+   "equivariance_err": 2.110154030260182e-15,
+   "block_rank1_err": 7.172178226680156e-14,
+   "multiple": 1.0007770007770056,
+   "multiple_imag": -2.8398479136297507e-15,
+   "w_perp_norm": 1.2627295663534999e-16,
+   "normPiN2_by_J": {
+    "0": 6.142749629237772e-35,
+    "1": 2.841911252216819e-32,
+    "2": 5.033498535444572e-32,
+    "3": 1.001554605284219,
+    "4": 1.6697060611710456e-29,
+    "5": 0.00018594890389762785,
+    "6": 5.72980782219058e-30,
+    "7": 0.00038865784927680246,
+    "8": 0.00014663985252220016,
+    "9": 3.91132733567172e-05,
+    "10": 7.514218242591624e-30
+   },
+   "xi_norms_by_n": {
+    "0": 2.6661239710233384e-38,
+    "2": 1.7761945326355118e-35,
+    "4": 8.738712735146827e-35,
+    "8": 1.6305723253623493e-32,
+    "10": 3.5869773128400434e-08,
+    "12": 3.979033209854569e-34,
+    "14": 1.2547063832541401e-08,
+    "16": 2.545830772954864e-09,
+    "18": 4.018046654823841e-10,
+    "20": 4.89003165516427e-35
+   },
+   "along": -1.6581808022735167e-05,
+   "along_imag": 2.7407892665574073e-21,
+   "perp_norm2": 1.2924697071141057e-24,
+   "lam4_identity": -1.6581808022735367e-05,
+   "dn_rank1_err": 1.422108234120645e-16,
+   "u": [
+    "(1.503666389008384e-19+8.875887076289842e-19j)",
+    "(-5.52651627761154e-20+3.9983347358787835e-20j)",
+    "(4.819858856975107e-19+7.788853054758474e-19j)",
+    "(8.354109680553676e-21+4.6660241934396e-21j)",
+    "(7.026715070235709e-20+1.1228388599555958e-19j)",
+    "(3.0735910312383133e-21+2.220586264598463e-21j)",
+    "(-2.53291301411367e-05+1.5776674868116973e-19j)"
+   ],
+   "item9_residual_casimir_max": 9.546626967485166e-15,
+   "item9_residual_fd_max": 4.4790107308013564e-12,
+   "item9_scale_maxN": 0.9875885097216106,
+   "item9_casimir_vs_fd_max": 4.473685016615844e-12
+  },
+  "R2": {
+   "equivariance_err": 2.8004261699864225e-15,
+   "block_rank1_err": 6.886145406273125e-14,
+   "multiple": 1.3108003108003015,
+   "multiple_imag": 5.811355156321146e-15,
+   "w_perp_norm": 4.465499021175174e-16,
+   "normPiN2_by_J": {
+    "0": 1.4681963347185746e-32,
+    "1": 2.0141846122972447e-29,
+    "2": 4.917468170197489e-31,
+    "3": 1.7181974547941674,
+    "4": 8.403075270392169e-31,
+    "5": 0.13016423272833355,
+    "6": 9.453526440409579e-31,
+    "7": 0.09286331545387345,
+    "8": 3.0458248461713752e-30,
+    "9": 0.1194732713441647,
+    "10": 1.8530103121933764e-29
+   },
+   "xi_norms_by_n": {
+    "0": 6.372379924993814e-36,
+    "2": 1.2588653826857778e-32,
+    "4": 8.537271128815085e-34,
+    "8": 8.206128193742352e-34,
+    "10": 2.5108841189879157e-05,
+    "12": 6.564948916951097e-35,
+    "14": 2.9979117850553155e-06,
+    "16": 5.287890357936416e-35,
+    "18": 1.2273306145644797e-06,
+    "20": 1.2058844701383385e-34
+   },
+   "along": -0.008155188574755499,
+   "along_imag": -8.812229092570579e-18,
+   "perp_norm2": 2.846030702774449e-19,
+   "lam4_identity": -0.008155188574755457,
+   "dn_rank1_err": 5.968555313159612e-16,
+   "u": [
+    "(-2.1020052930213727e-20-6.380559082314993e-22j)",
+    "(-2.3281692127779076e-19+1.2492767295900994e-19j)",
+    "(1.5688342681550095e-19-7.684508595362697e-20j)",
+    "(-0.012457256316818727+2.9777805108154632e-18j)",
+    "(-2.5515604117015462e-19+4.8534976068958607e-20j)",
+    "(2.3964246655838814e-19+1.1266128443403026e-19j)",
+    "(-2.3276610559065405e-19-5.629440224044463e-20j)"
+   ],
+   "item9_residual_casimir_max": 1.5446630188464147e-14,
+   "item9_residual_fd_max": 1.7937369949887996e-10,
+   "item9_scale_maxN": 2.0820982990679644,
+   "item9_casimir_vs_fd_max": 1.793674134903055e-10
+  },
+  "R3": {
+   "equivariance_err": 2.6772106046399243e-15,
+   "block_rank1_err": 1.7515241704223668e-14,
+   "multiple": 1.2237762237762246,
+   "multiple_imag": -1.704157606965621e-15,
+   "w_perp_norm": 6.257081048782561e-15,
+   "normPiN2_by_J": {
+    "0": 6.1390165107417805e-34,
+    "1": 8.241260748042686e-33,
+    "2": 1.3036011244992586e-29,
+    "3": 1.4976282458799959,
+    "4": 1.0761170457878717e-29,
+    "5": 5.025441190136821e-30,
+    "6": 5.047907265057158e-30,
+    "7": 0.10347626579145892,
+    "8": 5.457420314277699e-30,
+    "9": 0.059139269315361565,
+    "10": 1.0130602658725053e-29
+   },
+   "xi_norms_by_n": {
+    "0": 2.6645036938983423e-37,
+    "2": 5.150787967526679e-36,
+    "4": 2.2631963967001018e-32,
+    "8": 1.0508955525272184e-32,
+    "10": 9.694138098257757e-34,
+    "12": 3.505491156289693e-34,
+    "14": 3.3405302747759207e-06,
+    "16": 9.474688045621005e-35,
+    "18": 6.075286542094178e-07,
+    "20": 6.592697481989961e-35
+   },
+   "along": -0.0023324468054217043,
+   "along_imag": 7.48069983574728e-20,
+   "perp_norm2": -8.470329472543003e-21,
+   "lam4_identity": -0.002332446805421701,
+   "dn_rank1_err": 3.6588409933119013e-17,
+   "u": [
+    "(-1.9694444443765575e-20+9.27138557057892e-20j)",
+    "(-0.0025193304897946356-4.166535004689404e-18j)",
+    "(2.218753119422582e-20-6.144051309427018e-20j)",
+    "(-9.43151775042576e-19+1.5774698724532126e-19j)",
+    "(-6.191464379156195e-20-3.7465973000001724e-20j)",
+    "(-0.002519330489794639-6.6684360515117536e-18j)",
+    "(-1.1819777954106713e-20+8.744402000687734e-20j)"
+   ],
+   "item9_residual_casimir_max": 8.77304048173157e-15,
+   "item9_residual_fd_max": 4.6679862275564524e-11,
+   "item9_scale_maxN": 1.519872745344369,
+   "item9_casimir_vs_fd_max": 4.6681556652206465e-11
+  },
+  "R4": {
+   "equivariance_err": 2.7978115851442678e-15,
+   "block_rank1_err": 1.342038767783078e-14,
+   "multiple": 1.3597513597513622,
+   "multiple_imag": -1.3817405796707755e-15,
+   "w_perp_norm": 3.761459770375985e-15,
+   "normPiN2_by_J": {
+    "0": 1.5290266313007767e-34,
+    "1": 3.9477747730392736e-32,
+    "2": 1.3932352862501062e-31,
+    "3": 1.8489237603456767,
+    "4": 5.797230402142541e-30,
+    "5": 0.05694685181864651,
+    "6": 3.443287615941837e-30,
+    "7": 0.0039798563765945285,
+    "8": 3.484472219483873e-30,
+    "9": 0.18161270651359318,
+    "10": 1.4836368427497956e-29
+   },
+   "xi_norms_by_n": {
+    "0": 6.636400309465177e-38,
+    "2": 2.467359233149546e-35,
+    "4": 2.4188112608508787e-34,
+    "8": 5.6613578145923255e-33,
+    "10": 1.0985118020572243e-05,
+    "12": 2.3911719555151646e-34,
+    "14": 1.2848193364522626e-07,
+    "16": 6.049430936603947e-35,
+    "18": 1.8656795130012448e-06,
+    "20": 9.6550710820348e-35
+   },
+   "along": -0.00418689997757745,
+   "along_imag": 1.0880269752990774e-18,
+   "perp_norm2": 3.7269449679189215e-20,
+   "lam4_identity": -0.0041868999775774495,
+   "dn_rank1_err": 4.619599179632401e-17,
+   "u": [
+    "(-0.0045223688474748565-1.7921588403359213e-18j)",
+    "(-2.5546847482013613e-20+5.710583079852891e-20j)",
+    "(8.452178899000014e-19+6.4591935733697e-19j)",
+    "(-1.0330620880331835e-20+1.384429995511759e-19j)",
+    "(7.859191905068908e-19-6.801351106038856e-19j)",
+    "(1.8388943904630093e-20+2.3867667556406217e-20j)",
+    "(-0.004522368847474867+2.5339185291040985e-18j)"
+   ],
+   "item9_residual_casimir_max": 9.370209978900196e-15,
+   "item9_residual_fd_max": 1.6602184072393713e-11,
+   "item9_scale_maxN": 2.6443615657959985,
+   "item9_casimir_vs_fd_max": 1.6596579445876228e-11
+  },
+  "R5": {
+   "equivariance_err": 2.144196810752504e-15,
+   "block_rank1_err": 1.6576987038965548e-14,
+   "multiple": 1.1846153846153822,
+   "multiple_imag": 1.0212977744888196e-15,
+   "w_perp_norm": 6.820670277928475e-15,
+   "normPiN2_by_J": {
+    "0": 2.0077172041295774e-34,
+    "1": 2.1197048805242685e-32,
+    "2": 8.574955519451176e-30,
+    "3": 1.403313609467449,
+    "4": 2.3972016588060023e-29,
+    "5": 0.07289940828402357,
+    "6": 3.4784960884798196e-30,
+    "7": 0.046061464752974,
+    "8": 0.020018099547511315,
+    "9": 0.05212704166796878,
+    "10": 1.1647736991791909e-29
+   },
+   "xi_norms_by_n": {
+    "0": 8.714050365145735e-38,
+    "2": 1.3248155503276678e-35,
+    "4": 1.4887075554602734e-32,
+    "8": 2.3410172449277366e-32,
+    "10": 1.4062385857257633e-05,
+    "12": 2.4156222836665413e-34,
+    "14": 1.4870049313330965e-06,
+    "16": 3.47536450477627e-07,
+    "18": 5.354931137817306e-07,
+    "20": 7.580003769127387e-35
+   },
+   "along": -0.004574061747755119,
+   "along_imag": 8.977875088696353e-19,
+   "perp_norm2": 3.0672611968572436e-07,
+   "lam4_identity": -0.004574061747755115,
+   "dn_rank1_err": 9.727339371209991e-17,
+   "u": [
+    "(-0.004230681927785201-9.716621308506817e-18j)",
+    "(-5.327149572261162e-19-9.578991117894429e-19j)",
+    "(-5.666306563925632e-21+2.182082971811157e-19j)",
+    "(-2.5135488655205102e-20-1.6437824570984304e-19j)",
+    "(5.052217504931698e-19-1.2932499853011764e-18j)",
+    "(-0.0056245106519433145+1.4760294143329124e-17j)",
+    "(6.5262614834976e-20-1.065029885284556e-18j)"
+   ],
+   "item9_residual_casimir_max": 1.6654825600958367e-14,
+   "item9_residual_fd_max": 3.404361501256878e-11,
+   "item9_scale_maxN": 2.091356402231568,
+   "item9_casimir_vs_fd_max": 3.404468880168209e-11
+  }
+ },
+ "4": {
+  "R1": {
+   "equivariance_err": 2.2046035488621598e-15,
+   "block_rank1_err": 5.6764223710512104e-14,
+   "multiple": 1.0004370629370603,
+   "multiple_imag": 4.967780232225109e-15,
+   "w_perp_norm": 2.356588300185763e-16,
+   "normPiN2_by_J": {
+    "0": 5.9901184978698256e-34,
+    "1": 2.269977068613939e-32,
+    "2": 6.422786683739635e-32,
+    "3": 1.0008743168981311,
+    "4": 1.2034512690113649e-05,
+    "5": 3.814498517500062e-30,
+    "6": 0.00020859821996186458,
+    "7": 0.00010150216152988709,
+    "8": 9.993364949530741e-05,
+    "9": 2.156904951513007e-05,
+    "10": 6.67506590195977e-30
+   },
+   "xi_norms_by_n": {
+    "0": 2.5998778202560007e-37,
+    "2": 1.4187356678837118e-35,
+    "4": 1.1150671325936867e-34,
+    "8": 1.175245379893911e-08,
+    "10": 7.35821473283191e-34,
+    "12": 1.4485987497351708e-08,
+    "14": 3.2768001526952185e-09,
+    "16": 1.7349591926268647e-09,
+    "18": 2.2157554153445585e-10,
+    "20": 4.343936056564823e-35
+   },
+   "along": -9.529906869935124e-06,
+   "along_imag": -5.9312945086549556e-21,
+   "perp_norm2": 7.754818242684634e-25,
+   "lam4_identity": -9.529906869935439e-06,
+   "dn_rank1_err": 1.7250418750420424e-16,
+   "u": [
+    "(-2.0836810752842964e-19-1.365742341557979e-18j)",
+    "(-3.169822874808626e-20-2.731562749376737e-20j)",
+    "(-5.211289214957728e-19-7.102196714138622e-19j)",
+    "(4.643488434246891e-21-2.0532906908877518e-20j)",
+    "(-1.1082441907376722e-20-3.0235702030790477e-20j)",
+    "(3.866520418170518e-21+1.9385763586780887e-21j)",
+    "(-1.2606881797727206e-05+4.3700398467800185e-20j)"
+   ],
+   "item9_residual_casimir_max": 6.519471176751215e-15,
+   "item9_residual_fd_max": 4.689171653162539e-12,
+   "item9_scale_maxN": 0.7806851402478587,
+   "item9_casimir_vs_fd_max": 4.690367345902242e-12
+  },
+  "R2": {
+   "equivariance_err": 2.024635595269873e-15,
+   "block_rank1_err": 3.292804803799403e-14,
+   "multiple": 1.1748251748251737,
+   "multiple_imag": 2.2054610114607455e-15,
+   "w_perp_norm": 3.87036584129496e-17,
+   "normPiN2_by_J": {
+    "0": 1.426213954094767e-32,
+    "1": 1.9255054128336578e-29,
+    "2": 8.41785402475132e-31,
+    "3": 1.3802141914029993,
+    "4": 7.585801764088398e-31,
+    "5": 6.769930954845189e-29,
+    "6": 5.964135073944676e-31,
+    "7": 0.024252249794873112,
+    "8": 1.8628530198278986e-30,
+    "9": 0.06588364215530339,
+    "10": 1.1779287082008034e-29
+   },
+   "xi_norms_by_n": {
+    "0": 6.190164731314092e-36,
+    "2": 1.203440883021036e-32,
+    "4": 1.4614329904082154e-33,
+    "8": 7.408009535242576e-34,
+    "10": 1.3059280391290872e-32,
+    "12": 4.1417604680171364e-35,
+    "14": 7.829367831506041e-07,
+    "16": 3.234119826090102e-35,
+    "18": 6.768125632324888e-07,
+    "20": 7.665612688728677e-35
+   },
+   "along": -0.0010468871806891295,
+   "along_imag": -1.0717637139416602e-18,
+   "perp_norm2": -1.3129010682441655e-20,
+   "lam4_identity": -0.0010468871806891284,
+   "dn_rank1_err": 6.757860421270819e-17,
+   "u": [
+    "(3.146626652286638e-20+4.436584942166035e-22j)",
+    "(2.831074634880999e-19-1.404173971988838e-19j)",
+    "(8.486921620748086e-20+3.354124259615829e-20j)",
+    "(-0.0013849015654224803+8.888013824986843e-18j)",
+    "(-4.050554993545779e-20-4.9643892022199554e-20j)",
+    "(3.222743576360244e-19-2.8129703537510115e-19j)",
+    "(-1.6050285718729486e-20+6.233732855051394e-20j)"
+   ],
+   "item9_residual_casimir_max": 1.527767331173755e-14,
+   "item9_residual_fd_max": 6.963422502747295e-11,
+   "item9_scale_maxN": 1.170751408822623,
+   "item9_casimir_vs_fd_max": 6.962594407379782e-11
+  },
+  "R3": {
+   "equivariance_err": 2.2232198742534223e-15,
+   "block_rank1_err": 1.6932357093127127e-14,
+   "multiple": 1.1258741258741283,
+   "multiple_imag": 5.83697029274816e-16,
+   "w_perp_norm": 4.970565985646061e-15,
+   "normPiN2_by_J": {
+    "0": 1.7673217533375008e-33,
+    "1": 4.117228445767556e-33,
+    "2": 1.4061987476842903e-29,
+    "3": 1.2675925473128327,
+    "4": 8.975740804413468e-30,
+    "5": 7.987505011225806e-30,
+    "6": 0.0550699300699301,
+    "7": 0.027023935485715838,
+    "8": 2.9461422339579578e-30,
+    "9": 0.03261240286687513,
+    "10": 9.437630843497658e-30
+   },
+   "xi_norms_by_n": {
+    "0": 7.670667332194013e-37,
+    "2": 2.5732677786047228e-36,
+    "4": 2.4413172702852264e-32,
+    "8": 8.765371879310027e-33,
+    "10": 1.5407995777827558e-33,
+    "12": 3.824300699300701e-06,
+    "14": 8.72415272653533e-07,
+    "16": 5.114830267288121e-35,
+    "18": 3.350222188000815e-07,
+    "20": 6.14173185879429e-35
+   },
+   "along": -0.002150964312506193,
+   "along_imag": -9.187530444759685e-20,
+   "perp_norm2": 1.6940658945086007e-21,
+   "lam4_identity": -0.002150964312506194,
+   "dn_rank1_err": 2.736402568106157e-17,
+   "u": [
+    "(5.3603237009720073e-20-3.751880366333213e-20j)",
+    "(-0.00201204287714398-1.108666580896391e-18j)",
+    "(-1.159178246370539e-19-5.479770599556337e-20j)",
+    "(4.353552099460693e-19+2.107169131107384e-19j)",
+    "(1.0684791805487444e-20-2.041004895601613e-20j)",
+    "(-0.0020120428771439854-1.2532065410154025e-18j)",
+    "(-4.23278722165003e-21-2.053234410509462e-20j)"
+   ],
+   "item9_residual_casimir_max": 1.0041842978268712e-14,
+   "item9_residual_fd_max": 3.378640440944155e-11,
+   "item9_scale_maxN": 1.0574702843623172,
+   "item9_casimir_vs_fd_max": 3.379183873583584e-11
+  },
+  "R4": {
+   "equivariance_err": 2.098438997170749e-15,
+   "block_rank1_err": 1.2127884439125666e-14,
+   "multiple": 1.2023601398601382,
+   "multiple_imag": 7.434420953217169e-16,
+   "w_perp_norm": 1.2840865862962538e-15,
+   "normPiN2_by_J": {
+    "0": 9.303980700997874e-34,
+    "1": 4.49118153116272e-32,
+    "2": 8.227225008519705e-32,
+    "3": 1.4456699059244915,
+    "4": 0.05084581611570241,
+    "5": 5.835293447443138e-30,
+    "6": 0.004224113954227548,
+    "7": 0.0010393821340660082,
+    "8": 2.7833343248396026e-30,
+    "9": 0.10015048916112355,
+    "10": 1.0167867289089918e-29
+   },
+   "xi_norms_by_n": {
+    "0": 4.038186068141438e-37,
+    "2": 2.8069884569767003e-35,
+    "4": 1.4283376750902265e-34,
+    "8": 4.965411730049063e-05,
+    "10": 1.1256353100777658e-33,
+    "12": 2.9334124682135755e-07,
+    "14": 3.355443356359789e-08,
+    "16": 4.832177647290977e-35,
+    "18": 1.0288306332298196e-06,
+    "20": 6.616948204582673e-35
+   },
+   "along": -0.005853100323327481,
+   "along_imag": 1.8812803801084755e-18,
+   "perp_norm2": 0.0,
+   "lam4_identity": -0.00585310032332748,
+   "dn_rank1_err": 1.0756585452266348e-16,
+   "u": [
+    "(-0.005475074015076801+8.583379702468844e-18j)",
+    "(4.2935090328821567e-20-2.2549721214093507e-19j)",
+    "(3.0776663913404802e-19-1.2049995392122123e-19j)",
+    "(-4.860733543719141e-20+8.149391535450255e-20j)",
+    "(2.996032435296199e-19+2.2000162687462073e-19j)",
+    "(-2.0312335355574957e-19-3.69003253776606e-20j)",
+    "(-0.005475074015076808-1.0270144227818434e-17j)"
+   ],
+   "item9_residual_casimir_max": 7.73560639750263e-15,
+   "item9_residual_fd_max": 2.6625920940840673e-11,
+   "item9_scale_maxN": 1.5667739344941791,
+   "item9_casimir_vs_fd_max": 2.6626751940027795e-11
+  },
+  "R5": {
+   "equivariance_err": 2.4402818255368237e-15,
+   "block_rank1_err": 1.3499257408982346e-14,
+   "multiple": 1.1038461538461537,
+   "multiple_imag": -4.04266770636465e-16,
+   "w_perp_norm": 1.906262369715542e-15,
+   "normPiN2_by_J": {
+    "0": 3.4505288019509827e-34,
+    "1": 1.8650068416269236e-32,
+    "2": 8.827306979250197e-30,
+    "3": 1.2184763313609455,
+    "4": 0.010624260355029537,
+    "5": 5.0216915287832066e-30,
+    "6": 0.010903846153846132,
+    "7": 0.012029445035932887,
+    "8": 0.013642142359902642,
+    "9": 0.0287455036698028,
+    "10": 9.165041850275682e-30
+   },
+   "xi_norms_by_n": {
+    "0": 1.497625348069003e-37,
+    "2": 1.1656292760168272e-35,
+    "4": 1.5325185727864924e-32,
+    "8": 1.0375254252958532e-05,
+    "10": 9.68690495521452e-34,
+    "12": 7.57211538461537e-07,
+    "14": 3.8834727001332923e-07,
+    "16": 2.368427493038653e-07,
+    "18": 2.952981557137861e-07,
+    "20": 5.964338980031551e-35
+   },
+   "along": -0.0019205937739441015,
+   "along_imag": -4.2353301723940123e-19,
+   "perp_norm2": 4.0437572882684004e-07,
+   "lam4_identity": -0.0019205937739440971,
+   "dn_rank1_err": 9.888353264306345e-17,
+   "u": [
+    "(-0.0023668683974362027-7.881027499056906e-18j)",
+    "(4.271312164255098e-19+1.1130380945606886e-18j)",
+    "(-7.407837409991636e-20+1.3216818941125016e-19j)",
+    "(-1.3082660035657221e-20-5.110208476350428e-21j)",
+    "(-2.940962369829058e-19-1.83623015709964e-19j)",
+    "(-0.0012493127280878199-4.927523243044194e-18j)",
+    "(-2.9792246641670923e-19+1.2390814583052071e-18j)"
+   ],
+   "item9_residual_casimir_max": 9.489647133146529e-15,
+   "item9_residual_fd_max": 3.067994661844559e-11,
+   "item9_scale_maxN": 1.835964943601208,
+   "item9_casimir_vs_fd_max": 3.067991292594412e-11
+  }
+ },
+ "checks": [
+  {
+   "label": "commutant has exactly two eigenvalue clusters (spread 1.8e-15, gap 0.40)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "treat all 7 eigenvalues as one cluster"
+  },
+  {
+   "label": "D^3(h) eta = eta sigma(h) for all 120 h, d=3 (err 1.9e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "replace sigma(h) by identity"
+  },
+  {
+   "label": "D^3(h) eta = eta sigma(h) for all 120 h, d=4 (err 1.5e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "replace sigma(h) by identity"
+  },
+  {
+   "label": "cubature reproduces Schur orthogonality up to J=10 (err 5.9e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop the complex conjugate in the Schur integral"
+  },
+  {
+   "label": "[primary d=3 R1] Phi(gh) = Phi(g) sigma(h), all h (err 2.1e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=3 R1] level-6 part of N and of DN is (fibre) x eta (err 7.2e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=3 R1] item 9 residual, Casimir (spin-J matrices), max 9.5e-15 (scale 0.99)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=3 R1] item 9 residual, finite differences on geodesics, max 4.5e-12",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=3 R2] Phi(gh) = Phi(g) sigma(h), all h (err 2.8e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=3 R2] level-6 part of N and of DN is (fibre) x eta (err 6.9e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=3 R2] item 9 residual, Casimir (spin-J matrices), max 1.5e-14 (scale 2.08)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=3 R2] item 9 residual, finite differences on geodesics, max 1.8e-10",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=3 R3] Phi(gh) = Phi(g) sigma(h), all h (err 2.7e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=3 R3] level-6 part of N and of DN is (fibre) x eta (err 1.8e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=3 R3] item 9 residual, Casimir (spin-J matrices), max 8.8e-15 (scale 1.52)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=3 R3] item 9 residual, finite differences on geodesics, max 4.7e-11",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=3 R4] Phi(gh) = Phi(g) sigma(h), all h (err 2.8e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=3 R4] level-6 part of N and of DN is (fibre) x eta (err 1.3e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=3 R4] item 9 residual, Casimir (spin-J matrices), max 9.4e-15 (scale 2.64)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=3 R4] item 9 residual, finite differences on geodesics, max 1.7e-11",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=3 R5] Phi(gh) = Phi(g) sigma(h), all h (err 2.1e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=3 R5] level-6 part of N and of DN is (fibre) x eta (err 1.7e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=3 R5] item 9 residual, Casimir (spin-J matrices), max 1.7e-14 (scale 2.09)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=3 R5] item 9 residual, finite differences on geodesics, max 3.4e-11",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=4 R1] Phi(gh) = Phi(g) sigma(h), all h (err 2.2e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=4 R1] level-6 part of N and of DN is (fibre) x eta (err 5.7e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=4 R1] item 9 residual, Casimir (spin-J matrices), max 6.5e-15 (scale 0.78)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=4 R1] item 9 residual, finite differences on geodesics, max 4.7e-12",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=4 R2] Phi(gh) = Phi(g) sigma(h), all h (err 2.0e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=4 R2] level-6 part of N and of DN is (fibre) x eta (err 3.3e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=4 R2] item 9 residual, Casimir (spin-J matrices), max 1.5e-14 (scale 1.17)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=4 R2] item 9 residual, finite differences on geodesics, max 7.0e-11",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=4 R3] Phi(gh) = Phi(g) sigma(h), all h (err 2.2e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=4 R3] level-6 part of N and of DN is (fibre) x eta (err 1.7e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=4 R3] item 9 residual, Casimir (spin-J matrices), max 1.0e-14 (scale 1.06)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=4 R3] item 9 residual, finite differences on geodesics, max 3.4e-11",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=4 R4] Phi(gh) = Phi(g) sigma(h), all h (err 2.1e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=4 R4] level-6 part of N and of DN is (fibre) x eta (err 1.2e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=4 R4] item 9 residual, Casimir (spin-J matrices), max 7.7e-15 (scale 1.57)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=4 R4] item 9 residual, finite differences on geodesics, max 2.7e-11",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  },
+  {
+   "label": "[primary d=4 R5] Phi(gh) = Phi(g) sigma(h), all h (err 2.4e-15)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop sigma(h) for h = q1 (compare Phi(g q1) with Phi(g))"
+  },
+  {
+   "label": "[primary d=4 R5] level-6 part of N and of DN is (fibre) x eta (err 1.3e-14)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "reintroduce the factor d in the fibre extraction (the bug found in the first run)"
+  },
+  {
+   "label": "[primary d=4 R5] item 9 residual, Casimir (spin-J matrices), max 9.5e-15 (scale 1.84)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "lambda_2 -> 1.001 lambda_2"
+  },
+  {
+   "label": "[primary d=4 R5] item 9 residual, finite differences on geodesics, max 3.1e-11",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "48 -> 47 in (-Delta - 48)"
+  }
+ ],
+ "all_ok": true
+}

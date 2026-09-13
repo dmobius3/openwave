@@ -29,11 +29,11 @@
 
 ---
 
-## STATUS AT A GLANCE (2026-09-11)
+## STATUS AT A GLANCE (2026-09-13)
 
 | Question | Answer |
 | --- | --- |
-| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10). M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). Nothing is in progress |
+| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), and M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13). M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). Nothing is in progress |
 | What kind of column is it? | The platform's first top-down structural model: strong on the origin of the numbers (representation theory on S³/2I), absent on dynamics. The M8 program exists to supply the dynamics half |
 | What decides the program? | Field dynamics remains the decisive question (does ANY reasonable Lagrangian on S³/2I realize the McKay slot structure?), and it stands without a live route in this column. Per [#512](https://github.com/openwave-labs/openwave/discussions/512), the two MODELS.md criteria gated on it stay open and nothing is pending; a future program is reviewed on arrival, under run-before-write and the maintainer-reproduction rule |
 | Evidence discipline | The author's own claim ledger is adopted as the grading baseline (structural results = the core; the numeric mass table = low weight, capped by the author's own pre-registered nulls); platform standards (pre-registration, adversarial audit, method notes) apply from day one |
@@ -76,6 +76,7 @@
 | [M8.5](tasks/m8_5_task_details.md) | Quotient-manifold simulation engineering | ✅ Closed 2026-08-31, row retired 2026-09-11. The grid backend is certified for its own target: M8.5-A reproduced the tables three-way (2026-07-31) and M8.5-B adjudicated `M85B-ADJ-07` GREEN at both rungs (2026-08-17). The spectral half closed with M8.5-C, below. Full record: [task doc](tasks/m8_5_task_details.md) | 2026-08-31 |
 | [M8.5-C](tasks/m8_5_task_details.md) | Spectral dynamics substrate for S³/2I | ❌ Closed 2026-08-31, row retired 2026-09-11: `M8.5-C2-FAILED`, instrument-attributed STOP-QUAL ([#506](https://github.com/openwave-labs/openwave/issues/506)). Attempt C2-A1 was terminated on unit misconduct and no gate measured red; the spectral route and the M8.4 reopening path close. C's A1 stands terminated non-adjudicated ([#501](https://github.com/openwave-labs/openwave/issues/501)). Record: [addendum 1](findings/m8_5c2_protocol.md), [room](m8_5c2/a1/) | 2026-08-31 |
 | [M8.1.2](tasks/m8_1_2_task_details.md) | Third blind run: the fourth bedrock paper | ✅ ALL 21 FROZEN CLAIMS REPRODUCE, adjudicated before the author's package opened. Two blind agents, a two-stage packet with the group given by generators, and an adversarial audit that refuted no value; both agents proved the spin-8 zero set with the normalizing hint withheld. ⚠️ The packet's `w_K` wording was loose; the paper's is not. [Method note](findings/m8_1_2_method_note.md) | 2026-09-10 |
+| [M8.10](tasks/m8_10_task_details.md) | First correction at the level-6 critical rays | ✅ ALL FROZEN CLAIMS REPRODUCE: two blind agents in separate rooms derived the 36 level norms and the eight `λ₄/g²` exactly, so the candidate rationals stand as exact results; `λ₄ < 0` argued two ways, and the `R5` negative control fired unmarked. ⚠️ Four solver checks could not fail and the block cubic's `M_K` form is not unique; no value moves. [Method note](findings/m8_10_method_note.md) | 2026-09-13 |
 
 ## CHANGE-LOG
 
@@ -310,3 +311,14 @@ M8.1.2, and the Backlog is empty. M8.7's gate cell, the canonical's OQ1 and OQ3 
 gap map and the M8.5 and M8.7 task headers now point at
 [#512](https://github.com/openwave-labs/openwave/discussions/512) instead of at a chassis
 qualification that can no longer happen. Bookkeeping only; no scope or evidence change.
+
+**M8.10 CLOSE-OUT: THE FIRST CORRECTION AT THE LEVEL-6 CRITICAL RAYS (2026-09-13).** The author
+proposed M8.10 under the [#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)
+follow-up ([#546](https://github.com/openwave-labs/openwave/pull/546)): the fourth bedrock paper's range equation carried
+one order at its four symmetry-pinned critical rays in sectors `3′` and `4`, with the author's candidate values filed as
+rational identifications. The maintainer ran it on 2026-09-13: two blind agents in separate rooms, the handout asking
+the same questions at all five rays so the negative control was unmarked, and an adversarial audit that confirmed the
+solver value by value and reran its code with no difference. Every frozen claim reproduces, the 36 level norms and the
+eight `λ₄/g²` are now exact results, and the negative control fired. Branches at finite amplitude, existence and
+stability are not established. No MODELS.md cell moves and M8.7's gate is unchanged. The author's package lands in its
+own PR for the provenance comparison. Record: [method note](findings/m8_10_method_note.md).

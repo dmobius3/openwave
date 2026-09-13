@@ -1,0 +1,22 @@
+(a) exact components of M^{6,J}(v) at the vanishing levels:
+   R2 J=4 (n=8): all 9 components exactly zero: True
+   R2 J=6 (n=12): all 13 components exactly zero: True
+   R2 J=8 (n=16): all 17 components exactly zero: True
+   R3 J=4 (n=8): all 9 components exactly zero: True
+   R3 J=5 (n=10): all 11 components exactly zero: True
+   R3 J=8 (n=16): all 17 components exactly zero: True
+   R4 J=8 (n=16): all 17 components exactly zero: True
+   control R2 J=5: nonzero components exist: True
+   control R3 J=7: nonzero components exist: True
+   control R4 J=9: nonzero components exist: True
+(b) R2: rho_6(v_0) components: [0, 0, 0, 0, 0, 0, 10*sqrt(231)/231, 0, 0, 0, 0, 0, 0]
+    <6 0; 3 0 | J 0> for J = 3..9: ['-10*sqrt(429)/429', '0', 'sqrt(273)/39', '0', '-6*sqrt(34034)/2431', '0', '2*sqrt(4641)/221']
+(d) R4, J = 8: rho_6(R4) = [-1, 0, 0, 0, 0, 0, -sqrt(231)/231, 0, 0, 0, 0, 0, -1]
+    M^(6,8)(R4)_3 = <6 6;3 -3|8 3> rho_6,6 + <6 0;3 3|8 3> rho_6,0 = (sqrt(273)/546)(-1) + (-sqrt(143)/26)(-sqrt(231)/231) = 0
+    M^(6,8)(R4)_-3 = (-sqrt(273)/546)(-1) + (sqrt(143)/26)(-sqrt(231)/231) = 0
+(c) |H| = 48, closed under multiplication: True
+    R3 is an eigenline of every element of H: max |D v - chi v| = 4.84e-16
+    multiplicity of chi in V_J, J=3..9: {3: '1.0000000000-5.1e-18i', 4: '0.0000000000+3.3e-17i', 5: '0.0000000000-4.2e-17i', 6: '1.0000000000-1.1e-16i', 7: '1.0000000000+1.7e-17i', 8: '0.0000000000-1.0e-15i', 9: '1.0000000000+3.8e-16i'}
+    rounded: {3: 1, 4: 0, 5: 0, 6: 1, 7: 1, 8: 0, 9: 1}
+(e) R4, <e^{i pi/6}, j> (binary dihedral): |H| = 24, eigenline max dev 1.9e-15, chi-multiplicity in V_J: {3: 1, 8: 1}
+(e) R5, <e^{i pi/5}> (cyclic): |H| = 10, eigenline max dev 4.0e-16, chi-multiplicity in V_J: {3: 2}

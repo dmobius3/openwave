@@ -3,7 +3,7 @@
 > Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md) M8.10 (**author-proposed, maintainer-run**).
 > Standing: [#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036).
 > Parent verification and run-format template: [`m8_1_2_task_details.md`](m8_1_2_task_details.md).
-> Status: 📋 PROPOSED 2026-09-12, author-drafted; registration and go pending.
+> Status: ✅ DONE 2026-09-13, maintainer-run (go 09:37 EDT); proposed 2026-09-12, author-drafted ([#546](https://github.com/openwave-labs/openwave/pull/546)).
 
 ## TASK PLANNING (author-proposed; registration and go pending)
 
@@ -259,10 +259,99 @@ From the designer's freeze the values stop moving on the author's side: no edit 
 
 Maintainer-run at maintainer pace. Nothing else in the column waits on it.
 
+## GO-TIME PRE-REGISTRATION (2026-09-13, go 09:37 EDT)
+
+Written by the designer and frozen before any agent received a packet. Nothing in this section is edited after the solver and auditor launch; anything the run forces off it goes in the deviations log below.
+
+### The go-time checklist, answered
+
+| Item | Decision |
+| --- | --- |
+| Deposit pin | verified at the review of [#546](https://github.com/openwave-labs/openwave/pull/546): the Zenodo record returns `the-surviving-ray.pdf`, MD5 `d2405316e20c060f53d338c1516298bc`, 589,476 bytes |
+| Claims frozen | the claims tables above, as written, with no value edited. C1 and C3 are graded at `R1` to `R4` only; anything an agent reports for items 7 and 8 at `R5` is recorded as a diagnostic, and D2 is graded on item 6 |
+| Instrument | the offered worklist, adopted with one change: items 4, 7, 8 and 9 ask at `R1` to `R5` uniformly, so the instrument no longer marks `R5` as different (the note in the #546 review) |
+| Handout audit | maintainer-side, two passes: the semantic read at the #546 review, and a go-time value-pattern gate over all 48 frozen fractions, 12 decimals and 77 integers of three or more digits. No graded value appears in the handout; the only matches are `12/25`, which defines `R5`, and the supplied `48` and `18` |
+| Run format | two blind agents in separate rooms, then the auditor's second stage over the solver's work, per the roles table below. Earns blind |
+| Exactness rule | exact means a symbolic derivation, or a rational identification that states its precision and denominator bound and repeats at a second precision. The record labels each value by which route produced it; the author's own values are identifications ([§ Candidate claims](#candidate-pre-registered-claims)) |
+| Compute | each room's interpreter pins the math libraries to one thread and runs at `nice 15`, beside a concurrent maintainer workload |
+| Answer-key containment | the table below |
+| Author's package | not yet in the repository. The provenance comparison waits for its landing PR, after the verdict |
+
+| Packet file | SHA-256 | Bytes |
+| --- | --- | --- |
+| `worklist.md` (both rooms) | `52ae85c759c5111d78f5fe69c687b593271ea4db6d99f483eb17a977921acacd` | 6,776 |
+| `BRIEF.md` (solver) | `5fa38668f281b9e33578703db92348aba6eb7c52f19606732df016e94e1f9be6` | 1,399 |
+| `BRIEF.md` (auditor, stage 1) | `0d519010dbafe509fab21d93f32747624bc86052bea9f048240e2d8096c8e0e5` | 1,872 |
+
+The packet files land beside the returns at FINISH, under `m8_10/`.
+
+### Containment: where the answer key lives, and what walls it off
+
+The frozen claims live in this file, in the maintainers' working tree. No agent is given a repository path.
+
+| Route to the answers | Guard |
+| --- | --- |
+| This file and every repository document | agents are given only their room directory; solver and auditor get separate rooms |
+| Web search and fetch, connectors, spawning agents | withheld by the agent definition's tool allowlist: read, write, edit and shell only |
+| The Python route | each room's interpreter runs without site processing, so `import openwave` fails from inside the room, while the numerics load (Python 3.12.14, numpy 2.5.3, scipy 1.18.1, sympy 1.14.0, mpmath 1.3.0) |
+| Instruction files on the room's ancestor path | checked on the room directory: none |
+| What loads unavoidably | a canary agent, run before any packet existed, reported the user-global instruction file, a project instruction file and a memory index, none answer-bearing: no value, equation, ray or claim. The index names the author and the column, and one line names this task's ID. Holding that line on disk did not reach the agents, which receive the session's start-time snapshot; it is disclosed as a named load |
+| The filesystem outside the room | NOT sandboxed. At FINISH every agent's transcript is audited for any tool call reaching outside its room; a hit is a protocol failure |
+
+### Roles and ordering
+
+| Step | Who | Receives | Before the next step |
+| --- | --- | --- | --- |
+| 1 | solver and auditor, in parallel, separate rooms | the worklist and a brief. The auditor writes its method before computing, and is directed to a route that shares no library coupling tables with a Clebsch-Gordan approach | each return saved verbatim to a checkpoint and hashed |
+| 2 | auditor, context continued | the solver's scripts and return, copied into its room | per-claim verdicts (confirmed, partial, refuted) and a hunt for solver checks that cannot fail |
+| 3 | designer | everything | comparison against the frozen claims, X0 as a precondition and X1 to X4 recorded apart from the claim verdicts |
+| 4 | designer, only after the verdict is recorded | the author's package, when it lands | provenance comparison, with the agreement and disagreement asymmetry stated |
+
 ## DEVIATIONS LOG
 
-(none)
+| Date | Deviation | Disposition |
+| --- | --- | --- |
+| 2026-09-13 | The auditor ran eight commands in the background, and the tool harness wrote their output to its own task folder outside the room; the auditor read six of those files back (11 references) | No other file outside the room was touched. The same folder held the solver's and the canary's transcripts, and the transcript audit shows neither was opened; the stage-1 comparison was therefore made with no view of the solver's work |
+| 2026-09-13 | The transcript-audit pattern flagged 15 of the auditor's 69 calls, four of them Python code whose division operators matched the absolute-path rule | Each flag was classified by extracting every path outside the room from the command; the 11 real references are the row above. The pattern had been mutation-tested before use on eight synthetic out-of-room calls |
+| 2026-09-13 | The auditor's eight console logs carried a `.log` extension, which the repository ignores | Landed byte-identical as `*_log.txt` under [`../scripts/m8_10_audit/`](../scripts/m8_10_audit/), the M8.1.2 raw-output naming; only the names moved. The returns `AUDIT_STAGE1.md`, `AUDIT_STAGE2.md` and the solver's `RETURN.md` landed renamed to `*_return.md`, content unchanged |
+| 2026-09-13 | The auditor's `METHOD.md` wrote literal `\|` inside table cells, which breaks its rows when rendered | In the landed copy, the pipes inside seven cells are escaped as `\|`, a rendering change only; every other agent file landed byte-identical, and the unedited bytes of all of them are hashed in the maintainer's run checkpoints |
+| 2026-09-13 | The designer's comparison script first read the solver's level keys as `j = n/2` and printed B1 as a failure | The keys are levels `n`; the script was corrected before any verdict was recorded, and the solver's B1 values were unchanged |
 
 ## FINDINGS
 
-(pending)
+Full record with the equations, the code map and the audit: [`../findings/m8_10_method_note.md`](../findings/m8_10_method_note.md).
+
+| ID | Finding |
+| --- | --- |
+| F1 | **Every frozen claim reproduces blind.** A1 to D2 match in both agents, computed by separate implementations that never saw a claimed value; the auditor then confirmed the solver on items 0 to 8 value by value and reran its code with no difference |
+| F2 | **The candidate rationals are now derived.** Both agents obtained the 36 level norms and the eight `λ₄/g²` by exact symbolic routes, so the values the task filed as rational identifications stand as exact results. `λ₄ < 0` at all eight expansions, argued two ways |
+| F3 | **The negative control fired blind.** With the handout asking the same questions at all five rays, both agents found that the order-`a⁵` block equation has a component orthogonal to `Φ` at `R5`, with identical exact values, so the fixed-ray expansion fails there as D2 predicted |
+| F4 | ⚠️ **The block cubic's coefficient form is not unique.** The seven `M_K` span four dimensions, so A1's frozen form is one valid representation; no value moves |
+| F5 | ⚠️ **Four checks in the solver cannot fail.** Its order-`a³` residual cannot see an error in `N(Φ)` (it does catch a mislabeled level, which is what X4 asks), and three recorded failures never stop the run. No number is affected, since the auditor reproduced each by its own route |
+| F6 | **Level 16 vanishes by time reversal**, as B3b states, through a Jacobian identity the auditor derived; the solver proved the same zeros by exact cancellation without naming the mechanism |
+| F7 | **Containment held on the record.** The solver made no call outside its room in 49; the auditor's only outside references in 90 are the output files of its own background commands |
+
+## TASK REVIEW (2026-09-13)
+
+Task Duration: 01:02 (from 09:37 to 10:39)
+Usage Cap Triggered: NO
+
+Approved by the maintainer on 2026-09-13.
+
+| Result | Status |
+| --- | --- |
+| Every frozen claim, A1 to D2, reproduced blind by both agents | ✅ |
+| The 36 level norms and the eight `λ₄/g²` derived exactly, by symbolic routes in both agents | ✅ |
+| `λ₄ < 0` at all eight expansions, argued two ways | ✅ |
+| The `R5` negative control fired, unmarked in the handout | ✅ |
+| The auditor confirmed the solver value by value and reran its code with no difference | ✅ |
+| Four solver checks cannot fail, and the block cubic's `M_K` form is not unique | ⚠️ no value moves |
+| The memory index that agents load named this task's ID | ⚠️ disclosed in the pre-registration; it carried no value, equation or ray |
+
+| Remaining | Where |
+| --- | --- |
+| Provenance comparison against the author's package | its landing PR, against the 16 pinned hashes, with the agreement and disagreement asymmetry stated |
+
+**Findings.** The candidate rationals M8.10 filed are now exact results: two blind agents derived all 36 level norms and all eight `λ₄/g²` symbolically, both argued `λ₄ < 0`, and the fixed-ray expansion fails at the pentagonal pyramid as predicted. Branches at finite amplitude, existence and stability remain open.
+
+**Research docs created/updated.** [Task doc](m8_10_task_details.md), [method note](../findings/m8_10_method_note.md), [roadmap](../m8_roadmap.md), [briefing](../../__M8_model_briefing.md), [canonical](../m8_theory_canonical.md), [solver scripts](../scripts/m8_10_solver/), [audit scripts](../scripts/m8_10_audit/), [packet as run](../m8_10/).
