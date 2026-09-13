@@ -27,7 +27,8 @@ When a result must be reproduced by a context that the record can show was never
 targets: an author-supplied computation reproduced in-platform, a single-implementation
 result re-derived before a claim rests on it, any case where the implementing context would
 otherwise share state with a context that knows the answers. The cost is real (a sealed
-packet, ordered commits, an operator at the keyboard), so the trigger is the claim, not
+packet, ordered commits, and either an operator at the keyboard or the headless launch of
+§ 3.4), so the trigger is the claim, not
 habit: if nobody will rely on the isolation, a plain independent implementation is cheaper.
 
 ## 3. Building the room
@@ -71,7 +72,9 @@ environments on the spot; the rule exists because the miss was live, not hypothe
 
 ### 3.3 What loads unavoidably
 
-The user-global instruction file loads into any session. Grep it for the subject vocabulary
+It depends on the launch mode (§ 3.4).
+
+An operated session loads the user-global instruction file. Grep it for the subject vocabulary
 before the run and disclose it in the consulted-files manifest as a named load. Read the
 grep's summary with suspicion: "nothing relevant" is the conclusion to be most careful with,
 since the file is written for a general working context and nobody edits it with a clean
@@ -79,18 +82,50 @@ room in mind. At M8.5-A it carried nothing answer-bearing and still named the pl
 repository several times. Project memory is keyed to the working directory, so a fresh
 folder starts with none.
 
-### 3.4 Launch
+A headless launch under `--restricted` loads no instruction file at all. At the 2026-09-13
+prototype a canary with every tool disabled was asked to quote a line that exists only in the
+user-global file: a plain headless session quoted it, which shows the probe can fire, and the
+`--restricted` session answered NONE. Its init record listed no memory path, no MCP server
+and no skill. Two things still reach the session in either mode, the account's email address
+and the working-directory path, so the room's path must name nothing (§ 3.1). Re-run the
+canary pair after any client upgrade before relying on this paragraph.
+
+### 3.4 Launch: headless or operated
+
+Two launch modes are admissible. Both withhold web tools, keep the implementer's writes inside
+the room, and leave every commit to a maintainer.
+
+**Headless (the default).** The maintainer launches the room as a separate one-shot session
+from a script, and nobody answers prompts:
 
 ```bash
-claude --disallowedTools "WebSearch,WebFetch"
+cd /path/to/room
+claude -p "$(cat OPENING_PROMPT.md)" --restricted --tools "Read,Edit,Write,Bash" \
+  --strict-mcp-config --disable-slash-commands --permission-prompts none \
+  --allowedTools "Edit(./**)" "Write(./**)" "Bash(./py *)" \
+  --no-session-persistence --output-format stream-json --verbose < /dev/null > transcript.jsonl
 ```
 
-In DEFAULT permission mode, never a bypass mode. The approval prompt is what makes a tool
-call reaching outside the room visible to the operator, and it is the one containment guard
-that does not rely on the implementer's cooperation. The room is isolated by withheld tools
-and by instruction, not by a sandbox: the filesystem outside it is reachable in principle,
-and the prompts are what stand in the way. The implementer writes only inside the room; a
-maintainer copies artifacts out and performs every commit.
+[`utils/clean_room_launch.sh`](utils/clean_room_launch.sh) builds the room interpreter, runs
+the § 3.1 and § 3.2 checks, and launches. Each guard below was made to fire at the prototype:
+
+| Route out of the room | Guard |
+| --- | --- |
+| the file tools | `--restricted` confines Read, Edit and Write to the working directory; an outside path fails as outside the working directory, not as a prompt |
+| shell commands | only `./py` is allowlisted; anything else would prompt, and `--permission-prompts none` denies every prompt automatically, a command chained onto `./py` included |
+| code the implementation runs | `./py` executes under macOS `sandbox-exec`, whose profile denies reads and writes outside the room and the interpreter's own install, and every network call, so a script opening an outside file gets `Operation not permitted` from the OS |
+| web, MCP connectors, skills, agents, messaging | absent from the session: four tools, no MCP server, no skill |
+
+The approval prompt's job, making a reach outside the room visible, passes to the record:
+every automatic denial is listed in the transcript's final `permission_denials` entry, which
+the § 7 transcript check reads. A denial is evidence exactly as a declined prompt is (§ 6).
+Two nearby options are not this route: `--bare` authenticates only with an API key, and
+`dontAsk` mode's denial text invites the model to try other tools.
+
+**Operated.** `claude --disallowedTools "WebSearch,WebFetch"` in DEFAULT permission mode with
+the § 6 runbook, never a bypass mode. The prompts are the guard there, since the filesystem
+outside the room is reachable in principle. Use it where the headless guards are unavailable,
+such as a platform without `sandbox-exec`, or where a person's reading of each call is wanted.
 
 ## 4. The packet
 
@@ -160,7 +195,9 @@ the firewall forbids. The near-empty prompt is a firewall property, not a style 
 
 ## 6. The operator runbook
 
-The human at the room's keyboard is a firewall component. The rules, applied per event:
+In an operated launch (§ 3.4) the human at the room's keyboard is a firewall component. A
+headless launch has no keyboard: the prompt rows below are replaced by the automatic denial
+and its record, and the rest apply as written. The rules, applied per event:
 
 | Event | Operator action |
 | --- | --- |
@@ -192,7 +229,7 @@ Nothing is unsealed until the commitment is committed and merged. The commitment
 | --- | --- |
 | hashes of every deliverable | computed independently by the maintainer at copy-out and matched against the implementer's own record |
 | the environment record and consulted-files manifest | folded in, with the implementer's prior-knowledge disclosure |
-| the transcript check | extract every tool call from the session transcript and classify its paths against the manifest; the manifest is corroborated, never merely attested. Session-temp writes of the run's own output are disclosed, not hidden |
+| the transcript check | extract every tool call from the session transcript and classify its paths against the manifest; the manifest is corroborated, never merely attested. Session-temp writes of the run's own output are disclosed, not hidden. For a headless launch the transcript is the stream-json file the launch writes, and its final `permission_denials` entry is classified with the tool calls |
 | any redaction | disclosed precisely, with BOTH hashes recorded (the original stays the commitment; the transcript retains the original bytes) |
 | the pre-declared choices | anything the protocol requires fixed before unsealing (M8.5-A: whether the optional module ran) is declared here and unavailable afterwards |
 | the operator log | launch checks, prompts, stalls, deviations |
@@ -230,7 +267,8 @@ Delete the room only after this standard's per-run write-up (or its refutation) 
 room is the last place to check a detail the transcript renders ambiguously. A room left on
 disk is a room that gets reused, and its second occupant is not context-isolated: by then
 the folder holds the packet, the implementation, and the unsealed comparison. Keep the
-session transcript; it lives under the agent's project-history directory, outside the room,
+session transcript; it lives under the agent's project-history directory, or where a headless
+launch wrote it, outside the room,
 and it is what makes the manifest checkable rather than an attestation.
 
 **Hash the transcript at teardown and record the hash in the task document.** The transcript
@@ -294,7 +332,7 @@ and is the opposite of it.
 | build | ancestor-path check run and contents read; interpreter check green; unavoidable loads grepped and disclosed; room outside every working tree |
 | packet | per-part mechanical audits green and mutation-tested; author evidence outside; incoming + authoritative hashes recorded; withholdings stated; task file carries the § 4 small print |
 | commit 1 | packet + task file + audit script + output merged BEFORE launch |
-| launch | hashes re-verified; banner cwd + model recorded; default permission mode; web tools withheld; near-empty opening prompt, nothing else |
+| launch | hashes re-verified; headless (the launch script's checks green; the init record's cwd, model and tool list recorded) or operated (banner cwd + model recorded, default permission mode); web tools withheld; near-empty opening prompt, nothing else |
 | run | operator runbook applied per event; deviations logged as they happen; packet never amended |
 | commit 2 | the commitment: hashes, environment, manifest, transcript check, redactions, pre-declarations, operator log; merged BEFORE unsealing |
 | commit 3 | adjudication naming commit 2; own transcription; two-sided comparison mutations; exact comparison |
