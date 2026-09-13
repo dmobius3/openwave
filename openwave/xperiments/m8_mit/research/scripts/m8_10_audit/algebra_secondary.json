@@ -1,0 +1,969 @@
+{
+ "identification": "secondary",
+ "3": {
+  "B_nonzero_K": [
+   0,
+   6
+  ],
+  "c_block": {
+   "0": "-3*sqrt(7)/7",
+   "6": "-4*sqrt(91)/91"
+  },
+  "item2_kappa": {
+   "0": "-3*sqrt(7)/7",
+   "6": "-4*sqrt(91)/91"
+  },
+  "item2_kappa_float": {
+   "0": -1.1338934190276817,
+   "6": -0.4193139346887673
+  },
+  "rJ": {
+   "3": "48/91",
+   "4": "0",
+   "5": "132/91",
+   "6": "0",
+   "7": "270/221",
+   "8": "6/7",
+   "9": "240/221"
+  },
+  "rays": {
+   "R1": {
+    "v_normalised": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "sqrt(21)/3"
+    ],
+    "w": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "1288*sqrt(21)/3861"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "1288/1287",
+    "item3_multiple_float": 1.0007770007770007,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "1288/1287",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "1658944/1656369",
+     "4": "0",
+     "5": "28/150579",
+     "6": "0",
+     "7": "18375/47278088",
+     "8": "7/47736",
+     "9": "980/25055433"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "0",
+     "10": "7/195150384",
+     "12": "0",
+     "14": "18375/1464486053888",
+     "16": "7/2749593600",
+     "18": "245/609749017488"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 0.0,
+     "10": 3.5869773128399276e-08,
+     "12": 0.0,
+     "14": 1.254706383254181e-08,
+     "16": 2.545830772954956e-09,
+     "18": 4.0180466548241985e-10
+    },
+    "item6_along": "-608931967/36722893315680",
+    "item6_along_float": -1.658180802273543e-05,
+    "item6_perp_fibre": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    "item6_perp_norm2": "0",
+    "item6_perp_norm2_float": 0.0,
+    "item7_lambda4_over_g2": "-608931967/36722893315680",
+    "item7_float": -1.658180802273543e-05,
+    "item9_exact_coefficient_residual_max": 0
+   },
+   "R2": {
+    "v_normalised": [
+     "0",
+     "0",
+     "0",
+     "sqrt(21)/3",
+     "0",
+     "0",
+     "0"
+    ],
+    "w": [
+     "0",
+     "0",
+     "0",
+     "1687*sqrt(21)/3861",
+     "0",
+     "0",
+     "0"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "1687/1287",
+    "item3_multiple_float": 1.3108003108003108,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "1687/1287",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "2845969/1656369",
+     "4": "0",
+     "5": "19600/150579",
+     "6": "0",
+     "7": "548800/5909761",
+     "8": "0",
+     "9": "10976000/91869921"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "0",
+     "10": "1225/48787596",
+     "12": "0",
+     "14": "8575/2860324324",
+     "16": "0",
+     "18": "171500/139734149841"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 0.0,
+     "10": 2.5108841189879492e-05,
+     "12": 0.0,
+     "14": 2.997911785055323e-06,
+     "16": 0.0,
+     "18": 1.2273306145644824e-06
+    },
+    "item6_along": "-1871763250/229518083223",
+    "item6_along_float": -0.008155188574755537,
+    "item6_perp_fibre": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    "item6_perp_norm2": "0",
+    "item6_perp_norm2_float": 0.0,
+    "item7_lambda4_over_g2": "-1871763250/229518083223",
+    "item7_float": -0.008155188574755537,
+    "item9_exact_coefficient_residual_max": 0
+   },
+   "R3": {
+    "v_normalised": [
+     "0",
+     "sqrt(42)/6",
+     "0",
+     "0",
+     "0",
+     "sqrt(42)/6",
+     "0"
+    ],
+    "w": [
+     "0",
+     "175*sqrt(42)/858",
+     "0",
+     "0",
+     "0",
+     "175*sqrt(42)/858",
+     "0"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "175/143",
+    "item3_multiple_float": 1.2237762237762237,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "175/143",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "30625/20449",
+     "4": "0",
+     "5": "0",
+     "6": "0",
+     "7": "47040/454597",
+     "8": "0",
+     "9": "54880/927979"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "0",
+     "10": "0",
+     "12": "0",
+     "14": "735/220024948",
+     "16": "0",
+     "18": "1715/2822912118"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 0.0,
+     "10": 0.0,
+     "12": 0.0,
+     "14": 3.3405302747759313e-06,
+     "16": 0.0,
+     "18": 6.075286542094188e-07
+    },
+    "item6_along": "-2203040/944518861",
+    "item6_along_float": -0.002332446805421708,
+    "item6_perp_fibre": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    "item6_perp_norm2": "0",
+    "item6_perp_norm2_float": 0.0,
+    "item7_lambda4_over_g2": "-2203040/944518861",
+    "item7_float": -0.002332446805421708,
+    "item9_exact_coefficient_residual_max": 0
+   },
+   "R4": {
+    "v_normalised": [
+     "sqrt(42)/6",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "sqrt(42)/6"
+    ],
+    "w": [
+     "875*sqrt(42)/3861",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "875*sqrt(42)/3861"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "1750/1287",
+    "item3_multiple_float": 1.3597513597513597,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "1750/1287",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "3062500/1656369",
+     "4": "0",
+     "5": "8575/150579",
+     "6": "0",
+     "7": "23520/5909761",
+     "8": "0",
+     "9": "1516795/8351811"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "0",
+     "10": "8575/780601536",
+     "12": "0",
+     "14": "735/5720648648",
+     "16": "0",
+     "18": "1516795/812998689984"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 0.0,
+     "10": 1.0985118020572279e-05,
+     "12": 0.0,
+     "14": 1.2848193364522814e-07,
+     "16": 0.0,
+     "18": 1.8656795130012459e-06
+    },
+    "item6_along": "-1921938515/459036166446",
+    "item6_along_float": -0.004186899977577459,
+    "item6_perp_fibre": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    "item6_perp_norm2": "0",
+    "item6_perp_norm2_float": 0.0,
+    "item7_lambda4_over_g2": "-1921938515/459036166446",
+    "item7_float": -0.004186899977577459,
+    "item9_exact_coefficient_residual_max": 0
+   },
+   "R5": {
+    "v_normalised": [
+     "2*sqrt(7)/5",
+     "0",
+     "0",
+     "0",
+     "0",
+     "sqrt(273)/15",
+     "0"
+    ],
+    "w": [
+     "154*sqrt(7)/325",
+     "0",
+     "0",
+     "0",
+     "0",
+     "77*sqrt(273)/975",
+     "0"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "77/65",
+    "item3_multiple_float": 1.1846153846153846,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "77/65",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "5929/4225",
+     "4": "0",
+     "5": "308/4225",
+     "6": "0",
+     "7": "281211/6105125",
+     "8": "553/27625",
+     "9": "241864/4639895"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "0",
+     "10": "77/5475600",
+     "12": "0",
+     "14": "281211/189112352000",
+     "16": "553/1591200000",
+     "18": "30233/56458242360"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 0.0,
+     "10": 1.4062385857257651e-05,
+     "12": 0.0,
+     "14": 1.4870049313330945e-06,
+     "16": 3.4753645047762694e-07,
+     "18": 5.354931137817305e-07
+    },
+    "item6_along": "-267786421/58544557500",
+    "item6_along_float": -0.004574061747755118,
+    "item6_perp_fibre": [
+     "7188839*sqrt(7)/31177575000",
+     "0",
+     "0",
+     "0",
+     "0",
+     "-7188839*sqrt(273)/202654237500",
+     "0"
+    ],
+    "item6_perp_norm2": "51679406167921/168487138365975000000",
+    "item6_perp_norm2_float": 3.0672611968556856e-07,
+    "item7_lambda4_over_g2": "-267786421/58544557500",
+    "item7_float": -0.004574061747755118,
+    "item9_exact_coefficient_residual_max": 0
+   }
+  }
+ },
+ "4": {
+  "B_nonzero_K": [
+   0,
+   6
+  ],
+  "c_block": {
+   "0": "-4*sqrt(7)/7",
+   "6": "-3*sqrt(91)/91"
+  },
+  "item2_kappa": {
+   "0": "-4*sqrt(7)/7",
+   "6": "-3*sqrt(91)/91"
+  },
+  "item2_kappa_float": {
+   "0": -1.511857892036909,
+   "6": -0.3144854510165755
+  },
+  "rJ": {
+   "3": "36/91",
+   "4": "108/91",
+   "5": "0",
+   "6": "12/7",
+   "7": "90/119",
+   "8": "18/13",
+   "9": "2196/1547"
+  },
+  "rays": {
+   "R1": {
+    "v_normalised": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "sqrt(7)/2"
+    ],
+    "w": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "2289*sqrt(7)/4576"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "2289/2288",
+    "item3_multiple_float": 1.000437062937063,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "2289/2288",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "5239521/5234944",
+     "4": "63/5234944",
+     "5": "0",
+     "6": "21/100672",
+     "7": "23625/232753664",
+     "8": "147/1470976",
+     "9": "1281/59390656"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "63/5360582656",
+     "10": "0",
+     "12": "7/483225600",
+     "14": "23625/7209777496064",
+     "16": "49/28242739200",
+     "18": "427/1927108005888"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 1.1752453798932711e-08,
+     "10": 0.0,
+     "12": 1.4485987497351134e-08,
+     "14": 3.276800152695071e-09,
+     "16": 1.734959192626755e-09,
+     "18": 2.2157554153444602e-10
+    },
+    "item6_along": "-368688201/38687492546560",
+    "item6_along_float": -9.529906869934451e-06,
+    "item6_perp_fibre": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    "item6_perp_norm2": "0",
+    "item6_perp_norm2_float": 0.0,
+    "item7_lambda4_over_g2": "-368688201/38687492546560",
+    "item7_float": -9.529906869934451e-06,
+    "item9_exact_coefficient_residual_max": 0
+   },
+   "R2": {
+    "v_normalised": [
+     "0",
+     "0",
+     "0",
+     "sqrt(7)/2",
+     "0",
+     "0",
+     "0"
+    ],
+    "w": [
+     "0",
+     "0",
+     "0",
+     "84*sqrt(7)/143",
+     "0",
+     "0",
+     "0"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "168/143",
+    "item3_multiple_float": 1.1748251748251748,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "168/143",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "28224/20449",
+     "4": "0",
+     "5": "0",
+     "6": "0",
+     "7": "11025/454597",
+     "8": "0",
+     "9": "672525/10207769"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "0",
+     "10": "0",
+     "12": "0",
+     "14": "11025/14081596672",
+     "16": "0",
+     "18": "74725/110407229504"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 0.0,
+     "10": 0.0,
+     "12": 0.0,
+     "14": 7.829367831506089e-07,
+     "16": 0.0,
+     "18": 6.768125632324896e-07
+    },
+    "item6_along": "-15820875/15112301776",
+    "item6_along_float": -0.0010468871806891319,
+    "item6_perp_fibre": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    "item6_perp_norm2": "0",
+    "item6_perp_norm2_float": 0.0,
+    "item7_lambda4_over_g2": "-15820875/15112301776",
+    "item7_float": -0.0010468871806891319,
+    "item9_exact_coefficient_residual_max": 0
+   },
+   "R3": {
+    "v_normalised": [
+     "0",
+     "sqrt(14)/4",
+     "0",
+     "0",
+     "0",
+     "sqrt(14)/4",
+     "0"
+    ],
+    "w": [
+     "0",
+     "161*sqrt(14)/572",
+     "0",
+     "0",
+     "0",
+     "161*sqrt(14)/572",
+     "0"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "161/143",
+    "item3_multiple_float": 1.1258741258741258,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "161/143",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "25921/20449",
+     "4": "0",
+     "5": "0",
+     "6": "63/1144",
+     "7": "945/34969",
+     "8": "0",
+     "9": "242109/7423832"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "0",
+     "10": "0",
+     "12": "7/1830400",
+     "14": "945/1083199744",
+     "16": "0",
+     "18": "26901/80296166912"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 0.0,
+     "10": 0.0,
+     "12": 3.824300699300699e-06,
+     "14": 8.724152726535356e-07,
+     "16": 0.0,
+     "18": 3.350222188000824e-07
+    },
+    "item6_along": "-162530109/75561508880",
+    "item6_along_float": -0.002150964312506196,
+    "item6_perp_fibre": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    "item6_perp_norm2": "0",
+    "item6_perp_norm2_float": 0.0,
+    "item7_lambda4_over_g2": "-162530109/75561508880",
+    "item7_float": -0.002150964312506196,
+    "item9_exact_coefficient_residual_max": 0
+   },
+   "R4": {
+    "v_normalised": [
+     "sqrt(14)/4",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "sqrt(14)/4"
+    ],
+    "w": [
+     "2751*sqrt(14)/9152",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "2751*sqrt(14)/9152"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "2751/2288",
+    "item3_multiple_float": 1.2023601398601398,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "2751/2288",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "7568001/5234944",
+     "4": "1575/30976",
+     "5": "0",
+     "6": "1701/402688",
+     "7": "945/909194",
+     "8": "0",
+     "9": "23792013/237562624"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "1575/31719424",
+     "10": "0",
+     "12": "189/644300800",
+     "14": "945/28163193344",
+     "16": "0",
+     "18": "2643557/2569477341184"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 4.96541173004907e-05,
+     "10": 0.0,
+     "12": 2.9334124682136046e-07,
+     "14": 3.3554433563597525e-08,
+     "16": 0.0,
+     "18": 1.0288306332298164e-06
+    },
+    "item6_along": "-226441775133/38687492546560",
+    "item6_along_float": -0.0058531003233274845,
+    "item6_perp_fibre": [
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    "item6_perp_norm2": "0",
+    "item6_perp_norm2_float": 0.0,
+    "item7_lambda4_over_g2": "-226441775133/38687492546560",
+    "item7_float": -0.0058531003233274845,
+    "item9_exact_coefficient_residual_max": 0
+   },
+   "R5": {
+    "v_normalised": [
+     "sqrt(21)/5",
+     "0",
+     "0",
+     "0",
+     "0",
+     "sqrt(91)/10",
+     "0"
+    ],
+    "w": [
+     "287*sqrt(21)/1300",
+     "0",
+     "0",
+     "0",
+     "0",
+     "287*sqrt(91)/2600",
+     "0"
+    ],
+    "item3_is_multiple": true,
+    "item3_multiple": "287/260",
+    "item3_multiple_float": 1.103846153846154,
+    "item3_residual_norm2_if_not": "0",
+    "lambda2_over_g": "287/260",
+    "normPiN2_by_J": {
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "82369/67600",
+     "4": "3591/338000",
+     "5": "0",
+     "6": "567/52000",
+     "7": "361557/30056000",
+     "8": "313551/22984000",
+     "9": "21340179/742383200"
+    },
+    "item4_normPi_xi2_over_g2_by_n": {
+     "0": "0",
+     "2": "0",
+     "4": "0",
+     "8": "3591/346112000",
+     "10": "0",
+     "12": "63/83200000",
+     "14": "361557/931014656000",
+     "16": "34839/147097600000",
+     "18": "2371131/8029616691200"
+    },
+    "item4_float": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "8": 1.037525425295858e-05,
+     "10": 0.0,
+     "12": 7.572115384615385e-07,
+     "14": 3.883472700133305e-07,
+     "16": 2.3684274930386356e-07,
+     "18": 2.952981557137869e-07
+    },
+    "item6_along": "-4797453339/2497901120000",
+    "item6_along_float": -0.0019205937739441023,
+    "item6_perp_fibre": [
+     "-19565553*sqrt(21)/147804800000",
+     "0",
+     "0",
+     "0",
+     "0",
+     "58696659*sqrt(91)/960731200000",
+     "0"
+    ],
+    "item6_perp_norm2": "1148432592587427/2840013657395200000000",
+    "item6_perp_norm2_float": 4.043757288268624e-07,
+    "item7_lambda4_over_g2": "-4797453339/2497901120000",
+    "item7_float": -0.0019205937739441023,
+    "item9_exact_coefficient_residual_max": 0
+   }
+  }
+ },
+ "flags": [],
+ "checks": [
+  {
+   "label": "[3,R1] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[3,R1] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[3,R2] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[3,R2] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[3,R3] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[3,R3] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[3,R4] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[3,R4] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[3,R5] [[Theta v x v]_K x v]_3 == (-1)^K M_K(v), K=0..6",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop the (-1)^K"
+  },
+  {
+   "label": "[3,R5] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[3,R5] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[4,R1] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[4,R1] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[4,R2] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[4,R2] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[4,R3] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[4,R3] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[4,R4] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[4,R4] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  },
+  {
+   "label": "[4,R5] [[Theta v x v]_K x v]_3 == (-1)^K M_K(v), K=0..6",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop the (-1)^K"
+  },
+  {
+   "label": "[4,R5] w from M_K formula == w from coupling paths",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "double w"
+  },
+  {
+   "label": "[4,R5] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "shift by 1e-6"
+  }
+ ],
+ "all_ok": true
+}

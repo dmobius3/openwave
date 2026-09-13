@@ -1,0 +1,60 @@
+
+=== sector dim 3: K with nonzero right invariant [sum_b Theta eta_b x eta_b]_K: [0, 6]
+item 2: w(v) = sum_K kappa_K M_K(v), kappa = {0: -3*sqrt(7)/7, 6: -4*sqrt(91)/91}
+[PASS] [3,R1] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [3,R1] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[3-dim, R1] multiple? True mu=1288/1287 ; lambda4/g^2 = -608931967/36722893315680 = -1.65818080227e-05; perp |.|^2 = 0
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '0', 10: '7/195150384', 12: '0', 14: '18375/1464486053888', 16: '7/2749593600', 18: '245/609749017488'}
+    item 9 exact coefficient residual max |.| = 0
+[PASS] [3,R2] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [3,R2] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[3-dim, R2] multiple? True mu=1687/1287 ; lambda4/g^2 = -1871763250/229518083223 = -0.00815518857476; perp |.|^2 = 0
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '0', 10: '1225/48787596', 12: '0', 14: '8575/2860324324', 16: '0', 18: '171500/139734149841'}
+    item 9 exact coefficient residual max |.| = 0
+[PASS] [3,R3] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [3,R3] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[3-dim, R3] multiple? True mu=175/143 ; lambda4/g^2 = -2203040/944518861 = -0.00233244680542; perp |.|^2 = 0
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '0', 10: '0', 12: '0', 14: '735/220024948', 16: '0', 18: '1715/2822912118'}
+    item 9 exact coefficient residual max |.| = 0
+[PASS] [3,R4] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [3,R4] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[3-dim, R4] multiple? True mu=1750/1287 ; lambda4/g^2 = -1921938515/459036166446 = -0.00418689997758; perp |.|^2 = 0
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '0', 10: '8575/780601536', 12: '0', 14: '735/5720648648', 16: '0', 18: '1516795/812998689984'}
+    item 9 exact coefficient residual max |.| = 0
+[PASS] [3,R5] [[Theta v x v]_K x v]_3 == (-1)^K M_K(v), K=0..6   | mutation: drop the (-1)^K -> mutant failed (good)
+[PASS] [3,R5] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [3,R5] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[3-dim, R5] multiple? True mu=77/65 ; lambda4/g^2 = -267786421/58544557500 = -0.00457406174776; perp |.|^2 = 51679406167921/168487138365975000000
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '0', 10: '77/5475600', 12: '0', 14: '281211/189112352000', 16: '553/1591200000', 18: '30233/56458242360'}
+    item 9 exact coefficient residual max |.| = 0
+
+=== sector dim 4: K with nonzero right invariant [sum_b Theta eta_b x eta_b]_K: [0, 6]
+item 2: w(v) = sum_K kappa_K M_K(v), kappa = {0: -4*sqrt(7)/7, 6: -3*sqrt(91)/91}
+[PASS] [4,R1] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [4,R1] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[4-dim, R1] multiple? True mu=2289/2288 ; lambda4/g^2 = -368688201/38687492546560 = -9.52990686993e-06; perp |.|^2 = 0
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '63/5360582656', 10: '0', 12: '7/483225600', 14: '23625/7209777496064', 16: '49/28242739200', 18: '427/1927108005888'}
+    item 9 exact coefficient residual max |.| = 0
+[PASS] [4,R2] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [4,R2] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[4-dim, R2] multiple? True mu=168/143 ; lambda4/g^2 = -15820875/15112301776 = -0.00104688718069; perp |.|^2 = 0
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '0', 10: '0', 12: '0', 14: '11025/14081596672', 16: '0', 18: '74725/110407229504'}
+    item 9 exact coefficient residual max |.| = 0
+[PASS] [4,R3] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [4,R3] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[4-dim, R3] multiple? True mu=161/143 ; lambda4/g^2 = -162530109/75561508880 = -0.00215096431251; perp |.|^2 = 0
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '0', 10: '0', 12: '7/1830400', 14: '945/1083199744', 16: '0', 18: '26901/80296166912'}
+    item 9 exact coefficient residual max |.| = 0
+[PASS] [4,R4] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [4,R4] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[4-dim, R4] multiple? True mu=2751/2288 ; lambda4/g^2 = -226441775133/38687492546560 = -0.00585310032333; perp |.|^2 = 0
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '1575/31719424', 10: '0', 12: '189/644300800', 14: '945/28163193344', 16: '0', 18: '2643557/2569477341184'}
+    item 9 exact coefficient residual max |.| = 0
+[PASS] [4,R5] [[Theta v x v]_K x v]_3 == (-1)^K M_K(v), K=0..6   | mutation: drop the (-1)^K -> mutant failed (good)
+[PASS] [4,R5] w from M_K formula == w from coupling paths   | mutation: double w -> mutant failed (good)
+[PASS] [4,R5] <Phi,DN_Phi[xi]> == 3<N,xi> == -3 sum ||Pi_n N||^2/mu_n   | mutation: shift by 1e-6 -> mutant failed (good)
+[4-dim, R5] multiple? True mu=287/260 ; lambda4/g^2 = -4797453339/2497901120000 = -0.00192059377394; perp |.|^2 = 1148432592587427/2840013657395200000000
+    ||Pi_n xi||^2/g^2: {0: '0', 2: '0', 4: '0', 8: '3591/346112000', 10: '0', 12: '63/83200000', 14: '361557/931014656000', 16: '34839/147097600000', 18: '2371131/8029616691200'}
+    item 9 exact coefficient residual max |.| = 0
+FLAGS: []
+ALL OK

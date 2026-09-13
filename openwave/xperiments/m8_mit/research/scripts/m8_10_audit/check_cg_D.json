@@ -1,0 +1,180 @@
+{
+ "records": [
+  {
+   "label": "Racah CG == lowering CG on all compared triples (30-digit)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "count one extra mismatch"
+  },
+  {
+   "label": "Racah == lowering symbolically for all (3,3,K)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "pretend one mismatch"
+  },
+  {
+   "label": "CG matrix (3x3) orthogonal, err=2.2e-16",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1e-3 to the error"
+  },
+  {
+   "label": "CG matrix (6x3) orthogonal, err=2.2e-16",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1e-3 to the error"
+  },
+  {
+   "label": "CG matrix (3x9) orthogonal, err=2.2e-16",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1e-3 to the error"
+  },
+  {
+   "label": "D^(1/2) raising generator == CS J+ (err 0.0e+00)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1 to error"
+  },
+  {
+   "label": "D^(2/2) raising generator == CS J+ (err 1.0e-06)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1 to error"
+  },
+  {
+   "label": "D^(6/2) raising generator == CS J+ (err 6.0e-06)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1 to error"
+  },
+  {
+   "label": "D^(12/2) raising generator == CS J+ (err 2.1e-05)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1 to error"
+  },
+  {
+   "label": "D^(18/2) raising generator == CS J+ (err 4.5e-05)",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1 to error"
+  },
+  {
+   "label": "D^(1/2) homomorphism err 1.2e-16",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1"
+  },
+  {
+   "label": "D^(1/2) unitary err 3.3e-16",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1"
+  },
+  {
+   "label": "conj D = (-1)^(m-k) D_(-m,-k) for n=1, err 0.0e+00",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop the (-1)^(m-k) sign"
+  },
+  {
+   "label": "D^(6/2) homomorphism err 5.0e-16",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1"
+  },
+  {
+   "label": "D^(6/2) unitary err 1.1e-15",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1"
+  },
+  {
+   "label": "conj D = (-1)^(m-k) D_(-m,-k) for n=6, err 5.1e-16",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop the (-1)^(m-k) sign"
+  },
+  {
+   "label": "D^(13/2) homomorphism err 3.7e-15",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1"
+  },
+  {
+   "label": "D^(13/2) unitary err 2.9e-15",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1"
+  },
+  {
+   "label": "conj D = (-1)^(m-k) D_(-m,-k) for n=13, err 2.8e-15",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop the (-1)^(m-k) sign"
+  },
+  {
+   "label": "D^(18/2) homomorphism err 8.7e-15",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1"
+  },
+  {
+   "label": "D^(18/2) unitary err 6.2e-15",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "add 1"
+  },
+  {
+   "label": "conj D = (-1)^(m-k) D_(-m,-k) for n=18, err 5.0e-15",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "drop the (-1)^(m-k) sign"
+  },
+  {
+   "label": "product formula D^3 D^3 = sum CG CG D^J, err 6.1e-16",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "replace one CG by its absolute value (phase convention broken)"
+  },
+  {
+   "label": "product formula D^6 D^3 = sum CG CG D^J, err 2.4e-15",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "replace one CG by its absolute value (phase convention broken)"
+  },
+  {
+   "label": "product formula D^3 D^9 = sum CG CG D^J, err 1.3e-14",
+   "status": "PASS",
+   "real": true,
+   "mutant_result": false,
+   "mutation": "replace one CG by its absolute value (phase convention broken)"
+  }
+ ],
+ "all_ok": true
+}
