@@ -17,6 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
+| [M8.11](tasks/m8_11_task_details.md) | Local branch germs at the level-6 critical rays, and the order-`a²` tilt | Whether the formal expansions at six level-6 critical rays in sectors `3′` and `4` are Taylor expansions of local branch germs, for sufficiently small amplitude, by one existence theorem graded by audit; and the order-`a²` tilt at the pyramid and the prism, supplied as candidate exact values for a maintainer-run recompute. Analytic side; no radius or stability claimed | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
 
 ## LATER (gated)
 
