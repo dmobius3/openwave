@@ -165,7 +165,7 @@ Hi Paul,
 Thanks again for the Particle Spectrum paper — it directly addresses the lepton-hierarchy question (Q2) from our earlier exchange. I spent the last few days running independent
 reproductions in a NumPy sandbox environment.
 
-Quick disclosure upfront: My background is in mechanical engineering, currently working on an ocean thermal conversion startup (<https://neptunya.net> - Former NSF SBIR PI and Florida NextEra Incubator Alumni), but not physics. I use AI-assisted scripting (Claude Code on Opus 4.7) to iterate faster on the numerical interpretations. The math gets checked; the framing is mine.
+My background is in mechanical engineering, currently working on an ocean thermal conversion startup (Former NSF SBIR PI and Florida NextEra Incubator Alumni), but not physics. I use AI-assisted scripting (Claude Code on Opus 4.7) to iterate faster on the numerical interpretations. The math gets checked; the framing is mine.
 
 ### OUROBOROS: WHAT REPRODUCES
 

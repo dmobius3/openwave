@@ -1,0 +1,932 @@
+{
+ "task": "M5.32 R20-0 audit",
+ "class_json_utc": "2026-09-13T16:12:58Z",
+ "convention_under_audit": "code branch s = -1: M_vac = diag(8, 1, 0.3, 0), N = M eta spectrum (-8, 1, 0.3, 0), W1 = 0.000724023879",
+ "claim1_hessians": {
+  "stack_s_minus_1": {
+   "q_code": [
+    -8.0,
+    1.0,
+    0.3,
+    0.0
+   ],
+   "M_vac_code": [
+    8.0,
+    1.0,
+    0.3,
+    0.0
+   ],
+   "c4_code": [
+    -6.7,
+    65.09,
+    -510.973,
+    4097.0081
+   ],
+   "c4_from_q": [
+    -6.7,
+    65.09,
+    -510.973,
+    4097.0081
+   ],
+   "V4_exact_diag_block_minus_closed_form_is_zero": true,
+   "V4_offdiag_and_cross_max_abs_exact": 0.0,
+   "V4_diag_block_eigs_own": [
+    0.15482422973515758,
+    3.2771104040352466,
+    33.802916290336356,
+    8462877.654277075
+   ],
+   "V4_diag_block_eigs_script": [
+    0.15482422978014057,
+    3.27711040416715,
+    33.80291629413357,
+    8462877.654286155
+   ],
+   "V4_H00_exact": 8462850.0,
+   "V4_rank": 4,
+   "Vspec_exact_diag_block_minus_closed_form_is_zero": true,
+   "Vspec_offdiag_and_cross_max_abs_exact": 0.0,
+   "Vspec_diag_own": [
+    714251.52,
+    79.38,
+    6.076098,
+    11.52
+   ],
+   "Vspec_diag_script": [
+    714251.5200003441,
+    79.37999999977005,
+    6.076097999916978,
+    11.519999999962963
+   ],
+   "Pprime_own": [
+    -597.6,
+    6.3,
+    -1.743,
+    2.4
+   ],
+   "Pprime_script": [
+    -597.6,
+    6.3,
+    -1.743,
+    2.4
+   ],
+   "quoted_max_rel_dev": 0.9207182957514259
+  },
+  "report_s_plus_1": {
+   "q_code": [
+    8.0,
+    1.0,
+    0.3,
+    0.0
+   ],
+   "M_vac_code": [
+    -8.0,
+    1.0,
+    0.3,
+    0.0
+   ],
+   "c4_code": [
+    9.3,
+    65.09,
+    513.027,
+    4097.0081
+   ],
+   "c4_from_q": [
+    9.3,
+    65.09,
+    513.027,
+    4097.0081
+   ],
+   "V4_exact_diag_block_minus_closed_form_is_zero": true,
+   "V4_offdiag_and_cross_max_abs_exact": 0.0,
+   "V4_diag_block_eigs_own": [
+    0.11856576568196618,
+    2.997560406498502,
+    25.124231239059647,
+    8462886.648770588
+   ],
+   "V4_diag_block_eigs_script": [
+    0.11856576575208497,
+    2.997560406730683,
+    25.124231243136656,
+    8462886.648779668
+   ],
+   "V4_H00_exact": 8462850.0,
+   "V4_rank": 4,
+   "Vspec_exact_diag_block_minus_closed_form_is_zero": true,
+   "Vspec_offdiag_and_cross_max_abs_exact": 0.0,
+   "Vspec_diag_own": [
+    371866.88,
+    48.02,
+    5.229378,
+    11.52
+   ],
+   "Vspec_diag_script": [
+    371866.8800001785,
+    48.019999999985295,
+    5.2293779998929795,
+    11.519999999838168
+   ],
+   "Pprime_own": [
+    431.2,
+    -4.9,
+    1.617,
+    -2.4
+   ],
+   "Pprime_script": [
+    431.2,
+    -4.8999999999999995,
+    1.6169999999999998,
+    -2.4
+   ],
+   "quoted_max_rel_dev": 7.228915662641908e-05
+  },
+  "reflection": {
+   "full_reflection_max_rel_change": 0.0,
+   "single_root_flip_min_over_50_max_rel_change": 8634.131185532484
+  }
+ },
+ "claim2_gradient": {
+  "exact_rational_point": {
+   "M0": [
+    [
+     "47/7",
+     "-1/7",
+     "4/7",
+     "0"
+    ],
+    [
+     "-1/7",
+     "11/7",
+     "1",
+     "-1"
+    ],
+    [
+     "4/7",
+     "1",
+     "61/70",
+     "0"
+    ],
+    [
+     "0",
+     "-1",
+     "0",
+     "-3/7"
+    ]
+   ],
+   "G_scale": 147694.8579972378,
+   "rel_dev_by_variant": {
+    "correct": 0.0,
+    "no_transpose": 0.0,
+    "eta_dropped": 2.0,
+    "eta_right": 0.1560792364277583,
+    "factor_1": 0.5,
+    "Pp_as_P": 2.0774979959987037
+   }
+  },
+  "numeric": {
+   "complex_step_worst_rel": 4.647044214214512e-15,
+   "shipped_grad_vs_own_rel": 7.6766880562941e-16,
+   "shipped_E_vs_own_rel": 6.278884175180713e-16
+  }
+ },
+ "claim3_gamma": {
+  "E_V4_stack": 0.3069567721158226,
+  "E_V4_own_eigenvalue_route": 0.3069567721158232,
+  "max_imag_eigenvalue": 0.0,
+  "E_V4_stack_expected": 0.3069567721158226,
+  "sum_h3_trP2_eig": 647.2880157800431,
+  "sum_h3_trP2_horner": 647.2880157800431,
+  "sum_h3_trP2_script": 647.2880157800851,
+  "gamma_own": 0.00047421976714015127,
+  "gamma_script": 0.00047421976714012053,
+  "gamma_quoted": 0.0004742198,
+  "E_I1_own_stencils": 13.527981439245114,
+  "E_I1_block_reads": 13.527981439245101,
+  "E_total_own": 13.834938211360937,
+  "E_total_record": 13.834938211360924,
+  "far_field_M00_mean_r_gt_20": 8.000000150613223,
+  "V4_under_s_plus_1_targets": 83982752.30257122
+ },
+ "claim4_jets": {
+  "single_axis_max_abs_E": 0.0,
+  "two_axis_pairs": [
+   {
+    "axes": [
+     1,
+     0
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     42.865199999999994,
+     0.5292000000000002,
+     0.00428652,
+     5.2919999999999995e-05
+    ],
+    "max_abs_E": 42.865199999999994,
+    "exponent_dev": 0.0,
+    "eps4_ratio_spread": 3.4372437708727443e-16
+   },
+   {
+    "axes": [
+     1,
+     2
+    ],
+    "comm_zero": true,
+    "E_zero": true,
+    "E": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs_E": 0.0
+   },
+   {
+    "axes": [
+     2,
+     0
+    ],
+    "comm_zero": true,
+    "E_zero": true,
+    "E": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs_E": 0.0
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     42.8652,
+     0.5292000000000001,
+     0.004286520000000001,
+     5.2919999999999995e-05
+    ],
+    "max_abs_E": 42.8652,
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": 5.155865656309115e-16
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "comm_zero": true,
+    "E_zero": true,
+    "E": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs_E": 0.0
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     42.8652,
+     0.5292000000000001,
+     0.0042865199999999985,
+     5.291999999999999e-05
+    ],
+    "max_abs_E": 42.8652,
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": 3.4372437708727443e-16
+   },
+   {
+    "axes": [
+     0,
+     2
+    ],
+    "comm_zero": true,
+    "E_zero": true,
+    "E": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs_E": 0.0
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     42.8652,
+     0.5292000000000001,
+     0.004286520000000001,
+     5.2919999999999995e-05
+    ],
+    "max_abs_E": 42.8652,
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": 5.155865656309115e-16
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     42.865199999999994,
+     0.5292000000000002,
+     0.00428652,
+     5.2919999999999995e-05
+    ],
+    "max_abs_E": 42.865199999999994,
+    "exponent_dev": 0.0,
+    "eps4_ratio_spread": 3.4372437708727443e-16
+   },
+   {
+    "axes": [
+     1,
+     0
+    ],
+    "comm_zero": true,
+    "E_zero": true,
+    "E": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs_E": 0.0
+   },
+   {
+    "axes": [
+     2,
+     1
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     21.432600000000004,
+     0.26460000000000017,
+     0.0021432600000000006,
+     2.6459999999999997e-05
+    ],
+    "max_abs_E": 21.432600000000004,
+    "exponent_dev": 0.0,
+    "eps4_ratio_spread": 6.874487541745486e-16
+   },
+   {
+    "axes": [
+     2,
+     0
+    ],
+    "comm_zero": true,
+    "E_zero": true,
+    "E": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs_E": 0.0
+   },
+   {
+    "axes": [
+     2,
+     0
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     3.7936527064203753,
+     0.04683521859778383,
+     0.00037936527064202924,
+     4.68352185977822e-06
+    ],
+    "max_abs_E": 3.7936527064203753,
+    "exponent_dev": 4.263256414560601e-14,
+    "eps4_ratio_spread": 5.1703177992319756e-14
+   },
+   {
+    "axes": [
+     1,
+     0
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     -574.1927282884895,
+     -7.08879911467271,
+     -0.057419272828848955,
+     -0.0007088799114672698
+    ],
+    "max_abs_E": 574.1927282884895,
+    "exponent_dev": 1.7763568394002505e-15,
+    "eps4_ratio_spread": -2.052804007133829e-15
+   },
+   {
+    "axes": [
+     2,
+     1
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     -13.650232332214559,
+     -0.16852138681746476,
+     -0.0013650232332214488,
+     -1.6852138681745738e-05
+    ],
+    "max_abs_E": 13.650232332214559,
+    "exponent_dev": 2.930988785010413e-14,
+    "eps4_ratio_spread": -4.3714968310464734e-14
+   },
+   {
+    "axes": [
+     0,
+     2
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     729.3368085253103,
+     9.004158129942104,
+     0.07293368085253102,
+     0.0009004158129942105
+    ],
+    "max_abs_E": 729.3368085253103,
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": 3.232265586268734e-16
+   },
+   {
+    "axes": [
+     2,
+     1
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     -581.2086812620361,
+     -7.17541581804983,
+     -0.058120868126203554,
+     -0.0007175415818049823
+    ],
+    "max_abs_E": 581.2086812620361,
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": -8.112095854716254e-16
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     6974.208932008481,
+     86.10134483961092,
+     0.6974208932008482,
+     0.00861013448396109
+    ],
+    "max_abs_E": 6974.208932008481,
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": 2.7041464228878796e-16
+   },
+   {
+    "axes": [
+     2,
+     0
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     133.99485225169838,
+     1.6542574352061579,
+     0.013399485225169845,
+     0.00016542574352061503
+    ],
+    "max_abs_E": 133.99485225169838,
+    "exponent_dev": 2.220446049250313e-15,
+    "eps4_ratio_spread": 4.398322449296822e-15
+   },
+   {
+    "axes": [
+     2,
+     0
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     3296.6939564254308,
+     40.6999253879683,
+     0.32966939564254316,
+     0.00406999253879683
+    ],
+    "max_abs_E": 3296.6939564254308,
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": 2.860332561232397e-16
+   },
+   {
+    "axes": [
+     0,
+     2
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     -780.5455658865967,
+     -9.636365010945644,
+     -0.07805455658865966,
+     -0.0009636365010945632
+    ],
+    "max_abs_E": 780.5455658865967,
+    "exponent_dev": 0.0,
+    "eps4_ratio_spread": -1.0570729365571421e-15
+   },
+   {
+    "axes": [
+     0,
+     2
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     821.374801104876,
+     10.140429643270075,
+     0.08213748011048758,
+     0.0010140429643270066
+    ],
+    "max_abs_E": 821.374801104876,
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": 8.610235901409498e-16
+   },
+   {
+    "axes": [
+     0,
+     2
+    ],
+    "comm_zero": false,
+    "E_zero": false,
+    "E": [
+     594.2327057690006,
+     7.336206244061737,
+     0.05942327057690016,
+     0.0007336206244061711
+    ],
+    "max_abs_E": 594.2327057690006,
+    "exponent_dev": 4.440892098500626e-15,
+    "eps4_ratio_spread": 5.157294974412575e-15
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "comm_zero": true,
+    "E_zero": true,
+    "E": [
+     5.354451172085949e-29,
+     8.864393495596064e-31,
+     1.162956528076417e-32,
+     3.449561640884929e-35
+    ],
+    "max_abs_E": 5.354451172085949e-29
+   }
+  ],
+  "two_axis_zero_floor_max_abs_E": 5.354451172085949e-29,
+  "two_axis_smallest_nonzero_max_abs_E": 3.7936527064203753,
+  "class_pairs_reclassified_agree": 12,
+  "shapes": {
+   "linear_30_jets": {
+    "E": [
+     -6298.275674993568,
+     -77.75648981473543,
+     -0.6298275674993569,
+     -0.007775648981473544
+    ],
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": -2.99435640946007e-16,
+    "own_stencil_rel": 2.8880752406057775e-16
+   },
+   "quadratic_in_x": {
+    "E": [
+     -96993.06597444256,
+     -1197.445258943736,
+     -9.699306597444222,
+     -0.11974452589437323
+    ],
+    "exponent_dev": 2.6645352591003757e-15,
+    "eps4_ratio_spread": -3.733238179169543e-15,
+    "own_stencil_rel": 3.516339129383916e-17
+   },
+   "mixed_linear_plus_quadratic_plus_cubic": {
+    "E": [
+     2060622.2343386514,
+     25439.780670847562,
+     206.06222343386528,
+     2.5439780670847547
+    ],
+    "exponent_dev": 8.881784197001252e-16,
+    "eps4_ratio_spread": 9.37188029198599e-16,
+    "own_stencil_rel": 3.3897136472750286e-16
+   },
+   "smooth_gaussian_bump": {
+    "E": [
+     7.821463515816843,
+     0.09656127797304742,
+     0.0007821463515816831,
+     9.656127797304696e-06
+    ],
+    "exponent_dev": 3.552713678800501e-15,
+    "eps4_ratio_spread": 5.0626235740106875e-15,
+    "own_stencil_rel": 3.548642215040778e-18
+   }
+  },
+  "V4_mass_term_eigs_at_W1": [
+   0.00011209643937603635,
+   0.002372706186640856,
+   0.024474118574041602,
+   6127.32550675211
+  ]
+ },
+ "claim5_pair_laws": {
+  "ledger_hits_by_section": {
+   "string_law": [
+    "### 6.8 The next OpenWave rung ladder: R19, the mixed bracke",
+    "### 6.9 The next OpenWave rung ladder: R20, the paper's thre"
+   ],
+   "r3_3869": [
+    "### 6.8 The next OpenWave rung ladder: R19, the mixed bracke",
+    "### 6.9 The next OpenWave rung ladder: R20, the paper's thre"
+   ],
+   "r3_2784": [
+    "### 6.8 The next OpenWave rung ladder: R19, the mixed bracke",
+    "### 6.9 The next OpenWave rung ladder: R20, the paper's thre"
+   ],
+   "one_over_d_fit": [
+    "### 6.8 The next OpenWave rung ladder: R19, the mixed bracke"
+   ],
+   "best_exponent_1": [],
+   "coulomb_identity": [],
+   "object_independent": []
+  },
+  "six_point_refit": {
+   "d": [
+    6.0,
+    9.0,
+    12.0,
+    15.0,
+    18.0,
+    24.0
+   ],
+   "E_int": [
+    -12.59,
+    -10.53,
+    -7.61,
+    -5.54,
+    -0.86,
+    3.67
+   ],
+   "intercept": -18.663999999999994,
+   "slope": 0.9348095238095234,
+   "rms": 0.5906882587690556
+  },
+  "R3_lam0_dressed_g32": {
+   "d10": 3868.903076201949,
+   "d18": 2986.4764246932687,
+   "d14": 2989.2996078488886,
+   "d24": 2784.103935374939
+  },
+  "Gam_g32_ext2_tail_fits": {
+   "E_int": [
+    29363.885268859405,
+    18621.776489546,
+    9862.161888172908,
+    3276.2079702166957
+   ],
+   "A_plus_B_over_d": {
+    "A": -14910.086766421664,
+    "B": 449521.7640765935,
+    "R2": 0.992632446503901
+   },
+   "A_plus_B_over_d5": {
+    "R2": 0.8226729256590252
+   },
+   "A_plus_B_lnd_over_d": {
+    "R2": 0.9977681407451197
+   }
+  },
+  "I1_undressed_g8": {
+   "E_int_d12_18_24_30": [
+    17.245133221314333,
+    18.374770243821125,
+    19.57556613525987,
+    20.102729147303826
+   ],
+   "record_outcome": "STATIC_PART (ATTRACTIVE in the string sense; not a Newton read)"
+  }
+ },
+ "claim6_ledger_6_9": {
+  "row1_text_found": true,
+  "sec_1_1_vacuum_line": {
+   "wrong_form_present": false,
+   "corrected_form_present": true
+  },
+  "row2_ratio_true_over_quoted": {
+   "(8,1,0.3,0)": [
+    2.0095892488468845,
+    1.9983736043323346,
+    1.9939866062745752,
+    2.0006824228772073
+   ],
+   "(-8,1,0.3,0)": [
+    2.6241394870365693,
+    2.184740269356831,
+    2.682771134153679,
+    2.0006802965194033
+   ]
+  },
+  "stiffness_ratios": {
+   "V4_(8)": 71377151.7443824,
+   "V4_(-8)": 54661196.56305527,
+   "Vspec_(8)": 71111.11111111112,
+   "Vspec_(-8)": 117551.02040816327
+  }
+ },
+ "lines": {
+  "A1_stack_s_minus_1_code_vacuum_and_C_p_are_the_power_sums_of_q": {
+   "pass": true,
+   "detail": "vac4 diag [8.0, 1.0, 0.3, 0.0], N spectrum [-8.0, 1.0, 0.3, 0.0], c4_of [-6.7, 65.09, -510.973, 4097.0081] vs power sums [-6.7, 65.09, -510.973, 4097.0081]"
+  },
+  "A1_stack_s_minus_1_V4_exact_hessian_equals_D_2JtJ_D_and_zero_off_the_diagonal_block": {
+   "pass": true,
+   "detail": "exact diag-block deviation zero True, off/cross max 0.0, rank 4, H_00 8462850.0"
+  },
+  "A1_stack_s_minus_1_V4_eigs_match_script_1e-8": {
+   "pass": true,
+   "detail": "own ['0.154824', '3.27711', '33.8029', '8.46288e+06'] vs script ['0.154824', '3.27711', '33.8029', '8.46288e+06'], rel 1.1e-12"
+  },
+  "A1_stack_s_minus_1_Vspec_exact_hessian_is_2Pprime2_diag_and_zero_off_the_diagonal_block": {
+   "pass": true,
+   "detail": "exact diag-block deviation zero True, off/cross max 0.0, diag ['714252', '79.38', '6.0761', '11.52']"
+  },
+  "A1_stack_s_minus_1_Vspec_diag_and_Pprime_match_script_1e-8": {
+   "pass": true,
+   "detail": "rel diag 4.8e-13, rel P' 0.0e+00"
+  },
+  "A1_report_s_plus_1_code_vacuum_and_C_p_are_the_power_sums_of_q": {
+   "pass": true,
+   "detail": "vac4 diag [-8.0, 1.0, 0.3, 0.0], N spectrum [8.0, 1.0, 0.3, 0.0], c4_of [9.3, 65.09, 513.027, 4097.0081] vs power sums [9.3, 65.09, 513.027, 4097.0081]"
+  },
+  "A1_report_s_plus_1_V4_exact_hessian_equals_D_2JtJ_D_and_zero_off_the_diagonal_block": {
+   "pass": true,
+   "detail": "exact diag-block deviation zero True, off/cross max 0.0, rank 4, H_00 8462850.0"
+  },
+  "A1_report_s_plus_1_V4_eigs_match_script_1e-8": {
+   "pass": true,
+   "detail": "own ['0.118566', '2.99756', '25.1242', '8.46289e+06'] vs script ['0.118566', '2.99756', '25.1242', '8.46289e+06'], rel 1.1e-12"
+  },
+  "A1_report_s_plus_1_Vspec_exact_hessian_is_2Pprime2_diag_and_zero_off_the_diagonal_block": {
+   "pass": true,
+   "detail": "exact diag-block deviation zero True, off/cross max 0.0, diag ['371867', '48.02', '5.22938', '11.52']"
+  },
+  "A1_report_s_plus_1_Vspec_diag_and_Pprime_match_script_1e-8": {
+   "pass": true,
+   "detail": "rel diag 4.8e-13, rel P' 2.1e-18"
+  },
+  "A2_author_numbers_reproduce_on_8_1_0.3_0_within_1e-4_and_NOT_on_-8_1_0.3_0": {
+   "pass": true,
+   "detail": "max rel dev on (8, 1, 0.3, 0) 7.2e-05; on (-8, 1, 0.3, 0) 0.92 (own (-8) numbers ['7.1425e+05', '79.38', '6.0761', '11.52'])"
+  },
+  "A2b_ledger_6.9_numbers_for_-g_1_delta_0_reproduce_within_1e-3": {
+   "pass": true,
+   "detail": "714251 / 79.4 / 6.08 / 11.52 vs own, max rel dev 6.4e-04"
+  },
+  "A3_Pprime2_invariant_under_full_q_to_minus_q_but_not_under_a_single_root_flip": {
+   "pass": true,
+   "detail": "full reflection max rel change 0.0e+00; single flip q_0 -> -q_0 rel change 8634.13: the (8) vs (-8) sets are a SINGLE flip, so the invariance note does not identify them"
+  },
+  "B1_exact_gradient_equals_2sym4_eta_P_Pprime_T_exactly": {
+   "pass": true,
+   "detail": "exact rel deviation 0.0 (scale 1.477e+05)"
+  },
+  "B2_mutants_eta_dropped_eta_right_factor_1_Pp_as_P_all_FAIL_by_more_than_1e-2": {
+   "pass": true,
+   "detail": "rel deviations eta_dropped 2.000, eta_right 0.156, factor_1 0.500, Pp_as_P 2.077"
+  },
+  "B3_transpose_omitted_is_NOT_a_failing_mutant_sym4_absorbs_it": {
+   "pass": true,
+   "detail": "rel deviation with the transpose omitted 0.0 (sym4(X^T) = sym4(X)): the class docstring's transpose is redundant, not load-bearing"
+  },
+  "B4_own_formula_complex_step_1e-12_on_a_random_field": {
+   "pass": true,
+   "detail": "worst rel 4.6e-15 over 8 directions, n 5"
+  },
+  "B5_shipped_vspec_energy_grad_matches_own_horner_formula_1e-12": {
+   "pass": true,
+   "detail": "grad rel 7.7e-16, E rel 6.3e-16"
+  },
+  "C1_E_V4_by_eigenvalue_power_sums_equals_e_parts_1e-10_and_the_quoted_0.3069567721158226": {
+   "pass": true,
+   "detail": "own 0.3069567721158232, e_parts 0.3069567721158226, max |Im lambda| 0.0e+00"
+  },
+  "C2_sum_h3_trP2_by_eigenvalues_and_by_horner_agree_1e-10_and_match_script": {
+   "pass": true,
+   "detail": "eig 647.2880157800, horner 647.2880157800, script 647.2880157801"
+  },
+  "C3_gamma_4.742198e-4_within_1e-6_and_matches_script_1e-10": {
+   "pass": true,
+   "detail": "own gamma 4.742197671e-04, script 4.742197671e-04"
+  },
+  "C4_record_total_13.834938_rebuilt_as_own_I1_plus_V4_1e-9_and_own_I1_equals_block_reads": {
+   "pass": true,
+   "detail": "own E_total 13.834938211361, own E_I1 13.527981439245, block_reads 13.527981439245"
+  },
+  "C5_record_field_lives_on_the_s_minus_1_branch_M00_far_is_plus_8_and_V4_under_8_1_0.3_0_targets_is_huge": {
+   "pass": true,
+   "detail": "far-field M_00 8.00000015 (N_00 = -8.000); V4 with C_p from (8, 1, 0.3, 0): 8.398e+07 vs the record's 0.307"
+  },
+  "D1_single_axis_jets_66_shapes_give_exactly_zero": {
+   "pass": true,
+   "detail": "max |E_curv_I1| over 3 axes x 22 jets x 4 eps = 0.0"
+  },
+  "D2_two_axis_pairs_zero_iff_eta_commutator_zero_24_own_pairs_both_classes_present_nonzero_ones_exactly_quartic": {
+   "pass": true,
+   "detail": "agreement 24/24 (predicted zero 7, nonzero 17); worst |exponent - 4| 4.3e-14; roundoff floor of the zero class 5.4e-29 vs smallest nonzero 3.79e+00"
+  },
+  "D3_class_script_12_pairs_9_zero_3_quartic_match_the_commutator_criterion": {
+   "pass": true,
+   "detail": "12/12 agree; script counts zero 9, quartic 3"
+  },
+  "D4_random_30_jet_quadratic_mixed_and_gaussian_shapes_all_exactly_quartic_E_over_eps4_constant_1e-9": {
+   "pass": true,
+   "detail": "worst |exponent - 4| 3.6e-15, worst spread of E / eps^4 5.1e-15 over 4 shapes x 4 eps"
+  },
+  "D5_own_stencil_I1_equals_block_reads_on_every_shape_1e-10": {
+   "pass": true,
+   "detail": "worst rel 3.4e-16"
+  },
+  "D6_qualifier_second_variation_of_L_cert_is_not_zero_the_V4_mass_term_is_positive_on_four_directions": {
+   "pass": true,
+   "detail": "H_V4 eigenvalues at W1: ['0.000112', '0.00237', '0.0245', '6.13e+03']; the class statement 'zero on the 30-jet space' holds for the derivative sector only"
+  },
+  "E1_string_law_-18.66_+_0.935_d_appears_in_ledger_6.8_and_6.9": {
+   "pass": true,
+   "detail": "sections holding it: ['### 6.8 The next OpenWave rung ladder: R19, the mixed bracke', \"### 6.9 The next OpenWave rung ladder: R20, the paper's thre\"]"
+  },
+  "E2_R3_numbers_3869_and_2784_are_in_ledger_6.8_and_6.9_not_in_section_3_and_the_class_row_cites_6.8": {
+   "pass": true,
+   "detail": "section 3 heading: '## 3. Vantasner substrate-framework, P239 to P249', holds 3869 False, 2784 False; sections holding 3869: ['### 6.8 The next OpenWave rung ladder: R19, the mixed bracke', \"### 6.9 The next OpenWave rung ladder: R20, the paper's thre\"]"
+  },
+  "E3_six_point_law_refits_to_-18.66_+_0.935_d_rms_0.59_from_the_task_record_points": {
+   "pass": true,
+   "detail": "refit E_int = -18.66 + 0.935 d, rms 0.59"
+  },
+  "E4_the_class_row_states_the_six_points_as_d_6_9_12_15_18_24": {
+   "pass": true,
+   "detail": "the six points are d [6, 9, 12, 15, 18, 24] (R18-3's four at d 12 to 24 plus R19-3's d 6 and 9); class row law: 'E_int = -18.66 + 0.935 d (six points, d 6, 9, 12, 15, 18, 24; rms 0.59, no bend)' (the first version said 'six points, d 12 to 24', refuted 2026-09-13 and fixed)"
+  },
+  "E5_R3_lambda0_like_pair_g32_E_int_+3869_d10_and_+2784_d24_and_monotone_fall": {
+   "pass": true,
+   "detail": "R3 lambda = 0 rows: [('d10', 3868.9), ('d14', 2989.3), ('d18', 2986.5), ('d24', 2784.1)]; R19-1's own I1 dressed rows reproduce them"
+  },
+  "E6_R19-1_Gam_g32_tail_at_10500_steps_fits_1_over_d_with_R2_0.993_positive_B_and_beats_1_over_d5": {
+   "pass": true,
+   "detail": "A + B/d: B 449522, R^2 0.9926; 1/d^5 R^2 0.823; ln d / d R^2 0.9978; E_int falls 29364 -> 3276 (repulsive force)"
+  },
+  "E7_undressed_I1_pair_g8_E_int_RISES_with_d_and_the_class_row_says_so": {
+   "pass": true,
+   "detail": "E_int at d 12 / 18 / 24 / 30 = [17.25, 18.37, 19.58, 20.1]: positive but RISING with d (dE_int/dd > 0, a string); the record's outcome string: 'STATIC_PART (ATTRACTIVE in the string sense; not a Newton read)'; class row form: 'string-like rise' (the first version said 'repulsive', refuted 2026-09-13 and fixed)"
+  },
+  "F1_ledger_6.9_row1_says_M00_=_-g_and_the_stack_spectrum_is_8_1_0.3_0_which_the_s_minus_1_code_branch_CONTRADICTS": {
+   "pass": true,
+   "detail": "row 1 text present True; code s = -1: vac4 [8.0, 1.0, 0.3, 0.0] (M_00 = +8), N spectrum [-8.0, 1.0, 0.3, 0.0]; (8, 1, 0.3, 0) is the s = +1 branch's spectrum (vac4 [-8.0, 1.0, 0.3, 0.0])"
+  },
+  "F1b_ledger_1.1_vacuum_line_carries_M_00_=_+g_on_s_=_-1_consistent_with_its_own_C_p_=_(sg)^p_and_vac4": {
+   "pass": true,
+   "detail": "corrected form present True, the first version's 'M_vac = diag(-g, 1, delta, 0) (s = -1 ...)' present False (it contradicted C_p = (s g)^p + 1 + delta^p and vac4, which put N_00 = s g = -8, i.e. M_00 = +8 on s = -1; refuted 2026-09-13 and corrected)"
+  },
+  "F2_ledger_6.9_row2_V4_eigenvalues_are_HALF_the_exact_2JtJ_eigenvalues_on_8_1_0.3_0_and_no_constant_factor_on_-8_1_0.3_0": {
+   "pass": true,
+   "detail": "row 2 text present True; true / quoted on (8, 1, 0.3, 0) = ['2.010', '1.998', '1.994', '2.001']; on (-8, 1, 0.3, 0) = ['2.62', '2.18', '2.68', '2.00']; exact on (8, 1, 0.3, 0): ['0.1186', '2.998', '25.12', '8.463e+06'], on (-8, 1, 0.3, 0): ['0.1548', '3.277', '33.8', '8.463e+06']"
+  },
+  "F3_row2_stiffness_ratios_7e7_and_7e4_hold_on_8_1_0.3_0_and_differ_on_the_stack_roots": {
+   "pass": true,
+   "detail": "V4 ratio on (8) 7.14e+07, on (-8) 5.47e+07; V_spec ratio on (8) 7.11e+04, on (-8) 1.18e+05"
+  }
+ },
+ "runtime_s": 5.678361654281616
+}
