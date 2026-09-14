@@ -1,0 +1,899 @@
+{
+ "task": "M5.32 R20-0",
+ "utc": "2026-09-13T16:12:58Z",
+ "convention": "code branch s = -1: M_vac = diag(8, 1, 0.3, 0), N = M eta spectrum (-8, 1, 0.3, 0), W1 = 0.000724023879",
+ "a": {
+  "stack_branch_s_minus_1": {
+   "roots_N_spectrum": [
+    -8.0,
+    1.0,
+    0.3,
+    0.0
+   ],
+   "M_vac_diag": [
+    8.0,
+    1.0,
+    0.3,
+    0.0
+   ],
+   "sym4_basis": "4 diagonal E_ii, then 6 off-diagonal (E_ij + E_ji) / sqrt 2, (i, j) lexicographic",
+   "V4_w1": {
+    "hessian_eigs": [
+     -1.886313840948154e-12,
+     1.478147167383384e-13,
+     6.931162108108282e-13,
+     1.2799999948853724e-10,
+     5.311170091689318e-10,
+     7.209763735101701e-10,
+     0.15482422978014057,
+     3.27711040416715,
+     33.80291629413357,
+     8462877.654286155
+    ],
+    "diag_block_eigs": [
+     0.15482422978014057,
+     3.27711040416715,
+     33.80291629413357,
+     8462877.654286155
+    ],
+    "diag_block_closed_form_eigs": [
+     0.15482422973515766,
+     3.2771104040352466,
+     33.802916290336356,
+     8462877.654277075
+    ],
+    "diag_block_max_abs_dev_from_closed_form": 9.080395102500916e-06,
+    "offdiag_block_max_abs": 7.209763735101701e-10,
+    "cross_block_max_abs": 0.0,
+    "diag_block_matrix": [
+     [
+      8462850.00000908,
+      15294.000002105604,
+      355.88800136970303,
+      -1.9999999999982994
+     ],
+     [
+      15294.00000001656,
+      60.00000000396337,
+      6.884000002560657,
+      1.9999999999982994
+     ],
+     [
+      355.88800000038736,
+      6.884000000113548,
+      2.8891280000442072,
+      1.9999999999982994
+     ],
+     [
+      -2.000000000000964,
+      1.9999999999985956,
+      1.9999999999985956,
+      1.999999999996799
+     ]
+    ],
+    "with_W1_eigs": [
+     0.000112096439376036,
+     0.0023727061866408564,
+     0.02447411857404162,
+     6127.3255067521095
+    ]
+   },
+   "V_spec_gamma1": {
+    "hessian_eigs": [
+     -3.674765218501507e-11,
+     -2.985321868136725e-11,
+     -1.4804822149575188e-11,
+     4.514624958595892e-11,
+     5.4572281589504446e-11,
+     7.65799252714731e-11,
+     6.076097999916978,
+     11.519999999962963,
+     79.37999999977005,
+     714251.5200003441
+    ],
+    "diag_block_diag": [
+     714251.5200003441,
+     79.37999999977005,
+     6.076097999916978,
+     11.519999999962963
+    ],
+    "diag_block_closed_form": [
+     714251.52,
+     79.38,
+     6.076098000000001,
+     11.52
+    ],
+    "P_prime_at_roots": [
+     -597.6,
+     6.3,
+     -1.743,
+     2.4
+    ],
+    "diag_block_max_abs_dev_from_closed_form": 3.441236913204193e-07,
+    "diag_block_offdiag_max_abs": 0.0,
+    "offdiag_block_max_abs": 7.65799252714731e-11,
+    "cross_block_max_abs": 0.0
+   }
+  },
+  "report_roots_s_plus_1": {
+   "roots_N_spectrum": [
+    8.0,
+    1.0,
+    0.3,
+    0.0
+   ],
+   "M_vac_diag": [
+    -8.0,
+    1.0,
+    0.3,
+    0.0
+   ],
+   "sym4_basis": "4 diagonal E_ii, then 6 off-diagonal (E_ij + E_ji) / sqrt 2, (i, j) lexicographic",
+   "V4_w1": {
+    "hessian_eigs": [
+     -3.104829819170855e-11,
+     -2.00000067866977e-12,
+     2.956076048729374e-13,
+     5.566920057707645e-13,
+     1.2799999948853724e-10,
+     7.817922929402125e-10,
+     0.11856576575208497,
+     2.997560406730683,
+     25.124231243136656,
+     8462886.648779668
+    ],
+    "diag_block_eigs": [
+     0.11856576575208497,
+     2.997560406730683,
+     25.124231243136656,
+     8462886.648779668
+    ],
+    "diag_block_closed_form_eigs": [
+     0.11856576568196618,
+     2.997560406498502,
+     25.124231239059647,
+     8462886.648770588
+    ],
+    "diag_block_max_abs_dev_from_closed_form": 9.080395102500916e-06,
+    "offdiag_block_max_abs": 7.817922929402125e-10,
+    "cross_block_max_abs": 0.0,
+    "diag_block_matrix": [
+     [
+      8462850.00000908,
+      -17602.00000211297,
+      -567.2480013663973,
+      -2.0000000582112896
+     ],
+     [
+      -17602.00000001869,
+      60.00000000436688,
+      6.884000002617204,
+      2.0000000009131234
+     ],
+     [
+      -567.2480000005787,
+      6.8840000001543915,
+      2.889128000048857,
+      2.000000000085483
+     ],
+     [
+      -1.9999999999982994,
+      2.0000000000036287,
+      1.9999999999982994,
+      2.000000000002128
+     ]
+    ],
+    "with_W1_eigs": [
+     8.584444558566224e-05,
+     0.0021703053130498625,
+     0.018190543358596944,
+     6127.332018980192
+    ]
+   },
+   "V_spec_gamma1": {
+    "hessian_eigs": [
+     -3.340466972316398e-11,
+     -1.90500636629963e-11,
+     -1.3340496807097481e-11,
+     4.121384050009835e-11,
+     5.1746249646322795e-11,
+     5.183495198462137e-11,
+     5.2293779998929795,
+     11.519999999838168,
+     48.019999999985295,
+     371866.8800001785
+    ],
+    "diag_block_diag": [
+     371866.8800001785,
+     48.019999999985295,
+     5.2293779998929795,
+     11.519999999838168
+    ],
+    "diag_block_closed_form": [
+     371866.88,
+     48.01999999999999,
+     5.229377999999999,
+     11.52
+    ],
+    "P_prime_at_roots": [
+     431.2,
+     -4.8999999999999995,
+     1.6169999999999998,
+     -2.4
+    ],
+    "diag_block_max_abs_dev_from_closed_form": 1.7852289602160454e-07,
+    "diag_block_offdiag_max_abs": 0.0,
+    "offdiag_block_max_abs": 5.183495198462137e-11,
+    "cross_block_max_abs": 0.0
+   }
+  },
+  "report_curvatures_quoted": [
+   371866.88,
+   48.02,
+   5.229,
+   11.52
+  ],
+  "report_curvatures_match_roots": {
+   "(8, 1, 0.3, 0)_max_rel_dev": 7.228915662624923e-05,
+   "(-8, 1, 0.3, 0)_max_rel_dev": 0.9207182957514259,
+   "note": "(8, 1, 0.3, 0) and (-8, 1, 0.3, 0) differ by a single-root flip, under which P'(q_i)^2 changes (the two sets are distinguishable); the full reflection q -> -q leaves P'(q_i)^2 invariant, so the report's numbers are equally those of (-8, -1, -0.3, 0): the g eigenvalue of N sharing the sign of the 1 and delta eigenvalues, which on this stack is the s = +1 branch, not the certified s = -1 branch"
+  }
+ },
+ "b": {
+  "n": 6,
+  "amp": 0.3,
+  "ndir": 6,
+  "V_spec": {
+   "E": 29217541.587333634,
+   "complex_step_max_rel_err": 4.8752771668844565e-15,
+   "stencil4_max_rel_err": 3.9355320166353466e-11,
+   "PASS_complex_step_1e-12": true,
+   "PASS_stencil4_1e-8": true
+  },
+  "V4_targets": {
+   "E": 236254.0471871147,
+   "complex_step_max_rel_err": 9.269542746218267e-15,
+   "stencil4_max_rel_err": 6.526114614212514e-12,
+   "PASS_complex_step_1e-12": true,
+   "PASS_stencil4_1e-8": true
+  },
+  "V4_wrapper_vs_stack": {
+   "E_rel": 0.0,
+   "G_max_abs_dev": 0.0,
+   "PASS": true
+  }
+ },
+ "c": {
+  "record_field": "m5_32_r19_1/I1_un_single_d0_n32_g8.npz",
+  "record_E_total_R19": 13.834938211360924,
+  "E_V4_stack": 0.3069567721158226,
+  "E_V4_wrapper": 0.3069567721158226,
+  "sum_h3_trP2": 647.2880157800851,
+  "gamma": 0.00047421976714012053,
+  "E_V_spec_at_gamma": 0.3069567721158226,
+  "gamma_check_rel": 0.0,
+  "curvatures_at_fixed_weights": {
+   "V4_W1_eigs": [
+    0.00011209643937603635,
+    0.002372706186640856,
+    0.024474118574041602,
+    6127.32550675211
+   ],
+   "V_spec_gamma_diag": [
+    338.71218949387713,
+    0.03764356511558276,
+    0.0028814057786805524,
+    0.005463011717454188
+   ],
+   "roots": [
+    -8.0,
+    1.0,
+    0.3,
+    0.0
+   ]
+  },
+  "split_core_r_lt_4": {
+   "V4": 0.13733094751370578,
+   "V_spec": 0.07918280101876976
+  },
+  "split_mid_4_12": {
+   "V4": 0.16708205942643362,
+   "V_spec": 0.2217843661514683
+  },
+  "split_far_r_ge_12": {
+   "V4": 0.0025437651756832253,
+   "V_spec": 0.005989604945584528
+  }
+ },
+ "d": {
+  "n": 8,
+  "eps": [
+   0.1,
+   0.01,
+   0.001
+  ],
+  "jets": [
+   {
+    "axis": 0,
+    "sym_index": 0,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 1,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 2,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 3,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 4,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 5,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 6,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 7,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 8,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 0,
+    "sym_index": 9,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 0,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 1,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 2,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 3,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 4,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 5,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 6,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 7,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 8,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 1,
+    "sym_index": 9,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 0,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 1,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 2,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 3,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 4,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 5,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 6,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 7,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 8,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   },
+   {
+    "axis": 2,
+    "sym_index": 9,
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN,
+    "E_over_eps2_at_1e-3": 0.0
+   }
+  ],
+  "two_axis_pairs": [
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "sym_indices": [
+     2,
+     1
+    ],
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     1,
+     2
+    ],
+    "sym_indices": [
+     0,
+     0
+    ],
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "sym_indices": [
+     4,
+     2
+    ],
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     0,
+     2
+    ],
+    "sym_indices": [
+     0,
+     1
+    ],
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "sym_indices": [
+     5,
+     4
+    ],
+    "E_curv": [
+     0.2646,
+     2.6459999999999974e-05,
+     2.646e-09
+    ],
+    "exponent": 3.999999999999999
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "sym_indices": [
+     1,
+     7
+    ],
+    "E_curv": [
+     0.5292,
+     5.291999999999996e-05,
+     5.291999999999954e-09
+    ],
+    "exponent": 4.000000000000003
+   },
+   {
+    "axes": [
+     1,
+     2
+    ],
+    "sym_indices": [
+     2,
+     3
+    ],
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     1,
+     2
+    ],
+    "sym_indices": [
+     8,
+     2
+    ],
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     0,
+     1
+    ],
+    "sym_indices": [
+     9,
+     9
+    ],
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     2,
+     0
+    ],
+    "sym_indices": [
+     0,
+     8
+    ],
+    "E_curv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     2,
+     1
+    ],
+    "sym_indices": [
+     4,
+     1
+    ],
+    "E_curv": [
+     -0.5291999999999999,
+     -5.291999999999995e-05,
+     -5.291999999999953e-09
+    ],
+    "exponent": NaN
+   },
+   {
+    "axes": [
+     2,
+     1
+    ],
+    "sym_indices": [
+     2,
+     7
+    ],
+    "E_curv": [
+     0.5292,
+     5.291999999999996e-05,
+     5.291999999999952e-09
+    ],
+    "exponent": 4.000000000000003
+   }
+  ],
+  "pairs_quartic": 3,
+  "pairs_identically_zero": 9,
+  "random_combination": {
+   "E_curv": [
+    28.44286699482008,
+    0.0028442866994820067,
+    2.8442866994819907e-07
+   ],
+   "exponent": 4.000000000000003
+  },
+  "jets_quartic": 0,
+  "jets_identically_zero": 30,
+  "max_abs_exponent_dev_from_4": 0.0,
+  "quadratic_form_max_E_over_eps2": 0.2844286699481991,
+  "statement": "derivative sector only (the second variation of L_cert about the flat vacuum is the V4 mass term, the four spectral curvatures at W1): a single jet gives F = 0 identically (one axis, no commutator); two-axis pairs and the random 30-jet combination are quartic in eps: the quadratic fluctuation form of L_cert is zero on the 30-jet space, so no propagator, TT or otherwise, exists at quadratic order about the flat vacuum (the R14-0 fact)"
+ },
+ "e": {
+  "rows": [
+   {
+    "object": "the like pair on the degenerate vacuum (g, 1, delta, delta), g 8",
+    "law": "E_int = -18.66 + 0.935 d (six points, d 6, 9, 12, 15, 18, 24; rms 0.59, no bend)",
+    "source": "R18-3 (d 12 to 24) + R19-3 (d 6, 9) (ledger sections 6.7, 6.8)",
+    "form": "linear (a string)"
+   },
+   {
+    "object": "the certified split-vacuum like pair at g 32",
+    "law": "E falls from +3869 (d 10) to +2784 (d 24)",
+    "source": "R3 arm (ii), lambda = 0 rows (ledger sections 6.8 and 6.9; R19-1 JSON R3_lam0_dr_n32_g32)",
+    "form": "monotone fall, repulsive"
+   },
+   {
+    "object": "the boost-dressed (Gam) pair at g 8, n 32 L 48",
+    "law": "E_int(d) positive; the tail fits 1/d (R^2 0.993) and ln d/d, not 1/d^5",
+    "source": "R19-1 (ledger section 6.8)",
+    "form": "repulsive, a 1/d tail"
+   },
+   {
+    "object": "the undressed I1 pair at g 8 (the static part)",
+    "law": "E_int positive and RISING with d (+17.2 to +20.1 over d 12 to 30), object-independent (the Coulomb identity)",
+    "source": "R19-1 (ledger section 6.8; outcome STATIC_PART, attractive in the string sense, not a Newton read)",
+    "form": "string-like rise"
+   }
+  ],
+  "readme_statement": "a quartic kinetic term gives a linear, not 1/r, potential (round501; the script is not online)",
+  "reading": "on this stack the linear law is the degenerate-vacuum string (a line defect, not a propagator); on the split vacuum the g 32 like pair falls with d while the undressed g 8 pair rises with d (string-like), and the dressed pair has a 1/d tail; the quadratic fluctuation form about the flat vacuum is zero (stage d), so any propagator on L_cert is background-generated, as the README says"
+ },
+ "f": {
+  "n": 8,
+  "E_curv_before": -33.68349310994266,
+  "E_curv_after_trace_shift": -33.6834931099427,
+  "rel_change": 1.2656812049288847e-15,
+  "curvature_gradient_component_along_eta_max": 8.764100556390986e-13,
+  "curvature_gradient_scale": 9.90802550852635,
+  "trace_curvature_V4_w1": 8431640.881128,
+  "trace_curvature_V4_W1": 6104.709337089273,
+  "trace_curvature_V_spec_gamma1": 714348.4960980001,
+  "statement": "the curvature energy is exactly invariant under N -> N + c(x) 1 and its gradient has no component along eta, so the trace of N is fixed by the potential alone (an algebraic Euler-Lagrange relation, tr N = C_1 for V4 at the vacuum); both R20 potentials are stiff there"
+ }
+}
