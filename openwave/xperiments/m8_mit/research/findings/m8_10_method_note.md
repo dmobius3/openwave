@@ -149,7 +149,7 @@ The auditor recorded the solver's cross-check of its coupling coefficients again
 
 ## 7. Provenance
 
-The author's package is not in the repository. The comparison against it waits for its landing PR, after this verdict, and will state the asymmetry: agreement is weak evidence, since a shared convention error survives it, and disagreement is strong evidence.
+The author's package landed after this verdict, at [#550](https://github.com/openwave-labs/openwave/pull/550), and the comparison against it is recorded in the task doc's [provenance comparison](../tasks/m8_10_task_details.md#provenance-comparison-2026-09-13). Agreement with it is weak evidence, since a shared convention error survives it, and disagreement is strong evidence.
 
 ## 8. What this run does NOT verify
 

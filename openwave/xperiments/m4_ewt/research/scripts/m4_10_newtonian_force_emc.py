@@ -10,12 +10,12 @@ Purpose:
     both built from the self-consistent geometric trinity G_geom,
     hbar_geom, lambda_l derived in the M4.7 emergence engine.
 
-    The strength clause is closed on both halves:
+    The strength clause:
 
-      circularity : G_geom enters the force test directly, derived from
-                    BCC geometry, without re-entering through an input.
-      accuracy    : the G_geom residual is stated against the CODATA
-                    uncertainty on G.
+      circularity : discharged. G_geom is derived from BCC geometry
+                    without re-entering through an input.
+      accuracy    : stated and not met. The G_geom residual is 21.9x the
+                    CODATA uncertainty on G.
 
 Dimensional anchors:
     r_e, m_e, c are the measured anchors used to build the dimensionless
@@ -27,8 +27,9 @@ Physics & Structural Identification:
    t in [0, 1) evaluates the pre-computed angular result J(r) = 4pi/r^2
    for r >= R.
 2. Algebraic Identity: A = 2 G M / c^2 and K_emc = c^4 / (16 pi G) use
-   the same G_geom, so the test verifies the geometric amplitude
-   end-to-end rather than cancelling through a normalisation gate.
+   the same G_geom, so G_geom cancels identically in F_EMC = F_Newton.
+   The gate passes for any value of G_geom: it checks the normalization
+   of A, K_emc and 4pi, not G_geom.
 3. Residual Floor: the reported ~1.2e-5 % difference is accumulated
    floating-point roundoff of the midpoint summation over a constant
    integrand, not a physical residual.
@@ -39,7 +40,11 @@ import sys
 
 try:
     from m4_7_ewt_emergence_engine import (
-        PI, C0, M_E, R_E, E_CHARGE_CODATA,
+        PI,
+        C0,
+        M_E,
+        R_E,
+        E_CHARGE_CODATA,
         G_CODATA,
         BCC_IDEAL_PROJECTION_LP,
         compute_alpha_geometric,
@@ -50,14 +55,13 @@ try:
         gravity_sector,
     )
 except ImportError:
-    raise ImportError(
-        "This module requires m4_7_ewt_emergence_engine.py in the same directory."
-    )
+    raise ImportError("This module requires m4_7_ewt_emergence_engine.py in the same directory.")
 
 
 # ----------------------------------------------------------------------
 # 1. Geometric G from the self-consistent trinity
 # ----------------------------------------------------------------------
+
 
 def derive_G_geom():
     """Derive G_geom from the M4.7 self-consistent trinity.
@@ -126,6 +130,7 @@ def derive_G_geom():
 # 2. Exact-domain overlap integral
 # ----------------------------------------------------------------------
 
+
 def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
     """Evaluate the spatial overlap integral I(R) over r in [R, inf)
     using the coordinate transformation t in [0, 1).
@@ -157,6 +162,7 @@ def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
 # 3. Main
 # ----------------------------------------------------------------------
 
+
 def main():
     print("[1/5] Deriving G_geom from the M4.7 self-consistent trinity...")
     geom = derive_G_geom()
@@ -172,8 +178,7 @@ def main():
     print(f"    G_CODATA            = {G_CODATA:.15e} m^3 kg^-1 s^-2")
     print(f"    relative residual   = {geom['rel_err_vs_CODATA']*100:.6f} %")
     print(f"    CODATA rel. unc. on G = 22 ppm (2.2e-5)")
-    print(f"    residual / uncertainty = "
-          f"{geom['rel_err_over_uncertainty']:.1f}x")
+    print(f"    residual / uncertainty = " f"{geom['rel_err_over_uncertainty']:.1f}x")
     print("    Note: r_e, m_e, c are the dimensional anchors. The derivation")
     print("          produces G_geom as a dimensionless ratio against")
     print("          c^2 r_e / m_e, not G from nothing.")
@@ -208,8 +213,7 @@ def main():
 
     ok = rel_diff < 1e-3
     if ok:
-        print("    RESULT: PASS (G_geom drives A and K_emc; "
-              "Newtonian 1/r^2 recovered)")
+        print("    RESULT: PASS (normalization of A, K_emc and 4pi consistent; G_geom cancels)")
     else:
         print("    RESULT: FAIL")
     return ok
