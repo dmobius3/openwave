@@ -34,7 +34,11 @@ import sys
 
 try:
     from m4_7_ewt_emergence_engine import (
-        PI, C0, M_E, R_E, E_CHARGE_CODATA,
+        PI,
+        C0,
+        M_E,
+        R_E,
+        E_CHARGE_CODATA,
         G_CODATA,
         BCC_IDEAL_PROJECTION_LP,
         compute_alpha_core,
@@ -57,6 +61,7 @@ K_WC = 10
 # ----------------------------------------------------------------------
 # 1. Geometry from the M4.7 trinity
 # ----------------------------------------------------------------------
+
 
 def derive_geometry():
     """Return the M4.7 geometric quantities used by the amplitude test.
@@ -115,6 +120,7 @@ def derive_geometry():
 # 2. Geometric amplitude from the EMC deficit
 # ----------------------------------------------------------------------
 
+
 def geometric_amplitude(M, geom):
     """Derive the monopole amplitude A from the EMC deficit ratio.
 
@@ -138,6 +144,7 @@ def geometric_amplitude(M, geom):
 # ----------------------------------------------------------------------
 # 3. Exact-domain overlap integral
 # ----------------------------------------------------------------------
+
 
 def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
     """Evaluate the spatial overlap integral I(R) over r in [R, inf)
@@ -165,6 +172,7 @@ def compute_overlap_integral_exact_domain(A1, A2, R, num_pts=10000):
 # 4. Force with a given G in the coupling only
 # ----------------------------------------------------------------------
 
+
 def force_ratio(A1, A2, M1, M2, R, G_for_coupling, F_numeric):
     """Return the EMC and Newton forces with G_for_coupling in K_emc and
     F_Newton, while A1 and A2 are kept as given (geometric)."""
@@ -178,6 +186,7 @@ def force_ratio(A1, A2, M1, M2, R, G_for_coupling, F_numeric):
 # ----------------------------------------------------------------------
 # 5. Main
 # ----------------------------------------------------------------------
+
 
 def main():
     print("[1/6] Deriving geometry from the M4.7 trinity...")
