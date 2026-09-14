@@ -1,7 +1,8 @@
-# M4.12 - Newtonian Force with Geometric Amplitude
+# M4.12 - Newtonian Force with the Amplitude in M4.7 Chain Factors
 
 ## Status
-DONE (post-hoc)
+BACKLOG. This record documents the amplitude written in M4.7 chain
+factors; the amplitude-derivation clause stays open (see Interpretation).
 
 ## Criterion
 `Gravity: Newton limit (GEM)`
@@ -12,7 +13,8 @@ the monopole amplitude $A$ from the geometric EMC deficit instead of
 writing it as $2 G_{\text{geom}} M / c^2$. M4.10 showed that with the old
 form the factor $G_{\text{geom}}$ cancels identically in
 $F_{\text{EMC}} \equiv F_{\text{Newton}}$, so the gate could not test the
-geometric coupling.
+geometric coupling. The form built here is $2 G_{\text{geom}} M / c^2$ by
+value, so this objective stays open (see Interpretation).
 
 ## Method
 
@@ -20,7 +22,7 @@ geometric coupling.
 
 2. Build the amplitude from the deficit ratio:
    $$A = \frac{2 M r_e}{m_e} \cdot \frac{\sqrt{X_{\text{eff}}}}{A_\pi^4 \, N_{\text{geom}}^3 \, K_{WC} \sqrt{N_{\nu,\text{stat}}}}$$
-   with no $G$ in the formula.
+   with no $G$ symbol in the formula. Its value is $2 G_{\text{geom}} M / c^2$ (step 3).
 
 3. Verify algebraically that the geometric form equals $2 G_{\text{geom}} M / c^2$ to machine precision.
 
@@ -50,10 +52,13 @@ Geometric amplitude:
 
 ## Interpretation
 
-The gate now depends on $G_{\text{geom}}$: the amplitude is geometric, the
-coupling carries $G_{\text{geom}}$, and mutating $G_{\text{geom}}$ breaks
-the agreement. M4.10 could not do this because $G_{\text{geom}}$ sat on
-both sides and cancelled.
+The gate does not depend on the value of $G_{\text{geom}}$. The amplitude
+is the engine's $G_{\text{EWT}}$ formula times $2M/c^2$, term for term, so
+$G_{\text{geom}}$ sits on both sides and cancels identically in
+$F_{\text{EMC}} \equiv F_{\text{Newton}}$, as in M4.10. The mutation
+replaces $G_{\text{geom}}$ in the coupling only, a state the chain cannot
+produce, so it confirms the formula identity and does not test the value.
+The force comparison remains a normalization-consistency gate.
 
 Strength clause: circularity is discharged (the trinity enters directly
 without re-entering through an input); accuracy is stated and not met

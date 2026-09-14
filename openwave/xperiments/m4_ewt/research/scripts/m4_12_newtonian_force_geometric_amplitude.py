@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-"""M4/EWT - Newtonian Force with Geometric Amplitude from the EMC Deficit
+"""M4/EWT - Newtonian Force with the Amplitude in M4.7 Chain Factors
 
 OpenWave criterion:
     Gravity: Newton limit (GEM)
 
 Purpose:
-    Extend the Newtonian force test so that the monopole amplitude A is
-    derived from the geometric EMC deficit, using the ratio
-    N_nu_stat / N_nu_eff explicitly, instead of being written as
-    2 G_geom M / c^2. In this form the amplitude does not carry G_geom,
-    so the force gate actually tests G_geom rather than cancelling it.
+    Write the monopole amplitude A in the M4.7 chain factors, using the
+    ratio N_nu_stat / N_nu_eff explicitly, without the symbol G_geom.
+    The product is the engine's G_EWT formula times 2 M / c^2, term for
+    term, so A = 2 G_geom M / c^2 by value and G_geom still cancels in
+    the force gate. The gate remains a normalization-consistency check,
+    as in M4.10.
 
-    The gate passes for the derived G_geom and fails for a mutated
-    G_geom, which is what makes it a test of the geometric coupling.
+    The mutation arm changes G_geom in the coupling only, one copy of
+    the formula and not the other, so it confirms the identity and does
+    not test the value of G_geom.
 
 Dimensional anchors:
     r_e, m_e, c are the measured anchors used to build the dimensionless
@@ -21,10 +23,10 @@ Dimensional anchors:
 
 Structure:
     [1] Derive the M4.7 geometric trinity.
-    [2] Derive A from N_nu_stat / N_nu_eff and geometry (no G).
+    [2] Write A in chain factors (no G symbol; equals 2 G_geom M / c^2).
     [3] State the accuracy half of the strength clause.
     [4] Numerical overlap integral and force baseline gate.
-    [5] Mutation test: mutate G_geom, confirm the gate fails.
+    [5] One-copy mutation: G_geom in the coupling only.
 """
 
 import math
@@ -118,7 +120,8 @@ def geometric_amplitude(M, geom):
 
     A = 2 M r_e / m_e * sqrt(X_eff) / (A_pi^4 N_geom^3 K_WC sqrt(N_nu_stat))
 
-    with X_eff = N_nu_stat / N_nu_eff. No G_geom enters this formula.
+    with X_eff = N_nu_stat / N_nu_eff. No G_geom symbol enters, but the
+    product equals 2 G_geom M / c^2 (engine gravity_sector).
     """
     r_e = R_E
     m_e = M_E
@@ -206,8 +209,8 @@ def main():
     print(f"    A_2 (geometric) = {A2:.6e} m")
     print(f"    A_2 (2GM/c^2)   = {A2_alt:.6e} m")
     print(f"    rel. diff A_2   = {abs(A2 - A2_alt)/A2_alt:.3e}")
-    print("    The two forms agree algebraically; the geometric form")
-    print("    does not carry G_geom, so the force gate can test it.")
+    print("    The two forms are the same expression: the amplitude carries")
+    print("    G_geom by value, so G_geom cancels in the force gate.")
 
     print("\n[3/6] Accuracy statement (strength clause, accuracy half)...")
     rel_err = abs(G_geom - G_CODATA) / G_CODATA
@@ -229,7 +232,7 @@ def main():
     print(f"    Rel. diff.   = {rel_diff:.12e}%")
     baseline_pass = rel_diff < 1e-3
     if baseline_pass:
-        print("    RESULT: PASS (geometric amplitude consistent with G_geom)")
+        print("    RESULT: PASS (normalization consistency; G_geom cancels)")
     else:
         print("    RESULT: FAIL")
 
@@ -242,14 +245,14 @@ def main():
     print(f"    Rel. diff._mut = {rel_diff_mut:.6f}%")
     mutation_fails = rel_diff_mut > 10.0
     if mutation_fails:
-        print("    RESULT: FAIL as expected (gate now tests G_geom)")
+        print("    RESULT: FAIL as expected (one copy mutated; confirms the identity)")
     else:
-        print("    RESULT: PASS (unexpected; gate does not test G_geom)")
+        print("    RESULT: PASS (unexpected; the gate ignores the coupling)")
 
     overall = baseline_pass and mutation_fails
     print()
     if overall:
-        print("OVERALL: PASS (amplitude geometric; gate tests G_geom)")
+        print("OVERALL: PASS (normalization-consistency gate; G_geom cancels)")
     else:
         print("OVERALL: FAIL")
     return overall

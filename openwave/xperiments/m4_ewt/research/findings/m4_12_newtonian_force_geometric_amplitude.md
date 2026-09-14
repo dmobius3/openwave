@@ -1,21 +1,21 @@
-# M4.12: Newtonian Force with Geometric Amplitude from the EMC Deficit
+# M4.12: Newtonian Force with the Amplitude in M4.7 Chain Factors
 
 ## Status
-DONE (post-hoc)
+BACKLOG. This record documents the amplitude written in M4.7 chain factors; the task's amplitude-derivation clause stays open (see Interpretation).
 
 ## Criterion
 `Gravity: Newton limit (GEM)`
 
 ## Abstract
-This artifact derives the monopole amplitude $A$ from the geometric EMC deficit — using the ratio $N_{\nu,\text{stat}} / N_{\nu,\text{eff}}$ explicitly — rather than writing it as $2 G_{\text{geom}} M / c^2$. In this form the amplitude does not carry $G_{\text{geom}}$, so the Newtonian force gate actually tests $G_{\text{geom}}$ instead of cancelling it. The baseline gate passes at the same precision as M4.10, and a mutation of $G_{\text{geom}}$ in the coupling now breaks the gate at 100%.
+This artifact writes the monopole amplitude $A$ in the M4.7 chain factors, using the ratio $N_{\nu,\text{stat}} / N_{\nu,\text{eff}}$ explicitly, without the symbol $G_{\text{geom}}$. The product is the engine's $G_{\text{EWT}}$ formula multiplied by $2M/c^2$, term for term, so $A = 2 G_{\text{geom}} M / c^2$ by value and $G_{\text{geom}}$ still cancels identically in $F_{\text{EMC}} \equiv F_{\text{Newton}}$. The force comparison therefore remains a normalization-consistency gate, as in M4.10, not a test of $G_{\text{geom}}$. The baseline gate passes at the same precision as M4.10. Mutating $G_{\text{geom}}$ in the coupling only breaks the gate at 100%, which shows that the two copies of the formula agree, not that the value of $G_{\text{geom}}$ is right.
 
-## Geometric Amplitude
+## Amplitude in Chain Factors
 
 The amplitude is written as
 
 $$A = \frac{2 M r_e}{m_e} \cdot \frac{\sqrt{X_{\text{eff}}}}{A_\pi^4 \, N_{\text{geom}}^3 \, K_{WC} \sqrt{N_{\nu,\text{stat}}}}$$
 
-with $X_{\text{eff}} = N_{\nu,\text{stat}} / N_{\nu,\text{eff}}$. Every factor on the right is geometric: $A_\pi = 4\pi^3 + \pi^2 + \pi$, $N_{\text{geom}} = 8\pi^4(1-\zeta)$, $K_{WC} = 10$, and $X_{\text{eff}}, N_{\nu,\text{stat}}$ from the M4.7 chain. The anchors $r_e, m_e$ are the measured dimensional quantities; $G_{\text{geom}}$ does not appear.
+with $X_{\text{eff}} = N_{\nu,\text{stat}} / N_{\nu,\text{eff}}$. Every factor on the right is geometric: $A_\pi = 4\pi^3 + \pi^2 + \pi$, $N_{\text{geom}} = 8\pi^4(1-\zeta)$, $K_{WC} = 10$, and $X_{\text{eff}}, N_{\nu,\text{stat}}$ from the M4.7 chain. The anchors $r_e, m_e$ are the measured dimensional quantities. The symbol $G_{\text{geom}}$ does not appear, but the product is the engine's $G_{\text{EWT}}$ formula (`gravity_sector` in the M4.7 engine) multiplied by $2M/c^2$, term for term, so $A = 2 G_{\text{geom}} M / c^2$ by value.
 
 At $N_{\text{geom}} = 778.8025$:
 
@@ -29,7 +29,7 @@ At $N_{\text{geom}} = 778.8025$:
 | $A_1$ (geometric) | $2.955552 \times 10^{3}\ \text{m}$ |
 | $A_2$ (geometric) | $8.874085 \times 10^{-3}\ \text{m}$ |
 
-The geometric form agrees with $2 G_{\text{geom}} M / c^2$ to $1.5 \times 10^{-16}$ for $A_1$ and $2.0 \times 10^{-16}$ for $A_2$ — machine precision, as expected from algebraic equivalence.
+The geometric form agrees with $2 G_{\text{geom}} M / c^2$ to $1.5 \times 10^{-16}$ for $A_1$ and $2.0 \times 10^{-16}$ for $A_2$, machine precision: the two are the same expression, so this agreement is an identity, not a confirmation.
 
 ## Force Gate
 
@@ -51,9 +51,9 @@ Mutation test: replace $G_{\text{geom}}$ with $1.0$ in $K_{\text{emc}}$ and $F_{
 
 ## Interpretation
 
-The gate now depends on the value of $G_{\text{geom}}$. With the geometric amplitude in place, the factor $G_{\text{geom}}$ appears only in $K_{\text{emc}}$ and in $F_{\text{Newton}}$. Mutating it by orders of magnitude breaks the agreement, which is what makes the gate a test of the geometric coupling rather than a normalisation-consistency check.
+The gate does not depend on the value of $G_{\text{geom}}$. The amplitude carries $G_{\text{geom}}$ by value through the chain factors and the coupling carries it by symbol, so it sits on both sides and cancels identically in $F_{\text{EMC}} \equiv F_{\text{Newton}}$, as in M4.10: changing any input to the chain moves $G_{\text{geom}}$ and the gate still passes. The mutation above changes $G_{\text{geom}}$ in the coupling only, one copy of the formula and not the other, a state the chain cannot produce, so it confirms the identity and does not test the value. The force comparison remains a normalization-consistency gate. Making it test $G_{\text{geom}}$ needs an amplitude whose value is fixed without passing through the $G_{\text{EWT}}$ formula, which is the task's open clause.
 
-**Strength clause.** Circularity is discharged: $G_{\text{geom}}$ enters the force test directly, derived from BCC geometry, without re-entering through an input. Accuracy is stated and not met: the $G_{\text{geom}}$ residual against CODATA is $0.048169\%$, or $21.9\times$ the CODATA 2022 relative uncertainty on $G$. The gate tests $G_{\text{geom}}$ now, but the value it tests does not agree with the measured one within its uncertainty.
+**Strength clause.** Circularity is discharged: $G_{\text{geom}}$ enters the force test directly, derived from BCC geometry, without re-entering through an input. Accuracy is stated and not met: the $G_{\text{geom}}$ residual against CODATA is $0.048169\%$, or $21.9\times$ the CODATA 2022 relative uncertainty on $G$. At that distance the derived value does not agree with the measured $G$ within its uncertainty.
 
 **Dimensional anchors.** $r_e, m_e, c$ are the measured anchors used to build the dimensionless geometric ratio. The amplitude $A$ is a length built from these anchors and the BCC geometry.
 
