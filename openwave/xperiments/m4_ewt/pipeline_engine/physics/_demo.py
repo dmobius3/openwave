@@ -111,9 +111,15 @@ def main() -> None:
     p.add_argument("--grid", type=int, default=64)
     p.add_argument("--steps", type=int, default=5000, help="max steps (headless mode)")
     p.add_argument("--no-window", action="store_true", help="run headless; exits after --steps")
+    p.add_argument(
+        "--check-stateless", action="store_true", help="enable the stateless guard (dev/CI use)"
+    )
     args = p.parse_args()
 
     ti.init(arch=ti.cpu, log_level=ti.WARN)
+
+    if not args.no_window:
+        print("[info] window mode: --steps ignored; close the window to stop")
 
     # Build WCState from K and geometry. Same pipeline, different input.
     wc_state = build_wc_state(
@@ -126,9 +132,9 @@ def main() -> None:
         spacing=args.spacing,
     )
 
-    out = Path("out_demo")
+    out = Path(__file__).resolve().parent / "out_demo"
     sinks = {"session": JsonSessionSink(out / "session.json", flush_every=100)}
-    runner = Runner(sinks, check_stateless=True)
+    runner = Runner(sinks, check_stateless=args.check_stateless)
 
     pipeline = WavePipeline(
         grid=args.grid,
@@ -159,6 +165,7 @@ def main() -> None:
     print("=" * 64)
     print(f"Wave demo finished (K={args.k}, geometry={args.geometry}, gamma={args.gamma})")
     print("=" * 64)
+    print(f"[info] stateless guard: {'ON' if args.check_stateless else 'OFF'}")
     print(f"steps simulated : {ctx.sim.step}")
     stats = ctx.data.require(WaveStats)
     print(f"final amp_max   : {stats.amp_max:.6f}")
