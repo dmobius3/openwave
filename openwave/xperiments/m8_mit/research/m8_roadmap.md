@@ -17,7 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
-| [M8.10](tasks/m8_10_task_details.md) | First correction at the level-6 critical rays | The fourth bedrock paper's range equation (§ 6.2) carried one order at its four symmetry-pinned critical rays in sectors `3′` and `4`: eight formal branch expansions, with the first state correction and the eigenvalue coefficient `λ₄` supplied as candidate exact rationals for a maintainer-run recompute, blind in the recommended format. Analytic side of the closed spectral route; no branch, existence or stability claimed | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
+| [M8.11](tasks/m8_11_task_details.md) | Local branch germs at the level-6 critical rays, and the order-`a²` tilt | Whether the formal expansions at six level-6 critical rays in sectors `3′` and `4` are Taylor expansions of local branch germs, for sufficiently small amplitude, by one existence theorem graded by audit; and the order-`a²` tilt at the pyramid and the prism, supplied as candidate exact values for a maintainer-run recompute. Analytic side; no radius or stability claimed | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
 
 ## LATER (gated)
 
@@ -322,3 +322,11 @@ solver value by value and reran its code with no difference. Every frozen claim 
 eight `λ₄/g²` are now exact results, and the negative control fired. Branches at finite amplitude, existence and
 stability are not established. No MODELS.md cell moves and M8.7's gate is unchanged. The author's package lands in its
 own PR for the provenance comparison. Record: [method note](findings/m8_10_method_note.md).
+
+**M8.10 PACKAGE LANDED AND BACKLOG ROW RETIRED (2026-09-13).** The author's package landed at
+[#550](https://github.com/openwave-labs/openwave/pull/550) (merge `e4259652`): fourteen files byte-identical to their
+pins and two as disclosed privacy redactions, accepted at review. The designer's provenance comparison ran at the
+landing and is recorded in the task doc's
+[provenance comparison](tasks/m8_10_task_details.md#provenance-comparison-2026-09-13). The M8.10 row, left in the
+Backlog when the task moved to [DONE](#done), is removed, and the Backlog is empty. Bookkeeping only; no scope or
+evidence change.

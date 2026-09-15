@@ -1,0 +1,73 @@
+{
+ "a_free_gradient_stencil4_rel": {
+  "face": 4.049986595525198e-07,
+  "edge": 2.498739830365535e-08,
+  "corner": 2.6884634651964143e-07,
+  "interior": 1.1251396206281856e-07
+ },
+ "a_pin_zeroes_faces": {
+  "pinned_cells": 448,
+  "max_abs_G_on_pinned": 3359.748480414081
+ },
+ "b_coord_coincidence_max_abs": 0.0,
+ "b_restriction_bitwise": true,
+ "b_restricted_Sd_energy_n32": {
+  "E_total": 15.781460587731893,
+  "E_pin_shell": 2.431463836219777
+ },
+ "M_symmetry_max_abs": 5.551115123125783e-17,
+ "polish_unpack_roundtrip_max_abs_interior_only": 1.3877787807814457e-17,
+ "a_packed_gradient_stencil4_rel_interior_only": {
+  "0.001": 2.2573714190039263e-11,
+  "0.0001": 5.89380948781741e-11,
+  "1e-05": 7.311117713049436e-10
+ },
+ "polish_unpack_roundtrip_max_abs_all_cells_faces_included": 5.551115123125783e-17,
+ "a_packed_gradient_stencil4_rel_all_cells_faces_included": {
+  "0.001": 1.4479789945978718e-11,
+  "0.0001": 5.023940747444137e-11,
+  "1e-05": 9.845907084416874e-11
+ },
+ "tiny_seed": {
+  "E0": 96.53191870943186,
+  "E_fire": 88.64022198389647,
+  "E_polished": 62.38016423852957,
+  "fmax_fire": 5.803594398444413,
+  "fmax_polished": 2.119575086037012,
+  "polish_verdict": "POLISHED",
+  "polish_iters": 4,
+  "face_layer_E": 42.93648541387226,
+  "solid_angle_rank1_r6": 1.0,
+  "frame3_c0": -34.86170510373358,
+  "axis_norm_min_rel": 0.6162301941767666
+ },
+ "tiny_free": {
+  "E0": 96.53191870943186,
+  "E_fire": 88.19297981885754,
+  "E_polished": 6.175229916933226,
+  "fmax_fire": 4.250135491184184,
+  "fmax_polished": 0.4004322289580404,
+  "polish_verdict": "FALLING (at max |G| = 4.00e-01)",
+  "polish_iters": 60,
+  "face_layer_E": 2.018340934730357,
+  "solid_angle_rank1_r6": 1.0,
+  "frame3_c0": -25.00331578176003,
+  "axis_norm_min_rel": 0.5708831067351348
+ },
+ "g1_seed": {
+  "E": 14.826186449056879,
+  "ok": true,
+  "min_gap": 1.0000000000214195
+ },
+ "delta1_seed": {
+  "E": 112.65292123796009,
+  "ok": true,
+  "min_gap": 8.000000000032953,
+  "roots": [
+   -8.0,
+   1.0,
+   1.0,
+   0.0
+  ]
+ }
+}
