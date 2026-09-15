@@ -117,7 +117,7 @@ def main() -> None:
     ti.init(arch=ti.cpu, log_level=ti.WARN)
 
     if not args.no_window:
-        print(f"[info] window mode: --steps ignored; close the window to stop")
+        print("[info] window mode: --steps ignored; close the window to stop")
 
     # Build WCState from K and geometry. Same pipeline, different input.
     wc_state = build_wc_state(

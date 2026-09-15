@@ -85,10 +85,15 @@ new feature never changes any signature.
 
 ## Statelessness
 
-Processors are stateless by default. The engine raises if process() mutates
-any instance field, including in-place mutations of containers
-(self.hist.append(...)). Runtime state belongs in ctx.data. When memoization
-is genuinely required, set `stateless = False` on the class.
+Processors are stateless by default. With the guard enabled, the engine
+compares the repr() of every instance field before and after process() and
+raises on any difference, so both a rebind (self.n = self.n + 1) and an
+in-place change to a list or dict (self.hist.append(...)) are caught. A change
+that leaves the repr unchanged is not: the contents of a Taichi field, a NumPy
+array of more than 1000 elements (NumPy abbreviates its repr), or the
+attributes of an object whose repr does not show them. Runtime state belongs
+in ctx.data. When memoization is genuinely required, set `stateless = False`
+on the class.
 
 The check is opt-in: Runner(..., check_stateless=True) enables it, and the
 guard runs only when enabled. Processors with `stateless = False` are skipped.
@@ -102,6 +107,10 @@ ErrorPolicy selects what happens when a processor raises:
     CONTINUE   -- log, skip to the next processor
 
 Default is SOFT_STOP. The error is recorded in ctx.diag.errors either way.
+
+The policy covers process() only. A failure in setup() always propagates the
+original exception, after the processors already set up are torn down in
+reverse.
 
 ## Folder layout
 
@@ -121,9 +130,10 @@ Smoke test (no Taichi required):
 
     python -m openwave.xperiments.m4_ewt.pipeline_engine._smoke_test
 
-Runs four scenarios: a normal pipeline, a pipeline with an injected failure
-(SOFT_STOP in action), a pipeline with file sinks, and a pipeline reading a
-caller-supplied feature (external_provides).
+Runs six scenarios: a normal pipeline, a pipeline with an injected failure
+(SOFT_STOP in action), a pipeline with file sinks, a pipeline reading a
+caller-supplied feature (external_provides), and two regression checks, one
+for the stateless guard and one for a failing setup().
 
 Physics demo (requires Taichi):
 
