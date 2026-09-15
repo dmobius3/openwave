@@ -162,8 +162,7 @@ class Pipeline:
         for r in p.requires:
             if r not in available:
                 raise PipelineError(
-                    f"{p.name}: requires '{r.__name__}', "
-                    f"not provided by any earlier processor"
+                    f"{p.name}: requires '{r.__name__}', " f"not provided by any earlier processor"
                 )
 
     # --- Lifecycle ---
@@ -174,9 +173,7 @@ class Pipeline:
         self._setup_done = []
         try:
             for p in self._all:
-                self._safe(
-                    lambda p=p: p.setup(ctx), p, "setup", ctx, is_lifecycle=True
-                )
+                self._safe(lambda p=p: p.setup(ctx), p, "setup", ctx, is_lifecycle=True)
                 self._setup_done.append(p)
         except BaseException:
             self._teardown_completed(ctx)
@@ -230,11 +227,7 @@ class Pipeline:
     ) -> None:
         t0 = time.perf_counter()
         try:
-            if (
-                op == "process"
-                and self._check_stateless
-                and getattr(p, "stateless", True)
-            ):
+            if op == "process" and self._check_stateless and getattr(p, "stateless", True):
                 self._stateless_guard(fn, p)
             else:
                 fn()
@@ -275,9 +268,7 @@ class Pipeline:
         before = Pipeline._field_snapshot(p)
         fn()
         after = Pipeline._field_snapshot(p)
-        changed = sorted(
-            k for k in set(before) | set(after) if before.get(k) != after.get(k)
-        )
+        changed = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
         if changed:
             raise PipelineError(
                 f"{p.name}: mutated instance fields in process(): {changed}. "

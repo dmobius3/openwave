@@ -111,7 +111,9 @@ def main() -> None:
     p.add_argument("--grid", type=int, default=64)
     p.add_argument("--steps", type=int, default=5000, help="max steps (headless mode)")
     p.add_argument("--no-window", action="store_true", help="run headless; exits after --steps")
-    p.add_argument("--check-stateless", action="store_true", help="enable the stateless guard (dev/CI use)")
+    p.add_argument(
+        "--check-stateless", action="store_true", help="enable the stateless guard (dev/CI use)"
+    )
     args = p.parse_args()
 
     ti.init(arch=ti.cpu, log_level=ti.WARN)
