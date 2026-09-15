@@ -7,6 +7,7 @@ Contains:
 
 Domain-agnostic: no imports of physics, no imports of Taichi.
 """
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -31,6 +32,7 @@ class IRunner(Protocol):
     Runner interface. Implementations decide how to run a pipeline.
     The default Runner runs synchronously, in-process.
     """
+
     def run(
         self,
         pipeline: Pipeline,

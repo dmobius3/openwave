@@ -7,6 +7,7 @@ Contains:
     LiveJsonSink     -- small rolling file, overwritten on each write
     InMemorySink     -- for tests and post-mortem inspection
 """
+
 from __future__ import annotations
 
 import json

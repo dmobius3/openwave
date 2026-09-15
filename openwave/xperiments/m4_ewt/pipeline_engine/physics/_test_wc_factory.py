@@ -12,8 +12,8 @@ from pathlib import Path
 # Bootstrap: add m4_ewt/ to sys.path so 'pipeline_engine' is importable
 # as a proper package, and 'physics' is its subpackage.
 _THIS = Path(__file__).resolve()
-_ENGINE_DIR = _THIS.parents[1]           # .../pipeline_engine
-_M4EWT_DIR = _ENGINE_DIR.parent          # .../m4_ewt
+_ENGINE_DIR = _THIS.parents[1]  # .../pipeline_engine
+_M4EWT_DIR = _ENGINE_DIR.parent  # .../m4_ewt
 sys.path.insert(0, str(_M4EWT_DIR))
 
 from pipeline_engine.physics.wc_factory import build_wc_state
@@ -25,8 +25,10 @@ def report(name, wc_state):
     print(f"  K       = {wc_state.K}")
     print(f"  active  = {wc_state.active_count}")
     for i, wc in enumerate(wc_state.centers):
-        print(f"  WC[{i:2d}]: pos=({wc.x:7.3f}, {wc.y:7.3f}, {wc.z:7.3f}) "
-              f"phase={wc.phase:6.3f} active={wc.active}")
+        print(
+            f"  WC[{i:2d}]: pos=({wc.x:7.3f}, {wc.y:7.3f}, {wc.z:7.3f}) "
+            f"phase={wc.phase:6.3f} active={wc.active}"
+        )
     n = wc_state.K
     if n >= 2:
         dmin = float("inf")
@@ -58,8 +60,11 @@ def main():
 
     for K, geometry in cases:
         state = build_wc_state(
-            K=K, geometry=geometry,
-            nx=grid, ny=grid, nz=grid,
+            K=K,
+            geometry=geometry,
+            nx=grid,
+            ny=grid,
+            nz=grid,
             wavelength=wavelength,
         )
         report(f"K={K}, geometry='{geometry}'", state)

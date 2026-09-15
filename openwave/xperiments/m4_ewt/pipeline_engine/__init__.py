@@ -21,6 +21,7 @@ Design rules:
     Z7. Measurement and logging are separate processors.
     Z8. Params are typed and grouped separately from run identity.
 """
+
 from .context import (
     Context,
     Diagnostics,
@@ -45,15 +46,29 @@ from .runner import IRunner, Runner
 
 __all__ = [
     # context
-    "Context", "Diagnostics", "FeatureBag", "LogContext",
-    "Params", "RunContext", "SimContext",
+    "Context",
+    "Diagnostics",
+    "FeatureBag",
+    "LogContext",
+    "Params",
+    "RunContext",
+    "SimContext",
     # pipeline
-    "BaseProcessor", "ErrorPolicy", "IProcessor",
-    "Pipeline", "PipelineError", "PipelineStopSignal", "Stage",
+    "BaseProcessor",
+    "ErrorPolicy",
+    "IProcessor",
+    "Pipeline",
+    "PipelineError",
+    "PipelineStopSignal",
+    "Stage",
     # sinks
-    "ILogSink", "InMemorySink", "JsonSessionSink", "LiveJsonSink",
+    "ILogSink",
+    "InMemorySink",
+    "JsonSessionSink",
+    "LiveJsonSink",
     # loggers
     "LogProcessor",
     # runner
-    "IRunner", "Runner",
+    "IRunner",
+    "Runner",
 ]

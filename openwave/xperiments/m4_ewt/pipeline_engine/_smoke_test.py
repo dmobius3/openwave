@@ -37,6 +37,7 @@ except ImportError:
 # Data features (runtime state lives in ctx.data)
 # ================================================================
 
+
 @dataclass
 class Counter:
     value: int = 0
@@ -50,12 +51,14 @@ class History:
 @dataclass
 class Tags:
     """Provided by the caller via initial_features; not by any processor."""
+
     label: str = ""
 
 
 # ================================================================
 # Processors
 # ================================================================
+
 
 class AllocateState(BaseProcessor):
     name = "AllocateState"
@@ -92,6 +95,7 @@ class RecordValue(BaseProcessor):
 
 class ReadExternal(BaseProcessor):
     """Reads a feature provided by the caller (Tags). Fails validation if absent."""
+
     name = "ReadExternal"
     stage = Stage.MEASURE
     order = 5
@@ -105,6 +109,7 @@ class ReadExternal(BaseProcessor):
 
 class BadProcessor(BaseProcessor):
     """Forces a failure to demonstrate ErrorPolicy.SOFT_STOP."""
+
     name = "BadProcessor"
     stage = Stage.UPDATE
     order = 90
@@ -116,6 +121,7 @@ class BadProcessor(BaseProcessor):
 # ================================================================
 # Pipelines
 # ================================================================
+
 
 def _payload(ctx: Context) -> Mapping[str, Any]:
     c = ctx.data.require(Counter)
@@ -144,6 +150,7 @@ class ExternalFeaturePipeline(Pipeline):
     Demonstrates external_provides + initial_features.
     Tags is supplied by the caller; ReadExternal requires it.
     """
+
     def __init__(self) -> None:
         super().__init__(
             error_policy=ErrorPolicy.SOFT_STOP,
@@ -159,6 +166,7 @@ class ExternalFeaturePipeline(Pipeline):
 # ================================================================
 # Helpers
 # ================================================================
+
 
 def _print_summary(label: str, ctx: Context) -> None:
     print(f"--- {label} ---")
@@ -219,6 +227,7 @@ def _run_external_feature(out_dir: Path) -> Context:
 # ================================================================
 # Entry point
 # ================================================================
+
 
 def main() -> None:
     out_dir = Path("out_engine_smoke")

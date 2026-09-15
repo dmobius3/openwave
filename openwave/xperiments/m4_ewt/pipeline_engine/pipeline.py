@@ -10,6 +10,7 @@ Contains:
     BaseProcessor     -- convenience base
     Pipeline          -- staged processor list with validation and error policy
 """
+
 from __future__ import annotations
 
 import time
@@ -18,10 +19,10 @@ from typing import Callable, Protocol, runtime_checkable
 
 from .context import Context
 
-
 # ================================================================
 # Stage and error policy
 # ================================================================
+
 
 class Stage(Enum):
     PRE_UPDATE = auto()
@@ -31,9 +32,9 @@ class Stage(Enum):
 
 
 class ErrorPolicy(Enum):
-    FAIL_FAST = auto()   # re-raise, stop the run immediately
-    SOFT_STOP = auto()   # log, set should_stop, teardown, do not re-raise
-    CONTINUE = auto()    # log, keep going with the next processor
+    FAIL_FAST = auto()  # re-raise, stop the run immediately
+    SOFT_STOP = auto()  # log, set should_stop, teardown, do not re-raise
+    CONTINUE = auto()  # log, keep going with the next processor
 
 
 class PipelineStopSignal(Exception):
@@ -48,6 +49,7 @@ class PipelineError(RuntimeError):
 # Processor
 # ================================================================
 
+
 @runtime_checkable
 class IProcessor(Protocol):
     """
@@ -56,6 +58,7 @@ class IProcessor(Protocol):
     stage=None means lifecycle-only: only setup/teardown are called.
     stateless=False opts out of the stateless enforcement in Pipeline._safe.
     """
+
     name: str
     stage: Stage | None
     order: int
@@ -70,6 +73,7 @@ class IProcessor(Protocol):
 
 class BaseProcessor:
     """Convenience base. Override what you need."""
+
     name: str = "BaseProcessor"
     stage: Stage | None = None
     order: int = 0
@@ -77,14 +81,20 @@ class BaseProcessor:
     provides: tuple[type, ...] = ()
     stateless: bool = True
 
-    def setup(self, ctx: Context) -> None: pass
-    def process(self, ctx: Context) -> None: pass
-    def teardown(self, ctx: Context) -> None: pass
+    def setup(self, ctx: Context) -> None:
+        pass
+
+    def process(self, ctx: Context) -> None:
+        pass
+
+    def teardown(self, ctx: Context) -> None:
+        pass
 
 
 # ================================================================
 # Pipeline
 # ================================================================
+
 
 class Pipeline:
     """
@@ -144,8 +154,7 @@ class Pipeline:
         for r in p.requires:
             if r not in available:
                 raise PipelineError(
-                    f"{p.name}: requires '{r.__name__}', "
-                    f"not provided by any earlier processor"
+                    f"{p.name}: requires '{r.__name__}', " f"not provided by any earlier processor"
                 )
 
     # --- Lifecycle ---

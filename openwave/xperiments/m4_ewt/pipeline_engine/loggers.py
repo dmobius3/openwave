@@ -4,6 +4,7 @@ Generic logging processor.
 LogProcessor is domain-agnostic: it reads a payload from the Context and
 writes it to a named sink. What to log and how often is configured per instance.
 """
+
 from __future__ import annotations
 
 from typing import Any, Callable, Mapping

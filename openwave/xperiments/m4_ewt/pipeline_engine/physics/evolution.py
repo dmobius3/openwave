@@ -21,6 +21,7 @@ class LaplacianProcessor(BaseProcessor):
     from the spatial operator). Overwrites; must run before any additive
     processor in the UPDATE stage.
     """
+
     name = "Laplacian"
     stage = Stage.UPDATE
     order = 10
@@ -29,15 +30,16 @@ class LaplacianProcessor(BaseProcessor):
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
         field = ctx.data.require(PsiField)
-        _laplacian(field.psi, field.psi_new,
-                   grid.nx, grid.ny, grid.nz, grid.dx, grid.c)
+        _laplacian(field.psi, field.psi_new, grid.nx, grid.ny, grid.nz, grid.dx, grid.c)
 
 
 @ti.kernel
 def _laplacian(
     psi: ti.template(),
     out: ti.template(),
-    nx: ti.i32, ny: ti.i32, nz: ti.i32,
+    nx: ti.i32,
+    ny: ti.i32,
+    nz: ti.i32,
     dx: ti.f32,
     c: ti.f32,
 ):
@@ -45,9 +47,12 @@ def _laplacian(
     c2 = c * c
     for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
         face_sum = (
-            psi[i + 1, j, k] + psi[i - 1, j, k]
-            + psi[i, j + 1, k] + psi[i, j - 1, k]
-            + psi[i, j, k + 1] + psi[i, j, k - 1]
+            psi[i + 1, j, k]
+            + psi[i - 1, j, k]
+            + psi[i, j + 1, k]
+            + psi[i, j - 1, k]
+            + psi[i, j, k + 1]
+            + psi[i, j, k - 1]
         )
         out[i, j, k] = c2 * (face_sum - 6.0 * psi[i, j, k]) * inv_dx2
 
@@ -58,6 +63,7 @@ class LeapfrogProcessor(BaseProcessor):
     where psi_new holds the accumulated acceleration (spatial + forces).
     Then swaps time levels: prev <- psi, psi <- new.
     """
+
     name = "Leapfrog"
     stage = Stage.UPDATE
     order = 20
@@ -67,8 +73,7 @@ class LeapfrogProcessor(BaseProcessor):
         grid = ctx.data.require(WaveGrid)
         field = ctx.data.require(PsiField)
         dt2 = ctx.sim.dt * ctx.sim.dt
-        _leapfrog(field.psi, field.psi_prev, field.psi_new,
-                  grid.nx, grid.ny, grid.nz, dt2)
+        _leapfrog(field.psi, field.psi_prev, field.psi_new, grid.nx, grid.ny, grid.nz, dt2)
 
 
 @ti.kernel
@@ -76,7 +81,9 @@ def _leapfrog(
     psi: ti.template(),
     prev: ti.template(),
     new: ti.template(),
-    nx: ti.i32, ny: ti.i32, nz: ti.i32,
+    nx: ti.i32,
+    ny: ti.i32,
+    nz: ti.i32,
     dt2: ti.f32,
 ):
     # Read accumulated acceleration, produce psi(t+dt) into the same buffer.

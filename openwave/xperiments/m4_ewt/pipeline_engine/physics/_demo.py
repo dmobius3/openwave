@@ -50,6 +50,7 @@ class WavePipeline(Pipeline):
     Same pipeline for all K and geometries. The only difference between runs
     is the WCState passed in via initial_features.
     """
+
     def __init__(
         self,
         *,
@@ -68,36 +69,48 @@ class WavePipeline(Pipeline):
         self.add(DirichletBoundaryProcessor())
         self.add(AmplitudeTracker(every=10))
         if with_window:
-            self.add(TaichiWindowProcessor(
-                size=(512, 512),
-                scale=8,
-                amp_scale=3.0,
-                title=f"M4 wave (K, gamma={gamma})",
-            ))
-        self.add(LogProcessor(
-            "SessionLog", "session", _payload,
-            every=20, order=500,
-        ))
+            self.add(
+                TaichiWindowProcessor(
+                    size=(512, 512),
+                    scale=8,
+                    amp_scale=3.0,
+                    title=f"M4 wave (K, gamma={gamma})",
+                )
+            )
+        self.add(
+            LogProcessor(
+                "SessionLog",
+                "session",
+                _payload,
+                every=20,
+                order=500,
+            )
+        )
 
 
 def main() -> None:
     p = argparse.ArgumentParser(description="M4 wave demo")
-    p.add_argument("--k", type=int, default=1,
-                   help="number of wave centers")
-    p.add_argument("--geometry", type=str, default="single",
-                   choices=["single", "pair", "line", "golden", "tetrahedron_10_locked"],
-                   help="geometry used to place the wave centers")
-    p.add_argument("--spacing", type=float, default=None,
-                   help="characteristic spacing in grid units (default: wavelength)")
-    p.add_argument("--wavelength", type=float, default=12.0,
-                   help="reference wavelength in grid units")
-    p.add_argument("--gamma", type=float, default=0.01,
-                   help="cubic coupling (0.0 = linear)")
+    p.add_argument("--k", type=int, default=1, help="number of wave centers")
+    p.add_argument(
+        "--geometry",
+        type=str,
+        default="single",
+        choices=["single", "pair", "line", "golden", "tetrahedron_10_locked"],
+        help="geometry used to place the wave centers",
+    )
+    p.add_argument(
+        "--spacing",
+        type=float,
+        default=None,
+        help="characteristic spacing in grid units (default: wavelength)",
+    )
+    p.add_argument(
+        "--wavelength", type=float, default=12.0, help="reference wavelength in grid units"
+    )
+    p.add_argument("--gamma", type=float, default=0.01, help="cubic coupling (0.0 = linear)")
     p.add_argument("--grid", type=int, default=64)
-    p.add_argument("--steps", type=int, default=5000,
-                   help="max steps (headless mode)")
-    p.add_argument("--no-window", action="store_true",
-                   help="run headless; exits after --steps")
+    p.add_argument("--steps", type=int, default=5000, help="max steps (headless mode)")
+    p.add_argument("--no-window", action="store_true", help="run headless; exits after --steps")
     args = p.parse_args()
 
     ti.init(arch=ti.cpu, log_level=ti.WARN)
@@ -106,7 +119,9 @@ def main() -> None:
     wc_state = build_wc_state(
         K=args.k,
         geometry=args.geometry,
-        nx=args.grid, ny=args.grid, nz=args.grid,
+        nx=args.grid,
+        ny=args.grid,
+        nz=args.grid,
         wavelength=args.wavelength,
         spacing=args.spacing,
     )

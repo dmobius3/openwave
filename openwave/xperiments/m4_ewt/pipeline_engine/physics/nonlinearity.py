@@ -21,6 +21,7 @@ class NonlinearCubic(BaseProcessor):
     Must run AFTER a processor that initializes psi_new (i.e. Laplacian),
     and BEFORE Leapfrog. The order=15 slot is reserved for that.
     """
+
     name = "NonlinearCubic"
     stage = Stage.UPDATE
     order = 15
@@ -32,8 +33,7 @@ class NonlinearCubic(BaseProcessor):
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
         field = ctx.data.require(PsiField)
-        _apply_cubic(field.psi, field.psi_new, self.gamma,
-                     grid.nx, grid.ny, grid.nz)
+        _apply_cubic(field.psi, field.psi_new, self.gamma, grid.nx, grid.ny, grid.nz)
 
 
 @ti.kernel
@@ -41,7 +41,9 @@ def _apply_cubic(
     psi: ti.template(),
     accel: ti.template(),
     gamma: ti.f32,
-    nx: ti.i32, ny: ti.i32, nz: ti.i32,
+    nx: ti.i32,
+    ny: ti.i32,
+    nz: ti.i32,
 ):
     for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
         u = psi[i, j, k].norm_sqr()

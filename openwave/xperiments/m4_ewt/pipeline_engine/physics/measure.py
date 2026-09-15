@@ -9,6 +9,7 @@ from .features import PsiField, WaveGrid, WaveStats
 
 class AmplitudeTracker(BaseProcessor):
     """Max |psi|^2 and total mass (sum of |psi|^2) into WaveStats."""
+
     name = "AmplitudeTracker"
     stage = Stage.MEASURE
     order = 10
@@ -27,8 +28,7 @@ class AmplitudeTracker(BaseProcessor):
         grid = ctx.data.require(WaveGrid)
         field = ctx.data.require(PsiField)
         stats = ctx.data.require(WaveStats)
-        _reduce(field.psi, self._max, self._mass,
-                grid.nx, grid.ny, grid.nz)
+        _reduce(field.psi, self._max, self._mass, grid.nx, grid.ny, grid.nz)
         stats.amp_max = float(self._max[None])
         stats.mass = float(self._mass[None])
 
@@ -38,7 +38,9 @@ def _reduce(
     psi: ti.template(),
     out_max: ti.template(),
     out_mass: ti.template(),
-    nx: ti.i32, ny: ti.i32, nz: ti.i32,
+    nx: ti.i32,
+    ny: ti.i32,
+    nz: ti.i32,
 ):
     out_max[None] = 0.0
     out_mass[None] = 0.0

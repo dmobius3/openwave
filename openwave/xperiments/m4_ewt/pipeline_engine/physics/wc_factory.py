@@ -11,6 +11,7 @@ Geometries provided:
     golden                 K >= 1, golden-angle phyllotaxis on a sphere
     tetrahedron_10_locked  K = 10, 1-3-6 with radii = n * spacing
 """
+
 from __future__ import annotations
 
 import math
@@ -56,9 +57,7 @@ def build_wc_state(
         phases = [0.0] * K
 
     if len(phases) != K:
-        raise ValueError(
-            f"phases length {len(phases)} does not match K={K}"
-        )
+        raise ValueError(f"phases length {len(phases)} does not match K={K}")
 
     if geometry == "single":
         if K != 1:
@@ -112,7 +111,9 @@ def build_wc_state(
 
 
 def _tetrahedron_10_locked(
-    cx: float, cy: float, cz: float,
+    cx: float,
+    cy: float,
+    cz: float,
     spacing: float,
     phases: list[float],
     amplitude: float,
@@ -133,28 +134,40 @@ def _tetrahedron_10_locked(
     # 2. Inner 3 (in XY plane, 120 deg apart)
     angles_inner = [math.radians(90.0), math.radians(210.0), math.radians(330.0)]
     for idx, a in enumerate(angles_inner):
-        centers.append(WC(
-            cx + r1 * math.cos(a),
-            cy + r1 * math.sin(a),
-            cz,
-            phases[1 + idx], True, amplitude,
-        ))
+        centers.append(
+            WC(
+                cx + r1 * math.cos(a),
+                cy + r1 * math.sin(a),
+                cz,
+                phases[1 + idx],
+                True,
+                amplitude,
+            )
+        )
 
     # 3. Outer 6 (two layers of 3, rotated 60 deg from inner)
     angles_outer = [math.radians(30.0), math.radians(150.0), math.radians(270.0)]
     for idx, a in enumerate(angles_outer):
-        centers.append(WC(
-            cx + r2 * math.cos(a),
-            cy + r2 * math.sin(a),
-            cz - h,
-            phases[4 + idx], True, amplitude,
-        ))
+        centers.append(
+            WC(
+                cx + r2 * math.cos(a),
+                cy + r2 * math.sin(a),
+                cz - h,
+                phases[4 + idx],
+                True,
+                amplitude,
+            )
+        )
     for idx, a in enumerate(angles_outer):
-        centers.append(WC(
-            cx + r2 * math.cos(a),
-            cy + r2 * math.sin(a),
-            cz + h,
-            phases[7 + idx], True, amplitude,
-        ))
+        centers.append(
+            WC(
+                cx + r2 * math.cos(a),
+                cy + r2 * math.sin(a),
+                cz + h,
+                phases[7 + idx],
+                True,
+                amplitude,
+            )
+        )
 
     return centers

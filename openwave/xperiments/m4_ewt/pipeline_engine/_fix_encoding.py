@@ -11,12 +11,12 @@ Safe to run multiple times.
 from pathlib import Path
 
 REPLACEMENTS = [
-    ("\u2014", "--"),   # em-dash
-    ("\u2013", "-"),    # en-dash
-    ("\u2192", "->"),   # right arrow
-    ("\u2190", "<-"),   # left arrow
-    ("\u00b5", "u"),    # micro sign
-    ("\u00d7", "x"),    # multiplication sign
+    ("\u2014", "--"),  # em-dash
+    ("\u2013", "-"),  # en-dash
+    ("\u2192", "->"),  # right arrow
+    ("\u2190", "<-"),  # left arrow
+    ("\u00b5", "u"),  # micro sign
+    ("\u00d7", "x"),  # multiplication sign
     ("\u00b1", "+/-"),  # plus-minus
     ("\u2026", "..."),  # ellipsis
     ("\u201c", '"'),
@@ -61,10 +61,7 @@ def fix(path):
 def main():
     here = Path(__file__).resolve().parent
     print(f"Fixing files under: {here}")
-    files = [
-        p for p in here.rglob("*.py")
-        if "__pycache__" not in p.parts
-    ]
+    files = [p for p in here.rglob("*.py") if "__pycache__" not in p.parts]
     for p in sorted(files):
         fix(p)
     print(f"Done. {len(files)} files processed.")

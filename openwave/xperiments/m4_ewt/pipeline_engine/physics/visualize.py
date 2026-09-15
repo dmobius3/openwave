@@ -22,6 +22,7 @@ class TaichiWindowProcessor(BaseProcessor):
     Resources (window, canvas, image buffer) are allocated in setup()
     and released when the process exits. process() reads them only.
     """
+
     name = "TaichiWindow"
     stage = Stage.MEASURE
     order = 2000
@@ -65,9 +66,15 @@ class TaichiWindowProcessor(BaseProcessor):
         z = grid.nz // 2
 
         _render_slice(
-            field.psi, self._img,
-            grid.nx, grid.ny, z,
-            w, h, self.scale, self.amp_scale,
+            field.psi,
+            self._img,
+            grid.nx,
+            grid.ny,
+            z,
+            w,
+            h,
+            self.scale,
+            self.amp_scale,
         )
         self._canvas.set_image(self._img)
         self._window.show()
@@ -85,9 +92,13 @@ class TaichiWindowProcessor(BaseProcessor):
 def _render_slice(
     psi: ti.template(),
     img: ti.template(),
-    nx: ti.i32, ny: ti.i32, z: ti.i32,
-    w: ti.i32, h: ti.i32,
-    scale: ti.i32, amp: ti.f32,
+    nx: ti.i32,
+    ny: ti.i32,
+    z: ti.i32,
+    w: ti.i32,
+    h: ti.i32,
+    scale: ti.i32,
+    amp: ti.f32,
 ):
     for px, py in ti.ndrange(w, h):
         i = px // scale

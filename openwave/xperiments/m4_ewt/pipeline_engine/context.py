@@ -12,6 +12,7 @@ Contains:
 
 Nothing in this module imports from other engine modules.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -24,6 +25,7 @@ T = TypeVar("T")
 # ================================================================
 # FeatureBag -- typed container
 # ================================================================
+
 
 class FeatureBag:
     """
@@ -61,6 +63,7 @@ class FeatureBag:
 # ================================================================
 # Params -- typed view over run parameters
 # ================================================================
+
 
 class Params:
     """
@@ -104,9 +107,7 @@ class Params:
             return default
         if not isinstance(v, tp):
             tname = tp.__name__ if isinstance(tp, type) else "/".join(t.__name__ for t in tp)
-            raise TypeError(
-                f"Params: '{key}' expected {tname}, got {type(v).__name__}"
-            )
+            raise TypeError(f"Params: '{key}' expected {tname}, got {type(v).__name__}")
         return v
 
     def get_int(self, key: str, default: int | None = None) -> int | None:
@@ -157,9 +158,11 @@ class Params:
 # Context sub-objects
 # ================================================================
 
+
 @dataclass(frozen=True)
 class RunContext:
     """Immutable run identity. Set once by the caller."""
+
     name: str
     output_dir: Path = Path("out")
     seed: int = 0
@@ -168,6 +171,7 @@ class RunContext:
 @dataclass
 class SimContext:
     """Mutable simulation clock."""
+
     dt: float = 1.0
     t: float = 0.0
     step: int = 0
@@ -182,6 +186,7 @@ class LogContext:
     The value type is Any to avoid an import cycle with sinks.py.
     In practice, values implement the ILogSink protocol.
     """
+
     sinks: dict[str, Any] = field(default_factory=dict)
 
     def get(self, name: str) -> Any:
@@ -193,6 +198,7 @@ class LogContext:
 @dataclass
 class Diagnostics:
     """Errors, warnings, timings. Populated by the pipeline."""
+
     errors: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
     timings: dict[str, list[float]] = field(default_factory=dict)
@@ -211,9 +217,11 @@ class Diagnostics:
 # Context -- the single object passed to every processor
 # ================================================================
 
+
 @dataclass
 class Context:
     """Everything a processor sees in process()."""
+
     run: RunContext
     params: Params
     sim: SimContext
