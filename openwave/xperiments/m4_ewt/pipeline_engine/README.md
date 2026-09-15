@@ -13,12 +13,13 @@ state lives in a typed FeatureBag inside the Context.
 
 ## Why
 
-The previous M4 solver was a single monolithic wave_engine.py where the
-update, boundary condition, wave-center drive, trackers, and buffer swap
-all lived in one kernel. Adding a mode meant editing several files;
-comparing two modes meant two branches of code. The engine replaces that
-with composition: a pipeline is a list of processors, and swapping one
-processor is the only change needed to try a different physics model.
+M4's wave_engine.py is a single monolithic solver where the update,
+boundary condition, wave-center drive, trackers, and buffer swap all live
+in one kernel. Adding a mode means editing several files; comparing two
+modes means two branches of code. The engine offers composition instead:
+a pipeline is a list of processors, and swapping one processor is the only
+change needed to try a different physics model. wave_engine.py and the
+launcher are left as they are; the engine sits alongside them.
 
 ## Quick start
 
@@ -59,14 +60,14 @@ Z8. Parameters are typed and grouped separately from run identity.
 
 ## Stages
 
-    SETUP        -- lifecycle only. run once before the first step.
     PRE_UPDATE   -- runs before evolution. Example: seed, boundary pin, source.
     UPDATE       -- evolution. Example: Laplacian, nonlinearity, integrator.
     POST_UPDATE  -- runs after evolution. Example: boundary enforcement.
     MEASURE      -- read-only. Example: trackers, logging, visualization.
 
-Processors with stage=None run only setup/teardown (allocators, subprocess
-spawns, resource acquisition).
+Processors with stage=None are lifecycle only: they run setup() once before
+the first step and teardown() once after the last (allocators, subprocess
+spawns, resource acquisition). There is no SETUP member in Stage.
 
 ## Context
 
@@ -84,11 +85,15 @@ new feature never changes any signature.
 
 ## Statelessness
 
-Processors are stateless by default. The engine will raise if process()
-mutates any instance attribute. Runtime state belongs in ctx.data. When
-memoization is genuinely required, set `stateless = False` on the class.
+Processors are stateless by default. The engine raises if process()
+rebinds an instance attribute (attributes are compared by object identity
+before and after the call); mutating an attribute in place, such as
+appending to a list held on self, is not detected. Runtime state belongs
+in ctx.data. When memoization is genuinely required, set
+`stateless = False` on the class.
 
-With `Runner(..., check_stateless=True)` the check is enforced at runtime.
+The check runs on every process() call of a processor with
+`stateless = True`. The `check_stateless` argument of `Runner` is not read.
 
 ## Error handling
 
@@ -118,9 +123,9 @@ Smoke test (no Taichi required):
 
     python -m openwave.xperiments.m4_ewt.pipeline_engine._smoke_test
 
-Runs three scenarios: a normal pipeline, a pipeline with an injected failure
-(SOFT_STOP in action), and a pipeline with file sinks. Also exercises
-external_provides with a caller-supplied feature.
+Runs four scenarios: a normal pipeline, a pipeline with an injected failure
+(SOFT_STOP in action), a pipeline with file sinks, and a pipeline reading a
+caller-supplied feature (external_provides).
 
 Physics demo (requires Taichi):
 

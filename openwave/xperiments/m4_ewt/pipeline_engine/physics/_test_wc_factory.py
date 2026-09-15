@@ -65,12 +65,19 @@ def main():
         report(f"K={K}, geometry='{geometry}'", state)
 
     print("--- error cases ---")
+    unexpected = 0
     for K, geometry in [(1, "pair"), (2, "single"), (1, "line"), (11, "tetrahedron_10_locked")]:
         try:
             build_wc_state(K=K, geometry=geometry, nx=grid, ny=grid, nz=grid)
             print(f"  K={K}, geometry='{geometry}': NO ERROR (unexpected)")
+            unexpected += 1
         except ValueError as e:
             print(f"  K={K}, geometry='{geometry}': ValueError -> {e}")
+
+    if unexpected:
+        print(f"FAILED: {unexpected} error case(s) did not raise ValueError")
+        sys.exit(1)
+    print("all error cases raised ValueError")
 
 
 if __name__ == "__main__":
