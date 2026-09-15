@@ -12,12 +12,17 @@ from dataclasses import dataclass
 
 @dataclass
 class WC:
-    """A single wave center in grid coordinates."""
+    """A single wave center in grid coordinates.
+
+    phase: radians. Used only as a sign convention for the seed envelope
+           (cos(phase)). This is an imposed sign, NOT a charge model. The
+           emergent-charge question is M4.2.
+    """
 
     x: float
     y: float
     z: float
-    phase: float = 0.0  # radians; 0 = electron-like, pi = positron-like
+    phase: float = 0.0
     active: bool = True
     amplitude: float = 1.0
 

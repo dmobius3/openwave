@@ -100,10 +100,12 @@ class Pipeline:
     """
     Staged processor list.
 
-    build()  validates the requires/provides graph.
-    setup()  runs all processors' setup(), with rollback on failure.
-    step()   runs the four stages in order.
-    teardown() runs all processors' teardown() in reverse, never masking errors.
+    build()    validates the requires/provides graph.
+    setup()    runs all processors' setup(); on failure, tears down the ones
+               that succeeded and propagates the original exception.
+    step()     runs the four stages in order.
+    teardown() tears down, in reverse, only processors whose setup()
+               succeeded. Idempotent.
     """
 
     def __init__(
@@ -117,6 +119,12 @@ class Pipeline:
         self._built = False
         self._error_policy = error_policy
         self._external_provides = external_provides
+        self._check_stateless = False
+        self._setup_done: list[IProcessor] = []
+
+    def enable_stateless_check(self) -> None:
+        """Enable the stateless guard. Called by Runner when check_stateless=True."""
+        self._check_stateless = True
 
     # --- Builder ---
 
@@ -154,7 +162,8 @@ class Pipeline:
         for r in p.requires:
             if r not in available:
                 raise PipelineError(
-                    f"{p.name}: requires '{r.__name__}', " f"not provided by any earlier processor"
+                    f"{p.name}: requires '{r.__name__}', "
+                    f"not provided by any earlier processor"
                 )
 
     # --- Lifecycle ---
@@ -162,18 +171,15 @@ class Pipeline:
     def setup(self, ctx: Context) -> None:
         if not self._built:
             self.build()
-        done: list[IProcessor] = []
+        self._setup_done = []
         try:
             for p in self._all:
-                self._safe(lambda p=p: p.setup(ctx), p, "setup", ctx)
-                done.append(p)
-        except Exception:
-            # Roll back what has been set up.
-            for p in reversed(done):
-                try:
-                    p.teardown(ctx)
-                except Exception as e:
-                    ctx.diag.error(f"{p.name}.teardown(after setup failure): {e}")
+                self._safe(
+                    lambda p=p: p.setup(ctx), p, "setup", ctx, is_lifecycle=True
+                )
+                self._setup_done.append(p)
+        except BaseException:
+            self._teardown_completed(ctx)
             raise
 
     def step(self, ctx: Context) -> None:
@@ -194,12 +200,22 @@ class Pipeline:
         ctx.sim.t += ctx.sim.dt
 
     def teardown(self, ctx: Context) -> None:
-        for p in reversed(self._all):
+        self._teardown_completed(ctx)
+
+    def _teardown_completed(self, ctx: Context) -> None:
+        """
+        Tear down, in reverse, only processors whose setup() succeeded.
+
+        Idempotent: clearing the list makes a second call a no-op. This is
+        what allows Runner's finally to call teardown after a failed setup
+        without double-tearing anything.
+        """
+        for p in reversed(self._setup_done):
             try:
                 p.teardown(ctx)
             except Exception as e:
-                # Never let a teardown failure mask the others.
                 ctx.diag.error(f"{p.name}.teardown: {type(e).__name__}: {e}")
+        self._setup_done = []
 
     # --- Error handling and stateless enforcement ---
 
@@ -209,10 +225,16 @@ class Pipeline:
         p: IProcessor,
         op: str,
         ctx: Context,
+        *,
+        is_lifecycle: bool = False,
     ) -> None:
         t0 = time.perf_counter()
         try:
-            if op == "process" and getattr(p, "stateless", True):
+            if (
+                op == "process"
+                and self._check_stateless
+                and getattr(p, "stateless", True)
+            ):
                 self._stateless_guard(fn, p)
             else:
                 fn()
@@ -221,6 +243,10 @@ class Pipeline:
         except Exception as e:
             msg = f"{p.name}.{op}: {type(e).__name__}: {e}"
             ctx.diag.error(msg)
+            if is_lifecycle:
+                # Setup is not subject to ErrorPolicy: either the whole run
+                # can start, or it cannot. Propagate the original exception.
+                raise
             if self._error_policy is ErrorPolicy.FAIL_FAST:
                 raise
             if self._error_policy is ErrorPolicy.CONTINUE and op == "process":
@@ -230,12 +256,29 @@ class Pipeline:
             ctx.diag.time(f"{p.name}.{op}", time.perf_counter() - t0)
 
     @staticmethod
+    def _field_snapshot(p: IProcessor) -> dict[str, str]:
+        return {k: repr(v) for k, v in p.__dict__.items()}
+
+    @staticmethod
     def _stateless_guard(fn: Callable[[], None], p: IProcessor) -> None:
-        before = {k: id(v) for k, v in p.__dict__.items()}
+        """
+        Detect any change to instance fields during fn().
+
+        Compares repr() of each field, not id(). id() catches rebinding
+        (self.x = new) but misses in-place mutation (self.hist.append).
+        repr() catches both: the repr of a list, dict, or dataclass reflects
+        its contents, and the repr of an opaque object (Taichi handles,
+        files) is stable, so no false positives on Taichi resources.
+
+        Only runs when check_stateless is enabled, so the extra cost is opt-in.
+        """
+        before = Pipeline._field_snapshot(p)
         fn()
-        after = {k: id(v) for k, v in p.__dict__.items()}
-        if before != after:
-            changed = sorted(k for k in before | after if before.get(k) != after.get(k))
+        after = Pipeline._field_snapshot(p)
+        changed = sorted(
+            k for k in set(before) | set(after) if before.get(k) != after.get(k)
+        )
+        if changed:
             raise PipelineError(
                 f"{p.name}: mutated instance fields in process(): {changed}. "
                 f"Runtime state must live in ctx.data. "

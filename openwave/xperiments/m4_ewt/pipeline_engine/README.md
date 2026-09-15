@@ -85,15 +85,13 @@ new feature never changes any signature.
 
 ## Statelessness
 
-Processors are stateless by default. The engine raises if process()
-rebinds an instance attribute (attributes are compared by object identity
-before and after the call); mutating an attribute in place, such as
-appending to a list held on self, is not detected. Runtime state belongs
-in ctx.data. When memoization is genuinely required, set
-`stateless = False` on the class.
+Processors are stateless by default. The engine raises if process() mutates
+any instance field, including in-place mutations of containers
+(self.hist.append(...)). Runtime state belongs in ctx.data. When memoization
+is genuinely required, set `stateless = False` on the class.
 
-The check runs on every process() call of a processor with
-`stateless = True`. The `check_stateless` argument of `Runner` is not read.
+The check is opt-in: Runner(..., check_stateless=True) enables it, and the
+guard runs only when enabled. Processors with `stateless = False` are skipped.
 
 ## Error handling
 

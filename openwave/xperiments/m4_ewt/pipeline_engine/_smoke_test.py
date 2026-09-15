@@ -22,12 +22,13 @@ try:
         LiveJsonSink,
         LogProcessor,
         Pipeline,
+        PipelineError,
         Runner,
         Stage,
     )
 except ImportError:
     from context import Context
-    from pipeline import BaseProcessor, ErrorPolicy, Pipeline, Stage
+    from pipeline import BaseProcessor, ErrorPolicy, Pipeline, PipelineError, Stage
     from sinks import InMemorySink, JsonSessionSink, LiveJsonSink
     from loggers import LogProcessor
     from runner import Runner
@@ -146,10 +147,7 @@ class DemoPipeline(Pipeline):
 
 
 class ExternalFeaturePipeline(Pipeline):
-    """
-    Demonstrates external_provides + initial_features.
-    Tags is supplied by the caller; ReadExternal requires it.
-    """
+    """Demonstrates external_provides + initial_features."""
 
     def __init__(self) -> None:
         super().__init__(
@@ -224,13 +222,81 @@ def _run_external_feature(out_dir: Path) -> Context:
     )
 
 
+def test_stateless_guard() -> tuple[bool, str]:
+    """Regression: in-place mutation of a stateless processor must be caught."""
+
+    class InPlaceMutant(BaseProcessor):
+        name = "InPlaceMutant"
+        stage = Stage.UPDATE
+
+        def __init__(self) -> None:
+            self.hist: list[int] = []
+
+        def process(self, ctx: Context) -> None:
+            self.hist.append(ctx.sim.step)
+
+    p = InPlaceMutant()
+    runner = Runner({}, check_stateless=True)
+    pipeline = Pipeline(error_policy=ErrorPolicy.FAIL_FAST).add(p)
+    try:
+        runner.run(pipeline, name="stateless_test", max_steps=5)
+    except PipelineError as e:
+        if "mutated instance fields" in str(e):
+            return True, "PipelineError raised on in-place mutation"
+        return False, f"wrong PipelineError: {e}"
+    except BaseException as e:
+        return False, f"unexpected {type(e).__name__}: {e}"
+    return False, "expected PipelineError, none raised"
+
+
+def test_setup_failure() -> tuple[bool, str]:
+    """Regression: setup failure must not leak PipelineStopSignal, and only
+    processors whose setup() succeeded get torn down."""
+    calls: list[str] = []
+
+    def make(name: str, order: int, fail: bool = False) -> BaseProcessor:
+        class P(BaseProcessor):
+            stage = None
+
+            def setup(self, ctx: Context) -> None:
+                calls.append(f"{name}.setup")
+                if fail:
+                    raise RuntimeError("boom")
+
+            def teardown(self, ctx: Context) -> None:
+                calls.append(f"{name}.teardown")
+
+        P.name = name
+        P.order = order
+        return P()
+
+    pipeline = Pipeline()
+    pipeline.add(make("A", 1))
+    pipeline.add(make("B", 2, fail=True))
+    pipeline.add(make("C", 3))
+
+    runner = Runner({})
+    try:
+        runner.run(pipeline, name="setup_fail_test", max_steps=3)
+    except RuntimeError as e:
+        if str(e) != "boom":
+            return False, f"wrong RuntimeError: {e}"
+        expected = ["A.setup", "B.setup", "A.teardown"]
+        if calls != expected:
+            return False, f"call trace {calls} != {expected}"
+        return True, "RuntimeError propagated, only A torn down"
+    except BaseException as e:
+        return False, f"wrong exception type: {type(e).__name__}: {e}"
+    return False, "expected RuntimeError, none raised"
+
+
 # ================================================================
 # Entry point
 # ================================================================
 
 
 def main() -> None:
-    out_dir = Path("out_engine_smoke")
+    out_dir = Path(__file__).resolve().parent / "out_engine_smoke"
 
     print("=" * 64)
     print("Pipeline engine smoke test")
@@ -264,6 +330,20 @@ def main() -> None:
     assert ctx.sim.step == 50, f"expected 50 steps, got {ctx.sim.step}"
     assert ctx.diag.errors == []
     assert ctx.data.require(Tags).label == "external_demo"
+
+    # 5) Stateless guard regression
+    ok, msg = test_stateless_guard()
+    print("--- stateless guard regression ---")
+    print(f"result: {'PASS' if ok else 'FAIL'} ({msg})")
+    assert ok, msg
+    print()
+
+    # 6) Setup failure regression
+    ok, msg = test_setup_failure()
+    print("--- setup failure regression ---")
+    print(f"result: {'PASS' if ok else 'FAIL'} ({msg})")
+    assert ok, msg
+    print()
 
     print("=" * 64)
     print("SMOKE TEST PASSED")

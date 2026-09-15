@@ -42,6 +42,7 @@ class IRunner(Protocol):
         output_dir: Path | str = "out",
         dt: float = 1.0,
         max_steps: int,
+        initial_features: list[object] | None = None,
     ) -> Context: ...
 
 
@@ -77,6 +78,9 @@ class Runner:
             log=LogContext(sinks=dict(self._sinks)),
             diag=Diagnostics(),
         )
+
+        if self._check_stateless:
+            pipeline.enable_stateless_check()
 
         # Seed any features provided by the caller (e.g. WCState).
         if initial_features:
