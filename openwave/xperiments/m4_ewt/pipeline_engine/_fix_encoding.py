@@ -1,41 +1,32 @@
 """
 One-shot encoding fixer. Run once from inside pipeline_engine/.
 
-Reads each .py file (UTF-8 strict, fall back to cp1252), replaces non-ASCII
-characters with ASCII equivalents, writes back as UTF-8 without BOM.
+Recurses into subdirectories. Reads each .py file (UTF-8 strict, fall back
+to cp1252), replaces non-ASCII characters with ASCII equivalents, writes
+back as UTF-8 without BOM.
 
 Safe to run multiple times.
 """
+
 from pathlib import Path
 
-FILES = [
-    "__init__.py",
-    "context.py",
-    "pipeline.py",
-    "sinks.py",
-    "loggers.py",
-    "runner.py",
-    "_smoke_test.py",
-]
-
-# Order matters: longer patterns first.
 REPLACEMENTS = [
-    ("—", "--"),    # em-dash
-    ("–", "-"),     # en-dash
-    ("→", "->"),    # arrow
-    ("←", "<-"),
-    ("µ", "u"),     # micro sign (us)
-    ("×", "x"),
-    ("±", "+/-"),
-    ("…", "..."),
-    ("“", '"'),
-    ("”", '"'),
-    ("‘", "'"),
-    ("’", "'"),
+    ("\u2014", "--"),   # em-dash
+    ("\u2013", "-"),    # en-dash
+    ("\u2192", "->"),   # right arrow
+    ("\u2190", "<-"),   # left arrow
+    ("\u00b5", "u"),    # micro sign
+    ("\u00d7", "x"),    # multiplication sign
+    ("\u00b1", "+/-"),  # plus-minus
+    ("\u2026", "..."),  # ellipsis
+    ("\u201c", '"'),
+    ("\u201d", '"'),
+    ("\u2018", "'"),
+    ("\u2019", "'"),
 ]
 
 
-def is_ascii(s: str) -> bool:
+def is_ascii(s):
     try:
         s.encode("ascii")
         return True
@@ -43,15 +34,12 @@ def is_ascii(s: str) -> bool:
         return False
 
 
-def fix(path: Path) -> None:
+def fix(path):
     raw = path.read_bytes()
-
-    # Try UTF-8 strict first.
     try:
         text = raw.decode("utf-8")
         source = "utf-8"
     except UnicodeDecodeError:
-        # Fall back to cp1252 (Windows default).
         text = raw.decode("cp1252")
         source = "cp1252"
 
@@ -59,28 +47,27 @@ def fix(path: Path) -> None:
     for old, new in REPLACEMENTS:
         text = text.replace(old, new)
 
-    # Report any remaining non-ASCII so nothing slips through.
     remaining = [c for c in text if not is_ascii(c)]
     if remaining:
         chars = "".join(sorted(set(remaining)))
-        print(f"  ! {path.name}: still has non-ASCII after replacement: {chars!r}")
+        print(f"  ! {path}: still non-ASCII: {chars!r}")
 
     path.write_text(text, encoding="utf-8", newline="\n")
-
     changed = "yes" if text != original else "no"
-    print(f"  {path.name}: read={source}, replaced={changed}, wrote=utf-8")
+    rel = path.relative_to(path.parents[0])
+    print(f"  {rel}: read={source}, replaced={changed}, wrote=utf-8")
 
 
-def main() -> None:
+def main():
     here = Path(__file__).resolve().parent
-    print(f"Fixing files in: {here}")
-    for name in FILES:
-        p = here / name
-        if not p.exists():
-            print(f"  - {name}: not found, skipped")
-            continue
+    print(f"Fixing files under: {here}")
+    files = [
+        p for p in here.rglob("*.py")
+        if "__pycache__" not in p.parts
+    ]
+    for p in sorted(files):
         fix(p)
-    print("Done.")
+    print(f"Done. {len(files)} files processed.")
 
 
 if __name__ == "__main__":

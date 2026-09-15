@@ -1,19 +1,17 @@
 """
 Smoke test for the pipeline engine. No Taichi, no physics.
 
-Run:
+Run from the OpenWave root:
     python -m openwave.xperiments.m4_ewt.pipeline_engine._smoke_test
 
-or, from inside the folder:
+or from inside the folder:
     python _smoke_test.py
 """
-from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Mapping
 
-# Local imports. If run as a script from inside the folder, use relative paths.
 try:
     from . import (
         BaseProcessor,
@@ -28,14 +26,11 @@ try:
         Stage,
     )
 except ImportError:
-    # Running as a plain script from inside the folder.
-    from context import (  # type: ignore[no-redef]
-        Context,
-    )
-    from pipeline import BaseProcessor, ErrorPolicy, Pipeline, Stage  # type: ignore[no-redef]
-    from sinks import InMemorySink, JsonSessionSink, LiveJsonSink  # type: ignore[no-redef]
-    from loggers import LogProcessor  # type: ignore[no-redef]
-    from runner import Runner  # type: ignore[no-redef]
+    from context import Context
+    from pipeline import BaseProcessor, ErrorPolicy, Pipeline, Stage
+    from sinks import InMemorySink, JsonSessionSink, LiveJsonSink
+    from loggers import LogProcessor
+    from runner import Runner
 
 
 # ================================================================
@@ -49,7 +44,13 @@ class Counter:
 
 @dataclass
 class History:
-    values: list[float] = field(default_factory=list)
+    values: list = field(default_factory=list)
+
+
+@dataclass
+class Tags:
+    """Provided by the caller via initial_features; not by any processor."""
+    label: str = ""
 
 
 # ================================================================
@@ -89,6 +90,19 @@ class RecordValue(BaseProcessor):
         h.values.append(float(c.value % 7))
 
 
+class ReadExternal(BaseProcessor):
+    """Reads a feature provided by the caller (Tags). Fails validation if absent."""
+    name = "ReadExternal"
+    stage = Stage.MEASURE
+    order = 5
+    requires = (Tags,)
+    provides = ()
+
+    def process(self, ctx: Context) -> None:
+        # Read-only demo: pull the tag, do nothing with it here.
+        _ = ctx.data.require(Tags).label
+
+
 class BadProcessor(BaseProcessor):
     """Forces a failure to demonstrate ErrorPolicy.SOFT_STOP."""
     name = "BadProcessor"
@@ -100,7 +114,7 @@ class BadProcessor(BaseProcessor):
 
 
 # ================================================================
-# Pipeline + payload
+# Pipelines
 # ================================================================
 
 def _payload(ctx: Context) -> Mapping[str, Any]:
@@ -122,11 +136,28 @@ class DemoPipeline(Pipeline):
             self.add(BadProcessor())
         self.add(RecordValue())
         self.add(LogProcessor("SessionLog", "session", _payload, every=10, order=50))
-        self.add(LogProcessor("LiveLog",    "live",    _payload, every=1,  order=60))
+        self.add(LogProcessor("LiveLog", "live", _payload, every=1, order=60))
+
+
+class ExternalFeaturePipeline(Pipeline):
+    """
+    Demonstrates external_provides + initial_features.
+    Tags is supplied by the caller; ReadExternal requires it.
+    """
+    def __init__(self) -> None:
+        super().__init__(
+            error_policy=ErrorPolicy.SOFT_STOP,
+            external_provides=(Tags,),
+        )
+        self.add(AllocateState())
+        self.add(Increment())
+        self.add(ReadExternal())
+        self.add(RecordValue())
+        self.add(LogProcessor("SessionLog", "session", _payload, every=10, order=50))
 
 
 # ================================================================
-# Runner helper
+# Helpers
 # ================================================================
 
 def _print_summary(label: str, ctx: Context) -> None:
@@ -145,13 +176,8 @@ def _print_summary(label: str, ctx: Context) -> None:
     print()
 
 
-def _run_demo(
-    *,
-    inject_failure: bool,
-    use_memory: bool,
-    out_dir: Path,
-) -> Context:
-    sinks: dict[str, Any] = {}
+def _run_demo(*, inject_failure: bool, use_memory: bool, out_dir: Path) -> Context:
+    sinks: dict = {}
     if use_memory:
         sinks["session"] = InMemorySink()
         sinks["live"] = InMemorySink()
@@ -169,6 +195,24 @@ def _run_demo(
         output_dir=out_dir,
         dt=1.0,
         max_steps=200,
+    )
+
+
+def _run_external_feature(out_dir: Path) -> Context:
+    sinks = {"session": InMemorySink()}
+    pipeline = ExternalFeaturePipeline()
+    runner = Runner(sinks, check_stateless=True)
+
+    tags = Tags(label="external_demo")
+
+    return runner.run(
+        pipeline,
+        name="external_feature_demo",
+        params={"note": "external_provides demo"},
+        output_dir=out_dir,
+        dt=1.0,
+        max_steps=50,
+        initial_features=[tags],
     )
 
 
@@ -204,6 +248,13 @@ def main() -> None:
     assert session_path.exists(), f"expected session log at {session_path}"
     print(f"session log written to: {session_path}")
     print()
+
+    # 4) External feature run (external_provides + initial_features)
+    ctx = _run_external_feature(out_dir)
+    _print_summary("external feature run (in-memory)", ctx)
+    assert ctx.sim.step == 50, f"expected 50 steps, got {ctx.sim.step}"
+    assert ctx.diag.errors == []
+    assert ctx.data.require(Tags).label == "external_demo"
 
     print("=" * 64)
     print("SMOKE TEST PASSED")

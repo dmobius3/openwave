@@ -64,6 +64,7 @@ class Runner:
         output_dir: Path | str = "out",
         dt: float = 1.0,
         max_steps: int,
+        initial_features: list[object] | None = None,
     ) -> Context:
         run = RunContext(name=name, output_dir=Path(output_dir))
         ctx = Context(
@@ -74,6 +75,11 @@ class Runner:
             log=LogContext(sinks=dict(self._sinks)),
             diag=Diagnostics(),
         )
+
+        # Seed any features provided by the caller (e.g. WCState).
+        if initial_features:
+            for f in initial_features:
+                ctx.data.set(f)
 
         meta: Mapping[str, Any] = {
             "run": run.name,

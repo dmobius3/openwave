@@ -96,11 +96,17 @@ class Pipeline:
     teardown() runs all processors' teardown() in reverse, never masking errors.
     """
 
-    def __init__(self, *, error_policy: ErrorPolicy = ErrorPolicy.SOFT_STOP) -> None:
+    def __init__(
+        self,
+        *,
+        error_policy: ErrorPolicy = ErrorPolicy.SOFT_STOP,
+        external_provides: tuple[type, ...] = (),
+    ) -> None:
         self._all: list[IProcessor] = []
         self._by_stage: dict[Stage, list[IProcessor]] = {s: [] for s in Stage}
         self._built = False
         self._error_policy = error_policy
+        self._external_provides = external_provides
 
     # --- Builder ---
 
@@ -121,7 +127,7 @@ class Pipeline:
         self._built = True
 
     def _validate(self) -> None:
-        available: set[type] = set()
+        available: set[type] = set(self._external_provides)
         # Lifecycle-only processors first, in global order.
         for p in self._all:
             if p.stage is None:
