@@ -1,0 +1,44 @@
+{
+ "U1": {
+  "max |r.u - chi u| over solver generators (my D)": 2.237726045655905e-16
+ },
+ "U2": {
+  "max |r.u - chi u| over solver generators (my D)": 2.9997597730436923e-16
+ },
+ "U3": {
+  "max |r.u - chi u| over solver generators (my D)": 7.799221742390356e-16,
+  "order of group generated (my closure)": 48,
+  "max |h.u - chi(h) u| over the whole group": 2.585178334777746e-15
+ },
+ "U4": {
+  "max |r.u - chi u| over solver generators (my D)": 3.737038904754673e-16,
+  "order of group generated (my closure)": 24,
+  "max |h.u - chi(h) u| over the whole group": 1.8989477175952927e-15
+ },
+ "U5": {
+  "max |r.u - chi u| over solver generators (my D)": 3.925231146709438e-16,
+  "order of group generated (my closure)": 10,
+  "max |h.u - chi(h) u| over the whole group": 1.3597399555105183e-15
+ },
+ "U6": {
+  "max |r.u - chi u| over solver generators (my D)": 6.061329197149862e-16,
+  "order of group generated (my closure)": 12,
+  "max |h.u - chi(h) u| over the whole group": 1.3713393642245182e-15
+ },
+ "U2 Rx(pi) (solver) vs ry(pi) (mine)": [
+  "(-1+0j)",
+  "(-1+0j)"
+ ],
+ "U3 rz(pi/2)": [
+  "(-1+0j)",
+  null
+ ],
+ "U4 ry(pi) (solver says +1)": [
+  "(1+0j)",
+  null
+ ],
+ "U6 rx(pi)": [
+  "(-1-0j)",
+  null
+ ]
+}

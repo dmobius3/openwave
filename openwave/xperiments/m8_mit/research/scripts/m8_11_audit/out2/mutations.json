@@ -1,0 +1,226 @@
+{
+ "m1_s09_antiunitary_unverified": {
+  "scripts": [
+   "s09_zeros.py"
+  ],
+  "lines": [
+   "PASS U5 sector 3: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U5 sector 3: kappa_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2), ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)",
+   "PASS U5 sector 4: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U5 sector 4: kappa_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2), ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)",
+   "PASS U6 sector 3: DNxi_perp_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U6 sector 3: kappa_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U6 sector 3: form cross term (tau_x, tau_y) = 0 (computed) explained by ANTIUNITARY",
+   "PASS U6 sector 4: DNxi_perp_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U6 sector 4: kappa_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U6 sector 4: form cross term (tau_x, tau_y) = 0 (computed) explained by ANTIUNITARY",
+   "PASS U6: rhat6 second derivative r6pp_cross = 0 (computed) explained by ANTIUNITARY",
+   "PASS no unresolved zero  [0 unresolved]"
+  ],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 12,
+  "n_FAIL": 0,
+  "seconds": 0
+ },
+ "m2_s09_spurious_zero": {
+  "scripts": [
+   "s09_zeros.py"
+  ],
+  "lines": [
+   "PASS U1 sector 3: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U1 sector 3: form cross term (tau_x, tau_y) = 0 (computed) explained by ANTIUNITARY",
+   "PASS U6 sector 3: form on i e_t (and rhat6'') = 0 (computed) explained by ORBIT (i e_t is tangent to the R_z orbit; Hessian of an invariant function vanishes on orbit tangents at a critical point)",
+   "PASS no unresolved zero  [0 unresolved]"
+  ],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 4,
+  "n_FAIL": 0,
+  "seconds": 0
+ },
+ "m3_s10_level_below_6": {
+  "scripts": [
+   "s10_existence.py"
+  ],
+  "lines": [
+   "PASS sector 3: 48 is an eigenvalue only at level 6 (levels [6, 10, 14, 16, 18])",
+   "PASS sector 4: 48 is an eigenvalue only at level 6 (levels [2, 4, 6, 8, 12, 14, 16, 18])",
+   "PASS U1: H1 critical point (exact) in both sectors",
+   "PASS U1: H2 nondegenerate modulo symmetry: rank 10 + orbit dim 2 = 12, ker L = orbit tangents",
+   "PASS U2: H1 critical point (exact) in both sectors",
+   "PASS U2: H2 nondegenerate modulo symmetry: rank 10 + orbit dim 2 = 12, ker L = orbit tangents",
+   "PASS U3: H1 critical point (exact) in both sectors",
+   "PASS U3: H2 nondegenerate modulo symmetry: rank 9 + orbit dim 3 = 12, ker L = orbit tangents",
+   "PASS U4: H1 critical point (exact) in both sectors",
+   "PASS U4: H2 nondegenerate modulo symmetry: rank 9 + orbit dim 3 = 12, ker L = orbit tangents",
+   "PASS U5: H1 critical point (exact) in both sectors",
+   "PASS U5: H2 nondegenerate modulo symmetry: rank 9 + orbit dim 3 = 12, ker L = orbit tangents",
+   "PASS U6: H1 critical point (exact) in both sectors",
+   "PASS U6: H2 nondegenerate modulo symmetry: rank 9 + orbit dim 3 = 12, ker L = orbit tangents"
+  ],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 14,
+  "n_FAIL": 0,
+  "seconds": 0
+ },
+ "m4_s03_wrong_character": {
+  "scripts": [
+   "s03_stabilizers.py"
+  ],
+  "lines": [
+   "FAIL U4: closed-form generator fixes [u] with character (1.0 + 0.0j)  [(-1.0 + 0.0j)]",
+   "PASS U4: closed-form generator fixes [u] with character (-1.0 + 0.0j)  [(-1.0 + 0.0j)]",
+   "PASS U4: closed-form generators generate a group of order 24 in SU(2) = 2 x (search count 12)",
+   "PASS U4: every rotation found by the complete search lies in the generated group",
+   "PASS U4: every element of the generated group fixes [u] (character values of modulus 1)"
+  ],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 4,
+  "n_FAIL": 1,
+  "seconds": 1
+ },
+ "m9_s01_odd_levels": {
+  "scripts": [
+   "s01_levels.py"
+  ],
+  "lines": [
+   "FAIL sector 3: numerical intertwiner counts equal exact dims at even n  [[0, 0, 0, 1, 0, 1, 0, 1, 1, 1]]",
+   "PASS sector 3: exact dims vanish at every odd n",
+   "FAIL sector 4: numerical intertwiner counts equal exact dims at even n  [[0, 0, 0, 1, 1, 0, 1, 1, 1, 2]]",
+   "PASS sector 4: exact dims vanish at every odd n"
+  ],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 2,
+  "n_FAIL": 2,
+  "seconds": 43
+ },
+ "m11_s99_sign_literal": {
+  "scripts": [
+   "s99_assemble.py"
+  ],
+  "lines": [],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 0,
+  "n_FAIL": 0,
+  "seconds": 0
+ },
+ "m7_s12_casimir": {
+  "scripts": [
+   "s12_quadrature.py"
+  ],
+  "lines": [
+   "FAIL U1 sector 3: |(-Delta-48)xi + N - Pi6 N| over all levels <= 18  [0.000985]",
+   "PASS U1 sector 3: quadrature N equals algebraic N at every level (all copies)  [9.79e-30]",
+   "PASS U1 sector 3: quadrature N has no part outside V_J (x) Hom(sigma, V_J)  [9.72e-30]",
+   "PASS U1 sector 3: quadrature N has no component at levels 20, 22  [2.83e-29]",
+   "FAIL U1 sector 4: |(-Delta-48)xi + N - Pi6 N| over all levels <= 18  [0.000571]",
+   "PASS U1 sector 4: quadrature N equals algebraic N at every level (all copies)  [1.49e-29]",
+   "PASS U1 sector 4: quadrature N has no part outside V_J (x) Hom(sigma, V_J)  [1.3e-29]",
+   "PASS U1 sector 4: quadrature N has no component at levels 20, 22  [2.29e-29]"
+  ],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 6,
+  "n_FAIL": 2,
+  "seconds": 33
+ },
+ "m8_s12_control": {
+  "scripts": [
+   "s12_quadrature.py"
+  ],
+  "lines": [
+   "PASS U1 sector 3: |(-Delta-48)xi + N - Pi6 N| over all levels <= 18  [9.8e-30]",
+   "PASS U1 sector 3: quadrature N equals algebraic N at every level (all copies)  [9.79e-30]",
+   "PASS U1 sector 3: quadrature N has no part outside V_J (x) Hom(sigma, V_J)  [9.72e-30]",
+   "PASS U1 sector 3: quadrature N has no component at levels 20, 22  [2.83e-29]",
+   "PASS U1 sector 4: |(-Delta-48)xi + N - Pi6 N| over all levels <= 18  [1.49e-29]",
+   "PASS U1 sector 4: quadrature N equals algebraic N at every level (all copies)  [1.49e-29]",
+   "PASS U1 sector 4: quadrature N has no part outside V_J (x) Hom(sigma, V_J)  [1.3e-29]",
+   "PASS U1 sector 4: quadrature N has no component at levels 20, 22  [2.29e-29]"
+  ],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 8,
+  "n_FAIL": 0,
+  "seconds": 34
+ },
+ "m5_s04_antiunitary_sign": {
+  "scripts": [
+   "s04_pipeline.py",
+   "s09_zeros.py"
+  ],
+  "lines": [
+   "FAIL U5 s3 antiunitary A' fixes Phi, xi, first tangent and flips the second  [2.2]",
+   "FAIL U5 s4 antiunitary A' fixes Phi, xi, first tangent and flips the second  [1.91]",
+   "FAIL U6 s3 antiunitary A' fixes Phi, xi, first tangent and flips the second  [2.23]",
+   "FAIL U6 s4 antiunitary A' fixes Phi, xi, first tangent and flips the second  [1.93]",
+   "PASS all exact values identified identically at both precisions",
+   "PASS U5 sector 3: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U5 sector 3: kappa_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2), ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)",
+   "PASS U5 sector 4: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U5 sector 4: kappa_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2), ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)",
+   "PASS U6 sector 3: DNxi_perp_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U6 sector 3: kappa_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U6 sector 3: form cross term (tau_x, tau_y) = 0 (computed) explained by ANTIUNITARY",
+   "PASS U6 sector 4: DNxi_perp_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U6 sector 4: kappa_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+   "PASS U6 sector 4: form cross term (tau_x, tau_y) = 0 (computed) explained by ANTIUNITARY",
+   "PASS U6: rhat6 second derivative r6pp_cross = 0 (computed) explained by ANTIUNITARY",
+   "PASS no unresolved zero  [0 unresolved]"
+  ],
+  "returncodes": [
+   0,
+   0
+  ],
+  "n_PASS": 13,
+  "n_FAIL": 4,
+  "seconds": 33
+ },
+ "m6_s04_kappa_solve": {
+  "scripts": [
+   "s04_pipeline.py"
+  ],
+  "lines": [
+   "PASS U5 s3 order-a^5 block equation solvable (rhs has no ker L component)  [0.0]",
+   "FAIL U5 s3 with kappa the equation has no component orthogonal to Phi  [0.000277]",
+   "PASS U6 s3 order-a^5 block equation solvable (rhs has no ker L component)  [9.12e-125]",
+   "FAIL U6 s3 with kappa the equation has no component orthogonal to Phi  [0.000502]"
+  ],
+  "returncodes": [
+   0
+  ],
+  "n_PASS": 2,
+  "n_FAIL": 2,
+  "seconds": 33
+ },
+ "m10_s99_xi_character_literal": {
+  "scripts": [
+   "s04_pipeline.py",
+   "s99_assemble.py"
+  ],
+  "lines": [
+   "FAIL U4 s3 xi (and Phi) transform by the item-3 character  [2.16]",
+   "FAIL U4 s4 xi (and Phi) transform by the item-3 character  [1.87]"
+  ],
+  "returncodes": [
+   0,
+   0
+  ],
+  "n_PASS": 0,
+  "n_FAIL": 2,
+  "seconds": 33
+ }
+}

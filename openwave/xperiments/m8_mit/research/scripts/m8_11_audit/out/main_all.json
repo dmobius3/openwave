@@ -1,0 +1,696 @@
+{
+ "U1_s3": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "1288/1287",
+  "int_Phi4": "1288/1287",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "1/924",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "1658944/1656369",
+   "10": "28/150579",
+   "14": "18375/47278088",
+   "16": "7/47736",
+   "18": "980/25055433"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "10": "7/195150384",
+   "14": "18375/1464486053888",
+   "16": "7/2749593600",
+   "18": "245/609749017488"
+  },
+  "DNxi_along_Phi": "-608931967/36722893315680",
+  "DNxi_perp_norm_sq": "0",
+  "lambda4_identity_-3sum": "-608931967/36722893315680",
+  "L_symmetric": true,
+  "dim_ker_Ltilde_R": 4,
+  "dim_rotation_orbit_tangent": 2,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 2,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "0",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-608931967/36722893315680",
+  "lambda4_over_g2_with_kappa": "-608931967/36722893315680",
+  "lambda4_sign": -1,
+  "time_s": 0.2
+ },
+ "U1_s4": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "2289/2288",
+  "int_Phi4": "2289/2288",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "1/924",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "5239521/5234944",
+   "8": "63/5234944",
+   "12": "21/100672",
+   "14": "23625/232753664",
+   "16": "147/1470976",
+   "18": "1281/59390656"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "8": "63/5360582656",
+   "12": "7/483225600",
+   "14": "23625/7209777496064",
+   "16": "49/28242739200",
+   "18": "427/1927108005888"
+  },
+  "DNxi_along_Phi": "-368688201/38687492546560",
+  "DNxi_perp_norm_sq": "0",
+  "lambda4_identity_-3sum": "-368688201/38687492546560",
+  "L_symmetric": true,
+  "dim_ker_Ltilde_R": 4,
+  "dim_rotation_orbit_tangent": 2,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 2,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "0",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-368688201/38687492546560",
+  "lambda4_over_g2_with_kappa": "-368688201/38687492546560",
+  "lambda4_sign": -1,
+  "time_s": 0.2
+ },
+ "U2_s3": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "1687/1287",
+  "int_Phi4": "1687/1287",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "100/231",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "2845969/1656369",
+   "10": "19600/150579",
+   "14": "548800/5909761",
+   "18": "10976000/91869921"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "10": "1225/48787596",
+   "14": "8575/2860324324",
+   "18": "171500/139734149841"
+  },
+  "DNxi_along_Phi": "-1871763250/229518083223",
+  "DNxi_perp_norm_sq": "0",
+  "lambda4_identity_-3sum": "-1871763250/229518083223",
+  "L_symmetric": true,
+  "dim_ker_Ltilde_R": 4,
+  "dim_rotation_orbit_tangent": 2,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 2,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "0",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-1871763250/229518083223",
+  "lambda4_over_g2_with_kappa": "-1871763250/229518083223",
+  "lambda4_sign": -1,
+  "time_s": 0.1
+ },
+ "U2_s4": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "168/143",
+  "int_Phi4": "168/143",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "100/231",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "28224/20449",
+   "14": "11025/454597",
+   "18": "672525/10207769"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "14": "11025/14081596672",
+   "18": "74725/110407229504"
+  },
+  "DNxi_along_Phi": "-15820875/15112301776",
+  "DNxi_perp_norm_sq": "0",
+  "lambda4_identity_-3sum": "-15820875/15112301776",
+  "L_symmetric": true,
+  "dim_ker_Ltilde_R": 4,
+  "dim_rotation_orbit_tangent": 2,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 2,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "0",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-15820875/15112301776",
+  "lambda4_over_g2_with_kappa": "-15820875/15112301776",
+  "lambda4_sign": -1,
+  "time_s": 0.1
+ },
+ "U3_s3": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "175/143",
+  "int_Phi4": "175/143",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "24/77",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "30625/20449",
+   "14": "47040/454597",
+   "18": "54880/927979"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "14": "735/220024948",
+   "18": "1715/2822912118"
+  },
+  "DNxi_along_Phi": "-2203040/944518861",
+  "DNxi_perp_norm_sq": "0",
+  "lambda4_identity_-3sum": "-2203040/944518861",
+  "L_symmetric": true,
+  "dim_ker_Ltilde_R": 5,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 3,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "0",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-2203040/944518861",
+  "lambda4_over_g2_with_kappa": "-2203040/944518861",
+  "lambda4_sign": -1,
+  "time_s": 0.2
+ },
+ "U3_s4": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "161/143",
+  "int_Phi4": "161/143",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "24/77",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "25921/20449",
+   "12": "63/1144",
+   "14": "945/34969",
+   "18": "242109/7423832"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "12": "7/1830400",
+   "14": "945/1083199744",
+   "18": "26901/80296166912"
+  },
+  "DNxi_along_Phi": "-162530109/75561508880",
+  "DNxi_perp_norm_sq": "0",
+  "lambda4_identity_-3sum": "-162530109/75561508880",
+  "L_symmetric": true,
+  "dim_ker_Ltilde_R": 5,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 3,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "0",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-162530109/75561508880",
+  "lambda4_over_g2_with_kappa": "-162530109/75561508880",
+  "lambda4_sign": -1,
+  "time_s": 0.2
+ },
+ "U4_s3": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "1750/1287",
+  "int_Phi4": "1750/1287",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "463/924",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "3062500/1656369",
+   "10": "8575/150579",
+   "14": "23520/5909761",
+   "18": "1516795/8351811"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "10": "8575/780601536",
+   "14": "735/5720648648",
+   "18": "1516795/812998689984"
+  },
+  "DNxi_along_Phi": "-1921938515/459036166446",
+  "DNxi_perp_norm_sq": "0",
+  "lambda4_identity_-3sum": "-1921938515/459036166446",
+  "L_symmetric": true,
+  "dim_ker_Ltilde_R": 5,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 3,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "0",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-1921938515/459036166446",
+  "lambda4_over_g2_with_kappa": "-1921938515/459036166446",
+  "lambda4_sign": -1,
+  "time_s": 0.2
+ },
+ "U4_s4": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "2751/2288",
+  "int_Phi4": "2751/2288",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "463/924",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "7568001/5234944",
+   "8": "1575/30976",
+   "12": "1701/402688",
+   "14": "945/909194",
+   "18": "23792013/237562624"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "8": "1575/31719424",
+   "12": "189/644300800",
+   "14": "945/28163193344",
+   "18": "2643557/2569477341184"
+  },
+  "DNxi_along_Phi": "-226441775133/38687492546560",
+  "DNxi_perp_norm_sq": "0",
+  "lambda4_identity_-3sum": "-226441775133/38687492546560",
+  "L_symmetric": true,
+  "dim_ker_Ltilde_R": 5,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 3,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "0",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-226441775133/38687492546560",
+  "lambda4_over_g2_with_kappa": "-226441775133/38687492546560",
+  "lambda4_sign": -1,
+  "time_s": 0.2
+ },
+ "U5_s3": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "77/65",
+  "int_Phi4": "77/65",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "9/35",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "5929/4225",
+   "10": "308/4225",
+   "14": "281211/6105125",
+   "16": "553/27625",
+   "18": "241864/4639895"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "10": "77/5475600",
+   "14": "281211/189112352000",
+   "16": "553/1591200000",
+   "18": "30233/56458242360"
+  },
+  "DNxi_along_Phi": "-267786421/58544557500",
+  "DNxi_perp_norm_sq": "51679406167921/168487138365975000000",
+  "lambda4_identity_-3sum": "-267786421/58544557500",
+  "DNxi_tangent_components": {
+   "e_t": "7188839/81061695000*sqrt(39)",
+   "i_e_t": "0"
+  },
+  "L_symmetric": true,
+  "qform": {
+   "e_t": "-56/165",
+   "i_e_t": "0"
+  },
+  "qform_cross": "0",
+  "qform_cross_sym": "0",
+  "r6hat_dd": {
+   "e_t": "-104/55",
+   "i_e_t": "0"
+  },
+  "r6hat_dd_cross": "0",
+  "dim_ker_Ltilde_R": 5,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 3,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "51679406167921/168487138365975000000",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "1054681758529/396076284864000000",
+  "kappa_tangent_components": {
+   "e_t": "1026977/3930264000*sqrt(39)",
+   "i_e_t": "0"
+  },
+  "kappa_remainder_norm_sq": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-267786421/58544557500",
+  "lambda4_over_g2_with_kappa": "-267786421/58544557500",
+  "lambda4_sign": -1,
+  "time_s": 0.2
+ },
+ "U5_s4": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "287/260",
+  "int_Phi4": "287/260",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "9/35",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "82369/67600",
+   "8": "3591/338000",
+   "12": "567/52000",
+   "14": "361557/30056000",
+   "16": "313551/22984000",
+   "18": "21340179/742383200"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "8": "3591/346112000",
+   "12": "63/83200000",
+   "14": "361557/931014656000",
+   "16": "34839/147097600000",
+   "18": "2371131/8029616691200"
+  },
+  "DNxi_along_Phi": "-4797453339/2497901120000",
+  "DNxi_perp_norm_sq": "1148432592587427/2840013657395200000000",
+  "lambda4_identity_-3sum": "-4797453339/2497901120000",
+  "DNxi_tangent_components": {
+   "e_t": "-19565553/192146240000*sqrt(39)",
+   "i_e_t": "0"
+  },
+  "L_symmetric": true,
+  "qform": {
+   "e_t": "-21/110",
+   "i_e_t": "0"
+  },
+  "qform_cross": "0",
+  "qform_cross_sym": "0",
+  "r6hat_dd": {
+   "e_t": "-104/55",
+   "i_e_t": "0"
+  },
+  "r6hat_dd_cross": "0",
+  "dim_ker_Ltilde_R": 5,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 3,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "1148432592587427/2840013657395200000000",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "2604155538747/234711872512000000",
+  "kappa_tangent_components": {
+   "e_t": "-931693/1746784000*sqrt(39)",
+   "i_e_t": "0"
+  },
+  "kappa_remainder_norm_sq": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-4797453339/2497901120000",
+  "lambda4_over_g2_with_kappa": "-4797453339/2497901120000",
+  "lambda4_sign": -1,
+  "time_s": 0.3
+ },
+ "U6_s3": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "5831/5031",
+  "int_Phi4": "5831/5031",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "200/903",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "34000561/25310961",
+   "10": "20451200/1088371323",
+   "14": "206721200/3883201387",
+   "16": "6633200/474418269",
+   "18": "75383756000/1992082311531"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "10": "319550/88158077163",
+   "14": "12920075/7517877885232",
+   "16": "16583/68316230736",
+   "18": "2355742375/6059914391677302"
+  },
+  "DNxi_along_Phi": "-336158940460/150812349114141",
+  "DNxi_perp_norm_sq": "1671938888011708435/1661506658289542382018129",
+  "lambda4_identity_-3sum": "-336158940460/150812349114141",
+  "DNxi_tangent_components": {
+   "tau_x": "-120576113/1288994436873*sqrt(115)",
+   "tau_y": "0"
+  },
+  "L_symmetric": true,
+  "qform": {
+   "tau_x": "6440/18447",
+   "tau_y": "56/429"
+  },
+  "qform_cross": "0",
+  "qform_cross_sym": "0",
+  "r6hat_dd": {
+   "tau_x": "920/473",
+   "tau_y": "8/11"
+  },
+  "r6hat_dd_cross": "0",
+  "dim_ker_Ltilde_R": 5,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 3,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "1671938888011708435/1661506658289542382018129",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "296706102575281/35935889967339860160",
+  "kappa_tangent_components": {
+   "tau_x": "17225159/64285514280*sqrt(115)",
+   "tau_y": "0"
+  },
+  "kappa_remainder_norm_sq": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-336158940460/150812349114141",
+  "lambda4_over_g2_with_kappa": "-336158940460/150812349114141",
+  "lambda4_sign": -1,
+  "time_s": 0.3
+ },
+ "U6_s4": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": true,
+  "Q_fibre_ratio": "609/559",
+  "int_Phi4": "609/559",
+  "Pi6N_perp_norm_sq": "0",
+  "r6hat": "200/903",
+  "r6hat_stationary": true,
+  "r6hat_grad_nonzero_components": [],
+  "levels_N": {
+   "6": "370881/312481",
+   "8": "126000/13436683",
+   "12": "264075/8268728",
+   "14": "16611525/1194831196",
+   "16": "8706075/913694444",
+   "18": "12317167275/590246610824"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "8": "7875/859947712",
+   "12": "3521/1587595776",
+   "14": "16611525/37011091127296",
+   "16": "116081/701717332992",
+   "18": "4105722425/19152322028017152"
+  },
+  "DNxi_along_Phi": "-11093213145/4965015608696",
+  "DNxi_perp_norm_sq": "5287736861620418835/9335433844106948692381696",
+  "lambda4_identity_-3sum": "-11093213145/4965015608696",
+  "DNxi_tangent_components": {
+   "tau_x": "214430223/3055394220736*sqrt(115)",
+   "tau_y": "0"
+  },
+  "L_symmetric": true,
+  "qform": {
+   "tau_x": "2415/12298",
+   "tau_y": "21/286"
+  },
+  "qform_cross": "0",
+  "qform_cross_sym": "0",
+  "r6hat_dd": {
+   "tau_x": "920/473",
+   "tau_y": "8/11"
+  },
+  "r6hat_dd_cross": "0",
+  "dim_ker_Ltilde_R": 5,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": true,
+  "dim_ker_L_on_T": 3,
+  "ker_equals_span(u,iu,rotations)": true,
+  "perp_eq_norm_sq_without_kappa": "5287736861620418835/9335433844106948692381696",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "104263765387369/7098447400956021760",
+  "kappa_tangent_components": {
+   "tau_x": "-10210963/28571339680*sqrt(115)",
+   "tau_y": "0"
+  },
+  "kappa_remainder_norm_sq": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-11093213145/4965015608696",
+  "lambda4_over_g2_with_kappa": "-11093213145/4965015608696",
+  "lambda4_sign": -1,
+  "time_s": 0.3
+ },
+ "U5q_s3": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": false,
+  "Q_fibre_ratio": "23653/20592",
+  "int_Phi4": "23653/20592",
+  "Pi6N_perp_norm_sq": "648025/141343488",
+  "r6hat": "3061/14784",
+  "r6hat_stationary": false,
+  "r6hat_grad_nonzero_components": [
+   "115/352",
+   "-115/1056*sqrt(3)"
+  ],
+  "levels_N": {
+   "6": "10796317/8154432",
+   "10": "664237/9637056",
+   "14": "76339305/1512898816",
+   "16": "248059/16803072",
+   "18": "1164485/30837456"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "10": "664237/49958498304",
+   "14": "76339305/46863553724416",
+   "16": "248059/967856947200",
+   "18": "1164485/3001841316864"
+  },
+  "DNxi_along_Phi": "-386854911653/90394814315520",
+  "DNxi_perp_norm_sq": "1834597551555186366529/2045831992471422785056407552",
+  "lambda4_identity_-3sum": "-386854911653/90394814315520",
+  "DNxi_tangent_components": {
+   "e_t": "-42832202273/78342172406784*sqrt(3)",
+   "i_e_t": "0"
+  },
+  "L_symmetric": true,
+  "qform": {
+   "e_t": "-35/198",
+   "i_e_t": "805/10296"
+  },
+  "qform_cross": "0",
+  "qform_cross_sym": "0",
+  "r6hat_dd": {
+   "e_t": "-65/66",
+   "i_e_t": "115/264"
+  },
+  "r6hat_dd_cross": "0",
+  "dim_ker_Ltilde_R": 2,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": false,
+  "dim_ker_L_on_T": 0,
+  "ker_equals_span(u,iu,rotations)": false,
+  "perp_eq_norm_sq_without_kappa": "1834597551555186366529/2045831992471422785056407552",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "37440766358269109521/1304606667987592327987200",
+  "kappa_tangent_components": {
+   "e_t": "-6118886039/1978337687040*sqrt(3)",
+   "i_e_t": "0"
+  },
+  "kappa_remainder_norm_sq": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-386854911653/90394814315520",
+  "lambda4_over_g2_with_kappa": "-656021828612521/122213788954583040",
+  "lambda4_sign": -1,
+  "time_s": 0.2
+ },
+ "U5q_s4": {
+  "norm_Phi_sq": "1",
+  "Pi6N_multiple_of_Phi": false,
+  "Q_fibre_ratio": "39669/36608",
+  "int_Phi4": "39669/36608",
+  "Pi6N_perp_norm_sq": "1944075/1340145664",
+  "r6hat": "3061/14784",
+  "r6hat_stationary": false,
+  "r6hat_grad_nonzero_components": [
+   "115/352",
+   "-115/1056*sqrt(3)"
+  ],
+  "levels_N": {
+   "6": "30299493/25772032",
+   "8": "602847/335036416",
+   "12": "53109/6443008",
+   "14": "98150535/7448117248",
+   "16": "5209239/517783552",
+   "18": "6088593/292384768"
+  },
+  "xi_level_norm_sq_over_g2": {
+   "8": "602847/343077289984",
+   "12": "5901/10308812800",
+   "14": "98150535/230712879874048",
+   "16": "1736413/9941444198400",
+   "18": "2029531/9487300952064"
+  },
+  "DNxi_along_Phi": "-176247804873/190461501767680",
+  "DNxi_perp_norm_sq": "242182881134182370047561/735668836535567427387965571072",
+  "lambda4_identity_-3sum": "-176247804873/190461501767680",
+  "DNxi_tangent_components": {
+   "e_t": "-492120799331/1485599713787904*sqrt(3)",
+   "i_e_t": "0"
+  },
+  "L_symmetric": true,
+  "qform": {
+   "e_t": "-35/352",
+   "i_e_t": "805/18304"
+  },
+  "qform_cross": "0",
+  "qform_cross_sym": "0",
+  "r6hat_dd": {
+   "e_t": "-65/66",
+   "i_e_t": "115/264"
+  },
+  "r6hat_dd_cross": "0",
+  "dim_ker_Ltilde_R": 2,
+  "dim_rotation_orbit_tangent": 3,
+  "rotation_dirs_in_ker": false,
+  "dim_ker_L_on_T": 0,
+  "ker_equals_span(u,iu,rotations)": false,
+  "perp_eq_norm_sq_without_kappa": "242182881134182370047561/735668836535567427387965571072",
+  "perp_eq_norm_sq_with_kappa": "0",
+  "rhs_in_range": true,
+  "kappa_norm_sq_over_g2": "4942507778248619796889/148435247557699393762099200",
+  "kappa_tangent_components": {
+   "e_t": "-70302971333/21102268661760*sqrt(3)",
+   "i_e_t": "0"
+  },
+  "kappa_remainder_norm_sq": "0",
+  "kappa_eq_residual_equals_ker_component": true,
+  "lambda4_over_g2_without_kappa": "-176247804873/190461501767680",
+  "lambda4_over_g2_with_kappa": "-408068707957491/257503950389903360",
+  "lambda4_sign": -1,
+  "time_s": 0.3
+ }
+}

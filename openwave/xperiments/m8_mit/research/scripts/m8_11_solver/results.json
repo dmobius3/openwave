@@ -1,0 +1,1994 @@
+{
+ "conventions": {
+  "exact_values": "strings; identified values were identified at 80 and 120 digits (continued fractions, denominators <= 1e30; PSLQ in Q(sqrt5), coefficients <= 1e10)"
+ },
+ "item0": {
+  "norm2_q1": "1",
+  "norm2_q2": "1",
+  "order_Gamma": 120,
+  "Gamma_equals_derived_subgroup": true,
+  "derived_subgroup_order": 120,
+  "CG_33_3m3_60": "sqrt(231)/462"
+ },
+ "item1": {
+  "declaration": "DERIVED",
+  "dims_sector3": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 1,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 1,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 1,
+   "15": 0,
+   "16": 1,
+   "17": 0,
+   "18": 1
+  },
+  "dims_sector4": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 1,
+   "7": 0,
+   "8": 1,
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 1,
+   "13": 0,
+   "14": 1,
+   "15": 0,
+   "16": 1,
+   "17": 0,
+   "18": 2
+  },
+  "invariant_dims_V_K": {
+   "0": 1,
+   "1": 0,
+   "2": 0,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 1,
+   "7": 0,
+   "8": 0,
+   "9": 0,
+   "10": 1,
+   "11": 0,
+   "12": 1
+  },
+  "characters": {
+   "3": {
+    "class_0(order 1, Re=1)": "3",
+    "class_1(order 6, Re=1/2)": "0",
+    "class_2(order 10, Re=(1/4+1/4*sqrt(5)))": "(1/2-1/2*sqrt(5))",
+    "class_3(order 3, Re=-1/2)": "0",
+    "class_4(order 4, Re=0)": "-1",
+    "class_5(order 5, Re=(-1/4+1/4*sqrt(5)))": "(1/2+1/2*sqrt(5))",
+    "class_6(order 2, Re=-1)": "3",
+    "class_7(order 5, Re=(-1/4-1/4*sqrt(5)))": "(1/2-1/2*sqrt(5))",
+    "class_8(order 10, Re=(1/4-1/4*sqrt(5)))": "(1/2+1/2*sqrt(5))"
+   },
+   "4": {
+    "class_0(order 1, Re=1)": "4",
+    "class_1(order 6, Re=1/2)": "1",
+    "class_2(order 10, Re=(1/4+1/4*sqrt(5)))": "-1",
+    "class_3(order 3, Re=-1/2)": "1",
+    "class_4(order 4, Re=0)": "0",
+    "class_5(order 5, Re=(-1/4+1/4*sqrt(5)))": "-1",
+    "class_6(order 2, Re=-1)": "4",
+    "class_7(order 5, Re=(-1/4-1/4*sqrt(5)))": "-1",
+    "class_8(order 10, Re=(1/4-1/4*sqrt(5)))": "-1"
+   }
+  },
+  "intertwiner_residuals_50digits_required_1e-40": {
+   "3": {
+    "intertwining": "1.72e-49",
+    "orthonormal": "6.28e-50",
+    "cross": "n/a (no level of dim 2)",
+    "sigma_imag": "1.0e-51",
+    "required": "1e-40",
+    "digits": 50
+   },
+   "4": {
+    "intertwining": "6.23e-50",
+    "orthonormal": "3.47e-50",
+    "cross": "1.88e-50",
+    "sigma_imag": "1.88e-51",
+    "required": "1e-40",
+    "digits": 50
+   }
+  },
+  "gamma_constants": {
+   "r0_norm2_3": "9/7",
+   "r1_norm2_3": "0",
+   "r2_norm2_3": "0",
+   "r3_norm2_3": "0",
+   "r4_norm2_3": "0",
+   "r5_norm2_3": "0",
+   "r6_norm2_3": "12/7",
+   "tau_3_3": "48/637",
+   "tau_5_3": "12/91",
+   "tau_7_3": "18/221",
+   "tau_8_3": "6/119",
+   "tau_9_3": "240/4199",
+   "r0_norm2_4": "16/7",
+   "r1_norm2_4": "0",
+   "r2_norm2_4": "0",
+   "r3_norm2_4": "0",
+   "r4_norm2_4": "0",
+   "r5_norm2_4": "0",
+   "r6_norm2_4": "12/7",
+   "tau_3_4": "36/637",
+   "tau_4_4": "12/91",
+   "tau_6_4": "12/91",
+   "tau_7_4": "6/119",
+   "tau_8_4": "18/221",
+   "tau_9_4": "2196/29393"
+  }
+ },
+ "item2": {
+  "U1": {
+   "rhat6": "1/924",
+   "rhat6_stationary_on_unit_sphere": true,
+   "sector3": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "1288/1287"
+   },
+   "sector4": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "2289/2288"
+   }
+  },
+  "U2": {
+   "rhat6": "100/231",
+   "rhat6_stationary_on_unit_sphere": true,
+   "sector3": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "1687/1287"
+   },
+   "sector4": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "168/143"
+   }
+  },
+  "U3": {
+   "rhat6": "24/77",
+   "rhat6_stationary_on_unit_sphere": true,
+   "sector3": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "175/143"
+   },
+   "sector4": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "161/143"
+   }
+  },
+  "U4": {
+   "rhat6": "463/924",
+   "rhat6_stationary_on_unit_sphere": true,
+   "sector3": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "1750/1287"
+   },
+   "sector4": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "2751/2288"
+   }
+  },
+  "U5": {
+   "rhat6": "9/35",
+   "rhat6_stationary_on_unit_sphere": true,
+   "sector3": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "77/65"
+   },
+   "sector4": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "287/260"
+   }
+  },
+  "U6": {
+   "rhat6": "200/903",
+   "rhat6_stationary_on_unit_sphere": true,
+   "sector3": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "5831/5031"
+   },
+   "sector4": {
+    "Pi6N_is_multiple_of_Phi": true,
+    "multiple_Q": "609/559"
+   }
+  }
+ },
+ "item3": {
+  "U1": {
+   "group": "maximal torus T = {Rz(a) = diag(e^{-ia/2}, e^{ia/2})} (connected, SO(3) image SO(2))",
+   "character": "chi(Rz(a)) = e^{3ia}",
+   "complex_dim_of_character_subspace_in_block": 1,
+   "character_subspace_dims_V_J_J0to9": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1
+   },
+   "action": "(r.Phi)(g) = Phi(r^-1 g) = Phi_{sigma, conj(D^3(r)) u}; same for both sectors"
+  },
+  "U2": {
+   "group": "N(T) = T u T.Rx(pi) (Pin(2); SO(3) image O(2))",
+   "character": "chi(Rz(a)) = 1, chi(Rx(pi)) = -1",
+   "complex_dim_of_character_subspace_in_block": 1,
+   "character_subspace_dims_V_J_J0to9": {
+    "0": 0,
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0,
+    "7": 1,
+    "8": 0,
+    "9": 1
+   },
+   "action": "(r.Phi)(g) = Phi(r^-1 g) = Phi_{sigma, conj(D^3(r)) u}; same for both sectors"
+  },
+  "U3": {
+   "group": "binary octahedral 2O, order 48 (SO(3) image O, order 24; 4-fold axes z, (1,+-1,0)/sqrt2)",
+   "generators": "Rz(pi/2), R((1,1,0)/sqrt2, pi/2)",
+   "character": "sign character of O = S4: -1 on 4-fold rotations and on pi-rotations about 2-fold axes, +1 on 3-fold rotations and on pi-rotations about 4-fold axes; chi(-1) = 1",
+   "complex_dim_of_character_subspace_in_block": 1,
+   "character_subspace_dims_V_J_J0to9": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1,
+    "7": 1,
+    "8": 0,
+    "9": 1
+   },
+   "action": "(r.Phi)(g) = Phi(r^-1 g) = Phi_{sigma, conj(D^3(r)) u}; same for both sectors"
+  },
+  "U4": {
+   "group": "binary dihedral of order 24 (SO(3) image D6, order 12)",
+   "generators": "Rz(pi/3), Rx(pi)",
+   "character": "chi(Rz(pi/3)) = -1, chi(Rx(pi)) = -1",
+   "complex_dim_of_character_subspace_in_block": 1,
+   "character_subspace_dims_V_J_J0to9": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 2
+   },
+   "action": "(r.Phi)(g) = Phi(r^-1 g) = Phi_{sigma, conj(D^3(r)) u}; same for both sectors"
+  },
+  "U5": {
+   "group": "cyclic of order 10 (SO(3) image C5)",
+   "generators": "Rz(2pi/5)",
+   "character": "chi(Rz(2pi/5)) = e^{4 pi i/5}",
+   "complex_dim_of_character_subspace_in_block": 2,
+   "character_subspace_dims_V_J_J0to9": {
+    "0": 0,
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2,
+    "7": 3,
+    "8": 4,
+    "9": 4
+   },
+   "action": "(r.Phi)(g) = Phi(r^-1 g) = Phi_{sigma, conj(D^3(r)) u}; same for both sectors"
+  },
+  "U6": {
+   "group": "binary dihedral of order 12 (SO(3) image D3)",
+   "generators": "Rz(2pi/3), Rx(pi)",
+   "character": "chi(Rz(2pi/3)) = 1, chi(Rx(pi)) = -1",
+   "complex_dim_of_character_subspace_in_block": 2,
+   "character_subspace_dims_V_J_J0to9": {
+    "0": 0,
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 2,
+    "7": 3,
+    "8": 2,
+    "9": 4
+   },
+   "action": "(r.Phi)(g) = Phi(r^-1 g) = Phi_{sigma, conj(D^3(r)) u}; same for both sectors"
+  }
+ },
+ "item4": {
+  "U1_sector3": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "10": "7/195150384",
+    "14": "18375/1464486053888",
+    "16": "7/2749593600",
+    "18": "245/609749017488"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "1658944/1656369",
+    "10": "28/150579",
+    "14": "18375/47278088",
+    "16": "7/47736",
+    "18": "980/25055433"
+   }
+  },
+  "U1_sector4": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "8": "63/5360582656",
+    "12": "7/483225600",
+    "14": "23625/7209777496064",
+    "16": "49/28242739200",
+    "18": "427/1927108005888"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "5239521/5234944",
+    "8": "63/5234944",
+    "12": "21/100672",
+    "14": "23625/232753664",
+    "16": "147/1470976",
+    "18": "1281/59390656"
+   }
+  },
+  "U2_sector3": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "10": "1225/48787596",
+    "14": "8575/2860324324",
+    "16": "0",
+    "18": "171500/139734149841"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "2845969/1656369",
+    "10": "19600/150579",
+    "14": "548800/5909761",
+    "16": "0",
+    "18": "10976000/91869921"
+   }
+  },
+  "U2_sector4": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "8": "0",
+    "12": "0",
+    "14": "11025/14081596672",
+    "16": "0",
+    "18": "74725/110407229504"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "28224/20449",
+    "8": "0",
+    "12": "0",
+    "14": "11025/454597",
+    "16": "0",
+    "18": "672525/10207769"
+   }
+  },
+  "U3_sector3": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "10": "0",
+    "14": "735/220024948",
+    "16": "0",
+    "18": "1715/2822912118"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "30625/20449",
+    "10": "0",
+    "14": "47040/454597",
+    "16": "0",
+    "18": "54880/927979"
+   }
+  },
+  "U3_sector4": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "8": "0",
+    "12": "7/1830400",
+    "14": "945/1083199744",
+    "16": "0",
+    "18": "26901/80296166912"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "25921/20449",
+    "8": "0",
+    "12": "63/1144",
+    "14": "945/34969",
+    "16": "0",
+    "18": "242109/7423832"
+   }
+  },
+  "U4_sector3": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "10": "8575/780601536",
+    "14": "735/5720648648",
+    "16": "0",
+    "18": "1516795/812998689984"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "3062500/1656369",
+    "10": "8575/150579",
+    "14": "23520/5909761",
+    "16": "0",
+    "18": "1516795/8351811"
+   }
+  },
+  "U4_sector4": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "8": "1575/31719424",
+    "12": "189/644300800",
+    "14": "945/28163193344",
+    "16": "0",
+    "18": "2643557/2569477341184"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "7568001/5234944",
+    "8": "1575/30976",
+    "12": "1701/402688",
+    "14": "945/909194",
+    "16": "0",
+    "18": "23792013/237562624"
+   }
+  },
+  "U5_sector3": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "10": "77/5475600",
+    "14": "281211/189112352000",
+    "16": "553/1591200000",
+    "18": "30233/56458242360"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "5929/4225",
+    "10": "308/4225",
+    "14": "281211/6105125",
+    "16": "553/27625",
+    "18": "241864/4639895"
+   }
+  },
+  "U5_sector4": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "8": "3591/346112000",
+    "12": "63/83200000",
+    "14": "361557/931014656000",
+    "16": "34839/147097600000",
+    "18": "2371131/8029616691200"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "82369/67600",
+    "8": "3591/338000",
+    "12": "567/52000",
+    "14": "361557/30056000",
+    "16": "313551/22984000",
+    "18": "21340179/742383200"
+   }
+  },
+  "U6_sector3": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "10": "319550/88158077163",
+    "14": "12920075/7517877885232",
+    "16": "16583/68316230736",
+    "18": "2355742375/6059914391677302"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "34000561/25310961",
+    "10": "20451200/1088371323",
+    "14": "206721200/3883201387",
+    "16": "6633200/474418269",
+    "18": "75383756000/1992082311531"
+   }
+  },
+  "U6_sector4": {
+   "norm_Pi_n_xi_sq_over_g2": {
+    "6": "0",
+    "8": "7875/859947712",
+    "12": "3521/1587595776",
+    "14": "16611525/37011091127296",
+    "16": "116081/701717332992",
+    "18": "4105722425/19152322028017152"
+   },
+   "levels_above_18": "0 (N(Phi) has no component above level 18)",
+   "xi_transforms_by_same_character": true,
+   "norm_Pi_n_N_sq": {
+    "6": "370881/312481",
+    "8": "126000/13436683",
+    "12": "264075/8268728",
+    "14": "16611525/1194831196",
+    "16": "8706075/913694444",
+    "18": "12317167275/590246610824"
+   }
+  }
+ },
+ "item5": {
+  "U1_sector3": {
+   "along_Phi_per_g": "-608931967/36722893315680",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "0"
+  },
+  "U1_sector4": {
+   "along_Phi_per_g": "-368688201/38687492546560",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "0"
+  },
+  "U2_sector3": {
+   "along_Phi_per_g": "-1871763250/229518083223",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "0"
+  },
+  "U2_sector4": {
+   "along_Phi_per_g": "-15820875/15112301776",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "0"
+  },
+  "U3_sector3": {
+   "along_Phi_per_g": "-2203040/944518861",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "0"
+  },
+  "U3_sector4": {
+   "along_Phi_per_g": "-162530109/75561508880",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "0"
+  },
+  "U4_sector3": {
+   "along_Phi_per_g": "-1921938515/459036166446",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "0"
+  },
+  "U4_sector4": {
+   "along_Phi_per_g": "-226441775133/38687492546560",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "0"
+  },
+  "U5_sector3": {
+   "along_Phi_per_g": "-267786421/58544557500",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "7188839*sqrt(39)/81061695000",
+   "perp_component_e_t": "7188839*sqrt(39)/81061695000",
+   "perp_component_ie_t": "0",
+   "perp_remainder_norm": "0"
+  },
+  "U5_sector4": {
+   "along_Phi_per_g": "-4797453339/2497901120000",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "19565553*sqrt(39)/192146240000",
+   "perp_component_e_t": "-19565553*sqrt(39)/192146240000",
+   "perp_component_ie_t": "0",
+   "perp_remainder_norm": "0"
+  },
+  "U6_sector3": {
+   "along_Phi_per_g": "-336158940460/150812349114141",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "120576113*sqrt(115)/1288994436873",
+   "perp_component_tau_x": "-120576113*sqrt(115)/1288994436873",
+   "perp_component_tau_y": "0",
+   "perp_remainder_norm": "0"
+  },
+  "U6_sector4": {
+   "along_Phi_per_g": "-11093213145/4965015608696",
+   "along_Phi_imag": "0",
+   "perp_norm_per_g": "214430223*sqrt(115)/3055394220736",
+   "perp_component_tau_x": "214430223*sqrt(115)/3055394220736",
+   "perp_component_tau_y": "0",
+   "perp_remainder_norm": "0"
+  }
+ },
+ "item6": {
+  "U5_sector3": {
+   "form_e_t": "-56/165",
+   "form_ie_t": "0"
+  },
+  "U5_sector4": {
+   "form_e_t": "-21/110",
+   "form_ie_t": "0"
+  },
+  "U6_sector3": {
+   "form_tau_x": "6440/18447",
+   "form_tau_y": "56/429",
+   "form_cross": "0"
+  },
+  "U6_sector4": {
+   "form_tau_x": "2415/12298",
+   "form_tau_y": "21/286",
+   "form_cross": "0"
+  },
+  "U5_rhat6_second_derivatives": {
+   "r6pp_e_t": "-104/55",
+   "r6pp_ie_t": "0"
+  },
+  "U6_rhat6_second_derivatives": {
+   "r6pp_tau_x": "920/473",
+   "r6pp_itau_x": "8/11",
+   "r6pp_cross": "0"
+  }
+ },
+ "item7": {
+  "U1_sector3": {
+   "kappa_norm2_over_g2": "0",
+   "free_directions_real_dim": 2,
+   "free_directions": "P_W(X_x Phi), P_W(X_y Phi): infinitesimal rotations about x, y (rotation about z only changes the phase)",
+   "eq_perp_norm_without_kappa_per_g": "0",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 1.9342e-126 at 120 digits)",
+   "L_eigenvalues": [
+    "0.0",
+    "0.0",
+    "0.032634032634032634033",
+    "0.032634032634032634033",
+    "0.048951048951048951049",
+    "0.048951048951048951049",
+    "0.17404817404817404817",
+    "0.17404817404817404817",
+    "0.35353535353535353535",
+    "0.35353535353535353535",
+    "0.71794871794871794872",
+    "0.71794871794871794872"
+   ]
+  },
+  "U1_sector4": {
+   "kappa_norm2_over_g2": "0",
+   "free_directions_real_dim": 2,
+   "free_directions": "P_W(X_x Phi), P_W(X_y Phi): infinitesimal rotations about x, y (rotation about z only changes the phase)",
+   "eq_perp_norm_without_kappa_per_g": "0",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 0.0 at 120 digits)",
+   "L_eigenvalues": [
+    "0.0",
+    "0.0",
+    "0.018356643356643356643",
+    "0.018356643356643356643",
+    "0.027534965034965034965",
+    "0.027534965034965034965",
+    "0.097902097902097902098",
+    "0.097902097902097902098",
+    "0.19886363636363636364",
+    "0.19886363636363636364",
+    "0.40384615384615384615",
+    "0.40384615384615384615"
+   ]
+  },
+  "U2_sector3": {
+   "kappa_norm2_over_g2": "0",
+   "free_directions_real_dim": 2,
+   "free_directions": "P_W(X_x Phi), P_W(X_y Phi): infinitesimal rotations about x, y (rotation about z only changes the phase)",
+   "eq_perp_norm_without_kappa_per_g": "0",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 9.9032e-124 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.54390054390054390054",
+    "-0.54390054390054390054",
+    "-0.32634032634032634033",
+    "-0.32634032634032634033",
+    "-0.21756021756021756022",
+    "-0.21756021756021756022",
+    "-0.1958041958041958042",
+    "-0.1958041958041958042",
+    "-9.681479787123295682e-122",
+    "-9.681479787123295682e-122",
+    "0.13053613053613053613",
+    "0.13053613053613053613"
+   ]
+  },
+  "U2_sector4": {
+   "kappa_norm2_over_g2": "0",
+   "free_directions_real_dim": 2,
+   "free_directions": "P_W(X_x Phi), P_W(X_y Phi): infinitesimal rotations about x, y (rotation about z only changes the phase)",
+   "eq_perp_norm_without_kappa_per_g": "0",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 0.0 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.30594405594405594406",
+    "-0.30594405594405594406",
+    "-0.18356643356643356643",
+    "-0.18356643356643356643",
+    "-0.12237762237762237762",
+    "-0.12237762237762237762",
+    "-0.11013986013986013986",
+    "-0.11013986013986013986",
+    "2.4203699467808239205e-122",
+    "2.4203699467808239205e-122",
+    "0.073426573426573426573",
+    "0.073426573426573426573"
+   ]
+  },
+  "U3_sector3": {
+   "kappa_norm2_over_g2": "0",
+   "free_directions_real_dim": 3,
+   "free_directions": "P_W(X_a Phi), a = x, y, z: infinitesimal rotations",
+   "eq_perp_norm_without_kappa_per_g": "0",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 0.0 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.39160839160839160839",
+    "-0.39160839160839160839",
+    "-0.39160839160839160839",
+    "-0.13053613053613053613",
+    "-0.13053613053613053613",
+    "-0.13053613053613053613",
+    "-4.3648503075855651628e-121",
+    "-3.7531495311544416316e-121",
+    "-2.2048057483956567901e-121",
+    "0.21756021756021756022",
+    "0.21756021756021756022",
+    "0.21756021756021756022"
+   ]
+  },
+  "U3_sector4": {
+   "kappa_norm2_over_g2": "0",
+   "free_directions_real_dim": 3,
+   "free_directions": "P_W(X_a Phi), a = x, y, z: infinitesimal rotations",
+   "eq_perp_norm_without_kappa_per_g": "0",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 8.0859e-124 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.22027972027972027972",
+    "-0.22027972027972027972",
+    "-0.22027972027972027972",
+    "-0.073426573426573426573",
+    "-0.073426573426573426573",
+    "-0.073426573426573426573",
+    "-2.6472796292915261631e-123",
+    "2.0595424608770544877e-121",
+    "2.2389677990568249866e-121",
+    "0.12237762237762237762",
+    "0.12237762237762237762",
+    "0.12237762237762237762"
+   ]
+  },
+  "U4_sector3": {
+   "kappa_norm2_over_g2": "0",
+   "free_directions_real_dim": 3,
+   "free_directions": "P_W(X_a Phi), a = x, y, z: infinitesimal rotations",
+   "eq_perp_norm_without_kappa_per_g": "0",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 1.4005e-123 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.71794871794871794872",
+    "-0.37529137529137529138",
+    "-0.36441336441336441336",
+    "-0.36441336441336441336",
+    "-0.34809634809634809635",
+    "-0.34809634809634809635",
+    "-0.24475524475524475524",
+    "-0.16317016317016317016",
+    "-0.16317016317016317016",
+    "-2.4203699467808239205e-121",
+    "-2.4203699467808239205e-121",
+    "1.9362959574246591364e-121"
+   ]
+  },
+  "U4_sector4": {
+   "kappa_norm2_over_g2": "0",
+   "free_directions_real_dim": 3,
+   "free_directions": "P_W(X_a Phi), a = x, y, z: infinitesimal rotations",
+   "eq_perp_norm_without_kappa_per_g": "0",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 1.6172e-123 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.40384615384615384615",
+    "-0.2111013986013986014",
+    "-0.20498251748251748252",
+    "-0.20498251748251748252",
+    "-0.1958041958041958042",
+    "-0.1958041958041958042",
+    "-0.13767482517482517483",
+    "-0.091783216783216783217",
+    "-0.091783216783216783217",
+    "-1.9362959574246591364e-121",
+    "3.0254624334760299006e-121",
+    "3.0254624334760299006e-121"
+   ]
+  },
+  "U5_sector3": {
+   "kappa_norm2_over_g2": "1054681758529/396076284864000000",
+   "free_directions_real_dim": 3,
+   "free_directions": "P_W(X_a Phi), a = x, y, z: infinitesimal rotations (P_W(X_z Phi) is proportional to i e_t)",
+   "eq_perp_norm_without_kappa_per_g": "7188839*sqrt(39)/81061695000",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 1.1072e-123 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.33939393939393939394",
+    "-0.19924566878837378896",
+    "-0.19924566878837378896",
+    "-0.078321678321678321678",
+    "-0.078321678321678321678",
+    "1.9362959574246591364e-121",
+    "2.991233935144174621e-121",
+    "3.2165647783112355027e-121",
+    "0.0043512043512043512044",
+    "0.0043512043512043512044",
+    "0.29932336886607386666",
+    "0.29932336886607386666"
+   ],
+   "kappa_component_e_t": "1026977*sqrt(39)/3930264000",
+   "kappa_component_ie_t": "0",
+   "kappa_remainder_norm": "0"
+  },
+  "U5_sector4": {
+   "kappa_norm2_over_g2": "2604155538747/234711872512000000",
+   "free_directions_real_dim": 3,
+   "free_directions": "P_W(X_a Phi), a = x, y, z: infinitesimal rotations (P_W(X_z Phi) is proportional to i e_t)",
+   "eq_perp_norm_without_kappa_per_g": "19565553*sqrt(39)/192146240000",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 4.5201e-124 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.19090909090909090909",
+    "-0.11207568869346025629",
+    "-0.11207568869346025629",
+    "-0.044055944055944055944",
+    "-0.044055944055944055944",
+    "-1.4266983219774874643e-121",
+    "-1.2399834885814536439e-121",
+    "0.0",
+    "0.0024475524475524475524",
+    "0.0024475524475524475524",
+    "0.16836939498716654999",
+    "0.16836939498716654999"
+   ],
+   "kappa_component_e_t": "-931693*sqrt(39)/1746784000",
+   "kappa_component_ie_t": "0",
+   "kappa_remainder_norm": "0"
+  },
+  "U6_sector3": {
+   "kappa_norm2_over_g2": "296706102575281/35935889967339860160",
+   "free_directions_real_dim": 3,
+   "free_directions": "P_W(X_a Phi), a = x, y, z: infinitesimal rotations",
+   "eq_perp_norm_without_kappa_per_g": "120576113*sqrt(115)/1288994436873",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 1.3357e-123 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.26410798503821759636",
+    "-0.19913824297822713071",
+    "-0.19913824297822713071",
+    "8.0536874902008766229e-122",
+    "8.3065274120410420792e-122",
+    "1.9145554683757343111e-121",
+    "0.070833559205652228908",
+    "0.070833559205652228908",
+    "0.081756916294574865664",
+    "0.081756916294574865664",
+    "0.13053613053613053613",
+    "0.34910825608500027105"
+   ],
+   "kappa_component_tau_x": "17225159*sqrt(115)/64285514280",
+   "kappa_component_tau_y": "0",
+   "kappa_remainder_norm": "0"
+  },
+  "U6_sector4": {
+   "kappa_norm2_over_g2": "104263765387369/7098447400956021760",
+   "free_directions_real_dim": 3,
+   "free_directions": "P_W(X_a Phi), a = x, y, z: infinitesimal rotations",
+   "eq_perp_norm_without_kappa_per_g": "214430223*sqrt(115)/3055394220736",
+   "eq_perp_norm_with_kappa_per_g": "0 (residual 7.4085e-124 at 120 digits)",
+   "L_eigenvalues": [
+    "-0.14856074158399739795",
+    "-0.11201526167525276103",
+    "-0.11201526167525276103",
+    "-4.7459018720415327469e-121",
+    "-4.1714246103537242765e-121",
+    "-7.5124669150848219584e-122",
+    "0.039843877053179378761",
+    "0.039843877053179378761",
+    "0.045988265415698361936",
+    "0.045988265415698361936",
+    "0.073426573426573426573",
+    "0.19637339404781265246"
+   ],
+   "kappa_component_tau_x": "-10210963*sqrt(115)/28571339680",
+   "kappa_component_tau_y": "0",
+   "kappa_remainder_norm": "0"
+  }
+ },
+ "item8": {
+  "U1_sector3": {
+   "lambda4_over_g2_with_kappa": "-608931967/36722893315680",
+   "lambda4_over_g2_without_kappa": "-608931967/36722893315680",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U1_sector4": {
+   "lambda4_over_g2_with_kappa": "-368688201/38687492546560",
+   "lambda4_over_g2_without_kappa": "-368688201/38687492546560",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U2_sector3": {
+   "lambda4_over_g2_with_kappa": "-1871763250/229518083223",
+   "lambda4_over_g2_without_kappa": "-1871763250/229518083223",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U2_sector4": {
+   "lambda4_over_g2_with_kappa": "-15820875/15112301776",
+   "lambda4_over_g2_without_kappa": "-15820875/15112301776",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U3_sector3": {
+   "lambda4_over_g2_with_kappa": "-2203040/944518861",
+   "lambda4_over_g2_without_kappa": "-2203040/944518861",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U3_sector4": {
+   "lambda4_over_g2_with_kappa": "-162530109/75561508880",
+   "lambda4_over_g2_without_kappa": "-162530109/75561508880",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U4_sector3": {
+   "lambda4_over_g2_with_kappa": "-1921938515/459036166446",
+   "lambda4_over_g2_without_kappa": "-1921938515/459036166446",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U4_sector4": {
+   "lambda4_over_g2_with_kappa": "-226441775133/38687492546560",
+   "lambda4_over_g2_without_kappa": "-226441775133/38687492546560",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U5_sector3": {
+   "lambda4_over_g2_with_kappa": "-267786421/58544557500",
+   "lambda4_over_g2_without_kappa": "-267786421/58544557500",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U5_sector4": {
+   "lambda4_over_g2_with_kappa": "-4797453339/2497901120000",
+   "lambda4_over_g2_without_kappa": "-4797453339/2497901120000",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U6_sector3": {
+   "lambda4_over_g2_with_kappa": "-336158940460/150812349114141",
+   "lambda4_over_g2_without_kappa": "-336158940460/150812349114141",
+   "sign_of_lambda4": "negative for every g != 0"
+  },
+  "U6_sector4": {
+   "lambda4_over_g2_with_kappa": "-11093213145/4965015608696",
+   "lambda4_over_g2_without_kappa": "-11093213145/4965015608696",
+   "sign_of_lambda4": "negative for every g != 0"
+  }
+ },
+ "item9": {
+  "zeros": [
+   {
+    "where": "U1 sector 3",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)",
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U1 sector 3",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U1 sector 3",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U1 sector 3",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U1 sector 3",
+    "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)"
+    ]
+   },
+   {
+    "where": "U1 sector 3",
+    "quantity": "kappa",
+    "reasons": [
+     "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+    ]
+   },
+   {
+    "where": "U1 sector 3",
+    "quantity": "equation perp component without kappa",
+    "reasons": [
+     "ISOTYPIC"
+    ]
+   },
+   {
+    "where": "U1 sector 3",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U1 sector 4",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)",
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U1 sector 4",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U1 sector 4",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U1 sector 4",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U1 sector 4",
+    "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)"
+    ]
+   },
+   {
+    "where": "U1 sector 4",
+    "quantity": "kappa",
+    "reasons": [
+     "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+    ]
+   },
+   {
+    "where": "U1 sector 4",
+    "quantity": "equation perp component without kappa",
+    "reasons": [
+     "ISOTYPIC"
+    ]
+   },
+   {
+    "where": "U1 sector 4",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)",
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "||Pi_16 xi||^2",
+    "reasons": [
+     "ISOTYPIC (chi-subspace of V_8 is 0)",
+     "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+     "exact A_8 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "kappa",
+    "reasons": [
+     "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "equation perp component without kappa",
+    "reasons": [
+     "ISOTYPIC"
+    ]
+   },
+   {
+    "where": "U2 sector 3",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)",
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "||Pi_8 xi||^2",
+    "reasons": [
+     "ISOTYPIC (chi-subspace of V_4 is 0)",
+     "exact A_4 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "||Pi_12 xi||^2",
+    "reasons": [
+     "ISOTYPIC (chi-subspace of V_6 is 0)",
+     "exact A_6 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "||Pi_16 xi||^2",
+    "reasons": [
+     "ISOTYPIC (chi-subspace of V_8 is 0)",
+     "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+     "exact A_8 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "kappa",
+    "reasons": [
+     "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "equation perp component without kappa",
+    "reasons": [
+     "ISOTYPIC"
+    ]
+   },
+   {
+    "where": "U2 sector 4",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)",
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "||Pi_10 xi||^2",
+    "reasons": [
+     "ISOTYPIC (chi-subspace of V_5 is 0)",
+     "exact A_5 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "||Pi_16 xi||^2",
+    "reasons": [
+     "ISOTYPIC (chi-subspace of V_8 is 0)",
+     "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+     "exact A_8 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "kappa",
+    "reasons": [
+     "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "equation perp component without kappa",
+    "reasons": [
+     "ISOTYPIC"
+    ]
+   },
+   {
+    "where": "U3 sector 3",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)",
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "||Pi_8 xi||^2",
+    "reasons": [
+     "ISOTYPIC (chi-subspace of V_4 is 0)",
+     "exact A_4 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "||Pi_16 xi||^2",
+    "reasons": [
+     "ISOTYPIC (chi-subspace of V_8 is 0)",
+     "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+     "exact A_8 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "kappa",
+    "reasons": [
+     "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "equation perp component without kappa",
+    "reasons": [
+     "ISOTYPIC"
+    ]
+   },
+   {
+    "where": "U3 sector 4",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)",
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "||Pi_16 xi||^2",
+    "reasons": [
+     "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+     "exact A_8 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "kappa",
+    "reasons": [
+     "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "equation perp component without kappa",
+    "reasons": [
+     "ISOTYPIC"
+    ]
+   },
+   {
+    "where": "U4 sector 3",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)",
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "||Pi_16 xi||^2",
+    "reasons": [
+     "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+     "exact A_8 = 0 in s02"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi)"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "kappa",
+    "reasons": [
+     "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "equation perp component without kappa",
+    "reasons": [
+     "ISOTYPIC"
+    ]
+   },
+   {
+    "where": "U4 sector 4",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "DNxi_perp_comp_ie_t",
+    "reasons": [
+     "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "kappa_comp_ie_t",
+    "reasons": [
+     "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+     "ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "DNxi_perp_remainder_norm",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "kappa_remainder_norm",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "form on i e_t (and rhat6'')",
+    "reasons": [
+     "ORBIT (i e_t is tangent to the R_z orbit; Hessian of an invariant function vanishes on orbit tangents at a critical point)"
+    ]
+   },
+   {
+    "where": "U5 sector 3",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "DNxi_perp_comp_ie_t",
+    "reasons": [
+     "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "kappa_comp_ie_t",
+    "reasons": [
+     "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+     "ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "DNxi_perp_remainder_norm",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "kappa_remainder_norm",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "form on i e_t (and rhat6'')",
+    "reasons": [
+     "ORBIT (i e_t is tangent to the R_z orbit; Hessian of an invariant function vanishes on orbit tangents at a critical point)"
+    ]
+   },
+   {
+    "where": "U5 sector 4",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "DNxi_perp_comp_tau_y",
+    "reasons": [
+     "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "kappa_comp_tau_y",
+    "reasons": [
+     "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "DNxi_perp_remainder_norm",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "kappa_remainder_norm",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "form cross term (tau_x, tau_y)",
+    "reasons": [
+     "ANTIUNITARY"
+    ]
+   },
+   {
+    "where": "U6 sector 3",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "Pi_6 N(Phi) - Q Phi",
+    "reasons": [
+     "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "Im Q",
+    "reasons": [
+     "REALITY (Q = int |Phi|^4)"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "||Pi_6 xi||^2",
+    "reasons": [
+     "CONSTRUCTION (xi orthogonal to the block)"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "Im <Phi, DN_Phi[xi]>",
+    "reasons": [
+     "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "DNxi_perp_comp_tau_y",
+    "reasons": [
+     "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "kappa_comp_tau_y",
+    "reasons": [
+     "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "DNxi_perp_remainder_norm",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "kappa_remainder_norm",
+    "reasons": [
+     "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "form cross term (tau_x, tau_y)",
+    "reasons": [
+     "ANTIUNITARY"
+    ]
+   },
+   {
+    "where": "U6 sector 4",
+    "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+    "reasons": [
+     "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+    ]
+   },
+   {
+    "where": "U5",
+    "quantity": "rhat6 second derivative r6pp_ie_t",
+    "reasons": [
+     "ORBIT"
+    ]
+   },
+   {
+    "where": "U6",
+    "quantity": "rhat6 second derivative r6pp_cross",
+    "reasons": [
+     "ANTIUNITARY"
+    ]
+   }
+  ],
+  "unresolved": [],
+  "missing": []
+ },
+ "item10": {
+  "U1": {
+   "existence_for_all_small_a": true,
+   "orbit_dim_in_W": 2,
+   "hessian_rank_on_W": 10
+  },
+  "U2": {
+   "existence_for_all_small_a": true,
+   "orbit_dim_in_W": 2,
+   "hessian_rank_on_W": 10
+  },
+  "U3": {
+   "existence_for_all_small_a": true,
+   "orbit_dim_in_W": 3,
+   "hessian_rank_on_W": 9
+  },
+  "U4": {
+   "existence_for_all_small_a": true,
+   "orbit_dim_in_W": 3,
+   "hessian_rank_on_W": 9
+  },
+  "U5": {
+   "existence_for_all_small_a": true,
+   "orbit_dim_in_W": 3,
+   "hessian_rank_on_W": 9
+  },
+  "U6": {
+   "existence_for_all_small_a": true,
+   "orbit_dim_in_W": 3,
+   "hessian_rank_on_W": 9
+  },
+  "spectral_gap": {
+   "sector3": {
+    "levels_le_18": [
+     6,
+     10,
+     14,
+     16,
+     18
+    ],
+    "min_gap": 72
+   },
+   "sector4": {
+    "levels_le_18": [
+     6,
+     8,
+     12,
+     14,
+     16,
+     18
+    ],
+    "min_gap": 32
+   }
+  }
+ },
+ "item11": {
+  "rhat6": "3061/14784",
+  "stationary": false,
+  "riemannian_grad_norm2_of_rhat6": "13225/92928",
+  "d_rhat6_ds_along_e_t": "115*sqrt(3)/528",
+  "Re_Phi_DN_et_sector3": "805*sqrt(3)/6864",
+  "Re_Phi_DN_et_sector4": "2415*sqrt(3)/36608",
+  "numeric_identification_sector3": "805*sqrt(3)/6864",
+  "numeric_identification_sector4": "2415*sqrt(3)/36608"
+ },
+ "item12": {
+  "U1_sector3": {
+   "residual_equation": "9.8e-30",
+   "quadrature_vs_algebra": "9.79e-30",
+   "component_outside_Hom": "9.72e-30",
+   "max_component_levels_20_22": "2.83e-29"
+  },
+  "U2_sector3": {
+   "residual_equation": "1.41e-29",
+   "quadrature_vs_algebra": "1.41e-29",
+   "component_outside_Hom": "1.41e-29",
+   "max_component_levels_20_22": "5.25e-29"
+  },
+  "U3_sector3": {
+   "residual_equation": "5.78e-30",
+   "quadrature_vs_algebra": "5.78e-30",
+   "component_outside_Hom": "5.03e-30",
+   "max_component_levels_20_22": "2.44e-29"
+  },
+  "U4_sector3": {
+   "residual_equation": "9.17e-30",
+   "quadrature_vs_algebra": "9.17e-30",
+   "component_outside_Hom": "9.15e-30",
+   "max_component_levels_20_22": "3.66e-29"
+  },
+  "U5_sector3": {
+   "residual_equation": "5.03e-30",
+   "quadrature_vs_algebra": "5.03e-30",
+   "component_outside_Hom": "5.04e-30",
+   "max_component_levels_20_22": "2.85e-29"
+  },
+  "U6_sector3": {
+   "residual_equation": "9.6e-30",
+   "quadrature_vs_algebra": "9.59e-30",
+   "component_outside_Hom": "9.65e-30",
+   "max_component_levels_20_22": "3.4e-29"
+  },
+  "U1_sector4": {
+   "residual_equation": "1.49e-29",
+   "quadrature_vs_algebra": "1.49e-29",
+   "component_outside_Hom": "1.3e-29",
+   "max_component_levels_20_22": "2.29e-29"
+  },
+  "U2_sector4": {
+   "residual_equation": "1.41e-29",
+   "quadrature_vs_algebra": "1.41e-29",
+   "component_outside_Hom": "1.36e-29",
+   "max_component_levels_20_22": "4.39e-29"
+  },
+  "U3_sector4": {
+   "residual_equation": "5.7e-30",
+   "quadrature_vs_algebra": "5.69e-30",
+   "component_outside_Hom": "5.6e-30",
+   "max_component_levels_20_22": "2.13e-29"
+  },
+  "U4_sector4": {
+   "residual_equation": "1.27e-29",
+   "quadrature_vs_algebra": "1.27e-29",
+   "component_outside_Hom": "1.12e-29",
+   "max_component_levels_20_22": "2.59e-29"
+  },
+  "U5_sector4": {
+   "residual_equation": "3.6e-30",
+   "quadrature_vs_algebra": "3.6e-30",
+   "component_outside_Hom": "3.6e-30",
+   "max_component_levels_20_22": "2.44e-29"
+  },
+  "U6_sector4": {
+   "residual_equation": "9.31e-30",
+   "quadrature_vs_algebra": "9.31e-30",
+   "component_outside_Hom": "8.98e-30",
+   "max_component_levels_20_22": "2.97e-29"
+  },
+  "required": "1e-25 at 30 digits",
+  "worst_residual": "1.49e-29"
+ },
+ "identification_independence": {
+  "max_difference": "9.18e-41",
+  "digits": 40,
+  "embeddings_coincide": false
+ },
+ "negative_controls": {
+  "order check \"|Gamma| = 120\" fails for <q1>": true,
+  "perfectness check fails for <q1>": true,
+  "intertwiner residual < 1e-30 fails for eta perturbed by 1e-20": true,
+  "eta^dag eta = I (< 1e-30) fails for eta scaled by 1 + 1e-20": true,
+  "Pi_6 N(Phi) - Q Phi = 0 fails at the item-11 vector (sector 3)": true,
+  "exact stationarity of rhat6 fails at the item-11 vector": true,
+  "xi covariance (< 1e-30) fails with the conjugate character": true,
+  "kernel dim = orbit dim fails when L is shifted by 1e-10": true,
+  "item-12 residual < 1e-25 fails for xi built with n(n+2)-47": true,
+  "quadrature = algebra (< 1e-25) fails on an 8 x 5 x 8 grid (not exact to spin 18)": true,
+  "identification agreement fails for a 1e-60 perturbation": true,
+  "Majorana equivariance fails with the wrong map p -> p g": true,
+  "A/B comparison (< 1e-30) fails when comparing U1 with U2": true
+ }
+}

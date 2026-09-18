@@ -1,0 +1,27 @@
+{
+ "U1": {
+  "m": 1,
+  "u_in_chi_subspace": true,
+  "mutant(-conj chi): u inside": false
+ },
+ "U2": {
+  "m": 1,
+  "u_in_chi_subspace": true,
+  "mutant(-conj chi): u inside": false
+ },
+ "U3": {
+  "m": 1,
+  "u_in_chi_subspace": true,
+  "mutant(-conj chi): u inside": false
+ },
+ "U4": {
+  "m": 1,
+  "u_in_chi_subspace": true,
+  "mutant(-conj chi): u inside": false
+ },
+ "U6": {
+  "m": 2,
+  "u_in_chi_subspace": true,
+  "mutant(-conj chi): u inside": false
+ }
+}

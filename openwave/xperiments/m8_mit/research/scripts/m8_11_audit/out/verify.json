@@ -1,0 +1,38 @@
+{
+ "cg_crosscheck": {
+  "triples": 59,
+  "coefficients": 3541,
+  "mismatches": 0,
+  "max_spins": 9
+ },
+ "beta": {
+  "3": "28/39",
+  "4": "21/52"
+ },
+ "r6hat_U5curve": "-(875*S2**2 - 840*S2 - 36)/924",
+ "r6hat_U5curve_critical_S": [
+  "12/25"
+ ],
+ "r6hat_U6family": "(100*x**4 + 200*x**2*y**2 - 20*x**2 + 100*y**4 + 148*y**2 + 463)/(231*(x**2 + y**2 + 2)**2)",
+ "r6hat_U6family_critical_x": [
+  "0",
+  "-sqrt(230)/10",
+  "sqrt(230)/10"
+ ],
+ "Sym3_V3_multiplicities": {
+  "0": 0,
+  "1": 1,
+  "2": 0,
+  "3": 2,
+  "4": 1,
+  "5": 1,
+  "6": 1,
+  "7": 1,
+  "8": 0,
+  "9": 1
+ },
+ "item11_Re<Phi,DN e_t>_U5q_s3": "805/6864*sqrt(3)",
+ "item11_Re<Phi,DN e_t>_U5q_s4": "2415/36608*sqrt(3)",
+ "item11_Re<Phi,DN e_t>_U5_s3": "0",
+ "item11_Re<Phi,DN e_t>_U5_s4": "0"
+}

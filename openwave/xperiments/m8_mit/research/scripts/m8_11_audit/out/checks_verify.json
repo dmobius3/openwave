@@ -1,0 +1,278 @@
+[
+ {
+  "label": "Racah CG == highest-weight CG for every coefficient of every coupling used",
+  "status": "PASS",
+  "mutation": "negate one highest-weight coefficient",
+  "mutation_detected": true
+ },
+ {
+  "label": "invariant quartic basis evaluated at the 7 points has rank 4 (evaluation injective on the 4-dim space)",
+  "status": "PASS",
+  "mutation": "replace K=6 column by the K=0 column",
+  "mutation_detected": true
+ },
+ {
+  "label": "sector 3: int|Phi|^4 == 1 + 28/39 r6hat at all 7 points (hence identically on the block sphere)",
+  "status": "PASS",
+  "mutation": "beta + 1/1000",
+  "mutation_detected": true
+ },
+ {
+  "label": "sector 4: int|Phi|^4 == 1 + 21/52 r6hat at all 7 points (hence identically on the block sphere)",
+  "status": "PASS",
+  "mutation": "beta + 1/1000",
+  "mutation_detected": true
+ },
+ {
+  "label": "d r6hat/d(sin^2 t) vanishes at sin^2 t = 12/25",
+  "status": "PASS",
+  "mutation": "evaluate at sin^2 t = 1/4 instead",
+  "mutation_detected": true
+ },
+ {
+  "label": "r6hat(sin^2 t = 12/25) == 9/35 (matches exact engine)",
+  "status": "PASS",
+  "mutation": "value at 1/4",
+  "mutation_detected": true
+ },
+ {
+  "label": "d r6hat/dx vanishes at z = z0 = sqrt(23/10)",
+  "status": "PASS",
+  "mutation": "z0 + 1/10",
+  "mutation_detected": true
+ },
+ {
+  "label": "d r6hat/dy vanishes at z = z0 (y = 0)",
+  "status": "PASS",
+  "mutation": "y = 1/10",
+  "mutation_detected": true
+ },
+ {
+  "label": "r6hat(z0) == 200/903",
+  "status": "PASS",
+  "mutation": "value at z = 1",
+  "mutation_detected": true
+ },
+ {
+  "label": "U1 s3: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U1 s4: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U2 s3: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U2 s4: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U3 s3: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U3 s4: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U4 s3: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U4 s4: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5 s3: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5 s4: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U6 s3: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U6 s4: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5q s3: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5q s4: <Phi, DN xi>/g == -3 sum_n ||Pi_n N||^2/(n(n+2)-48)",
+  "status": "PASS",
+  "mutation": "drop the lowest level from the sum",
+  "mutation_detected": true
+ },
+ {
+  "label": "sector 3: P Theta_col(conj P) == Theta_col(conj P) (conjugate sector coincides with the sector)",
+  "status": "PASS",
+  "mutation": "use the other sector's projector",
+  "mutation_detected": true
+ },
+ {
+  "label": "sector 4: P Theta_col(conj P) == Theta_col(conj P) (conjugate sector coincides with the sector)",
+  "status": "PASS",
+  "mutation": "use the other sector's projector",
+  "mutation_detected": true
+ },
+ {
+  "label": "D^J(r0) Theta x == (-1)^J conj(x) for all J <= 9 (exact)",
+  "status": "PASS",
+  "mutation": "compare with +conj(x) at J=3",
+  "mutation_detected": true
+ },
+ {
+  "label": "U1 s3: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U1 s4: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U2 s3: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U2 s4: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U3 s3: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U3 s4: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U4 s3: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U4 s4: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5 s3: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5 s4: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U6 s3: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U6 s4: fibres of Phi, Pi_6 DN_Phi[xi], kappa are real (S'-invariant)",
+  "status": "PASS",
+  "mutation": "multiply the DN xi fibre by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "U2: Theta u == c u with |c| = 1 (c = 1)",
+  "status": "PASS",
+  "mutation": "use U1 instead",
+  "mutation_detected": true
+ },
+ {
+  "label": "U3: Theta u == c u with |c| = 1 (c = 1)",
+  "status": "PASS",
+  "mutation": "use U1 instead",
+  "mutation_detected": true
+ },
+ {
+  "label": "U4: Theta u == c u with |c| = 1 (c = -1)",
+  "status": "PASS",
+  "mutation": "use U1 instead",
+  "mutation_detected": true
+ },
+ {
+  "label": "V_8 does not occur in Sym^3 V_3",
+  "status": "PASS",
+  "mutation": "set mult 1",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5q s3: Re<Phi,DN e_t> == 3 Re<N(Phi), e_t> (two computations)",
+  "status": "PASS",
+  "mutation": "+1e-9",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5q s4: Re<Phi,DN e_t> == 3 Re<N(Phi), e_t> (two computations)",
+  "status": "PASS",
+  "mutation": "+1e-9",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5 s3: Re<Phi,DN e_t> == 3 Re<N(Phi), e_t> (two computations)",
+  "status": "PASS",
+  "mutation": "+1e-9",
+  "mutation_detected": true
+ },
+ {
+  "label": "U5 s4: Re<Phi,DN e_t> == 3 Re<N(Phi), e_t> (two computations)",
+  "status": "PASS",
+  "mutation": "+1e-9",
+  "mutation_detected": true
+ }
+]
