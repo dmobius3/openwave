@@ -1835,3 +1835,30 @@ Action needed (yours): (1) the commit, done (`6337d024`); the PR and merge; (2) 
 **Findings.** At W1 the certified potential holds neither the seed's line defect nor the vacuum spectrum: R20's three energies were the pin's, every R3-to-R20 energy was a FIRE stall, and the released string is a disclination texture. The W1 x 25 electron is the first compact, boundary-indifferent object on this stack, and the frame saddle is a `g^2` law above g 8 with no delta root.
 
 **Research docs created/updated.** [`m5_32_task_details.md`](m5_32_task_details.md) (this R21 section), [`m5_32_candidate_ledger.md`](../findings/m5_32_candidate_ledger.md) (§ 6.12, the § 6.1 row), [`m5_32_convo.md`](m5_32_convo.md) (the 16:50 UTC reply), [`m5_roadmap.md`](../m5_roadmap.md) (the preview), [`m5_32_r21_0_form.py`](../scripts/m5_32_r21_0_form.py), [`m5_32_r21_0_audit.py`](../scripts/m5_32_r21_0_audit.py), [`m5_32_r21_1_runs.py`](../scripts/m5_32_r21_1_runs.py), [`m5_32_r21_1_audit.py`](../scripts/m5_32_r21_1_audit.py), their JSON under `data/` and the six plots under `plots/`; the end fields local (89 MB, [`_DATASETS.md`](../data/_DATASETS.md)).
+
+## R22 PLANNING: INEQUIVALENT CORES UNDER ONE UNIAXIAL EXTERIOR, AND THE COULOMB CERTIFICATE PAIR (planned 2026-09-18; no go yet)
+
+**Inputs read at PLAN.** Discussion #186 through comment 18487882 (the author's 09-15 and 09-16 posts answer R13-W, not R21; the referee notes of giuliano-vantasner; the merged L-ladder appendix of report 008), the working note [Zenodo 22788604](https://zenodo.org/records/22788604) (v2, supersedes 22776154), the lepton paper [Zenodo 22801032](https://zenodo.org/records/22801032) (§§ 2.1 to 2.4, 2.8, 12), and the two list emails of 09-17 and 09-18. AI-derived inputs are evidence until our scripts confirm them.
+
+**Scope.** (1) The vacuum moves to the exactly uniaxial `(g, 1, delta, delta)` of the note § 4 (iv); the biaxial R20 / R21 rows stay as the control. (2) R22-1: the lepton paper's § 2.1 protocol on the 4x4 field (radial, oblate, biaxial and axis-permuted core seeds; one common hedgehog exterior; `V4` at `W1 x 25` main and `W1 x 1` control; pinned exterior and free boundary; n 32 / n 48 refinement, n 32 / n 64 box; a delta 0.89 side row). (3) R22-2: like and unlike pairs with pinned cores on the degenerate-pair vacuum against `U = -/+ 32 pi (1 - delta)^4 / d` (slope 24.14 at delta 0.3) and `U_grav -> 0`. (4) R22-0 form level first: the Faber identity on our stencils, its biaxial extension against the R21 tails, the `epsilon^4` flatness of `V4` and of the spectral potential on the degenerate pair, the author's scripts run unchanged. (5) R22-3 stretch: the frozen-profile `omega_E` on the compact `W1 x 25` electron on Mikulski's rung grid.
+
+**Definition of done.** Every row polished to max abs(G) < 1e-3 or its attained residual stated; one of the pre-registered labels per part (`ONE_BRANCH`, `BRANCH_BOUNDARY_HELD`, `BRANCH_LATTICE_ONLY`, `BRANCHES_SURVIVE`; `COULOMB_CERTIFIED`, `LIKE_EXCESS`, `UNLIKE_TUBE`, `PAIR_BOX_LIMITED`); a fresh-agent audit with its own script per part; ledger § 6.13 and the 008 rows updated; the results post drafted with a validation-script column.
+
+**Consumers.**
+
+| Sub-result | Consumer | Instrument check the consumer needs |
+| --- | --- | --- |
+| R22-0 (a) | the R22-2 slope prediction | identity residual converging as `h^2`; the single-hedgehog self-energy against `16 pi (1 - delta)^4 / r_c` |
+| R22-0 (b) | the bridge from the R20 / R21 record to the new vacuum | the closed-form tail weights against the R21 polished tails |
+| R22-0 (c) | the reading of a seed merge in R22-1 | the `epsilon` exponent fitted on two windows |
+| R22-1 | the ratio table against 1 : 206.77 : 3477.37 and the replication of the paper's § 2.4 | the polish gate with the residual spread; endpoint RMS differences; on-surface degree 1 on every endpoint; refinement and box rows |
+| R22-2 | the ledger's pair row ("repels" or "absent") | single-core references in the same box; on-surface degree around each core; two boxes; the Helmholtz split residual |
+| R22-3 | column 3 of the 008 appendix table | our route returns 0.326 on the committed N = 32 field before any other number is read |
+
+**Blindspot pass** (the recurring-failure table read against the instruments). Unvalidated instrument: both new instruments (the pair energy, the `omega_E` route) get a known-answer control before use. Artifact read as result: the d ladder on two boxes, the exponent on two windows. Wrong diagnostic for the regime: the Derrick identity beside any dilation scan. New to this rung: `V4` is quartic-flat along the transverse split on the uniaxial vacuum, so the L-BFGS Hessian is ill-conditioned there and the gate may not be reached; an unpinned unlike pair annihilates, so the cores are pinned balls; the unlike seed must avoid the quotient map (flip tube) and the collinear product (wrong local degree).
+
+**Gating.** The user's "go R22, reset <time>, ping me". Author-gated (asked in the plan post, not blocking): a preferred member of the sextic family of the note's eq. (8), and delta between 0.3 and 0.89.
+
+**Cut line.** R22-3, then the delta 0.89 row, then the n 64 rows. Not in R22: the `C_12` gap scan, the scale-mode gravity terms, any two-derivative orientation term, the neutrino loop hypothesis.
+
+**Research body.** Ledger § 6.13; this record's R22 section; scripts `m5_32_r22_*`; data and plots under the same prefix; local arrays under `data/m5_32_r22_1/`.
