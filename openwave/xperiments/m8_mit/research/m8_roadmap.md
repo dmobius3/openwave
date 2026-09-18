@@ -17,7 +17,6 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
-| [M8.11](tasks/m8_11_task_details.md) | Local branch germs at the level-6 critical rays, and the order-`a²` tilt | Whether the formal expansions at six level-6 critical rays in sectors `3′` and `4` are Taylor expansions of local branch germs, for sufficiently small amplitude, by one existence theorem graded by audit; and the order-`a²` tilt at the pyramid and the prism, supplied as candidate exact values for a maintainer-run recompute. Analytic side; no radius or stability claimed | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
 
 ## LATER (gated)
 
@@ -29,11 +28,11 @@
 
 ---
 
-## STATUS AT A GLANCE (2026-09-13)
+## STATUS AT A GLANCE (2026-09-18)
 
 | Question | Answer |
 | --- | --- |
-| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), and M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13). M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). Nothing is in progress |
+| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13), and M8.11 showed, as an audited argument, that those expansions and the two at the pyramid and the prism are Taylor expansions of local branch germs (2026-09-18). M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). Nothing is in progress |
 | What kind of column is it? | The platform's first top-down structural model: strong on the origin of the numbers (representation theory on S³/2I), absent on dynamics. The M8 program exists to supply the dynamics half |
 | What decides the program? | Field dynamics remains the decisive question (does ANY reasonable Lagrangian on S³/2I realize the McKay slot structure?), and it stands without a live route in this column. Per [#512](https://github.com/openwave-labs/openwave/discussions/512), the two MODELS.md criteria gated on it stay open and nothing is pending; a future program is reviewed on arrival, under run-before-write and the maintainer-reproduction rule |
 | Evidence discipline | The author's own claim ledger is adopted as the grading baseline (structural results = the core; the numeric mass table = low weight, capped by the author's own pre-registered nulls); platform standards (pre-registration, adversarial audit, method notes) apply from day one |
@@ -77,6 +76,7 @@
 | [M8.5-C](tasks/m8_5_task_details.md) | Spectral dynamics substrate for S³/2I | ❌ Closed 2026-08-31, row retired 2026-09-11: `M8.5-C2-FAILED`, instrument-attributed STOP-QUAL ([#506](https://github.com/openwave-labs/openwave/issues/506)). Attempt C2-A1 was terminated on unit misconduct and no gate measured red; the spectral route and the M8.4 reopening path close. C's A1 stands terminated non-adjudicated ([#501](https://github.com/openwave-labs/openwave/issues/501)). Record: [addendum 1](findings/m8_5c2_protocol.md), [room](m8_5c2/a1/) | 2026-08-31 |
 | [M8.1.2](tasks/m8_1_2_task_details.md) | Third blind run: the fourth bedrock paper | ✅ ALL 21 FROZEN CLAIMS REPRODUCE, adjudicated before the author's package opened. Two blind agents, a two-stage packet with the group given by generators, and an adversarial audit that refuted no value; both agents proved the spin-8 zero set with the normalizing hint withheld. ⚠️ The packet's `w_K` wording was loose; the paper's is not. [Method note](findings/m8_1_2_method_note.md) | 2026-09-10 |
 | [M8.10](tasks/m8_10_task_details.md) | First correction at the level-6 critical rays | ✅ ALL FROZEN CLAIMS REPRODUCE: two blind agents in separate rooms derived the 36 level norms and the eight `λ₄/g²` exactly, so the candidate rationals stand as exact results; `λ₄ < 0` argued two ways, and the `R5` negative control fired unmarked. ⚠️ Four solver checks could not fail and the block cubic's `M_K` form is not unique; no value moves. [Method note](findings/m8_10_method_note.md) | 2026-09-13 |
+| [M8.11](tasks/m8_11_task_details.md) | Local branch germs at the level-6 critical rays, and the order-`a²` tilt | ✅ ALL FROZEN VALUES REPRODUCE, and the existence theorem passes as an **audited argument**: two blind agents derived every value exactly, including the tilt at the pyramid and the prism, and an auditor graded the author's proof. Local germs for sufficiently small amplitude; no radius or stability. ⚠️ The `λ₄` lemma's sign step needs M8.10's level sets and does not stand alone. [Method note](findings/m8_11_method_note.md) | 2026-09-18 |
 
 ## CHANGE-LOG
 
@@ -330,3 +330,15 @@ landing and is recorded in the task doc's
 [provenance comparison](tasks/m8_10_task_details.md#provenance-comparison-2026-09-13). The M8.10 row, left in the
 Backlog when the task moved to [DONE](#done), is removed, and the Backlog is empty. Bookkeeping only; no scope or
 evidence change.
+
+**M8.11 CLOSE-OUT: LOCAL BRANCH GERMS AT THE LEVEL-6 CRITICAL RAYS (2026-09-18).** The author proposed M8.11 under
+the [#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036) follow-up
+([#554](https://github.com/openwave-labs/openwave/pull/554)): one local existence theorem for branch germs at six
+level-6 critical rays, and the order-`a²` tilt at the pentagonal pyramid and the trigonal prism as candidate exact
+values. The maintainer ran it on 2026-09-18, the first run in the headless clean-room mode: two blind agents in
+separate rooms, then an auditor stage that graded the author's proof step by step. Every frozen value reproduces, and
+T1, S1 and C2's lemma pass as audited arguments, the label for a proof graded by one AI auditor and read by the
+designer. The auditor's DEFECT on the `λ₄` lemma's sign step was overruled as a packet artifact, with the reason
+recorded. No radius, stability or finite-amplitude claim is made; no MODELS.md cell moves and M8.7's gate is unchanged.
+The author's package lands in its own PR for the provenance comparison. Record:
+[method note](findings/m8_11_method_note.md).

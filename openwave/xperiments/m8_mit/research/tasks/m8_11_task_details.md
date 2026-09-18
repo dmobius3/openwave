@@ -3,7 +3,7 @@
 > Roadmap row: [`../m8_roadmap.md`](../m8_roadmap.md) M8.11 (**author-proposed, maintainer-run**).
 > Standing: [#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036).
 > Parents: [`m8_10_task_details.md`](m8_10_task_details.md) and [`m8_1_2_task_details.md`](m8_1_2_task_details.md).
-> Status: PROPOSED 2026-09-13, author-drafted; registration and go pending.
+> Status: DONE 2026-09-18: every frozen value reproduces blind; T1, S1 and C2's lemma pass as audited arguments. Maintainer-run, headless rooms.
 
 ## TASK PLANNING
 
@@ -329,10 +329,119 @@ M8.10's [go-time items](m8_10_task_details.md#to-be-fixed-at-go-before-numerics)
 
 From the designer's freeze, the values stop moving on the author's side: no edit because a computed result disagrees with a frozen value. A disagreement is a result, and a claim that this text is defective goes to maintainer reproduction under #512. This binds the author, not the maintainers.
 
+## GO-TIME PRE-REGISTRATION (2026-09-18, go 11:50 EDT)
+
+Written by the designer and frozen before any room received a packet. Nothing in this section is edited after the rooms launch; anything the run forces off it goes in the deviations log below.
+
+### The go-time checklist, answered
+
+| Item | Decision |
+| --- | --- |
+| Deposit pin | unchanged from M8.10's go ([#546](https://github.com/openwave-labs/openwave/pull/546) review): MD5 `d2405316e20c060f53d338c1516298bc` |
+| Engine pin | `wave_engine.py` blob SHA-256 `6520ca41762cc4078660c00fd7bc4279094927f9182e09b0b373aa5dbe72a001` at `main` `3e116e3d`, unchanged |
+| Claims frozen | the claims tables above, as written, with no value edited. A designer transcription (`frozen_claims.json`, SHA-256 `272a79100acaad739011eba6eae15fc9372891951ee0095ee99f55a3b8d6117f`) was checked against this file and against the tables' own identities before launch: `λ₂/g = 1 + w₆ r̂₆`, `L_T = (w₆/4) Hess_T r̂₆`, A3's `F = −√(d/7)·R`, tilt `= −F/L_T`, `‖v‖² =` tilt², `λ₄/g² = −3 Σ (n(n+2) − 48) ‖Π_n ξ‖²/g²` at all four new expansions, both sector ratios and N1's `(3/4) w₆ · 115√3/528`, all exact |
+| Instrument | the offered worklist, adopted unchanged (SHA-256 `d0895cf4...`, the file reviewed at [#554](https://github.com/openwave-labs/openwave/pull/554)). It already asks items 4 to 8 at all six fibre vectors, so no ray is marked |
+| Handout audit | maintainer-side: the semantic read at the #554 review, and a go-time gate over the 53 fractions, 18 decimals and 123 integers of three or more digits in the claims section, plus 56 withheld terms (claim IDs, ray names and labels, author, model, repositories, paper). The only matches are `1/4`, `12/25` and `23/10`, which define the fibre vectors and N1's point. A planted value and term fire the gate |
+| Run format | two blind rooms, then the auditor's second stage over the solver's work and the theorem text, per the roles table below. Earns blind for the values; the arguments earn the label below |
+| Exactness rule | #547's, unchanged: exact means a symbolic derivation, or an identification that states its precision, denominator bound and field, repeated at a second precision. Equality with a frozen value is decided symbolically, so any equivalent radical form matches. The record labels each value by the route that produced it |
+| Argument grading | T1, S1 and C2's lemma are graded as arguments, by the auditor at stage 2, one verdict per step: **ESTABLISHED** (the stated route holds, or the auditor supplies an equivalent derivation, shown), **GAP** (the step cannot be established) or **DEFECT** (a false statement, or a necessary hypothesis left unstated, even if the result can be rescued). T1 passes only if the auditor's own stage-1 argument establishes the result, locating the trivial branch's division and what fails without it, and every step of T.a to T.e is ESTABLISHED. A GAP gives a partial verdict and a DEFECT fails the claim, per its row. The designer reads the grading and may overrule a verdict only with a stated reason in the method note. The solvers' item-10 arguments are the diagnostic of T1's row, scored on its seven elements |
+| Label | a passing argument is recorded as an **audited argument**: checked step by step by one AI auditor and read by the designer. It is never recorded as a verified or proven theorem, since AI agents sit on both the drafting and the checking side ([`AI_HYGIENE.md`](../../../../../AI_HYGIENE.md)) |
+| Compute | each room's interpreter pins the math libraries to one thread and runs at `nice 15`: Python 3.12.14, numpy 2.5.3, scipy 1.18.1, sympy 1.14.0, mpmath 1.3.0 |
+| Answer-key containment | the table below |
+| Author's package | not in the repository. The provenance comparison waits for its landing PR, after the verdict |
+
+| Packet file | Room | SHA-256 | Bytes |
+| --- | --- | --- | --- |
+| `worklist.md` | both | `d0895cf4327ef162df58b62a322fceac3a3f2095a78992bc3e88443cc4e35c17` | 10,638 |
+| `BRIEF.md` (solver) | solver | `f5fa720e6453184b09c1b7cd750c03c4126faf6d807db9285c555b42451e2216` | 1,908 |
+| `BRIEF.md` (auditor, stage 1) | auditor | `7b16836de313aad826009a6a2719c2eff3a14f8c42b0807d1c08ede8e29e8b51` | 2,432 |
+| `BRIEF_stage2.md` | auditor, stage 2 | `e4822e54a180cf150d96e62511ec87554705a0569b0830f50115fc4ab4c9d1f7` | 2,347 |
+| `THEOREM.md` | auditor, stage 2 | `2b25f48ace681cff392eb547f3913f7eb0b589d64da927bf7c695a7df90e9e74` | 7,283 |
+
+`THEOREM.md` transcribes the setting's symmetry and fixed-space paragraphs, Theorem T (T.a to T.e), E1, E2's expansion and loci, the bridge, the `λ₄` lemma and the S lemma, with references to the paper and to parent tasks removed and no frozen value except the gap `32` or `72` and the prism parameter. The packet files land beside the returns at FINISH, under `m8_11/`.
+
+### Containment: where the answer key lives, and what walls it off
+
+The frozen claims live in this file, in a maintainer worktree outside the rooms. Both rooms run headless, per [`CLEAN_ROOM_STANDARDS.md` § 3.4](../../../../../dev_docs/CLEAN_ROOM_STANDARDS.md), launched by [`clean_room_launch.sh`](../../../../../dev_docs/utils/clean_room_launch.sh) in neutral folders under `/tmp/cr-20260918-m811/`. No in-session subagent is used at any step.
+
+| Route to the answers | Guard |
+| --- | --- |
+| This file, M8.1.2's and M8.10's records, every repository | the session's file tools are restricted to the room; the shell runs only `./py`, whose OS sandbox refuses every read under `/Users` and `/private/tmp` except the room |
+| Web search and fetch, connectors, skills, spawning agents | the session has four tools (read, write, edit, shell), no MCP server and no slash command |
+| Instruction files and memory | `--restricted` loads none; the launcher aborts on any instruction file on the room's ancestor path |
+| The Python route | `import openwave` must fail from the room, and the sandbox must refuse an outside read that succeeds unsandboxed, or the launch aborts |
+| Network | refused to the interpreter by the sandbox |
+| What still reaches a room | the account email and the room's own path, disclosed in § 3.4 |
+| After the run | every tool call in each stream-json transcript is classified against the room; a call outside it is a protocol failure |
+
+### Roles and ordering
+
+| Step | Who | Receives | Before the next step |
+| --- | --- | --- | --- |
+| 1 | solver and auditor, in parallel, separate rooms | the worklist and a brief. The auditor writes its method, including its item-10 outline, before computing, on a route with no library coupling tables | each return snapshotted and hashed outside the room |
+| 2 | auditor, a second headless launch in the same room | its own saved stage-1 files, the solver's work and `THEOREM.md` | per-item verdicts on the solver, a hunt for checks that cannot fail, and the per-step grades of `THEOREM.md` |
+| 3 | designer | everything | comparison against the frozen claims, X0 as a precondition and X1 to X5 recorded apart from the verdicts; the argument grades read and recorded |
+| 4 | designer, only after the verdict is recorded | the author's package, when it lands | provenance comparison, with the agreement and disagreement asymmetry stated |
+
+### Definition of done, finalized
+
+| # | Item |
+| --- | --- |
+| 1 | Solver and auditor returns, scripts and data in the repository, under `scripts/m8_11_solver/` and `scripts/m8_11_audit/` |
+| 2 | Adversarial audit with its own method, per-item verdicts, a hunt for checks that cannot fail, and the per-step argument grades |
+| 3 | Designer comparison against the frozen claims, every number stated; diagnostics recorded apart from the verdicts |
+| 4 | Transcript audit of every room session |
+| 5 | Method note `findings/m8_11_method_note.md`: equations first, equation-to-code map, audit record, manifests |
+| 6 | Author package landed byte-identical to its hashes and compared for provenance only after the verdict, with the asymmetry stated (its own PR) |
+| 7 | Doc sync (roadmap row and briefing), doc checker and roadmap linter exit 0, TASK REVIEW presented |
+
 ## DEVIATIONS LOG
 
-(none)
+| Date | Deviation | Disposition |
+| --- | --- | --- |
+| 2026-09-18 | The containment table says the shell runs only `./py`. The permission layer also allowed shell writes into the room by redirection and a `time` prefix, which run outside the interpreter sandbox; four other commands were refused automatically | Every such call is classified in the transcript audit: all paths stayed in the room ([method note § 6](../findings/m8_11_method_note.md#6-containment-record)) |
+| 2026-09-18 | The solver read the output files of three of its own background commands, and the auditor at stage 2 read one of its own oversized tool outputs; the harness writes both to per-session folders outside the room and points the session at them | Each folder held only that session's own output, and no other file outside a room was touched. The route is open in principle; § 3.4 of the clean-room standards should name it |
+| 2026-09-18 | A desktop file browser, not an agent, created `.DS_Store` files in the run folder and the auditor's room while the rooms ran | The auditor only listed it; no agent read it. Excluded at landing |
+| 2026-09-18 | The stage-2 packet ([`../m8_11/theorem_stage2.md`](../m8_11/theorem_stage2.md)) removed references to the paper and to parent tasks. It rendered "By M8.10's argument" as "By an earlier argument, not supplied here", and it omitted the value paragraphs, including the second variations that E2's nondegeneracy rests on | The auditor graded the `λ₄` lemma a DEFECT for an unstated hypothesis (every non-block level above 6) and noted E2 does not state nondegeneracy. The designer overruled the first and cleared the second, both as packet artifacts, with the reasons in [method note § 5.3](../findings/m8_11_method_note.md#53-the-arguments-graded) |
+| 2026-09-18 | The auditor re-imported one stage-1 script at stage 2, which rewrote three of its stage-1 output files | Disclosed by the auditor; byte-identical to its stage-1 clean run, and all 72 stage-1 files match their stage-1 hashes |
+| 2026-09-18 | The agents' console logs carried a `.log` extension, which the repository ignores, and their returns were named `RETURN.md`, `AUDIT_STAGE1.md` and `AUDIT_STAGE2.md` | Landed as `*_log.txt` and `*_return.md`, content unchanged. Binary caches (`*.pkl`), the auditor's clean-run copy, its mutation copies and its rerun of the solver are not landed; the unedited bytes of every agent file are hashed in the maintainer's run checkpoints |
+
 
 ## FINDINGS
 
-(pending)
+Full record with the equations, the code map and the audit: [`../findings/m8_11_method_note.md`](../findings/m8_11_method_note.md).
+
+| ID | Finding |
+| --- | --- |
+| F1 | **Every frozen value reproduces blind.** A1 to D4, N1 and X0 match in both agents: 104 of 104 scripted checks each, by separate implementations that never saw a claimed value. The auditor then confirmed the solver on 490 of 490 paired values and reran its code byte-identically |
+| F2 | **The candidate values are now derived.** The auditor computed every value exactly, in multi-quadratic arithmetic with its own coupling coefficients, including the tilt in `√39·ℚ` and `√115·ℚ` and the eighteen new level norms; the solver derived most exactly and identified the rest at two precisions |
+| F3 | **Local branch germs exist at all six rays, as an audited argument.** Both agents gave their own complete existence argument, blow-up and division by `a³` before the implicit function theorem, on a slice transverse to the symmetry orbit. The auditor graded T.a to T.e ESTABLISHED step by step. T1, S1 and C2's lemma pass as audited arguments, not as verified theorems |
+| F4 | ⚠️ **The `λ₄` lemma's sign step does not stand alone.** "`λ₄ < 0` since `Q ≠ 1`" needs every non-block level above 6, which the frozen text carries only by citing M8.10. The auditor's DEFECT on the transcribed text was overruled as a packet artifact, and the claim passes on both agents' own complete arguments |
+| F5 | **The tilt is forced and correct.** Both agents found the order-`a⁵` block equation's tangential part equal to the forcing without the tilt and exactly zero with it, the orbit direction `i·e_t` null, and no `τ_y` component at the prism, with the handout asking the same questions at all six rays |
+| F6 | ⚠️ **Several solver checks cannot fail.** Its item 9 reason lines attach labels without reading a verification, its spectral-gap line cannot see a level below 6, and two `results.json` fields are literals. No number is affected, since the auditor reproduced each by its own exact route |
+| F7 | **Containment held on the record, with one open route.** No call reached answer-bearing material. The only reads outside a room were a session's own outputs, reached through harness pointers that `--restricted` allows |
+
+## TASK REVIEW (2026-09-18)
+
+Task Duration: 01:31 (from 11:50 to 13:21)
+Usage Cap Triggered: NO
+
+Approved by the maintainer on 2026-09-18.
+
+| Result | Status |
+| --- | --- |
+| Every frozen value, A1 to D4 and N1, reproduced blind: 104 of 104 scripted checks in each agent | ✅ |
+| Every value derived exactly by the auditor, including the tilt and the 18 new level norms; the solver confirmed on 490 of 490 paired values and its code rerun byte-identically | ✅ |
+| T1, local branch germs at all six rays: the author's proof graded ESTABLISHED at every step, and the auditor's own stage-1 argument establishes the result | ✅ audited argument |
+| S1, the prism's symmetry, with the section-level lift derived | ✅ audited argument |
+| C2, the `λ₄` lemma: the auditor's DEFECT overruled as a packet artifact, and both agents' own sign arguments complete | ✅ audited argument, ⚠️ F4 |
+| Several solver checks cannot fail | ⚠️ no value moves |
+| Harness pointers let a room read its own outputs outside the room, and `--restricted` allows it | ⚠️ for the clean-room standards |
+
+| Remaining | Where |
+| --- | --- |
+| Provenance comparison against the author's package | its landing PR, under `research/scripts/m8_11_author/` |
+
+**Findings.** At the four symmetry-pinned rays and at the pentagonal pyramid and trigonal prism, the formal expansions are Taylor expansions of local branch germs, for sufficiently small amplitude, established as an audited argument rather than a verified theorem. The order-`a²` tilt at the two new rays is now an exact result, derived blind by two agents. No radius, stability or finite-amplitude claim is made.
+
+**Research docs created/updated.** [Task doc](m8_11_task_details.md), [method note](../findings/m8_11_method_note.md), [roadmap](../m8_roadmap.md), [briefing](../../__M8_model_briefing.md), [canonical](../m8_theory_canonical.md), [solver scripts](../scripts/m8_11_solver/), [audit scripts](../scripts/m8_11_audit/), [packet as run](../m8_11/).

@@ -1,0 +1,656 @@
+{
+ "log": [
+  {
+   "label": "sector 3: conj(P) = R P R exactly (P is a real-coefficient class-sum polynomial)",
+   "ok": true,
+   "mutant": "P with one entry doubled",
+   "mutant_caught": true
+  },
+  {
+   "label": "sector 3: S maps the block right factor P to P exactly",
+   "ok": true,
+   "mutant": "(implied by the line above)",
+   "mutant_caught": null
+  },
+  {
+   "label": "sector 4: conj(P) = R P R exactly (P is a real-coefficient class-sum polynomial)",
+   "ok": true,
+   "mutant": "P with one entry doubled",
+   "mutant_caught": true
+  },
+  {
+   "label": "sector 4: S maps the block right factor P to P exactly",
+   "ok": true,
+   "mutant": "(implied by the line above)",
+   "mutant_caught": null
+  },
+  {
+   "label": "derived fibre action of S equals conj(psi(r^-1 g)) R pointwise on all levels (dev < 1e-12)",
+   "ok": true,
+   "mutant": "r used instead of r^-1 (degenerate at U6, whose stabilizer contains r^2); R dropped",
+   "mutant_caught": true
+  },
+  {
+   "label": "S preserves pointwise |psi| and commutes with N pointwise (dev < 1e-12)",
+   "ok": true,
+   "mutant": "(covered by the formula mutant)",
+   "mutant_caught": null
+  },
+  {
+   "label": "S keeps the sector: (S f)(g h) = (S f)(g) D^3(h) for h = q1, q2 (dev < 1e-12)",
+   "ok": true,
+   "mutant": "(see the conj(P) mutant)",
+   "mutant_caught": null
+  },
+  {
+   "label": "Theta on the chart: Theta u(z) = -1 * u(-conj z)",
+   "ok": true,
+   "mutant": "compare with u(conj z)",
+   "mutant_caught": true
+  },
+  {
+   "label": "R_z(pi/3) on the chart: u(z) -> -1 * u(-z)",
+   "ok": true,
+   "mutant": "compare with u(z)",
+   "mutant_caught": true
+  },
+  {
+   "label": "S = R_z(pi/3) o Theta on the chart: u(z) -> 1 * u(conj z) (no phase)",
+   "ok": true,
+   "mutant": "compare with u(z)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: S Phi = Phi exactly",
+   "ok": true,
+   "mutant": "compare with i Phi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: S xi = xi exactly at every level [10, 14, 16, 18]",
+   "ok": true,
+   "mutant": "compare with -xi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: forcing fibre Pi_6 DN_Phi[xi] is S-even",
+   "ok": true,
+   "mutant": "compare with minus",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: S tau_x = tau_x and S tau_y = -tau_y exactly",
+   "ok": true,
+   "mutant": "claim S tau_y = +tau_y",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: L commutes with S exactly (so B(tau_x, tau_y) = 0)",
+   "ok": true,
+   "mutant": "L with a symmetric real/imag coupling added",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: kappa is S-even and its tau_y component is exactly 0",
+   "ok": true,
+   "mutant": "i kappa",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: L_T(tau_y, tau_y) = 56/429 != 0 (needed for v_y = 0)",
+   "ok": true,
+   "mutant": "(value)",
+   "mutant_caught": null
+  },
+  {
+   "label": "U6 s4: S Phi = Phi exactly",
+   "ok": true,
+   "mutant": "compare with i Phi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: S xi = xi exactly at every level [8, 12, 14, 16, 18]",
+   "ok": true,
+   "mutant": "compare with -xi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: forcing fibre Pi_6 DN_Phi[xi] is S-even",
+   "ok": true,
+   "mutant": "compare with minus",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: S tau_x = tau_x and S tau_y = -tau_y exactly",
+   "ok": true,
+   "mutant": "claim S tau_y = +tau_y",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: L commutes with S exactly (so B(tau_x, tau_y) = 0)",
+   "ok": true,
+   "mutant": "L with a symmetric real/imag coupling added",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: kappa is S-even and its tau_y component is exactly 0",
+   "ok": true,
+   "mutant": "i kappa",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: L_T(tau_y, tau_y) = 21/286 != 0 (needed for v_y = 0)",
+   "ok": true,
+   "mutant": "(value)",
+   "mutant_caught": null
+  },
+  {
+   "label": "U5 s3 e_t: Q'' = -224/165 = 4 x form",
+   "ok": true,
+   "mutant": "4 x (form + 1/7), and 4 x (form + Q)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s3 i_e_t: Q'' = 0 = 4 x form",
+   "ok": true,
+   "mutant": "4 x (form + 1/7), and 4 x (form + Q)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s3 cross (e_t, i_e_t): polarized Q''/4 = 0 = form",
+   "ok": true,
+   "mutant": "form + 1",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s4 e_t: Q'' = -42/55 = 4 x form",
+   "ok": true,
+   "mutant": "4 x (form + 1/7), and 4 x (form + Q)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s4 i_e_t: Q'' = 0 = 4 x form",
+   "ok": true,
+   "mutant": "4 x (form + 1/7), and 4 x (form + Q)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s4 cross (e_t, i_e_t): polarized Q''/4 = 0 = form",
+   "ok": true,
+   "mutant": "form + 1",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3 tau_x: Q'' = 25760/18447 = 4 x form",
+   "ok": true,
+   "mutant": "4 x (form + 1/7), and 4 x (form + Q)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3 tau_y: Q'' = 224/429 = 4 x form",
+   "ok": true,
+   "mutant": "4 x (form + 1/7), and 4 x (form + Q)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3 cross (tau_x, tau_y): polarized Q''/4 = 0 = form",
+   "ok": true,
+   "mutant": "form + 1",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4 tau_x: Q'' = 4830/6149 = 4 x form",
+   "ok": true,
+   "mutant": "4 x (form + 1/7), and 4 x (form + Q)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4 tau_y: Q'' = 42/143 = 4 x form",
+   "ok": true,
+   "mutant": "4 x (form + 1/7), and 4 x (form + Q)",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4 cross (tau_x, tau_y): polarized Q''/4 = 0 = form",
+   "ok": true,
+   "mutant": "form + 1",
+   "mutant_caught": true
+  },
+  {
+   "label": "U1 s3: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (368/9009+-184/3861*I)*sqrt(21)",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U1 s3: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U1 s3: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 406798/535007187 > 0, Q = 1288/1287 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U1 s4: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (-981/8008+327/1144*I)*sqrt(7))",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U1 s4: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U1 s4: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 750141/1690886912 > 0, Q = 2289/2288 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s3: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (-1205/9009+-241/3861*I)*sqrt()",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s3: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s3: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 183240400/535007187 > 0, Q = 1687/1287 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s4: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (-240/1001+-48/143*I)*sqrt(7))",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s4: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s4: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 595350/6605027 > 0, Q = 168/143 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U3 s3: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (25/2002+25/858*I)*sqrt(42))",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U3 s3: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U3 s3: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 1074080/6605027 > 0, Q = 175/143 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U3 s4: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (69/1001+46/429*I)*sqrt(14))",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U3 s4: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U3 s4: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 757638/6605027 > 0, Q = 161/143 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U4 s3: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (-250/9009+-125/1287*I)*sqrt(4)",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U4 s3: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U4 s3: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 129760330/535007187 > 0, Q = 1750/1287 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U4 s4: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (-393/16016+-1179/2288*I)*sqrt)",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U4 s4: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U4 s4: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 264217653/1690886912 > 0, Q = 2751/2288 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s3: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (-66/2275+-22/65*I)*sqrt(7) + )",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s3: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s3: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 1303988/6823375 > 0, Q = 77/65 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s4: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (82/2275+41/390*I)*sqrt(91))",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s4: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U5 s4: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 8291241/109174000 > 0, Q = 287/260 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (476/216333+-1666/648999*I)*sq)",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 43538303200/351543937329 > 0, Q = 5831/5031 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: <Phi, DN_Phi v> = 2X + conj X for a random block v (X = (174/168259+348/24037*I)*sqrt()",
+   "ok": true,
+   "mutant": "3X",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: X = <N(Phi), kappa> = 0 exactly",
+   "ok": true,
+   "mutant": "X at the random v",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 = 371564550/4340048609 > 0, Q = 609/559 != 1",
+   "ok": true,
+   "mutant": "forget -Q^2",
+   "mutant_caught": true
+  },
+  {
+   "label": "sector 3 (T.a, lambda_4 sign): levels [6, 10, 14, 16, 18]; none below 6; nearest other level 10, gap 72",
+   "ok": true,
+   "mutant": "(read from my item 1)",
+   "mutant_caught": null
+  },
+  {
+   "label": "sector 4 (T.a, lambda_4 sign): levels [6, 8, 12, 14, 16, 18]; none below 6; nearest other level 8, gap 32",
+   "ok": true,
+   "mutant": "(read from my item 1)",
+   "mutant_caught": null
+  },
+  {
+   "label": "U5: P_perp(i conj(J_z) u) = -2/5*sqrt(39) * (i e_t) exactly, real multiple (orbit direction)",
+   "ok": true,
+   "mutant": "real multiple of e_t",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6: no nonzero X in su(2) preserves K_H (Gram determinant of the leakage map = 2916 != 0)",
+   "ok": true,
+   "mutant": "(value)",
+   "mutant_caught": null
+  },
+  {
+   "label": "s3: Hess_T Q invertible on the slices: U5 -224/165; U6 det = 5770240/7913763",
+   "ok": true,
+   "mutant": "(values)",
+   "mutant_caught": null
+  },
+  {
+   "label": "s4: Hess_T Q invertible on the slices: U5 -42/55; U6 det = 202860/879307",
+   "ok": true,
+   "mutant": "(values)",
+   "mutant_caught": null
+  },
+  {
+   "label": "U3 s3: xi transforms by chi under the exact finite generators, all levels",
+   "ok": true,
+   "mutant": "-chi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U3 s4: xi transforms by chi under the exact finite generators, all levels",
+   "ok": true,
+   "mutant": "-chi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U4 s3: xi transforms by chi under the exact finite generators, all levels",
+   "ok": true,
+   "mutant": "-chi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U4 s4: xi transforms by chi under the exact finite generators, all levels",
+   "ok": true,
+   "mutant": "-chi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s3: xi transforms by chi under the exact finite generators, all levels",
+   "ok": true,
+   "mutant": "-chi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U6 s4: xi transforms by chi under the exact finite generators, all levels",
+   "ok": true,
+   "mutant": "-chi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s3: xi transforms by chi under the exact finite generators, all levels",
+   "ok": true,
+   "mutant": "-chi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s4: xi transforms by chi under the exact finite generators, all levels",
+   "ok": true,
+   "mutant": "-chi",
+   "mutant_caught": true
+  },
+  {
+   "label": "U1 s3: xi lives in torus weight 3 (character of the torus) at all levels",
+   "ok": true,
+   "mutant": "weight + 1",
+   "mutant_caught": true
+  },
+  {
+   "label": "U1 s4: xi lives in torus weight 3 (character of the torus) at all levels",
+   "ok": true,
+   "mutant": "weight + 1",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s3: xi lives in torus weight 0 (character of the torus) at all levels",
+   "ok": true,
+   "mutant": "weight + 1",
+   "mutant_caught": true
+  },
+  {
+   "label": "U2 s4: xi lives in torus weight 0 (character of the torus) at all levels",
+   "ok": true,
+   "mutant": "weight + 1",
+   "mutant_caught": true
+  }
+ ],
+ "bridge": {
+  "U5 s3 e_t": {
+   "Qpp": "-224/165",
+   "4*form": "-224/165"
+  },
+  "U5 s3 i_e_t": {
+   "Qpp": "0",
+   "4*form": "0"
+  },
+  "U5 s3 cross": {
+   "Qpp_polarized/4": "0",
+   "form": "0"
+  },
+  "U5 s4 e_t": {
+   "Qpp": "-42/55",
+   "4*form": "-42/55"
+  },
+  "U5 s4 i_e_t": {
+   "Qpp": "0",
+   "4*form": "0"
+  },
+  "U5 s4 cross": {
+   "Qpp_polarized/4": "0",
+   "form": "0"
+  },
+  "U6 s3 tau_x": {
+   "Qpp": "25760/18447",
+   "4*form": "25760/18447"
+  },
+  "U6 s3 tau_y": {
+   "Qpp": "224/429",
+   "4*form": "224/429"
+  },
+  "U6 s3 cross": {
+   "Qpp_polarized/4": "0",
+   "form": "0"
+  },
+  "U6 s4 tau_x": {
+   "Qpp": "4830/6149",
+   "4*form": "4830/6149"
+  },
+  "U6 s4 tau_y": {
+   "Qpp": "42/143",
+   "4*form": "42/143"
+  },
+  "U6 s4 cross": {
+   "Qpp_polarized/4": "0",
+   "form": "0"
+  }
+ },
+ "lambda4": {
+  "U1_s3": {
+   "Q": "1288/1287",
+   "sum_{n!=6}||Pi_n N||^2": "406798/535007187",
+   "int|Phi|^6 - Q^2": "406798/535007187"
+  },
+  "U1_s4": {
+   "Q": "2289/2288",
+   "sum_{n!=6}||Pi_n N||^2": "750141/1690886912",
+   "int|Phi|^6 - Q^2": "750141/1690886912"
+  },
+  "U2_s3": {
+   "Q": "1687/1287",
+   "sum_{n!=6}||Pi_n N||^2": "183240400/535007187",
+   "int|Phi|^6 - Q^2": "183240400/535007187"
+  },
+  "U2_s4": {
+   "Q": "168/143",
+   "sum_{n!=6}||Pi_n N||^2": "595350/6605027",
+   "int|Phi|^6 - Q^2": "595350/6605027"
+  },
+  "U3_s3": {
+   "Q": "175/143",
+   "sum_{n!=6}||Pi_n N||^2": "1074080/6605027",
+   "int|Phi|^6 - Q^2": "1074080/6605027"
+  },
+  "U3_s4": {
+   "Q": "161/143",
+   "sum_{n!=6}||Pi_n N||^2": "757638/6605027",
+   "int|Phi|^6 - Q^2": "757638/6605027"
+  },
+  "U4_s3": {
+   "Q": "1750/1287",
+   "sum_{n!=6}||Pi_n N||^2": "129760330/535007187",
+   "int|Phi|^6 - Q^2": "129760330/535007187"
+  },
+  "U4_s4": {
+   "Q": "2751/2288",
+   "sum_{n!=6}||Pi_n N||^2": "264217653/1690886912",
+   "int|Phi|^6 - Q^2": "264217653/1690886912"
+  },
+  "U5_s3": {
+   "Q": "77/65",
+   "sum_{n!=6}||Pi_n N||^2": "1303988/6823375",
+   "int|Phi|^6 - Q^2": "1303988/6823375"
+  },
+  "U5_s4": {
+   "Q": "287/260",
+   "sum_{n!=6}||Pi_n N||^2": "8291241/109174000",
+   "int|Phi|^6 - Q^2": "8291241/109174000"
+  },
+  "U6_s3": {
+   "Q": "5831/5031",
+   "sum_{n!=6}||Pi_n N||^2": "43538303200/351543937329",
+   "int|Phi|^6 - Q^2": "43538303200/351543937329"
+  },
+  "U6_s4": {
+   "Q": "609/559",
+   "sum_{n!=6}||Pi_n N||^2": "371564550/4340048609",
+   "int|Phi|^6 - Q^2": "371564550/4340048609"
+  }
+ }
+}

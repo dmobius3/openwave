@@ -1,0 +1,424 @@
+{
+ "task1_labels": {
+  "item0": {
+   "label": "CONFIRMED",
+   "comparison": "== on integers/booleans; exact sympy equality on |q|^2 and <3 3;3 -3|6 0>",
+   "values_compared": 6,
+   "values_agreeing": 6
+  },
+  "item1": {
+   "label": "CONFIRMED",
+   "comparison": "== on all 38 dim Hom entries (n = 0..18, both sectors) and the DERIVED declaration; intertwiner residuals: both below the common 1e-40 requirement at 50 digits",
+   "values_compared": 41,
+   "values_agreeing": 41
+  },
+  "item2": {
+   "label": "CONFIRMED",
+   "comparison": "sympy: simplify(radsimp(mine - theirs)) == 0 (theirs squared where it reports a norm and I report a squared norm) for Q (12) and r6hat (6); == on the multiple-of-Phi and stationarity flags",
+   "values_compared": 36,
+   "values_agreeing": 36
+  },
+  "item3": {
+   "label": "CONFIRMED",
+   "comparison": "== on the block chi-subspace dimension and on the chi-subspace dimensions of V_J, J = 0..9 (60); stabilizer orders; and st2_item3.py: the solver's closed-form generators applied with MY D-matrices fix [u] with the claimed characters (residual <= 7.8e-16), generate groups of orders 48, 24, 10, 12, and the character is a homomorphism on each whole group (<= 2.6e-15). Float-level on both sides (neither worker certified the finite stabilizers exactly).",
+   "values_compared": 72,
+   "values_agreeing": 72
+  },
+  "item4": {
+   "label": "CONFIRMED",
+   "comparison": "sympy: simplify(radsimp(mine - theirs)) == 0 (theirs squared where it reports a norm and I report a squared norm) for every ||Pi_n xi||^2/g^2 (level 6: their explicit 0 vs my 'not listed, 0 by definition') and for every ||Pi_n N||^2; == on the character flag",
+   "values_compared": 144,
+   "values_agreeing": 144
+  },
+  "item5": {
+   "label": "CONFIRMED",
+   "comparison": "sympy: simplify(radsimp(mine - theirs)) == 0 (theirs squared where it reports a norm and I report a squared norm) for along-Phi, perp norm (squared), e_t / i e_t / tau_x / tau_y components and remainders",
+   "values_compared": 48,
+   "values_agreeing": 48
+  },
+  "item6": {
+   "label": "CONFIRMED",
+   "comparison": "sympy: simplify(radsimp(mine - theirs)) == 0 (theirs squared where it reports a norm and I report a squared norm) for the forms and the r6hat second derivatives, including cross terms (same polarized reading)",
+   "values_compared": 15,
+   "values_agreeing": 15
+  },
+  "item7": {
+   "label": "CONFIRMED",
+   "comparison": "sympy: simplify(radsimp(mine - theirs)) == 0 (theirs squared where it reports a norm and I report a squared norm) for ||kappa||^2, components, remainders and the perp equation without kappa; == on free-direction dimensions; with-kappa perp equation: mine exact 0, theirs '0 (residual < 1e-120 at 120 digits)'",
+   "values_compared": 60,
+   "values_agreeing": 60
+  },
+  "item8": {
+   "label": "CONFIRMED",
+   "comparison": "sympy: simplify(radsimp(mine - theirs)) == 0 (theirs squared where it reports a norm and I report a squared norm) for lambda4/g^2 with and without kappa; sign: both 'negative for every g != 0' (their field is a literal in s99_assemble.py, but their values and argument support it)",
+   "values_compared": 36,
+   "values_agreeing": 36
+  },
+  "item9": {
+   "label": "PARTIAL",
+   "comparison": "set of computed zeros in items 4-8 mapped onto a common vocabulary: both set differences empty; unresolved: 0 = 0. PARTIAL because one of their reasons is incomplete as stated (the with-kappa perpendicular equation is 'zero by construction', which needs the solvability / Noether argument they give only in item 10) and their machine check of reasons (s09) cannot fail (mutations m1, m2, m5).",
+   "values_compared": 2,
+   "values_agreeing": 2
+  },
+  "item10": {
+   "label": "CONFIRMED",
+   "comparison": "== on existence (yes for all six), orbit dimension in Phi-perp (2,2,3,3,3,3), rank 12 - orbit, gaps 72/32; arguments compared in task 4 (both correct)",
+   "values_compared": 20,
+   "values_agreeing": 20
+  },
+  "item11": {
+   "label": "CONFIRMED",
+   "comparison": "sympy: simplify(radsimp(mine - theirs)) == 0 (theirs squared where it reports a norm and I report a squared norm) for r6hat and Re<Phi, DN e_t> in both sectors; == on stationarity (no) and Pi6N parallel (no); their |grad|^2 = 13225/92928 equals the sum of squares of my two nonzero gradient components",
+   "values_compared": 8,
+   "values_agreeing": 8
+  },
+  "item12": {
+   "label": "CONFIRMED",
+   "comparison": "each side below its own declared requirement: mine 8.5e-15 < 1e-10 (float64), theirs 1.5e-29 < 1e-25 (30 digits); levels 20, 22 empty on both sides",
+   "values_compared": 2,
+   "values_agreeing": 2
+  }
+ },
+ "task2_reproduction": {
+  "reproduces_own_results": true,
+  "detail": "./py solver_rerun/run_all.py from a clean copy: 503 PASS, 0 FAIL; results.json identical (recursive diff: 0 differences); all 11 results/*.json byte-identical; log identical line by line (964 lines) after masking timings"
+ },
+ "task3_mutations": {
+  "m1_s09_antiunitary_unverified": {
+   "n_PASS": 12,
+   "n_FAIL": 0,
+   "lines": [
+    "PASS U5 sector 3: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+    "PASS U5 sector 3: kappa_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2), ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)",
+    "PASS U5 sector 4: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+    "PASS U5 sector 4: kappa_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2), ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)",
+    "PASS U6 sector 3: DNxi_perp_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+    "PASS U6 sector 3: kappa_comp_tau_y = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+   ]
+  },
+  "m2_s09_spurious_zero": {
+   "n_PASS": 4,
+   "n_FAIL": 0,
+   "lines": [
+    "PASS U1 sector 3: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+    "PASS U1 sector 3: form cross term (tau_x, tau_y) = 0 (computed) explained by ANTIUNITARY",
+    "PASS U6 sector 3: form on i e_t (and rhat6'') = 0 (computed) explained by ORBIT (i e_t is tangent to the R_z orbit; Hessian of an invariant function vanishes on orbit tangents at a critical point)",
+    "PASS no unresolved zero  [0 unresolved]"
+   ]
+  },
+  "m3_s10_level_below_6": {
+   "n_PASS": 14,
+   "n_FAIL": 0,
+   "lines": [
+    "PASS sector 3: 48 is an eigenvalue only at level 6 (levels [6, 10, 14, 16, 18])",
+    "PASS sector 4: 48 is an eigenvalue only at level 6 (levels [2, 4, 6, 8, 12, 14, 16, 18])",
+    "PASS U1: H1 critical point (exact) in both sectors",
+    "PASS U1: H2 nondegenerate modulo symmetry: rank 10 + orbit dim 2 = 12, ker L = orbit tangents",
+    "PASS U2: H1 critical point (exact) in both sectors",
+    "PASS U2: H2 nondegenerate modulo symmetry: rank 10 + orbit dim 2 = 12, ker L = orbit tangents"
+   ]
+  },
+  "m4_s03_wrong_character": {
+   "n_PASS": 4,
+   "n_FAIL": 1,
+   "lines": [
+    "FAIL U4: closed-form generator fixes [u] with character (1.0 + 0.0j)  [(-1.0 + 0.0j)]",
+    "PASS U4: closed-form generator fixes [u] with character (-1.0 + 0.0j)  [(-1.0 + 0.0j)]",
+    "PASS U4: closed-form generators generate a group of order 24 in SU(2) = 2 x (search count 12)",
+    "PASS U4: every rotation found by the complete search lies in the generated group",
+    "PASS U4: every element of the generated group fixes [u] (character values of modulus 1)"
+   ]
+  },
+  "m9_s01_odd_levels": {
+   "n_PASS": 2,
+   "n_FAIL": 2,
+   "lines": [
+    "FAIL sector 3: numerical intertwiner counts equal exact dims at even n  [[0, 0, 0, 1, 0, 1, 0, 1, 1, 1]]",
+    "PASS sector 3: exact dims vanish at every odd n",
+    "FAIL sector 4: numerical intertwiner counts equal exact dims at even n  [[0, 0, 0, 1, 1, 0, 1, 1, 1, 2]]",
+    "PASS sector 4: exact dims vanish at every odd n"
+   ]
+  },
+  "m11_s99_sign_literal": {
+   "n_PASS": 0,
+   "n_FAIL": 0,
+   "lines": []
+  },
+  "m7_s12_casimir": {
+   "n_PASS": 6,
+   "n_FAIL": 2,
+   "lines": [
+    "FAIL U1 sector 3: |(-Delta-48)xi + N - Pi6 N| over all levels <= 18  [0.000985]",
+    "PASS U1 sector 3: quadrature N equals algebraic N at every level (all copies)  [9.79e-30]",
+    "PASS U1 sector 3: quadrature N has no part outside V_J (x) Hom(sigma, V_J)  [9.72e-30]",
+    "PASS U1 sector 3: quadrature N has no component at levels 20, 22  [2.83e-29]",
+    "FAIL U1 sector 4: |(-Delta-48)xi + N - Pi6 N| over all levels <= 18  [0.000571]",
+    "PASS U1 sector 4: quadrature N equals algebraic N at every level (all copies)  [1.49e-29]"
+   ]
+  },
+  "m8_s12_control": {
+   "n_PASS": 8,
+   "n_FAIL": 0,
+   "lines": [
+    "PASS U1 sector 3: |(-Delta-48)xi + N - Pi6 N| over all levels <= 18  [9.8e-30]",
+    "PASS U1 sector 3: quadrature N equals algebraic N at every level (all copies)  [9.79e-30]",
+    "PASS U1 sector 3: quadrature N has no part outside V_J (x) Hom(sigma, V_J)  [9.72e-30]",
+    "PASS U1 sector 3: quadrature N has no component at levels 20, 22  [2.83e-29]",
+    "PASS U1 sector 4: |(-Delta-48)xi + N - Pi6 N| over all levels <= 18  [1.49e-29]",
+    "PASS U1 sector 4: quadrature N equals algebraic N at every level (all copies)  [1.49e-29]"
+   ]
+  },
+  "m5_s04_antiunitary_sign": {
+   "n_PASS": 13,
+   "n_FAIL": 4,
+   "lines": [
+    "FAIL U5 s3 antiunitary A' fixes Phi, xi, first tangent and flips the second  [2.2]",
+    "FAIL U5 s4 antiunitary A' fixes Phi, xi, first tangent and flips the second  [1.91]",
+    "FAIL U6 s3 antiunitary A' fixes Phi, xi, first tangent and flips the second  [2.23]",
+    "FAIL U6 s4 antiunitary A' fixes Phi, xi, first tangent and flips the second  [1.93]",
+    "PASS all exact values identified identically at both precisions",
+    "PASS U5 sector 3: DNxi_perp_comp_ie_t = 0 (computed) explained by ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+   ]
+  },
+  "m6_s04_kappa_solve": {
+   "n_PASS": 2,
+   "n_FAIL": 2,
+   "lines": [
+    "PASS U5 s3 order-a^5 block equation solvable (rhs has no ker L component)  [0.0]",
+    "FAIL U5 s3 with kappa the equation has no component orthogonal to Phi  [0.000277]",
+    "PASS U6 s3 order-a^5 block equation solvable (rhs has no ker L component)  [9.12e-125]",
+    "FAIL U6 s3 with kappa the equation has no component orthogonal to Phi  [0.000502]"
+   ]
+  },
+  "m10_s99_xi_character_literal": {
+   "n_PASS": 0,
+   "n_FAIL": 2,
+   "lines": [
+    "FAIL U4 s3 xi (and Phi) transform by the item-3 character  [2.16]",
+    "FAIL U4 s4 xi (and Phi) transform by the item-3 character  [1.87]"
+   ]
+  }
+ },
+ "task5_grades": {
+  "T.a": {
+   "grade": "ESTABLISHED",
+   "note": "levels from item 1 (none below 6; nearest 10 / 8; gaps 72 / 32). T.a's 'nearest level' wording alone does not exclude levels 0, 2 in the 4-dim sector; item 1 does."
+  },
+  "T.b": {
+   "grade": "ESTABLISHED",
+   "note": "F commutes with rotations and N(chi psi) = chi N(psi); xi in X_H checked exactly on my xi (U1-U4, U6 exact generators; U5 exact weight argument)."
+  },
+  "T.c": {
+   "grade": "ESTABLISHED",
+   "note": "holds with 'tangential part' taken in the moving tangent space at theta (the theta-gradient of the reduced functional); with the fixed projection Pi_T the a^3 division needs lambda substituted from the radial equation first; same Jacobian. The 1/4 comes from dQ = 4 Re<N, E>, the first-order form of the bridge."
+  },
+  "T.d": {
+   "grade": "ESTABLISHED",
+   "note": "IFT in (lambda, theta) plus the uniqueness of the range solution; uniqueness only within X_H."
+  },
+  "T.e": {
+   "grade": "ESTABLISHED",
+   "note": "needs the reparametrization a_T.c = |k| -> a = <Phi, psi> (analytic, odd, a(1 + O(a^4))); T's ansatz allows a block tilt at every odd order, the worklist's section 2 ansatz does not at order a^5; they agree through a^3."
+  },
+  "E1": {
+   "grade": "ESTABLISHED",
+   "note": "m = 1 checked exactly for exact generators at U1-U4 (st2_exact_m.py)."
+  },
+  "E2": {
+   "grade": "ESTABLISHED",
+   "note": "all stated facts checked (orbit direction = -(2/5)sqrt39 * i e_t exactly; no continuous symmetry of K_H at U6; chart actions; m = 2 exact at U6, by weights at U5). The T.c nondegeneracy that E2 uses but does not state: Hess_T Q = -224/165, -42/55 (U5); det 5770240/7913763, 202860/879307 (U6)."
+  },
+  "bridge": {
+   "grade": "ESTABLISHED",
+   "note": "derived; checked exactly in 12 cases, Q'' from an N-only quartic interpolation = 4 x form, cross terms by polarization."
+  },
+  "lambda4_lemma": {
+   "grade": "DEFECT",
+   "note": "the formula and the kappa-independence hold (2X + conj X checked exactly). The sign step leaves its argument unsupplied and leaves a necessary hypothesis unstated: every non-block level of the sector lies above 6 (mu_n > 0). T.a does not imply it for the 4-dim sector. Rescued: item 1 gives mu_n > 0; Q != 1 => |Phi|^2 not constant => sum_{n!=6} ||Pi_n N||^2 = int|Phi|^6 - Q^2 > 0 (Cauchy-Schwarz). Minor: the sum must exclude n = 6."
+  },
+  "S_lemma": {
+   "grade": "ESTABLISHED",
+   "note": "section-level action derived: (S psi)(g) = conj(psi(r^-1 g)) R in the P-trick form (R_{m,m'} = (-1)^m delta_{m,-m'}), fibres x -> conj(D^J(r)) Theta x, columns b -> (-1)^b Theta(col -b); keeps the sector because conj(P) = R P R exactly. On the chart it acts as u(z) -> u(conj z) with no phase. All consequences hold exactly on my objects. Two remarks: the phase freedom must be taken in the lift (or in eta, which Phi and tau_x share), not by rephasing u alone; 'hence v_y = 0' also uses L_T(tau_y, tau_y) = 56/429, 21/286 != 0, i.e. the T.c hypothesis."
+  }
+ },
+ "task5_supporting_checks": {
+  "theorem_checks": {
+   "total": 90,
+   "pass": 90,
+   "mutants_run": 79,
+   "mutants_caught": 79
+  },
+  "exact_m": {
+   "U1": {
+    "m": 1,
+    "u_in_chi_subspace": true,
+    "mutant(-conj chi): u inside": false
+   },
+   "U2": {
+    "m": 1,
+    "u_in_chi_subspace": true,
+    "mutant(-conj chi): u inside": false
+   },
+   "U3": {
+    "m": 1,
+    "u_in_chi_subspace": true,
+    "mutant(-conj chi): u inside": false
+   },
+   "U4": {
+    "m": 1,
+    "u_in_chi_subspace": true,
+    "mutant(-conj chi): u inside": false
+   },
+   "U6": {
+    "m": 2,
+    "u_in_chi_subspace": true,
+    "mutant(-conj chi): u inside": false
+   }
+  },
+  "bridge_values": {
+   "U5 s3 e_t": {
+    "Qpp": "-224/165",
+    "4*form": "-224/165"
+   },
+   "U5 s3 i_e_t": {
+    "Qpp": "0",
+    "4*form": "0"
+   },
+   "U5 s3 cross": {
+    "Qpp_polarized/4": "0",
+    "form": "0"
+   },
+   "U5 s4 e_t": {
+    "Qpp": "-42/55",
+    "4*form": "-42/55"
+   },
+   "U5 s4 i_e_t": {
+    "Qpp": "0",
+    "4*form": "0"
+   },
+   "U5 s4 cross": {
+    "Qpp_polarized/4": "0",
+    "form": "0"
+   },
+   "U6 s3 tau_x": {
+    "Qpp": "25760/18447",
+    "4*form": "25760/18447"
+   },
+   "U6 s3 tau_y": {
+    "Qpp": "224/429",
+    "4*form": "224/429"
+   },
+   "U6 s3 cross": {
+    "Qpp_polarized/4": "0",
+    "form": "0"
+   },
+   "U6 s4 tau_x": {
+    "Qpp": "4830/6149",
+    "4*form": "4830/6149"
+   },
+   "U6 s4 tau_y": {
+    "Qpp": "42/143",
+    "4*form": "42/143"
+   },
+   "U6 s4 cross": {
+    "Qpp_polarized/4": "0",
+    "form": "0"
+   }
+  },
+  "lambda4_values": {
+   "U1_s3": {
+    "Q": "1288/1287",
+    "sum_{n!=6}||Pi_n N||^2": "406798/535007187",
+    "int|Phi|^6 - Q^2": "406798/535007187"
+   },
+   "U1_s4": {
+    "Q": "2289/2288",
+    "sum_{n!=6}||Pi_n N||^2": "750141/1690886912",
+    "int|Phi|^6 - Q^2": "750141/1690886912"
+   },
+   "U2_s3": {
+    "Q": "1687/1287",
+    "sum_{n!=6}||Pi_n N||^2": "183240400/535007187",
+    "int|Phi|^6 - Q^2": "183240400/535007187"
+   },
+   "U2_s4": {
+    "Q": "168/143",
+    "sum_{n!=6}||Pi_n N||^2": "595350/6605027",
+    "int|Phi|^6 - Q^2": "595350/6605027"
+   },
+   "U3_s3": {
+    "Q": "175/143",
+    "sum_{n!=6}||Pi_n N||^2": "1074080/6605027",
+    "int|Phi|^6 - Q^2": "1074080/6605027"
+   },
+   "U3_s4": {
+    "Q": "161/143",
+    "sum_{n!=6}||Pi_n N||^2": "757638/6605027",
+    "int|Phi|^6 - Q^2": "757638/6605027"
+   },
+   "U4_s3": {
+    "Q": "1750/1287",
+    "sum_{n!=6}||Pi_n N||^2": "129760330/535007187",
+    "int|Phi|^6 - Q^2": "129760330/535007187"
+   },
+   "U4_s4": {
+    "Q": "2751/2288",
+    "sum_{n!=6}||Pi_n N||^2": "264217653/1690886912",
+    "int|Phi|^6 - Q^2": "264217653/1690886912"
+   },
+   "U5_s3": {
+    "Q": "77/65",
+    "sum_{n!=6}||Pi_n N||^2": "1303988/6823375",
+    "int|Phi|^6 - Q^2": "1303988/6823375"
+   },
+   "U5_s4": {
+    "Q": "287/260",
+    "sum_{n!=6}||Pi_n N||^2": "8291241/109174000",
+    "int|Phi|^6 - Q^2": "8291241/109174000"
+   },
+   "U6_s3": {
+    "Q": "5831/5031",
+    "sum_{n!=6}||Pi_n N||^2": "43538303200/351543937329",
+    "int|Phi|^6 - Q^2": "43538303200/351543937329"
+   },
+   "U6_s4": {
+    "Q": "609/559",
+    "sum_{n!=6}||Pi_n N||^2": "371564550/4340048609",
+    "int|Phi|^6 - Q^2": "371564550/4340048609"
+   }
+  }
+ },
+ "consulted_material_manifest": {
+  "read_in_this_room": [
+   "BRIEF_stage2.md",
+   "BRIEF.md",
+   "worklist.md (== solver_work/worklist.md byte for byte)",
+   "METHOD.md",
+   "AUDIT_STAGE1.md",
+   "audit_results.json",
+   "THEOREM.md",
+   "solver_work/RETURN.md",
+   "solver_work/results.json",
+   "solver_work/run_all.log",
+   "solver_work/run_all.py",
+   "solver_work/common.py",
+   "solver_work/s00_group.py",
+   "solver_work/s01_levels.py",
+   "solver_work/s02_su2_exact.py",
+   "solver_work/s03_stabilizers.py",
+   "solver_work/s04_pipeline.py",
+   "solver_work/s09_zeros.py",
+   "solver_work/s10_existence.py",
+   "solver_work/s12_quadrature.py",
+   "solver_work/s13_identification_B.py",
+   "solver_work/s14_negative_controls.py",
+   "solver_work/s99_assemble.py",
+   "my stage-1 code: su2.py, engine.py, s_main.py, mq.py, numD.py, linalg_mq.py, s03_stabilizers.py",
+   "my stage-1 outputs: out/main_all.pkl, out/main_all.json, out/group.pkl, out/item3.json, out/item01.json",
+   "py, .room.sb (the room interpreter wrapper and sandbox profile)"
+  ],
+  "outside_the_room": "nothing (no web, papers, books or other files)",
+  "software": "Python 3.12 standard library, numpy, mpmath, sympy (the solver's scripts also use sympy.physics.quantum.cg as their own cross-check; I did not call it)",
+  "item1_declaration_stage1": "DERIVED (unchanged)"
+ }
+}

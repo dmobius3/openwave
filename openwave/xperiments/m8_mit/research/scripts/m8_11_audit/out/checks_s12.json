@@ -1,0 +1,56 @@
+[
+ {
+  "label": "item 12: max |(-Delta-48)xi + g(N - Pi_6 N)| over all U, sectors, levels < 1e-10 (Casimir from spin matrices)",
+  "status": "PASS",
+  "mutation": "flip the sign of xi (min over cases of the mutant residual)",
+  "mutation_detected": true
+ },
+ {
+  "label": "item 12 (second mutant)",
+  "status": "PASS",
+  "mutation": "replace 4*Casimir by 3*Casimir",
+  "mutation_detected": true
+ },
+ {
+  "label": "N(Phi) fully captured by levels <= 18 with every intertwiner copy (copy residual, levels 20 and 22 included) < 1e-10",
+  "status": "PASS",
+  "mutation": "sector 4, level 18: keep only the first of the two copies",
+  "mutation_detected": true
+ },
+ {
+  "label": "Parseval: int|N|^2 == sum of level norms (no component above level 22 either)",
+  "status": "PASS",
+  "mutation": "defect 1e-5",
+  "mutation_detected": true
+ },
+ {
+  "label": "quadrature level norms agree with exact ||Pi_n N||^2",
+  "status": "PASS",
+  "mutation": "dev 1e-6",
+  "mutation_detected": true
+ },
+ {
+  "label": "quadrature Pi_6 DN_Phi[xi] fibre agrees with exact",
+  "status": "PASS",
+  "mutation": "dev 1e-6",
+  "mutation_detected": true
+ },
+ {
+  "label": "kappa solves the order-a^5 perp equation (quadrature)",
+  "status": "PASS",
+  "mutation": "dev 1e-6",
+  "mutation_detected": true
+ },
+ {
+  "label": "Pi_6 N(Phi) == Q Phi (quadrature) at U1..U6",
+  "status": "PASS",
+  "mutation": "dev 1e-6",
+  "mutation_detected": true
+ },
+ {
+  "label": "quadrature grid independence",
+  "status": "PASS",
+  "mutation": "dev 1e-6",
+  "mutation_detected": true
+ }
+]

@@ -1,0 +1,454 @@
+# RETURN
+
+Every number below comes from the scripts in this room. `./py run_all.py` runs them all in order from a clean directory (no `results/` and no `results.json`). The last clean run took about 6 minutes and printed **503 PASS, 0 FAIL**. All values are also in `results.json`, with exact values stored as strings.
+
+## How the values were obtained
+
+| script | content |
+| --- | --- |
+| `common.py` | Library code. Exact arithmetic in Q(√5) and on quaternions. Exact Clebsch-Gordan coefficients (Racah formula, as sign·√rational). Wigner D^j built from the 2×2 matrix. Θ. Intertwiners by group averaging. An algebra of sections that multiplies sections with CG coefficients. Identification of exact values. |
+| `s00_group.py` | Item 0, plus checks of the D-matrix and CG conventions. |
+| `s01_levels.py` | Item 1: characters, Hom dimensions, intertwiner residuals, and the Γ-constants. |
+| `s02_su2_exact.py` | Exact SymPy computation of the SU(2)-only parts: r̂₆, its gradient and Hessian, the level norms A_J, and the item 6 and item 11 derivatives. These are combined with the Γ-constants. |
+| `s03_stabilizers.py` | Item 3 stabilizers, using Majorana roots and a complete search. |
+| `s04_pipeline.py` | Items 2, 4, 5, 6, 7, 8 and 11 in the full Γ-dependent section algebra. Run from scratch at 80 and at 120 digits, identified at both, and compared with s02. |
+| `s09_zeros.py`, `s10_existence.py` | Items 9 and 10. |
+| `s12_quadrature.py` | Item 12. |
+| `s13_identification_B.py` | Checks that nothing depends on the quaternion→SU(2) identification. |
+| `s14_negative_controls.py` | Shows that the checks can fail. |
+| `s99_assemble.py` | Writes `results.json`. |
+
+**Exact values.** Three sources:
+- Exact rational or Q(√5) arithmetic: group, characters, dimensions.
+- Exact SymPy arithmetic: r̂₆, stationarity, Hessian ranks, second and first derivatives of r̂₆.
+- Identification from high-precision numerics, used for the Γ-dependent quantities.
+
+**Identification** (`common.identify`):
+- The same computation is run from scratch at 80 and at 120 digits.
+- A value is accepted only if the same exact form is found at both precisions, within a tolerance of 10^−(digits−12) at each.
+- Candidate forms, tried in order:
+  1. 0
+  2. a rational (continued fractions, denominator ≤ 10³⁰)
+  3. ±√(rational)
+  4. an element of Q(√5) (PSLQ, integer coefficients ≤ 10¹⁰)
+  5. ±√ of an element of Q(√5)
+- Field used: Q(√5). Every identified value in fact turned out to be in Q, or √39·Q, or √115·Q, or √3·Q.
+- A false rational identification would need |x − p/q| < 10⁻⁶⁸ with q ≤ 10³⁰, where generically |x − p/q| ~ 1/q² ≥ 10⁻⁶⁰. That cannot happen by accident.
+
+**Independent exact derivation.** Every Γ-independent value, and every value built from the rational Γ-constants (r̂₆, Q, ‖Π_nξ‖², λ₄, the item 6 forms, item 11), was also derived exactly in s02. s04 compares all of them with the 120-digit numerics to better than 10⁻⁷⁰ (PASS lines). The Γ-constants themselves (‖r_K‖², τ_J, item 1) are rational and were identified at 80 and at 120 digits. The other item 5 and item 7 values (components along e_t and τ_x, norms of κ) were identified at both precisions.
+
+**Why the PASS checks can fail.** Every PASS is a comparison with a tolerance, or an exact equality, on data that would violate it if something were wrong. `s14_negative_controls.py` feeds corrupted inputs to each kind of check and confirms it reports failure:
+- η perturbed by 10⁻²⁰;
+- the order-a³ block condition tested at a non-critical point;
+- the wrong character;
+- L shifted by 10⁻¹⁰;
+- ξ built with the wrong denominator;
+- a quadrature grid that is too coarse;
+- a value perturbed at 10⁻⁶⁰;
+- the wrong Majorana map;
+- comparing U1 with U2.
+
+All 13 controls are detected. The exact checks (group order, perfectness, stationarity) are shown to fail on <q₁> and on the item 11 vector.
+
+**Identification independence.** `s13` repeats everything with a second identification, i, j, k ↦ iσ_z, iσ_y, iσ_x. It puts Γ in the mirror position relative to the weight basis; the check confirms the image of Γ really differs. Every reported quantity agrees to 10⁻⁴⁰ at 40 digits. The reason is structural: every block quantity is an SU(2)-covariant function of the fibre vector, and Γ enters only through rotation-invariant constants.
+
+**Environment note.** `./py` cannot be nested inside its own sandbox (sandbox-exec refuses). So `run_all.py`, launched as `./py run_all.py`, starts each script with `sys.executable -S`, the same interpreter and flags that `./py` uses. The child processes inherit the `./py` sandbox, the one-thread environment and the priority.
+
+---
+
+## Item 0
+
+- ‖q₁‖² = ‖q₂‖² = 1, exactly in Q(√5). Using φ² + φ⁻² = 3, ‖q₂‖² = (φ² + φ⁻² + 1)/4 = 1.
+- **|Γ| = 120**, found by closing the group under multiplication in exact Q(√5) quaternion arithmetic. The result is closed under products and inverses.
+- **Γ equals its derived subgroup.** The subgroup generated by all 120² commutators has order 120, so Γ is perfect.
+- Nine conjugacy classes, as (element order, class size): (1,1), (2,1), (3,20), (4,30), (5,12), (5,12), (6,20), (10,12), (10,12). The centre is {±1}.
+- **⟨3 3; 3 −3 | 6 0⟩ = 1/√924 = √231/462** (≈ 0.0329), positive. It agrees with SymPy's independent CG routine, which also matches the Racah routine on 1542 coefficients.
+
+## Item 1: DERIVED
+
+All values were derived from the two generators; no character table was used. I did recognize the group (binary icosahedral, order 120) but used no known tables. Method:
+1. Γ was enumerated exactly. Characters of V_j are exact: χ_j(h) = U_{2j}(Re h), a Chebyshev polynomial of the second kind, in Q(√5).
+2. V₃ was split using a generic element of its commutant, (1/|Γ|) Σ_h D³(h) M D³(h)†. It has exactly two eigenvalue clusters, of multiplicities 3 and 4.
+3. The constituent characters tr(P D³(h)) were checked to be class functions and identified in Z[φ].
+
+Constituent characters, by class (order: value):
+- **3-dim sector:** 1: 3, 2: 3, 3: 0, 4: −1, 6: 0; one class of order 5: (1+√5)/2, the other: (1−√5)/2; the order-10 classes carry the same pair.
+- **4-dim sector:** 1: 4, 2: 4, 3: 1, 4: 0, 5: −1, 6: 1, 10: −1.
+
+Exact checks:
+- Σχ²/120 = 1 for both (each is irreducible).
+- χ₃ + χ₄ = χ_{V₃} on all 120 elements.
+- dim Hom = (1/120) Σ χ_σ χ_{n/2}, computed exactly.
+
+dim Hom_Γ(σ, V_{n/2}) for n = 0, 1, …, 18 (zero at every odd n, because σ(−1) = I while D^{n/2}(−1) = −I):
+
+| n | 0 | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 18 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 3-dim sector | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 1 | 1 | 1 |
+| 4-dim sector | 0 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | 1 | **2** |
+
+- The number of orthonormal intertwiners found numerically by group averaging agrees with this table at every n.
+- Also derived: dim V_K^Γ = 1 for K = 0, 6, 10, 12 and 0 for the other K ≤ 12. This is used below.
+
+**Intertwiner checks** (every intertwiner used, at 50 digits, required residual < 10⁻⁴⁰), for the single real σ(h) = η₃†D³(h)η₃ used at every level:
+
+| | 3-dim sector | 4-dim sector |
+| --- | --- | --- |
+| max \|D^j(h)η − ησ(h)\|, h = q₁, q₂ | 1.7·10⁻⁴⁹ | 6.2·10⁻⁵⁰ |
+| max \|η†η − I\| | 6.3·10⁻⁵⁰ | 3.5·10⁻⁵⁰ |
+| max \|η†η′\| (n = 18 only) | none | 1.9·10⁻⁵⁰ |
+
+- All η were chosen Θ-real (Θη = η). That makes σ(h) real orthogonal; the deviation is below 10⁻⁷⁰ at 120 digits.
+
+**Γ-constants** (rational, identified identically at 80 and 120 digits). Define r_K = Σ_a [Θη_a ⊗ η_a]_K.
+- ‖r₀‖² = 9/7 (3-dim sector) and 16/7 (4-dim sector).
+- ‖r_K‖² = 0 for K = 1, …, 5.
+- ‖r₆‖² = 12/7 in both sectors.
+- τ_J is defined by ‖x ⊗ [r₆ ⊗ η]_J‖² = τ_J ‖x‖². Values:
+  - 3-dim sector (J = 3, 5, 7, 8, 9): 48/637, 12/91, 18/221, 6/119, 240/4199.
+  - 4-dim sector (J = 3, 4, 6, 7, 8, 9): 36/637, 12/91, 12/91, 6/119, 18/221, 2196/29393.
+
+## Item 2
+
+**Structure** (exact). Write u′ for the fibre vector of the normalized Φ, so ‖u′‖² = 7/d, and û for u′ rescaled to unit length.
+1. The product formula gives |Φ|² = Σ_K [Θu′ ⊗ u′]_K ⊗ r_K.
+2. Each r_K is Γ-invariant, and V_K^Γ = 0 for 1 ≤ K ≤ 5, so only K = 0 and K = 6 survive.
+3. The K = 0 term is exactly the constant 1.
+4. Since Σ_K ‖r_K‖² = d and ‖r₀‖² = d²/7, we get ‖r₆‖² = d(7−d)/7 = 12/7.
+5. Hence ∫|Φ|⁴ = 1 + (7(7−d)/(13d)) r̂₆(û).
+6. Π₆N(Φ_u) is the ū-gradient of ¼∫|Φ_u|⁴ = a‖u‖⁴ + b‖ρ₆(u)‖², with b ≠ 0. So **Π₆N(Φ) ∥ Φ ⇔ û is a stationary point of r̂₆ on the unit sphere**, and then Q = ∫|Φ|⁴ = 1 + 4κ_d r̂₆, with 4κ₃ = 28/39 and 4κ₄ = 21/52.
+
+**Results.** Stationarity was checked exactly in SymPy (the Riemannian gradient vanishes identically). Π₆N(Φ) − QΦ was also computed numerically in the section algebra and identified as 0 in both sectors.
+
+| | r̂₆ | stationary | Π₆N ∥ Φ | Q (3-dim) | Q (4-dim) |
+| --- | --- | --- | --- | --- | --- |
+| U1 | 1/924 | yes | yes, both | 1288/1287 | 2289/2288 |
+| U2 | 100/231 | yes | yes, both | 1687/1287 | 168/143 |
+| U3 | 24/77 | yes | yes, both | 175/143 | 161/143 |
+| U4 | 463/924 | yes | yes, both | 1750/1287 | 2751/2288 |
+| U5 | 9/35 | yes | yes, both | 77/65 | 287/260 |
+| U6 | 200/903 | yes | yes, both | 5831/5031 | 609/559 |
+
+## Item 3
+
+Rotations act on block sections through the fibre vector: r·Φ_{σ,u} = Φ_{σ, conj(D³(r))u}. So the stabilizer and its character are the same in both sectors.
+
+Method:
+- The Lie algebra of the stabilizer was found by a linear solve.
+- The finite part was found through Majorana roots. The equivariance roots(D(g)u) = roots(u)·g⁻¹ was checked.
+- Every g ∈ SU(2) that maps a fixed pair of roots to a pair of roots was enumerated, and those fixing [u] were kept. This search is complete.
+- The closed-form generators below were checked to generate exactly the group found by the search. Its order in SU(2) is twice the SO(3) count.
+
+Notation: Rz(α) = diag(e^{−iα/2}, e^{iα/2}), and R(n, θ) = cos(θ/2) − i sin(θ/2) n·σ. The element −1 is always in the stabilizer and acts trivially.
+
+| | stabilizer in SU(2) | character on Φ | dim_ℂ of the character subspace of the block |
+| --- | --- | --- | --- |
+| U1 | maximal torus {Rz(α)} (SO(3) image SO(2)) | Rz(α) ↦ e^{3iα} | 1 (= ℂΦ) |
+| U2 | Pin(2) = T ∪ T·Rx(π) (SO(3) image O(2)) | T ↦ 1, T·Rx(π) ↦ −1 | 1 |
+| U3 | binary octahedral group, order 48 (SO(3) image O; 4-fold axes along z and (1, ±1, 0)/√2), generated by Rz(π/2) and R((1,1,0)/√2, π/2) | sign character of O ≅ S₄: −1 on 4-fold rotations and on π-rotations about 2-fold axes, +1 on 3-fold rotations and on π-rotations about 4-fold axes | 1 |
+| U4 | binary dihedral group of order 24 (SO(3) image D₆), generated by Rz(π/3) and Rx(π) | Rz(π/3) ↦ −1, Rx(π) ↦ −1 (so Ry(π) ↦ +1) | 1 |
+| U5 | cyclic group of order 10 (SO(3) image C₅), generated by Rz(2π/5) | Rz(2π/5) ↦ e^{4πi/5} | **2** (span of Φ and e_t) |
+| U6 | binary dihedral group of order 12 (SO(3) image D₃), generated by Rz(2π/3) and Rx(π) | Rz(2π/3) ↦ 1, Rx(π) ↦ −1 | **2** (span of Φ and τ_x) |
+
+The dimensions of the character subspaces of V_J for J = 0, …, 9 are in `results.json` and are used in item 9.
+
+## Item 4
+
+- Using μ_n = n(n+2) − 48, the order-a³ equation off the block gives ξ = −g Σ_{n≠6} Π_nN(Φ)/μ_n. So ‖Π_nξ‖²/g² = ‖Π_nN(Φ)‖²/μ_n².
+- Exactly, ‖Π_{2J}N‖² = (7/d)³ A_J(û) τ_J for J ≠ 3, where A_J = ‖[ρ₆(û) ⊗ û]_J‖².
+- The values below are identified at 80 and 120 digits and agree with the s02 exact product to better than 10⁻⁷⁰.
+- Level 6 is 0 by construction. There are no sector levels below 6.
+- Every sector level above 18 has ‖Π_nξ‖² = 0 exactly, because N(Φ) has no component above level 18 (item 12). This is by the selection rule, not a numerical computation.
+
+**‖Π_nξ‖²/g², 3-dim sector** (levels 6, 10, 14, 16, 18):
+
+| | 6 | 10 | 14 | 16 | 18 |
+| --- | --- | --- | --- | --- | --- |
+| U1 | 0 | 7/195150384 | 18375/1464486053888 | 7/2749593600 | 245/609749017488 |
+| U2 | 0 | 1225/48787596 | 8575/2860324324 | **0** | 171500/139734149841 |
+| U3 | 0 | **0** | 735/220024948 | **0** | 1715/2822912118 |
+| U4 | 0 | 8575/780601536 | 735/5720648648 | **0** | 1516795/812998689984 |
+| U5 | 0 | 77/5475600 | 281211/189112352000 | 553/1591200000 | 30233/56458242360 |
+| U6 | 0 | 319550/88158077163 | 12920075/7517877885232 | 16583/68316230736 | 2355742375/6059914391677302 |
+
+**‖Π_nξ‖²/g², 4-dim sector** (levels 6, 8, 12, 14, 16, 18; at level 18 both copies are kept):
+
+| | 6 | 8 | 12 | 14 | 16 | 18 |
+| --- | --- | --- | --- | --- | --- | --- |
+| U1 | 0 | 63/5360582656 | 7/483225600 | 23625/7209777496064 | 49/28242739200 | 427/1927108005888 |
+| U2 | 0 | **0** | **0** | 11025/14081596672 | **0** | 74725/110407229504 |
+| U3 | 0 | **0** | 7/1830400 | 945/1083199744 | **0** | 26901/80296166912 |
+| U4 | 0 | 1575/31719424 | 189/644300800 | 945/28163193344 | **0** | 2643557/2569477341184 |
+| U5 | 0 | 3591/346112000 | 63/83200000 | 361557/931014656000 | 34839/147097600000 | 2371131/8029616691200 |
+| U6 | 0 | 7875/859947712 | 3521/1587595776 | 16611525/37011091127296 | 116081/701717332992 | 4105722425/19152322028017152 |
+
+- **ξ transforms by the same character as Φ** under the item 3 stabilizer, at every U and in both sectors. Residual below 10⁻¹²⁰ on the generators at 120 digits; the proof is in item 9.
+- The values of ‖Π_nN(Φ)‖² themselves are in `results.json`.
+
+## Item 5
+
+Π₆DN_Φ[ξ], per g. "Along Φ" means ⟨Φ, ·⟩; it is real, and its imaginary part is computed as 0.
+
+| | along Φ (3-dim) | ⊥ norm (3-dim) | along Φ (4-dim) | ⊥ norm (4-dim) |
+| --- | --- | --- | --- | --- |
+| U1 | −608931967/36722893315680 | 0 | −368688201/38687492546560 | 0 |
+| U2 | −1871763250/229518083223 | 0 | −15820875/15112301776 | 0 |
+| U3 | −2203040/944518861 | 0 | −162530109/75561508880 | 0 |
+| U4 | −1921938515/459036166446 | 0 | −226441775133/38687492546560 | 0 |
+| U5 | −267786421/58544557500 | 7188839√39/81061695000 | −4797453339/2497901120000 | 19565553√39/192146240000 |
+| U6 | −336158940460/150812349114141 | 120576113√115/1288994436873 | −11093213145/4965015608696 | 214430223√115/3055394220736 |
+
+Components (⟨·,·⟩_ℝ, per g):
+- **U5:** along e_t: +7188839√39/81061695000 (3-dim), −19565553√39/192146240000 (4-dim). Along i·e_t: 0 in both. Remainder: 0.
+- **U6:** along τ_x: −120576113√115/1288994436873 (3-dim), +214430223√115/3055394220736 (4-dim). Along τ_y: 0 in both. Remainder: 0.
+
+## Item 6
+
+The form is (7(7−d)/(52d))·r̂₆″ exactly, because ∫|Φ_s|⁴ = 1 + 4κ_d r̂₆ along the great circle. The first-derivative term −Q comes from Φ″ = −Φ.
+
+| | form (3-dim) | form (4-dim) | d²r̂₆/ds² |
+| --- | --- | --- | --- |
+| U5, e_t | −56/165 | −21/110 | −104/55 |
+| U5, i·e_t | 0 | 0 | 0 |
+| U6, τ_x | 6440/18447 | 2415/12298 | 920/473 |
+| U6, τ_y | 56/429 | 21/286 | 8/11 |
+| U6, cross term | 0 | 0 | 0 |
+
+The same values come from the full section algebra and from exact SymPy; they agree to better than 10⁻⁷⁰.
+
+## Item 7
+
+On W = {κ ∈ block : ⟨Φ, κ⟩ = 0} (real dimension 12), the order-a⁵ block equation orthogonal to Φ reads L κ = −P_⊥Π₆DN_Φ[ξ], with L = P_⊥(Π₆DN_Φ − Q)|_W. L is symmetric and equals (Q−1)/(4r̂₆) times the Riemannian Hessian of r̂₆.
+
+**Free directions** (ker L): verified numerically at 120 digits, and exactly through the SymPy rank of the Hessian (12 minus the orbit dimension).
+- U1, U2: ker L is spanned by P_W(X_xΦ) and P_W(X_yΦ), where X_a is an infinitesimal rotation. Real dimension 2. The rotation about z only changes the phase.
+- U3–U6: P_W(X_aΦ) for a = x, y, z. Real dimension 3.
+- At U5, P_W(X_zΦ) is proportional to i·e_t.
+- The right-hand side has no component in ker L (below 10⁻¹²⁴), so the equation is solvable. κ is taken ⊥ ker L.
+
+| | ‖κ‖²/g² | components of κ/g | remainder |
+| --- | --- | --- | --- |
+| U1–U4, both sectors | 0 | — | — |
+| U5, 3-dim | 1054681758529/396076284864000000 | e_t: 1026977√39/3930264000; i·e_t: 0 | 0 |
+| U5, 4-dim | 2604155538747/234711872512000000 | e_t: −931693√39/1746784000; i·e_t: 0 | 0 |
+| U6, 3-dim | 296706102575281/35935889967339860160 | τ_x: 17225159√115/64285514280; τ_y: 0 | 0 |
+| U6, 4-dim | 104263765387369/7098447400956021760 | τ_x: −10210963√115/28571339680; τ_y: 0 | 0 |
+
+**Equation component orthogonal to Φ**, per g:
+- Without κ: equal to item 5's ⊥ norm (0 at U1–U4).
+- With κ: 0 (residual ≤ 1.7·10⁻¹²³ at 120 digits).
+
+Note: at U5 and U6, e_t and τ_x are eigenvectors of L, with eigenvalue equal to the item 6 form. So κ_{e_t} = −(⊥ component)/form(e_t), which the values satisfy.
+
+## Item 8
+
+**λ₄/g²**, identical with and without κ:
+
+| | 3-dim sector | 4-dim sector |
+| --- | --- | --- |
+| U1 | −608931967/36722893315680 | −368688201/38687492546560 |
+| U2 | −1871763250/229518083223 | −15820875/15112301776 |
+| U3 | −2203040/944518861 | −162530109/75561508880 |
+| U4 | −1921938515/459036166446 | −226441775133/38687492546560 |
+| U5 | −267786421/58544557500 | −4797453339/2497901120000 |
+| U6 | −336158940460/150812349114141 | −11093213145/4965015608696 |
+
+**Argument.**
+
+*Formula for λ₄.*
+1. Projecting the order-a⁵ equation onto Φ gives λ₄ = g⟨Φ, DN_Φ[κ + ξ]⟩. Here ⟨Φ, (−Δ−48)ζ⟩ = 0, and λ₂⟨Φ, κ+ξ⟩ = 0.
+2. From DN_Φ[h] = (Φ†h + h†Φ)Φ + |Φ|²h, one gets ⟨Φ, DN_Φ[h]⟩ = 2⟨N(Φ), h⟩ + conj⟨N(Φ), h⟩.
+
+*Why κ does not contribute.*
+- For κ in the block with ⟨Φ, κ⟩ = 0: ⟨N(Φ), κ⟩ = ⟨Π₆N(Φ), κ⟩ = Q⟨Φ, κ⟩ = 0.
+- So κ contributes exactly nothing, and the with-κ and without-κ values coincide exactly. Numerically |⟨Φ, DN_Φκ⟩| ≤ 4·10⁻¹²³.
+
+*The remaining term.*
+- ⟨N(Φ), ξ⟩ = Σ_n ⟨Π_nN, Π_nξ⟩ = −g Σ_{n≥8} ‖Π_nN(Φ)‖²/μ_n, which is real.
+- Hence **λ₄ = −3g² Σ_{8≤n≤18} ‖Π_nN(Φ)‖²/(n(n+2) − 48)**. This was checked against the computed values to 10⁻⁷⁰.
+- Every denominator is positive (n ≥ 8), so λ₄ ≤ 0.
+
+*Strict negativity for every normalized Φ and every g ≠ 0.*
+1. Σ_{n≥8} ‖Π_nN‖² = ‖N‖² − ‖Π₆N‖² = ∫|Φ|⁶ − Q².
+2. By Cauchy–Schwarz, Q² = (∫|Φ|³·|Φ|)² ≤ ∫|Φ|⁶ · ∫|Φ|² = ∫|Φ|⁶.
+3. Equality would require |Φ|² to be constant almost everywhere, since Φ is real-analytic and not identically zero.
+4. |Φ|² is not constant, because its level-12 part is ρ₆(u′) ⊗ r₆, and neither factor vanishes:
+   - ‖r₆‖² = 12/7.
+   - ρ₆(u′) is the top-spin component of u′ ⊗ Θu′. That corresponds to the product of two nonzero degree-6 binary forms, which is never 0.
+5. So **λ₄ < 0 for every g ≠ 0**, at all six vectors in both sectors, regardless of the sign of g.
+
+## Item 9: zeros
+
+Every zero listed below was **computed and found zero**, identified as exactly 0 at 80 and 120 digits. None was assumed. No quantity is missing. `s09_zeros.py` attaches at least one exact reason to each zero and reports none unresolved (117 PASS).
+
+**Symmetries used, with proof that they preserve the equation and the sector.**
+- **(S1) Left translation** L_r ψ(g) = ψ(r⁻¹g):
+  - Sector: L_rψ(gh) = ψ(r⁻¹g)σ(h), so the sector is preserved.
+  - Laplacian: left translations are isometries of the bi-invariant round metric, so they commute with Δ.
+  - Nonlinearity: N is pointwise, so N(L_rψ) = L_rN(ψ).
+  - Haar measure is invariant, so L_r is unitary and commutes with every Π_n.
+- **(S2) Constant phase** e^{iθ}: σ is linear, so the sector is preserved; N(e^{iθ}ψ) = e^{iθ}N(ψ).
+- **(S3) Complex conjugation** Cψ = conj ψ:
+  - Sector: σ(h) = η₃†D³(h)η₃ is real (verified), so conj(ψ(g)σ(h)) = conj(ψ(g))σ(h).
+  - Δ is a real operator, and N(conj ψ) = conj N(ψ).
+  - C preserves ⟨·,·⟩_ℝ.
+  - On fibre vectors, C(u ⊗ η^γ_J) = Θu ⊗ η^γ_J, because every η was chosen Θ-real (verified).
+- **(A′) The antiunitary map A′ = −L_{Ry(π)}∘C** combines S1–S3, so it preserves the equation and the sector.
+  - At U5: A′Φ = Φ, A′e_t = e_t, A′(ie_t) = −ie_t.
+  - At U6: A′Φ = Φ, A′τ_x = τ_x, A′τ_y = −τ_y.
+  - Verified at 120 digits on all levels.
+
+**Covariance lemma.**
+- ξ = −g(−Δ−48)⁻¹(1−Π₆)N(Φ) is uniquely determined by Φ, and every map in it commutes with S1–S3.
+- So for r in the stabilizer: L_rξ(Φ) = ξ(χΦ) = χξ(Φ), since |χ| = 1 and ξ is cubic.
+- Likewise A′ξ = ξ, and L_rDN_Φ[ξ] = χ DN_Φ[ξ].
+- L commutes with the stabilizer and with A′, and they preserve ker L. So the minimum-norm solution κ is also χ-covariant and A′-invariant.
+
+**Zeros and their reasons.**
+1. **Π₆N(Φ) − QΦ = 0** (item 2, all six, both sectors).
+   - U1–U4: the χ-subspace of the block is ℂΦ, and Π₆N(Φ) lies in it.
+   - All six: exact stationarity of r̂₆ (SymPy), together with the item 2 equivalence.
+2. **Im Q and Im⟨Φ, DN_Φ[ξ]⟩ = 0.** Q = ∫|Φ|⁴, and Im⟨Φ, DN_Φξ⟩ = Im⟨N, ξ⟩, where ⟨N, ξ⟩ = −g Σ ‖Π_nN‖²/μ_n.
+3. **‖Π₆ξ‖² = 0**: by construction.
+4. **Symmetry zeros of ‖Π_nξ‖².** Π_nξ lies in (χ-subspace of V_{n/2}) ⊗ Hom, and these subspaces are 0:
+   - U2: n = 16 in the 3-dim sector, n = 8, 12, 16 in the 4-dim sector (J even; the flip Rx(π) acts on the T-invariant vector of V_J by (−1)^J ≠ χ = −1).
+   - U3: n = 10 and 16 in the 3-dim sector, n = 8 and 16 in the 4-dim sector (the character subspace of V₄, V₅, V₈ is 0).
+5. **Sym³ zero: U4 at n = 16, both sectors.** The U4 character subspace of V₈ is 1-dimensional, so symmetry does not explain this zero.
+   - ΘU4 = −U4, so ρ₆(u) ⊗ u = −[u⊗u]₆ ⊗ u lies in the image of Sym³(V₃).
+   - By exact weight counting, Sym³(V₃) contains no spin 8 (multiplicities 0,1,0,2,1,1,1,1,0,1 for J = 0, …, 9).
+   - So [ρ₆ ⊗ u]₈ = 0 identically. The same argument also covers U2 and U3 at n = 16.
+   - SymPy independently gives A₈ = 0 exactly.
+6. **Orthogonal part of Π₆DN_Φ[ξ] = 0 at U1–U4**: covariance with a 1-dimensional χ-subspace.
+   - The same gives κ = 0 at U1–U4 (its right-hand side is 0 and κ ⊥ ker L), and a zero orthogonal component of the equation without κ.
+7. **Remainders = 0 at U5 and U6** (items 5 and 7): the χ-subspace of the block is ℂΦ ⊕ ℂE₁, so the orthogonal part lies in ℂE₁ = ℝE₁ ⊕ ℝiE₁.
+8. **Components along i·e_t (U5) and τ_y (U6) = 0**, in items 5 and 7: A′-invariance gives ⟨iE₁, X⟩_ℝ = ⟨A′iE₁, A′X⟩_ℝ = −⟨iE₁, X⟩_ℝ.
+   - For κ at U5 there is a second reason: i·e_t ∈ ker L, and κ is taken ⊥ ker L.
+9. **Item 6 form on i·e_t, and r̂₆″ along i·e_t, = 0 at U5.** Write E = P_W(X_zΦ), which is proportional to i·e_t.
+   - Differentiating N(e^{sX}Φ) = e^{sX}N(Φ) gives DN_Φ[XΦ] = X N(Φ).
+   - Also DN_Φ[iΦ] = iN(Φ).
+   - So (Π₆DN_Φ − Q)E = 0 exactly: the Hessian vanishes on an orbit tangent at a critical point.
+10. **Item 6 cross term = 0 at U6** (and the r̂₆ cross second derivative): B(τ_x, τ_y) = B(A′τ_x, A′τ_y) = −B(τ_x, τ_y).
+11. **λ₄(with κ) − λ₄(without κ) = 0**: item 8.
+12. **The equation's orthogonal component with κ = 0**: by construction (κ solves it). The residual is reported numerically.
+
+Unresolved zeros: **none**.
+
+## Item 10: existence
+
+**Answer: yes, for all six vectors and in both sectors.** For every sufficiently small a > 0 there is an actual solution (ψ(a), λ(a)) with ⟨Φ, ψ⟩ = a, whose expansion begins as in §2, with κ equal to the item 7 κ.
+
+**Setting.**
+- Work in H²-sections of the σ-bundle. In dimension 3, H² is an algebra, so N is a bounded cubic polynomial map H² → H², and it is real-analytic.
+- F(ψ, λ) = (−Δ−λ)ψ + gN(ψ) is the ⟨·,·⟩_ℝ-gradient of E_λ(ψ) = ½⟨ψ, (−Δ−λ)ψ⟩ + (g/4)∫|ψ|⁴.
+- E_λ is invariant under G = SU(2) × U(1), acting by (r, e^{iθ})ψ = e^{iθ}L_rψ.
+
+**Step 1: Lyapunov–Schmidt reduction.**
+- Split ψ = b + w, with b in the block B (complex dimension 7) and w ⊥ B.
+- By H0, −Δ − λ is invertible on B^⊥ for |λ − 48| < gap/2, with gap 72 (3-dim sector) and 32 (4-dim sector).
+- The implicit function theorem gives a unique small w = W(b, λ). It is analytic and G-equivariant (by uniqueness), with W = −g(−Δ−λ)⁻¹(1−Π₆)N(b) + O(|b|⁵).
+- The remaining equation Π₆F(b + W, λ) = 0 is the gradient of the reduced function f(b, λ) = E_λ(b + W(b, λ)), which is G-invariant.
+
+**Step 2: the degeneracy at a = 0, and the blow-up.**
+- At a = 0 the linearization −Δ − 48 has the whole 7-dimensional block as kernel. So the implicit function theorem cannot be applied to (ψ, λ) directly.
+- Moreover, κ enters only at order a². So writing ψ = aΦ + a³κ + … with κ as an unknown makes the a = 0 problem independent of κ, which is degenerate.
+- To handle this, set b = a(Φ + k) with k ∈ W an O(1) unknown, and λ = 48 + a²μ.
+- Because W(ab, λ) = a³Ŵ, dividing by a³ gives R(k, μ; a) = −μ(Φ+k) + gΠ₆N(Φ + k + a²Ŵ) = 0.
+- R is analytic, and it is even in a because the element −1 ∈ U(1) gives W(−b) = −W(b).
+- At a = 0 the problem reduces to the finite cubic problem on the block.
+- By H1, (k, μ) = (0, gQ) solves it.
+
+**Step 3: the linearization.**
+- At (0, gQ; 0), the linearization is (k, δμ) ↦ gLk − δμΦ.
+- The ⟨Φ, ·⟩ part of DN_Φk vanishes for k ∈ W (item 8), so δμ is decoupled.
+- By H2, ker L is exactly the orbit tangent space T ⊂ W, of real dimension o = 2 (U1, U2) or 3 (U3–U6). This is verified exactly: the Hessian rank equals 12 − o.
+
+**Step 4: slice and Noether identities.**
+- Restrict k to the slice S = W ⊖ T.
+- Solve the square system (P_S R, Re⟨Φ, R⟩) = 0 in the unknowns (k, μ) ∈ S × ℝ. Both sides have real dimension 13 − o, and the linearization there is invertible (g ≠ 0, L invertible on S).
+- The implicit function theorem gives a unique analytic solution (k(a), μ(a)) for |a| < a₀.
+- The remaining components of R are along iΦ and along T. They vanish because of the Noether identities ⟨iv, R⟩_ℝ = 0 and ⟨X_a v, R⟩_ℝ = 0. These follow by differentiating the G-invariance of f, using ⟨Xv, v⟩_ℝ = ⟨iv, v⟩_ℝ = 0.
+- For U1 and U2 use X_x and X_y only.
+- For v near Φ, T_v = span{iv, X_a v} is transversal to ℝΦ ⊕ S. So R ∈ T_Φ ∩ T_v^⊥ = {0}.
+
+**Result.**
+- ψ(a) = a(Φ + k(a)) + W(a(Φ + k(a)), λ(a)), and λ(a) = 48 + a²μ(a).
+- ⟨Φ, ψ⟩ = a, because k ∈ W and W ⊥ B.
+- k(a) = a²κ + O(a⁴), with κ the item 7 κ (in S, i.e. ⊥ the free directions).
+- μ(a) = gQ + λ₄a² + … . So λ₂ = gQ, and λ₄ is as in item 8.
+
+**Hypotheses, where each is verified, and what fails without it.**
+
+| | hypothesis | where verified | what fails without it |
+| --- | --- | --- | --- |
+| H0 | Spectral gap: 48 = n(n+2) only at n = 6 among the sector's levels | item 1, `s10` | (−Δ−48) is not invertible off the block. ξ (item 4) does not exist, and the reduction must include the resonant level. |
+| H1 | Π₆N(Φ) = QΦ | item 2: exact stationarity of r̂₆ plus the numerical zero | The order-a³ block equation has no solution, so no branch has leading term aΦ. |
+| H2 | ker L = T (nondegeneracy modulo symmetry) | item 7 (ker L = orbit tangents at 120 digits), `s02` (exact Hessian rank 12 − o), item 3 (o from the stabilizer's Lie algebra) | The implicit function theorem fails on the slice. κ would be undetermined, and existence and uniqueness would depend on higher-order terms. |
+| H3 | G preserves the sector and the equation, and F is a gradient | item 9 (S1, S2), direct computation | Without the Noether identities there are more equations than slice unknowns, and the iΦ and T components are not controlled. |
+| H4 | g ≠ 0 | given | The linearization gL vanishes. |
+| H5 | N is analytic on H² | H² is an algebra in dimension 3 | The implicit function theorem and the analyticity statements fail. |
+
+**Local uniqueness.**
+- (i) In the slice chart: for 0 < a < a₀, the pair (k(a), μ(a)) is the unique solution with k ∈ S, |k| < δ, |μ − gQ| < δ. Equivalently, ψ(a) is the unique solution with ⟨Φ, ψ⟩ = a, Π₆ψ/a − Φ ∈ S of norm < δ, ‖(1−Π₆)ψ‖_{H²} small, and |λ − 48 − gQa²| < δa².
+- (ii) Modulo symmetry: every solution with small ψ ≠ 0, λ near 48, and block direction within δ of the G-orbit of Φ has the form γ·ψ(a′) for some γ ∈ G and a′ ∈ (0, a₀). Here γ is unique modulo the stabilizer G_Φ = {(r, e^{iθ}) : e^{iθ}χ(r) = 1} (item 3).
+- The statement is local. Other critical points of r̂₆ give other branches that lie outside this neighborhood.
+
+**Regularity.** ψ(a) = a·(an analytic function of a²) and λ(a) = (an analytic function of a²). Both are real-analytic in a on (−a₀, a₀); ψ is odd in a and λ is even, matching the odd/even powers posited in §2.
+
+**Degeneracy at a = 0.** There are two:
+1. The bifurcation from ψ = 0 has a 7-dimensional kernel. This is removed by the scaling b = a(Φ + k), λ = 48 + a²μ; κ must be carried as an O(1) unknown k, not as a²κ.
+2. The continuous symmetry (orbit of real dimension o in W, plus the phase). This is handled by the slice and the Noether identities.
+
+## Item 11
+
+At sin²t = 1/4, u = (√3/2)v₂ + (1/2)v₋₃ and e_t = −(1/2)v₂ + (√3/2)v₋₃.
+- **Not a stationary point of r̂₆.** Exactly: r̂₆ = 3061/14784, and the squared norm of the Riemannian gradient is 13225/92928. The gradient lies entirely along e_t: dr̂₆/ds = 115√3/528.
+- Π₆N(Φ) is correspondingly not parallel to Φ in either sector.
+- **Re⟨Φ, DN_Φ[e_t]⟩ = 805√3/6864** in the 3-dim sector and **2415√3/36608** in the 4-dim sector.
+  - Exact derivation: 3Re⟨N, e_t⟩ = 3κ_d·dr̂₆/ds.
+  - The numerics identify the same values at 80 and 120 digits.
+
+## Item 12
+
+- **Left side:** −Δξ was obtained by applying 4·Σ_a (J_aᵀ)² to the fibre vectors of the item 4 ξ, at every level. The J_a are explicit spin matrices, built from J₊ with Condon–Shortley phases.
+  - Justification for the factor 4: on the unit S³, the right-invariant fields of i, j, k are orthonormal and Δ = ΣY_q². Under q ↦ −iσ_a, Y_q acts on uᵀD(g)η by uᵀ ↦ uᵀ(−2iJ_a).
+  - The value n(n+2) was not substituted.
+- **Right side:** N(Φ) = |Φ|²Φ was evaluated pointwise at 8064 group elements g = Rz(α)Ry(β)Rz(γ). The grid is 24 × 14 × 24: trapezoid in α and γ, Gauss–Legendre in cos β. Φ(g) was computed as uᵀD³(g)η from the 2×2 matrix.
+  - N(Φ) was projected onto every level up to 22 by quadrature. The full tensor F^J[M, K, a] was kept, which includes both copies at level 18 and any part outside V_J ⊗ Hom.
+  - This rule is exact for projections up to J = 13. The factorization D^J(Euler angles) = e^{−iMα} d^J(β) e^{−iKγ} was checked.
+- **Why N(Φ) has nothing above level 18:** N(Φ) is a sum of products of three matrix coefficients of spin 3. By the Clebsch–Gordan series, 3 ⊗ 3 ⊗ 3 contains only spins ≤ 9, i.e. levels ≤ 18. The quadrature confirms the levels 20 and 22 components are ≤ 6·10⁻²⁹.
+- **Residual of (−Δ−48)ξ + g(N − Π₆N)** over all levels ≤ 18, all six vectors, both sectors: **worst 1.5·10⁻²⁹**, at 30-digit working precision, against a required 10⁻²⁵.
+- Also, the quadrature N equals the algebraic N at every level, including both copies (≤ 1.5·10⁻²⁹). It has no part outside V_J ⊗ Hom(σ, V_J) (≤ 1.5·10⁻²⁹).
+- Nothing is unresolved.
+
+---
+
+## Readings taken where the worklist is underdetermined
+
+1. **"Per g"** (items 5 and 7) means the quantity divided by g. Since ξ ∝ g, that is DN_Φ[ξ/g] and κ/g; λ₄ is reported as λ₄/g².
+2. **"Component along Φ"** means ⟨Φ, ·⟩ with the complex inner product. It is real here, and the imaginary part is reported as 0.
+3. **The item 6 quadratic form** is evaluated on unit tangents. Its "cross term" is the symmetric bilinear value B(τ_x, τ_y) = ⟨τ_x, DN_Φτ_y⟩_ℝ, not 2B.
+   - The cross second derivative of r̂₆ is the polarization ½[h((ŵ₁+ŵ₂)/√2) − h((ŵ₁−ŵ₂)/√2)], where h(ŵ) = d²/ds² r̂₆(cos s·û + sin s·ŵ).
+4. **"Every level n of the sector"** (item 4): levels up to 18 are computed. All higher levels are 0 by the selection rule, not by computation.
+5. **"Rotations that fix Φ up to a phase"**: the full stabilizer in SU(2), including −1. The character is of r·Φ = χ(r)Φ, with (r·ψ)(g) = ψ(r⁻¹g), which acts on the fibre vector by conj(D³(r)).
+6. **Stationarity of r̂₆** means on the unit sphere of V₃ viewed as a real manifold of dimension 13.
+7. **"Sufficiently small a > 0"** (item 10): a < a₀ for some a₀ that depends on Φ and g. No numerical value of a₀ is claimed.
+8. **σ** is the real orthogonal representation σ(h) = η₃†D³(h)η₃, with Θ-real η₃. It is used at every level, as §1.3 requires.
+
+## Things that looked wrong or notable
+
+- All six vectors turn out to be critical points of r̂₆. For U5 and U6 this holds only at the given parameter values (sin²t = 12/25 and z₀ = √(23/10)); the item 11 point, sin²t = 1/4, is not critical. Nothing in the worklist looked inconsistent.
+- The U4 zero at level 16 is not explained by the rotation stabilizer. Its character subspace in V₈ is 1-dimensional; the reason is Sym³, because ΘU4 = −U4.
+- At U5 and U6, the item 7 components of κ (and the item 5 components) have opposite signs in the two sectors. This is legitimate: these components do not depend on the phase of η, because Φ, e_t and τ_x are all built from the same η.
+- The claim in §1.2 that no question depends on the identification was verified (item "identification independence" above), including for an identification that puts Γ in the mirror position.
+- Hom_Γ(σ, V_{n/2}) has dimension two only at n = 18, and only in the 4-dim sector. That is the only place where η†η′ = 0 could be tested.
+- Environment deviation: `run_all.py` runs the child scripts with `sys.executable -S` instead of nesting `./py`, which the sandbox forbids (see above).
+
+---
+
+## Consulted-material manifest
+
+- **Item 1 declaration: DERIVED.** Γ, its classes, and the characters of the two constituents of V₃ were computed from q₁ and q₂: exact enumeration in Q(√5), commutant eigenspaces, and exact Z[φ] identification. The dimensions come from exact character sums, and were confirmed by group-averaged intertwiners. I recognized the group as binary icosahedral, but no character or branching table was consulted or used.
+- **Files read:** `BRIEF.md`; `worklist.md`; the room interpreter wrapper `py` (read only to understand why `./py` cannot be nested). Otherwise only the files I wrote.
+- **Software:** Python 3.12, mpmath 1.3.0 (arbitrary precision, eigsy/svd, PSLQ, polyroots), SymPy 1.14.0 (exact algebra; `sympy.physics.quantum.cg.CG` used only as an independent cross-check of the Racah routine). No documentation or external sources were consulted.
+- **Background knowledge used (no source consulted):** the Racah formula for Clebsch–Gordan coefficients; Wigner D-matrices via binary forms; the Majorana representation; Chebyshev characters of SU(2); Lyapunov–Schmidt reduction and the equivariant implicit function theorem with slices and Noether identities.
+- No search for the origin of the problem was made.

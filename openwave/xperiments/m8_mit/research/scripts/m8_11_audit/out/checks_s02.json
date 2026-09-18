@@ -1,0 +1,14 @@
+[
+ {
+  "label": "all intertwiner residuals (intertwining at q1,q2; eta^dag eta = I; eta^dag eta' = 0) < 1e-40 at 50 digits",
+  "status": "PASS",
+  "mutation": "append a residual 1e-30",
+  "mutation_detected": true
+ },
+ {
+  "label": "intertwining test detects a wrong group element (sector 3, level 6)",
+  "status": "PASS",
+  "mutation": "compare D(q1) eta with eta sigma(q2)",
+  "mutation_detected": true
+ }
+]

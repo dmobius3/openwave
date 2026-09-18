@@ -1,0 +1,71 @@
+{
+ "gap_sector3": {
+  "levels_le_18": [
+   6,
+   10,
+   14,
+   16,
+   18
+  ],
+  "min_gap": 72
+ },
+ "gap_sector4": {
+  "levels_le_18": [
+   6,
+   8,
+   12,
+   14,
+   16,
+   18
+  ],
+  "min_gap": 32
+ },
+ "U1": {
+  "stationary_exact": true,
+  "orbit_dim_in_W": 2,
+  "hessian_rank_on_W": 10,
+  "Q_sector3": "1288/1287",
+  "Q_sector4": "2289/2288",
+  "existence": true
+ },
+ "U2": {
+  "stationary_exact": true,
+  "orbit_dim_in_W": 2,
+  "hessian_rank_on_W": 10,
+  "Q_sector3": "1687/1287",
+  "Q_sector4": "168/143",
+  "existence": true
+ },
+ "U3": {
+  "stationary_exact": true,
+  "orbit_dim_in_W": 3,
+  "hessian_rank_on_W": 9,
+  "Q_sector3": "175/143",
+  "Q_sector4": "161/143",
+  "existence": true
+ },
+ "U4": {
+  "stationary_exact": true,
+  "orbit_dim_in_W": 3,
+  "hessian_rank_on_W": 9,
+  "Q_sector3": "1750/1287",
+  "Q_sector4": "2751/2288",
+  "existence": true
+ },
+ "U5": {
+  "stationary_exact": true,
+  "orbit_dim_in_W": 3,
+  "hessian_rank_on_W": 9,
+  "Q_sector3": "77/65",
+  "Q_sector4": "287/260",
+  "existence": true
+ },
+ "U6": {
+  "stationary_exact": true,
+  "orbit_dim_in_W": 3,
+  "hessian_rank_on_W": 9,
+  "Q_sector3": "5831/5031",
+  "Q_sector4": "609/559",
+  "existence": true
+ }
+}
