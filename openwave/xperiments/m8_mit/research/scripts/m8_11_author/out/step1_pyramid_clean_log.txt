@@ -1,0 +1,58 @@
+
+=== sector 3p (d = 3, w6 = 0.717948717949) ===
+  [PASS] parent: Q along the line = 1 + w6 * (paper restriction), three points  (max err 1.3e-15)
+  [PASS] parent: the pyramid is critical, Pi_T N(Phi) = 0  (5.0e-16; block identification 4.4e-16)
+  [PASS] parent: Q at the pyramid = 1 + w6 * 9/35  (Q = 1.184615384615383)
+  [PASS] bridge route 1, first order: Re<e, N(Phi)> = (1/4) dQ/dt at the control point  (c1 = 0.250000000000000)
+  [PASS] two routes to d2Q/dt2 at the pyramid: finite difference = w6 * (-104/55)  (-1.357575719019 vs -1.357575757576)
+  [PASS] bridge route 2, second order: Re<e, DN e> - Q = (1/4) d2Q/dt2 along e_t  (c2 = 0.250000000000000)
+  [PASS] slice: the direction i e_t inside the locus is null (rotation orbit)  (Hess form 0.0e+00, d2Q -5.3e-11)
+  [PASS] bridge route 3, at the hexagon, three random tangents: c = 1/4  (0.2500000022, 0.2500000055, 0.2500000027)
+  [PASS] support (F1): the cubic vanishes at every level outside the sector's support  (0: 0e+00, 2: 0e+00, 4: 1e-32, 8: 5e-32, 12: 9e-33)
+  [PASS] forcing lies in the fixed kernel: no component off span{v2, v_-3}  (3.9e-19)
+  [PASS] forcing has no component along the orbit direction i e_t  (-8.6e-22)
+  [PASS] parent (#547 D2): the forcing reproduces M8.10's audited residual, in the audit's fibre basis (e = -e_t)  (-8.459871625895541e-04 vs -8.459871625895552e-04)
+  [PASS] a^5 tangential residual vanishes with the tilt  (1.4e-18)
+  [PASS] arm: without the tilt the residual is M8.10's nonzero value (fibre norm)  (8.459871625895541e-04)
+  [PASS] lambda_4, two routes agree (level sum and direct pairing)  (-4.574061747755111e-03)
+  [PASS] lambda_4 lemma: including the tilt does not change it  (difference 8.7e-19)
+  [PASS] consistency with #547's blind R5 diagnostic (item 4, ungraded): xi level norms, same support  (max rel err 1.6e-15)
+  [PASS] consistency with #547's blind R5 diagnostic (item 7, ungraded): lambda_4  (-4.574061747755118e-03)
+  [PASS] arm: at sin^2 t = 1/4 (not critical) Re<Phi, DN_Phi[e_t]> is nonzero  (2.031324e-01)
+  [PASS] arm: comparing without the w6 conversion fails  (off by 7.051e-02)
+  [PASS] arm: dropping the conjugate term of DN moves c off 1/4  (c = 0.125000)
+  forcing along e_t by level of xi: 10: +3.832127e-04, 14: +2.308204e-04, 16: -2.600774e-05, 18: -3.419672e-05
+  level norms ||P_n N||^2: 10: 7.289940828402e-02, 14: 4.606146475297e-02, 16: 2.001809954751e-02, 18: 5.212704166797e-02
+  Q = 1.184615384615383   Hess form along e_t = -3.393939393939389e-01   forcing along e_t = +5.538286013610778e-04
+  tilt coefficient along e_t (per g, a^3 term, unit section) = +1.631816414724607e-03   ||v||^2 = 2.662824811364669e-06
+  lambda_4/g^2 = -4.574061747755111e-03
+
+=== sector 4 (d = 4, w6 = 0.403846153846) ===
+  [PASS] parent: Q along the line = 1 + w6 * (paper restriction), three points  (max err 4.4e-16)
+  [PASS] parent: the pyramid is critical, Pi_T N(Phi) = 0  (2.2e-16; block identification 4.4e-16)
+  [PASS] parent: Q at the pyramid = 1 + w6 * 9/35  (Q = 1.103846153846154)
+  [PASS] bridge route 1, first order: Re<e, N(Phi)> = (1/4) dQ/dt at the control point  (c1 = 0.250000000000000)
+  [PASS] two routes to d2Q/dt2 at the pyramid: finite difference = w6 * (-104/55)  (-0.763636341943 vs -0.763636363636)
+  [PASS] bridge route 2, second order: Re<e, DN e> - Q = (1/4) d2Q/dt2 along e_t  (c2 = 0.250000000000000)
+  [PASS] slice: the direction i e_t inside the locus is null (rotation orbit)  (Hess form 0.0e+00, d2Q -4.1e-11)
+  [PASS] bridge route 3, at the hexagon, three random tangents: c = 1/4  (0.2500000042, 0.2500000052, 0.2500000049)
+  [PASS] support (F1): the cubic vanishes at every level outside the sector's support  (0: 0e+00, 2: 0e+00, 4: 4e-33, 10: 3e-32)
+  [PASS] forcing lies in the fixed kernel: no component off span{v2, v_-3}  (1.1e-19)
+  [PASS] forcing has no component along the orbit direction i e_t  (-5.6e-22)
+  [PASS] parent (#547 D2): the forcing reproduces M8.10's audited residual, in the audit's fibre basis (e = -e_t)  (+8.412238260100632e-04 vs +8.412238260100632e-04)
+  [PASS] a^5 tangential residual vanishes with the tilt  (9.7e-19)
+  [PASS] arm: without the tilt the residual is M8.10's nonzero value (fibre norm)  (8.412238260100632e-04)
+  [PASS] lambda_4, two routes agree (level sum and direct pairing)  (-1.920593773944102e-03)
+  [PASS] lambda_4 lemma: including the tilt does not change it  (difference 2.2e-19)
+  [PASS] consistency with #547's blind R5 diagnostic (item 4, ungraded): xi level norms, same support  (max rel err 4.4e-16)
+  [PASS] consistency with #547's blind R5 diagnostic (item 7, ungraded): lambda_4  (-1.920593773944102e-03)
+  [PASS] arm: at sin^2 t = 1/4 (not critical) Re<Phi, DN_Phi[e_t]> is nonzero  (1.142620e-01)
+  [PASS] arm: comparing without the w6 conversion fails  (off by 1.490e-01)
+  [PASS] arm: dropping the conjugate term of DN moves c off 1/4  (c = 0.125000)
+  forcing along e_t by level of xi: 8: -6.481411e-04, 12: -1.146372e-05, 14: +6.028122e-05, 16: -1.772403e-05, 18: -1.885781e-05
+  level norms ||P_n N||^2: 8: 1.062426035503e-02, 12: 1.090384615385e-02, 14: 1.202944503593e-02, 16: 1.364214235990e-02, 18: 2.874550366980e-02
+  Q = 1.103846153846154   Hess form along e_t = -1.909090909090906e-01   forcing along e_t = -6.359054401613988e-04
+  tilt coefficient along e_t (per g, a^3 term, unit section) = -3.330933257988285e-03   ||v||^2 = 1.109511636917245e-05
+  lambda_4/g^2 = -1.920593773944102e-03
+
+  42 checks; ALL PASS, ALL ARMS FIRE

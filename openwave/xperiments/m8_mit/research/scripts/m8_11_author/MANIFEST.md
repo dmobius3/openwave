@@ -1,0 +1,29 @@
+# M8.11 author package: landing manifest
+
+Fifteen files were pinned by SHA-256 in [`../../tasks/m8_11_task_details.md`](../../tasks/m8_11_task_details.md), and all fifteen land byte-identical. The five console logs among them are renamed from `*.log` to `*_log.txt`, because the repository ignores `*.log`, as the agents' logs were at [#564](https://github.com/openwave-labs/openwave/pull/564); their bytes are unchanged. Four files from the author's dry run of the worklist join them, as the task doc's instrument qualification states: the brief, the criteria frozen before the run, the worklist as run, and the agent's return. They were not pinned in the task doc; each is byte-identical to the SHA-256 recorded before the run, and the worklist's also appears in the qualification record. With this manifest, the directory holds twenty files.
+
+| file | status | pinned or recorded SHA-256 | landed SHA-256 |
+| --- | --- | --- | --- |
+| `m810_core.py` | BYTE-IDENTICAL | `9339d87117a4fe524b913f5fe63972f9a19dfaa0d708f059323bde7553f7ecda` | `9339d87117a4fe524b913f5fe63972f9a19dfaa0d708f059323bde7553f7ecda` |
+| `m810_exact.py` | BYTE-IDENTICAL | `8436ef9ffc465e6a91878b4b994c1385766167cc8ebc4047d482cf65c72463a9` | `8436ef9ffc465e6a91878b4b994c1385766167cc8ebc4047d482cf65c72463a9` |
+| `m811_ops.py` | BYTE-IDENTICAL | `6753b9827e69624180d3eb8d3b627fc242fd41b4a81a3c1c8d5e6ec36bdae1c0` | `6753b9827e69624180d3eb8d3b627fc242fd41b4a81a3c1c8d5e6ec36bdae1c0` |
+| `m811_pyramid.py` | BYTE-IDENTICAL | `d72c58e18763e67488c531540deedccaca2d139f0993e435af9c409a29582eff` | `d72c58e18763e67488c531540deedccaca2d139f0993e435af9c409a29582eff` |
+| `m811_prism.py` | BYTE-IDENTICAL | `58e60e8bbe2f1621ae2c3f765d9bb6f5f934cbec5703f5967537e8486c77dd6c` | `58e60e8bbe2f1621ae2c3f765d9bb6f5f934cbec5703f5967537e8486c77dd6c` |
+| `m811_exact.py` | BYTE-IDENTICAL | `5ea22c908f6501aa03fea8c42ec328d8b7ec4fbc1207e6143840a2a631b01bd5` | `5ea22c908f6501aa03fea8c42ec328d8b7ec4fbc1207e6143840a2a631b01bd5` |
+| `NOTES.md` | BYTE-IDENTICAL | `3687e056f8c0a10f7c0b4c11ac14b25df75eb1ad2706c251ea1e33f7737cef47` | `3687e056f8c0a10f7c0b4c11ac14b25df75eb1ad2706c251ea1e33f7737cef47` |
+| `out/pyramid.json` | BYTE-IDENTICAL | `cd9a8c5204af9cbbca439b590e3898248562205fea779ae56e3ca37b300299b0` | `cd9a8c5204af9cbbca439b590e3898248562205fea779ae56e3ca37b300299b0` |
+| `out/prism.json` | BYTE-IDENTICAL | `018e8274490ab6b8c69d5833ebbe0766c820759561ce716bb349936dfa124b01` | `018e8274490ab6b8c69d5833ebbe0766c820759561ce716bb349936dfa124b01` |
+| `out/exact.json` | BYTE-IDENTICAL | `16e1ffc83b20bb8fba5c47dc6d5815357d2c1da45a158af681e31e96588008c4` | `16e1ffc83b20bb8fba5c47dc6d5815357d2c1da45a158af681e31e96588008c4` |
+| `out/step1_pyramid_clean_log.txt` | BYTE-IDENTICAL, renamed from `out/step1_pyramid_clean.log` | `7cb5eabd9939c9cc90ad436e655ac35b57d8fe0b8b6e33a5abd49af510f39368` | `7cb5eabd9939c9cc90ad436e655ac35b57d8fe0b8b6e33a5abd49af510f39368` |
+| `out/step2_prism_clean_log.txt` | BYTE-IDENTICAL, renamed from `out/step2_prism_clean.log` | `9cb6875655c0bfd2674d53c94aab23067d95f69ee6805a590fba6117a1f86f73` | `9cb6875655c0bfd2674d53c94aab23067d95f69ee6805a590fba6117a1f86f73` |
+| `out/step3_exact_clean_log.txt` | BYTE-IDENTICAL, renamed from `out/step3_exact_clean.log` | `980b34f179f014e3b02118fb9c920f5e657048060be433a581ee8414f88a125b` | `980b34f179f014e3b02118fb9c920f5e657048060be433a581ee8414f88a125b` |
+| `out/step3_exact_dps100_log.txt` | BYTE-IDENTICAL, renamed from `out/step3_exact_dps100.log` | `63e7bf37618414e1de89808af416fa79461f394b341c3cfbb8a664c1392f73ee` | `63e7bf37618414e1de89808af416fa79461f394b341c3cfbb8a664c1392f73ee` |
+| `out/step3_exact_firstpass_sqrt230_failed_log.txt` | BYTE-IDENTICAL, renamed from `out/step3_exact_firstpass_sqrt230_failed.log` | `6e47dfb50115a80f4e4026266cb71d2000f68be7367a70ef6aa557ed25af8074` | `6e47dfb50115a80f4e4026266cb71d2000f68be7367a70ef6aa557ed25af8074` |
+| `dryrun/BRIEF.md` | DRY-RUN RECORD, the brief | `e5395f736642bfc3e73bb0a1c3b412d3e5804158fc9f5f4902cc6f42c872a6d6` | `e5395f736642bfc3e73bb0a1c3b412d3e5804158fc9f5f4902cc6f42c872a6d6` |
+| `dryrun/PLAN.md` | DRY-RUN RECORD, the criteria frozen before the run | `fa0e6409fffa0b4ecbf692a3f4579ad5188ba2fb45af6498eed39d8092f1254e` | `fa0e6409fffa0b4ecbf692a3f4579ad5188ba2fb45af6498eed39d8092f1254e` |
+| `dryrun/worklist.md` | DRY-RUN RECORD, the worklist as run | `1dd5842e11e66efe04a4e32782dc99be059dc23a2ec3ea8b8823dd51f78c8d7f` | `1dd5842e11e66efe04a4e32782dc99be059dc23a2ec3ea8b8823dd51f78c8d7f` |
+| `dryrun/RETURN.md` | DRY-RUN RECORD, the agent's return | `40b0b587a736e44bc529855821f771bfef8ba063efea96423adc3d6cbd296895` | `40b0b587a736e44bc529855821f771bfef8ba063efea96423adc3d6cbd296895` |
+
+Regeneration, on the author's machine (python 3.13.13, numpy 2.5.0, scipy 1.18.0, mpmath 1.3.0): in a fresh directory holding only the six Python sources, `python3 m811_pyramid.py`, `python3 m811_prism.py` and `python3 m811_exact.py`, run in that order, each exit 0, print exactly the three clean logs, and write `out/pyramid.json`, `out/prism.json` and `out/exact.json` byte-identical to their pins. Run after the first two, `M811_DPS=100 python3 m811_exact.py` prints exactly `out/step3_exact_dps100_log.txt` and writes the same `out/exact.json`. The logs and the two float-pipeline files print floating-point values, so another interpreter or library version can differ in their last digits; `out/exact.json` holds the identified exact values. `out/step3_exact_firstpass_sqrt230_failed_log.txt` is the kept log of the first pass, whose stated field failed before the code was corrected, so it has no regeneration.
+
+Not landed: the dry run's transcript, 8.1 MB, and the author-side checks that ran on it. The task doc admits them only after deterministic privacy treatment, which this landing does not attempt, and no verdict rests on them.
