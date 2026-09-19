@@ -1,0 +1,2249 @@
+{
+ "task": "M5.32 R22-1 adversarial audit",
+ "partial_static_only": false,
+ "rows_audited": [
+  "bia_free_d0.3_w1_n32_L48",
+  "bia_free_d0.3_w25_n32_L48",
+  "bia_pin_d0.3_w1_n32_L48",
+  "bia_pin_d0.3_w25_n32_L48",
+  "bia_pin_d0.3_w25_n32_L48_x9000",
+  "bia_pin_d0.3_w25_n48_L48",
+  "big_free_d0.3_w25_n32_L48",
+  "big_pin_d0.3_w25_n32_L48",
+  "obl_free_d0.3_w25_n32_L48",
+  "obl_pin_d0.3_w25_n32_L48",
+  "obl_pin_d0.3_w25_n32_L48_x9000",
+  "perm_free_d0.3_w25_n32_L48",
+  "perm_pin_d0.3_w25_n32_L48",
+  "perm_pin_d0.3_w25_n32_L48_x9000",
+  "rad_free_d0.3_w1_n32_L48",
+  "rad_free_d0.3_w25_n32_L48",
+  "rad_pin_d0.3_w1_n32_L48",
+  "rad_pin_d0.3_w25_n32_L48",
+  "rad_pin_d0.3_w25_n32_L48_x9000",
+  "rad_pin_d0.3_w25_n48_L48",
+  "rad_pin_d0.89_w25_n32_L48"
+ ],
+ "rows_still_computing": [
+  "rad_pin_d0.3_w25_n64_L96"
+ ],
+ "checks": [
+  {
+   "id": "Q1.1",
+   "claim": "every end field's E, E_curv, V reproduce the JSON (production energy_parts and energy_grad)",
+   "method": "21 end fields recomputed",
+   "value": {
+    "max_abs_dev": 1.1427490897997217e-14,
+    "fields": 21
+   },
+   "expected": "< 1e-9",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q1.2",
+   "claim": "the quoted energies match the recomputed ones to the quoted digits",
+   "method": "rounding of the recomputed E_total",
+   "value": {
+    "mismatches": {}
+   },
+   "expected": "none",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q1.3",
+   "claim": "an independent energy (own stencils, own commutators, own V4) agrees",
+   "method": "own_energy on one pinned W1 x 25 and one free W1 field",
+   "value": {
+    "bia_pin_d0.3_w25_n32_L48_x9000": {
+     "own_E_curv": 3.730223621627088,
+     "own_V": 0.6785331401417394,
+     "dev_curv": 0.0,
+     "dev_V": 0.0
+    },
+    "rad_free_d0.3_w1_n32_L48": {
+     "own_E_curv": 1.4609383871263482,
+     "own_V": 0.7578946269490923,
+     "dev_curv": 0.0,
+     "dev_V": 0.0
+    }
+   },
+   "expected": "< 1e-9",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q1.4",
+   "claim": "the pinned shell is bitwise the seed's on every 'pin' row",
+   "method": "np.array_equal on B3.pin_shell",
+   "value": {
+    "rows": 14,
+    "not_equal": []
+   },
+   "expected": "all equal",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q1.5",
+   "claim": "M_0i = 0 on every end field",
+   "method": "max |M_0i|",
+   "value": 0.0,
+   "expected": "0",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q2.1",
+   "claim": "every W1 x 25 row still falls by 0.03 to 0.24 per 500 iterations at its end",
+   "method": "last-chunk energy drops from polish_chunks",
+   "value": {
+    "min": 0.007773520003782508,
+    "max": 0.23524888234129548,
+    "outside_0.03_0.24": {
+     "big_pin_d0.3_w25_n32_L48": 0.0078,
+     "big_free_d0.3_w25_n32_L48": 0.01,
+     "rad_pin_d0.3_w25_n48_L48": 0.0083
+    }
+   },
+   "expected": "all inside; all positive",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q2.1b",
+   "claim": "no W1 x 25 row is converged (every last-chunk drop is positive and far above 1e-6)",
+   "method": "the same drops",
+   "value": {
+    "min_drop": 0.007773520003782508
+   },
+   "expected": "> 1e-3",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q2.2",
+   "claim": "the 9000-iteration traces do not fix a floor (extrapolations by decay law disagree)",
+   "method": "three decay laws (exponential, power, hyperbola) from chunk 6 and from chunk 9, scipy curve_fit",
+   "value": {
+    "fits": {
+     "perm": {
+      "exp_from6": {
+       "E_inf": 4.225829045644399,
+       "rms_resid": 0.005328092071423126
+      },
+      "power_from6": {
+       "E_inf": 3.4883637040614768,
+       "rms_resid": 0.006696100054295117
+      },
+      "hyperbola_from6": {
+       "E_inf": 3.7376370592492516,
+       "rms_resid": 0.0059397416924224355
+      },
+      "exp_from9": {
+       "E_inf": 4.200203554812851,
+       "rms_resid": 0.004867814371077892
+      },
+      "power_from9": {
+       "E_inf": 3.7622811200205946,
+       "rms_resid": 0.005623582091609047
+      },
+      "hyperbola_from9": {
+       "E_inf": 3.809050634836506,
+       "rms_resid": 0.005559705514675009
+      },
+      "E_inf_min": 3.4883637040614768,
+      "E_inf_max": 4.225829045644399,
+      "E_9000": 4.380240756640064
+     },
+     "rad": {
+      "exp_from6": {
+       "E_inf": 4.21977955296642,
+       "rms_resid": 0.004543852756174588
+      },
+      "power_from6": {
+       "E_inf": -49.99999914048697,
+       "rms_resid": 0.015231521785594473
+      },
+      "hyperbola_from6": {
+       "E_inf": 3.105114385482521,
+       "rms_resid": 0.004466433965052623
+      },
+      "exp_from9": {
+       "E_inf": 4.22734973853978,
+       "rms_resid": 0.0036644106003079326
+      },
+      "power_from9": {
+       "E_inf": -49.99989283170981,
+       "rms_resid": 0.006578569102176114
+      },
+      "hyperbola_from9": {
+       "E_inf": 3.190308969010412,
+       "rms_resid": 0.0037131137613873513
+      },
+      "E_inf_min": -49.99999914048697,
+      "E_inf_max": 4.22734973853978,
+      "E_9000": 5.044444456860587
+     },
+     "obl": {
+      "exp_from6": {
+       "E_inf": 3.917305131154987,
+       "rms_resid": 0.018624263427722026
+      },
+      "power_from6": {
+       "E_inf": -49.99997040525756,
+       "rms_resid": 0.023200688843073428
+      },
+      "hyperbola_from6": {
+       "E_inf": 2.8995781442373967,
+       "rms_resid": 0.02090072443503134
+      },
+      "exp_from9": {
+       "E_inf": 4.155975627696483,
+       "rms_resid": 0.012415859111150004
+      },
+      "power_from9": {
+       "E_inf": 3.345769483018792,
+       "rms_resid": 0.014004862096202572
+      },
+      "hyperbola_from9": {
+       "E_inf": 3.5578605317510648,
+       "rms_resid": 0.013762752774984434
+      },
+      "E_inf_min": -49.99997040525756,
+      "E_inf_max": 4.155975627696483,
+      "E_9000": 4.44459100582826
+     },
+     "bia": {
+      "exp_from6": {
+       "E_inf": 3.5322943120465076,
+       "rms_resid": 0.010463248987087854
+      },
+      "power_from6": {
+       "E_inf": -49.99999999999928,
+       "rms_resid": 0.01974039008515873
+      },
+      "hyperbola_from6": {
+       "E_inf": 2.277286010892486,
+       "rms_resid": 0.010736686913071794
+      },
+      "exp_from9": {
+       "E_inf": 3.763138032509739,
+       "rms_resid": 0.010478111090537822
+      },
+      "power_from9": {
+       "E_inf": -49.99999966682969,
+       "rms_resid": 0.011507400154109634
+      },
+      "hyperbola_from9": {
+       "E_inf": 2.818452167518593,
+       "rms_resid": 0.010830603712985788
+      },
+      "E_inf_min": -49.99999999999928,
+      "E_inf_max": 3.763138032509739,
+      "E_9000": 4.408756761768828
+     }
+    },
+    "spread_of_E_inf_per_seed": {
+     "perm": 0.737,
+     "rad": 54.227,
+     "obl": 54.156,
+     "bia": 53.763
+    },
+    "common_window_all_seeds": [
+     3.4883637040614768,
+     3.763138032509739
+    ]
+   },
+   "expected": "spread per seed above the 0.03 to 0.66 gaps between the seeds",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q3.1",
+   "claim": "the end-of-chunk max |G| is carried by the (0,0) entry (the stiff M_00 direction)",
+   "method": "production gradient on the end fields, arg max over entries and free cells",
+   "value": {
+    "perm_pin_d0.3_w25_n32_L48_x9000": {
+     "fmax_all": 1.5388702406797088,
+     "fmax_json": 1.5388702406797088,
+     "argmax_entry": [
+      0,
+      0
+     ],
+     "argmax_cell": [
+      12,
+      12,
+      12
+     ],
+     "fmax_excluding_00": 0.03950999523864804,
+     "rms_G00": 0.0485634552508374,
+     "rms_G_spatial": 0.000609780908294489,
+     "predicted_E_decrease_from_M00": 5.007027043801895e-05,
+     "max_M00_error": 2.9765876955553656e-06
+    },
+    "rad_pin_d0.3_w25_n32_L48_x9000": {
+     "fmax_all": 0.10374058195199051,
+     "fmax_json": 0.10374058195199051,
+     "argmax_entry": [
+      0,
+      0
+     ],
+     "argmax_cell": [
+      14,
+      17,
+      14
+     ],
+     "fmax_excluding_00": 0.042026450623321304,
+     "rms_G00": 0.0031185709170704966,
+     "rms_G_spatial": 0.0006285596575849645,
+     "predicted_E_decrease_from_M00": 2.064771648666911e-07,
+     "max_M00_error": 2.0066210366876428e-07
+    },
+    "obl_pin_d0.3_w25_n32_L48_x9000": {
+     "fmax_all": 0.14035755157854968,
+     "fmax_json": 0.14035755157854968,
+     "argmax_entry": [
+      0,
+      0
+     ],
+     "argmax_cell": [
+      16,
+      16,
+      12
+     ],
+     "fmax_excluding_00": 0.06633724975478664,
+     "rms_G00": 0.0048630376049845474,
+     "rms_G_spatial": 0.0008287210271175364,
+     "predicted_E_decrease_from_M00": 5.020835991953828e-07,
+     "max_M00_error": 2.7148914181513767e-07
+    },
+    "bia_pin_d0.3_w25_n32_L48_x9000": {
+     "fmax_all": 1.1994237334427322,
+     "fmax_json": 1.1994237334427322,
+     "argmax_entry": [
+      0,
+      0
+     ],
+     "argmax_cell": [
+      12,
+      19,
+      20
+     ],
+     "fmax_excluding_00": 0.024138904916634264,
+     "rms_G00": 0.023757335018587393,
+     "rms_G_spatial": 0.00038504768951838115,
+     "predicted_E_decrease_from_M00": 1.1982742407090507e-05,
+     "max_M00_error": 2.3200071275312895e-06
+    },
+    "big_pin_d0.3_w25_n32_L48": {
+     "fmax_all": 0.3106967484216623,
+     "fmax_json": 0.3106967484216623,
+     "argmax_entry": [
+      0,
+      0
+     ],
+     "argmax_cell": [
+      18,
+      18,
+      14
+     ],
+     "fmax_excluding_00": 0.003300263835474434,
+     "rms_G00": 0.019687343165562594,
+     "rms_G_spatial": 0.00013976175479254828,
+     "predicted_E_decrease_from_M00": 8.228771489312689e-06,
+     "max_M00_error": 6.009708251895857e-07
+    }
+   },
+   "expected": "argmax entry (0,0); fmax reproduces the JSON",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q3.2",
+   "claim": "with the (0,0) entry excluded the residual is far below the recorded fmax_end, yet still above the 1e-3 gate",
+   "method": "max |G| over the 9 other entries on the free cells; the M_00 part as a predicted energy decrease G_00^2 / (2 H_00)",
+   "value": {
+    "fmax_excluding_00_min": 0.003300263835474434,
+    "fmax_excluding_00_max": 0.06633724975478664,
+    "fmax_recorded_min": 0.10374058195199051,
+    "fmax_recorded_max": 1.5388702406797088,
+    "predicted_E_decrease_from_M00_max": 5.007027043801895e-05
+   },
+   "expected": "1e-3 < spatial residual < 0.1 on every row",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q3.3",
+   "claim": "V4 Hessian along M_00 is 8.46e6 w; 7 of the 10 directions are V4-flat at the uniaxial vacuum",
+   "method": "own V4, central second differences on one cell",
+   "value": {
+    "H_00_over_w": 8462850.000582926,
+    "closed_form": 8462850.0,
+    "zero_modes": 7,
+    "eigenvalues_over_w": [
+     -1.1362577545526036e-09,
+     2.6900860985338094e-08,
+     1.6041036937833622e-07,
+     1.6041036937834268e-07,
+     0.00016777292906110255,
+     0.00019657014349634574,
+     0.00019657014349735226,
+     3.0873385992127322,
+     35.02167385475001,
+     8462877.669826673
+    ]
+   },
+   "expected": "8.46e6; 7",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q4.1",
+   "claim": "both W1 pinned rows are under the 1e-3 max |G| gate and agree in energy to 0.03 percent",
+   "method": "production gradient on the two end fields",
+   "value": {
+    "rows": {
+     "rad": {
+      "E": 2.279990489880091,
+      "fmax": 0.0006436060993391578
+     },
+     "bia": {
+      "E": 2.279207052412725,
+      "fmax": 0.0007242442768363657
+     }
+    },
+    "rel_dE": 0.0003437324689464945
+   },
+   "expected": "fmax < 1e-3; rel dE about 3.4e-4",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q4.2",
+   "claim": "the W1 pinned rows ARE converged (the gate was met by a settled descent)",
+   "method": "polish_chunks: how the gate was met, and the energy drop of the last full 500-iteration chunk against dE",
+   "value": {
+    "history": {
+     "rad": {
+      "chunk_iters": [
+       500,
+       500,
+       500,
+       1
+      ],
+      "chunk_E": [
+       2.3787748029452085,
+       2.28447763993276,
+       2.2799905823166147,
+       2.279990489880091
+      ],
+      "chunk_fmax": [
+       0.24113280143494556,
+       0.07819123571487806,
+       0.006838112260244911,
+       0.0006436060993391578
+      ],
+      "drop_in_last_full_chunk": 0.004487057616145318,
+      "collect_last_chunk_drop_is_over_iters": 1
+     },
+     "bia": {
+      "chunk_iters": [
+       500,
+       500,
+       500,
+       1
+      ],
+      "chunk_E": [
+       2.3682563788680016,
+       2.285490607303654,
+       2.279207694038203,
+       2.279207052412725
+      ],
+      "chunk_fmax": [
+       0.2465834439942212,
+       0.11305854797061332,
+       0.026827710995681632,
+       0.0007242442768363657
+      ],
+      "drop_in_last_full_chunk": 0.00628291326545094,
+      "collect_last_chunk_drop_is_over_iters": 1
+     }
+    },
+    "dE_between_rows": 0.0007834374673660882
+   },
+   "expected": "gate met inside a chunk, last full-chunk drop below dE",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q4.3",
+   "claim": "end RMS 0.044 over r < 12 (min over the 12 exact symmetries), seed RMS 0.093, ratio above 0.25",
+   "method": "own 12 images (axis permutations times the inversion)",
+   "value": {
+    "end": {
+     "rms_min12": 0.04380344734013691,
+     "perm": [
+      2,
+      1,
+      0
+     ],
+     "inversion": 1,
+     "rms_identity": 0.043803447340563774
+    },
+    "seed": {
+     "rms_min12": 0.0932340849039954,
+     "perm": [
+      1,
+      0,
+      2
+     ],
+     "inversion": 1,
+     "rms_identity": 0.09323408490399542
+    },
+    "ratio": 0.46982224778890685
+   },
+   "expected": "0.0438, 0.0932",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q4.4",
+   "claim": "the field difference lies along the V4 zero modes of the local vacuum frame",
+   "method": "cell-by-cell projection of D on the eigenframe of the mean field, fractions of sum |D|^2 over r < 12",
+   "value": {
+    "fractions": {
+     "top_diag (V4-massive)": 0.07641326591013684,
+     "pair_trace (V4-massive)": 0.1416007054794732,
+     "M00 (V4-massive)": 3.348333033120019e-08,
+     "pair_split (V4-flat at the vacuum)": 0.41144642141240423,
+     "pair_offdiag (V4-flat at the vacuum)": 0.16023939187317066,
+     "top_axis_rotation (V4-flat)": 0.21030018184148488
+    },
+    "massive_total": 0.21801400487294037,
+    "mean_field_eigenvalues_on_shells": {
+     "r3": [
+      0.5423466639673521,
+      0.605114135496758,
+      0.7572346892004298
+     ],
+     "r6": [
+      0.4899746772416284,
+      0.5553301759829714,
+      0.8231445387561053
+     ],
+     "r9": [
+      0.43140518497322056,
+      0.4903969518430536,
+      0.8859023964823337
+     ],
+     "r12": [
+      0.38919662905986047,
+      0.43738615548155796,
+      0.9255918032275365
+     ]
+    },
+    "note": "the W1 fields sit far from the (1, 0.3, 0.3) vacuum inside r 12, so 'flat at the vacuum' is nominal there"
+   },
+   "expected": "massive fraction under 0.05",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q4.5",
+   "claim": "the two endpoints carry the same rotation-invariant reads (a frame-only difference)",
+   "method": "sorted eigenvalue and biaxiality shell means; pointwise sorted-eigenvalue RMS over r < 12",
+   "value": {
+    "max_shell_eigenvalue_diff": 0.038761517608348894,
+    "max_shell_biaxiality_diff": 0.04894596893888194,
+    "pointwise_eigenvalue_rms": 0.03335310162364354,
+    "field_rms": 0.043803447340563774,
+    "profiles": {
+     "1.5": {
+      "rad_lam": [
+       0.5778447718797991,
+       0.6216388890280881,
+       0.7223022041970483
+      ],
+      "bia_lam": [
+       0.5390832542714502,
+       0.6318233403586212,
+       0.7376134982690797
+      ],
+      "rad_biax": 0.04379411714828886,
+      "bia_biax": 0.0927400860871708
+     },
+     "3": {
+      "rad_lam": [
+       0.5537704114192616,
+       0.5997070982853835,
+       0.7567115827014114
+      ],
+      "bia_lam": [
+       0.5223294646104318,
+       0.6148626854557311,
+       0.7620097348568612
+      ],
+      "rad_biax": 0.04593668686612197,
+      "bia_biax": 0.09253322084529889
+     },
+     "4.5": {
+      "rad_lam": [
+       0.5218507709018435,
+       0.5752679200210122,
+       0.7942203373269329
+      ],
+      "bia_lam": [
+       0.4980453967268858,
+       0.5891420585582882,
+       0.796023365543757
+      ],
+      "rad_biax": 0.05341714911916864,
+      "bia_biax": 0.09109666183140201
+     },
+     "6": {
+      "rad_lam": [
+       0.4959060249867122,
+       0.5514852982228259,
+       0.8235350710223499
+      ],
+      "bia_lam": [
+       0.47922913767799674,
+       0.5629588306709596,
+       0.8237844213805654
+      ],
+      "rad_biax": 0.05557927323611298,
+      "bia_biax": 0.08372969299296298
+     },
+     "9": {
+      "rad_lam": [
+       0.4343932533319062,
+       0.48750560659457776,
+       0.8862784128579932
+      ],
+      "bia_lam": [
+       0.42649841787656073,
+       0.4950588814707802,
+       0.8856744944653965
+      ],
+      "rad_biax": 0.05311235326267165,
+      "bia_biax": 0.06856046359421995
+     },
+     "12": {
+      "rad_lam": [
+       0.39062915745518845,
+       0.43531175966381963,
+       0.9258450808237247
+      ],
+      "bia_lam": [
+       0.38706105288293635,
+       0.4401414817059033,
+       0.9253606430063359
+      ],
+      "rad_biax": 0.044682602208631864,
+      "bia_biax": 0.05308042882296707
+     },
+     "15": {
+      "rad_lam": [
+       0.3542672347081241,
+       0.3878006500626052,
+       0.9564156821533792
+      ],
+      "bia_lam": [
+       0.35270427874823645,
+       0.39050793513422255,
+       0.9557687070543922
+      ],
+      "rad_biax": 0.03353341535448187,
+      "bia_biax": 0.03780365638598732
+     },
+     "18": {
+      "rad_lam": [
+       0.3316439890939183,
+       0.3541715499771841,
+       0.9750030595535397
+      ],
+      "bia_lam": [
+       0.3311438354274923,
+       0.3555114965712161,
+       0.9743820841083998
+      ],
+      "rad_biax": 0.022527560883264804,
+      "bia_biax": 0.02436766114372304
+     }
+    }
+   },
+   "expected": "differences under 0.005",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q4.6",
+   "claim": "rad and bia are two equal-energy minima (each stationary along the segment joining them)",
+   "method": "E on the straight segment A + t (B - A), t in [-0.25, 1.25], quadratic fit",
+   "value": {
+    "scan": {
+     "-0.25": {
+      "E": 2.280586087585365,
+      "E_curv": 1.554269347812902,
+      "V": 0.7263167397724631
+     },
+     "0": {
+      "E": 2.279990489880091,
+      "E_curv": 1.5519862257630577,
+      "V": 0.7280042641170333
+     },
+     "0.25": {
+      "E": 2.279624596641494,
+      "E_curv": 1.5506655681158408,
+      "V": 0.7289590285256532
+     },
+     "0.5": {
+      "E": 2.2793988822429188,
+      "E_curv": 1.5502554097610892,
+      "V": 0.7291434724818294
+     },
+     "0.75": {
+      "E": 2.279263321616581,
+      "E_curv": 1.5507090699960158,
+      "V": 0.7285542516205654
+     },
+     "1": {
+      "E": 2.2792070524127244,
+      "E_curv": 1.5519851525252082,
+      "V": 0.7272218998875163
+     },
+     "1.25": {
+      "E": 2.279258159984216,
+      "E_curv": 1.554047545460628,
+      "V": 0.7252106145235881
+     }
+    },
+    "quadratic_min_at_t": 0.9467946983374831,
+    "barrier": 0.0,
+    "dE_dt_at_rad": -0.0017896959379653237,
+    "curvature_d2E_dt2": 0.0018902682293298924,
+    "norm_D": 2.1611973955502686
+   },
+   "expected": "slope at t = 0 consistent with 0 and an interior maximum",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q5.1",
+   "claim": "G_1^2 = ((1-delta)^2 - eps^2)^2, G_2,3^2 = 4 eps^2 (1-delta -/+ eps)^2, V4 = w A eps^4, c_0 = 5.08",
+   "method": "own sympy expansion",
+   "value": {
+    "A_delta0.3": 8.4064,
+    "c_0": 5.0756487346785635
+   },
+   "expected": "identities hold; 5.08",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q5.2",
+   "claim": "the local V4 resistance to the split is w A eps^4 with A = 8.41 (delta 0.3)",
+   "method": "own V4 on one cell, minimized over the three V4-massive eigenvalue shifts at fixed eps",
+   "value": {
+    "A_fixed_top_and_pair_mean": 8.4064,
+    "A_relaxed": [
+     0.9290462702507872,
+     0.9261512488869714,
+     0.9154567712037076
+    ],
+    "relaxed_shifts_per_eps2_(top, pair_mean, N00)": [
+     -0.696802123706071,
+     0.15708159777958441,
+     -0.000796307040587729
+    ],
+    "G1_sq_loss_per_eps2_fixed": 0.9799999999999999,
+    "G1_sq_loss_per_eps2_relaxed": 2.151528465878319,
+    "c_0_fixed": 5.0756487346785635,
+    "c_0_same_balance_with_relaxed_V4": 22.622386736899195
+   },
+   "expected": "A_relaxed within 10 percent of A",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q5.3",
+   "claim": "on the end fields the tangent-frame current cost stays below the top-axis gain, read with the frame formula e = 8 sum_a G_a^2 rho_a^2 that the mechanism rests on",
+   "method": "sign-free projector currents rho_a^2 = sum_{i<j} tr(F F^T)/2, F = [d_i P_a, d_j P_a], central differences, shell sums; the frame formula total against the actual curvature (same stencil) as the validity control",
+   "value": {
+    "shells": {
+     "bia_9000": {
+      "6": {
+       "gain_top_axis": 0.06405419178874625,
+       "cost_tangent_currents": 0.24485898268114142,
+       "cost_over_gain": 3.822684758691483,
+       "frame_formula_total": 0.4305470692674942,
+       "actual_curvature_total": 0.10770716989409296,
+       "eps_mean": 0.17271003272898997,
+       "rho1_r4_mean": 1.5569020467281935
+      },
+      "9": {
+       "gain_top_axis": 0.38799036147083177,
+       "cost_tangent_currents": 0.6061930977826184,
+       "cost_over_gain": 1.5623921570747334,
+       "frame_formula_total": 1.0855430576133822,
+       "actual_curvature_total": 0.19215330793193866,
+       "eps_mean": 0.16573813372038437,
+       "rho1_r4_mean": 15.370381736091282
+      },
+      "12": {
+       "gain_top_axis": 0.050989762181783846,
+       "cost_tangent_currents": 0.22872694862673248,
+       "cost_over_gain": 4.485742604785975,
+       "frame_formula_total": 0.4087083690520642,
+       "actual_curvature_total": 0.21688140605336348,
+       "eps_mean": 0.1209350200145525,
+       "rho1_r4_mean": 4.446502482625706
+      },
+      "15": {
+       "gain_top_axis": 0.0015397003736247797,
+       "cost_tangent_currents": 0.017551906020764958,
+       "cost_over_gain": 11.399559499647367,
+       "frame_formula_total": 0.08554307607198046,
+       "actual_curvature_total": 0.10398742806019431,
+       "eps_mean": 0.057868687959394406,
+       "rho1_r4_mean": 1.1003834987186947
+      }
+     },
+     "rad_9000": {
+      "6": {
+       "gain_top_axis": 0.06683771546909781,
+       "cost_tangent_currents": 0.5686132929700537,
+       "cost_over_gain": 8.507371758284439,
+       "frame_formula_total": 0.9714418722616194,
+       "actual_curvature_total": 0.16135116538590727,
+       "eps_mean": 0.16013513055721784,
+       "rho1_r4_mean": 2.9025466962697757
+      },
+      "9": {
+       "gain_top_axis": 0.05556729328157668,
+       "cost_tangent_currents": 0.39119425503852745,
+       "cost_over_gain": 7.040009184111686,
+       "frame_formula_total": 0.5545019124847809,
+       "actual_curvature_total": 0.23787545882018582,
+       "eps_mean": 0.13242808398335956,
+       "rho1_r4_mean": 4.0371951652165174
+      },
+      "12": {
+       "gain_top_axis": 0.0176194937435547,
+       "cost_tangent_currents": 0.14319372932077273,
+       "cost_over_gain": 8.127005883648259,
+       "frame_formula_total": 0.25768711814367423,
+       "actual_curvature_total": 0.19050827705452764,
+       "eps_mean": 0.08963002912993828,
+       "rho1_r4_mean": 2.2229890405810333
+      },
+      "15": {
+       "gain_top_axis": 0.0006580601128733686,
+       "cost_tangent_currents": 0.004341705996005783,
+       "cost_over_gain": 6.5977346310325045,
+       "frame_formula_total": 0.07165810316504076,
+       "actual_curvature_total": 0.09040863750832862,
+       "eps_mean": 0.04131317677191952,
+       "rho1_r4_mean": 1.0303412722131686
+      }
+     }
+    },
+    "cost_over_gain_min_max": [
+     1.5623921570747334,
+     11.399559499647367
+    ],
+    "frame_formula_over_actual_min_max": [
+     0.7926024010531015,
+     6.020668458998729
+    ],
+    "note": "the fixed-eigenvalue frame formula misses the actual curvature by up to the factor shown (eigenvalue gradients, eigenvector exchanges), so this budget cannot decide the sign; the direct test Q5.4 does"
+   },
+   "expected": "cost / gain < 1 on every shell and frame formula within 25 percent of the actual curvature",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q5.4",
+   "claim": "the uniaxial Coulomb tail is unstable to the split at every radius (d2E/da2 < 0 for a split perturbation)",
+   "method": "E_curv(+a) + E_curv(-a) - 2 E_curv(0) on the exact 'rad' seed exterior, production energy_parts; 3 frames, 2 tensors, shell and box-filling radial shapes",
+   "value": {
+    "trials": [
+     {
+      "frame_axis": "z",
+      "radial_shape": "shell r 13 +/- 6",
+      "angular": "sin^2",
+      "tensor": "split",
+      "a": 0.05,
+      "c2_curv": 24.987006274957576,
+      "c2_total": 25.884085617231275,
+      "dV_mean": 0.002242698355683359,
+      "continuum_c2_if_tangential_eigenvalue_0": 20.132488259920226,
+      "continuum_c2_if_tangential_eigenvalue_4": 23.0855860955379,
+      "no_gradient_prediction_of_1b": -0.7382835128323251
+     },
+     {
+      "frame_axis": "z",
+      "radial_shape": "shell r 13 +/- 6",
+      "angular": "sin^2",
+      "tensor": "split",
+      "a": 0.1,
+      "c2_curv": 25.156227831114816,
+      "c2_total": 29.330271376155174,
+      "dV_mean": 0.04174043545040362,
+      "continuum_c2_if_tangential_eigenvalue_0": 20.132488259920226,
+      "continuum_c2_if_tangential_eigenvalue_4": 23.0855860955379,
+      "no_gradient_prediction_of_1b": -0.7382835128323251
+     },
+     {
+      "frame_axis": "z",
+      "radial_shape": "shell r 13 +/- 6",
+      "angular": "sin^2",
+      "tensor": "partner",
+      "a": 0.05,
+      "c2_curv": 25.213376180440502,
+      "c2_total": 26.110455522925232,
+      "dV_mean": 0.0022426983562118252,
+      "continuum_c2_if_tangential_eigenvalue_0": 20.132488259920226,
+      "continuum_c2_if_tangential_eigenvalue_4": 23.0855860955379,
+      "no_gradient_prediction_of_1b": null
+     },
+     {
+      "frame_axis": "111",
+      "radial_shape": "shell r 13 +/- 6",
+      "angular": "sin^2",
+      "tensor": "split",
+      "a": 0.05,
+      "c2_curv": 25.12610883098709,
+      "c2_total": 26.023216139377322,
+      "dV_mean": 0.002242768270978246,
+      "continuum_c2_if_tangential_eigenvalue_0": 20.13336655449823,
+      "continuum_c2_if_tangential_eigenvalue_4": 23.086452318212043,
+      "no_gradient_prediction_of_1b": -0.7382654049765135
+     },
+     {
+      "frame_axis": "z",
+      "radial_shape": "shell r 10 +/- 4",
+      "angular": "sin^2",
+      "tensor": "split",
+      "a": 0.05,
+      "c2_curv": 34.18933107243979,
+      "c2_total": 33.321420287283836,
+      "dV_mean": -0.002169776962889003,
+      "continuum_c2_if_tangential_eigenvalue_0": 30.841145680849262,
+      "continuum_c2_if_tangential_eigenvalue_4": 34.121734771621114,
+      "no_gradient_prediction_of_1b": -0.8200425640691112
+     },
+     {
+      "frame_axis": "z",
+      "radial_shape": "shell r 10 +/- 4",
+      "angular": "sin^4",
+      "tensor": "split",
+      "a": 0.05,
+      "c2_curv": 26.282848499419128,
+      "c2_total": 25.611158858480817,
+      "dV_mean": -0.0016792241023448895,
+      "continuum_c2_if_tangential_eigenvalue_0": null,
+      "continuum_c2_if_tangential_eigenvalue_4": null,
+      "no_gradient_prediction_of_1b": -0.937221438501448
+     },
+     {
+      "frame_axis": "z",
+      "radial_shape": "shell r 15 +/- 5",
+      "angular": "sin^2",
+      "tensor": "split",
+      "a": 0.05,
+      "c2_curv": 26.83832554984242,
+      "c2_total": 28.032949684413204,
+      "dV_mean": 0.002986560336427857,
+      "continuum_c2_if_tangential_eigenvalue_0": 25.029631635639525,
+      "continuum_c2_if_tangential_eigenvalue_4": 26.829754727834967,
+      "no_gradient_prediction_of_1b": -0.45003619961388686
+     },
+     {
+      "frame_axis": "z",
+      "radial_shape": "broad sqrt(r), r 4 to 21",
+      "angular": "sin^2",
+      "tensor": "split",
+      "a": 0.05,
+      "c2_curv": 42.42833592755026,
+      "c2_total": 39.477612392764165,
+      "dV_mean": -0.007376808836964344,
+      "continuum_c2_if_tangential_eigenvalue_0": 17.417886021650308,
+      "continuum_c2_if_tangential_eigenvalue_4": 29.798861213164642,
+      "no_gradient_prediction_of_1b": -3.0902726756575287
+     },
+     {
+      "frame_axis": "z",
+      "radial_shape": "broad sqrt(r), r 4 to 21",
+      "angular": "sin^2",
+      "tensor": "split",
+      "a": 0.02,
+      "c2_curv": 42.33664167432538,
+      "c2_total": 35.219452902146564,
+      "dV_mean": -0.002846875508871527,
+      "continuum_c2_if_tangential_eigenvalue_0": 17.417886021650308,
+      "continuum_c2_if_tangential_eigenvalue_4": 29.798861213164642,
+      "no_gradient_prediction_of_1b": -3.0902726756575287
+     },
+     {
+      "frame_axis": "z",
+      "radial_shape": "broad sqrt(r), r 4 to 21",
+      "angular": "sin^2",
+      "tensor": "partner",
+      "a": 0.05,
+      "c2_curv": 43.21661135653904,
+      "c2_total": 40.265887820845585,
+      "dV_mean": -0.0073768088392336395,
+      "continuum_c2_if_tangential_eigenvalue_0": 17.417886021650308,
+      "continuum_c2_if_tangential_eigenvalue_4": 29.798861213164642,
+      "no_gradient_prediction_of_1b": null
+     },
+     {
+      "frame_axis": "x",
+      "radial_shape": "broad sqrt(r), r 4 to 21",
+      "angular": "sin^2",
+      "tensor": "split",
+      "a": 0.05,
+      "c2_curv": 42.42833592755061,
+      "c2_total": 39.477612392764875,
+      "dV_mean": -0.007376808836964344,
+      "continuum_c2_if_tangential_eigenvalue_0": 17.417886021650308,
+      "continuum_c2_if_tangential_eigenvalue_4": 29.798861213164642,
+      "no_gradient_prediction_of_1b": -3.0902726756575287
+     }
+    ],
+    "negative_curvature_trials": 0,
+    "c2_curv_min": 24.987006274957576,
+    "c2_curv_max": 43.21661135653904,
+    "note": "the second variation of a split eps(r) sin^2(theta) is 8 (1-delta)^2 / r^2 [2 eps_r^2 + (lam - 2) eps^2 / r^2]; lam = 4 reproduces the clean shells (r 10 +/- 4, r 15 +/- 5) to 0.3 percent, so the form is positive for every radial profile r^s (2 s^2 + 2 > 0); the -16 (1-delta)^2 eps^2 / r^4 of the audited note is there, outweighed by gradient terms of the same order that it omits"
+   },
+   "expected": "at least one trial with c2_curv < 0",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q5.8",
+   "claim": "on (certified quartic + V4) the uniaxial exterior is a saddle in the split sector (some split texture lowers E)",
+   "method": "Lanczos (full reorthogonalization) on the Hessian restricted to the 2 split coordinates per cell of the shell 8 < r < 16, 'rad' seed, all other entries clamped; the Ritz vector re-tested by a direct energy second difference",
+   "value": {
+    "cells": 4416,
+    "lanczos_steps": 80,
+    "lowest_ritz_values": [
+     0.023567213880110738,
+     0.02395907232239748,
+     0.02699993542790042
+    ],
+    "largest": 1.2517844779952667,
+    "residual_of_lowest": 0.0008053785321864343,
+    "direct_d2E_da2_along_the_ritz_vector": 0.023567118888934143,
+    "mean_r_of_the_mode": 12.799545966999842,
+    "local_value_claimed_by_1b_at_r9_r12_r15": [
+     -0.004032921810699588,
+     -0.0012760416666666666,
+     -0.0005226666666666666
+    ],
+    "note": "finite-difference Hessian-vector products of the production gradient (step 2e-3 in sup norm; a step of 0.5 in 2-norm gives spurious negative Ritz values through the quartic nonlinearity, caught by the direct check)"
+   },
+   "expected": "lowest eigenvalue < 0",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q5.5",
+   "claim": "the halo is the local-balance power law eps = c_0 / r^2 with c_0 = 5.08",
+   "method": "shell means of eps every 1.5 from r 6 to 18, log-log slopes, eps r^2 against c_0",
+   "value": {
+    "halo": {
+     "rad_3000": {
+      "r": [
+       6.0,
+       7.5,
+       9.0,
+       10.5,
+       12.0,
+       13.5,
+       15.0,
+       16.5,
+       18.0
+      ],
+      "eps": [
+       0.10982457546169382,
+       0.0809867360483024,
+       0.05688838789861729,
+       0.03701691292167624,
+       0.022409101828841337,
+       0.014119551133916297,
+       0.007995927656866365,
+       0.0047272284744379455,
+       0.002680141560908057
+      ],
+      "eps_r2": [
+       3.953684716620977,
+       4.5555039027170094,
+       4.607959419788001,
+       4.081114649614806,
+       3.2269106633531526,
+       2.573288194156245,
+       1.7990837227949321,
+       1.2869879521657306,
+       0.8683658657342105
+      ],
+      "loglog_slope_r6_to_12": -2.2526615825352083,
+      "loglog_slope_r12_to_18": -5.252600628274765
+     },
+     "rad_9000": {
+      "r": [
+       6.0,
+       7.5,
+       9.0,
+       10.5,
+       12.0,
+       13.5,
+       15.0,
+       16.5,
+       18.0
+      ],
+      "eps": [
+       0.1750510725199144,
+       0.15207801552695835,
+       0.13815984026762348,
+       0.11753335652647333,
+       0.08829842803822419,
+       0.06483067344072287,
+       0.04116750641907878,
+       0.027583828630959383,
+       0.01724249152300228
+      ],
+      "eps_r2": [
+       6.301838610716918,
+       8.554388373391408,
+       11.190947061677502,
+       12.958052557043684,
+       12.714973637504283,
+       11.815390234571742,
+       9.262688944292725,
+       7.509697344778692,
+       5.586567253452738
+      ],
+      "loglog_slope_r6_to_12": -0.9178015054561492,
+      "loglog_slope_r12_to_18": -4.045705499319048
+     },
+     "bia_3000": {
+      "r": [
+       6.0,
+       7.5,
+       9.0,
+       10.5,
+       12.0,
+       13.5,
+       15.0,
+       16.5,
+       18.0
+      ],
+      "eps": [
+       0.18405434247986732,
+       0.14257852376080618,
+       0.10157548388934196,
+       0.06549410604873443,
+       0.04102361150834209,
+       0.02605684119013195,
+       0.015038749092381403,
+       0.00820910453225229,
+       0.004146445900606406
+      ],
+      "eps_r2": [
+       6.6259563292752235,
+       8.020041961545347,
+       8.227614195036699,
+       7.220725191872971,
+       5.9074000572012615,
+       4.748859306901548,
+       3.3837185457858157,
+       2.2349287089056857,
+       1.3434484717964754
+      ],
+      "loglog_slope_r6_to_12": -2.1451576331189153,
+      "loglog_slope_r12_to_18": -5.627027653422033
+     },
+     "bia_9000": {
+      "r": [
+       6.0,
+       7.5,
+       9.0,
+       10.5,
+       12.0,
+       13.5,
+       15.0,
+       16.5,
+       18.0
+      ],
+      "eps": [
+       0.17569224792177782,
+       0.18011273050773213,
+       0.16991769317399175,
+       0.15333640876079235,
+       0.11995709260939318,
+       0.08785617287459437,
+       0.05873260351383574,
+       0.04039149174460451,
+       0.026812304144587722
+      ],
+      "eps_r2": [
+       6.324920925184001,
+       10.131341091059932,
+       13.76333314709333,
+       16.905339065877357,
+       17.27382133575262,
+       16.011787506394825,
+       13.21483579061304,
+       10.996583627468578,
+       8.687186542846423
+      ],
+      "loglog_slope_r6_to_12": -0.5023307613156301,
+      "loglog_slope_r12_to_18": -3.7083712227433887
+     },
+     "perm_9000": {
+      "r": [
+       6.0,
+       7.5,
+       9.0,
+       10.5,
+       12.0,
+       13.5,
+       15.0,
+       16.5,
+       18.0
+      ],
+      "eps": [
+       0.17431333899590026,
+       0.1892307492143565,
+       0.19004726274106437,
+       0.1682242517220095,
+       0.12760285391280143,
+       0.09233640084049084,
+       0.06363199827432052,
+       0.043825067711258436,
+       0.028559655694169392
+      ],
+      "eps_r2": [
+       6.275280203852409,
+       10.644229643307554,
+       15.393828282026215,
+       18.546723752351546,
+       18.374810963443405,
+       16.828309053179456,
+       14.317199611722117,
+       11.931374684390109,
+       9.253328444910883
+      ],
+      "loglog_slope_r6_to_12": -0.3848307577816855,
+      "loglog_slope_r12_to_18": -3.672528880731238
+     },
+     "obl_9000": {
+      "r": [
+       6.0,
+       7.5,
+       9.0,
+       10.5,
+       12.0,
+       13.5,
+       15.0,
+       16.5,
+       18.0
+      ],
+      "eps": [
+       0.1705863824246759,
+       0.17804935540915398,
+       0.17907722822522557,
+       0.16079995399452549,
+       0.12356197656860535,
+       0.08955416877647139,
+       0.061139530793615886,
+       0.041945905977301925,
+       0.02714178075977797
+      ],
+      "eps_r2": [
+       6.141109767288332,
+       10.015276241764912,
+       14.505255486243271,
+       17.728194927896435,
+       17.79292462587917,
+       16.32124725951191,
+       13.756394428563574,
+       11.41977290232045,
+       8.793936966168063
+      ],
+      "loglog_slope_r6_to_12": -0.393996989396981,
+      "loglog_slope_r12_to_18": -3.721856037827356
+     }
+    },
+    "slopes_9000_r6_to_12": [
+     -0.9178015054561492,
+     -0.5023307613156301,
+     -0.3848307577816855,
+     -0.393996989396981
+    ],
+    "max_eps_r2_over_c0_at_9000": [
+     2.5529845019632367,
+     3.403273598846977,
+     3.6540597511474746,
+     3.5055468878907714
+    ]
+   },
+   "expected": "slope near -2 and eps r^2 near 5.08",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q5.6",
+   "claim": "G_1^2 is 0.12 to 0.15 at r 9 against the uniaxial 0.2401",
+   "method": "shell mean of ((top - mid)(top - small))^2 at r 9",
+   "value": {
+    "rad": {
+     "G1_sq_r9": 0.15163312419326183,
+     "uniaxial_part_(top - pair mean)^4": 0.16642817456784903,
+     "share_of_the_drop_from_the_split": 0.16723830518111646
+    },
+    "bia": {
+     "G1_sq_r9": 0.14512266371783658,
+     "uniaxial_part_(top - pair mean)^4": 0.16643140019560296,
+     "share_of_the_drop_from_the_split": 0.22435601283301237
+    },
+    "perm": {
+     "G1_sq_r9": 0.12395698170428208,
+     "uniaxial_part_(top - pair mean)^4": 0.14737826332514273,
+     "share_of_the_drop_from_the_split": 0.20165897153823298
+    },
+    "obl": {
+     "G1_sq_r9": 0.13191784188725722,
+     "uniaxial_part_(top - pair mean)^4": 0.15428692820397777,
+     "share_of_the_drop_from_the_split": 0.206772417069074
+    }
+   },
+   "expected": "0.12 to 0.155",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q5.7",
+   "claim": "the charge weight runs BECAUSE of the split (the split carries most of the drop of G_1^2 at r 9)",
+   "method": "G_1^2 = (top - pair mean)^4 - 2 (top - pair mean)^2 eps^2 + eps^4, shell means",
+   "value": {
+    "split_share": [
+     0.16723830518111646,
+     0.22435601283301237,
+     0.20165897153823298,
+     0.206772417069074
+    ]
+   },
+   "expected": "share above 0.5",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q6.1",
+   "claim": "pin and free agree within 1 percent at 3000 iterations for every seed at W1 x 25",
+   "method": "recomputed E_total, (free - pin) / pin",
+   "value": {
+    "rad": 0.00500623722696669,
+    "bia": -0.00683148686440131,
+    "obl": 0.012815854617002222,
+    "perm": -0.013329918195757597,
+    "big": -0.002479347864424454
+   },
+   "expected": "all |rel| < 0.01",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q7.1",
+   "claim": "the delta 0.89 row is uninformative: the absolute 1e-3 gate is met trivially at gradient scale (1-delta)^4",
+   "method": "production gradient on the seed and on the end field; the gate rescaled by ((1-0.89)/(1-0.3))^4",
+   "value": {
+    "polish_iters": 6,
+    "fmax_end_all_and_spatial": [
+     0.00019181783077076465,
+     0.00019181783077076465
+    ],
+    "fmax_seed_all_and_spatial": [
+     10.065544417632243,
+     0.02533087886036739
+    ],
+    "fmax_seed_delta0.3_all_and_spatial": [
+     178.80872182185632,
+     0.2550322309910874
+    ],
+    "(1-delta)^4": 0.00014641,
+    "gradient_scale_ratio_to_delta0.3": 0.0006097875885047896,
+    "gate_scaled_by_(1-delta)^4": 6.097875885047897e-07,
+    "end_spatial_fmax_over_scaled_gate": 314.564996708289,
+    "rms_moved_from_seed_r_lt_12": 0.0008040174910153364,
+    "E_seed": 0.015534753833066017,
+    "E_end": 0.004074844973299287
+   },
+   "expected": "end residual far above the rescaled gate",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q8.1",
+   "claim": "the one-charge sector is kept: the degree of the top eigenvector through the r 9 cube is 1",
+   "method": "own reader: surface-oriented eigenvector, solid-angle sum on the triangulated cell cube 10..21, signed probe preimages",
+   "value": {
+    "bia_pin_d0.3_w25_n32_L48": {
+     "json_flux_degree_r9": 0.9948081269045007,
+     "r6": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 882,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.03548549785383015
+     },
+     "r9": {
+      "solid_angle_degree": 1.0000000000000002,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.42672720651464147
+     },
+     "r12": {
+      "solid_angle_degree": 1.0000000000000002,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.632332103078836
+     }
+    },
+    "perm_pin_d0.3_w25_n32_L48": {
+     "json_flux_degree_r9": 0.9947077851612985,
+     "r6": {
+      "solid_angle_degree": 1.0000000000000002,
+      "conflicting_links": 0,
+      "links": 882,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.05826838584883565
+     },
+     "r9": {
+      "solid_angle_degree": 1.0000000000000002,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.462745988700669
+     },
+     "r12": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.6195686615954078
+     }
+    },
+    "obl_pin_d0.3_w25_n32_L48": {
+     "json_flux_degree_r9": 0.9948455906802814,
+     "r6": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 882,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.14399678327994425
+     },
+     "r9": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.47904552542959455
+     },
+     "r12": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.6361363681991286
+     }
+    },
+    "rad_pin_d0.3_w25_n32_L48": {
+     "json_flux_degree_r9": 0.9949846302846842,
+     "r6": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 882,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.30772893995402595
+     },
+     "r9": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.5598699300915094
+     },
+     "r12": {
+      "solid_angle_degree": 1.0000000000000002,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.6595750466610042
+     }
+    },
+    "bia_pin_d0.3_w1_n32_L48": {
+     "json_flux_degree_r9": 0.9963319539989924,
+     "r6": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 882,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.2075857916991618
+     },
+     "r9": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.36773914017732456
+     },
+     "r12": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.4932518753777246
+     }
+    },
+    "rad_pin_d0.3_w1_n32_L48": {
+     "json_flux_degree_r9": 0.9962628328922285,
+     "r6": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 882,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.25056829859869667
+     },
+     "r9": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.39538842407430935
+     },
+     "r12": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.5091242374026488
+     }
+    },
+    "big_pin_d0.3_w25_n32_L48": {
+     "json_flux_degree_r9": 0.9941971179270639,
+     "r6": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 882,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.4410951733398103
+     },
+     "r9": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.6017280404049222
+     },
+     "r12": {
+      "solid_angle_degree": 1.0000000000000002,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.6667156977781079
+     }
+    },
+    "perm_pin_d0.3_w25_n32_L48_x9000": {
+     "json_flux_degree_r9": 0.9756612996996256,
+     "r6": {
+      "solid_angle_degree": 2.2998944296627297e-13,
+      "conflicting_links": 60,
+      "links": 882,
+      "probe_counts": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "degree": "undefined",
+      "min_gap_top_mid_on_surface": 0.014524556591780868
+     },
+     "r9": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.09232735287196103
+     },
+     "r12": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.43243715741022803
+     }
+    },
+    "rad_pin_d0.3_w25_n32_L48_x9000": {
+     "json_flux_degree_r9": 0.9921940946716126,
+     "r6": {
+      "solid_angle_degree": 1.0000000000000002,
+      "conflicting_links": 0,
+      "links": 882,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.0875927077030636
+     },
+     "r9": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.33316813474007545
+     },
+     "r12": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.5503563582727056
+     }
+    },
+    "obl_pin_d0.3_w25_n32_L48_x9000": {
+     "json_flux_degree_r9": 0.9766507158147438,
+     "r6": {
+      "solid_angle_degree": 1.0425151455908195e-15,
+      "conflicting_links": 68,
+      "links": 882,
+      "probe_counts": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "degree": "undefined",
+      "min_gap_top_mid_on_surface": 0.04007267169253759
+     },
+     "r9": {
+      "solid_angle_degree": 1.0000000000000002,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.0922735590838295
+     },
+     "r12": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.43245419233802795
+     }
+    },
+    "bia_pin_d0.3_w25_n32_L48_x9000": {
+     "json_flux_degree_r9": 0.9351662672870032,
+     "r6": {
+      "solid_angle_degree": 4.8591807633470396e-17,
+      "conflicting_links": 2,
+      "links": 882,
+      "probe_counts": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "degree": "undefined",
+      "min_gap_top_mid_on_surface": 0.06714469646604349
+     },
+     "r9": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 2178,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.08465536150693043
+     },
+     "r12": {
+      "solid_angle_degree": 1.0,
+      "conflicting_links": 0,
+      "links": 4050,
+      "probe_counts": [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "degree": 1,
+      "min_gap_top_mid_on_surface": 0.35415004812743967
+     }
+    }
+   },
+   "expected": "degree 1, zero conflicting links, on every pinned n 32 row",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q8.2",
+   "claim": "the charge stays in a compact core: the top eigenvector is orientable with degree 1 on the r 6 cube too",
+   "method": "the same reader on the cell cube 12..19 (half-width 5.25)",
+   "value": {
+    "rows_not_degree_1_at_r6": {
+     "perm_pin_d0.3_w25_n32_L48_x9000": {
+      "conflicting_links": 60,
+      "min_gap_top_mid": 0.014524556591780868
+     },
+     "obl_pin_d0.3_w25_n32_L48_x9000": {
+      "conflicting_links": 68,
+      "min_gap_top_mid": 0.04007267169253759
+     },
+     "bia_pin_d0.3_w25_n32_L48_x9000": {
+      "conflicting_links": 2,
+      "min_gap_top_mid": 0.06714469646604349
+     }
+    },
+    "note": "the 0.93 to 0.98 of the audited flux reader at r 9 is reader error: the solid-angle degree there is exactly 1",
+    "audited_flux_reads_r9_at_9000": {
+     "perm_pin_d0.3_w25_n32_L48_x9000": 0.9756612996996256,
+     "rad_pin_d0.3_w25_n32_L48_x9000": 0.9921940946716126,
+     "obl_pin_d0.3_w25_n32_L48_x9000": 0.9766507158147438,
+     "bia_pin_d0.3_w25_n32_L48_x9000": 0.9351662672870032
+    }
+   },
+   "expected": "degree 1 on every row",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q9.2",
+   "claim": "the n 48 refinement rows can decide BRANCH_LATTICE_ONLY (both present, both at the gate, the rule applied)",
+   "method": "the pre-registered rule with own 12 images, if both final fields exist",
+   "value": {
+    "final_fields_present": [
+     "rad_pin_d0.3_w25_n48_L48",
+     "bia_pin_d0.3_w25_n48_L48"
+    ],
+    "rad_pin_d0.3_w25_n48_L48": {
+     "E": 6.061232591211427,
+     "polish_iters": 2000,
+     "label": "FALLING (at max |G| = 5.49e-02)",
+     "last_chunk_drop": 0.008258273712985265,
+     "E_n32_same_seed_at_3000": 5.70880906320332
+    },
+    "bia_pin_d0.3_w25_n48_L48": {
+     "E": 5.769247162571489,
+     "polish_iters": 2000,
+     "label": "FALLING (at max |G| = 6.60e-01)",
+     "last_chunk_drop": 0.08419651203222944,
+     "E_n32_same_seed_at_3000": 5.226832313924933
+    },
+    "rms_end": 0.13593712983686757,
+    "rms_seed": 0.09410954099140274,
+    "dE": 0.29198542863993815,
+    "tol_E": 0.2525895360966883
+   },
+   "expected": "both rows present and converged",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q4.7",
+   "claim": "a further polish leaves the two W1 fields where they are (converged endpoints, apart at one energy)",
+   "method": "300 L-BFGS iterations on copies of each field, pinned shell held, M_00 slaved (reduced polish), production energy_grad",
+   "value": {
+    "rad": {
+     "E_in": 2.2799904894337786,
+     "E_end": 2.0563936359686417,
+     "iters": 300,
+     "n_eval": 314,
+     "fmax_end_spatial": 0.004066650040218909
+    },
+    "bia": {
+     "E_in": 2.2792070523693098,
+     "E_end": 2.057874601340931,
+     "iters": 300,
+     "n_eval": 312,
+     "fmax_end_spatial": 0.008587976300833647
+    },
+    "dE_before": 0.0007834370644688171,
+    "dE_after": -0.0014809653722891447,
+    "rms_before": 0.04380344734013691,
+    "rms_after": 0.11500120200262541,
+    "rms_rad_moved": 0.3601574574615657,
+    "rms_bia_moved": 0.35441789037517235,
+    "eigenvalue_rms_after": 0.08856645050899725,
+    "E_trace_rad_every_50": [
+     2.211218225288592,
+     2.1472928982494404,
+     2.1131842000250325,
+     2.0893270981965966,
+     2.070618699055128,
+     2.0563936359686417
+    ],
+    "E_trace_bia_every_50": [
+     2.2143359130754403,
+     2.1439074611241606,
+     2.10694630460398,
+     2.084915449407103,
+     2.0704970260172404,
+     2.057874601340931
+    ],
+    "degree_reads_rad_after": {
+     "r6": [
+      1,
+      0
+     ],
+     "r9": [
+      1,
+      0
+     ],
+     "r12": [
+      1,
+      0
+     ]
+    },
+    "degree_reads_bia_after": {
+     "r6": [
+      1,
+      0
+     ],
+     "r9": [
+      1,
+      0
+     ],
+     "r12": [
+      1,
+      0
+     ]
+    }
+   },
+   "expected": "each field's further energy drop below the 7.8e-4 gap between them",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q4.8",
+   "claim": "decision: same branch, two distinct minima, or undecidable at this gate",
+   "method": "Q4.2, Q4.5, Q4.6, Q4.7 together",
+   "value": {
+    "rms_ratio_after_over_before": 2.6253915841288205,
+    "closer_by_half": false,
+    "reading": "neither row was converged at the gate; see the final report for the decision"
+   },
+   "expected": "informational (PASS iff the claim 'two converged equal-energy endpoints' survives)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q2.3",
+   "claim": "the slow fall at W1 x 25 is the landscape's (the 10-entry L-BFGS polish is an adequate instrument there)",
+   "method": "the same L-BFGS with M_00 slaved per cell to its V4 minimizer, from the 9000-iteration fields, against the production rate",
+   "value": {
+    "production_drop_per_iteration_last_chunk": {
+     "bia": 7.770336126732503e-05,
+     "rad": 8.144941027561714e-05
+    },
+    "plain_restart": {
+     "iters": 40,
+     "E_in": 4.408756761768828,
+     "E_end": 4.405885249558212,
+     "drop_per_it": 7.178780526539974e-05,
+     "fmax_all_in": 1.1994237334427322,
+     "fmax_all_after_1_it": 0.029099038657074153,
+     "fmax_spatial_after_1_it": 0.023937779065741814,
+     "fmax_all_end": 0.14015759480556614
+    },
+    "reduced_bia": {
+     "iters": 150,
+     "E_in": 4.408744779600778,
+     "E_end": 3.893475216005183,
+     "drop_per_it": 0.0034351304239706336,
+     "E_at_it_40": 4.203682366779102,
+     "E_every_25": [
+      4.27281629597553,
+      4.157663838718184,
+      4.080757276288603,
+      4.008636265807354,
+      3.9451704883697194,
+      3.893475216005183
+     ],
+     "fmax_end_spatial": 0.03776485971004664
+    },
+    "reduced_rad": {
+     "iters": 150,
+     "E_in": 5.044444250396486,
+     "E_end": 4.397396522413096,
+     "drop_per_it": 0.004313651519889264,
+     "E_every_25": [
+      4.876002982095491,
+      4.7414984996422875,
+      4.645559042413937,
+      4.554936218313609,
+      4.4782816182827885,
+      4.397396522413096
+     ],
+     "fmax_end_spatial": 0.07179797504569142
+    },
+    "extrapolated_floor_window_bia": [
+     -49.99999999999928,
+     3.763138032509739
+    ],
+    "extrapolated_floor_window_rad": [
+     -49.99999914048697,
+     4.22734973853978
+    ],
+    "speedup_reduced_over_production_bia": 44.20826033706134
+   },
+   "expected": "energy drop per iteration within 3 x of the production polish",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "Q3.4",
+   "claim": "max |G| falls from its end-of-chunk spike to 0.02 to 0.07 after ONE iteration of a fresh L-BFGS",
+   "method": "plain 10-entry L-BFGS restarted from the bia 9000 field",
+   "value": {
+    "fmax_in": 1.1994237334427322,
+    "fmax_after_1_it": 0.029099038657074153
+   },
+   "expected": "in: 1.2; after one iteration: under 0.1",
+   "verdict": "PASS"
+  },
+  {
+   "id": "Q9.1",
+   "claim": "one descent path ordered by how biaxial the seed's core was; no compact endpoint within 9000 iterations",
+   "method": "reads of the two reduced-polish continuations (150 iterations each)",
+   "value": {
+    "bia": {
+     "E_curv": 3.2280566831704065,
+     "V": 0.6654185328347773,
+     "eps_r2": {
+      "6": 5.288457718925343,
+      "9": 13.04674612475164,
+      "12": 22.197124855572767,
+      "15": 28.30715713910073,
+      "18": 24.2896818855487
+     },
+     "degree_reads": {
+      "r6": [
+       0,
+       0,
+       0.18261871972004173
+      ],
+      "r9": [
+       "undefined",
+       143,
+       0.04449135849034114
+      ],
+      "r12": [
+       1,
+       0,
+       0.12173890344744431
+      ]
+     },
+     "pin_bitwise": true
+    },
+    "rad": {
+     "E_curv": 3.581803357102838,
+     "V": 0.8155931653102597,
+     "eps_r2": {
+      "6": 6.012721682103769,
+      "9": 13.392604559550684,
+      "12": 21.20104342786742,
+      "15": 24.910168757347307,
+      "18": 22.564743960682588
+     },
+     "degree_reads": {
+      "r6": [
+       "undefined",
+       81,
+       0.011220025631962671
+      ],
+      "r9": [
+       1,
+       0,
+       0.13395515707616168
+      ],
+      "r12": [
+       1,
+       0,
+       0.34234172053084044
+      ]
+     },
+     "pin_bitwise": true
+    },
+    "rms_bia_vs_rad_before": {
+     "rms_min12": 0.3977250348631432,
+     "perm": [
+      0,
+      1,
+      2
+     ],
+     "inversion": -1,
+     "rms_identity": 0.39772503486321037
+    },
+    "rms_bia_vs_rad_after": {
+     "rms_min12": 0.48139609701025515,
+     "perm": [
+      2,
+      1,
+      0
+     ],
+     "inversion": -1,
+     "rms_identity": 0.48882240994320697
+    }
+   },
+   "expected": "informational: PASS iff the ordering survives and the r 9 cube keeps degree 1 on both",
+   "verdict": "FAIL"
+  }
+ ],
+ "totals": {
+  "PASS": 17,
+  "FAIL": 18,
+  "checks": 35
+ },
+ "wall_s": 542.7
+}
