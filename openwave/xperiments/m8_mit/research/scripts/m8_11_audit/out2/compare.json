@@ -1,0 +1,4664 @@
+{
+ "records": [
+  {
+   "item": 0,
+   "where": "-",
+   "quantity": "|q1|^2",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 0,
+   "where": "-",
+   "quantity": "|q2|^2",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 0,
+   "where": "-",
+   "quantity": "|Gamma|",
+   "mine": "120",
+   "theirs": "120",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 0,
+   "where": "-",
+   "quantity": "derived subgroup order",
+   "mine": "120",
+   "theirs": "120",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 0,
+   "where": "-",
+   "quantity": "Gamma perfect",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 0,
+   "where": "-",
+   "quantity": "<3 3;3 -3|6 0>",
+   "mine": "1/462*sqrt(231)",
+   "theirs": "sqrt(231)/462",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=0",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=1",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=3",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=4",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=5",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=6",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=7",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=8",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=9",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=10",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=11",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=12",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=13",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=14",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=15",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=16",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=17",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "dim Hom n=18",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=0",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=1",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=3",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=4",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=5",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=6",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=7",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=8",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=9",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=10",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=11",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=12",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=13",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=14",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=15",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=16",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=17",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "dim Hom n=18",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "-",
+   "quantity": "declaration",
+   "mine": "DERIVED",
+   "theirs": "DERIVED",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector3",
+   "quantity": "max intertwiner residual (both < 1e-40)",
+   "mine": "2.25e-49",
+   "theirs": "1.72e-49",
+   "rule": "both < 1e-40",
+   "agree": true
+  },
+  {
+   "item": 1,
+   "where": "sector4",
+   "quantity": "max intertwiner residual (both < 1e-40)",
+   "mine": "1.18e-49",
+   "theirs": "6.23e-50",
+   "rule": "both < 1e-40",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U1 s3",
+   "quantity": "Q",
+   "mine": "1288/1287",
+   "theirs": "1288/1287",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U1 s3",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U1 s4",
+   "quantity": "Q",
+   "mine": "2289/2288",
+   "theirs": "2289/2288",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U1 s4",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U1",
+   "quantity": "r6hat",
+   "mine": "1/924",
+   "theirs": "1/924",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U1",
+   "quantity": "r6hat stationary",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U2 s3",
+   "quantity": "Q",
+   "mine": "1687/1287",
+   "theirs": "1687/1287",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U2 s3",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U2 s4",
+   "quantity": "Q",
+   "mine": "168/143",
+   "theirs": "168/143",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U2 s4",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U2",
+   "quantity": "r6hat",
+   "mine": "100/231",
+   "theirs": "100/231",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U2",
+   "quantity": "r6hat stationary",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U3 s3",
+   "quantity": "Q",
+   "mine": "175/143",
+   "theirs": "175/143",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U3 s3",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U3 s4",
+   "quantity": "Q",
+   "mine": "161/143",
+   "theirs": "161/143",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U3 s4",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U3",
+   "quantity": "r6hat",
+   "mine": "24/77",
+   "theirs": "24/77",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U3",
+   "quantity": "r6hat stationary",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U4 s3",
+   "quantity": "Q",
+   "mine": "1750/1287",
+   "theirs": "1750/1287",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U4 s3",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U4 s4",
+   "quantity": "Q",
+   "mine": "2751/2288",
+   "theirs": "2751/2288",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U4 s4",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U4",
+   "quantity": "r6hat",
+   "mine": "463/924",
+   "theirs": "463/924",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U4",
+   "quantity": "r6hat stationary",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U5 s3",
+   "quantity": "Q",
+   "mine": "77/65",
+   "theirs": "77/65",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U5 s3",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U5 s4",
+   "quantity": "Q",
+   "mine": "287/260",
+   "theirs": "287/260",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U5 s4",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U5",
+   "quantity": "r6hat",
+   "mine": "9/35",
+   "theirs": "9/35",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U5",
+   "quantity": "r6hat stationary",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U6 s3",
+   "quantity": "Q",
+   "mine": "5831/5031",
+   "theirs": "5831/5031",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U6 s3",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U6 s4",
+   "quantity": "Q",
+   "mine": "609/559",
+   "theirs": "609/559",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U6 s4",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U6",
+   "quantity": "r6hat",
+   "mine": "200/903",
+   "theirs": "200/903",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 2,
+   "where": "U6",
+   "quantity": "r6hat stationary",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "complex dim of block chi-subspace",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_0",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_1",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_3",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_4",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_5",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_6",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_7",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_8",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "chi-subspace dim in V_9",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U1",
+   "quantity": "stabilizer order in SU(2)",
+   "mine": "inf",
+   "theirs": "inf",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "complex dim of block chi-subspace",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_0",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_1",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_3",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_4",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_5",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_6",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_7",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_8",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "chi-subspace dim in V_9",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U2",
+   "quantity": "stabilizer order in SU(2)",
+   "mine": "inf",
+   "theirs": "inf",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "complex dim of block chi-subspace",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_0",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_1",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_3",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_4",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_5",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_6",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_7",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_8",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "chi-subspace dim in V_9",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U3",
+   "quantity": "stabilizer order in SU(2)",
+   "mine": "48",
+   "theirs": "48",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "complex dim of block chi-subspace",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_0",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_1",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_3",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_4",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_5",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_6",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_7",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_8",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "chi-subspace dim in V_9",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U4",
+   "quantity": "stabilizer order in SU(2)",
+   "mine": "24",
+   "theirs": "24",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "complex dim of block chi-subspace",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_0",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_1",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_2",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_3",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_4",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_5",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_6",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_7",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_8",
+   "mine": "4",
+   "theirs": "4",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "chi-subspace dim in V_9",
+   "mine": "4",
+   "theirs": "4",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U5",
+   "quantity": "stabilizer order in SU(2)",
+   "mine": "10",
+   "theirs": "10",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "complex dim of block chi-subspace",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_0",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_1",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_3",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_4",
+   "mine": "1",
+   "theirs": "1",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_5",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_6",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_7",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_8",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "chi-subspace dim in V_9",
+   "mine": "4",
+   "theirs": "4",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 3,
+   "where": "U6",
+   "quantity": "stabilizer order in SU(2)",
+   "mine": "12",
+   "theirs": "12",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_10 xi||^2/g^2",
+   "mine": "7/195150384",
+   "theirs": "7/195150384",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "18375/1464486053888",
+   "theirs": "18375/1464486053888",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "7/2749593600",
+   "theirs": "7/2749593600",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "245/609749017488",
+   "theirs": "245/609749017488",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "1658944/1656369",
+   "theirs": "1658944/1656369",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_10 N||^2 (supporting)",
+   "mine": "28/150579",
+   "theirs": "28/150579",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "18375/47278088",
+   "theirs": "18375/47278088",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "7/47736",
+   "theirs": "7/47736",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s3",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "980/25055433",
+   "theirs": "980/25055433",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_8 xi||^2/g^2",
+   "mine": "63/5360582656",
+   "theirs": "63/5360582656",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_12 xi||^2/g^2",
+   "mine": "7/483225600",
+   "theirs": "7/483225600",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "23625/7209777496064",
+   "theirs": "23625/7209777496064",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "49/28242739200",
+   "theirs": "49/28242739200",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "427/1927108005888",
+   "theirs": "427/1927108005888",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "5239521/5234944",
+   "theirs": "5239521/5234944",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_8 N||^2 (supporting)",
+   "mine": "63/5234944",
+   "theirs": "63/5234944",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_12 N||^2 (supporting)",
+   "mine": "21/100672",
+   "theirs": "21/100672",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "23625/232753664",
+   "theirs": "23625/232753664",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "147/1470976",
+   "theirs": "147/1470976",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U1 s4",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "1281/59390656",
+   "theirs": "1281/59390656",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_10 xi||^2/g^2",
+   "mine": "1225/48787596",
+   "theirs": "1225/48787596",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "8575/2860324324",
+   "theirs": "8575/2860324324",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "171500/139734149841",
+   "theirs": "171500/139734149841",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "2845969/1656369",
+   "theirs": "2845969/1656369",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_10 N||^2 (supporting)",
+   "mine": "19600/150579",
+   "theirs": "19600/150579",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "548800/5909761",
+   "theirs": "548800/5909761",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s3",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "10976000/91869921",
+   "theirs": "10976000/91869921",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_8 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_12 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "11025/14081596672",
+   "theirs": "11025/14081596672",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "74725/110407229504",
+   "theirs": "74725/110407229504",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "28224/20449",
+   "theirs": "28224/20449",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_8 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_12 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "11025/454597",
+   "theirs": "11025/454597",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U2 s4",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "672525/10207769",
+   "theirs": "672525/10207769",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_10 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "735/220024948",
+   "theirs": "735/220024948",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "1715/2822912118",
+   "theirs": "1715/2822912118",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "30625/20449",
+   "theirs": "30625/20449",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_10 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "47040/454597",
+   "theirs": "47040/454597",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s3",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "54880/927979",
+   "theirs": "54880/927979",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_8 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_12 xi||^2/g^2",
+   "mine": "7/1830400",
+   "theirs": "7/1830400",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "945/1083199744",
+   "theirs": "945/1083199744",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "26901/80296166912",
+   "theirs": "26901/80296166912",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "25921/20449",
+   "theirs": "25921/20449",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_8 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_12 N||^2 (supporting)",
+   "mine": "63/1144",
+   "theirs": "63/1144",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "945/34969",
+   "theirs": "945/34969",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U3 s4",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "242109/7423832",
+   "theirs": "242109/7423832",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_10 xi||^2/g^2",
+   "mine": "8575/780601536",
+   "theirs": "8575/780601536",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "735/5720648648",
+   "theirs": "735/5720648648",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "1516795/812998689984",
+   "theirs": "1516795/812998689984",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "3062500/1656369",
+   "theirs": "3062500/1656369",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_10 N||^2 (supporting)",
+   "mine": "8575/150579",
+   "theirs": "8575/150579",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "23520/5909761",
+   "theirs": "23520/5909761",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s3",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "1516795/8351811",
+   "theirs": "1516795/8351811",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_8 xi||^2/g^2",
+   "mine": "1575/31719424",
+   "theirs": "1575/31719424",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_12 xi||^2/g^2",
+   "mine": "189/644300800",
+   "theirs": "189/644300800",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "945/28163193344",
+   "theirs": "945/28163193344",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "2643557/2569477341184",
+   "theirs": "2643557/2569477341184",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "7568001/5234944",
+   "theirs": "7568001/5234944",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_8 N||^2 (supporting)",
+   "mine": "1575/30976",
+   "theirs": "1575/30976",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_12 N||^2 (supporting)",
+   "mine": "1701/402688",
+   "theirs": "1701/402688",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "945/909194",
+   "theirs": "945/909194",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U4 s4",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "23792013/237562624",
+   "theirs": "23792013/237562624",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_10 xi||^2/g^2",
+   "mine": "77/5475600",
+   "theirs": "77/5475600",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "281211/189112352000",
+   "theirs": "281211/189112352000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "553/1591200000",
+   "theirs": "553/1591200000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "30233/56458242360",
+   "theirs": "30233/56458242360",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "5929/4225",
+   "theirs": "5929/4225",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_10 N||^2 (supporting)",
+   "mine": "308/4225",
+   "theirs": "308/4225",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "281211/6105125",
+   "theirs": "281211/6105125",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "553/27625",
+   "theirs": "553/27625",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s3",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "241864/4639895",
+   "theirs": "241864/4639895",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_8 xi||^2/g^2",
+   "mine": "3591/346112000",
+   "theirs": "3591/346112000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_12 xi||^2/g^2",
+   "mine": "63/83200000",
+   "theirs": "63/83200000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "361557/931014656000",
+   "theirs": "361557/931014656000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "34839/147097600000",
+   "theirs": "34839/147097600000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "2371131/8029616691200",
+   "theirs": "2371131/8029616691200",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "82369/67600",
+   "theirs": "82369/67600",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_8 N||^2 (supporting)",
+   "mine": "3591/338000",
+   "theirs": "3591/338000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_12 N||^2 (supporting)",
+   "mine": "567/52000",
+   "theirs": "567/52000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "361557/30056000",
+   "theirs": "361557/30056000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "313551/22984000",
+   "theirs": "313551/22984000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U5 s4",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "21340179/742383200",
+   "theirs": "21340179/742383200",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_10 xi||^2/g^2",
+   "mine": "319550/88158077163",
+   "theirs": "319550/88158077163",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "12920075/7517877885232",
+   "theirs": "12920075/7517877885232",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "16583/68316230736",
+   "theirs": "16583/68316230736",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "2355742375/6059914391677302",
+   "theirs": "2355742375/6059914391677302",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "34000561/25310961",
+   "theirs": "34000561/25310961",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_10 N||^2 (supporting)",
+   "mine": "20451200/1088371323",
+   "theirs": "20451200/1088371323",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "206721200/3883201387",
+   "theirs": "206721200/3883201387",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "6633200/474418269",
+   "theirs": "6633200/474418269",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s3",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "75383756000/1992082311531",
+   "theirs": "75383756000/1992082311531",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_6 xi||^2/g^2 (level 6: mine not listed, 0 by definition)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_8 xi||^2/g^2",
+   "mine": "7875/859947712",
+   "theirs": "7875/859947712",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_12 xi||^2/g^2",
+   "mine": "3521/1587595776",
+   "theirs": "3521/1587595776",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_14 xi||^2/g^2",
+   "mine": "16611525/37011091127296",
+   "theirs": "16611525/37011091127296",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_16 xi||^2/g^2",
+   "mine": "116081/701717332992",
+   "theirs": "116081/701717332992",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_18 xi||^2/g^2",
+   "mine": "4105722425/19152322028017152",
+   "theirs": "4105722425/19152322028017152",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "xi same character",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_6 N||^2 (supporting)",
+   "mine": "370881/312481",
+   "theirs": "370881/312481",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_8 N||^2 (supporting)",
+   "mine": "126000/13436683",
+   "theirs": "126000/13436683",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_12 N||^2 (supporting)",
+   "mine": "264075/8268728",
+   "theirs": "264075/8268728",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_14 N||^2 (supporting)",
+   "mine": "16611525/1194831196",
+   "theirs": "16611525/1194831196",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_16 N||^2 (supporting)",
+   "mine": "8706075/913694444",
+   "theirs": "8706075/913694444",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 4,
+   "where": "U6 s4",
+   "quantity": "||Pi_18 N||^2 (supporting)",
+   "mine": "12317167275/590246610824",
+   "theirs": "12317167275/590246610824",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U1 s3",
+   "quantity": "along Phi per g",
+   "mine": "-608931967/36722893315680",
+   "theirs": "-608931967/36722893315680",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U1 s3",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U1 s3",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U1 s4",
+   "quantity": "along Phi per g",
+   "mine": "-368688201/38687492546560",
+   "theirs": "-368688201/38687492546560",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U1 s4",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U1 s4",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U2 s3",
+   "quantity": "along Phi per g",
+   "mine": "-1871763250/229518083223",
+   "theirs": "-1871763250/229518083223",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U2 s3",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U2 s3",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U2 s4",
+   "quantity": "along Phi per g",
+   "mine": "-15820875/15112301776",
+   "theirs": "-15820875/15112301776",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U2 s4",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U2 s4",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U3 s3",
+   "quantity": "along Phi per g",
+   "mine": "-2203040/944518861",
+   "theirs": "-2203040/944518861",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U3 s3",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U3 s3",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U3 s4",
+   "quantity": "along Phi per g",
+   "mine": "-162530109/75561508880",
+   "theirs": "-162530109/75561508880",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U3 s4",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U3 s4",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U4 s3",
+   "quantity": "along Phi per g",
+   "mine": "-1921938515/459036166446",
+   "theirs": "-1921938515/459036166446",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U4 s3",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U4 s3",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U4 s4",
+   "quantity": "along Phi per g",
+   "mine": "-226441775133/38687492546560",
+   "theirs": "-226441775133/38687492546560",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U4 s4",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U4 s4",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s3",
+   "quantity": "along Phi per g",
+   "mine": "-267786421/58544557500",
+   "theirs": "-267786421/58544557500",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s3",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s3",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "51679406167921/168487138365975000000",
+   "theirs": "7188839*sqrt(39)/81061695000",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s3",
+   "quantity": "<e_t, .>_R",
+   "mine": "7188839/81061695000*sqrt(39)",
+   "theirs": "7188839*sqrt(39)/81061695000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s3",
+   "quantity": "<i e_t, .>_R",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s3",
+   "quantity": "perp remainder (mine: perp norm^2 - e_t comp^2)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s4",
+   "quantity": "along Phi per g",
+   "mine": "-4797453339/2497901120000",
+   "theirs": "-4797453339/2497901120000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s4",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s4",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "1148432592587427/2840013657395200000000",
+   "theirs": "19565553*sqrt(39)/192146240000",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s4",
+   "quantity": "<e_t, .>_R",
+   "mine": "-19565553/192146240000*sqrt(39)",
+   "theirs": "-19565553*sqrt(39)/192146240000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s4",
+   "quantity": "<i e_t, .>_R",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U5 s4",
+   "quantity": "perp remainder (mine: perp norm^2 - e_t comp^2)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s3",
+   "quantity": "along Phi per g",
+   "mine": "-336158940460/150812349114141",
+   "theirs": "-336158940460/150812349114141",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s3",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s3",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "1671938888011708435/1661506658289542382018129",
+   "theirs": "120576113*sqrt(115)/1288994436873",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s3",
+   "quantity": "<tau_x, .>_R",
+   "mine": "-120576113/1288994436873*sqrt(115)",
+   "theirs": "-120576113*sqrt(115)/1288994436873",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s3",
+   "quantity": "<tau_y, .>_R",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s3",
+   "quantity": "perp remainder (mine: perp norm^2 - tau_x comp^2)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s4",
+   "quantity": "along Phi per g",
+   "mine": "-11093213145/4965015608696",
+   "theirs": "-11093213145/4965015608696",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s4",
+   "quantity": "Im along Phi (mine: value is real)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s4",
+   "quantity": "perp norm^2 per g^2",
+   "mine": "5287736861620418835/9335433844106948692381696",
+   "theirs": "214430223*sqrt(115)/3055394220736",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s4",
+   "quantity": "<tau_x, .>_R",
+   "mine": "214430223/3055394220736*sqrt(115)",
+   "theirs": "214430223*sqrt(115)/3055394220736",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s4",
+   "quantity": "<tau_y, .>_R",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 5,
+   "where": "U6 s4",
+   "quantity": "perp remainder (mine: perp norm^2 - tau_x comp^2)",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U5 s3",
+   "quantity": "form e_t",
+   "mine": "-56/165",
+   "theirs": "-56/165",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U5 s3",
+   "quantity": "form i e_t",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6 s3",
+   "quantity": "form tau_x",
+   "mine": "6440/18447",
+   "theirs": "6440/18447",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6 s3",
+   "quantity": "form tau_y",
+   "mine": "56/429",
+   "theirs": "56/429",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6 s3",
+   "quantity": "form cross",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U5 s4",
+   "quantity": "form e_t",
+   "mine": "-21/110",
+   "theirs": "-21/110",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U5 s4",
+   "quantity": "form i e_t",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6 s4",
+   "quantity": "form tau_x",
+   "mine": "2415/12298",
+   "theirs": "2415/12298",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6 s4",
+   "quantity": "form tau_y",
+   "mine": "21/286",
+   "theirs": "21/286",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6 s4",
+   "quantity": "form cross",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U5",
+   "quantity": "r6hat'' e_t",
+   "mine": "-104/55",
+   "theirs": "-104/55",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U5",
+   "quantity": "r6hat'' i e_t",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6",
+   "quantity": "r6hat'' tau_x",
+   "mine": "920/473",
+   "theirs": "920/473",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6",
+   "quantity": "r6hat'' tau_y",
+   "mine": "8/11",
+   "theirs": "8/11",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 6,
+   "where": "U6",
+   "quantity": "r6hat'' cross",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U1 s3",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U1 s3",
+   "quantity": "free directions real dim",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U1 s3",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U1 s3",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 1.9342e-126 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U1 s4",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U1 s4",
+   "quantity": "free directions real dim",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U1 s4",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U1 s4",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 0.0 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U2 s3",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U2 s3",
+   "quantity": "free directions real dim",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U2 s3",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U2 s3",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 9.9032e-124 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U2 s4",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U2 s4",
+   "quantity": "free directions real dim",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U2 s4",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U2 s4",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 0.0 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U3 s3",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U3 s3",
+   "quantity": "free directions real dim",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U3 s3",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U3 s3",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 0.0 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U3 s4",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U3 s4",
+   "quantity": "free directions real dim",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U3 s4",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U3 s4",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 8.0859e-124 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U4 s3",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U4 s3",
+   "quantity": "free directions real dim",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U4 s3",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U4 s3",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 1.4005e-123 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U4 s4",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U4 s4",
+   "quantity": "free directions real dim",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U4 s4",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U4 s4",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 1.6172e-123 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s3",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "1054681758529/396076284864000000",
+   "theirs": "1054681758529/396076284864000000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s3",
+   "quantity": "free directions real dim",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s3",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "51679406167921/168487138365975000000",
+   "theirs": "7188839*sqrt(39)/81061695000",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s3",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 1.1072e-123 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s3",
+   "quantity": "kappa/g along e_t",
+   "mine": "1026977/3930264000*sqrt(39)",
+   "theirs": "1026977*sqrt(39)/3930264000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s3",
+   "quantity": "kappa/g along i_e_t",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s3",
+   "quantity": "kappa remainder norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s4",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "2604155538747/234711872512000000",
+   "theirs": "2604155538747/234711872512000000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s4",
+   "quantity": "free directions real dim",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s4",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "1148432592587427/2840013657395200000000",
+   "theirs": "19565553*sqrt(39)/192146240000",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s4",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 4.5201e-124 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s4",
+   "quantity": "kappa/g along e_t",
+   "mine": "-931693/1746784000*sqrt(39)",
+   "theirs": "-931693*sqrt(39)/1746784000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s4",
+   "quantity": "kappa/g along i_e_t",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U5 s4",
+   "quantity": "kappa remainder norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s3",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "296706102575281/35935889967339860160",
+   "theirs": "296706102575281/35935889967339860160",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s3",
+   "quantity": "free directions real dim",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s3",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "1671938888011708435/1661506658289542382018129",
+   "theirs": "120576113*sqrt(115)/1288994436873",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s3",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 1.3357e-123 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s3",
+   "quantity": "kappa/g along tau_x",
+   "mine": "17225159/64285514280*sqrt(115)",
+   "theirs": "17225159*sqrt(115)/64285514280",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s3",
+   "quantity": "kappa/g along tau_y",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s3",
+   "quantity": "kappa remainder norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s4",
+   "quantity": "||kappa||^2/g^2",
+   "mine": "104263765387369/7098447400956021760",
+   "theirs": "104263765387369/7098447400956021760",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s4",
+   "quantity": "free directions real dim",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s4",
+   "quantity": "perp eq. without kappa, norm^2",
+   "mine": "5287736861620418835/9335433844106948692381696",
+   "theirs": "214430223*sqrt(115)/3055394220736",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s4",
+   "quantity": "perp eq. with kappa (mine exact; theirs numerical)",
+   "mine": "0",
+   "theirs": "0 (residual 7.4085e-124 at 120 digits)",
+   "rule": "mine exact 0; theirs '0' with residual < 1e-100 at 120 digits",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s4",
+   "quantity": "kappa/g along tau_x",
+   "mine": "-10210963/28571339680*sqrt(115)",
+   "theirs": "-10210963*sqrt(115)/28571339680",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s4",
+   "quantity": "kappa/g along tau_y",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 7,
+   "where": "U6 s4",
+   "quantity": "kappa remainder norm^2",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "sympy: simplify(radsimp(mine - theirs^2)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U1 s3",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-608931967/36722893315680",
+   "theirs": "-608931967/36722893315680",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U1 s3",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-608931967/36722893315680",
+   "theirs": "-608931967/36722893315680",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U1 s3",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U1 s4",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-368688201/38687492546560",
+   "theirs": "-368688201/38687492546560",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U1 s4",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-368688201/38687492546560",
+   "theirs": "-368688201/38687492546560",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U1 s4",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U2 s3",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-1871763250/229518083223",
+   "theirs": "-1871763250/229518083223",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U2 s3",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-1871763250/229518083223",
+   "theirs": "-1871763250/229518083223",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U2 s3",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U2 s4",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-15820875/15112301776",
+   "theirs": "-15820875/15112301776",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U2 s4",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-15820875/15112301776",
+   "theirs": "-15820875/15112301776",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U2 s4",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U3 s3",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-2203040/944518861",
+   "theirs": "-2203040/944518861",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U3 s3",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-2203040/944518861",
+   "theirs": "-2203040/944518861",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U3 s3",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U3 s4",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-162530109/75561508880",
+   "theirs": "-162530109/75561508880",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U3 s4",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-162530109/75561508880",
+   "theirs": "-162530109/75561508880",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U3 s4",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U4 s3",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-1921938515/459036166446",
+   "theirs": "-1921938515/459036166446",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U4 s3",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-1921938515/459036166446",
+   "theirs": "-1921938515/459036166446",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U4 s3",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U4 s4",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-226441775133/38687492546560",
+   "theirs": "-226441775133/38687492546560",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U4 s4",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-226441775133/38687492546560",
+   "theirs": "-226441775133/38687492546560",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U4 s4",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U5 s3",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-267786421/58544557500",
+   "theirs": "-267786421/58544557500",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U5 s3",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-267786421/58544557500",
+   "theirs": "-267786421/58544557500",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U5 s3",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U5 s4",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-4797453339/2497901120000",
+   "theirs": "-4797453339/2497901120000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U5 s4",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-4797453339/2497901120000",
+   "theirs": "-4797453339/2497901120000",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U5 s4",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U6 s3",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-336158940460/150812349114141",
+   "theirs": "-336158940460/150812349114141",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U6 s3",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-336158940460/150812349114141",
+   "theirs": "-336158940460/150812349114141",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U6 s3",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U6 s4",
+   "quantity": "lambda4/g^2 with kappa",
+   "mine": "-11093213145/4965015608696",
+   "theirs": "-11093213145/4965015608696",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U6 s4",
+   "quantity": "lambda4/g^2 without kappa",
+   "mine": "-11093213145/4965015608696",
+   "theirs": "-11093213145/4965015608696",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 8,
+   "where": "U6 s4",
+   "quantity": "sign",
+   "mine": "negative",
+   "theirs": "negative for every g != 0",
+   "rule": "both negative for all g != 0",
+   "agree": true
+  },
+  {
+   "item": 9,
+   "where": "all",
+   "quantity": "set of computed zeros in items 4-8 (mine vs theirs, mapped)",
+   "mine": "[]",
+   "theirs": "[]",
+   "rule": "both set differences empty",
+   "agree": true,
+   "mine_minus_theirs": [],
+   "theirs_minus_mine": [],
+   "theirs_extra_not_in_my_list": [
+    [
+     "U1_sector3",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U1_sector3",
+     "Im Q"
+    ],
+    [
+     "U1_sector3",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U1_sector3",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U1_sector4",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U1_sector4",
+     "Im Q"
+    ],
+    [
+     "U1_sector4",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U1_sector4",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U2_sector3",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U2_sector3",
+     "Im Q"
+    ],
+    [
+     "U2_sector3",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U2_sector3",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U2_sector4",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U2_sector4",
+     "Im Q"
+    ],
+    [
+     "U2_sector4",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U2_sector4",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U3_sector3",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U3_sector3",
+     "Im Q"
+    ],
+    [
+     "U3_sector3",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U3_sector3",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U3_sector4",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U3_sector4",
+     "Im Q"
+    ],
+    [
+     "U3_sector4",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U3_sector4",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U4_sector3",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U4_sector3",
+     "Im Q"
+    ],
+    [
+     "U4_sector3",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U4_sector3",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U4_sector4",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U4_sector4",
+     "Im Q"
+    ],
+    [
+     "U4_sector4",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U4_sector4",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U5_sector3",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U5_sector3",
+     "Im Q"
+    ],
+    [
+     "U5_sector3",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U5_sector3",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U5_sector4",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U5_sector4",
+     "Im Q"
+    ],
+    [
+     "U5_sector4",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U5_sector4",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U6_sector3",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U6_sector3",
+     "Im Q"
+    ],
+    [
+     "U6_sector3",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U6_sector3",
+     "||Pi_6 xi||^2"
+    ],
+    [
+     "U6_sector4",
+     "Im <Phi, DN_Phi[xi]>"
+    ],
+    [
+     "U6_sector4",
+     "Im Q"
+    ],
+    [
+     "U6_sector4",
+     "Pi_6 N(Phi) - Q Phi"
+    ],
+    [
+     "U6_sector4",
+     "||Pi_6 xi||^2"
+    ]
+   ]
+  },
+  {
+   "item": 9,
+   "where": "all",
+   "quantity": "unresolved zeros",
+   "mine": "0",
+   "theirs": "0",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U1",
+   "quantity": "existence for all small a",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U1",
+   "quantity": "orbit dim in Phi-perp block (= dim ker L)",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U1",
+   "quantity": "rank of L on Phi-perp block (12 - orbit)",
+   "mine": "10",
+   "theirs": "10",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U2",
+   "quantity": "existence for all small a",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U2",
+   "quantity": "orbit dim in Phi-perp block (= dim ker L)",
+   "mine": "2",
+   "theirs": "2",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U2",
+   "quantity": "rank of L on Phi-perp block (12 - orbit)",
+   "mine": "10",
+   "theirs": "10",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U3",
+   "quantity": "existence for all small a",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U3",
+   "quantity": "orbit dim in Phi-perp block (= dim ker L)",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U3",
+   "quantity": "rank of L on Phi-perp block (12 - orbit)",
+   "mine": "9",
+   "theirs": "9",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U4",
+   "quantity": "existence for all small a",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U4",
+   "quantity": "orbit dim in Phi-perp block (= dim ker L)",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U4",
+   "quantity": "rank of L on Phi-perp block (12 - orbit)",
+   "mine": "9",
+   "theirs": "9",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U5",
+   "quantity": "existence for all small a",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U5",
+   "quantity": "orbit dim in Phi-perp block (= dim ker L)",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U5",
+   "quantity": "rank of L on Phi-perp block (12 - orbit)",
+   "mine": "9",
+   "theirs": "9",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U6",
+   "quantity": "existence for all small a",
+   "mine": "True",
+   "theirs": "True",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U6",
+   "quantity": "orbit dim in Phi-perp block (= dim ker L)",
+   "mine": "3",
+   "theirs": "3",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "U6",
+   "quantity": "rank of L on Phi-perp block (12 - orbit)",
+   "mine": "9",
+   "theirs": "9",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "sector3",
+   "quantity": "gap",
+   "mine": "72",
+   "theirs": "72",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 10,
+   "where": "sector4",
+   "quantity": "gap",
+   "mine": "32",
+   "theirs": "32",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 11,
+   "where": "s3",
+   "quantity": "stationary",
+   "mine": "False",
+   "theirs": "False",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 11,
+   "where": "s3",
+   "quantity": "r6hat",
+   "mine": "3061/14784",
+   "theirs": "3061/14784",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 11,
+   "where": "s3",
+   "quantity": "Re<Phi, DN e_t>",
+   "mine": "805/6864*sqrt(3)",
+   "theirs": "805*sqrt(3)/6864",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 11,
+   "where": "s3",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "False",
+   "theirs": "False",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 11,
+   "where": "s4",
+   "quantity": "stationary",
+   "mine": "False",
+   "theirs": "False",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 11,
+   "where": "s4",
+   "quantity": "r6hat",
+   "mine": "3061/14784",
+   "theirs": "3061/14784",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 11,
+   "where": "s4",
+   "quantity": "Re<Phi, DN e_t>",
+   "mine": "2415/36608*sqrt(3)",
+   "theirs": "2415*sqrt(3)/36608",
+   "rule": "sympy: simplify(radsimp(mine - theirs)) == 0",
+   "agree": true
+  },
+  {
+   "item": 11,
+   "where": "s4",
+   "quantity": "Pi6N multiple of Phi",
+   "mine": "False",
+   "theirs": "False",
+   "rule": "==",
+   "agree": true
+  },
+  {
+   "item": 12,
+   "where": "all",
+   "quantity": "max residual vs own requirement",
+   "mine": "8.46140000972823e-15",
+   "theirs": "1.49e-29",
+   "rule": "mine < 1e-10 (float64); theirs < 1e-25 (30 digits)",
+   "agree": true
+  },
+  {
+   "item": 12,
+   "where": "all",
+   "quantity": "levels 20, 22 empty",
+   "mine": "2.5542429446099604e-14",
+   "theirs": "5.25e-29",
+   "rule": "both below own threshold",
+   "agree": true
+  }
+ ],
+ "summary": {
+  "0": {
+   "compared": 6,
+   "agree": 6
+  },
+  "1": {
+   "compared": 41,
+   "agree": 41
+  },
+  "2": {
+   "compared": 36,
+   "agree": 36
+  },
+  "3": {
+   "compared": 72,
+   "agree": 72
+  },
+  "4": {
+   "compared": 144,
+   "agree": 144
+  },
+  "5": {
+   "compared": 48,
+   "agree": 48
+  },
+  "6": {
+   "compared": 15,
+   "agree": 15
+  },
+  "7": {
+   "compared": 60,
+   "agree": 60
+  },
+  "8": {
+   "compared": 36,
+   "agree": 36
+  },
+  "9": {
+   "compared": 2,
+   "agree": 2
+  },
+  "10": {
+   "compared": 20,
+   "agree": 20
+  },
+  "11": {
+   "compared": 8,
+   "agree": 8
+  },
+  "12": {
+   "compared": 2,
+   "agree": 2
+  }
+ }
+}

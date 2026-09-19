@@ -1,0 +1,134 @@
+{
+ "U1": {
+  "lie_algebra_dim": 1,
+  "distinct_roots": 1,
+  "order_SO3": "infinite",
+  "root_multiplicities": [
+   6
+  ],
+  "isotypic_dim_by_J": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "3": 1,
+   "4": 1,
+   "5": 1,
+   "6": 1,
+   "7": 1,
+   "8": 1,
+   "9": 1
+  }
+ },
+ "U2": {
+  "lie_algebra_dim": 1,
+  "distinct_roots": 2,
+  "order_SO3": "infinite",
+  "root_multiplicities": [
+   3,
+   3
+  ],
+  "isotypic_dim_by_J": {
+   "0": 0,
+   "1": 1,
+   "2": 0,
+   "3": 1,
+   "4": 0,
+   "5": 1,
+   "6": 0,
+   "7": 1,
+   "8": 0,
+   "9": 1
+  }
+ },
+ "U3": {
+  "lie_algebra_dim": 0,
+  "distinct_roots": 6,
+  "order_SO3": 24,
+  "order_SU2_from_generators": 48,
+  "character_values": [
+   "-1.0",
+   "1.0"
+  ],
+  "isotypic_dim_by_J": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "3": 1,
+   "4": 0,
+   "5": 0,
+   "6": 1,
+   "7": 1,
+   "8": 0,
+   "9": 1
+  }
+ },
+ "U4": {
+  "lie_algebra_dim": 0,
+  "distinct_roots": 6,
+  "order_SO3": 12,
+  "order_SU2_from_generators": 24,
+  "character_values": [
+   "-1.0",
+   "1.0"
+  ],
+  "isotypic_dim_by_J": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "3": 1,
+   "4": 1,
+   "5": 1,
+   "6": 1,
+   "7": 1,
+   "8": 1,
+   "9": 2
+  }
+ },
+ "U5": {
+  "lie_algebra_dim": 0,
+  "distinct_roots": 6,
+  "order_SO3": 5,
+  "order_SU2_from_generators": 10,
+  "character_values": [
+   "(-0.809017 + 0.587785j)",
+   "(-0.809017 - 0.587785j)",
+   "(0.309017 + 0.951057j)",
+   "(0.309017 - 0.951057j)",
+   "1.0"
+  ],
+  "isotypic_dim_by_J": {
+   "0": 0,
+   "1": 0,
+   "2": 1,
+   "3": 2,
+   "4": 2,
+   "5": 2,
+   "6": 2,
+   "7": 3,
+   "8": 4,
+   "9": 4
+  }
+ },
+ "U6": {
+  "lie_algebra_dim": 0,
+  "distinct_roots": 6,
+  "order_SO3": 6,
+  "order_SU2_from_generators": 12,
+  "character_values": [
+   "-1.0",
+   "1.0"
+  ],
+  "isotypic_dim_by_J": {
+   "0": 0,
+   "1": 1,
+   "2": 0,
+   "3": 2,
+   "4": 1,
+   "5": 2,
+   "6": 2,
+   "7": 3,
+   "8": 2,
+   "9": 4
+  }
+ }
+}

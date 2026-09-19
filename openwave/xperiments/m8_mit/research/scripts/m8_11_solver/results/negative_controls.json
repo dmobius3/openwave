@@ -1,0 +1,15 @@
+{
+ "order check \"|Gamma| = 120\" fails for <q1>": true,
+ "perfectness check fails for <q1>": true,
+ "intertwiner residual < 1e-30 fails for eta perturbed by 1e-20": true,
+ "eta^dag eta = I (< 1e-30) fails for eta scaled by 1 + 1e-20": true,
+ "Pi_6 N(Phi) - Q Phi = 0 fails at the item-11 vector (sector 3)": true,
+ "exact stationarity of rhat6 fails at the item-11 vector": true,
+ "xi covariance (< 1e-30) fails with the conjugate character": true,
+ "kernel dim = orbit dim fails when L is shifted by 1e-10": true,
+ "item-12 residual < 1e-25 fails for xi built with n(n+2)-47": true,
+ "quadrature = algebra (< 1e-25) fails on an 8 x 5 x 8 grid (not exact to spin 18)": true,
+ "identification agreement fails for a 1e-60 perturbation": true,
+ "Majorana equivariance fails with the wrong map p -> p g": true,
+ "A/B comparison (< 1e-30) fails when comparing U1 with U2": true
+}

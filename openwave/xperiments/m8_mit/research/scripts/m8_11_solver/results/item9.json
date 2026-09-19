@@ -1,0 +1,861 @@
+{
+ "zeros": [
+  {
+   "where": "U1 sector 3",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)",
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U1 sector 3",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U1 sector 3",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U1 sector 3",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U1 sector 3",
+   "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)"
+   ]
+  },
+  {
+   "where": "U1 sector 3",
+   "quantity": "kappa",
+   "reasons": [
+    "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+   ]
+  },
+  {
+   "where": "U1 sector 3",
+   "quantity": "equation perp component without kappa",
+   "reasons": [
+    "ISOTYPIC"
+   ]
+  },
+  {
+   "where": "U1 sector 3",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U1 sector 4",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)",
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U1 sector 4",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U1 sector 4",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U1 sector 4",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U1 sector 4",
+   "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)"
+   ]
+  },
+  {
+   "where": "U1 sector 4",
+   "quantity": "kappa",
+   "reasons": [
+    "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+   ]
+  },
+  {
+   "where": "U1 sector 4",
+   "quantity": "equation perp component without kappa",
+   "reasons": [
+    "ISOTYPIC"
+   ]
+  },
+  {
+   "where": "U1 sector 4",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)",
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "||Pi_16 xi||^2",
+   "reasons": [
+    "ISOTYPIC (chi-subspace of V_8 is 0)",
+    "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+    "exact A_8 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "kappa",
+   "reasons": [
+    "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "equation perp component without kappa",
+   "reasons": [
+    "ISOTYPIC"
+   ]
+  },
+  {
+   "where": "U2 sector 3",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)",
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "||Pi_8 xi||^2",
+   "reasons": [
+    "ISOTYPIC (chi-subspace of V_4 is 0)",
+    "exact A_4 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "||Pi_12 xi||^2",
+   "reasons": [
+    "ISOTYPIC (chi-subspace of V_6 is 0)",
+    "exact A_6 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "||Pi_16 xi||^2",
+   "reasons": [
+    "ISOTYPIC (chi-subspace of V_8 is 0)",
+    "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+    "exact A_8 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "kappa",
+   "reasons": [
+    "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "equation perp component without kappa",
+   "reasons": [
+    "ISOTYPIC"
+   ]
+  },
+  {
+   "where": "U2 sector 4",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)",
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "||Pi_10 xi||^2",
+   "reasons": [
+    "ISOTYPIC (chi-subspace of V_5 is 0)",
+    "exact A_5 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "||Pi_16 xi||^2",
+   "reasons": [
+    "ISOTYPIC (chi-subspace of V_8 is 0)",
+    "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+    "exact A_8 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "kappa",
+   "reasons": [
+    "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "equation perp component without kappa",
+   "reasons": [
+    "ISOTYPIC"
+   ]
+  },
+  {
+   "where": "U3 sector 3",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)",
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "||Pi_8 xi||^2",
+   "reasons": [
+    "ISOTYPIC (chi-subspace of V_4 is 0)",
+    "exact A_4 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "||Pi_16 xi||^2",
+   "reasons": [
+    "ISOTYPIC (chi-subspace of V_8 is 0)",
+    "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+    "exact A_8 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "kappa",
+   "reasons": [
+    "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "equation perp component without kappa",
+   "reasons": [
+    "ISOTYPIC"
+   ]
+  },
+  {
+   "where": "U3 sector 4",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)",
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "||Pi_16 xi||^2",
+   "reasons": [
+    "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+    "exact A_8 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "kappa",
+   "reasons": [
+    "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "equation perp component without kappa",
+   "reasons": [
+    "ISOTYPIC"
+   ]
+  },
+  {
+   "where": "U4 sector 3",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)",
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "||Pi_16 xi||^2",
+   "reasons": [
+    "SYM3 (Theta u = c u; Sym^3 V_3 has no spin 8)",
+    "exact A_8 = 0 in s02"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "||P_perp Pi_6 DN_Phi[xi]||",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi)"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "kappa",
+   "reasons": [
+    "ISOTYPIC (right-hand side P_perp Pi_6 DN[xi] = 0; kappa orthogonal to ker L)"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "equation perp component without kappa",
+   "reasons": [
+    "ISOTYPIC"
+   ]
+  },
+  {
+   "where": "U4 sector 4",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "DNxi_perp_comp_ie_t",
+   "reasons": [
+    "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "kappa_comp_ie_t",
+   "reasons": [
+    "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+    "ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "DNxi_perp_remainder_norm",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "kappa_remainder_norm",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "form on i e_t (and rhat6'')",
+   "reasons": [
+    "ORBIT (i e_t is tangent to the R_z orbit; Hessian of an invariant function vanishes on orbit tangents at a critical point)"
+   ]
+  },
+  {
+   "where": "U5 sector 3",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "DNxi_perp_comp_ie_t",
+   "reasons": [
+    "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "kappa_comp_ie_t",
+   "reasons": [
+    "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)",
+    "ORBIT (i e_t in ker L = free direction; kappa chosen orthogonal)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "DNxi_perp_remainder_norm",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "kappa_remainder_norm",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "form on i e_t (and rhat6'')",
+   "reasons": [
+    "ORBIT (i e_t is tangent to the R_z orbit; Hessian of an invariant function vanishes on orbit tangents at a critical point)"
+   ]
+  },
+  {
+   "where": "U5 sector 4",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "DNxi_perp_comp_tau_y",
+   "reasons": [
+    "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "kappa_comp_tau_y",
+   "reasons": [
+    "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "DNxi_perp_remainder_norm",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "kappa_remainder_norm",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "form cross term (tau_x, tau_y)",
+   "reasons": [
+    "ANTIUNITARY"
+   ]
+  },
+  {
+   "where": "U6 sector 3",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "Pi_6 N(Phi) - Q Phi",
+   "reasons": [
+    "exact stationarity of rhat6 (s02) + Pi6 N = gradient"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "Im Q",
+   "reasons": [
+    "REALITY (Q = int |Phi|^4)"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "||Pi_6 xi||^2",
+   "reasons": [
+    "CONSTRUCTION (xi orthogonal to the block)"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "Im <Phi, DN_Phi[xi]>",
+   "reasons": [
+    "REALITY (= Im 3<N, xi>, and <N, xi> = -g sum ||Pi_n N||^2/mu_n)"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "DNxi_perp_comp_tau_y",
+   "reasons": [
+    "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "kappa_comp_tau_y",
+   "reasons": [
+    "ANTIUNITARY (A' fixes Phi, xi, E1; A'E2 = -E2)"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "DNxi_perp_remainder_norm",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "kappa_remainder_norm",
+   "reasons": [
+    "ISOTYPIC (block chi-subspace = C Phi + C E1, dim 2)"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "form cross term (tau_x, tau_y)",
+   "reasons": [
+    "ANTIUNITARY"
+   ]
+  },
+  {
+   "where": "U6 sector 4",
+   "quantity": "lambda4(with kappa) - lambda4(without kappa)",
+   "reasons": [
+    "REALITY (<Phi, DN_Phi kappa> = 2<N,kappa> + conj<N,kappa>, <N,kappa> = Q<Phi,kappa> = 0)"
+   ]
+  },
+  {
+   "where": "U5",
+   "quantity": "rhat6 second derivative r6pp_ie_t",
+   "reasons": [
+    "ORBIT"
+   ]
+  },
+  {
+   "where": "U6",
+   "quantity": "rhat6 second derivative r6pp_cross",
+   "reasons": [
+    "ANTIUNITARY"
+   ]
+  }
+ ],
+ "unresolved": [],
+ "sym3_multiplicities": {
+  "0": 0,
+  "1": 1,
+  "2": 0,
+  "3": 2,
+  "4": 1,
+  "5": 1,
+  "6": 1,
+  "7": 1,
+  "8": 0,
+  "9": 1
+ },
+ "theta_proportional": {
+  "U1": false,
+  "U2": true,
+  "U3": true,
+  "U4": true,
+  "U5": false,
+  "U6": false
+ }
+}

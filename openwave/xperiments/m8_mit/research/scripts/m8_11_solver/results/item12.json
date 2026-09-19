@@ -1,0 +1,76 @@
+{
+ "U1_sector3": {
+  "residual_equation": "9.8e-30",
+  "quadrature_vs_algebra": "9.79e-30",
+  "component_outside_Hom": "9.72e-30",
+  "max_component_levels_20_22": "2.83e-29"
+ },
+ "U2_sector3": {
+  "residual_equation": "1.41e-29",
+  "quadrature_vs_algebra": "1.41e-29",
+  "component_outside_Hom": "1.41e-29",
+  "max_component_levels_20_22": "5.25e-29"
+ },
+ "U3_sector3": {
+  "residual_equation": "5.78e-30",
+  "quadrature_vs_algebra": "5.78e-30",
+  "component_outside_Hom": "5.03e-30",
+  "max_component_levels_20_22": "2.44e-29"
+ },
+ "U4_sector3": {
+  "residual_equation": "9.17e-30",
+  "quadrature_vs_algebra": "9.17e-30",
+  "component_outside_Hom": "9.15e-30",
+  "max_component_levels_20_22": "3.66e-29"
+ },
+ "U5_sector3": {
+  "residual_equation": "5.03e-30",
+  "quadrature_vs_algebra": "5.03e-30",
+  "component_outside_Hom": "5.04e-30",
+  "max_component_levels_20_22": "2.85e-29"
+ },
+ "U6_sector3": {
+  "residual_equation": "9.6e-30",
+  "quadrature_vs_algebra": "9.59e-30",
+  "component_outside_Hom": "9.65e-30",
+  "max_component_levels_20_22": "3.4e-29"
+ },
+ "U1_sector4": {
+  "residual_equation": "1.49e-29",
+  "quadrature_vs_algebra": "1.49e-29",
+  "component_outside_Hom": "1.3e-29",
+  "max_component_levels_20_22": "2.29e-29"
+ },
+ "U2_sector4": {
+  "residual_equation": "1.41e-29",
+  "quadrature_vs_algebra": "1.41e-29",
+  "component_outside_Hom": "1.36e-29",
+  "max_component_levels_20_22": "4.39e-29"
+ },
+ "U3_sector4": {
+  "residual_equation": "5.7e-30",
+  "quadrature_vs_algebra": "5.69e-30",
+  "component_outside_Hom": "5.6e-30",
+  "max_component_levels_20_22": "2.13e-29"
+ },
+ "U4_sector4": {
+  "residual_equation": "1.27e-29",
+  "quadrature_vs_algebra": "1.27e-29",
+  "component_outside_Hom": "1.12e-29",
+  "max_component_levels_20_22": "2.59e-29"
+ },
+ "U5_sector4": {
+  "residual_equation": "3.6e-30",
+  "quadrature_vs_algebra": "3.6e-30",
+  "component_outside_Hom": "3.6e-30",
+  "max_component_levels_20_22": "2.44e-29"
+ },
+ "U6_sector4": {
+  "residual_equation": "9.31e-30",
+  "quadrature_vs_algebra": "9.31e-30",
+  "component_outside_Hom": "8.98e-30",
+  "max_component_levels_20_22": "2.97e-29"
+ },
+ "required": "1e-25 at 30 digits",
+ "worst_residual": "1.49e-29"
+}

@@ -1,0 +1,92 @@
+
+=== sector 3p (d = 3) ===
+  [PASS] Lemma 4.1 / C1: the density has no multipole K = 1..5
+  [PASS] the K = 0 part is c0 = (d/7)<a, b>
+  [PASS] D^3 here equals m810_exact's D^3
+  [PASS] pointwise at two group elements: |Phi|^2 = c0 + X_d R^6 y_d  (7.14e-101)
+  [PASS] pointwise: N(Phi) = c0 Phi + sum_J X_J R^J Y_J, the factorized cubic  (3.64e-101)
+  [PASS] arm: without the W twist in y_d the density identity fails  (0.76)
+  [PASS] the level-6 part is a block section: X_3 = kappa P
+  [PASS] forbidden levels [8, 12]: C_J = 0 exactly  (1.04e-202, 8.46e-203)
+  [PASS] C at level 10: rational 12/91, matches the note (7 digits)  (note 0.1318681)
+  [PASS] C at level 14: rational 18/221, matches the note (7 digits)  (note 0.08144796)
+  [PASS] C at level 16: rational 6/119, matches the note (7 digits)  (note 0.05042017)
+  [PASS] C at level 18: rational 240/4199, matches the note (7 digits)  (note 0.05715647)
+  [PASS] pyramid: Q = parent, exactly  (77/65)
+  [PASS] pyramid: critical in the whole block
+  [PASS] pyramid: second variation along e_t = parent, exactly  (-56/165)
+  [PASS] pyramid: the direction i e_t is null (rotation orbit)
+  [PASS] pyramid: forcing has no orbit (imaginary) component
+  [PASS] pyramid: forcing = rational x sqrt(39), as predicted, and equals the audited value  (7188839/81061695000 sqrt(39))
+  [PASS] arm: the forcing is not a small-denominator rational x sqrt(230)
+  [PASS] pyramid parity: F(-t) = -F(t)
+  [PASS] pyramid: tilt beta = rational x sqrt(39), equal to the inherited form  (1026977/3930264000 sqrt(39))
+  [PASS] pyramid: xi level norms rational and equal to #547's blind diagnostics
+  [PASS] pyramid: lambda_4 rational and equal to #547's blind diagnostic  (-267786421/58544557500)
+  [PASS] pyramid: lambda_4 lemma, <Phi, DN_Phi[e_t]> = 0 at the critical ray
+  [PASS] arm: at sin^2 t = 1/4 the gradient and the lemma pairing are nonzero
+  [PASS] pyramid: the float pipeline agrees (tilt, lambda_4, forcing)
+  [PASS] prism: Q = parent, exactly  (5831/5031)
+  [PASS] prism: critical in the whole block
+  [PASS] prism: second variation (tau_x, tau_y) = parent, exactly
+  [PASS] prism: no cross term (S-forced: the form is S-even, tau_x and tau_y have opposite S-parity)
+  [PASS] prism: the S-odd forcing component vanishes (Im F along tau_x)  (0.0)
+  [PASS] prism: forcing = rational x sqrt(115), the corrected prediction  (-120576113/1288994436873 sqrt(115))
+  [PASS] arm: the first-pass field, rational x sqrt(230), fails
+  [PASS] arm: the forcing is not a small-denominator rational x sqrt(39)
+  [PASS] prism parity: F(-x0) = -F(x0)
+  [PASS] prism: tilt v_x = rational x sqrt(115); v_y = 0  (17225159/64285514280 sqrt(115))
+  [PASS] prism: xi level norms and lambda_4 rational  (-336158940460/150812349114141)
+  [PASS] prism: lambda_4 lemma, <Phi, DN_Phi[tau_x]> = 0
+  [PASS] prism: the float pipeline agrees (tilt, lambda_4, forcing, level norms)
+  prism exact: forcing -120576113/1288994436873 sqrt(115), tilt v_x 17225159/64285514280 sqrt(115), ||v||^2 296706102575281/35935889967339860160, lambda_4 -336158940460/150812349114141
+  prism xi level norms: 10: 319550/88158077163, 14: 12920075/7517877885232, 16: 16583/68316230736, 18: 2355742375/6059914391677302
+
+=== sector 4 (d = 4) ===
+  [PASS] Lemma 4.1 / C1: the density has no multipole K = 1..5
+  [PASS] the K = 0 part is c0 = (d/7)<a, b>
+  [PASS] D^3 here equals m810_exact's D^3
+  [PASS] pointwise at two group elements: |Phi|^2 = c0 + X_d R^6 y_d  (1.0e-100)
+  [PASS] pointwise: N(Phi) = c0 Phi + sum_J X_J R^J Y_J, the factorized cubic  (8.72e-101)
+  [PASS] arm: without the W twist in y_d the density identity fails  (0.57)
+  [PASS] the level-6 part is a block section: X_3 = kappa P
+  [PASS] forbidden levels [10]: C_J = 0 exactly  (7.13e-203)
+  [PASS] C at level 8: rational 12/91, matches the note (7 digits)  (note 0.1318681)
+  [PASS] C at level 12: rational 12/91, matches the note (7 digits)  (note 0.1318681)
+  [PASS] C at level 14: rational 6/119, matches the note (7 digits)  (note 0.05042017)
+  [PASS] C at level 16: rational 18/221, matches the note (7 digits)  (note 0.08144796)
+  [PASS] C at level 18: rational 2196/29393, matches the note (7 digits)  (note 0.07471167)
+  [PASS] pyramid: Q = parent, exactly  (287/260)
+  [PASS] pyramid: critical in the whole block
+  [PASS] pyramid: second variation along e_t = parent, exactly  (-21/110)
+  [PASS] pyramid: the direction i e_t is null (rotation orbit)
+  [PASS] pyramid: forcing has no orbit (imaginary) component
+  [PASS] pyramid: forcing = rational x sqrt(39), as predicted, and equals the audited value  (-19565553/192146240000 sqrt(39))
+  [PASS] arm: the forcing is not a small-denominator rational x sqrt(230)
+  [PASS] pyramid parity: F(-t) = -F(t)
+  [PASS] pyramid: tilt beta = rational x sqrt(39), equal to the inherited form  (-931693/1746784000 sqrt(39))
+  [PASS] pyramid: xi level norms rational and equal to #547's blind diagnostics
+  [PASS] pyramid: lambda_4 rational and equal to #547's blind diagnostic  (-4797453339/2497901120000)
+  [PASS] pyramid: lambda_4 lemma, <Phi, DN_Phi[e_t]> = 0 at the critical ray
+  [PASS] arm: at sin^2 t = 1/4 the gradient and the lemma pairing are nonzero
+  [PASS] pyramid: the float pipeline agrees (tilt, lambda_4, forcing)
+  [PASS] prism: Q = parent, exactly  (609/559)
+  [PASS] prism: critical in the whole block
+  [PASS] prism: second variation (tau_x, tau_y) = parent, exactly
+  [PASS] prism: no cross term (S-forced: the form is S-even, tau_x and tau_y have opposite S-parity)
+  [PASS] prism: the S-odd forcing component vanishes (Im F along tau_x)  (0.0)
+  [PASS] prism: forcing = rational x sqrt(115), the corrected prediction  (214430223/3055394220736 sqrt(115))
+  [PASS] arm: the first-pass field, rational x sqrt(230), fails
+  [PASS] arm: the forcing is not a small-denominator rational x sqrt(39)
+  [PASS] prism parity: F(-x0) = -F(x0)
+  [PASS] prism: tilt v_x = rational x sqrt(115); v_y = 0  (-10210963/28571339680 sqrt(115))
+  [PASS] prism: xi level norms and lambda_4 rational  (-11093213145/4965015608696)
+  [PASS] prism: lambda_4 lemma, <Phi, DN_Phi[tau_x]> = 0
+  [PASS] prism: the float pipeline agrees (tilt, lambda_4, forcing, level norms)
+  prism exact: forcing 214430223/3055394220736 sqrt(115), tilt v_x -10210963/28571339680 sqrt(115), ||v||^2 104263765387369/7098447400956021760, lambda_4 -11093213145/4965015608696
+  prism xi level norms: 8: 7875/859947712, 12: 3521/1587595776, 14: 16611525/37011091127296, 16: 116081/701717332992, 18: 4105722425/19152322028017152
+  [PASS] arm: sector 4's constants on sector 3' fail #547's pyramid values
+
+  prism lambda_4 ratio (3'/4) = 10976618464/11002656303 = 0.997633495195801; 1 - ratio = 26037839/11002656303 = 2.366505e-03
+
+  80 checks at 100 digits; ALL PASS, ALL ARMS FIRE

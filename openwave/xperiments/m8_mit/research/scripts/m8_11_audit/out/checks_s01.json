@@ -1,0 +1,128 @@
+[
+ {
+  "label": "||q1||^2 == 1 exactly",
+  "status": "PASS",
+  "mutation": "add 1e-6",
+  "mutation_detected": true
+ },
+ {
+  "label": "||q2||^2 == 1 exactly",
+  "status": "PASS",
+  "mutation": "q2 with phi in place of 1/phi",
+  "mutation_detected": true
+ },
+ {
+  "label": "group closed under products (30 x all spot check) and every element unit",
+  "status": "PASS",
+  "mutation": "pretend one norm != 1",
+  "mutation_detected": true
+ },
+ {
+  "label": "derived subgroup order == |Gamma| (Gamma perfect)",
+  "status": "PASS",
+  "mutation": "derived order - 1",
+  "mutation_detected": true
+ },
+ {
+  "label": "CG <33;3-3|60>: Racah == highest-weight construction",
+  "status": "PASS",
+  "mutation": "double HW value",
+  "mutation_detected": true
+ },
+ {
+  "label": "CG <33;3-3|60> > 0 (Condon-Shortley)",
+  "status": "PASS",
+  "mutation": "negate",
+  "mutation_detected": true
+ },
+ {
+  "label": "D^3(q1 q2) == D^3(q1) D^3(q2) exactly",
+  "status": "PASS",
+  "mutation": "use D(q2)D(q1)",
+  "mutation_detected": true
+ },
+ {
+  "label": "D^3(q2) unitary exactly",
+  "status": "PASS",
+  "mutation": "add 1e-3 I",
+  "mutation_detected": true
+ },
+ {
+  "label": "Z^2 == c Z exactly (class sum has eigenvalues 0 and c)",
+  "status": "PASS",
+  "mutation": "c+1",
+  "mutation_detected": true
+ },
+ {
+  "label": "P_4^2 == P_4",
+  "status": "PASS",
+  "mutation": "2P",
+  "mutation_detected": true
+ },
+ {
+  "label": "P_4 commutes with D3(q1), D3(q2)",
+  "status": "PASS",
+  "mutation": "add E_01",
+  "mutation_detected": true
+ },
+ {
+  "label": "P_4 Hermitian",
+  "status": "PASS",
+  "mutation": "multiply by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "P_3^2 == P_3",
+  "status": "PASS",
+  "mutation": "2P",
+  "mutation_detected": true
+ },
+ {
+  "label": "P_3 commutes with D3(q1), D3(q2)",
+  "status": "PASS",
+  "mutation": "add E_01",
+  "mutation_detected": true
+ },
+ {
+  "label": "P_3 Hermitian",
+  "status": "PASS",
+  "mutation": "multiply by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "sector 4 irreducible: <chi,chi> == 1",
+  "status": "PASS",
+  "mutation": "double",
+  "mutation_detected": true
+ },
+ {
+  "label": "sector 4 character real-valued",
+  "status": "PASS",
+  "mutation": "multiply one value by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "sector 3 irreducible: <chi,chi> == 1",
+  "status": "PASS",
+  "mutation": "double",
+  "mutation_detected": true
+ },
+ {
+  "label": "sector 3 character real-valued",
+  "status": "PASS",
+  "mutation": "multiply one value by i",
+  "mutation_detected": true
+ },
+ {
+  "label": "tr D^3(q2) == U_6(Re q2)",
+  "status": "PASS",
+  "mutation": "+1",
+  "mutation_detected": true
+ },
+ {
+  "label": "dim Hom(sigma, V_3) == 1 for both sectors",
+  "status": "PASS",
+  "mutation": "set 2",
+  "mutation_detected": true
+ }
+]

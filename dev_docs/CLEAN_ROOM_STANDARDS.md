@@ -112,7 +112,8 @@ the § 3.1 and § 3.2 checks, and launches. Each guard below was made to fire at
 | Route out of the room | Guard |
 | --- | --- |
 | the file tools | `--restricted` confines Read, Edit and Write to the working directory; an outside path fails as outside the working directory, not as a prompt |
-| shell commands | only `./py` is allowlisted; anything else would prompt, and `--permission-prompts none` denies every prompt automatically, a command chained onto `./py` included |
+| shell commands | `./py` is allowlisted, and `--permission-prompts none` denies every prompt automatically. The client also admits two shapes without a prompt: a write into the room by redirection (`cat > file <<EOF`), which the `Edit(./**)` and `Write(./**)` rules cover, and a wrapper such as `time ./py`. Both run OUTSIDE the `./py` sandbox, so the transcript check reads every shell command's paths, not only the denials. Observed at M8.11 ([#564](https://github.com/openwave-labs/openwave/pull/564)), every path in the room |
+| harness pointers | the client writes a background command's output, and any tool result too large to return inline, to per-session folders OUTSIDE the room, both named after the room's path (a `tasks/` folder under the system temp directory, and a `tool-results/` folder under the client's per-project history), and hands the session the path. `--restricted` allows the read. The folders hold only that session's own output, so nothing answer-bearing is reachable this way, but it is a read outside the room: the transcript check classifies it separately, and the implementer's manifest will usually not list it. Observed at M8.11, and the same route appeared in M8.10's in-session run ([#547](https://github.com/openwave-labs/openwave/pull/547)) |
 | code the implementation runs | `./py` executes under macOS `sandbox-exec`, whose profile denies reads and writes outside the room and the interpreter's own install, and every network call, so a script opening an outside file gets `Operation not permitted` from the OS |
 | web, MCP connectors, skills, agents, messaging | absent from the session: four tools, no MCP server, no skill |
 
@@ -121,6 +122,11 @@ every automatic denial is listed in the transcript's final `permission_denials` 
 the § 7 transcript check reads. A denial is evidence exactly as a declined prompt is (§ 6).
 Two nearby options are not this route: `--bare` authenticates only with an API key, and
 `dontAsk` mode's denial text invites the model to try other tools.
+
+**After the run.** Once the returns are snapshotted and hashed outside the room and the record
+has merged, delete the room and the two harness folders named after its path (the
+harness-pointer row above). They hold copies of the room's own output, and a later session
+launched from the same path would find them.
 
 **Operated.** `claude --disallowedTools "WebSearch,WebFetch"` in DEFAULT permission mode with
 the § 6 runbook, never a bypass mode. The prompts are the guard there, since the filesystem
@@ -229,7 +235,7 @@ Nothing is unsealed until the commitment is committed and merged. The commitment
 | --- | --- |
 | hashes of every deliverable | computed independently by the maintainer at copy-out and matched against the implementer's own record |
 | the environment record and consulted-files manifest | folded in, with the implementer's prior-knowledge disclosure |
-| the transcript check | extract every tool call from the session transcript and classify its paths against the manifest; the manifest is corroborated, never merely attested. Session-temp writes of the run's own output are disclosed, not hidden. For a headless launch the transcript is the stream-json file the launch writes, and its final `permission_denials` entry is classified with the tool calls |
+| the transcript check | extract every tool call from the session transcript and classify its paths against the manifest; the manifest is corroborated, never merely attested. Session-temp writes of the run's own output are disclosed, not hidden. For a headless launch the transcript is the stream-json file the launch writes, and its final `permission_denials` entry is classified with the tool calls. Reads of the harness's own output folders (§ 3.4) are classified in their own row, and shell writes by redirection are classified by their paths |
 | any redaction | disclosed precisely, with BOTH hashes recorded (the original stays the commitment; the transcript retains the original bytes) |
 | the pre-declared choices | anything the protocol requires fixed before unsealing (M8.5-A: whether the optional module ran) is declared here and unavailable afterwards |
 | the operator log | launch checks, prompts, stalls, deviations |
