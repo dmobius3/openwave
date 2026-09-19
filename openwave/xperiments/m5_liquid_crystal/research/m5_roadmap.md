@@ -10,7 +10,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS: one autonomous rung ladder, audited. R0-R12: the hedgehog is not a protected soliton, the ring is, the clock obstruction is the convention. R13-W to R19: no fixed-J minimizer; v4, v6 bind no doublet; the anticommutator repels. R20-R21: at W1 the box and the pin set every energy; the W1 x 25 electron is compact. [Method note](findings/m5_32_method_note.md), [ledger](findings/m5_32_candidate_ledger.md) | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
+| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS: one autonomous rung ladder, audited. R0-R12: the hedgehog is not a protected soliton, the ring is, the clock obstruction is the convention. R13-W to R19: no fixed-J minimizer; v4, v6 bind no doublet; the anticommutator repels. R20-R22: box, pin and optimizer set every energy; the pinned pair is odd-channel Coulomb; no compact electron on the uniaxial vacuum. [Method note](findings/m5_32_method_note.md), [ledger](findings/m5_32_candidate_ledger.md) | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
 
 ## BACKLOG
 

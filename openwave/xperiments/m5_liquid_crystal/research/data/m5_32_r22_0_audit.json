@@ -1,0 +1,1474 @@
+{
+ "task": "M5.32 R22-0 adversarial audit",
+ "totals": {
+  "checks": 40,
+  "PASS": 35,
+  "FAIL": 5,
+  "PASS_with_wording_note": 12
+ },
+ "checks": [
+  {
+   "id": "C1.1",
+   "claim": "stack quartic = 8 (1-delta)^4 |E_top|^2 for tangent jets, symbolic",
+   "method": "sympy, general n on S^2 (polynomial remainder modulo s^2 + c^2 = 1), orthonormal frame verified",
+   "value": "0",
+   "expected": "0",
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C1.2",
+   "claim": "the author's dens() contraction = 4 (1-delta)^4 |E_top|^2, so the stack sits at c4 = 2",
+   "method": "sympy on the posted formula 2 (T1 - T2)",
+   "value": "0",
+   "expected": "0",
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C1.3",
+   "claim": "with n . d_i n = gamma_i the quartic is 8 (1-delta)^4 (|E_top|^2 + 4 sum_{i<j} |gamma_j t_i - gamma_i t_j|^2)",
+   "method": "sympy; E_top itself does not see gamma; the plain identity must NOT hold there (negative control)",
+   "value": [
+    "0",
+    "0",
+    "plain identity residual nonzero: True"
+   ],
+   "expected": [
+    "0",
+    "0",
+    "True"
+   ],
+   "verdict": "PASS",
+   "note": "the identity fails upward (positive excess) off the constraint; a one-sided lattice difference has gamma_i = -/+ (h/2) |d_i n|^2, one part of the C3 excess"
+  },
+  {
+   "id": "C1.4",
+   "claim": "production comm_eta / inner_eta give the factor 8 on random tangent jets (own seed)",
+   "method": "own commutator against B3, 500 jets",
+   "value": {
+    "max_rel": 2.6841805188283626e-15,
+    "factor_min": 7.999999999999979,
+    "factor_max": 8.000000000000007
+   },
+   "expected": {
+    "max_rel": "< 1e-10",
+    "factor": 8
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C1.5",
+   "claim": "pair slope 64 pi (1-delta)^4 at delta 0.3",
+   "method": "arithmetic",
+   "value": 48.274969352122184,
+   "expected": 48.27,
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C2.1",
+   "claim": "the posted script, run unchanged, prints 7.36e-01 for item (1)",
+   "method": "subprocess, stdout parsed",
+   "value": 0.736,
+   "expected": 0.736,
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C2.2",
+   "claim": "own re-implementation reproduces the printed max norm at n 40",
+   "method": "own central stencil and E_top",
+   "value": 0.7358929338789939,
+   "expected": 0.7359,
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C2.3",
+   "claim": "the posted field is under-resolved at n 40: max |grad n| h about 1.3",
+   "method": "analytic |d_i n| = 2 |d_i w| / (1+|w|^2)",
+   "value": {
+    "n40": 1.2885411205636368,
+    "n80": 0.6495774523444664,
+    "n160": 0.32567808881251403,
+    "n320": 0.16292687157422397
+   },
+   "expected": {
+    "n40": 1.29
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C2.4",
+   "claim": "no norm, mask or reference gives (6.5 percent, 1.7 percent) at n 40 and n 80",
+   "method": "9 norms x 3 margins x 2 references",
+   "value": {
+    "hits_at_n40_n80": [],
+    "n40_n80_rows_margin2_lattice": [
+     {
+      "sum_rel": 0.4042399600240411,
+      "max_over_max": 0.7358929338789939,
+      "L2": 0.5818357521600308,
+      "L1": 0.4317484696741245,
+      "rms_over_max": 0.03898372525757198,
+      "mean_over_max": 0.00867022968206441,
+      "weighted_rel": 0.5617893225009423,
+      "mean_pointwise_rel": 0.2679972805250147,
+      "median_pointwise_rel": 0.03291241303867798
+     },
+     {
+      "sum_rel": 0.1715362497094871,
+      "max_over_max": 0.306102504264059,
+      "L2": 0.2349143615873607,
+      "L1": 0.17311800322690482,
+      "rms_over_max": 0.013233992634698738,
+      "mean_over_max": 0.0026493152188289356,
+      "weighted_rel": 0.22782519961650088,
+      "mean_pointwise_rel": 0.06296403501708708,
+      "median_pointwise_rel": 0.008931219208329566
+     }
+    ]
+   },
+   "expected": "no hit",
+   "verdict": "PASS",
+   "note": "the pair does come out of the same field on finer grids: n 80 to 160 mean_pointwise_rel vs analytic_rhs: 0.069 to 0.016; n 160 to 320 L2 vs lattice_rhs: 0.068 to 0.018; n 160 to 320 weighted_rel vs lattice_rhs: 0.066 to 0.017"
+  },
+  {
+   "id": "C3.1",
+   "claim": "own stencil code equals the production fwd / bwd density",
+   "method": "R20.density against own_density, n 32",
+   "value": 4.1849233686104367e-16,
+   "expected": "< 1e-12",
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C3.2",
+   "claim": "the fwd / bwd averaged density converges at order 2 on a different smooth field",
+   "method": "own angle field, L2 fit over n 32, 64, 128",
+   "value": {
+    "stack_order": 1.9490135172073064,
+    "central_order": 1.9810110393684581,
+    "rows": [
+     {
+      "n": 32,
+      "h": 0.3125,
+      "max_grad_n_h": 0.14275429731353342,
+      "stack_L2": 0.2863030234228119,
+      "central_L2": 0.02688405461747511,
+      "stack_sum_rel": 0.24504595701087087,
+      "central_sum_rel": -0.025272254755779464,
+      "own_vs_production_density_max_rel": 4.1849233686104367e-16
+     },
+     {
+      "n": 64,
+      "h": 0.15625,
+      "max_grad_n_h": 0.07140355924844576,
+      "stack_L2": 0.0764119445320332,
+      "central_L2": 0.006877526785678343,
+      "stack_sum_rel": 0.06437065041407697,
+      "central_sum_rel": -0.00642283740533747
+     },
+     {
+      "n": 128,
+      "h": 0.078125,
+      "max_grad_n_h": 0.035704125019037886,
+      "stack_L2": 0.0192044941840397,
+      "central_L2": 0.0017250722135087266,
+      "stack_sum_rel": 0.016162893806617354,
+      "central_sum_rel": -0.001611199190986087,
+      "leading_term_rel_L2_misfit": 0.001256217985484204,
+      "positive_definite_share": 1.048538593215699,
+      "radial_component_share": 0.3384927373957828,
+      "mean_E2_over_mean_gradn4": 0.10867364019920014
+     }
+    ]
+   },
+   "expected": "1.5 to 2.5",
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C3.3",
+   "claim": "on the audited field: L2 16 percent (stack) against 0.12 percent (central) at max |grad n| h 0.035",
+   "method": "own stencils, own analytic reference through w",
+   "value": {
+    "max_grad_n_h": 0.034664490412639214,
+    "stack_L2": 0.16472563325511902,
+    "central_L2": 0.001163641344109608,
+    "ratio": 141.5604851864071,
+    "mean_E2_over_mean_gradn4": 0.01611886227646215
+   },
+   "expected": {
+    "stack_L2": 0.165,
+    "central_L2": 0.00116
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C3.4",
+   "claim": "the error constant of the stack density is roughly 100 to 150 times the central one (read as generic)",
+   "method": "the same ratio on three fields",
+   "value": {
+    "own_field_n128": 11.132574064814678,
+    "audited_field_n128": 141.5604851864071,
+    "hedgehog_h1.5_abs_shell_sum": 0.4870116140895182,
+    "hedgehog_h0.75_abs_shell_sum": 0.26155258002947135
+   },
+   "expected": "100 to 150 on every field",
+   "verdict": "FAIL",
+   "note": "the ratio is a property of the audited test field (mean |E_top|^2 / mean |grad n|^4 = 0.016 there, 0.109 on the own field); on the hedgehog the central stencil is the WORSE one"
+  },
+  {
+   "id": "C3.5",
+   "claim": "analytic leading term of (stack - central): h^2 sum_{i<j} 4 ((1/4)|F_1|^2 + (1/2) F_0 . [P_ii, P_jj])",
+   "method": "pointwise against the measured difference, own field, n 128",
+   "value": {
+    "leading_term_rel_L2_misfit": 0.001256217985484204,
+    "positive_definite_share": 1.048538593215699,
+    "radial_component_share": 0.3384927373957828
+   },
+   "expected": "misfit < 0.02",
+   "verdict": "PASS",
+   "note": "the O(h) terms +/- (h/2) F_0 . F_1 cancel in the fwd / bwd energy average; the square (h^2/4)|F_1|^2 does not, is positive, and does not vanish where E_top does"
+  },
+  {
+   "id": "C4.1",
+   "claim": "hedgehog L 48, r_c 4: stencil residual +5.0 / +1.8 / +0.85 percent at h 1.5 / 1.0 / 0.75",
+   "method": "own stencil, same-cell analytic sum 8 (1-delta)^4 / r^4",
+   "value": [
+    {
+     "n": 32,
+     "h": 1.5,
+     "stack_rel": 0.050184635399579625,
+     "central_rel": -0.1030460751811868
+    },
+    {
+     "n": 48,
+     "h": 1.0,
+     "stack_rel": 0.01761712699229423,
+     "central_rel": -0.05302933176306279
+    },
+    {
+     "n": 64,
+     "h": 0.75,
+     "stack_rel": 0.008522720200638378,
+     "central_rel": -0.032585112330675736
+    }
+   ],
+   "expected": [
+    0.05,
+    0.018,
+    0.0085
+   ],
+   "verdict": "PASS",
+   "note": "central stencil on the same cells: -10.30%, -5.30%, -3.26%"
+  },
+  {
+   "id": "C5.1",
+   "claim": "frame quartic = 8 sum_a G_a^2 sum_{i<j} rho_ij[e_a]^2, G_a = prod_{b != a} (l_a - l_b)",
+   "method": "sympy at a point, d_i M = [w_i, Lambda]",
+   "value": "0",
+   "expected": "0",
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C5.2",
+   "claim": "rho_ij[e_a]^2 = (1/2) tr(F F^T), F = [d_i P_a, d_j P_a], and rho_ij[e_a] = (W_i x W_j)^a",
+   "method": "sympy, all a and i < j",
+   "value": [
+    true,
+    true
+   ],
+   "expected": [
+    true,
+    true
+   ],
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C5.3",
+   "claim": "uniaxial limit G = ((1-delta)^2, 0, 0); biaxial G^2 = (0.49, 0.0441, 0.09) at (1, 0.3, 0)",
+   "method": "substitution",
+   "value": {
+    "uniaxial_G": [
+     "(delta - 1)**2",
+     "0",
+     "0"
+    ],
+    "biaxial_G2": [
+     0.49,
+     0.0441,
+     0.09
+    ]
+   },
+   "expected": {
+    "uniaxial_G": [
+     "(delta - 1)**2",
+     "0",
+     "0"
+    ],
+    "biaxial_G2": [
+     0.49,
+     0.0441,
+     0.09
+    ]
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C5.4",
+   "claim": "the closed form holds for R not 1 (rotation covariance), production algebra",
+   "method": "300 random frames",
+   "value": 3.353392563548211e-15,
+   "expected": "< 1e-10",
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C6.1",
+   "claim": "R21 S1_Bfree w25 n32, shell r 12 to 14 off axis: ratio about 1.10, large-axis share about 0.97, <e r^4> about 4.2",
+   "method": "own reader (own eigh, own fwd / bwd stencil)",
+   "value": {
+    "ratio": 1.1038126547105005,
+    "share_large_axis": 0.9677126449126684,
+    "mean_e_r4": 4.235775609827297,
+    "mean_G_large_sq": 0.48323059477838065,
+    "lam_mean": [
+     0.05103989087465148,
+     0.26848768880567675,
+     1.0005487358350198
+    ]
+   },
+   "expected": {
+    "ratio": 1.1,
+    "share_large_axis": 0.97,
+    "mean_e_r4": 4.2
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C6.2",
+   "claim": "the tail weight reads 0.49 (the biaxial G_large^2), not (1-delta)^4 = 0.2401",
+   "method": "<e r^4> on four shells, stack and central, against 8 x 0.49 = 3.92 and 8 x 0.2401 = 1.92",
+   "value": {
+    "mean_e_r4": {
+     "sym r8-10": 3.377151034128108,
+     "sym r10-12": 3.8695904003672292,
+     "sym r12-14": 4.235775609827297,
+     "sym r14-16": 4.5181801794710275,
+     "cen r8-10": 3.189498706517828,
+     "cen r10-12": 3.700371802491194,
+     "cen r12-14": 4.062905443559808,
+     "cen r14-16": 4.36185369808914
+    },
+    "ideal": {
+     "8*0.49": 3.92,
+     "plus_line_defect_share_weight_0.09": 4.188751059801299,
+     "plus_line_defect_share_weight_0.0441": 4.051688019302636,
+     "uniaxial_8*(1-delta)^4": 1.9207999999999996
+    },
+    "max_over_min_across_shells": 1.3378673721761762
+   },
+   "expected": "between 3.3 and 4.6, never near 1.92",
+   "verdict": "PASS",
+   "note": "fair against 0.2401 (off by 2.2), but <e r^4> is not a plateau: it climbs from 3.4 (r 8 to 10) to 4.5 (r 14 to 16), the local G_large^2 runs 0.36 to 0.50, and 10 percent of the shell curvature is not frame rotation; '0.49 within about 15 percent' is what the field supports"
+  },
+  {
+   "id": "C7.1",
+   "claim": "V4 along the split: eps^2 coefficient 0, eps^4 coefficient w (4 + 36 delta^2 + 144 delta^4)",
+   "method": "sympy, exact polynomial in eps",
+   "value": {
+    "eps2": "0",
+    "eps4": "144*delta**4 + 36*delta**2 + 4"
+   },
+   "expected": {
+    "eps2": "0",
+    "eps4": "144*delta**4 + 36*delta**2 + 4"
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C7.2",
+   "claim": "V4 Hessian on the vacuum: 7 zero modes of 10, nonzero about (3.09, 35.0, 8462878) at g 8, delta 0.3, w 1",
+   "method": "sympy: H = 2 J^T J, J_pk = p tr(N^(p-1) B_k eta); rank for symbolic (g, delta)",
+   "value": {
+    "rank_symbolic": 3,
+    "nonzero": [
+     3.0873385884628783,
+     35.021673694355194,
+     8462877.669243718
+    ],
+    "largest_zero": 3.425736320683117e-16
+   },
+   "expected": {
+    "rank": 3,
+    "nonzero": [
+     3.09,
+     35.0,
+     8462878
+    ]
+   },
+   "verdict": "PASS",
+   "note": "zero modes: the six off-diagonal directions M01, M02, M03, M12, M13, M23 (three boosts, two tilts of the eigenvalue-1 axis, and M23, the off-diagonal partner of the split) plus the diagonal split (M22 - M33) / sqrt 2 (J . split = [0, 0, 0, 0])"
+  },
+  {
+   "id": "C7.3",
+   "claim": "Vspec Hessian: 8 zero modes, nonzero about 38.9 and 768825",
+   "method": "sympy: H_ab = 2 tr(dP_a dP_b); closed form 2 P'(q)^2 at the two simple roots",
+   "value": {
+    "rank_symbolic": 2,
+    "nonzero": [
+     38.8962,
+     768824.8002
+    ],
+    "closed_form_2Pprime2": [
+     38.8962,
+     768824.8002000003
+    ]
+   },
+   "expected": {
+    "rank": 2,
+    "nonzero": [
+     38.9,
+     768825
+    ]
+   },
+   "verdict": "PASS",
+   "note": "zero modes: M22, M33, M01, M02, M03, M12, M13, M23 are null columns (M22, M33 included: the double root makes P'(delta) = 0, so both pair diagonals are flat)"
+  },
+  {
+   "id": "C7.4",
+   "claim": "the production V4 gradient differentiates to the exact Hessian",
+   "method": "own FD step 2e-5 against sympy H",
+   "value": 3.09089554535031e-11,
+   "expected": "< 1e-8 of the top eigenvalue",
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C8.1",
+   "claim": "the fwd / bwd averaged functional is invariant under exactly 12 of the 48 cubic images, the central one under 48",
+   "method": "generic asymmetric smooth 4x4 field (own seed), production B3.e_parts on every image",
+   "value": {
+    "sym_invariant": 12,
+    "cen_invariant": 48,
+    "the_12_have_equal_signs": true,
+    "array_transform_vs_definition_max_abs": 0.0,
+    "sym_broken_rel_min": 0.03435326562146722,
+    "sym_broken_rel_max": 0.08259616972820191,
+    "own_vs_production_E": {
+     "sym": 0.0,
+     "cen": 1.9389521254668704e-16
+    }
+   },
+   "expected": {
+    "sym_invariant": 12,
+    "cen_invariant": 48
+   },
+   "verdict": "PASS",
+   "note": "per plaquette (i, j) the fwd-fwd and bwd-bwd branches use the corner triangles at (0,0) and (1,1); a reflection of one of the two axes maps them to the corners (1,0) and (0,1), which the average does not contain; equal signs on all three axes (identity or full inversion) swap fwd and bwd as a whole"
+  },
+  {
+   "id": "C9.1",
+   "claim": "control: C1 9.0754e-06, C2 8.5648e-05, omega_E 0.3255186 on the committed N 32 field",
+   "method": "own retyping of the route, numbers read from chain_N32.json",
+   "value": {
+    "C1": 9.075435624180148e-06,
+    "C2": 8.564773350793507e-05,
+    "omega_E": 0.3255185953964089
+   },
+   "expected": {
+    "C1": 9.075435624180151e-06,
+    "C2": 8.564773350793511e-05,
+    "omega_E": 0.3255185953964089
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C9.2",
+   "claim": "block-diagonal static field: the curvature is unchanged under M_00 -> -M_00 (branch s = -1 to s = +1)",
+   "method": "random block-diagonal field with varying M_00, production B3.e_parts on both branches; negative control M_01 != 0",
+   "value": {
+    "curvature_rel_diff_M00_varying": 0.0,
+    "curvature_rel_diff_M00_constant": 0.0,
+    "negative_control_with_M01": 0.004798899610913101
+   },
+   "expected": {
+    "curvature": "< 1e-12",
+    "negative_control": "> 1e-6"
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C9.2b",
+   "claim": "V4 is unchanged too, also where M_00 varies ('M_00 may vary', 'V4's odd powers flip together with their targets')",
+   "method": "the same random field through production V4 on both branches; then the two R21 fields",
+   "value": {
+    "V4_rel_diff_M00_varying": 2.235964919208395e-05,
+    "V4_rel_diff_M00_constant": 1.7399361332166796e-14,
+    "R21_fields": {
+     "S1_Bseed_g8_d0.3_w25_n32": {
+      "V4_code_branch": 0.10695869990590759,
+      "V4_translated": 0.08813990257263475,
+      "rel_diff": 0.17594452204288089,
+      "M00_minus_g_range": [
+       -3.836466172657538e-05,
+       0.00020145760143996938
+      ]
+     },
+     "S1_Bfree_g8_d0.3_w25_n32": {
+      "V4_code_branch": 0.11415708658699932,
+      "V4_translated": 0.09596231453799758,
+      "rel_diff": 0.15938364049905446,
+      "M00_minus_g_range": [
+       -2.469025431128813e-05,
+       0.00021131638669302788
+      ]
+     }
+    }
+   },
+   "expected": "< 1e-12",
+   "verdict": "FAIL",
+   "note": "tr N^p - C_p = (u^p - sg^p) + (S_p - c_p) with u = N_00 and S_p the spatial trace; under the flip the first bracket changes sign for odd p, so the cross term 2 (u^p - sg^p)(S_p - c_p), p = 1 and 3, changes sign: V4 is invariant only where M_00 = g exactly or the spatial block sits on target. On the R21 fields M_00 - g is only of order 1e-4, but u^3 and u^4 amplify it (4 g^3 = 2048) and V4 moves by 16 to 18 percent under the translation: the translated field is NOT a stationary point of the other branch's static energy. C1, C2 and omega_E do not contain V4, so the omega_E numbers themselves stand"
+  },
+  {
+   "id": "C9.3",
+   "claim": "omega_E of the two R21 W1 x 25 rows: 4.00 (seed pin) and 4.59 (free)",
+   "method": "own route on the translated fields",
+   "value": {
+    "S1_Bseed_g8_d0.3_w25_n32": {
+     "omega_E": 3.9968022662805134,
+     "C1": 0.0004984566227786448,
+     "C2": 3.120340907844629e-05,
+     "max_abs_M0i": 0.0,
+     "I1G_over_E_curv_eta": 1.000100826288556
+    },
+    "S1_Bfree_g8_d0.3_w25_n32": {
+     "omega_E": 4.594183177014374,
+     "C1": 0.0005162208002096503,
+     "C2": 2.44578842510827e-05,
+     "max_abs_M0i": 0.0,
+     "I1G_over_E_curv_eta": 1.0001000893071104
+    }
+   },
+   "expected": {
+    "S1_Bseed": 4.0,
+    "S1_Bfree": 4.59
+   },
+   "verdict": "PASS",
+   "note": "the read is formally the report's: M_0i = 0 exactly, and the G-metric I_1 equals the eta-metric curvature to 1e-4 on these fields; what the number means is limited by C9.2b, C9.4 and C9.5"
+  },
+  {
+   "id": "C9.4",
+   "claim": "omega_E is a meaningful number on these fields (weak dependence on the envelope radius 10)",
+   "method": "envelope radius 6 to infinity, boost axis x / y / z, the control swept the same way",
+   "value": {
+    "fields": {
+     "S1_Bseed_g8_d0.3_w25_n32": {
+      "renv": {
+       "6.0": 2.3428516990990382,
+       "8.0": 3.142616462592703,
+       "12.0": 4.940999692640798,
+       "16.0": 7.104587745945167,
+       "24.0": 12.323775717018076,
+       "inf": 22.063001715181855,
+       "10.0": 3.9968022662805134
+      },
+      "boost_y": 3.9968022662910907,
+      "boost_z": 4.619078481420841
+     },
+     "S1_Bfree_g8_d0.3_w25_n32": {
+      "renv": {
+       "6.0": 2.5200314562984256,
+       "8.0": 3.5571776799242723,
+       "12.0": 5.691345002314203,
+       "16.0": 8.126454456594088,
+       "24.0": 13.698771331824382,
+       "inf": 23.88442643064595,
+       "10.0": 4.594183177014374
+      },
+      "boost_y": 4.594183177106648,
+      "boost_z": 4.8807831951285285
+     }
+    },
+    "control": {
+     "6.0": 0.22204782587305857,
+     "8.0": 0.2514992506128177,
+     "12.0": 0.4224907182164755,
+     "16.0": 0.6752714652500675,
+     "24.0": 1.5018809756160707,
+     "inf": 3.4893227430327016,
+     "10.0": 0.3255185953964089
+    },
+    "omega_E(16)/omega_E(8)": 2.260723772853841,
+    "ratio_to_control_by_renv": {
+     "6.0": 10.551112986075402,
+     "8.0": 12.495530125577794,
+     "12.0": 11.694930751376015,
+     "16.0": 10.521083907068672,
+     "24.0": 8.205560838110271,
+     "inf": 6.323004015388404,
+     "10.0": 12.278260974348642
+    }
+   },
+   "expected": "omega_E(16) / omega_E(8) within 1.25",
+   "verdict": "FAIL",
+   "note": "omega_E runs 2.3 to 22 (seed pin) and 0.22 to 3.5 (the control itself) over renv 6 to infinity, about linear in renv; only the RATIO to the control is stable (6 to 13); boost-z differs from boost-x by 15 percent (seed pin) because the seed's line defect is on z"
+  },
+  {
+   "id": "C9.5",
+   "claim": "omega_E does not depend on the lattice spacing of the field it is read on",
+   "method": "the analytic S1 seed sampled at n 32 and n 64 in the same L 48 box",
+   "value": {
+    "omega_E_n32": 7.3670953961657935,
+    "omega_E_n64": 25.117214697814042,
+    "ratio": 3.4093782348585173,
+    "2^1.5": 2.8284271247461903,
+    "tangent_norm_ratio": 2.8284271247460917
+   },
+   "expected": "ratio within 1 +/- 0.2",
+   "verdict": "FAIL",
+   "note": "a0 is normalized by the cell sum of a^2 (no h^3), so omega_E scales as h^(-3/2) at fixed continuum field (here 3.41 = 2.83 from the norm times 1.21 from the lattice); rows read at h other than 1.5 (the planned R22-1 n 48, L 48 rows, h 1.0: factor 1.84) are not comparable with the report's numbers unless rescaled by (h / 1.5)^(3/2)"
+  },
+  {
+   "id": "C10.1",
+   "claim": "energy_grad_n equals the production energy and gradient (chain rule to n) and passes a finite-difference test",
+   "method": "own field (|m| not 1, noise), n 11, L 13.2, delta 0.37, seed 77; faces and corners included in the cell test",
+   "value": {
+    "E_rel_vs_production": 2.001160519454007e-16,
+    "E_rel_vs_own": 0.0,
+    "grad_rel_vs_production_chain": 7.912325059870873e-16,
+    "fd_directional_worst_rel": 8.701261871896688e-08,
+    "fd_single_cell_worst": 8.64120720808539e-11
+   },
+   "expected": {
+    "E": "< 1e-12",
+    "grad": "< 1e-10",
+    "fd": "< 1e-6"
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C11.1",
+   "claim": "natural wall condition of int |E_top|^2 is E_top x nu = 0 (E_top normal to the wall)",
+   "method": "sympy with arbitrary a(x), b(x) and variation (u, v): delta E = curl alpha, alpha . E = 0, E . grad n = 0",
+   "value": [
+    "[0, 0, 0]",
+    "0",
+    "[0, 0, 0]"
+   ],
+   "expected": [
+    "[0, 0, 0]",
+    "0",
+    "[0, 0, 0]"
+   ],
+   "verdict": "PASS",
+   "note": "delta E = 2 int alpha . curl E + 2 oint alpha . (E x nu); alpha spans the plane normal to E, so the wall term gives E x nu = 0 (equivalently d_nu n = 0); curl variations carry no flux, so the fixed flux adds no multiplier and no Neumann condition on the potential. The BULK equation is only (curl E) x E = 0 (force-free), weaker than curl E = 0: 8 pi k G_D is the lower bound over all divergence-free fields and is attained only if the grounded-box Coulomb field is realized by a director texture"
+  },
+  {
+   "id": "C11.2",
+   "claim": "G_D of the cube, source (4,0,0), field point (-4,0,0): 0.08935 (half-width 24), 0.09802 (half-width 32)",
+   "method": "mixed eigenfunction series (odd sine modes to 241, closed sinh form along x)",
+   "value": {
+    "half24": 0.08934801359261739,
+    "half32": 0.0980165172790403,
+    "truncation_change_161_to_241": 0.0
+   },
+   "expected": {
+    "half24": 0.08935,
+    "half32": 0.09802
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C11.3",
+   "claim": "green_box (the audited DST solve) and an own finer DST solve agree with the series",
+   "method": "three routes",
+   "value": {
+    "green_box": {
+     "n48_L48": 0.08934722874105039,
+     "n32_L48": 0.08934664550077798,
+     "n64_L64": 0.09801612197941642
+    },
+    "own_dst_fine": {
+     "half24_n96": 0.08934781532721109,
+     "half32_n128": 0.09801641793428972
+    },
+    "series": {
+     "half24": 0.08934801359261739,
+     "half32": 0.0980165172790403
+    },
+    "max_abs_dev": 1.3680918394126662e-06
+   },
+   "expected": "< 1e-4",
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C11.4",
+   "claim": "the wall of the cell-centered free box sits at L/2 (the choice made in psi_dirichlet)",
+   "method": "effective cell counts of a uniform-rho texture (n 16): a component is integrated over the full width L along its own axis and over L - h across it; then G_D at L/2 against L/2 - h/2",
+   "value": {
+    "effective_cells": {
+     "E_z_from_xy_plaquettes": 3599.193701769512,
+     "E_x_from_yz_plaquettes": 3599.193701769512
+    },
+    "n*(n-1)^2": 3600,
+    "n^3": 4096,
+    "G_D": {
+     "half_L/2": 0.08934801359261739,
+     "half_L/2-h/2_at_h1": 0.08862180423440923,
+     "half_L/2-h/2_at_h1.5": 0.08824775573741639,
+     "free_space": 0.125
+    },
+    "rel_change_h1.5": -0.012314295650909829
+   },
+   "expected": "each component: n (n-1)^2 cells",
+   "verdict": "PASS",
+   "note": "the wall-normal component of E_top is weighted out to L/2, the wall-tangential ones only to the outer cell centers; since the tangential field vanishes linearly at a conductor, this is an O(h^2) quadrature of the wall-at-L/2 problem (Hadamard: a half cell of normal-field energy equals a wall displacement of h/2 to first order). Putting the wall at L/2 - h/2 instead would lower G_D by 1.2% at h 1.5: that is the size of the wall-position question, not a defect"
+  },
+  {
+   "id": "C12.1",
+   "claim": "pinned ball of fixed uniform flux in a uniform field: outside +(2 pi / 3), inside -(4 pi / 3), net -(2 pi / 3) k r_c^3 E_0^2 per ball",
+   "method": "sympy: induced dipole p = -E_0 r_c^3 / 2 from zero normal field, energy integrals, cross term",
+   "value": {
+    "normal_field_at_r_c": "0",
+    "outside": "2*pi*E_0**2*r_c**3/3",
+    "cross_angular": "0",
+    "net": "-2*pi*E_0**2*r_c**3/3"
+   },
+   "expected": {
+    "net": "-2*pi*E_0**2*r_c**3/3"
+   },
+   "verdict": "PASS",
+   "note": ""
+  },
+  {
+   "id": "C12.2",
+   "claim": "per pair -(4 pi / 3) k r_c^3 / d^4: -0.097 (d 6), -0.031 (d 8), -0.006 (d 12) at r_c 2.5",
+   "method": "arithmetic, then the full multipole sum of a point charge at distance d (net_l checked by quadrature, l 1 to 4)",
+   "value": {
+    "rows": {
+     "6.0": {
+      "dipole_only": -0.09700313736199963,
+      "all_multipoles": -0.11267327974139424,
+      "ratio": 1.1615426346564053,
+      "share_of_U_free": 0.01400393801427958
+     },
+     "8.0": {
+      "dipole_only": -0.030692398930945195,
+      "all_multipoles": -0.033295042414499584,
+      "ratio": 1.0847976559085548,
+      "share_of_U_free": 0.005517566202334365
+     },
+     "12.0": {
+      "dipole_only": -0.006062696085124977,
+      "all_multipoles": -0.006280822918387156,
+      "ratio": 1.0359785201500304,
+      "share_of_U_free": 0.0015612619962716268
+     }
+    },
+    "multipole_formula_quadrature_worst_rel": 2.7511191745621066e-08
+   },
+   "expected": {
+    "6": -0.097,
+    "8": -0.031,
+    "12": -0.006
+   },
+   "verdict": "PASS",
+   "note": "the cross term E_0 . E_dip is conditionally convergent and vanishes shell by shell (angular integral first), the order the docstring uses. The uniform-field (dipole) estimate is the l = 1 term; the field of the other core is not uniform over the ball, and the l >= 2 terms raise the artifact by 16 percent at d 6 (-0.113), 9 percent at d 8, 4 percent at d 12; same sign, still charge-even"
+  },
+  {
+   "id": "X.1",
+   "claim": "R22-0 (a) docstring: 'M_00 = -g constant (code branch s = -1, the R20 / R21 stack)'",
+   "method": "B3.embed34 on s = -1",
+   "value": 8.0,
+   "expected": -8.0,
+   "verdict": "FAIL",
+   "note": "the code branch s = -1 has M_00 = +g (N_00 = -g), as the R22-3 docstring says; immaterial for the spatial quartic, but the two docstrings contradict each other"
+  }
+ ],
+ "tables": {
+  "C2": {
+   "table": {
+    "40|2|lattice_rhs": {
+     "sum_rel": 0.4042399600240411,
+     "max_over_max": 0.7358929338789939,
+     "L2": 0.5818357521600308,
+     "L1": 0.4317484696741245,
+     "rms_over_max": 0.03898372525757198,
+     "mean_over_max": 0.00867022968206441,
+     "weighted_rel": 0.5617893225009423,
+     "mean_pointwise_rel": 0.2679972805250147,
+     "median_pointwise_rel": 0.03291241303867798
+    },
+    "40|2|analytic_rhs": {
+     "sum_rel": 0.5975034130495451,
+     "max_over_max": 0.865228153686225,
+     "L2": 0.7612328602944343,
+     "L1": 0.6112665465667853,
+     "rms_over_max": 0.043566554777913956,
+     "mean_over_max": 0.00923442040998842,
+     "weighted_rel": 0.7515105872799115,
+     "mean_pointwise_rel": 0.2691178293692992,
+     "median_pointwise_rel": 0.07598902696979384
+    },
+    "40|4|lattice_rhs": {
+     "sum_rel": 0.4000704572054055,
+     "max_over_max": 0.7358929338789939,
+     "L2": 0.5783998081578751,
+     "L1": 0.4252296533071473,
+     "rms_over_max": 0.03970927948899258,
+     "mean_over_max": 0.008689167320933099,
+     "weighted_rel": 0.5587587232878838,
+     "mean_pointwise_rel": 0.3040730187865889,
+     "median_pointwise_rel": 0.035147420784604026
+    },
+    "40|4|analytic_rhs": {
+     "sum_rel": 0.5904547762123955,
+     "max_over_max": 0.865228153686225,
+     "L2": 0.7571990563279561,
+     "L1": 0.6033419878205198,
+     "rms_over_max": 0.044032005608265486,
+     "mean_over_max": 0.0091788146818257,
+     "weighted_rel": 0.7474734234037802,
+     "mean_pointwise_rel": 0.283548240338271,
+     "median_pointwise_rel": 0.08034636937188962
+    },
+    "40|8|lattice_rhs": {
+     "sum_rel": 0.3783423360060769,
+     "max_over_max": 0.729121085708739,
+     "L2": 0.5476009843628178,
+     "L1": 0.39492745366534376,
+     "rms_over_max": 0.04423451611510795,
+     "mean_over_max": 0.010153144350513373,
+     "weighted_rel": 0.5265246131686518,
+     "mean_pointwise_rel": 0.2442258822024376,
+     "median_pointwise_rel": 0.04327566196660363
+    },
+    "40|8|analytic_rhs": {
+     "sum_rel": 0.5628262157203079,
+     "max_over_max": 0.8606149707917083,
+     "L2": 0.7275520575112894,
+     "L1": 0.5714665429411968,
+     "rms_over_max": 0.0490516037209113,
+     "mean_over_max": 0.010885037586814047,
+     "weighted_rel": 0.7164675448635524,
+     "mean_pointwise_rel": 0.26234331119520604,
+     "median_pointwise_rel": 0.09402100271178884
+    },
+    "80|2|lattice_rhs": {
+     "sum_rel": 0.1715362497094871,
+     "max_over_max": 0.306102504264059,
+     "L2": 0.2349143615873607,
+     "L1": 0.17311800322690482,
+     "rms_over_max": 0.013233992634698738,
+     "mean_over_max": 0.0026493152188289356,
+     "weighted_rel": 0.22782519961650088,
+     "mean_pointwise_rel": 0.06296403501708708,
+     "median_pointwise_rel": 0.008931219208329566
+    },
+    "80|2|analytic_rhs": {
+     "sum_rel": 0.2538830838365708,
+     "max_over_max": 0.4255386113108753,
+     "L2": 0.33918278604178187,
+     "L1": 0.25516201518973747,
+     "rms_over_max": 0.018192623856425737,
+     "mean_over_max": 0.003589546395161478,
+     "weighted_rel": 0.3308637583082043,
+     "mean_pointwise_rel": 0.06895064570722673,
+     "median_pointwise_rel": 0.018366363363144435
+    },
+    "80|4|lattice_rhs": {
+     "sum_rel": 0.17046508237158423,
+     "max_over_max": 0.306102504264059,
+     "L2": 0.2338827854037362,
+     "L1": 0.17206375022539383,
+     "rms_over_max": 0.01332236153333896,
+     "mean_over_max": 0.0026800855556232826,
+     "weighted_rel": 0.22676620871756895,
+     "mean_pointwise_rel": 0.06596067127345105,
+     "median_pointwise_rel": 0.009123194545316324
+    },
+    "80|4|analytic_rhs": {
+     "sum_rel": 0.2521381496378478,
+     "max_over_max": 0.4255386113108753,
+     "L2": 0.33767280697979346,
+     "L1": 0.2534387629327253,
+     "rms_over_max": 0.018295408484292373,
+     "mean_over_max": 0.0036250260281993174,
+     "weighted_rel": 0.32929898394656965,
+     "mean_pointwise_rel": 0.06895223616946913,
+     "median_pointwise_rel": 0.018530703084238487
+    },
+    "80|8|lattice_rhs": {
+     "sum_rel": 0.16648977161768766,
+     "max_over_max": 0.306102504264059,
+     "L2": 0.2307492338670614,
+     "L1": 0.16802497056460913,
+     "rms_over_max": 0.013390798969908375,
+     "mean_over_max": 0.0026449273146458277,
+     "weighted_rel": 0.22370286410839768,
+     "mean_pointwise_rel": 0.07489748430273285,
+     "median_pointwise_rel": 0.009610960893272767
+    },
+    "80|8|analytic_rhs": {
+     "sum_rel": 0.24630238546371275,
+     "max_over_max": 0.4255386113108753,
+     "L2": 0.3331400801796052,
+     "L1": 0.24757829255725647,
+     "rms_over_max": 0.01834127396057527,
+     "mean_over_max": 0.0035680570821823815,
+     "weighted_rel": 0.32481857461122715,
+     "mean_pointwise_rel": 0.07109680400576462,
+     "median_pointwise_rel": 0.019638524408409325
+    },
+    "160|2|lattice_rhs": {
+     "sum_rel": 0.05034330399583004,
+     "max_over_max": 0.08855702025694054,
+     "L2": 0.06797361299790275,
+     "L1": 0.050374801715474885,
+     "rms_over_max": 0.0036604029901520277,
+     "mean_over_max": 0.0007161048667645633,
+     "weighted_rel": 0.06594604573214737,
+     "mean_pointwise_rel": 0.010438409969237948,
+     "median_pointwise_rel": 0.0024757823317159786
+    },
+    "160|2|analytic_rhs": {
+     "sum_rel": 0.07525176701210746,
+     "max_over_max": 0.13161107593893365,
+     "L2": 0.10182935790733963,
+     "L1": 0.07532209630473449,
+     "rms_over_max": 0.0054137773595744395,
+     "mean_over_max": 0.001047643614014554,
+     "weighted_rel": 0.0987967229311762,
+     "mean_pointwise_rel": 0.016138608864993617,
+     "median_pointwise_rel": 0.0046037772625410625
+    },
+    "160|4|lattice_rhs": {
+     "sum_rel": 0.05038079252950038,
+     "max_over_max": 0.08855702025694054,
+     "L2": 0.06804640265430996,
+     "L1": 0.05041146123139152,
+     "rms_over_max": 0.003724163386626737,
+     "mean_over_max": 0.0007302007466572458,
+     "weighted_rel": 0.06602203582192226,
+     "mean_pointwise_rel": 0.010508080638450016,
+     "median_pointwise_rel": 0.002499814068364901
+    },
+    "160|4|analytic_rhs": {
+     "sum_rel": 0.07528693296231906,
+     "max_over_max": 0.13161107593893365,
+     "L2": 0.10191839638343402,
+     "L1": 0.07535615772023771,
+     "rms_over_max": 0.005507128184719721,
+     "mean_over_max": 0.001067969869137131,
+     "weighted_rel": 0.09889105941938345,
+     "mean_pointwise_rel": 0.016248228327999523,
+     "median_pointwise_rel": 0.004604095030239827
+    },
+    "160|8|lattice_rhs": {
+     "sum_rel": 0.04990203011076067,
+     "max_over_max": 0.08855702025694054,
+     "L2": 0.0675993175414534,
+     "L1": 0.04993506453059767,
+     "rms_over_max": 0.003738717916112727,
+     "mean_over_max": 0.0007357116803988344,
+     "weighted_rel": 0.06556306716346602,
+     "mean_pointwise_rel": 0.010573990802786383,
+     "median_pointwise_rel": 0.002541280199922475
+    },
+    "160|8|analytic_rhs": {
+     "sum_rel": 0.07457219224516151,
+     "max_over_max": 0.13161107593893365,
+     "L2": 0.10126658168825883,
+     "L1": 0.07464234416532567,
+     "rms_over_max": 0.0055282499315639725,
+     "mean_over_max": 0.001075716727437467,
+     "weighted_rel": 0.09822346723001094,
+     "mean_pointwise_rel": 0.01633006668230861,
+     "median_pointwise_rel": 0.004654719019355186
+    },
+    "320|2|lattice_rhs": {
+     "sum_rel": 0.0131258111384092,
+     "max_over_max": 0.023048496295308356,
+     "L2": 0.017662392974715783,
+     "L1": 0.013126136867719036,
+     "rms_over_max": 0.0009265554120621942,
+     "mean_over_max": 0.00018023336479405647,
+     "weighted_rel": 0.017134617572996218,
+     "mean_pointwise_rel": 0.0025391402956194053,
+     "median_pointwise_rel": 0.0006541493298496113
+    },
+    "320|2|analytic_rhs": {
+     "sum_rel": 0.019683836323432284,
+     "max_over_max": 0.03483581443767234,
+     "L2": 0.026730262948012392,
+     "L1": 0.01969564354251499,
+     "rms_over_max": 0.0013977854473566397,
+     "mean_over_max": 0.000268966785212661,
+     "weighted_rel": 0.025891805267567014,
+     "mean_pointwise_rel": 0.003900723945766169,
+     "median_pointwise_rel": 0.0011560146844615152
+    },
+    "320|4|lattice_rhs": {
+     "sum_rel": 0.013136765415427932,
+     "max_over_max": 0.023048496295308356,
+     "L2": 0.017670962431052182,
+     "L1": 0.01313708093238573,
+     "rms_over_max": 0.0009356903024697561,
+     "mean_over_max": 0.00018239582896723325,
+     "weighted_rel": 0.017144139192636805,
+     "mean_pointwise_rel": 0.0025323382135997454,
+     "median_pointwise_rel": 0.0006570955117621653
+    },
+    "320|4|analytic_rhs": {
+     "sum_rel": 0.019698309121999175,
+     "max_over_max": 0.03483581443767234,
+     "L2": 0.02674107407160355,
+     "L1": 0.0197099660716277,
+     "rms_over_max": 0.0014114564394902612,
+     "mean_over_max": 0.0002721658988415711,
+     "weighted_rel": 0.02590408894793462,
+     "mean_pointwise_rel": 0.003900203096676862,
+     "median_pointwise_rel": 0.0011556413227473703
+    },
+    "320|8|lattice_rhs": {
+     "sum_rel": 0.013139791198252516,
+     "max_over_max": 0.023048496295308356,
+     "L2": 0.0176865632230474,
+     "L1": 0.013140107322524118,
+     "rms_over_max": 0.0009518005811977952,
+     "mean_over_max": 0.00018589092306956105,
+     "weighted_rel": 0.017160287681578575,
+     "mean_pointwise_rel": 0.0025467941933160283,
+     "median_pointwise_rel": 0.0006630728842249138
+    },
+    "320|8|analytic_rhs": {
+     "sum_rel": 0.019700815463174055,
+     "max_over_max": 0.03483581443767234,
+     "L2": 0.026761479027709815,
+     "L1": 0.019712249789567805,
+     "rms_over_max": 0.0014355946274031035,
+     "mean_over_max": 0.00027734928425491277,
+     "weighted_rel": 0.02592566378660598,
+     "mean_pointwise_rel": 0.003911224779204795,
+     "median_pointwise_rel": 0.0011560271791854083
+    }
+   },
+   "near_hits": [
+    {
+     "n": [
+      80,
+      160
+     ],
+     "margin": 2,
+     "ref": "analytic_rhs",
+     "norm": "mean_pointwise_rel",
+     "values": [
+      0.06895064570722673,
+      0.016138608864993617
+     ]
+    },
+    {
+     "n": [
+      80,
+      160
+     ],
+     "margin": 4,
+     "ref": "analytic_rhs",
+     "norm": "mean_pointwise_rel",
+     "values": [
+      0.06895223616946913,
+      0.016248228327999523
+     ]
+    },
+    {
+     "n": [
+      80,
+      160
+     ],
+     "margin": 8,
+     "ref": "analytic_rhs",
+     "norm": "mean_pointwise_rel",
+     "values": [
+      0.07109680400576462,
+      0.01633006668230861
+     ]
+    },
+    {
+     "n": [
+      160,
+      320
+     ],
+     "margin": 2,
+     "ref": "lattice_rhs",
+     "norm": "L2",
+     "values": [
+      0.06797361299790275,
+      0.017662392974715783
+     ]
+    },
+    {
+     "n": [
+      160,
+      320
+     ],
+     "margin": 2,
+     "ref": "lattice_rhs",
+     "norm": "weighted_rel",
+     "values": [
+      0.06594604573214737,
+      0.017134617572996218
+     ]
+    },
+    {
+     "n": [
+      160,
+      320
+     ],
+     "margin": 4,
+     "ref": "lattice_rhs",
+     "norm": "L2",
+     "values": [
+      0.06804640265430996,
+      0.017670962431052182
+     ]
+    },
+    {
+     "n": [
+      160,
+      320
+     ],
+     "margin": 4,
+     "ref": "lattice_rhs",
+     "norm": "weighted_rel",
+     "values": [
+      0.06602203582192226,
+      0.017144139192636805
+     ]
+    },
+    {
+     "n": [
+      160,
+      320
+     ],
+     "margin": 8,
+     "ref": "lattice_rhs",
+     "norm": "L2",
+     "values": [
+      0.0675993175414534,
+      0.0176865632230474
+     ]
+    },
+    {
+     "n": [
+      160,
+      320
+     ],
+     "margin": 8,
+     "ref": "lattice_rhs",
+     "norm": "weighted_rel",
+     "values": [
+      0.06556306716346602,
+      0.017160287681578575
+     ]
+    }
+   ]
+  },
+  "C3": [
+   {
+    "n": 32,
+    "h": 1.5,
+    "stack_rel": 0.050184635399579625,
+    "central_rel": -0.1030460751811868
+   },
+   {
+    "n": 48,
+    "h": 1.0,
+    "stack_rel": 0.01761712699229423,
+    "central_rel": -0.05302933176306279
+   },
+   {
+    "n": 64,
+    "h": 0.75,
+    "stack_rel": 0.008522720200638378,
+    "central_rel": -0.032585112330675736
+   }
+  ],
+  "C6": {
+   "S1_Bfree_g8_d0.3_w25_n32": {
+    "rows": {
+     "sym r8-10": {
+      "ratio": 1.2417490392100474,
+      "share_large_axis": 0.8393069127714273,
+      "mean_e_r4": 3.377151034128108,
+      "mean_G_large_sq": 0.35702657243629166,
+      "lam_mean": [
+       0.046315236520090806,
+       0.3436970868680335,
+       0.9802781211228715
+      ]
+     },
+     "sym r10-12": {
+      "ratio": 1.1164509278939125,
+      "share_large_axis": 0.8819286017703515,
+      "mean_e_r4": 3.8695904003672292,
+      "mean_G_large_sq": 0.43129730690430584,
+      "lam_mean": [
+       0.05139064699454102,
+       0.29771383876688423,
+       0.9939564689205801
+      ]
+     },
+     "sym r12-14": {
+      "ratio": 1.1038126547105005,
+      "share_large_axis": 0.9677126449126684,
+      "mean_e_r4": 4.235775609827297,
+      "mean_G_large_sq": 0.48323059477838065,
+      "lam_mean": [
+       0.05103989087465148,
+       0.26848768880567675,
+       1.0005487358350198
+      ]
+     },
+     "sym r14-16": {
+      "ratio": 1.0894809274092843,
+      "share_large_axis": 0.973081481520413,
+      "mean_e_r4": 4.5181801794710275,
+      "mean_G_large_sq": 0.5046514228151594,
+      "lam_mean": [
+       0.04174965742605154,
+       0.2633343075099955,
+       1.002763853923817
+      ]
+     },
+     "cen r8-10": {
+      "ratio": 1.3662296158029734,
+      "share_large_axis": 0.877181390454013,
+      "mean_e_r4": 3.189498706517828,
+      "mean_G_large_sq": 0.35702657243629166,
+      "lam_mean": [
+       0.046315236520090806,
+       0.3436970868680335,
+       0.9802781211228715
+      ]
+     },
+     "cen r10-12": {
+      "ratio": 1.1705788520870388,
+      "share_large_axis": 0.9174587275886351,
+      "mean_e_r4": 3.700371802491194,
+      "mean_G_large_sq": 0.43129730690430584,
+      "lam_mean": [
+       0.05139064699454102,
+       0.29771383876688423,
+       0.9939564689205801
+      ]
+     },
+     "cen r12-14": {
+      "ratio": 1.1011823440984596,
+      "share_large_axis": 0.969543212891291,
+      "mean_e_r4": 4.062905443559808,
+      "mean_G_large_sq": 0.48323059477838065,
+      "lam_mean": [
+       0.05103989087465148,
+       0.26848768880567675,
+       1.0005487358350198
+      ]
+     },
+     "cen r14-16": {
+      "ratio": 1.0832411496081518,
+      "share_large_axis": 0.9744466108235287,
+      "mean_e_r4": 4.36185369808914,
+      "mean_G_large_sq": 0.5046514228151594,
+      "lam_mean": [
+       0.04174965742605154,
+       0.2633343075099955,
+       1.002763853923817
+      ]
+     }
+    },
+    "max_abs_M0i": 0.0,
+    "M00_range": [
+     7.999975309745689,
+     8.000211316386693
+    ]
+   },
+   "S1_Bseed_g8_d0.3_w25_n32": {
+    "rows": {
+     "sym r8-10": {
+      "ratio": 1.0851094219921689,
+      "share_large_axis": 0.6592538889705416,
+      "mean_e_r4": 3.7157968906523933,
+      "mean_G_large_sq": 0.36009784646922927,
+      "lam_mean": [
+       0.031561077552696236,
+       0.34911544352337504,
+       0.9785160509996785
+      ]
+     },
+     "sym r10-12": {
+      "ratio": 1.129107263347176,
+      "share_large_axis": 0.8609205272822783,
+      "mean_e_r4": 3.9870338842050566,
+      "mean_G_large_sq": 0.4364906742288957,
+      "lam_mean": [
+       0.04545442008958032,
+       0.2971116673396253,
+       0.9934583923904577
+      ]
+     },
+     "sym r12-14": {
+      "ratio": 1.1064210117531506,
+      "share_large_axis": 0.9633500355783124,
+      "mean_e_r4": 4.211522208596574,
+      "mean_G_large_sq": 0.4810012426928338,
+      "lam_mean": [
+       0.05341852249655586,
+       0.2684192507798647,
+       1.0005977718942398
+      ]
+     },
+     "sym r14-16": {
+      "ratio": 1.0888878206690444,
+      "share_large_axis": 0.9742978054481067,
+      "mean_e_r4": 4.484401738424292,
+      "mean_G_large_sq": 0.5033646605754067,
+      "lam_mean": [
+       0.046970165414139856,
+       0.26060105869194544,
+       1.0029635695997052
+      ]
+     },
+     "cen r8-10": {
+      "ratio": 1.422894109256402,
+      "share_large_axis": 0.8019577311470139,
+      "mean_e_r4": 3.5000267266496756,
+      "mean_G_large_sq": 0.36009784646922927,
+      "lam_mean": [
+       0.031561077552696236,
+       0.34911544352337504,
+       0.9785160509996785
+      ]
+     },
+     "cen r10-12": {
+      "ratio": 1.1966484129320332,
+      "share_large_axis": 0.9074879955719416,
+      "mean_e_r4": 3.7966276089683966,
+      "mean_G_large_sq": 0.4364906742288957,
+      "lam_mean": [
+       0.04545442008958032,
+       0.2971116673396253,
+       0.9934583923904577
+      ]
+     },
+     "cen r12-14": {
+      "ratio": 1.1058154665316111,
+      "share_large_axis": 0.9657779766614283,
+      "mean_e_r4": 4.046047709102648,
+      "mean_G_large_sq": 0.4810012426928338,
+      "lam_mean": [
+       0.05341852249655586,
+       0.2684192507798647,
+       1.0005977718942398
+      ]
+     },
+     "cen r14-16": {
+      "ratio": 1.08367576528041,
+      "share_large_axis": 0.9756487620911072,
+      "mean_e_r4": 4.333108375216158,
+      "mean_G_large_sq": 0.5033646605754067,
+      "lam_mean": [
+       0.046970165414139856,
+       0.26060105869194544,
+       1.0029635695997052
+      ]
+     }
+    },
+    "max_abs_M0i": 0.0,
+    "M00_range": [
+     7.999961635338273,
+     8.00020145760144
+    ]
+   }
+  },
+  "C9": {
+   "rows": {
+    "S1_Bseed_g8_d0.3_w25_n32": {
+     "C1": 0.0004984566227786448,
+     "C2": 3.120340907844629e-05,
+     "omega_E": 3.9968022662805134,
+     "tangent_norm": 272.4271806071235,
+     "I1G_static": 10.323040042653181,
+     "max_abs_M0i": 0.0,
+     "claimed": 4.0,
+     "E_curv_eta": 10.321999313771896,
+     "I1G_over_E_curv_eta": 1.000100826288556
+    },
+    "S1_Bfree_g8_d0.3_w25_n32": {
+     "C1": 0.0005162208002096503,
+     "C2": 2.44578842510827e-05,
+     "omega_E": 4.594183177014374,
+     "tangent_norm": 272.67169273348617,
+     "I1G_static": 9.829125890981341,
+     "max_abs_M0i": 0.0,
+     "claimed": 4.59,
+     "E_curv_eta": 9.828142199038457,
+     "I1G_over_E_curv_eta": 1.0001000893071104
+    }
+   },
+   "sensitivity": {
+    "S1_Bseed_g8_d0.3_w25_n32": {
+     "renv": {
+      "6.0": 2.3428516990990382,
+      "8.0": 3.142616462592703,
+      "12.0": 4.940999692640798,
+      "16.0": 7.104587745945167,
+      "24.0": 12.323775717018076,
+      "inf": 22.063001715181855,
+      "10.0": 3.9968022662805134
+     },
+     "boost_y": 3.9968022662910907,
+     "boost_z": 4.619078481420841
+    },
+    "S1_Bfree_g8_d0.3_w25_n32": {
+     "renv": {
+      "6.0": 2.5200314562984256,
+      "8.0": 3.5571776799242723,
+      "12.0": 5.691345002314203,
+      "16.0": 8.126454456594088,
+      "24.0": 13.698771331824382,
+      "inf": 23.88442643064595,
+      "10.0": 4.594183177014374
+     },
+     "boost_y": 4.594183177106648,
+     "boost_z": 4.8807831951285285
+    }
+   },
+   "control_sensitivity": {
+    "6.0": 0.22204782587305857,
+    "8.0": 0.2514992506128177,
+    "12.0": 0.4224907182164755,
+    "16.0": 0.6752714652500675,
+    "24.0": 1.5018809756160707,
+    "inf": 3.4893227430327016,
+    "10.0": 0.3255185953964089
+   }
+  }
+ },
+ "runtime_s": 192.15745306015015
+}

@@ -1,0 +1,1111 @@
+{
+ "task": "M5.32 R22-2 adversarial audit",
+ "checks": [
+  {
+   "id": "P1.1",
+   "claim": "U(++) and U(+-) at h 1.0, six rows, own stack functional",
+   "method": "own one-sided commutator energy on P = n n^T, fwd and bwd averaged",
+   "value": {
+    "n48_d6": [
+     6.5027,
+     -6.499
+    ],
+    "n48_d8": [
+     4.3717,
+     -4.4881
+    ],
+    "n48_d10": [
+     3.1602,
+     -3.2262
+    ],
+    "n48_d12": [
+     2.3688,
+     -2.4022
+    ],
+    "n64_d8": [
+     4.8053,
+     -4.9023
+    ],
+    "n64_d12": [
+     2.7711,
+     -2.799
+    ]
+   },
+   "expected": "claimed values to 1e-3",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P1.2",
+   "claim": "every one of the 30 row energies (stack and central) matches the JSON",
+   "method": "max |E_own - E_row| over 30 rows, both stencils",
+   "value": 2.842170943040401e-14,
+   "expected": "< 1e-8",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P2.1",
+   "claim": "n is unit in every end field",
+   "method": "max ||n| - 1| over 30 fields",
+   "value": 3.3306690738754696e-16,
+   "expected": "< 1e-12",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P2.2",
+   "claim": "ball 1 = r-hat about +d/2, ball 2 = the stated constant O(3) image of r-hat about -d/2, in the END fields",
+   "method": "max |n - formula| over pinned cells, 30 fields",
+   "value": 1.1102230246251565e-16,
+   "expected": "< 1e-12",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P2.3",
+   "claim": "the pinned-only stencil energy of each ball of each pair equals the reference ball (self-energies cancel exactly)",
+   "method": "stack density summed over stencils whose four cells are all pinned; max rel diff",
+   "value": 0.0,
+   "expected": "< 1e-12",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P2.4",
+   "claim": "the pinned ball is centered on the core in every row (needed for a like-for-like h sequence)",
+   "method": "centroid offset of ball 1 along x; cells per ball",
+   "value": {
+    "offset_rows": {
+     "n32_d8": -0.25,
+     "n32_d10": 0.25
+    },
+    "cells_per_ball": {
+     "n48_d6": [
+      56,
+      56
+     ],
+     "n48_d8": [
+      56,
+      56
+     ],
+     "n48_d10": [
+      56,
+      56
+     ],
+     "n48_d12": [
+      56,
+      56
+     ],
+     "n64_d8": [
+      56,
+      56
+     ],
+     "n64_d12": [
+      56,
+      56
+     ],
+     "n32_d6": [
+      32,
+      32
+     ],
+     "n32_d8": [
+      20,
+      20
+     ],
+     "n32_d10": [
+      20,
+      20
+     ],
+     "n32_d12": [
+      32,
+      32
+     ]
+    }
+   },
+   "expected": "offset 0 in every row",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P3.1",
+   "claim": "degrees on every h 1.0 row: like (+1, +1, 2), unlike (+1, -1, 0), ref +1",
+   "method": "solid-angle sum over triangulated elementary cubes, summed per core cube and box",
+   "value": {
+    "ref_d6_n48_L48": [
+     1.0,
+     0.0,
+     1.0
+    ],
+    "like_d6_n48_L48": [
+     1.0,
+     1.0,
+     2.0
+    ],
+    "unlike_d6_n48_L48": [
+     1.0,
+     -1.0,
+     0.0
+    ],
+    "ref_d8_n48_L48": [
+     1.0,
+     0.0,
+     1.0
+    ],
+    "like_d8_n48_L48": [
+     1.0,
+     1.0,
+     2.0
+    ],
+    "unlike_d8_n48_L48": [
+     1.0,
+     -1.0,
+     0.0
+    ],
+    "ref_d10_n48_L48": [
+     1.0,
+     -0.0,
+     1.0
+    ],
+    "like_d10_n48_L48": [
+     1.0,
+     1.0,
+     2.0
+    ],
+    "unlike_d10_n48_L48": [
+     1.0,
+     -1.0,
+     0.0
+    ],
+    "ref_d12_n48_L48": [
+     1.0,
+     0.0,
+     1.0
+    ],
+    "like_d12_n48_L48": [
+     1.0,
+     1.0,
+     2.0
+    ],
+    "unlike_d12_n48_L48": [
+     1.0,
+     -1.0,
+     0.0
+    ],
+    "ref_d8_n64_L64": [
+     1.0,
+     0.0,
+     1.0
+    ],
+    "like_d8_n64_L64": [
+     1.0,
+     1.0,
+     2.0
+    ],
+    "unlike_d8_n64_L64": [
+     1.0,
+     -1.0,
+     -0.0
+    ],
+    "ref_d12_n64_L64": [
+     1.0,
+     -0.0,
+     1.0
+    ],
+    "like_d12_n64_L64": [
+     1.0,
+     1.0,
+     2.0
+    ],
+    "unlike_d12_n64_L64": [
+     1.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "expected": "integers as claimed",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P3.2",
+   "claim": "no extra point defect in any of the 30 end fields",
+   "method": "count of elementary cubes with |degree| > 0.5 beyond the pinned cores",
+   "value": 0,
+   "expected": 0,
+   "verdict": "PASS"
+  },
+  {
+   "id": "P3.3",
+   "claim": "no flip tube: no free link with neighboring directors more than 90 degrees apart, 30 rows",
+   "method": "nearest-neighbor angles, both cells free",
+   "value": 0,
+   "expected": 0,
+   "verdict": "PASS"
+  },
+  {
+   "id": "P3.4",
+   "claim": "h 1.0 rows are smooth (max free-link angle under 45 degrees)",
+   "method": "same scan, h 1.0 rows",
+   "value": 34.57,
+   "expected": "< 45",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P3.5",
+   "claim": "the h 1.5 unlike d 8 and d 10 anomalies are only resolution-limited (no tube-like object between the cores)",
+   "method": "free links over 45 and 60 degrees: count, max angle, x span and (y, z) index span of the y links over 60",
+   "value": {
+    "like_d6_n32_L48": {
+     "links_over_45": 34,
+     "links_over_60": 0,
+     "max_deg": 49.16,
+     "x_span_of_y_links": null,
+     "yz_index_span": null,
+     "worst_axis": 0
+    },
+    "like_d8_n32_L48": {
+     "links_over_45": 8,
+     "links_over_60": 0,
+     "max_deg": 46.77,
+     "x_span_of_y_links": null,
+     "yz_index_span": null,
+     "worst_axis": 1
+    },
+    "unlike_d8_n32_L48": {
+     "links_over_45": 12,
+     "links_over_60": 0,
+     "max_deg": 49.19,
+     "x_span_of_y_links": null,
+     "yz_index_span": null,
+     "worst_axis": 2
+    },
+    "like_d10_n32_L48": {
+     "links_over_45": 4,
+     "links_over_60": 0,
+     "max_deg": 45.74,
+     "x_span_of_y_links": null,
+     "yz_index_span": null,
+     "worst_axis": 0
+    },
+    "unlike_d10_n32_L48": {
+     "links_over_45": 192,
+     "links_over_60": 76,
+     "max_deg": 83.4,
+     "x_span_of_y_links": [
+      -3.75,
+      3.75
+     ],
+     "yz_index_span": [
+      14,
+      16,
+      13,
+      18
+     ],
+     "worst_axis": 2
+    }
+   },
+   "expected": "no row with free links over 45 degrees",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P4.1",
+   "claim": "8 pi k G_D = 6.309/4.313/3.126/2.345 (half-width 24), 4.732/2.739 (32)",
+   "method": "2D sine series with exact sinh factor; image series as second method",
+   "value": {
+    "values": {
+     "a24_d6": 6.309,
+     "a24_d8": 4.3133,
+     "a24_d10": 3.1261,
+     "a24_d12": 2.345,
+     "a32_d8": 4.7317,
+     "a32_d12": 2.7391
+    },
+    "series_vs_images_rel": 1.1642964463893174e-09
+   },
+   "expected": "claimed to 1e-3",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P4.2",
+   "claim": "ref and like: E_top at the free faces is normal as the grounded wall predicts",
+   "method": "tangential energy fraction on planes 2 and 3 cells inside the faces, data against the Dirichlet image field; max abs difference over ref and like rows",
+   "value": 0.0022,
+   "expected": "< 0.01",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P4.3",
+   "claim": "unlike: E_top at the free faces is normal as the grounded wall predicts",
+   "method": "same read, unlike rows: [data, Dirichlet] tangential fractions; k |E - E_pred|^2 summed over the outer 6 layers",
+   "value": {
+    "fractions": {
+     "unlike_n48_d6": {
+      "j2": [
+       0.6212,
+       0.0667
+      ],
+      "j3": [
+       0.1838,
+       0.1155
+      ]
+     },
+     "unlike_n48_d8": {
+      "j2": [
+       0.0776,
+       0.0667
+      ],
+      "j3": [
+       0.1286,
+       0.1156
+      ]
+     },
+     "unlike_n48_d10": {
+      "j2": [
+       0.1433,
+       0.0668
+      ],
+      "j3": [
+       0.1335,
+       0.116
+      ]
+     },
+     "unlike_n48_d12": {
+      "j2": [
+       0.1224,
+       0.0671
+      ],
+      "j3": [
+       0.1293,
+       0.1169
+      ]
+     },
+     "unlike_n64_d8": {
+      "j2": [
+       0.2478,
+       0.0399
+      ],
+      "j3": [
+       0.1801,
+       0.0722
+      ]
+     },
+     "unlike_n64_d12": {
+      "j2": [
+       0.0449,
+       0.0399
+      ],
+      "j3": [
+       0.0722,
+       0.0722
+      ]
+     }
+    },
+    "outer_zone_deviation_energy": {
+     "ref_n48_d6": 0.0002,
+     "like_n48_d6": 0.0229,
+     "unlike_n48_d6": 0.0331,
+     "ref_n48_d8": 0.0002,
+     "like_n48_d8": 0.0125,
+     "unlike_n48_d8": 0.0029,
+     "ref_n48_d10": 0.0003,
+     "like_n48_d10": 0.0094,
+     "unlike_n48_d10": 0.0318,
+     "ref_n48_d12": 0.0003,
+     "like_n48_d12": 0.0053,
+     "unlike_n48_d12": 0.0202,
+     "ref_n64_d8": 0.0,
+     "like_n64_d8": 0.0041,
+     "unlike_n64_d8": 0.0101,
+     "ref_n64_d12": 0.0001,
+     "like_n64_d12": 0.0026,
+     "unlike_n64_d12": 0.0035
+    }
+   },
+   "expected": "max abs difference < 0.01",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P4.4",
+   "claim": "the grounded-wall (Dirichlet) cube is the right yardstick for U(+-), not Neumann and not free space",
+   "method": "rms of U(+-) minus each prediction over the six h 1.0 rows; Neumann = W_N(pair) - 2 W_D(ref) by all-positive images",
+   "value": {
+    "rms": {
+     "U_dirichlet": 0.137,
+     "U_dirichlet_plus_pin": 0.0982,
+     "U_neumann": 0.7377,
+     "U_free": 1.458
+    },
+    "rows": {
+     "n48_d6": {
+      "U_unlike": -6.499,
+      "U_dirichlet": -6.309,
+      "U_dirichlet_plus_pin": -6.4217,
+      "U_neumann": -5.9274,
+      "U_free": -8.0458
+     },
+     "n48_d8": {
+      "U_unlike": -4.4881,
+      "U_dirichlet": -4.3133,
+      "U_dirichlet_plus_pin": -4.3466,
+      "U_neumann": -3.7516,
+      "U_free": -6.0344
+     },
+     "n48_d10": {
+      "U_unlike": -3.2262,
+      "U_dirichlet": -3.1261,
+      "U_dirichlet_plus_pin": -3.1394,
+      "U_neumann": -2.3577,
+      "U_free": -4.8275
+     },
+     "n48_d12": {
+      "U_unlike": -2.4022,
+      "U_dirichlet": -2.345,
+      "U_dirichlet_plus_pin": -2.3513,
+      "U_neumann": -1.3423,
+      "U_free": -4.0229
+     },
+     "n64_d8": {
+      "U_unlike": -4.9023,
+      "U_dirichlet": -4.7317,
+      "U_dirichlet_plus_pin": -4.765,
+      "U_neumann": -4.4455,
+      "U_free": -6.0344
+     },
+     "n64_d12": {
+      "U_unlike": -2.799,
+      "U_dirichlet": -2.7391,
+      "U_dirichlet_plus_pin": -2.7454,
+      "U_neumann": -2.2429,
+      "U_free": -4.0229
+     }
+    }
+   },
+   "expected": "Dirichlet rms the smallest by a factor > 3",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P4.5",
+   "claim": "the box-to-box shift of U at fixed d equals 8 pi k (G_D(32) - G_D(24))",
+   "method": "ratio measured / predicted, d 8 and 12, both pair types",
+   "value": {
+    "d8": {
+     "pred": 0.4185,
+     "like": 1.0361,
+     "unlike": 0.9899
+    },
+    "d12": {
+     "pred": 0.3941,
+     "like": 1.0207,
+     "unlike": 1.0068
+    }
+   },
+   "expected": "within 5 percent",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P4.6",
+   "claim": "8 pi k G_D is a lower bound: U(+-) is not below -(8 pi k G_D) + pin",
+   "method": "U(+-) - (-(8 pi k G_D) + pin) per h 1.0 row (negative = the lattice pair sits below the continuum bound: a direct measure of the lattice error)",
+   "value": {
+    "n48_d6": -0.0773,
+    "n48_d8": -0.1415,
+    "n48_d10": -0.0868,
+    "n48_d12": -0.051,
+    "n64_d8": -0.1373,
+    "n64_d12": -0.0536
+   },
+   "expected": ">= 0 on every row",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P5.1",
+   "claim": "central-stencil U of the same end fields: U(+-) -6.49/-4.55/-3.20/-2.38, U(++) +4.88/+3.71/+2.82/+2.16",
+   "method": "own central-difference commutator energy",
+   "value": {
+    "6": [
+     4.8778,
+     -6.49
+    ],
+    "8": [
+     3.7054,
+     -4.547
+    ],
+    "10": [
+     2.8194,
+     -3.1985
+    ],
+    "12": [
+     2.1649,
+     -2.3816
+    ]
+   },
+   "expected": "claimed to 0.01",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P5.2",
+   "claim": "the like excess does not sit on the stereographic string (z < 0 half equals z > 0 half)",
+   "method": "stack-minus-central interaction density, halves in z",
+   "value": 0.002,
+   "expected": "< 0.02 of the total",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P5.3",
+   "claim": "the like excess is localized (cores, midplane fold, walls) rather than spread through the bulk",
+   "method": "shares of the like stack-minus-central difference: cores r < 4.5, fold slab |x| < 1.5, outer 2 layers, bulk = the rest",
+   "value": {
+    "shares": {
+     "like_d6": {
+      "cores": 0.484,
+      "fold": 0.158,
+      "walls": -0.072,
+      "bulk": 0.408
+     },
+     "like_d8": {
+      "cores": 0.263,
+      "fold": 0.176,
+      "walls": -0.07,
+      "bulk": 0.608
+     },
+     "like_d10": {
+      "cores": 0.172,
+      "fold": 0.14,
+      "walls": -0.07,
+      "bulk": 0.742
+     },
+     "like_d12": {
+      "cores": 0.127,
+      "fold": 0.172,
+      "walls": -0.039,
+      "bulk": 0.748
+     }
+    },
+    "map": {
+     "like_d6": {
+      "total": 1.6249,
+      "cores_r_lt_4.5": 0.7865,
+      "fold_slab_absx_lt_1.5_far": 0.2567,
+      "walls_outer_2_layers": -0.1174,
+      "bulk_rest": 0.6623,
+      "z_below": 0.8108,
+      "z_above": 0.8141
+     },
+     "unlike_d6": {
+      "total": -0.009,
+      "cores_r_lt_4.5": 0.2669,
+      "fold_slab_absx_lt_1.5_far": -0.0219,
+      "walls_outer_2_layers": -0.0605,
+      "bulk_rest": -0.1973,
+      "z_below": -0.0058,
+      "z_above": -0.0032
+     },
+     "like_d8": {
+      "total": 0.6664,
+      "cores_r_lt_4.5": 0.1755,
+      "fold_slab_absx_lt_1.5_far": 0.1173,
+      "walls_outer_2_layers": -0.0464,
+      "bulk_rest": 0.4051,
+      "z_below": 0.3332,
+      "z_above": 0.3332
+     },
+     "unlike_d8": {
+      "total": 0.0589,
+      "cores_r_lt_4.5": 0.1983,
+      "fold_slab_absx_lt_1.5_far": 0.0107,
+      "walls_outer_2_layers": -0.0091,
+      "bulk_rest": -0.1411,
+      "z_below": 0.0296,
+      "z_above": 0.0293
+     },
+     "like_d10": {
+      "total": 0.3408,
+      "cores_r_lt_4.5": 0.0586,
+      "fold_slab_absx_lt_1.5_far": 0.0478,
+      "walls_outer_2_layers": -0.0239,
+      "bulk_rest": 0.253,
+      "z_below": 0.1704,
+      "z_above": 0.1704
+     },
+     "unlike_d10": {
+      "total": -0.0277,
+      "cores_r_lt_4.5": 0.0688,
+      "fold_slab_absx_lt_1.5_far": 0.0577,
+      "walls_outer_2_layers": -0.0603,
+      "bulk_rest": -0.0954,
+      "z_below": -0.0138,
+      "z_above": -0.0138
+     },
+     "like_d12": {
+      "total": 0.2039,
+      "cores_r_lt_4.5": 0.0258,
+      "fold_slab_absx_lt_1.5_far": 0.035,
+      "walls_outer_2_layers": -0.008,
+      "bulk_rest": 0.1526,
+      "z_below": 0.1019,
+      "z_above": 0.1019
+     },
+     "unlike_d12": {
+      "total": -0.0207,
+      "cores_r_lt_4.5": 0.028,
+      "fold_slab_absx_lt_1.5_far": 0.0171,
+      "walls_outer_2_layers": -0.0407,
+      "bulk_rest": -0.0346,
+      "z_below": -0.0103,
+      "z_above": -0.0103
+     }
+    }
+   },
+   "expected": "bulk share < 0.5 on every d",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P5.4",
+   "claim": "the stack number is the better estimate of the continuum like-pair energy",
+   "method": "analytic product seed (known k |E_top|^2) outside r 4 of both cores: error of the pair-minus-two-singles energy per stencil at h 1.0 and h 0.5; [stack, central] relative errors of each single energy",
+   "value": {
+    "min_central_over_stack_error_like_h1": 8.13,
+    "max_stack_abs_err_h1": 0.177,
+    "table": {
+     "h1.0_d6_like": {
+      "exact": 10.8973,
+      "stack_err": -0.1757,
+      "central_err": -1.685
+     },
+     "h1.0_d6_unlike": {
+      "exact": -6.1491,
+      "stack_err": 0.0667,
+      "central_err": 0.0772
+     },
+     "h1.0_d6_single_rel": {
+      "ref": [
+       0.0173,
+       -0.0485
+      ],
+      "like": [
+       -0.0007,
+       -0.1058
+      ],
+      "unlike": [
+       0.0725,
+       -0.119
+      ]
+     },
+     "h1.0_d12_like": {
+      "exact": 5.5822,
+      "stack_err": -0.0812,
+      "central_err": -0.6599
+     },
+     "h1.0_d12_unlike": {
+      "exact": -0.9517,
+      "stack_err": -0.177,
+      "central_err": -0.6288
+     },
+     "h1.0_d12_single_rel": {
+      "ref": [
+       0.0173,
+       -0.0516
+      ],
+      "like": [
+       0.0059,
+       -0.0756
+      ],
+      "unlike": [
+       -0.0006,
+       -0.1272
+      ]
+     },
+     "h0.5_d6_like": {
+      "exact": 11.1774,
+      "stack_err": -0.0502,
+      "central_err": -0.4786
+     },
+     "h0.5_d6_unlike": {
+      "exact": -6.2515,
+      "stack_err": 0.0166,
+      "central_err": 0.0126
+     },
+     "h0.5_d6_single_rel": {
+      "ref": [
+       0.0035,
+       -0.0133
+      ],
+      "like": [
+       -0.0008,
+       -0.0293
+      ],
+      "unlike": [
+       0.0154,
+       -0.035
+      ]
+     },
+     "h0.5_d12_like": {
+      "exact": 5.7687,
+      "stack_err": -0.0217,
+      "central_err": -0.1806
+     },
+     "h0.5_d12_unlike": {
+      "exact": -0.9796,
+      "stack_err": -0.048,
+      "central_err": -0.1841
+     },
+     "h0.5_d12_single_rel": {
+      "ref": [
+       0.0034,
+       -0.0142
+      ],
+      "like": [
+       0.0008,
+       -0.0204
+      ],
+      "unlike": [
+       -0.0014,
+       -0.0358
+      ]
+     }
+    }
+   },
+   "expected": "central error at least 3 times the stack error",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P6.1",
+   "claim": "E_transverse is 0.07 to 0.09 (unlike) and 0.14 to 0.21 (like) at h 1.0",
+   "method": "own image-series E_pred, own central E_top, same mask",
+   "value": {
+    "like": [
+     0.1393,
+     0.2134
+    ],
+    "unlike": [
+     0.068,
+     0.0925
+    ]
+   },
+   "expected": "inside the claimed ranges",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P6.2",
+   "claim": "unlike realizes the box Coulomb field, like keeps a small transverse part: measured against the floor of the read (two times the single-core value)",
+   "method": "T / (2 T_ref) per row",
+   "value": {
+    "floor": 0.0856,
+    "unlike": [
+     0.7948,
+     0.8851,
+     1.0813,
+     1.0728,
+     1.0421,
+     1.067
+    ],
+    "like": [
+     2.4941,
+     2.133,
+     1.9318,
+     1.6281,
+     2.1179,
+     1.6363
+    ]
+   },
+   "expected": "unlike within 0.75 to 1.25 of the floor, like above 1.5",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P6.3",
+   "claim": "the same statement in relative terms: unlike is closer to its Coulomb field than like",
+   "method": "T / (Coulomb energy in the same mask) and the pointwise correlation",
+   "value": {
+    "T_over_C": {
+     "ref_n48_d6": 0.0095,
+     "like_n48_d6": 0.01569,
+     "unlike_n48_d6": 0.02321,
+     "ref_n48_d8": 0.00953,
+     "like_n48_d8": 0.01446,
+     "unlike_n48_d8": 0.01738,
+     "ref_n48_d10": 0.00956,
+     "like_n48_d10": 0.01406,
+     "unlike_n48_d10": 0.01594,
+     "ref_n48_d12": 0.0096,
+     "like_n48_d12": 0.01262,
+     "unlike_n48_d12": 0.01384,
+     "ref_n64_d8": 0.00899,
+     "like_n64_d8": 0.01329,
+     "unlike_n64_d8": 0.02024,
+     "ref_n64_d12": 0.00902,
+     "like_n64_d12": 0.0116,
+     "unlike_n64_d12": 0.01351
+    },
+    "corr": {
+     "ref_n48_d6": 0.99524,
+     "like_n48_d6": 0.99213,
+     "unlike_n48_d6": 0.98833,
+     "ref_n48_d8": 0.99523,
+     "like_n48_d8": 0.99275,
+     "unlike_n48_d8": 0.99144,
+     "ref_n48_d10": 0.99521,
+     "like_n48_d10": 0.99294,
+     "unlike_n48_d10": 0.992,
+     "ref_n48_d12": 0.99519,
+     "like_n48_d12": 0.99368,
+     "unlike_n48_d12": 0.99306,
+     "ref_n64_d8": 0.9955,
+     "like_n64_d8": 0.99334,
+     "unlike_n64_d8": 0.98995,
+     "ref_n64_d12": 0.99548,
+     "like_n64_d12": 0.99419,
+     "unlike_n64_d12": 0.99322
+    }
+   },
+   "expected": "max unlike T/C < min like T/C",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P7.1",
+   "claim": "relaxation error of U_grav is small (the rows stopped at the iteration cap)",
+   "method": "last 1000 iterations of each trace: geometric tail and the slower 1 / it tail, propagated as [from pairs, from 2 x ref]",
+   "value": {
+    "U_grav_shift_bounds": {
+     "n48_d6": {
+      "geometric": [
+       -0.0004,
+       0.0
+      ],
+      "power_law_p1": [
+       -0.00226,
+       0.0
+      ]
+     },
+     "n48_d8": {
+      "geometric": [
+       -0.00066,
+       0.0
+      ],
+      "power_law_p1": [
+       -0.00143,
+       0.0
+      ]
+     },
+     "n48_d10": {
+      "geometric": [
+       -5e-05,
+       0.0
+      ],
+      "power_law_p1": [
+       -0.00049,
+       0.0
+      ]
+     },
+     "n48_d12": {
+      "geometric": [
+       -7e-05,
+       0.0
+      ],
+      "power_law_p1": [
+       -0.00021,
+       0.0
+      ]
+     },
+     "n64_d8": {
+      "geometric": [
+       -0.00052,
+       0.0
+      ],
+      "power_law_p1": [
+       -0.00316,
+       1e-05
+      ]
+     },
+     "n64_d12": {
+      "geometric": [
+       -0.00024,
+       0.0
+      ],
+      "power_law_p1": [
+       -0.00219,
+       1e-05
+      ]
+     }
+    },
+    "rows_at_gate_of_18": 0,
+    "max_residual_end": 0.00021764885496633468
+   },
+   "expected": "max |shift| < 0.01",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P7.2",
+   "claim": "U_grav is zero within the pin artifact plus the relaxation error",
+   "method": "U_grav - pin multipole sum per d (L48), against the relaxation bound of P7.1",
+   "value": {
+    "U_grav": {
+     "6": 0.0019,
+     "8": -0.0582,
+     "10": -0.033,
+     "12": -0.0167
+    },
+    "remainder": {
+     "6": 0.1145,
+     "8": -0.0249,
+     "10": -0.0197,
+     "12": -0.0104
+    },
+    "relaxation_bound": 0.0032
+   },
+   "expected": "|remainder| <= relaxation bound",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P7.3",
+   "claim": "U_grav at h 1.0 is resolved: its value exceeds its own lattice dependence",
+   "method": "U_grav by central stencil; U_grav at h 1.5 (centered-ball rows d 6, 12) and the h^2 extrapolation; the like margin over and the unlike deficit under the continuum bound, whose half-sum is U_grav - pin",
+   "value": {
+    "U_grav_stack_h1": {
+     "6": 0.0019,
+     "8": -0.0582,
+     "10": -0.033,
+     "12": -0.0167
+    },
+    "U_grav_central_h1": {
+     "6": -0.8061,
+     "8": -0.4208,
+     "10": -0.1896,
+     "12": -0.1083
+    },
+    "U_grav_stack_h15": {
+     "6": -0.3318,
+     "12": -0.097
+    },
+    "U_grav_h2_extrapolated": {
+     "6": 0.2688,
+     "12": 0.0475
+    },
+    "like_margin_over_bound": {
+     "6": 0.3064,
+     "8": 0.0918,
+     "10": 0.0473,
+     "12": 0.0301
+    },
+    "unlike_deficit_under_bound": {
+     "6": -0.0773,
+     "8": -0.1415,
+     "10": -0.0868,
+     "12": -0.051
+    },
+    "upper_bound_abs": {
+     "6": 0.3064,
+     "8": 0.1415,
+     "10": 0.0868,
+     "12": 0.0643
+    },
+    "upper_bound_over_U_box": {
+     "6": 0.0486,
+     "8": 0.0328,
+     "10": 0.0278,
+     "12": 0.0274
+    }
+   },
+   "expected": "|U_grav| > lattice dependence on every d",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P8.1",
+   "claim": "the collect fits reproduce (own G_D, own U)",
+   "method": "np.polyfit, L48 and L64",
+   "value": {
+    "n48_like": {
+     "slope_vs_G_D": 1.0436,
+     "intercept_vs_G_D": -0.0978,
+     "slope_vs_inv_d": 1.029,
+     "intercept_vs_inv_d": -1.7979,
+     "slope_through_origin_vs_G_D": 1.0222
+    },
+    "n48_unlike": {
+     "slope_vs_G_D": -1.0335,
+     "intercept_vs_G_D": 0.0043,
+     "slope_vs_inv_d": -1.0191,
+     "intercept_vs_inv_d": 1.6885,
+     "slope_through_origin_vs_G_D": -1.0326
+    },
+    "n64_like": {
+     "slope_vs_G_D": 1.0209,
+     "intercept_vs_G_D": -0.0253,
+     "slope_vs_inv_d": 1.0113,
+     "intercept_vs_inv_d": -1.2974,
+     "slope_through_origin_vs_G_D": 1.0146
+    },
+    "n64_unlike": {
+     "slope_vs_G_D": -1.0555,
+     "intercept_vs_G_D": 0.0922,
+     "slope_vs_inv_d": -1.0457,
+     "intercept_vs_inv_d": 1.4075,
+     "slope_through_origin_vs_G_D": -1.0325
+    }
+   },
+   "expected": "collect values to 2e-3",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P8.2",
+   "claim": "the slope is 8 pi k within about 3 percent in the box-aware fit too (the claim quotes the slope from the 1/d fit and the intercept from the G_D fit)",
+   "method": "|slope / 8 pi k| - 1 against G_D, like and unlike, both boxes",
+   "value": [
+    0.0436,
+    0.0335,
+    0.0209,
+    0.0555
+   ],
+   "expected": "all <= 0.035",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P8.3",
+   "claim": "pointwise: the charge-odd energy U_odd equals 8 pi k G_D within 3.5 percent on all six h 1.0 points",
+   "method": "U_odd / (8 pi k G_D)",
+   "value": {
+    "n48_d6": 1.0304,
+    "n48_d8": 1.027,
+    "n48_d10": 1.0214,
+    "n48_d12": 1.0173,
+    "n64_d8": 1.0258,
+    "n64_d12": 1.0168
+   },
+   "expected": "0.965 to 1.035",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P8.4",
+   "claim": "the data distinguish slope 1.00 from slope 1.05 (times 8 pi k)",
+   "method": "chi^2 over the 8 L48 points, zero intercept, pin removed, sigma = the largest stack truncation error of the seed test (P5.4)",
+   "value": {
+    "sigma": 0.177,
+    "chi2": {
+     "s0.95": 29.168,
+     "s1.00": 4.52,
+     "s1.05": 3.395
+    }
+   },
+   "expected": "|chi2(1.05) - chi2(1.00)| > 4",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "P8.5",
+   "claim": "the data distinguish slope 1.00 from slope 0.95",
+   "method": "same chi^2",
+   "value": {
+    "s0.95": 29.168,
+    "s1.00": 4.52,
+    "s1.05": 3.395
+   },
+   "expected": "chi2(0.95) - chi2(1.00) > 4",
+   "verdict": "PASS"
+  }
+ ],
+ "totals": {
+  "PASS": 22,
+  "FAIL": 10,
+  "checks": 32
+ },
+ "U_grav_upper_bound_abs": {
+  "6": 0.3064,
+  "8": 0.1415,
+  "10": 0.0868,
+  "12": 0.0643
+ },
+ "refinement_h075": null,
+ "runtime_s": 49.4
+}
