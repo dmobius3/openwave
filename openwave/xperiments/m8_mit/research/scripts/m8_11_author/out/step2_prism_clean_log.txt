@@ -1,0 +1,77 @@
+=== S lemma, step 1: the fibre side (acts on the ray in V3, sector-independent) ===
+  [PASS] S = R_z(pi/3) o Theta fixes the prism ray  (|<u, S u>| = 1.000000000000000)
+  [PASS] S acts on the chart as z -> conj(z) (generic point z = 0.7 + 0.4i)
+  [PASS] arm: Theta alone does not fix the prism ray (it sends z -> -conj(z))  (0.069767)
+  [PASS] arm: S does not fix the octahedron point z = i sqrt(5/2)  (0.111111)
+
+=== sector 3p (d = 3, w6 = 0.717948717949) ===
+  [PASS] S lemma 2, route A: W^T conj(P) W = P, so fibre conjugation preserves the sector  (2.8e-16)
+  [PASS] arm: a phase-twisted projector fails route A
+  [PASS] S lemma 2, route B: a C-real orthonormal basis of the sector makes sigma real orthogonal on all 120 elements  (imag 6.9e-16, orthogonality 1.3e-15)
+  [PASS] arm: a basis that is not C-real gives a non-real sigma  (imag 1.000)
+  [PASS] S lemma 2: C commutes with the cubic, level by level (random block state)  (3.0e-16)
+  [PASS] S lemma 2: the left rotation commutes with the cubic, level by level  (3.3e-16)
+  [PASS] parent: Q on the chart = 1 + w6 * (paper chart formula), three points  (max err 1.6e-15)
+  [PASS] parent: the prism is critical in the whole block  (2.7e-16)
+  [PASS] parent: Q at the prism = 1 + w6 * 200/903  (Q = 1.159014112502484)
+  [PASS] support (F1): the cubic vanishes at every level outside the sector's support  (0: 4e-68, 2: 3e-33, 4: 4e-66, 8: 2e-32, 12: 2e-32)
+  [PASS] S fixes the prism at the section level: S Phi = (phase) Phi
+  [PASS] S lemma 3: S xi = xi, level by level (xi is S-even, by uniqueness)  (1.3e-18)
+  [PASS] Fubini-Study metric at the prism: |d u_hat/dx|^2 = 200/1849
+  [PASS] slice: tau_x is S-even and tau_y is S-odd
+  [PASS] two routes to the in-locus second variation: machinery = (w6/4) x paper chart Hessian / FS metric  ((0.349108256085, 0.130536130536) vs (0.349108256085, 0.130536130536))
+  [PASS] no cross term between the S-even and S-odd directions  (2.0e-18)
+  [PASS] arm: without the Fubini-Study conversion the routes disagree
+  [PASS] arm: dropping the conjugate term of DN breaks the agreement
+  [PASS] forcing lies in the fixed kernel span{v3 + v_-3, v0}  (2.4e-19)
+  [PASS] S lemma 3: the forcing has no S-odd (tau_y) component  (1.6e-21)
+  [PASS] arm: at the non-S-fixed chart point z = sqrt(23/10) + 0.3i the corresponding component is nonzero  (-2.019e-04)
+  [PASS] control: at the hexagon (z = 0, pinned) on the same locus the forcing has no tangential part  (1.2e-18)
+  [PASS] a^5 tangential residual vanishes with the tilt  (1.4e-18)
+  the prism's forcing along tau_x is NONZERO: -1.003134476009233e-03
+  [PASS] arm: without the tilt the tangential residual is nonzero  (1.532e-03)
+  [PASS] lambda_4, two routes agree  (-2.228988159355442e-03)
+  [PASS] lambda_4 lemma: including the tilt does not change it  (difference 3.8e-36)
+  [PASS] arm: at the non-critical chart point z = 1 the lemma pairing is nonzero  (-1.999898e-01)
+  forcing along tau_x by level of xi: 10: -8.607647e-04, 14: -1.741141e-04, 16: +5.419337e-06, 18: +2.632499e-05
+  level norms ||P_n N||^2: 10: 1.879064577301e-02, 14: 5.323473582700e-02, 16: 1.398175499013e-02, 18: 3.784168734577e-02
+  Q = 1.159014112502484   second variation (tau_x, tau_y) = (3.491082560850005e-01, 1.305361305361306e-01)
+  forcing (tau_x, tau_y) = (-1.003134476009233e-03, +1.6e-21)   tilt (v_x, v_y) = (+2.873419515363712e-03, -5.6e-20)   ||v||^2 = 8.256539711273030e-06
+  lambda_4/g^2 = -2.228988159355442e-03
+
+=== sector 4 (d = 4, w6 = 0.403846153846) ===
+  [PASS] S lemma 2, route A: W^T conj(P) W = P, so fibre conjugation preserves the sector  (5.0e-16)
+  [PASS] arm: a phase-twisted projector fails route A
+  [PASS] S lemma 2, route B: a C-real orthonormal basis of the sector makes sigma real orthogonal on all 120 elements  (imag 5.5e-16, orthogonality 1.3e-15)
+  [PASS] arm: a basis that is not C-real gives a non-real sigma  (imag 1.000)
+  [PASS] S lemma 2: C commutes with the cubic, level by level (random block state)  (3.4e-16)
+  [PASS] S lemma 2: the left rotation commutes with the cubic, level by level  (1.1e-16)
+  [PASS] parent: Q on the chart = 1 + w6 * (paper chart formula), three points  (max err 8.9e-16)
+  [PASS] parent: the prism is critical in the whole block  (2.7e-16)
+  [PASS] parent: Q at the prism = 1 + w6 * 200/903  (Q = 1.089445438282648)
+  [PASS] support (F1): the cubic vanishes at every level outside the sector's support  (0: 1e-69, 2: 2e-33, 4: 0e+00, 10: 2e-32)
+  [PASS] S fixes the prism at the section level: S Phi = (phase) Phi
+  [PASS] S lemma 3: S xi = xi, level by level (xi is S-even, by uniqueness)  (2.0e-18)
+  [PASS] Fubini-Study metric at the prism: |d u_hat/dx|^2 = 200/1849
+  [PASS] slice: tau_x is S-even and tau_y is S-odd
+  [PASS] two routes to the in-locus second variation: machinery = (w6/4) x paper chart Hessian / FS metric  ((0.196373394048, 0.073426573427) vs (0.196373394048, 0.073426573427))
+  [PASS] no cross term between the S-even and S-odd directions  (-1.0e-18)
+  [PASS] arm: without the Fubini-Study conversion the routes disagree
+  [PASS] arm: dropping the conjugate term of DN breaks the agreement
+  [PASS] forcing lies in the fixed kernel span{v3 + v_-3, v0}  (6.9e-19)
+  [PASS] S lemma 3: the forcing has no S-odd (tau_y) component  (6.7e-22)
+  [PASS] arm: at the non-S-fixed chart point z = sqrt(23/10) + 0.3i the corresponding component is nonzero  (1.429e-04)
+  [PASS] control: at the hexagon (z = 0, pinned) on the same locus the forcing has no tangential part  (7.5e-37)
+  [PASS] a^5 tangential residual vanishes with the tilt  (7.5e-19)
+  the prism's forcing along tau_x is NONZERO: +7.526059796666189e-04
+  [PASS] arm: without the tilt the tangential residual is nonzero  (9.956e-04)
+  [PASS] lambda_4, two routes agree  (-2.234275583257130e-03)
+  [PASS] lambda_4 lemma: including the tilt does not change it  (difference 1.7e-18)
+  [PASS] arm: at the non-critical chart point z = 1 the lemma pairing is nonzero  (-1.124943e-01)
+  forcing along tau_x by level of xi: 8: +6.356452e-04, 12: +1.442224e-04, 14: -4.547176e-05, 16: +3.693226e-06, 18: +1.451694e-05
+  level norms ||P_n N||^2: 8: 9.377314326758e-03, 12: 3.193659290764e-02, 14: 1.390282163339e-02, 16: 9.528431585822e-03, 18: 2.086783227405e-02
+  Q = 1.089445438282648   second variation (tau_x, tau_y) = (1.963733940478125e-01, 7.342657342657355e-02)
+  forcing (tau_x, tau_y) = (+7.526059796666189e-04, +6.7e-22)   tilt (v_x, v_y) = (-3.832525191693617e-03, -6.3e-20)   ||v||^2 = 1.468824934496620e-05
+  lambda_4/g^2 = -2.234275583257130e-03
+
+  58 checks; ALL PASS, ALL ARMS FIRE

@@ -342,3 +342,10 @@ designer. The auditor's DEFECT on the `λ₄` lemma's sign step was overruled as
 recorded. No radius, stability or finite-amplitude claim is made; no MODELS.md cell moves and M8.7's gate is unchanged.
 The author's package lands in its own PR for the provenance comparison. Record:
 [method note](findings/m8_11_method_note.md).
+
+**M8.11 PACKAGE LANDED (2026-09-19).** The author's package landed at
+[#566](https://github.com/openwave-labs/openwave/pull/566): all fifteen pinned files byte-identical, five logs under
+`*_log.txt` names, plus four unpinned dry-run files, accepted at review. The designer's provenance comparison ran at
+the landing and is recorded in the task doc's
+[provenance comparison](tasks/m8_11_task_details.md#provenance-comparison-2026-09-19). Bookkeeping only; no scope or
+evidence change.

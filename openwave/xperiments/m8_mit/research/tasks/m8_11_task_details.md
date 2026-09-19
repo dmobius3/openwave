@@ -405,7 +405,7 @@ The frozen claims live in this file, in a maintainer worktree outside the rooms.
 | 2026-09-18 | The stage-2 packet ([`../m8_11/theorem_stage2.md`](../m8_11/theorem_stage2.md)) removed references to the paper and to parent tasks. It rendered "By M8.10's argument" as "By an earlier argument, not supplied here", and it omitted the value paragraphs, including the second variations that E2's nondegeneracy rests on | The auditor graded the `λ₄` lemma a DEFECT for an unstated hypothesis (every non-block level above 6) and noted E2 does not state nondegeneracy. The designer overruled the first and cleared the second, both as packet artifacts, with the reasons in [method note § 5.3](../findings/m8_11_method_note.md#53-the-arguments-graded) |
 | 2026-09-18 | The auditor re-imported one stage-1 script at stage 2, which rewrote three of its stage-1 output files | Disclosed by the auditor; byte-identical to its stage-1 clean run, and all 72 stage-1 files match their stage-1 hashes |
 | 2026-09-18 | The agents' console logs carried a `.log` extension, which the repository ignores, and their returns were named `RETURN.md`, `AUDIT_STAGE1.md` and `AUDIT_STAGE2.md` | Landed as `*_log.txt` and `*_return.md`, content unchanged. Binary caches (`*.pkl`), the auditor's clean-run copy, its mutation copies and its rerun of the solver are not landed; the unedited bytes of every agent file are hashed in the maintainer's run checkpoints |
-
+| 2026-09-19 | The author's package landed ([#566](https://github.com/openwave-labs/openwave/pull/566)) with its five console logs renamed from `*.log` to `*_log.txt`, and with four dry-run files the pin table does not list: the brief, the criteria frozen before the run, the worklist as run and the agent's return. The dry run's transcript and the author-side checks on it did not land | Accepted by the maintainer. All fifteen pinned files hash to their pins under the new names; the package's [`MANIFEST.md`](../scripts/m8_11_author/MANIFEST.md) gives both hashes of every file. Of the four dry-run files, only the worklist's SHA-256 is on the public record before the landing, in the instrument qualification above; the other three rest on the author's pre-run record. Nothing in the verdict rests on the dry run |
 
 ## FINDINGS
 
@@ -420,6 +420,22 @@ Full record with the equations, the code map and the audit: [`../findings/m8_11_
 | F5 | **The tilt is forced and correct.** Both agents found the order-`a⁵` block equation's tangential part equal to the forcing without the tilt and exactly zero with it, the orbit direction `i·e_t` null, and no `τ_y` component at the prism, with the handout asking the same questions at all six rays |
 | F6 | ⚠️ **Several solver checks cannot fail.** Its item 9 reason lines attach labels without reading a verification, its spectral-gap line cannot see a level below 6, and two `results.json` fields are literals. No number is affected, since the auditor reproduced each by its own exact route |
 | F7 | **Containment held on the record, with one open route.** No call reached answer-bearing material. The only reads outside a room were a session's own outputs, reached through harness pointers that `--restricted` allows |
+
+## PROVENANCE COMPARISON (2026-09-19)
+
+Made by the designer after the verdict was recorded, against the author's package as landed in [#566](https://github.com/openwave-labs/openwave/pull/566) under [`../scripts/m8_11_author/`](../scripts/m8_11_author/). The six sources were read line by line before anything ran, then ran in a scratch copy under an OS sandbox that refused network access; the copies were byte-identical to their pins before and after the run.
+
+| Check | Result |
+| --- | --- |
+| Pins | fifteen of fifteen files byte-identical to the hashes above, five under the renamed log names, per the deviations log; `m810_core.py` and `m810_exact.py` also byte-identical to [#550](https://github.com/openwave-labs/openwave/pull/550)'s copies under [`../scripts/m8_10_author/`](../scripts/m8_10_author/) |
+| Regeneration | in a fresh folder holding only the six sources, `m811_pyramid.py`, `m811_prism.py` and `m811_exact.py` exited 0 in that order, on 42, 58 and 80 checks with no failure, in about 8 s in all; `out/exact.json` and the step-3 log came out byte-identical to their pins, and `M811_DPS=100` repeated both byte-identically |
+| Float pipeline | on Python 3.12.14 and numpy 2.5.3 against the author's 3.13.13 and 2.5.0, `out/pyramid.json` and `out/prism.json` differ from their pins in trailing digits only, as the manifest states: same 98 keys, worst relative difference `5.2e-15`, apart from the finite-difference bridge quotients at `2.2e-11`. The step-1 and step-2 logs differ in the same trailing digits, and every check passes |
+| Package against the frozen claims | 46 exact equalities and no mismatch, in both sectors at both new rays: A2's `Q` four, T4's `L_T` six, B1's `‖Π_n ξ‖²` eighteen, C1's `λ₄/g²` four, D1's forcing four, D2's tilt four with the prism's `v_y = 0` twice, and D3's `‖v‖²` four. A sign flipped on one forcing value is caught. The transcription compared against is the one pinned at go (SHA-256 `272a7910...`), whose hash was checked again |
+| Package against the blind agents | equal on every value, through the frozen claims both agents reproduced exactly (F1) |
+
+**The asymmetry.** Agreement here is weak evidence. The frozen claims came from this package, so the fourth row shows only that they were frozen from the code that landed, and a convention error shared by the package and the worklist would survive the fifth. What rules that out is F1 and F2: two agents with separate implementations derived every value without seeing one. A disagreement at any row would have been strong evidence of a defect, and there is none.
+
+Not compared: N1 and T2 have no counterpart in the package, which takes the paper's `dQ/dt` as an input rather than computing it; A3's `R` enters the package as M8.10's audited value, a parent rather than an output.
 
 ## TASK REVIEW (2026-09-18)
 
@@ -440,7 +456,7 @@ Approved by the maintainer on 2026-09-18.
 
 | Remaining | Where |
 | --- | --- |
-| Provenance comparison against the author's package | its landing PR, under `research/scripts/m8_11_author/` |
+| Provenance comparison against the author's package | ✅ done at its landing, [#566](https://github.com/openwave-labs/openwave/pull/566): [§ Provenance comparison](#provenance-comparison-2026-09-19) |
 
 **Findings.** At the four symmetry-pinned rays and at the pentagonal pyramid and trigonal prism, the formal expansions are Taylor expansions of local branch germs, for sufficiently small amplitude, established as an audited argument rather than a verified theorem. The order-`a²` tilt at the two new rays is now an exact result, derived blind by two agents. No radius, stability or finite-amplitude claim is made.
 

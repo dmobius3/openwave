@@ -173,7 +173,7 @@ Per step, under the go-time grading rule. The auditor's full reasoning is in its
 
 ## 7. Provenance
 
-The author's package lands after this verdict in its own PR, under `research/scripts/m8_11_author/`, byte-identical to the fifteen hashes in the task doc's firewall section. The comparison against it is recorded in the task doc when it lands. Agreement with it is weak evidence, since a shared convention error survives it, and disagreement is strong evidence.
+The author's package landed after this verdict, at [#566](https://github.com/openwave-labs/openwave/pull/566), byte-identical to the fifteen hashes in the task doc's firewall section, and the comparison against it is recorded in the task doc's [provenance comparison](../tasks/m8_11_task_details.md#provenance-comparison-2026-09-19). Agreement with it is weak evidence, since a shared convention error survives it, and disagreement is strong evidence.
 
 ## 8. What this run does NOT verify
 
