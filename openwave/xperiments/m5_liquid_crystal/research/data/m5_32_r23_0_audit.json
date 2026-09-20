@@ -1,0 +1,855 @@
+{
+ "audit": "M5.32 R23-0 form record and R23-3 well record, independent refutation attempt",
+ "checks": [
+  {
+   "id": "A1a",
+   "claim": "the first-derivative vectors keeping the vacuum critical on the FULL 10-entry gradient are one-dimensional, spanned by a_p",
+   "method": "sympy: d t_p/dM = p eta N^(p-1) verified entry by entry on a generic symmetric M (mismatches counted), then the nullspace of the 10 x 4 gradient Jacobian at M0, symbolic g and delta",
+   "value": {
+    "gradient_formula_mismatches": 0,
+    "jacobian_rank": 3,
+    "nullspace_dim": 1,
+    "proportional_to_a_p": true,
+    "a_p_numeric_g8_d0.3": [
+     2.4,
+     -5.05,
+     2.2333333333333334,
+     0.25
+    ]
+   },
+   "threshold or expectation": "mismatches 0, rank 3, nullspace 1, proportional to a_p",
+   "fails_if": "an off-diagonal gradient entry survived at the vacuum (rank 4 of J), or the nullspace had dimension 2 (degenerate pair adding freedom)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A1b",
+   "claim": "the same on Lorentz-transformed vacua M = Lambda^T M0 Lambda (random boosts and rotations): rank 3, null vector a_p",
+   "method": "200 random Lambda = expm(eta Omega); SVD of the numeric 10 x 4 Jacobian",
+   "value": {
+    "min_ratio_sv3_over_sv4": 10043885.14963185,
+    "max_1_minus_cos_angle_to_a": 4.6629367034256575e-15,
+    "max_rel_residual_J_a": 3.020926503332991e-12
+   },
+   "threshold or expectation": "sv3/sv4 > 1e6 (rank exactly 3), angle defect < 1e-8",
+   "fails_if": "a boosted vacuum had a rank-4 Jacobian (no critical family) or rank 2 (extra freedom)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A1c",
+   "claim": "WORDING: 'keep the spectrum (-g, 1, delta, delta) a critical point': criticality is a condition on eigenvalues alone",
+   "method": "a real symmetric M whose N has exactly that spectrum but a Jordan block at delta (the 2 x 2 block [[-delta+e, e], [e, delta+e]] in the (0,1) plane, -g and 1 spacelike); evaluate the power-sum residuals and |grad L|",
+   "value": {
+    "eigenvalues_of_N": [
+     -8.0,
+     0.29999999999999993,
+     0.29999999999999993,
+     1.0
+    ],
+    "max_abs_imag": 2.719340831257129e-09,
+    "max_abs_power_sum_residual": 0.0,
+    "norm_grad_L": 2.3239999999999994,
+    "closed_form_norm_grad_L (g+delta)(1-delta) 2 e": 2.3240000000000003
+   },
+   "threshold or expectation": "if the claim's wording held, |grad L| = 0 at every M with that spectrum",
+   "fails_if": "|grad L| > 1e-9 at a matrix with the vacuum spectrum: the condition is on the MINIMAL POLYNOMIAL (diagonalizable N), not on eigenvalues",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "A2",
+   "claim": "L on the split (-g, 1, delta+eps, delta-eps) is (delta+g)(delta-1) eps^2 + eps^4/2",
+   "method": "own route: L = sum_i F(lambda_i) with F the antiderivative of the cubic (sympy), plus L from the traces of boosted and rotated split matrices, eps up to 1.3",
+   "value": {
+    "symbolic_difference": "0",
+    "max_abs_error_matrix_route": 1.3579682517361746e-11
+   },
+   "threshold or expectation": "difference 0; matrix route absolute error < 1e-9 (the traces are of order 4096, so 1e-9 is their roundoff after a boost; a 1e-6 error in either coefficient would show as 1.6e-7 at eps 0.4)",
+   "fails_if": "a surviving eps^2 or eps^4 coefficient mismatch, or any odd term",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A3a",
+   "claim": "Hessian of V4 - c L at the vacuum: 5 zero modes for c > 0 (7 at c = 0), exact doublet {M_23, (M_22 - M_33)/sqrt 2} at (g + delta)(1 - delta) c, three positive massive modes",
+   "method": "own analytic Hessian (trace formula), cross-checked against Richardson central differences of the analytic gradient; eigen-decomposition; M_23 and (M_22-M_33)/sqrt2 tested as exact eigenvectors",
+   "value": {
+    "fd_cross_check_max_abs_error_soft_block": 5.198073002819307e-11,
+    "rows": [
+     {
+      "c": 0.0,
+      "zero_modes": 7,
+      "max_abs_H_times_orbit_tangent": 0.0,
+      "M23_rayleigh": 0.0,
+      "M22m33_rayleigh": 0.0,
+      "doublet_eigenvector_residual": 0.0,
+      "closed_form_5.81c": 0.0,
+      "massive": [
+       0.05588267151513194,
+       0.6339132009314824,
+       153183.13793970787
+      ]
+     },
+     {
+      "c": 3e-05,
+      "zero_modes": 5,
+      "max_abs_H_times_orbit_tangent": 2.1316282072803006e-19,
+      "M23_rayleigh": 0.00017429999999999995,
+      "M22m33_rayleigh": 0.00017430000000000177,
+      "doublet_eigenvector_residual": 5.366526958391809e-19,
+      "closed_form_5.81c": 0.0001743,
+      "massive": [
+       0.056026681024683556,
+       0.6337544847116384,
+       153183.13569871458
+      ]
+     },
+     {
+      "c": 0.0001,
+      "zero_modes": 5,
+      "max_abs_H_times_orbit_tangent": 7.105427357601002e-19,
+      "M23_rayleigh": 0.0005809999999999999,
+      "M22m33_rayleigh": 0.0005809999999999962,
+      "doublet_eigenvector_residual": 1.9932814416883862e-18,
+      "closed_form_5.81c": 0.000581,
+      "massive": [
+       0.05636256724616185,
+       0.6333842828328102,
+       153183.13046973024
+      ]
+     },
+     {
+      "c": 0.0003,
+      "zero_modes": 5,
+      "max_abs_H_times_orbit_tangent": 2.1316282072803004e-18,
+      "M23_rayleigh": 0.0017429999999999995,
+      "M22m33_rayleigh": 0.0017430000000000021,
+      "doublet_eigenvector_residual": 3.0665868333667484e-19,
+      "closed_form_5.81c": 0.001743,
+      "massive": [
+       0.057321187754511484,
+       0.6323276175891697,
+       153183.11552977498
+      ]
+     },
+     {
+      "c": 0.001,
+      "zero_modes": 5,
+      "max_abs_H_times_orbit_tangent": 7.105427357601002e-18,
+      "M23_rayleigh": 0.005809999999999999,
+      "M22m33_rayleigh": 0.005810000000000003,
+      "doublet_eigenvector_residual": 1.2266347333466993e-18,
+      "closed_form_5.81c": 0.005810000000000001,
+      "massive": [
+       0.060663846648804566,
+       0.6286418021212952,
+       153183.06323993157
+      ]
+     },
+     {
+      "c": 0.003,
+      "zero_modes": 5,
+      "max_abs_H_times_orbit_tangent": 2.1316282072803006e-17,
+      "M23_rayleigh": 0.017429999999999998,
+      "M22m33_rayleigh": 0.01743,
+      "doublet_eigenvector_residual": 7.359808400080195e-18,
+      "closed_form_5.81c": 0.01743,
+      "massive": [
+       0.0701013699334864,
+       0.6182238314829853,
+       153182.91384037893
+      ]
+     }
+    ]
+   },
+   "threshold or expectation": "zero modes 5 (7 at c 0); doublet rel error < 1e-9; 3 massive > 0; FD error < 1e-6",
+   "fails_if": "a sixth zero mode for c > 0, a doublet eigenvalue off 5.81 c, or a massive mode <= 0",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A3b",
+   "claim": "the 5 zero modes are the Lorentz orbit (3 boosts + 2 tilts); M_23 is NOT an orbit direction; the collaborator's 'six zero modes, M_23 a stabilizer direction' is wrong",
+   "method": "tangent space of {Lambda^T M0 Lambda} from the six generators K = eta Omega, T_K = K^T M0 + M0 K; rank by SVD; the norm of each tangent vector; the residual of the unit M_23 vector after projection on the tangent space",
+   "value": {
+    "tangent_rank": 5,
+    "tangent_vector_norms": {
+     "boost_01": 12.727922061357855,
+     "boost_02": 11.737972567696689,
+     "boost_03": 11.737972567696689,
+     "rot_12": 0.9899494936611664,
+     "rot_13": 0.9899494936611664,
+     "rot_23": 0.0
+    },
+    "M23_residual_after_projection_on_tangent": 1.0,
+    "reading": "rot_23 generates the ZERO tangent vector (it is the stabilizer of the degenerate pair): a stabilizer removes a zero mode, it does not add one. The M_23 entry is the split doublet partner (a 45 degree rotation of (M_22 - M_33)/sqrt 2) and carries 5.81 c. Record right (5), collaborator wrong (6)."
+   },
+   "threshold or expectation": "rank 5, |T(rot_23)| = 0, M_23 residual 1 (orthogonal to the orbit)",
+   "fails_if": "tangent rank 6, or M_23 inside the tangent span (residual < 1)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A4",
+   "claim": "c_crit about 0.086 (29 x 3e-3) at delta 0.3; about 6.9e-3 at delta phys with w 25 W1; with w / 6615 softest massive 1.57e-7, unstable at c 3.094e-5 (lowest -6.3e-6), stable below about 1e-6",
+   "method": "own Hessian projected on the complement of the orbit tangent; brentq root of the lowest projected eigenvalue (not a grid)",
+   "value": {
+    "delta_phys": 0.9223826393218935,
+    "w_ratio": 6615.408651862456,
+    "c_crit_d0.3_w25": 0.08628075933856438,
+    "c_crit_over_3e-3": 28.760253112854794,
+    "c_crit_dphys_w25": 0.006902076446282859,
+    "c_crit_dphys_scaled_w": 1.0433333463590618e-06,
+    "softest_massive_c0": {
+     "d0.3": 0.05588267151513199,
+     "dphys_w25": 0.0010387444780646138,
+     "dphys_scaled": 1.570189436099928e-07
+    },
+    "lowest_eig_rowB_at_c_3.094e-05": -6.3228840272916265e-06,
+    "destabilizing_mode_components": {
+     "d0.3": {
+      "00": 0.0017,
+      "11": -0.9669,
+      "22": 0.1804,
+      "33": 0.1804
+     },
+     "dphys": {
+      "00": -0.0002,
+      "11": 0.7795,
+      "22": -0.443,
+      "33": -0.443
+     }
+    }
+   },
+   "threshold or expectation": "each number within 0.5 percent of the record (the record used a 0.2 percent c grid)",
+   "fails_if": "c_crit off by more than 0.5 percent, or the row B eigenvalue not negative at 3.094e-5",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A5i",
+   "claim": "on real spectra the vacuum is the global minimum of V4 - c L for every c used: no V < 0",
+   "method": "own search per c: 250 BFGS starts with analytic gradient on [-12, 12]^4, a differential evolution run, and a scan of the soft (split, pair-shift) plane",
+   "value": {
+    "d0.3 c=3e-05": {
+     "lowest_found": -1.2462758332857382e-17,
+     "soft_plane_scan_min": 0.0
+    },
+    "d0.3 c=0.0001": {
+     "lowest_found": -4.926204283872908e-17,
+     "soft_plane_scan_min": 0.0
+    },
+    "d0.3 c=0.0003": {
+     "lowest_found": -1.8264375034705996e-16,
+     "soft_plane_scan_min": 0.0
+    },
+    "d0.3 c=0.001": {
+     "lowest_found": -5.607058842209031e-16,
+     "soft_plane_scan_min": 0.0
+    },
+    "d0.3 c=0.003": {
+     "lowest_found": -1.357754139186197e-15,
+     "soft_plane_scan_min": 0.0
+    },
+    "rowA c=3.094e-05": {
+     "lowest_found": -7.420710331533843e-18,
+     "soft_plane_scan_min": 0.0
+    }
+   },
+   "threshold or expectation": "lowest value found > -1e-11",
+   "fails_if": "any real spectrum with V < -1e-11",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A5iia",
+   "claim": "full symmetric matrices reach V = -c^2 sum a_p^2 / (4 w) (about -501 c^2), on a complex pair next to delta whose 2-plane has signature (1,1); -g and 1 sit on spacelike vectors",
+   "method": "solve r = c a / 2w for the spectrum (l1, l2, u +- i v), build the symmetric M with the block [[-u, v], [v, u]] in the (0,3) plane, evaluate V from the matrix, read the eta-norm of the real eigenvectors and the eta-Gram determinant of the pair's plane",
+   "value": {
+    "sum_a2_over_4w": 501.54116226017146,
+    "closed_form_c3e-3": -0.004513870460341543,
+    "V_of_matrix": -0.004513870460341542,
+    "spectrum_l1_l2_u_v": [
+     -7.999409488522998,
+     1.2272859473745092,
+     0.28550600451228003,
+     0.6701883330113586
+    ],
+    "solve_residual": 9.094947017729282e-13,
+    "real_eigenvalues_with_eta_norm": [
+     [
+      1.2272859473745092,
+      1.0
+     ],
+     [
+      -7.999409488522998,
+      1.0
+     ]
+    ],
+    "pair_plane_gram_det": -0.2499999999999999,
+    "dist_from_M0_frobenius": 11.767751755972032,
+    "pair_u_v_and_distance_from_delta_by_c": {
+     "3e-05": [
+      0.29920780490673315,
+      0.07183410432692888,
+      0.07183847240523632
+     ],
+     "0.0001": [
+      0.29749484876300114,
+      0.1306142619865865,
+      0.13063828388730805
+     ],
+     "0.0003": [
+      0.2934668513279447,
+      0.22395831753222517,
+      0.2240535873924722
+     ],
+     "0.001": [
+      0.2856843036534183,
+      0.3992123710954425,
+      0.399468968003189
+     ],
+     "0.003": [
+      0.28550600451228003,
+      0.6701883330113586,
+      0.6703450436974542
+     ]
+    }
+   },
+   "threshold or expectation": "V_of_matrix = closed form (rel 1e-8); Gram det < 0 (signature (1,1)); both real eigenvectors spacelike; coefficient 501.5",
+   "fails_if": "V of the matrix differing from the closed form, or a positive Gram determinant",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A5iib",
+   "claim": "a real symmetric M near M0 (small perturbation, M_0i included) cannot give the pair (delta, delta) a complex split",
+   "method": "32000 random perturbations of Frobenius size 1e-3 to 4 (all ten entries): max |Im lambda|; then the nearest complex spectrum: Nelder-Mead over directions of the first scale s at which M0 + s D turns complex (24 starts)",
+   "value": {
+    "max_abs_imag_over_random_perturbations_up_to_size_4": 0.0,
+    "samples": 32000,
+    "nearest_complex_onset_distance": 4.150068267610095,
+    "closed_form_(g+delta)/2": 4.15,
+    "V4_at_that_onset": 244769.3476918329,
+    "direction_components": {
+     "00": -0.498,
+     "02": 0.709,
+     "22": -0.499
+    },
+    "reading": "complex pairs need a Krein collision of the timelike eigenvalue with a spacelike one; the cheapest in Frobenius distance is -g meeting delta halfway"
+   },
+   "threshold or expectation": "no complex eigenvalue below distance 4; onset at (g + delta)/2 = 4.15",
+   "fails_if": "any complex eigenvalue at perturbation size <= 4, or an onset distance below 4.1",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A5iic",
+   "claim": "V < 0 is not reachable from the vacuum without a large barrier (the record: 'a V4 barrier of order w * 8^8')",
+   "method": "c = 3e-3. (1) SLSQP: minimize |M - M0|_F subject to V <= 0.2 V_min (and 0.01 V_min), 52 starts (the closed-form state in 4 slot assignments, each with 12 random Lorentz transforms); (2) V along the straight line M0 -> that state; (3) min V inside balls |M - M0| <= R",
+   "value": {
+    "first_R_with_V_below_0.2_Vmin": 10.815366332808976,
+    "first_R_with_V_below_0.01_Vmin": 10.776433963292108,
+    "distance_M0_to_the_orbit_of_the_V0_twin": 11.105854312028411,
+    "spectrum_of_that_state": [
+     [
+      -7.999703453643012,
+      0.0
+     ],
+     [
+      0.11833388442583366,
+      0.4916402120417166
+     ],
+     [
+      0.11833388442583366,
+      -0.4916402120417166
+     ],
+     [
+      1.1212218477610505,
+      0.0
+     ]
+    ],
+    "straight_path_barrier_max_V": 205376.23942200866,
+    "straight_path_barrier_over_abs_Vmin": 45498921.873462185,
+    "record_order_w_8^8": 303677.6251785216,
+    "min_V_in_ball": {
+     "R=1.000": -1.3996529198825035e-15,
+     "R=2.000": -1.3405527006326049e-15,
+     "R=4.000": -1.3833957193003326e-15,
+     "R=6.000": -1.2511752096041029e-15,
+     "R=9.734": -7.005064441645977e-16,
+     "R=11.356": -0.004513870460341544
+    }
+   },
+   "threshold or expectation": "no V < 0 in any ball of radius below 0.95 R_first; V < 0 found just above R_first; the straight-path barrier is many orders above |V_min| = 4.5e-3",
+   "fails_if": "V < -1e-9 inside a ball of radius below 0.95 R_first (a nearer state than the search found), or a straight-path barrier below 1e3 |V_min|",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A5iid",
+   "claim": "WORDING: the V < 0 sector 'cannot be reached without moving the timelike eigenvalue from -g to about delta (a V4 barrier of order w * 8^8)' = 3.0e5",
+   "method": "lower bound for EVERY path: a complex pair needs the timelike eigenvalue t to collide with a spacelike one at some u with a real spectrum up to there, so max V >= min_u max( max_{t <= u} f(t), fc(u) ), f(t) = min over the three spacelike eigenvalues (continuation in t, geometric steps off the vacuum, 5e-4 near the crossing, global multi-start on a sub-grid), fc(u) the same with the collision imposed. Upper bound: an explicit continuous path of MATRICES, leg 1 block-diagonal diag(-t, l(t)) along the branch through a REAL crossing t = l1 to the V = 0 twin, leg 2 straight from the twin to the V < 0 minimum; V evaluated from the matrices",
+   "value": {
+    "barrier_lower_bound": 27.901372998753445,
+    "barrier_upper_bound_explicit_path": 27.901352396718657,
+    "upper_bound_in_units_of_w": 1541.4603416260338,
+    "record_w_8^8": 303677.6251785216,
+    "record_over_actual": 10883.975115637608,
+    "f_max_at_t": -6.615500000000213,
+    "real_crossing_at_t": -6.615500000000213,
+    "spacelike_eigenvalues_at_crossing": [
+     4.037368672815226,
+     0.03794984914964705,
+     -6.615400225206459
+    ],
+    "largest_knot_to_knot_move": 2.094364925032335,
+    "largest_knot_to_knot_move_at_t": -7.981029151182564,
+    "polyline_V_evaluations_leg1": 19202,
+    "continuation_minus_global_f_max_gap_anywhere": 4.508313413172939,
+    "continuation_minus_global_f_max_gap_between_-7_and_-6": 2.98001623377786e-11,
+    "min_fc_for_collisions_at_or_below_-g": 308365.9330571368,
+    "max_V_on_leg2_twin_to_minimum": 0.00014328023164351337,
+    "V_at_leg2_end": -0.004513870460341542,
+    "leg1_end_matrix_diag": [
+     -0.3,
+     0.9999955597078753,
+     0.3000030492129757,
+     -8.000000015335146
+    ],
+    "leg1_max_abs_M0i": 0.0,
+    "reading": "the timelike label is carried from -g to delta by a level crossing with a spacelike eigenvalue that comes down to meet it while a third goes to about +4; the multiset never has to give up its fourth power sum, so the cost is of order 1.5e3 w, not 8^8 w. Leg 1 keeps M_0i = 0 exactly (it lies inside the instrument's sector)."
+   },
+   "threshold or expectation": "if the record's order of magnitude were right, no such path would exist: the explicit upper bound would sit within a factor 10 of 3.0e5",
+   "fails_if": "an explicit continuous path (a polyline of matrices, V sampled every 0.004 along it) with max V more than 10 x below w 8^8",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "A5iie",
+   "claim": "the qualitative reading: the V < 0 sector cannot be reached from the vacuum sector at small V (a barrier many orders above |V_min|)",
+   "method": "the path-independent lower bound of A5iid against |V_min| at the largest c, and against the largest V_0 of the record's conversion table (0.110, zero spatial block)",
+   "value": {
+    "barrier_lower_bound": 27.901372998753445,
+    "abs_Vmin_c3e-3": 0.004513870460341543,
+    "ratio_to_abs_Vmin": 6181.252484733973,
+    "ratio_to_V0_zero_block_0.1103": 252.8653103015989
+   },
+   "threshold or expectation": "ratio to |V_min| > 1e3",
+   "fails_if": "a collision configuration with V below 1e3 |V_min| reachable with a real spectrum from the vacuum",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A5iif",
+   "claim": "the requested 'distance R to the vacuum orbit' search is well posed and V < 0 stays at finite distance from the orbit",
+   "method": "(1) demonstration: the boosted vacuum plus e^(-2 chi) A k k^T (k null, A = -3, chi = 9) is at Frobenius distance ~1e-7 of the orbit yet has a complex pair and V of order 50; (2) every state at ZERO inf-distance from the orbit through contracting components is M0 + A k k^T + k b^T + b k^T in some frame: minimize V over (n, A, b), 150 BFGS starts",
+   "value": {
+    "demo_frobenius_distance_to_orbit_point": 9.137987833085504e-08,
+    "demo_spectrum": [
+     [
+      -3.5,
+      2.598076211353316
+     ],
+     [
+      -3.5,
+      -2.598076211353316
+     ],
+     [
+      0.3,
+      0.0
+     ],
+     [
+      0.3,
+      0.0
+     ]
+    ],
+    "demo_V": 405372.7990186828,
+    "min_V_over_null_family": 5.789687913368179e-13,
+    "reading": "Frobenius distance is not Lorentz invariant and the orbit is not compact: states with a complex spectrum sit arbitrarily close to highly boosted vacua, at large V. V itself is invariant, so the invariant statement is the collision barrier of A5iid. No V < 0 state was found in the zero-distance family."
+   },
+   "threshold or expectation": "min V over the null family >= -1e-10 (no V < 0 at zero orbit distance)",
+   "fails_if": "V < -1e-10 somewhere in the null family: V < 0 arbitrarily close (Frobenius) to the orbit",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A5iii",
+   "claim": "a block-diagonal field (M_0i = 0) always has a real spectrum, so the instrument cannot reach the V < 0 states",
+   "method": "200000 random block-diagonal symmetric M at three scales: max |Im lambda|; plus the block-diagonal twin diag(-delta, -g, 1, delta) (timelike eigenvalue delta): its V, the lowest Hessian eigenvalue inside the block-diagonal subspace and on all ten entries",
+   "value": {
+    "max_abs_imag": 0.0,
+    "V_of_block_diagonal_twin": 0.0,
+    "twin_lowest_hessian_eig_block_diagonal_subspace": 9.064147463576432e-11,
+    "twin_lowest_hessian_eig_all_entries": -0.017429999984915304,
+    "closed_form_-(g+delta)(1-delta)c": -0.01743,
+    "reading": "true as algebra (N = diag(-M_00, S), S symmetric). Not said in the record: the block-diagonal sector CONTAINS a V = 0 twin of the vacuum for every c, which is a saddle of the full problem (unstable along M_0i at -5.81 c) and stable inside the block-diagonal subspace; the vacuum is a global minimum there, not the unique one."
+   },
+   "threshold or expectation": "max |Im| = 0",
+   "fails_if": "a block-diagonal M with a complex eigenvalue",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A6a",
+   "claim": "the reader 'eps r^0.618 falls to half of its r = 4.5 value' returns 18.5, 14.0, 11.0, 8.6, 7.2; log slope -0.21 (five) and -0.23 (lowest three)",
+   "method": "closed form eps = sqrt(r) K_nu(sqrt(beta) r^2 / 2), nu = sqrt(5)/4, root by brentq; cross-checked by an own fixed-step RK4 inward integration in log amplitude started on the WKB tail at 7.5 beta^(-1/4)",
+   "value": {
+    "rows": [
+     {
+      "c": 3e-05,
+      "beta": 2.223214285714286e-05,
+      "reader_closed_form": 18.51201847009162,
+      "reader_rk4": 18.512018436478623,
+      "record": 18.514450722536125
+     },
+     {
+      "c": 0.0001,
+      "beta": 7.410714285714286e-05,
+      "reader_closed_form": 13.981760177460306,
+      "reader_rk4": 13.981760170309759,
+      "record": 13.982649132456624
+     },
+     {
+      "c": 0.0003,
+      "beta": 0.0002223214285714286,
+      "reader_closed_form": 10.976774398191607,
+      "reader_rk4": 10.976774410153405,
+      "record": 10.977173858692936
+     },
+     {
+      "c": 0.001,
+      "beta": 0.0007410714285714288,
+      "reader_closed_form": 8.630211960692897,
+      "reader_rk4": 8.630211960349234,
+      "record": 8.632181609080455
+     },
+     {
+      "c": 0.003,
+      "beta": 0.0022232142857142863,
+      "reader_closed_form": 7.153511159309041,
+      "reader_rk4": 7.153511153157136,
+      "record": 7.155807790389519
+     }
+    ],
+    "slope_all_five": -0.20717652108032297,
+    "slope_lowest_three": -0.22707687135075183,
+    "max_abs_diff_to_record": 0.002432252444506844,
+    "max_abs_diff_rk4_vs_closed": 3.361299505399984e-08
+   },
+   "threshold or expectation": "each radius within 0.01 of the record (its grid step is 0.003); slopes within 0.003 of -0.2071 and -0.2271; RK4 within 0.01 of the closed form",
+   "fails_if": "a radius off by more than 0.01, or a slope off by more than 0.003",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A6b",
+   "claim": "every intrinsic radius of the decaying solution scales exactly as beta^(-1/4); without the potential term the decaying power law is r^((1 - sqrt 5)/2) = r^(-0.618)",
+   "method": "radius where the log slope of the closed form reaches -2, five decades of beta, fitted exponent; the same radius from the RK4 route at beta 1e-4; the local log slope of the closed form at r = 1e-3 to 2e-3; sympy check that r^((1 - sqrt 5)/2) solves eps'' = eps / r^2",
+   "value": {
+    "exponent": -0.24999999999910708,
+    "radius_closed_beta1e-4": 12.077358499530602,
+    "radius_rk4_beta1e-4": 12.07735847292713,
+    "small_r_log_slope": -0.6180339916674256,
+    "(1-sqrt5)/2": -0.6180339887498949,
+    "indicial_residual": "0"
+   },
+   "threshold or expectation": "exponent -0.25 within 1e-6; RK4 radius within 1e-3 relative; small-r slope -0.618 within 1e-4; indicial residual 0",
+   "fails_if": "an exponent off -1/4 or a different small-r power",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A6c",
+   "claim": "beta = m2 / (2 K) with m2 = (g + delta)(1 - delta) c: the halo equation follows from e_2 = (K / r^2)(2 eps_r^2 + 2 eps^2 / r^2) plus the potential m2 eps^2 (the -c L quadratic term of A2), radial measure r^2 dr",
+   "method": "sympy Euler-Lagrange equation of r^2 (e_2 + m2 eps^2), solved for eps''",
+   "value": {
+    "eps''": "(2*K + m2*r**4)*e(r)/(2*K*r**2)",
+    "difference_from_claimed": "0",
+    "note": "K = 8 (1 - delta)^2 and the angular factor of the potential term are taken from the record (not audited here); a potential (m2 / 2) eps^2 would halve beta"
+   },
+   "threshold or expectation": "difference 0",
+   "fails_if": "a factor 2 in beta (potential normalized as m2 eps^2 / 2) or a different centrifugal coefficient",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A7",
+   "claim": "V4 at the isotropic block a I, a = (1 + 2 delta)/3: 0.019253 (M_00 = g), 0.009955 (M_00 re-solved), 0.11034 (zero spatial block)",
+   "method": "V4 from the traces of the explicit 4 x 4 matrices; M_00 by bounded scalar minimization",
+   "value": {
+    "M00_g": 0.01925253988375783,
+    "M00_solved": 0.009954567101002508,
+    "M00_at_min": 8.000348402578291,
+    "zero_block": 0.11034084891072946,
+    "record_M00_solved": 0.009954763483326615,
+    "note": "the record's 0.00995476 comes from a 1e-5 grid in M_00 on a curvature of 1.5e5, good to about 2e-6 only; the minimum is 0.00995457 at M_00 = 8.00035. The quoted 0.009955 holds."
+   },
+   "threshold or expectation": "0.019253, 0.009955, 0.11034 at the quoted precision (5, 4 and 5 significant figures)",
+   "fails_if": "any of the three differing at the quoted precision",
+   "verdict": "PASS"
+  },
+  {
+   "id": "B1",
+   "claim": "on the committed N = 32 field with its pinned shell, G = eta - 2 q eta differs from the identity by at most 3.9e-4 and M_0i = 0 exactly: the report's contraction is the positive one",
+   "method": "own rebuild of the pinned shell (boolean edge mask, width ceil(1.6/1.5) = 2 cells) and of G; max |G - 1|, max |M_0i|, the lowest eigenvalue of G over the grid",
+   "value": {
+    "max_abs_G_minus_identity": 0.00039219775454779615,
+    "max_abs_M0i": 0.0,
+    "min_eig_G": 0.9999106138408899,
+    "max_abs_G_asymmetry": 1.7618285302889447e-19
+   },
+   "threshold or expectation": "max |G - 1| = 3.9220e-4 (record) within 1e-9; M_0i = 0; min eig G > 0",
+   "fails_if": "a cell with |G - 1| above 3.93e-4, a non-zero M_0i, or a non-positive G eigenvalue",
+   "verdict": "PASS"
+  },
+  {
+   "id": "B2",
+   "claim": "C1 = +9.0754e-6 (G), +9.0729e-6 (identity), -9.0729e-6 (eta); C2 = 8.5648e-5 (G); omega_E = 0.32551859539640887 (G)",
+   "method": "own stencils (np.diff padded one-sided differences, fwd/bwd averaged), own bracket, the contraction as sum((X^T F X) * F), a0 normalized over the grid",
+   "value": {
+    "values": {
+     "G": {
+      "C1": 9.075435624180148e-06,
+      "C2": 8.564773350793507e-05,
+      "omega_E": 0.3255185953964089
+     },
+     "identity": {
+      "C1": 9.07293057798155e-06,
+      "C2": 8.561973197903885e-05,
+      "omega_E": 0.32552688463897583
+     },
+     "eta": {
+      "C1": -9.07293057798155e-06,
+      "C2": 8.561973197903885e-05,
+      "omega_E": null
+     }
+    },
+    "pointwise": {
+     "G": {
+      "min_i1s": 2.7882579919817074e-07,
+      "min_k1": 5.609005648580627e-235,
+      "max_k1": 0.0015785929534031533
+     },
+     "identity": {
+      "min_i1s": 2.788257991999662e-07,
+      "min_k1": 5.609005648654849e-235,
+      "max_k1": 0.0015781683678831304
+     },
+     "eta": {
+      "min_i1s": 2.788257991999662e-07,
+      "min_k1": -0.0015781683678831304,
+      "max_k1": -5.609005648654849e-235
+     }
+    }
+   },
+   "threshold or expectation": "C1 and C2 within 1e-9 relative of the record under all three contractions; omega_E within 1e-10",
+   "fails_if": "any C1 or C2 off by more than 1e-9 relative",
+   "verdict": "PASS"
+  },
+  {
+   "id": "B3a",
+   "claim": "on a block-diagonal field i1s lives entirely in the rotation block and k1 entirely in the boost block; under eta k1 = -2 |F_0i|^2 <= 0",
+   "method": "sympy with generic block-diagonal symmetric A_i = diag(alpha_i, S_i) and a0 with only 0i entries: count the non-zero entries outside the claimed block; a0 = W M + M W^T on a block-diagonal M; <F, F>_eta on a pure boost-block F",
+   "value": {
+    "rotation_bracket_entries_in_boost_block": 0,
+    "boost_bracket_entries_outside_boost_block": 0,
+    "non_antisymmetric_brackets": 0,
+    "a0_entries_outside_0i": 0,
+    "<F,F>_eta_on_boost_block": "-2*f1**2 - 2*f2**2 - 2*f3**2"
+   },
+   "threshold or expectation": "all leak counts 0; <F,F>_eta = -2 (f1^2 + f2^2 + f3^2)",
+   "fails_if": "any non-zero entry outside the claimed block",
+   "verdict": "PASS"
+  },
+  {
+   "id": "B3b",
+   "claim": "WORDING: 'on a block-diagonal field ... so under any positive contraction i1s >= 0 and k1 >= 0': the block structure is presented as the reason for positivity",
+   "method": "identity <F, F>_X = || R F R^T ||_F^2 for X = R^T R: 20000 random antisymmetric F (all six entries, boost and rotation mixed) against random positive definite X, both routes",
+   "value": {
+    "min_<F,F>_X_over_samples": 0.3035281567380602
+   },
+   "threshold or expectation": "min >= 0 and the two routes agree: positivity holds for ANY F, block structure is not needed (it is needed only for the sign under eta)",
+   "fails_if": "a negative <F, F>_X for a positive definite X, or the two routes disagreeing",
+   "verdict": "PASS"
+  },
+  {
+   "id": "B3c",
+   "claim": "C1 >= 0 under a positive contraction for ANY field (tested off the block-diagonal sector: a symmetric M_0i added to the committed field, white noise cell by cell at amplitude 1e-3 to 1 and a smooth low-k packet at 1e-2 to 1)",
+   "method": "rebuild G, a0, i1s, k1 on the perturbed field; C1 and the pointwise sign fractions under G, identity and eta; the lowest eigenvalue of G (is the report's G still positive?)",
+   "value": {
+    "noise amp=0.001": {
+     "min_eig_G": 0.9986590046392803,
+     "G": {
+      "C1": 9.458118747694969e-06,
+      "C2": 8.565287386835567e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "identity": {
+      "C1": 9.455552626768001e-06,
+      "C2": 8.56249494788403e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "eta": {
+      "C1": -8.690521784204885e-06,
+      "C2": 8.561444202731529e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 1.0
+     }
+    },
+    "noise amp=0.01": {
+     "min_eig_G": 0.9871562967954798,
+     "G": {
+      "C1": 5.993013037625605e-05,
+      "C2": 8.626868076031697e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "identity": {
+      "C1": 5.991672819383717e-05,
+      "C2": 8.625909303971351e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "eta": {
+      "C1": 4.100254364814475e-05,
+      "C2": 8.501450379074578e-05,
+      "frac_i1s_negative": 0.079132080078125,
+      "frac_k1_negative": 0.955230712890625
+     }
+    },
+    "noise amp=0.1": {
+     "min_eig_G": 0.8715405848143376,
+     "G": {
+      "C1": 0.018309446985496886,
+      "C2": 0.00037066606436017796,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "identity": {
+      "C1": 0.018318279032829024,
+      "C2": 0.00037013933897381236,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "eta": {
+      "C1": 0.010085451464681637,
+      "C2": 0.00022864618168276212,
+      "frac_i1s_negative": 0.013916015625,
+      "frac_k1_negative": 0.007354736328125
+     }
+    },
+    "noise amp=1": {
+     "min_eig_G": -1.0633079134412153,
+     "G": {
+      "C1": 14403.734344012704,
+      "C2": 4.193034391544159,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.003265380859375
+     },
+     "identity": {
+      "C1": 12915.382650667747,
+      "C2": 4.2373571771971354,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "eta": {
+      "C1": 2913.4019430542717,
+      "C2": 1.380169839612346,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.1439208984375
+     }
+    },
+    "smooth amp=0.01": {
+     "min_eig_G": 0.9978026089767909,
+     "G": {
+      "C1": 9.287663585585699e-06,
+      "C2": 8.565137077543346e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "identity": {
+      "C1": 9.285108055618745e-06,
+      "C2": 8.562421653213028e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "eta": {
+      "C1": -8.859941290284698e-06,
+      "C2": 8.561503382172546e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 1.0
+     }
+    },
+    "smooth amp=0.1": {
+     "min_eig_G": 0.9776791701180179,
+     "G": {
+      "C1": 3.0384358882122082e-05,
+      "C2": 8.601856761876058e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "identity": {
+      "C1": 3.038505024834957e-05,
+      "C2": 8.607544767768826e-05,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "eta": {
+      "C1": 1.2137194185802633e-05,
+      "C2": 8.515739989874484e-05,
+      "frac_i1s_negative": 0.002227783203125,
+      "frac_k1_negative": 0.99969482421875
+     }
+    },
+    "smooth amp=1": {
+     "min_eig_G": 0.7659733471841396,
+     "G": {
+      "C1": 0.004394890089505344,
+      "C2": 0.00019429611476178292,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "identity": {
+      "C1": 0.004477976659770841,
+      "C2": 0.00020358776339215865,
+      "frac_i1s_negative": 0.0,
+      "frac_k1_negative": 0.0
+     },
+     "eta": {
+      "C1": 0.0026285985271975736,
+      "C2": 0.00011303129097728729,
+      "frac_i1s_negative": 0.112579345703125,
+      "frac_k1_negative": 0.772003173828125
+     }
+    }
+   },
+   "threshold or expectation": "identity: C1 > 0 and no negative cell at every amplitude; G: C1 > 0 wherever G stays positive definite; eta: signs become mixed once M_0i != 0",
+   "fails_if": "C1 <= 0 or a negative k1 cell under the identity contraction, or C1 <= 0 under a positive definite G",
+   "verdict": "PASS"
+  },
+  {
+   "id": "B3d",
+   "claim": "the well (C1 > 0, a real omega_E) exists for any field under a positive contraction",
+   "method": "C1 and omega_E on three white-noise block-diagonal fields with no soliton, and on the uniform vacuum (where every derivative vanishes)",
+   "value": {
+    "noise": {
+     "noise_field_0": {
+      "C1": 36.89702066107837,
+      "C2": 0.053639314579027084,
+      "omega_E": 26.227327534646456
+     },
+     "noise_field_1": {
+      "C1": 43.74543539681443,
+      "C2": 0.06851228856950375,
+      "omega_E": 25.26865548731445
+     },
+     "noise_field_2": {
+      "C1": 42.75500630584373,
+      "C2": 0.0628061151872347,
+      "omega_E": 26.091107954345834
+     }
+    },
+    "uniform_vacuum": {
+     "C1": 0.0,
+     "C2": 0.0
+    },
+    "reading": "C1 = h^3 sum i1s k1 is a sum of products of non-negative densities, so C1 > 0 for every non-uniform field, noise included: the EXISTENCE of the frozen-profile well carries no information about the field or its dynamics. It is fixed by the form (i1s - omega^2 k1)^2 and the sign of the contraction on the boost block. Only the magnitude of omega_E could inform, and that is normalization dependent (a0 norm, envelope, h^(-3/2))."
+   },
+   "threshold or expectation": "C1 > 0 on noise; C1 = 0 on the uniform vacuum",
+   "fails_if": "a non-uniform field with C1 <= 0 under the identity contraction",
+   "verdict": "PASS"
+  }
+ ],
+ "runtime_s": 126.01209712028503,
+ "counts": {
+  "total": 25,
+  "PASS": 23,
+  "FAIL": 2
+ }
+}

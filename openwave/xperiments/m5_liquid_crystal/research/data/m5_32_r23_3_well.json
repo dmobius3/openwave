@@ -1,0 +1,93 @@
+{
+ "field": "report 008, M_G_polished_N32 with its pinned shell",
+ "rows": {
+  "G": {
+   "C1": 9.075435624180153e-06,
+   "C2": 8.564773350793515e-05,
+   "omega_E": 0.32551859539640887,
+   "well": true,
+   "C1_by_k1_block": {
+    "b": 9.075435624180153e-06,
+    "r": 0.0,
+    "x": 0.0
+   },
+   "i1s_total_by_block": {
+    "b": 0.0,
+    "r": 4.1539751855175275,
+    "x": 0.0
+   },
+   "k1_total_by_block": {
+    "b": 0.1708978886753081,
+    "r": 0.0,
+    "x": 0.0
+   },
+   "fraction_cells_i1s_negative": 0.0,
+   "fraction_cells_k1_negative": 0.0,
+   "most_negative_i1s_over_max": 2.6230702734523927e-05,
+   "blocks_sum_to_C1_rel": 0.0
+  },
+  "frobenius": {
+   "C1": 9.072930577981556e-06,
+   "C2": 8.561973197903893e-05,
+   "omega_E": 0.3255268846389757,
+   "well": true,
+   "C1_by_k1_block": {
+    "b": 9.072930577981556e-06,
+    "r": 0.0,
+    "x": 0.0
+   },
+   "i1s_total_by_block": {
+    "b": 0.0,
+    "r": 4.153287772144855,
+    "x": 0.0
+   },
+   "k1_total_by_block": {
+    "b": 0.1708774458871907,
+    "r": 0.0,
+    "x": 0.0
+   },
+   "fraction_cells_i1s_negative": 0.0,
+   "fraction_cells_k1_negative": 0.0,
+   "most_negative_i1s_over_max": 2.6230702734607072e-05,
+   "blocks_sum_to_C1_rel": 0.0
+  },
+  "eta": {
+   "C1": -9.072930577981556e-06,
+   "C2": 8.561973197903893e-05,
+   "omega_E": null,
+   "well": false,
+   "C1_by_k1_block": {
+    "b": -9.072930577981556e-06,
+    "r": 0.0,
+    "x": 0.0
+   },
+   "i1s_total_by_block": {
+    "b": 0.0,
+    "r": 4.153287772144855,
+    "x": 0.0
+   },
+   "k1_total_by_block": {
+    "b": -0.1708774458871907,
+    "r": 0.0,
+    "x": 0.0
+   },
+   "fraction_cells_i1s_negative": 0.0,
+   "fraction_cells_k1_negative": 1.0,
+   "most_negative_i1s_over_max": 2.6230702734607072e-05,
+   "blocks_sum_to_C1_rel": 0.0
+  }
+ },
+ "control": {
+  "C1": 9.075435624180153e-06,
+  "C2": 8.564773350793515e-05,
+  "omega_E": 0.32551859539640887
+ },
+ "control_PASS": true,
+ "max_abs_M0i": 0.0,
+ "max_abs_G_minus_identity": 0.00039219775454779615,
+ "max_abs_a0_spatial_block": 0.0,
+ "max_abs_a0_00": 0.0,
+ "G_matches_control_rel": 0.0,
+ "label": "WELL_SURVIVES",
+ "PASS": true
+}
