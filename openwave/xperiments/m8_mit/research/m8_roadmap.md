@@ -17,7 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
-| [M8.12](tasks/m8_12_task_details.md) | The reduced Morse census of the level-6 quartic, and the classification of its critical orbits with a fixed locus of projective dimension at most one | Which critical orbits of the level-6 reduced quartic `r̂₆` have a projective stabilizer whose fixed locus has projective dimension at most one, and, at each of them, the signature of the second variation transverse to the phase-and-rotation orbit, which gives the reduced Morse index for both signs of `g`. Finite algebra on spin 3, sector-independent by M8.1.2's D7. No stability claim, no radius, no MODELS.md cell, and M8.7's gate unchanged | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
+| [M8.12](tasks/m8_12_task_details.md) | The reduced Morse census of the level-6 quartic | Which critical orbits of `r̂₆` have a projective stabilizer whose fixed locus has projective dimension at most one, and, at each, the signature of the second variation transverse to the phase-and-rotation orbit, which gives the reduced Morse index for both signs of `g`. Finite algebra on spin 3, sector-independent by M8.1.2's D7. No stability claim, no radius, no MODELS.md cell, M8.7's gate unchanged | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
 
 ## LATER (gated)
 

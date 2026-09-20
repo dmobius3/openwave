@@ -49,8 +49,8 @@ is one reason the platform's own independent verification (M8.1 first) matters.
 
 ## Mathematical literature
 
-Standard mathematical sources that M8 task documents pin as external references, as opposed
-to the author's own works above. Registered per Gate A4 of
+Standard mathematical and physics sources that M8 task documents pin as external
+references, as opposed to the author's own works above. Registered per Gate A4 of
 [`PR_REVIEW_STANDARDS.md`](../../../../dev_docs/PR_REVIEW_STANDARDS.md).
 
 **Identifier provenance.** These are transcribed from the pinning document's own reference
@@ -59,11 +59,12 @@ unverified fields as such. They were **not** independently machine-checked at re
 treat them as author-attested until first use, on the same footing as the SSRN entries above.
 Where a pin carries no identifier, that is recorded rather than filled in, per the
 [`ONBOARDING_MODELS.md`](../../../../ONBOARDING_MODELS.md) section 3.4 never-fabricate rule.
-The Lehoucq, Uzan and Weeks entry is an exception on both counts: its DOI and metadata were
-machine-verified at the publisher, and the sealing unit that transcribed from it verified the
-same identifiers independently before reading a value. It is registered only now because it
-was the sealed external reference for `M85B-ADJ-07`; registering it earlier would have
-disclosed the case before its commitment was published.
+Two entries are exceptions to the author-attested default. The Lehoucq, Uzan and Weeks row
+was machine-verified at the publisher and independently re-verified by the sealing unit
+before it read a value; the Kawaguchi and Ueda row was machine-verified at Crossref at
+registration. The Lehoucq, Uzan and Weeks row is registered only now because it was the
+sealed external reference for `M85B-ADJ-07`; registering it earlier would have disclosed
+the case before its commitment was published.
 
 | Author(s) | Year | Title | Venue / ID | Pinned by |
 | --- | --- | --- | --- | --- |
@@ -88,6 +89,7 @@ disclosed the case before its commitment was published.
 | Gallot, Meyer | n/a | (p-form multiplicity formulas; the pin records reported errors and restricts use to the curvature lower bound) | no identifier in the pin | M8.5-B § 11.9, use-warning |
 | Bär | n/a | (route for the curvature lower bound) | no identifier in the pin | M8.5-B § 11.9 |
 | Lachièze-Rey | 2004 | Laplacian eigenmodes for the three-Sphere | arXiv [math/0401153](https://arxiv.org/abs/math/0401153) (preprint; identifier and metadata machine-verified 2026-08-18) | [M8.4 kinematic close](../research/findings/m8_4_kinematic_close.md) § 4, corroboration: quotient eigenmodes are the Γ-invariant modes of S³ |
+| Kawaguchi, Ueda | 2011 | Symmetry classification of spinor Bose-Einstein condensates | *Phys. Rev. A* 84, no. 5, 053616; DOI [10.1103/PhysRevA.84.053616](https://doi.org/10.1103/PhysRevA.84.053616). Metadata machine-verified at Crossref 2026-09-20 | M8.12 firewall, Table II |
 
 Four of these carry a **use-warning** in the pinning document: each is excluded from a stated
 gate because its indexing, bundle convention or dimensional notation does not match the

@@ -76,7 +76,7 @@ Answer in order. Where an item asks for an argument, give it as prose with every
 
 **10.** Using § 1.6, state what changes in your answers to items 4, 5, 5b and 6 when `r̂₆` is replaced by `Q_σ` in each of the two sectors, and why. Report the numbers of item 5b multiplied by each `w₆`, exactly.
 
-**11.** At `u = (v₃ + v₁ − v₋₂)/√3`: report the tangential gradient of `r̂₆` on the unit sphere, and whether the directions of `O_u` are annihilated by the matrix you used in item 5. Say what this tells you about the checks in item 5.
+**11.** At `u = (v₃ + v₁ − v₋₂)/√3`: report `924·r̂₆` exactly, the norm of the tangential gradient of `r̂₆` on the unit sphere, and `‖M_u d‖` for each of the four generators of `O_u` exactly as § 1.5 writes them, without normalizing, where `M_u = Hess N(u) − 4N(u)·I` is the matrix you used in item 5. Say what this tells you about the checks in item 5.
 
 **12.** Pick one orbit from item 4 and one tangent direction in its `N_u`. Compute `H_u` along it in two ways: as the second derivative of `s ↦ r̂₆(u cos s + e sin s)` at `s = 0`, and by the matrix formula of item 5. Report the largest disagreement and the precision of each route.
 
