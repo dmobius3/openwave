@@ -1,0 +1,1056 @@
+{
+ "a": {
+  "3x3_p3": {
+   "V_over_w": "4*eps**4*(9*delta**2 + 1)",
+   "minus_reply_form": "-144*delta**4*eps**4"
+  },
+  "3x3_p4": {
+   "V_over_w": "4*eps**4*(36*delta**4 + 12*delta**2*eps**2 + 9*delta**2 + eps**4 + 1)",
+   "minus_reply_form": "4*eps**6*(12*delta**2 + eps**2)"
+  },
+  "4x4_p4": {
+   "V4_over_w": "4*eps**4*(36*delta**4 + 12*delta**2*eps**2 + 9*delta**2 + eps**4 + 1)",
+   "lowest_power_of_eps": 4
+  },
+  "PASS": true,
+  "fails_if": "V4 on the split had an eps^2 term, or its eps^4 coefficient were not 4 (1 + 9 d^2 + 36 d^4)",
+  "note": "the reply's 'exactly' holds at leading order only: p 4 adds 4 eps^6 (12 delta^2 + eps^2)"
+ },
+ "b": {
+  "rows": [
+   {
+    "c": 0.0003,
+    "R_c": 8.18944874012546,
+    "R_K_over_R_c": 1.0892064024157195
+   },
+   {
+    "c": 0.001,
+    "R_c": 6.060870190837862,
+    "R_K_over_R_c": 1.1813485150735743
+   },
+   {
+    "c": 0.003,
+    "R_c": 4.605265457100586,
+    "R_K_over_R_c": 1.1117708735130079
+   },
+   {
+    "c": 0.01,
+    "R_c": 3.4082777749224475,
+    "R_K_over_R_c": null
+   },
+   {
+    "c": 5.1e-06,
+    "R_c": 22.67996805691109,
+    "R_K_over_R_c": null
+   }
+  ],
+  "spread_of_solution_over_curve": {
+   "rho^nu K_nu": 1.322653098156934e-11,
+   "sqrt(rho) K_nu": 0.3909991430363897
+  },
+  "spread_definition": "max / min - 1 of solution over curve, r from 1.5 to 3 R_c, worst of c 3e-4, 1e-3, 3e-3",
+  "sqrt_rho_K_nu_drift_factor_r6_to_r18": {
+   "0.0003": 1.1384567195947837,
+   "0.001": 1.1384567194746043,
+   "0.003": 1.1384567195030413
+  },
+  "threshold_c_at_ratio": {
+   "1.09": 0.004901331101869933,
+   "1.1": 0.005083686848433633,
+   "1.18": 0.006731875555322457
+  },
+  "sector_depth_501_c2": {
+   "c_3e-2": 0.45089999999999997,
+   "c_5.1e-6": 1.3031010000000001e-08,
+   "barrier": 27.9
+  },
+  "PASS": true,
+  "fails_if": "the ODE solution times r^0.618 were not rho^nu K_nu(rho) up to one constant"
+ },
+ "c": {
+  "vacuum_orbit_200": {
+   "M_asymmetry": 3.296918293926865e-12,
+   "max_abs_B_riesz": 5.223270704846072e-10,
+   "max_abs_B_naive_euclid_outer": 326474.8926360372
+  },
+  "split_orbit_trB2_minus_2eps2": 4.136901932128012e-11,
+  "coalescence_cubic_fit_residual": 4.217423328969905e-11,
+  "coalescence_B_scale": 0.0037686571097589328,
+  "single_projector_jump_across_coalescence": 1.7044633425213112,
+  "jump_of_B_near_lambda1_crossing": 0.010000000000000009,
+  "PASS": true,
+  "fails_if": "B were nonzero on a boosted vacuum, tr B^2 differed from 2 eps^2, or B jumped at the coalescence"
+ },
+ "d": {
+  "rows": [
+   {
+    "covariant_trace": -0.008164970374883063,
+    "frobenius": 0.032967184034667994,
+    "h_metric": 0.008164970374883082,
+    "h_min_eig": 0.1588441374511011,
+    "eps": 0.08163635588706308,
+    "a": [
+     0.6224368567249161,
+     -0.626698340277932,
+     0.46885130871449165
+    ],
+    "theta0": 0.9199159125707745,
+    "closed_form": -0.008164970365619651,
+    "trNp_drift": 4.547473508864641e-12
+   },
+   {
+    "covariant_trace": -0.03895678503992411,
+    "frobenius": 0.26966298133253896,
+    "h_metric": 0.03895678503992403,
+    "h_min_eig": 0.14171504886000244,
+    "eps": 0.19624251301202342,
+    "a": [
+     0.7030034603129881,
+     0.33535727748896793,
+     0.6271535946027514
+    ],
+    "theta0": 0.9769684678331292,
+    "closed_form": -0.038956785020870625,
+    "trNp_drift": 2.000888343900442e-11
+   },
+   {
+    "covariant_trace": -0.017655219955695398,
+    "frobenius": 0.18063852304200304,
+    "h_metric": 0.017655219955695686,
+    "h_min_eig": 0.17539526453219925,
+    "eps": 0.10030377312528269,
+    "a": [
+     0.3501111881310235,
+     0.886081054053079,
+     -0.30378038381973793
+    ],
+    "theta0": -0.8703565987572781,
+    "closed_form": -0.01765521996083052,
+    "trNp_drift": 5.4569682106375694e-12
+   },
+   {
+    "covariant_trace": -0.0007428753468977816,
+    "frobenius": 0.002509782332480764,
+    "h_metric": 0.0007428753468977814,
+    "h_min_eig": 0.2853653103419407,
+    "eps": 0.020218198794372554,
+    "a": [
+     0.30222641763793673,
+     -0.4170194924382915,
+     -0.8571778901769744
+    ],
+    "theta0": 0.6269925644161805,
+    "closed_form": -0.0007428753450346252,
+    "trNp_drift": 1.8189894035458565e-12
+   },
+   {
+    "covariant_trace": -0.07322276337895747,
+    "frobenius": 0.4600277535742357,
+    "h_metric": 0.07322276337895717,
+    "h_min_eig": 0.19190613623076422,
+    "eps": 0.19185114957417643,
+    "a": [
+     0.07287673099029568,
+     0.4598123442498571,
+     -0.8850206721628704
+    ],
+    "theta0": -0.8253744501451084,
+    "closed_form": -0.07322276336163627,
+    "trNp_drift": 9.094947017729282e-13
+   },
+   {
+    "covariant_trace": -0.015164216746787362,
+    "frobenius": 0.07243554334963993,
+    "h_metric": 0.015164216746787352,
+    "h_min_eig": 0.14208897243031754,
+    "eps": 0.1195962048168483,
+    "a": [
+     0.6854948500041043,
+     0.5926290875873185,
+     -0.4229510316375561
+    ],
+    "theta0": -0.9756509255904782,
+    "closed_form": -0.015164216752355925,
+    "trNp_drift": 2.7284841053187847e-12
+   },
+   {
+    "covariant_trace": -0.0281851625217839,
+    "frobenius": 0.0727343256636571,
+    "h_metric": 0.02818516252178388,
+    "h_min_eig": 0.20737190649436338,
+    "eps": 0.12849713256629053,
+    "a": [
+     -0.3827527999444154,
+     0.6225355744204096,
+     0.6826051220989782
+    ],
+    "theta0": -0.786620724015054,
+    "closed_form": -0.028185162536952572,
+    "trNp_drift": 6.366462912410498e-12
+   },
+   {
+    "covariant_trace": -0.005383141910692168,
+    "frobenius": 0.007159922275772502,
+    "h_metric": 0.0053831419106921624,
+    "h_min_eig": 0.5084611824232455,
+    "eps": 0.14091348628397343,
+    "a": [
+     0.9297578329980327,
+     0.359696869312939,
+     -0.07854001645831905
+    ],
+    "theta0": -0.33818320191239226,
+    "closed_form": -0.005383141910664816,
+    "trNp_drift": 9.094947017729282e-13
+   },
+   {
+    "covariant_trace": -0.021829451586658555,
+    "frobenius": 0.15480504627106123,
+    "h_metric": 0.0218294515866586,
+    "h_min_eig": 0.20536076143841542,
+    "eps": 0.10812395491485362,
+    "a": [
+     -0.2576480147365191,
+     0.8967549042503051,
+     0.3597890245760096
+    ],
+    "theta0": 0.791493517301842,
+    "closed_form": -0.02182945157985099,
+    "trNp_drift": 2.637534635141492e-11
+   },
+   {
+    "covariant_trace": -0.002171796546219236,
+    "frobenius": 0.004451523720948909,
+    "h_metric": 0.0021717965462192397,
+    "h_min_eig": 0.26135920946103997,
+    "eps": 0.08066195466882795,
+    "a": [
+     0.9127441031438959,
+     -0.27679722600129913,
+     0.3004687968059758
+    ],
+    "theta0": 0.6709297682033917,
+    "closed_form": -0.0021717965462193568,
+    "trNp_drift": 9.094947017729282e-12
+   },
+   {
+    "covariant_trace": -0.030744877218090928,
+    "frobenius": 0.03514886423192708,
+    "h_metric": 0.03074487721809095,
+    "h_min_eig": 0.7471095132843981,
+    "eps": 0.1325658791614898,
+    "a": [
+     0.3539201318587058,
+     -0.9193443949652381,
+     -0.17189073189417903
+    ],
+    "theta0": -0.14577175023280398,
+    "closed_form": -0.03074487721477492,
+    "trNp_drift": 9.094947017729282e-13
+   },
+   {
+    "covariant_trace": -0.03045815097353904,
+    "frobenius": 0.05796594301150247,
+    "h_metric": 0.030458150973539048,
+    "h_min_eig": 0.3275306036369497,
+    "eps": 0.16812708938746299,
+    "a": [
+     0.6791439604037673,
+     0.6055856971395275,
+     -0.41476432400475177
+    ],
+    "theta0": 0.5580868910264813,
+    "closed_form": -0.03045815097522489,
+    "trNp_drift": 1.8189894035458565e-12
+   },
+   {
+    "covariant_trace": -0.001158221636197373,
+    "frobenius": 0.0017165238957146662,
+    "h_metric": 0.0011582216361973752,
+    "h_min_eig": 0.40900170477874725,
+    "eps": 0.0252645731138157,
+    "a": [
+     0.3045118993783229,
+     -0.6054200666291742,
+     -0.7353496080503019
+    ],
+    "theta0": -0.4470179773924128,
+    "closed_form": -0.0011582216362582007,
+    "trNp_drift": 3.637978807091713e-12
+   },
+   {
+    "covariant_trace": -0.055044653685573604,
+    "frobenius": 0.17135196781042358,
+    "h_metric": 0.055044653685573514,
+    "h_min_eig": 0.3960983527365794,
+    "eps": 0.17199839278477946,
+    "a": [
+     -0.26395341148762413,
+     0.9626161969861481,
+     -0.06081655912636172
+    ],
+    "theta0": -0.46304636653442444,
+    "closed_form": -0.05504465368237078,
+    "trNp_drift": 1.8189894035458565e-12
+   },
+   {
+    "covariant_trace": -0.0023730200227093023,
+    "frobenius": 0.002708831275213862,
+    "h_metric": 0.0023730200227093036,
+    "h_min_eig": 0.5917700810182898,
+    "eps": 0.04461012984241034,
+    "a": [
+     -0.6354391345442513,
+     -0.5596270698522338,
+     0.5320100083440686
+    ],
+    "theta0": -0.26231854809708666,
+    "closed_form": -0.0023730200226770525,
+    "trNp_drift": 4.547473508864641e-12
+   },
+   {
+    "covariant_trace": -0.041139636352109585,
+    "frobenius": 0.18394376806730584,
+    "h_metric": 0.041139636352109474,
+    "h_min_eig": 0.20012906948503295,
+    "eps": 0.14617502199823623,
+    "a": [
+     0.19317141214074854,
+     0.8334592493236749,
+     -0.5177166070818722
+    ],
+    "theta0": -0.8043963865780233,
+    "closed_form": -0.04113963636339854,
+    "trNp_drift": 3.637978807091713e-12
+   },
+   {
+    "covariant_trace": -0.032027857131334714,
+    "frobenius": 0.058499396447815405,
+    "h_metric": 0.0320278571313347,
+    "h_min_eig": 0.3042937855639761,
+    "eps": 0.1481475533096209,
+    "a": [
+     0.5199610759901356,
+     0.6358580331585468,
+     0.5703727212296578
+    ],
+    "theta0": 0.5948808221790749,
+    "closed_form": -0.03202785712901278,
+    "trNp_drift": 1.2732925824820995e-11
+   },
+   {
+    "covariant_trace": -0.023861695405774198,
+    "frobenius": 0.0358253904436344,
+    "h_metric": 0.023861695405774198,
+    "h_min_eig": 0.6100418269352579,
+    "eps": 0.11322010331502938,
+    "a": [
+     0.26318992755066967,
+     -0.9646841982535121,
+     0.010745216417161241
+    ],
+    "theta0": 0.24711387770959226,
+    "closed_form": -0.02386169540213231,
+    "trNp_drift": 2.7284841053187847e-12
+   },
+   {
+    "covariant_trace": -0.0034843238003711167,
+    "frobenius": 0.003756449404357754,
+    "h_metric": 0.0034843238003711206,
+    "h_min_eig": 0.764874006141917,
+    "eps": 0.04222466572683197,
+    "a": [
+     0.15120059776259837,
+     -0.42979921786662284,
+     0.8901747084463096
+    ],
+    "theta0": -0.13402207828674273,
+    "closed_form": -0.0034843238001600043,
+    "trNp_drift": 1.8189894035458565e-12
+   },
+   {
+    "covariant_trace": -0.06339148748900285,
+    "frobenius": 0.0673972118526145,
+    "h_metric": 0.06339148748900288,
+    "h_min_eig": 0.7762212568073319,
+    "eps": 0.1856402271622784,
+    "a": [
+     0.28333301706675657,
+     0.43774786327852533,
+     -0.8532872960702829
+    ],
+    "theta0": 0.12665883734376937,
+    "closed_form": -0.06339148748483171,
+    "trNp_drift": 9.094947017729282e-13
+   },
+   {
+    "covariant_trace": -0.035278703591999645,
+    "frobenius": 0.056976830192225984,
+    "h_metric": 0.03527870359199963,
+    "h_min_eig": 0.49445817943903103,
+    "eps": 0.1829950416215171,
+    "a": [
+     0.687932182734095,
+     -0.7004872501538569,
+     -0.18991293881826923
+    ],
+    "theta0": -0.35214635145157636,
+    "closed_form": -0.03527870358823433,
+    "trNp_drift": 0.0
+   },
+   {
+    "covariant_trace": -0.008293324274828847,
+    "frobenius": 0.03726400321023884,
+    "h_metric": 0.008293324274828841,
+    "h_min_eig": 0.13991474475633917,
+    "eps": 0.19136269993198768,
+    "a": [
+     0.9416815368345471,
+     -0.2995890761662545,
+     0.15323925289160012
+    ],
+    "theta0": 0.9833610039470486,
+    "closed_form": -0.008293324275987503,
+    "trNp_drift": 5.638867150992155e-11
+   },
+   {
+    "covariant_trace": -0.043591766468635815,
+    "frobenius": 0.6578294786002012,
+    "h_metric": 0.04359176646863605,
+    "h_min_eig": 0.1658699080537355,
+    "eps": 0.15061395187407012,
+    "a": [
+     -0.19792803471844686,
+     0.2085019789978643,
+     -0.9577846406298586
+    ],
+    "theta0": 0.8982757421458056,
+    "closed_form": -0.043591766527585576,
+    "trNp_drift": 6.002665031701326e-11
+   },
+   {
+    "covariant_trace": -0.018231246729124656,
+    "frobenius": 0.018293165981997463,
+    "h_metric": 0.018231246729124673,
+    "h_min_eig": 0.9432404652930224,
+    "eps": 0.15986415478473914,
+    "a": [
+     -0.8020695393842823,
+     0.5913369501660628,
+     -0.08369626849617945
+    ],
+    "theta0": -0.02921701427249923,
+    "closed_form": -0.018231246727922125,
+    "trNp_drift": 0.0
+   },
+   {
+    "covariant_trace": -0.007679017792003928,
+    "frobenius": 0.050072412069339135,
+    "h_metric": 0.00767901779200395,
+    "h_min_eig": 0.13607989459211586,
+    "eps": 0.10752623886723488,
+    "a": [
+     0.8172618335106497,
+     -0.2578311570791984,
+     -0.5153699544269271
+    ],
+    "theta0": -0.9972565527485782,
+    "closed_form": -0.00767901779993181,
+    "trNp_drift": 2.7284841053187847e-12
+   },
+   {
+    "covariant_trace": -0.00014213614342414684,
+    "frobenius": 0.000257364635550446,
+    "h_metric": 0.0001421361434241469,
+    "h_min_eig": 0.34299313153150107,
+    "eps": 0.03209442906953032,
+    "a": [
+     -0.9648862008653002,
+     0.2620531306053189,
+     0.01796597115881112
+    ],
+    "theta0": 0.5350224283530989,
+    "closed_form": -0.0001421361434258716,
+    "trNp_drift": 1.0913936421275139e-11
+   },
+   {
+    "covariant_trace": -0.0029612222522281463,
+    "frobenius": 0.004260086172191721,
+    "h_metric": 0.0029612222522281506,
+    "h_min_eig": 0.5375528324926138,
+    "eps": 0.05208213565256151,
+    "a": [
+     0.6739157300736849,
+     -0.7020750631469524,
+     -0.2300612841537124
+    ],
+    "theta0": -0.31036411540062336,
+    "closed_form": -0.0029612222518619713,
+    "trNp_drift": 9.094947017729282e-13
+   },
+   {
+    "covariant_trace": -0.0029976960901100013,
+    "frobenius": 0.003939035317438572,
+    "h_metric": 0.0029976960901100026,
+    "h_min_eig": 0.5054894833431683,
+    "eps": 0.07631357578880385,
+    "a": [
+     0.8617611765123294,
+     0.45044328014705554,
+     0.2333849310183653
+    ],
+    "theta0": 0.3411140226012894,
+    "closed_form": -0.0029976960900025933,
+    "trNp_drift": 9.094947017729282e-13
+   },
+   {
+    "covariant_trace": -0.0030032046786713437,
+    "frobenius": 0.005452770790901604,
+    "h_metric": 0.0030032046786713446,
+    "h_min_eig": 0.3043645024043168,
+    "eps": 0.04728807025862098,
+    "a": [
+     0.5731414582335598,
+     0.5521706614649103,
+     -0.605488587399723
+    ],
+    "theta0": 0.5947646373803843,
+    "closed_form": -0.0030032046781181742,
+    "trNp_drift": 4.547473508864641e-12
+   },
+   {
+    "covariant_trace": -0.01840301818107022,
+    "frobenius": 0.10224505179199395,
+    "h_metric": 0.018403018181070176,
+    "h_min_eig": 0.19654591022328674,
+    "eps": 0.1326499066754411,
+    "a": [
+     0.6907011426292832,
+     0.26334109151051804,
+     0.6734860066049267
+    ],
+    "theta0": 0.8134296175745932,
+    "closed_form": -0.01840301817322956,
+    "trNp_drift": 1.4551915228366852e-11
+   },
+   {
+    "covariant_trace": -0.05927779661736274,
+    "frobenius": 0.16091250403300983,
+    "h_metric": 0.05927779661736271,
+    "h_min_eig": 0.21154979642600796,
+    "eps": 0.19804510058958658,
+    "a": [
+     0.4942945423038617,
+     0.5522358805295168,
+     -0.6713482238781936
+    ],
+    "theta0": 0.7766474320569059,
+    "closed_form": -0.059277796629095644,
+    "trNp_drift": 7.275957614183426e-12
+   },
+   {
+    "covariant_trace": -0.039254692362937785,
+    "frobenius": 0.04023054897525154,
+    "h_metric": 0.03925469236293775,
+    "h_min_eig": 0.8015226982934784,
+    "eps": 0.1411366063384553,
+    "a": [
+     -0.12111475846303867,
+     0.6797227726881846,
+     -0.7234004199414916
+    ],
+    "theta0": 0.11062099378312085,
+    "closed_form": -0.03925469236123663,
+    "trNp_drift": 1.4210854715202004e-14
+   },
+   {
+    "covariant_trace": -0.015562602535402011,
+    "frobenius": 0.02384352539461508,
+    "h_metric": 0.01556260253540202,
+    "h_min_eig": 0.4086224877829677,
+    "eps": 0.18934346321639392,
+    "a": [
+     0.8848469328270606,
+     0.2235947710158166,
+     0.40871907692316956
+    ],
+    "theta0": 0.44748178096674573,
+    "closed_form": -0.015562602534147481,
+    "trNp_drift": 1.8189894035458565e-12
+   },
+   {
+    "covariant_trace": -0.018810276598101826,
+    "frobenius": 0.05740340864305975,
+    "h_metric": 0.018810276598101833,
+    "h_min_eig": 0.24533734081474962,
+    "eps": 0.11291914293846202,
+    "a": [
+     0.5122348004967494,
+     -0.45354646741603616,
+     -0.7293223642906405
+    ],
+    "theta0": 0.702560557106028,
+    "closed_form": -0.018810276594767632,
+    "trNp_drift": 1.546140993013978e-11
+   },
+   {
+    "covariant_trace": -0.046527426530013336,
+    "frobenius": 0.08033551067372768,
+    "h_metric": 0.046527426530013266,
+    "h_min_eig": 0.34826331318253495,
+    "eps": 0.15369822232429797,
+    "a": [
+     -0.12334981066383875,
+     -0.7733715017835578,
+     0.6218370722610863
+    ],
+    "theta0": -0.5273982191222475,
+    "closed_form": -0.04652742652774171,
+    "trNp_drift": 9.094947017729282e-13
+   },
+   {
+    "covariant_trace": -0.009422464996532792,
+    "frobenius": 0.05051965084795337,
+    "h_metric": 0.009422464996532804,
+    "h_min_eig": 0.2222383484282048,
+    "eps": 0.09406959480140846,
+    "a": [
+     -0.6838146829699314,
+     -0.1993295864864657,
+     0.7019011292951927
+    ],
+    "theta0": 0.7520024157411376,
+    "closed_form": -0.009422465000837588,
+    "trNp_drift": 1.0913936421275139e-11
+   },
+   {
+    "covariant_trace": -0.012543046490397022,
+    "frobenius": 0.08341809270550078,
+    "h_metric": 0.012543046490397003,
+    "h_min_eig": 0.2535504546648599,
+    "eps": 0.07920197392807805,
+    "a": [
+     -0.01509542380120717,
+     0.9727378200398815,
+     -0.23141577656746076
+    ],
+    "theta0": -0.6860962217733295,
+    "closed_form": -0.012543046489925953,
+    "trNp_drift": 4.547473508864641e-12
+   },
+   {
+    "covariant_trace": -0.012923487381798299,
+    "frobenius": 0.01978382954748561,
+    "h_metric": 0.0129234873817983,
+    "h_min_eig": 0.5067111488992414,
+    "eps": 0.10399824898483014,
+    "a": [
+     -0.6344725010647546,
+     0.7257277313369209,
+     0.2660148592864711
+    ],
+    "theta0": 0.33990708189174956,
+    "closed_form": -0.012923487380787985,
+    "trNp_drift": 1.2732925824820995e-11
+   },
+   {
+    "covariant_trace": -0.0652063627521421,
+    "frobenius": 1.1075200774121616,
+    "h_metric": 0.0652063627521415,
+    "h_min_eig": 0.16450113013773984,
+    "eps": 0.18319400348629142,
+    "a": [
+     0.1688547591803918,
+     0.9766273593069188,
+     -0.1329927492584714
+    ],
+    "theta0": -0.9024189193310377,
+    "closed_form": -0.0652063626582658,
+    "trNp_drift": 1.8189894035458565e-12
+   },
+   {
+    "covariant_trace": -0.007905148270375353,
+    "frobenius": 0.010917203334788758,
+    "h_metric": 0.007905148270375362,
+    "h_min_eig": 0.5338170363337638,
+    "eps": 0.08311362498001652,
+    "a": [
+     0.6540765829260995,
+     -0.6909485914279223,
+     0.30785364651322117
+    ],
+    "theta0": 0.31385106366049276,
+    "closed_form": -0.007905148269684015,
+    "trNp_drift": 9.094947017729282e-13
+   }
+  ],
+  "worst_abs_deviation_from_closed_form": 9.387629562596089e-11,
+  "all_covariant_negative": true,
+  "all_h_positive": true,
+  "finite_amplitude_chain": [
+   {
+    "A": 0.05,
+    "k": 0.2026833970057931,
+    "sum_tr_dBdB": -0.00021231151898806085,
+    "closed_form_lattice": -0.0002123115189880609,
+    "continuum_form": -0.0002122900124608059
+   },
+   {
+    "A": 0.3,
+    "k": 0.2026833970057931,
+    "sum_tr_dBdB": -0.007670356869101308,
+    "closed_form_lattice": -0.007670356869101301,
+    "continuum_form": -0.007642440448589012
+   },
+   {
+    "A": 0.3,
+    "k": 0.7853981633974483,
+    "sum_tr_dBdB": -0.02545327776713001,
+    "closed_form_lattice": -0.025453277767130005,
+    "continuum_form": -0.024336000000000017
+   },
+   {
+    "A": 1.0,
+    "k": 1.5707963267948966,
+    "sum_tr_dBdB": -0.8892182698573987,
+    "closed_form_lattice": -0.8892182698573572,
+    "continuum_form": -0.27040000000000003
+   }
+  ],
+  "chain_worst_relative": 4.6629367034256575e-14,
+  "PASS": true,
+  "fails_if": "tr(dB dB) on the ripple were non-negative, or differed from -2 abs(B a)^2 theta'^2",
+  "reading": "with the covariant trace the static energy kappa_0 sum_i tr(d_i B d_i B) is unbounded below on any split background (theta' is free, V4, L and F are blind to the ripple); the covariant positive contraction h = eta + 2 u u gives +2 abs(B a)^2 theta'^2 instead; Frobenius is positive but equals that value only at theta = 0 (the audit: 2 eps^2 theta'^2 cosh(4 theta) along a doublet axis, not Lorentz invariant). The closed form is the rest-frame statement: on a boosted split background tr(dB dB) = theta'^2 tr([K, B]^2) is indefinite (the audit), and the unboundedness stands"
+ },
+ "e": {
+  "normalization_kappa": "4",
+  "linear_in_eps": "0",
+  "linear_in_eps_r": "0",
+  "coef_eps_r^2": "(delta - 1)**2*(80*sin(theta)**12 - 192*sin(theta)**10 + 120*sin(theta)**8 + 160*sin(theta)**6*cos(theta)**6 + 120*sin(theta)**4*cos(theta)**8 - 40*cos(theta)**12 + 48*cos(theta)**10 + 8)/r**2",
+  "coef_eps^2": "8*(delta - 1)**2*((sin(theta)**2 - 2)**2*cos(theta)**6 + (6*sin(theta)**8 - 15*sin(theta)**6 + 13*sin(theta)**4 - 9*sin(theta)**2 - 5*cos(theta)**8 + 12*cos(theta)**6 + 3)*sin(theta)**2)/(r**4*sin(theta)**2)",
+  "coef_eps_eps_r": "0",
+  "audit_form": "8 (1 - delta)^2 / r^2 [2 eps_r^2 + 2 eps^2 / r^2]",
+  "sphere_average_linear_in_eps": "0",
+  "sphere_average_coef_eps_r^2": "16*(delta - 1)**2/r**2",
+  "coef_eps^2_at_equator": "-16*(delta - 1)**2/r**4",
+  "coef_eps^2_times_sin^2_at_pole": "32*(delta - 1)**2/r**4",
+  "coef_eps^2_closed_form": "16 (1 - delta)^2 (2 cot^2 theta - 1) / r^4",
+  "coef_eps^2_closed_form_residual": "0",
+  "coef_eps^2_closed_form_numeric_residual": 5.684341886080802e-14,
+  "coef_eps_r^2_equals_audit": true,
+  "coef_eps^2_equator_equals_audit": false,
+  "PASS": true,
+  "fails_if": "n/a: reported, not gated; the collapse read (R24-1) carries the consequence"
+ },
+ "PASS": true,
+ "d2": {
+  "tag": "rad_pin_d0.3_w25_c0.001_n32_L48",
+  "E0": 5.416820972916112,
+  "T0_static_field": 120.76983710166901,
+  "rows": [
+   {
+    "A": 0.02,
+    "k": 0.5235987755982988,
+    "dE_certified_plus_cL": -3.2829791043249608,
+    "dE_curv": -3.2829791043250336,
+    "dV4": 1.887379141862766e-14,
+    "dT_per_kappa0": -0.001698605473279713,
+    "kappa0_star": null
+   },
+   {
+    "A": 0.02,
+    "k": 1.0471975511965976,
+    "dE_certified_plus_cL": -10.946936078385749,
+    "dE_curv": -10.946936078385718,
+    "dV4": -1.5987211554602254e-14,
+    "dT_per_kappa0": -0.0027723474153162897,
+    "kappa0_star": null
+   },
+   {
+    "A": 0.05,
+    "k": 1.0471975511965976,
+    "dE_certified_plus_cL": -68.45677216559628,
+    "dE_curv": -68.45677216559639,
+    "dV4": 8.770761894538737e-15,
+    "dT_per_kappa0": -0.017337203054850647,
+    "kappa0_star": null
+   }
+  ],
+  "reading": "dT < 0 is the witness on a relaxed field; dE_curv is the certified action's own answer to the same ripple (the baseline: it is indefinite off the block-diagonal sector); kappa0_star, where defined, is the kappa_0 above which the ripple lowers the total"
+ },
+ "e2": {
+  "eps0": 0.02,
+  "lattices": [
+   {
+    "n": 32,
+    "L": 48.0,
+    "h": 1.5,
+    "bands": [
+     {
+      "abs_cos_theta": [
+       0.0,
+       0.3
+      ],
+      "cells": 1824,
+      "stack_second_variation": -0.000553368666920605,
+      "this_derivation": -0.0005862698236606431,
+      "r22_audit_form": 0.000621612590529888,
+      "stack_first_variation_over_second": 0.645492839320307,
+      "base_density_over_identity": 0.9976340824451136
+     },
+     {
+      "abs_cos_theta": [
+       0.3,
+       0.6
+      ],
+      "cells": 1976,
+      "stack_second_variation": -0.00020522742480069155,
+      "this_derivation": -0.00031286613771827024,
+      "r22_audit_form": 0.0006974962665688999,
+      "stack_first_variation_over_second": 0.9113646910777267,
+      "base_density_over_identity": 1.0185181607907134
+     },
+     {
+      "abs_cos_theta": [
+       0.6,
+       0.8
+      ],
+      "cells": 1216,
+      "stack_second_variation": 0.0006443071235031376,
+      "this_derivation": 0.0004372914272405532,
+      "r22_audit_form": 0.0004140953046154532,
+      "stack_first_variation_over_second": 0.18396694739675748,
+      "base_density_over_identity": 1.0257432657486796
+     }
+    ]
+   },
+   {
+    "n": 48,
+    "L": 48.0,
+    "h": 1.0,
+    "bands": [
+     {
+      "abs_cos_theta": [
+       0.0,
+       0.3
+      ],
+      "cells": 6344,
+      "stack_second_variation": -0.000586008564046392,
+      "this_derivation": -0.0006011580355716096,
+      "r22_audit_form": 0.0006412358587084177,
+      "stack_first_variation_over_second": 0.2573475934374324,
+      "base_density_over_identity": 0.9989762735842648
+     },
+     {
+      "abs_cos_theta": [
+       0.3,
+       0.6
+      ],
+      "cells": 6504,
+      "stack_second_variation": -0.0002452177495219701,
+      "this_derivation": -0.0002888160949237722,
+      "r22_audit_form": 0.0006638372896960864,
+      "stack_first_variation_over_second": 0.2029923352419342,
+      "base_density_over_identity": 1.0079163364332215
+     },
+     {
+      "abs_cos_theta": [
+       0.6,
+       0.8
+      ],
+      "cells": 4232,
+      "stack_second_variation": 0.0005615693758506695,
+      "this_derivation": 0.0004670806113078442,
+      "r22_audit_form": 0.0004295210367319306,
+      "stack_first_variation_over_second": 0.016679522997114393,
+      "base_density_over_identity": 1.0109483242997854
+     }
+    ]
+   },
+   {
+    "n": 64,
+    "L": 48.0,
+    "h": 0.75,
+    "bands": [
+     {
+      "abs_cos_theta": [
+       0.0,
+       0.3
+      ],
+      "cells": 15240,
+      "stack_second_variation": -0.0006121620845683134,
+      "this_derivation": -0.0006211383919835375,
+      "r22_audit_form": 0.0006640318274833891,
+      "stack_first_variation_over_second": 0.13430793712579778,
+      "base_density_over_identity": 0.9992704947624859
+     },
+     {
+      "abs_cos_theta": [
+       0.3,
+       0.6
+      ],
+      "cells": 15168,
+      "stack_second_variation": -0.00026177917003820906,
+      "this_derivation": -0.00028578910317056535,
+      "r22_audit_form": 0.0006527311889819056,
+      "stack_first_variation_over_second": 0.08070984730763232,
+      "base_density_over_identity": 1.0044072076807424
+     },
+     {
+      "abs_cos_theta": [
+       0.6,
+       0.8
+      ],
+      "cells": 10080,
+      "stack_second_variation": 0.0005253347275395073,
+      "this_derivation": 0.0004712151398379859,
+      "r22_audit_form": 0.00044268831008032166,
+      "stack_first_variation_over_second": -0.0454117115261308,
+      "base_density_over_identity": 1.0062207743820504
+     }
+    ]
+   }
+  ],
+  "relative_deviation_by_lattice_and_band": [
+   [
+    0.056119478458919625,
+    0.34404078914575675,
+    0.4734044240677635
+   ],
+   [
+    0.02520048078674153,
+    0.1509553870718635,
+    0.20229648213881757
+   ],
+   [
+    0.014451380772905087,
+    0.08401276628810661,
+    0.11485112239842055
+   ]
+  ],
+  "PASS": true,
+  "fails_if": "on the finest lattice the equatorial band differed from 16 (1 - delta)^2 (2 cot^2 theta - 1) eps^2 / r^4 by over 5 percent, a band's deviation did not shrink from h 1.5 to h 0.75, or a sign disagreed"
+ },
+ "e3": {
+  "linear_terms_all_zero": true,
+  "hessian_entries_times_r4_over_(1-delta)^2": {
+   "a a": "-48 + 32/sin(theta)**2",
+   "b b": "-48 + 32/sin(theta)**2",
+   "a_r a_r": "16*r**2",
+   "b_r b_r": "16*r**2",
+   "a_t a_t": "8",
+   "b_t b_t": "8",
+   "a_p a_p": "8/sin(theta)**2",
+   "b_p b_p": "8/sin(theta)**2",
+   "a a_t": "48/tan(theta)",
+   "b b_t": "48/tan(theta)",
+   "a b_p": "16*cos(theta)/sin(theta)**2",
+   "a_p b": "-16*cos(theta)/sin(theta)**2",
+   "a_t b_p": "24/sin(theta)",
+   "a_p b_t": "-24/sin(theta)"
+  },
+  "hessian_residual_against_the_listed_form": 1.1368683772161603e-13,
+  "lowest_angular_eigenvalues_by_m": {
+   "-3": [
+    95.99978315481387,
+    159.9990895521006
+   ],
+   "-2": [
+    50.58597839980507,
+    99.88871293287649
+   ],
+   "-1": [
+    47.99984813897069,
+    95.99932829962847
+   ],
+   "0": [
+    47.99984813721895,
+    95.99932829928824
+   ],
+   "1": [
+    47.99984813478275,
+    95.99932830034066
+   ],
+   "2": [
+    50.58597840061749,
+    99.88871293369938
+   ],
+   "3": [
+    95.99978315505324,
+    159.999089552354
+   ]
+  },
+  "lowest_angular_eigenvalue": 47.99984813478275,
+  "closed_form": "8 (l (l + 1) - 4) + 32 on spin-2 harmonics, l >= 2: 48, 96, 160",
+  "A_of_the_halo_equation": 2.999990508423922,
+  "nu": 0.9013865026202581,
+  "tail_exponent": -1.3027730052405162,
+  "PASS": true,
+  "fails_if": "a linear term survived, the jet Hessian differed from the listed form, or the lowest mode were not 48",
+  "reading": "the radial part is the R22-1 audit's (16 eps_r^2); the angular part is 48 eps^2 / r^2 on the lowest spin-2 mode, not 16: eps'' = 3 eps / r^2 + beta r^2 eps, the same beta and cutoff, nu = sqrt(13) / 4, tail r^(-1.303)"
+ },
+ "e4": {
+  "spatial_mixed_block_is_nonzero_pointwise": true,
+  "spatial_mixed_block_minus_16(1-delta)^3/r^4_div(W)": "0",
+  "W": "W_theta = a u + b v, W_phi = b u - a v: the contraction of the split tensor with the director vector",
+  "time_space_blocks_max_abs": 0.0,
+  "M00_blocks_max_abs": 0.0,
+  "reading": "the doublet-director block is a total divergence on the sphere, so it integrates to zero at every r; the blocks with the time-space modes vanish identically (M -> T M T, T = diag(-1, 1, 1, 1), keeps the density, the background and the doublet, and flips w); what is left mixes only with modes V4 makes massive",
+  "PASS": true,
+  "fails_if": "the doublet-director block differed from the listed divergence, or a block with the time-space modes survived"
+ },
+ "e5": {
+  "integrated_mixed_E_type": "512*pi*(-delta**2*P(r) + delta**2*Q(r) + 2*delta*P(r) - 2*delta*Q(r) - P(r) + Q(r))*alpha(r)/(5*r**4)",
+  "integrated_mixed_E_type_minus_claim": "0",
+  "integrated_mixed_B_type": "0",
+  "adiabatic_rows": [
+   {
+    "c": 0.0,
+    "softest_massive_eigenvalue": 0.10247753908154493,
+    "v_Hinv_v": 17.582244420567875,
+    "A_eff_E_type": {
+     "6": 1.7236592939143323,
+     "9": 2.7478833173164112,
+     "12": 2.9202287058696457,
+     "18": 2.984242707332276
+    }
+   },
+   {
+    "c": 0.001,
+    "softest_massive_eigenvalue": 0.11080166411433685,
+    "v_Hinv_v": 16.40207396477476,
+    "A_eff_E_type": {
+     "6": 1.809330927001536,
+     "9": 2.7648061090373406,
+     "12": 2.9255831829375962,
+     "18": 2.9853003818148336
+    }
+   },
+   {
+    "c": 0.003,
+    "softest_massive_eigenvalue": 0.12692923082418364,
+    "v_Hinv_v": 14.555851793651355,
+    "A_eff_E_type": {
+     "6": 1.9433529809053092,
+     "9": 2.791279601166481,
+     "12": 2.933959561306582,
+     "18": 2.986954975072905
+    }
+   },
+   {
+    "c": 0.008,
+    "softest_massive_eigenvalue": 0.16371094805706102,
+    "v_Hinv_v": 11.697880054204713,
+    "A_eff_E_type": {
+     "6": 2.1508205590281024,
+     "9": 2.832260851166045,
+     "12": 2.9469262849392566,
+     "18": 2.989516303197878
+    }
+   }
+  ],
+  "reading": "the E-type half of the l = 2 doublet couples to the massive (rr - tt) mode, the B-type half does not; to leading adiabatic order A_eff = 3 - 192 (1 - delta)^2 v H^-1 v / r^4 for the E-type half: about 2.99 at r 18, 2.93 at r 12, 2.77 at r 9, and the estimate stops being perturbative near r 6; the B-type half stays at 3. A = 3 is the far-field value, the inner third of the read window sits below it",
+  "PASS": true,
+  "fails_if": "the integrated E-type block differed from the listed form, or the B-type block did not vanish"
+ }
+}
