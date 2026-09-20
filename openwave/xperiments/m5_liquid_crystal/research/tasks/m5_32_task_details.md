@@ -2058,7 +2058,7 @@ Action needed (the user's): (1) the commit, the PR and the merge; (2) the result
 
 **Research body.** Ledger § 6.14; this record's R23 section; scripts `m5_32_r23_*`; data and plots under the same prefix; local arrays under `data/m5_32_r23_1/`.
 
-## R23: THE SECOND-ORDER STIFFNESS ON THE DEGENERATE PAIR, THE HALO AGAINST IT, THE COULOMB-ANCHORED DELTA, THE 008 WELL (2026-09-19 21:15 UTC go; the plan post [discussioncomment-18520011](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18520011); the thread re-read at the go: 61 comments, none after the plan post, so no amendment)
+## R23: THE SECOND-ORDER STIFFNESS ON THE DEGENERATE PAIR, THE HALO AGAINST IT, THE COULOMB-ANCHORED DELTA, THE 008 WELL (2026-09-19 21:15 UTC go; the results post [discussioncomment-18527288](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18527288), pinned to the PR #569 merge `461d0ff3`; the plan post [discussioncomment-18520011](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18520011); the thread re-read at the go: 61 comments, none after the plan post, so no amendment)
 
 Convention: the code and this section write `V = V4 - c L` with `c >= 0`; the plan post writes `V4 + c L` with `c < 0`, and its `abs(c)` is the `c` here.
 
@@ -2156,7 +2156,7 @@ Half-energy radii of 19.9 and 20.9 are the reader's ceiling (20.6), not sizes, s
 
 `data/m5_32_r23_1/` (153 MB): 23 end fields `<tag>.npz` and their `<tag>_stage.npz` resume files (key `M`, plus `done` and `chunks` in the stage files), one deliberately invalid stage file for the blocked row B job (deviation 1). Regenerate with `m5_32_r23_1_cscan.py run 12` (about 3 h 50 min on 12 workers, the n 48 rows the long pole), `extra 4` (about 3 h 20 min) and `extra2 5` (about 1 h 15 min); each mode resumes from the stage files. The `c` 3e-3 n 32 end field is the 2218-iteration one (its 1000-iteration predecessor was overwritten by the continuation of deviation 7). R23-3 reads report 008's committed fields under the local-only `theory/r22_mikulski_008/`.
 
-## TASK REVIEW (2026-09-20, R23; presented in the terminal at 03:23 UTC and approved by the user at 12:24 UTC)
+## TASK REVIEW (2026-09-20, R23; presented in the terminal at 03:23 UTC and approved by the user at 12:24 UTC; the commit `43352890`, PR #569, merge `461d0ff3`)
 
 `Task Duration: 06:08 (from 21:15 to 03:23 UTC)`
 `Usage Cap Triggered: NO`

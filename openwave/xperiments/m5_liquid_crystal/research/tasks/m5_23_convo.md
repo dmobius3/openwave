@@ -34,7 +34,7 @@ Verbatim (two messages, 17 minutes apart). One editorial substitution: the autho
 > But [his AI] said, as in liquid crystal e.g. Alexander article, that both should split into two 1/2-vortices - would be great to visualize them, also for muon and taon.
 >
 > Maybe simplified as point with two loops - for muon/taon decay the central field should quickly rotate, releasing these two loops with large velocities - as neutrinos.
-
+>
 > ps. isosurfaces from these simulations would be great - visualized like e.g. <https://reference.wolfram.com/language/ref/ContourPlot3D.html> , or uniformly covered with ellipsoids.
 >
 > Especially for energy density - optimizing surface both around vortices, and central charge.

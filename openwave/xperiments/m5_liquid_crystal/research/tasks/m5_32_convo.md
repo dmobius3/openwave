@@ -13,9 +13,9 @@ Attachment `newton for boost hedgehogs.pdf` ("simple notebook - getting incorrec
 > "Anyway, if you could continue search for similar Lagrangian, preferably Lorentz invariant, satisfying:
 > - Coulomb remains, but Newton gets opposite sign - one can start with approximated ansatz, if it works there should be performed energy minimization to check if getting ~1/r effective Newton potential,
 > - energy minimization in empty vacuum doesn't lead to infinite omega, for hedgehog as electron leads to finite nonzero ... if successful, then for neutrino as topological vortex loop."
-
+>
 > "I am slowly working on it, maybe higher order terms will be required, but I still have hope to handle without."
-
+>
 > "I am trying to reverse it by such imaginary time or g, then there should be performed energy minimization - now preferring to increase curvatures, box boundary conditions need to be fixed to avoid approaching infinity."
 
 | Item | Routing |
@@ -50,9 +50,9 @@ Verbatim (signature and the quoted chain removed):
 On the GitHub notification thread of the withdrawn [PR #448](https://github.com/openwave-labs/openwave/pull/448) the author wrote to the substrate-framework maintainer, then forwarded the message to Models-of-Particles. Spine:
 
 > "the current 4x4 Lagrangian is definitely incorrect - both the Newton e.g. sign, and omega frequency diverging to infinity"
-
+>
 > "1) Coulomb from spatial dynamics needs to stay, but Newton from boosts needs to reverse sign, 2) energy minimization for electron as field hedgehog needs to lead to finite nonzero frequency omega, without particles cannot diverge to infinite omega."
-
+>
 > "The modification should rather be additional term(s), preferably Lorentz-covartiant, added to current Lagrangian"; "I hope just more of current order curvature^2 terms should be sufficient"; "which might be the final Lagrangian of physics"; "I am just slow human ... AI should do it faster".
 
 The same day (07:48 UTC) the author posted the criteria as a comment on [substrate-framework issue #146](https://github.com/vantasnerdan/substrate-framework/issues/146) (public, verbatim):
@@ -81,7 +81,7 @@ The author forwarded the quest to Vrba and the group with (snippet, the full mes
 Verbatim spine:
 
 > "this is topological charge quantization: using Gauss as [Gauss-Bonnet] ... without charge quantization there are no charged particles - e.g. electrons would explode. Then we need 3 leptons - same quantized charge, just different mass - as hedgehog of 1 of 3 axes in 3D again is the only approach I have seen (?)"
-
+>
 > "It leads to liquid crystal approach: just assumption of preferred vacuum anisotropy, which qualitatively automatically gives everything as needed ... just needs polishing quantitative details: finding The Final Lagrangian (mine was only initial guess), then its consequences. At least one AI startup is currently searching for it: [substrate-framework issue #147](https://github.com/vantasnerdan/substrate-framework/issues/147)"
 
 | Item | Routing |
@@ -111,7 +111,7 @@ A direct cc chain among the author, the substrate-framework maintainer, Fulceri,
 Three later messages on the same chain, all on the list: Fulceri's CQED / CNP framing of LENR (14:53 UTC); Werbos pointing at the v10 Ouroboros paper (zenodo 22085169, 16:07 UTC: "attempts to find OTHER models which fit the most important tests ... pointed back to this one", an M6 statement, not an M5 input); and the author (16:43 UTC), with the "Needed precise simulations" BSE / SE slide (filed as `theory/duda_2026-08-27_needed_precise_simulations_bse_se.png`):
 
 > "We should target derivation of QFT from deeper physics candidate, ideally the Standard Model Lagrangian as its effective description ... but it is quite nontrivial."
-
+>
 > "Regarding LENR, it needs screening Coulomb repulsion - like in already working muon-catalyzed fusion. Ideally we should use electrons for such screening ... To explain it, instead of electrons in orbitals, we need electron trajectories - and there is observed electron backscattering, if performed multiple times between two nuclei should be sufficient for fusion. Simple simulations including crucial Lorentz force ... which turn out quite complicated, but with AI agents we could develop"
 
 | Item | Routing |
@@ -128,13 +128,13 @@ The user's decision, in the user's words: "we've been searching in circles with 
 The user sent the note on 2026-08-28 19:44 UTC (1:1, the three § 8 questions in the body, the note link). The author replied the next morning with a two-page Mathematica PDF attached, filed as `theory/duda_2026-08-29_newton_same_sign_boost_hedgehogs.pdf` (local-only corpus; the `_CITATIONS.md` row is the tracked trace).
 
 > "also Vantasner ( https://github.com/vantasnerdan/substrate-framework/issues/177 clock: 183) and Maciej ( https://github.com/mjmikulski/the-final-lagrangian-of-physics/ ) are searching for the final Lagrangian (mine was only initial guess) - you could compare."
-
+>
 > "I see 'The stack, the record and the author's 2026-08-17 Newton notebook all reproduce' - if it refers to my arxiv, I used there 'dipole ansatz': opposite types of masses, while they should be the same, where we get incorrect sign (repulsion) - I am attaching example of same sign masses, now with attraction by reversing sign of boost curvature Lagrangian contributions ... but I don't know how to reverse only this sign (?)"
-
+>
 > "Reversing Newton alone seems the most difficult issue, while divergence of omega should be easy to stop e.g. with 4-th order term like (F_abcd F^abcd)^2 - should give positive e.g. omega^4 Hamiltonian contribution preventing divergence."
-
+>
 > "I have problem understanding the rest. Generally we need hedgehog-like for quantized electric charge (3D) - for biaxial leading to also vortices: central topological charge 1 in cross-section (2D), or two 1/2 with charged ring as in your previous simulations or e.g. https://www.nature.com/articles/s41598-018-20492-0"
-
+>
 > "ps. With Maciej we are just preparing the 3+1D time crystal article, feel welcomed to coauthor if you want."
 
 | Item | Reading against the record | Routing |
@@ -273,3 +273,4 @@ The thread is public (the author, Vantasner, Mikulski tagged on every OpenWave p
 | 2026-09-19 21:09 | ours, top-level ([discussioncomment-18520011](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18520011)), the R23 plan post | the five-item TL;DR: the three proposed items in the proposed order behind a form level; the unique linear member `L` of `V(tr N^p)` as the second-order stiffness (`(g + delta)(1 - delta) abs(c) eps^2`, stiff for `c < 0`); the two pre-registered exponents of the halo radius against `c` (`-1/2` constant stiffness, `-1/4` from the audited second variation); the anchor arithmetic reproduced, the zero-mode count corrected to 5 plus the split doublet; the radius-drift gate for the fit. The plan-time checks table, R23-1 / R23-2 / R23-3 with their labels, a narrower Newton-row wording, the cut line | ASKS the author four things, none blocking: whether `L` is the intended term, which state defines `V_0`, the `sqrt 2` between the two mass expressions, the 5 + 2 count. The assistant's note pasted into the reply was not raised. Routing: the run waits on the user's go; the thread is re-read at the go |
 | 2026-09-19 21:15 | ours, the R23 go | the thread re-read at the go: 61 comments, none after the plan post, so R23 started on the plan unamended; it was amended once during the run, on the author's 2026-09-20 01:26 UTC reply (the ladder extended upward, deviation 9) | the run's record: [`m5_32_task_details.md`](m5_32_task_details.md), the R23 section; the results post is drafted for the user (terminal only until sent) |
 | 2026-09-20 01:26 | JarekDuda, top-level ([discussioncomment-18521761](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18521761)), the reply to the R23 plan post; AI-assisted (a draft-change note and a work split naming two AI tools are pasted at the end) | the four questions answered: the 5 + 2 zero-mode count conceded (the doublet `Phi = (M_22 - M_33) / 2 + i M_23` carries charge 2 under the residual rotation); `L` is the intended term and the flatness is restated as a theorem (any sum-of-squares potential vanishing on the vacuum is `eps^4`-flat); `V_0` is the isotropic block at fixed trace with `M_00` at its vacuum value, `c = M^2 / 11.62 = 2.67e-4 V_0`; neither mass expression stands, the convention-free definition is `V'' / K''` along the doublet. The `-1/4` exponent conceded for the action as run (the doublet has no gradient term of its own); `-1/2` would need a kinetic term `kappa_0 Tr(d Phi d Phi)` with the rank-2 projector `1 - u u^T - n n^T`, in the family of the rejected P240 field-dependent axis, so "the exponent identifies which Lagrangian you are in". Our Newton wording adopted; `386 / 1.88 = (3/2) / alpha` named as Nambu's formula, not the muon ratio. One request, called blocking for the scan's value and written before the scan was known to have run: extend the ladder upward to seven points over three decades | evidence, not resolution. Acted on inside the running R23 (deviation 9, logged before its rows were read): `c` 1e-2 and 3e-2 added at n 32 L 48, and `c` 3e-3, 1e-2, 3e-2 at n 48 L 48; both new values checked stable first. With our `V_0` 0.019253 the stated conversion gives `c` about 5.1e-6, a factor 6 below the scan floor. The pasted work split is not an instruction to us. The kinetic-term proposal is a candidate for the next rung, not R23 |
+| 2026-09-20 12:33 | ours, top-level ([discussioncomment-18527288](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18527288)), the R23 results post, pinned to the PR #569 merge `461d0ff3` | the five-item TL;DR: the unique linear invariant `L` and the exact split cost, with the second signature sector behind a barrier of 27.9; the stiffness confines the biaxial halo and restores a clean unit hedgehog for `c >= 1e-3`; no exponent certified (`HALO_BOX_LIMITED`, the label's margin disclosed; a wall, an amplitude threshold, a network collapse, one clean point; the tail-only `K_nu` read near `-1/4` as a hypothesis); delta 0.92238 box-filling by tearing and by melting, row B unable to take a stiffness; for Maciej, the 008 well under three contractions and its existence for any non-uniform field. The plot inline, a validation script per row, the deviations including the ladder extension met after the run had started, the not-computed list, the audit totals (116 checks, 84 PASS) | ASKS the author two things: whether the note expects the amplitude threshold at the top of the ladder and which halo read would be accepted without a power law; the definition of `u` and `n` in the rank-2 projector of the proposed kinetic term. The halo's exterior energy split (curvature 2.69 plus `V4` 0.67 against 3.17) is stated against the 09-19 "at no potential cost". Routing: wait for replies; the kinetic-term rung waits on the user's call and must start with the P240 witness |

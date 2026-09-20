@@ -5,7 +5,7 @@
 > tracked record. Obtain the author's series from the public specification
 > repo [github.com/n4hy/New_Model_Emergent_Gravity](https://github.com/n4hy/New_Model_Emergent_Gravity)
 > (`research/*.pdf`), or from the original venues (DOI / arXiv / Zenodo).
-
+>
 > **Archive pointer (2026-08-22).** The campaign records this document cites (M9.3 to M9.73: notes, scripts, data, latex, APPLICATION) are not in the tree; they are parked in PR #441's branch history at `a5640709` and return as per-task PRs against registered roadmap rows. Their links below were reduced to plain text at the merge trim.
 
 Total: **0 local PDF files** as of 2026-08-15. Public PDFs live in the

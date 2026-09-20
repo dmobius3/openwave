@@ -4,7 +4,7 @@
 > with a spinless source *is* Einstein-Hilbert. This note
 > checks the Newton limit of that inheritance. It does not
 > discover gravity from entanglement.
-
+>
 > **Archive pointer (2026-08-22).** The campaign records this document cites (M9.3 to M9.73: notes, scripts, data, latex, APPLICATION) are not in the tree; they are parked in PR #441's branch history at `a5640709` and return as per-task PRs against registered roadmap rows. Their links below were reduced to plain text at the merge trim.
 
 ## Equations
