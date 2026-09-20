@@ -7,7 +7,7 @@
 > with no branch issued ([S1 result](#s1-result-2026-08-25-instrument-defect)); S1b then removed the
 > assumption S1 could not test and returned the `S1b-SPECTRAL` branch, closing the task at that
 > claim ceiling. The PLANNING text below is preserved as filed and is no longer a live work order.
-
+>
 > **Diagnostic only.** M8.9 locates where the non-real spectrum enters the M8.4 substrate. It does
 > not repair anything, runs no nonlinear dynamics, and does not reopen M8.4 P1A, whose outcome is
 > final. If M8.9 identifies and motivates an operator correction, that correction and its

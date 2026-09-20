@@ -461,11 +461,11 @@ The author replied to the M5.21.11 sanity-check send and TOOK THE EXCHANGE PUBLI
 The author's reply to the 2026-08-11 M5.21.15 send (cc: the group list + Faber + Blaschke + Maciej; attachment `Fmunu 4D Hamiltonian imaginary.pdf`, filed as [`theory/duda_fmunu_4d_hamiltonian_imaginary_2026_08_13.pdf`](../../theory/)). Verbatim spine (public thread):
 
 > "indeed there is some serious problem with boost treatment by current Lagrangian - but instead of missing higher order kinetic terms as they add in Skyrmion models, looks like there is wrong sign for time axis: like there should be reversed sign for Hamiltonian contributions of (\tilde{Gamma})^2 boost terms as in signature, what kind of means boosts being imaginary."
-
+>
 > "what is preferred frequency? For electron and neutrinos there should be preferred omega = mc^2 / hbar. ... But for empty space, shouldn't preferred frequency be omega = 0? Definitely cannot be infinite."
-
+>
 > "the second is reversed sign between Coulomb and Newton force: repulsion vs attraction for same charges/masses - naively we get wrong sign for Newton. We have discussed it with Manfried, I hoped that dynamical effects might repair it, but couldn't make it work ... but reversing (tilde{Gamma})^2 Hamiltonian would do it. Just checked that also using imaginary g and complex conjugation for second F in F_abcd F^abcd could do it."
-
+>
 > "I plan to work on, it but maybe Fable could check it: modify Lagrangian and Hamiltonian for negative terms of (tilde{Gamma})^2, or imaginary g and conjugation - checking Coulomb vs Newton with signs, and if electron could get finite gravitational mass and frequency by energy minimization?"
 
 ### Decode + routing

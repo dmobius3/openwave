@@ -74,6 +74,10 @@ Appended at the **end** of the table, so it reads in order of completion. A clos
 
 IDs are assigned in creation order and **never reused**, including after a renumber or a migration between roadmaps. A migrated task carries a `(was <old ID>)` note in its row and a change-log entry; records written before a renumber keep the old ID and are not rewritten.
 
+**Whoever creates the row allocates its ID**, in the same pull request. On a model roadmap that is the column's author or co-author, who defines the task and therefore numbers it; there is no request step and no maintainer assignment, because an ID nobody can pick without asking turns every new task into a round trip. The reviewer verifies instead of assigning: the ID is the next free number in creation order, it is not a retired or reused one, and the scheme matches the table above. A collision with a row that landed first is renumbered by whoever merges second, as a [maintainer edit](PR_REVIEW_STANDARDS.md#10-maintainer-edits). The merge is the approval.
+
+**Proposing is not allocating.** A design document may list the IDs it expects its future tasks to take. They stay proposals until the pull request that creates the rows, and the collision check runs then, because other rows can land in between.
+
 ## 7. Frozen sections
 
 Three section kinds are **exempt from every budget above**, are not rewritten to comply, and are skipped by the checker. Editing any of them to meet a current standard would destroy the only thing it is for.
