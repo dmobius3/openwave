@@ -2228,7 +2228,7 @@ Action needed (the user's): (1) the commit, the PR and the merge; (2) the result
 
 **Research body.** Ledger § 6.15; this record's R24 section; scripts `m5_32_r24_*`; data and plots under the same prefix; local arrays under `data/m5_32_r24_2/`.
 
-## R24: THE FORM-LEVEL WITNESS ON THE PROPOSED KINETIC TERM, THE HALO EQUATION'S ANGULAR FACTOR, THE COLLAPSE READ, AND THE TWO-STATE WINDOW AT THE TOP OF THE LADDER (2026-09-20 15:22 UTC go; no plan post, by the user's call; the thread re-read at the go: 64 comments, the last one the author's reply [discussioncomment-18528194](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18528194), so no amendment; the pre-registration committed as `fe55c677` before any stored profile was read)
+## R24: THE FORM-LEVEL WITNESS ON THE PROPOSED KINETIC TERM, THE HALO EQUATION'S ANGULAR FACTOR, THE COLLAPSE READ, AND THE TWO-STATE WINDOW AT THE TOP OF THE LADDER (2026-09-20 15:22 UTC go; the results post [discussioncomment-18530752](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18530752), pinned to the PR #573 merge `e9338e91`; no plan post, by the user's call; the thread re-read at the go: 64 comments, the last one the author's reply [discussioncomment-18528194](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-18528194), so no amendment; the pre-registration committed as `fe55c677` before any stored profile was read)
 
 Convention: `V = V4 - c L` with `c >= 0`, as in R23. `eps` is half the gap of the pair of eigenvalues of `N = M eta` nearest `delta`; `eps(6)` is its shell mean interpolated to r 6 (shells of width `h / 2`). `beta = 5.81 c / (2 K)`, `K = 8 (1 - delta)^2 = 3.92`, `rho = sqrt(beta) r^2 / 2`.
 
@@ -2336,7 +2336,7 @@ What survives, stated once. (1) A halo state and a no-halo state coexist at `c` 
 
 `data/m5_32_r24_2/` (209 MB): 33 end fields `<tag>.npz` and their `<tag>_stage.npz` resume files (key `M`, plus `done` and `chunks` in the stage files). Tags: `rad_pin_*` fresh radial seed, `rad_down_pin_*` started from a halo state, `rad_up_pin_*` started from a no-halo state; each started row's start field is named in its first chunk's `note`. Regenerate with `m5_32_r24_2_threshold.py run 12` (16 rows, about 41 min on 12 workers), `run_ext 12` (11 rows, about 63 min; it reads the R23 `c` 3e-3 end fields and this rung's `c` 4e-3 n 48 and `c` 5e-3 n 32 end fields) and `run_ext2 6` (6 rows, about 25 min; it reads this rung's halo-started `c` 4e-3 end fields); each mode resumes from the stage files. The second audit's continuation arrays were written to a scratch folder outside the repository and are not kept; regenerate with `m5_32_r24_1_audit.py continue <folder> <job> [iterations]` (about 11 min per 250 iterations at n 48).
 
-## TASK REVIEW (2026-09-20, R24; presented in the terminal at 19:25 UTC and approved by the user the same hour; the commit `fb218b62`)
+## TASK REVIEW (2026-09-20, R24; presented in the terminal at 19:25 UTC and approved by the user the same hour; the commit `fb218b62`, PR #573, merge `e9338e91`)
 
 `Task Duration: 04:03 (from 15:22 to 19:25 UTC)`
 `Usage Cap Triggered: NO`
