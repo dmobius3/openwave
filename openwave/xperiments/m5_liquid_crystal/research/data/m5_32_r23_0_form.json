@@ -1,0 +1,374 @@
+{
+ "a": {
+  "nullspace_dim": 1,
+  "a_p": [
+   "delta*g",
+   "-(delta*g - delta + g)/2",
+   "(-delta + g - 1)/3",
+   "1/4"
+  ],
+  "member_is_critical": true,
+  "nullspace_proportional_to_a": true,
+  "negative_control_residuals": [
+   "-2*g",
+   "2",
+   "2*delta"
+  ],
+  "PASS": true,
+  "fails_if": "a second independent null vector existed, or (x+g)(x-1)(x-delta) were not critical"
+ },
+ "b": {
+  "L_on_split": "epsilon**2*(2*delta**2 + 2*delta*g - 2*delta + epsilon**2 - 2*g)/2",
+  "PASS": true,
+  "coefficient_g8_d0.3": 5.8100000000000005,
+  "coefficient_g8_dphys": 0.6925317914243236,
+  "fails_if": "the eps^2 coefficient differed from (g + delta)(1 - delta) or a first-order term survived"
+ },
+ "c": {
+  "rows": [
+   {
+    "case": "delta 0.3, W1 x 25",
+    "c": 0.0,
+    "zero_modes": 7,
+    "doublet": [],
+    "doublet_closed_form": 0.0,
+    "massive": [
+     0.05588267151513195,
+     0.6339132009314824,
+     153183.13793970787
+    ],
+    "min_massive_over_w": 3.087338588462879
+   },
+   {
+    "case": "delta 0.3, W1 x 25",
+    "c": 3e-05,
+    "zero_modes": 5,
+    "doublet": [
+     0.00017429999999999998,
+     0.0001743000000000039
+    ],
+    "doublet_closed_form": 0.0001743,
+    "massive": [
+     0.05602668102468355,
+     0.6337544847116384,
+     153183.13569871458
+    ],
+    "min_massive_over_w": 3.0952946525501845
+   },
+   {
+    "case": "delta 0.3, W1 x 25",
+    "c": 0.0001,
+    "zero_modes": 5,
+    "doublet": [
+     0.0005809999999999982,
+     0.000581
+    ],
+    "doublet_closed_form": 0.000581,
+    "massive": [
+     0.05636256724616187,
+     0.6333842828328102,
+     153183.13046973027
+    ],
+    "min_massive_over_w": 3.1138512903197695
+   },
+   {
+    "case": "delta 0.3, W1 x 25",
+    "c": 0.0003,
+    "zero_modes": 5,
+    "doublet": [
+     0.0017429999999999998,
+     0.0017430000000000024
+    ],
+    "doublet_closed_form": 0.001743,
+    "massive": [
+     0.05732118775451149,
+     0.6323276175891697,
+     153183.11552977498
+    ],
+    "min_massive_over_w": 3.1668120025920574
+   },
+   {
+    "case": "delta 0.3, W1 x 25",
+    "c": 0.001,
+    "zero_modes": 5,
+    "doublet": [
+     0.00581,
+     0.005810000000000003
+    ],
+    "doublet_closed_form": 0.005810000000000001,
+    "massive": [
+     0.06066384664880455,
+     0.6286418021212953,
+     153183.0632399316
+    ],
+    "min_massive_over_w": 3.3514831987360214
+   },
+   {
+    "case": "delta 0.3, W1 x 25",
+    "c": 0.003,
+    "zero_modes": 5,
+    "doublet": [
+     0.01742999999999998,
+     0.01742999999999999
+    ],
+    "doublet_closed_form": 0.01743,
+    "massive": [
+     0.0701013699334864,
+     0.6182238314829853,
+     153182.91384037893
+    ],
+    "min_massive_over_w": 3.8728761283568875
+   },
+   {
+    "case": "delta phys, W1 x 25 (row A)",
+    "c": 0.0,
+    "zero_modes": 7,
+    "doublet": [],
+    "doublet_closed_form": 0.0,
+    "massive": [
+     0.001038744478064353,
+     1.4793227190792353,
+     153183.7466658803
+    ],
+    "min_massive_over_w": 0.05738730493248568
+   },
+   {
+    "case": "delta phys, W1 x 25 (row A)",
+    "c": 3.094e-05,
+    "zero_modes": 5,
+    "doublet": [
+     2.1426933626668568e-05,
+     2.1426933626722544e-05
+    ],
+    "doublet_closed_form": 2.142693362666857e-05,
+    "massive": [
+     0.0010341545393701712,
+     1.4793271046103194,
+     153183.74418137164
+    ],
+    "min_massive_over_w": 0.05713372552289376
+   },
+   {
+    "case": "delta phys, scaled w (row B)",
+    "c": 0.0,
+    "zero_modes": 7,
+    "doublet": [],
+    "doublet_closed_form": 0.0,
+    "massive": [
+     1.5701894361007873e-07,
+     0.00022361773806108828,
+     23.155598501500585
+    ],
+    "min_massive_over_w": 0.05738730493248927
+   }
+  ],
+  "softest_massive_at_c0[delta 0.3, W1 x 25]": 0.05588267151513195,
+  "c_crit[delta 0.3, W1 x 25]": 0.08633278918624812,
+  "c_crit_over_c_max_used[delta 0.3, W1 x 25]": 28.77759639541604,
+  "softest_massive_at_c0[delta phys, W1 x 25 (row A)]": 0.001038744478064353,
+  "c_crit[delta phys, W1 x 25 (row A)]": 0.00690218408258188,
+  "c_crit_over_c_max_used[delta phys, W1 x 25 (row A)]": 223.082872740203,
+  "softest_massive_at_c0[delta phys, scaled w (row B)]": 1.5701894361007873e-07,
+  "c_crit[delta phys, scaled w (row B)]": 1.0433496169037302e-06,
+  "c_crit_over_c_max_used[delta phys, scaled w (row B)]": null,
+  "row_B_at_the_planned_c_3.094e-05": {
+   "lowest_eigenvalue": -6.322884027291619e-06,
+   "reading": "negative: on the scaled w the vacuum is unstable at the planned c, so row B runs at c = 0 only (deviation 1); the largest stable c there cuts the halo at about the half-box"
+  },
+  "PASS": true,
+  "fails_if": "the zero-mode count differed from 5 (7 at c = 0), the doublet left (g + delta)(1 - delta) c, or a massive mode went negative inside the scan"
+ },
+ "d": {
+  "delta 0.3, W1 x 25 c=0": {
+   "lowest_on_real_spectra": 2.597951111931933e-12,
+   "spectrum_there": [
+    -8.000000005260905,
+    0.29902923122993524,
+    0.3009645816153593,
+    0.9999983300919734
+   ],
+   "real_spectra_minima_below_zero": 0,
+   "matrix_minima_in_vacuum_sector": 79,
+   "lowest_in_vacuum_sector": 8.5253829409103e-12,
+   "matrix_minima_in_other_sectors": 81,
+   "lowest_in_other_sectors": 2.814758176580086e-09,
+   "unconstrained_minimum_closed_form_-c^2_sum_a^2_/_4w": -0.0
+  },
+  "delta 0.3, W1 x 25 c=3e-05": {
+   "lowest_on_real_spectra": 2.2486575057929547e-13,
+   "spectrum_there": [
+    -7.9999999994313455,
+    0.2999763013844655,
+    0.30002083311275934,
+    1.000000609369829
+   ],
+   "real_spectra_minima_below_zero": 0,
+   "matrix_minima_in_vacuum_sector": 79,
+   "lowest_in_vacuum_sector": 1.8097492578256525e-11,
+   "matrix_minima_in_other_sectors": 81,
+   "lowest_in_other_sectors": -4.5080475882163534e-07,
+   "unconstrained_minimum_closed_form_-c^2_sum_a^2_/_4w": -4.513870460341543e-07
+  },
+  "delta 0.3, W1 x 25 c=0.0001": {
+   "lowest_on_real_spectra": 6.182099141519053e-13,
+   "spectrum_there": [
+    -8.000000000175806,
+    0.29997328510453286,
+    0.3000290665218329,
+    0.9999993266874885
+   ],
+   "real_spectra_minima_below_zero": 0,
+   "matrix_minima_in_vacuum_sector": 78,
+   "lowest_in_vacuum_sector": 4.268398630015059e-11,
+   "matrix_minima_in_other_sectors": 82,
+   "lowest_in_other_sectors": -5.015238796452634e-06,
+   "unconstrained_minimum_closed_form_-c^2_sum_a^2_/_4w": -5.015411622601715e-06
+  },
+  "delta 0.3, W1 x 25 c=0.0003": {
+   "lowest_on_real_spectra": 8.800730733707629e-13,
+   "spectrum_there": [
+    -8.000000001802787,
+    0.2999979269320549,
+    0.3000058506463367,
+    0.9999980408987534
+   ],
+   "real_spectra_minima_below_zero": 0,
+   "matrix_minima_in_vacuum_sector": 76,
+   "lowest_in_vacuum_sector": 7.059304211524097e-12,
+   "matrix_minima_in_other_sectors": 84,
+   "lowest_in_other_sectors": -4.513819159083878e-05,
+   "unconstrained_minimum_closed_form_-c^2_sum_a^2_/_4w": -4.513870460341542e-05
+  },
+  "delta 0.3, W1 x 25 c=0.001": {
+   "lowest_on_real_spectra": 1.1116566791870857e-13,
+   "spectrum_there": [
+    -7.999999999170245,
+    0.2999966335556812,
+    0.3000014780264181,
+    1.0000002575074054
+   ],
+   "real_spectra_minima_below_zero": 0,
+   "matrix_minima_in_vacuum_sector": 79,
+   "lowest_in_vacuum_sector": 1.022008899593837e-11,
+   "matrix_minima_in_other_sectors": 81,
+   "lowest_in_other_sectors": -0.0005015366438432824,
+   "unconstrained_minimum_closed_form_-c^2_sum_a^2_/_4w": -0.0005015411622601714
+  },
+  "delta 0.3, W1 x 25 c=0.003": {
+   "lowest_on_real_spectra": 1.7179612690762089e-12,
+   "spectrum_there": [
+    -8.000000006840096,
+    0.29999888826107424,
+    0.30000460272906715,
+    0.9999979349503751
+   ],
+   "real_spectra_minima_below_zero": 0,
+   "matrix_minima_in_vacuum_sector": 79,
+   "lowest_in_vacuum_sector": 2.0223763726799297e-12,
+   "matrix_minima_in_other_sectors": 81,
+   "lowest_in_other_sectors": -0.004513851294469019,
+   "unconstrained_minimum_closed_form_-c^2_sum_a^2_/_4w": -0.004513870460341543
+  },
+  "row A c=3.094e-05": {
+   "lowest_on_real_spectra": 6.171314798023358e-12,
+   "spectrum_there": [
+    -8.000000015500582,
+    0.9223845240374259,
+    0.9224164670276138,
+    0.9999681013582693
+   ],
+   "real_spectra_minima_below_zero": 0,
+   "matrix_minima_in_vacuum_sector": 80,
+   "lowest_in_vacuum_sector": 1.1243054207616533e-10,
+   "matrix_minima_in_other_sectors": 80,
+   "lowest_in_other_sectors": -1.4650351063201643e-06,
+   "unconstrained_minimum_closed_form_-c^2_sum_a^2_/_4w": -1.4658396371308788e-06
+  },
+  "row B c=0": {
+   "lowest_on_real_spectra": 7.449921937632584e-17,
+   "spectrum_there": [
+    -8.000000006226285,
+    0.9160713173570787,
+    0.9292035018770934,
+    0.9994872417443542
+   ],
+   "real_spectra_minima_below_zero": 0,
+   "matrix_minima_in_vacuum_sector": 83,
+   "lowest_in_vacuum_sector": 1.5298765754052213e-16,
+   "matrix_minima_in_other_sectors": 77,
+   "lowest_in_other_sectors": 2.2788474803095664e-14,
+   "unconstrained_minimum_closed_form_-c^2_sum_a^2_/_4w": -0.0
+  },
+  "reading": "V4 - c L is lower than the vacuum by c^2 sum a_p^2 / 4w on matrices whose spectrum carries a complex pair next to delta (the timelike direction inside the pair): a different signature sector, which at c = 0 is exactly degenerate with the vacuum (the same characteristic polynomial) and is reached only by moving the timelike eigenvalue from -g to delta. The block-diagonal sector of the instrument has a real spectrum, where the vacuum is the global minimum",
+  "PASS": true,
+  "fails_if": "a minimum with V < 0 on real spectra, or inside the vacuum's signature sector on full matrices"
+ },
+ "e": {
+  "isotropic block at fixed trace, M_00 = g": {
+   "V_0": 0.01925253988375783,
+   "c if V = (M^2 / 2) eps_full^2, eps_full = 2 eps": 2.0809974263338926e-05,
+   "c if V = M^2 eps_full^2": 4.161994852667785e-05,
+   "c if V = (M^2 / 2) eps^2 (our eps)": 5.2024935658347315e-06
+  },
+  "isotropic block at fixed trace, M_00 solved": {
+   "V_0": 0.009954763483326615,
+   "c if V = (M^2 / 2) eps_full^2, eps_full = 2 eps": 1.0760054160979541e-05,
+   "c if V = M^2 eps_full^2": 2.1520108321959083e-05,
+   "c if V = (M^2 / 2) eps^2 (our eps)": 2.6900135402448853e-06
+  },
+  "zero spatial block, M_00 = g": {
+   "V_0": 0.11034084891072946,
+   "c if V = (M^2 / 2) eps_full^2, eps_full = 2 eps": 0.00011926687283293992,
+   "c if V = M^2 eps_full^2": 0.00023853374566587985,
+   "c if V = (M^2 / 2) eps^2 (our eps)": 2.981671820823498e-05
+  },
+  "note": "author-gated: which state defines V_0, and the convention of the split amplitude"
+ },
+ "f": {
+  "K": 3.9199999999999995,
+  "rows": [
+   {
+    "c": 3e-05,
+    "R_scale (2K/m2)^(1/4)": 14.563128074134305,
+    "reader_radius_f0.5": 21.86126806340317,
+    "reader_radius_f1": 18.514450722536125,
+    "reader_radius_f2": 15.728211410570529
+   },
+   {
+    "c": 0.0001,
+    "R_scale (2K/m2)^(1/4)": 10.777920667285649,
+    "reader_radius_f0.5": 16.41089554477724,
+    "reader_radius_f1": 13.982649132456624,
+    "reader_radius_f2": 11.978998949947497
+   },
+   {
+    "c": 0.0003,
+    "R_scale (2K/m2)^(1/4)": 8.18944874012546,
+    "reader_radius_f0.5": 12.764363218160907,
+    "reader_radius_f1": 10.977173858692936,
+    "reader_radius_f2": 9.523001150057503
+   },
+   {
+    "c": 0.001,
+    "R_scale (2K/m2)^(1/4)": 6.060870190837862,
+    "reader_radius_f0.5": 9.87544377218861,
+    "reader_radius_f1": 8.632181609080455,
+    "reader_radius_f2": 7.635906795339768
+   },
+   {
+    "c": 0.003,
+    "R_scale (2K/m2)^(1/4)": 4.605265457100586,
+    "reader_radius_f0.5": 8.021651082554127,
+    "reader_radius_f1": 7.155807790389519,
+    "reader_radius_f2": 6.478673933696685
+   }
+  ],
+  "intrinsic_radius_exponent_in_beta": -0.25000000001528916,
+  "reader_log_slope_vs_c_f1_all_five": -0.2071293749829221,
+  "reader_log_slope_vs_c_f1_lowest_three": -0.2271183643441787,
+  "PASS": true,
+  "fails_if": "the intrinsic radius of the decaying solution did not scale as beta^(-1/4)",
+  "note": "the reader's fixed r_ref 4.5 bends its slope away from -1/4 at large c, where the cutoff reaches the reference radius; the HALO_QUARTER window [-0.3, -0.2] is read against this table"
+ },
+ "PASS": true
+}

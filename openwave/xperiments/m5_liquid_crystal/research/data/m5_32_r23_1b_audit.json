@@ -1,0 +1,4230 @@
+{
+ "task": "M5.32 R23-1b adversarial audit (claims D1 to D9)",
+ "independence": "no import from the record; energy, gradient, M_00 solve, seed, half-energy reader, degree reader, disclination counter and fit forms reused from the earlier independent auditor (m5_32_r23_1_audit.py); shells, r_eps reader and variants, rms radius, linear theory, k4, box integral, stability probe, label replica are new",
+ "checks": [
+  {
+   "id": "D1.rows_exist",
+   "claim": "every end field of the ladder exists, is block-diagonal and symmetric",
+   "method": "tags rebuilt from the claim text; max |M_0i| and max |S - S^T| over all cells",
+   "value": {
+    "missing": [],
+    "max_M0i": 0.0,
+    "max_asym": 5.551115123125783e-17,
+    "rows": 18
+   },
+   "expectation": "no missing tag, M_0i exactly zero, asymmetry under 1e-15",
+   "fails_if": "a missing end field, a nonzero M_0i or an asymmetric spatial block",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D1.energies",
+   "claim": "stored E, E_curv, V4, E_lin of every n48 row and of the two new n32 rows reproduce from the end fields",
+   "method": "the earlier auditor's energy code (one-sided stencils, per-cell potential) on the end field against the last chunk of the row whose E is nearest",
+   "value": {
+    "worst_rel_diff": 9.955675246103156e-10,
+    "rows": {
+     "rad_pin_d0.3_w25_c3e-05_n48_L72": {
+      "mine": {
+       "E": 3.79971878055533,
+       "E_curv": 2.8491339821516455,
+       "V4": 0.7337178458301945,
+       "E_lin": 0.2168669525734907
+      },
+      "rel_diff": {
+       "E": 4.324346540733098e-14,
+       "E_curv": 0.0,
+       "V4": 1.2710435571182084e-14,
+       "E_lin": 8.01565974059213e-13
+      },
+      "matched_row_file": "m5_32_r23_1_cscan.json"
+     },
+     "rad_pin_d0.3_w25_c0.0001_n48_L72": {
+      "mine": {
+       "E": 4.157572028272982,
+       "E_curv": 3.082858597377332,
+       "V4": 0.5906663461264132,
+       "E_lin": 0.4840470847692362
+      },
+      "rel_diff": {
+       "E": 1.2433214307540476e-13,
+       "E_curv": 1.4405111224623172e-16,
+       "V4": 2.217941106089929e-14,
+       "E_lin": 1.040388796496066e-12
+      },
+      "matched_row_file": "m5_32_r23_1_cscan.json"
+     },
+     "rad_pin_d0.3_w25_c0.0003_n48_L72": {
+      "mine": {
+       "E": 4.811128062170807,
+       "E_curv": 3.579079310197932,
+       "V4": 0.4802452587194709,
+       "E_lin": 0.7518034932534041
+      },
+      "rel_diff": {
+       "E": 2.8799032510213894e-13,
+       "E_curv": 1.240791754976515e-16,
+       "V4": 4.288358236312306e-14,
+       "E_lin": 1.868379414785344e-12
+      },
+      "matched_row_file": "m5_32_r23_1_cscan_extra.json"
+     },
+     "rad_pin_d0.3_w25_c0.001_n48_L72": {
+      "mine": {
+       "E": 5.651275161715132,
+       "E_curv": 4.169842963071963,
+       "V4": 0.5415886130012868,
+       "E_lin": 0.9398435856418834
+      },
+      "rel_diff": {
+       "E": 9.12181304295174e-13,
+       "E_curv": 2.1300044811418894e-16,
+       "V4": 3.894882012193826e-14,
+       "E_lin": 5.5073864039842454e-12
+      },
+      "matched_row_file": "m5_32_r23_1_cscan_extra.json"
+     },
+     "rad_pin_d0.3_w25_c0.003_n48_L72": {
+      "mine": {
+       "E": 6.51037684070913,
+       "E_curv": 4.833856536967133,
+       "V4": 1.1839562759074949,
+       "E_lin": 0.4925640278345009
+      },
+      "rel_diff": {
+       "E": 2.0492405230554585e-12,
+       "E_curv": 1.8374116254955875e-16,
+       "V4": 9.189685347954968e-15,
+       "E_lin": 2.710744586012253e-11
+      },
+      "matched_row_file": "m5_32_r23_1_cscan_extra.json"
+     },
+     "rad_pin_d0.3_w25_c0.0003_n48_L48": {
+      "mine": {
+       "E": 4.760913436103452,
+       "E_curv": 3.459174549559275,
+       "V4": 0.6045421394852429,
+       "E_lin": 0.697196747058934
+      },
+      "rel_diff": {
+       "E": 1.305894135935008e-13,
+       "E_curv": 0.0,
+       "V4": 1.542634135445426e-14,
+       "E_lin": 8.780548365454458e-13
+      },
+      "matched_row_file": "m5_32_r23_1_cscan.json"
+     },
+     "rad_pin_d0.3_w25_c0.003_n48_L48": {
+      "mine": {
+       "E": 6.332933126060199,
+       "E_curv": 4.5677732734370675,
+       "V4": 1.3031312346260102,
+       "E_lin": 0.4620286179971228
+      },
+      "rel_diff": {
+       "E": 1.0052945113566292e-12,
+       "E_curv": 0.0,
+       "V4": 1.1927518834442598e-15,
+       "E_lin": 1.3785376537215983e-11
+      },
+      "matched_row_file": "m5_32_r23_1_cscan_extra2.json"
+     },
+     "rad_pin_d0.3_w25_c0.01_n48_L48": {
+      "mine": {
+       "E": 6.855368517227655,
+       "E_curv": 4.961997374535199,
+       "V4": 1.3731608878169859,
+       "E_lin": 0.5202102548754707
+      },
+      "rel_diff": {
+       "E": 3.1703220440321703e-12,
+       "E_curv": 1.7899614865945445e-16,
+       "V4": 2.6842742714696946e-14,
+       "E_lin": 4.1711507419025724e-11
+      },
+      "matched_row_file": "m5_32_r23_1_cscan_extra2.json"
+     },
+     "rad_pin_d0.3_w25_c0.03_n48_L48": {
+      "mine": {
+       "E": 7.28982288943151,
+       "E_curv": 5.2926598609425355,
+       "V4": 2.096200828778146,
+       "E_lin": -0.09903780028917097
+      },
+      "rel_diff": {
+       "E": 8.555473785555863e-12,
+       "E_curv": 1.6781324381989578e-16,
+       "V4": 6.1437754001645594e-15,
+       "E_lin": 6.298766699609861e-10
+      },
+      "matched_row_file": "m5_32_r23_1_cscan_extra2.json"
+     },
+     "rad_pin_d0.3_w25_c0.01_n32_L48": {
+      "mine": {
+       "E": 6.755038626244943,
+       "E_curv": 4.952903532529322,
+       "V4": 1.2998072006634875,
+       "E_lin": 0.5023278930521324
+      },
+      "rel_diff": {
+       "E": 4.064296986370279e-12,
+       "E_curv": 0.0,
+       "V4": 7.345641728175174e-15,
+       "E_lin": 5.4671303759333565e-11
+      },
+      "matched_row_file": "m5_32_r23_1_cscan_extra2.json"
+     },
+     "rad_pin_d0.3_w25_c0.03_n32_L48": {
+      "mine": {
+       "E": 7.177948610413457,
+       "E_curv": 5.282768623968909,
+       "V4": 1.9728026470862825,
+       "E_lin": -0.07762266064173312
+      },
+      "rel_diff": {
+       "E": 1.0777004941329603e-11,
+       "E_curv": 1.6812745038090326e-16,
+       "V4": 3.995626975907121e-14,
+       "E_lin": 9.955675246103156e-10
+      },
+      "matched_row_file": "m5_32_r23_1_cscan_extra2.json"
+     }
+    }
+   },
+   "expectation": "every relative difference under 1e-8",
+   "fails_if": "any energy part of any of the 11 rows off by 1e-8 relative or more",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D1.fmax",
+   "claim": "the stored fmax_spatial of the same 11 rows reproduces",
+   "method": "the earlier auditor's analytic gradient, max |G_ab| over free cells (2 pinned layers)",
+   "value": {
+    "rad_pin_d0.3_w25_c3e-05_n48_L72": {
+     "mine": 0.004958491962456258,
+     "stored": 0.004958491962439452,
+     "rel": 3.3893371538299688e-12,
+     "gate": 0.001,
+     "label": "FALLING"
+    },
+    "rad_pin_d0.3_w25_c0.0001_n48_L72": {
+     "mine": 0.0035387265346976133,
+     "stored": 0.0035387265347236623,
+     "rel": 7.361134334775854e-12,
+     "gate": 0.001,
+     "label": "FALLING"
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L72": {
+     "mine": 0.0011112381031962632,
+     "stored": 0.0011112381031871822,
+     "rel": 8.17202049700993e-12,
+     "gate": 0.001,
+     "label": "FALLING"
+    },
+    "rad_pin_d0.3_w25_c0.001_n48_L72": {
+     "mine": 0.0067194605462411496,
+     "stored": 0.006719460546241148,
+     "rel": 2.581640987455768e-16,
+     "gate": 0.001,
+     "label": "FALLING"
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L72": {
+     "mine": 0.00027683106062275547,
+     "stored": 0.0002768310607502999,
+     "rel": 4.6073030614171814e-10,
+     "gate": 0.001,
+     "label": "AT_GATE"
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L48": {
+     "mine": 0.0039257270924745805,
+     "stored": 0.003925727092483781,
+     "rel": 2.343762849485187e-12,
+     "gate": 0.001,
+     "label": "FALLING"
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L48": {
+     "mine": 0.0001396251179877939,
+     "stored": 0.0001396251179878061,
+     "rel": 8.735730802767989e-14,
+     "gate": 0.001,
+     "label": "AT_GATE"
+    },
+    "rad_pin_d0.3_w25_c0.01_n48_L48": {
+     "mine": 1.2443127495269553e-05,
+     "stored": 1.2443127448810189e-05,
+     "rel": 3.7337369021365515e-09,
+     "gate": 0.001,
+     "label": "AT_GATE"
+    },
+    "rad_pin_d0.3_w25_c0.03_n48_L48": {
+     "mine": 1.817220848390408e-05,
+     "stored": 1.8172208483905813e-05,
+     "rel": 9.546024510521999e-14,
+     "gate": 0.001,
+     "label": "AT_GATE"
+    },
+    "rad_pin_d0.3_w25_c0.01_n32_L48": {
+     "mine": 3.301138007498483e-06,
+     "stored": 3.3011381443881146e-06,
+     "rel": 4.146740475167758e-08,
+     "gate": 0.001,
+     "label": "AT_GATE"
+    },
+    "rad_pin_d0.3_w25_c0.03_n32_L48": {
+     "mine": 8.143963428075551e-07,
+     "stored": 8.143963365243867e-07,
+     "rel": 7.715123642135697e-09,
+     "gate": 0.001,
+     "label": "AT_GATE"
+    }
+   },
+   "expectation": "relative difference under 1e-6 on every row",
+   "fails_if": "a stored fmax that my gradient does not reproduce to 1e-6",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D1.pinned_shell",
+   "claim": "the outer shell is pinned at the analytic seed; its depth is 2 cells on every lattice (3.0 at h 1.5, 2.0 at h 1.0; the record's '1.6' is the nominal depth before rounding up)",
+   "method": "own seed against the end field on the 2 outer layers and on the first free layer",
+   "value": {
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.09911586169780495
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.15040195871149653
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.09412791607599824
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.050537256445256695
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.04471225574578047
+    },
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.00879378937689743
+    },
+    "rad_pin_d0.3_w25_c0.01_n32_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.00792208603502792
+    },
+    "rad_pin_d0.3_w25_c0.03_n32_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.007994002006530498
+    },
+    "rad_pin_d0.3_w25_c3e-05_n48_L72": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.029148323913747776
+    },
+    "rad_pin_d0.3_w25_c0.0001_n48_L72": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.021745893425976104
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L72": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.018424946538455316
+    },
+    "rad_pin_d0.3_w25_c0.001_n48_L72": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.012175264262509422
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L72": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.0044782904461671755
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 2.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.02523818518761331
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 2.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.0027310611305255174
+    },
+    "rad_pin_d0.3_w25_c0.01_n48_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 2.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.000961326021570369
+    },
+    "rad_pin_d0.3_w25_c0.03_n48_L48": {
+     "pinned_layers": 2,
+     "pinned_depth": 2.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.0009673796026423431
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+     "pinned_layers": 2,
+     "pinned_depth": 3.0,
+     "max_diff_on_pinned": 0.0,
+     "max_diff_on_first_free_layer": 0.05783793212547712
+    }
+   },
+   "expectation": "pinned cells equal the seed to 1e-13 and the first free layer has moved",
+   "fails_if": "a pinned cell off the seed, or a first free layer still at the seed (a deeper pin)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D1.collect_quotes_end_fields",
+   "claim": "the summary the record quotes (collect JSON) carries, for every row, the E of the end field on disk (one row exists twice in the row files)",
+   "method": "collect E against my E of the end field",
+   "value": {
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "collect_E": 3.5233295159611373,
+     "end_field_E": 3.5233295159611515,
+     "rel": 4.033359539840069e-15,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "collect_E": 3.662298327266187,
+     "end_field_E": 3.662298327266299,
+     "rel": 3.0557445320340874e-14,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "collect_E": 3.9557365116413203,
+     "end_field_E": 3.9557365116415526,
+     "rel": 5.871439011876956e-14,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+     "collect_E": 4.567435792048664,
+     "end_field_E": 4.567435792049457,
+     "rel": 1.7365177419085733e-13,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "collect_E": 5.416820972916112,
+     "end_field_E": 5.416820972918767,
+     "rel": 4.902605214719544e-13,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    },
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "collect_E": 6.231383849868993,
+     "end_field_E": 6.231383849877297,
+     "rel": 1.3325418953191236e-12,
+     "json_candidates": 2,
+     "matched": "m5_32_r23_1_cscan_extra.json"
+    },
+    "rad_pin_d0.3_w25_c0.01_n32_L48": {
+     "collect_E": 6.755038626217488,
+     "end_field_E": 6.755038626244943,
+     "rel": 4.064296986353761e-12,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan_extra2.json"
+    },
+    "rad_pin_d0.3_w25_c0.03_n32_L48": {
+     "collect_E": 7.1779486103361005,
+     "end_field_E": 7.177948610413457,
+     "rel": 1.0777004941213458e-11,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan_extra2.json"
+    },
+    "rad_pin_d0.3_w25_c3e-05_n48_L72": {
+     "collect_E": 3.7997187805551658,
+     "end_field_E": 3.79971878055533,
+     "rel": 4.324346540732911e-14,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    },
+    "rad_pin_d0.3_w25_c0.0001_n48_L72": {
+     "collect_E": 4.157572028272465,
+     "end_field_E": 4.157572028272982,
+     "rel": 1.243321430753893e-13,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L72": {
+     "collect_E": 4.811128062169422,
+     "end_field_E": 4.811128062170807,
+     "rel": 2.87990325102056e-13,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan_extra.json"
+    },
+    "rad_pin_d0.3_w25_c0.001_n48_L72": {
+     "collect_E": 5.651275161709977,
+     "end_field_E": 5.651275161715132,
+     "rel": 9.121813042943419e-13,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan_extra.json"
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L72": {
+     "collect_E": 6.5103768406957885,
+     "end_field_E": 6.51037684070913,
+     "rel": 2.049240523051259e-12,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan_extra.json"
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L48": {
+     "collect_E": 4.760913436102831,
+     "end_field_E": 4.760913436103452,
+     "rel": 1.3058941359348376e-13,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L48": {
+     "collect_E": 6.332933126053833,
+     "end_field_E": 6.332933126060199,
+     "rel": 1.0052945113556185e-12,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan_extra2.json"
+    },
+    "rad_pin_d0.3_w25_c0.01_n48_L48": {
+     "collect_E": 6.855368517205921,
+     "end_field_E": 6.855368517227655,
+     "rel": 3.1703220440221193e-12,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan_extra2.json"
+    },
+    "rad_pin_d0.3_w25_c0.03_n48_L48": {
+     "collect_E": 7.289822889369142,
+     "end_field_E": 7.28982288943151,
+     "rel": 8.555473785482667e-12,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan_extra2.json"
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+     "collect_E": 4.485015562266572,
+     "end_field_E": 4.485015562267309,
+     "rel": 1.643668964168395e-13,
+     "json_candidates": 1,
+     "matched": "m5_32_r23_1_cscan.json"
+    }
+   },
+   "expectation": "relative difference under 1e-8 on every row",
+   "fails_if": "a collect row quoting a chunk that is not the end field on disk",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D2.profile_reproduces",
+   "claim": "the stored eps profile of every row is the shell mean of (mid - small) / 2 on |r - R| < h / 2, R on the 0.75 grid up to L/2 - 2h",
+   "method": "own eigenvalues and own shells on the end field against the last chunk",
+   "value": {
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 5.551115123125783e-17
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 1.3877787807814457e-17
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.01_n32_L48": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 3.469446951953614e-18
+    },
+    "rad_pin_d0.3_w25_c0.03_n32_L48": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 3.903127820947816e-18
+    },
+    "rad_pin_d0.3_w25_c3e-05_n48_L72": {
+     "points": 41,
+     "stored_points": 41,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.0001_n48_L72": {
+     "points": 41,
+     "stored_points": 41,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L72": {
+     "points": 41,
+     "stored_points": 41,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.001_n48_L72": {
+     "points": 41,
+     "stored_points": 41,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L72": {
+     "points": 41,
+     "stored_points": 41,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L48": {
+     "points": 26,
+     "stored_points": 26,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L48": {
+     "points": 26,
+     "stored_points": 26,
+     "max_abs_diff": 2.7755575615628914e-17
+    },
+    "rad_pin_d0.3_w25_c0.01_n48_L48": {
+     "points": 26,
+     "stored_points": 26,
+     "max_abs_diff": 4.119968255444917e-18
+    },
+    "rad_pin_d0.3_w25_c0.03_n48_L48": {
+     "points": 26,
+     "stored_points": 26,
+     "max_abs_diff": 5.204170427930421e-18
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+     "points": 25,
+     "stored_points": 25,
+     "max_abs_diff": 5.551115123125783e-17
+    }
+   },
+   "expectation": "max abs difference under 1e-10 and the same number of points",
+   "fails_if": "a stored profile I cannot rebuild from the end field",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D2.r_eps_values",
+   "claim": "the 16 quoted r_eps values (and the three None reads on n32 L48)",
+   "method": "own reader on own shell profile (half-width h / 2, the record's definition)",
+   "value": {
+    "n48_L72 c3e-05": {
+     "claimed": 32.98,
+     "mine": 32.98420995784181
+    },
+    "n48_L72 c0.0001": {
+     "claimed": 28.11,
+     "mine": 28.109276504462702
+    },
+    "n48_L72 c0.0003": {
+     "claimed": 22.17,
+     "mine": 22.173444997981278
+    },
+    "n48_L72 c0.001": {
+     "claimed": 16.11,
+     "mine": 16.109227742287665
+    },
+    "n48_L72 c0.003": {
+     "claimed": 9.39,
+     "mine": 9.393331008520754
+    },
+    "n32_L48 c3e-05": {
+     "claimed": null,
+     "mine": null
+    },
+    "n32_L48 c0.0001": {
+     "claimed": null,
+     "mine": null
+    },
+    "n32_L48 c0.0003": {
+     "claimed": null,
+     "mine": null
+    },
+    "n32_L48 c0.001": {
+     "claimed": 15.81,
+     "mine": 15.806191703639211
+    },
+    "n32_L48 c0.003": {
+     "claimed": 9.36,
+     "mine": 9.364025931408037
+    },
+    "n32_L48 c0.01": {
+     "claimed": 6.67,
+     "mine": 6.674925601566038
+    },
+    "n32_L48 c0.03": {
+     "claimed": 6.33,
+     "mine": 6.325199106119388
+    },
+    "n48_L48 c0.0003": {
+     "claimed": 20.92,
+     "mine": 20.915060472743498
+    },
+    "n48_L48 c0.003": {
+     "claimed": 8.82,
+     "mine": 8.819259482190139
+    },
+    "n48_L48 c0.01": {
+     "claimed": 7.6,
+     "mine": 7.602294517293074
+    },
+    "n48_L48 c0.03": {
+     "claimed": 7.23,
+     "mine": 7.229423099478314
+    }
+   },
+   "expectation": "each within 0.006 of the quote, None where the record says None",
+   "fails_if": "any value off by more than 0.006 or a None / number mismatch",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D2.shell_sensitivity_window",
+   "claim": "the r_eps values inside the window c 3e-4 to 3e-3 are properties of the field, not of the shell definition (they are quoted to 4 figures)",
+   "method": "the same reader on shell means with half-width 0.75, h and 0.375 (the record uses h / 2); the shell median and the shell rms are listed too but do not enter the verdict",
+   "value": {
+    "n48_L72 c0.0003": {
+     "record_h/2": 22.173444997981278,
+     "alternatives": {
+      "fixed_0.75": 22.173444997981278,
+      "wide_h": 22.227742127644973,
+      "narrow_0.375": 22.172288689469614,
+      "median_h/2": 21.192295174156154,
+      "rms_h/2": 22.96365748780921
+     },
+     "max_rel_dev_mean_shells": 0.002448745770837065,
+     "a_mean_shell_reads_None": false
+    },
+    "n48_L72 c0.001": {
+     "record_h/2": 16.109227742287665,
+     "alternatives": {
+      "fixed_0.75": 16.109227742287665,
+      "wide_h": 16.427972481367465,
+      "narrow_0.375": 16.008583141835647,
+      "median_h/2": 15.368872737244033,
+      "rms_h/2": 16.770223624074355
+     },
+     "max_rel_dev_mean_shells": 0.01978646923235662,
+     "a_mean_shell_reads_None": false
+    },
+    "n48_L72 c0.003": {
+     "record_h/2": 9.393331008520754,
+     "alternatives": {
+      "fixed_0.75": 9.393331008520754,
+      "wide_h": 9.467727894094104,
+      "narrow_0.375": 8.81294170372439,
+      "median_h/2": 9.134204546094809,
+      "rms_h/2": 9.593538875189633
+     },
+     "max_rel_dev_mean_shells": 0.06178737918102634,
+     "a_mean_shell_reads_None": false
+    },
+    "n32_L48 c0.001": {
+     "record_h/2": 15.806191703639211,
+     "alternatives": {
+      "fixed_0.75": 15.806191703639211,
+      "wide_h": 16.00602077510301,
+      "narrow_0.375": 15.363617447806423,
+      "median_h/2": 15.269542606299941,
+      "rms_h/2": 16.212586630814915
+     },
+     "max_rel_dev_mean_shells": 0.028000056188796585,
+     "a_mean_shell_reads_None": false
+    },
+    "n32_L48 c0.003": {
+     "record_h/2": 9.364025931408037,
+     "alternatives": {
+      "fixed_0.75": 9.364025931408037,
+      "wide_h": 9.413646210032963,
+      "narrow_0.375": 8.75128114380713,
+      "median_h/2": 9.146611474054275,
+      "rms_h/2": 9.546491073553275
+     },
+     "max_rel_dev_mean_shells": 0.0654360413020311,
+     "a_mean_shell_reads_None": false
+    },
+    "n48_L48 c0.003": {
+     "record_h/2": 8.819259482190139,
+     "alternatives": {
+      "fixed_0.75": 8.589823107177514,
+      "wide_h": 8.627425742246611,
+      "narrow_0.375": 8.871647626982236,
+      "median_h/2": 8.713043954104808,
+      "rms_h/2": 8.887853499182345
+     },
+     "max_rel_dev_mean_shells": 0.026015378669371893,
+     "a_mean_shell_reads_None": false
+    }
+   },
+   "expectation": "every mean-shell variant within 5 percent of the quoted value",
+   "fails_if": "a shell width that moves a window value by 5 percent or more (that is 0.05 on a local slope over a factor 3 in c)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D2.shell_sensitivity_edges",
+   "claim": "the r_eps values at the ceiling (c <= 1e-4, and n48 L48 c 3e-4) and at the floor (c >= 1e-2) are stable against the shell definition",
+   "method": "same as above",
+   "value": {
+    "n48_L72 c3e-05": {
+     "record_h/2": 32.98420995784181,
+     "alternatives": {
+      "fixed_0.75": 32.98420995784181,
+      "wide_h": null,
+      "narrow_0.375": 32.79318333718266,
+      "median_h/2": 32.06768101326517,
+      "rms_h/2": null
+     },
+     "max_rel_dev_mean_shells": null,
+     "a_mean_shell_reads_None": true
+    },
+    "n48_L72 c0.0001": {
+     "record_h/2": 28.109276504462702,
+     "alternatives": {
+      "fixed_0.75": 28.109276504462702,
+      "wide_h": 28.171177632125264,
+      "narrow_0.375": 27.991966619053507,
+      "median_h/2": 27.119319433944366,
+      "rms_h/2": 29.039093345610894
+     },
+     "max_rel_dev_mean_shells": 0.004173351291719336,
+     "a_mean_shell_reads_None": false
+    },
+    "n32_L48 c0.01": {
+     "record_h/2": 6.674925601566038,
+     "alternatives": {
+      "fixed_0.75": 6.674925601566038,
+      "wide_h": 7.220794326974499,
+      "narrow_0.375": 6.589935707810587,
+      "median_h/2": 6.461267831388747,
+      "rms_h/2": 6.885296106928435
+     },
+     "max_rel_dev_mean_shells": 0.0817789976985499,
+     "a_mean_shell_reads_None": false
+    },
+    "n32_L48 c0.03": {
+     "record_h/2": 6.325199106119388,
+     "alternatives": {
+      "fixed_0.75": 6.325199106119388,
+      "wide_h": 6.7490365837137976,
+      "narrow_0.375": 6.282975827905283,
+      "median_h/2": 6.121988350934901,
+      "rms_h/2": 6.43788891019249
+     },
+     "max_rel_dev_mean_shells": 0.0670077685276915,
+     "a_mean_shell_reads_None": false
+    },
+    "n48_L48 c0.0003": {
+     "record_h/2": 20.915060472743498,
+     "alternatives": {
+      "fixed_0.75": 20.760938343082813,
+      "wide_h": 20.81872875320694,
+      "narrow_0.375": 20.93918153645328,
+      "median_h/2": 19.96171016594181,
+      "rms_h/2": 21.69735519215547
+     },
+     "max_rel_dev_mean_shells": 0.007368954532143804,
+     "a_mean_shell_reads_None": false
+    },
+    "n48_L48 c0.01": {
+     "record_h/2": 7.602294517293074,
+     "alternatives": {
+      "fixed_0.75": 7.3132864643794475,
+      "wide_h": 7.398020117722823,
+      "narrow_0.375": 7.243280307892186,
+      "median_h/2": 7.73606185711811,
+      "rms_h/2": 7.723734926054571
+     },
+     "max_rel_dev_mean_shells": 0.047224454220266256,
+     "a_mean_shell_reads_None": false
+    },
+    "n48_L48 c0.03": {
+     "record_h/2": 7.229423099478314,
+     "alternatives": {
+      "fixed_0.75": 6.974366902261204,
+      "wide_h": 6.897456281437383,
+      "narrow_0.375": 7.012409519725648,
+      "median_h/2": 6.520045480277071,
+      "rms_h/2": 7.213793377569326
+     },
+     "max_rel_dev_mean_shells": 0.045918853202116035,
+     "a_mean_shell_reads_None": false
+    }
+   },
+   "expectation": "every mean-shell variant within 5 percent and never None",
+   "fails_if": "a shell width that moves a value by 5 percent or more, or turns it into None (the read then sits on the end of the stored window)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D2.none_means_beyond_window",
+   "claim": "the three None reads on n32 L48 mean 'beyond the stored window (r = 21)', not 'no halo'",
+   "method": "the weighted profile at the last stored radius, and the L72 read at the same c",
+   "value": {
+    "3e-05": {
+     "n32_L48_window_end": 21.0,
+     "weighted_eps_at_window_end_over_value_at_4.5": 1.4372207143508104,
+     "n48_L72_r_eps": 32.98420995784181
+    },
+    "0.0001": {
+     "n32_L48_window_end": 21.0,
+     "weighted_eps_at_window_end_over_value_at_4.5": 1.092211835848724,
+     "n48_L72_r_eps": 28.109276504462702
+    },
+    "0.0003": {
+     "n32_L48_window_end": 21.0,
+     "weighted_eps_at_window_end_over_value_at_4.5": 0.5857883504350011,
+     "n48_L72_r_eps": 22.173444997981278
+    }
+   },
+   "expectation": "weighted profile still above one half at r = 21 and the L72 read above 21",
+   "fails_if": "a None row whose L72 read lies inside the L48 window",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D3.saturation_numbers",
+   "claim": "for c >= 1e-2 r_eps reads 6.3 to 7.6 and the interpolated half-energy radius 5.6 to 5.8",
+   "method": "own reads on the four end fields",
+   "value": {
+    "n32_L48 c0.003": {
+     "r_eps": 9.364025931408037,
+     "r_half_interp": 7.334238034785186,
+     "R_rms_r>=5": 7.451732780480138,
+     "knu_R_log": 5.015137750863829,
+     "yukawa_R_log": 2.400077921384565,
+     "eps_at": {
+      "4.5": {
+       "shell_h/2": 0.09038860500992787,
+       "shell_0.75": 0.09038860500992787
+      },
+      "6": {
+       "shell_h/2": 0.08956146051997863,
+       "shell_0.75": 0.08956146051997863
+      },
+      "9": {
+       "shell_h/2": 0.034861992949451664,
+       "shell_0.75": 0.034861992949451664
+      }
+     },
+     "interior_spectrum_r1.5": [
+      1.5,
+      0.36510267835752463,
+      0.5108076447198638,
+      0.881672287560235
+     ]
+    },
+    "n32_L48 c0.01": {
+     "r_eps": 6.674925601566038,
+     "r_half_interp": 5.759141700244391,
+     "R_rms_r>=5": 6.797168776713939,
+     "knu_R_log": 5.261461171727096,
+     "yukawa_R_log": 2.5899113181291264,
+     "eps_at": {
+      "4.5": {
+       "shell_h/2": 0.01196979248921738,
+       "shell_0.75": 0.01196979248921738
+      },
+      "6": {
+       "shell_h/2": 0.007065518199197084,
+       "shell_0.75": 0.007065518199197084
+      },
+      "9": {
+       "shell_h/2": 0.0018186844636192102,
+       "shell_0.75": 0.0018186844636192102
+      }
+     },
+     "interior_spectrum_r1.5": [
+      1.5,
+      0.47279953217783455,
+      0.5164622087706684,
+      0.8080251896185108
+     ]
+    },
+    "n32_L48 c0.03": {
+     "r_eps": 6.325199106119388,
+     "r_half_interp": 5.584060302084348,
+     "R_rms_r>=5": 6.486239296985184,
+     "knu_R_log": 5.239855262275415,
+     "yukawa_R_log": 2.538336294201285,
+     "eps_at": {
+      "4.5": {
+       "shell_h/2": 0.005468858570381408,
+       "shell_0.75": 0.005468858570381408
+      },
+      "6": {
+       "shell_h/2": 0.002742280214128785,
+       "shell_0.75": 0.002742280214128785
+      },
+      "9": {
+       "shell_h/2": 0.0005330242030627406,
+       "shell_0.75": 0.0005330242030627406
+      }
+     },
+     "interior_spectrum_r1.5": [
+      1.5,
+      0.43253191571417626,
+      0.4623006312278988,
+      0.7681296373907006
+     ]
+    },
+    "n48_L48 c0.003": {
+     "r_eps": 8.819259482190139,
+     "r_half_interp": 7.032893284455066,
+     "R_rms_r>=5": 7.12020532595915,
+     "knu_R_log": 4.800757201729906,
+     "yukawa_R_log": 2.1744018576587885,
+     "eps_at": {
+      "4.5": {
+       "shell_h/2": 0.09508592363931967,
+       "shell_0.75": 0.09654749387131156
+      },
+      "6": {
+       "shell_h/2": 0.08277576236812435,
+       "shell_0.75": 0.07896859464162231
+      },
+      "9": {
+       "shell_h/2": 0.028961724816165522,
+       "shell_0.75": 0.027250684763969274
+      }
+     },
+     "interior_spectrum_r1.5": [
+      1.5,
+      0.45175482933541755,
+      0.5804591032379848,
+      0.8070635706066407
+     ]
+    },
+    "n48_L48 c0.01": {
+     "r_eps": 7.602294517293074,
+     "r_half_interp": 5.76058061378127,
+     "R_rms_r>=5": 6.807529020001972,
+     "knu_R_log": 5.2215728023026236,
+     "yukawa_R_log": 2.544373214284952,
+     "eps_at": {
+      "4.5": {
+       "shell_h/2": 0.004535916389076422,
+       "shell_0.75": 0.0050545245308383415
+      },
+      "6": {
+       "shell_h/2": 0.003096672430834175,
+       "shell_0.75": 0.002831735903320601
+      },
+      "9": {
+       "shell_h/2": 0.0008729627667460999,
+       "shell_0.75": 0.0008404696612317553
+      }
+     },
+     "interior_spectrum_r1.5": [
+      1.5,
+      0.5191263098180622,
+      0.5490284798671806,
+      0.7556195327375921
+     ]
+    },
+    "n48_L48 c0.03": {
+     "r_eps": 7.229423099478314,
+     "r_half_interp": 5.584311651124382,
+     "R_rms_r>=5": 6.444312383097702,
+     "knu_R_log": 5.169380958082118,
+     "yukawa_R_log": 2.4591132034524525,
+     "eps_at": {
+      "4.5": {
+       "shell_h/2": 0.0019523234263706334,
+       "shell_0.75": 0.002203736039381297
+      },
+      "6": {
+       "shell_h/2": 0.0013026527004787703,
+       "shell_0.75": 0.0011940774616751122
+      },
+      "9": {
+       "shell_h/2": 0.00025857242755623493,
+       "shell_0.75": 0.00024918897226472073
+      }
+     },
+     "interior_spectrum_r1.5": [
+      1.5,
+      0.4669544126110529,
+      0.4905839871041574,
+      0.7088716370893031
+     ]
+    }
+   },
+   "expectation": "r_eps in [6.30, 7.65] and interpolated r_half in [5.55, 5.85] on all four rows",
+   "fails_if": "a read outside the quoted range",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D3.no_read_responds",
+   "claim": "the top two ladder points carry no halo-size information: no size read still responds to c between 1e-2 and 3e-2",
+   "method": "local log slope between c 1e-2 and 3e-2 of five size reads on both spacings",
+   "value": {
+    "n32_L48 r_eps": -0.04898593034140668,
+    "n32_L48 R_rms_r>=5": -0.04262037482092811,
+    "n32_L48 knu_R_log": -0.0037455445102774804,
+    "n32_L48 yukawa_R_log": -0.018309253490390587,
+    "n32_L48 r_half_interp": -0.02810116823124766,
+    "n48_L48 r_eps": -0.04577672399231368,
+    "n48_L48 R_rms_r>=5": -0.04990957077901294,
+    "n48_L48 knu_R_log": -0.009144004397385271,
+    "n48_L48 yukawa_R_log": -0.03102417499410208,
+    "n48_L48 r_half_interp": -0.028287591174355146
+   },
+   "expectation": "every |slope| under 0.1 (a -1/4 law would give -0.25)",
+   "fails_if": "a size read that still falls with a slope of magnitude 0.1 or more (the rows would then carry information and the floor would be the reader's, not the field's)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D3.retreat_or_collapse",
+   "claim": "WORDING: 'the halo has retreated into the seed's core scale' (a halo of the same amplitude with a smaller radius)",
+   "method": "shell-mean eps at r = 4.5, 6, 9 at c = 3e-3 against c = 1e-2, both spacings; a retreating cutoff envelope bounds the drop at r = 4.5",
+   "value": {
+    "n32_L48": {
+     "eps(4.5)_c3e-3_over_c1e-2": 7.551392815819629,
+     "eps(6)_c3e-3_over_c1e-2": 12.675851649516135,
+     "eps(9)_c3e-3_over_c1e-2": 19.168796812656417
+    },
+    "n48_L48": {
+     "eps(4.5)_c3e-3_over_c1e-2": 20.96289161509005,
+     "eps(6)_c3e-3_over_c1e-2": 26.73055165406255,
+     "eps(9)_c3e-3_over_c1e-2": 33.17635747984771
+    },
+    "largest_drop_at_r4.5_a_pure_retreat_allows": {
+     "assumption": "K_nu envelope exp(-r^2 / 2 R^2), R = 5.12 at c 3e-3 shrinking as c^(-1/2) (the steepest law on the table)",
+     "factor": 2.4626111472975505
+    }
+   },
+   "expectation": "eps(4.5) falls by less than 5 (twice the bound of a pure retreat)",
+   "fails_if": "eps at the core edge falls by 5 or more between c 3e-3 and 1e-2: the split does not shrink, its amplitude collapses (the halo is gone, not retreated)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D3.floor_core_or_lattice",
+   "claim": "the residual split at c >= 1e-2 is set by the core (a physical, spacing-independent profile), not by the lattice",
+   "method": "shell-mean eps (equal physical half-width 0.75) at r = 4.5, 6, 9 on L48 at h 1.5 against h 1.0; c = 3e-3 is the control where a real halo is present",
+   "value": {
+    "0.003": {
+     "eps(4.5)_h1.5_over_h1.0": 0.9362087133033936,
+     "eps(6)_h1.5_over_h1.0": 1.1341402354496641,
+     "eps(9)_h1.5_over_h1.0": 1.2793070431590043
+    },
+    "0.01": {
+     "eps(4.5)_h1.5_over_h1.0": 2.3681342164209607,
+     "eps(6)_h1.5_over_h1.0": 2.4951190507955876,
+     "eps(9)_h1.5_over_h1.0": 2.163890676260493
+    },
+    "0.03": {
+     "eps(4.5)_h1.5_over_h1.0": 2.4816305005007773,
+     "eps(6)_h1.5_over_h1.0": 2.2965681056250538,
+     "eps(9)_h1.5_over_h1.0": 2.1390360826100014
+    },
+    "h_squared_ratio": 2.25
+   },
+   "expectation": "ratio h 1.5 / h 1.0 inside [0.8, 1.25] at c 1e-2 and 3e-2, as it is at the control",
+   "fails_if": "a ratio outside [0.8, 1.25] at c >= 1e-2: the residual eps scales with the spacing (about h^2 = 2.25), so it is discretization biaxiality of a uniaxial hedgehog",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D3.floor_state_is_stable",
+   "claim": "the almost uniaxial state at c = 1e-2 is a minimum, not a symmetric stationary point that the uniaxial seed never left",
+   "method": "own L-BFGS descent (own reduced energy and gradient, M_00 re-solved) from the n32 end field plus a biaxial core perturbation 0.05 exp(-(r/6)^2) diag(1, -1, 0)",
+   "value": {
+    "E_stored_field": 6.755038626244943,
+    "E_after_perturbed_descent": 6.755042628883673,
+    "rel_change": 5.925412053519602e-07,
+    "iterations": 81,
+    "max_abs_gradient_end": 1.4886068203653641e-05,
+    "eps(6)_stored_field": 0.007065518199197084,
+    "eps(6)_perturbed_start": 0.013174499547164504,
+    "eps(6)_after_descent": 0.007065065161226138
+   },
+   "expectation": "the descent returns: E not lower than the stored E by more than 1e-5 relative, and eps(6) within 10 percent of the stored field",
+   "fails_if": "a lower energy state with a larger split is found (the floor would be a seed artifact)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D4.ceiling_rows",
+   "claim": "on n48 L72 the c = 3e-5 and 1e-4 reads are wall-limited and those rows are not converged (FALLING, fmax 5.0e-3 and 3.5e-3 against the gate 1e-3)",
+   "method": "r_eps against the free half-box (36 minus the 2 pinned layers = 33); the largest ratio demonstrated harmless is the L48 c = 1e-3 row (agrees with L72 to 2 percent)",
+   "value": {
+    "3e-05": {
+     "r_eps": 32.98420995784181,
+     "free_half_box": 33.0,
+     "r_eps_over_free_half_box": 0.9995215138739943,
+     "last_stored_profile_radius": 33.0,
+     "label": "FALLING",
+     "fmax": 0.004958491962439452,
+     "gate": 0.001
+    },
+    "0.0001": {
+     "r_eps": 28.109276504462702,
+     "free_half_box": 33.0,
+     "r_eps_over_free_half_box": 0.851796257710991,
+     "last_stored_profile_radius": 33.0,
+     "label": "FALLING",
+     "fmax": 0.0035387265347236623,
+     "gate": 0.001
+    },
+    "0.0003": {
+     "r_eps": 22.173444997981278,
+     "free_half_box": 33.0,
+     "r_eps_over_free_half_box": 0.6719225756964023,
+     "last_stored_profile_radius": 33.0,
+     "label": "FALLING",
+     "fmax": 0.0011112381031871822,
+     "gate": 0.001
+    },
+    "0.001": {
+     "r_eps": 16.109227742287665,
+     "free_half_box": 33.0,
+     "r_eps_over_free_half_box": 0.48815841643295954,
+     "last_stored_profile_radius": 33.0,
+     "label": "FALLING",
+     "fmax": 0.006719460546241148,
+     "gate": 0.001
+    },
+    "0.003": {
+     "r_eps": 9.393331008520754,
+     "free_half_box": 33.0,
+     "r_eps_over_free_half_box": 0.2846463941975986,
+     "last_stored_profile_radius": 33.0,
+     "label": "AT_GATE",
+     "fmax": 0.0002768310607502999,
+     "gate": 0.001
+    },
+    "demonstrated_safe_ratio": {
+     "n32_L48_c1e-3_r_eps_over_free_half_box": 0.752675795411391,
+     "its_disagreement_with_L72": 0.0188113324546878
+    }
+   },
+   "expectation": "both reads above the demonstrated-safe ratio, both rows FALLING with fmax over gate",
+   "fails_if": "a read at or below the demonstrated-safe ratio (it would not be wall-limited by this evidence) or a row at the gate",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D4.box_agreement_profile",
+   "claim": "inside the readable window (c >= 3e-4) the two boxes agree on eps(r) within 10 percent over 5 <= r <= 15 (same spacing 1.5, same shells)",
+   "method": "max over shells of |eps_L48 / eps_L72 - 1| per c, also on 5-12 and 5-21 and with wide shells",
+   "value": {
+    "3e-05": {
+     "record_h/2 r5-12": {
+      "max_abs_rel_diff": 0.11877519246007395,
+      "at_r": 9.75,
+      "mean_rel_diff": 0.10838637089052168
+     },
+     "record_h/2 r5-15": {
+      "max_abs_rel_diff": 0.11877519246007395,
+      "at_r": 9.75,
+      "mean_rel_diff": 0.09702558515951858
+     },
+     "record_h/2 r5-21": {
+      "max_abs_rel_diff": 0.21510964423512113,
+      "at_r": 21.0,
+      "mean_rel_diff": 0.032996228459268216
+     },
+     "wide_h r5-12": {
+      "max_abs_rel_diff": 0.11682552571757765,
+      "at_r": 9.0,
+      "mean_rel_diff": 0.10642808982329573
+     },
+     "wide_h r5-15": {
+      "max_abs_rel_diff": 0.11682552571757765,
+      "at_r": 9.0,
+      "mean_rel_diff": 0.09445510117406246
+     },
+     "wide_h r5-21": {
+      "max_abs_rel_diff": 0.23608984442052272,
+      "at_r": 21.0,
+      "mean_rel_diff": 0.02926690104018587
+     }
+    },
+    "0.0001": {
+     "record_h/2 r5-12": {
+      "max_abs_rel_diff": 0.09551662317473464,
+      "at_r": 6.0,
+      "mean_rel_diff": -0.025329838055364363
+     },
+     "record_h/2 r5-15": {
+      "max_abs_rel_diff": 0.09551662317473464,
+      "at_r": 6.0,
+      "mean_rel_diff": -0.012017029064825753
+     },
+     "record_h/2 r5-21": {
+      "max_abs_rel_diff": 0.16507668717437696,
+      "at_r": 21.0,
+      "mean_rel_diff": -0.03488913639892543
+     },
+     "wide_h r5-12": {
+      "max_abs_rel_diff": 0.08182531658038872,
+      "at_r": 6.0,
+      "mean_rel_diff": -0.01478039997916274
+     },
+     "wide_h r5-15": {
+      "max_abs_rel_diff": 0.08182531658038872,
+      "at_r": 6.0,
+      "mean_rel_diff": -0.0049802033152709846
+     },
+     "wide_h r5-21": {
+      "max_abs_rel_diff": 0.18619757915340296,
+      "at_r": 21.0,
+      "mean_rel_diff": -0.032283181366269405
+     }
+    },
+    "0.0003": {
+     "record_h/2 r5-12": {
+      "max_abs_rel_diff": 0.02513086475440729,
+      "at_r": 6.75,
+      "mean_rel_diff": 0.009743849433396956
+     },
+     "record_h/2 r5-15": {
+      "max_abs_rel_diff": 0.02513086475440729,
+      "at_r": 6.75,
+      "mean_rel_diff": 0.0011817212464184182
+     },
+     "record_h/2 r5-21": {
+      "max_abs_rel_diff": 0.08794603963386904,
+      "at_r": 21.0,
+      "mean_rel_diff": -0.011055416341262099
+     },
+     "wide_h r5-12": {
+      "max_abs_rel_diff": 0.018967778593462103,
+      "at_r": 6.0,
+      "mean_rel_diff": 0.01059635154106343
+     },
+     "wide_h r5-15": {
+      "max_abs_rel_diff": 0.021599932092252305,
+      "at_r": 14.25,
+      "mean_rel_diff": 0.0027395902779238806
+     },
+     "wide_h r5-21": {
+      "max_abs_rel_diff": 0.0999313351187453,
+      "at_r": 21.0,
+      "mean_rel_diff": -0.011269772744865252
+     }
+    },
+    "0.001": {
+     "record_h/2 r5-12": {
+      "max_abs_rel_diff": 0.06048250005767519,
+      "at_r": 6.75,
+      "mean_rel_diff": 0.014708983261054732
+     },
+     "record_h/2 r5-15": {
+      "max_abs_rel_diff": 0.11539638769137117,
+      "at_r": 15.0,
+      "mean_rel_diff": -0.009812454596395539
+     },
+     "record_h/2 r5-21": {
+      "max_abs_rel_diff": 0.359838636130815,
+      "at_r": 21.0,
+      "mean_rel_diff": -0.09917669685336197
+     },
+     "wide_h r5-12": {
+      "max_abs_rel_diff": 0.044431865734660736,
+      "at_r": 7.5,
+      "mean_rel_diff": 0.011948438141324392
+     },
+     "wide_h r5-15": {
+      "max_abs_rel_diff": 0.11148767657885184,
+      "at_r": 15.0,
+      "mean_rel_diff": -0.011902037089426458
+     },
+     "wide_h r5-21": {
+      "max_abs_rel_diff": 0.36406947931717104,
+      "at_r": 21.0,
+      "mean_rel_diff": -0.09837227637776634
+     }
+    },
+    "0.003": {
+     "record_h/2 r5-12": {
+      "max_abs_rel_diff": 0.016004406531345605,
+      "at_r": 12.0,
+      "mean_rel_diff": -0.003965684467166952
+     },
+     "record_h/2 r5-15": {
+      "max_abs_rel_diff": 0.026539750990511424,
+      "at_r": 15.0,
+      "mean_rel_diff": -0.009391068966319924
+     },
+     "record_h/2 r5-21": {
+      "max_abs_rel_diff": 0.09152174138395663,
+      "at_r": 21.0,
+      "mean_rel_diff": -0.025234631754257553
+     },
+     "wide_h r5-12": {
+      "max_abs_rel_diff": 0.016012637220183423,
+      "at_r": 12.0,
+      "mean_rel_diff": -0.004107443975100522
+     },
+     "wide_h r5-15": {
+      "max_abs_rel_diff": 0.025400784243993946,
+      "at_r": 15.0,
+      "mean_rel_diff": -0.009174423816366803
+     },
+     "wide_h r5-21": {
+      "max_abs_rel_diff": 0.11634313433385268,
+      "at_r": 21.0,
+      "mean_rel_diff": -0.025411104444450792
+     }
+    }
+   },
+   "expectation": "under 10 percent at c = 3e-4, 1e-3 and 3e-3",
+   "fails_if": "a window c where the boxes differ by 10 percent or more on 5 <= r <= 15",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D5.quoted_slopes",
+   "claim": "on n48 L72 the local log slopes of r_eps are -0.27 and -0.49, those of the fitted K_nu cutoff (10.83, 7.67, 5.12) are -0.29 and -0.37",
+   "method": "own r_eps; the earlier auditor's log-space K_nu fit on my profile (5 <= r <= 30, eps above 1e-3 of its r = 5 value)",
+   "value": {
+    "r_eps": {
+     "values": [
+      22.173444997981278,
+      16.109227742287665,
+      9.393331008520754
+     ],
+     "segments": [
+      -0.2653740524600498,
+      -0.4909760201609917
+     ],
+     "lsq": -0.3712978494041356
+    },
+    "knu_R_log_fit": {
+     "values": [
+      10.83234326648122,
+      7.674742097258452,
+      5.12457962808672
+     ],
+     "segments": [
+      -0.2862205147168347,
+      -0.36763305511798683
+     ],
+     "lsq": -0.32444502794264674
+    }
+   },
+   "expectation": "slopes within 0.01 of the quotes, K_nu radii within 1 percent",
+   "fails_if": "a slope off by more than 0.01 or a K_nu radius off by more than 1 percent",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D5.knu_fit_metric",
+   "claim": "the fitted K_nu cutoff is a read of the profile (it does not depend on whether the least squares run in log space or in linear space)",
+   "method": "the same two-parameter K_nu form fitted both ways on the same points",
+   "value": {
+    "fits": {
+     "0.0003": {
+      "points": 34,
+      "r_first_last": [
+       5.25,
+       30.0
+      ],
+      "knu_R_log": 10.83234326648122,
+      "knu_R_lin": 17.68792571081784,
+      "knu_rms_log": 0.37700749470586337,
+      "yukawa_R_log": 9.0218897773305,
+      "yukawa_R_lin": 231.63413673914513,
+      "yukawa_rms_log": 0.619184945945709,
+      "power_exponent_log": 2.3629284995874547,
+      "power_rms_log": 0.7795763816663467
+     },
+     "0.001": {
+      "points": 32,
+      "r_first_last": [
+       5.25,
+       28.5
+      ],
+      "knu_R_log": 7.674742097258452,
+      "knu_R_lin": 12.596149846187345,
+      "knu_rms_log": 0.3743754509903633,
+      "yukawa_R_log": 4.065000812608281,
+      "yukawa_R_lin": 31.206662778405786,
+      "yukawa_rms_log": 0.7557674703088348,
+      "power_exponent_log": 4.16039095948136,
+      "power_rms_log": 1.1018141732885647
+     },
+     "0.003": {
+      "points": 20,
+      "r_first_last": [
+       5.25,
+       19.5
+      ],
+      "knu_R_log": 5.12457962808672,
+      "knu_R_lin": 5.881908612386193,
+      "knu_rms_log": 0.15120670512108855,
+      "yukawa_R_log": 2.32386258847567,
+      "yukawa_R_lin": 5.730119305262945,
+      "yukawa_rms_log": 0.3501343547140405,
+      "power_exponent_log": 5.5978402819828466,
+      "power_rms_log": 0.6621727101706238
+     }
+    },
+    "R_lin_over_R_log": {
+     "0.0003": 1.6328808343389574,
+     "0.001": 1.6412473131425358,
+     "0.003": 1.1477836309048093
+    },
+    "slopes_lin_fit": {
+     "values": [
+      17.68792571081784,
+      12.596149846187345,
+      5.881908612386193
+     ],
+     "segments": [
+      -0.2819756749080691,
+      -0.693156179090115
+     ],
+     "lsq": -0.47503161620234363
+    }
+   },
+   "expectation": "the two radii within 15 percent on all three window rows, RMS log residual under 0.15",
+   "fails_if": "a row where the radius moves by 15 percent or more with the metric, or where the K_nu form misses the profile by more than 15 percent RMS (the 'cutoff' is then a property of the fit, and so are its slopes)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D5.knu_box_agreement",
+   "claim": "the K_nu cutoff agrees between the boxes where r_eps does (c = 1e-3 and 3e-3)",
+   "method": "K_nu log fit on both boxes; the L72 fit repeated on the L48 window (5 to 18) to separate the window from the box",
+   "value": {
+    "0.001": {
+     "n32_L48_window_5_to_18": 9.637997779566335,
+     "n48_L72_window_5_to_30": 7.674742097258452,
+     "n48_L72_window_5_to_18": 10.745419370977878
+    },
+    "0.003": {
+     "n32_L48_window_5_to_18": 5.015137750863829,
+     "n48_L72_window_5_to_30": 5.12457962808672,
+     "n48_L72_window_5_to_18": 5.0326712423863
+    },
+    "n48_L72_window_5_to_18_at_c3e-4": {
+     "knu_R_log": 11744418355.074081,
+     "note": "above 400 means no cutoff inside r <= 18: the fit runs away"
+    },
+    "slope_1e-3_to_3e-3": {
+     "n32_L48_window_5_to_18": -0.5946160495079788,
+     "n48_L72_window_5_to_30": -0.36763305511798655,
+     "n48_L72_window_5_to_18": -0.6904425349244029
+    }
+   },
+   "expectation": "L48 against L72 (each on its own window, as the record quotes them) within 10 percent",
+   "fails_if": "a K_nu cutoff that differs by 10 percent or more between boxes whose r_eps agree to 2 percent",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D5.not_a_power_law",
+   "claim": "inside the window the radius is not a power law of c: no size read gives one exponent",
+   "method": "two local slopes per read on n48 L72 (15 reads: r_eps with other reference radii, levels, weights and shells; the eps^2-weighted rms radius; the interpolated half-energy radius; the disclination network's outer radius; K_nu and Yukawa scales, the K_nu fit also on the linear tail alone and on the 5 to 18 window, which has no cutoff at c = 3e-4 and drops out)",
+   "value": {
+    "reads": {
+     "r_eps_ref4.5_half (the record's)": {
+      "segments": [
+       -0.2653740524600498,
+       -0.4909760201609917
+      ],
+      "difference": 0.22560196770094187,
+      "lsq": -0.3712978494041356,
+      "compatible_with_one_exponent": false
+     },
+     "r_eps_ref6_half": {
+      "segments": [
+       -0.2239923820245261,
+       -0.5412893084605485
+      ],
+      "difference": 0.31729692643602236,
+      "lsq": -0.37296845501403203,
+      "compatible_with_one_exponent": false
+     },
+     "r_eps_ref4.5_1/e": {
+      "segments": [
+       -0.25771232661865506,
+       -0.4679915652254833
+      ],
+      "difference": 0.21027923860682823,
+      "lsq": -0.35644185277807455,
+      "compatible_with_one_exponent": false
+     },
+     "r_eps_ref6_1/e": {
+      "segments": [
+       -0.2289341568427786,
+       -0.5270919715871787
+      ],
+      "difference": 0.29815781474440006,
+      "lsq": -0.3689241052821616,
+      "compatible_with_one_exponent": false
+     },
+     "r_eps_no_power_weight": {
+      "segments": [
+       -0.23575205986120099,
+       -0.43808594002735574
+      ],
+      "difference": 0.20233388016615475,
+      "lsq": -0.3307511108714254,
+      "compatible_with_one_exponent": false
+     },
+     "r_eps_wide_shell_h": {
+      "segments": [
+       -0.2511316136352082,
+       -0.5016297150203927
+      ],
+      "difference": 0.25049810138518447,
+      "lsq": -0.3687445506871419,
+      "compatible_with_one_exponent": false
+     },
+     "r_eps_narrow_shell_0.375": {
+      "segments": [
+       -0.2705361998096881,
+       -0.543325194552032
+      ],
+      "difference": 0.27278899474234386,
+      "lsq": -0.39861507421903003,
+      "compatible_with_one_exponent": false
+     },
+     "R_rms_eps2_weighted_r>=5": {
+      "segments": [
+       -0.19347070710136924,
+       -0.3973698180487705
+      ],
+      "difference": 0.20389911094740124,
+      "lsq": -0.28920465944748575,
+      "compatible_with_one_exponent": false
+     },
+     "r_half_interpolated": {
+      "segments": [
+       -0.1693199866225217,
+       -0.40571026959697826
+      ],
+      "difference": 0.23639028297445655,
+      "lsq": -0.28030907323604587,
+      "compatible_with_one_exponent": false
+     },
+     "disclination_network_r_max": {
+      "segments": [
+       -0.8826530883038518,
+       -0.49957077532340055
+      ],
+      "difference": 0.38308231298045126,
+      "lsq": -0.7027897052556975,
+      "compatible_with_one_exponent": false
+     },
+     "knu_R_log_fit": {
+      "segments": [
+       -0.2862205147168347,
+       -0.36763305511798683
+      ],
+      "difference": 0.08141254040115214,
+      "lsq": -0.32444502794264674,
+      "compatible_with_one_exponent": true
+     },
+     "knu_R_lin_fit": {
+      "segments": [
+       -0.2819756749080691,
+       -0.693156179090115
+      ],
+      "difference": 0.4111805041820459,
+      "lsq": -0.47503161620234363,
+      "compatible_with_one_exponent": false
+     },
+     "yukawa_R_log_fit": {
+      "segments": [
+       -0.6621743249053498,
+       -0.5089905133881731
+      ],
+      "difference": 0.15318381151717664,
+      "lsq": -0.5902520313561402,
+      "compatible_with_one_exponent": false
+     },
+     "knu_R_log_fit_linear_tail_only": {
+      "segments": [
+       -0.18237987742105438,
+       -0.304308482575738
+      ],
+      "difference": 0.12192860515468362,
+      "lsq": -0.23962734270558014,
+      "compatible_with_one_exponent": false
+     }
+    },
+    "slope_range_over_all_reads": [
+     -0.8826530883038518,
+     -0.1693199866225217
+    ],
+    "full_table": {
+     "r_eps_ref4.5_half (the record's)": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        22.173444997981278,
+        16.109227742287665,
+        9.393331008520754
+       ],
+       "segments": [
+        -0.2653740524600498,
+        -0.4909760201609917
+       ],
+       "lsq": -0.3712978494041356
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        28.109276504462702,
+        22.173444997981278,
+        16.109227742287665,
+        9.393331008520754
+       ],
+       "segments": [
+        -0.2159126084688211,
+        -0.2653740524600498,
+        -0.4909760201609917
+       ],
+       "lsq": -0.31593340555904137
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        15.806191703639211,
+        9.364025931408037
+       ],
+       "segments": [
+        -0.4765342876229019
+       ],
+       "lsq": -0.47653428762290184
+      }
+     },
+     "r_eps_ref6_half": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        21.45587889741391,
+        16.38420803065916,
+        9.039924837745657
+       ],
+       "segments": [
+        -0.2239923820245261,
+        -0.5412893084605485
+       ],
+       "lsq": -0.37296845501403203
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        27.408733212357838,
+        21.45587889741391,
+        16.38420803065916,
+        9.039924837745657
+       ],
+       "segments": [
+        -0.2228839174839183,
+        -0.2239923820245261,
+        -0.5412893084605485
+       ],
+       "lsq": -0.31475107715105677
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        15.732406118510726,
+        9.000493272296572
+       ],
+       "segments": [
+        -0.5083169840117349
+       ],
+       "lsq": -0.508316984011735
+      }
+     },
+     "r_eps_ref4.5_1/e": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        23.202584666578442,
+        17.01312402897515,
+        10.174084617207583
+       ],
+       "segments": [
+        -0.25771232661865506,
+        -0.4679915652254833
+       ],
+       "lsq": -0.35644185277807455
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        29.471025597864475,
+        23.202584666578442,
+        17.01312402897515,
+        10.174084617207583
+       ],
+       "segments": [
+        -0.21767817411320545,
+        -0.25771232661865506,
+        -0.4679915652254833
+       ],
+       "lsq": -0.30657945407055975
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        16.663101561636665,
+        10.109786644903272
+       ],
+       "segments": [
+        -0.4548400407442112
+       ],
+       "lsq": -0.4548400407442114
+      }
+     },
+     "r_eps_ref6_1/e": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        22.684732569616646,
+        17.219829976805144,
+        9.650328035780978
+       ],
+       "segments": [
+        -0.2289341568427786,
+        -0.5270919715871787
+       ],
+       "lsq": -0.3689241052821616
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        28.852773179310066,
+        22.684732569616646,
+        17.219829976805144,
+        9.650328035780978
+       ],
+       "segments": [
+        -0.21892526662886208,
+        -0.2289341568427786,
+        -0.5270919715871787
+       ],
+       "lsq": -0.31164438679781753
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        16.599801900764337,
+        9.61961082245837
+       ],
+       "segments": [
+        -0.49661464596436605
+       ],
+       "lsq": -0.49661464596436616
+      }
+     },
+     "r_eps_no_power_weight": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        17.999181377232496,
+        13.55136403681317,
+        8.374577360131479
+       ],
+       "segments": [
+        -0.23575205986120099,
+        -0.43808594002735574
+       ],
+       "lsq": -0.3307511108714254
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        21.981379559698752,
+        17.999181377232496,
+        13.55136403681317,
+        8.374577360131479
+       ],
+       "segments": [
+        -0.18192899857907963,
+        -0.23575205986120099,
+        -0.43808594002735574
+       ],
+       "lsq": -0.278380586067656
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        13.640976652873851,
+        8.343853045526574
+       ],
+       "segments": [
+        -0.44743095584236414
+       ],
+       "lsq": -0.4474309558423642
+      }
+     },
+     "r_eps_wide_shell_h": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        22.227742127644973,
+        16.427972481367465,
+        9.467727894094104
+       ],
+       "segments": [
+        -0.2511316136352082,
+        -0.5016297150203927
+       ],
+       "lsq": -0.3687445506871419
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        28.171177632125264,
+        22.227742127644973,
+        16.427972481367465,
+        9.467727894094104
+       ],
+       "segments": [
+        -0.21568867727516147,
+        -0.2511316136352082,
+        -0.5016297150203927
+       ],
+       "lsq": -0.3128610203342995
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        16.00602077510301,
+        9.413646210032963
+       ],
+       "segments": [
+        -0.48315915847839574
+       ],
+       "lsq": -0.4831591584783957
+      }
+     },
+     "r_eps_narrow_shell_0.375": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        22.172288689469614,
+        16.008583141835647,
+        8.81294170372439
+       ],
+       "segments": [
+        -0.2705361998096881,
+        -0.543325194552032
+       ],
+       "lsq": -0.39861507421903003
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        27.991966619053507,
+        22.172288689469614,
+        16.008583141835647,
+        8.81294170372439
+       ],
+       "segments": [
+        -0.21215338024728758,
+        -0.2705361998096881,
+        -0.543325194552032
+       ],
+       "lsq": -0.3320793205477196
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        15.363617447806423,
+        8.75128114380713
+       ],
+       "segments": [
+        -0.512284552643774
+       ],
+       "lsq": -0.5122845526437743
+      }
+     },
+     "R_rms_eps2_weighted_r>=5": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        14.629980024404503,
+        11.589962013950807,
+        7.490113976782466
+       ],
+       "segments": [
+        -0.19347070710136924,
+        -0.3973698180487705
+       ],
+       "lsq": -0.28920465944748575
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        18.03051169482102,
+        14.629980024404503,
+        11.589962013950807,
+        7.490113976782466
+       ],
+       "segments": [
+        -0.19023323288183008,
+        -0.19347070710136924,
+        -0.3973698180487705
+       ],
+       "lsq": -0.25106859730331654
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        11.173307563677714,
+        7.451732780480138
+       ],
+       "segments": [
+        -0.36872069558751674
+       ],
+       "lsq": -0.3687206955875168
+      }
+     },
+     "r_half_interpolated": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        14.3669914307337,
+        11.717420363881535,
+        7.503415873324915
+       ],
+       "segments": [
+        -0.1693199866225217,
+        -0.40571026959697826
+       ],
+       "lsq": -0.28030907323604587
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        17.034530935176406,
+        14.3669914307337,
+        11.717420363881535,
+        7.503415873324915
+       ],
+       "segments": [
+        -0.15502211613589598,
+        -0.1693199866225217,
+        -0.40571026959697826
+       ],
+       "lsq": -0.23306936392132388
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        11.156738878921036,
+        7.334238034785186
+       ],
+       "segments": [
+        -0.3818364112305414
+       ],
+       "lsq": -0.38183641123054135
+      }
+     },
+     "disclination_network_r_max": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        11.953858494245713,
+        4.130356813809173,
+        2.385787374716316
+       ],
+       "segments": [
+        -0.8826530883038518,
+        -0.49957077532340055
+       ],
+       "lsq": -0.7027897052556975
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        14.430827027734985,
+        11.953858494245713,
+        4.130356813809173,
+        2.385787374716316
+       ],
+       "segments": [
+        -0.1714094893681368,
+        -0.8826530883038518,
+        -0.49957077532340055
+       ],
+       "lsq": -0.5685379203648203
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        4.8735328535961076,
+        2.385787374716316
+       ],
+       "segments": [
+        -0.650174686198942
+       ],
+       "lsq": -0.6501746861989423
+      }
+     },
+     "knu_R_log_fit": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        10.83234326648122,
+        7.674742097258452,
+        5.12457962808672
+       ],
+       "segments": [
+        -0.2862205147168347,
+        -0.36763305511798683
+       ],
+       "lsq": -0.32444502794264674
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        17.95701883137935,
+        10.83234326648122,
+        7.674742097258452,
+        5.12457962808672
+       ],
+       "segments": [
+        -0.4600755510027047,
+        -0.2862205147168347,
+        -0.36763305511798683
+       ],
+       "lsq": -0.3594924868480912
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        9.637997779566335,
+        5.015137750863829
+       ],
+       "segments": [
+        -0.5946160495079792
+       ],
+       "lsq": -0.5946160495079794
+      }
+     },
+     "knu_R_lin_fit": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        17.68792571081784,
+        12.596149846187345,
+        5.881908612386193
+       ],
+       "segments": [
+        -0.2819756749080691,
+        -0.693156179090115
+       ],
+       "lsq": -0.47503161620234363
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        31.28416387038127,
+        17.68792571081784,
+        12.596149846187345,
+        5.881908612386193
+       ],
+       "segments": [
+        -0.5190455133176237,
+        -0.2819756749080691,
+        -0.693156179090115
+       ],
+       "lsq": -0.4680493692366136
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        15.050970267746877,
+        5.841047386246309
+       ],
+       "segments": [
+        -0.861570856960541
+       ],
+       "lsq": -0.861570856960541
+      }
+     },
+     "yukawa_R_log_fit": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        9.0218897773305,
+        4.065000812608281,
+        2.32386258847567
+       ],
+       "segments": [
+        -0.6621743249053498,
+        -0.5089905133881731
+       ],
+       "lsq": -0.5902520313561402
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": {
+       "values": [
+        53.33349950349539,
+        9.0218897773305,
+        4.065000812608281,
+        2.32386258847567
+       ],
+       "segments": [
+        -1.6174139309813325,
+        -0.6621743249053498,
+        -0.5089905133881731
+       ],
+       "lsq": -0.8923963162343934
+      },
+      "n32_L48_two_points_1e-3_3e-3": {
+       "values": [
+        14.070078977790763,
+        2.400077921384565
+       ],
+       "segments": [
+        -1.609802929101541
+       ],
+       "lsq": -1.6098029291015414
+      }
+     },
+     "knu_R_log_fit_window_5_to_18": {
+      "n48_L72_window_3e-4_1e-3_3e-3": null,
+      "n48_L72_four_points_1e-4_to_3e-3": null,
+      "n32_L48_two_points_1e-3_3e-3": null
+     },
+     "knu_R_log_fit_linear_tail_only": {
+      "n48_L72_window_3e-4_1e-3_3e-3": {
+       "values": [
+        8.916878566397036,
+        7.158965851379281,
+        5.12457962808672
+       ],
+       "segments": [
+        -0.18237987742105438,
+        -0.304308482575738
+       ],
+       "lsq": -0.23962734270558014
+      },
+      "n48_L72_four_points_1e-4_to_3e-3": null,
+      "n32_L48_two_points_1e-3_3e-3": null
+     }
+    }
+   },
+   "expectation": "every read has local slopes differing by more than 0.10 (the 2 percent convergence uncertainty of a radius is 0.02 on a slope)",
+   "fails_if": "a read whose two local slopes agree within 0.10: that read cannot exclude a single exponent",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D5.inside_the_spread",
+   "claim": "WORDING: 'neither -1/4 nor -1/2 is certified and both lie inside the spread'",
+   "method": "the literal intervals spanned by the quoted slopes",
+   "value": {
+    "r_eps_interval": [
+     -0.4909760201609917,
+     -0.2653740524600498
+    ],
+    "knu_interval": [
+     -0.36763305511798683,
+     -0.2862205147168347
+    ],
+    "distance_of_-1/4_outside_r_eps_interval": 0.015374052460049803,
+    "distance_of_-1/2_outside_r_eps_interval": 0.009023979839008323,
+    "all_reads_interval": [
+     -0.8826530883038518,
+     -0.1693199866225217
+    ]
+   },
+   "expectation": "-0.25 and -0.5 inside [min, max] of the two quoted r_eps slopes",
+   "fails_if": "either exponent outside the interval of the quoted r_eps slopes (true only of the union over other reads, or within the 0.02 convergence uncertainty)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D5.window_ends_clean",
+   "claim": "the readable window is c in [3e-4, 3e-3]: both end points are free of the floor and of structure in the read region",
+   "method": "upper end: r_eps against the floor value at the same spacing, and the split amplitude at r = 4.5 against the plateau; lower end: the outer radius of the disclination network against the start of the read region (r_ref 4.5, fit window from 5)",
+   "value": {
+    "upper_end_c3e-3": {
+     "r_eps": 9.393331008520754,
+     "floor_r_eps_same_spacing": 6.325199106119388,
+     "ratio_to_floor": 1.4850648732042386,
+     "eps(4.5)_by_c": {
+      "0.0001": 0.13583067096281737,
+      "0.0003": 0.12961668953976965,
+      "0.001": 0.1295993243289215,
+      "0.003": 0.08983724292304975
+     },
+     "eps(4.5)_c3e-3_over_c3e-4": 0.6930993473296927
+    },
+    "lower_end_c3e-4": {
+     "r_eps_over_free_half_box": 0.6719225756964023,
+     "disclination_network_by_c": {
+      "0.0001": {
+       "frustrated_squares_free_region": 96,
+       "r_min": 1.299038105676658,
+       "r_median": 8.015385890429446,
+       "r_max": 14.430827027734985
+      },
+      "0.0003": {
+       "frustrated_squares_free_region": 80,
+       "r_min": 1.299038105676658,
+       "r_median": 8.297869319412595,
+       "r_max": 11.953858494245713
+      },
+      "0.001": {
+       "frustrated_squares_free_region": 24,
+       "r_min": 1.299038105676658,
+       "r_median": 3.0545271157439555,
+       "r_max": 4.130356813809173
+      },
+      "0.003": {
+       "frustrated_squares_free_region": 6,
+       "r_min": 1.299038105676658,
+       "r_median": 1.8932533492216042,
+       "r_max": 2.385787374716316
+      }
+     }
+    }
+   },
+   "expectation": "r_eps(3e-3) at least twice the floor, eps(4.5) within 20 percent of its c = 3e-4 value, the network inside r = 5 on all three rows",
+   "fails_if": "an end point within a factor 2 of the floor, an amplitude already down by more than 20 percent, or a network reaching into the read region",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D5.falling_rows_radii",
+   "claim": "the FALLING L72 rows at c = 3e-4 and 1e-3 (fmax 1.1e-3 and 6.7e-3) are converged enough for their radii",
+   "method": "r_eps recomputed from every stored chunk of the last 1000 iterations; the converged L48 row at c = 1e-3 as a cross-check",
+   "value": {
+    "0.0003": {
+     "iters": [
+      3000,
+      3250,
+      3500,
+      3750,
+      4000
+     ],
+     "r_eps": [
+      22.128422178079752,
+      22.119906609773157,
+      22.149699235812378,
+      22.14196150897112,
+      22.173444997981278
+     ],
+     "E": [
+      4.816898138929013,
+      4.815445811621638,
+      4.814130692480447,
+      4.812721856677973,
+      4.811128062169422
+     ],
+     "fmax": [
+      0.0012650064679096784,
+      0.004451043919772114,
+      0.0017173210071404453,
+      0.003810920310697228,
+      0.0011112381031871822
+     ],
+     "change_over_window_rel": 0.002030483756837274,
+     "last_chunk_step_rel": 0.0014198735926250002,
+     "monotone": false,
+     "label": "FALLING"
+    },
+    "0.001": {
+     "iters": [
+      3000,
+      3250,
+      3500,
+      3750,
+      4000
+     ],
+     "r_eps": [
+      15.818005028158474,
+      15.963888908569446,
+      16.011910895865874,
+      16.101432308188024,
+      16.109227742287665
+     ],
+     "E": [
+      5.664249271808977,
+      5.658503483926832,
+      5.654753567687098,
+      5.652555267032316,
+      5.651275161709977
+     ],
+     "fmax": [
+      0.001869537657722109,
+      0.003660263622789871,
+      0.0024433289983426475,
+      0.0014304889395186683,
+      0.006719460546241148
+     ],
+     "change_over_window_rel": 0.01807800589749651,
+     "last_chunk_step_rel": 0.0004839110989273477,
+     "monotone": true,
+     "label": "FALLING"
+    },
+    "0.003": {
+     "iters": [
+      250,
+      500,
+      750,
+      1000,
+      1250
+     ],
+     "r_eps": [
+      8.944666002597359,
+      8.823918683178563,
+      9.363968044007335,
+      9.379914326492363,
+      9.393331008520754
+     ],
+     "E": [
+      6.58494979036743,
+      6.534312995171639,
+      6.513204174773845,
+      6.510880146769129,
+      6.5103768406957885
+     ],
+     "fmax": [
+      0.00012342423651625603,
+      0.01931115467057653,
+      0.0019577443609851706,
+      0.002510351715637474,
+      0.0002768310607502999
+     ],
+     "change_over_window_rel": 0.047764206916205566,
+     "last_chunk_step_rel": 0.0014283199448864479,
+     "monotone": false,
+     "label": "AT_GATE"
+    },
+    "cross_check_c1e-3": {
+     "n32_L48_AT_GATE_r_eps": 15.806191703639211,
+     "n48_L72_FALLING_r_eps": 16.109227742287665,
+     "rel_diff": 0.0188113324546878
+    }
+   },
+   "expectation": "change over the last 1000 iterations under 2 percent, last chunk step under 0.5 percent, L48 and L72 within 3 percent at c = 1e-3",
+   "fails_if": "a radius still moving by 2 percent per 1000 iterations or more",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D5.box_check_numbers",
+   "claim": "the L48 and L72 half-energy radii differ by 11.7 percent at c = 3e-5 and by 7.1 percent at c = 1e-4 (L72 row unconverged); the pre-registered label is HALO_BOX_LIMITED",
+   "method": "own half-energy radius (cell reader and interpolated) on the four end fields",
+   "value": {
+    "rows": {
+     "3e-05": {
+      "r_half_cell_reader": [
+       16.482945732,
+       18.659782957,
+       0.1166593003796641
+      ],
+      "r_half_interpolated": [
+       16.456200468380526,
+       18.60522287956724,
+       0.11550640511524472
+      ],
+      "labels": [
+       "FALLING",
+       "FALLING"
+      ],
+      "fmax_over_gate": [
+       2.032618351098321,
+       4.958491962439451
+      ],
+      "collect_r_half_drift": [
+       0.0,
+       0.013093682531128858
+      ],
+      "collect_both_converged": true
+     },
+     "0.0001": {
+      "r_half_cell_reader": [
+       15.927570436,
+       17.151894939,
+       0.07138129678115805
+      ],
+      "r_half_interpolated": [
+       15.922126424107056,
+       17.034530935176406,
+       0.0653029141396684
+      ],
+      "labels": [
+       "FALLING",
+       "FALLING"
+      ],
+      "fmax_over_gate": [
+       5.897629507667783,
+       3.5387265347236623
+      ],
+      "collect_r_half_drift": [
+       0.0,
+       0.023467370264964347
+      ],
+      "collect_both_converged": false
+     }
+    },
+    "collect_label": "HALO_BOX_LIMITED"
+   },
+   "expectation": "cell-reader differences within 0.002 of 0.117 and 0.071, label HALO_BOX_LIMITED",
+   "fails_if": "a difference I cannot reproduce or another label in the collect JSON",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D5.label_margin",
+   "claim": "WORDING: HALO_BOX_LIMITED is a robust outcome of the pre-registered rule",
+   "method": "replica of the rule's last step from the collect summary: the c = 1e-4 box check passes its 10 percent gate (7.1) and is excluded only by the drift flag of the L72 row (r_half drift 2.35 percent against 2.0, read on a cell-quantized radius); the label the rule gives if that one flag flips",
+   "value": {
+    "r_half": {
+     "points": [
+      [
+       0.0001,
+       15.927570436196476
+      ],
+      [
+       0.0003,
+       13.970952007647869
+      ],
+      [
+       0.001,
+       11.299889379989523
+      ],
+      [
+       0.003,
+       7.46240577829965
+      ],
+      [
+       0.01,
+       5.7608593109014565
+      ],
+      [
+       0.03,
+       5.7608593109014565
+      ]
+     ],
+     "slope": -0.20338015104321666
+    },
+    "r_eps": {
+     "points": [
+      [
+       0.001,
+       15.806191703639211
+      ],
+      [
+       0.003,
+       9.364025931408039
+      ],
+      [
+       0.01,
+       6.674925601566038
+      ],
+      [
+       0.03,
+       6.32519910611939
+      ]
+     ],
+     "slope": -0.2705999198286325
+    },
+    "label_if_the_c1e-4_box_check_had_counted": "HALO_QUARTER",
+    "margin": {
+     "L72_c1e-4_r_half_drift": 0.023467370264964347,
+     "drift_gate": 0.02,
+     "box_difference_at_c1e-4": 0.07138129678115805,
+     "box_gate": 0.1
+    }
+   },
+   "expectation": "the same label HALO_BOX_LIMITED",
+   "fails_if": "another label: the outcome then hangs on a 0.35 point margin of one drift read, and the alternative label would rest on a fit through the floor rows c >= 1e-2",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D6.arithmetic",
+   "claim": "the linearized one-mode equation predicts r_eps = 18.5, 14.0, 11.0, 8.6, 7.2; the L72 reads are 1.3 to 2.0 times larger; a factor 2 in R is a factor 16 in beta",
+   "method": "the record's reader on sqrt(r) K_nu(sqrt(beta) r^2 / 2), beta = 5.81 c / (2 * 3.92), on the reader's 0.75 grid and on a 0.001 grid",
+   "value": {
+    "rows": {
+     "3e-05": {
+      "quoted": 18.5,
+      "on_reader_grid": 18.51349366428368,
+      "on_fine_grid": 18.512018470318242,
+      "beta_-1/4": 14.563128074134305,
+      "measured_L72": 32.98420995784181,
+      "measured_over_predicted": 1.7816307692088993
+     },
+     "0.0001": {
+      "quoted": 14.0,
+      "on_reader_grid": 13.984140203978734,
+      "on_fine_grid": 13.981760180919354,
+      "beta_-1/4": 10.777920667285649,
+      "measured_L72": 28.109276504462702,
+      "measured_over_predicted": 2.0100825717168593
+     },
+     "0.0003": {
+      "quoted": 11.0,
+      "on_reader_grid": 10.980485286083617,
+      "on_fine_grid": 10.976774403328534,
+      "beta_-1/4": 8.18944874012546,
+      "measured_L72": 22.173444997981278,
+      "measured_over_predicted": 2.0193501853769003
+     },
+     "0.001": {
+      "quoted": 8.6,
+      "on_reader_grid": 8.637351592220602,
+      "on_fine_grid": 8.630211969198763,
+      "beta_-1/4": 6.060870190837862,
+      "measured_L72": 16.109227742287665,
+      "measured_over_predicted": 1.8650656477613754
+     },
+     "0.003": {
+      "quoted": 7.2,
+      "on_reader_grid": 7.165762001259346,
+      "on_fine_grid": 7.153511181443198,
+      "beta_-1/4": 4.605265457100586,
+      "measured_L72": 9.393331008520754,
+      "measured_over_predicted": 1.3108628233633663
+     }
+    },
+    "ratio_range": [
+     1.3108628233633663,
+     2.0193501853769003
+    ],
+    "two_to_the_fourth": 16.0
+   },
+   "expectation": "predictions within 0.05 of the quotes; ratio range within 0.05 of [1.3, 2.0]",
+   "fails_if": "a prediction or a ratio I cannot reproduce",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D6.reason_nonlinearity",
+   "claim": "possible reason 1 is absent: in the read region the split is small enough for the linearized potential term (5.81 c eps^2 dominates V4 = k4 eps^4)",
+   "method": "k4 from my own per-cell potential on the split with M_00 re-solved; eps_x = sqrt(5.81 c / (2 k4)) is where the two restoring forces are equal; shell-mean eps at r = 6",
+   "value": {
+    "k4_by_eps": {
+     "0.02": 0.13675177224564683,
+     "0.05": 0.13677629461370752,
+     "0.1": 0.13686392023711896,
+     "0.15": 0.13701012188958353
+    },
+    "rows": {
+     "3e-05": {
+      "eps_x": 0.025242262494057918,
+      "eps(4.5)": 0.13694618014977847,
+      "eps(6)": 0.12557887112989402,
+      "quartic_over_quadratic_force_at_r6": 24.750079150927476,
+      "eps(6)_over_gap_0.7": 0.17939838732842003,
+      "minus_cL_eps4_over_eps2_term_at_r6": 0.0013571474074232813,
+      "first_shell_radius_with_eps_below_eps_x": 32.25,
+      "r_eps": 32.98420995784181
+     },
+     "0.0001": {
+      "eps_x": 0.04608585523487378,
+      "eps(4.5)": 0.13583067096281737,
+      "eps(6)": 0.1318912001995733,
+      "quartic_over_quadratic_force_at_r6": 8.190234529312953,
+      "eps(6)_over_gap_0.7": 0.18841600028510472,
+      "minus_cL_eps4_over_eps2_term_at_r6": 0.0014970127960485303,
+      "first_shell_radius_with_eps_below_eps_x": 24.75,
+      "r_eps": 28.109276504462702
+     },
+     "0.0003": {
+      "eps_x": 0.0798230427770655,
+      "eps(4.5)": 0.12961668953976965,
+      "eps(6)": 0.12957121081064837,
+      "quartic_over_quadratic_force_at_r6": 2.634877791849575,
+      "eps(6)_over_gap_0.7": 0.18510172972949768,
+      "minus_cL_eps4_over_eps2_term_at_r6": 0.001444810556879301,
+      "first_shell_radius_with_eps_below_eps_x": 17.25,
+      "r_eps": 22.173444997981278
+     },
+     "0.001": {
+      "eps_x": 0.14573627045899534,
+      "eps(4.5)": 0.1295993243289215,
+      "eps(6)": 0.09966174480425811,
+      "quartic_over_quadratic_force_at_r6": 0.4676507873153523,
+      "eps(6)_over_gap_0.7": 0.14237392114894018,
+      "minus_cL_eps4_over_eps2_term_at_r6": 0.0008547730961642917,
+      "first_shell_radius_with_eps_below_eps_x": 4.5,
+      "r_eps": 16.109227742287665
+     },
+     "0.003": {
+      "eps_x": 0.2524226249405792,
+      "eps(4.5)": 0.08983724292304975,
+      "eps(6)": 0.08878723488515479,
+      "quartic_over_quadratic_force_at_r6": 0.12372130848913683,
+      "eps(6)_over_gap_0.7": 0.12683890697879258,
+      "minus_cL_eps4_over_eps2_term_at_r6": 0.0006784142064158044,
+      "first_shell_radius_with_eps_below_eps_x": 4.5,
+      "r_eps": 9.393331008520754
+     }
+    }
+   },
+   "expectation": "force ratio (eps / eps_x)^2 at r = 6 under 0.25 at every c of the five",
+   "fails_if": "a c where the quartic V4 force at r = 6 is a quarter of the linear one or more: the linear equation cannot hold from r_ref on, and nonlinearity is a live reason for the prefactor",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D6.reason_disclinations",
+   "claim": "possible reason 2 is absent: the disclination network of the top eigenvector stays inside the read region's inner edge (r_ref 4.5, fit window from 5)",
+   "method": "frustrated elementary squares over the free region (the earlier auditor's counter), their largest radius",
+   "value": {
+    "3e-05": {
+     "frustrated_squares_free_region": 90,
+     "r_min": 1.299038105676658,
+     "r_median": 8.297869319412595,
+     "r_max": 12.601099819922393
+    },
+    "0.0001": {
+     "frustrated_squares_free_region": 96,
+     "r_min": 1.299038105676658,
+     "r_median": 8.015385890429446,
+     "r_max": 14.430827027734985
+    },
+    "0.0003": {
+     "frustrated_squares_free_region": 80,
+     "r_min": 1.299038105676658,
+     "r_median": 8.297869319412595,
+     "r_max": 11.953858494245713
+    },
+    "0.001": {
+     "frustrated_squares_free_region": 24,
+     "r_min": 1.299038105676658,
+     "r_median": 3.0545271157439555,
+     "r_max": 4.130356813809173
+    },
+    "0.003": {
+     "frustrated_squares_free_region": 6,
+     "r_min": 1.299038105676658,
+     "r_median": 1.8932533492216042,
+     "r_max": 2.385787374716316
+    }
+   },
+   "expectation": "r_max under 5 at every c of the five",
+   "fails_if": "a c where the network reaches r = 5 or beyond (the one-mode, defect-free ansatz is then not the state that was measured)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D6.verdict_linear_tail",
+   "claim": "'the linearized one-mode equation does not describe the measured halo quantitatively' survives a fairer test: the K_nu cutoff fitted ONLY on the linear tail (eps below half of eps_x) against beta^(-1/4)",
+   "method": "log-space K_nu fit restricted to shells with eps < eps_x / 2, r >= 5; ratio of the fitted cutoff to the theoretical one",
+   "value": {
+    "3e-05": {
+     "tail_fit": null,
+     "beta_-1/4": 14.563128074134305,
+     "R_tail_over_theory": null,
+     "R_full_window_over_theory": 2.7152953321610105,
+     "implied_beta_over_theory_beta": null
+    },
+    "0.0001": {
+     "tail_fit": null,
+     "beta_-1/4": 10.777920667285649,
+     "R_tail_over_theory": null,
+     "R_full_window_over_theory": 1.6660930605923372,
+     "implied_beta_over_theory_beta": null
+    },
+    "0.0003": {
+     "tail_fit": {
+      "points": 14,
+      "r_first_last": [
+       20.25,
+       30.0
+      ],
+      "knu_R_log": 8.916878566397036,
+      "knu_R_lin": 9.171642115357926,
+      "knu_rms_log": 0.029365236952605157,
+      "yukawa_R_log": 3.378206760054911,
+      "yukawa_R_lin": 3.972811014754484,
+      "yukawa_rms_log": 0.0802067826839544,
+      "power_exponent_log": 8.31616166265286,
+      "power_rms_log": 0.12781650405050304
+     },
+     "beta_-1/4": 8.18944874012546,
+     "R_tail_over_theory": 1.0888252493366766,
+     "R_full_window_over_theory": 1.3227194662574164,
+     "implied_beta_over_theory_beta": 0.7114874868668178
+    },
+    "0.001": {
+     "tail_fit": {
+      "points": 22,
+      "r_first_last": [
+       12.75,
+       28.5
+      ],
+      "knu_R_log": 7.158965851379281,
+      "knu_R_lin": 7.524723741588691,
+      "knu_rms_log": 0.07399405148653593,
+      "yukawa_R_log": 2.6412120742009795,
+      "yukawa_R_lin": 4.100257786053284,
+      "yukawa_rms_log": 0.19636587126622168,
+      "power_exponent_log": 8.378429665850792,
+      "power_rms_log": 0.3856140365056952
+     },
+     "beta_-1/4": 6.060870190837862,
+     "R_tail_over_theory": 1.181177887987338,
+     "R_full_window_over_theory": 1.2662772598001288,
+     "implied_beta_over_theory_beta": 0.513734541571211
+    },
+    "0.003": {
+     "tail_fit": {
+      "points": 20,
+      "r_first_last": [
+       5.25,
+       19.5
+      ],
+      "knu_R_log": 5.12457962808672,
+      "knu_R_lin": 5.881908612386193,
+      "knu_rms_log": 0.15120670512108855,
+      "yukawa_R_log": 2.32386258847567,
+      "yukawa_R_lin": 5.730119305262945,
+      "yukawa_rms_log": 0.3501343547140405,
+      "power_exponent_log": 5.5978402819828466,
+      "power_rms_log": 0.6621727101706238
+     },
+     "beta_-1/4": 4.605265457100586,
+     "R_tail_over_theory": 1.1127653065439331,
+     "R_full_window_over_theory": 1.1127653065439331,
+     "implied_beta_over_theory_beta": 0.6522073555204168
+    }
+   },
+   "expectation": "the record's statement stands: at least one ratio outside [0.9, 1.1]",
+   "fails_if": "every tail ratio inside [0.9, 1.1]: the equation would then describe the tail and the factor 1.3 to 2.0 would be the r_eps reader starting inside the nonlinear plateau",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D7.values",
+   "claim": "at c = 3e-3: r_eps 9.36, 9.39, 8.82 and E 6.2314, 6.5104, 6.3330; the L48 to L72 energy difference is 0.279 (4.5 percent)",
+   "method": "own reads and own energies",
+   "value": {
+    "r_eps": [
+     9.364025931408037,
+     9.393331008520754,
+     8.819259482190139
+    ],
+    "E": [
+     6.231383849877297,
+     6.51037684070913,
+     6.332933126060199
+    ],
+    "E_L72_minus_E_L48": 0.27899299083183315,
+    "rel": 0.04477223640096042
+   },
+   "expectation": "r_eps within 0.006, E within 1e-4, difference within 0.001 of 0.279",
+   "fails_if": "any quoted number off",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D7.hedgehog_density",
+   "claim": "the curvature energy density of the uniaxial hedgehog is 8 (1 - delta)^4 / r^4",
+   "method": "the earlier auditor's lattice curvature density on S = delta I + (1 - delta) rhat rhat^T, mean of density r^4 / (1 - delta)^4 over cells with 10 < r < 18 at h = 1.5",
+   "value": {
+    "coefficient": 8.050640526175174
+   },
+   "expectation": "coefficient within 3 percent of 8",
+   "fails_if": "a lattice coefficient off 8 by more than 3 percent",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D7.coulomb_tail_accounts",
+   "claim": "the 0.279 energy difference between L48 and L72 at c = 3e-3 is the Coulomb tail of the hedgehog between the two walls",
+   "method": "lattice hedgehog curvature energy outside r = 12 on each lattice (boundary stencils and pinned shells as the rows have them), L72 minus L48; the continuum cube-minus-cube integral; the rows' own difference split inside / outside r = 12",
+   "value": {
+    "continuum_cube_factor_k": 10.444949520823766,
+    "continuum_cube_minus_cube": 0.2786480422166428,
+    "split_at_r9": {
+     "rows_inside_diff": -0.021704234317633464,
+     "rows_outside_diff": 0.30069722514946395,
+     "hedgehog_outside_diff_lattice": 0.2827132762206803
+    },
+    "split_at_r12": {
+     "rows_inside_diff": -0.0073860607548903445,
+     "rows_outside_diff": 0.28637905158672217,
+     "hedgehog_outside_diff_lattice": 0.28271327622068076
+    },
+    "split_at_r15": {
+     "rows_inside_diff": -0.004717550355573863,
+     "rows_outside_diff": 0.2837105411874039,
+     "hedgehog_outside_diff_lattice": 0.282713276220681
+    },
+    "L72_cells_outside_the_L48_cube": {
+     "rows": 0.27718236706135,
+     "hedgehog": 0.2751237536559045
+    }
+   },
+   "expectation": "the hedgehog difference within 5 percent of 0.279 and the rows' difference inside r = 12 under 5 percent of 0.279",
+   "fails_if": "a hedgehog tail that misses 0.279 by more than 5 percent, or an interior that differs between the boxes by more than 0.014",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D8.clean_degree_high_c",
+   "claim": "clean unit |degree| with zero orientation conflicts on the r 6, 9, 12 cubes for every rad-seed row with c >= 1e-3 on every box and spacing",
+   "method": "the earlier auditor's reader (gauge-invariant frustrated squares, flood-fill orientation, solid-angle degree) on the record's cube and on the box-centered cube",
+   "value": {
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "c": 0.0,
+     "box": "n32_L48",
+     "network": {
+      "frustrated_squares_free_region": 130,
+      "r_min": 1.299038105676658,
+      "r_median": 8.297869319412595,
+      "r_max": 13.120270581738241
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        28
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 10,
+        "conflicts_bfs": 34,
+        "conflicts_rhat": 28,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 8,
+        "conflicts_bfs": 66,
+        "conflicts_rhat": 18,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        null,
+        6
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 4,
+        "conflicts_bfs": 66,
+        "conflicts_rhat": 6,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 2,
+        "conflicts_bfs": 15,
+        "conflicts_rhat": 3,
+        "degree_bfs": null
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        -1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "c": 3e-05,
+     "box": "n32_L48",
+     "network": {
+      "frustrated_squares_free_region": 92,
+      "r_min": 1.893253349221604,
+      "r_median": 7.592798416764097,
+      "r_max": 10.869628957695896
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        37
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 12,
+        "conflicts_bfs": 55,
+        "conflicts_rhat": 19,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 6,
+        "conflicts_bfs": 16,
+        "conflicts_rhat": 11,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        -1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "c": 0.0001,
+     "box": "n32_L48",
+     "network": {
+      "frustrated_squares_free_region": 96,
+      "r_min": 1.299038105676658,
+      "r_median": 8.81258053284634,
+      "r_max": 11.953858494245715
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        23
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 8,
+        "conflicts_bfs": 34,
+        "conflicts_rhat": 23,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 8,
+        "conflicts_bfs": 44,
+        "conflicts_rhat": 16,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        null,
+        4
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 2,
+        "conflicts_bfs": 50,
+        "conflicts_rhat": 4,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 0.9999999999999999
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        -1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+     "c": 0.0003,
+     "box": "n32_L48",
+     "network": {
+      "frustrated_squares_free_region": 80,
+      "r_min": 1.299038105676658,
+      "r_median": 7.945333868088346,
+      "r_max": 10.869628957695896
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        17
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 8,
+        "conflicts_bfs": 67,
+        "conflicts_rhat": 17,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 4,
+        "conflicts_bfs": 6,
+        "conflicts_rhat": 6,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "c": 0.001,
+     "box": "n32_L48",
+     "network": {
+      "frustrated_squares_free_region": 20,
+      "r_min": 1.299038105676658,
+      "r_median": 2.385787374716316,
+      "r_max": 4.8735328535961076
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        -1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "c": 0.003,
+     "box": "n32_L48",
+     "network": {
+      "frustrated_squares_free_region": 6,
+      "r_min": 1.299038105676658,
+      "r_median": 1.8932533492216042,
+      "r_max": 2.385787374716316
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.01_n32_L48": {
+     "c": 0.01,
+     "box": "n32_L48",
+     "network": {
+      "frustrated_squares_free_region": 6,
+      "r_min": 1.893253349221604,
+      "r_median": 1.8932533492216042,
+      "r_max": 1.8932533492216042
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.03_n32_L48": {
+     "c": 0.03,
+     "box": "n32_L48",
+     "network": {
+      "frustrated_squares_free_region": 6,
+      "r_min": 1.893253349221604,
+      "r_median": 1.893253349221604,
+      "r_max": 1.8932533492216042
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        -1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c3e-05_n48_L72": {
+     "c": 3e-05,
+     "box": "n48_L72",
+     "network": {
+      "frustrated_squares_free_region": 90,
+      "r_min": 1.299038105676658,
+      "r_median": 8.297869319412595,
+      "r_max": 12.601099819922393
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        24
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 6,
+        "conflicts_bfs": 29,
+        "conflicts_rhat": 24,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 4,
+        "conflicts_bfs": 12,
+        "conflicts_rhat": 13,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        0.9999999999999999,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0001_n48_L72": {
+     "c": 0.0001,
+     "box": "n48_L72",
+     "network": {
+      "frustrated_squares_free_region": 96,
+      "r_min": 1.299038105676658,
+      "r_median": 8.015385890429446,
+      "r_max": 14.430827027734985
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        14
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 4,
+        "conflicts_bfs": 30,
+        "conflicts_rhat": 14,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 4,
+        "conflicts_bfs": 34,
+        "conflicts_rhat": 17,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        null,
+        7
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 2,
+        "conflicts_bfs": 7,
+        "conflicts_rhat": 7,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 2,
+        "conflicts_bfs": 3,
+        "conflicts_rhat": 3,
+        "degree_bfs": null
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        0.9999999999999999,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L72": {
+     "c": 0.0003,
+     "box": "n48_L72",
+     "network": {
+      "frustrated_squares_free_region": 80,
+      "r_min": 1.299038105676658,
+      "r_median": 8.297869319412595,
+      "r_max": 11.953858494245713
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        15
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 6,
+        "conflicts_bfs": 35,
+        "conflicts_rhat": 15,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 8,
+        "conflicts_bfs": 74,
+        "conflicts_rhat": 12,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        -1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.001_n48_L72": {
+     "c": 0.001,
+     "box": "n48_L72",
+     "network": {
+      "frustrated_squares_free_region": 24,
+      "r_min": 1.299038105676658,
+      "r_median": 3.0545271157439555,
+      "r_max": 4.130356813809173
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L72": {
+     "c": 0.003,
+     "box": "n48_L72",
+     "network": {
+      "frustrated_squares_free_region": 6,
+      "r_min": 1.299038105676658,
+      "r_median": 1.8932533492216042,
+      "r_max": 2.385787374716316
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0003_n48_L48": {
+     "c": 0.0003,
+     "box": "n48_L48",
+     "network": {
+      "frustrated_squares_free_region": 154,
+      "r_min": 1.2621688994810691,
+      "r_median": 7.106402037559202,
+      "r_max": 11.727616070334253
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        33
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 4,
+        "conflicts_bfs": 62,
+        "conflicts_rhat": 33,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 6,
+        "conflicts_bfs": 73,
+        "conflicts_rhat": 21,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.003_n48_L48": {
+     "c": 0.003,
+     "box": "n48_L48",
+     "network": {
+      "frustrated_squares_free_region": 8,
+      "r_min": 0.8660254037844386,
+      "r_median": 1.2621688994810691,
+      "r_max": 1.2621688994810691
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.01_n48_L48": {
+     "c": 0.01,
+     "box": "n48_L48",
+     "network": {
+      "frustrated_squares_free_region": 0,
+      "r_min": null,
+      "r_median": null,
+      "r_max": null
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.03_n48_L48": {
+     "c": 0.03,
+     "box": "n48_L48",
+     "network": {
+      "frustrated_squares_free_region": 0,
+      "r_min": null,
+      "r_median": null,
+      "r_max": null
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        -1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      }
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+     "c": 0.0003,
+     "box": "n32_L48_from_r22s",
+     "network": {
+      "frustrated_squares_free_region": 58,
+      "r_min": 1.893253349221604,
+      "r_median": 6.796142501052339,
+      "r_max": 9.663219779336313
+     },
+     "cubes": {
+      "6": {
+       "stored_degree_conflicts": [
+        null,
+        7
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 4,
+        "conflicts_bfs": 23,
+        "conflicts_rhat": 7,
+        "degree_bfs": null
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 2,
+        "conflicts_bfs": 1,
+        "conflicts_rhat": 1,
+        "degree_bfs": null
+       }
+      },
+      "9": {
+       "stored_degree_conflicts": [
+        -1.0000000000000002,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       }
+      },
+      "12": {
+       "stored_degree_conflicts": [
+        1.0,
+        0
+       ],
+       "record_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0
+       },
+       "box_centered_cube": {
+        "frustrated_plaquettes": 0,
+        "conflicts_bfs": 0,
+        "conflicts_rhat": 0,
+        "degree_bfs": 1.0000000000000002
+       }
+      }
+     }
+    }
+   },
+   "expectation": "zero frustrated squares, zero conflicts, |degree| = 1 to 1e-6 on both cubes, 9 rows",
+   "fails_if": "a frustrated square, a conflict or a non-unit degree on any cube of a c >= 1e-3 row",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D8.conflicts_only_low_c",
+   "claim": "conflicts appear only at c <= 3e-4, and every row there has them; the stored zero / nonzero pattern is the gauge-invariant one",
+   "method": "disclination piercings per cube on all 18 rows (values in D8.clean_degree_high_c)",
+   "value": {
+    "rows_c<=3e-4_all_pierced": true,
+    "stored_pattern_matches_piercings": true
+   },
+   "expectation": "every c <= 3e-4 row pierced on at least one cube; stored conflicts zero exactly where my piercing count is zero",
+   "fails_if": "a clean c <= 3e-4 row, or a stored clean cube with piercings (or the reverse)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D8.cube_centering",
+   "claim": "WORDING: the clean / pierced class of a cube does not depend on the record's cube being centered half a cell off the box center",
+   "method": "the same read on the box-centered cube (one cell wider on the low side)",
+   "value": {
+    "cubes_that_change_class [record, centered, centered degree]": {
+     "rad_pin_d0.3_w25_c0.0001_n32_L48 r9": [
+      2,
+      0,
+      0.9999999999999999
+     ]
+    }
+   },
+   "expectation": "no cube changes class",
+   "fails_if": "a cube pierced on the record's cube and clean on the box-centered one, or the reverse",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D8.network_radius_is_smooth",
+   "claim": "WORDING: the c ladder is one family of states (the disclination network shrinks smoothly with c, like the halo radius)",
+   "method": "outer radius of the network per row; the largest local log slope between neighbors",
+   "value": {
+    "r_max_by_row": {
+     "rad_pin_d0.3_w25_c0_n32_L48": 13.120270581738241,
+     "rad_pin_d0.3_w25_c3e-05_n32_L48": 10.869628957695896,
+     "rad_pin_d0.3_w25_c0.0001_n32_L48": 11.953858494245715,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": 10.869628957695896,
+     "rad_pin_d0.3_w25_c0.001_n32_L48": 4.8735328535961076,
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 2.385787374716316,
+     "rad_pin_d0.3_w25_c0.01_n32_L48": 1.8932533492216042,
+     "rad_pin_d0.3_w25_c0.03_n32_L48": 1.8932533492216042,
+     "rad_pin_d0.3_w25_c3e-05_n48_L72": 12.601099819922393,
+     "rad_pin_d0.3_w25_c0.0001_n48_L72": 14.430827027734985,
+     "rad_pin_d0.3_w25_c0.0003_n48_L72": 11.953858494245713,
+     "rad_pin_d0.3_w25_c0.001_n48_L72": 4.130356813809173,
+     "rad_pin_d0.3_w25_c0.003_n48_L72": 2.385787374716316,
+     "rad_pin_d0.3_w25_c0.0003_n48_L48": 11.727616070334253,
+     "rad_pin_d0.3_w25_c0.003_n48_L48": 1.2621688994810691,
+     "rad_pin_d0.3_w25_c0.01_n48_L48": null,
+     "rad_pin_d0.3_w25_c0.03_n48_L48": null,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": 9.663219779336313
+    },
+    "by_box": {
+     "n32_L48": {
+      "0": 13.120270581738241,
+      "3e-05": 10.869628957695896,
+      "0.0001": 11.953858494245715,
+      "0.0003": 10.869628957695896,
+      "0.001": 4.8735328535961076,
+      "0.003": 2.385787374716316,
+      "0.01": 1.8932533492216042,
+      "0.03": 1.8932533492216042
+     },
+     "n48_L72": {
+      "3e-05": 12.601099819922393,
+      "0.0001": 14.430827027734985,
+      "0.0003": 11.953858494245713,
+      "0.001": 4.130356813809173,
+      "0.003": 2.385787374716316
+     },
+     "n48_L48": {
+      "0.0003": 11.727616070334253,
+      "0.003": 1.2621688994810691,
+      "0.01": null,
+      "0.03": null
+     }
+    },
+    "L72_slope_3e-4_to_1e-3": -0.882653088303852
+   },
+   "expectation": "local slope of the network radius between c 3e-4 and 1e-3 no steeper than -0.6",
+   "fails_if": "a slope steeper than -0.6 between two window points: the network collapses into the core between them, so the window straddles a structural change",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D9.arithmetic",
+   "claim": "V_0 = 0.019253, c_phys = 5.1e-6; anchored at r_eps(1e-3) = 16.1 the slopes -1/4 and -1/2 give 60 and 225 lattice units, 15 and 56 core radii",
+   "method": "own V4 of the isotropic block at M_00 = g; the conversion as stated",
+   "value": {
+    "V_0": 0.019252539883733592,
+    "c_phys": 5.136219762441836e-06,
+    "anchored_at_c1e-3": [
+     {
+      "lattice_units": 60.174684506045,
+      "core_radii": 15.04367112651125
+     },
+     {
+      "lattice_units": 224.77754448133686,
+      "core_radii": 56.194386120334215
+     }
+    ],
+    "decades_below_the_smallest_window_c": 1.7664776571872984
+   },
+   "expectation": "V_0 within 1e-6, c_phys within 0.05e-6 of 5.1e-6, 60 and 225 within 1, 15 and 56 within 0.5",
+   "fails_if": "any of the quoted numbers off",
+   "verdict": "PASS"
+  },
+  {
+   "id": "D9.anchor_robustness",
+   "claim": "WORDING: '15 to 56 core radii' is a fair statement of the extrapolation range",
+   "method": "the same two exponents anchored at each of the three window points, with r_eps and with the K_nu cutoff",
+   "value": {
+    "all": {
+     "r_eps anchor c0.0003 slope -0.25": {
+      "lattice_units": 61.298886730187895,
+      "core_radii": 15.324721682546974
+     },
+     "r_eps anchor c0.0003 slope -0.5": {
+      "lattice_units": 169.46187273572065,
+      "core_radii": 42.36546818393016
+     },
+     "r_eps anchor c0.001 slope -0.25": {
+      "lattice_units": 60.174684506045,
+      "core_radii": 15.04367112651125
+     },
+     "r_eps anchor c0.001 slope -0.5": {
+      "lattice_units": 224.77754448133686,
+      "core_radii": 56.194386120334215
+     },
+     "r_eps anchor c0.003 slope -0.25": {
+      "lattice_units": 46.17841696588908,
+      "core_radii": 11.54460424147227
+     },
+     "r_eps anchor c0.003 slope -0.5": {
+      "lattice_units": 227.01703916759197,
+      "core_radii": 56.754259791897994
+     },
+     "knu_R_log anchor c0.0003 slope -0.25": {
+      "lattice_units": 29.94620741048578,
+      "core_radii": 7.486551852621445
+     },
+     "knu_R_log anchor c0.0003 slope -0.5": {
+      "lattice_units": 82.78682794762854,
+      "core_radii": 20.696706986907135
+     },
+     "knu_R_log anchor c0.001 slope -0.25": {
+      "lattice_units": 28.668362739417443,
+      "core_radii": 7.167090684854361
+     },
+     "knu_R_log anchor c0.001 slope -0.5": {
+      "lattice_units": 107.08829192480695,
+      "core_radii": 26.772072981201738
+     },
+     "knu_R_log anchor c0.003 slope -0.25": {
+      "lattice_units": 25.192870838473283,
+      "core_radii": 6.298217709618321
+     },
+     "knu_R_log anchor c0.003 slope -0.5": {
+      "lattice_units": 123.8503032727697,
+      "core_radii": 30.962575818192423
+     }
+    },
+    "r_eps_range_core_radii": [
+     11.54460424147227,
+     56.754259791897994
+    ],
+    "all_reads_range_core_radii": [
+     6.298217709618321,
+     56.754259791897994
+    ]
+   },
+   "expectation": "both ends of the range move by less than 20 percent under the anchor and the reader",
+   "fails_if": "an end of the range that moves by 20 percent or more (the range then states the anchor, not the extrapolation)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "D9.nothing_measured",
+   "claim": "all extrapolated radii lie far outside both boxes, so nothing at the physical point was measured",
+   "method": "the smallest extrapolated radius over all anchors and readers against the larger free half-box (33)",
+   "value": {
+    "smallest_lattice_units": 25.192870838473283,
+    "larger_free_half_box": 33.0,
+    "note": "the K_nu anchors give 25 to 30 lattice units, inside the L72 box; a cutoff radius is not an r_eps (r_eps is about 2 cutoff radii), so this does not put the physical point in reach, but 'all far outside both boxes' holds for r_eps only"
+   },
+   "expectation": "every r_eps extrapolation above 33",
+   "fails_if": "an r_eps extrapolation that fits inside the L72 free region",
+   "verdict": "PASS"
+  }
+ ],
+ "counts": {
+  "PASS": 24,
+  "FAIL": 16,
+  "total": 40
+ },
+ "wall_s": 26.4
+}

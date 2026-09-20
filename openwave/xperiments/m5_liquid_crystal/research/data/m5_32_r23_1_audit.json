@@ -1,0 +1,4701 @@
+{
+ "task": "M5.32 R23-1 / R23-2 adversarial audit",
+ "independence": "own energy, gradient, M_00 solve, radius readers, shells, degree reader and symmetry images; no import from any script in this folder",
+ "checks": [
+  {
+   "id": "C0.rows",
+   "claim": "all 12 finished n32 rows named in the claims exist as end fields",
+   "method": "tag reconstruction from the claim text against the JSON and the npz folder",
+   "value": {
+    "found": 12,
+    "missing": [],
+    "rows_whose_end_field_matches_the_continuation_pool_json": [
+     "rad_pin_d0.3_w25_c0.003_n32_L48"
+    ]
+   },
+   "expectation": "no missing tag",
+   "fails_if": "a claimed row has no status OK row or no end field",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1.block_diagonal",
+   "claim": "every end field is block-diagonal (M_0i = 0) with a symmetric spatial block",
+   "method": "max |M_0i| and max |S - S^T| over all cells",
+   "value": {
+    "max_M0i": 0.0,
+    "max_asym": 5.551115123125783e-17
+   },
+   "expectation": "both exactly zero",
+   "fails_if": "any nonzero M_0i or asymmetry above 1e-15",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1.curv_two_rows",
+   "claim": "my curvature energy (literal 4 x 4 eta form and the 3 x 3 reduction) reproduces the stored E_curv of two rows before it is used for anything else",
+   "method": "own one-sided stencils (zero on the missing layer), fwd and bwd each weighted 1/2",
+   "value": {
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "mine_4x4_eta": 4.5543487471051085,
+     "mine_3x3": 4.554348747105108,
+     "stored": 4.554348747105108,
+     "rel_4x4_vs_stored": 1.950176565342477e-16,
+     "rel_3x3_vs_4x4": 1.9501765653424768e-16
+    },
+    "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+     "mine_4x4_eta": 0.00015321141589944931,
+     "mine_3x3": 0.00015321141589944931,
+     "stored": 0.0001532114158994493,
+     "rel_4x4_vs_stored": 1.7691275909835801e-16,
+     "rel_3x3_vs_4x4": 0.0
+    }
+   },
+   "expectation": "relative difference under 1e-8 for both rows and both forms",
+   "fails_if": "any relative difference at or above 1e-8",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1.energies_all_rows",
+   "claim": "stored E, E_curv, V4, E_lin of every finished n32 row reproduce from its end field",
+   "method": "own energy code on the end field against the last chunk of the row",
+   "value": {
+    "worst_rel_diff": 6.106662025954289e-09,
+    "rows": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+      "mine": {
+       "E": 3.841266658223572,
+       "E_curv": 2.9041688298912907,
+       "V4": 0.5523093596553834,
+       "E_lin": 0.3847884686768979
+      },
+      "rel_diff": {
+       "E": 6.959727822004183e-14,
+       "E_curv": 1.5291439164254296e-16,
+       "V4": 3.61826467248754e-15,
+       "E_lin": 6.898707908291211e-13
+      }
+     },
+     "bia_pin_d0.3_w25_c0.001_n32_L48": {
+      "mine": {
+       "E": 5.337972243437439,
+       "E_curv": 3.855383999135138,
+       "V4": 0.5628242732334979,
+       "E_lin": 0.9197639710688039
+      },
+      "rel_diff": {
+       "E": 4.986670223164116e-13,
+       "E_curv": 2.3037352956264974e-16,
+       "V4": 7.495852070021325e-15,
+       "E_lin": 2.8989085241609765e-12
+      }
+     },
+     "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+      "mine": {
+       "E": 3.9557365116415526,
+       "E_curv": 2.9940063425707453,
+       "V4": 0.5593541088057588,
+       "E_lin": 0.4023760602650489
+      },
+      "rel_diff": {
+       "E": 5.871439011877301e-14,
+       "E_curv": 0.0,
+       "V4": 1.4092295650903684e-14,
+       "E_lin": 5.9763572160717e-13
+      }
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+      "mine": {
+       "E": 4.567435792049457,
+       "E_curv": 3.3673902877116015,
+       "V4": 0.4735045826129137,
+       "E_lin": 0.7265409217249419
+      },
+      "rel_diff": {
+       "E": 1.7365177419088747e-13,
+       "E_curv": 0.0,
+       "V4": 7.479571642181452e-14,
+       "E_lin": 1.043077153604335e-12
+      }
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+      "mine": {
+       "E": 4.485015562267309,
+       "E_curv": 3.2996312661796514,
+       "V4": 0.4530111976138232,
+       "E_lin": 0.7323730984738337
+      },
+      "rel_diff": {
+       "E": 1.6436689641686653e-13,
+       "E_curv": 0.0,
+       "V4": 2.4752705027553697e-14,
+       "E_lin": 1.0202178331379384e-12
+      }
+     },
+     "rad_pin_d0.3_w25_c0.001_n32_L48": {
+      "mine": {
+       "E": 5.416820972918767,
+       "E_curv": 3.985982996312504,
+       "V4": 0.5620395275402119,
+       "E_lin": 0.8687984490660505
+      },
+      "rel_diff": {
+       "E": 4.902605214721948e-13,
+       "E_curv": 1.1141272059135639e-16,
+       "V4": 1.303728937819535e-14,
+       "E_lin": 3.064364140982578e-12
+      }
+     },
+     "rad_pin_d0.3_w25_c0.003_n32_L48": {
+      "mine": {
+       "E": 6.231383849877297,
+       "E_curv": 4.554348747105108,
+       "V4": 1.1855645272023296,
+       "E_lin": 0.4914705755698596
+      },
+      "rel_diff": {
+       "E": 1.3325418953208994e-12,
+       "E_curv": 0.0,
+       "V4": 9.364509473347998e-16,
+       "E_lin": 1.6899216022095543e-11
+      }
+     },
+     "rad_pin_d0.3_w25_c0_n32_L48": {
+      "mine": {
+       "E": 3.5233295159611515,
+       "E_curv": 2.8338424327398446,
+       "V4": 0.6894870832213066,
+       "E_lin": 0.0
+      },
+      "rel_diff": {
+       "E": 4.033359539840085e-15,
+       "E_curv": 1.5670921033555977e-16,
+       "V4": 1.9322590110402287e-14,
+       "E_lin": 0.0
+      }
+     },
+     "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+      "mine": {
+       "E": 3.662298327266299,
+       "E_curv": 2.879799070333779,
+       "V4": 0.6339372785951676,
+       "E_lin": 0.14856197833735196
+      },
+      "rel_diff": {
+       "E": 3.055744532034181e-14,
+       "E_curv": 0.0,
+       "V4": 4.640981236781977e-14,
+       "E_lin": 5.526379871210532e-13
+      }
+     },
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+      "mine": {
+       "E": 0.00015451689733149193,
+       "E_curv": 0.00015321141589944931,
+       "V4": 1.3054814320426293e-06,
+       "E_lin": 0.0
+      },
+      "rel_diff": {
+       "E": 4.1416203882020766e-13,
+       "E_curv": 1.7691275909835801e-16,
+       "V4": 4.900127719188843e-11,
+       "E_lin": 0.0
+      }
+     },
+     "rad_pin_d0.9224_w25_c0_n32_L48": {
+      "mine": {
+       "E": 0.0003222492643699011,
+       "E_curv": 0.0003172225252310014,
+       "V4": 5.026739138899728e-06,
+       "E_lin": 0.0
+      },
+      "rel_diff": {
+       "E": 2.8112274175049142e-11,
+       "E_curv": 0.0,
+       "V4": 1.8022032132959411e-09,
+       "E_lin": 0.0
+      }
+     },
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+      "mine": {
+       "E": 0.0005729148298733233,
+       "E_curv": 0.00041310367799803126,
+       "V4": 1.6834755585545413e-05,
+       "E_lin": 0.0001429763962897466
+      },
+      "rel_diff": {
+       "E": 1.5487829297976697e-09,
+       "E_curv": 0.0,
+       "V4": 8.442189773467243e-10,
+       "E_lin": 6.106662025954289e-09
+      }
+     }
+    }
+   },
+   "expectation": "every relative difference under 1e-8 (absolute for a stored zero)",
+   "fails_if": "any part of any row off by 1e-8 relative or more",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1.pinned_shell",
+   "claim": "the outer shell of depth 1.6 (2 cells at h 1.5) is pinned at the seed in every end field",
+   "method": "own seed construction (rad and bia cores, r_c 4) compared on the shell cells",
+   "value": {
+    "worst": 0.0,
+    "rows": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "bia_pin_d0.3_w25_c0.001_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.001_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.003_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.3_w25_c0_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.9224_w25_c0_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     },
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+      "max_abs_S_minus_seed_on_pin": 0.0,
+      "max_abs_M00_minus_g_on_pin": 0.0
+     }
+    }
+   },
+   "expectation": "difference under 1e-13 (the from_r22s row is pinned at the same analytic hedgehog)",
+   "fails_if": "any pinned cell differs from my seed by 1e-13 or more",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1.m00_minimizer",
+   "claim": "M_00 in the end fields is the per-cell minimizer of the potential density (its M_00 derivative is zero to 1e-8 of its scale)",
+   "method": "g = d/dM_00 of w sum r_p^2 - c sum a_p r_p on free cells against the sum of the absolute values of its terms, on the cells where g is above its double-precision floor (2 w 4 |u|^3 times 8 ulp of u^4 + tr S^4 + C_4); the relative Newton step g / (H u); the Hessian sign; the difference from my own Newton solve. The raw ratio is reported too: it reaches 5e-4 only in near-vacuum cells where the sum of |terms| is itself of roundoff size.",
+   "value": {
+    "worst_resolved_ratio": 0.0,
+    "worst_newton_step_rel": 2.1422226413415812e-16,
+    "worst_diff_from_my_minimizer": 1.7763568394002505e-15,
+    "min_hessian_over_w": 8462791.363255823,
+    "rows": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 1.7797374858407898e-09,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.17790795869742618,
+      "max_newton_step_rel": 1.5666664291772335e-16,
+      "min_hessian_over_w": 8462813.09476384,
+      "max_abs_M00_minus_my_minimizer": 1.7763568394002505e-15
+     },
+     "bia_pin_d0.3_w25_c0.001_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 1.324774128265268e-10,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.12605062753774082,
+      "max_newton_step_rel": 1.1100076349086685e-16,
+      "min_hessian_over_w": 8462794.662985824,
+      "max_abs_M00_minus_my_minimizer": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 1.3113732911756463e-09,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.126073910684084,
+      "max_newton_step_rel": 1.1102125889984437e-16,
+      "min_hessian_over_w": 8462813.532029595,
+      "max_abs_M00_minus_my_minimizer": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 4.4025700098897105e-10,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.17935991434214613,
+      "max_newton_step_rel": 1.5794411651962167e-16,
+      "min_hessian_over_w": 8462791.363255823,
+      "max_abs_M00_minus_my_minimizer": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+      "max_abs_g_over_sum_abs_terms_raw": 5.557912785876971e-10,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.17047790985414643,
+      "max_newton_step_rel": 1.5012364285041918e-16,
+      "min_hessian_over_w": 8462811.365260094,
+      "max_abs_M00_minus_my_minimizer": 1.7763568394002505e-15
+     },
+     "rad_pin_d0.3_w25_c0.001_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 1.639394875091949e-10,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.18628357348541819,
+      "max_newton_step_rel": 1.6404145932400826e-16,
+      "min_hessian_over_w": 8462803.498887822,
+      "max_abs_M00_minus_my_minimizer": 0.0
+     },
+     "rad_pin_d0.3_w25_c0.003_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 4.421382990971575e-11,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.12607178970443492,
+      "max_newton_step_rel": 1.1101959579391467e-16,
+      "min_hessian_over_w": 8462797.798597708,
+      "max_abs_M00_minus_my_minimizer": 0.0
+     },
+     "rad_pin_d0.3_w25_c0_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 2.7162440446954895e-06,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.12606412361469352,
+      "max_newton_step_rel": 1.1101229402101258e-16,
+      "min_hessian_over_w": 8462840.3571619,
+      "max_abs_M00_minus_my_minimizer": 0.0
+     },
+     "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 4.319313666120882e-09,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.126062520284446,
+      "max_newton_step_rel": 1.1101127573164031e-16,
+      "min_hessian_over_w": 8462819.822768917,
+      "max_abs_M00_minus_my_minimizer": 0.0
+     },
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 1.94355823016529e-07,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.18812060898771157,
+      "max_newton_step_rel": 1.6571763240886444e-16,
+      "min_hessian_over_w": 8462850.59376384,
+      "max_abs_M00_minus_my_minimizer": 1.7763568394002505e-15
+     },
+     "rad_pin_d0.9224_w25_c0_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 0.0005241296767770136,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.2431821499620309,
+      "max_newton_step_rel": 2.1422226413415812e-16,
+      "min_hessian_over_w": 8462849.247475613,
+      "max_abs_M00_minus_my_minimizer": 1.7763568394002505e-15
+     },
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+      "max_abs_g_over_sum_abs_terms_raw": 6.396833335323997e-09,
+      "max_ratio_on_cells_where_g_is_above_its_roundoff_floor": 0.0,
+      "fraction_of_free_cells_with_g_above_roundoff_floor": 0.0,
+      "max_abs_g_over_roundoff_floor": 0.18810976542860533,
+      "max_newton_step_rel": 1.6570827694891444e-16,
+      "min_hessian_over_w": 8462849.089031685,
+      "max_abs_M00_minus_my_minimizer": 1.7763568394002505e-15
+     }
+    }
+   },
+   "expectation": "resolved ratio under 1e-8, Newton step under 1e-12 of |M_00|, my minimizer within 1e-12, a positive Hessian",
+   "fails_if": "a free cell with a resolvable M_00 derivative at or above 1e-8 of its scale, a Newton step at or above 1e-12, or a non-positive Hessian",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1.gradient_fd",
+   "claim": "my analytic gradient equals central differences of my own reduced energy (M_00 re-solved per perturbed cell), so the envelope argument holds",
+   "method": "280 (cell, entry) samples per row: 260 random free cells plus the 20 largest |G| entries; 5^3 patches, five-point stencil, step 5e-4; M_00 re-solved by my own Newton (the envelope argument is tested by also holding M_00: the two must agree)",
+   "value": {
+    "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 7.687600766605261e-10,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 9.934103382942966e-10,
+     "fd_max_abs_record_convention": 0.0008841747329298444
+    },
+    "bia_pin_d0.3_w25_c0.001_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 2.252198168645138e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 1.6039522128438103e-09,
+     "fd_max_abs_record_convention": 0.0009250692253852619
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 1.9618034233725898e-10,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 1.2373145367003431e-10,
+     "fd_max_abs_record_convention": 0.005897629507718889
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 3.149848128442774e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 2.4852566146819942e-09,
+     "fd_max_abs_record_convention": 0.0003326797332788012
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 6.081881408417472e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 7.435985595057899e-09,
+     "fd_max_abs_record_convention": 0.0001140044269616787
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 3.3432400114703677e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 2.643423404456226e-09,
+     "fd_max_abs_record_convention": 0.0004792543496640045
+    },
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 9.7876056218138e-06,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 7.78543896018391e-06,
+     "fd_max_abs_record_convention": 1.9715229217694605e-07
+    },
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 1.3301443360158559e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 1.0217433253840265e-09,
+     "fd_max_abs_record_convention": 0.0007478134598826585
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 3.2166036257296546e-10,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 4.230231072060685e-10,
+     "fd_max_abs_record_convention": 0.0020326183513173896
+    },
+    "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 2.2193327703284466e-07,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 4.4679330177574814e-07,
+     "fd_max_abs_record_convention": 3.075301723187448e-10
+    },
+    "rad_pin_d0.9224_w25_c0_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 2.35805324940972e-08,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 4.984672833295757e-08,
+     "fd_max_abs_record_convention": 4.1852591382447636e-05
+    },
+    "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 6.512440894940905e-08,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 1.1071390774918777e-07,
+     "fd_max_abs_record_convention": 1.618690025322911e-05
+    }
+   },
+   "expectation": "max |FD - analytic| under 1e-4 of max(max |G|, gate / 1000) on every row",
+   "fails_if": "a row where the finite differences disagree with the analytic gradient by 1e-4 of max |G| or more",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1.at_gate_stationary",
+   "claim": "rows labeled AT_GATE have max |dE/dS| over free cells below 1e-3 ((1 - delta) / 0.7)^4 in the record's convention",
+   "method": "own analytic gradient over ALL free cells, its largest entries confirmed by finite differences; the independent-variable convention (2 G_ab off the diagonal) is reported",
+   "value": {
+    "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+     "label": "AT_GATE",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 0.0008841747326622426,
+     "fmax_stored": 0.000884174732661337,
+     "fmax_independent_variable_convention": 0.0017683494653244851,
+     "rms_G_free": 1.570533596922166e-05,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 7.687600766605261e-10,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 9.934103382942966e-10,
+     "fd_max_abs_record_convention": 0.0008841747329298444
+    },
+    "bia_pin_d0.3_w25_c0.001_n32_L48": {
+     "label": "AT_GATE",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 0.0009250692254466509,
+     "fmax_stored": 0.000925069225446461,
+     "fmax_independent_variable_convention": 0.0018501384508933017,
+     "rms_G_free": 7.665237520097283e-06,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 2.252198168645138e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 1.6039522128438103e-09,
+     "fd_max_abs_record_convention": 0.0009250692253852619
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "label": "FALLING",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 0.005897629507670573,
+     "fmax_stored": 0.0058976295076677825,
+     "fmax_independent_variable_convention": 0.011795259015341146,
+     "rms_G_free": 8.596535981228241e-05,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 1.9618034233725898e-10,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 1.2373145367003431e-10,
+     "fd_max_abs_record_convention": 0.005897629507718889
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+     "label": "AT_GATE",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 0.0003326797329046111,
+     "fmax_stored": 0.00033267973280324593,
+     "fmax_independent_variable_convention": 0.0006653594658092222,
+     "rms_G_free": 6.920852874315539e-06,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 3.149848128442774e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 2.4852566146819942e-09,
+     "fd_max_abs_record_convention": 0.0003326797332788012
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+     "label": "AT_GATE",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 0.00011400442700962673,
+     "fmax_stored": 0.0001140044271615307,
+     "fmax_independent_variable_convention": 0.00021955282328864714,
+     "rms_G_free": 6.387333481250104e-06,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 6.081881408417472e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 7.435985595057899e-09,
+     "fd_max_abs_record_convention": 0.0001140044269616787
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "label": "AT_GATE",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 0.0004792543511350263,
+     "fmax_stored": 0.0004792543511104701,
+     "fmax_independent_variable_convention": 0.0009585087022700526,
+     "rms_G_free": 4.6590714653830835e-06,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 3.3432400114703677e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 2.643423404456226e-09,
+     "fd_max_abs_record_convention": 0.0004792543496640045
+    },
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "label": "LINE_SEARCH_STALL",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 1.9715321795238903e-07,
+     "fmax_stored": 1.9715322045190872e-07,
+     "fmax_independent_variable_convention": 3.9430643590477807e-07,
+     "rms_G_free": 3.3544704988858986e-09,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 9.7876056218138e-06,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 7.78543896018391e-06,
+     "fd_max_abs_record_convention": 1.9715229217694605e-07
+    },
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "label": "AT_GATE",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 0.0007478134599197067,
+     "fmax_stored": 0.000747813459921256,
+     "fmax_independent_variable_convention": 0.0014956269198394133,
+     "rms_G_free": 1.2421202285603514e-05,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 1.3301443360158559e-09,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 1.0217433253840265e-09,
+     "fd_max_abs_record_convention": 0.0007478134598826585
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "label": "FALLING",
+     "gate": 0.001,
+     "fmax_mine_record_convention": 0.0020326183510983335,
+     "fmax_stored": 0.002032618351098321,
+     "fmax_independent_variable_convention": 0.004065236702196667,
+     "rms_G_free": 3.452102615681766e-05,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 3.2166036257296546e-10,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 4.230231072060685e-10,
+     "fd_max_abs_record_convention": 0.0020326183513173896
+    },
+    "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+     "label": "LINE_SEARCH_STALL",
+     "gate": 1.5116224146160152e-07,
+     "fmax_mine_record_convention": 3.0753017010626924e-10,
+     "fmax_stored": 3.0753016779526775e-10,
+     "fmax_independent_variable_convention": 6.150603402125385e-10,
+     "rms_G_free": 1.8033279274442854e-11,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 2.2193327703284466e-07,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 4.4679330177574814e-07,
+     "fd_max_abs_record_convention": 3.075301723187448e-10
+    },
+    "rad_pin_d0.9224_w25_c0_n32_L48": {
+     "label": "FALLING",
+     "gate": 1.5116224146160152e-07,
+     "fmax_mine_record_convention": 4.185259156337563e-05,
+     "fmax_stored": 4.1852590759191096e-05,
+     "fmax_independent_variable_convention": 4.185259156337563e-05,
+     "rms_G_free": 3.774770878500915e-07,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 2.35805324940972e-08,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 4.984672833295757e-08,
+     "fd_max_abs_record_convention": 4.1852591382447636e-05
+    },
+    "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+     "label": "FALLING",
+     "gate": 1.5116224146160152e-07,
+     "fmax_mine_record_convention": 1.618689951074242e-05,
+     "fmax_stored": 1.6186899937196558e-05,
+     "fmax_independent_variable_convention": 1.618689951074242e-05,
+     "rms_G_free": 1.4368948280008428e-07,
+     "fd_samples": 280,
+     "fd_resolved_vs_analytic_max_abs_over_max_G": 6.512440894940905e-08,
+     "fd_fixed_m00_vs_resolved_max_abs_over_max_G": 1.1071390774918777e-07,
+     "fd_max_abs_record_convention": 1.618690025322911e-05
+    }
+   },
+   "expectation": "every AT_GATE row under its gate, and my fmax equal to the stored fmax",
+   "fails_if": "an AT_GATE row whose max |G| (mine, full field, or FD) is at or above the gate, or a stored fmax I cannot reproduce to 1e-6",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1.gate_convention",
+   "claim": "WORDING: 'max |dE/dS| below the gate' holds when dE/dS means the derivative with respect to the independent symmetric entries",
+   "method": "max over free cells of |dE/dS_aa| and 2 |G_ab| against the gate",
+   "value": {
+    "bia_pin_d0.3_w25_c0.0001_n32_L48": 1.7683494653244851,
+    "bia_pin_d0.3_w25_c0.001_n32_L48": 1.8501384508933016,
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": 0.6653594658092221,
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": 0.21955282328864714,
+    "rad_pin_d0.3_w25_c0.001_n32_L48": 0.9585087022700526,
+    "rad_pin_d0.3_w25_c0_n32_L48": 1.4956269198394132
+   },
+   "expectation": "ratio under 1 for every AT_GATE row",
+   "fails_if": "an AT_GATE row passes only in the halved (sym4) convention",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C2.r_half_values",
+   "claim": "r_half end values 17.02, 16.48, 15.93, 13.97, 11.30, 7.46 for c = 0 to 3e-3 and 4.44 for the seed",
+   "method": "own per-cell density, cells grouped by radius, first radius whose ball holds half",
+   "value": {
+    "0": {
+     "mine": 17.020208577,
+     "stored_json": 17.020208576865326,
+     "claimed": 17.02,
+     "interpolated": 16.902947838298893,
+     "reader_step_at_r_half": 0.132713202999998,
+     "reader_step_percent": 0.7797389932068047
+    },
+    "3e-05": {
+     "mine": 16.482945732,
+     "stored_json": 16.48294573187693,
+     "claimed": 16.48,
+     "interpolated": 16.456200468380526,
+     "reader_step_at_r_half": 0.1370746940000025,
+     "reader_step_percent": 0.8316152721044613
+    },
+    "0.0001": {
+     "mine": 15.927570436,
+     "stored_json": 15.927570436196476,
+     "claimed": 15.93,
+     "interpolated": 15.922126424107056,
+     "reader_step_at_r_half": 0.14189655100000031,
+     "reader_step_percent": 0.8908863506218201
+    },
+    "0.0003": {
+     "mine": 13.970952008,
+     "stored_json": 13.970952007647869,
+     "claimed": 13.97,
+     "interpolated": 13.848841044555119,
+     "reader_step_at_r_half": 0.16198752799999916,
+     "reader_step_percent": 1.1594594835573295
+    },
+    "0.001": {
+     "mine": 11.29988938,
+     "stored_json": 11.299889379989523,
+     "claimed": 11.3,
+     "interpolated": 11.156738878921036,
+     "reader_step_at_r_half": 0.20090294000000064,
+     "reader_step_percent": 1.77791952862463
+    },
+    "0.003": {
+     "mine": 7.462405778,
+     "stored_json": 7.46240577829965,
+     "claimed": 7.46,
+     "interpolated": 7.334238034785186,
+     "reader_step_at_r_half": 0.30786176700000034,
+     "reader_step_percent": 4.125502902932603
+    },
+    "seed": {
+     "mine": 4.437059837,
+     "claimed": 4.44
+    }
+   },
+   "expectation": "each within 0.006 of the claim and equal to the stored JSON value",
+   "fails_if": "any recomputed radius off by more than 0.006",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C2.negative_density",
+   "claim": "the per-cell density including -c L is never negative in the end fields, so the cumulative read is monotone",
+   "method": "min over cells of my density and of the -c L part alone; monotonicity of the shell cumulative sum",
+   "value": {
+    "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -7.082334718688799e-17,
+     "cells_with_negative_lin": 1544,
+     "cumulative_monotone": true
+    },
+    "bia_pin_d0.3_w25_c0.001_n32_L48": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -7.082334718688799e-16,
+     "cells_with_negative_lin": 1544,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -5.403677505455562e-17,
+     "cells_with_negative_lin": 1608,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -1.6211032516366682e-16,
+     "cells_with_negative_lin": 1608,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -1.6211032516366682e-16,
+     "cells_with_negative_lin": 1608,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -5.403677505455561e-16,
+     "cells_with_negative_lin": 1608,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -1.6211032516366683e-15,
+     "cells_with_negative_lin": 1608,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -0.0,
+     "cells_with_negative_lin": 0,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "min_cell_total": 4.4988633024784506e-07,
+     "min_cell_lin_part": -1.6211032516366683e-17,
+     "cells_with_negative_lin": 1608,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+     "min_cell_total": 6.800582608319483e-11,
+     "min_cell_lin_part": -0.0,
+     "cells_with_negative_lin": 0,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.9224_w25_c0_n32_L48": {
+     "min_cell_total": 6.800582608319488e-11,
+     "min_cell_lin_part": 0.0,
+     "cells_with_negative_lin": 0,
+     "cumulative_monotone": true
+    },
+    "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+     "min_cell_total": 6.800585180916432e-11,
+     "min_cell_lin_part": -9.863752046802935e-12,
+     "cells_with_negative_lin": 12,
+     "cumulative_monotone": true
+    }
+   },
+   "expectation": "min total density >= 0 and a monotone cumulative sum on every row",
+   "fails_if": "a negative cell or a non-monotone cumulative sum on any row",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C2.reader_ceiling",
+   "claim": "the reader has a finite ceiling in this cube: a uniform density reads about 23.6 (whole cube) and about 20.7 (free region only)",
+   "method": "r_half of a constant density on the same 32^3 cells, and on the free cells alone",
+   "value": {
+    "uniform_whole_cube": 23.657715443,
+    "uniform_whole_cube_continuum": 23.633880524224715,
+    "uniform_free_region_only": 20.607947496,
+    "uniform_free_region_continuum": 20.679645458696623,
+    "density_r_minus_2": 14.905955186
+   },
+   "expectation": "lattice values within 0.3 of the continuum 23.63 and 20.68",
+   "fails_if": "the lattice ceiling differs from the continuum estimate by more than 0.3",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C2.decomposition",
+   "claim": "at c = 0 r_half reads the exterior (halo), not the core: most of E sits outside r = 6 and it is not distributed like the Coulomb tail of the uniaxial hedgehog",
+   "method": "E inside / outside r = 6 by part; the half-energy radius of the exterior energy alone against that of the curvature of the unrelaxed uniaxial hedgehog on the same cells",
+   "value": {
+    "0": {
+     "E": 3.5233295159611515,
+     "frac_inside_r6": 0.047513526205744366,
+     "frac_outside_r6": 0.9524864737942554,
+     "frac_pinned_shell": 0.04124040667857701,
+     "inside_r6_total": 0.1674058092880928,
+     "seed_inside_r6_total": 8.030976135187789,
+     "outside_r6_total": 3.355923706673058,
+     "outside_r6_curv": 2.690324861303597,
+     "outside_r6_V4": 0.6655988453694613,
+     "outside_r6_lin": 0.0,
+     "unrelaxed_uniaxial_hedgehog_curv_outside_r6": 3.1728433445076947,
+     "r_half_of_the_exterior_energy_alone": 17.282577933,
+     "r_half_of_the_hedgehog_tail_alone": 10.03431612
+    },
+    "0.003": {
+     "E": 6.231383849877297,
+     "frac_inside_r6": 0.33147700354458315,
+     "frac_outside_r6": 0.668522996455417,
+     "frac_pinned_shell": 0.018017850938544456,
+     "inside_r6_total": 2.0655604464934347,
+     "seed_inside_r6_total": 8.030976135187789,
+     "outside_r6_total": 4.165823403383863,
+     "outside_r6_curv": 3.215747297492735,
+     "outside_r6_V4": 0.6606326033576531,
+     "outside_r6_lin": 0.2894435025334747,
+     "unrelaxed_uniaxial_hedgehog_curv_outside_r6": 3.1728433445076947,
+     "r_half_of_the_exterior_energy_alone": 9.09326674,
+     "r_half_of_the_hedgehog_tail_alone": 10.03431612
+    }
+   },
+   "expectation": "outside fraction above 0.5 at c = 0 and an exterior-only radius more than 20 percent above the hedgehog tail's",
+   "fails_if": "the core holds half of E or more at c = 0, or the exterior energy is distributed like the 1 / r^4 tail",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C2.coulomb_floor",
+   "claim": "r_half responds to the halo at every c of the scan (so a slope of r_half against c is a slope of the halo radius)",
+   "method": "reference read: the row's own density inside r = 6 plus the curvature density of the unrelaxed uniaxial hedgehog outside (no halo at all); the row's r_half must exceed it",
+   "value": {
+    "rows": {
+     "0": {
+      "r_half": 17.020208577,
+      "r_half_interpolated": 16.902947838298893,
+      "r_half_with_exterior_replaced_by_bare_hedgehog_tail": 9.807522623,
+      "same_interpolated": 9.626328939497798,
+      "excess_over_halo_free_reference_percent": 75.5907983670119
+     },
+     "3e-05": {
+      "r_half": 16.482945732,
+      "r_half_interpolated": 16.456200468380526,
+      "r_half_with_exterior_replaced_by_bare_hedgehog_tail": 9.807522623,
+      "same_interpolated": 9.595873244330658,
+      "excess_over_halo_free_reference_percent": 71.49247441448875
+     },
+     "0.0001": {
+      "r_half": 15.927570436,
+      "r_half_interpolated": 15.922126424107056,
+      "r_half_with_exterior_replaced_by_bare_hedgehog_tail": 9.575359001,
+      "same_interpolated": 9.482125188163508,
+      "excess_over_halo_free_reference_percent": 67.91727706761952
+     },
+     "0.0003": {
+      "r_half": 13.970952008,
+      "r_half_interpolated": 13.848841044555119,
+      "r_half_with_exterior_replaced_by_bare_hedgehog_tail": 9.337424698,
+      "same_interpolated": 9.195549704380806,
+      "excess_over_halo_free_reference_percent": 50.60373212878684
+     },
+     "0.001": {
+      "r_half": 11.29988938,
+      "r_half_interpolated": 11.156738878921036,
+      "r_half_with_exterior_replaced_by_bare_hedgehog_tail": 8.842369592,
+      "same_interpolated": 8.639861295239072,
+      "excess_over_halo_free_reference_percent": 29.130995251843565
+     },
+     "0.003": {
+      "r_half": 7.462405778,
+      "r_half_interpolated": 7.334238034785186,
+      "r_half_with_exterior_replaced_by_bare_hedgehog_tail": 6.832825184,
+      "same_interpolated": 6.830734682895563,
+      "excess_over_halo_free_reference_percent": 7.371144909937965
+     }
+    },
+    "rows_within_10_percent_of_the_halo_free_reference": [
+     "0.003"
+    ]
+   },
+   "expectation": "every row more than 10 percent above its halo-free reference",
+   "fails_if": "a row whose r_half is within 10 percent of the halo-free reference: there the read is set by the core and the Coulomb tail, and it floors instead of following the halo",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C3.c0_spectrum_bands",
+   "claim": "at c = 0 the shell-mean spectrum is about (0.14 to 0.18, 0.44 to 0.50, 0.96 to 0.98) and flat in r from 1.5 to 15",
+   "method": "own shells |r - R| < 0.75 h, R in 1.5, 3, 4.5, 6, 9, 12, 15; min and max over R",
+   "value": {
+    "range_small_mid_top": [
+     [
+      0.14108496540156382,
+      0.17633496919598182
+     ],
+     [
+      0.44236720998345447,
+      0.5014097422909045
+     ],
+     [
+      0.959566932156268,
+      0.9794606305519296
+     ]
+    ],
+    "shells": {
+     "1.5": {
+      "mean": [
+       0.14108496540156382,
+       0.5014097422909045,
+       0.959566932156268
+      ],
+      "std": [
+       0.06898442814864433,
+       0.10607328119771553,
+       0.0383413459533621
+      ],
+      "cells": 32
+     },
+     "3": {
+      "mean": [
+       0.15903877418250129,
+       0.4697249732563968,
+       0.9719186786822481
+      ],
+      "std": [
+       0.05978706862691293,
+       0.08732419549127868,
+       0.02769676242654247
+      ],
+      "cells": 80
+     },
+     "4.5": {
+      "mean": [
+       0.1691819892579818,
+       0.4542380243016706,
+       0.9766018412441695
+      ],
+      "std": [
+       0.058015694647939,
+       0.08147001275207148,
+       0.025236802526052083
+      ],
+      "cells": 152
+     },
+     "6": {
+      "mean": [
+       0.1650487622080584,
+       0.45875712663059603,
+       0.9752892030273766
+      ],
+      "std": [
+       0.0590438611312762,
+       0.08472748231848769,
+       0.027884243876365053
+      ],
+      "cells": 296
+     },
+     "9": {
+      "mean": [
+       0.16261258422418176,
+       0.4612947116676036,
+       0.9735430880178448
+      ],
+      "std": [
+       0.0661249311486983,
+       0.09520874020135985,
+       0.03234917603238827
+      ],
+      "cells": 704
+     },
+     "12": {
+      "mean": [
+       0.16709101670488824,
+       0.45330224480777803,
+       0.9770118628024907
+      ],
+      "std": [
+       0.06223539020283697,
+       0.08517526106267768,
+       0.025713862539770586
+      ],
+      "cells": 1232
+     },
+     "15": {
+      "mean": [
+       0.17633496919598182,
+       0.44236720998345447,
+       0.9794606305519296
+      ],
+      "std": [
+       0.06259374351981184,
+       0.0840680611365136,
+       0.023937900736929814
+      ],
+      "cells": 1904
+     },
+     "18": {
+      "mean": [
+       0.18987188251200118,
+       0.42672796157865,
+       0.9828497163962819
+      ],
+      "std": [
+       0.0621412822905511,
+       0.08039988462534682,
+       0.020031467142741243
+      ],
+      "cells": 2648
+     },
+     "21": {
+      "mean": [
+       0.22105251301113663,
+       0.3894810732521641,
+       0.9901655939318882
+      ],
+      "std": [
+       0.056563888885538996,
+       0.06673914184693433,
+       0.011615612087913318
+      ],
+      "cells": 3608
+     }
+    }
+   },
+   "expectation": "every shell mean inside the quoted band (0.005 rounding allowance)",
+   "fails_if": "a shell mean between r 1.5 and r 15 outside its band",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C3.c0_angular_spread",
+   "claim": "WORDING: 'biaxial with a spectrum about (...) flat in r' describes the field, not only its shell average",
+   "method": "standard deviation of each eigenvalue over the cells of a shell at c = 0 against the mid - small gap; the 5 / 50 / 95 percentiles of eps in the shell; the smallest top - mid gap in the shell",
+   "value": {
+    "1.5": {
+     "std_small_mid_top": [
+      0.06898442814864433,
+      0.10607328119771553,
+      0.0383413459533621
+     ],
+     "std_mid_over_gap_mid_small": 0.29438242386060415,
+     "eps_percentiles_5_50_95": [
+      0.0728185004147534,
+      0.16067115340292615,
+      0.323358180839798
+     ],
+     "gap_top_mid_min_in_shell": 0.1252220600299807
+    },
+    "3": {
+     "std_small_mid_top": [
+      0.05978706862691293,
+      0.08732419549127868,
+      0.02769676242654247
+     ],
+     "std_mid_over_gap_mid_small": 0.28106879466026413,
+     "eps_percentiles_5_50_95": [
+      0.07003908039164074,
+      0.1350226765456616,
+      0.2903366448716685
+     ],
+     "gap_top_mid_min_in_shell": 0.23444061730454835
+    },
+    "4.5": {
+     "std_small_mid_top": [
+      0.058015694647939,
+      0.08147001275207148,
+      0.025236802526052083
+     ],
+     "std_mid_over_gap_mid_small": 0.28580350084356243,
+     "eps_percentiles_5_50_95": [
+      0.05569082454119139,
+      0.1250881943393304,
+      0.272826937053658
+     ],
+     "gap_top_mid_min_in_shell": 0.14245196232208757
+    },
+    "6": {
+     "std_small_mid_top": [
+      0.0590438611312762,
+      0.08472748231848769,
+      0.027884243876365053
+     ],
+     "std_mid_over_gap_mid_small": 0.2884748702512135,
+     "eps_percentiles_5_50_95": [
+      0.05280909494802352,
+      0.13659724496978543,
+      0.271906208717445
+     ],
+     "gap_top_mid_min_in_shell": 0.058033851768513944
+    },
+    "9": {
+     "std_small_mid_top": [
+      0.0661249311486983,
+      0.09520874020135985,
+      0.03234917603238827
+     ],
+     "std_mid_over_gap_mid_small": 0.31876276299590395,
+     "eps_percentiles_5_50_95": [
+      0.04594239527445059,
+      0.1331929392914915,
+      0.30527926752694423
+     ],
+     "gap_top_mid_min_in_shell": 0.002091392036295159
+    },
+    "12": {
+     "std_small_mid_top": [
+      0.06223539020283697,
+      0.08517526106267768,
+      0.025713862539770586
+     ],
+     "std_mid_over_gap_mid_small": 0.29759580582232825,
+     "eps_percentiles_5_50_95": [
+      0.04325541279130803,
+      0.13400027990587032,
+      0.27542557029927245
+     ],
+     "gap_top_mid_min_in_shell": 0.03970703576501966
+    },
+    "15": {
+     "std_small_mid_top": [
+      0.06259374351981184,
+      0.0840680611365136,
+      0.023937900736929814
+     ],
+     "std_mid_over_gap_mid_small": 0.3160070406792301,
+     "eps_percentiles_5_50_95": [
+      0.032890719034019904,
+      0.12668236396658233,
+      0.2674939961956048
+     ],
+     "gap_top_mid_min_in_shell": 0.07849975468790682
+    }
+   },
+   "expectation": "within-shell std of the mid eigenvalue under 25 percent of the mid - small gap",
+   "fails_if": "the within-shell scatter is 25 percent of the gap or more (the shell mean then hides an angular structure, here a disclination network of the top eigenvector, see C5)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C3.reproduces_r22_halo",
+   "claim": "the c = 0 row reproduces the earlier R22 interior (0.17, 0.45, 0.98) from a fresh seed, on the shells r 6 to 15",
+   "method": "shell means (0.75 h) of the R22-1s end field (read only) against the c = 0 row and against the quoted triple",
+   "value": {
+    "r22_1s_shells": {
+     "1.5": [
+      0.11292329272997163,
+      0.5561166657056174,
+      0.9314855164605902
+     ],
+     "3": [
+      0.1283255374660953,
+      0.516017129948137,
+      0.9544615095654809
+     ],
+     "4.5": [
+      0.15121382864857927,
+      0.47658424968694224,
+      0.9712368303952854
+     ],
+     "6": [
+      0.17190959871262582,
+      0.4476731863695037,
+      0.9795536677510652
+     ],
+     "9": [
+      0.17089665082038338,
+      0.44800187711373546,
+      0.9786975118445433
+     ],
+     "12": [
+      0.16705185756169563,
+      0.45497310490973847,
+      0.9756294648859424
+     ],
+     "15": [
+      0.17655039755254714,
+      0.4429182350699471,
+      0.97879518984374
+     ],
+     "18": [
+      0.19091193309410845,
+      0.4248025850660358,
+      0.9837419408883248
+     ],
+     "21": [
+      0.2228090577195491,
+      0.3872882411894169,
+      0.9906374956722035
+     ]
+    },
+    "c0_row_vs_r22_max_abs_diff_r6_to_15": 0.01329283455386815,
+    "c0_row_vs_r22_max_abs_diff_r1.5_to_4.5": 0.05470692341471284,
+    "r22_vs_quoted_triple_r6_to_15": 0.007081764930052914,
+    "r22_vs_quoted_triple_r1.5_to_4.5": 0.10611666570561734
+   },
+   "expectation": "both within 0.02 on r 6 to 15",
+   "fails_if": "a shell mean off by more than 0.02 on r 6 to 15, or the R22 field is missing",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C3.reproduces_r22_core",
+   "claim": "WORDING: the same reproduction holds for the whole 'interior', the shells r 1.5 to 4.5 included",
+   "method": "as above on the shells r 1.5, 3, 4.5",
+   "value": {
+    "r22_1s_shells": {
+     "1.5": [
+      0.11292329272997163,
+      0.5561166657056174,
+      0.9314855164605902
+     ],
+     "3": [
+      0.1283255374660953,
+      0.516017129948137,
+      0.9544615095654809
+     ],
+     "4.5": [
+      0.15121382864857927,
+      0.47658424968694224,
+      0.9712368303952854
+     ],
+     "6": [
+      0.17190959871262582,
+      0.4476731863695037,
+      0.9795536677510652
+     ],
+     "9": [
+      0.17089665082038338,
+      0.44800187711373546,
+      0.9786975118445433
+     ],
+     "12": [
+      0.16705185756169563,
+      0.45497310490973847,
+      0.9756294648859424
+     ],
+     "15": [
+      0.17655039755254714,
+      0.4429182350699471,
+      0.97879518984374
+     ],
+     "18": [
+      0.19091193309410845,
+      0.4248025850660358,
+      0.9837419408883248
+     ],
+     "21": [
+      0.2228090577195491,
+      0.3872882411894169,
+      0.9906374956722035
+     ]
+    },
+    "c0_row_vs_r22_max_abs_diff_r6_to_15": 0.01329283455386815,
+    "c0_row_vs_r22_max_abs_diff_r1.5_to_4.5": 0.05470692341471284,
+    "r22_vs_quoted_triple_r6_to_15": 0.007081764930052914,
+    "r22_vs_quoted_triple_r1.5_to_4.5": 0.10611666570561734
+   },
+   "expectation": "both within 0.02 on r 1.5 to 4.5",
+   "fails_if": "the two fields, or the R22 field and the quoted triple, differ by more than 0.02 inside r 4.5 (the triple is then a halo value, not an interior value)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C3.c3e-3_shell_means",
+   "claim": "at c = 3e-3 the shell means are (0.289, 0.456, 0.944) at r 6, (0.301, 0.364, 0.979) at r 9, (0.3015, 0.317, 0.994) at r 12, (0.301, 0.304, 0.9985) at r 15",
+   "method": "own shells of half-width 0.5 h, 0.75 h (the record's) and 1.0 h",
+   "value": {
+    "shells": {
+     "6": {
+      "0.5h": [
+       0.2821988852792055,
+       0.46132180631916275,
+       0.9436918930549097
+      ],
+      "0.75h": [
+       0.28843025596049543,
+       0.4561724258176548,
+       0.9438271895953257
+      ],
+      "1.0h": [
+       0.29081519687654567,
+       0.44303772755205795,
+       0.9488833487244952
+      ],
+      "quoted": [
+       0.289,
+       0.456,
+       0.944
+      ]
+     },
+     "9": {
+      "0.5h": [
+       0.3012079344793176,
+       0.3709319203782208,
+       0.9758537982977273
+      ],
+      "0.75h": [
+       0.30073785573138834,
+       0.36404709944346486,
+       0.9784706817579452
+      ],
+      "1.0h": [
+       0.3001825648648464,
+       0.36417397461395545,
+       0.9784593522319461
+      ],
+      "quoted": [
+       0.301,
+       0.364,
+       0.979
+      ]
+     },
+     "12": {
+      "0.5h": [
+       0.30146534547273746,
+       0.3164022412830945,
+       0.9945793964432778
+      ],
+      "0.75h": [
+       0.3015359510545248,
+       0.3168403653600529,
+       0.9944075230660174
+      ],
+      "1.0h": [
+       0.3012278124439982,
+       0.3161303928159208,
+       0.9947116444722182
+      ],
+      "quoted": [
+       0.3015,
+       0.317,
+       0.994
+      ]
+     },
+     "15": {
+      "0.5h": [
+       0.3013715327036347,
+       0.3037630735706712,
+       0.9984742036863307
+      ],
+      "0.75h": [
+       0.3012647014784844,
+       0.30377603687235843,
+       0.998501612586151
+      ],
+      "1.0h": [
+       0.3012741625232768,
+       0.3037886393149009,
+       0.9984946360222822
+      ],
+      "quoted": [
+       0.301,
+       0.304,
+       0.9985
+      ]
+     }
+    },
+    "worst_abs_diff_0.75h": 0.0005697440395045494,
+    "width_sensitivity": 0.018284078767104806
+   },
+   "expectation": "within 0.002 of the quoted values at half-width 0.75 h",
+   "fails_if": "any quoted shell mean off by more than 0.002",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C3.eps_monotone",
+   "claim": "with the stiffness on, the split eps(r) decays with r (every c > 0, rad seed)",
+   "method": "own shells: contiguous, non-overlapping, width h = 1.5, centers 4.5 to 21",
+   "value": {
+    "0": {
+     "eps_on_contiguous_shells": [
+      [
+       4.5,
+       0.14084822492050245
+      ],
+      [
+       6.0,
+       0.15078516477667342
+      ],
+      [
+       7.5,
+       0.14246347364127254
+      ],
+      [
+       9.0,
+       0.15298380703588726
+      ],
+      [
+       10.5,
+       0.14904585163117096
+      ],
+      [
+       12.0,
+       0.13862199203367487
+      ],
+      [
+       13.5,
+       0.14193179747790102
+      ],
+      [
+       15.0,
+       0.1281902523112411
+      ],
+      [
+       16.5,
+       0.12805918412688866
+      ],
+      [
+       18.0,
+       0.11817914042030521
+      ],
+      [
+       19.5,
+       0.10330709228285949
+      ],
+      [
+       21.0,
+       0.08857369519879726
+      ]
+     ],
+     "largest_upward_step_rel": 0.07384582957106078,
+     "r_of_largest_upward_step": 7.5
+    },
+    "3e-05": {
+     "eps_on_contiguous_shells": [
+      [
+       4.5,
+       0.14710725487866197
+      ],
+      [
+       6.0,
+       0.13698503705771942
+      ],
+      [
+       7.5,
+       0.13524354541727762
+      ],
+      [
+       9.0,
+       0.14779562199087673
+      ],
+      [
+       10.5,
+       0.14470567207861387
+      ],
+      [
+       12.0,
+       0.13386102286716436
+      ],
+      [
+       13.5,
+       0.1383370806945899
+      ],
+      [
+       15.0,
+       0.12317760930276284
+      ],
+      [
+       16.5,
+       0.12229519355331325
+      ],
+      [
+       18.0,
+       0.11310604548024479
+      ],
+      [
+       19.5,
+       0.09692640108306852
+      ],
+      [
+       21.0,
+       0.08159971275418883
+      ]
+     ],
+     "largest_upward_step_rel": 0.09281091038297755,
+     "r_of_largest_upward_step": 7.5
+    },
+    "0.0001": {
+     "eps_on_contiguous_shells": [
+      [
+       4.5,
+       0.15592535536268498
+      ],
+      [
+       6.0,
+       0.11929339813004716
+      ],
+      [
+       7.5,
+       0.12158429586622124
+      ],
+      [
+       9.0,
+       0.13767360312352722
+      ],
+      [
+       10.5,
+       0.1379642609965587
+      ],
+      [
+       12.0,
+       0.1303001106935655
+      ],
+      [
+       13.5,
+       0.1327905039099389
+      ],
+      [
+       15.0,
+       0.11747617125348496
+      ],
+      [
+       16.5,
+       0.11390770293834399
+      ],
+      [
+       18.0,
+       0.0996621052905908
+      ],
+      [
+       19.5,
+       0.08133480949463032
+      ],
+      [
+       21.0,
+       0.065728646861373
+      ]
+     ],
+     "largest_upward_step_rel": 0.1323304719797776,
+     "r_of_largest_upward_step": 7.5
+    },
+    "0.0003": {
+     "eps_on_contiguous_shells": [
+      [
+       4.5,
+       0.13658188535135227
+      ],
+      [
+       6.0,
+       0.12967699130861327
+      ],
+      [
+       7.5,
+       0.12589979797657877
+      ],
+      [
+       9.0,
+       0.13599399588672842
+      ],
+      [
+       10.5,
+       0.13582724050616957
+      ],
+      [
+       12.0,
+       0.12126417489023039
+      ],
+      [
+       13.5,
+       0.1157011689859055
+      ],
+      [
+       15.0,
+       0.09371686968288204
+      ],
+      [
+       16.5,
+       0.08271609381666473
+      ],
+      [
+       18.0,
+       0.06396988574443661
+      ],
+      [
+       19.5,
+       0.04556119341833185
+      ],
+      [
+       21.0,
+       0.030879119247174645
+      ]
+     ],
+     "largest_upward_step_rel": 0.08017644247552709,
+     "r_of_largest_upward_step": 7.5
+    },
+    "0.001": {
+     "eps_on_contiguous_shells": [
+      [
+       4.5,
+       0.11957152012519391
+      ],
+      [
+       6.0,
+       0.10256223567382136
+      ],
+      [
+       7.5,
+       0.09701879994798986
+      ],
+      [
+       9.0,
+       0.11287228688353107
+      ],
+      [
+       10.5,
+       0.1044995703035652
+      ],
+      [
+       12.0,
+       0.08313937695543168
+      ],
+      [
+       13.5,
+       0.06254509099528814
+      ],
+      [
+       15.0,
+       0.03742823663051404
+      ],
+      [
+       16.5,
+       0.02095748782074094
+      ],
+      [
+       18.0,
+       0.011116001619866325
+      ],
+      [
+       19.5,
+       0.005378681308728975
+      ],
+      [
+       21.0,
+       0.002650671333265142
+      ]
+     ],
+     "largest_upward_step_rel": 0.16340633922538725,
+     "r_of_largest_upward_step": 7.5
+    },
+    "0.003": {
+     "eps_on_contiguous_shells": [
+      [
+       4.5,
+       0.09038860500992787
+      ],
+      [
+       6.0,
+       0.08956146051997863
+      ],
+      [
+       7.5,
+       0.06153688953232157
+      ],
+      [
+       9.0,
+       0.034861992949451664
+      ],
+      [
+       10.5,
+       0.017686130754333375
+      ],
+      [
+       12.0,
+       0.007468447905178542
+      ],
+      [
+       13.5,
+       0.0033199034205448645
+      ],
+      [
+       15.0,
+       0.001195770433518243
+      ],
+      [
+       16.5,
+       0.0004890150600735114
+      ],
+      [
+       18.0,
+       0.0001954605220839378
+      ],
+      [
+       19.5,
+       8.662137967286994e-05
+      ],
+      [
+       21.0,
+       4.749862595297287e-05
+      ]
+     ],
+     "largest_upward_step_rel": -0.00915098191700602,
+     "r_of_largest_upward_step": 4.5
+    }
+   },
+   "expectation": "no upward step above 5 percent on any c > 0 row",
+   "fails_if": "a c > 0 row with an upward step of eps(r) above 5 percent between neighboring shells",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C3.eps_decays_outer",
+   "claim": "the decay of eps(r) holds in the outer halo (r >= 10.5) on every row",
+   "method": "the same contiguous shells restricted to centers 10.5 to 21",
+   "value": {
+    "largest_upward_step_rel_r_ge_10.5": {
+     "0": 0.023876481614995962,
+     "3e-05": 0.03343809670322999,
+     "0.0001": 0.019112748278704107,
+     "0.0003": -0.045875097978117445,
+     "0.001": -0.20440460459390786,
+     "0.003": -0.45165239652896483
+    }
+   },
+   "expectation": "no upward step above 5 percent",
+   "fails_if": "an upward step above 5 percent beyond r = 10.5",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C3.eps_profile_smooth",
+   "claim": "WORDING: the stored profile (shells of width h on a 0.75 grid, overlapping) is a smooth decaying curve that a reader can interpolate (the r_eps reader and any fit do)",
+   "method": "the same profile rebuilt with my shells, 4.5 <= r <= 21; relative upward steps",
+   "value": {
+    "0": {
+     "largest_upward_step_rel": 0.059356668931274344,
+     "upward_steps": 7,
+     "upward_steps_over_5_percent": 2,
+     "r_of_largest_upward_step": 7.5
+    },
+    "3e-05": {
+     "largest_upward_step_rel": 0.07504261250808984,
+     "upward_steps": 7,
+     "upward_steps_over_5_percent": 2,
+     "r_of_largest_upward_step": 7.5
+    },
+    "0.0001": {
+     "largest_upward_step_rel": 0.08699396573270488,
+     "upward_steps": 9,
+     "upward_steps_over_5_percent": 2,
+     "r_of_largest_upward_step": 7.5
+    },
+    "0.0003": {
+     "largest_upward_step_rel": 0.05431220702831055,
+     "upward_steps": 5,
+     "upward_steps_over_5_percent": 1,
+     "r_of_largest_upward_step": 5.25
+    },
+    "0.001": {
+     "largest_upward_step_rel": 0.13349214889763095,
+     "upward_steps": 5,
+     "upward_steps_over_5_percent": 1,
+     "r_of_largest_upward_step": 7.5
+    },
+    "0.003": {
+     "largest_upward_step_rel": 0.059046751774012474,
+     "upward_steps": 1,
+     "upward_steps_over_5_percent": 1,
+     "r_of_largest_upward_step": 5.25
+    }
+   },
+   "expectation": "no upward step above 5 percent on any c > 0 row",
+   "fails_if": "an upward step above 5 percent (lattice sampling of a strongly angle-dependent eps)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C3.halo_cut_in_box",
+   "claim": "the halo is cut inside the L 48 box only at the larger c (the record treats c = 1e-3 and 3e-3 as cut and c <= 3e-4 as box-limited)",
+   "method": "eps(18) / eps(6) against 0.25 (half of the free r^-0.618 value 0.507)",
+   "value": {
+    "rows": {
+     "0": {
+      "eps_r6": 0.15078516477667342,
+      "eps_r18": 0.11817914042030521,
+      "ratio": 0.7837584061756957,
+      "visibly_cut": false
+     },
+     "3e-05": {
+      "eps_r6": 0.13698503705771942,
+      "eps_r18": 0.11310604548024479,
+      "ratio": 0.825681752617893,
+      "visibly_cut": false
+     },
+     "0.0001": {
+      "eps_r6": 0.11929339813004716,
+      "eps_r18": 0.0996621052905908,
+      "ratio": 0.8354368879822218,
+      "visibly_cut": false
+     },
+     "0.0003": {
+      "eps_r6": 0.12967699130861327,
+      "eps_r18": 0.06396988574443661,
+      "ratio": 0.4933017422666536,
+      "visibly_cut": false
+     },
+     "0.001": {
+      "eps_r6": 0.10256223567382136,
+      "eps_r18": 0.011116001619866325,
+      "ratio": 0.1083829886003903,
+      "visibly_cut": true
+     },
+     "0.003": {
+      "eps_r6": 0.08956146051997863,
+      "eps_r18": 0.0001954605220839378,
+      "ratio": 0.0021824177603751347,
+      "visibly_cut": true
+     }
+    },
+    "visibly_cut": [
+     "0.001",
+     "0.003"
+    ]
+   },
+   "expectation": "exactly the rows c = 1e-3 and 3e-3 fall under 0.25",
+   "fails_if": "the set of visibly cut rows is not {0.001, 0.003}",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C4.knu_solves_ode",
+   "claim": "sqrt(r) K_nu(sqrt(beta) r^2 / 2) with nu = sqrt(5) / 4 solves eps'' = eps / r^2 + beta r^2 eps",
+   "method": "second finite difference of the closed form on a fine grid, beta = 3e-3",
+   "value": {
+    "max_rel_residual": 1.0586875191868572e-06
+   },
+   "expectation": "relative ODE residual under 1e-4",
+   "fails_if": "the closed form does not satisfy the ODE",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C4.knu_vs_yukawa",
+   "claim": "the measured profiles at c = 1e-3 and 3e-3 are better described by the K_nu cutoff than by exp(-r / R) / r",
+   "method": "two-parameter least squares (amplitude and one scale) on 5 <= r <= 18, residuals in log space and in linear space; a pure power law as the third candidate",
+   "value": {
+    "0.001": {
+     "knu_cutoff": {
+      "rms_log": 0.3109466112946818,
+      "rms_lin_rel_to_max": 0.1787124265600893,
+      "par_log_fit": [
+       -3.6981150924524635,
+       -4.5314267756697495
+      ],
+      "par_lin_fit": [
+       -4.529299854715455,
+       -5.422884917469082
+      ],
+      "beta_log_fit": 0.00011589180109275812,
+      "R_cut_log_fit": 9.637997779566335,
+      "R_cut_lin_fit": 15.050970267746877
+     },
+     "yukawa": {
+      "rms_log": 0.40248196416087806,
+      "rms_lin_rel_to_max": 0.20965240323530043,
+      "par_log_fit": [
+       0.38679014586886856,
+       2.6440504843152888
+      ],
+      "par_lin_fit": [
+       -0.32156529492238856,
+       18.139371802060744
+      ],
+      "R_log_fit": 14.070078977790763,
+      "R_lin_fit": 75479511.1626181
+     },
+     "power": {
+      "rms_log": 0.44110134700639575,
+      "rms_lin_rel_to_max": 0.2044522041891186,
+      "par_log_fit": [
+       0.9289039508639706,
+       1.57242936302596
+      ],
+      "par_lin_fit": [
+       -0.6724670894860781,
+       0.8341699603920896
+      ],
+      "exponent_log_fit": 1.57242936302596,
+      "exponent_lin_fit": 0.8341699603920896
+     },
+     "points": 18,
+     "eps_first_last": [
+      0.0977774386290235,
+      0.011116001619866325
+     ]
+    },
+    "0.003": {
+     "knu_cutoff": {
+      "rms_log": 0.11373601496578702,
+      "rms_lin_rel_to_max": 0.057617591352155065,
+      "par_log_fit": [
+       -2.990610483864822,
+       -3.224921777612248
+      ],
+      "par_lin_fit": [
+       -3.4631846486275695,
+       -3.5298202554387537
+      ],
+      "beta_log_fit": 0.0015807694525147077,
+      "R_cut_log_fit": 5.015137750863829,
+      "R_cut_lin_fit": 5.841047386246309
+     },
+     "yukawa": {
+      "rms_log": 0.3444520463672411,
+      "rms_lin_rel_to_max": 0.08686085853540101,
+      "par_log_fit": [
+       2.258698090855103,
+       0.8755012040704192
+      ],
+      "par_lin_fit": [
+       0.3078292298130536,
+       1.739763295188893
+      ],
+      "R_log_fit": 2.400077921384565,
+      "R_lin_fit": 5.695994993669428
+     },
+     "power": {
+      "rms_log": 0.6038197264986774,
+      "rms_lin_rel_to_max": 0.10834061681785204,
+      "par_log_fit": [
+       7.495183063151696,
+       5.216899894109824
+      ],
+      "par_lin_fit": [
+       1.602050035068738,
+       2.327340603404153
+      ],
+      "exponent_log_fit": 5.216899894109824,
+      "exponent_lin_fit": 2.327340603404153
+     },
+     "points": 18,
+     "eps_first_last": [
+      0.08456799510498847,
+      0.0001954605220839378
+     ]
+    },
+    "knu_scale_against_c": {
+     "R_cut_log_fit_c1e-3_c3e-3": [
+      9.637997779566335,
+      5.015137750863829
+     ],
+     "implied_exponent_log_fit": -0.5946160495079788,
+     "R_cut_lin_fit_c1e-3_c3e-3": [
+      15.050970267746877,
+      5.841047386246309
+     ],
+     "implied_exponent_lin_fit": -0.8615708569605406,
+     "note": "two points and a poor K_nu fit at c = 1e-3: informs, settles nothing"
+    }
+   },
+   "expectation": "K_nu residual below the Yukawa residual on both rows in both metrics",
+   "fails_if": "the Yukawa form fits as well or better on either row in either metric",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C4.knu_describes_profile",
+   "claim": "WORDING: 'better described by the K_nu cutoff' also means 'described by it'",
+   "method": "RMS log residual of the two-parameter K_nu fit on 5 <= r <= 18",
+   "value": {
+    "0.001": 0.3109466112946818,
+    "0.003": 0.11373601496578702
+   },
+   "expectation": "RMS log residual under 0.15 (a 15 percent scatter) on both rows",
+   "fails_if": "a row where the best of the three candidates still misses by more than 15 percent RMS",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C5.degree_all_rows",
+   "claim": "the stored surface-oriented degree reads hold: zero conflicts exactly where the top eigenvector is orientable on the cube, and |degree| = 1 there",
+   "method": "own reader: frustrated elementary squares on the cube surface (gauge invariant), breadth-first flood-fill orientation, r-hat orientation, solid-angle degree with both quad splittings and geometric outward ordering; also a cube centered on the box",
+   "value": {
+    "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 2,
+      "conflicts_bfs": 14,
+      "conflicts_rhat": 35,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.09742762299060759,
+       0.39703414173552487
+      ],
+      "gap_top_mid_surface_median": 0.5085053192508864,
+      "gap_top_mid_surface_min": 0.09742762299060759,
+      "stored_degree_conflicts": [
+       null,
+       19
+      ],
+      "centered_cube_frustrated": 8,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 4,
+      "conflicts_bfs": 58,
+      "conflicts_rhat": 6,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.043659666280961185,
+       0.0688137558513765,
+       0.18835089199804322,
+       0.4156168208506701
+      ],
+      "gap_top_mid_surface_median": 0.5185140129649836,
+      "gap_top_mid_surface_min": 0.043659666280961185,
+      "stored_degree_conflicts": [
+       null,
+       6
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5556352644239597,
+      "gap_top_mid_surface_min": 0.13972042044358812,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 60,
+      "r_min": 6.276074956823477,
+      "r_median": 9.321698642129562,
+      "r_max": 10.874682121025222
+     }
+    },
+    "bia_pin_d0.3_w25_c0.001_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 4,
+      "conflicts_bfs": 44,
+      "conflicts_rhat": 12,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.09506127450866153,
+       0.09506161990833373,
+       0.34448991008281915,
+       0.38172103193099527
+      ],
+      "gap_top_mid_surface_median": 0.4858875448110954,
+      "gap_top_mid_surface_min": 0.06316029679647905,
+      "stored_degree_conflicts": [
+       null,
+       12
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.6042539074515683,
+      "gap_top_mid_surface_min": 0.18837738897213452,
+      "stored_degree_conflicts": [
+       1.0000000000000002,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.6711222938374725,
+      "gap_top_mid_surface_min": 0.3850952985780566,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 44,
+      "r_min": 4.86277619666582,
+      "r_median": 6.629205919683134,
+      "r_max": 7.282232502101418
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 8,
+      "conflicts_bfs": 34,
+      "conflicts_rhat": 23,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.07457111955076101,
+       0.17454004649794763,
+       0.2343984297482411,
+       0.2343984297482411,
+       0.23714572923354837,
+       0.27547586780671063
+      ],
+      "gap_top_mid_surface_median": 0.546891312862354,
+      "gap_top_mid_surface_min": 0.07457111955076101,
+      "stored_degree_conflicts": [
+       null,
+       23
+      ],
+      "centered_cube_frustrated": 8,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 2,
+      "conflicts_bfs": 50,
+      "conflicts_rhat": 4,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.023859092361413148,
+       0.4098389919422558
+      ],
+      "gap_top_mid_surface_median": 0.5520870293003315,
+      "gap_top_mid_surface_min": 0.023859092361413148,
+      "stored_degree_conflicts": [
+       null,
+       4
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 0.9999999999999999
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5626075045515981,
+      "gap_top_mid_surface_min": 0.1286167864132629,
+      "stored_degree_conflicts": [
+       -1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 96,
+      "r_min": 1.299038105676658,
+      "r_median": 8.81258053284634,
+      "r_max": 11.953858494245715
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 8,
+      "conflicts_bfs": 67,
+      "conflicts_rhat": 17,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.07468755078897715,
+       0.07468755078897715,
+       0.10397478225151524,
+       0.15138587430322248,
+       0.17425795766843521,
+       0.2945647542291927
+      ],
+      "gap_top_mid_surface_median": 0.5293142524595971,
+      "gap_top_mid_surface_min": 0.07468755078897715,
+      "stored_degree_conflicts": [
+       null,
+       17
+      ],
+      "centered_cube_frustrated": 4,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0000000000000002,
+      "degree_rhat": 1.0000000000000002,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5500268039715446,
+      "gap_top_mid_surface_min": 0.1182706521000274,
+      "stored_degree_conflicts": [
+       -1.0000000000000002,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5830360844624879,
+      "gap_top_mid_surface_min": 0.19893326547248658,
+      "stored_degree_conflicts": [
+       1.0000000000000002,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 80,
+      "r_min": 1.299038105676658,
+      "r_median": 7.945333868088346,
+      "r_max": 10.869628957695896
+     }
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+     "6": {
+      "frustrated_plaquettes": 4,
+      "conflicts_bfs": 23,
+      "conflicts_rhat": 7,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.20310494106621269,
+       0.2715254366861525,
+       0.3925678157093695,
+       0.4491226614432753
+      ],
+      "gap_top_mid_surface_median": 0.5547424969784807,
+      "gap_top_mid_surface_min": 0.03227142926258042,
+      "stored_degree_conflicts": [
+       null,
+       7
+      ],
+      "centered_cube_frustrated": 2,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5557397196511258,
+      "gap_top_mid_surface_min": 0.14677038306292944,
+      "stored_degree_conflicts": [
+       -1.0000000000000002,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5899689087668539,
+      "gap_top_mid_surface_min": 0.23829408069365998,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0000000000000002
+     },
+     "volume": {
+      "frustrated_squares_free_region": 58,
+      "r_min": 1.893253349221604,
+      "r_median": 6.796142501052339,
+      "r_max": 9.663219779336313
+     }
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0000000000000002,
+      "degree_rhat": 1.0000000000000002,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5423868029242445,
+      "gap_top_mid_surface_min": 0.12848705717441777,
+      "stored_degree_conflicts": [
+       -1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0000000000000002
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0000000000000002,
+      "degree_rhat": 1.0000000000000002,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5817946878324146,
+      "gap_top_mid_surface_min": 0.17043942812209,
+      "stored_degree_conflicts": [
+       1.0000000000000002,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.6649049463390311,
+      "gap_top_mid_surface_min": 0.4263697576678256,
+      "stored_degree_conflicts": [
+       1.0000000000000002,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 20,
+      "r_min": 1.299038105676658,
+      "r_median": 2.385787374716316,
+      "r_max": 4.8735328535961076
+     }
+    },
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0000000000000002,
+      "degree_rhat": 1.0000000000000002,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5770396232797674,
+      "gap_top_mid_surface_min": 0.3107609310831717,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0000000000000002
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.6768837233685328,
+      "gap_top_mid_surface_min": 0.5663620042554749,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.6955524470657386,
+      "gap_top_mid_surface_min": 0.6741001588240274,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 6,
+      "r_min": 1.299038105676658,
+      "r_median": 1.8932533492216042,
+      "r_max": 2.385787374716316
+     }
+    },
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 10,
+      "conflicts_bfs": 34,
+      "conflicts_rhat": 28,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.002091392036295159,
+       0.002091392036295159,
+       0.2654990627862007,
+       0.2662650165839323,
+       0.35723142046259715,
+       0.3670833314322558
+      ],
+      "gap_top_mid_surface_median": 0.5268376773333587,
+      "gap_top_mid_surface_min": 0.002091392036295159,
+      "stored_degree_conflicts": [
+       null,
+       28
+      ],
+      "centered_cube_frustrated": 8,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 4,
+      "conflicts_bfs": 66,
+      "conflicts_rhat": 6,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.05395133563197285,
+       0.2370611894516822,
+       0.3414504324196487,
+       0.3464359648012221
+      ],
+      "gap_top_mid_surface_median": 0.5388967936812309,
+      "gap_top_mid_surface_min": 0.05395133563197285,
+      "stored_degree_conflicts": [
+       null,
+       6
+      ],
+      "centered_cube_frustrated": 2,
+      "centered_cube_degree": null
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5501183566156551,
+      "gap_top_mid_surface_min": 0.08020489289985766,
+      "stored_degree_conflicts": [
+       -1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 130,
+      "r_min": 1.299038105676658,
+      "r_median": 8.297869319412595,
+      "r_max": 13.120270581738241
+     }
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 12,
+      "conflicts_bfs": 55,
+      "conflicts_rhat": 19,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.04456360677578741,
+       0.056927403626997664,
+       0.0964951738463915,
+       0.13716410721403127,
+       0.2152458474310407,
+       0.3396269624132303
+      ],
+      "gap_top_mid_surface_median": 0.5376519171763261,
+      "gap_top_mid_surface_min": 0.04456360677578741,
+      "stored_degree_conflicts": [
+       null,
+       37
+      ],
+      "centered_cube_frustrated": 6,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5489577706833604,
+      "gap_top_mid_surface_min": 0.07539608564400957,
+      "stored_degree_conflicts": [
+       -1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0000000000000002
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.5628717628918141,
+      "gap_top_mid_surface_min": 0.13476503213894364,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 92,
+      "r_min": 1.893253349221604,
+      "r_median": 7.592798416764097,
+      "r_max": 10.869628957695896
+     }
+    },
+    "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.021055558276562247,
+      "gap_top_mid_surface_min": 0.015051413112344258,
+      "stored_degree_conflicts": [
+       -1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.03055707247290912,
+      "gap_top_mid_surface_min": 0.024265013840048644,
+      "stored_degree_conflicts": [
+       -1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0000000000000002,
+      "degree_rhat": 1.0000000000000002,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.04152022219080603,
+      "gap_top_mid_surface_min": 0.03369232363855712,
+      "stored_degree_conflicts": [
+       -1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 0,
+      "r_min": null,
+      "r_median": null,
+      "r_max": null
+     }
+    },
+    "rad_pin_d0.9224_w25_c0_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 4,
+      "conflicts_bfs": 20,
+      "conflicts_rhat": 38,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.0013737901647744577,
+       0.0067501289235540884,
+       0.014705042950135416,
+       0.047913353165030426
+      ],
+      "gap_top_mid_surface_median": 0.05251866268931876,
+      "gap_top_mid_surface_min": 0.0013737901647744577,
+      "stored_degree_conflicts": [
+       null,
+       35
+      ],
+      "centered_cube_frustrated": 6,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 6,
+      "conflicts_bfs": 63,
+      "conflicts_rhat": 47,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.001530967322938781,
+       0.0021828237755250335,
+       0.002385361845096301,
+       0.003482176145590432,
+       0.0042511383556548266,
+       0.010560044674627123
+      ],
+      "gap_top_mid_surface_median": 0.041692933748486205,
+      "gap_top_mid_surface_min": 0.0010662949806249378,
+      "stored_degree_conflicts": [
+       null,
+       63
+      ],
+      "centered_cube_frustrated": 4,
+      "centered_cube_degree": null
+     },
+     "12": {
+      "frustrated_plaquettes": 8,
+      "conflicts_bfs": 118,
+      "conflicts_rhat": 28,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.0005914178708440465,
+       0.0020537318368506474,
+       0.002240025742911711,
+       0.0023317069117784195,
+       0.0027998471891244048,
+       0.003161111208805578
+      ],
+      "gap_top_mid_surface_median": 0.03746479936353225,
+      "gap_top_mid_surface_min": 0.0005914178708440465,
+      "stored_degree_conflicts": [
+       null,
+       89
+      ],
+      "centered_cube_frustrated": 4,
+      "centered_cube_degree": null
+     },
+     "volume": {
+      "frustrated_squares_free_region": 118,
+      "r_min": 4.374841300928017,
+      "r_median": 13.589419318913833,
+      "r_max": 19.589915386531928
+     }
+    },
+    "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+     "6": {
+      "frustrated_plaquettes": 8,
+      "conflicts_bfs": 60,
+      "conflicts_rhat": 14,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.004116648737466977,
+       0.010617989753057278,
+       0.010617989753057278,
+       0.01565704679272184,
+       0.01629250890871803,
+       0.016460628400013833
+      ],
+      "gap_top_mid_surface_median": 0.05383018937278766,
+      "gap_top_mid_surface_min": 0.004116648737466977,
+      "stored_degree_conflicts": [
+       null,
+       14
+      ],
+      "centered_cube_frustrated": 4,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.056304765874282625,
+      "gap_top_mid_surface_min": 0.008372302123724862,
+      "stored_degree_conflicts": [
+       1.0000000000000002,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.05825450435573071,
+      "gap_top_mid_surface_min": 0.025589455591821908,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "volume": {
+      "frustrated_squares_free_region": 80,
+      "r_min": 1.893253349221604,
+      "r_median": 5.733747010853175,
+      "r_max": 11.863222535826685
+     }
+    }
+   },
+   "expectation": "stored conflicts are zero if and only if my frustrated-square count is zero, and |degree| agrees to 1e-6 where defined",
+   "fails_if": "a cube the record calls clean has a frustrated square, a cube the record calls conflicted has none, or the degrees differ",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C5.claimed_pattern",
+   "claim": "clean unit degree on all three cubes at c = 3e-3 and 1e-3; at c = 0 conflicts on r 6 and r 9 and a unit degree on r 12; at c = 3e-5 and 1e-4 conflicts on r 6",
+   "method": "own reader as above, rad seed rows",
+   "value": {
+    "rad_pin_d0.3_w25_c0.003_n32_L48": {
+     "orientable_r6_r9_r12": [
+      true,
+      true,
+      true
+     ],
+     "degree_signed_outward": [
+      1.0000000000000002,
+      1.0,
+      1.0
+     ]
+    },
+    "rad_pin_d0.3_w25_c0.001_n32_L48": {
+     "orientable_r6_r9_r12": [
+      true,
+      true,
+      true
+     ],
+     "degree_signed_outward": [
+      1.0000000000000002,
+      1.0000000000000002,
+      1.0
+     ]
+    },
+    "rad_pin_d0.3_w25_c0_n32_L48": {
+     "orientable_r6_r9_r12": [
+      false,
+      false,
+      true
+     ],
+     "degree_signed_outward": [
+      null,
+      null,
+      1.0
+     ]
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+     "orientable_r6_r9_r12": [
+      false,
+      true,
+      true
+     ],
+     "degree_signed_outward": [
+      null,
+      1.0,
+      1.0
+     ]
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+     "orientable_r6_r9_r12": [
+      false,
+      false,
+      true
+     ],
+     "degree_signed_outward": [
+      null,
+      null,
+      1.0
+     ]
+    }
+   },
+   "expectation": "the orientable / non-orientable pattern and the unit degrees as claimed",
+   "fails_if": "any cube of the claimed pattern reads differently with my reader",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C5.conflict_counts",
+   "claim": "WORDING: the stored conflict counts (28 and 6 at c = 0; 35, 63, 89 on row A) are numbers of the field",
+   "method": "the same cubes oriented by a breadth-first flood fill and by r-hat, against the gauge-invariant count of frustrated elementary squares (disclination piercings)",
+   "value": {
+    "bia_pin_d0.3_w25_c0.0001_n32_L48 r6": {
+     "stored_conflicts": 19,
+     "my_flood_fill_conflicts": 14,
+     "my_rhat_conflicts": 35,
+     "frustrated_squares_gauge_invariant": 2
+    },
+    "bia_pin_d0.3_w25_c0.0001_n32_L48 r9": {
+     "stored_conflicts": 6,
+     "my_flood_fill_conflicts": 58,
+     "my_rhat_conflicts": 6,
+     "frustrated_squares_gauge_invariant": 4
+    },
+    "bia_pin_d0.3_w25_c0.001_n32_L48 r6": {
+     "stored_conflicts": 12,
+     "my_flood_fill_conflicts": 44,
+     "my_rhat_conflicts": 12,
+     "frustrated_squares_gauge_invariant": 4
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48 r6": {
+     "stored_conflicts": 23,
+     "my_flood_fill_conflicts": 34,
+     "my_rhat_conflicts": 23,
+     "frustrated_squares_gauge_invariant": 8
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48 r9": {
+     "stored_conflicts": 4,
+     "my_flood_fill_conflicts": 50,
+     "my_rhat_conflicts": 4,
+     "frustrated_squares_gauge_invariant": 2
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48 r6": {
+     "stored_conflicts": 17,
+     "my_flood_fill_conflicts": 67,
+     "my_rhat_conflicts": 17,
+     "frustrated_squares_gauge_invariant": 8
+    },
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s r6": {
+     "stored_conflicts": 7,
+     "my_flood_fill_conflicts": 23,
+     "my_rhat_conflicts": 7,
+     "frustrated_squares_gauge_invariant": 4
+    },
+    "rad_pin_d0.3_w25_c0_n32_L48 r6": {
+     "stored_conflicts": 28,
+     "my_flood_fill_conflicts": 34,
+     "my_rhat_conflicts": 28,
+     "frustrated_squares_gauge_invariant": 10
+    },
+    "rad_pin_d0.3_w25_c0_n32_L48 r9": {
+     "stored_conflicts": 6,
+     "my_flood_fill_conflicts": 66,
+     "my_rhat_conflicts": 6,
+     "frustrated_squares_gauge_invariant": 4
+    },
+    "rad_pin_d0.3_w25_c3e-05_n32_L48 r6": {
+     "stored_conflicts": 37,
+     "my_flood_fill_conflicts": 55,
+     "my_rhat_conflicts": 19,
+     "frustrated_squares_gauge_invariant": 12
+    },
+    "rad_pin_d0.9224_w25_c0_n32_L48 r6": {
+     "stored_conflicts": 35,
+     "my_flood_fill_conflicts": 20,
+     "my_rhat_conflicts": 38,
+     "frustrated_squares_gauge_invariant": 4
+    },
+    "rad_pin_d0.9224_w25_c0_n32_L48 r9": {
+     "stored_conflicts": 63,
+     "my_flood_fill_conflicts": 63,
+     "my_rhat_conflicts": 47,
+     "frustrated_squares_gauge_invariant": 6
+    },
+    "rad_pin_d0.9224_w25_c0_n32_L48 r12": {
+     "stored_conflicts": 89,
+     "my_flood_fill_conflicts": 118,
+     "my_rhat_conflicts": 28,
+     "frustrated_squares_gauge_invariant": 8
+    },
+    "rad_pin_d0.9224_w25_c3.094e-05_n32_L48 r6": {
+     "stored_conflicts": 14,
+     "my_flood_fill_conflicts": 60,
+     "my_rhat_conflicts": 14,
+     "frustrated_squares_gauge_invariant": 8
+    }
+   },
+   "expectation": "my flood-fill count equals the stored count on every conflicted cube",
+   "fails_if": "a conflicted cube where another spanning tree gives another count (the count is then a property of the tree; only zero / nonzero and the piercing count are invariant)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C5.cube_centering",
+   "claim": "WORDING: the clean / conflicted reading of a cube does not depend on the reader's cube being centered on cell n // 2 (half a cell, 0.75, off the box center)",
+   "method": "the same read on the cube centered on the box center (one cell wider on the low side)",
+   "value": {
+    "bia_pin_d0.3_w25_c0.0001_n32_L48 r9": {
+     "record_cube_frustrated": 4,
+     "box_centered_cube_frustrated": 0,
+     "box_centered_cube_degree": 1.0
+    },
+    "bia_pin_d0.3_w25_c0.001_n32_L48 r6": {
+     "record_cube_frustrated": 4,
+     "box_centered_cube_frustrated": 0,
+     "box_centered_cube_degree": 1.0
+    },
+    "rad_pin_d0.3_w25_c0.0001_n32_L48 r9": {
+     "record_cube_frustrated": 2,
+     "box_centered_cube_frustrated": 0,
+     "box_centered_cube_degree": 0.9999999999999999
+    }
+   },
+   "expectation": "no cube changes class",
+   "fails_if": "a cube that is conflicted on the record's cube and clean on the box-centered one, or the reverse",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C5.disclination_extent",
+   "claim": "the clean cubes at c = 1e-3 and 3e-3 mean the line defects of the top eigenvector are confined inside r = 6 there, and reach beyond r = 6 for c <= 3e-4",
+   "method": "frustrated elementary squares of the top-eigenvector line field over the whole free region (all three plane orientations), with their radii",
+   "value": {
+    "0": {
+     "frustrated_squares_free_region": 130,
+     "r_min": 1.299038105676658,
+     "r_median": 8.297869319412595,
+     "r_max": 13.120270581738241
+    },
+    "3e-05": {
+     "frustrated_squares_free_region": 92,
+     "r_min": 1.893253349221604,
+     "r_median": 7.592798416764097,
+     "r_max": 10.869628957695896
+    },
+    "0.0001": {
+     "frustrated_squares_free_region": 96,
+     "r_min": 1.299038105676658,
+     "r_median": 8.81258053284634,
+     "r_max": 11.953858494245715
+    },
+    "0.0003": {
+     "frustrated_squares_free_region": 80,
+     "r_min": 1.299038105676658,
+     "r_median": 7.945333868088346,
+     "r_max": 10.869628957695896
+    },
+    "0.001": {
+     "frustrated_squares_free_region": 20,
+     "r_min": 1.299038105676658,
+     "r_median": 2.385787374716316,
+     "r_max": 4.8735328535961076
+    },
+    "0.003": {
+     "frustrated_squares_free_region": 6,
+     "r_min": 1.299038105676658,
+     "r_median": 1.8932533492216042,
+     "r_max": 2.385787374716316
+    }
+   },
+   "expectation": "r_max under 6 at c = 1e-3 and 3e-3, above 6 for c <= 3e-4",
+   "fails_if": "frustrated squares beyond r = 6 at the two large c, or none beyond r = 6 at the small c",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C5.degree_sign",
+   "claim": "the mixed signs of the stored degrees (for example -1, +1, +1 at c = 1e-3) are the arbitrary root sign of the reader and not a physical sign change between cubes",
+   "method": "degree with the global sign fixed by mean (v . r-hat) > 0 on each cube",
+   "value": {
+    "bia_pin_d0.3_w25_c0.0001_n32_L48": [
+     null,
+     null,
+     1.0
+    ],
+    "bia_pin_d0.3_w25_c0.001_n32_L48": [
+     null,
+     1.0,
+     1.0
+    ],
+    "rad_pin_d0.3_w25_c0.0001_n32_L48": [
+     null,
+     null,
+     1.0
+    ],
+    "rad_pin_d0.3_w25_c0.0003_n32_L48": [
+     null,
+     1.0000000000000002,
+     1.0
+    ],
+    "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": [
+     null,
+     1.0,
+     1.0
+    ],
+    "rad_pin_d0.3_w25_c0.001_n32_L48": [
+     1.0000000000000002,
+     1.0000000000000002,
+     1.0
+    ],
+    "rad_pin_d0.3_w25_c0.003_n32_L48": [
+     1.0000000000000002,
+     1.0,
+     1.0
+    ],
+    "rad_pin_d0.3_w25_c0_n32_L48": [
+     null,
+     null,
+     1.0
+    ],
+    "rad_pin_d0.3_w25_c3e-05_n32_L48": [
+     null,
+     1.0,
+     1.0
+    ],
+    "rad_pin_d0.9224_w0.003779_c0_n32_L48": [
+     1.0,
+     1.0,
+     1.0000000000000002
+    ],
+    "rad_pin_d0.9224_w25_c0_n32_L48": [
+     null,
+     null,
+     null
+    ],
+    "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": [
+     null,
+     1.0,
+     1.0
+    ]
+   },
+   "expectation": "every defined degree is +1 once oriented outward",
+   "fails_if": "a cube with degree -1 relative to the outward orientation",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C6.twelve_symmetries",
+   "claim": "the one-sided fwd / bwd averaged functional has only 12 exact lattice symmetries (axis permutations times full inversion)",
+   "method": "energy of the 48 cubic images of the c = 3e-4 end field; the analytic hedgehog seed must map to itself under all 48 (a test of my image code)",
+   "value": {
+    "exact_images": 12,
+    "min_rel_change_of_the_other_36": 0.4266128848868007,
+    "max_rel_change_of_the_other_36": 2.0621472734428954,
+    "seed_invariance_max_abs": 0.0
+   },
+   "expectation": "exactly 12 images leave E unchanged to 1e-12 and they are the predicted ones",
+   "fails_if": "the count of exact images is not 12, or my image code does not fix the seed",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C6.three_percent",
+   "claim": "the radius is reproducible to about 3 percent across start fields and the energy to about 2 to 3 percent",
+   "method": "own energies and own r_half on the three pairs of end fields",
+   "value": {
+    "E_percent": [
+     1.8376799062985198,
+     2.9800027856154627,
+     1.4771288775108558
+    ],
+    "r_half_percent": [
+     3.2885749707901315,
+     2.771887641688798,
+     1.8101016798791643
+    ],
+    "pairs": {
+     "two_sided_c3e-4": {
+      "labels": [
+       "AT_GATE",
+       "AT_GATE"
+      ],
+      "E": [
+       4.567435792049457,
+       4.485015562267309
+      ],
+      "E_rel_diff_percent": 1.8376799062985198,
+      "r_half": [
+       13.970952008,
+       14.446020213
+      ],
+      "r_half_interpolated": [
+       13.848841044555119,
+       14.40030970384427
+      ],
+      "r_half_rel_diff_percent": 3.2885749707901315,
+      "r_half_interp_rel_diff_percent": 3.8295611041055073,
+      "continuous_rotation_search_r_lt_18": {
+       "proper": {
+        "rms_identity": 0.3647595987634202,
+        "rms_random_median": 0.47195869132190926,
+        "rms_min": 0.3091544135818861,
+        "angle_deg_of_best": 177.33821436825465
+       },
+       "with_inversion": {
+        "rms_identity": 0.36082769816330335,
+        "rms_random_median": 0.4754563469643408,
+        "rms_min": 0.3130676851908996,
+        "angle_deg_of_best": 116.75282554045404
+       }
+      },
+      "rms_S_diff_identity_free": 0.23818779480642402,
+      "rms_S_diff_min_over_12": 0.20848601586159116,
+      "image_12": "((2, 1, 0), (-1.0, -1.0, -1.0))",
+      "rms_S_diff_min_over_48": 0.20848601586159116,
+      "image_48": "((2, 1, 0), (-1.0, -1.0, -1.0))",
+      "rms_of_field_minus_uniaxial_hedgehog": 0.22081059882553017,
+      "rms_sorted_eigenvalue_diff_identity": 0.06899272026241819,
+      "regions": {
+       "all_free": {
+        "rms_S_diff_best12": 0.20848601586159116,
+        "rms_sorted_eigenvalue_diff_best12": 0.05935883943712817
+       },
+       "r_lt_6": {
+        "rms_S_diff_best12": 0.44150403107364944,
+        "rms_sorted_eigenvalue_diff_best12": 0.11633257825043608
+       },
+       "r_6_12": {
+        "rms_S_diff_best12": 0.39146643739960685,
+        "rms_sorted_eigenvalue_diff_best12": 0.10829800437380402
+       },
+       "r_lt_12": {
+        "rms_S_diff_best12": 0.39825768798453676,
+        "rms_sorted_eigenvalue_diff_best12": 0.10936495993840338
+       },
+       "r_ge_12_free": {
+        "rms_S_diff_best12": 0.17549070662433575,
+        "rms_sorted_eigenvalue_diff_best12": 0.050942166024970426
+       }
+      },
+      "shell_spectra_a_b": {
+       "3": [
+        [
+         0.16436741259693632,
+         0.4837560536090949,
+         0.9621676170772009
+        ],
+        [
+         0.14801916738572665,
+         0.5035612824294665,
+         0.9557859463951616
+        ]
+       ],
+       "6": [
+        [
+         0.187129077852151,
+         0.44226393851596163,
+         0.9779408040787527
+        ],
+        [
+         0.19615117450412398,
+         0.42640461020599196,
+         0.9819894374825511
+        ]
+       ],
+       "9": [
+        [
+         0.18238288191830734,
+         0.4473736794666932,
+         0.9752382957424328
+        ],
+        [
+         0.1966590858917789,
+         0.42493264802615743,
+         0.981490251846052
+        ]
+       ],
+       "12": [
+        [
+         0.18793198043114848,
+         0.4406671249565178,
+         0.9774915511743582
+        ],
+        [
+         0.19084542553784348,
+         0.4335420165907877,
+         0.9795619930233327
+        ]
+       ],
+       "15": [
+        [
+         0.21329209045701297,
+         0.4077162078660412,
+         0.985231243626033
+        ],
+        [
+         0.2105419074386868,
+         0.4118976426634745,
+         0.9839849019858211
+        ]
+       ]
+      },
+      "straight_path_E": [
+       4.567435792049457,
+       6.013358821076702,
+       9.130376468252187,
+       12.416555022682687,
+       14.804622475450657,
+       15.657930964568678,
+       14.767518731262538,
+       12.350259836644039,
+       9.04809335871611,
+       5.928327257156393,
+       4.485015562267309
+      ],
+      "straight_path_barrier_above_higher_end": 11.090495172519221,
+      "dE_dt_at_a_from_my_gradient": 0.0007284783351410244
+     },
+     "seed_c1e-4": {
+      "labels": [
+       "FALLING",
+       "AT_GATE"
+      ],
+      "E": [
+       3.9557365116415526,
+       3.841266658223572
+      ],
+      "E_rel_diff_percent": 2.9800027856154627,
+      "r_half": [
+       15.927570436,
+       15.49798374
+      ],
+      "r_half_interpolated": [
+       15.922126424107056,
+       15.49520655338666
+      ],
+      "r_half_rel_diff_percent": 2.771887641688798,
+      "r_half_interp_rel_diff_percent": 2.7551737968093546,
+      "continuous_rotation_search_r_lt_18": {
+       "proper": {
+        "rms_identity": 0.46352418397383566,
+        "rms_random_median": 0.5235235833091718,
+        "rms_min": 0.3948798923308596,
+        "angle_deg_of_best": 118.03407288770353
+       },
+       "with_inversion": {
+        "rms_identity": 0.46355671964236106,
+        "rms_random_median": 0.5211365946223319,
+        "rms_min": 0.39496676641992184,
+        "angle_deg_of_best": 118.03407288770353
+       }
+      },
+      "rms_S_diff_identity_free": 0.31496257646314313,
+      "rms_S_diff_min_over_12": 0.2890171759751972,
+      "image_12": "((2, 0, 1), (-1.0, -1.0, -1.0))",
+      "rms_S_diff_min_over_48": 0.2890171759751972,
+      "image_48": "((2, 0, 1), (-1.0, -1.0, -1.0))",
+      "rms_of_field_minus_uniaxial_hedgehog": 0.27459211277456497,
+      "rms_sorted_eigenvalue_diff_identity": 0.09542643900315334,
+      "regions": {
+       "all_free": {
+        "rms_S_diff_best12": 0.2890171759751972,
+        "rms_sorted_eigenvalue_diff_best12": 0.0855440641909403
+       },
+       "r_lt_6": {
+        "rms_S_diff_best12": 0.8102069659048534,
+        "rms_sorted_eigenvalue_diff_best12": 0.16362639278937788
+       },
+       "r_6_12": {
+        "rms_S_diff_best12": 0.47454158076534314,
+        "rms_sorted_eigenvalue_diff_best12": 0.12381862466959875
+       },
+       "r_lt_12": {
+        "rms_S_diff_best12": 0.5297932385973565,
+        "rms_sorted_eigenvalue_diff_best12": 0.1296280759289036
+       },
+       "r_ge_12_free": {
+        "rms_S_diff_best12": 0.24867258294682335,
+        "rms_sorted_eigenvalue_diff_best12": 0.07920895348836661
+       }
+      },
+      "shell_spectra_a_b": {
+       "3": [
+        [
+         0.12919499040961396,
+         0.517355238614847,
+         0.9543987536867171
+        ],
+        [
+         0.22946359180195602,
+         0.37225062617973964,
+         0.9958272863112689
+        ]
+       ],
+       "6": [
+        [
+         0.18890165524296113,
+         0.42885045991856874,
+         0.9838381309503861
+        ],
+        [
+         0.17486360278371932,
+         0.4394353789203808,
+         0.9829681003994424
+        ]
+       ],
+       "9": [
+        [
+         0.17652195505588059,
+         0.4453987396084298,
+         0.9776566057140414
+        ],
+        [
+         0.17798190010276363,
+         0.44299030369162967,
+         0.9787731129836007
+        ]
+       ],
+       "12": [
+        [
+         0.1766236108980593,
+         0.44705461815840314,
+         0.9765605528874802
+        ],
+        [
+         0.17695298392360098,
+         0.449977180678728,
+         0.9739241823283599
+        ]
+       ],
+       "15": [
+        [
+         0.18799847498348432,
+         0.43170548764027816,
+         0.9812072571955207
+        ],
+        [
+         0.18928253598896133,
+         0.4320388440511483,
+         0.979898912294608
+        ]
+       ]
+      },
+      "straight_path_E": [
+       3.9557365116415526,
+       6.645750836954845,
+       12.426380754191246,
+       18.5037826900194,
+       22.911410853433132,
+       24.484608573901525,
+       22.843965013884453,
+       18.387412176245817,
+       12.291073649636612,
+       6.51891304709218,
+       3.8412666582235726
+      ],
+      "straight_path_barrier_above_higher_end": 20.52887206225997,
+      "dE_dt_at_a_from_my_gradient": 0.0005010914143080323
+     },
+     "seed_c1e-3": {
+      "labels": [
+       "AT_GATE",
+       "AT_GATE"
+      ],
+      "E": [
+       5.416820972918767,
+       5.337972243437439
+      ],
+      "E_rel_diff_percent": 1.4771288775108558,
+      "r_half": [
+       11.29988938,
+       11.09898644
+      ],
+      "r_half_interpolated": [
+       11.156738878921036,
+       10.89927922594587
+      ],
+      "r_half_rel_diff_percent": 1.8101016798791643,
+      "r_half_interp_rel_diff_percent": 2.3621713659952883,
+      "continuous_rotation_search_r_lt_18": {
+       "proper": {
+        "rms_identity": 0.31639887394505983,
+        "rms_random_median": 0.32907440625497014,
+        "rms_min": 0.2939497505085436,
+        "angle_deg_of_best": 87.57160762757835
+       },
+       "with_inversion": {
+        "rms_identity": 0.3163987806107961,
+        "rms_random_median": 0.3274240410185575,
+        "rms_min": 0.2912314573138668,
+        "angle_deg_of_best": 92.62930716028511
+       }
+      },
+      "rms_S_diff_identity_free": 0.19270054706276607,
+      "rms_S_diff_min_over_12": 0.188198520754646,
+      "image_12": "((1, 2, 0), (-1.0, -1.0, -1.0))",
+      "rms_S_diff_min_over_48": 0.18706373204196028,
+      "image_48": "((2, 1, 0), (-1.0, -1.0, 1.0))",
+      "rms_of_field_minus_uniaxial_hedgehog": 0.1585763045773671,
+      "rms_sorted_eigenvalue_diff_identity": 0.05080558945131863,
+      "regions": {
+       "all_free": {
+        "rms_S_diff_best12": 0.188198520754646,
+        "rms_sorted_eigenvalue_diff_best12": 0.05066503140445122
+       },
+       "r_lt_6": {
+        "rms_S_diff_best12": 0.6738213017111789,
+        "rms_sorted_eigenvalue_diff_best12": 0.149257870542749
+       },
+       "r_6_12": {
+        "rms_S_diff_best12": 0.41675605710420516,
+        "rms_sorted_eigenvalue_diff_best12": 0.12723167569965654
+       },
+       "r_lt_12": {
+        "rms_S_diff_best12": 0.45799563305024793,
+        "rms_sorted_eigenvalue_diff_best12": 0.13027486569102611
+       },
+       "r_ge_12_free": {
+        "rms_S_diff_best12": 0.1274185868143023,
+        "rms_sorted_eigenvalue_diff_best12": 0.03133646062476935
+       }
+      },
+      "shell_spectra_a_b": {
+       "3": [
+        [
+         0.1921478417686943,
+         0.4738711938641475,
+         0.9582343603532358
+        ],
+        [
+         0.22508307712921685,
+         0.3820814825951396,
+         0.9933689933771561
+        ]
+       ],
+       "6": [
+        [
+         0.21928721001185353,
+         0.4176407344330118,
+         0.9803991114705274
+        ],
+        [
+         0.1912027888772631,
+         0.4527889506989508,
+         0.9731664561445057
+        ]
+       ],
+       "9": [
+        [
+         0.2143711657398203,
+         0.42924267762523133,
+         0.975502751130626
+        ],
+        [
+         0.21171706975420115,
+         0.45093748900965736,
+         0.9649228154025586
+        ]
+       ],
+       "12": [
+        [
+         0.23650790543087882,
+         0.4064168415460306,
+         0.979956466364976
+        ],
+        [
+         0.23579262991474667,
+         0.4023135415217116,
+         0.9815210402264348
+        ]
+       ],
+       "15": [
+        [
+         0.27281327336996053,
+         0.34723284137273175,
+         0.9927532272859397
+        ],
+        [
+         0.27432667779074416,
+         0.3439463859240951,
+         0.9934072270044518
+        ]
+       ]
+      },
+      "straight_path_E": [
+       5.416820972918767,
+       6.382398696318429,
+       8.47233832806308,
+       10.688743446521318,
+       12.31507595156063,
+       12.915767445719759,
+       12.337845337502712,
+       10.714622674485184,
+       8.471508946908708,
+       6.3340073475416885,
+       5.337972243437439
+      ],
+      "straight_path_barrier_above_higher_end": 7.498946472800991,
+      "dE_dt_at_a_from_my_gradient": 0.00017509699851256787
+     }
+    }
+   },
+   "expectation": "every radius and every energy difference under 3.5 percent",
+   "fails_if": "a pair differing by 3.5 percent or more in the radius or in the energy",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C6.three_percent_reader_free",
+   "claim": "WORDING: the same 3 percent holds when the one-cell quantization of the r_half reader is removed, and 'energy to about 2 to 3 percent' describes the AT_GATE pairs",
+   "method": "r_half linearly interpolated between the bracketing cell radii; the energy differences of the two pairs where both rows are AT_GATE",
+   "value": {
+    "r_half_interp_percent": [
+     3.8295611041055073,
+     2.7551737968093546,
+     2.3621713659952883
+    ],
+    "E_percent_two_sided_and_seed_c1e-3": [
+     1.8376799062985198,
+     1.4771288775108558
+    ],
+    "E_percent_pair_with_a_FALLING_row": 2.9800027856154627
+   },
+   "expectation": "interpolated radius differences under 3.5 percent and both AT_GATE energy differences inside 2 to 3 percent",
+   "fails_if": "an interpolated radius difference of 3.5 percent or more, or an AT_GATE energy difference outside 2 to 3 percent",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C6.not_a_rotated_copy",
+   "claim": "the paired end fields are not one texture in two orientations (a continuous rotation, which the lattice and the cubic pin break only weakly, does not map one onto the other)",
+   "method": "min over SO(3), with and without the inversion, of the RMS of S_a - R S_b(R^T x) R^T on r < 18: 24 lattice rotations plus 150 random ones, the best 4 refined by Nelder-Mead; my interpolated rotation reproduces my exact lattice images to the value shown",
+   "value": {
+    "pairs": {
+     "two_sided_c3e-4": {
+      "proper": {
+       "rms_identity": 0.3647595987634202,
+       "rms_random_median": 0.47195869132190926,
+       "rms_min": 0.3091544135818861,
+       "angle_deg_of_best": 177.33821436825465
+      },
+      "with_inversion": {
+       "rms_identity": 0.36082769816330335,
+       "rms_random_median": 0.4754563469643408,
+       "rms_min": 0.3130676851908996,
+       "angle_deg_of_best": 116.75282554045404
+      }
+     },
+     "seed_c1e-4": {
+      "proper": {
+       "rms_identity": 0.46352418397383566,
+       "rms_random_median": 0.5235235833091718,
+       "rms_min": 0.3948798923308596,
+       "angle_deg_of_best": 118.03407288770353
+      },
+      "with_inversion": {
+       "rms_identity": 0.46355671964236106,
+       "rms_random_median": 0.5211365946223319,
+       "rms_min": 0.39496676641992184,
+       "angle_deg_of_best": 118.03407288770353
+      }
+     },
+     "seed_c1e-3": {
+      "proper": {
+       "rms_identity": 0.31639887394505983,
+       "rms_random_median": 0.32907440625497014,
+       "rms_min": 0.2939497505085436,
+       "angle_deg_of_best": 87.57160762757835
+      },
+      "with_inversion": {
+       "rms_identity": 0.3163987806107961,
+       "rms_random_median": 0.3274240410185575,
+       "rms_min": 0.2912314573138668,
+       "angle_deg_of_best": 92.62930716028511
+      }
+     }
+    },
+    "lattice_rotation_code_check_max_abs": 5.551115123125783e-17
+   },
+   "expectation": "the best rotation leaves more than half of the identity RMS on every pair",
+   "fails_if": "a rotation that brings the RMS under half of its identity value (then the fields are the same object turned), or my rotation code failing its lattice check",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C6.not_the_same_field",
+   "claim": "the paired end fields are NOT the same field, also after the symmetry images",
+   "method": "RMS Frobenius difference of the spatial blocks over free cells, minimized over the 12 exact and all 48 cubic images, against the RMS departure of the field from the uniaxial hedgehog",
+   "value": {
+    "two_sided_c3e-4": {
+     "min12": 0.20848601586159116,
+     "min48": 0.20848601586159116,
+     "scale": 0.22081059882553017
+    },
+    "seed_c1e-4": {
+     "min12": 0.2890171759751972,
+     "min48": 0.2890171759751972,
+     "scale": 0.27459211277456497
+    },
+    "seed_c1e-3": {
+     "min12": 0.188198520754646,
+     "min48": 0.18706373204196028,
+     "scale": 0.1585763045773671
+    }
+   },
+   "expectation": "min over 48 images above 10 percent of the halo scale on every pair",
+   "fails_if": "a pair that coincides (under 10 percent of the halo scale) after some image",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C6.where_the_difference_lives",
+   "claim": "the differences between paired end fields are a frame (orientation) difference more than a spectrum difference",
+   "method": "per-region RMS of S_a - S_b against the RMS of the sorted-eigenvalue difference",
+   "value": {
+    "two_sided_c3e-4": {
+     "core_r_lt_6": 0.44150403107364944,
+     "r_6_12": 0.39146643739960685,
+     "r_ge_12": 0.17549070662433575,
+     "eig_core": 0.11633257825043608,
+     "eig_r_ge_12": 0.050942166024970426
+    },
+    "seed_c1e-4": {
+     "core_r_lt_6": 0.8102069659048534,
+     "r_6_12": 0.47454158076534314,
+     "r_ge_12": 0.24867258294682335,
+     "eig_core": 0.16362639278937788,
+     "eig_r_ge_12": 0.07920895348836661
+    },
+    "seed_c1e-3": {
+     "core_r_lt_6": 0.6738213017111789,
+     "r_6_12": 0.41675605710420516,
+     "r_ge_12": 0.1274185868143023,
+     "eig_core": 0.149257870542749,
+     "eig_r_ge_12": 0.03133646062476935
+    }
+   },
+   "expectation": "in every region the eigenvalue RMS is under half of the full-matrix RMS",
+   "fails_if": "the eigenvalue difference carries half or more of the matrix difference in a region",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C6.distinct_stationary_points",
+   "claim": "WORDING: 'the gate does not select a unique stationary point' needs the two AT_GATE fields to be separated, not two stops along one slow valley",
+   "method": "energy along the straight path between the pair (best exact image, M_00 re-solved); a straight path between two frame textures is a poor path, so a barrier here shows the fields are far apart and does not prove two separate minima",
+   "value": {
+    "two_sided_c3e-4": {
+     "path_E": [
+      4.567435792049457,
+      6.013358821076702,
+      9.130376468252187,
+      12.416555022682687,
+      14.804622475450657,
+      15.657930964568678,
+      14.767518731262538,
+      12.350259836644039,
+      9.04809335871611,
+      5.928327257156393,
+      4.485015562267309
+     ],
+     "barrier": 11.090495172519221,
+     "dE_dt_at_a": 0.0007284783351410244
+    },
+    "seed_c1e-4": {
+     "path_E": [
+      3.9557365116415526,
+      6.645750836954845,
+      12.426380754191246,
+      18.5037826900194,
+      22.911410853433132,
+      24.484608573901525,
+      22.843965013884453,
+      18.387412176245817,
+      12.291073649636612,
+      6.51891304709218,
+      3.8412666582235726
+     ],
+     "barrier": 20.52887206225997,
+     "dE_dt_at_a": 0.0005010914143080323
+    },
+    "seed_c1e-3": {
+     "path_E": [
+      5.416820972918767,
+      6.382398696318429,
+      8.47233832806308,
+      10.688743446521318,
+      12.31507595156063,
+      12.915767445719759,
+      12.337845337502712,
+      10.714622674485184,
+      8.471508946908708,
+      6.3340073475416885,
+      5.337972243437439
+     ],
+     "barrier": 7.498946472800991,
+     "dE_dt_at_a": 0.00017509699851256787
+    }
+   },
+   "expectation": "a barrier above the higher end on the two pairs where both rows are AT_GATE",
+   "fails_if": "the path energy falls monotonically from the higher field to the lower one (then the higher AT_GATE field is a slow-valley stop and the gate is too loose, not non-unique)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C7.c3e-3_drift",
+   "claim": "the c = 3e-3 row met the gate at 1000 iterations with r_half still rising: the drift over the last 500 iterations exceeds 2 percent",
+   "method": "stored chunk reads at iterations 500, 750, 1000 of the main-pool row",
+   "value": {
+    "r_half_500_to_1000": [
+     7.1545440106270926,
+     7.46240577829965,
+     7.46240577829965
+    ],
+    "drift": 0.04183026539001895,
+    "reader_step_percent": {
+     "label": "AT_GATE",
+     "label_of_the_end_field_row": "LINE_SEARCH_STALL",
+     "iters": 2218,
+     "drift_500": 0.0,
+     "drift_1000": 0.0,
+     "reader_step_percent": 4.125502902932603,
+     "E_drop_last_chunk_over_E": 0.0
+    }
+   },
+   "expectation": "drift above 0.02",
+   "fails_if": "drift at or under 0.02",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C7.c3e-3_continuation",
+   "claim": "WORDING: at the gate (1000 iterations) the c = 3e-3 radius was 'still rising', which is why the row is held out of a slope fit",
+   "method": "chunks past iteration 1000 in the row's stage file (read only, a snapshot if the continuation pool is still writing); the interpolated r_half of the present end field. This audit's first pass, run before the continuation pool replaced the 1000-iteration end field, read an interpolated r_half of 7.3297 on it (not reproducible from the files any more)",
+   "value": {
+    "chunks_iters_r_half_E": [
+     [
+      1250,
+      7.46240577829965,
+      6.231385688592771
+     ],
+     [
+      1500,
+      7.46240577829965,
+      6.2313839672324365
+     ],
+     [
+      1750,
+      7.46240577829965,
+      6.2313838575645715
+     ],
+     [
+      2000,
+      7.46240577829965,
+      6.2313838503211025
+     ],
+     [
+      2217,
+      7.46240577829965,
+      6.231383849868993
+     ],
+     [
+      2218,
+      7.46240577829965,
+      6.231383849868993
+     ]
+    ],
+    "r_half_at_1000": 7.46240577829965,
+    "largest_relative_move_after_1000": 0.0,
+    "end_field_r_half": 7.462405778,
+    "end_field_r_half_interpolated": 7.334238034785186,
+    "interpolated_r_half_of_the_1000_iteration_field_first_pass": 7.329710910570718,
+    "end_field_row_label": "LINE_SEARCH_STALL",
+    "end_field_row_iters": 2218
+   },
+   "expectation": "r_half moves by more than 2 percent somewhere in the continuation (or no continued chunk exists yet)",
+   "fails_if": "the continuation leaves r_half within 2 percent of its 1000-iteration value: the radius was then final at the gate and the 4.2 percent 'drift' was one step of the reader (see C7.drift_rule_resolution)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C7.energy_convergence_at_gate",
+   "claim": "WORDING: AT_GATE energies are converged well inside the 1.5 to 3 percent start-field differences they are compared at",
+   "method": "geometric extrapolation of the last five chunk drops of each AT_GATE row (ratio per chunk, remaining fall as a percent of E)",
+   "value": {
+    "rows": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+      "last_drops": [
+       0.0028201431774630414,
+       0.005240350536125593,
+       0.0022349446257874384,
+       0.00071522452318451,
+       0.00030539178506172604
+      ],
+      "E": 3.841266658223305,
+      "drop_ratio_per_chunk": 0.5736494059327898,
+      "projected_remaining_fall_percent_of_E": 0.010697014132076013
+     },
+     "bia_pin_d0.3_w25_c0.001_n32_L48": {
+      "last_drops": [
+       0.04450338032304302,
+       0.008260234337581274,
+       0.0011466821137773309,
+       0.0007985156682277506,
+       0.00037320262175200014
+      ],
+      "E": 5.337972243434777,
+      "drop_ratio_per_chunk": 0.3026132372945883,
+      "projected_remaining_fall_percent_of_E": 0.0030337696109510232
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+      "last_drops": [
+       0.0027953978763779475,
+       0.002107813863396757,
+       0.001429326282559984,
+       0.0006294230456127536,
+       0.00016407992413025596
+      ],
+      "E": 4.567435792048664,
+      "drop_ratio_per_chunk": 0.49221285730606146,
+      "projected_remaining_fall_percent_of_E": 0.0034822043152580814
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+      "last_drops": [
+       0.0010837397129996873,
+       0.0003783034563511478,
+       0.00020154077693579353,
+       0.0004074041413426599,
+       9.629327851712333e-05
+      ],
+      "E": 4.485015562266572,
+      "drop_ratio_per_chunk": 0.5459687008982949,
+      "projected_remaining_fall_percent_of_E": 0.002581748736090093
+     },
+     "rad_pin_d0.3_w25_c0.001_n32_L48": {
+      "last_drops": [
+       0.0022099398813866244,
+       0.0015438859582612707,
+       0.0005851661021436527,
+       0.00047384028262165145,
+       0.0001001259145159139
+      ],
+      "E": 5.416820972916112,
+      "drop_ratio_per_chunk": 0.46136166858520333,
+      "projected_remaining_fall_percent_of_E": 0.001583238224115324
+     },
+     "rad_pin_d0.3_w25_c0_n32_L48": {
+      "last_drops": [
+       0.002666728502008109,
+       0.0016719649938856662,
+       0.0010222572251818995,
+       0.0005751690922140007,
+       0.0002785947935426414
+      ],
+      "E": 3.5233295159611373,
+      "drop_ratio_per_chunk": 0.5685236666400775,
+      "projected_remaining_fall_percent_of_E": 0.01041864649668719
+     }
+    },
+    "rows_with_projected_fall_above_0.5_percent": {}
+   },
+   "expectation": "projected remaining fall under 0.5 percent of E on every AT_GATE row",
+   "fails_if": "an AT_GATE row whose drops are not shrinking (ratio >= 1) or whose projected remaining fall exceeds 0.5 percent of E",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C7.other_at_gate_rows",
+   "claim": "no other AT_GATE row stopped with r_half drifting more than 2 percent over its last 500 iterations",
+   "method": "the same drift read on every AT_GATE row (500 and 1000 iteration windows reported)",
+   "value": {
+    "offenders_500": [],
+    "all": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+      "label": "AT_GATE",
+      "label_of_the_end_field_row": "AT_GATE",
+      "iters": 4500,
+      "drift_500": 0.009295320532920906,
+      "drift_1000": 0.00930685522658552,
+      "reader_step_percent": 0.9411974128190677,
+      "E_drop_last_chunk_over_E": 7.950288595766961e-05
+     },
+     "bia_pin_d0.3_w25_c0.001_n32_L48": {
+      "label": "AT_GATE",
+      "label_of_the_end_field_row": "AT_GATE",
+      "iters": 1750,
+      "drift_500": 0.01854874090906322,
+      "drift_1000": 0.018640945192443137,
+      "reader_step_percent": 1.8434760336548328,
+      "E_drop_last_chunk_over_E": 6.99146800943009e-05
+     },
+     "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+      "label": "FALLING",
+      "label_of_the_end_field_row": "FALLING",
+      "iters": 6000,
+      "drift_500": 0.0,
+      "drift_1000": 0.0,
+      "reader_step_percent": 0.8908863506218201,
+      "E_drop_last_chunk_over_E": 0.0009741837647706695
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+      "label": "AT_GATE",
+      "label_of_the_end_field_row": "AT_GATE",
+      "iters": 3750,
+      "drift_500": 0.0,
+      "drift_1000": 0.011648619244540347,
+      "reader_step_percent": 1.1594594835573295,
+      "E_drop_last_chunk_over_E": 3.592386003890819e-05
+     },
+     "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+      "label": "AT_GATE",
+      "label_of_the_end_field_row": "AT_GATE",
+      "iters": 3500,
+      "drift_500": 0.0,
+      "drift_1000": 0.0,
+      "reader_step_percent": 1.0840428622623364,
+      "E_drop_last_chunk_over_E": 2.146999875034102e-05
+     },
+     "rad_pin_d0.3_w25_c0.001_n32_L48": {
+      "label": "AT_GATE",
+      "label_of_the_end_field_row": "AT_GATE",
+      "iters": 4500,
+      "drift_500": 0.0,
+      "drift_1000": 0.0,
+      "reader_step_percent": 1.77791952862463,
+      "E_drop_last_chunk_over_E": 1.8484257651589277e-05
+     },
+     "rad_pin_d0.3_w25_c0.003_n32_L48": {
+      "label": "AT_GATE",
+      "label_of_the_end_field_row": "LINE_SEARCH_STALL",
+      "iters": 2218,
+      "drift_500": 0.0,
+      "drift_1000": 0.0,
+      "reader_step_percent": 4.125502902932603,
+      "E_drop_last_chunk_over_E": 0.0
+     },
+     "rad_pin_d0.3_w25_c0_n32_L48": {
+      "label": "AT_GATE",
+      "label_of_the_end_field_row": "AT_GATE",
+      "iters": 6000,
+      "drift_500": 0.0,
+      "drift_1000": 0.0,
+      "reader_step_percent": 0.7797389932068047,
+      "E_drop_last_chunk_over_E": 7.907145564460293e-05
+     },
+     "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+      "label": "FALLING",
+      "label_of_the_end_field_row": "FALLING",
+      "iters": 6000,
+      "drift_500": 0.0,
+      "drift_1000": 0.0,
+      "reader_step_percent": 0.8316152721044613,
+      "E_drop_last_chunk_over_E": 0.00011882673323384249
+     },
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+      "label": "LINE_SEARCH_STALL",
+      "label_of_the_end_field_row": "LINE_SEARCH_STALL",
+      "iters": 232,
+      "drift_500": 0.0,
+      "drift_1000": 0.0,
+      "reader_step_percent": 0.5148039341913216,
+      "E_drop_last_chunk_over_E": 0.0
+     },
+     "rad_pin_d0.9224_w25_c0_n32_L48": {
+      "label": "FALLING",
+      "label_of_the_end_field_row": "FALLING",
+      "iters": 6000,
+      "drift_500": 0.0,
+      "drift_1000": 0.0056802503838692025,
+      "reader_step_percent": 0.5673804614705786,
+      "E_drop_last_chunk_over_E": 0.0026602052863440796
+     },
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+      "label": "FALLING",
+      "label_of_the_end_field_row": "FALLING",
+      "iters": 6000,
+      "drift_500": 0.0,
+      "drift_1000": 0.0,
+      "reader_step_percent": 0.9780186142170226,
+      "E_drop_last_chunk_over_E": 0.0004706650144227602
+     }
+    }
+   },
+   "expectation": "no other AT_GATE row above 0.02 on the 500-iteration window",
+   "fails_if": "another AT_GATE row above 0.02",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C7.drift_rule_resolution",
+   "claim": "WORDING: a 2 percent drift rule is only meaningful where one step of the r_half reader (the gap between neighboring cell radii) is under 2 percent",
+   "method": "gap between the distinct cell radii bracketing r_half, in percent of r_half",
+   "value": {
+    "rows_with_reader_step_above_2_percent": {
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 4.125502902932603
+    }
+   },
+   "expectation": "no AT_GATE row whose reader step exceeds the 2 percent rule",
+   "fails_if": "an AT_GATE row where a single reader step is larger than the drift tolerance (a one-step move then reads as drift and a sub-step move as none)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C8.rowA_c0",
+   "claim": "row A at c = 0: spectrum about (0.905, 0.949, 0.992) flat in r from 1.5 to 15, r_half 19.9, the top eigenvector not orientable on all three cubes",
+   "method": "own shells (0.75 h), own r_half, own degree reader",
+   "value": {
+    "shells": {
+     "1.5": {
+      "spectrum": [
+       0.9127216845704165,
+       0.9347576733505433,
+       0.9973303002590402
+      ],
+      "G1sq_over_vacuum": 0.7867335372575882,
+      "seed_G1sq_over_vacuum": 0.00796022623320201,
+      "curv_density_over_seed": 0.019541615142110988,
+      "trace": 2.84480965818
+     },
+     "3": {
+      "spectrum": [
+       0.9121119957879664,
+       0.9359918921791731,
+       0.9966796764474326
+      ],
+      "G1sq_over_vacuum": 0.7627027610058844,
+      "seed_G1sq_over_vacuum": 0.07654858800683327,
+      "curv_density_over_seed": 0.011157264632840398,
+      "trace": 2.8447835644145725
+     },
+     "4.5": {
+      "spectrum": [
+       0.9095927861558182,
+       0.9401560546099518,
+       0.9950202287746635
+      ],
+      "G1sq_over_vacuum": 0.6724885154712765,
+      "seed_G1sq_over_vacuum": 0.3197194103012067,
+      "curv_density_over_seed": 0.011561074776910306,
+      "trace": 2.8447690695404333
+     },
+     "6": {
+      "spectrum": [
+       0.9082332549890093,
+       0.9418708752391328,
+       0.9946606885315421
+      ],
+      "G1sq_over_vacuum": 0.637753037709181,
+      "seed_G1sq_over_vacuum": 0.6401197820174365,
+      "curv_density_over_seed": 0.021497935071580005,
+      "trace": 2.844764818759684
+     },
+     "9": {
+      "spectrum": [
+       0.9055093362972751,
+       0.9463274777335038,
+       0.9929222684241207
+      ],
+      "G1sq_over_vacuum": 0.5284620188605424,
+      "seed_G1sq_over_vacuum": 0.9745424323237216,
+      "curv_density_over_seed": 0.11765334663181226,
+      "trace": 2.8447590824548996
+     },
+     "12": {
+      "spectrum": [
+       0.9046116516535012,
+       0.9480699894801562,
+       0.9920771821580107
+      ],
+      "G1sq_over_vacuum": 0.4770978480714937,
+      "seed_G1sq_over_vacuum": 0.9992874719203397,
+      "curv_density_over_seed": 0.33814192692731365,
+      "trace": 2.844758823291668
+     },
+     "15": {
+      "spectrum": [
+       0.904165413757759,
+       0.9490393766979863,
+       0.9915573917372348
+      ],
+      "G1sq_over_vacuum": 0.448932763906625,
+      "seed_G1sq_over_vacuum": 0.9999949183899798,
+      "curv_density_over_seed": 0.8359540427871591,
+      "trace": 2.8447621821929805
+     },
+     "18": {
+      "spectrum": [
+       0.9052872484504721,
+       0.9469097346921587,
+       0.9925756886626175
+      ],
+      "G1sq_over_vacuum": 0.49823718345616047,
+      "seed_G1sq_over_vacuum": 0.9999999843842697,
+      "curv_density_over_seed": 1.617795338655761,
+      "trace": 2.8447726718052486
+     },
+     "21": {
+      "spectrum": [
+       0.9096964387229941,
+       0.939558351893607,
+       0.995531536201715
+      ],
+      "G1sq_over_vacuum": 0.6650560550081044,
+      "seed_G1sq_over_vacuum": 0.9999999999888829,
+      "curv_density_over_seed": 2.6405973834501837,
+      "trace": 2.844786326818316
+     }
+    },
+    "r_half": 19.9421037,
+    "degree": {
+     "6": {
+      "frustrated_plaquettes": 4,
+      "conflicts_bfs": 20,
+      "conflicts_rhat": 38,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.0013737901647744577,
+       0.0067501289235540884,
+       0.014705042950135416,
+       0.047913353165030426
+      ],
+      "gap_top_mid_surface_median": 0.05251866268931876,
+      "gap_top_mid_surface_min": 0.0013737901647744577,
+      "stored_degree_conflicts": [
+       null,
+       35
+      ],
+      "centered_cube_frustrated": 6,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 6,
+      "conflicts_bfs": 63,
+      "conflicts_rhat": 47,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.001530967322938781,
+       0.0021828237755250335,
+       0.002385361845096301,
+       0.003482176145590432,
+       0.0042511383556548266,
+       0.010560044674627123
+      ],
+      "gap_top_mid_surface_median": 0.041692933748486205,
+      "gap_top_mid_surface_min": 0.0010662949806249378,
+      "stored_degree_conflicts": [
+       null,
+       63
+      ],
+      "centered_cube_frustrated": 4,
+      "centered_cube_degree": null
+     },
+     "12": {
+      "frustrated_plaquettes": 8,
+      "conflicts_bfs": 118,
+      "conflicts_rhat": 28,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.0005914178708440465,
+       0.0020537318368506474,
+       0.002240025742911711,
+       0.0023317069117784195,
+       0.0027998471891244048,
+       0.003161111208805578
+      ],
+      "gap_top_mid_surface_median": 0.03746479936353225,
+      "gap_top_mid_surface_min": 0.0005914178708440465,
+      "stored_degree_conflicts": [
+       null,
+       89
+      ],
+      "centered_cube_frustrated": 4,
+      "centered_cube_degree": null
+     }
+    },
+    "label": "FALLING",
+    "fmax_mine": 4.185259156337563e-05,
+    "gate": 1.5116224146160152e-07
+   },
+   "expectation": "every shell mean within 0.01 of the quoted triple, r_half within 0.1, frustrated squares on all three cubes",
+   "fails_if": "a shell off by more than 0.01, another radius, or an orientable cube",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "C8.rowA_c3.094e-5",
+   "claim": "row A at c = 3.094e-5: spectrum about (0.910, 0.940, 0.995) flat in r, r_half 15.2, unit degree on r 9 and r 12, conflicts on r 6",
+   "method": "own shells (0.75 h), own r_half, own degree reader",
+   "value": {
+    "shells": {
+     "1.5": {
+      "spectrum": [
+       0.9108970473840574,
+       0.9391353025358542,
+       0.9948392769540575
+      ],
+      "G1sq_over_vacuum": 0.6704413894479885,
+      "seed_G1sq_over_vacuum": 0.00796022623320201,
+      "curv_density_over_seed": 0.10510285277514034,
+      "trace": 2.844871626873969
+     },
+     "3": {
+      "spectrum": [
+       0.9119522800193073,
+       0.9369872755537358,
+       0.9959143076272892
+      ],
+      "G1sq_over_vacuum": 0.725542505282827,
+      "seed_G1sq_over_vacuum": 0.07654858800683327,
+      "curv_density_over_seed": 0.05330112495472624,
+      "trace": 2.8448538632003326
+     },
+     "4.5": {
+      "spectrum": [
+       0.9106218232293011,
+       0.9387979515312764,
+       0.9954190892016131
+      ],
+      "G1sq_over_vacuum": 0.6831343665646199,
+      "seed_G1sq_over_vacuum": 0.3197194103012067,
+      "curv_density_over_seed": 0.04536471307488944,
+      "trace": 2.8448388639621904
+     },
+     "6": {
+      "spectrum": [
+       0.909758329585306,
+       0.9402308528274538,
+       0.9948503030525797
+      ],
+      "G1sq_over_vacuum": 0.6488394714897769,
+      "seed_G1sq_over_vacuum": 0.6401197820174365,
+      "curv_density_over_seed": 0.08067679208295984,
+      "trace": 2.844839485465339
+     },
+     "9": {
+      "spectrum": [
+       0.9094455188507692,
+       0.9405540373002299,
+       0.994835297416127
+      ],
+      "G1sq_over_vacuum": 0.6419884567572889,
+      "seed_G1sq_over_vacuum": 0.9745424323237216,
+      "curv_density_over_seed": 0.36749730552685256,
+      "trace": 2.844834853567126
+     },
+     "12": {
+      "spectrum": [
+       0.9096632492781869,
+       0.9405152930447643,
+       0.9946608466382052
+      ],
+      "G1sq_over_vacuum": 0.6355053487323663,
+      "seed_G1sq_over_vacuum": 0.9992874719203397,
+      "curv_density_over_seed": 0.9357739516848701,
+      "trace": 2.844839388961156
+     },
+     "15": {
+      "spectrum": [
+       0.9116038027990379,
+       0.9368162622200107,
+       0.9964196111906151
+      ],
+      "G1sq_over_vacuum": 0.7185394585834523,
+      "seed_G1sq_over_vacuum": 0.9999949183899798,
+      "curv_density_over_seed": 1.6770796033998574,
+      "trace": 2.8448396762096637
+     },
+     "18": {
+      "spectrum": [
+       0.9146037950853363,
+       0.9322518194764299,
+       0.9979724227389293
+      ],
+      "G1sq_over_vacuum": 0.8283201227370883,
+      "seed_G1sq_over_vacuum": 0.9999999843842697,
+      "curv_density_over_seed": 2.2287147396795057,
+      "trace": 2.8448280373006956
+     },
+     "21": {
+      "spectrum": [
+       0.9180872554522964,
+       0.9275638227374506,
+       0.9991524815182022
+      ],
+      "G1sq_over_vacuum": 0.9264581308594682,
+      "seed_G1sq_over_vacuum": 0.9999999999888829,
+      "curv_density_over_seed": 2.0707614064233093,
+      "trace": 2.844803559707949
+     }
+    },
+    "r_half": 15.2048512,
+    "degree": {
+     "6": {
+      "frustrated_plaquettes": 8,
+      "conflicts_bfs": 60,
+      "conflicts_rhat": 14,
+      "degree_bfs": null,
+      "degree_rhat": null,
+      "gap_top_mid_at_frustrated": [
+       0.004116648737466977,
+       0.010617989753057278,
+       0.010617989753057278,
+       0.01565704679272184,
+       0.01629250890871803,
+       0.016460628400013833
+      ],
+      "gap_top_mid_surface_median": 0.05383018937278766,
+      "gap_top_mid_surface_min": 0.004116648737466977,
+      "stored_degree_conflicts": [
+       null,
+       14
+      ],
+      "centered_cube_frustrated": 4,
+      "centered_cube_degree": null
+     },
+     "9": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.056304765874282625,
+      "gap_top_mid_surface_min": 0.008372302123724862,
+      "stored_degree_conflicts": [
+       1.0000000000000002,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     },
+     "12": {
+      "frustrated_plaquettes": 0,
+      "conflicts_bfs": 0,
+      "conflicts_rhat": 0,
+      "degree_bfs": 1.0,
+      "degree_rhat": 1.0,
+      "gap_top_mid_at_frustrated": [],
+      "gap_top_mid_surface_median": 0.05825450435573071,
+      "gap_top_mid_surface_min": 0.025589455591821908,
+      "stored_degree_conflicts": [
+       1.0,
+       0
+      ],
+      "centered_cube_frustrated": 0,
+      "centered_cube_degree": 1.0
+     }
+    },
+    "label": "FALLING",
+    "fmax_mine": 1.618689951074242e-05,
+    "gate": 1.5116224146160152e-07
+   },
+   "expectation": "every shell mean r 1.5 to 15 within 0.01 of the quoted triple, r_half within 0.1, the claimed orientability pattern",
+   "fails_if": "a shell off by more than 0.01 (the spectrum is then not flat), another radius, or another pattern",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C8.rowB_numbers",
+   "claim": "row B (w1s 0.003779, c = 0): fmax below the gate, E 1.545e-4 from 8.66e-4, spectrum about (0.946, 0.948, 0.954) at r 1.5 to (0.930, 0.937, 0.980) at r 15",
+   "method": "own energy, own gradient over all free cells, own shells, own seed energy",
+   "value": {
+    "E": 0.00015451689733149193,
+    "E_seed": 0.0008661091950954781,
+    "fmax_mine": 3.0753017010626924e-10,
+    "gate": 1.5116224146160152e-07,
+    "label": "LINE_SEARCH_STALL",
+    "iters": 232,
+    "shells": {
+     "1.5": {
+      "spectrum": [
+       0.9458633133939973,
+       0.9480725281557494,
+       0.9543281476204655
+      ],
+      "G1sq_over_vacuum": 0.00011975375845013363,
+      "seed_G1sq_over_vacuum": 0.00796022623320201,
+      "curv_density_over_seed": 0.0049456657886287475,
+      "trace": 2.848263989170212
+     },
+     "3": {
+      "spectrum": [
+       0.9444364993702367,
+       0.9470503665848125,
+       0.9567349412994843
+      ],
+      "G1sq_over_vacuum": 0.0006350269668813767,
+      "seed_G1sq_over_vacuum": 0.07654858800683327,
+      "curv_density_over_seed": 0.0034256169133788463,
+      "trace": 2.8482218072545336
+     },
+     "4.5": {
+      "spectrum": [
+       0.9424272086111504,
+       0.9461162033328432,
+       0.9596074325581914
+      ],
+      "G1sq_over_vacuum": 0.0020154417726136907,
+      "seed_G1sq_over_vacuum": 0.3197194103012067,
+      "curv_density_over_seed": 0.004031929459951102,
+      "trace": 2.848150844502185
+     },
+     "6": {
+      "spectrum": [
+       0.9408021211673514,
+       0.9452195829796597,
+       0.9620504747590475
+      ],
+      "G1sq_over_vacuum": 0.004485398578696962,
+      "seed_G1sq_over_vacuum": 0.6401197820174365,
+      "curv_density_over_seed": 0.007939386995922917,
+      "trace": 2.8480721789060586
+     },
+     "9": {
+      "spectrum": [
+       0.9368198460533058,
+       0.9424440486992431,
+       0.9685220613535388
+      ],
+      "G1sq_over_vacuum": 0.02182114255780606,
+      "seed_G1sq_over_vacuum": 0.9745424323237216,
+      "curv_density_over_seed": 0.04534072754452352,
+      "trace": 2.8477859561060876
+     },
+     "12": {
+      "spectrum": [
+       0.9335908389791874,
+       0.9399796794013282,
+       0.9738894147719382
+      ],
+      "G1sq_over_vacuum": 0.05744598960674439,
+      "seed_G1sq_over_vacuum": 0.9992874719203397,
+      "curv_density_over_seed": 0.1378015449602586,
+      "trace": 2.8474599331524537
+     },
+     "15": {
+      "spectrum": [
+       0.9301980057972168,
+       0.9369093318116724,
+       0.9798945174964543
+      ],
+      "G1sq_over_vacuum": 0.13627812190180413,
+      "seed_G1sq_over_vacuum": 0.9999949183899798,
+      "curv_density_over_seed": 0.3450319341418298,
+      "trace": 2.847001855105343
+     },
+     "18": {
+      "spectrum": [
+       0.9274351992163927,
+       0.9337616486073036,
+       0.9853055721414548
+      ],
+      "G1sq_over_vacuum": 0.263631880825052,
+      "seed_G1sq_over_vacuum": 0.9999999843842697,
+      "curv_density_over_seed": 0.7024528331383639,
+      "trace": 2.846502419965151
+     },
+     "21": {
+      "spectrum": [
+       0.9246346049282925,
+       0.9299644142645553,
+       0.9912577864802509
+      ],
+      "G1sq_over_vacuum": 0.4901709195105484,
+      "seed_G1sq_over_vacuum": 0.9999999999888829,
+      "curv_density_over_seed": 1.34347220528952,
+      "trace": 2.845856805673099
+     }
+    }
+   },
+   "expectation": "shell means within 0.003, energies as quoted, my fmax under the gate",
+   "fails_if": "any of those numbers off",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C8.rowB_gap_closing",
+   "claim": "row B lowers the curvature energy by closing the eigenvalue gaps (the quartic is weighted by products of gaps): 'the potential at this weight does not hold the spectrum'",
+   "method": "shell mean of G_1^2 = ((top - mid)(top - small))^2 over its vacuum value (1 - delta)^4, the curvature density over the seed's, the V4 paid against the curvature saved, and the V4 cost of a fully isotropic free region",
+   "value": {
+    "G1sq_over_vacuum_by_shell": {
+     "1.5": 0.00011975375845013363,
+     "3": 0.0006350269668813767,
+     "4.5": 0.0020154417726136907,
+     "6": 0.004485398578696962,
+     "9": 0.02182114255780606,
+     "12": 0.05744598960674439,
+     "15": 0.13627812190180413,
+     "18": 0.263631880825052,
+     "21": 0.4901709195105484
+    },
+    "seed_G1sq_over_vacuum_by_shell": {
+     "1.5": 0.00796022623320201,
+     "3": 0.07654858800683327,
+     "4.5": 0.3197194103012067,
+     "6": 0.6401197820174365,
+     "9": 0.9745424323237216,
+     "12": 0.9992874719203397,
+     "15": 0.9999949183899798,
+     "18": 0.9999999843842697,
+     "21": 0.9999999999888829
+    },
+    "curv_density_over_seed_by_shell": {
+     "1.5": 0.0049456657886287475,
+     "3": 0.0034256169133788463,
+     "4.5": 0.004031929459951102,
+     "6": 0.007939386995922917,
+     "9": 0.04534072754452352,
+     "12": 0.1378015449602586,
+     "15": 0.3450319341418298,
+     "18": 0.7024528331383639,
+     "21": 1.34347220528952
+    },
+    "anisotropy_ramp_top_minus_mean_of_pair": {
+     "r": [
+      1.5,
+      3.0,
+      4.5,
+      6.0,
+      7.5,
+      9.0,
+      10.5,
+      12.0,
+      13.5,
+      15.0,
+      16.5,
+      18.0,
+      19.5,
+      21.0
+     ],
+     "anisotropy_over_vacuum": [
+      0.0418139018030757,
+      0.11320327617152809,
+      0.17772278471391925,
+      0.2403640159626028,
+      0.30147733313348285,
+      0.3579836350321411,
+      0.41739283441504416,
+      0.47906734441871374,
+      0.5315335559629952,
+      0.5928960066025994,
+      0.6481714568491093,
+      0.7066595080989834,
+      0.763379095713481,
+      0.8138147792177197
+     ],
+     "slope_of_a_through_origin_line_fit_over_vacuum": 0.03928559559264227,
+     "rms_residual_of_the_line_over_vacuum": 0.006721756786865867,
+     "log_log_slope_4.5_to_18": 0.989842712743281
+    },
+    "V4_paid": 1.3054814320426293e-06,
+    "curvature_saved": 0.0007128977791960288,
+    "V4_fully_isotropic": 4.01694355918753e-05,
+    "energy_fraction_by_layer": {
+     "pinned_shell": 0.16072408089252938,
+     "first_3_free_layers": 0.4004721746973898,
+     "interior": 0.43880374441008085
+    },
+    "volume_fraction_by_layer": {
+     "pinned_shell": 0.330078125,
+     "first_3_free_layers": 0.344970703125,
+     "interior": 0.324951171875
+    },
+    "degree": {
+     "6": 1.0,
+     "9": 1.0,
+     "12": 1.0000000000000002
+    }
+   },
+   "expectation": "G_1^2 under 10 percent of vacuum in the interior (r 1.5), rising toward the pin, and V4 paid under 10 percent of the curvature saved",
+   "fails_if": "the gaps are not closed in the interior, or the V4 paid is comparable to the saving",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C8.rowA_tearing",
+   "claim": "row A at c = 0 lost the hedgehog by tearing (disclination lines of the top eigenvector piercing the cubes where top and mid cross locally), not by a uniform gap closing",
+   "method": "gauge-invariant frustrated squares on each cube and in the volume, and the top - mid gap at the frustrated squares against the surface median",
+   "value": {
+    "G1sq_over_vacuum_by_shell": {
+     "1.5": 0.7867335372575882,
+     "3": 0.7627027610058844,
+     "4.5": 0.6724885154712765,
+     "6": 0.637753037709181,
+     "9": 0.5284620188605424,
+     "12": 0.4770978480714937,
+     "15": 0.448932763906625,
+     "18": 0.49823718345616047,
+     "21": 0.6650560550081044
+    },
+    "min_gap_top_mid_free": 0.0003788924422359896,
+    "vacuum_gap": 0.07761736067810654,
+    "volume_disclinations": {
+     "frustrated_squares_free_region": 118,
+     "r_min": 4.374841300928017,
+     "r_median": 13.589419318913833,
+     "r_max": 19.589915386531928
+    },
+    "frustrated_by_cube": {
+     "6": {
+      "count": 4,
+      "gap_at_frustrated": [
+       0.0013737901647744577,
+       0.0067501289235540884,
+       0.014705042950135416,
+       0.047913353165030426
+      ],
+      "gap_surface_median": 0.05251866268931876
+     },
+     "9": {
+      "count": 6,
+      "gap_at_frustrated": [
+       0.001530967322938781,
+       0.0021828237755250335,
+       0.002385361845096301,
+       0.003482176145590432,
+       0.0042511383556548266,
+       0.010560044674627123
+      ],
+      "gap_surface_median": 0.041692933748486205
+     },
+     "12": {
+      "count": 8,
+      "gap_at_frustrated": [
+       0.0005914178708440465,
+       0.0020537318368506474,
+       0.002240025742911711,
+       0.0023317069117784195,
+       0.0027998471891244048,
+       0.003161111208805578
+      ],
+      "gap_surface_median": 0.03746479936353225
+     }
+    },
+    "top_alignment_with_rhat": 0.9132174616514783,
+    "rowB_top_alignment_with_rhat": 0.9986763970125033
+   },
+   "expectation": "a small even number of piercings per cube with the gap at the piercings under 30 percent of the surface median, while G_1^2 stays above 10 percent of vacuum",
+   "fails_if": "no localized gap collapse at the piercings (then it is not tearing), or G_1^2 under 10 percent everywhere (then it is the row B melting)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C9.labels",
+   "claim": "DELTA_BOX_FILLING for both rows: not TWIN_SAME_OBJECT (row B radius not within 10 percent of 17.02), not CORE_LATTICE_PINNED (the eigenvalue dip is not confined to 2 cells), not DELTA_COMPACT (no radius under 8)",
+   "method": "own radii and own shell spectra against the pre-registered label definitions",
+   "value": {
+    "rowB_r_half": 20.932928605,
+    "rowA_c0_r_half": 19.9421037,
+    "rowA_c_r_half": 15.2048512,
+    "delta03_c0_r_half": 17.020208576865326,
+    "rowB_over_reference": 1.2298867261505262,
+    "TWIN_SAME_OBJECT": false,
+    "DELTA_COMPACT_any": false,
+    "dip_confined_to_2_cells_rowA": false,
+    "ceiling_uniform_cube": 23.657715443,
+    "ceiling_uniform_free_region": 20.607947496,
+    "rowB_minus_free_ceiling": 0.32498110899999944,
+    "rowA_c0_minus_free_ceiling": -0.6658437960000008
+   },
+   "expectation": "all three alternative labels fail on my numbers",
+   "fails_if": "any alternative label is met",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C9.ceiling_distinguishable",
+   "claim": "WORDING: an r_half of about 20 is a measured radius (distinguishable from the reader's uniform-density ceiling)",
+   "method": "row A (c = 0) and row B r_half against the r_half of a uniform density on the free region (20.7) and on the whole cube (23.6)",
+   "value": {
+    "rowB_r_half": 20.932928605,
+    "rowA_c0_r_half": 19.9421037,
+    "rowA_c_r_half": 15.2048512,
+    "delta03_c0_r_half": 17.020208576865326,
+    "rowB_over_reference": 1.2298867261505262,
+    "TWIN_SAME_OBJECT": false,
+    "DELTA_COMPACT_any": false,
+    "dip_confined_to_2_cells_rowA": false,
+    "ceiling_uniform_cube": 23.657715443,
+    "ceiling_uniform_free_region": 20.607947496,
+    "rowB_minus_free_ceiling": 0.32498110899999944,
+    "rowA_c0_minus_free_ceiling": -0.6658437960000008
+   },
+   "expectation": "both radii more than 10 percent below the free-region ceiling",
+   "fails_if": "a radius within 10 percent of the uniform free-region reading (it then carries no size information beyond 'the box')",
+   "verdict": "FAIL"
+  }
+ ],
+ "counts": {
+  "PASS": 37,
+  "FAIL": 14,
+  "total": 51
+ },
+ "wall_s": 41.5
+}
