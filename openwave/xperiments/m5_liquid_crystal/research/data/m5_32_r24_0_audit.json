@@ -1,0 +1,2426 @@
+{
+ "audit": "M5.32 R24-0 adversarial audit of the form-level claims C1 to C6",
+ "verdict_convention": "PASS or FAIL against the claim line of each check; FAIL = refuted or not reproduced; kind scope = an extension beyond the stated conditions of a claim",
+ "checks": {
+  "C1.v4_closed_form": {
+   "claim": "V4 on the split equals 4 eps^4 (1 + 9 d^2 + 36 d^4 + 12 d^2 eps^2 + eps^4), symbolically",
+   "verdict": "PASS",
+   "numbers": {
+    "V4_minus_claim": "0",
+    "V4_factored": "4*eps**4*(36*delta**4 + 12*delta**2*eps**2 + 9*delta**2 + eps**4 + 1)"
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C1.v3_closed_form": {
+   "claim": "the p <= 3 member equals 4 eps^4 (1 + 9 d^2), symbolically",
+   "verdict": "PASS",
+   "numbers": {
+    "V3_minus_claim": "0",
+    "V3_factored": "4*eps**4*(9*delta**2 + 1)"
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C1.no_eps2_term": {
+   "claim": "the lowest power of eps in V4 on the split is 4",
+   "verdict": "PASS",
+   "numbers": {
+    "lowest_power_of_eps": 4
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C1.numeric_matrix_traces": {
+   "claim": "the closed form matches V4 from matrix-power traces at three random eps (rel < 1e-6)",
+   "verdict": "PASS",
+   "numbers": {
+    "rows": [
+     {
+      "eps": 0.004728649880102687,
+      "V": 4.203041503645046e-09,
+      "claim": 4.203041496464437e-09,
+      "rel": 1.7084316934671502e-09
+     },
+     {
+      "eps": 0.18018547853037414,
+      "V": 0.009013419930529233,
+      "claim": 0.009013419930495349,
+      "rel": 3.759322645279816e-12
+     },
+     {
+      "eps": -0.14233615491214652,
+      "V": 0.003487009197426595,
+      "claim": 0.003487009197405662,
+      "rel": 6.00323677979682e-12
+     }
+    ],
+    "threshold": 1e-06
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C2.ode_residual": {
+   "claim": "sqrt(r) K_nu(sqrt(beta) r^2 / 2) solves eps'' = (A / r^2 + beta r^2) eps (rel < 1e-12)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_rel_residual": {
+     "A=1 beta=0.000741": 1.488033333267235e-16,
+     "A=1 beta=0.5": 1.6426881219010447e-16,
+     "A=3 beta=0.000741": 1.250700007831771e-16,
+     "A=3 beta=0.5": 6.125368411725002e-17,
+     "A=0.37 beta=0.000741": 1.0469526750009366e-16,
+     "A=0.37 beta=0.5": 8.455851430600699e-17
+    },
+    "threshold": 1e-12,
+    "mpmath_dps": 40
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C2.rho_nu_K_nu_collapse": {
+   "claim": "eps r^(2 nu - 1/2) / (rho^nu K_nu) is one constant over r 6 to 18 (spread < 1e-10)",
+   "verdict": "PASS",
+   "numbers": {
+    "A=1": 6.661338147750939e-16,
+    "A=3": 6.661338147750939e-16
+   },
+   "could_fail": false,
+   "kind": "claim",
+   "note": "an identity once C2.ode_residual holds; the ODE checks carry the test",
+   "mode": "run"
+  },
+  "C2.backward_integration": {
+   "claim": "a backward integration from r = 40 lands on the closed form at r 30, 18, 12, 6",
+   "verdict": "PASS",
+   "numbers": {
+    "rows": {
+     "r=30": {
+      "num": 9.406513487195615e-06,
+      "claim": 9.406513486053478e-06,
+      "rel": 1.2141985802765168e-10
+     },
+     "r=18": {
+      "num": 0.030973818473170826,
+      "claim": 0.030973818468842874,
+      "rel": 1.397293393524355e-10
+     },
+     "r=12": {
+      "num": 0.4425714493022569,
+      "claim": 0.4425714492385003,
+      "rel": 1.4405947607193465e-10
+     },
+     "r=6": {
+      "num": 2.78988028169719,
+      "claim": 2.7898802812864703,
+      "rel": 1.4721775170342714e-10
+     }
+    },
+    "threshold": 1e-06
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C2.off_by_31_to_39_percent": {
+   "claim": "the form sqrt(rho) K_nu is off by 31 to 39 percent over the window r 6 to 18",
+   "verdict": "FAIL",
+   "numbers": {
+    "collapse": {
+     "A=1": {
+      "nu": 0.5590169943749475,
+      "rho_nu_K_nu_spread": 6.661338147750939e-16,
+      "sqrt_rho_K_nu_max_over_min": 1.1384567196060988,
+      "deviation_ranges": {
+       "normalized at r=6.0": [
+        0.0,
+        0.13845671960609884
+       ],
+       "normalized at r=12.0": [
+        -0.07855752251030701,
+        0.04902238022863248
+       ],
+       "normalized at r=18.0": [
+        -0.12161790362483371,
+        0.0
+       ]
+      },
+      "rho_window": [
+       0.49000728857553016,
+       4.410065597179772
+      ],
+      "rho_pow_nu_minus_half_at_ends": [
+       0.9587749640951745,
+       1.0915238004642478
+      ]
+     },
+     "A=3": {
+      "nu": 0.9013878188659973,
+      "rho_nu_K_nu_spread": 6.661338147750939e-16,
+      "sqrt_rho_K_nu_max_over_min": 2.4155794124220495,
+      "deviation_ranges": {
+       "normalized at r=6.0": [
+        0.0,
+        1.4155794124220495
+       ],
+       "normalized at r=12.0": [
+        -0.4267547652194301,
+        0.3847193874049888
+       ],
+       "normalized at r=18.0": [
+        -0.5860206479416376,
+        0.0
+       ]
+      },
+      "rho_window": [
+       0.49000728857553016,
+       4.410065597179772
+      ],
+      "rho_pow_nu_minus_half_at_ends": [
+       0.7510192574572753,
+       1.8141466566462892
+      ]
+     }
+    },
+    "readings_that_reproduce_the_figure": []
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "note": "not reproduced: A = 1 gives max / min - 1 = 13.8 percent, A = 3 gives 141.6 percent, and no normalization of the deviation range gives 31 to 39; only the window r 6 to 18 was tested",
+   "mode": "run"
+  },
+  "C3a.vacuum_orbit": {
+   "claim": "the Riesz B vanishes on 400 random Lorentz images of the vacuum (|B| / |N| < 1e-8)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_B_over_N": 8.962220314583906e-12,
+    "max_rapidity": 4.048877998646215,
+    "M_symmetry_defect": 2.869885228614638e-14,
+    "threshold": 1e-08
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C3d.euclidean_not_invariant": {
+   "claim": "the Euclidean construction gives B != 0 on boosted vacua (median |B| > 1e-3) and B = 0 on rotated ones (< 1e-10)",
+   "verdict": "PASS",
+   "numbers": {
+    "euclid_B_min_median_max": [
+     0.008284320825716604,
+     18.10948470325131,
+     1763.635028251446
+    ],
+    "pure_rotation_control_max": 1.6653345369377348e-16,
+    "boost_along_doublet_axis": {
+     "rapidity 1e-01": {
+      "euclid": 7.771561172376096e-16,
+      "riesz": 4.996003610813204e-16
+     },
+     "rapidity 1e-02": {
+      "euclid": 4.996003610813204e-16,
+      "riesz": 5.551115123125783e-17
+     },
+     "rapidity 1e-03": {
+      "euclid": 3.885780586188048e-16,
+      "riesz": 3.885780586188048e-16
+     }
+    }
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "note": "a boost along a doublet axis leaves the Euclidean B at zero: see the extras",
+   "mode": "run"
+  },
+  "C3b.trB2_on_split_orbit": {
+   "claim": "tr B^2 = 2 eps^2 on 400 random Lorentz images of the split, |eps| < 0.25 (rel < 1e-5)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_rel_error": 6.63746462875389e-08,
+    "threshold": 1e-05
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C3b.ordering_swap": {
+   "claim": "tr B^2 = 2 eps^2 persists at eps = 0.9, where delta + eps passes the eigenvalue 1",
+   "verdict": "FAIL",
+   "numbers": {
+    "eps": 0.9,
+    "trB2": 1.2800000000000002,
+    "two_eps2": 1.62
+   },
+   "could_fail": true,
+   "kind": "scope",
+   "note": "the 'largest spacelike eigenvalue' selection rule picks the wrong member once delta + eps > 1; the cluster read is valid for delta + |eps| < 1 only",
+   "mode": "run"
+  },
+  "C3c.smooth_through_coalescence": {
+   "claim": "B(t) is smooth across the coalescence on a generic line (even part falls linearly in t, degree-5 fit residual < 1e-2 of scale) while a single projector jumps by O(1)",
+   "verdict": "PASS",
+   "numbers": {
+    "line": {
+     "1e-02": {
+      "even_part_over_B": 1.6268793200155915,
+      "B_over_t": 11.648502214873025,
+      "single_projector_jump": 2.2948522635457014
+     },
+     "1e-03": {
+      "even_part_over_B": 0.11825451307591311,
+      "B_over_t": 15.647803453949004,
+      "single_projector_jump": 2.8103342763695243
+     },
+     "1e-04": {
+      "even_part_over_B": 0.01147211542046231,
+      "B_over_t": 16.125612440249792,
+      "single_projector_jump": 2.867859525374732
+     },
+     "1e-05": {
+      "even_part_over_B": 0.001143761445819821,
+      "B_over_t": 16.174209282016072,
+      "single_projector_jump": 2.8736658796474774
+     },
+     "1e-06": {
+      "even_part_over_B": 0.00011432538370494197,
+      "B_over_t": 16.17907701378929,
+      "single_projector_jump": 2.8742470434858896
+     }
+    },
+    "fit_residual_B": 0.00029505569107221574,
+    "B_scale": 0.8949963893856661,
+    "fit_residual_single_projector": 1.448705178195178
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C4.covariant_trace_named_cases": {
+   "claim": "tr(dB dB) = -2 |B a|^2 theta'^2 on the five named cases (rel < 1e-5; zero off the doublet plane)",
+   "verdict": "PASS",
+   "numbers": {
+    "cases": {
+     "doublet axis 2": {
+      "theta": 0.22863790720554059,
+      "theta_prime": 0.4965620865632347,
+      "M_asym": 0.0,
+      "max_trace_drift": 9.094947017729282e-13,
+      "covariant_trace": -0.004931478116057816,
+      "frobenius": 0.0071416489081658745,
+      "h_metric": 0.004931478116057816,
+      "claim": 0.004931478116240671
+     },
+     "doublet axis 3": {
+      "theta": 0.22863790720554059,
+      "theta_prime": 0.4965620865632347,
+      "M_asym": 0.0,
+      "max_trace_drift": 9.094947017729282e-13,
+      "covariant_trace": -0.00493147811608724,
+      "frobenius": 0.007141648914121527,
+      "h_metric": 0.00493147811608724,
+      "claim": 0.0049314781162406686
+     },
+     "the '1' axis (not in doublet plane)": {
+      "theta": 0.22863790720554059,
+      "theta_prime": 0.4965620865632347,
+      "M_asym": 0.0,
+      "max_trace_drift": 1.7053025658242404e-13,
+      "covariant_trace": 1.6814363812668e-21,
+      "frobenius": 1.6925297377464705e-21,
+      "h_metric": 1.6973472276661907e-21,
+      "claim": 0.0
+     },
+     "doublet diagonal (B a rotates a)": {
+      "theta": 0.22863790720554059,
+      "theta_prime": 0.4965620865632347,
+      "M_asym": 6.661338147750939e-16,
+      "max_trace_drift": 1.8189894035458565e-12,
+      "covariant_trace": -0.004931478116398391,
+      "frobenius": 0.005456114080940032,
+      "h_metric": 0.004931478116398392,
+      "claim": 0.0049314781162406686
+     },
+     "LARGE theta, doublet axis": {
+      "theta": 1.2432803099920093,
+      "theta_prime": 1.4330047336826484,
+      "M_asym": 3.552713678800501e-15,
+      "max_trace_drift": 6.275513442233205e-11,
+      "covariant_trace": -0.04107005157663307,
+      "frobenius": 2.966983749993149,
+      "h_metric": 0.04107005157663281,
+      "claim": 0.04107005133513759
+     }
+    },
+    "threshold": 1e-05
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C4.covariant_trace_sweep": {
+   "claim": "the same closed form on 300 random (a, eps, theta) with the background at rest (rel < 1e-4), never positive",
+   "verdict": "PASS",
+   "numbers": {
+    "max_rel_error": 2.6800699447163057e-07,
+    "positive_cases": 0,
+    "threshold": 0.0001
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C4.h_metric_sweep": {
+   "claim": "the h-metric contraction equals +2 |B a|^2 theta'^2 on the same sweep (rel < 1e-4)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_rel_error": 2.680031223777223e-07,
+    "threshold": 0.0001
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C4.frobenius_finite_theta": {
+   "claim": "the Frobenius contraction equals +2 |B a|^2 theta'^2 at finite theta (rel < 1e-4)",
+   "verdict": "FAIL",
+   "numbers": {
+    "max_rel_error_sweep": 14.233173903153014,
+    "large_theta_case_frobenius_over_claim": 72.24202681857226,
+    "threshold": 0.0001
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "note": "refuted at finite theta: the Frobenius contraction is frame dependent and grows as cosh(4 theta) (extras, EX.c4e); it equals the claim at theta = 0 only",
+   "mode": "run"
+  },
+  "C4.generic_frame_background": {
+   "claim": "the closed form, with B of the background, holds when the split background sits in a random global Lorentz frame",
+   "verdict": "FAIL",
+   "numbers": {
+    "positive_cases_of_200": 131,
+    "max_rel_error": 66.91389454022
+   },
+   "could_fail": true,
+   "kind": "scope",
+   "note": "with a boosted background the lab-frame boost generator is a boost plus a rotation in the rest frame, and the rotation part contributes with the other sign",
+   "mode": "run"
+  },
+  "C6a.no_linear_term_on_doublet": {
+   "claim": "the first variation vanishes on all 8 doublet jets at 8 random points (scaled, < 1e-10)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_abs_linear_term_scaled": 9.765304737138751e-15,
+    "threshold": 1e-10
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6.fd_self_check": {
+   "claim": "own (linear, Hessian) pair matches five-point stencils of the full quartic density (rel < 1e-8)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_rel_error": 7.207535710060298e-12,
+    "threshold": 1e-08
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6b.table_as_quadratic_form": {
+   "claim": "the listed table t gives the second variation as e2 = v^T t v, that is d2e / dv dv = 2 t, on the doublet block (rel < 1e-10)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_rel_deviation_from_2t": 1.72908675441462e-15,
+    "threshold": 1e-10
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6b.table_as_hessian_entries": {
+   "claim": "the listed table equals the Hessian entries d2e / dv dv as labeled (rel < 1e-10)",
+   "verdict": "FAIL",
+   "numbers": {
+    "max_rel_deviation": 1.000000000000001,
+    "threshold": 1e-10
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "note": "a uniform factor 2 on every entry, a labeling convention: the table holds the coefficients of the quadratic form, not second derivatives; the angular eigenvalue is a ratio inside the table and does not move",
+   "mode": "run"
+  },
+  "C6.mixed_blocks_nonzero_pointwise": {
+   "claim": "the doublet x director and the doublet x massive blocks are nonzero pointwise, so any decoupling has to come from the angular integration or the constraint",
+   "verdict": "PASS",
+   "numbers": {
+    "point_r_theta_phi": [
+     5.81331146613967,
+     2.6224772626178536,
+     4.871306134739815
+    ],
+    "e0_scaled": 3.9199999999999995,
+    "max_abs_doublet_x_director": 32.25076499435477,
+    "max_abs_doublet_x_massive": 112.88572856212262,
+    "nonzero_linear_terms_scaled": {
+     "d1": -19.601398,
+     "d1_t": 11.2,
+     "d2_p": 22.575535,
+     "s": 22.4,
+     "u": -22.4
+    }
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6c.doublet_lowest_48_L2": {
+   "claim": "the lowest angular eigenvalue of the doublet sector is 48 (A = 3), multiplicity 10 = 2 x 5",
+   "verdict": "PASS",
+   "numbers": {
+    "lowest": 47.999999999999304,
+    "multiplicity": 10,
+    "rank": 33
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6c.doublet_ladder_L2": {
+   "claim": "the doublet ladder starts 48, 96, 160 = 8 (l (l + 1) - 4) + 32 for l = 2, 3, 4",
+   "verdict": "PASS",
+   "numbers": {
+    "groups_value_multiplicity": [
+     [
+      47.999999999999304,
+      10
+     ],
+     [
+      95.99999999999633,
+      14
+     ],
+     [
+      159.99999999999656,
+      9
+     ]
+    ]
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6.radial_tangential_block_vanishes_L2": {
+   "claim": "the radial x tangential block C vanishes on the doublet (|C| / |K| < 1e-10), so power laws separate and A = p (p - 1)",
+   "verdict": "PASS",
+   "numbers": {
+    "C_max": 1.0678079388573654e-13,
+    "K_max": 80.00000000000125
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6iii.coupled_48_survives_L2": {
+   "claim": "with the constrained director coupled in, the eigenvalue 48 keeps multiplicity 10 and doublet weight 1 (> 0.999)",
+   "verdict": "PASS",
+   "numbers": {
+    "multiplicity_at_48": 10,
+    "min_doublet_weight_at_48": 1.0,
+    "groups_below_48_value_multiplicity": [
+     [
+      -2.622523362922955e-12,
+      15
+     ],
+     [
+      31.999999999999037,
+      3
+     ]
+    ],
+    "max_doublet_weight_below_48": 1.7264343432965797e-29,
+    "coupled_groups": [
+     [
+      -2.622523362922955e-12,
+      15
+     ],
+     [
+      31.999999999999037,
+      3
+     ],
+     [
+      47.99999999999937,
+      10
+     ],
+     [
+      95.99999999999636,
+      19
+     ],
+     [
+      159.9999999999964,
+      9
+     ],
+     [
+      191.99999999999736,
+      7
+     ],
+     [
+      319.999999999997,
+      9
+     ]
+    ],
+    "coupled_groups_linear_parameterization": [
+     [
+      47.99999999999924,
+      10
+     ],
+     [
+      95.9999999999962,
+      29
+     ],
+     [
+      127.99999999999976,
+      3
+     ],
+     [
+      159.99999999999648,
+      9
+     ],
+     [
+      192.0000000000001,
+      5
+     ],
+     [
+      287.99999999999824,
+      7
+     ],
+     [
+      415.9999999999974,
+      9
+     ]
+    ],
+    "director_alone_constrained": [
+     [
+      -2.7494317257340312e-12,
+      15
+     ],
+     [
+      31.99999999999892,
+      3
+     ],
+     [
+      95.99999999999977,
+      5
+     ],
+     [
+      191.99999999999764,
+      7
+     ],
+     [
+      319.9999999999974,
+      9
+     ]
+    ],
+    "director_alone_linear": [
+     [
+      95.99999999999882,
+      15
+     ],
+     [
+      127.99999999999996,
+      3
+     ],
+     [
+      192.00000000000009,
+      5
+     ],
+     [
+      287.9999999999984,
+      7
+     ],
+     [
+      415.9999999999977,
+      9
+     ]
+    ]
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "note": "the modes below 48 (A = 0 and A = 2) are pure director modes, doublet weight 0",
+   "mode": "run"
+  },
+  "C6iii.doublet_director_block_integrates_to_zero_L2": {
+   "claim": "the doublet x director block is nonzero pointwise and integrates to zero over the sphere (< 1e-9)",
+   "verdict": "PASS",
+   "numbers": {
+    "integrated": {
+     "K_max": 2.3726149362991724e-13,
+     "K_largest_singular_value": 3.678174412302856e-13,
+     "R_max": 4.881249548916798e-16,
+     "C_rt_max": 9.734418717374939e-14,
+     "C_tr_max": 1.9343042088880133e-15
+    },
+    "pointwise_density_max": 15.916185360049358,
+    "pointwise_density_integral_max": 3.5472108249794074e-13
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6.doublet_massive_block_L2": {
+   "claim": "the doublet decouples from the massive rr and tt sectors in the curvature term (integrated K block < 1e-9)",
+   "verdict": "FAIL",
+   "numbers": {
+    "doublet x rr": {
+     "K_max": 103.039999712352,
+     "K_largest_singular_value": 107.33126291999432,
+     "R_max": 1.3851495789022892e-13,
+     "C_rt_max": 2.398620666276755e-13,
+     "C_tr_max": 1.4504451883368215e-13
+    },
+    "doublet x tt": {
+     "K_max": 73.36502699454688,
+     "K_largest_singular_value": 75.8946638440431,
+     "R_max": 9.317088663733903e-14,
+     "C_rt_max": 1.2543371976713557e-13,
+     "C_tr_max": 1.0149595736774582e-13
+    },
+    "director x rr": {
+     "K_max": 84.21942613698786,
+     "K_largest_singular_value": 101.1928851253922,
+     "R_max": 1.3369164268724827e-15,
+     "C_rt_max": 7.050088403744092e-14,
+     "C_tr_max": 5.6763709043416945e-14
+    },
+    "director x tt": {
+     "K_max": 60.395534597698735,
+     "K_largest_singular_value": 71.55417527999431,
+     "R_max": 7.90136563974308e-16,
+     "C_rt_max": 4.838953709500544e-14,
+     "C_tr_max": 3.800523035631686e-14
+    },
+    "rr x tt": {
+     "K_max": 147.0644405199859,
+     "K_largest_singular_value": 147.07821048680884,
+     "R_max": 11.313708498984768,
+     "C_rt_max": 2.1001650277270726e-13,
+     "C_tr_max": 2.1900164426483005e-13
+    }
+   },
+   "could_fail": true,
+   "kind": "scope",
+   "note": "the integrated doublet x massive block is of the size of K itself; the massive modes carry a potential mass, and the Schur check sizes the effect",
+   "mode": "run"
+  },
+  "C6c.doublet_lowest_48_L3": {
+   "claim": "the lowest angular eigenvalue of the doublet sector is 48 (A = 3), multiplicity 10 = 2 x 5",
+   "verdict": "PASS",
+   "numbers": {
+    "lowest": 47.999999999999396,
+    "multiplicity": 10,
+    "rank": 53
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6c.doublet_ladder_L3": {
+   "claim": "the doublet ladder starts 48, 96, 160 = 8 (l (l + 1) - 4) + 32 for l = 2, 3, 4",
+   "verdict": "PASS",
+   "numbers": {
+    "groups_value_multiplicity": [
+     [
+      47.999999999999396,
+      10
+     ],
+     [
+      95.99999999999832,
+      14
+     ],
+     [
+      159.99999999999636,
+      18
+     ],
+     [
+      239.99999999999523,
+      11
+     ]
+    ]
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6.radial_tangential_block_vanishes_L3": {
+   "claim": "the radial x tangential block C vanishes on the doublet (|C| / |K| < 1e-10), so power laws separate and A = p (p - 1)",
+   "verdict": "PASS",
+   "numbers": {
+    "C_max": 2.4371923836725233e-13,
+    "K_max": 119.92152908836793
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6iii.coupled_48_survives_L3": {
+   "claim": "with the constrained director coupled in, the eigenvalue 48 keeps multiplicity 10 and doublet weight 1 (> 0.999)",
+   "verdict": "PASS",
+   "numbers": {
+    "multiplicity_at_48": 10,
+    "min_doublet_weight_at_48": 1.0,
+    "groups_below_48_value_multiplicity": [
+     [
+      -1.0473743943852972e-11,
+      24
+     ],
+     [
+      31.999999999999755,
+      3
+     ]
+    ],
+    "max_doublet_weight_below_48": 6.825093591646148e-29,
+    "coupled_groups": [
+     [
+      -1.0473743943852972e-11,
+      24
+     ],
+     [
+      31.999999999999755,
+      3
+     ],
+     [
+      47.99999999999957,
+      10
+     ],
+     [
+      95.99999999999845,
+      19
+     ],
+     [
+      159.99999999999665,
+      18
+     ],
+     [
+      191.99999999999858,
+      7
+     ],
+     [
+      239.99999999999534,
+      11
+     ],
+     [
+      319.999999999997,
+      9
+     ],
+     [
+      479.99999999997897,
+      11
+     ]
+    ],
+    "coupled_groups_linear_parameterization": [
+     [
+      47.99999999999944,
+      10
+     ],
+     [
+      95.99999999999282,
+      38
+     ],
+     [
+      127.99999999999987,
+      3
+     ],
+     [
+      159.99999999999653,
+      18
+     ],
+     [
+      192.00000000000009,
+      5
+     ],
+     [
+      239.99999999999528,
+      11
+     ],
+     [
+      287.99999999999784,
+      7
+     ],
+     [
+      415.99999999999744,
+      9
+     ],
+     [
+      575.9999999999835,
+      11
+     ]
+    ],
+    "director_alone_constrained": [
+     [
+      -1.0547847756059284e-11,
+      24
+     ],
+     [
+      31.999999999999723,
+      3
+     ],
+     [
+      95.99999999999982,
+      5
+     ],
+     [
+      191.99999999999847,
+      7
+     ],
+     [
+      319.999999999997,
+      9
+     ],
+     [
+      479.99999999997914,
+      11
+     ]
+    ],
+    "director_alone_linear": [
+     [
+      95.99999999999287,
+      24
+     ],
+     [
+      128.00000000000026,
+      3
+     ],
+     [
+      192.00000000000003,
+      5
+     ],
+     [
+      287.9999999999977,
+      7
+     ],
+     [
+      415.9999999999972,
+      9
+     ],
+     [
+      575.9999999999832,
+      11
+     ]
+    ]
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "note": "the modes below 48 (A = 0 and A = 2) are pure director modes, doublet weight 0",
+   "mode": "run"
+  },
+  "C6iii.doublet_director_block_integrates_to_zero_L3": {
+   "claim": "the doublet x director block is nonzero pointwise and integrates to zero over the sphere (< 1e-9)",
+   "verdict": "PASS",
+   "numbers": {
+    "integrated": {
+     "K_max": 5.681167207200931e-13,
+     "K_largest_singular_value": 1.0762717457727878e-12,
+     "R_max": 4.851574824853356e-16,
+     "C_rt_max": 9.039028905245569e-14,
+     "C_tr_max": 3.373024520072481e-15
+    },
+    "pointwise_density_max": 15.916185360049358,
+    "pointwise_density_integral_max": 3.5472108249794074e-13
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6.doublet_massive_block_L3": {
+   "claim": "the doublet decouples from the massive rr and tt sectors in the curvature term (integrated K block < 1e-9)",
+   "verdict": "FAIL",
+   "numbers": {
+    "doublet x rr": {
+     "K_max": 145.8324271581831,
+     "K_largest_singular_value": 163.95121225536545,
+     "R_max": 1.1229660159412141e-13,
+     "C_rt_max": 3.1330119946406524e-13,
+     "C_tr_max": 3.116652047922787e-13
+    },
+    "doublet x tt": {
+     "K_max": 101.12749479756718,
+     "K_largest_singular_value": 115.93101396952581,
+     "R_max": 1.0216367231943337e-13,
+     "C_rt_max": 1.688086461150995e-13,
+     "C_tr_max": 2.216676093530837e-13
+    },
+    "director x rr": {
+     "K_max": 113.41195723374123,
+     "K_largest_singular_value": 123.93546707864427,
+     "R_max": 1.3312559446636626e-15,
+     "C_rt_max": 1.3628964629877744e-13,
+     "C_tr_max": 8.262857240056782e-14
+    },
+    "director x tt": {
+     "K_max": 82.6231919262562,
+     "K_largest_singular_value": 87.63560920082963,
+     "R_max": 7.927912348596031e-16,
+     "C_rt_max": 7.879024018654742e-14,
+     "C_tr_max": 4.659343078994131e-14
+    },
+    "rr x tt": {
+     "K_max": 203.33421091488768,
+     "K_largest_singular_value": 203.64675298173592,
+     "R_max": 11.313708498984775,
+     "C_rt_max": 3.246913223852998e-13,
+     "C_tr_max": 4.165362970029357e-13
+    }
+   },
+   "could_fail": true,
+   "kind": "scope",
+   "note": "the integrated doublet x massive block is of the size of K itself; the massive modes carry a potential mass, and the Schur check sizes the effect",
+   "mode": "run"
+  },
+  "C6m.A3_asymptotic": {
+   "claim": "with the massive modes eliminated adiabatically, the lowest doublet-like A returns to 3 at large r (r = 1000, rel < 1e-3)",
+   "verdict": "PASS",
+   "numbers": {
+    "potential_hessian_m00_s_u": [
+     [
+      153182.56281458086,
+      276.83053307206114,
+      12.883572289093818
+     ],
+     [
+      276.83053307206114,
+      1.079735943298364,
+      0.2492090255891334
+     ],
+     [
+      12.883572289093818,
+      0.2492090255891334,
+      0.22079977594634903
+     ]
+    ],
+    "s_u_hessian_after_slaving_M00": [
+     [
+      0.5794496010877026,
+      0.22592591738719392
+     ],
+     [
+      0.22592591738719392,
+      0.21971619024391353
+     ]
+    ],
+    "its_eigenvalues": [
+     0.110801746927578,
+     0.6883640444040382
+    ],
+    "lowest_A_without_massive_coupling": [
+     -0.0,
+     -0.0,
+     -0.0,
+     -0.0,
+     -0.0,
+     -0.0,
+     -0.0,
+     -0.0,
+     -0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     2.0,
+     2.0,
+     2.0,
+     3.0,
+     3.0,
+     3.0,
+     3.0,
+     3.0,
+     3.0,
+     3.0,
+     3.0,
+     3.0,
+     3.0,
+     6.0,
+     6.0
+    ],
+    "rows_by_r": {
+     "4.0": {
+      "min_eig_Kmm_plus_mass": 52.28498706831663,
+      "overall_lowest_A": -2.8625585185142417,
+      "lowest_doublet_like_A": 3.0,
+      "its_doublet_weight": 1.0,
+      "doublet_like_A_weight": [
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.4936,
+        0.617
+       ],
+       [
+        3.4936,
+        0.617
+       ],
+       [
+        3.4936,
+        0.617
+       ],
+       [
+        3.4936,
+        0.617
+       ],
+       [
+        3.4936,
+        0.617
+       ]
+      ]
+     },
+     "6.0": {
+      "min_eig_Kmm_plus_mass": 123.74649203563936,
+      "overall_lowest_A": -1.5359230605765627e-13,
+      "lowest_doublet_like_A": 0.7485,
+      "its_doublet_weight": 0.549,
+      "doublet_like_A_weight": [
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        0.7485,
+        0.549
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ]
+      ]
+     },
+     "9.0": {
+      "min_eig_Kmm_plus_mass": 450.9899320767769,
+      "overall_lowest_A": -1.5019992057361537e-13,
+      "lowest_doublet_like_A": 2.6507,
+      "its_doublet_weight": 0.852,
+      "doublet_like_A_weight": [
+       [
+        2.6507,
+        0.852
+       ],
+       [
+        2.6507,
+        0.852
+       ],
+       [
+        2.6507,
+        0.852
+       ],
+       [
+        2.6507,
+        0.852
+       ],
+       [
+        2.6507,
+        0.852
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ]
+      ]
+     },
+     "12.0": {
+      "min_eig_Kmm_plus_mass": 1328.6687565364864,
+      "overall_lowest_A": -1.5575410374854788e-13,
+      "lowest_doublet_like_A": 2.9156,
+      "its_doublet_weight": 0.988,
+      "doublet_like_A_weight": [
+       [
+        2.9156,
+        0.988
+       ],
+       [
+        2.9156,
+        0.988
+       ],
+       [
+        2.9156,
+        0.988
+       ],
+       [
+        2.9156,
+        0.988
+       ],
+       [
+        2.9156,
+        0.988
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ]
+      ]
+     },
+     "18.0": {
+      "min_eig_Kmm_plus_mass": 6543.366865904985,
+      "overall_lowest_A": -1.4790644468613587e-13,
+      "lowest_doublet_like_A": 2.9849,
+      "its_doublet_weight": 1.0,
+      "doublet_like_A_weight": [
+       [
+        2.9849,
+        1.0
+       ],
+       [
+        2.9849,
+        1.0
+       ],
+       [
+        2.9849,
+        1.0
+       ],
+       [
+        2.9849,
+        1.0
+       ],
+       [
+        2.9849,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ]
+      ]
+     },
+     "1000.0": {
+      "min_eig_Kmm_plus_mass": 61901911750.46418,
+      "overall_lowest_A": -1.4593044242101802e-13,
+      "lowest_doublet_like_A": 3.0,
+      "its_doublet_weight": 1.0,
+      "doublet_like_A_weight": [
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ],
+       [
+        3.0,
+        1.0
+       ]
+      ]
+     }
+    }
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6m.A3_outer_window": {
+   "claim": "A_eff stays within 5 percent of 3 at r = 12 and r = 18",
+   "verdict": "PASS",
+   "numbers": {
+    "rel_deviation": {
+     "r=12": 0.028133333333333344,
+     "r=18": 0.005033333333333297
+    },
+    "threshold": 0.05
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6m.A3_inner_window": {
+   "claim": "A_eff stays within 5 percent of 3 at r = 6 and r = 9",
+   "verdict": "FAIL",
+   "numbers": {
+    "A_eff": {
+     "r=6": 0.7485,
+     "r=9": 2.6507
+    },
+    "rel_deviation": {
+     "r=6": 0.7505000000000001,
+     "r=9": 0.11643333333333332
+    },
+    "overall_lowest_A_at_r4": -2.8625585185142417,
+    "threshold": 0.05
+   },
+   "could_fail": true,
+   "kind": "scope",
+   "note": "an adiabatic estimate, not a solved radial problem: the coupling to the massive modes pulls A_eff below 3 inside r of about 10, where the mode is also only partly doublet (weight 0.55 at r = 6)",
+   "mode": "run"
+  },
+  "C6fd.doublet_block_vs_pointwise": {
+   "claim": "a brute-force second variation on the exact nonlinear family reproduces the pointwise doublet Hessian (abs < 1e-4 on a scale of 40)",
+   "verdict": "PASS",
+   "numbers": {
+    "points": [
+     {
+      "point_r_theta_phi": [
+       1.5142808110767985,
+       1.5484835111242414,
+       3.668390802690802
+      ],
+      "doublet_block_vs_pointwise": 1.6196770385042668e-07,
+      "doublet_block_vs_2x_table": 1.619677086158317e-07,
+      "table_scale": 36.688741996726506,
+      "director_block_dev_from_minus_96": 4.256167741800709e-05,
+      "mixed_block_dev_from_divergence_form": 7.580430426701312e-06,
+      "mixed_correction_size": 16.003983782286774,
+      "constrained_mixed_block_max_abs": 7.580430426627341e-06,
+      "max_abs_linear_term_on_doublet_scaled": 4.010851278083627e-08,
+      "linear_terms_scaled": [
+       0.0,
+       -0.0,
+       -0.0,
+       -0.0,
+       -0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.2499,
+       0.0,
+       11.2,
+       0.0,
+       -0.0,
+       0.0,
+       0.0,
+       11.2028
+      ]
+     },
+     {
+      "point_r_theta_phi": [
+       1.1147560334877782,
+       0.8106447776126575,
+       5.49798172857807
+      ],
+      "doublet_block_vs_pointwise": 5.927030162666824e-06,
+      "doublet_block_vs_2x_table": 5.927030123586974e-06,
+      "table_scale": 45.63551781652492,
+      "director_block_dev_from_minus_96": 0.0002414055455588482,
+      "mixed_block_dev_from_divergence_form": 0.0003216544884683259,
+      "mixed_correction_size": 22.077139768872087,
+      "constrained_mixed_block_max_abs": 0.000321654488466898,
+      "max_abs_linear_term_on_doublet_scaled": 2.2112646147841627e-07,
+      "linear_terms_scaled": [
+       -0.0,
+       0.0,
+       0.0,
+       -0.0,
+       0.0,
+       -0.0,
+       -0.0,
+       -0.0,
+       10.6483,
+       -0.0,
+       11.2,
+       -0.0,
+       0.0,
+       -0.0,
+       -0.0,
+       15.454
+      ]
+     }
+    ],
+    "threshold": 0.0001
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6fd.doublet_block_vs_2x_table": {
+   "claim": "the same brute-force Hessian equals 2 x the listed table (abs < 1e-4)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_abs_deviation": 5.927030123586974e-06,
+    "threshold": 0.0001
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6fd.director_constraint_term": {
+   "claim": "freezing the eigenvalues (unit n) adds -96 to the (d1, d1) and (d2, d2) Hessian entries and nothing else (abs < 1e-2): the -48 of the Galerkin director block",
+   "verdict": "PASS",
+   "numbers": {
+    "max_abs_deviation": 0.0002414055455588482,
+    "threshold": 0.01
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6fd.mixed_block_divergence_form": {
+   "claim": "the constraint correction of the doublet x director block has the divergence form (abs < 1e-2 on a correction of size 16 to 22)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_abs_deviation": 0.0003216544884683259,
+    "threshold": 0.01
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "C6fd.constrained_mixed_block_vanishes": {
+   "claim": "on the constrained family the doublet x director block vanishes pointwise (abs < 1e-2), and no linear term survives on the doublet jets",
+   "verdict": "PASS",
+   "numbers": {
+    "max_abs_mixed_block": 0.000321654488466898,
+    "max_abs_linear_term_on_doublet": 2.2112646147841627e-07,
+    "threshold": 0.01
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "EX.c3d_single_boosts": {
+   "claim": "on single boosts at rapidity 0.5 the Riesz B vanishes (< 1e-10) for every axis, and the Euclidean B is nonzero exactly when the boost has a component along e1",
+   "verdict": "PASS",
+   "numbers": {
+    "along e1 (the '1' axis)": {
+     "euclid": 6.057708429532022,
+     "riesz": 3.885780586188048e-16,
+     "has_e1_component": true
+    },
+    "along e2 (doublet axis)": {
+     "euclid": 1.8596235662471372e-15,
+     "riesz": 2.7755575615628914e-16,
+     "has_e1_component": false
+    },
+    "along (e2+e3)/sqrt2": {
+     "euclid": 2.220446049250313e-16,
+     "riesz": 6.38378239159465e-16,
+     "has_e1_component": false
+    },
+    "along (e1+e2)/sqrt2": {
+     "euclid": 3.453262744229964,
+     "riesz": 3.885780586188048e-16,
+     "has_e1_component": true
+    },
+    "along (1,1,1)/sqrt3": {
+     "euclid": 2.4289972475552437,
+     "riesz": 2.498001805406602e-16,
+     "has_e1_component": true
+    }
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "EX.c4d_rotated_background": {
+   "claim": "the closed form holds on a spatially rotated split background (rel < 1e-4, never positive)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_rel_error": 1.7263586895616522e-09,
+    "positive_cases_of_100": 0
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "EX.c4d_boosted_background": {
+   "claim": "tr(dB dB) stays negative on a lab-frame boost ripple when the split background is itself boosted (rapidity 0.1, 0.5, 1.0)",
+   "verdict": "FAIL",
+   "numbers": {
+    "rapidity 0.1": {
+     "positive_cases_of_100": 0,
+     "range": [
+      -0.0030596687306487943,
+      -2.609676868931142e-05
+     ]
+    },
+    "rapidity 0.5": {
+     "positive_cases_of_100": 11,
+     "range": [
+      -0.0030651854129465314,
+      0.000753807943047748
+     ]
+    },
+    "rapidity 1.0": {
+     "positive_cases_of_100": 71,
+     "range": [
+      -0.003009535574984516,
+      0.009596863874342621
+     ]
+    }
+   },
+   "could_fail": true,
+   "kind": "scope",
+   "note": "the sign is a statement about boosts in the rest frame of the background; a lab-frame boost of a moving background carries a rotation part of the other sign",
+   "mode": "run"
+  },
+  "EX.c4e_frobenius_equals_claim": {
+   "claim": "Frobenius / (2 |B a|^2 theta'^2) = 1 for theta up to 1 (rel < 1e-4)",
+   "verdict": "FAIL",
+   "numbers": {
+    "theta 0.00": {
+     "frobenius_over_claim": 0.9999999999999885,
+     "cosh_4_theta": 1.0,
+     "h_metric_over_claim": 0.9999999999999885,
+     "covariant_over_claim": -0.9999999999999885
+    },
+    "theta 0.02": {
+     "frobenius_over_claim": 1.0032017070375356,
+     "cosh_4_theta": 1.0032017070307973,
+     "h_metric_over_claim": 1.000000000003737,
+     "covariant_over_claim": -1.000000000003737
+    },
+    "theta 0.05": {
+     "frobenius_over_claim": 1.0200667553886889,
+     "cosh_4_theta": 1.020066755619076,
+     "h_metric_over_claim": 0.9999999999917699,
+     "covariant_over_claim": -0.9999999999917697
+    },
+    "theta 0.20": {
+     "frobenius_over_claim": 1.3374349475742102,
+     "cosh_4_theta": 1.3374349463048447,
+     "h_metric_over_claim": 1.0000000000118092,
+     "covariant_over_claim": -1.000000000011809
+    },
+    "theta 0.50": {
+     "frobenius_over_claim": 3.762195689226671,
+     "cosh_4_theta": 3.7621956910836314,
+     "h_metric_over_claim": 0.9999999992687113,
+     "covariant_over_claim": -0.9999999992687102
+    },
+    "theta 1.00": {
+     "frobenius_over_claim": 27.308233098435256,
+     "cosh_4_theta": 27.308232836016487,
+     "h_metric_over_claim": 1.000000019892076,
+     "covariant_over_claim": -1.000000019892073
+    }
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "note": "refuted at finite theta: the ratio is 1.0032 at theta 0.02, 3.76 at 0.5, 27.3 at 1.0; the claim holds at theta = 0 only",
+   "mode": "run"
+  },
+  "EX.c4e_cosh_law": {
+   "claim": "the Frobenius ratio follows cosh(4 theta) while the h-metric ratio stays +1 and the covariant ratio stays -1 (rel < 1e-5)",
+   "verdict": "PASS",
+   "numbers": {
+    "threshold": 1e-05
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "run"
+  },
+  "EX.c2_candidate_readings": {
+   "claim": "some normalization of sqrt(rho) K_nu against r^(2 nu) K_nu reproduces 'off by 31 to 39 percent' on r 6 to 18 (both ends within 3 points)",
+   "verdict": "FAIL",
+   "numbers": {
+    "candidates": {
+     "sqrt(rho)K_nu, const=1": {
+      "Y_over_X": [
+       0.08294404265294454,
+       0.0944282027095396
+      ],
+      "X_over_Y": [
+       10.590056480011507,
+       12.056320960677212
+      ]
+     },
+     "sqrt(rho)K_nu x (2/sqrt beta)^nu": {
+      "Y_over_X": [
+       0.9161504307782198,
+       1.0429976140894865
+      ],
+      "X_over_Y": [
+       0.9587749640951744,
+       1.0915238004642476
+      ]
+     },
+     "sqrt(rho)K_nu x (2/sqrt beta)^(1/2)": {
+      "Y_over_X": [
+       0.7109436495280774,
+       0.8093785750665231
+      ],
+      "X_over_Y": [
+       1.2355157781608064,
+       1.4065812398265283
+      ]
+     },
+     "sqrt(rho)K_nu normalized at rho->0 limit of rho^nu K_nu": {
+      "Y_over_X": [
+       0.9161504307782198,
+       1.0429976140894865
+      ],
+      "X_over_Y": [
+       0.9587749640951744,
+       1.0915238004642476
+      ]
+     }
+    },
+    "log_slopes": {
+     "A=1": {
+      "rho_pow_nu_minus_half_window": [
+       0.9587749640951745,
+       1.0915238004642478
+      ],
+      "log_slope_mismatch": 0.05901699437494745
+     },
+     "A=3": {
+      "rho_pow_nu_minus_half_window": [
+       0.7510192574572753,
+       1.8141466566462892
+      ],
+      "log_slope_mismatch": 0.4013878188659973
+     }
+    },
+    "readings_that_reproduce_the_figure": []
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "note": "not reproduced: the closest reading, the (2 / sqrt beta)^(1/2) normalization, gives 24 to 41 percent; supplements C2.off_by_31_to_39_percent",
+   "mode": "run"
+  },
+  "C5.baseline_energy": {
+   "claim": "own lattice energy equals the production energy on the stored field, and both equal the claimed E0 (rel < 1e-9)",
+   "verdict": "PASS",
+   "numbers": {
+    "field": "../data/m5_32_r23_1/rad_pin_d0.3_w25_c0.001_n32_L48.npz",
+    "E0_production": 5.416820972916112,
+    "E0_own": 5.416820972916112,
+    "E0_claimed": 5.416820972916,
+    "own_parts_curv_V4_lin": [
+     3.9859829963125044,
+     0.5620395275402194,
+     0.8687984490633882
+    ],
+    "production_parts": {
+     "E_curv": 3.9859829963125044,
+     "V": 0.5620395275402192
+    },
+    "max_abs_time_space_entries": 0.0
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.claimed_cases": {
+   "claim": "the three claimed dE reproduce with the production energy (rel < 1e-8)",
+   "verdict": "PASS",
+   "numbers": {
+    "rows": [
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.25,
+      "dE_production": -3.2829791043249603,
+      "claimed": -3.2829791043
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.5,
+      "dE_production": -10.946936078385743,
+      "claimed": -10.9469360784
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.5,
+      "dE_production": -68.45677216559628,
+      "claimed": -68.4567721656
+     }
+    ],
+    "threshold": 1e-08
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.own_energy_agrees": {
+   "claim": "own energy gives the same dE as the production energy on all 33 rows (rel < 1e-6)",
+   "verdict": "PASS",
+   "numbers": {
+    "rows": [
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.25,
+      "dE_prod": -3.2829791043249603,
+      "dE_mine": -3.2829791043249603,
+      "d_curv": -3.2829791043250336,
+      "d_V4": 1.887379141862766e-14,
+      "d_lin": 5.3734794391857577e-14,
+      "pred_quad": -3.294401046457653,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.5,
+      "dE_prod": -10.946936078385743,
+      "dE_mine": -10.946936078385747,
+      "d_curv": -10.946936078385717,
+      "d_V4": -1.587618925213974e-14,
+      "d_lin": -1.4210854715202004e-14,
+      "pred_quad": -10.969713990702472,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.5,
+      "dE_prod": -68.45677216559628,
+      "dE_mine": -68.45677216559629,
+      "d_curv": -68.4567721655964,
+      "d_V4": 1.021405182655144e-14,
+      "d_lin": 1.099120794378905e-13,
+      "pred_quad": -68.56071244189044,
+      "pred_cross": 0.0,
+      "asym": 8.326672684688674e-17
+     },
+     {
+      "A": 0.005,
+      "kh_over_pi": 0.5,
+      "dE_prod": -0.6841289769967833,
+      "dE_mine": -0.6841289769967842,
+      "d_curv": -0.6841289769969241,
+      "d_V4": 3.2529534621517087e-14,
+      "d_lin": 1.0724754417879012e-13,
+      "pred_quad": -0.6856071244189045,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.001,
+      "kh_over_pi": 0.5,
+      "dE_prod": -0.027365025290174927,
+      "dE_mine": -0.027365025290175815,
+      "d_curv": -0.027365025290098988,
+      "d_V4": -1.7430501486614958e-14,
+      "d_lin": -5.984102102729594e-14,
+      "pred_quad": -0.027424284976756183,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.0001,
+      "kh_over_pi": 0.5,
+      "dE_prod": -0.0002736501980216133,
+      "dE_mine": -0.00027365019802250146,
+      "d_curv": -0.00027365019786307343,
+      "d_V4": -1.887379141862766e-14,
+      "d_lin": -1.4088730182493236e-13,
+      "pred_quad": -0.0002742428497675618,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.25,
+      "dE_prod": -20.520104051153808,
+      "dE_mine": -20.520104051153808,
+      "d_curv": -20.5201040511538,
+      "d_V4": -1.3433698597964394e-14,
+      "d_lin": 4.773959005888173e-15,
+      "pred_quad": -20.59000654036034,
+      "pred_cross": 0.0,
+      "asym": 1.1102230246251565e-16
+     },
+     {
+      "A": 0.005,
+      "kh_over_pi": 0.25,
+      "dE_prod": -0.20518405819076513,
+      "dE_mine": -0.20518405819076424,
+      "d_curv": -0.20518405819078422,
+      "d_V4": 1.5654144647214707e-14,
+      "d_lin": 3.6637359812630166e-15,
+      "pred_quad": -0.2059000654036033,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.001,
+      "kh_over_pi": 0.25,
+      "dE_prod": -0.00820735707266973,
+      "dE_mine": -0.00820735707266973,
+      "d_curv": -0.00820735707250897,
+      "d_V4": -1.7541523789077473e-14,
+      "d_lin": -1.4355183708403274e-13,
+      "pred_quad": -0.008236002616144133,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.0001,
+      "kh_over_pi": 0.25,
+      "dE_prod": -8.207356871814397e-05,
+      "dE_mine": -8.20735687172558e-05,
+      "d_curv": -8.207356856315684e-05,
+      "d_V4": -1.787459069646502e-14,
+      "d_lin": -1.3655743202889425e-13,
+      "pred_quad": -8.236002616144133e-05,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.125,
+      "dE_prod": -6.791487908662852,
+      "dE_mine": -6.791487908662852,
+      "d_curv": -6.791487908662819,
+      "d_V4": -1.887379141862766e-15,
+      "d_lin": -3.108624468950438e-14,
+      "pred_quad": -6.81068211543,
+      "pred_cross": 0.0,
+      "asym": 1.1102230246251565e-16
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.125,
+      "dE_prod": -1.086607933838592,
+      "dE_mine": -1.0866079338385912,
+      "d_curv": -1.0866079338386458,
+      "d_V4": 1.6764367671839864e-14,
+      "d_lin": 3.7636560534792807e-14,
+      "pred_quad": -1.0897091384687998,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.005,
+      "kh_over_pi": 0.125,
+      "dE_prod": -0.06791270618824541,
+      "dE_mine": -0.0679127061882463,
+      "d_curv": -0.06791270618827827,
+      "d_V4": 1.1435297153639112e-14,
+      "d_lin": 2.0317081350640365e-14,
+      "pred_quad": -0.06810682115429999,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.001,
+      "kh_over_pi": 0.125,
+      "dE_prod": -0.0027165075251911475,
+      "dE_mine": -0.0027165075251911475,
+      "d_curv": -0.0027165075251947,
+      "d_V4": -8.881784197001252e-16,
+      "d_lin": 4.218847493575595e-15,
+      "pred_quad": -0.0027242728461720003,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.0001,
+      "kh_over_pi": 0.125,
+      "dE_prod": -2.716507512445787e-05,
+      "dE_mine": -2.716507512445787e-05,
+      "d_curv": -2.7165074954371704e-05,
+      "d_V4": -2.919886554764162e-14,
+      "d_lin": -1.4088730182493236e-13,
+      "pred_quad": -2.7242728461720003e-05,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.0625,
+      "dE_prod": -2.5313360936313076,
+      "dE_mine": -2.5313360936313076,
+      "d_curv": -2.531336093631329,
+      "d_V4": -2.220446049250313e-16,
+      "d_lin": 2.0650148258027912e-14,
+      "pred_quad": -2.541165386920645,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.0625,
+      "dE_prod": -0.40501700825548514,
+      "dE_mine": -0.40501700825548514,
+      "d_curv": -0.4050170082555353,
+      "d_V4": -1.2323475573339238e-14,
+      "d_lin": 6.250555628639631e-14,
+      "pred_quad": -0.4065864619073032,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.005,
+      "kh_over_pi": 0.0625,
+      "dE_prod": -0.02531360354433243,
+      "dE_mine": -0.025313603544331542,
+      "d_curv": -0.02531360354432932,
+      "d_V4": 1.6653345369377348e-15,
+      "d_lin": -4.6629367034256575e-15,
+      "pred_quad": -0.02541165386920645,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.001,
+      "kh_over_pi": 0.0625,
+      "dE_prod": -0.0010125442475068525,
+      "dE_mine": -0.0010125442475068525,
+      "d_curv": -0.0010125442473594148,
+      "d_V4": -2.3647750424515834e-14,
+      "d_lin": -1.2467804566540508e-13,
+      "pred_quad": -0.001016466154768258,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.0001,
+      "kh_over_pi": 0.0625,
+      "dE_prod": -1.0125442615915858e-05,
+      "dE_mine": -1.0125442615915858e-05,
+      "d_curv": -1.0125442517772143e-05,
+      "d_V4": 2.220446049250313e-15,
+      "d_lin": -1.0014211682118912e-13,
+      "pred_quad": -1.016466154768258e-05,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.03125,
+      "dE_prod": -0.7306401019447399,
+      "dE_mine": -0.7306401019447399,
+      "d_curv": -0.7306401019446827,
+      "d_V4": -1.0880185641326534e-14,
+      "d_lin": -4.629630012686903e-14,
+      "pred_quad": -0.7336721247946062,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.03125,
+      "dE_prod": -0.11690298450847791,
+      "dE_mine": -0.11690298450847791,
+      "d_curv": -0.11690298450834646,
+      "d_V4": -3.652633751016765e-14,
+      "d_lin": -9.50350909079134e-14,
+      "pred_quad": -0.117387539967137,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.005,
+      "kh_over_pi": 0.03125,
+      "dE_prod": -0.007306443020386411,
+      "dE_mine": -0.007306443020386411,
+      "d_curv": -0.007306443020416609,
+      "d_V4": -8.881784197001252e-16,
+      "d_lin": 3.064215547965432e-14,
+      "pred_quad": -0.007336721247946062,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.001,
+      "kh_over_pi": 0.03125,
+      "dE_prod": -0.00029225773756103024,
+      "dE_mine": -0.00029225773756103024,
+      "d_curv": -0.0002922577374886437,
+      "d_V4": -6.106226635438361e-15,
+      "d_lin": -6.661338147750939e-14,
+      "pred_quad": -0.0002934688499178425,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.0001,
+      "kh_over_pi": 0.03125,
+      "dE_prod": -2.922577576391916e-06,
+      "dE_mine": -2.922577576391916e-06,
+      "d_curv": -2.922577381880842e-06,
+      "d_V4": -3.3861802251067274e-14,
+      "d_lin": -1.6076029396572267e-13,
+      "pred_quad": -2.9346884991784253e-06,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.0,
+      "dE_prod": -3.1605581683399357,
+      "dE_mine": -3.160558168339935,
+      "d_curv": -3.1605581683399704,
+      "d_V4": 6.661338147750939e-16,
+      "d_lin": 3.47499806707674e-14,
+      "pred_quad": -3.177755239145255,
+      "pred_cross": 0.0,
+      "asym": 1.1102230246251565e-16
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.0,
+      "dE_prod": -0.5056966443135256,
+      "dE_mine": -0.5056966443135247,
+      "d_curv": -0.5056966443135229,
+      "d_V4": -1.0436096431476471e-14,
+      "d_lin": 7.882583474838611e-15,
+      "pred_quad": -0.5084408382632407,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.005,
+      "kh_over_pi": 0.0,
+      "dE_prod": -0.03160615259452548,
+      "dE_mine": -0.03160615259452637,
+      "d_curv": -0.03160615259451394,
+      "d_V4": -3.6637359812630166e-15,
+      "d_lin": -9.2148511043888e-15,
+      "pred_quad": -0.031777552391452545,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.001,
+      "kh_over_pi": 0.0,
+      "dE_prod": -0.0012642464039567258,
+      "dE_mine": -0.001264246403957614,
+      "d_curv": -0.001264246403892333,
+      "d_V4": -9.43689570931383e-15,
+      "d_lin": -5.562217353372034e-14,
+      "pred_quad": -0.0012711020956581017,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     },
+     {
+      "A": 0.0001,
+      "kh_over_pi": 0.0,
+      "dE_prod": -1.264246426657678e-05,
+      "dE_mine": -1.2642464267464959e-05,
+      "d_curv": -1.2642464162659905e-05,
+      "d_V4": -2.8199664825478976e-14,
+      "d_lin": -7.716050021144838e-14,
+      "pred_quad": -1.2711020956581018e-05,
+      "pred_cross": 0.0,
+      "asym": 5.551115123125783e-17
+     }
+    ],
+    "threshold": 1e-06
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.negative_on_every_row": {
+   "claim": "dE < 0 on all 33 (A, k) rows, with the symmetry of M kept (asymmetry < 1e-12)",
+   "verdict": "PASS",
+   "numbers": {
+    "max_dE": -2.922577576391916e-06,
+    "min_dE": -68.45677216559628,
+    "max_asym": 1.1102230246251565e-16
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.curvature_term_alone": {
+   "claim": "the change sits in the curvature term: V4 and the linear member move by < 1e-10",
+   "verdict": "PASS",
+   "numbers": {
+    "max_abs_d_V4": 3.652633751016765e-14,
+    "max_abs_d_lin": 1.6076029396572267e-13
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.quadratic_in_A": {
+   "claim": "dE / A^2 is one constant at small A for every k (A = 1e-3 against 1e-4, rel < 1e-3): a second-order instability, not a finite-amplitude effect",
+   "verdict": "PASS",
+   "numbers": {
+    "rel_change_of_dE_over_A2": {
+     "kh/pi=0.5": 2.0054849721718045e-07,
+     "kh/pi=0.25": 2.447259647836334e-08,
+     "kh/pi=0.125": 4.6918185861773835e-09,
+     "kh/pi=0.0625": 1.391023969408038e-08,
+     "kh/pi=0.03125": 6.870018273570905e-08,
+     "kh/pi=0": 1.7956113286078534e-08
+    },
+    "threshold": 0.001
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.second_order_prediction": {
+   "claim": "own small-theta second-order form on the lattice stencil predicts dE at A = 1e-4 (rel < 2e-2)",
+   "verdict": "PASS",
+   "numbers": {
+    "rel_error": {
+     "kh/pi=0.5": 0.0021657274514441964,
+     "kh/pi=0.25": 0.00349025207227317,
+     "kh/pi=0.125": 0.0028585725202805445,
+     "kh/pi=0.0625": 0.0038733054202564053,
+     "kh/pi=0.03125": 0.004143918328922839,
+     "kh/pi=0": 0.0054227315623491795
+    },
+    "max_abs_cross_term": 0.0,
+    "threshold": 0.02
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.uniform_boost_invariance": {
+   "claim": "a uniform boost of the whole field leaves the production energy unchanged (< 1e-9)",
+   "verdict": "PASS",
+   "numbers": {
+    "dE": 3.1175062531474396e-13,
+    "threshold": 1e-09
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.rotation_ripple_control": {
+   "claim": "a rotation ripple of the same shape raises the energy (the field is a minimum against rotations)",
+   "verdict": "PASS",
+   "numbers": {
+    "dE": {
+     "A=0.02 kh/pi=0.25": 0.029185361717054548,
+     "A=0.02 kh/pi=0.0625": 0.0033737830541937797,
+     "A=0.005 kh/pi=0.25": 0.0018215037480295848
+    }
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.axis_envelope_shell_variants": {
+   "claim": "dE stays negative for the boost along x and z, for a k = 0 bump at three widths and for shell-confined ripples at r = 6, 12, 16",
+   "verdict": "PASS",
+   "numbers": {
+    "dE": {
+     "boost along x (along the carrier)": -2.5666229424960014,
+     "boost along z": -3.810310478443139,
+     "k=0 bump renv=6": -0.5317809002590224,
+     "k=0 bump renv=9": -0.5881850759156135,
+     "k=0 bump renv=12": -0.5056966443135256,
+     "shell r=6 width 3.0": -2.2263859710265796,
+     "shell r=12 width 3.0": -3.6786558683052584,
+     "shell r=16 width 2.5": -1.8578790859130851
+    }
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "C5.uniform_background_control": {
+   "claim": "on a uniform vacuum, where the continuum form gives zero, the lattice residue is below 1e-3 of the field's dE for the same ripple",
+   "verdict": "PASS",
+   "numbers": {
+    "dE_uniform_vacuum": -0.008303696493236243,
+    "dE_uniform_split": -0.008711165044505975,
+    "dE_field_same_ripple": -68.45677216559628,
+    "E_vacuum": 0.0
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "VA.scales_as_A6": {
+   "claim": "the ripple energy on the uniform vacuum is a lattice artifact of order A^6 (dE / A^6 constant to 1 percent between A = 0.02 and 0.01), so it cannot feed an A^2 signal",
+   "verdict": "PASS",
+   "numbers": {
+    "rel_change_of_dE_over_A6": {
+     "kh/pi=0.5": 0.0002102290072420553,
+     "kh/pi=0.25": 4.389336634203611e-05,
+     "kh/pi=0.125": 1.1931040793405015e-05
+    },
+    "ratio_of_dE_over_A4": {
+     "kh/pi=0.5": 4.0008409160289675,
+     "kh/pi=0.25": 4.000175573465368,
+     "kh/pi=0.125": 4.000047724163174
+    },
+    "rows": [
+     {
+      "A": 0.1,
+      "kh_over_pi": 0.5,
+      "dE": -0.5342371621506716,
+      "dE_over_A6": -534237.1621506715
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.5,
+      "dE": -0.008303696492795836,
+      "dE_over_A6": -531436.5755389333
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.5,
+      "dE": -3.396192923590268e-05,
+      "dE_over_A6": -530655.1443109793
+     },
+     {
+      "A": 0.01,
+      "kh_over_pi": 0.5,
+      "dE": -5.305436086548333e-07,
+      "dE_over_A6": -530543.6086548332
+     },
+     {
+      "A": 0.1,
+      "kh_over_pi": 0.25,
+      "dE": -0.01937586603117917,
+      "dE_over_A6": -19375.86603117916
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.25,
+      "dE": -0.00030241584682389665,
+      "dE_over_A6": -19354.614196729377
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.25,
+      "dE": -1.2383147741013916e-06,
+      "dE_over_A6": -19348.66834533424
+     },
+     {
+      "A": 0.01,
+      "kh_over_pi": 0.25,
+      "dE": -1.9347819104422375e-08,
+      "dE_over_A6": -19347.81910442237
+     },
+     {
+      "A": 0.1,
+      "kh_over_pi": 0.125,
+      "dE": -0.0017923213580791724,
+      "dE_over_A6": -1792.3213580791717
+     },
+     {
+      "A": 0.05,
+      "kh_over_pi": 0.125,
+      "dE": -2.7996669211170993e-05,
+      "dE_over_A6": -1791.7868295149428
+     },
+     {
+      "A": 0.02,
+      "kh_over_pi": 0.125,
+      "dE": -1.1466478023619304e-07,
+      "dE_over_A6": -1791.637191190516
+     },
+     {
+      "A": 0.01,
+      "kh_over_pi": 0.125,
+      "dE": -1.7916158153491372e-09,
+      "dE_over_A6": -1791.615815349137
+     }
+    ]
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "VA.negligible_against_c5": {
+   "claim": "at A = 0.05, k h / pi = 1/2 the artifact is below 1e-3 of the claimed C5 dE",
+   "verdict": "PASS",
+   "numbers": {
+    "dE_vacuum": -0.008303696492795836,
+    "claimed_dE_field": -68.4567721656,
+    "ratio": 0.00012129839357176851
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  },
+  "VA.matches_production_energy": {
+   "claim": "own curvature energy and the production energy agree on the vacuum artifact (rel < 1e-6)",
+   "verdict": "PASS",
+   "numbers": {
+    "own": -0.008303696492795836,
+    "production": -0.008303696493236243
+   },
+   "could_fail": true,
+   "kind": "claim",
+   "mode": "stack"
+  }
+ },
+ "modes": {
+  "run": {
+   "runtime_s": 65.5,
+   "checks": 49,
+   "PASS": 38,
+   "FAIL": 11,
+   "SKIPPED": 0,
+   "fail_ids": [
+    "C2.off_by_31_to_39_percent",
+    "C3b.ordering_swap",
+    "C4.frobenius_finite_theta",
+    "C4.generic_frame_background",
+    "C6b.table_as_hessian_entries",
+    "C6.doublet_massive_block_L2",
+    "C6.doublet_massive_block_L3",
+    "C6m.A3_inner_window",
+    "EX.c4d_boosted_background",
+    "EX.c4e_frobenius_equals_claim",
+    "EX.c2_candidate_readings"
+   ]
+  },
+  "stack": {
+   "runtime_s": 33.5,
+   "checks": 14,
+   "PASS": 14,
+   "FAIL": 0,
+   "SKIPPED": 0,
+   "fail_ids": []
+  }
+ },
+ "summary": {
+  "checks": 63,
+  "PASS": 52,
+  "FAIL": 11,
+  "SKIPPED": 0,
+  "fail_ids": [
+   "C2.off_by_31_to_39_percent",
+   "C3b.ordering_swap",
+   "C4.frobenius_finite_theta",
+   "C4.generic_frame_background",
+   "C6b.table_as_hessian_entries",
+   "C6.doublet_massive_block_L2",
+   "C6.doublet_massive_block_L3",
+   "C6m.A3_inner_window",
+   "EX.c4d_boosted_background",
+   "EX.c4e_frobenius_equals_claim",
+   "EX.c2_candidate_readings"
+  ]
+ }
+}

@@ -293,6 +293,30 @@ def run():
     out["all_rows"] = analyse(rows)
     for h in sorted({q["h"] for q in rows}):
         out[f"h_{h:g}"] = analyse([q for q in rows if q["h"] == h])
+    # POST HOC, not a registered label (added at EXECUTE after the first read): the registered pool took every
+    # gate row above the 1e-3 floor, and most of those sit above the fall of the split amplitude, where eps is an
+    # h^2 residue and no halo exists. The same instrument on the halo rows only: eps(6) above 3 floors, the floor
+    # being eps(6) of the same spacing's c 1e-2 row (the threshold instrument's registered floor); started rows
+    # (rad_down, rad_up) are left out, they duplicate a fresh row's state.
+    e6_of = lambda q: float(np.interp(6.0, q["prof"][:, 0], q["prof"][:, 1]))  # noqa: E731
+    post = {
+        "rule": "eps(6) > 3 x eps(6) of the same spacing's c 1e-2 row; fresh rows only; not a registered label"
+    }
+    for h in sorted({q["h"] for q in rows}):
+        fl = [
+            e6_of(q) for q in rows if q["h"] == h and abs(q["c"] - 1e-2) < 1e-12 and q["L"] == 48.0
+        ]
+        if not fl:
+            continue
+        sub = [
+            q
+            for q in rows
+            if q["h"] == h and q["tag"].startswith(("rad_pin", "bia_pin")) and e6_of(q) > 3 * fl[0]
+        ]
+        post[f"h_{h:g}"] = dict(
+            analyse(sub), floor=fl[0], tags=[q["tag"] for q in sub if q["qualifies"]]
+        )
+    out["post_hoc_halo_rows"] = post
     # the supporting read and the peel-off, with the winning A (or both when undecided)
     sup = []
     for A in A_LIST:
@@ -452,39 +476,84 @@ def plot():
 
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib.colors import LogNorm
 
     with open(OUT_JSON) as f:
         J = json.load(f)
-    fig, axs = plt.subplots(1, 2, figsize=(13, 5.2))
-    for ax, A in zip(axs, A_LIST):
+    post_tags = set()
+    for k, v in J.get("post_hoc_halo_rows", {}).items():
+        if isinstance(v, dict):
+            post_tags |= set(v.get("tags", []))
+    norm = LogNorm(1e-3, 3e-2)
+    cmap = plt.get_cmap("viridis")
+    fig, axs = plt.subplots(2, 2, figsize=(13, 10), sharex=True, sharey=True)
+    for col, A in enumerate(A_LIST):
         nu = nu_of(A)
         rd = next(q for q in J["all_rows"]["reads"] if q["A"] == A)
         amps = {p["tag"]: p["log_amplitude_s1"] for p in rd.get("rows", [])}
-        rho = np.logspace(-2.5, 1.2, 300)
-        ax.loglog(
-            rho,
-            np.exp(log_master(rho, nu)),
-            "k-",
-            lw=2,
-            label=r"$\rho^\nu K_\nu(\rho)$, normalized",
-        )
-        for tag, q in sorted(J["profiles"].items(), key=lambda kv_: kv_[1]["c"]):
-            if tag not in amps:
-                continue
-            P = np.array(q["r_mean_rms_count"])
-            k = (P[:, 0] >= 3.0) & (P[:, 0] <= 0.5 * q["L"] - 3.0) & (P[:, 1] > 0)
-            x = np.sqrt(beta_of(q["c"])) * P[k, 0] ** 2 / 2
-            y = P[k, 1] * P[k, 0] ** (2 * nu - 0.5) / np.exp(amps[tag])
-            ax.loglog(x, y, ".", ms=4, label=f"c {q['c']:g} n {q['n']} L {q['L']:g}")
-        ax.set_xlabel(r"$\rho = \sqrt{\beta}\, r^2 / 2$")
-        ax.set_ylabel(r"$\varepsilon\, r^{2\nu - 1/2}$ / row amplitude")
-        ax.set_title(f"A = {A:g} (nu = {nu:.3f}): {rd['label']}")
-        ax.set_ylim(1e-3, 30)
-        ax.legend(fontsize=7)
-    fig.tight_layout()
+        rho = np.logspace(-1.3, 1.2, 300)
+        for row, (title, keep) in enumerate(
+            (
+                (f"registered pool: {rd['label']}", lambda t: True),
+                ("post hoc: halo rows only", lambda t: t in post_tags),
+            )
+        ):
+            ax = axs[row, col]
+            ax.loglog(rho, np.exp(log_master(rho, nu)), "k-", lw=2)
+            for tag, q in sorted(J["profiles"].items(), key=lambda kv_: kv_[1]["c"]):
+                if tag not in amps or not keep(tag):
+                    continue
+                P = np.array(q["r_mean_rms_count"])
+                k = (P[:, 0] >= R_IN) & (P[:, 0] <= 0.5 * q["L"] - WALL) & (P[:, 1] > 0)
+                x = np.sqrt(beta_of(q["c"])) * P[k, 0] ** 2 / 2
+                y = P[k, 1] * P[k, 0] ** (2 * nu - 0.5) / np.exp(amps[tag])
+                ax.loglog(
+                    x,
+                    y,
+                    "o" if q["n"] == 48 else "^",
+                    ms=4,
+                    color=cmap(norm(q["c"])),
+                    alpha=0.85,
+                )
+            ax.set_title(f"A = {A:g}; {title}", fontsize=10)
+            ax.set_ylim(1e-3, 5)
+            if row == 1:
+                ax.set_xlabel(r"$\rho = \sqrt{\beta}\, r^2 / 2$")
+            if col == 0:
+                ax.set_ylabel(r"$\varepsilon\, r^{2\nu - 1/2}$ / row amplitude (s = 1)")
+    sm = plt.cm.ScalarMappable(norm=norm, cmap=cmap)
+    fig.colorbar(
+        sm, ax=axs, label="c  (circles n 48, triangles n 32; black: the master curve)", shrink=0.8
+    )
     out = os.path.join(HERE, "..", "plots", "m5_32_r24_1_collapse.png")
-    fig.savefig(out, dpi=130)
+    fig.savefig(out, dpi=130, bbox_inches="tight")
     print("wrote", out)
+    # the ladder of eps(6) against c, both spacings, the started rows marked
+    if os.path.exists(R24_2_JSON):
+        with open(R24_2_JSON) as f:
+            T = json.load(f).get("collect", {}).get("table", [])
+        fig, ax = plt.subplots(figsize=(7.5, 5))
+        for h, mk, colr in ((1.0, "o", "C0"), (1.5, "^", "C1")):
+            fresh = sorted((q["c"], q["eps6"]) for q in T if q.get("h") == h and not q.get("down"))
+            if fresh:
+                ax.loglog(*zip(*fresh), mk + "-", color=colr, label=f"h {h:g}, fresh radial seed")
+            st = [(q["c"], q["eps6"]) for q in T if q.get("h") == h and q.get("down")]
+            if st:
+                ax.loglog(
+                    *zip(*st),
+                    "x",
+                    color=colr,
+                    ms=10,
+                    mew=2,
+                    label=f"h {h:g}, started from another state",
+                )
+        ax.axvspan(4.9e-3, 6.7e-3, color="0.85", label="the reply's estimate of the threshold")
+        ax.set_xlabel("c")
+        ax.set_ylabel(r"$\varepsilon(r = 6)$, shell mean")
+        ax.legend(fontsize=8)
+        out = os.path.join(HERE, "..", "plots", "m5_32_r24_2_threshold.png")
+        fig.savefig(out, dpi=130, bbox_inches="tight")
+        print("wrote", out)
 
 
 if __name__ == "__main__":

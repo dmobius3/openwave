@@ -48,6 +48,12 @@
    "rho^nu K_nu": 1.322653098156934e-11,
    "sqrt(rho) K_nu": 0.3909991430363897
   },
+  "spread_definition": "max / min - 1 of solution over curve, r from 1.5 to 3 R_c, worst of c 3e-4, 1e-3, 3e-3",
+  "sqrt_rho_K_nu_drift_factor_r6_to_r18": {
+   "0.0003": 1.1384567195947837,
+   "0.001": 1.1384567194746043,
+   "0.003": 1.1384567195030413
+  },
   "threshold_c_at_ratio": {
    "1.09": 0.004901331101869933,
    "1.1": 0.005083686848433633,
@@ -714,7 +720,7 @@
   "chain_worst_relative": 4.6629367034256575e-14,
   "PASS": true,
   "fails_if": "tr(dB dB) on the ripple were non-negative, or differed from -2 abs(B a)^2 theta'^2",
-  "reading": "with the covariant trace the static energy kappa_0 sum_i tr(d_i B d_i B) is unbounded below on any split background (theta' is free, V4, L and F are blind to the ripple); a positive contraction (Frobenius, or the covariant h = eta + 2 u u) gives +2 abs(B a)^2 theta'^2 instead"
+  "reading": "with the covariant trace the static energy kappa_0 sum_i tr(d_i B d_i B) is unbounded below on any split background (theta' is free, V4, L and F are blind to the ripple); the covariant positive contraction h = eta + 2 u u gives +2 abs(B a)^2 theta'^2 instead; Frobenius is positive but equals that value only at theta = 0 (the audit: 2 eps^2 theta'^2 cosh(4 theta) along a doublet axis, not Lorentz invariant). The closed form is the rest-frame statement: on a boosted split background tr(dB dB) = theta'^2 tr([K, B]^2) is indefinite (the audit), and the unboundedness stands"
  },
  "e": {
   "normalization_kappa": "4",
@@ -982,5 +988,69 @@
   "PASS": true,
   "fails_if": "a linear term survived, the jet Hessian differed from the listed form, or the lowest mode were not 48",
   "reading": "the radial part is the R22-1 audit's (16 eps_r^2); the angular part is 48 eps^2 / r^2 on the lowest spin-2 mode, not 16: eps'' = 3 eps / r^2 + beta r^2 eps, the same beta and cutoff, nu = sqrt(13) / 4, tail r^(-1.303)"
+ },
+ "e4": {
+  "spatial_mixed_block_is_nonzero_pointwise": true,
+  "spatial_mixed_block_minus_16(1-delta)^3/r^4_div(W)": "0",
+  "W": "W_theta = a u + b v, W_phi = b u - a v: the contraction of the split tensor with the director vector",
+  "time_space_blocks_max_abs": 0.0,
+  "M00_blocks_max_abs": 0.0,
+  "reading": "the doublet-director block is a total divergence on the sphere, so it integrates to zero at every r; the blocks with the time-space modes vanish identically (M -> T M T, T = diag(-1, 1, 1, 1), keeps the density, the background and the doublet, and flips w); what is left mixes only with modes V4 makes massive",
+  "PASS": true,
+  "fails_if": "the doublet-director block differed from the listed divergence, or a block with the time-space modes survived"
+ },
+ "e5": {
+  "integrated_mixed_E_type": "512*pi*(-delta**2*P(r) + delta**2*Q(r) + 2*delta*P(r) - 2*delta*Q(r) - P(r) + Q(r))*alpha(r)/(5*r**4)",
+  "integrated_mixed_E_type_minus_claim": "0",
+  "integrated_mixed_B_type": "0",
+  "adiabatic_rows": [
+   {
+    "c": 0.0,
+    "softest_massive_eigenvalue": 0.10247753908154493,
+    "v_Hinv_v": 17.582244420567875,
+    "A_eff_E_type": {
+     "6": 1.7236592939143323,
+     "9": 2.7478833173164112,
+     "12": 2.9202287058696457,
+     "18": 2.984242707332276
+    }
+   },
+   {
+    "c": 0.001,
+    "softest_massive_eigenvalue": 0.11080166411433685,
+    "v_Hinv_v": 16.40207396477476,
+    "A_eff_E_type": {
+     "6": 1.809330927001536,
+     "9": 2.7648061090373406,
+     "12": 2.9255831829375962,
+     "18": 2.9853003818148336
+    }
+   },
+   {
+    "c": 0.003,
+    "softest_massive_eigenvalue": 0.12692923082418364,
+    "v_Hinv_v": 14.555851793651355,
+    "A_eff_E_type": {
+     "6": 1.9433529809053092,
+     "9": 2.791279601166481,
+     "12": 2.933959561306582,
+     "18": 2.986954975072905
+    }
+   },
+   {
+    "c": 0.008,
+    "softest_massive_eigenvalue": 0.16371094805706102,
+    "v_Hinv_v": 11.697880054204713,
+    "A_eff_E_type": {
+     "6": 2.1508205590281024,
+     "9": 2.832260851166045,
+     "12": 2.9469262849392566,
+     "18": 2.989516303197878
+    }
+   }
+  ],
+  "reading": "the E-type half of the l = 2 doublet couples to the massive (rr - tt) mode, the B-type half does not; to leading adiabatic order A_eff = 3 - 192 (1 - delta)^2 v H^-1 v / r^4 for the E-type half: about 2.99 at r 18, 2.93 at r 12, 2.77 at r 9, and the estimate stops being perturbative near r 6; the B-type half stays at 3. A = 3 is the far-field value, the inner third of the read window sits below it",
+  "PASS": true,
+  "fails_if": "the integrated E-type block differed from the listed form, or the B-type block did not vanish"
  }
 }

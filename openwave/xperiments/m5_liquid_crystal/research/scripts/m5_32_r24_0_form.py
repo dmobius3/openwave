@@ -37,7 +37,13 @@ e  the halo equation's elastic part re-derived: the second variation in eps of
    angular eigenvalue (spin-2 harmonics), which fixes A in
    eps'' = A eps / r^2 + beta r^2 eps.
 
-Modes: run (default) | stack (d2 and e2, the checks that import the production stack). Output: data/m5_32_r24_0_form.json. Runtime: minutes.
+   e4: the doublet against the massless modes at second order (the director
+   modes and the time-space modes): a total divergence and an identical zero.
+
+   e5: the doublet against the massive rr and tt modes, integrated on the
+   l = 2 sections, and the adiabatic estimate of A_eff(r) for the E-type half.
+
+Modes: run (default) | mix (e4 and e5, sympy, about 15 minutes) | stack (d2 and e2, the checks that import the production stack). Output: data/m5_32_r24_0_form.json. Runtime: minutes.
 """
 
 import importlib.util
@@ -55,6 +61,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "..", "data")
 OUT_JSON = os.path.join(DATA, "m5_32_r24_0_form.json")
 G_, D_ = 8.0, 0.3
+W1 = 0.000724023879  # the certified V4 weight; the main rows run W1 x 25
 ETA = np.diag([-1.0, 1.0, 1.0, 1.0])
 NU = np.sqrt(5.0) / 4.0
 K_EL = 8 * (1 - D_) ** 2
@@ -135,6 +142,20 @@ def check_b():
             q = y / cur
             worst[nm] = max(worst[nm], float(q.max() / q.min() - 1))
     out["spread_of_solution_over_curve"] = worst
+    out["spread_definition"] = (
+        "max / min - 1 of solution over curve, r from 1.5 to 3 R_c, worst of c 3e-4, 1e-3, 3e-3"
+    )
+    # the same spread inside the read window of R24-1 (the audit's definition: r 6 to 18 at c 1e-3, factor 1.138)
+    win = {}
+    for c in (3e-4, 1e-3, 3e-3):
+        beta = beta_of(c)
+        sol = halo_solution(beta, r_out=max(20.0, 3.0 * beta**-0.25))
+        rr = np.linspace(6.0, 18.0, 49)
+        y = sol.sol(rr)[0] * rr ** (2 * NU - 0.5)
+        rho = np.sqrt(beta) * rr**2 / 2
+        q = y / (np.sqrt(rho) * kv(NU, rho))
+        win[str(c)] = float(q.max() / q.min())
+    out["sqrt_rho_K_nu_drift_factor_r6_to_r18"] = win
     rk = {3e-4: 8.92, 1e-3: 7.16, 3e-3: 5.12}
     for c in (3e-4, 1e-3, 3e-3, 1e-2, 5.1e-6):
         Rc = beta_of(c) ** -0.25
@@ -357,8 +378,11 @@ def check_d():
     )
     out["reading"] = (
         "with the covariant trace the static energy kappa_0 sum_i tr(d_i B d_i B) is unbounded below on any split "
-        "background (theta' is free, V4, L and F are blind to the ripple); a positive contraction (Frobenius, or the "
-        "covariant h = eta + 2 u u) gives +2 abs(B a)^2 theta'^2 instead"
+        "background (theta' is free, V4, L and F are blind to the ripple); the covariant positive contraction "
+        "h = eta + 2 u u gives +2 abs(B a)^2 theta'^2 instead; Frobenius is positive but equals that value only at "
+        "theta = 0 (the audit: 2 eps^2 theta'^2 cosh(4 theta) along a doublet axis, not Lorentz invariant). The closed "
+        "form is the rest-frame statement: on a boosted split background tr(dB dB) = theta'^2 tr([K, B]^2) is "
+        "indefinite (the audit), and the unboundedness stands"
     )
     return out
 
@@ -706,6 +730,210 @@ def check_e3():
     return out
 
 
+def check_e4():
+    """the split doublet against the modes the potential leaves massless, at second order (added at the R24 go:
+    check e3 restricted the perturbation to the doublet, and a mixing with a massless mode could lower A).
+
+    Spatial block: the director modes u, v (rhat -> rhat + u that + v phat). Full 4x4: the time-space modes
+    w_r, w_t, w_p and M_00 (s), with the production contraction 4 F_ab F_cd eta^ac eta^bd.
+    """
+    r, th, ph, d = sp.symbols("r theta phi delta", positive=True)
+    er = sp.Matrix([sp.sin(th) * sp.cos(ph), sp.sin(th) * sp.sin(ph), sp.cos(th)])
+    et = sp.Matrix([sp.cos(th) * sp.cos(ph), sp.cos(th) * sp.sin(ph), -sp.sin(th)])
+    ep = sp.Matrix([-sp.sin(ph), sp.cos(ph), 0])
+    T1, T2 = et * et.T - ep * ep.T, et * ep.T + ep * et.T
+    U1, U2 = (1 - d) * (er * et.T + et * er.T), (1 - d) * (er * ep.T + ep * er.T)
+    M0 = d * sp.eye(3) + (1 - d) * er * er.T
+    J = sp.Matrix([[er[i], et[i] / r, ep[i] / (r * sp.sin(th))] for i in range(3)])
+
+    def density(basis, jets, M_bg, eta, point=None):
+        n = M_bg.shape[0]
+        dq = []
+        for k, q in enumerate((r, th, ph)):
+            m = M_bg.diff(q)
+            for f, T in enumerate(basis):
+                m += jets[4 * f + 1 + k] * T + jets[4 * f] * T.diff(q)
+            dq.append(m)
+        dM = [
+            sum((J[i, k] * dq[k] for k in range(3)), sp.zeros(n, n)).subs(ph, 0) for i in range(3)
+        ]
+        if point is not None:
+            dM = [m.subs(point) for m in dM]
+        dens = 0
+        for i in range(3):
+            for j in range(i + 1, 3):
+                F = dM[i] * eta * dM[j] - dM[j] * eta * dM[i]
+                dens += 4 * (F * eta * F.T * eta).trace()
+        return sp.expand(dens)
+
+    # spatial block, symbolic: the mixed part against a total divergence on the sphere
+    jets = sp.symbols("a a_r a_t a_p b b_r b_t b_p u u_r u_t u_p v v_r v_t v_p")
+    a, a_r, a_t, a_p, b, b_r, b_t, b_p, u, u_r, u_t, u_p, v, v_r, v_t, v_p = jets
+    dens = density([T1, T2, U1, U2], jets, M0, sp.eye(3))
+    split, direc = jets[:8], jets[8:]
+    mixed = sum(
+        dens.diff(x).diff(y).subs({z: 0 for z in jets}) * x * y for x in split for y in direc
+    )
+    div = (
+        sp.cot(th) * (a * u + b * v)
+        + a_t * u
+        + a * u_t
+        + b_t * v
+        + b * v_t
+        + (-a_p * v - a * v_p + b_p * u + b * u_p) / sp.sin(th)
+    )
+    resid = sp.simplify(sp.trigsimp(sp.expand(mixed - 16 * (1 - d) ** 3 / r**4 * div)))
+    mixed_nonzero = sp.simplify(mixed) != 0
+    # the full 4x4 at rational points: the blocks between the doublet or the director and the time-space modes
+    g = sp.Integer(8)
+    E = lambda i, j: sp.Matrix(
+        4, 4, lambda p_, q_: 1 if (p_, q_) in ((i, j), (j, i)) else 0
+    )  # noqa: E731
+
+    def emb(T):
+        m = sp.zeros(4, 4)
+        m[1:, 1:] = T
+        return m
+
+    def tvec(e):
+        m = sp.zeros(4, 4)
+        for i in range(3):
+            m[0, i + 1] = e[i]
+            m[i + 1, 0] = e[i]
+        return m
+
+    M4 = emb(M0)
+    M4[0, 0] = g
+    basis4 = [emb(T1), emb(T2), emb(U1), emb(U2), tvec(er), tvec(et), tvec(ep), E(0, 0)]
+    names = ["a", "b", "u", "v", "w_r", "w_t", "w_p", "s"]
+    jets4 = sp.symbols(" ".join(f"{n_} {n_}_r {n_}_t {n_}_p" for n_ in names))
+    eta4 = sp.diag(-1, 1, 1, 1)
+    worst_w, worst_s = sp.Integer(0), sp.Integer(0)
+    for pt in (
+        {r: sp.Rational(17, 10), th: sp.Rational(9, 10), d: sp.Rational(3, 10)},
+        {r: sp.Rational(23, 10), th: sp.Rational(21, 10), d: sp.Rational(3, 10)},
+    ):
+        d4 = density(basis4, jets4, M4, eta4, point=pt)
+        zero = {z: 0 for z in jets4}
+        for x in jets4[:16]:
+            for y in jets4[16:28]:
+                worst_w = max(worst_w, abs(sp.N(d4.diff(x).diff(y).subs(zero))))
+            for y in jets4[28:]:
+                worst_s = max(worst_s, abs(sp.N(d4.diff(x).diff(y).subs(zero))))
+    out = {
+        "spatial_mixed_block_is_nonzero_pointwise": bool(mixed_nonzero),
+        "spatial_mixed_block_minus_16(1-delta)^3/r^4_div(W)": str(resid),
+        "W": "W_theta = a u + b v, W_phi = b u - a v: the contraction of the split tensor with the director vector",
+        "time_space_blocks_max_abs": float(worst_w),
+        "M00_blocks_max_abs": float(worst_s),
+        "reading": (
+            "the doublet-director block is a total divergence on the sphere, so it integrates to zero at every r; the "
+            "blocks with the time-space modes vanish identically (M -> T M T, T = diag(-1, 1, 1, 1), keeps the density, "
+            "the background and the doublet, and flips w); what is left mixes only with modes V4 makes massive"
+        ),
+    }
+    out["PASS"] = bool(resid == 0 and worst_w < 1e-12)
+    out["fails_if"] = (
+        "the doublet-director block differed from the listed divergence, or a block with the time-space modes survived"
+    )
+    return out
+
+
+def check_e5():
+    """the split doublet against the massive diagonal modes (rr and tt) at second order, and the adiabatic estimate of
+    what they do to A (raised by the R24 audit, re-derived here). The l = 2, m = 0 sections: E-type a = alpha sin^2,
+    B-type b = alpha sin^2; the scalars P(r) P_2 on rr and Q(r) P_2 on tt; M_00 is slaved through the V4 Hessian.
+    """
+    r, th, ph, d = sp.symbols("r theta phi delta", positive=True)
+    er = sp.Matrix([sp.sin(th) * sp.cos(ph), sp.sin(th) * sp.sin(ph), sp.cos(th)])
+    et = sp.Matrix([sp.cos(th) * sp.cos(ph), sp.cos(th) * sp.sin(ph), -sp.sin(th)])
+    ep = sp.Matrix([-sp.sin(ph), sp.cos(ph), 0])
+    basis = [et * et.T - ep * ep.T, et * ep.T + ep * et.T, er * er.T, et * et.T + ep * ep.T]
+    M0 = d * sp.eye(3) + (1 - d) * er * er.T
+    J = sp.Matrix([[er[i], et[i] / r, ep[i] / (r * sp.sin(th))] for i in range(3)])
+    names = ["a", "b", "p", "q"]
+    jets = sp.symbols(" ".join(f"{n_} {n_}_r {n_}_t {n_}_p" for n_ in names))
+    dq = []
+    for k, x in enumerate((r, th, ph)):
+        m = M0.diff(x)
+        for f, T in enumerate(basis):
+            m += jets[4 * f + 1 + k] * T + jets[4 * f] * T.diff(x)
+        dq.append(m)
+    dM = [sum((J[i, k] * dq[k] for k in range(3)), sp.zeros(3, 3)).subs(ph, 0) for i in range(3)]
+    dens = 0
+    for i in range(3):
+        for j in range(i + 1, 3):
+            F = dM[i] * dM[j] - dM[j] * dM[i]
+            dens += 4 * (F * F.T).trace()
+    dens = sp.expand(dens)
+    zero = {z: 0 for z in jets}
+    mixed = sum(dens.diff(x).diff(y).subs(zero) * x * y for x in jets[:8] for y in jets[8:])
+    al, P, Q = [sp.Function(n_)(r) for n_ in ("alpha", "P", "Q")]
+    P2 = (3 * sp.cos(th) ** 2 - 1) / 2
+    integ = {}
+    for label, (fa, fb) in (
+        ("E", (al * sp.sin(th) ** 2, 0)),
+        ("B", (0, al * sp.sin(th) ** 2)),
+    ):
+        sub = {}
+        for n_, f in zip(names, (fa, fb, P * P2, Q * P2)):
+            js = sp.symbols(f"{n_} {n_}_r {n_}_t {n_}_p")
+            f = sp.sympify(f)
+            sub.update(
+                {js[0]: f, js[1]: sp.diff(f, r), js[2]: sp.diff(f, th), js[3]: sp.Integer(0)}
+            )
+        integ[label] = sp.simplify(
+            sp.integrate(
+                sp.expand(mixed.subs(sub, simultaneous=True) * sp.sin(th)), (th, 0, sp.pi)
+            )
+            * 2
+            * sp.pi
+        )
+    claim_E = -sp.Rational(512, 5) * sp.pi * (1 - d) ** 2 * (P - Q) * al / r**4
+    resid_E = sp.simplify(integ["E"] - claim_E)
+    # eliminating (s00, P, Q) against the Hessian of V4 - c L on the diagonal modes:
+    # dA = -192 (1 - delta)^2 v^T H^-1 v / r^4, v = (0, 1, -1)
+    rows = []
+    for c in (0.0, 1e-3, 3e-3, 8e-3):
+        lam = np.array([-G_, 1.0, D_])
+        dl = np.array([-1.0, 1.0, 2.0])
+        H = np.zeros((3, 3))
+        for pw in range(1, 5):
+            gp = pw * lam ** (pw - 1) * dl
+            H += 2 * W1 * 25.0 * np.outer(gp, gp)
+        qp = lambda x: (x - 1) * (x - D_) + (x + G_) * (x - D_) + (x + G_) * (x - 1)  # noqa: E731
+        H += -c * np.diag([qp(-G_), qp(1.0), 2 * qp(D_)])
+        v = np.array([0.0, 1.0, -1.0])
+        s_ = float(v @ np.linalg.solve(H, v))
+        rows.append(
+            {
+                "c": c,
+                "softest_massive_eigenvalue": float(np.linalg.eigvalsh(H)[0]),
+                "v_Hinv_v": s_,
+                "A_eff_E_type": {
+                    str(rr): float(3 - 192 * (1 - D_) ** 2 * s_ / rr**4) for rr in (6, 9, 12, 18)
+                },
+            }
+        )
+    out = {
+        "integrated_mixed_E_type": str(integ["E"]),
+        "integrated_mixed_E_type_minus_claim": str(resid_E),
+        "integrated_mixed_B_type": str(integ["B"]),
+        "adiabatic_rows": rows,
+        "reading": (
+            "the E-type half of the l = 2 doublet couples to the massive (rr - tt) mode, the B-type half does not; "
+            "to leading adiabatic order A_eff = 3 - 192 (1 - delta)^2 v H^-1 v / r^4 for the E-type half: about 2.99 at "
+            "r 18, 2.93 at r 12, 2.77 at r 9, and the estimate stops being perturbative near r 6; the B-type half "
+            "stays at 3. A = 3 is the far-field value, the inner third of the read window sits below it"
+        ),
+    }
+    out["PASS"] = bool(resid_E == 0 and integ["B"] == 0)
+    out["fails_if"] = (
+        "the integrated E-type block differed from the listed form, or the B-type block did not vanish"
+    )
+    return out
+
+
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "run"
     res = {}
@@ -723,6 +951,13 @@ def main():
         ):
             res[nm] = fn()
             print(nm, json.dumps(res[nm], indent=1)[:3000], flush=True)
+    elif mode == "mix":
+        only = sys.argv[2] if len(sys.argv) > 2 else None
+        for nm, fn in (("e4", check_e4), ("e5", check_e5)):
+            if only and nm != only:
+                continue
+            res[nm] = fn()
+            print(nm, json.dumps(res[nm], indent=1), flush=True)
     elif mode == "stack":
         for nm, fn in (("d2", check_d2), ("e2", check_e2)):
             res[nm] = fn()

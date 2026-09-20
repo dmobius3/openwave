@@ -91,29 +91,113 @@ def jobs_all():
     return J
 
 
+def jobs_ext():
+    """the extension logged at EXECUTE: the first ladder left no h 1.0 point between c 3e-3 and 4e-3, where the
+    whole fall happens, and its two downward rows sat far above the fall. Fresh rows inside the fall at both
+    spacings, and started rows from both sides of it (from the R23 halo state, from this rung's residue state).
+    """
+    base = {"delta": 0.3, "w1s": 25.0, "seed": "rad", "src": None}
+    J = [
+        dict(base, part="R24-2 ext seed h 1.0", c=c, n=48, L=48.0)
+        for c in (3.25e-3, 3.5e-3, 3.75e-3)
+    ]
+    J += [
+        dict(base, part="R24-2 ext seed h 1.5", c=c, n=32, L=48.0)
+        for c in (3.25e-3, 3.75e-3, 4.25e-3)
+    ]
+    halo = lambda n: (
+        "r23",
+        f"rad_pin_d0.3_w25_c0.003_n{n}_L48",
+        "the R23 c 3e-3 end field",
+    )  # noqa: E731
+    J += [
+        dict(
+            base,
+            part="R24-2 ext from the halo",
+            c=4e-3,
+            n=n,
+            L=48.0,
+            down=True,
+            start=("rad_down",) + halo(n),
+        )
+        for n in (48, 32)
+    ]
+    J += [
+        dict(
+            base,
+            part="R24-2 ext from the residue",
+            c=c,
+            n=n,
+            L=48.0,
+            down=True,
+            start=(
+                "rad_up",
+                "r24",
+                f"rad_pin_d0.3_w25_c{src}_n{n}_L48",
+                f"this rung's c {src} end field",
+            ),
+        )
+        for c, n, src in ((3.5e-3, 48, "0.004"), (3.5e-3, 32, "0.005"), (4e-3, 32, "0.005"))
+    ]
+    return J
+
+
+def jobs_ext2():
+    """the second extension logged at EXECUTE: the first one found two gate states at c 4e-3 on both spacings (the
+    halo-started one lower in energy), so the fresh seed's fall is a basin boundary of the seed and not the end of
+    the halo branch. The halo branch followed upward from its c 4e-3 state, to bracket where it ends.
+    """
+    base = {"delta": 0.3, "w1s": 25.0, "seed": "rad", "src": None}
+    J = []
+    for n, cs in ((48, (4.5e-3, 5e-3, 6e-3)), (32, (4.25e-3, 4.5e-3, 4.75e-3))):
+        src = f"rad_down_pin_d0.3_w25_c0.004_n{n}_L48"
+        J += [
+            dict(
+                base,
+                part="R24-2 ext2 along the halo branch",
+                c=c,
+                n=n,
+                L=48.0,
+                down=True,
+                start=("rad_down", "r24", src, "this rung's halo-started c 4e-3 end field"),
+            )
+            for c in cs
+        ]
+    return J
+
+
 def run_job(j):
     """R23-1's run_job on this rung's folder; a downward row is pre-staged from the stored halo state."""
     CS.OUT_NPZ = OUT_NPZ
     os.makedirs(OUT_NPZ, exist_ok=True)
     jj = dict(j)
     if j.get("down"):
-        jj["seed"] = (
-            "rad_down"  # only the tag changes: the stage file below carries the start field
+        seed, folder, src_tag, note = j.get("start") or (
+            "rad_down",
+            "r23",
+            SRC_TAG,
+            "the R23 c 3e-3 end field",
         )
+        jj.pop("start", None)
+        jj["seed"] = seed  # only the tag changes: the stage file below carries the start field
         stage = os.path.join(OUT_NPZ, CS.job_tag(jj) + "_stage.npz")
         if not os.path.exists(stage):
-            M = np.load(os.path.join(R23_NPZ, SRC_TAG + ".npz"))["M"]
+            M = np.load(os.path.join(R23_NPZ if folder == "r23" else OUT_NPZ, src_tag + ".npz"))[
+                "M"
+            ]
             cfg = CS.R21.cfg_of(j["n"], j["L"], CS.G, j["delta"])
             p = CS.R21.params_of(CS.G, j["delta"])
             pot = ("v4", CS.R0.roots_of(cfg, degenerate=True), CS.W1 * j["w1s"])
             start = dict(
                 CS.chunk_reads(M, cfg, p, pot, j["c"]),
                 iters=0,
-                note="the start field: the R23 c 3e-3 end field",
+                note="the start field: " + note,
             )
             np.savez_compressed(stage, M=M, done=0, chunks=json.dumps([start]))
     row = CS.run_job(jj)
     row["down"] = bool(j.get("down"))
+    if j.get("start"):
+        row["start_from"] = j["start"][2]
     return row
 
 
@@ -131,9 +215,9 @@ def save_json(J):
     os.replace(tmp, OUT_JSON)
 
 
-def run_pool(workers):
+def run_pool(workers, jobs=None):
     rows = load_json()["rows"]
-    pending = [j for j in jobs_all() if rows.get(_row_tag(j), {}).get("status") != "OK"]
+    pending = [j for j in (jobs or jobs_all()) if rows.get(_row_tag(j), {}).get("status") != "OK"]
     CS.log(f"pool: {len(pending)} jobs, {workers} workers")
     with ProcessPoolExecutor(max_workers=workers, mp_context=mp.get_context("spawn")) as ex:
         futs = [ex.submit(run_job, j) for j in pending]
@@ -146,7 +230,10 @@ def run_pool(workers):
 
 
 def _row_tag(j):
-    return CS.job_tag(dict(j, seed="rad_down")) if j.get("down") else CS.job_tag(j)
+    if not j.get("down"):
+        return CS.job_tag(j)
+    jj = {k: v for k, v in j.items() if k != "start"}
+    return CS.job_tag(dict(jj, seed=j["start"][0] if j.get("start") else "rad_down"))
 
 
 # ================= collect =================
@@ -358,12 +445,16 @@ def main():
         smoke()
     elif mode == "run":
         run_pool(int(sys.argv[2]) if len(sys.argv) > 2 else 12)
+    elif mode == "run_ext":
+        run_pool(int(sys.argv[2]) if len(sys.argv) > 2 else 12, jobs_ext())
+    elif mode == "run_ext2":
+        run_pool(int(sys.argv[2]) if len(sys.argv) > 2 else 12, jobs_ext2())
     elif mode == "wire":
         wire()
     elif mode == "collect":
         collect()
     elif mode == "jobs":
-        for j in jobs_all():
+        for j in jobs_all() + jobs_ext() + jobs_ext2():
             print(_row_tag(j), j["part"])
 
 
