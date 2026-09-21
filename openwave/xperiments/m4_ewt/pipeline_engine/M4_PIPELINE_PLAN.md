@@ -4,7 +4,8 @@
 > **Scope:** The pipeline_engine as the realisation substrate for Enhanced EWT.
 > **Audience:** Contributors implementing, testing, or extending M4.
 > **Related:** `M4_engine_upgrade.md`, `M4_k_selectivity_Formalization.md`,
-> `__M4_model_briefing.md`, manuscript v5.0.x (Zenodo), Yee's EWT corpus.
+> `__M4_model_briefing.md`, manuscript v5.0.2 (Zenodo, DOI
+> 10.5281/zenodo.22875996), Yee's EWT corpus.
 
 ---
 
@@ -30,6 +31,7 @@ This document captures:
    (Section 8).
 5. **Which** questions remain genuinely open and require author input or
    further research (Section 9).
+6. **What** is deferred to a second milestone (Section 15).
 
 Nothing in this document is a claim about nature. It is a **plan for a tool**,
 written so that the tool can express the hypotheses we intend to test.
@@ -162,6 +164,15 @@ conserved by construction. Any deviation is a bug, not a feature.
 The engine must therefore expose enough structure to *measure* the energy
 budget and *verify* that `dE/dt + flux ≈ 0`.
 
+Reflection is not assumed to be active by default. The default pipeline
+realises the nonlinear soliton without a scattering operator: the wave
+centres perturb the field through the density-modulated term, but they do
+not reflect a base wave. A second pipeline adds the scattering operator
+and the corresponding budget channel. The two pipelines share the same
+field types and base processors, and differ only in which processors they
+include and which vacuum variant they register. Section 5.4 defines the
+two configurations.
+
 ### 2.2. The soliton is an open system in steady state
 
 The medium carries an always-on base wave (Yee: "waves flow through all of
@@ -179,6 +190,10 @@ not a closed system isolated from it.
 This is a deliberate commitment to **variant B** (coupled dynamics), not
 variant A (static background). It is harder to implement, but it is what the
 manuscript describes.
+
+This picture applies to the reflective pipeline (Section 5.4, pipeline B).
+The default pipeline (A) uses the same field types but does not model
+reflection; it is the simpler non-reflective case.
 
 ### 2.3. The EMC density field is dynamic and self-consistent
 
@@ -284,6 +299,7 @@ N_nu_eff     : effective volume deficit
 A_base       : base wave amplitude
 r_domain     : simulated domain radius
 r_core       : soliton extent (K²λ), theoretical scale
+c_max        : maximum local wave speed, for the CFL bound
 ```
 
 Plus conversion methods:
@@ -303,12 +319,27 @@ to_physical_density(r)  -> 1/m³
 c      = 1
 lambda = 1
 dx     = 1 / K_grid     (e.g. 0.05 for 20 voxels/λ)
-dt     = CFL_SAFETY · dx / (c · √3),   CFL_SAFETY ≈ 0.9
+dt     = CFL_SAFETY · dx / (c_max · √3),   CFL_SAFETY ≈ 0.9
 ```
 
 The 3D leapfrog bound is `dx / (c · √3)`. `CFL_SAFETY = 0.9` of that bound
 gives `dt ≈ 0.52 · dx / c`. A 1D run may use `dt = CFL_SAFETY · dx / c` as
 a validation figure; the default is 3D and takes the `√3` factor.
+
+The timestep `dt` is computed against a maximum wave speed `c_max`, not the
+nominal `c₀`. For B4a the slaved density gives `c(ρ) ≤ c₀` and `c_max = c₀`.
+For B4b and B4c the density evolves independently and can exceed `ρ₀`
+locally (the EMC Wall peak), giving `c_max = c₀ · √(ρ_max/ρ₀) > c₀`. The
+unit system exposes both `c` (nominal) and `c_max` (for the CFL bound):
+
+```text
+dt = CFL_SAFETY · dx / (c_max · √3)
+```
+
+If the density exceeds the assumed `ρ_max` during a run, the simulation is
+unstable by construction; the maximum must be bounded either by the EMC
+Wall height parameter or by an explicit check in `DiagnosticProcessor`
+(item 1.18).
 
 **OpenWaveUnitSystem**:
 
@@ -316,7 +347,7 @@ a validation figure; the default is 3D and takes the `√3` factor.
 c      = 0.3 am/rs
 lambda = EWAVE_LENGTH / ATTOMETER   (≈ 28.5 am)
 dx     = lambda / 12
-dt     = CFL_SAFETY · dx / (c · √3)
+dt     = CFL_SAFETY · dx / (c_max · √3)
 ```
 
 **SIUnitSystem**:
@@ -325,7 +356,7 @@ dt     = CFL_SAFETY · dx / (c · √3)
 c      = 299792458 m/s
 lambda = 2.8540965e-17 m
 dx     = r_e / 200
-dt     = CFL_SAFETY · dx / (c · √3)
+dt     = CFL_SAFETY · dx / (c_max · √3)
 ```
 
 Used primarily for output conversion.
@@ -421,6 +452,32 @@ The kinetic term is required: without it, a standing wave's gradient-only
 integral oscillates at `2ω` and the conservation test fails by construction.
 The deformation term uses `κ`, the stiffness supplied by the unit system.
 
+The budget has two forms, one per pipeline.
+
+**Pipeline A (non-reflective).** There is no `E_base` channel and no
+scattering operator. The check is
+
+```text
+dE_total/dt + flux_through_boundary + P_deform = 0
+```
+
+where `P_deform` is the dissipation ledger of B4b (zero for B4a and B4c).
+
+**Pipeline B (reflective).** `E_base` participates as a separate feature.
+The scattering operator exchanges energy between `E_base` and the soliton
+by moving the incoming wave into the outgoing wave; the exchange is
+internal to the system, so no external channel is needed. The check keeps
+the same form as pipeline A, with `E_base` included in the total:
+
+```text
+dE_total/dt + flux_through_boundary + P_deform = 0
+E_total includes E_base for pipeline B.
+```
+
+For an isolated steady soliton, the scattering term averages to zero over
+one period of the standing wave. A non-zero average means the soliton is
+either growing (absorbing base energy) or decaying (leaking to base).
+
 The wave equation is implemented in the Euler-Lagrange form derived from
 the Lagrangian
 
@@ -488,6 +545,23 @@ on the empirical ground above; the property is recorded here so it is a
 known limit of the variant rather than a surprise in a sweep.
 The budget is not a fixed formula, it is the sum of the active terms.
 
+> **Physical reading of the unbounded potential.**
+> The absence of a ground state is not a defect of the variant; it is the
+> signature of the saturation mechanism described in the manuscript as the
+> Onion Model. The energy of a soliton scales as `r⁵` while the available
+> volume scales as `r³`; when the amplitude pushes the energy past what the
+> single shell can absorb, the soliton can no longer remain single-shelled.
+> In a Milestone 1 run there is no second shell to move into, so the field
+> collapses; in the full theory the collapse is the point at which a
+> recursive shell forms. The amplitude at which B6a loses its ground state
+> is therefore a **measurable threshold**, not a numerical failure: it
+> marks the capacity of a single-shell soliton at that `K`.
+>
+> The `r⁵/r³` disparity and its role in shell formation are derived in the
+> manuscript, v5.0.2 or later, Chapter 15 "Geometric Validation: The
+> Fundamental Identity and the Base AMM State (`aₑ`)", Section 15.2
+> "Physical Origin of the `r⁵` Scaling: Geometric Energy Density".
+> DOI: 10.5281/zenodo.22875996.
 
 ### 5.3. Coupling to the soliton
 
@@ -540,6 +614,37 @@ K-selectivity (where the wrap-around artefacts may be tolerable if the
 domain is large enough), and leaves **V4** and **V5** as research targets.
 Which one is physically correct is author-gated (Section 9, Q2).
 
+Two pipeline configurations share the same field types and the same base
+processors.
+
+**Pipeline A — non-reflective.** Vacuum V1 (static), no scattering
+operator, budget without `E_base`. This is the default pipeline. It
+tests the nonlinear soliton as a `c(ρ)` structure.
+
+**Pipeline B — reflective.** Vacuum V3 (periodic), scattering operator
+present, `E_base` in the budget. This is the optional pipeline that
+realises the Yee picture: wave centres as reflectors of an incoming base
+wave. `PsiInField` and `PsiOutField` are introduced as separate features
+in this pipeline only.
+
+**Capability flags.** A `VacuumProvider` exposes two flags that the
+pipeline uses for compatibility checks:
+
+```text
+evolves              : bool   # base wave evolves in time
+supports_reflection  : bool   # base wave can supply incoming waves
+```
+
+V1 has both `False`; V2, V3, V4, V5 have both `True`. A processor that
+requires reflection (like the scattering operator) declares
+`requires=(VacuumProvider, ...)` and checks `supports_reflection` in
+`setup()`, raising `PipelineError` if the registered vacuum cannot support
+it. This makes incompatibility a build-time or setup-time error, not a
+silent no-op in the middle of a run.
+
+Neither pipeline modifies the other. Switching between them is switching
+the processor list and the registered vacuum variant, nothing else.
+
 ---
 
 ## 6. Block 1 — Engine implementation
@@ -563,6 +668,14 @@ Infrastructure only. No specific physics. Each item is a work unit.
       triple-buffer variant for time integration.
 - [ ] Ensure `FeatureBag` handles these as distinct types without aliasing.
 - [ ] Add a test: allocate all five, write distinct values, read back.
+- [ ] `PsiInField`, `PsiOutField` — optional, used only by the reflective
+      pipeline (B). They carry the incoming and outgoing components of the
+      longitudinal field near wave centres.
+- [ ] `PsiTransField` is allocated by `AllocateWaveField` only when the
+      `allocate_trans` flag is set. Pipelines that do not use the
+      transverse mode leave it unallocated. The feature type stays in the
+      codebase so that a future spin variant can enable it without
+      touching the allocator.
 
 ### 1.2 — Trackers per voxel
 
@@ -589,6 +702,14 @@ Infrastructure only. No specific physics. Each item is a work unit.
       overwrites `psi_am`.
 - [ ] Implement `SeedBaseWave` — seeds `Ψ_base` once.
 - [ ] Implement `SourceTermInterface` — base class for additive sources.
+- [ ] Implement `ScatteringOperatorInterface` — separate base class for
+      operators that redistribute energy between two fields. A scattering
+      operator adds to one field and subtracts from another, and records
+      the exchanged amount in the budget. `SourceTermInterface` and
+      `ScatteringOperatorInterface` are distinct: sources inject,
+      scatterers exchange. A scattering operator is unitary by contract:
+      the field magnitude that enters equals the field magnitude that
+      leaves, per wave centre.
 - [ ] Add a test: two sources, superposition holds.
 
 ### 1.5 — Reflector interface
@@ -599,6 +720,9 @@ Infrastructure only. No specific physics. Each item is a work unit.
       the experiment, not computed.
 - [ ] Document the contract clearly: a reflector is a WC that satisfies
       unitarity on `Ψ_in`, `Ψ_out`, `Ψ_spin`.
+- [ ] The scattering operator is introduced in item 2.2, variant B2d. The
+      reflector interface here defines only the attributes; the operator
+      that reads them is separate.
 - [ ] Add a test: reflection of a plane wave from a single reflector
       preserves energy.
 
@@ -690,7 +814,9 @@ This is folded into 1.0. Listed separately only for traceability.
 
 This is the decision documented in Section 4. Work items:
 
-- [ ] Add `r_domain` and `r_core` to `UnitSystem`.
+- [ ] Add `r_domain`, `r_core` and `c_max` to `UnitSystem`; compute `c_max`
+      from `ρ_max`, the maximum density the EMC Wall can reach. For B4a,
+      `c_max = c₀`.
 - [ ] Implement the boundary condition processor (1.7).
 - [ ] Document the choice: `r_domain ~ 10 λ_ν`.
 - [ ] Add a test: for K = 1, the whole soliton fits inside `r_domain`.
@@ -699,20 +825,25 @@ This is the decision documented in Section 4. Work items:
 
 This is the decision documented in Section 5. Work items:
 
-- [ ] Define `VacuumProvider` interface: `seed`, `step`, `energy_budget`.
-- [ ] Implement V1 (static), V3 (periodic), and V4 (absorbing with
-      re-injection). V2 and V5 are deferred.
+- [ ] Define `VacuumProvider` interface: `seed`, `step`, `energy_budget`,
+      and the two capability flags `evolves` and `supports_reflection`.
+- [ ] Implement V1 (static, `evolves=False`, `supports_reflection=False`).
+- [ ] Implement V3 (periodic, both `True`).
+- [ ] Implement V4 (absorbing with re-injection, both `True`).
+- [ ] V2 and V5 are deferred.
 - [ ] Wire the provider as an external feature.
-- [ ] Implement the conservation check excluding `E_base`, including the
-      kinetic term.
+- [ ] Implement the conservation check excluding `E_base` in pipeline A and
+      including it in pipeline B.
 - [ ] Add a test: base wave alone → `dE_soliton/dt = 0` trivially.
+- [ ] Add a test: a processor that requires `supports_reflection` raises
+      `PipelineError` when registered with V1.
 
 ### 1.18 — Diagnostic hooks
 
 - [ ] Define a stop-condition contract: `StopCondition` callable.
 - [ ] Implement `DiagnosticProcessor` in `Stage.MEASURE`.
 - [ ] Built-in conditions: `dE/dt > threshold`, `localization < threshold`,
-      `sphericity < threshold`.
+      `sphericity < threshold`, `max(ρ) > ρ_max` (CFL guard).
 - [ ] Add a test: run with a forced violation → simulation stops early.
 
 ### 1.19 — Deterministic seeds
@@ -729,7 +860,7 @@ This is the decision documented in Section 5. Work items:
       `topologies`, `spacings`, `couplings`, `K`, `seeds`.
 - [ ] Implement `SweepRunner` that consumes the schema and drives
       `ExperimentRunner`.
-- [ ] Add a test: 2×2 sweep produces 4 runs.
+- [ ] Add a test: 2×2 sweep produces 4 rows.
 
 ### 1.21 — Artifact versioning
 
@@ -737,6 +868,34 @@ This is the decision documented in Section 5. Work items:
 - [ ] Store results in `output_dir / <hash> /`.
 - [ ] Provide `list_runs()` and `load_run(hash)` utilities.
 - [ ] Add a test: same config → same hash; different config → different.
+
+### 1.22 — Pipeline presets
+
+- [ ] Define `make_pipeline_a(...)` — non-reflective. Registers
+      `VacuumProvider V1`, no scattering operator, budget without
+      `E_base`. This is the default.
+- [ ] Define `make_pipeline_b(...)` — reflective. Registers
+      `VacuumProvider V3`, allocates `PsiInField` and `PsiOutField`, adds
+      the scattering operator (variant B2d), budget includes `E_base`.
+- [ ] Both presets return a `Pipeline` instance with the fields and
+      processors set. Callers may extend the returned pipeline but not
+      modify the shared base processors.
+- [ ] Add a test: pipeline A builds and runs without `PsiInField`;
+      pipeline B builds and runs with it; a scattering operator dropped
+      into pipeline A raises `PipelineError` at build time.
+
+### 1.23 — Conservative discretisation of the variable-coefficient Laplacian
+
+- [ ] Implement `LaplacianVariableCoeff` using the conservative stencil:
+      the flux form on half-grids, with `c²_{i+1/2} = ½(c²_i + c²_{i+1})`
+      (and similarly for `j`, `k`). This is the discrete variation of
+      `E_grad = Σ ½ c²_{i+1/2} ((Ψ_{i+1} − Ψ_i)/dx)² · dx` and preserves
+      the discrete energy exactly.
+- [ ] Test: constant `c²` → recovers the standard 6-point Laplacian.
+- [ ] Test: variable `c²`, harmonic wave → discrete energy conserved to
+      machine precision over 1000 steps.
+- [ ] This is the only form used in pipeline A and pipeline B. The naive
+      `c²ᵢ · ∇²Ψ` form is a bug.
 
 ---
 
@@ -784,7 +943,22 @@ geometric derivation in the manuscript.
       (coefficient multiplies amplitude). Unitarity:
       `|Ψ_out|² + |Ψ_spin|² = |Ψ_in|²`.
 - [ ] **B2c**: geometry-dependent reflection (local `α`, if variants warrant).
-- [ ] Recommended start: **B2b**.
+- [ ] **B2d**: scattering operator. Implements the WC as a reflector for
+      the reflective pipeline (Section 5.4, pipeline B). Reads
+      `PsiInField` in the neighbourhood of each wave centre, applies the
+      reflection with `reflect_coeff_long` (and `reflect_coeff_trans` when
+      the transverse mode is enabled), writes to `PsiLongField`, subtracts
+      the same amount from `PsiBaseField`, and records the exchanged energy
+      in the budget. Unitarity is enforced per wave centre:
+      `|Psi_out|^2 + |Psi_spin|^2 = |Psi_in|^2`. On the current
+      spin-disabled configuration, this reduces to `|Psi_out| = |Psi_in|`.
+- [ ] **B2d** (continued): integration via Strang splitting (Q10). The
+      scattering operator is applied between two half-steps of the
+      leapfrog, not as a post-step overwrite.
+- [ ] Recommended start: **B2b** for the reflective pipeline when the spin
+      channel is enabled; **B2d** with the spin channel off when it is not.
+      The spin channel is added later (item 2.3, variant B3a) once the
+      in/out decomposition is validated.
 
 **Optional consistency observation (not a derivation).** The engine may
 record three candidate ratios near a WC:
@@ -859,8 +1033,10 @@ the plan.
 
 ### 2.10 — K-selectivity
 
-The sweep runs on both a conservative and a dissipative vacuum, and
-measures two observables.
+The structural test runs on pipeline A (non-reflective) unless stated
+otherwise. The reflective pipeline B adds the scattering operator and the
+base-wave coupling; the structural comparison is meaningful in both, but
+the two are separate experiments and their results are not mixed.
 
 **Structural (V3, conservative).** For each K, run from three perturbed
 initial conditions at matched initial energy. Measure:
@@ -1012,6 +1188,75 @@ starting without spin keeps the first round of tests simpler.
 This is a working assumption, not a settled answer. Update if the K-sweep
 or the stability metrics show that spin is load-bearing.
 
+### Q9. How is the in/out decomposition defined in 3D?
+
+Open question, relevant to variant B2d. In 1D the decomposition is the
+standard characteristic split (`∂_t Ψ ∓ c ∂_x Ψ`). In 3D there is no
+pointwise split; three candidate schemes exist:
+
+- Spherical harmonic projection on a small ball around the wave centre
+  (accurate, expensive).
+- Local gradient estimate (`Ψ_in ≈ (Ψ − r̂·∇Ψ·Δ)/2`, cheap, inaccurate for
+  wavelengths comparable to the centre size).
+- Directional characteristics along the BCC axes (intermediate).
+
+Author-gated, to be settled with a 1D toy model first and a 3D validation
+second.
+
+### Q10 (updated). Integration of the scattering operator into leapfrog
+
+The operator is integrated by Strang splitting on the timestep:
+
+```text
+Ψ(t)  →  U(dt/2)  →  V(dt)  →  U(dt/2)  →  Ψ(t+dt)
+```
+
+where `U` is the free evolution (Laplacian + nonlinearity, the existing
+Stage.UPDATE sequence) and `V` is the scattering operator at the wave
+centres. `U(dt/2)` is a half-step of the leapfrog, which is one kick of
+the velocity-Verlet equivalent.
+
+This requires `LeapfrogProcessor` to expose a half-step mode, or a
+separate `LeapfrogHalfProcessor`. The half-step preserves the symplectic
+structure and second-order accuracy; a post-step overwrite does not.
+
+The alternative "local acceleration modification" (adjust the acceleration
+at WC voxels inside `LeapfrogProcessor`'s kernel) is equivalent to Strang
+splitting to second order but is less transparent about what it does. This
+plan prefers the explicit split.
+
+Author-gated: which of the two is used, and whether the half-step warrants
+a dedicated processor. Settled with the 1D toy model.
+
+### Q11. Is the B6a ground-state threshold the K-selectivity mechanism?
+
+Open question. The K-sweep in item 2.10 measures structural stability at
+fixed amplitude. The B6a threshold is a different observable: the
+amplitude at which the single-shell soliton loses its ground state and
+would need a recursive shell (Onion Model) to continue. If this
+threshold depends on `K`, then the K-selectivity may be a **capacity
+selection** rather than a geometric or energetic one:
+
+- `K < 10`: capacity too small for the electron's amplitude, threshold
+  reached early, less stable.
+- `K = 10`: capacity matches the electron's amplitude, highest
+  threshold.
+- `K > 10`: capacity too large, no collapse but no stable configuration
+  either.
+
+The measurement is straightforward in Milestone 1: sweep the amplitude
+at fixed `K`, record where the ground state disappears, repeat for every
+`K`. If the threshold peaks at `K = 10`, the Onion Model is not just a
+post-hoc explanation of the muon and tau; it is the selection rule.
+Author-gated, and a candidate for the second observable alongside
+localization in item 2.10.
+
+> **Reference.** The `r⁵/r³` saturation mechanism and the resulting shell
+> formation are derived in the manuscript, v5.0.2 or later, Section 15.2
+> "Physical Origin of the `r⁵` Scaling: Geometric Energy Density", within
+> Chapter 15 "Geometric Validation: The Fundamental Identity and the Base
+> AMM State (`aₑ`)". DOI: 10.5281/zenodo.22875996.
+
 ---
 
 ## 10. Recommended execution order
@@ -1030,12 +1275,12 @@ evolution)
 
 1.8 (Energy budget) → 1.9 (Stability metrics)
 
-**Phase D — Research infrastructure (Block 1.10–1.21)**
+**Phase D — Research infrastructure (Block 1.10–1.23)**
 
 1.10 (Experiment runner) → 1.11 (Geometry provider) → 1.13 (Checkpoint) →
 1.14 (Live monitor) → 1.15 (Logging schema) → 1.16 (Domain config) → 1.17
 (Vacuum layer) → 1.18 (Diagnostics) → 1.19 (Seeds) → 1.20 (Sweep DSL) →
-1.21 (Artifacts)
+1.21 (Artifacts) → 1.22 (Pipeline presets) → 1.23 (Conservative Laplacian)
 
 **Phase E — Physics variants (Block 2)**
 
@@ -1082,11 +1327,27 @@ launcher. Only after the physics is validated in headless mode.
 - **`κ`** — Stiffness of the EMC density deformation. Enters `E_deformation`
   as `½ κ (ρ − ρ₀)²`.
 - **`c_ρ`** — Characteristic wave speed of the density field, used by B4c.
+- **`c_max`** — Maximum local wave speed, for the CFL bound. `c_max = c₀`
+  under B4a; `c_max = c₀ √(ρ_max/ρ₀)` under B4b/B4c.
 - **NESS** — Non-Equilibrium Steady State. The soliton's dynamical regime.
 - **Reflector** — A WC that satisfies `|Ψ_out|² + |Ψ_spin|² = |Ψ_in|²`.
 - **Feature** — A typed object stored in `FeatureBag`, keyed by its class.
 - **Processor** — A stateless pipeline stage that reads and writes features.
 - **VacuumProvider** — The swappable vacuum layer (Section 5.4).
+- **`PsiInField`, `PsiOutField`** — optional features, used only by the
+  reflective pipeline (B). Carry the incoming and outgoing components of
+  the longitudinal field near wave centres.
+- **`ScatteringOperator`** — a processor that redistributes energy between
+  two fields. Unitary by contract. Distinct from a source term, which
+  injects.
+- **`VacuumProvider.supports_reflection`** — capability flag. True when the
+  base wave can supply incoming waves to wave centres (V2, V3, V4, V5).
+  False for the static vacuum V1.
+- **`PipelinePreset`** — a named pipeline composition (`make_pipeline_a`,
+  `make_pipeline_b`) that fixes the vacuum variant and the processor list.
+- **Onion Model** — the recursive shell structure of the lepton hierarchy
+  in the manuscript (Chapter 16). The `r⁵/r³` saturation that motivates it
+  is derived in Section 15.2 of v5.0.2.
 
 ---
 
@@ -1098,7 +1359,7 @@ This document is a **working plan**, not a specification. It records:
 - **What** the tool must express (Sections 3–5).
 - **How** to build it (Sections 6–7).
 - **What** to skip (Section 8).
-- **What** remains unresolved (Section 9).
+- **What** remains unresolved (Sections 9 and 15).
 
 Update it as decisions are made. Each work item in Blocks 1 and 2 should be
 promoted to a `tasks/m4_<n>_task_details.md` when it is picked up, with
@@ -1106,7 +1367,7 @@ pre-registered pass/fail criteria. The roadmap row in `m4_roadmap.md`
 references that task document.
 
 When a work item is complete, mark the checkbox and add a one-line note in
-Section 15 (Changelog).
+Section 16 (Changelog).
 
 ---
 
@@ -1171,6 +1432,8 @@ against the live roadmap for collisions.
 | M4.38 | Deterministic seeds | M4.30 |
 | M4.39 | Parameter sweep DSL | M4.30 |
 | M4.40 | Artifact versioning | M4.30 |
+| M4.53 | Pipeline presets | M4.36 |
+| M4.54 | Conservative variable-coefficient Laplacian | M4.23 |
 
 **Block 2 — Physics**
 
@@ -1195,7 +1458,132 @@ the sequence without collision.
 
 ---
 
-## 15. Changelog
+## 15. Milestone 2 — Spin extension
+
+Milestone 1 is the non-reflective and reflective pipelines without spin
+(Sections 1–14). Milestone 2 adds the transverse mode back. The plan is
+built so that the transverse mode can be enabled without restructuring:
+`PsiTransField` already exists, the reflector interface already carries
+`reflect_coeff_trans`, and item 2.3 already lists the L↔T coupling
+variants. What is missing is the dynamics of the transverse field and its
+interaction with the rest of the system.
+
+This milestone is deferred, not abandoned. If K-selectivity does not
+emerge in Milestone 1, or if the other criteria (spin-dependent
+observables) require it, Milestone 2 becomes the next step. A possible
+Milestone 3 (the Onion Model recursion) is flagged in Q11 but not scoped
+here; it would add the mechanism by which a saturated single-shell soliton
+transfers its excess energy into a second shell. Without that mechanism,
+the B6a threshold in Milestone 1 is a signal, not a transition.
+
+The five items below must be settled before the transverse mode is
+enabled, because each one changes the stepper, the CFL bound, or the
+budget in ways that are not additively compatible with the Milestone 1
+configuration.
+
+### R1. Equation for the transverse field
+
+The transverse field needs its own evolution equation. Three candidates:
+
+- **(a) Massless**, same as the longitudinal field:
+  `∂²Ψ_t/∂t² = c² ∇²Ψ_t`. The transverse mode is a second propagating
+  component. Simplest, but then the two modes are not physically
+  distinguished and the split buys nothing.
+- **(b) Massive**: `∂²Ψ_t/∂t² = c² ∇²Ψ_t − m² Ψ_t`. The transverse mode
+  is a bound oscillation at the wave centre. The mass `m` sets a natural
+  length `1/m`, which can be tied to the soliton extent `r_core`. The
+  numerical cost is an extra term in the stepper and an extra `c_trans`
+  in the CFL bound.
+- **(c) Damped**: `∂²Ψ_t/∂t² = c² ∇²Ψ_t − γ ∂_t Ψ_t`. The transverse
+  mode decays; spin is a transient. Only defensible if the physics
+  requires a decaying spin.
+
+The choice determines everything else below. Author-gated.
+
+### R2. CFL bound with a second wave speed
+
+If `c_trans ≠ c_long`, the timestep is computed against the larger of
+the two local speeds:
+
+```text
+c_max = max over (long, trans) of local c
+dt    = CFL_SAFETY · dx / (c_max · √3)
+```
+
+`UnitSystem` gains `c_trans` (and `c_trans_max` if the transverse speed
+also depends on the density). The `dt` in Section 3.2 is then the same
+formula with the broader maximum. This is an additive change to
+Milestone 1, not a replacement.
+
+### R3. Energy budget with the transverse field
+
+The budget gains a transverse energy term:
+
+```text
+E_trans = E_kin_trans + E_grad_trans  (+ E_mass_trans for R1b)
+E_total = E_soliton + E_trans + E_deformation
+check:    dE_total/dt + flux + P_deform + P_spin = 0
+```
+
+`P_spin` is the dissipation ledger for R1c (zero for R1a and R1b). The
+rule from Section 5.2 applies: the budget enumerates every term the
+active variants put in the equation.
+
+### R4. Three-port scattering operator
+
+With spin enabled, the scattering operator is a three-port device:
+incoming longitudinal `Ψ_in` produces outgoing longitudinal `Ψ_out` and
+outgoing transverse `Ψ_spin`. The conversion is a 3×3 matrix `S` with
+`S†S = 1` (unitarity in the complex space). Whether this matrix is also
+symplectic in the phase space of `(Ψ, ∂_t Ψ)` for both fields is a
+separate requirement that must be verified before the Strang splitting
+in Q10 generalises to three ports. This is not guaranteed by unitarity
+alone and needs its own proof.
+
+### R5. Spin from base vs spin from soliton
+
+Two mechanisms can generate transverse energy:
+
+- **Spin from base**: the scattering operator at the wave centre converts
+  part of `Ψ_in` from the base wave into `Ψ_spin`. Requires `evolves =
+  True` and `supports_reflection = True` (pipeline B). `α` enters as the
+  conversion coefficient in the scattering matrix.
+- **Spin from soliton**: the longitudinal field couples to the transverse
+  field inside the soliton (variants B3a/B3b/B3c) without any base wave.
+  Works in both pipeline A and pipeline B.
+
+Both can operate at once, but they are distinct and must be selectable
+independently. The variants in item 2.3 (B3a/B3b/B3c) cover the second
+mechanism; the conversion coefficient in item 2.2 (B2b) covers the first.
+When spin is enabled, the plan must state which mechanism is active in
+each pipeline configuration.
+
+### When Milestone 2 becomes active
+
+Two signals would move the spin extension from deferred to active:
+
+1. **K-selectivity fails without spin.** If the K-sweep in Milestone 1
+   shows no unique ground state, the missing ingredient may be the
+   transverse mode.
+2. **Observables that depend on spin** (magnetic moment, spin quantum
+   number, the full unitarity relation) require the transverse channel
+   to be present for their measurement, even if they are not the target
+   of Milestone 1.
+
+The AMM does not activate Milestone 2: it is a static geometric quantity
+(Section 2.7), loaded from `GeometricConstants` and not derived from the
+transverse dynamics.
+
+Absent either of the two signals, Milestone 1 is the complete tool for
+the K-selectivity, structural stability, and energy-conservation studies.
+
+> **Reference.** The recursive shell formation (Onion Model) is derived
+> in the manuscript, v5.0.2 or later, Chapter 16 "The Recursive Lepton
+> Hierarchy: Nodal Shell Resonance Model". DOI: 10.5281/zenodo.22875996.
+
+---
+
+## 16. Changelog
 
 | Date | Change | Author |
 |---|---|---|
@@ -1204,6 +1592,9 @@ the sequence without collision.
 | 2026-09-20 | Section 4 rewritten: soliton neighbourhood simulated (`r_domain ~ 10 λ_ν`), soliton extent `K²λ` and the tail treated as analytic input. Section 2.4 header and body aligned. Section 5.2: equation stated in divergence form, dissipation ledger added for B4b. Item 2.2: coefficient multiplies amplitude; consistency observation conditional on not loading `α`. Item 2.10 rewritten: structural (V3) and energetic (V2/V4) tests. Q7 rewritten as two-observable test. Section 1.7 table row for `α` removed. Section 3.1: `r_core` labelled theoretical scale. | Lukasz Smolinski |
 | 2026-09-20 | Round three. Section 1.5 and Section 5.2: equation in Euler-Lagrange form with the exchange term `c₀²(β_ρ/ρ₀)\|∇Ψ\|²Ψ`; the plain divergence form does not conserve the gradient energy when `c²` depends on the field. B4c: `E_deformation` gains the density kinetic term `½\|∂ρ/∂t\|²/c_ρ²`, deferred until added. Section 4: `r_domain` sized by half the largest wave-centre pair separation plus a buffer, with measured numbers. Section 2.7: reference to "item 2.2, variant B2b". Section 14 preamble: IDs allocated by the author at row creation. | Lukasz Smolinski |
 | 2026-09-21 | Round four. R2 applied: `E_total` carries the deformation energy in every variant; the equation gains `− 2 κ β_ρ² Ψ³` under B4a. Section 5.2 states the budget as the sum of the active variant's terms (B6a rule). Section 1.5 equation aligned. Section 4: `r_domain` sized by the configuration radius about its centre, with the measured values. Glossary: `β_nl` removed; `γ_nl`, `κ`, `c_ρ` added. Item 1.8 and item 2.11 B11a aligned with the new definition. | Lukasz Smolinski |
+| 2026-09-21 | Round five. Added the reflective pipeline (B) as an optional configuration alongside the default non-reflective pipeline (A). New features `PsiInField` and `PsiOutField`; `PsiTransField` allocation is conditional. New `ScatteringOperatorInterface`, distinct from `SourceTermInterface` (sources inject, scatterers exchange). New variant B2d in item 2.2. New item 1.22 (pipeline presets, TaskID M4.53). `VacuumProvider` gains the capability flags `evolves` and `supports_reflection`, and item 1.17 is extended to test them. Budget split into pipeline A (no `E_base`) and pipeline B (`E_base` included). Sections 2.1, 2.2, 5.4 extended. Glossary updated. Q9 and Q10 added. | Lukasz Smolinski |
+| 2026-09-21 | Round six. Section 3.2 and item 1.16: CFL bound computed against `c_max`, the maximum local wave speed; `c_max` added to `UnitSystem` and to the glossary. New item 1.23 and TaskID M4.54: conservative discretisation of the variable-coefficient Laplacian on half-grids, the only form used in either pipeline. Q10 updated: scattering operator integrated via Strang splitting, not as a post-step overwrite; `LeapfrogProcessor` half-step mode noted. Section 15 added: Milestone 2 (spin extension) as a deferred work package with five items to settle before the transverse mode is enabled, and two activation signals. | Lukasz Smolinski |
+| 2026-09-21 | Round seven. Section 5.2: the unbounded B6a potential is reinterpreted as the physical saturation signature of the Onion Model, not a numerical failure; the amplitude at which the ground state disappears is a measurable threshold. Reference to manuscript v5.0.2, Chapter 15, Section 15.2 (DOI 10.5281/zenodo.22875996). New Q11: is the B6a threshold the K-selectivity mechanism (capacity selection)? Section 15: third activation signal removed (the AMM is a static geometric quantity, Section 2.7, not a transverse-mode requirement); possible Milestone 3 (Onion recursion) flagged. Glossary: Onion Model entry added. | Lukasz Smolinski |
 
 ---
 
