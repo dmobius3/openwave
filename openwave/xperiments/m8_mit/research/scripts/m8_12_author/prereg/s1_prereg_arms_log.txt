@@ -1,0 +1,76 @@
+parent: GREEN
+  1 caught     a census value  ->  hexagon        value, dim, signature and both indices match the log row exactl
+  2 caught     a census signature  ->  hexagon        value, dim, signature and both indices match the log row exactl
+  3 caught     an index for g < 0  ->  octahedron     value, dim, signature and both indices match the log row exactl
+  4 caught     an orbit representative  ->  C3 ray         representative 'v₂ + 3·v₋₁' is the vector the step-3 script use
+  5 caught     a census row deleted  ->  the census table in the doc has ten rows (found 9)
+  6 caught     a characteristic-polynomial coefficient  ->  charpoly of prism         : coefficients ['473', '920', '473', '696', '1419', 
+  7 caught     a quadratic, in the claim row  ->  the doc restates 9 restrictions, and each is one the step-2 log printed
+  8 caught     a quadratic, in the frozen table  ->  C5{v3,v-2}     restriction matches the step-2 log exactly
+  9 caught     an in-line vertex  ->  C5{v3,v-2}     vertex matches, interior or endpoint as logged
+ 10 caught     a dihedral chart formula  ->  the doc restates 9 restrictions, and each is one the step-2 log printed
+ 11 caught     a chart critical point  ->  D3{v3+v-3,v0}    chart critical set matches the logged one
+ 12 caught     the point at infinity dropped  ->  the infinite chart point is named on both dihedral rows
+ 13 caught     the exactly-zero coefficient made nonzero  ->  C4{v3,v-1}     restriction matches the step-2 log exactly
+ 14 caught     the inventory size  ->  disclosure carries the inventory, the correction and the deferred orbits
+ 15 caught     a claim group dropped  ->  all claim groups are present
+ 16 caught     the firewall section renamed  ->  every required section heading is present (missing: ['## THE FIREWALL'])
+ 17 caught     the disclosure section renamed  ->  every required section heading is present (missing: ['## DISCLOSURE'])
+ 18 caught     a bare short form  ->  the short-form rule is stated, and no bare stable or unstable is used
+ 19 caught     an M8.11 parent value, first copy  ->  the doc carries the parent value −104/55 exactly 2 time(s)
+ 20 caught     the same value, second copy  ->  the doc carries the parent value −104/55 exactly 2 time(s)
+ 21 caught     the prism parent value  ->  the doc carries the parent value 920/473 exactly 2 time(s)
+ 22 caught     the sector-bridge value  ->  the doc carries the parent value −56/165 exactly 1 time(s)
+ 23 caught     a step check count  ->  step L0: the doc reports 128 checks, and the log has 128 passing and 0 failing
+ 24 caught     the dated correction's count  ->  the control script's check count is recorded truthfully
+ 25 caught     the filed row rewritten, correction intact  ->  the control script's check count is recorded truthfully
+ 26 caught     the correction note undated  ->  the control script's check count is recorded truthfully
+ 27 caught     a G2 bound  ->  G2 constant 'TrN̄² ≤ 171/2' is in the frozen proof
+ 28 caught     the G2 invariant form  ->  G2 constant '−5/231 − |f|²/22 + (7/11)|a₀₀|² + TrN̄²/198' is in the frozen pro
+ 29 caught     a higher-dimensional space dropped  ->  the spaces of projective dimension at least 2 are the logged four
+ 30 caught     a point class dropped  ->  the six point classes are the logged ones
+ 31 caught     a parent value dropped from P1  ->  P1 carries all eight parent values
+ 32 caught     P1 miscited  ->  P1 sources the weight-state values to the paper Section 7.2
+ 33 caught     the § 7.2 source row  ->  the sources table names Section 7.2 and what it records
+ 34 caught     L1 out of the audit set  ->  the audit set includes L1: an adversarial audit follows, which al...
+ 35 caught     L1 out of the definition of done  ->  the audit set includes L1: The audit grades L0, L1, L2, G1 and G2...
+ 36 caught     the retired monotonicity inference  ->  D2 states the deferred indices are unknown
+ 37 caught     the network posture  ->  the firewall states the network posture
+ 38 caught     the exposed items misstated  ->  it names the items a search could reach
+ 39 caught     H2's monic rule  ->  H2 scores after monic normalization
+ 40 caught     the bridge arithmetic  ->  and the doc states 4 L_T as −42/55
+ 41 caught     the control value  ->  N1 states the control value, and the log measured it
+ 42 caught     the control gradient  ->  the gradient norm N1 states is the one s1_control.py measured
+ 43 caught     the control residual, altered but still nonzero  ->  the residual N1 freezes at -i Jx u  is the one s1_control.py measured
+ 44 caught     N1's pass condition, scoring one residual by sign  ->  N1 scores all six quantities and separates a mismatch from a control that cann
+ 45 caught     N1's fail condition weakened  ->  N1 scores all six quantities and separates a mismatch from a control that cann
+ 46 caught     one frozen residual, still nonzero  ->  the residual N1 freezes at -i Jy u  is the one s1_control.py measured
+ 47 caught     the sum rule  ->  N1 and the control log carry the same sum rule
+ 48 caught     the matrix renamed back to the second variation  ->  N1 names the matrix rather than the second variation, and says why they agree 
+ 49 caught     P2 chart device loosened  ->  P2 carries the agreed pass condition exactly, with nothing added or dropped
+ 50 caught     L1 chart device loosened  ->  L1 carries the agreed pass condition exactly, with nothing added or dropped
+ 51 caught     item 11 back to a yes or no  ->  worklist item 11 requests all six scored quantities, un-normalized, naming the
+ 52 caught     N1 drifting from the point the worklist supplies  ->  N1 and worklist item 11 name the same control point
+ 53 caught     a pipe left unescaped in a table  ->  P2 carries the agreed pass condition exactly, with nothing added or dropped
+ 54 caught     the worklist point drifting from N1  ->  N1 and worklist item 11 name the same control point
+ 55 caught     frozen values leaked into the handout  ->  no frozen value, count, name or representative leaks into the worklist (hits: 
+ 56 caught     the D7 input  ->  the worklist gives D7 as an input, with both weights
+ 57 caught     the zeros rule  ->  the worklist carries the zeros rule
+ 58 caught     a count of the answer leaked  ->  every numeral in the worklist is a reviewed one (new: {'ten': 1}, gone: {})
+ 59 caught     a census vector used as the control point  ->  N1 and worklist item 11 name the same control point
+ 60 caught     item 5b renamed  ->  the worklist asks for the in-locus second variations, with the off-diagonal en
+ 61 caught     the cross term dropped  ->  the worklist asks for the in-locus second variations, with the off-diagonal en
+ 62 caught     the sector-scaled numbers dropped  ->  the worklist asks for the sector-scaled numbers
+ 63 caught     the Clebsch-Gordan convention unpinned  ->  the worklist pins the Clebsch-Gordan phase convention
+ 64 caught     the separation clause weakened  ->  the worklist forces the separation of same-stabilizer classes, without naming 
+ 65 caught     the hard pair named in the handout  ->  the worklist forces the separation of same-stabilizer classes, without naming 
+ 66 caught     5b normalizing every projection again  ->  the worklist asks for the in-locus second variations, with the off-diagonal en
+ 67 caught     the zero direction left unidentified  ->  the worklist handles the tangent whose projection vanishes, rather than normal
+ 68 caught     the orbit-null control unnamed  ->  the worklist asks for the in-locus second variations, with the off-diagonal en
+ 69 caught     the zero projection normalized  ->  the worklist asks for the in-locus second variations, with the off-diagonal en
+ 70 caught     the control's own arm failing  ->  the control script's check count is recorded truthfully
+ 71 caught     the frozen S0 proof edited  ->  the frozen S0 maximum proof is unchanged
+ 72 caught     the gate inventory deleted  ->  gate inventory is present; re-pin deliberately with PIN=1
+ 73 caught     a line cut from the pin, to match a deleted gate  ->  gate inventory matches the pin; ADDED: {'the exposure table states what was vi
+restored: GREEN
+73 of 73 arms caught

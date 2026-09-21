@@ -1,0 +1,44 @@
+(A) the recorded values, Section 5.8
+PASS   coherent v3, 1/924: ||rho_6||^2 = 0.0010822511
+PASS   zonal v0, 400/924: ||rho_6||^2 = 0.4329004329
+PASS   octahedron, 288/924: ||rho_6||^2 = 0.3116883117
+PASS   hexagon, 463/924: ||rho_6||^2 = 0.5010822511
+PASS   pyramid s=12/25, 9/35: ||rho_6||^2 = 0.2571428571
+PASS   prism z=sqrt(23/10), 200/903: ||rho_6||^2 = 0.2214839424
+PASS   octahedron in D3 chart z=i*sqrt(5/2), 24/77: ||rho_6||^2 = 0.3116883117
+PASS   arm: K=5 misses the table
+PASS   arm: u(x)u in place of u(x)Theta(u) misses the table
+PASS   pyramid line formula at s=0.1
+PASS   pyramid line formula at s=0.37
+PASS   pyramid line formula at s=0.8
+(B) pair-channel decomposition
+  c_F (F = 0, 2, 4, 6): ['13/7', '65/84', '13/154', '1/924']
+PASS   rational c_F reproduce ||rho_6||^2 on 40 fresh states (max residual 1.1e-16)
+PASS   arm: a perturbed c_2 fails
+(C) Husimi reading
+PASS   control: 13*int Q^2 = 1 at the coherent state (1.000000000000, Lieb bound attained)
+PASS   ||rho_6||^2 = 13*int Q(n)Q(-n) on 8 fresh states (max error 7.2e-16)
+PASS   arm: the plain second moment 13*int Q^2 fails off time reversal
+  coherent v3, 1/924: 13*int Q(n)Q(-n) = 0.0010822511, 13*int Q^2 = 1.0000000000
+  zonal v0, 400/924: 13*int Q(n)Q(-n) = 0.4329004329, 13*int Q^2 = 0.4329004329
+  octahedron, 288/924: 13*int Q(n)Q(-n) = 0.3116883117, 13*int Q^2 = 0.3116883117
+  hexagon, 463/924: 13*int Q(n)Q(-n) = 0.5010822511, 13*int Q^2 = 0.5010822511
+(D) Diener-Ho coordinates: E ~ alpha|Theta|^2 + beta sum|B_M|^2 + gamma <S>^2 + C, a_F - a_6 = sign(g) w6 (c_F - c_6)
+  g > 0: (a0-a6, a2-a6, a4-a6) ~ (245/132, 17/22, 1/12); alpha:beta:gamma ~ 8/33 : 1/11 : -1/132; beta/gamma = -12.0000 (Cr-line: -0.892)
+  g < 0: (a0-a6, a2-a6, a4-a6) ~ (-245/132, -17/22, -1/12); alpha:beta:gamma ~ -8/33 : -1/11 : 1/132; beta/gamma = -12.0000 (Cr-line: -0.892)
+ALL PASS
+(E) the Kawaguchi-Ueda form of r6
+PASS   TrN = f(f+1) = 12 on 60 random states (the review's constraint)
+PASS   r6 = -5/231 - |f|^2/22 + (7/11)|a00|^2 + TrN^2/198 on 60 random states (max residual 1.7e-16)
+PASS   arm: z = 1/200 in place of 1/198 fails
+  coherent   |f|^2 = 9.000000  |a00|^2 = 0.000000 (1/7 = 0.142857)  TrN^2 = 85.500000  r6 = 0.001082
+  hexagon    |f|^2 = 0.000000  |a00|^2 = 0.142857 (1/7 = 0.142857)  TrN^2 = 85.500000  r6 = 0.501082
+  octahedron |f|^2 = 0.000000  |a00|^2 = 0.142857 (1/7 = 0.142857)  TrN^2 = 48.000000  r6 = 0.311688
+  zonal      |f|^2 = 0.000000  |a00|^2 = 0.142857 (1/7 = 0.142857)  TrN^2 = 72.000000  r6 = 0.432900
+(F) the bounds, and r6 itself, by multi-start local optimization (300 starts each)
+PASS   max |a00|^2 found = 0.142857142857, not above 1/7
+PASS   max TrN^2 found = 85.500000000000, not above 171/2
+PASS   arm: the probe reaches the bound (it can find a maximum), within 1e-8
+PASS   max r6 found = 0.501082251082 = 463/924 (0.501082251082); maximizer has |f|^2=1.2e-16, |a00|^2=0.142857, TrN^2=85.500000
+PASS   min r6 found = 0.001082251082 = 1/924; minimizer has |f|^2 = 9.00000000 (coherent: 9)
+ALL PASS

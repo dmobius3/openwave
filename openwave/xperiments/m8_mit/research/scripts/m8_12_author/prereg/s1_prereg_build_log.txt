@@ -1,0 +1,214 @@
+(A) the task doc
+PASS   no em-dash, and a planted one is refused
+PASS   budget: inside the Section 12.2 cap of 8000 (4046 words)
+PASS   no first-person voice outside the code spans
+PASS   arm: a planted first person is caught
+PASS   the short-form rule is stated, and no bare stable or unstable is used
+PASS   arm: a planted bare unstable is caught
+PASS   the step-3 log carries a census summary of ten orbits (found 10)
+PASS   the census table in the doc has ten rows (found 10)
+PASS     coherent v3    value, dim, signature and both indices match the log row exactly
+PASS     v2             value, dim, signature and both indices match the log row exactly
+PASS     prism          value, dim, signature and both indices match the log row exactly
+PASS     v1             value, dim, signature and both indices match the log row exactly
+PASS     D2 ray         value, dim, signature and both indices match the log row exactly
+PASS     C3 ray         value, dim, signature and both indices match the log row exactly
+PASS     pyramid        value, dim, signature and both indices match the log row exactly
+PASS     octahedron     value, dim, signature and both indices match the log row exactly
+PASS     zonal v0       value, dim, signature and both indices match the log row exactly
+PASS     hexagon        value, dim, signature and both indices match the log row exactly
+PASS   every logged orbit appears in the doc
+PASS   arm: one altered field is caught
+PASS   the census table gives a representative for every orbit (10)
+PASS     coherent v3    representative 'v₃' is the vector the step-3 script used
+PASS     v2             representative 'v₂' is the vector the step-3 script used
+PASS     prism          representative 'v₃ + √(23/10)·v₀ + v₋₃' is the vector the step-3 script used
+PASS     v1             representative 'v₁' is the vector the step-3 script used
+PASS     D2 ray         representative 'v₂ + i√(6/5)·v₀ + v₋₂' is the vector the step-3 script used
+PASS     C3 ray         representative 'v₂ + 2·v₋₁' is the vector the step-3 script used
+PASS     pyramid        representative '√12·v₃ + √13·v₋₂' is the vector the step-3 script used
+PASS     octahedron     representative 'v₂ + v₋₂' is the vector the step-3 script used
+PASS     zonal v0       representative 'v₀' is the vector the step-3 script used
+PASS     hexagon        representative 'v₃ + v₋₃' is the vector the step-3 script used
+PASS   arm: an altered representative is caught
+PASS   every signature triple in the doc is a logged one (8 distinct)
+PASS   arm: a signature triple the log does not carry is caught
+PASS   the step-2 log carries five cyclic quadratics with their vertices (5)
+PASS   the doc freezes five cyclic lines (5)
+PASS     C3{v2,v-1}     restriction matches the step-2 log exactly
+PASS     C3{v2,v-1}     vertex matches, interior or endpoint as logged
+PASS     C4{v3,v-1}     restriction matches the step-2 log exactly
+PASS     C4{v3,v-1}     vertex matches, interior or endpoint as logged
+PASS     C4{v2,v-2}     restriction matches the step-2 log exactly
+PASS     C4{v2,v-2}     vertex matches, interior or endpoint as logged
+PASS     C5{v3,v-2}     restriction matches the step-2 log exactly
+PASS     C5{v3,v-2}     vertex matches, interior or endpoint as logged
+PASS     C6{v3,v-3}     restriction matches the step-2 log exactly
+PASS     C6{v3,v-3}     vertex matches, interior or endpoint as logged
+PASS   arm: an altered restriction is caught
+PASS   arm: an altered vertex is caught
+PASS   the step-2 log carries both dihedral charts with their critical sets (2)
+PASS   the doc freezes two dihedral lines (2)
+PASS     D3{v3+v-3,v0}    chart formula matches the step-2 log exactly
+PASS     D3{v3+v-3,v0}    chart critical set matches the logged one
+PASS     D2{v2+v-2,v0}    chart formula matches the step-2 log exactly
+PASS     D2{v2+v-2,v0}    chart critical set matches the logged one
+PASS   arm: an altered chart point is caught
+PASS   the infinite chart point is named on both dihedral rows
+PASS   the doc restates 9 restrictions, and each is one the step-2 log printed
+PASS   arm: an altered restatement is caught
+PASS   every required section heading is present (missing: [])
+PASS   arm: a renamed heading is caught
+PASS     charpoly of coherent `v₃  : coefficients [] are in the step-3 log
+PASS     charpoly of v₂            : coefficients [] are in the step-3 log
+PASS     charpoly of zonal `v₀     : coefficients ['100'] are in the step-3 log
+PASS     charpoly of octahedron    : coefficients [] are in the step-3 log
+PASS     charpoly of hexagon       : coefficients [] are in the step-3 log
+PASS     charpoly of pyramid       : coefficients ['104', '165', '1815', '1012', '3360'] are in the step-3 log
+PASS     charpoly of prism         : coefficients ['473', '920', '473', '696', '1419', '560', '671187', '438944', '339200'] are in the step-3 log
+PASS     charpoly of C3 ray        : coefficients ['16471125', '9583200', '45776720', '23015168', '998400'] are in the step-3 log
+PASS     charpoly of D2 ray        : coefficients ['31944', '46948', '13530', '7125'] are in the step-3 log
+PASS     line class 'C3 {v2,v-1}' is in the step-1 log
+PASS     line class 'C4 {v3,v-1}' is in the step-1 log
+PASS     line class 'C4 {v2,v-2}' is in the step-1 log
+PASS     line class 'C5 {v3,v-2}' is in the step-1 log
+PASS     line class 'C6 {v3,v-3}' is in the step-1 log
+PASS     line class 'D3 {v3+v-3,v0}' is in the step-1 log
+PASS     line class 'D2 {v2+v-2,v0}' is in the step-1 log
+PASS   the four spaces of dimension at least 3 are the logged ones
+PASS   the six point classes are the logged ones
+PASS   the seven line classes are the logged ones
+PASS   the spaces of projective dimension at least 2 are the logged four
+PASS   arm: a fifth such space is not in the log
+PASS     M8.11 parent -104/55 reproduces in the step-3 log
+PASS     M8.11 parent 920/473 reproduces in the step-3 log
+PASS     M8.11 parent 8/11 reproduces in the step-3 log
+PASS     M8.11 parent -56/165 and -21/110 reproduces in the step-3 log
+PASS     the doc carries the parent value −104/55 exactly 2 time(s)
+PASS     the doc carries the parent value 920/473 exactly 2 time(s)
+PASS     the doc carries the parent value 8/11 exactly 2 time(s)
+PASS     the doc carries the parent value −56/165 exactly 1 time(s)
+PASS     the doc carries the parent value −21/110 exactly 1 time(s)
+PASS   arm: altering one copy of a parent value is caught
+PASS   the frozen S0 maximum proof is unchanged
+PASS     G2 constant '−5/231 − |f|²/22 + (7/11)|a₀₀|² + TrN̄²/198' is in the frozen proof
+PASS     G2 constant '|a₀₀|² ≤ 1/7' is in the frozen proof
+PASS     G2 constant 'TrN̄² ≤ 171/2' is in the frozen proof
+PASS   the frozen proof closes at the hexagon value
+PASS   arm: an altered bound is not in the frozen proof
+PASS   firewall names every excluded source
+PASS   disclosure carries the inventory, the correction and the deferred orbits
+PASS   all claim groups are present
+PASS   P2 carries the agreed pass condition exactly, with nothing added or dropped
+PASS   L1 carries the agreed pass condition exactly, with nothing added or dropped
+PASS   arm: a loosened chart clause is caught
+PASS   arm: a dropped chart clause is caught
+PASS   the exposure table states what was visible per orbit
+PASS   each diagnostic is recorded, with no pass or fail column (2 rows)
+PASS   every claim row has a standing, a pass and a fail condition (17 rows)
+PASS   the doc has a P1 row
+PASS   P1 carries all eight parent values
+PASS   P1 sources the weight-state values to the paper Section 7.2
+PASS   P1 keeps the other parents on D1, D3 and D4
+PASS   the sources table names Section 7.2 and what it records
+PASS   no row claims a weight-state value as new
+PASS   arm: a row claiming one as new is caught
+PASS   the audit set includes L1: an adversarial audit follows, which al...
+PASS   the audit set includes L1: The audit grades L0, L1, L2, G1 and G2...
+PASS   arm: an audit set without L1 is caught
+PASS   D2 confines the sequence to the classified orbits
+PASS   D2 states the deferred indices are unknown
+PASS   no monotonicity inference about the deferred orbits survives anywhere
+PASS   arm: the retired inference is caught
+PASS   the firewall states the network posture
+PASS   it names the items a search could reach
+PASS   arm: a firewall with the posture cut is caught
+PASS   H2 scores after monic normalization
+PASS   the spectra table says the same
+PASS     the bridge closes in the sector with w6 = 28/39: (w6/4)H = -56/165
+PASS     and the doc states 4 L_T as −224/165
+PASS     the bridge closes in the sector with w6 = 21/52: (w6/4)H = -21/110
+PASS     and the doc states 4 L_T as −42/55
+PASS   arm: the old value 21/55 does not satisfy the bridge
+PASS   the worklist asks for the in-locus second variations, with the off-diagonal entries
+PASS   the worklist handles the tangent whose projection vanishes, rather than normalizing zero
+PASS   arm: the old wording, which normalized every projection, is caught
+PASS   the worklist asks for the sector-scaled numbers
+PASS   the worklist pins the Clebsch-Gordan phase convention
+PASS   the worklist forces the separation of same-stabilizer classes, without naming the pair
+PASS   arm: the weaker two-classes wording is caught
+PASS   arm: naming the hard pair in the worklist is caught
+PASS   worklist item 11 requests all six scored quantities, un-normalized, naming the matrix
+PASS   arm: the earlier yes-or-no wording is caught
+PASS   N1 and worklist item 11 name the same control point
+PASS   arm: a different control point in either file is caught
+PASS   the control log measured that same point
+PASS   the control log is green, arms included
+PASS   N1 freezes a residual at each of the four generators (4)
+PASS     the residual N1 freezes at i u      is the one s1_control.py measured
+PASS     the residual N1 freezes at -i Jx u  is the one s1_control.py measured
+PASS     the residual N1 freezes at -i Jy u  is the one s1_control.py measured
+PASS     the residual N1 freezes at -i Jz u  is the one s1_control.py measured
+PASS   arm: a neighbouring surd would not match
+PASS   N1 and the control log carry the same sum rule
+PASS   N1 names the matrix rather than the second variation, and says why they agree on the orbit
+PASS   N1 states the tangential gradient norm
+PASS     the gradient norm N1 states is the one s1_control.py measured
+PASS   arm: a mutated gradient norm is caught, even though the same surd appears again as a residual
+PASS   N1 states the control value, and the log measured it
+PASS   arm: a frozen control value the log does not carry is caught
+PASS   N1 scores all six quantities and separates a mismatch from a control that cannot fail
+PASS   arm: the earlier pass condition, which scored one residual by its sign, is caught
+PASS     step L0: the doc reports 128 checks, and the log has 128 passing and 0 failing
+PASS     step L1: the doc reports 43 checks, and the log has 43 passing and 0 failing
+PASS     step H: the doc reports 29 checks, and the log has 29 passing and 0 failing
+PASS   arm: a miscounted step is caught
+    script runs 16; filed row says 7; dated correction 2026-09-20 records 16
+PASS   the control script's check count is recorded truthfully
+PASS   arm: a correction note carrying the wrong count is caught
+PASS   arm: rewriting the filed row is caught, even with the correction intact
+PASS   arm: a correction note that records the filed count rather than the live one is caught
+PASS   the disclosure names the inventory size the inventory actually has (57)
+PASS   arm: a wrong inventory size is caught
+(B) the worklist, which the rooms see
+PASS   no frozen value, count, name or representative leaks into the worklist (hits: [])
+PASS   arm: a planted leak is caught
+PASS   arm: the allowance does not admit a value over that normalization
+PASS   the worklist gives D7 as an input, with both weights
+PASS   the worklist carries the zeros rule
+PASS   the worklist asks for arguments and for what would fail if omitted
+PASS   the worklist defines the quartic, the tangent space and the transverse space by formula
+PASS   every numeral in the worklist is a reviewed one (new: {}, gone: {})
+PASS   arm: a count of the answer is caught
+PASS   the worklist asks for the census without naming its size
+PASS   no em-dash in the worklist, and a planted one is refused
+PASS   the worklist example vectors are generic (4 of them, none a census representative)
+(C) how the two files render on GitHub
+PASS   task doc: every table renders with a uniform column count (12 tables, ragged: [])
+PASS   task doc: every code span in a table survives the render (154 spans, lost: [])
+PASS   worklist: every table renders with a uniform column count (0 tables, ragged: [])
+PASS   worklist: every code span in a table survives the render (0 spans, lost: [])
+PASS   arm: an unescaped pipe inside a table code span is caught
+PASS   no unescaped pipe survives inside a table code span
+PASS   arm: the pipe check sees a bare pipe in a code span
+(D) hashes
+  427e8ce51b63442c975a0ed0cb4da16171e716210fe51f0a20b22d83ee92167a  prereg/s1_task_details.md
+  c07f9bc64d39ffc99317188e28a91378be18c0fc8902490bd44bed76bba4efdc  prereg/worklist.md
+  ece3771f197f8012e87214200509e0b2adf1ac81bbcca27a31ca8638784a5977  prereg/s1_prereg_build.py
+  346b17e3cfaa8e59c5bdf2c6be844f62b6558feef729e54c3dfd6a63e311c979  s1_L0.py
+  cf63a7b795bb28ce12ec7838eeca80520dfe77ef232fce1a07f294133afda353  s1_L0_log.txt
+  30bf03da2b41161b7c4085ca77adcb98a42eafc53e5ea8bde047cde76b73c13a  s1_L1.py
+  b1158cbcd473c0bbdf26e854437cab721ea191bc3481a1bb6189dad24085637b  s1_L1_log.txt
+  ffd44322ec22edf4ab61e585b0658b68c414ef65e30fb2d63d2156585d760735  s1_H.py
+  1f55602e43c57028db2ea9f8f491ca2e85130d6da6170060ac1cd1c5a7737297  s1_H_log.txt
+  e1363de6f2f546d9bdef46c7c2029239aa1388865d870a37832ca58e68228f1f  s1_control.py
+  b88e39261339584259c9a17b28dc45b97b3998f50f7e0edee9f56b9202eacdd3  s1_control_log.txt
+  49b8c5261ebdaf6667b973cefc8c1f7e751b83b90d62dc3bb3539e3e7d2256c9  prereg/s1_prereg_arms.py
+  1ea164c35b1bcd9f4f9c89576082a183376776cbe0f3c9abbce7b9b19071d6c6  DISCLOSURE_INVENTORY.md
+  536f63eb15173d537b0aa8d9aa9eaa60fe182b27457c929662b02d9c470dab0f  S1_STEP1_L0.md
+  eb6ecdc070b7c396519d43b09f0987f2db06e1410540da266942fc33591ab186  S1_STEP2_L1.md
+  33b149f8cc146833e694e94da39a426e8295cafd60aa94a1d7232a4c82d063c2  S1_STEP3_H.md
+    189 gates ran, 189 distinct after normalization
+    gate_inventory.txt SHA-256 c5de76439fa5f9d16dc3c3de1f94b4029f2308569f973d0743f0bd088b374266
+PASS   gate inventory matches the pin
+ALL PASS
