@@ -1,0 +1,81 @@
+(C) the five cyclic lines: r6 = q(s), s = |coefficient of the first vector|^2
+PASS   C3 {v2,v-1}: r6 does not depend on the relative phase
+PASS   C3 {v2,v-1}: r6 along the line is a polynomial of degree <= 2 in s
+    q(s) = -15/44*s**2 + 3/22*s + 75/308
+    vertex s* = 1/5  (interior: one critical circle, one orbit)
+PASS   C4 {v3,v-1}: r6 does not depend on the relative phase
+PASS   C4 {v3,v-1}: r6 along the line is a polynomial of degree <= 2 in s
+    q(s) = -8/33*s**2 + 0*s + 75/308
+    vertex s* = 0  (not interior: no interior critical point)
+PASS   C4 {v2,v-2}: r6 does not depend on the relative phase
+PASS   C4 {v2,v-2}: r6 along the line is a polynomial of degree <= 2 in s
+    q(s) = -12/11*s**2 + 12/11*s + 3/77
+    vertex s* = 1/2  (interior: one critical circle, one orbit)
+PASS   C5 {v3,v-2}: r6 does not depend on the relative phase
+PASS   C5 {v3,v-2}: r6 along the line is a polynomial of degree <= 2 in s
+    q(s) = -125/132*s**2 + 10/11*s + 3/77
+    vertex s* = 12/25  (interior: one critical circle, one orbit)
+PASS   C6 {v3,v-3}: r6 does not depend on the relative phase
+PASS   C6 {v3,v-3}: r6 along the line is a polynomial of degree <= 2 in s
+    q(s) = -2*s**2 + 2*s + 1/924
+    vertex s* = 1/2  (interior: one critical circle, one orbit)
+PASS   control: on the C5 line q(s) is the paper pyramid-line quadratic -125/132 s^2 + 10/11 s + 3/77 (up to the flip)
+(D) the two dihedral lines, chart u = b1 + z b2, z = x + i y, and z = infinity
+    f(x, y) = (100*x**4 + 200*x**2*y**2 - 20*x**2 + 100*y**4 + 148*y**2 + 463)/(231*(x**2 + y**2 + 2)**2)
+PASS   control: the D3 chart formula is the paper Section 5.8 formula
+PASS   arm: with u (x) u in place of u (x) Theta u the formula differs
+PASS   f is even in x and in y separately
+PASS   fx/x and fy/y are polynomials in X = x^2, Y = y^2
+PASS   off-axis case: the resultant is not identically zero and gives 0 off-axis critical points
+PASS   the elimination route finds the same 5 chart critical points as solve()
+    z = -sqrt(230)/10 + i*(0):  924*r6 = 8800/43  in-line minimum
+PASS     nondegenerate in the line (index 1)
+    z = 0 + i*(-sqrt(10)/2):  924*r6 = 288  in-line saddle
+PASS     nondegenerate in the line (index -1)
+    z = 0 + i*(0):  924*r6 = 463  in-line maximum
+PASS     nondegenerate in the line (index 1)
+    z = 0 + i*(sqrt(10)/2):  924*r6 = 288  in-line saddle
+PASS     nondegenerate in the line (index -1)
+    z = sqrt(230)/10 + i*(0):  924*r6 = 8800/43  in-line minimum
+PASS     nondegenerate in the line (index 1)
+PASS     z = infinity (v0) is critical in the line (gradient [0, 0]), in-line maximum
+PASS   D3 {v3+v-3,v0}: Poincare-Hopf indices sum to 2 = chi(S^2) = 2 over 6 critical points
+PASS   arm: dropping one point breaks the sum (1 != 2)
+    f(x, y) = 4*(25*x**4 + 50*x**2*y**2 + 142*x**2 + 25*y**4 + 30*y**2 + 72)/(231*(x**2 + y**2 + 2)**2)
+PASS   f is even in x and in y separately
+PASS   fx/x and fy/y are polynomials in X = x^2, Y = y^2
+PASS   off-axis case: the resultant is not identically zero and gives 0 off-axis critical points
+PASS   the elimination route finds the same 5 chart critical points as solve()
+    z = -sqrt(30)/3 + i*(0):  924*r6 = 463  in-line maximum
+PASS     nondegenerate in the line (index 1)
+    z = 0 + i*(-sqrt(30)/5):  924*r6 = 225  in-line minimum
+PASS     nondegenerate in the line (index 1)
+    z = 0 + i*(0):  924*r6 = 288  in-line saddle
+PASS     nondegenerate in the line (index -1)
+    z = 0 + i*(sqrt(30)/5):  924*r6 = 225  in-line minimum
+PASS     nondegenerate in the line (index 1)
+    z = sqrt(30)/3 + i*(0):  924*r6 = 463  in-line maximum
+PASS     nondegenerate in the line (index 1)
+PASS     z = infinity (v0) is critical in the line (gradient [0, 0]), in-line saddle
+PASS   D2 {v2+v-2,v0}: Poincare-Hopf indices sum to 2 = chi(S^2) = 2 over 6 critical points
+PASS   arm: dropping one point breaks the sum (1 != 2)
+(F) every point found is critical on the whole sphere (numerical control; Palais guarantees it)
+PASS   max tangential gradient over 26 points = 1.6e-10
+PASS   arm: a non-critical point on the C3 line (s = 1/2) fails it (2.0e-01)
+PASS   every exact value agrees with the numerical value at its point
+(U) the union modulo rotation
+PASS   tie at 924*r6 = 225: separated by the invariant triple (True) or the isotropy orders (True)
+PASS   tie at 924*r6 = 1188/5: separated by the invariant triple (False) or the isotropy orders (True)
+  10 distinct critical orbits on the seven lines and the six points:
+    924*r6 =          1  (   1.0000)  rotation orders [2, 3, 4, 5, 6]  on: C4 {v3,v-1} [v3 (s = 1)]; C5 {v3,v-2} [v3 (s = 1)]; C6 {v3,v-3} [v3 (s = 1)]; C6 {v3,v-3} [v-3 (s = 0)]
+    924*r6 =         36  (  36.0000)  rotation orders [2, 3, 4, 5, 6]  on: C3 {v2,v-1} [v2 (s = 1)]; C4 {v2,v-2} [v2 (s = 1)]; C4 {v2,v-2} [v-2 (s = 0)]; C5 {v3,v-2} [v-2 (s = 0)]
+    924*r6 =    8800/43  ( 204.6512)  rotation orders [2, 3]  on: D3 {v3+v-3,v0} [z = -sqrt(230)/10 + i(0), in-line minimum]; D3 {v3+v-3,v0} [z = sqrt(230)/10 + i(0), in-line minimum]
+    924*r6 =        225  ( 225.0000)  rotation orders [2, 3, 4, 5, 6]  on: C3 {v2,v-1} [v-1 (s = 0)]; C4 {v3,v-1} [v-1 (s = 0)]
+    924*r6 =        225  ( 225.0000)  rotation orders [2]  on: D2 {v2+v-2,v0} [z = 0 + i(-sqrt(30)/5), in-line minimum]; D2 {v2+v-2,v0} [z = 0 + i(sqrt(30)/5), in-line minimum]
+    924*r6 =     1188/5  ( 237.6000)  rotation orders [3]  on: C3 {v2,v-1} [interior circle, s* = 1/5]
+    924*r6 =     1188/5  ( 237.6000)  rotation orders [5]  on: C5 {v3,v-2} [interior circle, s* = 12/25]
+    924*r6 =        288  ( 288.0000)  rotation orders [2, 3, 4]  on: C4 {v2,v-2} [interior circle, s* = 1/2]; D3 {v3+v-3,v0} [z = 0 + i(-sqrt(10)/2), in-line saddle]; D3 {v3+v-3,v0} [z = 0 + i(sqrt(10)/2), in-line saddle]; D2 {v2+v-2,v0} [z = 0 + i(0), in-line saddle]
+    924*r6 =        400  ( 400.0000)  rotation orders [2, 3, 4, 5, 6]  on: D3 {v3+v-3,v0} [z = infinity (v0), in-line maximum]; D2 {v2+v-2,v0} [z = infinity (v0), in-line saddle]
+    924*r6 =        463  ( 463.0000)  rotation orders [2, 3, 6]  on: C6 {v3,v-3} [interior circle, s* = 1/2]; D3 {v3+v-3,v0} [z = 0 + i(0), in-line maximum]; D2 {v2+v-2,v0} [z = -sqrt(30)/3 + i(0), in-line maximum]; D2 {v2+v-2,v0} [z = sqrt(30)/3 + i(0), in-line maximum]
+PASS   arm: the union logic merges two rotated copies of the hexagon
+ALL PASS

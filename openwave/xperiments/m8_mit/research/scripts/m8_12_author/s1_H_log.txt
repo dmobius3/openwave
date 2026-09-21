@@ -1,0 +1,68 @@
+N built: 1827 ops
+Hessian built
+(H) the ten orbits
+PASS   coherent v3: the orbit directions are null for H
+PASS   coherent v3: dim N_u = 10; exact signature (n-, n0, n+) = (0, 0, 10); numerical (0, 0, 10)
+    924*r6 = 1   charpoly = (lam - 4)**2*(11*lam - 3)**2*(11*lam - 2)**2*(33*lam - 65)**2*(33*lam - 32)**2/17363069361
+    eigenvalues (30 digits): [0.181818, 0.181818, 0.272727, 0.272727, 0.969697, 0.969697, 1.969697, 1.969697, 4.0, 4.0]
+PASS   v2: the orbit directions are null for H
+PASS   v2: dim N_u = 10; exact signature (n-, n0, n+) = (2, 0, 8); numerical (2, 0, 8)
+    924*r6 = 36   charpoly = (3*lam - 4)**2*(11*lam - 24)**2*(11*lam - 20)**2*(11*lam - 12)**2*(33*lam + 8)**2/17363069361
+    eigenvalues (30 digits): [-0.242424, -0.242424, 1.090909, 1.090909, 1.333333, 1.333333, 1.818182, 1.818182, 2.181818, 2.181818]
+PASS   v1: the orbit directions are null for H
+PASS   v1: dim N_u = 10; exact signature (n-, n0, n+) = (4, 2, 4); numerical (4, 2, 4)
+    924*r6 = 225   charpoly = lam**2*(3*lam + 5)**2*(11*lam - 3)**2*(363*lam**2 - 374*lam - 600)**2/143496441
+    eigenvalues (30 digits): [-1.666667, -1.666667, -0.869866, -0.869866, 0.0, 0.0, 0.272727, 0.272727, 1.900169, 1.900169]
+PASS   v1: the 2-dimensional kernel is the C4 line direction span(v-3, i v-3) (rank 2 = 2)
+PASS   zonal v0: the orbit directions are null for H
+PASS   zonal v0: dim N_u = 10; exact signature (n-, n0, n+) = (8, 0, 2); numerical (8, 0, 2)
+    924*r6 = 400   charpoly = (11*lam - 8)**2*(11*lam + 12)**2*(11*lam + 20)**2*(33*lam + 40)**2*(33*lam + 100)**2/2100931392681
+    eigenvalues (30 digits): [-3.030303, -3.030303, -1.818182, -1.818182, -1.212121, -1.212121, -1.090909, -1.090909, 0.727273, 0.727273]
+PASS   octahedron: the orbit directions are null for H
+PASS   octahedron: dim N_u = 9; exact signature (n-, n0, n+) = (6, 0, 3); numerical (6, 0, 3)
+    924*r6 = 288   charpoly = (11*lam + 8)**3*(11*lam + 24)**3*(33*lam - 40)**3/63664587657
+    eigenvalues (30 digits): [-2.181818, -2.181818, -2.181818, -0.727273, -0.727273, -0.727273, 1.212121, 1.212121, 1.212121]
+PASS   hexagon: the orbit directions are null for H
+PASS   hexagon: dim N_u = 9; exact signature (n-, n0, n+) = (9, 0, 0); numerical (9, 0, 0)
+    924*r6 = 463   charpoly = (lam + 4)*(11*lam + 10)**2*(11*lam + 15)*(11*lam + 23)*(33*lam + 64)**2*(33*lam + 67)**2/17363069361
+    eigenvalues (30 digits): [-4.0, -2.090909, -2.030303, -2.030303, -1.939394, -1.939394, -1.363636, -0.909091, -0.909091]
+PASS   pyramid: the orbit directions are null for H
+PASS   pyramid: dim N_u = 9; exact signature (n-, n0, n+) = (5, 0, 4); numerical (5, 0, 4)
+    924*r6 = 1188/5   charpoly = (55*lam + 24)**2*(55*lam + 104)*(165*lam - 4)**2*(1815*lam**2 - 1012*lam - 3360)**2/14921387732109375
+    eigenvalues (30 digits): [-1.890909, -1.110083, -1.110083, -0.436364, -0.436364, 0.024242, 0.024242, 1.667659, 1.667659]
+PASS   prism: the orbit directions are null for H
+PASS   prism: dim N_u = 9; exact signature (n-, n0, n+) = (3, 0, 6); numerical (3, 0, 6)
+    924*r6 = 8800/43   charpoly = (11*lam - 8)*(473*lam - 920)*(473*lam + 696)*(1419*lam - 560)**2*(671187*lam**2 + 438944*lam - 339200)**2/2232373353377701794512571
+    eigenvalues (30 digits): [-1.471459, -1.109484, -1.109484, 0.394644, 0.394644, 0.455503, 0.455503, 0.727273, 1.945032]
+PASS   C3 ray: the orbit directions are null for H
+PASS   C3 ray: dim N_u = 9; exact signature (n-, n0, n+) = (5, 0, 4); numerical (5, 0, 4)
+    924*r6 = 1188/5   charpoly = (55*lam + 24)*(16471125*lam**4 + 9583200*lam**3 - 45776720*lam**2 - 23015168*lam + 998400)**2/14921387732109375
+    eigenvalues (30 digits): [-1.715187, -1.715187, -0.538755, -0.538755, -0.436364, 0.040195, 0.040195, 1.631929, 1.631929]
+PASS   D2 ray: the orbit directions are null for H
+PASS   D2 ray: dim N_u = 9; exact signature (n-, n0, n+) = (5, 0, 4); numerical (5, 0, 4)
+    924*r6 = 225   charpoly = (11*lam - 10)*(11*lam + 7)*(33*lam - 64)*(31944*lam**3 + 46948*lam**2 - 13530*lam - 7125)**2/4074533610048
+    eigenvalues (30 digits): [-1.644764, -1.644764, -0.636364, -0.29098, -0.29098, 0.466047, 0.466047, 0.909091, 1.939394]
+(P) parents and controls
+PASS   pyramid: H along the unit C5-line tangent is -104/55 (M8.11 T4)
+PASS   prism: H along the chart tangent v0 is 920/473 (M8.11 T4)
+PASS   prism: H along the chart tangent i v0 is 8/11 (M8.11 T4)
+PASS   the sector bridge gives M8.11 L_T at the pyramid: -56/165 and -21/110
+PASS   the two ends: n- = 0 at the coherent orbit and n+ = 0 at the hexagon
+PASS   the zonal is a saddle, as step 2 predicted (n- > 0 and n+ > 0)
+(A) arms
+PASS   arm: dropping the -4 N I term changes the hexagon signature
+PASS   arm: at a non-critical point the orbit directions are not annihilated
+(S) the census
+  orbit              924*r6  dim N_u  (n-, n0, n+)   index for g > 0   index for g < 0
+  coherent v3             1       10    (0, 0, 10)               0               10
+  v2                     36       10     (2, 0, 8)               2                8
+  v1                    225       10     (4, 2, 4)               4                4
+  zonal v0              400       10     (8, 0, 2)               8                2
+  octahedron            288        9     (6, 0, 3)               6                3
+  hexagon               463        9     (9, 0, 0)               9                0
+  pyramid            1188/5        9     (5, 0, 4)               5                4
+  prism             8800/43        9     (3, 0, 6)               3                6
+  C3 ray             1188/5        9     (5, 0, 4)               5                4
+  D2 ray                225        9     (5, 0, 4)               5                4
+  parity diagnostic (not a gate): indices at the weight states for g > 0: [('coherent v3', 0), ('v2', 2), ('v1', 4), ('zonal v0', 8)]
+ALL PASS
