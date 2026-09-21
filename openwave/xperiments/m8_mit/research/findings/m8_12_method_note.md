@@ -160,7 +160,20 @@ been tested.
 
 ## 4. Results against the frozen claims
 
-Every claim is **REPRODUCED**. No claim is defective and none is unresolved.
+Every claim is **REPRODUCED** and no claim is defective. One clause is **unresolved**: `G2`'s uniqueness.
+
+> **Correction, 2026-09-21, G2.** The run established the global maximum `463/924` as an argument, from
+> solver_a and from the audit's own certificate, and that the hexagon attains it. It did not establish that
+> no other orbit attains it (§ 5.4, § 8), and `G2`'s filed pass condition includes that uniqueness. `G2` is
+> therefore reproduced in its value and attainment and unresolved in its uniqueness clause, which rests on
+> the author's argument in `S0_S3_MAXIMUM.md`: the equality cases of steps 2 and 3, combined in step 4, of
+> which step 3's tracing through the three blocks is the substantive part. Landed with the author package
+> ([#581](https://github.com/openwave-labs/openwave/pull/581)) and not yet independently audited.
+>
+> ⚠️ This correction is the designer's, not a room's. Both § 5.4 and § 8 already said uniqueness was
+> unsettled while § 4 and the task doc's adjudication recorded `G2` as reproduced. The two halves of the
+> record were written in one sitting and never checked against each other, which is the
+> internal-consistency check that was run on the rooms' returns and not on this one. The author raised it.
 
 | ID | Verdict | Route |
 |---|---|---|
@@ -177,7 +190,7 @@ Every claim is **REPRODUCED**. No claim is defective and none is unresolved.
 | H3 | ✅ reproduced | `v₁` is the only degenerate orbit; the kernel is `span{v₋₃, i·v₋₃}`, identified with the line direction |
 | H4 | ✅ stated and used | both rooms |
 | G1 | ✅ reproduced | an argument in both rooms and in the audit |
-| G2 | ✅ reproduced | ⚠️ as an **argument** by solver_a and, independently, by the audit's own certificate. solver_b reached the same value by a 400-start search, which establishes nothing about the maximum. See § 5.2 |
+| G2 | ✅ reproduced in value and attainment, ⚠️ uniqueness **unresolved** | ⚠️ as an **argument** by solver_a and, independently, by the audit's own certificate. solver_b reached the same value by a 400-start search, which establishes nothing about the maximum. See § 5.2 |
 | G3 | ✅ reproduced | both ends transversely nondegenerate |
 | N1 | ✅ reproduced | all six quantities, both rooms, the audit and the maintainer, agreeing to 25 digits; all four residuals nonzero |
 | N2 | ✅ reproduced | no interior critical point, by the vanishing linear coefficient, in both rooms and in the audit |

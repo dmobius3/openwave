@@ -282,7 +282,7 @@ Full record: [`../findings/m8_12_method_note.md`](../findings/m8_12_method_note.
 [`../scripts/m8_12_audit/`](../scripts/m8_12_audit/),
 [`../scripts/m8_12_maintainer/`](../scripts/m8_12_maintainer/).
 
-**Every claim reproduced. None defective, none unresolved.** Two blind rooms on one packet, offline,
+**Every claim reproduced, none defective, and one clause unresolved: `G2`'s uniqueness.** Two blind rooms on one packet, offline,
 then an adversarial audit that wrote its own code, then adjudication against a frozen table that had
 itself been tested first.
 
@@ -303,7 +303,7 @@ itself been tested first.
 | Parents | P1, P2, P3, P4, P5 | reproduced |
 | The classification | L0, L1, L2 | reproduced, arguments SOUND in both rooms |
 | The census | H1, H2, H3, H4 | reproduced |
-| The two ends | G1, G2, G3 | reproduced; `G2` as an argument from one room and the audit |
+| The two ends | G1, G2, G3 | reproduced; `G2` as an argument from one room and the audit, in its **value and attainment only**: its uniqueness clause is **unresolved**, see the correction below |
 | Controls | N1, N2 | reproduced, all residuals nonzero |
 | Diagnostics | D1, D2 | recorded, not adjudicated |
 
@@ -327,7 +327,8 @@ Usage Cap Triggered: NO
 
 | Result | |
 |---|---|
-| ✅ | Every pre-registered claim reproduced: P1-P5, L0-L2, H1-H4, G1-G3, N1, N2. None defective, none unresolved |
+| ✅ | Every pre-registered claim reproduced: P1-P5, L0-L2, H1-H4, G1-G3, N1, N2. None defective |
+| ⚠️ | `G2` was recorded as fully reproduced although its filed pass condition includes uniqueness, which the run did not settle. Corrected 2026-09-21, see the [method note](../findings/m8_12_method_note.md) § 4 |
 | ✅ | Two blind rooms, offline, on one packet, agreeing on all ten orbits, signatures, characteristic polynomials, the classification, the kernel and both controls |
 | ✅ | The adversarial audit found zero mathematical defects in either room |
 | ✅ | The maintainer's own route ran before any room opened: 131 structural checks with five mutations firing, 66 independent recomputations, a compare harness proven on a synthetic return |
