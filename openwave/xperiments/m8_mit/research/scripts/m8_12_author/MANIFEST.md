@@ -38,7 +38,14 @@ Four scripts were never pinned before this landing. Each of the first three rege
 
 ## Regeneration
 
-In a fresh directory holding this folder's files, copy the filed documents into `prereg/` under the names the gate reads, [`../../tasks/m8_12_task_details.md`](../../tasks/m8_12_task_details.md) as `prereg/s1_task_details.md` and [`../../m8_12/worklist.md`](../../m8_12/worklist.md) as `prereg/worklist.md`. Then, each from its own folder:
+In a fresh directory holding this folder's files, copy the filed documents into `prereg/` under the names the gate reads. ⚠️ **Take the task doc at the commit that froze it, not from the working tree:** it has moved since these logs were produced, at [#578](https://github.com/openwave-labs/openwave/pull/578) and again when the item 5b note was appended, so the current file passes the gate at 190 of 190 but does not reproduce the log byte for byte.
+
+```bash
+git show 9f952247:openwave/xperiments/m8_mit/research/tasks/m8_12_task_details.md > prereg/s1_task_details.md
+git show 9f952247:openwave/xperiments/m8_mit/research/m8_12/worklist.md > prereg/worklist.md
+```
+
+That pair is the task doc at `427e8ce51b63442c975a0ed0cb4da16171e716210fe51f0a20b22d83ee92167a` and the worklist at `c07f9bc64d39ffc99317188e28a91378be18c0fc8902490bd44bed76bba4efdc`, which are the hashes the log prints. The worklist has not moved since #572; the task doc has. Then, each from its own folder:
 
 | command | runtime | prints exactly |
 | --- | --- | --- |
@@ -69,6 +76,10 @@ The blind run reproduced G2's maximum as an argument, but neither room nor the a
 ## What does not land
 
 The S0 literature memo and the author's other exploratory records. The inventory names 57 records swept from the two exploratory folders, with their hashes. The S0 memo is not among them, because the sweep excluded `.md` and `.py` files, and six references to it survive in the landed notes and in the gate, which checks that the task doc names it among the firewalled sources. It is available on request.
+
+## These bytes are exempt from formatting
+
+Every file in this folder is pinned by a published hash, so a `black` run, a line-wrap pass or a markdownlint fix would break the only thing tying the folder to the #571 record. `markdownlint` reports MD013 across the landed `.md` files; that is deliberate and stays. Exclude this folder from any repository-wide formatting sweep, as [#523](https://github.com/openwave-labs/openwave/pull/523) did for a vendored archive.
 
 ## Naming
 
