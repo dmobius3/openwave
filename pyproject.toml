@@ -17,7 +17,7 @@ name = "OPENWAVE"
 # matching its own tag). No "v" here; that prefix belongs on the git tag alone. A second release
 # on a day already used takes a fourth component, "26.9.7.1", NOT a letter suffix, because
 # PEP 440 reads "26.9.7b" as a beta that sorts BEFORE 26.9.7 and that pip skips by default.
-version = "26.9.21"
+version = "26.9.22"
 
 requires-python = ">=3.12"
 
