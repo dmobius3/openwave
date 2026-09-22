@@ -17,6 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
+| [M8.13](tasks/m8_13_task_details.md) | Audit of the uniqueness of the top-multipole maximum at spin 3 | Whether the hexagon orbit is the only maximizer of `r̂₆`, the clause of M8.12's G2 its run left unresolved: an auditor's own argument first, then a step-by-step grading of the author's argument, with controls testing whether stage 1 can certify a known equality set and whether the grading reads arguments rather than conclusions. No stability claim, no MODELS.md cell, M8.7's gate unchanged | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
 
 ## LATER (gated)
 
