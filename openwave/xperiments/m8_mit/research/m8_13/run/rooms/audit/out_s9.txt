@@ -1,0 +1,14 @@
+span{v3,v-3} family, alpha = p+iq, beta = r+is:
+  rhat6 - [2|a|^2|b|^2 + (|a|^2+|b|^2)^2/924]/(|a|^2+|b|^2)^2 = 0
+  identically zero ? True
+  numeric spot: p,q,r,s = 1,2,-3,0.5 -> diff = 0
+  => for a UNIT vector in that plane, rhat6 = 2|alpha|^2|beta|^2 + 1/924,
+     sweeping [1/924, 463/924] as |alpha||beta| goes from 0 to 1/2.
+
+D(z,t)^dag f_i D(z,t) = R_ij f_j  for a z-rotation, residuals printed in full:
+  i=0: max |residual entry| symbolic = {'0'}
+        zero matrix ? True
+  i=1: max |residual entry| symbolic = {'0'}
+        zero matrix ? True
+  i=2: max |residual entry| symbolic = {'0'}
+        zero matrix ? True

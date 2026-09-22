@@ -1,0 +1,89 @@
+C5 parametrization check (from the claim's own words)
+  e3 = 2a/3, e1-e2 = 4b, trace e1+e2+e3 = 0
+  e1-e2 = 4*b
+  |e|^2 = 2*a**2/3 + 8*b**2   (claim says (2/3)a^2 + 8b^2)
+  |e|^2 - (2a^2/3 + 8b^2) = 0
+
+A(e) in the m-basis (rows/cols m = 3,2,1,0,-1,-2,-3):
+   5*a  0  2*sqrt(15)*b  0  0  0  0
+   0  0  0  2*sqrt(30)*b  0  0  0
+   2*sqrt(15)*b  0  -3*a  0  12*b  0  0
+   0  2*sqrt(30)*b  0  -4*a  0  2*sqrt(30)*b  0
+   0  0  12*b  0  -3*a  0  2*sqrt(15)*b
+   0  0  0  2*sqrt(30)*b  0  0  0
+   0  0  0  0  2*sqrt(15)*b  0  5*a
+
+A in the parity-adapted basis ['sym(v2,v-2)', 'v0', 'sym(v3,v-3)', 'sym(v1,v-1)', 'asym(v3,v-3)', 'asym(v1,v-1)', 'asym(v2,v-2)']:
+   0  4*sqrt(15)*b  0  0  0  0  0
+   4*sqrt(15)*b  -4*a  0  0  0  0  0
+   0  0  5*a  2*sqrt(15)*b  0  0  0
+   0  0  2*sqrt(15)*b  -3*a + 12*b  0  0  0
+   0  0  0  0  5*a  2*sqrt(15)*b  0
+   0  0  0  0  2*sqrt(15)*b  -3*a - 12*b  0
+   0  0  0  0  0  0  0
+  is block diagonal (0-2 | 2-4 | 4-6 | 6): True
+  entry for asym(v2,v-2) (claim: a zero eigenvalue) = 0
+  its coupling to everything else = [0, 0, 0, 0, 0, 0, 0]
+
+block on (sym(v2,v-2), v0)   = [[0, 4*sqrt(15)*b], [4*sqrt(15)*b, -4*a]]   claim M3 = [[0,sqrt240 b],[sqrt240 b,-4a]]
+   difference from claim      = Matrix([[0, 0], [0, 0]])
+block on (sym(v3,v-3), sym(v1,v-1)) = [[5*a, 2*sqrt(15)*b], [2*sqrt(15)*b, -3*a + 12*b]]   claim M1 = [[5a,sqrt60 b],[sqrt60 b,-3a+12b]]
+   difference from claim      = Matrix([[0, 0], [0, 0]])
+block on (asym3, asym1)       = [[5*a, 2*sqrt(15)*b], [2*sqrt(15)*b, -3*a - 12*b]]
+claim: M2 = M1 at -b -> M1(-b) = [[5*a, -2*sqrt(15)*b], [-2*sqrt(15)*b, -3*a - 12*b]]
+   M2 - M1(-b) (as matrices)  = [[0, 4*sqrt(15)*b], [4*sqrt(15)*b, 0]]
+   charpolys equal?           = True
+   (sign of the off-diagonal is a basis-orientation choice; it does not move the spectrum)
+
+lambda* = 15/sqrt6 = 5*sqrt(6)/2 = 6.1237243569579452455;  lambda*^2 = 75/2
+ellipse in (alpha,beta) with a=sqrt6*alpha, b=sqrt6*beta : 4*alpha**2 + 48*beta**2 - 1 = 0
+
+M1:  det(lambda* I - M) on the ellipse = -30*(2*alpha - 1)*(alpha - 6*beta + 1)
+      trace(lambda* I - M)             = -2*sqrt(6)*alpha - 12*sqrt(6)*beta + 5*sqrt(6)
+
+M2:  det(lambda* I - M) on the ellipse = -30*(2*alpha - 1)*(alpha + 6*beta + 1)
+      trace(lambda* I - M)             = -2*sqrt(6)*alpha + 12*sqrt(6)*beta + 5*sqrt(6)
+
+M3:  det(lambda* I - M) on the ellipse = 15*(4*alpha + 1)**2/2
+      trace(lambda* I - M)             = 4*sqrt(6)*alpha + 5*sqrt(6)
+
+Sign analysis of each factor on the ellipse 4a^2+48b^2=1 (so |alpha|<=1/2, |beta|<=1/(4sqrt3)):
+  max of (u*alpha+v*beta) on the ellipse = sqrt(u^2/4 + v^2/48)  [Cauchy-Schwarz]
+  max(6beta - alpha  (appears in M1 factor alpha+1-6beta)) = 1 = 1.00000000000
+  max(-6beta - alpha (appears in M2 factor alpha+1+6beta)) = 1 = 1.00000000000
+  max(2alpha         (appears in 1-2alpha)) = 1 = 1.00000000000
+  max(2alpha+12beta  (trace test M1)) = 2 = 2.00000000000
+  max(4alpha         (trace test M3)) = 2 = 2.00000000000
+
+Exact solution of {g_k = 0} & ellipse:
+  M1: [{alpha: -1/4, beta: 1/8}, {alpha: 1/2, beta: 0}]
+  M2: [{alpha: -1/4, beta: -1/8}, {alpha: 1/2, beta: 0}]
+  M3: [{alpha: -1/4, beta: -1/8}, {alpha: -1/4, beta: 1/8}]
+  union of contact points (alpha,beta): [(-1/4, -1/8), (-1/4, 1/8), (1/2, 0)]
+  in (a,b) = sqrt6*(alpha,beta):
+     a = -sqrt(6)/4, b = -sqrt(6)/8   e = (-sqrt(6)/6, sqrt(6)/3, -sqrt(6)/6)   sqrt6*e = (-1,2,-1)
+     a = -sqrt(6)/4, b = sqrt(6)/8   e = (sqrt(6)/3, -sqrt(6)/6, -sqrt(6)/6)   sqrt6*e = (2,-1,-1)
+     a = sqrt(6)/2, b = 0   e = (-sqrt(6)/6, -sqrt(6)/6, sqrt(6)/3)   sqrt6*e = (-1,-1,2)
+
+C7: full spectrum of A at each contact point, and which blocks reach lambda*
+  (a,b) = (sqrt(6)/2, 0)
+    spectrum = {'5*sqrt(6)/2': 2, '0': 2, '-3*sqrt(6)/2': 2, '-2*sqrt(6)': 1}
+    top = 5*sqrt(6)/2 = 6.12372435695794525;  equals lambda*? True;  multiplicity = 2
+    M1 eigs = {'5*sqrt(6)/2': 1, '-3*sqrt(6)/2': 1}  -> reaches lambda* with mult 1
+    M2 eigs = {'5*sqrt(6)/2': 1, '-3*sqrt(6)/2': 1}  -> reaches lambda* with mult 1
+    M3 eigs = {'0': 1, '-2*sqrt(6)': 1}  -> reaches lambda* with mult 0
+    A * asym(v2,v-2) = [[0, 0, 0, 0, 0, 0, 0]]  (claim: zero eigenvector)
+  (a,b) = (-sqrt(6)/4, sqrt(6)/8)
+    spectrum = {'5*sqrt(6)/2': 2, '-2*sqrt(6)': 1, '-3*sqrt(6)/2': 2, '0': 2}
+    top = 5*sqrt(6)/2 = 6.12372435695794525;  equals lambda*? True;  multiplicity = 2
+    M1 eigs = {'-3*sqrt(6)/2': 1, '5*sqrt(6)/2': 1}  -> reaches lambda* with mult 1
+    M2 eigs = {'-2*sqrt(6)': 1, '0': 1}  -> reaches lambda* with mult 0
+    M3 eigs = {'-3*sqrt(6)/2': 1, '5*sqrt(6)/2': 1}  -> reaches lambda* with mult 1
+    A * asym(v2,v-2) = [[0, 0, 0, 0, 0, 0, 0]]  (claim: zero eigenvector)
+  (a,b) = (-sqrt(6)/4, -sqrt(6)/8)
+    spectrum = {'5*sqrt(6)/2': 2, '-2*sqrt(6)': 1, '-3*sqrt(6)/2': 2, '0': 2}
+    top = 5*sqrt(6)/2 = 6.12372435695794525;  equals lambda*? True;  multiplicity = 2
+    M1 eigs = {'-2*sqrt(6)': 1, '0': 1}  -> reaches lambda* with mult 0
+    M2 eigs = {'-3*sqrt(6)/2': 1, '5*sqrt(6)/2': 1}  -> reaches lambda* with mult 1
+    M3 eigs = {'-3*sqrt(6)/2': 1, '5*sqrt(6)/2': 1}  -> reaches lambda* with mult 1
+    A * asym(v2,v-2) = [[0, 0, 0, 0, 0, 0, 0]]  (claim: zero eigenvector)

@@ -1,0 +1,35 @@
+||[Jx,Jy] - i Jz||                 = 1.554e-15
+||[Jy,Jz] - i Jx||                 = 0.000e+00
+||J^2 - 12 I||                     = 1.776e-15
+hermiticity max err                = 0.000e+00
+||D(n,2pi) - I||                   = 2.547e-15
+D_z diagonal exp(-i m th) err      = 0.000e+00
+D_z(a)D_z(b)=D_z(a+b) err          = 1.570e-16
+unitarity of D                     = 8.882e-16
+Theta antilinear check             = 0.000e+00
+<Theta u,Theta w> - conj<u,w>      = 3.140e-16
+ITEM 0: ||Theta(Theta u) - u||     = 0.000e+00  -> Theta^2 = +1
+ITEM 0 exact: Theta^2 u - u        = Matrix([[0, 0, 0, 0, 0, 0, 0]])
+||Theta(Du) - D(Theta u)||         = 4.279e-15
+  Theta x Theta^-1 + x err       = 8.882e-16
+  Theta y Theta^-1 + y err       = 4.578e-16
+  Theta z Theta^-1 + z err       = 0.000e+00
+CS anchor <33;33|66>               = 1   (must be +1)
+ITEM 0: <33;3-3|60>                = sqrt(231)/462 = sqrt(231)/462 = 0.03289758474798844941919642
+          its square               = 1/924
+   textbook stretched formula      = sqrt(231)/462 ; difference = 0
+CG matrix shape (49, 49), ||M M^T - I||inf = 0
+rhat6 phase invariance             = 0.000e+00
+rhat6 scale invariance (deg 0)     = 2.776e-17
+rhat6 rotation invariance (40 rot) = 3.608e-16
+rhat6 real, imag part of ||rho||^2 = 0 by construction
+sum rule  sum_J||rho_J||^2/||u||^4 = 1.000000000000000  (must be 1)
+   -> rhat6 is the J=6 weight, so 0 <= rhat6 <= 1 identically
+Nbar covariance max err (20 rot)   = 9.948e-14
+f-vector covariance max err        = 3.109e-14
+Tr Nbar / ||u||^2 (must be 12)     = 12.000000000000
+Theta v3 (should be v_-3)          = [0. 0. 0. 0. 0. 0. 1.]
+rhat6(v3) num                      = 0.001082251082251082
+rhat6(v3) exact                    = 1/924
+rhat6((v3+v-3)/sqrt2) exact        = 463/924
+   as float                        = 0.5010822510822510822510823

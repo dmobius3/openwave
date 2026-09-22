@@ -1,0 +1,34 @@
+exact ||Theta u||^2 - ||u||^2 = 0
+  -> |<Theta u, u>| <= ||u||^2 (Cauchy-Schwarz), i.e. |a00|^2 <= ||u||^4/7. EXACT.
+
+The plane span{v3, v-3} (this family appears in NO claim):
+  rhat6(alpha v3 + beta v-3) = (Abs(alpha*conjugate(beta))**2 + Abs(beta*conjugate(alpha))**2 + Abs(alpha*conjugate(alpha) + beta*conjugate(beta))**2/924)/(Abs(alpha)**2 + Abs(beta)**2)**2
+  minus  [2|a|^2|b|^2 + (|a|^2+|b|^2)^2/924]/(|a|^2+|b|^2)^2 = (-Abs(alpha)**4 - Abs(beta)**4 + 924*Abs(alpha*conjugate(beta))**2 - 1850*Abs(alpha**2*beta**2) + 924*Abs(beta*conjugate(alpha))**2 + Abs(alpha*conjugate(alpha) + beta*conjugate(beta))**2)/(924*(Abs(alpha)**4 + Abs(beta)**4 + 2*Abs(alpha**2*beta**2)))
+  Nbar on that plane (unit u) = [[3*(alpha*conjugate(alpha) + beta*conjugate(beta))/(2*(Abs(alpha)**2 + Abs(beta)**2)), 0, 0], [0, 3*(alpha*conjugate(alpha) + beta*conjugate(beta))/(2*(Abs(alpha)**2 + Abs(beta)**2)), 0], [0, 0, 9*(alpha*conjugate(alpha) + beta*conjugate(beta))/(Abs(alpha)**2 + Abs(beta)**2)]]
+  Tr Nbar^2 (unit u)          = 171*(alpha*conjugate(alpha) + beta*conjugate(beta))**2/(2*(Abs(alpha)**2 + Abs(beta)**2)**2)
+  => EVERY state in span{v3,v-3} saturates C4's bound Tr Nbar^2 = 171/2, while rhat6
+     sweeps the whole interval [1/924, 463/924] across that same plane.
+     This is exactly the trap the brief warns about, made concrete.
+  alpha=1,beta=0 -> 1/924; alpha=beta=1 -> 463/924; alpha=1,beta=sp.I -> 463/924; alpha=1,beta=1/2 -> 7417/23100
+
+MIN certificate, exact step: every quadric from V0+V2+V4 vanishes on the cone of
+perfect 6th powers, parametrized by c_m = sqrt(binom(6,3+m)) x^{3+m} y^{3-m}.
+  the parametrized cone reproduces the rotation orbit of v3 (1-|overlap|) : 2.220e-16
+  all 15 quadrics vanish identically on the cone: True
+  number of V6 quadrics NOT vanishing on the cone: 13 of 13
+  restriction of the quadric a_i a_j to the cone is x^{i+j} y^{12-i-j}; i+j covers
+  0..12, so the restriction map onto degree-12 binary forms is ONTO, its kernel has
+  dimension 28 - 13 = 15.  The 15 quadrics above are independent and lie in that
+  kernel, hence they SPAN it, hence they cut out exactly what all quadrics through
+  the cone cut out, which includes every 2x2 Hankel minor a_i a_j - a_k a_l.
+  Rank<=1 Hankel => a_k = a_0 t^k, or a_0=..=a_5=0; both are perfect 6th powers.
+
+Exact cross-check: each Hankel minor, written in the c-basis, is a quadric that
+vanishes on the cone (by construction) -- verify symbolically on the parametrization:
+  Hankel minors vanishing on the cone: 91 of 91 (failures: 0)
+
+Exact check of the vector-operator relation D(z,t)^dag f_i D(z,t) = R(z,t)_ij f_j
+  z-rotations: [True, False, True]
+  (a z-rotation plus the su(2) commutators generate SO(3); the relation is the
+   standard vector-operator identity, and it was also checked numerically to 1e-13
+   for 20 random axes in s0_instrument.py)

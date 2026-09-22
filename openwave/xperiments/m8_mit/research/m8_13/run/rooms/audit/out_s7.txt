@@ -1,0 +1,65 @@
+C4 global form: maximize Tr Nbar^2 over the unit sphere (1500 starts)
+  max Tr Nbar^2 found = 85.50000000000013   (171/2 = 85.5);  excess = 1.279e-13
+  #(within 1e-8 of 85.5) = 1496 of 1500
+  any value above 85.5 + 1e-9 ? False   (max over all starts = np.float64(85.50000000000013))
+  Tr Nbar - 12 max deviation : 5.329e-15  -> Tr Nbar^2 = 48 + ||Nbar0||_F^2, so the claim is ||Nbar0||_F^2 <= 75/2 i.e. ||Nbar0||_F <= 15/sqrt6
+  48 + (15/sqrt6)^2 = 171/2 = 171/2  -> consistent
+  rhat6 values on the Tr Nbar^2 = 171/2 saturating set: min np.float64(0.0010822510822511464), max np.float64(0.5010822510822507), distinct-ish 44
+  -> the C4 bound is saturated by a set on which rhat6 is NOT constant; saturating C4
+     is necessary but far from sufficient for either extremum.
+
+Convention probes for C5/C6
+  (i) reading 'e1 - e2 = 4b' as 'e2 - e1 = 4b' is exactly b -> -b.
+      The ellipse (2/3)a^2 + 8b^2 = 1 is invariant under b -> -b, and the claimed
+      contact set {(sqrt6/2,0), (-sqrt6/4, sqrt6/8), (-sqrt6/4,-sqrt6/8)} is invariant
+      as a SET under b -> -b (it swaps the last two).  M1 and M2 swap.
+      => the answer to C6 is unchanged; only the labels M1/M2 swap.
+  (ii) 'e3 = 2a/3' pins the DISTINGUISHED axis to z.  Putting it on x or y is a
+      relabelling of axes; the contact set is the full set of permutations of
+      sqrt6*e = (2,-1,-1), which is permutation-invariant, so again unchanged.
+  check: (e1,e2,e3) at (a,b)=(sqrt6/2,0) -> [-1, -1, 2] (times 1/sqrt6)
+  check: at b -> -b, (a,b)=(-sqrt6/4,-sqrt6/8) -> [-1, 2, -1]
+  (iii) the 'M2 = M1 at -b' wording: M2 as a matrix in the basis
+      (asym(v3,v-3), asym(v1,v-1)) is [[5a, +sqrt60 b],[+sqrt60 b, -3a-12b]], which is
+      M1(-b) conjugated by diag(1,-1).  Same characteristic polynomial, so every
+      eigenvalue statement in C6/C7 is untouched; only the literal matrix differs,
+      and flipping the sign of one basis vector removes even that.
+
+Critical values of rhat6 found by the scan, identified as exact rationals
+  MAX run: np.float64(0.0010822511)  ~ 1/924 = 1/924 (|diff| = 1.77e-11);  |f|^2 = 9.000000, TrNbar^2 = 85.500000, |a00|^2 = 0.000000
+  MAX run: np.float64(0.038961039)  ~ 36/924 = 3/77 (|diff| = 3.90e-11);  |f|^2 = 4.000000, TrNbar^2 = 48.000000, |a00|^2 = 0.000000
+  MAX run: np.float64(0.2435064935)  ~ 225/924 = 75/308 (|diff| = 6.49e-12);  |f|^2 = 1.000000, TrNbar^2 = 61.500000, |a00|^2 = 0.000000
+  MAX run: np.float64(0.2571428571)  ~ 238/924 = 17/66 (|diff| = 4.33e-04);  |f|^2 = 0.160000, TrNbar^2 = 56.640000, |a00|^2 = 0.000000
+  MAX run: np.float64(0.3116883117)  ~ 288/924 = 24/77 (|diff| = 1.17e-11);  |f|^2 = 0.000000, TrNbar^2 = 48.000000, |a00|^2 = 0.142857
+  MAX run: np.float64(0.4329004329)  ~ 400/924 = 100/231 (|diff| = 4.33e-13);  |f|^2 = 0.000000, TrNbar^2 = 72.000000, |a00|^2 = 0.142857
+  MAX run: np.float64(0.5010822511)  ~ 463/924 = 463/924 (|diff| = 1.77e-11);  |f|^2 = 0.000000, TrNbar^2 = 85.500000, |a00|^2 = 0.142857
+  MIN run: np.float64(0.0010822511)  ~ 1/924 = 1/924 (|diff| = 1.77e-11);  |f|^2 = 9.000000, TrNbar^2 = 85.500000, |a00|^2 = 0.000000
+  MIN run: np.float64(0.038961039)  ~ 36/924 = 3/77 (|diff| = 3.90e-11);  |f|^2 = 4.000000, TrNbar^2 = 48.000000, |a00|^2 = 0.000000
+  MIN run: np.float64(0.2435064935)  ~ 225/924 = 75/308 (|diff| = 6.49e-12);  |f|^2 = 1.000000, TrNbar^2 = 61.500000, |a00|^2 = 0.000000
+  MIN run: np.float64(0.4329004329)  ~ 400/924 = 100/231 (|diff| = 4.33e-13);  |f|^2 = 0.000000, TrNbar^2 = 72.000000, |a00|^2 = 0.142857
+  exact values at simple vectors:
+    rhat6(v3) = 1/924 = 1/924 = 0.00108225108225108225
+    rhat6(v2) = 3/77 = 36/924 = 0.0389610389610389610
+    rhat6(v1) = 75/308 = 225/924 = 0.243506493506493506
+    rhat6(v0) = 100/231 = 400/924 = 0.432900432900432900
+    rhat6((v3+v-3)/r2) = 463/924 = 463/924 = 0.501082251082251082
+    rhat6((v2+v-2)/r2) = 24/77 = 288/924 = 0.311688311688311688
+    rhat6((v1+v-1)/r2) = 145/308 = 435/924 = 0.470779220779220779
+    rhat6((v3+v-3 i)/r2) = 463/924 = 463/924 = 0.501082251082251082
+
+Independent 50-digit evaluation (mpmath) of rhat6 at the two extremizers
+  cat  : 0.5010822510822510822510822510822510822511
+  463/924 = 0.5010822510822510822510822510822510822511
+  diff = 1.336382355e-51
+  coh  : 0.001082251082251082251082251082251082251082
+  1/924   = 0.001082251082251082251082251082251082251082
+  diff = 0.0
+  rotated cat (gamma=1/3): 1.336382355e-51
+
+Hessian of rhat6 (restricted to the unit sphere) at the two extremizers
+  cat / MAX: eigenvalues = [-4.      -2.09091 -2.0303  -2.0303  -1.93939 -1.93939 -1.36364 -0.90909
+ -0.90909 -0.      -0.      -0.       0.       0.     ]
+     zero modes = 5; expected 1 (radial) + 4 (orbit) = 5; nonzero eigenvalue signs = [np.int64(-1)]
+  v3 / MIN: eigenvalues = [-0.       0.       0.       0.       0.18182  0.18182  0.27273  0.27273
+  0.9697   0.9697   1.9697   1.9697   4.       4.     ]
+     zero modes = 4; expected 1 (radial) + 3 (orbit) = 4; nonzero eigenvalue signs = [np.int64(1)]

@@ -1,0 +1,113 @@
+========================================================================
+0. CONVENTIONS
+========================================================================
+PASS  0.1 <3 3; 3 3 | 6 6> = +1 (Condon-Shortley, as the worklist fixes it)
+PASS  0.2 Theta^2 = identity (integer spin)
+PASS  0.3 <3 3; 3 -3 | 6 0> = 1/(2 sqrt(231))   = sqrt(231)/462
+
+========================================================================
+1. THE INVARIANT AND ITS WEIGHT-STATE VALUES
+========================================================================
+PASS  1.1 r6 on v3, v2, v1, v0 = 1, 36, 225, 400 over 924   ['1/924', '3/77', '75/308', '100/231']
+PASS  1.2 r6 at the hexagon (v3+v-3)/sqrt(2) = 463/924
+PASS  1.3 r6 at the coherent state v3 = 1/924
+PASS  1.4a r6 exactly invariant under R_z(2pi/7)   r6 = -100892960*sqrt(15)/19069826193 - 2250080*sqrt(2)/577873521 - 2148160*sqrt(30)/6356608731 + 7404161413339/40046635005300
+PASS  1.4b r6 exactly invariant under R_y(pi): v_m -> (-1)^(3-m) v_{-m}
+PASS  1.5 r6 exactly invariant under a global phase e^(i pi/5)
+PASS  1.6 r6 exactly homogeneous of degree 0 (scale by 3)
+ARM   1.A3 a non-rotation perturbation of the identity changes r6
+PASS  1.4c r6 invariant under a generic-axis rotation, at 30 dps (tol 1e-22) and again at 50 dps (tol 1e-40): the exactness rule's second precision
+PASS  1.7 the mpmath route reproduces the exact value of r6 to 40 digits
+DEAD  1.A0 flip <33;33|66> alone  (EXPECTED DEAD: Q=6 is a single term)   shown dead deliberately; the live arm is 1.A1
+ARM   1.A1 flip <33;3-3|60> (Q=0 carries seven terms)   perturbed r6(hex) = 1/2
+DEAD  1.A2 drop Theta's (-1)^(3-m) phase, tested AT THE HEXAGON  (EXPECTED DEAD: the phase is +1 at both m = +-3, so the hexagon cannot see it)   shown dead deliberately; the live arm is 1.A4
+ARM   1.A4 drop Theta's (-1)^(3-m) phase, tested on a generic vector   perturbed r6 = 2054080*sqrt(30)/19069826193 + 8177120*sqrt(2)/2118869577 + 37903264*sqrt(15)/6356608731 + 12320321691739/40046635005300
+
+========================================================================
+2. THE NEMATIC OPERATOR AND ITS BLOCKS
+========================================================================
+PASS  2.1 e traceless
+PASS  2.2 |e|^2 - 1 is the stated ellipse (2/3)a^2 + 8b^2 = 1
+PASS  2.3 e1 fx^2 + e2 fy^2 + e3 fz^2 == a(fz^2 - 4) + b(f+^2 + f-^2), as 7x7
+PASS  2.4 charpoly = lam * det(M1-lam) det(M2-lam) det(M3-lam)  (zero eigenvalue + three 2x2)
+PASS  2.5 M2 is M1 at -b
+PASS  2.6 the ellipse is even in b
+ARM   2.A1 perturb the operator by (1/50) fx^2: charpoly no longer factors into the blocks
+ARM   2.A2 sqrt(60) -> sqrt(61) in M1: factorization fails
+
+========================================================================
+3. THE BOUND lam_max <= 15/sqrt(6), AND ITS EQUALITY SET, EXACTLY
+========================================================================
+PASS  3.1 M3: (15/sqrt6 + 2a)^2 - (30 - 16a^2) == 20 (a + sqrt6/4)^2
+PASS  3.2 M1: (a^2+6ab+24b^2)^2 - (3/2)(a+6b)^2 N^2 == 36 b^2 (a+2b)^2
+PASS  3.3 M1: a^2 + 6ab + 24b^2 == (a+3b)^2 + 15b^2  (the a+6b<=0 branch's sign)
+ARM   3.A1 24b^2 -> 23b^2 in the sum of squares
+    equality points found:
+      (a, b) = (-sqrt(6)/4, -sqrt(6)/8)   reached by ['M2', 'M3']
+      (a, b) = (-sqrt(6)/4, sqrt(6)/8)   reached by ['M1', 'M3']
+      (a, b) = (sqrt(6)/2, 0)   reached by ['M1', 'M2']
+PASS  3.4 exactly three equality points on the ellipse   found 3
+PASS  3.5 they are (sqrt6/2, 0) and (-sqrt6/4, +-sqrt6/8)
+PASS  3.6 each is reached by exactly two blocks, in the stated pairing (D1)
+ARM   3.A2 bound 15/sqrt6 -> 14/sqrt6: the equality set changes
+ARM   3.A3 ellipse constant 1 -> 51/50: the equality set changes
+ARM   3.A4 sqrt(60) -> sqrt(61) in M1: the equality set changes
+PASS  3.7 branch a+6b<=0: RHS (a+3b)^2+15b^2 vanishes nowhere on the ellipse, so no equality point there   real solutions of RHS=0 on the ellipse: 0
+PASS  3.8 every M1 equality point has a+6b>0, so all of them live on the squared branch   a+6b = sqrt(6)/2; a+6b = sqrt(6)/2
+PASS  3.8b and every M2 equality point has a-6b>0, its mirror branch  (the point reached by M2 and M3 has a+6b<0, which is not a counterexample: a+6b>0 is M1's branch)   a-6b = sqrt(6)/2; a-6b = sqrt(6)/2
+PASS  3.8c M3's equality condition 20(a+sqrt6/4)^2 = 0 pins a = -sqrt6/4, and both of its points have it
+PASS  3.9 [corroboration] 200001-point sweep of the closed ellipse never exceeds 15/sqrt6   max excess 0.000e+00
+PASS  3.10 [corroboration] the sweep touches the bound in exactly three places   contiguous near-bound groups (wrap merged): 3
+ARM   3.A5 sweep arm: add (1/50) fx^2, i.e. shift a by 1/50 in the blocks -> the sweep must now exceed the bound
+
+========================================================================
+4. FROM THE EQUALITY POINT TO THE STATE
+========================================================================
+PASS  4.x top eigenvalue at (a,b)=(-sqrt(6)/4, -sqrt(6)/8) is 15/sqrt6, multiplicity 2   sqrt6*e = (-1, 2, -1), blocks ['M2', 'M3']
+PASS  4.x top eigenvalue at (a,b)=(-sqrt(6)/4, sqrt(6)/8) is 15/sqrt6, multiplicity 2   sqrt6*e = (2, -1, -1), blocks ['M1', 'M3']
+PASS  4.x top eigenvalue at (a,b)=(sqrt(6)/2, 0) is 15/sqrt6, multiplicity 2   sqrt6*e = (-1, -1, 2), blocks ['M1', 'M2']
+PASS  4.1 at sqrt6*e = (-1,-1,2) the top eigenspace is span{v3, v-3}
+PASS  4.2 the three points are the three permutations of (2,-1,-1)/sqrt6
+
+========================================================================
+5. ARITHMETIC, AND THE STEP-1 IDENTITY
+========================================================================
+PASS  5.1 -5/231 + 1/11 + 171/396 = 463/924
+PASS  5.2 48 + 225/6 = 171/2
+PASS  5.3 (15/sqrt6)^2 = 225/6
+PASS  5.4 the four invariants at v3, v2, v1, v0 have determinant 180/7 (a basis)   det = 180/7
+    fitted: r6 = -5/231 + (-1/22)|f|^2 + (7/11)|a00|^2 + (1/198)TrN^2
+PASS  5.5 the fitted coefficients are (-5/231, -1/22, 7/11, 1/198)
+PASS  5.6 the identity holds at 5 exact vectors off the weight states
+ARM   5.A1 perturb the constant coefficient by 1/1000: the identity fails off the weight states
+PASS  5.7 at the hexagon: |f|^2 = 0, |a00|^2 = 1/7, TrN^2 = 171/2   ['0', '1/7', '171/2']
+PASS  5.8 Cauchy-Schwarz ceiling |a00|^2 <= 1/7 is met at the hexagon
+
+========================================================================
+6. CORROBORATION ONLY: a global search over the unit sphere of C^7
+========================================================================
+    400 restarts: max 0.501082251037  (463/924 = 0.501082251082)
+                  min 0.001082251138  (1/924   = 0.001082251082)
+PASS  6.1 [corroboration] no restart exceeds 463/924
+PASS  6.2 [corroboration] no restart falls below 1/924
+PASS  6.3 [corroboration] both bounds are approached
+    A search rejects candidates.  It establishes neither extremum nor completeness.
+
+========================================================================
+7. STEP 4: FROM THE THREE EQUALITY CONDITIONS TO ONE ORBIT
+========================================================================
+PASS  7.1 fx^2 + fy^2 + fz^2 = 12 I, so TrN = 12 for every unit u
+PASS  7.2 TrN = 12 on a generic vector
+PASS  7.3 TrN^2 = 48 + ||Q||^2 with Q = N - 4I traceless
+PASS  7.4 Tr(N E) = <u, A_E u> for a traceless symmetric E  (the duality step 3d uses)
+PASS  7.5 every u in span{v3, v-3} has TrN^2 = 171/2, the equality value   TrN^2 = 171/2
+PASS  7.6 on that span <f> = 3(|a|^2 - |b|^2) n, so |f|^2 = 9(|a|^2-|b|^2)^2   |f|^2 = 9*(alpha**2 - beta**2)**2/(alpha**2 + beta**2)**2
+PASS  7.7 on that span |a00|^2 = 4|a|^2|b|^2/7 (unit u)   |a00|^2 = 4*alpha**2*beta**2/(7*(alpha**2 + beta**2)**2)
+PASS  7.8 so |f|^2 = 0 forces |a| = |b|, AND |a00|^2 = 1/7 forces it too: either condition alone closes the span
+PASS  7.9 r6 on the span, as a function of t = |alpha|^2, peaks only at t = 1/2   r6(t) = -2*t**2 + 2*t + 1/924
+PASS  7.10 the relative phase is a rotation about n: R_z(chi) shifts it by 6 chi, so one orbit
+ARM   7.A1 leaving the span (a v2 component of 1/10) drops TrN^2 strictly below 171/2   TrN^2 = 1441/17
+ARM   7.A2 unequal weights on the span (t = 1/3) fall strictly below 463/924   r6(1/3) = 1235/2772
+
+========================================================================
+69 passed, 0 failed, 2 dead arms (0 unexpected)

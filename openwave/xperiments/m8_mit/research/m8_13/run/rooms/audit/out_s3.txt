@@ -1,0 +1,20 @@
+B_Q reproduces rho_Q            : 4.441e-16
+<U,H U> = rhat6*||u||^4 max err : 2.132e-14
+Sym^2 dim                       : 28
+||Hs - Hs^dagger||              : 0.000e+00
+
+eigenvalues of H on Sym^2 (times 924):
+   value = np.float64(0.001082251082251089)   x924 = np.float64(1.0000000000000062)   multiplicity = 13
+   value = np.float64(0.08441558441558446)   x924 = np.float64(78.00000000000004)   multiplicity = 9
+   value = np.float64(0.773809523809524)   x924 = np.float64(715.0000000000001)   multiplicity = 5
+   value = np.float64(1.8571428571428574)   x924 = np.float64(1716.0000000000002)   multiplicity = 1
+lambda_min = np.float64(0.0010822510822510395),  lambda_max = np.float64(1.8571428571428574)
+463/924    = 0.5010822510822511
+1/924      = 0.0010822510822510823
+lambda_max - 463/924 = 1.356e+00    lambda_min - 1/924 = -4.272e-17
+
+exact h_K by evaluating the form on the highest-weight vector of each V_K
+  h_0 = 13/7 = 1716/924 = 1.8571428571428571429   (mult 1)
+  h_2 = 65/84 = 715/924 = 0.77380952380952380952   (mult 5)
+  h_4 = 13/154 = 78/924 = 0.084415584415584415584   (mult 9)
+  h_6 = 1/924 = 1/924 = 0.0010822510822510822511   (mult 13)
