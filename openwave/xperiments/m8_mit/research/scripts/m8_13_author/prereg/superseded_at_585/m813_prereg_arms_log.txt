@@ -1,0 +1,56 @@
+parent: GREEN
+  1 caught     an em-dash in the task doc
+  2 caught     a required heading renamed
+  3 caught     a first person in the prose
+  4 caught     U2's pass condition emptied
+  5 caught     the frozen maximum altered
+  6 caught     an equality point moved
+  7 caught     the block membership swapped
+  8 caught     U2's equality-set part dropped
+  9 caught     U3's rule weakened
+ 10 caught     N2's fail condition reverted to a verdict
+ 11 caught     N2's scale-misapplication record dropped
+ 12 caught     N2 blessing plain ESTABLISHED again
+ 13 caught     written-out derivations allowed to pass as ESTABLISHED
+ 14 caught     the file count wrong again
+ 15 caught     U2 crediting the text alone again
+ 16 caught     the supplied part dropped from G2's status
+ 17 caught     the pre-registered expectation dropped
+ 18 caught     the controls heading reverted
+ 19 caught     strict GAP dropped from the scale
+ 20 caught     the online fallback weakened
+ 21 caught     N1's completeness requirement dropped
+ 22 caught     the false any-single-case sentence restored
+ 23 caught     a hash in the doc that matches no file, the author's own earlier slip
+ 24 caught     a disclosure count the log does not carry
+ 25 caught     the check changed while its green log stays stale
+ 26 caught     the log changed while the check stays intact
+ 27 caught     an ordinary room input deleted
+ 28 caught     the method-transfer instruction restored
+ 29 caught     the supplied label dropped from the scale
+ 30 caught     the posture made optional
+ 31 caught     the public exposure of the argument denied
+ 32 caught     the rerun requirement dropped
+ 33 caught     the repository-exclusion fallback restored
+ 34 caught     the trigger narrowed to one repository
+ 35 caught     an exclusion fallback added in another sentence
+ 36 caught     the withholding dropped
+ 37 caught     the frozen ellipse altered
+ 38 caught     a shape leaked into the worklist
+ 39 caught     a count leaked into the worklist
+ 40 caught     the setup altered from M8.12
+ 41 caught     the completeness request dropped
+ 42 caught     the zeros rule dropped
+ 43 caught     part 3c dropped from stage 2
+ 44 caught     the expected N2 verdict leaked
+ 45 caught     the argument-not-conclusion rule dropped
+ 46 caught     the variant restored to the full tracing
+ 47 caught     the variant also altering the third block's bound
+ 48 caught     the landed proof edited
+ 49 caught     the author-side check failing
+ 50 caught     an unescaped pipe in a table code span
+ 51 caught     the gate inventory deleted
+ 52 caught     a line cut from the pin, to match a deleted gate
+ 53 caught     a gate renamed inside its parentheses
+restored: GREEN
+53 of 53 arms caught
