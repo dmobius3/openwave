@@ -356,3 +356,5 @@ neither, since the whole plane `span{v₃, v₋₃}` saturates it while `r̂₆`
 [maintainer instruments](../m8_13/run/scripts/), [roadmap](../m8_roadmap.md),
 [briefing](../../__M8_model_briefing.md), [canonical](../m8_theory_canonical.md),
 [packet as run](../m8_13/).
+
+**Note, 2026-09-22, after the run.** The adjudication's reading of `check_s3_maximum.py` is accepted, and its findings were confirmed here line by line: the inert line 61, the two checks weaker than their labels at lines 86 and 87, the 27 call sites behind the 30 executed checks, and the 192 of 20001 sweep points excluded within 0.01 rad of an axis. Because both the note and the checker are pinned by hash, the correction is entered beside them rather than into them, at [`S0_S3_MAXIMUM_CORRECTION.md`](../scripts/m8_12_author/S0_S3_MAXIMUM_CORRECTION.md), which also records what the audit supplied and the two refinements the rooms raised. The withheld instruments land at [`research/scripts/m8_13_author/`](../scripts/m8_13_author/), with the task doc bytes they were qualified against, since #585 was squash-merged and this document has moved since.
