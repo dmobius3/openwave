@@ -250,6 +250,15 @@ Two findings it raised that the claims did not mention, both verified here:
 Reproduce: `cd run/scripts && python3 check_maint.py && python3 poly_identity.py
 && python3 verify_room.py` on sympy 1.14.0, numpy 2.5.3, mpmath 1.3.0.
 
+**The rooms' own scripts** are published verbatim under
+[`run/rooms/`](../m8_13/run/rooms/) (`stage1/`, `stage2a/`, `stage2b/`, `audit/`),
+so every script a return cites by name resolves. Their `.npy` arrays are not
+tracked; regenerate them first: `stage1/s03_numeric.py` before `s06` and `s10`,
+and `audit/s1_scan.py` before `s5`, `s7` and `s10`. Those scans are seeded
+searches that the returns themselves label corroboration only, so a rerun
+corroborates and establishes nothing. The room's copy of the author's checker is
+not duplicated; it is the pinned file under `scripts/m8_12_author/`.
+
 ⚠️ **Two arms in `check_maint.py` are deliberately dead and labelled so.**
 Flipping `⟨3 3; 3 3 \| 6 6⟩` is invisible in `‖ρ₆‖²` because `Q = 6` carries a
 single term; dropping `Θ`'s `(−1)^{3−m}` phase is invisible **at the hexagon**,
@@ -305,3 +314,45 @@ on an independent toolchain.
 > repository's no-em-dash convention is not applied to them: editing a hashed
 > record to match a style rule would break the only thing that makes it a
 > record. The surrounding maintainer prose follows the convention.
+
+## TASK REVIEW (2026-09-22)
+
+Task Duration: 02:34 (from 10:11 to 12:45)
+Usage Cap Triggered: NO
+
+| Result | |
+|---|---|
+| ✅ | P1, P2, U1, U2, U3, N1 and N2 pass and D1 is recorded: G2's uniqueness clause is now an audited argument, with the supplied parts named |
+| ✅ | The auditor's stage-1 route shares no machinery with the author's and reaches the same maximum, minimum and both extremal sets |
+| ✅ | Ten graded parts, no GAP and no DEFECT; nine of ten match the maintainer's grading frozen before stage 2b existed, and on the tenth the maintainer concedes |
+| ✅ | Four independent derivations of the equality set agree on three points, and one shows `M₃` is tangent to the bound |
+| ✅ | The adversarial audit refuted nothing and closed both completeness claims by certificate, not by search |
+| ⚠️ | The author's checker has no exact gate behind the equality set, and its strictness sweep excludes the 192 points nearest the three equality directions |
+| ⚠️ | U2's 3c grade is entangled with the 2a grade, since the same room read a near-identical text twice |
+| ⚠️ | The auditor's stage-1 argument asserted one load-bearing sub-step; it found and proved it at 2b, and the maintainer's polynomial identity had closed the same ground before 2b ran |
+
+Issues: none blocking.
+
+Deviations from plan: the #585 amendment was written 31 minutes after the go and merged before any
+stage-2 file was handed over, so stage 2 ran in its two parts. The maintainer's own checking carried
+several defects, none in any room's output, each fixed before use; the two arms that cannot fire on
+their arena are kept in `check_maint.py`, labelled.
+
+Action needed: the author package, `m813_equality.py` with its log and the pre-registration's
+instruments, is now due; check it against the two pins from the #583 review and the three that #585
+superseded.
+
+### Findings
+
+The hexagon orbit is the only maximizer of `r̂₆` on the unit sphere of `V₃`, as an audited argument:
+an offline auditor reached it by its own route before seeing the author's, and the author's route
+holds at every step once the parts it leaves out are supplied, most substantially step 3d and the
+branch analysis of 3c. Saturating the nematic bound is necessary for both extrema and sufficient for
+neither, since the whole plane `span{v₃, v₋₃}` saturates it while `r̂₆` sweeps its full range there.
+
+### Research docs created/updated
+
+[Task doc](m8_13_task_details.md), [run record](../m8_13/run/), [rooms' scripts](../m8_13/run/rooms/),
+[maintainer instruments](../m8_13/run/scripts/), [roadmap](../m8_roadmap.md),
+[briefing](../../__M8_model_briefing.md), [canonical](../m8_theory_canonical.md),
+[packet as run](../m8_13/).

@@ -1,0 +1,36 @@
+MAX bound arithmetic (each input justified separately):
+  -5/231 - 0 + (7/11)(1/7) + (171/2)/198 = 463/924 = 463/924
+  equals 463/924 ? True
+  the coherent-state value -5/231 - 9/22 + 0 + (171/2)/198 = 1/924 = 1/924
+
+||Theta u|| = ||u|| max deviation over 500 random unit u : 3.331e-16
+  => |<Theta u,u>| <= 1 by Cauchy-Schwarz, so |a00|^2 <= 1/7, equality iff Theta u = lambda u
+  rephasing: if Theta u = lambda u with |lambda| = 1 then u' = e^{i phi} u has Theta u' = e^{-2 i phi} lambda u'; choose e^{2 i phi} = lambda to get Theta u' = u'.
+  spot check |<Theta u,u>| = 1 on the cat orbit : True
+
+Equality step: u must lie in the top eigenspace of A at (a,b) = (sqrt6/2, 0).
+  top eigenvalue 5*sqrt(6)/2 multiplicity 2; eigenvectors:
+     [[1, 0, 0, 0, 0, 0, 0]]
+     [[0, 0, 0, 0, 0, 0, 1]]
+  => the top eigenspace is span{v3, v-3}.
+  <f_z> for u = alpha v3 + beta v-3 : 3*alpha*conjugate(alpha) - 3*beta*conjugate(beta)
+  <f_x>, <f_y>                      : 0, 0  (identically zero: f_pm shift m by 1, 3 and -3 differ by 6)
+  Theta u                           : [[conjugate(beta), 0, 0, 0, 0, 0, conjugate(alpha)]]
+  Theta u = u  <=>  alpha = conj(beta) and beta = conj(alpha)
+  with |alpha| = |beta| (from <f_z>=0) and |alpha|^2+|beta|^2 = 1:
+     alpha = e^{i gamma}/sqrt2, beta = e^{-i gamma}/sqrt2
+  Theta(that) - itself              = [[0, 0, 0, 0, 0, 0, 0]]
+  rhat6 of that (exact, any gamma)  = 463/924
+  D_z(theta) v_m = e^{-i m theta} v_m, so D_z(-gamma/3) (v3+v-3)/sqrt2 = (e^{i gamma} v3 + e^{-i gamma} v-3)/sqrt2  -> in the rotation orbit.
+  numeric check of that rotation identity : 6.480e-16
+  cyclic axis permutation matrix det = +1 -> it IS in SO(3), so the three contact points are a single rotation orbit; WLOG one of them.
+
+MIN completeness: characterise {u : u (x) u lies in the V6 component}
+  dim of V0+V2+V4 inside Sym^2 : 15 (expect 15)
+  Hankel minors a_i a_j - a_k a_l (i+j=k+l) on 200 random coherent states: max |minor| = 1.603e-15
+  number of Hankel 2x2 minors generated : 91
+  rank of their span                    : 15 (expect 15)
+  rank of [V0+V2+V4 quadrics ; Hankel minors] = 15  -> the two 15-dim spaces COINCIDE if this is 15
+  rank<=1 Hankel => a_k = a_0 t^k (or a = (0,...,0,a6)) => the binary sextic is l^6
+  => u is a perfect 6th power => u is a coherent state (SU(2) is transitive on P^1).
+  independent solve of P_low(u x u)=0 from 600 random starts: 600 solutions found, worst 'distance to coherent orbit' = 1.554e-15

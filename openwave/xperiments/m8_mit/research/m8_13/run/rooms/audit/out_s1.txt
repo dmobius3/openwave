@@ -1,0 +1,23 @@
+--- MAX: 4000 starts ---
+best found            = np.float64(0.5010822510822516)
+463/924               = 0.5010822510822511
+1/924                 = 0.0010822510822510823
+best - target         = 4.441e-16
+distinct converged levels (7):
+    np.float64(0.0010822510822510823)   count=84
+    np.float64(0.038961038961038946)   count=77
+    np.float64(0.2435064935064936)   count=143
+    np.float64(0.2571428571428572)   count=63
+    np.float64(0.3116883116883116)   count=22
+    np.float64(0.43290043290043284)   count=77
+    np.float64(0.5010822510822512)   count=3534
+--- MIN: 4000 starts ---
+best found            = np.float64(0.0010822510822510794)
+463/924               = 0.5010822510822511
+1/924                 = 0.0010822510822510823
+best - target         = -2.819e-18
+distinct converged levels (4):
+    np.float64(0.001082251082251082)   count=3658
+    np.float64(0.03896103896103896)   count=211
+    np.float64(0.2435064935064935)   count=89
+    np.float64(0.43290043290043295)   count=42

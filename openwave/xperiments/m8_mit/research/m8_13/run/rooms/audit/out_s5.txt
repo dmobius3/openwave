@@ -1,0 +1,21 @@
+ARMING the orbit tests on points KNOWN to be in each orbit
+  canon_max on 200 random rotations+phases of the cat state : max = 1.110e-15
+  canon_min on 200 random rotations+phases of v3           : max = 1.332e-15
+  canon_max on v3 (outside the max orbit)                  : 9.688e-01
+  canon_max on (v3+v-3)/sqrt2 rotated? already 0; on v2+v-2: 6.250e-01
+  canon_min on the cat state (outside the min orbit)       : 1.000e+00
+  canon_min on (v3+v2)/sqrt2                               : 1.022e-01
+
+=== MAX: 3534 of 4000 converged points within 1e-9 of 0.5010822510822511
+    worst |value - target| = 4.441e-16
+    |f|^2    range [0.000e+00, 6.527e-16]
+    |a00|^2  range [0.142857142857, 0.142857142857]   1/7 = 0.142857142857
+    TrNbar^2 range [85.5000000000, 85.5000000000]   171/2 = 85.5
+    ORBIT TEST over ALL 3534: max gap = 8.083e-09, median = 2.917e-11, #(gap>1e-6) = 0
+
+=== MIN: 3658 of 4000 converged points within 1e-9 of 0.0010822510822510823
+    worst |value - target| = 3.036e-18
+    |f|^2    range [9.000e+00, 9.000e+00]
+    |a00|^2  range [0.000000000000, 0.000000000000]   1/7 = 0.142857142857
+    TrNbar^2 range [85.5000000000, 85.5000000000]   171/2 = 85.5
+    ORBIT TEST over ALL 3658: max gap = 2.442e-15, median = -4.441e-16, #(gap>1e-6) = 0
