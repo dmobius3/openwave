@@ -1,0 +1,79 @@
+(A) the recorded values, Section 5.8
+PASS   coherent v3, 1/924: ||rho_6||^2 = 0.0010822511
+PASS   zonal v0, 400/924: ||rho_6||^2 = 0.4329004329
+PASS   octahedron, 288/924: ||rho_6||^2 = 0.3116883117
+PASS   hexagon, 463/924: ||rho_6||^2 = 0.5010822511
+PASS   pyramid s=12/25, 9/35: ||rho_6||^2 = 0.2571428571
+PASS   prism z=sqrt(23/10), 200/903: ||rho_6||^2 = 0.2214839424
+PASS   octahedron in D3 chart z=i*sqrt(5/2), 24/77: ||rho_6||^2 = 0.3116883117
+PASS   arm: K=5 misses the table
+PASS   arm: u(x)u in place of u(x)Theta(u) misses the table
+PASS   pyramid line formula at s=0.1
+PASS   pyramid line formula at s=0.37
+PASS   pyramid line formula at s=0.8
+(B) pair-channel decomposition
+  c_F (F = 0, 2, 4, 6): ['13/7', '65/84', '13/154', '1/924']
+PASS   rational c_F reproduce ||rho_6||^2 on 40 fresh states (max residual 1.1e-16)
+PASS   arm: a perturbed c_2 fails
+(C) Husimi reading
+PASS   control: 13*int Q^2 = 1 at the coherent state (1.000000000000, Lieb bound attained)
+PASS   ||rho_6||^2 = 13*int Q(n)Q(-n) on 8 fresh states (max error 7.2e-16)
+PASS   arm: the plain second moment 13*int Q^2 fails off time reversal
+  coherent v3, 1/924: 13*int Q(n)Q(-n) = 0.0010822511, 13*int Q^2 = 1.0000000000
+  zonal v0, 400/924: 13*int Q(n)Q(-n) = 0.4329004329, 13*int Q^2 = 0.4329004329
+  octahedron, 288/924: 13*int Q(n)Q(-n) = 0.3116883117, 13*int Q^2 = 0.3116883117
+  hexagon, 463/924: 13*int Q(n)Q(-n) = 0.5010822511, 13*int Q^2 = 0.5010822511
+(D) Diener-Ho coordinates: E ~ alpha|Theta|^2 + beta sum|B_M|^2 + gamma <S>^2 + C, a_F - a_6 = sign(g) w6 (c_F - c_6)
+  g > 0: (a0-a6, a2-a6, a4-a6) ~ (245/132, 17/22, 1/12); alpha:beta:gamma ~ 8/33 : 1/11 : -1/132; beta/gamma = -12.0000 (Cr-line: -0.892)
+  g < 0: (a0-a6, a2-a6, a4-a6) ~ (-245/132, -17/22, -1/12); alpha:beta:gamma ~ -8/33 : -1/11 : 1/132; beta/gamma = -12.0000 (Cr-line: -0.892)
+ALL PASS
+(E) the Kawaguchi-Ueda form of r6
+PASS   TrN = f(f+1) = 12 on 60 random states (the review's constraint)
+PASS   r6 = -5/231 - |f|^2/22 + (7/11)|a00|^2 + TrN^2/198 on 60 random states (max residual 1.7e-16)
+PASS   arm: z = 1/200 in place of 1/198 fails
+  coherent   |f|^2 = 9.000000  |a00|^2 = 0.000000 (1/7 = 0.142857)  TrN^2 = 85.500000  r6 = 0.001082
+  hexagon    |f|^2 = 0.000000  |a00|^2 = 0.142857 (1/7 = 0.142857)  TrN^2 = 85.500000  r6 = 0.501082
+  octahedron |f|^2 = 0.000000  |a00|^2 = 0.142857 (1/7 = 0.142857)  TrN^2 = 48.000000  r6 = 0.311688
+  zonal      |f|^2 = 0.000000  |a00|^2 = 0.142857 (1/7 = 0.142857)  TrN^2 = 72.000000  r6 = 0.432900
+(F) the bounds, and r6 itself, by multi-start local optimization (300 starts each)
+PASS   max |a00|^2 found = 0.142857142857, not above 1/7
+PASS   max TrN^2 found = 85.500000000000, not above 171/2
+PASS   arm: the probe reaches the bound (it can find a maximum), within 1e-8
+PASS   max r6 found = 0.501082251082 = 463/924 (0.501082251082); maximizer has |f|^2=1.2e-16, |a00|^2=0.142857, TrN^2=85.500000
+PASS   min r6 found = 0.001082251082 = 1/924; minimizer has |f|^2 = 9.00000000 (coherent: 9)
+ALL PASS
+(L1) the invariant form, exactly
+PASS   the four invariants are independent at the weight states (det = 180/7)
+PASS   coefficients forced by the weight states: [-5/231, -1/22, 7/11, 1/198]
+PASS   weight state m=3: aid gives |f|^2, |a00|^2, TrN^2 = 9.000000, 0.000000, 85.500000; r6 = 1.000000/924
+PASS   weight state m=2: aid gives |f|^2, |a00|^2, TrN^2 = 4.000000, 0.000000, 48.000000; r6 = 36.000000/924
+PASS   weight state m=1: aid gives |f|^2, |a00|^2, TrN^2 = 1.000000, 0.000000, 61.500000; r6 = 225.000000/924
+PASS   weight state m=0: aid gives |f|^2, |a00|^2, TrN^2 = 0.000000, 0.142857, 72.000000; r6 = 400.000000/924
+(L2) the eigenvalue lemma, exactly
+PASS   e1 fx^2 + e2 fy^2 + e3 fz^2 = a(fz^2 - 4) + b(f+^2 + f-^2) on the traceless plane, a = 3e3/2, b = (e1-e2)/4
+PASS   constraint: e unit traceless  <=>  (2/3)a^2 + 8b^2 = 1
+PASS   spectrum of the 7x7 operator = spectra of M1, M2, M3 and a zero (characteristic polynomials agree)
+PASS   top eigenvalue of M1 is a + 6b + sqrt(16a^2 - 48ab + 96b^2)
+PASS   M3: (K + 2a)^2 - (30 - 16a^2) = 20 (a + sqrt(6)/4)^2
+PASS   M1: (a^2 + 6ab + 24b^2)^2 - (3/2)(a + 6b)^2 N^2 = 36 b^2 (a + 2b)^2
+PASS   arm: the same identity with 24b^2 -> 23b^2 fails
+PASS   K^2 N^2 = 25a^2 + 300b^2
+PASS   M2 has the spectrum of M1 at b -> -b (equal characteristic polynomials), and the constraint is even in b
+PASS   arm: M2 and M1 themselves have different spectra (the b -> -b step is needed)
+PASS   K - a - 6b > 0 on the ellipse: max(a + 6b) = sqrt((3/2) + 36/8) = sqrt(6) < 15/sqrt(6)
+PASS   K + 2a > 0 on the ellipse: K - 2 sqrt(3/2) = 9/sqrt(6)
+PASS   a^2 + 6ab + 24b^2 = (a + 3b)^2 + 15b^2 >= 0
+PASS   sweep of 20001 points: max lambda_max = 6.123724356958 <= 15/sqrt(6) = 6.123724356958
+PASS   equality at the three axis directions exactly
+PASS   strictly below away from them: max over points > 0.01 rad from an axis = 6.123492614
+PASS   arm: the same sweep on a perturbed operator (+0.02 fx^2) exceeds 15/sqrt(6)
+(L3) the equality case, on the computed objects
+PASS   hexagon attains all three extremes: |f|^2 = 3.8e-33, |a00|^2 = 0.142857142857, TrN^2 = 85.500000000000
+PASS   every u on span{v3, v-3} has TrN^2 = 171/2 (the equality set of the TrN^2 bound)
+PASS   on that span, r6 < 463/924 unless |alpha| = |beta|
+PASS   the value is 463/924: r6(hexagon) = 463.000000000000/924
+(L4) arithmetic the note quotes
+PASS   -5/231 + 1/11 + 171/396 = 463/924 = 463/924
+PASS   (15/sqrt(6))^2 = 75/2 = 225/6, and 48 + 225/6 = 171/2 = 171/2
+PASS   the M3 equality point is a = -√6/4, where 240 b^2 = 30 - 20 a^2 gives b^2 = 3/32
+ALL PASS

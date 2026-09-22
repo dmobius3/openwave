@@ -1,0 +1,189 @@
+C3 ray         representative 'v₂ + 2·v₋₁' is the vector the step-3 script used
+C3 ray         value, dim, signature and both indices match the log row exactly
+C3{v2,v-1}     restriction matches the step-2 log exactly
+C3{v2,v-1}     vertex matches, interior or endpoint as logged
+C4{v2,v-2}     restriction matches the step-2 log exactly
+C4{v2,v-2}     vertex matches, interior or endpoint as logged
+C4{v3,v-1}     restriction matches the step-2 log exactly
+C4{v3,v-1}     vertex matches, interior or endpoint as logged
+C5{v3,v-2}     restriction matches the step-2 log exactly
+C5{v3,v-2}     vertex matches, interior or endpoint as logged
+C6{v3,v-3}     restriction matches the step-2 log exactly
+C6{v3,v-3}     vertex matches, interior or endpoint as logged
+D2 confines the sequence to the classified orbits
+D2 ray         representative 'v₂ + i√()·v₀ + v₋₂' is the vector the step-3 script used
+D2 ray         value, dim, signature and both indices match the log row exactly
+D2 states the deferred indices are unknown
+D2{v2+v-2,v0}    chart critical set matches the logged one
+D2{v2+v-2,v0}    chart formula matches the step-2 log exactly
+D3{v3+v-3,v0}    chart critical set matches the logged one
+D3{v3+v-3,v0}    chart formula matches the step-2 log exactly
+G2 constant 'TrN̄² ≤ 171/2' is in the frozen proof
+G2 constant '|a₀₀|² ≤ 1/7' is in the frozen proof
+G2 constant '−5/231 − |f|²/22 + ()|a₀₀|² + TrN̄²/198' is in the frozen proof
+H2 scores after monic normalization
+L1 carries the agreed pass condition exactly, with nothing added or dropped
+M8.11 parent -104/55 reproduces in the step-3 log
+M8.11 parent -56/165 and -21/110 reproduces in the step-3 log
+M8.11 parent 8/11 reproduces in the step-3 log
+M8.11 parent 920/473 reproduces in the step-3 log
+N1 and the control log carry the same sum rule
+N1 and worklist item 11 name the same control point
+N1 freezes a residual at each of the four generators ()
+N1 names the matrix rather than the second variation, and says why they agree on the orbit
+N1 scores all six quantities and separates a mismatch from a control that cannot fail
+N1 states the control value, and the log measured it
+N1 states the tangential gradient norm
+P1 carries all eight parent values
+P1 keeps the other parents on D1, D3 and D4
+P1 sources the weight-state values to the paper Section 7.2
+P2 carries the agreed pass condition exactly, with nothing added or dropped
+all claim groups are present
+and the doc states 4 L_T as −224/165
+and the doc states 4 L_T as −42/55
+arm: a correction note carrying the wrong count is caught
+arm: a correction note that records the filed count rather than the live one is caught
+arm: a count of the answer is caught
+arm: a different control point in either file is caught
+arm: a dropped chart clause is caught
+arm: a fifth such space is not in the log
+arm: a firewall with the posture cut is caught
+arm: a frozen control value the log does not carry is caught
+arm: a loosened chart clause is caught
+arm: a miscounted step is caught
+arm: a mutated gradient norm is caught, even though the same surd appears again as a residual
+arm: a neighbouring surd would not match
+arm: a planted bare unstable is caught
+arm: a planted first person is caught
+arm: a planted leak is caught
+arm: a renamed heading is caught
+arm: a row claiming one as new is caught
+arm: a signature triple the log does not carry is caught
+arm: a wrong inventory size is caught
+arm: altering one copy of a parent value is caught
+arm: an altered bound is not in the frozen proof
+arm: an altered chart point is caught
+arm: an altered representative is caught
+arm: an altered restatement is caught
+arm: an altered restriction is caught
+arm: an altered vertex is caught
+arm: an audit set without L1 is caught
+arm: an unescaped pipe inside a table code span is caught
+arm: naming the hard pair in the worklist is caught
+arm: one altered field is caught
+arm: rewriting the filed row is caught, even with the correction intact
+arm: the allowance does not admit a value over that normalization
+arm: the earlier pass condition, which scored one residual by its sign, is caught
+arm: the earlier yes-or-no wording is caught
+arm: the old value 21/55 does not satisfy the bridge
+arm: the old wording, which normalized every projection, is caught
+arm: the pipe check sees a bare pipe in a code span
+arm: the retired inference is caught
+arm: the weaker two-classes wording is caught
+budget: inside the Section 12.2 cap of 8000 ()
+charpoly of C3 ray        : coefficients ['16471125', '9583200', '45776720', '23015168', '998400'] are in the step-3 log
+charpoly of D2 ray        : coefficients ['31944', '46948', '13530', '7125'] are in the step-3 log
+charpoly of coherent `v₃  : coefficients [] are in the step-3 log
+charpoly of hexagon       : coefficients [] are in the step-3 log
+charpoly of octahedron    : coefficients [] are in the step-3 log
+charpoly of prism         : coefficients ['473', '920', '473', '696', '1419', '560', '671187', '438944', '339200'] are in the step-3 log
+charpoly of pyramid       : coefficients ['104', '165', '1815', '1012', '3360'] are in the step-3 log
+charpoly of v₂            : coefficients [] are in the step-3 log
+charpoly of zonal `v₀     : coefficients ['100'] are in the step-3 log
+coherent v3    representative 'v₃' is the vector the step-3 script used
+coherent v3    value, dim, signature and both indices match the log row exactly
+disclosure carries the inventory, the correction and the deferred orbits
+each diagnostic is recorded, with no pass or fail column ()
+every claim row has a standing, a pass and a fail condition ()
+every logged orbit appears in the doc
+every numeral in the worklist is a reviewed one ()
+every required section heading is present ()
+every signature triple in the doc is a logged one ()
+firewall names every excluded source
+hexagon        representative 'v₃ + v₋₃' is the vector the step-3 script used
+hexagon        value, dim, signature and both indices match the log row exactly
+it names the items a search could reach
+line class 'C3 {v2,v-1}' is in the step-1 log
+line class 'C4 {v2,v-2}' is in the step-1 log
+line class 'C4 {v3,v-1}' is in the step-1 log
+line class 'C5 {v3,v-2}' is in the step-1 log
+line class 'C6 {v3,v-3}' is in the step-1 log
+line class 'D2 {v2+v-2,v0}' is in the step-1 log
+line class 'D3 {v3+v-3,v0}' is in the step-1 log
+no em-dash in the worklist, and a planted one is refused
+no em-dash, and a planted one is refused
+no first-person voice outside the code spans
+no frozen value, count, name or representative leaks into the worklist ()
+no monotonicity inference about the deferred orbits survives anywhere
+no row claims a weight-state value as new
+no unescaped pipe survives inside a table code span
+octahedron     representative 'v₂ + v₋₂' is the vector the step-3 script used
+octahedron     value, dim, signature and both indices match the log row exactly
+prism          representative 'v₃ + √()·v₀ + v₋₃' is the vector the step-3 script used
+prism          value, dim, signature and both indices match the log row exactly
+pyramid        representative '√12·v₃ + √13·v₋₂' is the vector the step-3 script used
+pyramid        value, dim, signature and both indices match the log row exactly
+step H: the doc reports 29 checks, and the log has 29 passing and 0 failing
+step L0: the doc reports 128 checks, and the log has 128 passing and 0 failing
+step L1: the doc reports 43 checks, and the log has 43 passing and 0 failing
+task doc: every code span in a table survives the render ()
+task doc: every table renders with a uniform column count ()
+the audit set includes L1: The audit grades L0, L1, L2, G1 and G2...
+the audit set includes L1: an adversarial audit follows, which al...
+the bridge closes in the sector with w6 = 21/52: ()H = -21/110
+the bridge closes in the sector with w6 = 28/39: ()H = -56/165
+the census table gives a representative for every orbit ()
+the census table in the doc has ten rows ()
+the control log is green, arms included
+the control log measured that same point
+the control script's check count is recorded truthfully
+the disclosure names the inventory size the inventory actually has ()
+the doc carries the parent value 8/11 exactly 2 time()
+the doc carries the parent value 920/473 exactly 2 time()
+the doc carries the parent value −104/55 exactly 2 time()
+the doc carries the parent value −21/110 exactly 1 time()
+the doc carries the parent value −56/165 exactly 1 time()
+the doc freezes five cyclic lines ()
+the doc freezes two dihedral lines ()
+the doc has a P1 row
+the doc restates 9 restrictions, and each is one the step-2 log printed
+the exposure table states what was visible per orbit
+the firewall states the network posture
+the four spaces of dimension at least 3 are the logged ones
+the frozen S0 maximum proof is unchanged
+the frozen proof closes at the hexagon value
+the gradient norm N1 states is the one s1_control.py measured
+the infinite chart point is named on both dihedral rows
+the residual N1 freezes at -i Jx u  is the one s1_control.py measured
+the residual N1 freezes at -i Jy u  is the one s1_control.py measured
+the residual N1 freezes at -i Jz u  is the one s1_control.py measured
+the residual N1 freezes at i u      is the one s1_control.py measured
+the seven line classes are the logged ones
+the short-form rule is stated, and no bare stable or unstable is used
+the six point classes are the logged ones
+the sources table names Section 7.2 and what it records
+the spaces of projective dimension at least 2 are the logged four
+the spectra table says the same
+the step-2 log carries both dihedral charts with their critical sets ()
+the step-2 log carries five cyclic quadratics with their vertices ()
+the step-3 log carries a census summary of ten orbits ()
+the worklist asks for arguments and for what would fail if omitted
+the worklist asks for the census without naming its size
+the worklist asks for the in-locus second variations, with the off-diagonal entries
+the worklist asks for the sector-scaled numbers
+the worklist carries the zeros rule
+the worklist defines the quartic, the tangent space and the transverse space by formula
+the worklist example vectors are generic ()
+the worklist forces the separation of same-stabilizer classes, without naming the pair
+the worklist gives D7 as an input, with both weights
+the worklist handles the tangent whose projection vanishes, rather than normalizing zero
+the worklist pins the Clebsch-Gordan phase convention
+v1             representative 'v₁' is the vector the step-3 script used
+v1             value, dim, signature and both indices match the log row exactly
+v2             representative 'v₂' is the vector the step-3 script used
+v2             value, dim, signature and both indices match the log row exactly
+worklist item 11 requests all six scored quantities, un-normalized, naming the matrix
+worklist: every code span in a table survives the render ()
+worklist: every table renders with a uniform column count ()
+zonal v0       representative 'v₀' is the vector the step-3 script used
+zonal v0       value, dim, signature and both indices match the log row exactly
