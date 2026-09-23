@@ -84,3 +84,9 @@ Every file in this folder is pinned by a published hash, so a `black` run, a lin
 ## Naming
 
 These files keep the `s1_` prefix of the author's working names rather than `m812_`. The filed task doc names `s1_L0.py`, `s1_L1.py`, `s1_H.py` and `s1_control.py` in its feasibility table, the posted hashes are for those names, and the scripts refer to one another by them, so renaming would break both the filed references and the pins. The folder carries the task id.
+
+## Dated note, 2026-09-22: after M8.13
+
+M8.13 audited the uniqueness argument this package carries ([#586](https://github.com/openwave-labs/openwave/pull/586)): the hexagon orbit is the only maximizer of `r̂₆` on the unit sphere of `V₃`, and the coherent states the only minimizers, as an audited argument with every part the auditor supplied named in [M8.13's task doc](../../tasks/m8_13_task_details.md). The section above, "One argument this package carries that the run did not settle", is answered there.
+
+`S0_S3_MAXIMUM_CORRECTION.md` lands beside the note with a dated correction to its third sentence, which overstates the coverage of `check_s3_maximum.py`, and with what the audit supplied and two refinements, one of them to that section's reading of step 4. The note's bytes are unchanged, since three pins depend on them. With that file the directory holds 27 files.

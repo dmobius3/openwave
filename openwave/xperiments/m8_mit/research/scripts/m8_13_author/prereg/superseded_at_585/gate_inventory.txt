@@ -1,0 +1,82 @@
+N1 is a known-answer check, and says it does not test that the maximum method transfers
+N2 scores noticing, names ESTABLISHED, SUPPLIED as the only scale-correct grade, and records the other two as misapplied
+U2 credits the route with any auditor-supplied completion named, not the text alone
+U2 grades step 3 in its five parts
+U3 records the audited argument only if U1 and U2 both pass
+a pass that needed a supplied part carries it into G2's status
+arm: a U2 missing a part is caught
+arm: a bare pipe in a table code span is caught
+arm: a claim row with an empty pass condition is caught
+arm: a count of the answer is caught
+arm: a disclosure that drops the withholding is caught
+arm: a hash that matches no file is caught
+arm: a moved point would not match
+arm: a planted em-dash is refused
+arm: a planted first person is caught
+arm: a planted leak is caught
+arm: a renamed heading is caught
+arm: a variant that also drops the third block's bound is caught
+arm: an N2 paragraph that leaks the expected verdict is caught
+arm: an altered frozen cell is caught
+arm: an edited proof fails the pin
+budget: inside the Section 12.2 cap of 8000
+claim N1 has a claim, a standing, a pass and a fail condition
+claim N2 has a claim, a standing, a pass and a fail condition
+claim P1 has a claim, a standing, a pass and a fail condition
+claim P2 has a claim, a standing, a pass and a fail condition
+claim U1 has a claim, a standing, a pass and a fail condition
+claim U2 has a claim, a standing, a pass and a fail condition
+claim U3 has a claim, a standing, a pass and a fail condition
+diagnostic D1 is recorded, with no pass or fail column
+every SHA-256 the task doc states is the hash of a file it names
+every equality point is a permutation of (2, -1, -1), with a two-dimensional top eigenspace
+every numeral in the worklist is a reviewed one
+every required input is present
+every required section heading is present
+frozen: the constraint ellipse reads as pinned, and its quantities are in its source
+frozen: the equality points on it reads as pinned, and its quantities are in its source
+frozen: the maximizing set reads as pinned, and its quantities are in its source
+frozen: the maximum reads as pinned, and its quantities are in its source
+frozen: the minimum and its set reads as pinned, and its quantities are in its source
+frozen: the nematic bound reads as pinned, and its quantities are in its source
+frozen: the same points as `√6·e` reads as pinned, and its quantities are in its source
+frozen: the top eigenspace at each reads as pinned, and its quantities are in its source
+frozen: which blocks reach each reads as pinned, and its quantities are in its source
+no em-dash in the N2 variant
+no em-dash in the stage-2 instructions
+no em-dash in the task doc
+no em-dash in the worklist
+no first-person voice outside the code spans
+no unescaped pipe inside a table code span
+no value, shape, route or name that the room is meant to derive appears in the worklist
+stage-2 instructions: every code span in a table survives the render
+task doc: every code span in a table survives the render
+the N2 paragraph asks for a grade as an argument, and names no expected verdict
+the N2 variant is the landed step 3 with exactly the third block's equality case removed
+the author-side check is green, with its arms
+the author-side check reruns, exits 0, and prints exactly its log
+the controls heading covers a positive and a negative control
+the disclosure names the author-side check and says it is withheld
+the disclosure states the check count the log carries
+the doc pins the proof, its checker and the checker's log
+the doc pre-registers that the real note's part 3c is expected to grade ESTABLISHED, SUPPLIED
+the doc says where uniqueness lives, and why N2 exists
+the doc states the two-block property for blocks, not for every traced case
+the equality points the doc freezes are exactly the ones the check found
+the firewall names the author-side check among what stage 1 cannot see
+the frozen table holds exactly the pinned quantities
+the landed proof is the pinned one
+the network posture is load-bearing: a stage-1 room that reaches the public argument cannot score U1
+the setup is M8.12's, byte for byte, so the conventions are ones a room has already run on
+the stage-2 instructions count the files they hand over correctly
+the stage-2 instructions grade step 3 in parts 3a to 3e
+the stage-2 instructions grade the argument, not its conclusion
+the stage-2 scale applies GAP strictly, so a completable step is never failed
+the stage-2 scale defines ESTABLISHED, SUPPLIED, so a supplied case is named rather than silent
+the stage-2 scale treats a written-out derivation as supplied, so a completion cannot pass as ESTABLISHED
+the worklist asks for completeness and what fails if a case is omitted
+the worklist asks for the minimum, which is N1, without prescribing the method
+the worklist carries the zeros rule
+the worklist says a search establishes nothing on its own
+which blocks reach which point, as the doc freezes it, is what the check logged
+worklist: every code span in a table survives the render
