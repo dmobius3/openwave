@@ -21,7 +21,6 @@ from openwave.xperiments.m4_ewt.pipeline_engine.physics.features import (
     WaveStats,
 )
 
-
 # ---------------------------------------------------------------------------
 # Type hierarchy
 # ---------------------------------------------------------------------------

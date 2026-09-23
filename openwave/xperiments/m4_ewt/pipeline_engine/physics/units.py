@@ -33,10 +33,10 @@ from openwave.common import constants
 # Physical anchors, used by the conversion methods only.
 # =============================================================================
 
-_LAMBDA_PHYSICAL_M = constants.EWAVE_LENGTH   # fundamental wavelength, m
-_C_PHYSICAL_MS = constants.WAVE_SPEED         # wave speed, m/s
-_ATTOMETER = constants.ATTOMETER              # m per am
-_RONTOSECOND = constants.RONTOSECOND          # s per rs
+_LAMBDA_PHYSICAL_M = constants.EWAVE_LENGTH  # fundamental wavelength, m
+_C_PHYSICAL_MS = constants.WAVE_SPEED  # wave speed, m/s
+_ATTOMETER = constants.ATTOMETER  # m per am
+_RONTOSECOND = constants.RONTOSECOND  # s per rs
 
 # Electron rest mass, CODATA 2022, kg. Local anchor: the openwave
 # constants module does not expose it, and it is used only by the energy
@@ -44,9 +44,9 @@ _RONTOSECOND = constants.RONTOSECOND          # s per rs
 _M_E = 9.1093837015e-31
 
 # Precomputed derived anchors.
-_C_AMRS = _C_PHYSICAL_MS * _RONTOSECOND / _ATTOMETER   # ~0.2998 am/rs
-_LAMBDA_AM = _LAMBDA_PHYSICAL_M / _ATTOMETER            # ~28.5 am
-_ELECTRON_REST_ENERGY_J = _M_E * _C_PHYSICAL_MS**2      # ~8.19e-14 J
+_C_AMRS = _C_PHYSICAL_MS * _RONTOSECOND / _ATTOMETER  # ~0.2998 am/rs
+_LAMBDA_AM = _LAMBDA_PHYSICAL_M / _ATTOMETER  # ~28.5 am
+_ELECTRON_REST_ENERGY_J = _M_E * _C_PHYSICAL_MS**2  # ~8.19e-14 J
 
 # =============================================================================
 # Geometric constants.
@@ -91,11 +91,11 @@ _X_EFF = _A_PI * 3.0 * _K_WC * _SQRT2 / _C_UNIF
 # Neutrino radius and Planck length, from the M4.7 self-consistent chain.
 # Hardcoded here as the current source of truth; a runtime provider will
 # replace them once the emergence engine is packaged (plan item 1.11).
-_R_NU = 2.8179354e-17      # m
+_R_NU = 2.8179354e-17  # m
 _LAMBDA_L = 1.6166464e-35  # m
 
 # Statutory and effective EMC densities (dimensionless counts).
-_N_NU_STAT = (_R_NU / (2.0 * _LAMBDA_L * _EULER))**3
+_N_NU_STAT = (_R_NU / (2.0 * _LAMBDA_L * _EULER)) ** 3
 _N_NU_EFF = _N_NU_STAT / _X_EFF
 
 
@@ -191,13 +191,10 @@ class NaturalUnitSystem(UnitSystem):
     def __post_init__(self) -> None:
         if self.grid_voxels_per_lambda < 2:
             raise ValueError(
-                "grid_voxels_per_lambda must be >= 2, got "
-                f"{self.grid_voxels_per_lambda}"
+                "grid_voxels_per_lambda must be >= 2, got " f"{self.grid_voxels_per_lambda}"
             )
         if not 0.0 < self.cfl_safety <= 1.0:
-            raise ValueError(
-                f"cfl_safety must be in (0, 1], got {self.cfl_safety}"
-            )
+            raise ValueError(f"cfl_safety must be in (0, 1], got {self.cfl_safety}")
 
     @property
     def c(self) -> float:
@@ -263,13 +260,10 @@ class OpenWaveUnitSystem(UnitSystem):
     def __post_init__(self) -> None:
         if self.grid_voxels_per_lambda < 2:
             raise ValueError(
-                "grid_voxels_per_lambda must be >= 2, got "
-                f"{self.grid_voxels_per_lambda}"
+                "grid_voxels_per_lambda must be >= 2, got " f"{self.grid_voxels_per_lambda}"
             )
         if not 0.0 < self.cfl_safety <= 1.0:
-            raise ValueError(
-                f"cfl_safety must be in (0, 1], got {self.cfl_safety}"
-            )
+            raise ValueError(f"cfl_safety must be in (0, 1], got {self.cfl_safety}")
 
     @property
     def c(self) -> float:
@@ -334,13 +328,10 @@ class SIUnitSystem(UnitSystem):
     def __post_init__(self) -> None:
         if self.grid_voxels_per_lambda < 2:
             raise ValueError(
-                "grid_voxels_per_lambda must be >= 2, got "
-                f"{self.grid_voxels_per_lambda}"
+                "grid_voxels_per_lambda must be >= 2, got " f"{self.grid_voxels_per_lambda}"
             )
         if not 0.0 < self.cfl_safety <= 1.0:
-            raise ValueError(
-                f"cfl_safety must be in (0, 1], got {self.cfl_safety}"
-            )
+            raise ValueError(f"cfl_safety must be in (0, 1], got {self.cfl_safety}")
 
     @property
     def c(self) -> float:
@@ -401,6 +392,5 @@ def make_unit_system(kind: str) -> UnitSystem:
     if kind == "si":
         return SIUnitSystem()
     raise ValueError(
-        f"unknown unit system: {kind!r}. "
-        f"Valid names are 'natural', 'openwave', 'si'."
+        f"unknown unit system: {kind!r}. " f"Valid names are 'natural', 'openwave', 'si'."
     )

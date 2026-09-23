@@ -32,22 +32,23 @@ import ast
 import sys
 from pathlib import Path
 
-
 # Names that must never be assigned a numeric literal in physics/.
 # Kept in sync with the UnitSystem contract in physics/units.py.
-_FORBIDDEN = frozenset({
-    "c",
-    "wavelength",
-    "dx",
-    "dt",
-    "gamma",
-    "rho_0",
-    "A_pi",
-    "eps_M",
-    "N_geom",
-    "X_eff",
-    "N_nu_eff",
-})
+_FORBIDDEN = frozenset(
+    {
+        "c",
+        "wavelength",
+        "dx",
+        "dt",
+        "gamma",
+        "rho_0",
+        "A_pi",
+        "eps_M",
+        "N_geom",
+        "X_eff",
+        "N_nu_eff",
+    }
+)
 
 _EXEMPT_FILES = frozenset({"units.py", "__init__.py"})
 _EXEMPT_PREFIXES = ("_test_", "test_")
@@ -97,7 +98,7 @@ def _check_assignment(node: ast.AST, path: Path) -> list[str]:
         # which applies to the last len(defaults) of them.
         positional = args.posonlyargs + args.args
         n_with_default = len(args.defaults)
-        defaulted = positional[len(positional) - n_with_default:] if n_with_default else []
+        defaulted = positional[len(positional) - n_with_default :] if n_with_default else []
         for arg, default in zip(defaulted, args.defaults):
             if arg.arg in _FORBIDDEN and _is_numeric_literal(default):
                 issues.append(
@@ -108,11 +109,7 @@ def _check_assignment(node: ast.AST, path: Path) -> list[str]:
         # Keyword-only args have a parallel defaults list where None
         # means "no default".
         for arg, default in zip(args.kwonlyargs, args.kw_defaults):
-            if (
-                arg.arg in _FORBIDDEN
-                and default is not None
-                and _is_numeric_literal(default)
-            ):
+            if arg.arg in _FORBIDDEN and default is not None and _is_numeric_literal(default):
                 issues.append(
                     f"{path}:{node.lineno}: default for argument "
                     f"'{arg.arg}' = {ast.unparse(default)}"

@@ -13,7 +13,6 @@ from dataclasses import dataclass
 
 import taichi as ti
 
-
 # =============================================================================
 # Grid and statistics
 # =============================================================================
@@ -65,9 +64,9 @@ class PsiTripleBuffer:
     internal triplet, not a complex scalar, not a director field.
     """
 
-    psi: ti.Vector.field       # psi(t)
+    psi: ti.Vector.field  # psi(t)
     psi_prev: ti.Vector.field  # psi(t - dt)
-    psi_new: ti.Vector.field   # scratch / psi(t + dt)
+    psi_new: ti.Vector.field  # scratch / psi(t + dt)
 
 
 @dataclass

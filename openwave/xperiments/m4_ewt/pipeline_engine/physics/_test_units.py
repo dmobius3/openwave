@@ -19,7 +19,6 @@ from openwave.xperiments.m4_ewt.pipeline_engine.physics.units import (
     make_unit_system,
 )
 
-
 # ---------------------------------------------------------------------------
 # Construction and basic invariants
 # ---------------------------------------------------------------------------
@@ -177,9 +176,7 @@ def test_cfl_safety_validation():
             except ValueError:
                 pass
             else:
-                raise AssertionError(
-                    f"{factory.__name__}: expected ValueError for {bad}"
-                )
+                raise AssertionError(f"{factory.__name__}: expected ValueError for {bad}")
 
 
 # ---------------------------------------------------------------------------
