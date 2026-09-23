@@ -32,6 +32,11 @@ class FeatureBag:
     Typed container. Key is the class of the value, not a string.
     Adding a new feature never changes any processor signature.
 
+    A value is registered under its concrete type and every base class in
+    its MRO, excluding `object`. This lets a processor require an abstract
+    type (ABC, Protocol with a base class, or a plain base class) and
+    receive the concrete instance registered under a subclass.
+
     Usage:
         ctx.data.set(Counter())
         c = ctx.data.require(Counter)
@@ -43,7 +48,16 @@ class FeatureBag:
         self._items: dict[type, object] = {}
 
     def set(self, value: object) -> None:
-        self._items[type(value)] = value
+        """
+        Register a value under its concrete type and every base class.
+
+        `object` is excluded so that require(object) does not resolve to
+        an arbitrary feature.
+        """
+        for cls in type(value).__mro__:
+            if cls is object:
+                continue
+            self._items[cls] = value
 
     def try_get(self, key: type[T]) -> T | None:
         return self._items.get(key)  # type: ignore[return-value]

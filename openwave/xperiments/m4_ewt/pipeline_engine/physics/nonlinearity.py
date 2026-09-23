@@ -7,16 +7,17 @@ from ..pipeline import BaseProcessor, Stage
 
 import taichi as ti
 
-from .features import PsiField, WaveGrid
+from .features import PsiLongField, WaveGrid
 
 
 class NonlinearCubic(BaseProcessor):
     """
     Cubic self-interaction: adds -gamma * |psi|^2 * psi to psi_new.
 
-    EWT coupling: gamma = 1/eps_M = N_geom * pi^3 (order 2.4e4 in EWT units).
-    Start with small gamma (0.01 .. 1.0) to see the qualitative effect,
-    scale up once the solver is proven stable.
+    The coupling constant gamma is supplied by the experiment. In the
+    plan it is the inverse of the magnetic deficit (gamma = 1 / eps_M),
+    but the processor is agnostic: it multiplies whatever value it is
+    given.
 
     Must run AFTER a processor that initializes psi_new (i.e. Laplacian),
     and BEFORE Leapfrog. The order=15 slot is reserved for that.
@@ -25,14 +26,14 @@ class NonlinearCubic(BaseProcessor):
     name = "NonlinearCubic"
     stage = Stage.UPDATE
     order = 15
-    requires = (WaveGrid, PsiField)
+    requires = (WaveGrid, PsiLongField)
 
     def __init__(self, gamma: float):
         self.gamma = gamma
 
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiField)
+        field = ctx.data.require(PsiLongField)
         _apply_cubic(field.psi, field.psi_new, self.gamma, grid.nx, grid.ny, grid.nz)
 
 

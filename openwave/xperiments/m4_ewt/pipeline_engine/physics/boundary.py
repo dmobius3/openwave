@@ -4,7 +4,7 @@ from ..pipeline import BaseProcessor, Stage
 
 import taichi as ti
 
-from .features import PsiField, WaveGrid
+from .features import PsiLongField, WaveGrid
 
 
 class DirichletBoundaryProcessor(BaseProcessor):
@@ -13,11 +13,11 @@ class DirichletBoundaryProcessor(BaseProcessor):
     name = "DirichletBoundary"
     stage = Stage.POST_UPDATE
     order = 10
-    requires = (WaveGrid, PsiField)
+    requires = (WaveGrid, PsiLongField)
 
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiField)
+        field = ctx.data.require(PsiLongField)
         _dirichlet(field.psi, field.psi_prev, grid.nx, grid.ny, grid.nz)
 
 

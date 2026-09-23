@@ -4,7 +4,7 @@ from ..pipeline import BaseProcessor, Stage
 
 import taichi as ti
 
-from .features import PsiField, WaveGrid, WaveStats
+from .features import PsiLongField, WaveGrid, WaveStats
 
 
 class AmplitudeTracker(BaseProcessor):
@@ -13,7 +13,7 @@ class AmplitudeTracker(BaseProcessor):
     name = "AmplitudeTracker"
     stage = Stage.MEASURE
     order = 10
-    requires = (WaveGrid, PsiField, WaveStats)
+    requires = (WaveGrid, PsiLongField, WaveStats)
 
     def __init__(self, every: int = 10):
         self.every = max(1, every)
@@ -26,7 +26,7 @@ class AmplitudeTracker(BaseProcessor):
         if ctx.sim.step % self.every != 0:
             return
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiField)
+        field = ctx.data.require(PsiLongField)
         stats = ctx.data.require(WaveStats)
         _reduce(field.psi, self._max, self._mass, grid.nx, grid.ny, grid.nz)
         stats.amp_max = float(self._max[None])

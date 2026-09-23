@@ -12,7 +12,7 @@ from ..pipeline import BaseProcessor, Stage
 
 import taichi as ti
 
-from .features import PsiField, WaveGrid
+from .features import PsiLongField, WaveGrid
 
 
 class LaplacianProcessor(BaseProcessor):
@@ -25,11 +25,11 @@ class LaplacianProcessor(BaseProcessor):
     name = "Laplacian"
     stage = Stage.UPDATE
     order = 10
-    requires = (WaveGrid, PsiField)
+    requires = (WaveGrid, PsiLongField)
 
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiField)
+        field = ctx.data.require(PsiLongField)
         _laplacian(field.psi, field.psi_new, grid.nx, grid.ny, grid.nz, grid.dx, grid.c)
 
 
@@ -67,11 +67,11 @@ class LeapfrogProcessor(BaseProcessor):
     name = "Leapfrog"
     stage = Stage.UPDATE
     order = 20
-    requires = (WaveGrid, PsiField)
+    requires = (WaveGrid, PsiLongField)
 
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiField)
+        field = ctx.data.require(PsiLongField)
         dt2 = ctx.sim.dt * ctx.sim.dt
         _leapfrog(field.psi, field.psi_prev, field.psi_new, grid.nx, grid.ny, grid.nz, dt2)
 

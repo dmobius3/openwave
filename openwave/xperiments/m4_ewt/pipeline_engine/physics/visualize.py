@@ -11,7 +11,7 @@ from ..pipeline import BaseProcessor, Stage
 
 import taichi as ti
 
-from .features import PsiField, WaveGrid
+from .features import PsiLongField, WaveGrid
 
 
 class TaichiWindowProcessor(BaseProcessor):
@@ -26,7 +26,7 @@ class TaichiWindowProcessor(BaseProcessor):
     name = "TaichiWindow"
     stage = Stage.MEASURE
     order = 2000
-    requires = (WaveGrid, PsiField)
+    requires = (WaveGrid, PsiLongField)
 
     def __init__(
         self,
@@ -61,7 +61,7 @@ class TaichiWindowProcessor(BaseProcessor):
             return
 
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiField)
+        field = ctx.data.require(PsiLongField)
         w, h = self.size
         z = grid.nz // 2
 
