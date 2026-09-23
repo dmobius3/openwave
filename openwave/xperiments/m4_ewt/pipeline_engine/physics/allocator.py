@@ -32,9 +32,10 @@ class AllocateWaveField(BaseProcessor):
     holder. Runs once at setup.
 
     All fields are allocated together so that a pipeline can use any
-    subset without reallocation. Memory cost is one extra vector field
-    per time level beyond what a single-mode pipeline would use; the
-    grid dominates, so the overhead is small.
+    subset without reallocation. Memory cost: three triple-buffered
+    vector fields and two scalar fields, 29 f32 values per voxel against
+    9 for a single triple buffer (about 3.2x; 232 MiB against 72 MiB on
+    a 128^3 grid).
     """
 
     name = "AllocateWaveField"

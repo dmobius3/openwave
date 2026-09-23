@@ -42,6 +42,8 @@ def build_wc_state(
             Reference length in grid units. No default: the caller
             supplies it, typically from a unit system or an experiment
             configuration.
+        spacing: characteristic inter-center spacing in grid units;
+                 defaults to wavelength
         shell_radius: for 'golden'; defaults to 0.35 * spacing
         phases: list of phases in radians, one per center;
                 defaults to all zeros

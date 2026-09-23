@@ -108,6 +108,10 @@ ErrorPolicy selects what happens when a processor raises:
 
 Default is SOFT_STOP. The error is recorded in ctx.diag.errors either way.
 
+The policy covers process() only. A failure in setup() always propagates the
+original exception, after the processors already set up are torn down in
+reverse.
+
 ## Units
 
 Every dimensional constant the engine needs comes from a `UnitSystem`
@@ -170,9 +174,6 @@ caller registered.
 Subclass `UnitSystem` and provide the core fields and conversion methods.
 The geometric fields come from the shared mixin. Add the new name to
 `make_unit_system`.
-The policy covers process() only. A failure in setup() always propagates the
-original exception, after the processors already set up are torn down in
-reverse.
 
 ## Folder layout
 
