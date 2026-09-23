@@ -1,0 +1,93 @@
+{
+ "winding_seed": {
+  "z_loops_read": 5,
+  "z_windings": [
+   2.0,
+   2.0000000000000004,
+   1.9999999999999998,
+   2.0000000000000004,
+   2.0
+  ],
+  "xy_loops_read": 10,
+  "xy_windings": [
+   1.4135798584282297e-16,
+   -2.1203697876423444e-16,
+   7.067899292141149e-17,
+   7.067899292141149e-17,
+   7.067899292141149e-17,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "ok": true
+ },
+ "tube_seed": {
+  "n_planes": 16,
+  "T_range": [
+   0.08779465113549384,
+   0.20260530460759374
+  ]
+ },
+ "strands_seed": [
+  {
+   "axis": "z",
+   "sign": 1.0,
+   "m_half_turns": 2.0,
+   "dl_dL": 0.5
+  },
+  {
+   "axis": "z",
+   "sign": -1.0,
+   "m_half_turns": 2.0,
+   "dl_dL": 0.5
+  }
+ ],
+ "spin_gate_seed": {
+  "C_rot_z": 0.7001866747985429,
+  "renv": 10.0,
+  "E_stat": 28.17828362895123,
+  "omega_star": 3.662601930716593,
+  "J_star": 5.1290101339583485,
+  "E_rot_over_E": 0.25
+ },
+ "wire": {
+  "status": "OK",
+  "gate_label": "FALLING",
+  "kick_label": "FALLING",
+  "iters": 4,
+  "E_start": 23.84516772457191,
+  "E_end": 14.078205732628367,
+  "stop": null,
+  "ok": true
+ },
+ "kick_wire": {
+  "seed": 81103051,
+  "rms_change_free": 0.014901022920660643,
+  "pinned_untouched": true,
+  "block_diagonal": true
+ },
+ "classify": {
+  "match": "CHARGE_STRAND_MATCHES",
+  "twice": "CHARGE_STRAND_DIFFERS",
+  "missing": "INSUFFICIENT",
+  "spin_pinned": "SPIN_GATE_PINNED",
+  "ok": true
+ },
+ "classify_pair": {
+  "linear": "CHARGE_PAIR_LINEAR",
+  "coulomb": "CHARGE_PAIR_COULOMB",
+  "ok": true
+ },
+ "wiring": {
+  "jobs": 10,
+  "tags_unique": true,
+  "r25_1_json_present": false,
+  "t_half_bogomolny_delta_0.3_w25": 0.0026747011377773124,
+  "t_half_fallback_ok": true,
+  "t_half_source_now": "bogomolny (R25-1 JSON absent)",
+  "slope_pred_centered": 0.005349402275554625
+ },
+ "PASS": true
+}

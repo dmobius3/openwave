@@ -1,0 +1,41 @@
+{
+ "bound": {
+  "T_bps": 0.0026747011377773124,
+  "T_1d": 0.00268459212586098,
+  "T_stack_h1_L24": 0.0026657740182417576,
+  "T_1d_over_T_bps": 1.0036979787924594,
+  "T_stack_over_T_1d": 0.9929903289822146
+ },
+ "additivity": {
+  "T_m2_over_T_m1": 2.0310756047809053,
+  "expected": 2.0
+ },
+ "exterior_density": {
+  "pure_winding_max_beyond_4h": 4.1840526907621427e-07,
+  "pure_winding_max_axis_cells": 0.032472223604641075,
+  "bps_max_beyond_3_core_radii": 1.512668285472442e-09,
+  "bps_max": 4.042021719803065e-05
+ },
+ "wiring": {
+  "status": "OK",
+  "verdict": "FALLING",
+  "T_seed_bps": 0.0026636061123174485,
+  "T_seed_kicked": 0.0069334324030979185,
+  "T": 0.004711512067771146,
+  "T_over_T_bps": 1.7615097257880674,
+  "departure_max": 0.05797536109803492,
+  "core_radius": 2.1548294665900305,
+  "gate": 2.6747011377773123e-09,
+  "departure_seed_max": 0.05798647574556985
+ },
+ "classify": {
+  "in_block": "STRAND_IN_BLOCK",
+  "leaves": "STRAND_LEAVES_BLOCK",
+  "unresolved": "UNRESOLVED"
+ },
+ "jobs": {
+  "count": 22,
+  "unique": true
+ },
+ "PASS": true
+}
