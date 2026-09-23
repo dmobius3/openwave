@@ -1328,6 +1328,13 @@ does not select K = 10 over its larger neighbours.
 Author-gated, and a candidate for the second observable alongside
 localization in item 2.10.
 
+Related open question: Q11 in Section 9 (is the B6a ground-state threshold
+the K-selectivity mechanism?). Q11 asks about **capacity** selection;
+R6a-R6c and R8 ask about **positional** selection. They are complementary,
+not alternatives. Both must be evaluated on the same two topologies,
+1-3-6 and golden-angle, so that a selection mechanism that depends on the
+arrangement can be told apart from one that does not.
+
 ---
 
 ## 10. Recommended execution order
