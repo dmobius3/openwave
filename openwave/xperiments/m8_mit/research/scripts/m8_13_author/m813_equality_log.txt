@@ -1,0 +1,36 @@
+(1) the three blocks, and where each reaches 15/sqrt(6)
+PASS the 7x7 operator splits into a zero eigenvalue and the three blocks, exactly
+PASS M1: the resultant is not zero, so the conic and the ellipse share no component
+PASS M1: two conics with no common component meet in at most 4 points (Bezout); the resultant has degree 4
+PASS M1: 2 common points found, within the Bezout bound
+PASS M1: every candidate's larger-eigenvalue test is decided symbolically
+    M1: reaches 15/sqrt(6) exactly at [(-sqrt(6)/4, sqrt(6)/8), (sqrt(6)/2, 0)]
+PASS M2: the resultant is not zero, so the conic and the ellipse share no component
+PASS M2: two conics with no common component meet in at most 4 points (Bezout); the resultant has degree 4
+PASS M2: 2 common points found, within the Bezout bound
+PASS M2: every candidate's larger-eigenvalue test is decided symbolically
+    M2: reaches 15/sqrt(6) exactly at [(-sqrt(6)/4, -sqrt(6)/8), (sqrt(6)/2, 0)]
+PASS M3: the resultant is not zero, so the conic and the ellipse share no component
+PASS M3: two conics with no common component meet in at most 4 points (Bezout); the resultant has degree 4
+PASS M3: 2 common points found, within the Bezout bound
+PASS M3: every candidate's larger-eigenvalue test is decided symbolically
+    M3: reaches 15/sqrt(6) exactly at [(-sqrt(6)/4, -sqrt(6)/8), (-sqrt(6)/4, sqrt(6)/8)]
+    union over the blocks: [(-sqrt(6)/4, -sqrt(6)/8), (-sqrt(6)/4, sqrt(6)/8), (sqrt(6)/2, 0)]
+PASS the equality set on the ellipse is exactly the three points (sqrt6/2, 0), (-sqrt6/4, +-sqrt6/8)
+PASS M1 reaches it at (sqrt6/2, 0) and (-sqrt6/4, sqrt6/8), the cases b = 0, a > 0 and a = -2b, b > 0
+PASS M2 mirrors M1 under b -> -b
+PASS M3 reaches it only at a = -sqrt6/4, on both points of the ellipse there
+PASS every equality point is reached by exactly two blocks, so no single block is load-bearing for the set
+(2) back to e, and the top eigenspace at each point
+    (a, b) = (-sqrt(6)/4, -sqrt(6)/8):  sqrt6 * e = [-1, 2, -1];  15/sqrt6 has multiplicity 2
+PASS       a permutation of (2, -1, -1), and a two-dimensional top eigenspace
+    (a, b) = (-sqrt(6)/4, sqrt(6)/8):  sqrt6 * e = [2, -1, -1];  15/sqrt6 has multiplicity 2
+PASS       a permutation of (2, -1, -1), and a two-dimensional top eigenspace
+    (a, b) = (sqrt(6)/2, 0):  sqrt6 * e = [-1, -1, 2];  15/sqrt6 has multiplicity 2
+PASS       a permutation of (2, -1, -1), and a two-dimensional top eigenspace
+PASS       at the z-axis point the top eigenspace is span{v3, v-3}
+(3) arms
+PASS arm: a perturbed M3 still has equality points, and they move off a = -sqrt6/4
+PASS arm: a conic sharing a component with the ellipse gives a zero resultant, which the Bezout guard refuses
+PASS arm: the comparison would catch a missing point
+ALL PASS

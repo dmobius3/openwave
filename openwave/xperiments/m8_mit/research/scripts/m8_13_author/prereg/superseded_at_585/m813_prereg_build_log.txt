@@ -1,0 +1,116 @@
+    required inputs missing: []
+PASS   every required input is present
+(A) the task doc
+PASS   no em-dash in the task doc
+PASS   no em-dash in the worklist
+PASS   no em-dash in the stage-2 instructions
+PASS   no em-dash in the N2 variant
+PASS   arm: a planted em-dash is refused
+    task doc and worklist together: 3089 words
+PASS   budget: inside the Section 12.2 cap of 8000
+PASS   every required section heading is present
+PASS   arm: a renamed heading is caught
+PASS   no first-person voice outside the code spans
+PASS   arm: a planted first person is caught
+PASS   claim P1 has a claim, a standing, a pass and a fail condition
+PASS   claim P2 has a claim, a standing, a pass and a fail condition
+PASS   claim U1 has a claim, a standing, a pass and a fail condition
+PASS   claim U2 has a claim, a standing, a pass and a fail condition
+PASS   claim U3 has a claim, a standing, a pass and a fail condition
+PASS   claim N1 has a claim, a standing, a pass and a fail condition
+PASS   claim N2 has a claim, a standing, a pass and a fail condition
+PASS   diagnostic D1 is recorded, with no pass or fail column
+PASS   arm: a claim row with an empty pass condition is caught
+(B) the frozen values, against the landed proof and the author-side check
+PASS   the landed proof is the pinned one
+PASS   arm: an edited proof fails the pin
+    frozen table rows: 9
+PASS   the frozen table holds exactly the pinned quantities
+PASS     frozen: the maximum reads as pinned, and its quantities are in its source
+PASS     frozen: the nematic bound reads as pinned, and its quantities are in its source
+PASS     frozen: the constraint ellipse reads as pinned, and its quantities are in its source
+PASS     frozen: the equality points on it reads as pinned, and its quantities are in its source
+PASS     frozen: which blocks reach each reads as pinned, and its quantities are in its source
+PASS     frozen: the same points as `√6·e` reads as pinned, and its quantities are in its source
+PASS     frozen: the top eigenspace at each reads as pinned, and its quantities are in its source
+PASS     frozen: the maximizing set reads as pinned, and its quantities are in its source
+PASS     frozen: the minimum and its set reads as pinned, and its quantities are in its source
+PASS   arm: an altered frozen cell is caught
+    author-side check: 25 pass, 0 fail
+PASS   the author-side check is green, with its arms
+    rerun of the author-side check: exit 0, output identical to the log
+PASS   the author-side check reruns, exits 0, and prints exactly its log
+PASS   the disclosure states the check count the log carries
+    the doc states 3 SHA-256 values; unmatched: []
+PASS   every SHA-256 the task doc states is the hash of a file it names
+PASS   the doc pins the proof, its checker and the checker's log
+PASS   arm: a hash that matches no file is caught
+    doc freezes 3 equality points; the log found 3
+PASS   the equality points the doc freezes are exactly the ones the check found
+PASS   arm: a moved point would not match
+PASS   which blocks reach which point, as the doc freezes it, is what the check logged
+PASS   every equality point is a permutation of (2, -1, -1), with a two-dimensional top eigenspace
+(C) the claims that carry the design
+PASS   U2 grades step 3 in its five parts
+PASS   U2 credits the route with any auditor-supplied completion named, not the text alone
+PASS   arm: a U2 missing a part is caught
+PASS   U3 records the audited argument only if U1 and U2 both pass
+PASS   N2 scores noticing, names ESTABLISHED, SUPPLIED as the only scale-correct grade, and records the other two as misapplied
+PASS   N1 is a known-answer check, and says it does not test that the maximum method transfers
+PASS   the doc says where uniqueness lives, and why N2 exists
+PASS   the doc states the two-block property for blocks, not for every traced case
+PASS   the firewall names the author-side check among what stage 1 cannot see
+PASS   the network posture is load-bearing: a stage-1 room that reaches the public argument cannot score U1
+PASS   the doc pre-registers that the real note's part 3c is expected to grade ESTABLISHED, SUPPLIED
+PASS   a pass that needed a supplied part carries it into G2's status
+PASS   the controls heading covers a positive and a negative control
+PASS   the disclosure names the author-side check and says it is withheld
+PASS   arm: a disclosure that drops the withholding is caught
+(D) the stage-1 worklist, which the room sees
+PASS   the setup is M8.12's, byte for byte, so the conventions are ones a room has already run on
+    leak hits: []
+PASS   no value, shape, route or name that the room is meant to derive appears in the worklist
+PASS   arm: a planted leak is caught
+    worklist numerals: {'one': 3, 'seven': 1, '1': 1, '0': 1, '2': 1, '3': 1}
+PASS   every numeral in the worklist is a reviewed one
+PASS   arm: a count of the answer is caught
+PASS   the worklist asks for completeness and what fails if a case is omitted
+PASS   the worklist asks for the minimum, which is N1, without prescribing the method
+PASS   the worklist carries the zeros rule
+PASS   the worklist says a search establishes nothing on its own
+(E) stage 2 and the N2 variant
+PASS   the stage-2 instructions grade step 3 in parts 3a to 3e
+PASS   the stage-2 instructions grade the argument, not its conclusion
+PASS   the stage-2 scale applies GAP strictly, so a completable step is never failed
+PASS   the stage-2 scale treats a written-out derivation as supplied, so a completion cannot pass as ESTABLISHED
+PASS   the stage-2 instructions count the files they hand over correctly
+PASS   the stage-2 scale defines ESTABLISHED, SUPPLIED, so a supplied case is named rather than silent
+PASS   the N2 paragraph asks for a grade as an argument, and names no expected verdict
+PASS   arm: an N2 paragraph that leaks the expected verdict is caught
+PASS   the N2 variant is the landed step 3 with exactly the third block's equality case removed
+PASS   arm: a variant that also drops the third block's bound is caught
+(F) how the files render on GitHub
+    task doc: 37 table code spans, lost []
+PASS   task doc: every code span in a table survives the render
+    worklist: 0 table code spans, lost []
+PASS   worklist: every code span in a table survives the render
+    stage-2 instructions: 0 table code spans, lost []
+PASS   stage-2 instructions: every code span in a table survives the render
+PASS   no unescaped pipe inside a table code span
+PASS   arm: a bare pipe in a table code span is caught
+(G) hashes
+  7b2c4370b35bf16a5da7a7c95510f1a913e45c8a61bc56aa88c102426612521c  m8_13_task_details.md
+  0404780988ee03003ae27fc1792d57a60c0034fbde7e6aa14b13b84ec27cbeeb  worklist.md
+  4a472bd56db0d93900a22598f26f530c02f7df959ba623d32b67e3b01527f0ce  stage2_grading.md
+  05600d85936f8db7dadf0f131ff6cef83baf320eaab032970b53172c77e3fddf  n2_variant_step3.md
+  7c634a33fdb0ee05d5a934395a414f6346ba26e049b07f2619961792ab725498  S0_S3_MAXIMUM.md
+  34054633f9602e864c12d017b035e6517ebbc4d8b0ba6c043dc1ef4adc764d3a  check_s3_maximum.py
+  37a00d34168b23200a1f07694627dc2a93dd588b9156be5c55661deffab67b1d  check_s3_maximum_log.txt
+  3577872c112cefe13413eab3a706e834314e635129f7a914f5488d43f3cc090d  m813_equality.py
+  a30b8198d329d2a038ea3253fce2253b007954db0581fa4b71aeac5d12de0354  m813_equality_log.txt
+  c07f9bc64d39ffc99317188e28a91378be18c0fc8902490bd44bed76bba4efdc  m8_12_worklist.md
+  2a09b63d237fd00ce6268c1081602addc03308d047bd473e9a18bba21d16dee4  m813_prereg_build.py
+  077ca28b1c8cda35227a8709a81703031713050cc9204932311a66adf985acda  m813_prereg_arms.py
+    82 gates ran; gate_inventory.txt SHA-256 062fae9d62dba00760fb78a0b89401242e78acb05959e709ad138f4f5dcf7b53
+PASS   gate inventory matches the pin
+ALL PASS
