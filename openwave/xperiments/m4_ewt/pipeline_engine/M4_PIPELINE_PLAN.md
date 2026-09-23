@@ -1295,17 +1295,6 @@ depends on `K`, and if it peaks at `K = 10` in the topology under test,
 then K-selectivity may be a **capacity selection** rather than a
 geometric or energetic one.
 
-The expected shape is a **peak**, not a knee. A monotone capacity would
-select the smallest K that reaches a plateau, which is a weaker claim
-than selecting K = 10 uniquely. The physical reason a peak is expected at
-all is topological: K = 10 is the smallest count at which a
-constructive-interference pattern closes on the sphere (manuscript,
-Chapter 16; the 1-3-6 arrangement and the phyllotactic closure argument).
-Below K = 10 the pattern does not close; above K = 10 the pattern either
-forces a recursive shell (Onion Model) or loses constructive interference
-in a single shell. The threshold peaks at the closure point, and the
-closure point is a topological property of the pattern, not a
-redistribution of energy over centres.
 
 **Two topologies, one prediction.** The measurement must be repeated for
 both physically motivated topologies:
