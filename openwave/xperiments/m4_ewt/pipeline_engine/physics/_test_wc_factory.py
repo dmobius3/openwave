@@ -73,7 +73,14 @@ def main():
     unexpected = 0
     for K, geometry in [(1, "pair"), (2, "single"), (1, "line"), (11, "tetrahedron_10_locked")]:
         try:
-            build_wc_state(K=K, geometry=geometry, nx=grid, ny=grid, nz=grid)
+            build_wc_state(
+                K=K,
+                geometry=geometry,
+                nx=grid,
+                ny=grid,
+                nz=grid,
+                wavelength=wavelength,
+            )
             print(f"  K={K}, geometry='{geometry}': NO ERROR (unexpected)")
             unexpected += 1
         except ValueError as e:

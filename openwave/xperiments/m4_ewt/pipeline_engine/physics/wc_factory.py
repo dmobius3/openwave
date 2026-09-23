@@ -25,7 +25,7 @@ def build_wc_state(
     nx: int,
     ny: int,
     nz: int,
-    wavelength: float = 12.0,
+    wavelength: float,
     spacing: float | None = None,
     shell_radius: float | None = None,
     phases: list[float] | None = None,
@@ -38,7 +38,10 @@ def build_wc_state(
         K: number of wave centers
         geometry: one of the supported geometry names
         nx, ny, nz: grid dimensions
-        wavelength: reference length in grid units (defaults to 12)
+        wavelength: float
+            Reference length in grid units. No default: the caller
+            supplies it, typically from a unit system or an experiment
+            configuration.
         spacing: characteristic inter-center spacing in grid units;
                  defaults to wavelength
         shell_radius: for 'golden'; defaults to 0.35 * spacing

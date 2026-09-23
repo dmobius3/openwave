@@ -112,6 +112,69 @@ The policy covers process() only. A failure in setup() always propagates the
 original exception, after the processors already set up are torn down in
 reverse.
 
+## Units
+
+Every dimensional constant the engine needs comes from a `UnitSystem`
+feature. No processor contains a dimensional literal; the rule is enforced
+by `_check_dimensional_literals.py`, which scans `physics/` for numeric
+literals assigned to known dimensional names.
+
+### The contract
+
+    from openwave.xperiments.m4_ewt.pipeline_engine.physics.units import UnitSystem
+
+    units = ctx.data.require(UnitSystem)
+    c = units.c
+    gamma = units.gamma
+    dx = units.dx
+
+Core fields: `c`, `wavelength`, `dx`, `dt`, `rho_0`.
+Geometric fields: `A_pi`, `eps_M`, `N_geom`, `gamma`, `X_eff`, `N_nu_eff`.
+Conversion methods: `to_physical_length`, `to_physical_time`,
+`to_physical_energy`, `to_physical_density`.
+
+### Implementations
+
+Three implementations ship with the engine:
+
+| Class | Units | Use |
+| --- | --- | --- |
+| `NaturalUnitSystem` | `lambda_nu = 1`, `c = 1` | Default for research |
+| `OpenWaveUnitSystem` | attometres, rontoseconds | Legacy xparameters |
+| `SIUnitSystem` | metres, seconds | Output conversion only |
+
+The geometric fields are identical across all three: they are pure
+numbers derived from the BCC lattice geometry and the manuscript's
+fine-structure derivation, and they do not depend on the choice of unit
+system.
+
+### Registration
+
+Register the unit system under the abstract `UnitSystem` key, not the
+concrete class. The engine's `FeatureBag.set` registers a value under
+its concrete type and every base class in its MRO (excluding `object`),
+so requiring `UnitSystem` returns the concrete instance without an extra
+registration step.
+
+    runner.run(
+        pipeline,
+        name="...",
+        params={},
+        dt=units.dt,
+        max_steps=100,
+        initial_features=[units],     # FeatureBag.set keys by MRO
+    )
+
+`UnitSystem` is an abstract base class. A processor that declares
+`requires = (UnitSystem,)` receives whatever concrete implementation the
+caller registered.
+
+### Adding a new unit system
+
+Subclass `UnitSystem` and provide the core fields and conversion methods.
+The geometric fields come from the shared mixin. Add the new name to
+`make_unit_system`.
+
 ## Folder layout
 
     context.py    -- FeatureBag, Params, Context, Diagnostics, sub-contexts

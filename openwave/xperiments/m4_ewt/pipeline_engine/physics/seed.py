@@ -4,7 +4,7 @@ from ..pipeline import BaseProcessor, Stage
 
 import taichi as ti
 
-from .features import PsiField, WaveGrid
+from .features import PsiLongField, WaveGrid
 
 
 class SeedPulse(BaseProcessor):
@@ -16,7 +16,7 @@ class SeedPulse(BaseProcessor):
     name = "SeedPulse"
     stage = Stage.PRE_UPDATE
     order = 10
-    requires = (WaveGrid, PsiField)
+    requires = (WaveGrid, PsiLongField)
 
     def __init__(self, amplitude: float = 1.0, radius: float = 4.0):
         self.amplitude = amplitude
@@ -26,7 +26,7 @@ class SeedPulse(BaseProcessor):
         if ctx.sim.step > 0:
             return
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiField)
+        field = ctx.data.require(PsiLongField)
         _seed_pulse(
             field.psi,
             field.psi_prev,
@@ -81,7 +81,7 @@ class SeedMultiCenter(BaseProcessor):
     name = "SeedMultiCenter"
     stage = Stage.PRE_UPDATE
     order = 10
-    requires = (WaveGrid, PsiField, WCState)
+    requires = (WaveGrid, PsiLongField, WCState)
 
     def __init__(self, radius: float = 4.0):
         self.radius = radius
@@ -90,7 +90,7 @@ class SeedMultiCenter(BaseProcessor):
         if ctx.sim.step > 0:
             return
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiField)
+        field = ctx.data.require(PsiLongField)
         wc_state = ctx.data.require(WCState)
 
         _zero_field(field.psi, field.psi_prev, grid.nx, grid.ny, grid.nz)
