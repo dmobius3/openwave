@@ -1114,6 +1114,11 @@ seeds converge.
       matched energy.
 - [ ] B10f: energetic comparison (V2/V4) — three initial conditions,
       final energies and convergence.
+- [ ] B10g: perturbation sweep. For each topology and each K, sweep the
+      perturbation amplitude over {1%, 2%, 5%} of the
+      nearest-neighbour spacing, run three seeds per amplitude, and
+      classify each wave centre as return / bounded / escape. Report the
+      survival threshold `epsilon_crit` per `(topology, K)`.
 
 ### 2.11 — Energy conservation verification
 
@@ -1286,36 +1291,42 @@ Open question. The K-sweep in item 2.10 measures structural stability at
 fixed amplitude. The B6a threshold is a different observable: the
 amplitude at which the single-shell soliton loses its ground state and
 would need a recursive shell (Onion Model) to continue. If this threshold
-depends on `K`, then the K-selectivity may be a **capacity selection**
-rather than a geometric or energetic one:
+depends on `K`, and if it peaks at `K = 10` in the topology under test,
+then K-selectivity may be a **capacity selection** rather than a
+geometric or energetic one.
 
-- `K < 10`: capacity too small for the electron's amplitude, threshold
-  reached early, less stable.
-- `K = 10`: capacity matches the electron's amplitude, threshold peaks.
-- `K > 10`: capacity large enough that the single-shell configuration
-  holds, but the threshold is set by a different mechanism and is *not*
-  higher than at K = 10. The threshold turns over at K = 10 because
-  larger `K` redistributes the same total energy over more wave centres,
-  each carrying less, and the single-shell capacity per centre saturates
-  before the total does. The turnover is the prediction: capacity
-  selection peaks at K = 10, not at the largest `K`.
+The expected shape is a **peak**, not a knee. A monotone capacity would
+select the smallest K that reaches a plateau, which is a weaker claim
+than selecting K = 10 uniquely. The physical reason a peak is expected at
+all is topological: K = 10 is the smallest count at which a
+constructive-interference pattern closes on the sphere (manuscript,
+Chapter 16; the 1-3-6 arrangement and the phyllotactic closure argument).
+Below K = 10 the pattern does not close; above K = 10 the pattern either
+forces a recursive shell (Onion Model) or loses constructive interference
+in a single shell. The threshold peaks at the closure point, and the
+closure point is a topological property of the pattern, not a
+redistribution of energy over centres.
 
-The measurement is straightforward in Milestone 1: sweep the amplitude at
-fixed `K`, record where the ground state disappears, repeat for every `K`.
-If the threshold peaks at `K = 10`, the Onion Model is not just a
-post-hoc explanation of the muon and tau; it is the selection rule.
+**Two topologies, one prediction.** The measurement must be repeated for
+both physically motivated topologies:
+
+- `1-3-6` (item 2.8, `tetrahedron_10_locked`);
+- `golden-angle` (item 2.8, `golden_angle`).
+
+If the threshold peaks at K = 10 in both, capacity selection is
+topology-independent. If it peaks in only one, selection and topology are
+coupled and the plan must say which pairing is the physical one. If
+neither peaks, capacity selection is not the mechanism and the search
+returns to the structural and energetic tests of item 2.10.
+
+The measurement is straightforward in Milestone 1: for each topology,
+sweep the amplitude at fixed `K`, record where the ground state
+disappears, repeat for every `K`. The discriminating feature is whether
+the resulting threshold curve has a peak at K = 10 or only a knee; a knee
+does not select K = 10 over its larger neighbours.
+
 Author-gated, and a candidate for the second observable alongside
 localization in item 2.10.
-
-Q11 asks about **capacity** selection; the three tests in Milestone 2
-(R6-R8) ask about **positional** selection. They are complementary, not
-alternatives.
-
-> **Reference.** The `r^5/r^3` saturation mechanism and the resulting
-> shell formation are derived in the manuscript, v5.0.2 or later, Section
-> 15.2 "Physical Origin of the r^5 Scaling: Geometric Energy Density",
-> within Chapter 15 "Geometric Validation: The Fundamental Identity and
-> the Base AMM State (a_e)". DOI: 10.5281/zenodo.22875996.
 
 ---
 
@@ -1543,19 +1554,112 @@ Milestone 1 has produced its first K-sweep results, because the tests are
 only meaningful once the baseline stability of the 1-3-6 initial condition
 is known.
 
-### R6. Is 1-3-6 an attractor, or only an initial condition?
+### Two independent axes: topology and K
 
-Test: start from a random scatter of `K` wave centres in `r_domain`, let
+Two questions are conflated if the tests are not separated:
+
+- **Topology.** Does a given arrangement self-organise, and stay stable?
+  The candidates are 1-3-6, golden-angle, BCC, line, random (item 2.8).
+  The first two are the physically motivated ones; the rest are controls.
+- **K.** Given a fixed topology, does the count of wave centres select
+  `K = 10` over its neighbours?
+
+The two are independent. A model can have an attractor 1-3-6 but no K
+selection, or K selection that holds in more than one topology, or
+neither. Only the full 2D sweep (topology x K) distinguishes the cases.
+R6a-R6c and R8 below measure the topology axis and the K axis separately.
+
+### R6a. Is 1-3-6 an attractor of the dynamics?
+
+Test: start from a random scatter of 10 wave centres in `r_domain`, let
 them drift under the active motion rule (variants B7a-B7d), run for `N`
 steps, and check whether the configuration self-organises into 1-3-6. If
-yes, 1-3-6 is an attractor and the selection mechanism is dynamical. If
-no, 1-3-6 is only an initial condition and K-selectivity must have a
-different source.
+yes, 1-3-6 is a dynamical attractor and the selection mechanism is
+dynamical. If no, 1-3-6 is only an initial condition and any K-selection
+must have a different source.
 
-Controls: run the same test with `K = 9`, `K = 11`. If the system
-organises into 1-3-6 for `K = 10` but into a different arrangement for
-other `K`, the attractor is K-dependent. If it organises into 1-3-6 for
-every `K`, the attractor is universal and does not explain selectivity.
+Control: repeat the same test with a random scatter of `K = 9` and
+`K = 11`. If the system organises into the 1-3-6-equivalent shell
+structure at each own count, the attractor is topology-driven; if it
+organises into unrelated arrangements, the attractor is specific to
+`K = 10` alone.
+
+### R6b. Does K = 10 select under 1-3-6?
+
+Test: for each `K = 2..12`, start from the 1-3-6 arrangement at that K's
+count (a scaled analogue where the count is not 10; see item 2.8 for the
+geometries), perturb, and measure whether the configuration survives. If
+only `K = 10` survives, K-selection holds under 1-3-6.
+
+Note on geometry for `K != 10`: item 2.8 lists `golden_angle` and
+`bcc_lattice` for the non-1-3-6 counts. For `K != 10`, R6b uses those
+rather than a scaled 1-3-6, because 1-3-6 is a specific topology for ten
+centres and has no direct analogue at other counts.
+
+### R6c. Does K = 10 select under golden-angle?
+
+Test: for each `K = 2..12`, start from the golden-angle arrangement,
+perturb, and measure whether the configuration survives. If only `K = 10`
+survives, K-selection holds under golden-angle.
+
+### R6d. Perturbation protocol: how stable, and where do WCs go?
+
+The tests above ask whether a topology survives *a* perturbation. This one
+asks how stable it is, as a function of perturbation amplitude, and where
+the wave centres go when it does not survive.
+
+**Perturbation sweep.** For each topology (1-3-6, golden-angle) and each
+`K`, displace every wave centre by a random vector of magnitude `epsilon`,
+with `epsilon` swept over a range (for example 1%, 2%, 5%, 10%, 20%, 50%
+of the nearest-neighbour spacing). For each `epsilon`, run three seeds and
+measure the outcomes below.
+
+**Outcome metrics per wave centre.**
+
+- **Return**: the WC converges back to within a small tolerance of its
+  initial position. The configuration is a fixed point of the motion rule
+  under this perturbation.
+- **Bounded drift**: the WC oscillates or drifts but stays inside a ball
+  of radius `r_bound` around its initial position. The topology holds but
+  the positions relax.
+- **Escape**: the WC leaves `r_bound` and does not return. The topology
+  has broken at that centre.
+
+Report for each `(topology, K, epsilon)`: the fraction of centres in each
+of the three categories, and the survival threshold `epsilon_crit` at
+which the escape fraction exceeds a stated level (for example, 50%).
+
+**Perturbation growth.** Between the initial perturbation and the final
+state, measure whether the perturbation amplitude grows, stays bounded,
+or decays. A topology with a decay is **asymptotically stable**; one with
+a bounded oscillation is **marginally stable**; one with growth is
+**unstable**. This distinguishes a config that survives by a wide margin
+from one that survives only because the run is short.
+
+**Per-centre, not global.** All metrics above are computed per wave
+centre, not as a single global average, because a topology can fail at one
+centre while the others remain in place. Report both the per-centre
+outcomes and their aggregate.
+
+**Relation to item 2.9 (B9c).** Item 2.9 sweeps the spacing; R6d sweeps
+the perturbation amplitude at fixed spacing. Both are perturbations, but
+of different quantities: spacing is a systematic geometric parameter,
+perturbation is random displacement. The two protocols are complementary.
+
+**Relation to item 1.9 (wc_drift).** The `wc_drift` metric in item 1.9
+measures the mean displacement magnitude but does not distinguish bounded
+from unbounded. R6d's three-category classification is the qualitative
+extension of that metric; `wc_drift` becomes one of the numbers R6d
+reports.
+
+### Cross-check between R6b and R6c
+
+If only one topology shows K-selection, the selection and the topology
+are coupled (the K=10 result depends on being arranged as 1-3-6, or as
+golden-angle, whichever survives). If both show it, K-selection is
+topology-independent. If neither shows it, K-selection is not a
+Milestone 2 outcome and the source must be elsewhere (Q11's capacity
+argument, or the spin extension in Milestone 3).
 
 ### R7. Are the minima discrete (BCC nodes) or continuous?
 
@@ -1579,45 +1683,24 @@ The discrete case supports the manuscript's topological argument for
 
 ### R8. How many attractors, and is 1-3-6 one of them?
 
-Test: for each `K = 2..12`, start from `N` random initial conditions
-(`N >= 10`), run each to convergence, and cluster the final
-configurations. If all `N` runs for a given `K` converge to the same
-arrangement, the attractor is unique for that `K`. If they split into
-several clusters, the landscape has multiple attractors and 1-3-6 may be
-one of several.
+Test: for each topology in {1-3-6, golden-angle, bcc_lattice, line,
+random} (item 2.8), and for each `K = 2..12`, start from `N >= 10` random
+initial conditions, run each to convergence, and cluster the final
+configurations.
 
-Report for each `K`: number of clusters, and whether 1-3-6 appears as a
-cluster centre. This is the direct measurement of whether 1-3-6 is a
-preferred arrangement in the dynamics, independent of the static stability
-measured in Milestone 1.
+For each `(topology, K)` cell, report:
 
-### Relation to Milestone 1
+- the number of distinct final arrangements (clusters);
+- whether 1-3-6 appears as a cluster centre (only meaningful when the
+  topology is 1-3-6, or when a cluster happens to match it);
+- whether the same arrangement appears across topologies for the same K
+  (topology-independent attractor) or only within one topology
+  (topology-specific attractor).
 
-The three tests above use the same motion rules (B7a-B7d) and the same
-fields as Milestone 1. They differ only in the initial conditions and the
-observable. They are deferred to Milestone 2 because:
-
-1. They are expensive (each `K` needs multiple long runs).
-2. They are only interpretable after the Milestone 1 baseline is known.
-3. If Milestone 1 already shows a unique K = 10, the attractor test is
-   confirmatory; if it shows degeneracy, the attractor test is diagnostic.
-
-Related open question: Q11 in Section 9 (is the B6a ground-state threshold
-the K-selectivity mechanism?). Q11 asks about **capacity** selection;
-R6-R8 ask about **positional** selection. They are complementary, not
-alternatives.
-
-### When Milestone 2 becomes active
-
-One signal moves the lock-in test from deferred to active:
-
-**Milestone 1 K-sweep shows degeneracy.** If the sweep in item 2.10 reports
-the same stability for several `K`, the natural next question is whether
-1-3-6 is a dynamical attractor or only an initial condition. That is
-R6-R8.
-
-If Milestone 1 shows a unique K = 10, the lock-in test is a confirmation,
-not a blocker, and Milestone 2 can wait.
+This is the direct measurement of whether 1-3-6 is a preferred
+arrangement in the dynamics, and whether that preference is specific to
+ten centres or generic across K. It is the K-axis analogue of R6a's
+topology-axis test.
 
 ---
 
@@ -1760,6 +1843,7 @@ K-selectivity, structural stability, and energy-conservation studies.
 | 2026-09-21 | Round seven. Section 5.2: the unbounded B6a potential is reinterpreted as the physical saturation signature of the Onion Model, not a numerical failure; the amplitude at which the ground state disappears is a measurable threshold. Reference to manuscript v5.0.2, Chapter 15, Section 15.2 (DOI 10.5281/zenodo.22875996). New Q11: is the B6a threshold the K-selectivity mechanism (capacity selection)? Section 15: third activation signal removed (the AMM is a static geometric quantity, Section 2.7, not a transverse-mode requirement); possible Milestone 3 (Onion recursion) flagged. Glossary: Onion Model entry added. | Lukasz Smolinski |
 | 2026-09-22 | Round eight. Milestone 2 renamed from "Spin extension" to "Nodal lock-in"; new Section 15 with tests R6 (attractor), R7 (discrete vs continuous minima), R8 (attractor count per K). Spin extension moved to Section 16 as Milestone 3. Section 17 is the changelog. Section 12 references updated. Q6 linked to Milestone 2 R7; Q11 explicitly linked to Milestone 2 as the complementary capacity-selection test. Glossary: `Nodal lock-in` entry added. | Lukasz Smolinski |
 | 2026-09-22 | Round nine (review response). Section 2.10 lead-in changed from "pipeline A" to "vacuum variants"; the structural half runs on V3 and the energetic half on V2 or V4, irrespective of the pipeline preset, which is orthogonal. Section 2.3 and Section 3.2 corrected: the EMC Wall peak `rho > rho_0` arrives with B4c only; B4b obeys the maximum principle and `c_max = c_0` for both B4a and B4b. Item 1.16 aligned. Item 1.23 test 2 now names the staggered leapfrog invariant as the machine-precision quantity, and states that the Section 5.2 energy is scored by O(dt^2) convergence under refinement. Q10 tightened: `U(dt/2)` is a half kick and half drift, not a kick alone. Q11 given the turnover mechanism: capacity selection peaks at K = 10 because larger K redistributes the same energy over more centres. Comment-tier fixes: "(updated)" dropped from the Q10 heading. Applied as maintainer edits at merge: trailing newline restored (MD047); `theory/_CITATIONS.md` extended with the v5.0.2 row (DOI 10.5281/zenodo.22875996, published 2026-09-21). | Lukasz Smolinski |
+| 2026-09-22 | Round ten (post-merge). Section 15 restructured: R6 splited, with a cross-check paragraph; R8 moved to the topology x K grid; a new "Two independent axes" paragraph added ahead of R6a. Q11 rewritten: the threshold is expected to peak (not knee) at K=10 because the constructive-interference pattern closes on the sphere at that count, and the prediction is stated for both topologies. The earlier "energy redistributed over centres" wording is removed. | Lukasz Smolinski |
 
 ---
 
