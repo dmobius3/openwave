@@ -1,0 +1,45 @@
+{
+ "classify": {
+  "stable": "STABLE",
+  "saddle": "SADDLE",
+  "unresolved": "UNRESOLVED"
+ },
+ "wiring": {
+  "source_json_present": {
+   "r22_1": true,
+   "r23_1": true
+  },
+  "rows": 33,
+  "tags_unique": true,
+  "source_fields_present": 32
+ },
+ "r22_1": {
+  "E0": 10.650223971766625,
+  "E_ref_reslaved": 10.650223971766625,
+  "E_kicked": 10.863291951578635,
+  "kick_amp_effective": 0.004492029120927523,
+  "E_after_2_its": 7.90249316569793,
+  "iters": 2,
+  "block_diagonal_kept": true,
+  "pinned_cells_untouched": true,
+  "core_shift_h": 0.01841706876551027,
+  "fmax_after": 0.19613105022098964,
+  "kick_raised_E": true,
+  "descent_lowered_E": true
+ },
+ "r23_1": {
+  "E0": 10.621173959770077,
+  "E_ref_reslaved": 7.703597736898654,
+  "E_kicked": 7.85768374304538,
+  "kick_amp_effective": 0.0042569704211706545,
+  "E_after_2_its": 6.003314852605005,
+  "iters": 2,
+  "block_diagonal_kept": true,
+  "pinned_cells_untouched": true,
+  "core_shift_h": 0.07324612492448197,
+  "fmax_after": 0.18974302940663235,
+  "kick_raised_E": true,
+  "descent_lowered_E": true
+ },
+ "PASS": true
+}
