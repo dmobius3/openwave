@@ -28,11 +28,11 @@
 
 ---
 
-## STATUS AT A GLANCE (2026-09-18)
+## STATUS AT A GLANCE (2026-09-24)
 
 | Question | Answer |
 | --- | --- |
-| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13), and M8.11 showed, as an audited argument, that those expansions and the two at the pyramid and the prism are Taylor expansions of local branch germs (2026-09-18). M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). Nothing is in progress |
+| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13), and M8.11 showed, as an audited argument, that those expansions and the two at the pyramid and the prism are Taylor expansions of local branch germs (2026-09-18). M8.12 reproduced the level-6 quartic's reduced Morse census blind (2026-09-21), and M8.13 found, as an audited argument, that the hexagon orbit is its only maximizer, the uniqueness clause M8.12 left unresolved (2026-09-22), each marked "No stability claim" in its Done row. M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). Nothing is in progress |
 | What kind of column is it? | The platform's first top-down structural model: strong on the origin of the numbers (representation theory on S³/2I), absent on dynamics. The M8 program exists to supply the dynamics half |
 | What decides the program? | Field dynamics remains the decisive question (does ANY reasonable Lagrangian on S³/2I realize the McKay slot structure?), and it stands without a live route in this column. Per [#512](https://github.com/openwave-labs/openwave/discussions/512), the two MODELS.md criteria gated on it stay open and nothing is pending; a future program is reviewed on arrival, under run-before-write and the maintainer-reproduction rule |
 | Evidence discipline | The author's own claim ledger is adopted as the grading baseline (structural results = the core; the numeric mass table = low weight, capped by the author's own pre-registered nulls); platform standards (pre-registration, adversarial audit, method notes) apply from day one |
@@ -351,3 +351,15 @@ The author's package lands in its own PR for the provenance comparison. Record:
 the landing and is recorded in the task doc's
 [provenance comparison](tasks/m8_11_task_details.md#provenance-comparison-2026-09-19). Bookkeeping only; no scope or
 evidence change.
+
+**AUTHOR-SIDE SYNC: THE Λ TEST UNSCORED, THE ν₂ FALSIFIER RETIRED, THE CONSTRUCTION PARKED (2026-09-24).** The
+author's Λ page cannot yet score its coefficient test, `Λ_obs R_ind² = 3` at 5σ: no route to `R` states an uncertainty
+of its own, so the α route's figure stands as a conditional reference value about 23% below `Λ_obs`. The column's
+cells say so, and no longer call the test pre-registered: it was stated in advance of Euclid DR1 but never frozen. The
+routes to `R` read 3.2× apart on the canonical pair and 1.7× on the best assigned pair, not ~4×. The retired
+ν₂ = 8.6 meV falsifier leaves the briefing and background. The neutrino ladder that replaced it at M8.3 is not listed
+as a falsifier, since no quantitative threshold for it is stated; the falsifier cells name Euclid Row IV, which can
+score before the full release. The author's stress-tensor bridge parks its construction
+step with one entry test, cited from the first Help Wanted ask and the native field dynamics row. Riding along: the
+well-set rank, the Gauss equation, M8.1's pass, M8.12 and M8.13, and three "planned" labels. No task, gate or
+MODELS.md icon moves.
