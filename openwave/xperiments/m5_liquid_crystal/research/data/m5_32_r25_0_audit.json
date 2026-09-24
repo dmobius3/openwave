@@ -1,0 +1,1101 @@
+{
+ "checks": {
+  "a": {
+   "method": "own sympy on the explicit 4x4 with eta, V4 = w sum (tr N^p - C_p)^2",
+   "numbers": {
+    "u_4x4_eta_is_32m2_bbprime_over_rho_sq": true,
+    "u_2x2_plain_is_32m2_bbprime_over_rho_sq": true,
+    "trace_differences_match_claim": true,
+    "V_exact_block_polynomial_ok": true,
+    "K_bracket_at_f_0": "196*s0**4 + 36*s0**2 + 4",
+    "K_bracket_at_f_f0": "256*s0**4 + 36*s0**2 + 4",
+    "K_true_hessian_over_2w_at_f0": "256*s0**4 + 36*s0**2 + 4",
+    "perfect_square_ok": true,
+    "bound_pi_sqrt32wK_f0sq_ok": true,
+    "bps_profile_first_order_ok": true,
+    "K_of_f_increasing": true,
+    "m_scaling": "u carries m^2, so the bound and the exact-K bound carry m: T_m = m T_1 exactly"
+   },
+   "verdict": "QUALIFIED",
+   "note": "every identity holds; wording: K = 4 + 36 s0^2 + 144 s0^4 is the bracket at f = 0 (leading order in b, the author's phrase), NOT the leading order in f - f0: the quadratic stiffness about the vacuum is 4 + 36 s0^2 + 256 s0^4 (the 'exact-vacuum K'). The exact block potential has its own exact Bogomolny value 2 pi int_0^f0 sqrt(32 w K(f)) (f0 - f) df (K(f) increasing), which the 1D minimizer must reproduce; see a2."
+  },
+  "a2": {
+   "method": "own 1D radial integrator + L-BFGS, exact-K(f) quadrature, own slab field on the certified energy",
+   "numbers": {
+    "rows": [
+     {
+      "delta": 0.3,
+      "w1s": 6.25,
+      "bound_lead_K": 0.0013409507276400038,
+      "bound_exact_vacuum_K": 0.001345092783451958,
+      "bound_exact_Kf_integral": 0.0013422864398313012,
+      "T_1d_pinned_dr0.02": 0.0013422829070988606,
+      "T_1d_pinned_dr0.01": 0.0013422856013433873,
+      "T_1d_pinned_richardson": 0.0013422864994248962,
+      "T_1d_over_exact_Kf_bound_minus_1": 4.4397077347824165e-08,
+      "T_over_delta4": 0.16571438264504892,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.3,
+      "w1s": 25.0,
+      "bound_lead_K": 0.0026819014552800077,
+      "bound_exact_vacuum_K": 0.002690185566903916,
+      "bound_exact_Kf_integral": 0.0026845728796626024,
+      "T_1d_pinned_dr0.02": 0.0026845587417314307,
+      "T_1d_pinned_dr0.01": 0.0026845693548739036,
+      "T_1d_pinned_richardson": 0.002684572892588061,
+      "T_1d_over_exact_Kf_bound_minus_1": 4.814716847434397e-09,
+      "T_over_delta4": 0.3314287521713656,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.3,
+      "w1s": 100.0,
+      "bound_lead_K": 0.005363802910560015,
+      "bound_exact_vacuum_K": 0.005380371133807832,
+      "bound_exact_Kf_integral": 0.005369145759325205,
+      "T_1d_pinned_dr0.02": 0.005369089204543357,
+      "T_1d_pinned_dr0.01": 0.005369131624943833,
+      "T_1d_pinned_richardson": 0.005369145765077324,
+      "T_1d_over_exact_Kf_bound_minus_1": 1.0713285814034634e-09,
+      "T_over_delta4": 0.662857501861398,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.1,
+      "w1s": 6.25,
+      "bound_lead_K": 1.511290718154313e-05,
+      "bound_exact_vacuum_K": 1.5113599787099228e-05,
+      "bound_exact_Kf_integral": 1.5113130357051977e-05,
+      "T_1d_pinned_dr0.02": 1.511309400804413e-05,
+      "T_1d_pinned_dr0.01": 1.5113121271442396e-05,
+      "T_1d_pinned_richardson": 1.5113130359241818e-05,
+      "T_1d_over_exact_Kf_bound_minus_1": 1.4489653921145873e-10,
+      "T_over_delta4": 0.15113130359241814,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.1,
+      "w1s": 25.0,
+      "bound_lead_K": 3.022581436308626e-05,
+      "bound_exact_vacuum_K": 3.0227199574198456e-05,
+      "bound_exact_Kf_integral": 3.0226260714103953e-05,
+      "T_1d_pinned_dr0.02": 3.022611531326946e-05,
+      "T_1d_pinned_dr0.01": 3.0226224367303994e-05,
+      "T_1d_pinned_richardson": 3.0226260718648837e-05,
+      "T_1d_over_exact_Kf_bound_minus_1": 1.5036216716168838e-10,
+      "T_over_delta4": 0.30226260718648834,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.1,
+      "w1s": 100.0,
+      "bound_lead_K": 6.045162872617252e-05,
+      "bound_exact_vacuum_K": 6.045439914839691e-05,
+      "bound_exact_Kf_integral": 6.0452521428207906e-05,
+      "T_1d_pinned_dr0.02": 6.0451939812659344e-05,
+      "T_1d_pinned_dr0.01": 6.045237603192559e-05,
+      "T_1d_pinned_richardson": 6.045252143834768e-05,
+      "T_1d_over_exact_Kf_bound_minus_1": 1.677311622927391e-10,
+      "T_over_delta4": 0.6045252143834766,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.03,
+      "w1s": 6.25,
+      "bound_lead_K": 1.2116471454144684e-07,
+      "bound_exact_vacuum_K": 1.2116476045308072e-07,
+      "bound_exact_Kf_integral": 1.2116472933519694e-07,
+      "T_1d_pinned_dr0.02": 1.2116444087378465e-07,
+      "T_1d_pinned_dr0.01": 1.211646572198818e-07,
+      "T_1d_pinned_richardson": 1.2116472933524752e-07,
+      "T_1d_over_exact_Kf_bound_minus_1": 4.1744385725905886e-13,
+      "T_over_delta4": 0.14958608559907105,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.03,
+      "w1s": 25.0,
+      "bound_lead_K": 2.423294290828937e-07,
+      "bound_exact_vacuum_K": 2.4232952090616144e-07,
+      "bound_exact_Kf_integral": 2.423294586703939e-07,
+      "T_1d_pinned_dr0.02": 2.4232830482398377e-07,
+      "T_1d_pinned_dr0.01": 2.423291702090796e-07,
+      "T_1d_pinned_richardson": 2.4232945867077817e-07,
+      "T_1d_over_exact_Kf_bound_minus_1": 1.5858425683745736e-12,
+      "T_over_delta4": 0.2991721711984916,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.03,
+      "w1s": 100.0,
+      "bound_lead_K": 4.846588581657874e-07,
+      "bound_exact_vacuum_K": 4.846590418123229e-07,
+      "bound_exact_Kf_integral": 4.846589173407878e-07,
+      "T_1d_pinned_dr0.02": 4.846543019489769e-07,
+      "T_1d_pinned_dr0.01": 4.846577634951386e-07,
+      "T_1d_pinned_richardson": 4.846589173438592e-07,
+      "T_1d_over_exact_Kf_bound_minus_1": 6.3373750691653186e-12,
+      "T_over_delta4": 0.5983443423998263,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.01,
+      "w1s": 6.25,
+      "bound_lead_K": 1.4945146884834924e-09,
+      "bound_exact_vacuum_K": 1.4945146954874536e-09,
+      "bound_exact_Kf_integral": 1.494514690740324e-09,
+      "T_1d_pinned_dr0.02": 1.4945111358943618e-09,
+      "T_1d_pinned_dr0.01": 1.4945138020292883e-09,
+      "T_1d_pinned_richardson": 1.4945146907409303e-09,
+      "T_1d_over_exact_Kf_bound_minus_1": 4.056754931980322e-13,
+      "T_over_delta4": 0.14945146907409304,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.01,
+      "w1s": 25.0,
+      "bound_lead_K": 2.989029376966985e-09,
+      "bound_exact_vacuum_K": 2.989029390974907e-09,
+      "bound_exact_Kf_integral": 2.989029381480648e-09,
+      "T_1d_pinned_dr0.02": 2.9890151620873874e-09,
+      "T_1d_pinned_dr0.01": 2.989025826635889e-09,
+      "T_1d_pinned_richardson": 2.9890293814853894e-09,
+      "T_1d_over_exact_Kf_bound_minus_1": 1.5862866575844237e-12,
+      "T_over_delta4": 0.2989029381485389,
+      "between_bounds": true
+     },
+     {
+      "delta": 0.01,
+      "w1s": 100.0,
+      "bound_lead_K": 5.97805875393397e-09,
+      "bound_exact_vacuum_K": 5.978058781949814e-09,
+      "bound_exact_Kf_integral": 5.978058762961296e-09,
+      "T_1d_pinned_dr0.02": 5.978001885312436e-09,
+      "T_1d_pinned_dr0.01": 5.978044543577447e-09,
+      "T_1d_pinned_richardson": 5.978058762999117e-09,
+      "T_1d_over_exact_Kf_bound_minus_1": 6.326716928128917e-12,
+      "T_over_delta4": 0.5978058762999117,
+      "between_bounds": true
+     }
+    ],
+    "delta0.3_w25": {
+     "bound_lead": 0.0026819014552800077,
+     "bound_vac": 0.002690185566903916,
+     "bound_exact_Kf": 0.0026845728796626024,
+     "T_1d": 0.002684572892588061,
+     "audited_T_1d": 0.00268459212586098
+    },
+    "delta0.03_w25_T_over_lead_bound_minus_1": 1.2209777655591836e-07,
+    "T_over_delta4_at_w25": {
+     "0.3": 0.3314287521713656,
+     "0.1": 0.30226260718648834,
+     "0.03": 0.2991721711984916,
+     "0.01": 0.2989029381485389
+    },
+    "small_delta_constant_pi_sqrt(128 w)_over_16": 0.2988693122142224,
+    "free_axis": {
+     "shifted_bps_bound_by_c_over_f0": {
+      "0.0": 0.0026845728796626024,
+      "0.015": 0.0026047175376992583,
+      "0.1": 0.0021749389937607035,
+      "0.5": 0.0006718279616646499,
+      "0.9": 2.6896000670256197e-05
+     },
+     "own_free_axis_descent_T": 6.894583601015913e-12,
+     "own_free_axis_f0_over_f0": 0.9999612681002237,
+     "own_free_axis_T_over_lead_bound": 2.5707818560753474e-09,
+     "own_free_axis_iterations": 14644,
+     "own_free_axis_converged": true
+    },
+    "slab": [
+     {
+      "delta": 0.3,
+      "h": 1.5,
+      "n": 32,
+      "T_stack": 0.002642638012451067,
+      "T_stack_u": 0.0012990138373249328,
+      "T_stack_v": 0.0013436241751261342,
+      "T_1d_of_same_profile": 0.0026845713696282483,
+      "T_1d_minimizer": 0.0026845693548739036,
+      "ratio_to_1d_same_profile": 0.9843798687374856,
+      "ratio_to_1d_minimizer": 0.9843806075090931
+     },
+     {
+      "delta": 0.3,
+      "h": 1.0,
+      "n": 48,
+      "T_stack": 0.002665679161665251,
+      "T_stack_u": 0.0013220549865371732,
+      "T_stack_v": 0.0013436241751280777,
+      "T_1d_of_same_profile": 0.0026845713696282483,
+      "T_1d_minimizer": 0.0026845693548739036,
+      "ratio_to_1d_same_profile": 0.9929626724859195,
+      "ratio_to_1d_minimizer": 0.9929634176988733
+     },
+     {
+      "delta": 0.3,
+      "h": 0.5,
+      "n": 96,
+      "T_stack": 0.002679811701689936,
+      "T_stack_u": 0.0013361875265616718,
+      "T_stack_v": 0.0013436241751282644,
+      "T_1d_of_same_profile": 0.0026845713696282483,
+      "T_1d_minimizer": 0.0026845693548739036,
+      "ratio_to_1d_same_profile": 0.9982270287196829,
+      "ratio_to_1d_minimizer": 0.9982277778835067
+     },
+     {
+      "delta": 0.1,
+      "h": 1.5,
+      "n": 32,
+      "T_stack": 2.9793858483299484e-05,
+      "T_stack_u": 1.4680504945685452e-05,
+      "T_stack_v": 1.5113353537614036e-05,
+      "T_1d_of_same_profile": 3.022622436812391e-05,
+      "T_1d_minimizer": 3.0226224367303994e-05,
+      "ratio_to_1d_same_profile": 0.9856956701055791,
+      "ratio_to_1d_minimizer": 0.9856956701323172
+     },
+     {
+      "delta": 0.1,
+      "h": 1.0,
+      "n": 48,
+      "T_stack": 3.0031660956661843e-05,
+      "T_stack_u": 1.4918307419047804e-05,
+      "T_stack_v": 1.511335353761404e-05,
+      "T_1d_of_same_profile": 3.022622436812391e-05,
+      "T_1d_minimizer": 3.0226224367303994e-05,
+      "ratio_to_1d_same_profile": 0.9935630924626083,
+      "ratio_to_1d_minimizer": 0.9935630924895598
+     },
+     {
+      "delta": 0.1,
+      "h": 0.5,
+      "n": 96,
+      "T_stack": 3.01772416566897e-05,
+      "T_stack_u": 1.5063888119044416e-05,
+      "T_stack_v": 1.5113353537645286e-05,
+      "T_1d_of_same_profile": 3.022622436812391e-05,
+      "T_1d_minimizer": 3.0226224367303994e-05,
+      "ratio_to_1d_same_profile": 0.9983794631166085,
+      "ratio_to_1d_minimizer": 0.9983794631436906
+     }
+    ],
+    "m2": {
+     "T2_over_T1_dr0.01": 2.0000013246013895,
+     "T2_over_T1_richardson": 2.0000000102382796,
+     "T2_over_T1_exact_Kf_bound": 2.0,
+     "audited_ratio": 2.0321634836772464
+    },
+    "core_radius_rho_half_f": {
+     "6.25": 5.129071627152009,
+     "25.0": 3.6268013287507053,
+     "100.0": 2.5645358135760046,
+     "ratio_6.25_over_100_vs_16^0.25": 1.0,
+     "gap_at_rho_half_over_vacuum_gap": 0.7071067811865476
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "all numbers reproduce (bounds, the 1D pinned minimizer equals the EXACT-K(f) Bogomolny value to 1e-5, the slab ratios, T/delta^4). Two corrections: (1) the pinned minimizer is not 'between two bounds by accident', it IS the exact Bogomolny value of the exact block potential (a first-order ODE with variable K(f)); (2) the free-axis state is not a stationary lower state: with f(0) = c free the exact bound is 2 pi int_c^f0 ... which decreases monotonically to ZERO at c = f0 (the pure winding, zero density by check b), so the audited 1.6 percent is a stalled descent along a family whose infimum is 0; the axis pin f(0) = 0 is the regularity condition, not a numerical convenience. Also the m = 2 ratio is exactly 2 (an identity); 2.03 is the audited 1D grid's residual. The 'core radius' 3.63 is where f = b^2 reaches f0 / 2 (the pair gap is 0.71 of the vacuum's there, not half)."
+  },
+  "b": {
+   "method": "own sympy for F = 0 and the leading stencil residue; own 2D lattice at h 1 / 0.5 / 0.25",
+   "numbers": {
+    "continuum_F_zero_for_pure_winding": true,
+    "analytic_leading_sym_residue_per_volume": "h^2 <G,G>, phi-mean = b0**4/rho**6",
+    "bands": {
+     "1.0": {
+      "[1,2)": {
+       "sym_mean_density": 9.729923801898074e-05,
+       "cen_mean_density": 2.4770504796334075e-05,
+       "analytic_h2_GG_mean": 3.239999999999999e-05
+      },
+      "[2,4)": {
+       "sym_mean_density": 4.662544157970971e-06,
+       "cen_mean_density": 1.2446478592631668e-06,
+       "analytic_h2_GG_mean": 1.2000805348722922e-06
+      },
+      "[4,6)": {
+       "sym_mean_density": 5.403724011075225e-08,
+       "cen_mean_density": 6.012973383793468e-09,
+       "analytic_h2_GG_mean": 3.66555603960767e-08
+      },
+      "[6,9)": {
+       "sym_mean_density": 4.143875537110644e-09,
+       "cen_mean_density": 2.2649471777610336e-10,
+       "analytic_h2_GG_mean": 3.495048665361705e-09
+      },
+      "[9,14)": {
+       "sym_mean_density": 3.011491691266457e-10,
+       "cen_mean_density": 7.984940335842912e-12,
+       "analytic_h2_GG_mean": 2.739443306986217e-10
+      }
+     },
+     "0.5": {
+      "[1,2)": {
+       "sym_mean_density": 7.460070652753553e-05,
+       "cen_mean_density": 1.9914365748210668e-05,
+       "analytic_h2_GG_mean": 1.9201288557956675e-05
+      },
+      "[2,4)": {
+       "sym_mean_density": 3.872754557756298e-07,
+       "cen_mean_density": 4.0111190604935104e-08,
+       "analytic_h2_GG_mean": 2.709283661114637e-07
+      },
+      "[4,6)": {
+       "sym_mean_density": 1.0115328278931204e-08,
+       "cen_mean_density": 3.219493165118926e-10,
+       "analytic_h2_GG_mean": 9.417981100402664e-09
+      },
+      "[6,9)": {
+       "sym_mean_density": 9.429985135625614e-10,
+       "cen_mean_density": 1.479677478137804e-11,
+       "analytic_h2_GG_mean": 8.823345898235608e-10
+      },
+      "[9,14)": {
+       "sym_mean_density": 7.006216793303734e-11,
+       "cen_mean_density": 4.722987342403641e-13,
+       "analytic_h2_GG_mean": 6.892594197013508e-11
+      }
+     },
+     "0.25": {
+      "[1,2)": {
+       "sym_mean_density": 6.196407292410077e-06,
+       "cen_mean_density": 6.417790496789617e-07,
+       "analytic_h2_GG_mean": 4.3348538577834195e-06
+      },
+      "[2,4)": {
+       "sym_mean_density": 7.668931409874279e-08,
+       "cen_mean_density": 2.2513090442068086e-09,
+       "analytic_h2_GG_mean": 7.140065086456885e-08
+      },
+      "[4,6)": {
+       "sym_mean_density": 2.5007482126445284e-09,
+       "cen_mean_density": 2.1690454873369333e-11,
+       "analytic_h2_GG_mean": 2.446444342198994e-09
+      },
+      "[6,9)": {
+       "sym_mean_density": 2.2489910326738634e-10,
+       "cen_mean_density": 8.932179277439183e-13,
+       "analytic_h2_GG_mean": 2.196132178196604e-10
+      },
+      "[9,14)": {
+       "sym_mean_density": 1.764588007502253e-11,
+       "cen_mean_density": 3.056443767698841e-14,
+       "analytic_h2_GG_mean": 1.746037601358391e-11
+      }
+     }
+    },
+    "order_in_h_sym_band46_h1_to_h0.5": 2.417410851252473,
+    "order_in_h_sym_band46_h0.5_to_h0.25": 2.0161114288505178,
+    "order_in_h_central_band46_h0.5_to_h0.25": 3.891701373797194,
+    "rho_falloff_exponent": {
+     "sym_h1": 6.230080932064868,
+     "sym_h0.5": 5.970958802935254,
+     "sym_h0.25": 5.9476996985249615,
+     "analytic_h2GG_h0.25": 5.933873807200308,
+     "cen_h0.25": 7.881887038735009
+    },
+    "bps_rho_half": 3.6268013287507053,
+    "bps_density_beyond_3rho_half_over_max": 2.9405271299489586e-09
+   },
+   "verdict": "QUALIFIED",
+   "note": "continuum zero holds; the lattice residue is a STENCIL property: the stack's one-sided fwd/bwd average leaves h^2 <G,G> with G = [M_xx, M_y] + [M_x, M_yy] (own derivation), which falls as rho^-6 analytically (the phi-mean above), not rho^-7; central differences leave O(h^4). The audited 7.4 is a short-range band fit at h 1 (pre-asymptotic); the m = 2 additivity is an identity (a2)."
+  },
+  "c_i": {
+   "method": "own four-form on random jets, symmetric and arbitrary; own algebraic reason",
+   "numbers": {
+    "max_ratio_symmetric_jets_20_draws": 3.2899797765387076e-16,
+    "max_ratio_arbitrary_jets_20_draws": 1.0,
+    "eps_tr(X X X X)_arbitrary": -2.6645352591003757e-15,
+    "reason": "<[A,B]_eta,[C,D]_eta>_eta = -tr([eta A, eta B][eta C, eta D]); eps tr(X_mu X_nu X_rho X_sigma) = 0 since the cyclic shift of four indices is an odd permutation while the trace is cyclic; symmetry of the jets and eta play no role (it also vanishes for arbitrary matrices), the Jacobi form tr(A[B,[C,D]]) is an equivalent reading"
+   },
+   "verdict": "CONFIRMED",
+   "note": "identically zero; an unfalsifiable witness, as the audited script says"
+  },
+  "c_ii": {
+   "method": "own algebraic jets [W, M] + O diag(g) O^T at a point, own projected witness",
+   "numbers": {
+    "fixed_eigenvalues_max_ratio_200_draws": 1.5327060204074045e-16,
+    "decomposition_F_eq_c_x_wedge_y_max_rel_err": 3.151250613381093e-15,
+    "with_gradient_max_ratio_abs_EB_over_E2_plus_B2": 0.4039843111126414,
+    "with_gradient_median_ratio": 0.03227807949023627,
+    "with_gradient_max_cos_like_abs_EB_over_EnBn": 0.9818736387771947,
+    "reason": "in the eigenframe a fixed-eigenvalue jet is [w_mu, D], so the pair element of [dM_m, dM_n] is c (x_m y_n - x_n y_m) with x = w_pr, y = w_rq (the director column r mediates): a simple 2-form, whose Pfaffian E . B vanishes; an eigenvalue gradient adds z ^ v with z = d(d_p - d_q), v = w_pq (d_q - d_p), and E . B = 2 c (x ^ y ^ z ^ v) is generically nonzero"
+   },
+   "verdict": "QUALIFIED",
+   "note": "zero at fixed eigenvalues and switched on by a gradient, both reproduced; the '0.95' is a draw-dependent number (the ratio |E.B|/(E^2+B^2) is not scale-free in the clock amplitude: its ceiling is 1/2 at |E| = |B| parallel, and the reported 0.95 must come from a normalization where E and B are compared as (E^2 + B^2)/2 or similar); the scale-free cosine form is what to quote"
+  },
+  "c_iii": {
+   "method": "own fixed-eigenvalue biaxial hedgehog on n 24 / 36 / 48 at L 36, own witness",
+   "numbers": {
+    "rows": {
+     "1.5": {
+      "rot_z": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 3.9639090554719205e-05,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 7.927818110943841e-05,
+        "signed_sum_EB_over_sum_E2_plus_B2": -2.2723739277258137e-22,
+        "sum_abs_EB_over_sum_EnBn": 0.0003066934680060934,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.00014414891237390142,
+        "cells": 3168,
+        "EB_even_in_z_over_odd": 8.731928719237308e-17
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 5.356649317334393e-05,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.00010713298634668786,
+        "signed_sum_EB_over_sum_E2_plus_B2": 8.153366720331628e-22,
+        "sum_abs_EB_over_sum_EnBn": 0.0004576100811354539,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.00021122239332675453,
+        "cells": 3168,
+        "EB_even_in_z_over_odd": 0.0
+       }
+      },
+      "clock_local": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.06472691444972323,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.12945382889944645,
+        "signed_sum_EB_over_sum_E2_plus_B2": 3.81313694089203e-18,
+        "sum_abs_EB_over_sum_EnBn": 0.4136830867613457,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.1452845490373002,
+        "cells": 3168,
+        "EB_even_in_z_over_odd": 2.0525149689254926e-16
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.0042515160260589765,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.008503032052117953,
+        "signed_sum_EB_over_sum_E2_plus_B2": 1.2572287856561201e-19,
+        "sum_abs_EB_over_sum_EnBn": 0.4416044159135882,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.1603380769129672,
+        "cells": 3168,
+        "EB_even_in_z_over_odd": 0.0
+       }
+      },
+      "B_r_shells": {
+       "4.5": {
+        "Br_mean_north": 0.01905786490538785,
+        "Br_mean_south": -0.019057864905387845,
+        "Br_even_over_odd": 9.102401998276226e-17,
+        "net_flux_over_sum_abs": 2.0574483571366325e-17
+       },
+       "6.0": {
+        "Br_mean_north": 0.00783215376234418,
+        "Br_mean_south": -0.00783215376234418,
+        "Br_even_over_odd": 0.0,
+        "net_flux_over_sum_abs": 8.372761875065543e-18
+       },
+       "9.0": {
+        "Br_mean_north": 0.0034322763146231003,
+        "Br_mean_south": -0.0034322763146231003,
+        "Br_even_over_odd": 0.0,
+        "net_flux_over_sum_abs": 0.0
+       },
+       "12.0": {
+        "Br_mean_north": 0.001847706517685839,
+        "Br_mean_south": -0.001847706517685839,
+        "Br_even_over_odd": 0.0,
+        "net_flux_over_sum_abs": -7.522447539280176e-18
+       }
+      },
+      "mask_cells": 3168,
+      "pair_gap_min_in_mask": 0.29999999999999954
+     },
+     "1.0": {
+      "rot_z": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 7.384335505384159e-06,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 1.4768671010768318e-05,
+        "signed_sum_EB_over_sum_E2_plus_B2": -3.2521742945008205e-23,
+        "sum_abs_EB_over_sum_EnBn": 5.575789926148019e-05,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 2.6232607242080593e-05,
+        "cells": 10520,
+        "EB_even_in_z_over_odd": 0.0
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 5.407657480287225e-06,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 1.081531496057445e-05,
+        "signed_sum_EB_over_sum_E2_plus_B2": 1.7583275863723023e-24,
+        "sum_abs_EB_over_sum_EnBn": 8.205071313267206e-05,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 3.834320805259611e-05,
+        "cells": 10520,
+        "EB_even_in_z_over_odd": 0.0
+       }
+      },
+      "clock_local": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.027640062671844785,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.05528012534368957,
+        "signed_sum_EB_over_sum_E2_plus_B2": 0.0,
+        "sum_abs_EB_over_sum_EnBn": 0.4375622272322651,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.17066054702363243,
+        "cells": 10520,
+        "EB_even_in_z_over_odd": 7.155537175458953e-17
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.0009696136842346046,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.001939227368469209,
+        "signed_sum_EB_over_sum_E2_plus_B2": 0.0,
+        "sum_abs_EB_over_sum_EnBn": 0.45495892582674236,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.18073379535786818,
+        "cells": 10520,
+        "EB_even_in_z_over_odd": 2.4991265548642733e-16
+       }
+      },
+      "B_r_shells": {
+       "4.5": {
+        "Br_mean_north": 0.011253043051930707,
+        "Br_mean_south": -0.011253043051930709,
+        "Br_even_over_odd": 7.707797206370668e-17,
+        "net_flux_over_sum_abs": 1.3195179884911514e-17
+       },
+       "6.0": {
+        "Br_mean_north": 0.007124662430460691,
+        "Br_mean_south": -0.00712466243046069,
+        "Br_even_over_odd": 6.087037431276017e-17,
+        "net_flux_over_sum_abs": 0.0
+       },
+       "9.0": {
+        "Br_mean_north": 0.0034221264496930226,
+        "Br_mean_south": -0.0034221264496930226,
+        "Br_even_over_odd": 0.0,
+        "net_flux_over_sum_abs": 3.3216909263918303e-18
+       },
+       "12.0": {
+        "Br_mean_north": 0.0020070927733765545,
+        "Br_mean_south": -0.002007092773376554,
+        "Br_even_over_odd": 1.0803707600038232e-16,
+        "net_flux_over_sum_abs": 3.151712735461905e-18
+       }
+      },
+      "mask_cells": 10520,
+      "pair_gap_min_in_mask": 0.29999999999999954
+     },
+     "0.75": {
+      "rot_z": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 2.356859430084787e-06,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 4.713718860169574e-06,
+        "signed_sum_EB_over_sum_E2_plus_B2": 5.739597690791404e-25,
+        "sum_abs_EB_over_sum_EnBn": 1.769146702833597e-05,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 8.303868085745224e-06,
+        "cells": 24848,
+        "EB_even_in_z_over_odd": 0.0
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 1.1027040886677303e-06,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 2.2054081773354606e-06,
+        "signed_sum_EB_over_sum_E2_plus_B2": -1.3601314394103101e-26,
+        "sum_abs_EB_over_sum_EnBn": 2.5951584743672742e-05,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 1.2123725985749469e-05,
+        "cells": 24848,
+        "EB_even_in_z_over_odd": 0.0
+       }
+      },
+      "clock_local": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.016668095466392814,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.03333619093278563,
+        "signed_sum_EB_over_sum_E2_plus_B2": 0.0,
+        "sum_abs_EB_over_sum_EnBn": 0.4395385123554761,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.1610074808830611,
+        "cells": 24848,
+        "EB_even_in_z_over_odd": 9.520769562714216e-17
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.00038200450669913477,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.0007640090133982695,
+        "signed_sum_EB_over_sum_E2_plus_B2": 0.0,
+        "sum_abs_EB_over_sum_EnBn": 0.46091491103906435,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.17654238994957827,
+        "cells": 24848,
+        "EB_even_in_z_over_odd": 9.060294298333078e-17
+       }
+      },
+      "B_r_shells": {
+       "4.5": {
+        "Br_mean_north": 0.010477187203497808,
+        "Br_mean_south": -0.01047718720349781,
+        "Br_even_over_odd": 8.278574403050037e-17,
+        "net_flux_over_sum_abs": 0.0
+       },
+       "6.0": {
+        "Br_mean_north": 0.00687040719480005,
+        "Br_mean_south": -0.006870407194800049,
+        "Br_even_over_odd": 6.312302265321891e-17,
+        "net_flux_over_sum_abs": -8.717213656510639e-18
+       },
+       "9.0": {
+        "Br_mean_north": 0.003521631171719984,
+        "Br_mean_south": -0.003521631171719984,
+        "Br_even_over_odd": 0.0,
+        "net_flux_over_sum_abs": -1.8152429456829076e-18
+       },
+       "12.0": {
+        "Br_mean_north": 0.0020902953896025033,
+        "Br_mean_south": -0.0020902953896025033,
+        "Br_even_over_odd": 0.0,
+        "net_flux_over_sum_abs": 3.6165260786926135e-18
+       }
+      },
+      "mask_cells": 24848,
+      "pair_gap_min_in_mask": 0.2999999999999994
+     }
+    },
+    "order_in_h": {
+     "rot_z/unit_omega": 4.076746427248387,
+     "rot_z/unit_omega/cos_like": 4.121510424062599,
+     "rot_z/catalog_a0": 5.605710686387993,
+     "rot_z/catalog_a0/cos_like": 4.146693388164321,
+     "clock_local/unit_omega": 1.9665524877446263,
+     "clock_local/unit_omega/cos_like": -0.09080718737953936,
+     "clock_local/catalog_a0": 3.4874218189873263,
+     "clock_local/catalog_a0/cos_like": -0.06251586076321679
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "the audited ratio |E.B| / (E^2 + B^2) falls with h for both clocks (central differences, own mask r > 4.5, rho > 3, r < 14); the orders differ from the audited 1.9 / 1.6 because they depend on the stencil, the mask and the jet normalization (the catalog a0 is unit-Frobenius over the WHOLE lattice, so its per-cell amplitude scales as h^1.5 at fixed L and inflates the order). Two structural facts the order hides: for clock_local at fixed eigenvalues the continuum E is identically zero (the local clock's generator has no director component in the eigenframe, and the pair element of [dM_0, dM_i] needs one), so the scale-free cosine |E.B| / (|E||B|) does NOT fall with h (residue over residue, order about 0); for rot_z on an axisymmetric field the clock jet is the phi-derivative, a combination of the spatial jets, so E . B vanishes in the continuum for ANY eigenvalue profile (see c_iv)"
+  },
+  "c_iv": {
+   "method": "own central-difference witness on the stored S1 n32 and rad_pin n48 fields, catalog and unit-omega jets",
+   "numbers": {
+    "fields": {
+     "S1_n32_biaxial": {
+      "rot_z": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.008155950005912356,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.016311900011824712,
+        "signed_sum_EB_over_sum_E2_plus_B2": 2.3427764932999265e-12,
+        "sum_abs_EB_over_sum_EnBn": 0.09934910925321638,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.04246910877753284,
+        "cells": 21940,
+        "EB_even_in_z_over_odd": 3.4276330024151614e-10
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.016289615117968972,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.032579230235937943,
+        "signed_sum_EB_over_sum_E2_plus_B2": 1.3552097279421866e-11,
+        "sum_abs_EB_over_sum_EnBn": 0.21457450854711618,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.07111948000388144,
+        "cells": 21940,
+        "EB_even_in_z_over_odd": 1.5954037110086647e-09
+       }
+      },
+      "clock_local": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.09764412490903392,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.19528824981806783,
+        "signed_sum_EB_over_sum_E2_plus_B2": -4.2329243129550525e-12,
+        "sum_abs_EB_over_sum_EnBn": 0.506257512014563,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.1847756714740817,
+        "cells": 21940,
+        "EB_even_in_z_over_odd": 5.15782843027454e-10
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.0408732393482666,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.0817464786965332,
+        "signed_sum_EB_over_sum_E2_plus_B2": 7.174835374349236e-12,
+        "sum_abs_EB_over_sum_EnBn": 0.3689169464416581,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.10502681080791514,
+        "cells": 21940,
+        "EB_even_in_z_over_odd": 7.695066499006858e-10
+       }
+      },
+      "B_r_shells": {
+       "3.0": {
+        "Br_mean_north": 0.0004113234711065705,
+        "Br_mean_south": -0.0004113234722231352,
+        "Br_even_over_odd": 1.357283034995676e-09,
+        "net_flux_over_sum_abs": -9.551566219387988e-11
+       },
+       "4.5": {
+        "Br_mean_north": 0.0003291168950925798,
+        "Br_mean_south": -0.0003291168935404947,
+        "Br_even_over_odd": 2.357954191026498e-09,
+        "net_flux_over_sum_abs": 1.170416958943531e-10
+       },
+       "6.0": {
+        "Br_mean_north": 0.0005553077416330652,
+        "Br_mean_south": -0.0005553077414419219,
+        "Br_even_over_odd": 1.7210576301073164e-10,
+        "net_flux_over_sum_abs": 1.374867600061927e-11
+       },
+       "9.0": {
+        "Br_mean_north": 0.00013791940710697017,
+        "Br_mean_south": -0.0001379194061084664,
+        "Br_even_over_odd": 3.6198813294677937e-09,
+        "net_flux_over_sum_abs": 7.799111768843204e-11
+       },
+       "12.0": {
+        "Br_mean_north": 4.525063010516326e-05,
+        "Br_mean_south": -4.52506298932465e-05,
+        "Br_even_over_odd": 2.3415890643670962e-09,
+        "net_flux_over_sum_abs": 2.2861553321218175e-11
+       }
+      },
+      "mask_cells": 21940,
+      "pair_gap_min_in_mask": 0.011644995242107575,
+      "rot_z_phi_derivative_diagnostic": {
+       "rel_norm_[Jz,M]_minus_lattice_phi_derivative": 0.06975995633635314,
+       "ratio_with_A0_lattice_phi_derivative": 3.500422857209203e-18,
+       "ratio_with_A0_[Jz,M]": 0.008155950005912356
+      }
+     },
+     "rad_pin_n48_uniaxial": {
+      "rot_z": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.0014443346659092065,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.002888669331818413,
+        "signed_sum_EB_over_sum_E2_plus_B2": -2.0290999481080944e-08,
+        "sum_abs_EB_over_sum_EnBn": 0.009984523338519893,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.004542294893676886,
+        "cells": 6056,
+        "EB_even_in_z_over_odd": 2.1016419989853347e-05
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.005041415280865096,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.010082830561730193,
+        "signed_sum_EB_over_sum_E2_plus_B2": -8.079008686113994e-07,
+        "sum_abs_EB_over_sum_EnBn": 0.04638269782068312,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.021706132317270806,
+        "cells": 6056,
+        "EB_even_in_z_over_odd": 0.00019620015703492518
+       }
+      },
+      "clock_local": {
+       "unit_omega": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.059325820967629145,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.11865164193525829,
+        "signed_sum_EB_over_sum_E2_plus_B2": 7.122318316429331e-07,
+        "sum_abs_EB_over_sum_EnBn": 0.45234057441760306,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.14675373913776227,
+        "cells": 6056,
+        "EB_even_in_z_over_odd": 0.0014494651402487471
+       },
+       "catalog_a0": {
+        "sum_abs_EB_over_sum_E2_plus_B2": 0.013832514021170979,
+        "sum_abs_EB_over_half_sum_E2_plus_B2": 0.027665028042341958,
+        "signed_sum_EB_over_sum_E2_plus_B2": 1.1736631291997237e-06,
+        "sum_abs_EB_over_sum_EnBn": 0.42325907457042494,
+        "scale_optimal_sum_abs_EB_over_2sqrt": 0.14959729581402553,
+        "cells": 6056,
+        "EB_even_in_z_over_odd": 0.0013147901010862207
+       }
+      },
+      "B_r_shells": {
+       "3.0": {
+        "Br_mean_north": 0.0009490033768601633,
+        "Br_mean_south": -0.0009490033769440416,
+        "Br_even_over_odd": 4.4192848694698875e-11,
+        "net_flux_over_sum_abs": -3.908349350384713e-12
+       },
+       "4.5": {
+        "Br_mean_north": -0.0003106428581044819,
+        "Br_mean_south": 0.00031064285827451886,
+        "Br_even_over_odd": 2.736855847659889e-10,
+        "net_flux_over_sum_abs": 8.916933537013142e-12
+       },
+       "6.0": {
+        "Br_mean_north": -0.00048316654153326413,
+        "Br_mean_south": 0.00048316654150589323,
+        "Br_even_over_odd": 2.832449924900475e-11,
+        "net_flux_over_sum_abs": -1.6812563146995138e-12
+       },
+       "9.0": {
+        "Br_mean_north": -0.00021679090123411808,
+        "Br_mean_south": 0.00021679090123145802,
+        "Br_even_over_odd": 6.135088949795273e-12,
+        "net_flux_over_sum_abs": -2.570317778114494e-13
+       },
+       "12.0": {
+        "Br_mean_north": -0.0006481768860446352,
+        "Br_mean_south": 0.000648176886046212,
+        "Br_even_over_odd": 1.2163000975440305e-12,
+        "net_flux_over_sum_abs": 2.393610976325259e-13
+       }
+      },
+      "mask_cells": 6056,
+      "pair_gap_min_in_mask": 0.010030131123291874,
+      "rot_z_phi_derivative_diagnostic": {
+       "rel_norm_[Jz,M]_minus_lattice_phi_derivative": 0.08984333186494334,
+       "ratio_with_A0_lattice_phi_derivative": 7.89007605466843e-18,
+       "ratio_with_A0_[Jz,M]": 0.0014443346659092065
+      }
+     }
+    },
+    "audited_S1_rot_z_catalog": 0.03655,
+    "audited_S1_clock_local_catalog": 0.09141,
+    "B_is_clock_independent": "F_23, F_31, F_12 contain only spatial jets, so B and every B_r parity statement is a property of the static field alone; 'for BOTH clocks' is one statement, not two"
+   },
+   "verdict": "QUALIFIED",
+   "note": "S1 catalog-jet ratios |E.B| / ((E^2 + B^2) / 2) = 3.258e-02 (rot_z) / 8.175e-02 (clock_local) against the audited 3.66e-2 / 9.14e-2 (same instrument jet, own central differences and own mask); signed total 1.4e-11; B_r even/odd at most 3.6e-09 (dipole parity holds). Corrections: (1) rot_z is NOT a witness on these axisymmetric fields: [J_z, M] equals the phi-derivative -y d_x M + x d_y M (relative difference 6.98e-02 on S1), and with A_0 := the lattice phi-derivative the ratio is 3.5e-18 (an exact algebraic zero: four linearly dependent one-forms), so the whole rot_z reading is lattice anisotropy plus the field's departure from axisymmetry, and the fixed-eigenvalue hedgehog is not its baseline; (2) the clock_local reading is E_i = -w_pq (d_q - d_p) d_i(d_p - d_q), i.e. E . B = (grad of the pair gap) . B up to a factor, the eigenvalue-gradient term alone; (3) the ratio is normalization-bound (the catalog a0 is unit-Frobenius over the lattice with an envelope, not a physical omega): quote the scale-free cosine or scale-optimal form beside it; (4) B is clock-independent by construction, so the 'both clocks' parity read is one statement; the author's magnetic-charge variant lives in the clock's spatial imprint at t > 0 (psi depends on z through tanh(z / l)), which a t = 0 jet on a static field cannot produce, so the missing net flux is expected here"
+  },
+  "d": {
+   "method": "own sympy pencil with a general symmetric Phi; own Gram form per class; own stencil replica against B3.e_parts",
+   "numbers": {
+    "L0_background": "0",
+    "L1_linear": "0",
+    "L2_equals_4tau2_sin2_(om2-kx2-ky2)_bracket": true,
+    "kz_free": true,
+    "bracket_general_Phi": "-2*delta**2*(p2**2 + p3**2 - p5**2 - p6**2 - p7**2 + 2*p7*p9 - p9**2)",
+    "unit_basis_bracket_values_delta0.3": {
+     "00": 0.0,
+     "01": 0.0,
+     "02": -0.09,
+     "03": -0.09,
+     "11": 0.0,
+     "12": 0.09,
+     "13": 0.09,
+     "22": 0.18,
+     "23": 0.0,
+     "33": 0.18
+    },
+    "spatial_class_eigenvalues_delta0.3": [
+     -5.93969318174459e-17,
+     0.0,
+     2.3869795029440856e-17,
+     0.09,
+     0.09,
+     0.36
+    ],
+    "timespace_class_eigenvalues_delta0.3": [
+     -0.09,
+     -0.09,
+     0.0
+    ],
+    "full_10_eigenvalues_delta0.3": [
+     -0.09,
+     -0.09,
+     -5.93969318174459e-17,
+     0.0,
+     0.0,
+     0.0,
+     2.3869795029440856e-17,
+     0.09,
+     0.09,
+     0.36
+    ],
+    "timespace_zero_mode_is_director_boost_E01": true,
+    "lattice": {
+     "period_8": {
+      "kh": 0.7853981633974483,
+      "lattice_eps2_coefficient_of_E_u": 8.367842104212812,
+      "pred_exact_stencil": 8.36784210421281,
+      "ratio_exact_stencil": 1.0000000000000002,
+      "ratio_continuum_k": 0.9199649159407908,
+      "ratio_sin_kh_over_h": 1.134961222902129,
+      "ratio_2sin_kh2_over_h": 0.9687500000000003
+     },
+     "period_16": {
+      "kh": 0.39269908169872414,
+      "lattice_eps2_coefficient_of_E_u": 2.1747313079655415,
+      "pred_exact_stencil": 2.1747313079655415,
+      "ratio_exact_stencil": 1.0,
+      "ratio_continuum_k": 0.9563643673052,
+      "ratio_sin_kh_over_h": 1.0070796883373119,
+      "ratio_2sin_kh2_over_h": 0.9687500000000002
+     }
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "the pencil reproduces exactly (real mode: the factor sin^2 theta multiplies 4 tau^2 eps^2), no k_z, no linear term. Scope corrections: the bracket is positive SEMI-definite on spatial modes (four zero modes, the commutant of C: E_00, E_11, the pair identity and C itself) and negative SEMI-definite on time-space modes (one zero mode, the boost along the director E_01); the lattice second variation matches the exact one-sided stencil bookkeeping to round-off, and the effective wavenumber of the certified fwd/bwd stencil is 2 sin(kh/2)/h (exact, with the dropped boundary slice as the 31/32 factor), not sin(kh)/h (which overshoots by 0.7 percent at kh 0.39 and 13 percent at kh 0.79)"
+  },
+  "e": {
+   "method": "own sympy: J from dE_rot/d omega, the gate 2 J omega = E solved for J",
+   "numbers": {
+    "E_rot = C omega^2 (the stack: E_kin = omega^2 kin, C = kin)": {
+     "J_star_sq_over_C_E_stat": "4/3",
+     "omega_star_sq_times_C_over_E_stat": "1/3",
+     "E_rot_over_E": "1/4",
+     "dE_J/dJ": "J/(2*C)",
+     "plan_form_2J_omega_over_E": "4/5",
+     "plan_form_solves_2J_omega_eq_E_stat": true
+    },
+    "E_rot = C omega^2 / 2": {
+     "J_star_sq_over_C_E_stat": "2/3",
+     "omega_star_sq_times_C_over_E_stat": "2/3",
+     "E_rot_over_E": "1/4",
+     "dE_J/dJ": "J/C",
+     "plan_form_2J_omega_over_E": "4/3",
+     "plan_form_solves_2J_omega_eq_E_stat": false
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "the three values hold with C defined by E_rot = C omega^2 (J = 2 C omega), the stack's kin_of convention; with E_rot = C omega^2 / 2 they read J*^2 = 2 C E_stat / 3 and omega*^2 = 2 E_stat / (3 C) (E_rot / E = 1/4 in both). Wording: the values solve the GATE 2 J omega = E, not a stationary point (E_J = E_stat + J^2 / 4C is monotone in J); the plan's sqrt(C E_stat) solves 2 J omega = E_stat, the E_rot << E limit (its gate ratio is 4/5)"
+  },
+  "f": {
+   "method": "own stereographic textures (pair on the z axis), own pulled-back frame d n / d Re w, own winding reader on rho 1 and 2 loops",
+   "numbers": {
+    "opposite": {
+     "max_abs_e1_dot_n": 2.1018560666187505e-16,
+     "singular_points_norm_below_1e-3_of_20000": 125,
+     "singular_z_range": [
+      -19.925226431851645,
+      -6.873962497868007
+     ],
+     "singular_max_rho": 5.409524908719159,
+     "singular_points_norm_below_1e-2_of_20000": 437,
+     "singular_z_range_1e-2": [
+      -19.967075010966866,
+      -6.646413091285921
+     ],
+     "singular_max_rho_1e-2": 10.606625122029763,
+     "frame_norm_equals_1_plus_nz_max_err": 6.661338147750939e-16,
+     "loops_rho1": {
+      "0.0": {
+       "z": 0.0,
+       "n_z_mean": -4.295946314730101e-15,
+       "axial": false,
+       "half_turns": -0.00010826593236358066,
+       "min_frame_norm": 0.9999999999999956,
+       "max_abs_e1_dot_n": 8.039761622242172e-31
+      },
+      "3.0": {
+       "z": 3.0,
+       "n_z_mean": 0.7913366292607874,
+       "axial": false,
+       "half_turns": 7.69069545296436e-21,
+       "min_frame_norm": 1.7913366292607873,
+       "max_abs_e1_dot_n": 7.748089325972961e-17
+      },
+      "-3.0": {
+       "z": -3.0,
+       "n_z_mean": -0.7913366292607823,
+       "axial": false,
+       "half_turns": 0.0,
+       "min_frame_norm": 0.20866337073921748,
+       "max_abs_e1_dot_n": 1.0028907400961108e-16
+      },
+      "9.0": {
+       "z": 9.0,
+       "n_z_mean": 0.999941611302548,
+       "axial": true,
+       "half_turns": 3.3439133038772136e-23,
+       "min_frame_norm": 1.999941611302548,
+       "max_abs_e1_dot_n": 1.3084900047738602e-18
+      },
+      "-9.0": {
+       "z": -9.0,
+       "n_z_mean": -0.999941611302548,
+       "axial": true,
+       "half_turns": 0.0,
+       "min_frame_norm": 5.838869745207588e-05,
+       "max_abs_e1_dot_n": 1.3063629516456205e-18
+      },
+      "20.0": {
+       "z": 20.0,
+       "n_z_mean": 0.9999990596701653,
+       "axial": true,
+       "half_turns": -3.580079470928283e-25,
+       "min_frame_norm": 1.9999990596701651,
+       "max_abs_e1_dot_n": 1.6486038174861262e-19
+      },
+      "-20.0": {
+       "z": -20.0,
+       "n_z_mean": -0.9999990596701658,
+       "axial": true,
+       "half_turns": 0.0,
+       "min_frame_norm": 9.403298344304246e-07,
+       "max_abs_e1_dot_n": 1.1662520675203002e-19
+      }
+     },
+     "half_turns_rho2": {
+      "9.0": 1.3067173522727267e-22,
+      "-9.0": 0.0,
+      "20.0": 6.382821898117386e-24,
+      "-20.0": 0.0
+     }
+    },
+    "like": {
+     "max_abs_e1_dot_n": 3.885780586188048e-16,
+     "singular_points_norm_below_1e-3_of_20000": 129,
+     "singular_z_range": [
+      -19.935071265443636,
+      -8.046514521247383
+     ],
+     "singular_max_rho": 5.655777694350974,
+     "singular_points_norm_below_1e-2_of_20000": 476,
+     "singular_z_range_1e-2": [
+      -19.987190611139912,
+      -6.588706363884205
+     ],
+     "singular_max_rho_1e-2": 10.602406250402964,
+     "frame_norm_equals_1_plus_nz_max_err": 8.881784197001252e-16,
+     "loops_rho1": {
+      "0.0": {
+       "z": 0.0,
+       "n_z_mean": -4.300263848714754e-15,
+       "axial": false,
+       "half_turns": -8.0,
+       "min_frame_norm": 0.9999999999999952,
+       "max_abs_e1_dot_n": 2.7582103268031233e-16
+      },
+      "3.0": {
+       "z": 3.0,
+       "n_z_mean": 0.7913366292607874,
+       "axial": false,
+       "half_turns": 5.0248346530065976e-17,
+       "min_frame_norm": 1.791336629260787,
+       "max_abs_e1_dot_n": 1.5525775109992423e-16
+      },
+      "-3.0": {
+       "z": -3.0,
+       "n_z_mean": -0.7913366292607823,
+       "axial": false,
+       "half_turns": -8.0,
+       "min_frame_norm": 0.20866337073921748,
+       "max_abs_e1_dot_n": 3.139849491518021e-16
+      },
+      "9.0": {
+       "z": 9.0,
+       "n_z_mean": 0.999941611302548,
+       "axial": true,
+       "half_turns": 1.1121782142670532e-20,
+       "min_frame_norm": 1.9999416113025477,
+       "max_abs_e1_dot_n": 4.454186446043905e-18
+      },
+      "-9.0": {
+       "z": -9.0,
+       "n_z_mean": -0.999941611302548,
+       "axial": true,
+       "half_turns": -8.000000000000002,
+       "min_frame_norm": 5.838869745207587e-05,
+       "max_abs_e1_dot_n": 5.8817967857338616e-18
+      },
+      "20.0": {
+       "z": 20.0,
+       "n_z_mean": 0.9999990596701653,
+       "axial": true,
+       "half_turns": 1.8009704037847167e-22,
+       "min_frame_norm": 1.9999990596701644,
+       "max_abs_e1_dot_n": 4.658816402230016e-19
+      },
+      "-20.0": {
+       "z": -20.0,
+       "n_z_mean": -0.9999990596701658,
+       "axial": true,
+       "half_turns": -8.0,
+       "min_frame_norm": 9.403298344304245e-07,
+       "max_abs_e1_dot_n": 7.589415207398531e-19
+      }
+     },
+     "half_turns_rho2": {
+      "9.0": 1.5530052155583577e-19,
+      "-9.0": -8.0,
+      "20.0": 2.780445535667633e-21,
+      "-20.0": -8.0
+     }
+    },
+    "assumed_geometry": "pair on the z axis at z = +-6 (d 12), the stereographic pole on z, box +-24, z sampled in +-20 (the audited entry states no seed; this geometry reproduces its z range)"
+   },
+   "verdict": "QUALIFIED",
+   "note": "singular set below the lower charge (z in [-20, -6.x]), 0 half-turns on every axial loop of the +- texture, 8 half-turns (index 4) below the like pair and 0 above: reproduced with an own reader. Corrections: the orthogonality gate cannot fail (e_1 is a derivative of the unit vector n, so e_1 . n = 0 identically; the 8e-13 is round-off, not evidence), and the frame norm is exactly 1 + n_z, so the 'singular points' count is a threshold on 1 + n_z, to be stated with the threshold"
+  }
+ },
+ "summary": {
+  "QUALIFIED": 9,
+  "CONFIRMED": 1
+ },
+ "wall_s": 50.818172216415405
+}

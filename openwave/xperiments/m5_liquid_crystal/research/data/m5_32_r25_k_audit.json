@@ -1,0 +1,3087 @@
+{
+ "task": "M5.32 R25-K audit",
+ "independence": "the auditor did not read scripts/m5_32_r25_k_kick.py; checks built from the census data and the shared family instruments only",
+ "checks": [
+  {
+   "id": "C1",
+   "claim": "labels follow the stated rule; counts 25 / 7 / 1 / 0; stored E_after = own energy of the end field",
+   "method": "relabel every row from the JSON numbers and from own energies of the stored end fields (R20.energy_parts for r22_1, CS.energy_grad at c for r23_1, cross-checked by an auditor-written formula)",
+   "numbers": {
+    "counts_stored": {
+     "UNRESOLVED": 25,
+     "STABLE": 7,
+     "INSUFFICIENT": 1
+    },
+    "rows_with_fields": 32,
+    "label_mismatch_from_json": [],
+    "label_mismatch_from_fields": [],
+    "E_after_disagree_gt_1e-8": {},
+    "max_E_after_rel_disagreement": 0.0,
+    "max_E_before_vs_source_field_rel": 0.0,
+    "own_formula_vs_family_energy_max_rel": 1.2778379699859843e-14,
+    "insufficient_rows": {
+     "rad_pin_d0.9224_w0.003779_c3.094e-05_n32_L48": {
+      "family": "r23_1",
+      "label_stored": "INSUFFICIENT",
+      "n": 32,
+      "files_present": [
+       false,
+       false,
+       false
+      ],
+      "why_stored": "source status BLOCKED, field present False",
+      "stage_file_present": true
+     }
+    }
+   },
+   "verdict": "CONFIRMED"
+  },
+  {
+   "id": "C2",
+   "claim": "kicked start energy = source energy + 0.02 max(1, |E_ref|), E_ref re-slaved for r23_1",
+   "method": "(kicked.E_start - E_ref) / (0.02 max(1,|E_ref|)) per row, E_ref = E_before for r22_1, own re-slaved source energy (CS.solve_m00 on the free cells) for r23_1",
+   "numbers": {
+    "r22_1_excess_over_target_min_max": [
+     0.9999922886822897,
+     1.0000000789136676
+    ],
+    "r23_1_excess_over_target_vs_E_before_min_max": [
+     0.12575482216695533,
+     0.9999999997807838
+    ],
+    "r23_1_excess_over_target_vs_reslaved_min_max": [
+     0.12575482216695533,
+     0.9999999997807838
+    ],
+    "r23_1_reslave_shift_rel_min_max": [
+     0.0,
+     0.0
+    ],
+    "r23_1_E_before_is_reslaved": true,
+    "r23_1_E_before_is_raw_source": true,
+    "rows_off_target_gt_1pct": {
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+      "excess_over_target": 0.12575482216695533,
+      "E_before": 0.0001545168973239526,
+      "kick_excess_abs": 0.0025150964433391064,
+      "w1s": 0.0037790560365400364
+     }
+    },
+    "rows_with_kick_gt_10x_E": {
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": 16.27716118364762,
+     "rad_pin_d0.9224_w25_c0_n32_L48": 62.063756761395204,
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": 34.909202799129716
+    },
+    "per_row_r22_1": {
+     "obl_pin_d0.3_w25_n32_L48": 0.9999984975698943,
+     "bia_pin_d0.3_w25_n32_L48": 0.999999789477459,
+     "perm_pin_d0.3_w25_n32_L48": 0.9999999057436149,
+     "bia_pin_d0.3_w1_n32_L48": 0.9999949230493718,
+     "big_pin_d0.3_w25_n32_L48": 0.9999999960798674,
+     "obl_free_d0.3_w25_n32_L48": 0.9999999998663418,
+     "rad_free_d0.3_w1_n32_L48": 0.9999922886822897,
+     "big_free_d0.3_w25_n32_L48": 0.9999999963794312,
+     "bia_free_d0.3_w1_n32_L48": 1.0000000789136676,
+     "perm_free_d0.3_w25_n32_L48": 0.9999998259241788,
+     "bia_free_d0.3_w25_n32_L48": 0.9999998733721641,
+     "rad_pin_d0.3_w1_n32_L48": 0.9999952091401719,
+     "rad_pin_d0.3_w25_n32_L48": 0.9999995817136307,
+     "rad_free_d0.3_w25_n32_L48": 0.9999999842855497,
+     "rad_pin_d0.89_w25_n32_L48": 0.9999999982207358,
+     "bia_pin_d0.3_w25_n48_L48": 0.9999989400615834,
+     "rad_pin_d0.3_w25_n48_L48": 0.999999637488265
+    },
+    "per_row_r23_1_reslaved": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": 0.9999999991324219,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": 0.9999999988246988,
+     "bia_pin_d0.3_w25_c0.001_n32_L48": 0.999999977934903,
+     "rad_pin_d0.3_w25_c0.0001_n32_L48": 0.999999999632119,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": 0.9999999989597548,
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": 0.12575482216695533,
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 0.9999999018986503,
+     "rad_pin_d0.3_w25_c0_n32_L48": 0.9999999997807838,
+     "rad_pin_d0.3_w25_c0.001_n32_L48": 0.9999999889997555,
+     "rad_pin_d0.3_w25_c3e-05_n32_L48": 0.9999999985376083,
+     "rad_pin_d0.9224_w25_c0_n32_L48": 0.9999999980191462,
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": 0.999999997587645,
+     "rad_pin_d0.3_w25_c0.0001_n48_L72": 0.9999999997181661,
+     "rad_pin_d0.3_w25_c0.0003_n48_L48": 0.9999999879308379,
+     "rad_pin_d0.3_w25_c3e-05_n48_L72": 0.9999999986177739
+    }
+   },
+   "verdict": "REFUTED",
+   "reading": "the r23_1 sources are already M_00-slaved (re-slaving moves nothing), so the raw and re-slaved references coincide; a row whose excess misses the 2 percent target by more than 1 percent is listed in rows_off_target_gt_1pct; rows_with_kick_gt_10x_E lists where the max(1, |E|) floor made the kick many times the state's own energy"
+  },
+  {
+   "id": "C3",
+   "claim": "end fields block-diagonal (M_0i = 0) and the pinned shells untouched",
+   "method": "max |M_0i| over source, ctrl, kick fields; max |M_end - M_src| on B3.pin_shell cells, split by pinned / free rows",
+   "numbers": {
+    "max_abs_M0i_all_fields": 0.0,
+    "pinned_rows_shell_max_dev": 0.0,
+    "free_rows_shell_max_dev_min_max": [
+     0.003257145689648744,
+     0.00442181895879501
+    ],
+    "n_pinned_rows": 25,
+    "n_free_rows": 7
+   },
+   "verdict": "CONFIRMED"
+  },
+  {
+   "id": "C4",
+   "claim": "every r22_1 row UNRESOLVED; control drop 0.2 to 4 percent of E (0.0046 to 0.196 abs); kicked end 1e-4 to 1.4e-2 relative above control, never below",
+   "method": "from the stored numbers: ctrl.E_start - ctrl.E_after, its ratio to |E_before| and to max(1,|E_before|), (E_kick - E_ctrl)/max(1,|E_before|)",
+   "numbers": {
+    "n_rows": 17,
+    "all_unresolved": true,
+    "kick_never_below_ctrl": true,
+    "ctrl_drop_abs_min_max": [
+     0.0004298579088948115,
+     0.1961293623408693
+    ],
+    "ctrl_drop_abs_argmin": "rad_pin_d0.89_w25_n32_L48",
+    "ctrl_drop_rel_E_min_max": [
+     0.0019968949610070824,
+     0.10549061662750023
+    ],
+    "ctrl_drop_rel_E_argmax": "rad_pin_d0.89_w25_n32_L48",
+    "ctrl_drop_rel_E_argmin": "big_pin_d0.3_w25_n32_L48",
+    "kick_above_ctrl_rel_s_min_max": [
+     2.2705371357882413e-05,
+     0.014125544624945743
+    ],
+    "kick_above_ctrl_rel_s_argmin": "rad_pin_d0.89_w25_n32_L48",
+    "kick_above_ctrl_rel_E_min_max": [
+     7.554695094053134e-05,
+     0.014125544624945743
+    ],
+    "stated_ranges_hold": {
+     "abs": false,
+     "rel": false,
+     "kick": false
+    },
+    "per_row": {
+     "obl_pin_d0.3_w25_n32_L48": {
+      "drop": 0.11407554706905287,
+      "drop_rel_E": 0.020728484262577833,
+      "kick_above_rel_s": 0.0008359725414350219
+     },
+     "bia_pin_d0.3_w25_n32_L48": {
+      "drop": 0.10432358543449638,
+      "drop_rel_E": 0.019959237099794715,
+      "kick_above_rel_s": 0.006678759872747146
+     },
+     "perm_pin_d0.3_w25_n32_L48": {
+      "drop": 0.16363709791682002,
+      "drop_rel_E": 0.030740522977753832,
+      "kick_above_rel_s": 0.0037751231691297406
+     },
+     "bia_pin_d0.3_w1_n32_L48": {
+      "drop": 0.004741697459781147,
+      "drop_rel_E": 0.0020804154035771686,
+      "kick_above_rel_s": 0.0015505384736799496
+     },
+     "big_pin_d0.3_w25_n32_L48": {
+      "drop": 0.011982809965517482,
+      "drop_rel_E": 0.0019968949610070824,
+      "kick_above_rel_s": 0.0012634856155623948
+     },
+     "obl_free_d0.3_w25_n32_L48": {
+      "drop": 0.1444768788942694,
+      "drop_rel_E": 0.025920468438251486,
+      "kick_above_rel_s": 0.007204916829953061
+     },
+     "rad_free_d0.3_w1_n32_L48": {
+      "drop": 0.006534983846852249,
+      "drop_rel_E": 0.002945234637035223,
+      "kick_above_rel_s": 0.0008025078276959545
+     },
+     "big_free_d0.3_w25_n32_L48": {
+      "drop": 0.014651727953134852,
+      "drop_rel_E": 0.0024477299372637133,
+      "kick_above_rel_s": 0.0018318813410377248
+     },
+     "bia_free_d0.3_w1_n32_L48": {
+      "drop": 0.00920850601279799,
+      "drop_rel_E": 0.004156330505523117,
+      "kick_above_rel_s": 7.554695094053134e-05
+     },
+     "perm_free_d0.3_w25_n32_L48": {
+      "drop": 0.1961293623408693,
+      "drop_rel_E": 0.03734222056223073,
+      "kick_above_rel_s": 0.014125544624945743
+     },
+     "bia_free_d0.3_w25_n32_L48": {
+      "drop": 0.10538245608423846,
+      "drop_rel_E": 0.02030050334912205,
+      "kick_above_rel_s": 0.008442223015310339
+     },
+     "rad_pin_d0.3_w1_n32_L48": {
+      "drop": 0.0046398464809978,
+      "drop_rel_E": 0.002035028874722113,
+      "kick_above_rel_s": 0.0016249487375566876
+     },
+     "rad_pin_d0.3_w25_n32_L48": {
+      "drop": 0.08339430885191934,
+      "drop_rel_E": 0.014608004564287394,
+      "kick_above_rel_s": 0.007396788876443472
+     },
+     "rad_free_d0.3_w25_n32_L48": {
+      "drop": 0.06958882331623695,
+      "drop_rel_E": 0.012129006202130073,
+      "kick_above_rel_s": 0.0019159023126900274
+     },
+     "rad_pin_d0.89_w25_n32_L48": {
+      "drop": 0.0004298579088948115,
+      "drop_rel_E": 0.10549061662750023,
+      "kick_above_rel_s": 2.2705371357882413e-05
+     },
+     "bia_pin_d0.3_w25_n48_L48": {
+      "drop": 0.0580788804971224,
+      "drop_rel_E": 0.010066977347393672,
+      "kick_above_rel_s": 0.0031324659322107696
+     },
+     "rad_pin_d0.3_w25_n48_L48": {
+      "drop": 0.013593171504212798,
+      "drop_rel_E": 0.002242641459415766,
+      "kick_above_rel_s": 0.0015669797641731638
+     }
+    }
+   },
+   "verdict": "QUALIFIED"
+  },
+  {
+   "id": "C5",
+   "claim": "r23_1: 7 STABLE (1.7e-13 to 6.8e-6 rel), 8 UNRESOLVED (1.3e-5 to 3.7e-4 above control), n48 rows UNRESOLVED with controls dropping ~1e-2, none below control",
+   "method": "from the stored numbers, (E_kick - E_ctrl)/max(1,|E_before|) per r23_1 row, the n48 control drops",
+   "numbers": {
+    "n_stable": 7,
+    "n_unresolved": 8,
+    "stable_rel_min_max": [
+     1.728689077735296e-13,
+     6.826550438140829e-06
+    ],
+    "unresolved_rel_min_max": [
+     1.3390212617631738e-05,
+     0.0003655395068957426
+    ],
+    "n48_rows": {
+     "rad_pin_d0.3_w25_c0.0001_n48_L72": [
+      "UNRESOLVED",
+      0.012110080961218905
+     ],
+     "rad_pin_d0.3_w25_c0.0003_n48_L48": [
+      "UNRESOLVED",
+      0.015932236263229704
+     ],
+     "rad_pin_d0.3_w25_c3e-05_n48_L72": [
+      "UNRESOLVED",
+      0.009606111701783604
+     ]
+    },
+    "rows_below_control": [],
+    "stable_tol_over_abs_E": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": 1e-05,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": 1e-05,
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": 0.06471784104643577,
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 1e-05,
+     "rad_pin_d0.3_w25_c0.001_n32_L48": 1e-05,
+     "rad_pin_d0.9224_w25_c0_n32_L48": 0.031031878442167222,
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": 0.017454601441671557
+    },
+    "stable_kick_return_over_abs_E": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": 6.826550438140829e-06,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": 4.719040920141045e-07,
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": 1.118770249515825e-09,
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 9.953871307744318e-10,
+     "rad_pin_d0.3_w25_c0.001_n32_L48": 1.878121000286578e-07,
+     "rad_pin_d0.9224_w25_c0_n32_L48": 0.0007306194084557696,
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": 0.0002696561237619334
+    },
+    "stable_ctrl_iters_done": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": 500,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": 500,
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": 1,
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 1,
+     "rad_pin_d0.3_w25_c0.001_n32_L48": 500,
+     "rad_pin_d0.9224_w25_c0_n32_L48": 500,
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": 500
+    },
+    "stable_kick_iters_done": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": 500,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": 500,
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": 212,
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 500,
+     "rad_pin_d0.3_w25_c0.001_n32_L48": 500,
+     "rad_pin_d0.9224_w25_c0_n32_L48": 500,
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": 500
+    },
+    "note_rel_kick_minus_ctrl_can_be_negative_tiny": {}
+   },
+   "verdict": "QUALIFIED",
+   "reading": "the label tolerance 1e-5 x max(1, |E|) is an ABSOLUTE 1e-5 on the rows with |E| < 1; on the delta 0.9224 rows (E ~ 1e-4 to 6e-4) that is percent-level of the state's own energy, so STABLE there is a statement at the absolute scale (stable_tol_over_abs_E, stable_kick_return_over_abs_E)"
+  },
+  {
+   "id": "C6",
+   "claim": "no kicked descent found a state below its control (no SADDLE); the saddle hypothesis unsupported at 2 percent / 500 its; the R22-1 rows cannot be called minima",
+   "method": "own white symmetric kick on the spatial block (own seed, secant-sized to 2 percent of max(1,|E|)), both arms continued by R21.polish (L-BFGS, gate 0) for the same short budget; one 10 percent kick on the first row",
+   "numbers": {
+    "per_row": {
+     "perm_free_d0.3_w25_n32_L48": {
+      "E_before": 5.252214768910707,
+      "ctrl": {
+       "E_start": 5.252214768910707,
+       "E_end": 5.181651505785567,
+       "fmax_end": 3.8580272186026714,
+       "iters_done": 120,
+       "n_eval": 137,
+       "wall_s": 143.0,
+       "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+      },
+      "kick": {
+       "E_start": 5.357210756595524,
+       "E_end": 5.199248643909101,
+       "fmax_end": 0.4070941627205016,
+       "iters_done": 120,
+       "n_eval": 135,
+       "wall_s": 142.5,
+       "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+       "sizing": {
+        "E0": 5.252214768910707,
+        "excess": 0.10499598768481722,
+        "target": 0.10504429537821414,
+        "amp": 0.0011604458248702695,
+        "n_size": 2
+       },
+       "max_abs_M0i_kicked": 0.0,
+       "shell_max_dev": 0.003848626450426884
+      },
+      "kick_excess_over_target": 0.9995401207345627,
+      "ctrl_drop": 0.07056326312514027,
+      "kick_minus_ctrl_rel_s": 0.0033504224213557515,
+      "core_shift_h": 0.0005594095229302335,
+      "label_own": "UNRESOLVED",
+      "trace_kick_minus_ctrl_rel_s": [
+       [
+        1,
+        0.012942095481748841
+       ],
+       [
+        10,
+        0.006098644178162099
+       ],
+       [
+        20,
+        0.0024184087399876163
+       ],
+       [
+        30,
+        0.002097649271693425
+       ],
+       [
+        40,
+        0.00263843179519207
+       ],
+       [
+        50,
+        0.002898714139091884
+       ],
+       [
+        60,
+        0.0031584641171203296
+       ],
+       [
+        70,
+        0.0021901895491344397
+       ],
+       [
+        80,
+        0.002212107281282148
+       ],
+       [
+        90,
+        0.004609269068739389
+       ],
+       [
+        100,
+        0.0022438154999940177
+       ],
+       [
+        110,
+        0.0032099536534732774
+       ],
+       [
+        120,
+        0.0033504224213557515
+       ]
+      ],
+      "kick_ever_below_ctrl_in_trace": false,
+      "kick10": {
+       "E_start": 5.777434316642824,
+       "E_end": 5.219940611634452,
+       "fmax_end": 0.997983802090935,
+       "iters_done": 120,
+       "n_eval": 138,
+       "wall_s": 118.7,
+       "sizing": {
+        "E0": 5.252214768910707,
+        "excess": 0.5252195477321173,
+        "target": 0.5252214768910707,
+        "amp": 0.0026000177541893963,
+        "n_size": 3
+       },
+       "shell_max_dev": 0.009995989128606442
+      },
+      "kick10_excess_over_target": 0.9999963269610284,
+      "kick10_minus_ctrl_rel_s": 0.007290087617042753,
+      "kick10_core_shift_h": 0.04207475029280902,
+      "kick10_label_own": "UNRESOLVED",
+      "kick10_drop_vs_own_start": 0.5574937050083726
+     },
+     "bia_pin_d0.3_w25_n32_L48": {
+      "E_before": 5.226832313924933,
+      "ctrl": {
+       "E_start": 5.226832313924933,
+       "E_end": 5.182608231239392,
+       "fmax_end": 0.5219784278589643,
+       "iters_done": 120,
+       "n_eval": 133,
+       "wall_s": 133.2,
+       "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+      },
+      "kick": {
+       "E_start": 5.33141450513836,
+       "E_end": 5.2028557794795915,
+       "fmax_end": 3.4937803808783126,
+       "iters_done": 120,
+       "n_eval": 135,
+       "wall_s": 135.6,
+       "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+       "sizing": {
+        "E0": 5.226832313924933,
+        "excess": 0.10458219121342704,
+        "target": 0.10453664627849867,
+        "amp": 0.0013756365591683505,
+        "n_size": 2
+       },
+       "max_abs_M0i_kicked": 0.0,
+       "shell_max_dev": 0.0
+      },
+      "kick_excess_over_target": 1.0004356839113342,
+      "ctrl_drop": 0.0442240826855409,
+      "kick_minus_ctrl_rel_s": 0.0038737703878996407,
+      "core_shift_h": 0.053719122698573006,
+      "label_own": "UNRESOLVED",
+      "trace_kick_minus_ctrl_rel_s": [
+       [
+        1,
+        0.013320745883858601
+       ],
+       [
+        10,
+        0.005691071140051779
+       ],
+       [
+        20,
+        0.00312713072592602
+       ],
+       [
+        30,
+        0.0031883094310629257
+       ],
+       [
+        40,
+        0.003219608433970063
+       ],
+       [
+        50,
+        0.00370360999290374
+       ],
+       [
+        60,
+        0.003129728338797149
+       ],
+       [
+        70,
+        0.005573973014026336
+       ],
+       [
+        80,
+        0.005401164709503935
+       ],
+       [
+        90,
+        0.004821178629794245
+       ],
+       [
+        100,
+        0.004717764042127586
+       ],
+       [
+        110,
+        0.004642772915427957
+       ],
+       [
+        120,
+        0.0038737703878996407
+       ]
+      ],
+      "kick_ever_below_ctrl_in_trace": false
+     },
+     "rad_pin_d0.3_w1_n32_L48": {
+      "E_before": 2.279990489880091,
+      "ctrl": {
+       "E_start": 2.279990489880091,
+       "E_end": 2.27902304656652,
+       "fmax_end": 0.022393010231035314,
+       "iters_done": 120,
+       "n_eval": 134,
+       "wall_s": 131.1,
+       "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+      },
+      "kick": {
+       "E_start": 2.3255897260788236,
+       "E_end": 2.281284728795265,
+       "fmax_end": 0.006665782840848048,
+       "iters_done": 120,
+       "n_eval": 140,
+       "wall_s": 140.2,
+       "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+       "sizing": {
+        "E0": 2.279990489880091,
+        "excess": 0.04559923619873274,
+        "target": 0.045599809797601816,
+        "amp": 0.00224172962097598,
+        "n_size": 3
+       },
+       "max_abs_M0i_kicked": 0.0,
+       "shell_max_dev": 0.0
+      },
+      "kick_excess_over_target": 0.9999874210249643,
+      "ctrl_drop": 0.0009674433135709037,
+      "kick_minus_ctrl_rel_s": 0.000991970027411757,
+      "core_shift_h": 0.005655728343837321,
+      "label_own": "UNRESOLVED",
+      "trace_kick_minus_ctrl_rel_s": [
+       [
+        1,
+        0.01856750132072104
+       ],
+       [
+        10,
+        0.007490617688870998
+       ],
+       [
+        20,
+        0.005141696749496618
+       ],
+       [
+        30,
+        0.0035586593664755483
+       ],
+       [
+        40,
+        0.0024777248515264754
+       ],
+       [
+        50,
+        0.001675658459258525
+       ],
+       [
+        60,
+        0.0016680294062326989
+       ],
+       [
+        70,
+        0.0012812820874498732
+       ],
+       [
+        80,
+        0.0011994684781224492
+       ],
+       [
+        90,
+        0.0012069737097552494
+       ],
+       [
+        100,
+        0.001176067865191938
+       ],
+       [
+        110,
+        0.001021993805316688
+       ],
+       [
+        120,
+        0.000991970027411757
+       ]
+      ],
+      "kick_ever_below_ctrl_in_trace": false
+     }
+    },
+    "own_labels_2pct": {
+     "perm_free_d0.3_w25_n32_L48": "UNRESOLVED",
+     "bia_pin_d0.3_w25_n32_L48": "UNRESOLVED",
+     "rad_pin_d0.3_w1_n32_L48": "UNRESOLVED"
+    },
+    "any_kick_end_below_ctrl_by_saddle_tol": false,
+    "any_kick_below_ctrl_at_a_logged_iteration": false
+   },
+   "verdict": "CONFIRMED"
+  },
+  {
+   "id": "C7",
+   "claim": "core shift (half-peak energy-density centroid) under 0.2 h on every STABLE row",
+   "method": "own density (R20.density + own linear density) and own half-peak centroid on the stored ctrl and kick end fields, shift in units of h",
+   "numbers": {
+    "stable_rows_shift_own_vs_stored": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": [
+      0.023066758248514216,
+      0.00038313957519954056
+     ],
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": [
+      0.0504910576974151,
+      0.0008197380308040277
+     ],
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": [
+      0.00013205092056781405,
+      0.00013205092056781405
+     ],
+     "rad_pin_d0.3_w25_c0.003_n32_L48": [
+      9.713778914841841e-06,
+      1.0095366395352005e-05
+     ],
+     "rad_pin_d0.3_w25_c0.001_n32_L48": [
+      9.241174591572565e-05,
+      0.00012495010273834683
+     ],
+     "rad_pin_d0.9224_w25_c0_n32_L48": [
+      0.1698635808061947,
+      0.1698635808061947
+     ],
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": [
+      0.09055710999117728,
+      0.07781510762665673
+     ]
+    },
+    "max_stable_shift_own_h": 0.1698635808061947,
+    "max_abs_dev_own_vs_stored_all_rows_h": 0.17656564417368456,
+    "max_ctrl_centroid_dev_vs_stored_h": 0.7057418230619299,
+    "max_abs_dev_nolin_vs_stored_all_rows_h": 0.0,
+    "max_ctrl_centroid_nolin_dev_vs_stored_h": 0.0,
+    "stable_rows_shift_nolin_h": {
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": 0.00038313957519954056,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": 0.0008197380308040277,
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": 0.00013205092056781405,
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 1.0095366395352005e-05,
+     "rad_pin_d0.3_w25_c0.001_n32_L48": 0.00012495010273834683,
+     "rad_pin_d0.9224_w25_c0_n32_L48": 0.1698635808061947,
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": 0.07781510762665673
+    },
+    "all_rows_shift_own_h": {
+     "obl_pin_d0.3_w25_n32_L48": 0.051494226240303066,
+     "bia_pin_d0.3_w25_n32_L48": 0.09473490304114401,
+     "perm_pin_d0.3_w25_n32_L48": 0.02922960695632051,
+     "bia_pin_d0.3_w1_n32_L48": 0.008235539602481997,
+     "big_pin_d0.3_w25_n32_L48": 0.0003879101692370928,
+     "obl_free_d0.3_w25_n32_L48": 0.04916353105515909,
+     "rad_free_d0.3_w1_n32_L48": 0.0007004408161283472,
+     "big_free_d0.3_w25_n32_L48": 0.0005070745262207378,
+     "bia_free_d0.3_w1_n32_L48": 0.008899031140868893,
+     "perm_free_d0.3_w25_n32_L48": 0.004412325754868958,
+     "bia_free_d0.3_w25_n32_L48": 0.06727441220044694,
+     "rad_pin_d0.3_w1_n32_L48": 0.0005337021743909933,
+     "rad_pin_d0.3_w25_n32_L48": 0.0006827730463827681,
+     "rad_free_d0.3_w25_n32_L48": 0.002090299619349861,
+     "bia_pin_d0.3_w25_c0.0001_n32_L48": 0.023066758248514216,
+     "rad_pin_d0.89_w25_n32_L48": 0.0041671587284679255,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48": 0.0504910576974151,
+     "bia_pin_d0.3_w25_c0.001_n32_L48": 9.330633801800289e-05,
+     "rad_pin_d0.3_w25_c0.0001_n32_L48": 0.04369648710301874,
+     "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": 0.0014999502028511533,
+     "rad_pin_d0.9224_w0.003779_c0_n32_L48": 0.00013205092056781405,
+     "rad_pin_d0.3_w25_c0.003_n32_L48": 9.713778914841841e-06,
+     "rad_pin_d0.3_w25_c0_n32_L48": 0.04689614588603882,
+     "rad_pin_d0.3_w25_c0.001_n32_L48": 9.241174591572565e-05,
+     "rad_pin_d0.3_w25_c3e-05_n32_L48": 0.004794367585060226,
+     "rad_pin_d0.9224_w25_c0_n32_L48": 0.1698635808061947,
+     "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": 0.09055710999117728,
+     "bia_pin_d0.3_w25_n48_L48": 0.015145416470181203,
+     "rad_pin_d0.3_w25_n48_L48": 0.00028326512886282616,
+     "rad_pin_d0.3_w25_c0.0001_n48_L72": 0.025952936167753755,
+     "rad_pin_d0.3_w25_c0.0003_n48_L48": 0.21907874671469682,
+     "rad_pin_d0.3_w25_c3e-05_n48_L72": 0.056106940592450076
+    }
+   },
+   "verdict": "QUALIFIED",
+   "reading": "max_abs_dev_nolin_vs_stored_all_rows_h = 0 means the stored core is the centroid of the curvature + V4 density WITHOUT the linear member (the c term); the auditor's centroid on the full density differs on the c != 0 rows but stays under 0.2 h on every STABLE row"
+  }
+ ],
+ "per_row": {
+  "obl_pin_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0008359725414350219,
+   "ctrl_drop_json": 0.11407554706905287,
+   "ctrl_drop_rel_E": 0.020728484262577833,
+   "ctrl_drop_rel_s": 0.020728484262577833,
+   "kick_excess_json": 0.11006629740358065,
+   "kick_excess_over_target": 0.9999984975698943,
+   "E_src_ref": 5.503323138537397,
+   "E_ctrl_ref": 5.389247591468344,
+   "E_kick_ref": 5.393848218498805,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    0.010387146287389133,
+    -0.01057389628426464,
+    -0.0001691515189302263
+   ],
+   "core_kick_own": [
+    0.026882578607358126,
+    0.028431438193177574,
+    0.0644273584570514
+   ],
+   "core_shift_h_own": 0.051494226240303066,
+   "core_shift_h_stored": 0.051494226240303066,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.051494226240303066,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.06468027945028737,
+    0.05970075105170747
+   ]
+  },
+  "bia_pin_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.006678759872747146,
+   "ctrl_drop_json": 0.10432358543449638,
+   "ctrl_drop_rel_E": 0.019959237099794715,
+   "ctrl_drop_rel_s": 0.019959237099794715,
+   "kick_excess_json": 0.10453662427117827,
+   "kick_excess_over_target": 0.999999789477459,
+   "E_src_ref": 5.226832313924933,
+   "E_ctrl_ref": 5.122508728490437,
+   "E_kick_ref": 5.157417486410257,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    8.313373513784549e-10,
+    1.0388844469758957e-09,
+    -3.114290514853095e-09
+   ],
+   "core_kick_own": [
+    -0.03839844204899037,
+    -0.1355932721576088,
+    -0.01825111322329506
+   ],
+   "core_shift_h_own": 0.09473490304114401,
+   "core_shift_h_stored": 0.09473490304114401,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.09473490304114401,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.0755128287210135,
+    0.031082682094792702
+   ]
+  },
+  "perm_pin_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0037751231691297406,
+   "ctrl_drop_json": 0.16363709791682002,
+   "ctrl_drop_rel_E": 0.030740522977753832,
+   "ctrl_drop_rel_s": 0.030740522977753832,
+   "kick_excess_json": 0.10646343434781436,
+   "kick_excess_over_target": 0.9999999057436149,
+   "E_src_ref": 5.3231722191336885,
+   "E_ctrl_ref": 5.1595351212168685,
+   "E_kick_ref": 5.179630751994588,
+   "own_vs_ref_rel": 1.6685134035446828e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    7.651470726123329e-08,
+    -1.7072457784479587e-07,
+    -5.9064959572635224e-08
+   ],
+   "core_kick_own": [
+    -0.03564565791976089,
+    -0.00725394454463847,
+    -0.02447651118412872
+   ],
+   "core_shift_h_own": 0.02922960695632051,
+   "core_shift_h_stored": 0.02922960695632051,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.02922960695632051,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.12181056661788775,
+    0.11634068499359729
+   ]
+  },
+  "bia_pin_d0.3_w1_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0015505384736799496,
+   "ctrl_drop_json": 0.004741697459781147,
+   "ctrl_drop_rel_E": 0.0020804154035771686,
+   "ctrl_drop_rel_s": 0.0020804154035771686,
+   "kick_excess_json": 0.04558390961982095,
+   "kick_excess_over_target": 0.9999949230493718,
+   "E_src_ref": 2.2792070524127244,
+   "E_ctrl_ref": 2.274465354952943,
+   "E_kick_ref": 2.277999353177192,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    4.888582888847973e-10,
+    -8.13877562365046e-11,
+    -2.945669485915056e-10
+   ],
+   "core_kick_own": [
+    0.008109433049879582,
+    0.007357930839343467,
+    -0.005718584850915308
+   ],
+   "core_shift_h_own": 0.008235539602481997,
+   "core_shift_h_stored": 0.008235539602481997,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.008235539602481997,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.04232621558960192,
+    0.008173319301203574
+   ]
+  },
+  "big_pin_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0012634856155623948,
+   "ctrl_drop_json": 0.011982809965517482,
+   "ctrl_drop_rel_E": 0.0019968949610070824,
+   "ctrl_drop_rel_s": 0.0019968949610070824,
+   "kick_excess_json": 0.12001442391842243,
+   "kick_excess_over_target": 0.9999999960798674,
+   "E_src_ref": 6.000721219444744,
+   "E_ctrl_ref": 5.988738409479226,
+   "E_kick_ref": 5.996320234422995,
+   "own_vs_ref_rel": 1.4801194510121064e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    8.530802669888666e-09,
+    6.4526634332466075e-09,
+    -8.159257482428311e-09
+   ],
+   "core_kick_own": [
+    0.0005005206811873979,
+    0.000281247279087685,
+    -9.46567647091566e-05
+   ],
+   "core_shift_h_own": 0.0003879101692370928,
+   "core_shift_h_stored": 0.0003879101692370928,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.0003879101692370928,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.02705048025465212,
+    0.007974789231109614
+   ]
+  },
+  "obl_free_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.007204916829953061,
+   "ctrl_drop_json": 0.1444768788942694,
+   "ctrl_drop_rel_E": 0.025920468438251486,
+   "ctrl_drop_rel_s": 0.025920468438251486,
+   "kick_excess_json": 0.11147705854092571,
+   "kick_excess_over_target": 0.9999999998663418,
+   "E_src_ref": 5.573852927791276,
+   "E_ctrl_ref": 5.429376048897007,
+   "E_kick_ref": 5.469535195664133,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    1.657943944395162e-05,
+    1.064328127274132e-05,
+    1.9136263947279185e-05
+   ],
+   "core_kick_own": [
+    0.02085569027498212,
+    0.008247114524964277,
+    0.07027766435208817
+   ],
+   "core_shift_h_own": 0.04916353105515909,
+   "core_shift_h_stored": 0.04916353105515909,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.04916353105515909,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": false,
+   "shell_max_dev": [
+    0.0010750607172741455,
+    0.0034583190106866057
+   ],
+   "shell_free_cells_moved": [
+    0.06708212824643213,
+    0.05046620160236732
+   ]
+  },
+  "rad_free_d0.3_w1_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0008025078276959545,
+   "ctrl_drop_json": 0.006534983846852249,
+   "ctrl_drop_rel_E": 0.002945234637035223,
+   "ctrl_drop_rel_s": 0.002945234637035223,
+   "kick_excess_json": 0.04437631807898246,
+   "kick_excess_over_target": 0.9999922886822897,
+   "E_src_ref": 2.2188330140754404,
+   "E_ctrl_ref": 2.212298030228588,
+   "E_kick_ref": 2.214078661090734,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    1.5460004056771045e-08,
+    -3.132027695424606e-09,
+    -1.1824869294685275e-08
+   ],
+   "core_kick_own": [
+    5.630937969433414e-05,
+    0.0003708346309578711,
+    -0.0009814390285739257
+   ],
+   "core_shift_h_own": 0.0007004408161283472,
+   "core_shift_h_stored": 0.0007004408161283472,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.0007004408161283472,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": false,
+   "shell_max_dev": [
+    0.0026580315664752052,
+    0.00442181895879501
+   ],
+   "shell_free_cells_moved": [
+    0.0119218267731718,
+    0.007305031683043653
+   ]
+  },
+  "big_free_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0018318813410377248,
+   "ctrl_drop_json": 0.014651727953134852,
+   "ctrl_drop_rel_E": 0.0024477299372637133,
+   "ctrl_drop_rel_s": 0.0024477299372637133,
+   "kick_excess_json": 0.11971686644864299,
+   "kick_excess_over_target": 0.9999999963794312,
+   "E_src_ref": 5.985843344104307,
+   "E_ctrl_ref": 5.971191616151172,
+   "E_kick_ref": 5.9821569708836115,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -7.613906515584408e-10,
+    1.0048464877408897e-09,
+    -2.371868424118072e-10
+   ],
+   "core_kick_own": [
+    0.0005119418157434839,
+    -0.00043158135817288995,
+    0.000360806852152236
+   ],
+   "core_shift_h_own": 0.0005070745262207378,
+   "core_shift_h_stored": 0.0005070745262207378,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.0005070745262207378,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": false,
+   "shell_max_dev": [
+    0.003436349183299492,
+    0.003200188026807549
+   ],
+   "shell_free_cells_moved": [
+    0.030526078647205468,
+    0.007966556727949187
+   ]
+  },
+  "bia_free_d0.3_w1_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 7.554695094053134e-05,
+   "ctrl_drop_json": 0.00920850601279799,
+   "ctrl_drop_rel_E": 0.004156330505523117,
+   "ctrl_drop_rel_s": 0.004156330505523117,
+   "kick_excess_json": 0.044310753089718435,
+   "kick_excess_over_target": 1.0000000789136676,
+   "E_src_ref": 2.2155374796497336,
+   "E_ctrl_ref": 2.2063289736369356,
+   "E_kick_ref": 2.2064963507382176,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -4.153380076633211e-10,
+    8.293108762660666e-11,
+    -4.839745579503359e-11
+   ],
+   "core_kick_own": [
+    0.0031046591048794142,
+    -9.74113198509201e-05,
+    0.012982114555394123
+   ],
+   "core_shift_h_own": 0.008899031140868893,
+   "core_shift_h_stored": 0.008899031140868893,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.008899031140868893,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": false,
+   "shell_max_dev": [
+    0.0022014038546747106,
+    0.0036547997809098787
+   ],
+   "shell_free_cells_moved": [
+    0.01710553333773851,
+    0.016076058481390487
+   ]
+  },
+  "perm_free_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.014125544624945743,
+   "ctrl_drop_json": 0.1961293623408693,
+   "ctrl_drop_rel_E": 0.03734222056223073,
+   "ctrl_drop_rel_s": 0.03734222056223073,
+   "kick_excess_json": 0.10504427709254216,
+   "kick_excess_over_target": 0.9999998259241788,
+   "E_src_ref": 5.252214768910707,
+   "E_ctrl_ref": 5.056085406569838,
+   "E_kick_ref": 5.130275800667885,
+   "own_vs_ref_rel": 1.7566523274033961e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -1.550630346163645e-07,
+    -1.5369990358877197e-07,
+    -2.2606608126002155e-07
+   ],
+   "core_kick_own": [
+    -0.0015605473052448234,
+    -0.0006507369884670981,
+    -0.006399156383800145
+   ],
+   "core_shift_h_own": 0.004412325754868958,
+   "core_shift_h_stored": 0.004412325754868958,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.004412325754868958,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": false,
+   "shell_max_dev": [
+    0.0014829825569724342,
+    0.003346926551623719
+   ],
+   "shell_free_cells_moved": [
+    0.17349319772034877,
+    0.08827964874708272
+   ]
+  },
+  "bia_free_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.008442223015310339,
+   "ctrl_drop_json": 0.10538245608423846,
+   "ctrl_drop_rel_E": 0.02030050334912205,
+   "ctrl_drop_rel_s": 0.02030050334912205,
+   "kick_excess_json": 0.10382249240577934,
+   "kick_excess_over_target": 0.9999998733721641,
+   "E_src_ref": 5.191125277629927,
+   "E_ctrl_ref": 5.085742821545688,
+   "E_kick_ref": 5.129567458839855,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -5.823185636492124e-09,
+    6.374243711068928e-10,
+    -5.596251601710052e-09
+   ],
+   "core_kick_own": [
+    0.030287500828791843,
+    -0.06607845444388022,
+    -0.06999614422499763
+   ],
+   "core_shift_h_own": 0.06727441220044694,
+   "core_shift_h_stored": 0.06727441220044694,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.06727441220044694,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": false,
+   "shell_max_dev": [
+    0.0015945771867715841,
+    0.0032888267452669817
+   ],
+   "shell_free_cells_moved": [
+    0.07889693986592039,
+    0.029652485034020848
+   ]
+  },
+  "rad_pin_d0.3_w1_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0016249487375566876,
+   "ctrl_drop_json": 0.0046398464809978,
+   "ctrl_drop_rel_E": 0.002035028874722113,
+   "ctrl_drop_rel_s": 0.002035028874722113,
+   "kick_excess_json": 0.04559959133530489,
+   "kick_excess_over_target": 0.9999952091401719,
+   "E_src_ref": 2.279990489880091,
+   "E_ctrl_ref": 2.275350643399093,
+   "E_kick_ref": 2.279055511067265,
+   "own_vs_ref_rel": 1.94776781666935e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -1.994169012743389e-09,
+    -3.5592942745732382e-09,
+    -5.053279757428077e-09
+   ],
+   "core_kick_own": [
+    -0.0005174197659633865,
+    -0.00046923548035548784,
+    0.00039112891139899005
+   ],
+   "core_shift_h_own": 0.0005337021743909933,
+   "core_shift_h_stored": 0.0005337021743909933,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.0005337021743909933,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.047629029810283885,
+    0.006054158233973483
+   ]
+  },
+  "rad_pin_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.007396788876443472,
+   "ctrl_drop_json": 0.08339430885191934,
+   "ctrl_drop_rel_E": 0.014608004564287394,
+   "ctrl_drop_rel_s": 0.014608004564287394,
+   "kick_excess_json": 0.11417613350572609,
+   "kick_excess_over_target": 0.9999995817136307,
+   "E_src_ref": 5.70880906320332,
+   "E_ctrl_ref": 5.625414754351401,
+   "E_kick_ref": 5.667641609727843,
+   "own_vs_ref_rel": 1.5788674408639766e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -1.8871840065259888e-05,
+    -1.7748438234666187e-05,
+    2.8608543900647002e-05
+   ],
+   "core_kick_own": [
+    -0.00028082585106841475,
+    -0.0003769002883771218,
+    -0.0008940467918607209
+   ],
+   "core_shift_h_own": 0.0006827730463827681,
+   "core_shift_h_stored": 0.0006827730463827681,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.0006827730463827681,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.05220571622179371,
+    0.0205367311100772
+   ]
+  },
+  "rad_free_d0.3_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0019159023126900274,
+   "ctrl_drop_json": 0.06958882331623695,
+   "ctrl_drop_rel_E": 0.012129006202130073,
+   "ctrl_drop_rel_s": 0.012129006202130073,
+   "kick_excess_json": 0.11474777250994528,
+   "kick_excess_over_target": 0.9999999842855497,
+   "E_src_ref": 5.737388715657174,
+   "E_ctrl_ref": 5.667799892340937,
+   "E_kick_ref": 5.678792168650066,
+   "own_vs_ref_rel": 1.5480534154437037e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    2.076668523272409e-08,
+    3.0853446751963764e-08,
+    9.976670089088793e-09
+   ],
+   "core_kick_own": [
+    -0.001581003287405414,
+    -0.0012554678337912254,
+    -0.0023989750396862827
+   ],
+   "core_shift_h_own": 0.002090299619349861,
+   "core_shift_h_stored": 0.002090299619349861,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.002090299619349861,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": false,
+   "shell_max_dev": [
+    0.0010353663748265962,
+    0.003257145689648744
+   ],
+   "shell_free_cells_moved": [
+    0.04636764379590283,
+    0.03239087349481143
+   ]
+  },
+  "bia_pin_d0.3_w25_c0.0001_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "STABLE",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "STABLE",
+   "rel_kick_minus_ctrl_json": 6.826550438140829e-06,
+   "ctrl_drop_json": 0.00044275979524455167,
+   "ctrl_drop_rel_E": 0.00011526400915091393,
+   "ctrl_drop_rel_s": 0.00011526400915091393,
+   "kick_excess_json": 0.07682533309781414,
+   "kick_excess_over_target": 0.9999999991324219,
+   "E_src_ref": 3.8412666582233057,
+   "E_ctrl_ref": 3.840823898428061,
+   "E_kick_ref": 3.84085012102865,
+   "own_vs_ref_rel": 2.3122019342206584e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -0.0748326335963712,
+    0.07634997858999507,
+    0.026990810698046132
+   ],
+   "core_kick_own": [
+    -0.05832202953237963,
+    0.0551907661163803,
+    0.04882787064560266
+   ],
+   "core_shift_h_own": 0.023066758248514216,
+   "core_shift_h_stored": 0.00038313957519954056,
+   "core_ctrl_vs_stored_h": 0.07381658801904499,
+   "core_shift_h_own_nolin": 0.00038313957519954056,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "STABLE",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.08916374585595255,
+    0.08743361322738472
+   ],
+   "E_src_reslaved": 3.8412666582233057,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999991324219,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.89_w25_n32_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 2.2705371357882413e-05,
+   "ctrl_drop_json": 0.0004298579088948115,
+   "ctrl_drop_rel_E": 0.10549061662750023,
+   "ctrl_drop_rel_s": 0.0004298579088948115,
+   "kick_excess_json": 0.019999999964414716,
+   "kick_excess_over_target": 0.9999999982207358,
+   "E_src_ref": 0.004074844973299287,
+   "E_ctrl_ref": 0.0036449870644044754,
+   "E_kick_ref": 0.003667692435762358,
+   "own_vs_ref_rel": 0.0,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    0.0,
+    -1.2707248277791677e-17,
+    9.530436208343757e-18
+   ],
+   "core_kick_own": [
+    0.00573557900261024,
+    0.0022792769357368016,
+    0.0009898266810857235
+   ],
+   "core_shift_h_own": 0.0041671587284679255,
+   "core_shift_h_stored": 0.0041671587284679255,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.0041671587284679255,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.007905171268351385,
+    0.008309966641076062
+   ]
+  },
+  "rad_pin_d0.3_w25_c0.0003_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "STABLE",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "STABLE",
+   "rel_kick_minus_ctrl_json": 4.719040920141045e-07,
+   "ctrl_drop_json": 0.00011924993957368457,
+   "ctrl_drop_rel_E": 2.6108728179886802e-05,
+   "ctrl_drop_rel_s": 2.6108728179886802e-05,
+   "kick_excess_json": 0.09134871573361103,
+   "kick_excess_over_target": 0.9999999988246988,
+   "E_src_ref": 4.567435792048665,
+   "E_ctrl_ref": 4.567316542109091,
+   "E_kick_ref": 4.567318697500731,
+   "own_vs_ref_rel": 3.8892790176088084e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    0.005805865722713291,
+    0.026164396792748554,
+    -0.05538592984111336
+   ],
+   "core_kick_own": [
+    -0.0438247629566997,
+    -0.02318312988848238,
+    -0.0264436968762961
+   ],
+   "core_shift_h_own": 0.0504910576974151,
+   "core_shift_h_stored": 0.0008197380308040277,
+   "core_ctrl_vs_stored_h": 0.4082637982120889,
+   "core_shift_h_own_nolin": 0.0008197380308040277,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "STABLE",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.0899290204282317,
+    0.09852787570149157
+   ],
+   "E_src_reslaved": 4.567435792048665,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999988246988,
+   "m00_reslave_max_change": 0.0
+  },
+  "bia_pin_d0.3_w25_c0.001_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 4.8486179160088406e-05,
+   "ctrl_drop_json": 0.0008976480993858615,
+   "ctrl_drop_rel_E": 0.0001681627514061894,
+   "ctrl_drop_rel_s": 0.0001681627514061894,
+   "kick_excess_json": 0.10675944251303804,
+   "kick_excess_over_target": 0.999999977934903,
+   "E_src_ref": 5.337972243434777,
+   "E_ctrl_ref": 5.337074595335391,
+   "E_kick_ref": 5.337333413213938,
+   "own_vs_ref_rel": 1.6641671459424496e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -1.5208244774045256e-06,
+    2.601523547021767e-05,
+    -4.227582482879345e-05
+   ],
+   "core_kick_own": [
+    -9.39455461745346e-06,
+    -2.67793717699518e-05,
+    8.710499843060616e-05
+   ],
+   "core_shift_h_own": 9.330633801800289e-05,
+   "core_shift_h_stored": 0.00014571883941904025,
+   "core_ctrl_vs_stored_h": 3.1510707528378464e-05,
+   "core_shift_h_own_nolin": 0.00014571883941904025,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.16864309424814078,
+    0.11999740981886259
+   ],
+   "E_src_reslaved": 5.337972243434777,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.999999977934903,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.3_w25_c0.0001_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0001836549293322721,
+   "ctrl_drop_json": 0.005534887407867561,
+   "ctrl_drop_rel_E": 0.001399205278607148,
+   "ctrl_drop_rel_s": 0.001399205278607148,
+   "kick_excess_json": 0.07911473020372162,
+   "kick_excess_over_target": 0.999999999632119,
+   "E_src_ref": 3.955736511641321,
+   "E_ctrl_ref": 3.9502016242334532,
+   "E_kick_ref": 3.950928114742956,
+   "own_vs_ref_rel": 4.496049504853668e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -1.5811133962690633,
+    0.23919716601500246,
+    0.9521753512518503
+   ],
+   "core_kick_own": [
+    -1.5722364234013226,
+    0.18551716462148102,
+    0.9156271841340375
+   ],
+   "core_shift_h_own": 0.04369648710301874,
+   "core_shift_h_stored": 0.05292014000425527,
+   "core_ctrl_vs_stored_h": 0.34403730183938674,
+   "core_shift_h_own_nolin": 0.05292014000425527,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.2611175200179216,
+    0.2675247253949173
+   ],
+   "E_src_reslaved": 3.955736511641321,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.999999999632119,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.9224_w0.003779_c3.094e-05_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "INSUFFICIENT",
+   "n": 32,
+   "files_present": [
+    false,
+    false,
+    false
+   ],
+   "why_stored": "source status BLOCKED, field present False",
+   "stage_file_present": true
+  },
+  "rad_pin_d0.3_w25_c0.0003_n32_L48_from_r22s": {
+   "family": "r23_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 1.4888926491729792e-05,
+   "ctrl_drop_json": 0.00019640661844366747,
+   "ctrl_drop_rel_E": 4.3791736219619775e-05,
+   "ctrl_drop_rel_s": 4.3791736219619775e-05,
+   "kick_excess_json": 0.08970031115202115,
+   "kick_excess_over_target": 0.9999999989597548,
+   "E_src_ref": 4.4850155622665735,
+   "E_ctrl_ref": 4.48481915564813,
+   "E_kick_ref": 4.484885932715151,
+   "own_vs_ref_rel": 3.9607625835978483e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -2.307296804723384,
+    3.4419863068227095,
+    -0.3386279290882763
+   ],
+   "core_kick_own": [
+    -2.3084655404128984,
+    3.4405944980524037,
+    -0.3373016225212339
+   ],
+   "core_shift_h_own": 0.0014999502028511533,
+   "core_shift_h_stored": 0.0015032388450969424,
+   "core_ctrl_vs_stored_h": 0.7057418230619299,
+   "core_shift_h_own_nolin": 0.0015032388450969424,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.2616984979556503,
+    0.1453920003803112
+   ],
+   "E_src_reslaved": 4.4850155622665735,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999989597548,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.9224_w0.003779_c0_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "STABLE",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "STABLE",
+   "rel_kick_minus_ctrl_json": 1.728689077735296e-13,
+   "ctrl_drop_json": 0.0,
+   "ctrl_drop_rel_E": 0.0,
+   "ctrl_drop_rel_s": 0.0,
+   "kick_excess_json": 0.0025150964433391064,
+   "kick_excess_over_target": 0.12575482216695533,
+   "E_src_ref": 0.0001545168973239526,
+   "E_ctrl_ref": 0.0001545168973239526,
+   "E_kick_ref": 0.0001545168974968215,
+   "own_vs_ref_rel": 1.2778379699859843e-14,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -3.553760997189173e-08,
+    -3.553741920378069e-08,
+    -3.5537475079736385e-08
+   ],
+   "core_kick_own": [
+    -0.00019563055042376857,
+    1.945211300975083e-05,
+    -2.44706575780304e-05
+   ],
+   "core_shift_h_own": 0.00013205092056781405,
+   "core_shift_h_stored": 0.00013205092056781405,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.00013205092056781405,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "STABLE",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.0,
+    8.045026123393306e-06
+   ],
+   "E_src_reslaved": 0.0001545168973239526,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.12575482216695533,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.3_w25_c0.003_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "STABLE",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "STABLE",
+   "rel_kick_minus_ctrl_json": 9.953871307744318e-10,
+   "ctrl_drop_json": 0.0,
+   "ctrl_drop_rel_E": 0.0,
+   "ctrl_drop_rel_s": 0.0,
+   "kick_excess_json": 0.12462766477123655,
+   "kick_excess_over_target": 0.9999999018986503,
+   "E_src_ref": 6.231383849868993,
+   "E_ctrl_ref": 6.231383849868993,
+   "E_kick_ref": 6.231383856071632,
+   "own_vs_ref_rel": 2.8506618761247284e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -0.7783251246970299,
+    0.6639538022635515,
+    -0.640729641033597
+   ],
+   "core_kick_own": [
+    -0.7783342472896233,
+    0.6639628012488401,
+    -0.6407365765180764
+   ],
+   "core_shift_h_own": 9.713778914841841e-06,
+   "core_shift_h_stored": 1.0095366395352005e-05,
+   "core_ctrl_vs_stored_h": 0.0016422196413061127,
+   "core_shift_h_own_nolin": 1.0095366395352005e-05,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "STABLE",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    5.412337245047638e-16,
+    9.613721537327091e-05
+   ],
+   "E_src_reslaved": 6.231383849868993,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999018986503,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.3_w25_c0_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 1.3390212617631738e-05,
+   "ctrl_drop_json": 0.0003478055903980426,
+   "ctrl_drop_rel_E": 9.871503327248796e-05,
+   "ctrl_drop_rel_s": 9.871503327248796e-05,
+   "kick_excess_json": 0.07046659030377533,
+   "kick_excess_over_target": 0.9999999997807838,
+   "E_src_ref": 3.5233295159611377,
+   "E_ctrl_ref": 3.5229817103707397,
+   "E_kick_ref": 3.5230288885020804,
+   "own_vs_ref_rel": 2.5210648218038325e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -0.04734796901898578,
+    1.489792982491896,
+    -1.0280450665415197
+   ],
+   "core_kick_own": [
+    -0.03401202883549823,
+    1.4438186412921898,
+    -1.0795894335794984
+   ],
+   "core_shift_h_own": 0.04689614588603882,
+   "core_shift_h_stored": 0.04689614588603882,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.04689614588603882,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.12719130280267288,
+    0.16367066885647819
+   ],
+   "E_src_reslaved": 3.5233295159611377,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999997807838,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.3_w25_c0.001_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "STABLE",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "STABLE",
+   "rel_kick_minus_ctrl_json": 1.878121000286578e-07,
+   "ctrl_drop_json": 1.4436531666994767e-05,
+   "ctrl_drop_rel_E": 2.6651299238385113e-06,
+   "ctrl_drop_rel_s": 2.6651299238385113e-06,
+   "kick_excess_json": 0.10833641826659512,
+   "kick_excess_over_target": 0.9999999889997555,
+   "E_src_ref": 5.416820972916112,
+   "E_ctrl_ref": 5.416806536384445,
+   "E_kick_ref": 5.416807553728967,
+   "own_vs_ref_rel": 1.63967166583165e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -0.5027125881817025,
+    0.3524838261328107,
+    -0.41174552420134375
+   ],
+   "core_kick_own": [
+    -0.5025932292846997,
+    0.3524134447785107,
+    -0.41174168194479754
+   ],
+   "core_shift_h_own": 9.241174591572565e-05,
+   "core_shift_h_stored": 0.00012495010273834683,
+   "core_ctrl_vs_stored_h": 0.12087908105375224,
+   "core_shift_h_own_nolin": 0.00012495010273834683,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "STABLE",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.010088740279521929,
+    0.009601723986534614
+   ],
+   "E_src_reslaved": 5.416820972916112,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999889997555,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.3_w25_c3e-05_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "UNRESOLVED",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 2.584531581982646e-05,
+   "ctrl_drop_json": 0.0008387099331987891,
+   "ctrl_drop_rel_E": 0.00022901190953082858,
+   "ctrl_drop_rel_s": 0.00022901190953082858,
+   "kick_excess_json": 0.07324596643820946,
+   "kick_excess_over_target": 0.9999999985376083,
+   "E_src_ref": 3.6622983272661878,
+   "E_ctrl_ref": 3.661459617332989,
+   "E_kick_ref": 3.6615542705898836,
+   "own_vs_ref_rel": 2.4256868915861733e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    1.9974975185204165,
+    -1.5863208265325084,
+    0.675912397354586
+   ],
+   "core_kick_own": [
+    1.999522640094941,
+    -1.5820393577318514,
+    0.6813240808942913
+   ],
+   "core_shift_h_own": 0.004794367585060226,
+   "core_shift_h_stored": 0.00523846294519505,
+   "core_ctrl_vs_stored_h": 0.05196680119899741,
+   "core_shift_h_own_nolin": 0.00523846294519505,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.2172833996196304,
+    0.2200435073396012
+   ],
+   "E_src_reslaved": 3.6622983272661878,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999985376083,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.9224_w25_c0_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "STABLE",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "STABLE",
+   "rel_kick_minus_ctrl_json": 2.3544156690913625e-07,
+   "ctrl_drop_json": 1.537731290338529e-06,
+   "ctrl_drop_rel_E": 0.0047718690478502175,
+   "ctrl_drop_rel_s": 1.537731290338529e-06,
+   "kick_excess_json": 0.019999999960382923,
+   "kick_excess_over_target": 0.9999999980191462,
+   "E_src_ref": 0.00032224926436975356,
+   "E_ctrl_ref": 0.00032071153307941503,
+   "E_kick_ref": 0.00032094697464632416,
+   "own_vs_ref_rel": 8.911599756744604e-15,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    1.1385946126741446,
+    0.6551995584902145,
+    1.444334893544082
+   ],
+   "core_kick_own": [
+    1.3877790332143907,
+    0.6158145413576612,
+    1.4800647994377623
+   ],
+   "core_shift_h_own": 0.1698635808061947,
+   "core_shift_h_stored": 0.1698635808061947,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.1698635808061947,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "STABLE",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.023397458156987905,
+    0.02126779998427708
+   ],
+   "E_src_reslaved": 0.00032224926436975356,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999980191462,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.9224_w25_c3.094e-05_n32_L48": {
+   "family": "r23_1",
+   "label_stored": "STABLE",
+   "n": 32,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "STABLE",
+   "rel_kick_minus_ctrl_json": 1.5448999203049665e-07,
+   "ctrl_drop_json": 4.3755059574092543e-07,
+   "ctrl_drop_rel_E": 0.0007637271259223804,
+   "ctrl_drop_rel_s": 4.3755059574092543e-07,
+   "kick_excess_json": 0.0199999999517529,
+   "kick_excess_over_target": 0.999999997587645,
+   "E_src_ref": 0.0005729148289874868,
+   "E_ctrl_ref": 0.0005724772783917459,
+   "E_kick_ref": 0.0005726317683837764,
+   "own_vs_ref_rel": 8.757968308903408e-15,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    0.04016486979510187,
+    -0.4106578948946474,
+    0.3771642999436952
+   ],
+   "core_kick_own": [
+    -0.06463599302800122,
+    -0.4811822746718376,
+    0.32722014221756396
+   ],
+   "core_shift_h_own": 0.09055710999117728,
+   "core_shift_h_stored": 0.07781510762665673,
+   "core_ctrl_vs_stored_h": 0.664268733173254,
+   "core_shift_h_own_nolin": 0.07781510762665673,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "STABLE",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.018250110701569455,
+    0.018670345121828857
+   ],
+   "E_src_reslaved": 0.0005729148289874868,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.999999997587645,
+   "m00_reslave_max_change": 0.0
+  },
+  "bia_pin_d0.3_w25_n48_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 48,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0031324659322107696,
+   "ctrl_drop_json": 0.0580788804971224,
+   "ctrl_drop_rel_E": 0.010066977347393672,
+   "ctrl_drop_rel_s": 0.010066977347393672,
+   "kick_excess_json": 0.11538482095049574,
+   "kick_excess_over_target": 0.9999989400615834,
+   "E_src_ref": 5.769247162571489,
+   "E_ctrl_ref": 5.711168282074366,
+   "E_kick_ref": 5.729240252265625,
+   "own_vs_ref_rel": 1.5395048862913394e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    5.842585988297557e-10,
+    2.1384742730435335e-09,
+    -3.947818570127526e-10
+   ],
+   "core_kick_own": [
+    -0.009272069707546932,
+    0.004293322879065547,
+    -0.011179434619171844
+   ],
+   "core_shift_h_own": 0.015145416470181203,
+   "core_shift_h_stored": 0.015145416470181203,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.015145416470181203,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.0397297148181599,
+    0.0221202776524555
+   ]
+  },
+  "rad_pin_d0.3_w25_n48_L48": {
+   "family": "r22_1",
+   "label_stored": "UNRESOLVED",
+   "n": 48,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0015669797641731638,
+   "ctrl_drop_json": 0.013593171504212798,
+   "ctrl_drop_rel_E": 0.002242641459415766,
+   "ctrl_drop_rel_s": 0.002242641459415766,
+   "kick_excess_json": 0.12122460787886968,
+   "kick_excess_over_target": 0.999999637488265,
+   "E_src_ref": 6.061232591211427,
+   "E_ctrl_ref": 6.047639419707214,
+   "E_kick_ref": 6.057137248523589,
+   "own_vs_ref_rel": 1.4663336544282802e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    9.852600358674603e-09,
+    5.658498595765215e-09,
+    -6.0370280965541645e-09
+   ],
+   "core_kick_own": [
+    -0.00011997961827011097,
+    0.00024789402472268296,
+    6.627380908405922e-05
+   ],
+   "core_shift_h_own": 0.00028326512886282616,
+   "core_shift_h_stored": 0.00028326512886282616,
+   "core_ctrl_vs_stored_h": 0.0,
+   "core_shift_h_own_nolin": 0.00028326512886282616,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.038028083204394325,
+    0.007965656177870095
+   ]
+  },
+  "rad_pin_d0.3_w25_c0.0001_n48_L72": {
+   "family": "r23_1",
+   "label_stored": "UNRESOLVED",
+   "n": 48,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.00010109313005593196,
+   "ctrl_drop_json": 0.012110080961218905,
+   "ctrl_drop_rel_E": 0.0029127771879518902,
+   "ctrl_drop_rel_s": 0.0029127771879518902,
+   "kick_excess_json": 0.0831514405420144,
+   "kick_excess_over_target": 0.9999999997181661,
+   "E_src_ref": 4.157572028272464,
+   "E_ctrl_ref": 4.1454619473112455,
+   "E_kick_ref": 4.145882249281017,
+   "own_vs_ref_rel": 4.28462926005269e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -0.4389100287294232,
+    -0.4528629002101525,
+    -1.5028299423196685
+   ],
+   "core_kick_own": [
+    -0.4636966802149298,
+    -0.46633587346497096,
+    -1.5296552925540616
+   ],
+   "core_shift_h_own": 0.025952936167753755,
+   "core_shift_h_stored": 0.030422544266602774,
+   "core_ctrl_vs_stored_h": 0.27398209944896784,
+   "core_shift_h_own_nolin": 0.030422544266602774,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.293587223991867,
+    0.35667389698984575
+   ],
+   "E_src_reslaved": 4.157572028272464,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999997181661,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.3_w25_c0.0003_n48_L48": {
+   "family": "r23_1",
+   "label_stored": "UNRESOLVED",
+   "n": 48,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.0003655395068957426,
+   "ctrl_drop_json": 0.015932236263229704,
+   "ctrl_drop_rel_E": 0.0033464662773351013,
+   "ctrl_drop_rel_s": 0.0033464662773351013,
+   "kick_excess_json": 0.0952182675728519,
+   "kick_excess_over_target": 0.9999999879308379,
+   "E_src_ref": 4.760913436102831,
+   "E_ctrl_ref": 4.744981199839601,
+   "E_kick_ref": 4.746721501789407,
+   "own_vs_ref_rel": 1.8718270574605208e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    -1.139288041761764,
+    -0.6389581199627287,
+    1.9075728187833378
+   ],
+   "core_kick_own": [
+    -1.205583552954977,
+    -0.5079750696335542,
+    1.744957189201868
+   ],
+   "core_shift_h_own": 0.21907874671469682,
+   "core_shift_h_stored": 0.3956443908883814,
+   "core_ctrl_vs_stored_h": 0.19119449849874487,
+   "core_shift_h_own_nolin": 0.3956443908883814,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.33781295541870393,
+    0.3377651849024049
+   ],
+   "E_src_reslaved": 4.760913436102831,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999879308379,
+   "m00_reslave_max_change": 0.0
+  },
+  "rad_pin_d0.3_w25_c3e-05_n48_L72": {
+   "family": "r23_1",
+   "label_stored": "UNRESOLVED",
+   "n": 48,
+   "files_present": [
+    true,
+    true,
+    true
+   ],
+   "label_from_json": "UNRESOLVED",
+   "rel_kick_minus_ctrl_json": 0.00023734615867316005,
+   "ctrl_drop_json": 0.009606111701783604,
+   "ctrl_drop_rel_E": 0.002528111225215484,
+   "ctrl_drop_rel_s": 0.002528111225215484,
+   "kick_excess_json": 0.07599437550606192,
+   "kick_excess_over_target": 0.9999999986177739,
+   "E_src_ref": 3.7997187805551658,
+   "E_ctrl_ref": 3.790112668853382,
+   "E_kick_ref": 3.791014517509985,
+   "own_vs_ref_rel": 3.5142773086114377e-16,
+   "E_before_vs_src_rel": 0.0,
+   "ctrl_after_vs_field_rel": 0.0,
+   "kick_after_vs_field_rel": 0.0,
+   "core_ctrl_own": [
+    0.9895211943597668,
+    0.3002531298068702,
+    -1.5157334938152007
+   ],
+   "core_kick_own": [
+    0.9585311434415816,
+    0.26612932472910705,
+    -1.5861476786933468
+   ],
+   "core_shift_h_own": 0.056106940592450076,
+   "core_shift_h_stored": 0.03909248255527001,
+   "core_ctrl_vs_stored_h": 0.10458286035710458,
+   "core_shift_h_own_nolin": 0.03909248255527001,
+   "core_ctrl_nolin_vs_stored_h": 0.0,
+   "label_from_fields": "UNRESOLVED",
+   "max_abs_M0i": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "pinned": true,
+   "shell_max_dev": [
+    0.0,
+    0.0
+   ],
+   "shell_free_cells_moved": [
+    0.3434782983340295,
+    0.33929258988744293
+   ],
+   "E_src_reslaved": 3.7997187805551658,
+   "reslave_shift_rel": 0.0,
+   "kick_excess_over_target_reslaved": 0.9999999986177739,
+   "m00_reslave_max_change": 0.0
+  }
+ },
+ "summary": {
+  "CONFIRMED": 3,
+  "REFUTED": 1,
+  "QUALIFIED": 3
+ },
+ "wall_s": 646.4,
+ "dynamic_raw": {
+  "perm_free_d0.3_w25_n32_L48": {
+   "ctrl": {
+    "tag": "perm_free_d0.3_w25_n32_L48",
+    "arm": "ctrl",
+    "frac": 0.02,
+    "seed": 20260923,
+    "iters_req": 120,
+    "E_start": 5.252214768910707,
+    "E_end": 5.181651505785567,
+    "fmax_end": 3.8580272186026714,
+    "iters_done": 120,
+    "n_eval": 137,
+    "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "trace": [
+     [
+      1,
+      5.2522068414581415
+     ],
+     [
+      10,
+      5.243133692752815
+     ],
+     [
+      20,
+      5.233679168254536
+     ],
+     [
+      30,
+      5.227310146361474
+     ],
+     [
+      40,
+      5.223721949189693
+     ],
+     [
+      50,
+      5.213930192968935
+     ],
+     [
+      60,
+      5.21241474040516
+     ],
+     [
+      70,
+      5.203719936104669
+     ],
+     [
+      80,
+      5.2034940200021165
+     ],
+     [
+      90,
+      5.189929620199807
+     ],
+     [
+      100,
+      5.187635105491024
+     ],
+     [
+      110,
+      5.18248920928993
+     ],
+     [
+      120,
+      5.181651505785567
+     ]
+    ],
+    "wall_s": 143.0,
+    "core_end": [
+     3.5805182618312856e-08,
+     3.712492202566901e-08,
+     5.017518818282633e-08
+    ],
+    "shell_max_dev": 0.0003254924198684561
+   },
+   "kick": {
+    "tag": "perm_free_d0.3_w25_n32_L48",
+    "arm": "kick",
+    "frac": 0.02,
+    "seed": 20260923,
+    "iters_req": 120,
+    "sizing": {
+     "E0": 5.252214768910707,
+     "excess": 0.10499598768481722,
+     "target": 0.10504429537821414,
+     "amp": 0.0011604458248702695,
+     "n_size": 2
+    },
+    "max_abs_M0i_kicked": 0.0,
+    "E_start": 5.357210756595524,
+    "E_end": 5.199248643909101,
+    "fmax_end": 0.4070941627205016,
+    "iters_done": 120,
+    "n_eval": 135,
+    "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "trace": [
+     [
+      1,
+      5.320181506488035
+     ],
+     [
+      10,
+      5.27516508177569
+     ],
+     [
+      20,
+      5.246381170355962
+     ],
+     [
+      30,
+      5.238327450846257
+     ],
+     [
+      40,
+      5.237579559631165
+     ],
+     [
+      50,
+      5.229154862181123
+     ],
+     [
+      60,
+      5.229003672288174
+     ],
+     [
+      70,
+      5.215223282001347
+     ],
+     [
+      80,
+      5.2151124825352815
+     ],
+     [
+      90,
+      5.214138491276524
+     ],
+     [
+      100,
+      5.1994201063988035
+     ],
+     [
+      110,
+      5.199348575276221
+     ],
+     [
+      120,
+      5.199248643909101
+     ]
+    ],
+    "wall_s": 142.5,
+    "core_end": [
+     9.728943747572933e-05,
+     -0.0007835955457599712,
+     -0.0002838060396846258
+    ],
+    "shell_max_dev": 0.003848626450426884
+   },
+   "kick10": {
+    "tag": "perm_free_d0.3_w25_n32_L48",
+    "arm": "kick10",
+    "frac": 0.1,
+    "seed": 20260930,
+    "iters_req": 120,
+    "sizing": {
+     "E0": 5.252214768910707,
+     "excess": 0.5252195477321173,
+     "target": 0.5252214768910707,
+     "amp": 0.0026000177541893963,
+     "n_size": 3
+    },
+    "max_abs_M0i_kicked": 0.0,
+    "E_start": 5.777434316642824,
+    "E_end": 5.219940611634452,
+    "fmax_end": 0.997983802090935,
+    "iters_done": 120,
+    "n_eval": 138,
+    "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "trace": [
+     [
+      1,
+      5.591763142402809
+     ],
+     [
+      10,
+      5.354366213908459
+     ],
+     [
+      20,
+      5.296220429570242
+     ],
+     [
+      30,
+      5.291524983956426
+     ],
+     [
+      40,
+      5.281439398369982
+     ],
+     [
+      50,
+      5.263558000753552
+     ],
+     [
+      60,
+      5.26296059644899
+     ],
+     [
+      70,
+      5.262695143421575
+     ],
+     [
+      80,
+      5.253265480362641
+     ],
+     [
+      90,
+      5.2417578914470395
+     ],
+     [
+      100,
+      5.240025540683298
+     ],
+     [
+      110,
+      5.223466789367242
+     ],
+     [
+      120,
+      5.219940611634452
+     ]
+    ],
+    "wall_s": 118.7,
+    "core_end": [
+     -0.04943950421662719,
+     0.008637768468147197,
+     -0.03826562448408257
+    ],
+    "shell_max_dev": 0.009995989128606442
+   }
+  },
+  "bia_pin_d0.3_w25_n32_L48": {
+   "ctrl": {
+    "tag": "bia_pin_d0.3_w25_n32_L48",
+    "arm": "ctrl",
+    "frac": 0.02,
+    "seed": 20260924,
+    "iters_req": 120,
+    "E_start": 5.226832313924933,
+    "E_end": 5.182608231239392,
+    "fmax_end": 0.5219784278589643,
+    "iters_done": 120,
+    "n_eval": 133,
+    "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "trace": [
+     [
+      1,
+      5.2268305966083615
+     ],
+     [
+      10,
+      5.223271147160921
+     ],
+     [
+      20,
+      5.21522950622162
+     ],
+     [
+      30,
+      5.214246901147954
+     ],
+     [
+      40,
+      5.208811001512463
+     ],
+     [
+      50,
+      5.203332994135991
+     ],
+     [
+      60,
+      5.202341777416443
+     ],
+     [
+      70,
+      5.188769981874379
+     ],
+     [
+      80,
+      5.187548005578025
+     ],
+     [
+      90,
+      5.183161250621816
+     ],
+     [
+      100,
+      5.18288702693407
+     ],
+     [
+      110,
+      5.1826470775279025
+     ],
+     [
+      120,
+      5.182608231239392
+     ]
+    ],
+    "wall_s": 133.2,
+    "core_end": [
+     5.1171784554073096e-11,
+     -1.1850732646964784e-09,
+     1.0340271493800452e-09
+    ],
+    "shell_max_dev": 0.0
+   },
+   "kick": {
+    "tag": "bia_pin_d0.3_w25_n32_L48",
+    "arm": "kick",
+    "frac": 0.02,
+    "seed": 20260924,
+    "iters_req": 120,
+    "sizing": {
+     "E0": 5.226832313924933,
+     "excess": 0.10458219121342704,
+     "target": 0.10453664627849867,
+     "amp": 0.0013756365591683505,
+     "n_size": 2
+    },
+    "max_abs_M0i_kicked": 0.0,
+    "E_start": 5.33141450513836,
+    "E_end": 5.2028557794795915,
+    "fmax_end": 3.4937803808783126,
+    "iters_done": 120,
+    "n_eval": 135,
+    "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "trace": [
+     [
+      1,
+      5.296455901639696
+     ],
+     [
+      10,
+      5.2530174216965895
+     ],
+     [
+      20,
+      5.231574494149758
+     ],
+     [
+      30,
+      5.230911659909025
+     ],
+     [
+      40,
+      5.225639354913323
+     ],
+     [
+      50,
+      5.2226911425250755
+     ],
+     [
+      60,
+      5.218700342631474
+     ],
+     [
+      70,
+      5.217904204141037
+     ],
+     [
+      80,
+      5.215778987814491
+     ],
+     [
+      90,
+      5.208360742875229
+     ],
+     [
+      100,
+      5.207545988478936
+     ],
+     [
+      110,
+      5.206914073028477
+     ],
+     [
+      120,
+      5.2028557794795915
+     ]
+    ],
+    "wall_s": 135.6,
+    "core_end": [
+     0.040222563039495035,
+     -0.057315826112114894,
+     0.03987437830148864
+    ],
+    "shell_max_dev": 0.0
+   }
+  },
+  "rad_pin_d0.3_w1_n32_L48": {
+   "ctrl": {
+    "tag": "rad_pin_d0.3_w1_n32_L48",
+    "arm": "ctrl",
+    "frac": 0.02,
+    "seed": 20260925,
+    "iters_req": 120,
+    "E_start": 2.279990489880091,
+    "E_end": 2.27902304656652,
+    "fmax_end": 0.022393010231035314,
+    "iters_done": 120,
+    "n_eval": 134,
+    "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "trace": [
+     [
+      1,
+      2.2799903981073473
+     ],
+     [
+      10,
+      2.2798266983816915
+     ],
+     [
+      20,
+      2.2797782526613606
+     ],
+     [
+      30,
+      2.279662825422192
+     ],
+     [
+      40,
+      2.2795557935101076
+     ],
+     [
+      50,
+      2.279545145220589
+     ],
+     [
+      60,
+      2.2794134002537607
+     ],
+     [
+      70,
+      2.279344962579844
+     ],
+     [
+      80,
+      2.2793168667037826
+     ],
+     [
+      90,
+      2.279140497383537
+     ],
+     [
+      100,
+      2.2791362033503684
+     ],
+     [
+      110,
+      2.2790261461709354
+     ],
+     [
+      120,
+      2.27902304656652
+     ]
+    ],
+    "wall_s": 131.1,
+    "core_end": [
+     3.131921458258321e-11,
+     7.634225849712237e-11,
+     -6.153155012517614e-11
+    ],
+    "shell_max_dev": 0.0
+   },
+   "kick": {
+    "tag": "rad_pin_d0.3_w1_n32_L48",
+    "arm": "kick",
+    "frac": 0.02,
+    "seed": 20260925,
+    "iters_req": 120,
+    "sizing": {
+     "E0": 2.279990489880091,
+     "excess": 0.04559923619873274,
+     "target": 0.045599809797601816,
+     "amp": 0.00224172962097598,
+     "n_size": 3
+    },
+    "max_abs_M0i_kicked": 0.0,
+    "E_start": 2.3255897260788236,
+    "E_end": 2.281284728795265,
+    "fmax_end": 0.006665782840848048,
+    "iters_done": 120,
+    "n_eval": 140,
+    "scipy_message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "trace": [
+     [
+      1,
+      2.3223241245394273
+     ],
+     [
+      10,
+      2.296905235475645
+     ],
+     [
+      20,
+      2.2915012723520602
+     ],
+     [
+      30,
+      2.287776534934479
+     ],
+     [
+      40,
+      2.2852049826081275
+     ],
+     [
+      50,
+      2.2833656305719856
+     ],
+     [
+      60,
+      2.2832164914368116
+     ],
+     [
+      70,
+      2.2822662735540833
+     ],
+     [
+      80,
+      2.2820516434268128
+     ],
+     [
+      90,
+      2.2818923859633142
+     ],
+     [
+      100,
+      2.2818176268984596
+     ],
+     [
+      110,
+      2.2813562823277738
+     ],
+     [
+      120,
+      2.281284728795265
+     ]
+    ],
+    "wall_s": 140.2,
+    "core_end": [
+     -0.004079975528054135,
+     -0.003347087570484187,
+     -0.0066424503393107395
+    ],
+    "shell_max_dev": 0.0
+   }
+  }
+ }
+}

@@ -1,0 +1,2579 @@
+{
+ "task": "M5.32 R25-1",
+ "rows": {
+  "d0.01_w25_n48_L48": {
+   "delta": 0.01,
+   "w1s": 25.0,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.01_w25_n48_L48",
+   "h": 1.0,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 2.9890293648267846e-09,
+   "kappa_bps": 0.0475718798459011,
+   "gate": 1e-13,
+   "gate_at_floor": true,
+   "T_seed_bps": 2.9699968750980785e-09,
+   "T_seed_kicked": 4.4501831904731124e-05,
+   "departure_seed": {
+    "M0i": 0.0609532576586988,
+    "director_row": 0.060380314296952994,
+    "M33_minus_1": 0.07270125299164709,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.11008774350914274
+   },
+   "fire": {
+    "E_start": 0.0001780073276189245,
+    "E_end": 8.970839650407632e-05,
+    "fmax_end": 0.0014050890363200375,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 8.970839650407632e-05,
+    "E_end": -2005893550030745.5,
+    "fmax_end": 10486957426794.178,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": 2.4682277638874873e-09,
+      "fmax": 0.0002064681028609523,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -3190611899934.2544,
+      "fmax": 211535860374.53104,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -44993222959371.97,
+      "fmax": 1561319530714.5244,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -399304721242238.9,
+      "fmax": 5943795386830.272,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -734014735302189.4,
+      "fmax": 5234036284266.979,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -1215580536545415.2,
+      "fmax": 34719224610666.555,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -1543505329046048.8,
+      "fmax": 14826155508167.367,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -2005893550030745.5,
+      "fmax": 10486957426794.178,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -535709418462779.2,
+   "V4_per_len": 34236030955092.797,
+   "T": -501473387507686.4,
+   "T_over_delta4": -5.014733875076863e+22,
+   "T_over_T_bps": -1.6777131513284648e+23,
+   "T_1d": 2.9890293827100762e-09,
+   "departure": {
+    "M0i": 119743.94692226006,
+    "director_row": 24059.655213882248,
+    "M33_minus_1": 13529.260804104733,
+    "M00_minus_8": 123970.78737596927,
+    "z_variation": 123509.72777901965
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.817135474879496,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 2.2360153878568083e+19,
+   "T_over_T_1d": -1.6777131412907467e+23,
+   "departure_max": 123970.78737596927,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 707.7
+  },
+  "d0.03_w100_n48_L48": {
+   "delta": 0.03,
+   "w1s": 100.0,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.03_w100_n48_L48",
+   "h": 1.0,
+   "w": 0.0724023879,
+   "kicked": true,
+   "T_bps": 4.846586990054003e-07,
+   "kappa_bps": 0.09522941686320557,
+   "gate": 4.846586990054003e-13,
+   "gate_at_floor": false,
+   "T_seed_bps": 4.785427505460563e-07,
+   "T_seed_kicked": 0.0015976580861601863,
+   "departure_seed": {
+    "M0i": 0.05618393131166214,
+    "director_row": 0.054281282527355944,
+    "M33_minus_1": 0.07931533835394688,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.11356362773175348
+   },
+   "fire": {
+    "E_start": 0.006390632344640745,
+    "E_end": 0.003214714486495065,
+    "fmax_end": 0.005206089788614861,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.003214714486495065,
+    "E_end": -20112124682540.492,
+    "fmax_end": 1433033737910.3796,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": 7.97971623330855e-07,
+      "fmax": 0.0011234554736910581,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -909641979452.0195,
+      "fmax": 214316840670.77374,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -2226216910904.7866,
+      "fmax": 101602364858.42036,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -3487477777245.053,
+      "fmax": 240996648784.66763,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -6210081926166.439,
+      "fmax": 281939531552.9822,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -9630825130384.389,
+      "fmax": 203846941970.07477,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -14319980304625.115,
+      "fmax": 561147119503.8328,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -20112124682540.492,
+      "fmax": 1433033737910.3796,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -5372085194997.54,
+   "V4_per_len": 344054024362.417,
+   "T": -5028031170635.123,
+   "T_over_delta4": -6.207445889672993e+18,
+   "T_over_T_bps": -1.0374375165355483e+19,
+   "T_1d": 4.846589181190853e-07,
+   "departure": {
+    "M0i": 9494.313151869961,
+    "director_row": 2775.2929957371566,
+    "M33_minus_1": 1213.4233720721486,
+    "M00_minus_8": 13515.154105929867,
+    "z_variation": 15033.06341172707
+   },
+   "core_radius": null,
+   "core_radius_bps": 2.697908199547323,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 6256270896538721.0,
+   "T_over_T_1d": -1.037437047511357e+19,
+   "departure_max": 13515.154105929867,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 711.9
+  },
+  "d0.03_w6.25_n48_L48": {
+   "delta": 0.03,
+   "w1s": 6.25,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.03_w6.25_n48_L48",
+   "h": 1.0,
+   "w": 0.00452514924375,
+   "kicked": true,
+   "T_bps": 1.2116467475135006e-07,
+   "kappa_bps": 0.023807354215801393,
+   "gate": 1.2116467475135007e-13,
+   "gate_at_floor": false,
+   "T_seed_bps": 1.2077659789672608e-07,
+   "T_seed_kicked": 0.00010166473513625602,
+   "departure_seed": {
+    "M0i": 0.060936802529015774,
+    "director_row": 0.06220367451554192,
+    "M33_minus_1": 0.07523527828703358,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.10546058074835848
+   },
+   "fire": {
+    "E_start": 0.0004066589405450241,
+    "E_end": 0.00020417173459557405,
+    "fmax_end": 0.00031652675407756696,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.00020417173459557405,
+    "E_end": -3.4787876771602932e+16,
+    "fmax_end": 2576036992151506.5,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -48845428596242.28,
+      "fmax": 1056839531110.2698,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -1432998959661445.5,
+      "fmax": 24559371359612.133,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -4426217350352354.0,
+      "fmax": 61660736578458.195,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -6673756781521608.0,
+      "fmax": 23803674698435.918,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -1.1173075278697488e+16,
+      "fmax": 48712076678684.33,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -1.542263862914375e+16,
+      "fmax": 666129817348528.5,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -1.857768778794165e+16,
+      "fmax": 44315598484973.82,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -3.4787876771602932e+16,
+      "fmax": 2576036992151506.5,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -1.1230536248807646e+16,
+   "V4_per_len": 2533567055906913.0,
+   "T": -8696969192900733.0,
+   "T_over_delta4": -1.0736999003581154e+22,
+   "T_over_T_bps": -7.177809217701736e+22,
+   "T_1d": 1.2116472934907356e-07,
+   "departure": {
+    "M0i": 85304.34032912985,
+    "director_row": 4780.539846577678,
+    "M33_minus_1": 4010.8950293402822,
+    "M00_minus_8": 87831.30993858464,
+    "z_variation": 87063.71407719114
+   },
+   "core_radius": null,
+   "core_radius_bps": 5.395816399094646,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 1.7038537112157664e+20,
+   "T_over_T_1d": -7.177805983327796e+22,
+   "departure_max": 87831.30993858464,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 715.2
+  },
+  "d0.1_w6.25_n48_L48": {
+   "delta": 0.1,
+   "w1s": 6.25,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.1_w6.25_n48_L48",
+   "h": 1.0,
+   "w": 0.00452514924375,
+   "kicked": true,
+   "T_bps": 1.5112306897718348e-05,
+   "kappa_bps": 0.024051983442936204,
+   "gate": 1.5112306897718346e-11,
+   "gate_at_floor": false,
+   "T_seed_bps": 1.5064225978160423e-05,
+   "T_seed_kicked": 0.0011977686849869926,
+   "departure_seed": {
+    "M0i": 0.06290891629696164,
+    "director_row": 0.06421604939512779,
+    "M33_minus_1": 0.07760309346048322,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.11702355821913493
+   },
+   "fire": {
+    "E_start": 0.00479107473994797,
+    "E_end": 0.002388016436800667,
+    "fmax_end": 0.0011988162397002318,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.002388016436800667,
+    "E_end": -1065886973892131.5,
+    "fmax_end": 9912830260242.826,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -3309192610041.6147,
+      "fmax": 100708971212.21655,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -7835934260125.787,
+      "fmax": 685654953717.1858,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -13925872715359.543,
+      "fmax": 1389120442217.7417,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -25476191521822.688,
+      "fmax": 782496344093.2391,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -45820846180056.58,
+      "fmax": 855552651413.5195,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -104611739382933.28,
+      "fmax": 5673326451159.099,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -544352700059806.8,
+      "fmax": 97955435840156.75,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -1065886973892131.5,
+      "fmax": 9912830260242.826,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -283490907084407.7,
+   "V4_per_len": 17019163611374.816,
+   "T": -266471743473032.88,
+   "T_over_delta4": -2.664717434730328e+18,
+   "T_over_T_bps": -1.7632764162119068e+19,
+   "T_1d": 1.5113130394578162e-05,
+   "departure": {
+    "M0i": 9022.41807487005,
+    "director_row": 1455.1681071102746,
+    "M33_minus_1": 714.7917984218643,
+    "M00_minus_8": 11721.172905524812,
+    "z_variation": 12086.369213176891
+   },
+   "core_radius": null,
+   "core_radius_bps": 5.368306237757686,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 4.4634825684874605e+17,
+   "T_over_T_1d": -1.7631803373352065e+19,
+   "departure_max": 11721.172905524812,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 717.6
+  },
+  "d0.3_w25_n48_L48": {
+   "delta": 0.3,
+   "w1s": 25.0,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.3_w25_n48_L48",
+   "h": 1.0,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 0.0026747011377773124,
+   "kappa_bps": 0.05255455646552789,
+   "gate": 2.6747011377773123e-09,
+   "gate_at_floor": false,
+   "T_seed_bps": 0.00266579681293479,
+   "T_seed_kicked": 0.0563890098342427,
+   "departure_seed": {
+    "M0i": 0.06077049723722768,
+    "director_row": 0.0542713103827357,
+    "M33_minus_1": 0.07516247294032183,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.11743026410389812
+   },
+   "fire": {
+    "E_start": 0.2255560393369708,
+    "E_end": 0.09866338172331963,
+    "fmax_end": 0.06120300725146366,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.09866338172331963,
+    "E_end": -3679949179493064.0,
+    "fmax_end": 52031752387267.59,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -231419958309.83405,
+      "fmax": 122538571976.4506,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -1164096098419.5903,
+      "fmax": 80913099055.94438,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -21217379751023.56,
+      "fmax": 1220731103810.0127,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -137801122474382.03,
+      "fmax": 7861890319747.429,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -573931445644569.1,
+      "fmax": 26849068120438.996,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -922248049950974.0,
+      "fmax": 7989976215326.034,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -1922383444094478.5,
+      "fmax": 11645785354441.727,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -3679949179493064.0,
+      "fmax": 52031752387267.59,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -1000252830464442.8,
+   "V4_per_len": 80265535591176.73,
+   "T": -919987294873266.0,
+   "T_over_delta4": -1.1357867837941557e+17,
+   "T_over_T_bps": -3.43958912597532e+17,
+   "T_1d": 0.00268459212586098,
+   "departure": {
+    "M0i": 5163.014182190358,
+    "director_row": 303.2237454384082,
+    "M33_minus_1": 158.35357156687715,
+    "M00_minus_8": 5460.012965943595,
+    "z_variation": 5750.3200724074695
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.6316797373094096,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 3.729802400056279e+16,
+   "T_over_T_1d": -3.426916461576879e+17,
+   "departure_max": 5460.012965943595,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 719.9
+  },
+  "d0.01_w100_n48_L48": {
+   "delta": 0.01,
+   "w1s": 100.0,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.01_w100_n48_L48",
+   "h": 1.0,
+   "w": 0.0724023879,
+   "kicked": true,
+   "T_bps": 5.978058729653569e-09,
+   "kappa_bps": 0.0951437596918022,
+   "gate": 1e-13,
+   "gate_at_floor": true,
+   "T_seed_bps": 5.9026849629316335e-09,
+   "T_seed_kicked": 0.00017864537210031192,
+   "departure_seed": {
+    "M0i": 0.06341130701591383,
+    "director_row": 0.054729704857862944,
+    "M33_minus_1": 0.08095810400701176,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.12776573554514892
+   },
+   "fire": {
+    "E_start": 0.0007145814884012477,
+    "E_end": 0.0003602168220278576,
+    "fmax_end": 0.0017762711201882156,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.0003602168220278576,
+    "E_end": -32409150759227.094,
+    "fmax_end": 6595596682108.255,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": 2.1272213943115877e-08,
+      "fmax": 2.1947950453738823e-05,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -1370464460940.361,
+      "fmax": 234816857557.17902,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -3590963128371.478,
+      "fmax": 53053648103.46146,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -4799262324415.454,
+      "fmax": 504020796938.18665,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -7562869037591.146,
+      "fmax": 295061015425.52264,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -10715492980627.275,
+      "fmax": 295013140226.90784,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -14814782719985.662,
+      "fmax": 257251630405.02182,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -32409150759227.094,
+      "fmax": 6595596682108.255,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -11314026894691.824,
+   "V4_per_len": 3211739204885.051,
+   "T": -8102287689806.773,
+   "T_over_delta4": -8.102287689806773e+20,
+   "T_over_T_bps": -1.355337586366654e+21,
+   "T_1d": 5.978058772575686e-09,
+   "departure": {
+    "M0i": 43978.463843879406,
+    "director_row": 4197.242042453691,
+    "M33_minus_1": 9477.995773937422,
+    "M00_minus_8": 58090.92000607733,
+    "z_variation": 57595.35866541475
+   },
+   "core_radius": null,
+   "core_radius_bps": 2.699122378995024,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 8.997123059600118e+16,
+   "T_over_T_1d": -1.3553375766354083e+21,
+   "departure_max": 58090.92000607733,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 720.2
+  },
+  "d0.3_w6.25_n48_L48": {
+   "delta": 0.3,
+   "w1s": 6.25,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.3_w6.25_n48_L48",
+   "h": 1.0,
+   "w": 0.00452514924375,
+   "kicked": true,
+   "T_bps": 0.0013373505688886562,
+   "kappa_bps": 0.026277278232763945,
+   "gate": 1.3373505688886562e-09,
+   "gate_at_floor": false,
+   "T_seed_bps": 0.0013375702082765056,
+   "T_seed_kicked": 0.015021412000385249,
+   "departure_seed": {
+    "M0i": 0.05357110956241856,
+    "director_row": 0.05942303137764207,
+    "M33_minus_1": 0.079261713999181,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.11184824204137578
+   },
+   "fire": {
+    "E_start": 0.060085648001540995,
+    "E_end": 0.02934412025201054,
+    "fmax_end": 0.004475130866245247,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.02934412025201054,
+    "E_end": -1.0650442932652344e+16,
+    "fmax_end": 173723656561470.62,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -95038380262668.1,
+      "fmax": 14393284512507.945,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -237988222965620.56,
+      "fmax": 5791349125233.108,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -395012694926127.9,
+      "fmax": 6531438461315.073,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -673719047408447.0,
+      "fmax": 23019943557804.61,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -1168987954845950.5,
+      "fmax": 34420307749555.96,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -2125868938527804.2,
+      "fmax": 90137303642945.27,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -4741629733440230.0,
+      "fmax": 66105139244615.44,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -1.0650442932652344e+16,
+      "fmax": 173723656561470.62,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -2969340291406045.5,
+   "V4_per_len": 306729558242959.5,
+   "T": -2662610733163086.0,
+   "T_over_delta4": -3.2871737446457856e+17,
+   "T_over_T_bps": -1.9909594350984023e+18,
+   "T_1d": 0.0013422959791548718,
+   "departure": {
+    "M0i": 6654.852036918179,
+    "director_row": 510.18131525598443,
+    "M33_minus_1": 133.93038353254718,
+    "M00_minus_8": 5708.283374730479,
+    "z_variation": 11375.19655332499
+   },
+   "core_radius": null,
+   "core_radius_bps": 5.135970738698527,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 3.629498121322148e+17,
+   "T_over_T_1d": -1.9836241592852739e+18,
+   "departure_max": 6654.852036918179,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 723.0
+  },
+  "d0.1_w100_n48_L48": {
+   "delta": 0.1,
+   "w1s": 100.0,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.1_w100_n48_L48",
+   "h": 1.0,
+   "w": 0.0724023879,
+   "kicked": true,
+   "T_bps": 6.044922759087339e-05,
+   "kappa_bps": 0.09620793377174482,
+   "gate": 6.044922759087338e-11,
+   "gate_at_floor": false,
+   "T_seed_bps": 5.96819990060928e-05,
+   "T_seed_kicked": 0.01824284128945085,
+   "departure_seed": {
+    "M0i": 0.059780439674235894,
+    "director_row": 0.05600139889628373,
+    "M33_minus_1": 0.0767313861568919,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.10423641508254852
+   },
+   "fire": {
+    "E_start": 0.0729713651578034,
+    "E_end": 0.03609392233246196,
+    "fmax_end": 0.016545486000924856,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.03609392233246196,
+    "E_end": -541764663215752.4,
+    "fmax_end": 9986594910176.285,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -1166562038742.509,
+      "fmax": 109422559922.95,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -10951453901553.762,
+      "fmax": 408291466047.4785,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -46013293066461.8,
+      "fmax": 3262642689492.4087,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -82213150922086.14,
+      "fmax": 2601215211110.529,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -149560893217523.94,
+      "fmax": 5029478068384.214,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -231877463511972.25,
+      "fmax": 22495769885914.73,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -386684768738352.0,
+      "fmax": 20594061237519.652,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -541764663215752.4,
+      "fmax": 9986594910176.285,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -139703445743280.31,
+   "V4_per_len": 4262279939342.2144,
+   "T": -135441165803938.1,
+   "T_over_delta4": -1.3544116580393807e+18,
+   "T_over_T_bps": -2.2405772778540344e+18,
+   "T_1d": 6.0452521822277856e-05,
+   "departure": {
+    "M0i": 7725.538700925467,
+    "director_row": 4809.3841191590745,
+    "M33_minus_1": 1209.9537634427088,
+    "M00_minus_8": 8170.520096112398,
+    "z_variation": 7730.620466617559
+   },
+   "core_radius": null,
+   "core_radius_bps": 2.684153118878843,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 1.5009858397365226e+16,
+   "T_over_T_1d": -2.2404551823680177e+18,
+   "departure_max": 8170.520096112398,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 723.3
+  },
+  "d0.01_w6.25_n48_L48": {
+   "delta": 0.01,
+   "w1s": 6.25,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.01_w6.25_n48_L48",
+   "h": 1.0,
+   "w": 0.00452514924375,
+   "kicked": true,
+   "T_bps": 1.4945146824133923e-09,
+   "kappa_bps": 0.02378593992295055,
+   "gate": 1e-13,
+   "gate_at_floor": true,
+   "T_seed_bps": 1.4897315365758871e-09,
+   "T_seed_kicked": 1.1426025399220632e-05,
+   "departure_seed": {
+    "M0i": 0.06376388357726785,
+    "director_row": 0.0636751208703899,
+    "M33_minus_1": 0.07608579429196904,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.12838016351247594
+   },
+   "fire": {
+    "E_start": 4.5704101596882526e-05,
+    "E_end": 2.291706475490268e-05,
+    "fmax_end": 0.00010582484738620845,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 2.291706475490268e-05,
+    "E_end": -3.107716874151053e+16,
+    "fmax_end": 1093482589927964.4,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -623937178114937.9,
+      "fmax": 9429854956282.625,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -2663459044131740.0,
+      "fmax": 13173313167796.387,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -5002052653920997.0,
+      "fmax": 82697578575631.02,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -8345407256688905.0,
+      "fmax": 255035326633082.06,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -1.3592448642199058e+16,
+      "fmax": 197488680205531.47,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -1.7737893674799862e+16,
+      "fmax": 129190694449172.73,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -2.2790219837266864e+16,
+      "fmax": 124684976752638.75,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -3.107716874151053e+16,
+      "fmax": 1093482589927964.4,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -8227024817038336.0,
+   "V4_per_len": 457732631660703.5,
+   "T": -7769292185377632.0,
+   "T_over_delta4": -7.769292185377632e+23,
+   "T_over_T_bps": -5.198538546862263e+24,
+   "T_1d": 1.4945146909009046e-09,
+   "departure": {
+    "M0i": 222473.68279813987,
+    "director_row": 78651.8059991333,
+    "M33_minus_1": 18345.19390009059,
+    "M00_minus_8": 271367.40030251205,
+    "z_variation": 267805.60995046055
+   },
+   "core_radius": null,
+   "core_radius_bps": 5.398244757990048,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 1.3560710795156324e+21,
+   "T_over_T_1d": -5.198538517339193e+24,
+   "departure_max": 271367.40030251205,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 724.7
+  },
+  "d0.03_w25_n48_L48": {
+   "delta": 0.03,
+   "w1s": 25.0,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.03_w25_n48_L48",
+   "h": 1.0,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 2.423293495027001e-07,
+   "kappa_bps": 0.04761470843160279,
+   "gate": 2.4232934950270013e-13,
+   "gate_at_floor": false,
+   "T_seed_bps": 2.407850626197937e-07,
+   "T_seed_kicked": 0.0004141313963414477,
+   "departure_seed": {
+    "M0i": 0.05863294542322632,
+    "director_row": 0.059749009470318255,
+    "M33_minus_1": 0.0719239312913289,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.1212937541704417
+   },
+   "fire": {
+    "E_start": 0.0016565255853657908,
+    "E_end": 0.000830407404181953,
+    "fmax_end": 0.004153740166365489,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.000830407404181953,
+    "E_end": -1062053689389520.4,
+    "fmax_end": 3317785390985.506,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -625100833239.7532,
+      "fmax": 145194520022.85007,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -3651808678303.852,
+      "fmax": 483973478632.2489,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -12490869761214.11,
+      "fmax": 719346960366.2003,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -29358398943226.2,
+      "fmax": 2660706875116.947,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -124630660441738.4,
+      "fmax": 1978601908596.1711,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -354353662073117.2,
+      "fmax": 4269962376696.606,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -885767284066322.1,
+      "fmax": 68232566927817.055,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -1062053689389520.4,
+      "fmax": 3317785390985.506,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -269627803285938.6,
+   "V4_per_len": 4114380938558.4995,
+   "T": -265513422347380.1,
+   "T_over_delta4": -3.277943485770125e+20,
+   "T_over_T_bps": -1.0956717495930952e+21,
+   "T_1d": 2.42329458772018e-07,
+   "departure": {
+    "M0i": 38338.49578004009,
+    "director_row": 2236.0727983205115,
+    "M33_minus_1": 776.9194764058672,
+    "M00_minus_8": 33896.676079091485,
+    "z_variation": 37765.02969673931
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.815418365837403,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 1.278954985277095e+18,
+   "T_over_T_1d": -1.0956712555412977e+21,
+   "departure_max": 38338.49578004009,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 734.2
+  },
+  "d0.1_w25_n48_L48": {
+   "delta": 0.1,
+   "w1s": 25.0,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.1_w25_n48_L48",
+   "h": 1.0,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 3.0224613795436695e-05,
+   "kappa_bps": 0.04810396688587241,
+   "gate": 3.022461379543669e-11,
+   "gate_at_floor": false,
+   "T_seed_bps": 3.0031676377852026e-05,
+   "T_seed_kicked": 0.004647227200666702,
+   "departure_seed": {
+    "M0i": 0.0649322321737561,
+    "director_row": 0.05897456617666323,
+    "M33_minus_1": 0.0836432990467939,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.10805279465216353
+   },
+   "fire": {
+    "E_start": 0.01858890880266681,
+    "E_end": 0.00919965722189996,
+    "fmax_end": 0.01566999106730359,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.00919965722189996,
+    "E_end": -360995507531979.8,
+    "fmax_end": 9881331822876.018,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -7210398894141.1455,
+      "fmax": 468821587389.8401,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -17429146758804.234,
+      "fmax": 975550748293.7104,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -39728961327431.74,
+      "fmax": 7070653918473.6,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -70008157475736.9,
+      "fmax": 3027131864426.8477,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -144845821472901.75,
+      "fmax": 11194845066274.736,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -206152862549440.88,
+      "fmax": 2984136665724.7837,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -281728992057669.7,
+      "fmax": 14020015466054.926,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -360995507531979.8,
+      "fmax": 9881331822876.018,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -96874132847472.36,
+   "V4_per_len": 6625255964477.399,
+   "T": -90248876882994.95,
+   "T_over_delta4": -9.024887688299493e+17,
+   "T_over_T_bps": -2.9859397871486024e+18,
+   "T_1d": 3.022626082368499e-05,
+   "departure": {
+    "M0i": 9229.67747971702,
+    "director_row": 894.7620647085421,
+    "M33_minus_1": 212.52990592720343,
+    "M00_minus_8": 9588.826345060897,
+    "z_variation": 9460.045710717288
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.7959657442045023,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 3.924010415003541e+16,
+   "T_over_T_1d": -2.985777083359145e+18,
+   "departure_max": 9588.826345060897,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 737.9
+  },
+  "d0.3_w100_n48_L48": {
+   "delta": 0.3,
+   "w1s": 100.0,
+   "n": 48,
+   "L": 48.0,
+   "arm": "ladder",
+   "tag": "d0.3_w100_n48_L48",
+   "h": 1.0,
+   "w": 0.0724023879,
+   "kicked": true,
+   "T_bps": 0.005349402275554625,
+   "kappa_bps": 0.10510911293105578,
+   "gate": 5.349402275554625e-09,
+   "gate_at_floor": false,
+   "T_seed_bps": 0.005294826026991003,
+   "T_seed_kicked": 0.20956085182806652,
+   "departure_seed": {
+    "M0i": 0.05336311946412498,
+    "director_row": 0.059548597645916954,
+    "M33_minus_1": 0.08195357224667207,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.1109184099733499
+   },
+   "fire": {
+    "E_start": 0.8382434073122661,
+    "E_end": 0.3569785711615797,
+    "fmax_end": 0.056302822113388266,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.3569785711615797,
+    "E_end": -81157182284132.97,
+    "fmax_end": 11315811141604.104,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -90463701717.71582,
+      "fmax": 87259032095.45358,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -749932406315.5974,
+      "fmax": 177683304198.13354,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -2549988608162.259,
+      "fmax": 840390909296.2928,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -5472316407419.793,
+      "fmax": 257976646667.07822,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -14215639003648.041,
+      "fmax": 382504868345.3807,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -21360234404348.793,
+      "fmax": 405851463359.3498,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -33696019305450.164,
+      "fmax": 2050666557025.0378,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -81157182284132.97,
+      "fmax": 11315811141604.104,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -22977891512242.137,
+   "V4_per_len": 2688595941208.896,
+   "T": -20289295571033.242,
+   "T_over_delta4": -2504851305065832.5,
+   "T_over_T_bps": -3792815444774090.0,
+   "T_1d": 0.005369184916594595,
+   "departure": {
+    "M0i": 2187.502869099596,
+    "director_row": 84.47517516038856,
+    "M33_minus_1": 60.864041923298196,
+    "M00_minus_8": 2371.160486492235,
+    "z_variation": 2413.7431869796224
+   },
+   "core_radius": null,
+   "core_radius_bps": 2.5679853693492634,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 227344689122527.28,
+   "T_over_T_1d": -3778840901591023.0,
+   "departure_max": 2371.160486492235,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 747.8
+  },
+  "d0.3_w25_n32_L48": {
+   "delta": 0.3,
+   "w1s": 25.0,
+   "n": 32,
+   "L": 48.0,
+   "arm": "h",
+   "tag": "d0.3_w25_n32_L48",
+   "h": 1.5,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 0.0026747011377773124,
+   "kappa_bps": 0.05255455646552789,
+   "gate": 1.7831340918515415e-09,
+   "gate_at_floor": false,
+   "T_seed_bps": 0.0026428770139271685,
+   "T_seed_kicked": 0.04990192038768914,
+   "departure_seed": {
+    "M0i": 0.06194022537496492,
+    "director_row": 0.05562482228194811,
+    "M33_minus_1": 0.07184851161210408,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.10933495573695348
+   },
+   "fire": {
+    "E_start": 0.2994115223261348,
+    "E_end": 0.13108701020238808,
+    "fmax_end": 0.03981718565999368,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.13108701020238808,
+    "E_end": -108145592742868.05,
+    "fmax_end": 3223949550708.735,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -4840246227653.591,
+      "fmax": 625545514007.2882,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -12218125312902.318,
+      "fmax": 343546790078.46216,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -21839537057340.87,
+      "fmax": 444743625527.54816,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -30802069413824.582,
+      "fmax": 1376684613454.4697,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -42315070856089.086,
+      "fmax": 538464047309.46747,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -55360526464147.484,
+      "fmax": 794913845864.9414,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -74568654010954.03,
+      "fmax": 3594133206110.6157,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -108145592742868.05,
+      "fmax": 3223949550708.735,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -20949958561488.395,
+   "V4_per_len": 2925693104343.718,
+   "T": -18024265457144.676,
+   "T_over_delta4": -2225217957672182.2,
+   "T_over_T_bps": -6738796048115833.0,
+   "T_1d": 0.00268459212586098,
+   "departure": {
+    "M0i": 1862.7990756691202,
+    "director_row": 234.7833725303319,
+    "M33_minus_1": 135.4615148993865,
+    "M00_minus_8": 1990.0841196914178,
+    "z_variation": 2634.367376425514
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.6316797373094096,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 824990916917701.0,
+   "T_over_T_1d": -6713967937071291.0,
+   "departure_max": 1990.0841196914178,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 311.9
+  },
+  "d0.03_w25_n32_L48": {
+   "delta": 0.03,
+   "w1s": 25.0,
+   "n": 32,
+   "L": 48.0,
+   "arm": "h",
+   "tag": "d0.03_w25_n32_L48",
+   "h": 1.5,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 2.423293495027001e-07,
+   "kappa_bps": 0.04761470843160279,
+   "gate": 1.6155289966846676e-13,
+   "gate_at_floor": false,
+   "T_seed_bps": 2.388973636596585e-07,
+   "T_seed_kicked": 0.00036950008562805357,
+   "departure_seed": {
+    "M0i": 0.06931434174246873,
+    "director_row": 0.05003178859449856,
+    "M33_minus_1": 0.0714856149963694,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.1071657384381041
+   },
+   "fire": {
+    "E_start": 0.0022170005137683215,
+    "E_end": 0.0011077065122138817,
+    "fmax_end": 0.004160354553441796,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.0011077065122138817,
+    "E_end": -696254187593802.1,
+    "fmax_end": 8935781400583.906,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -26629276909.266605,
+      "fmax": 5344078908.283063,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -9671742813382.055,
+      "fmax": 1637660243985.0522,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -28514990505031.184,
+      "fmax": 871415370881.9227,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -70444193238748.62,
+      "fmax": 372284104896.3762,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -202823199465566.1,
+      "fmax": 12022418239800.842,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -443846760110036.94,
+      "fmax": 30124742685978.707,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -593945301124302.1,
+      "fmax": 13151903164930.873,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -696254187593802.1,
+      "fmax": 8935781400583.906,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -119212858430552.14,
+   "V4_per_len": 3170493831585.1323,
+   "T": -116042364598967.02,
+   "T_over_delta4": -1.4326217851724325e+20,
+   "T_over_T_bps": -4.788621965812442e+20,
+   "T_1d": 2.42329458772018e-07,
+   "departure": {
+    "M0i": 35922.96097301432,
+    "director_row": 2311.077860822265,
+    "M33_minus_1": 1838.443771348679,
+    "M00_minus_8": 34273.68898545993,
+    "z_variation": 37725.33724772022
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.815418365837403,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 6.285547479559872e+17,
+   "T_over_T_1d": -4.7886198065642085e+20,
+   "departure_max": 35922.96097301432,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 311.5
+  },
+  "d0.3_w25_n64_L48": {
+   "delta": 0.3,
+   "w1s": 25.0,
+   "n": 64,
+   "L": 48.0,
+   "arm": "h",
+   "tag": "d0.3_w25_n64_L48",
+   "h": 0.75,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 0.0026747011377773124,
+   "kappa_bps": 0.05255455646552789,
+   "gate": 3.566268183703083e-09,
+   "gate_at_floor": false,
+   "T_seed_bps": 0.0026739686341318513,
+   "T_seed_kicked": 0.05481257355056971,
+   "departure_seed": {
+    "M0i": 0.06881951739647936,
+    "director_row": 0.0626690645664431,
+    "M33_minus_1": 0.08226505379056485,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.1096585443997313
+   },
+   "fire": {
+    "E_start": 0.16443772065170914,
+    "E_end": 0.07412253303173656,
+    "fmax_end": 0.006227302586496345,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.07412253303173656,
+    "E_end": -1.657922152345046e+16,
+    "fmax_end": 308272635516483.4,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -2534303019997529.5,
+      "fmax": 169354013379021.0,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -5003775944956576.0,
+      "fmax": 269717981469742.75,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -6115384042121933.0,
+      "fmax": 61565225383693.445,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -7017043413759265.0,
+      "fmax": 189508930902538.5,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -7953600350540727.0,
+      "fmax": 41524417827620.375,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -9522229870040824.0,
+      "fmax": 207962380236813.47,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -1.2073650121832786e+16,
+      "fmax": 97713186596062.19,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -1.657922152345046e+16,
+      "fmax": 308272635516483.4,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -6681430349620895.0,
+   "V4_per_len": 1155023175137407.8,
+   "T": -5526407174483487.0,
+   "T_over_delta4": -6.822724906769737e+17,
+   "T_over_T_bps": -2.0661774492966172e+18,
+   "T_1d": 0.00268459212586098,
+   "departure": {
+    "M0i": 6685.960919749088,
+    "director_row": 1428.8878053769024,
+    "M33_minus_1": 275.4728626360623,
+    "M00_minus_8": 7424.490936040869,
+    "z_variation": 7682.030625685201
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.6316797373094096,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 2.2367316449306774e+17,
+   "T_over_T_1d": -2.05856491988e+18,
+   "departure_max": 7424.490936040869,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 1304.3
+  },
+  "d0.03_w25_n64_L48": {
+   "delta": 0.03,
+   "w1s": 25.0,
+   "n": 64,
+   "L": 48.0,
+   "arm": "h",
+   "tag": "d0.03_w25_n64_L48",
+   "h": 0.75,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 2.423293495027001e-07,
+   "kappa_bps": 0.04761470843160279,
+   "gate": 3.2310579933693353e-13,
+   "gate_at_floor": false,
+   "T_seed_bps": 2.4145693979275206e-07,
+   "T_seed_kicked": 0.00039336215620527047,
+   "departure_seed": {
+    "M0i": 0.06233871471419612,
+    "director_row": 0.06266764553145007,
+    "M33_minus_1": 0.0976540827683614,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.1337135752822912
+   },
+   "fire": {
+    "E_start": 0.0011800864686158114,
+    "E_end": 0.0005922746418714744,
+    "fmax_end": 0.0006878006155195297,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.0005922746418714744,
+    "E_end": -2.7145424732260136e+16,
+    "fmax_end": 583325436415887.6,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -1970501881111392.5,
+      "fmax": 34283911699982.832,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -4713071136787036.0,
+      "fmax": 48878668435420.0,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -7783595140835293.0,
+      "fmax": 50936778786732.89,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -9976476216696466.0,
+      "fmax": 164587504283058.9,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -1.3875091090348246e+16,
+      "fmax": 60873978746365.375,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -1.661593948060132e+16,
+      "fmax": 379826170986682.3,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -2.3215615326845636e+16,
+      "fmax": 202662852963025.4,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -2.7145424732260136e+16,
+      "fmax": 583325436415887.6,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -9145205472693620.0,
+   "V4_per_len": 96730561940240.89,
+   "T": -9048474910753378.0,
+   "T_over_delta4": -1.1170956679942444e+22,
+   "T_over_T_bps": -3.7339574959955715e+22,
+   "T_1d": 2.42329458772018e-07,
+   "departure": {
+    "M0i": 66627.81182017566,
+    "director_row": 5950.67288080642,
+    "M33_minus_1": 4833.537673977538,
+    "M00_minus_8": 74085.82429628076,
+    "z_variation": 73262.95833110547
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.815418365837403,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 4.5832495287128605e+19,
+   "T_over_T_1d": -3.7339558123084515e+22,
+   "departure_max": 74085.82429628076,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 1339.9
+  },
+  "d0.3_w25_n72_L72": {
+   "delta": 0.3,
+   "w1s": 25.0,
+   "n": 72,
+   "L": 72.0,
+   "arm": "L",
+   "tag": "d0.3_w25_n72_L72",
+   "h": 1.0,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 0.0026747011377773124,
+   "kappa_bps": 0.05255455646552789,
+   "gate": 2.6747011377773123e-09,
+   "gate_at_floor": false,
+   "T_seed_bps": 0.0026657979165835254,
+   "T_seed_kicked": 0.12743268977163819,
+   "departure_seed": {
+    "M0i": 0.06297067004302442,
+    "director_row": 0.057773737998664094,
+    "M33_minus_1": 0.08922524696116467,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.12383703365971814
+   },
+   "fire": {
+    "E_start": 0.5097307590865527,
+    "E_end": 0.21612374293318307,
+    "fmax_end": 0.05259573969110638,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.21612374293318307,
+    "E_end": -1.250450779370717e+16,
+    "fmax_end": 550608488703737.25,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -9740663029484.604,
+      "fmax": 638604398799.558,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -28837613425299.4,
+      "fmax": 2907034485361.6104,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -362656760517764.25,
+      "fmax": 10099238107432.236,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -2399426589889520.0,
+      "fmax": 34844025761489.87,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -6451096975417326.0,
+      "fmax": 584825492078067.0,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -8479397831185040.0,
+      "fmax": 54708698985543.45,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -9713777158052210.0,
+      "fmax": 182717244363523.3,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -1.250450779370717e+16,
+      "fmax": 550608488703737.25,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -3331070801131728.0,
+   "V4_per_len": 204943852704935.53,
+   "T": -3126126948426792.5,
+   "T_over_delta4": -3.8594159857120896e+17,
+   "T_over_T_bps": -1.1687761687739876e+18,
+   "T_1d": 0.00268459212586098,
+   "departure": {
+    "M0i": 5857.695520986156,
+    "director_row": 625.9316749220022,
+    "M33_minus_1": 431.7051664803045,
+    "M00_minus_8": 7158.856051078059,
+    "z_variation": 9065.728105693062
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.6316797373094096,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 5.785809381236318e+16,
+   "T_over_T_1d": -1.1644699834706575e+18,
+   "departure_max": 7158.856051078059,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 1618.1
+  },
+  "d0.03_w25_n72_L72": {
+   "delta": 0.03,
+   "w1s": 25.0,
+   "n": 72,
+   "L": 72.0,
+   "arm": "L",
+   "tag": "d0.03_w25_n72_L72",
+   "h": 1.0,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 2.423293495027001e-07,
+   "kappa_bps": 0.04761470843160279,
+   "gate": 2.4232934950270013e-13,
+   "gate_at_floor": false,
+   "T_seed_bps": 2.407851729846673e-07,
+   "T_seed_kicked": 0.0009834074992859068,
+   "departure_seed": {
+    "M0i": 0.0615538611093774,
+    "director_row": 0.05623783032030006,
+    "M33_minus_1": 0.08209981403130007,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.12027373906019756
+   },
+   "fire": {
+    "E_start": 0.003933629997143627,
+    "E_end": 0.0019745231573839073,
+    "fmax_end": 0.004774112462039333,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.0019745231573839073,
+    "E_end": -1.3827729491302612e+16,
+    "fmax_end": 71778796957480.14,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -38307372290.868805,
+      "fmax": 2022753549.2118526,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -880951270510470.8,
+      "fmax": 90471079600331.3,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -1859287867790697.8,
+      "fmax": 33095173436023.72,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -3462762669514200.5,
+      "fmax": 43449550042193.45,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -5318718474712322.0,
+      "fmax": 78733230621709.02,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -6944197737741501.0,
+      "fmax": 63826619079577.96,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -1.1047231994213636e+16,
+      "fmax": 276713123557842.06,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -1.3827729491302612e+16,
+      "fmax": 71778796957480.14,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -3628538385159342.0,
+   "V4_per_len": 171606012333688.78,
+   "T": -3456932372825653.0,
+   "T_over_delta4": -4.267817744229202e+21,
+   "T_over_T_bps": -1.4265430002266953e+22,
+   "T_1d": 2.42329458772018e-07,
+   "departure": {
+    "M0i": 64301.32562224886,
+    "director_row": 11489.672441569779,
+    "M33_minus_1": 18169.20683811344,
+    "M00_minus_8": 71371.46921608651,
+    "z_variation": 119210.07136840014
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.815418365837403,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 7.003072837911559e+18,
+   "T_over_T_1d": -1.426542356981003e+22,
+   "departure_max": 71371.46921608651,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 1621.6
+  },
+  "d0.3_w25_n96_L48": {
+   "delta": 0.3,
+   "w1s": 25.0,
+   "n": 96,
+   "L": 48.0,
+   "arm": "h",
+   "tag": "d0.3_w25_n96_L48",
+   "h": 0.5,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 0.0026747011377773124,
+   "kappa_bps": 0.05255455646552789,
+   "gate": 5.349402275554625e-09,
+   "gate_at_floor": false,
+   "T_seed_bps": 0.0026798540952990128,
+   "T_seed_kicked": 0.06328246286545573,
+   "departure_seed": {
+    "M0i": 0.058704416117816134,
+    "director_row": 0.05770115191476804,
+    "M33_minus_1": 0.08060865915483051,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.12360445186626523
+   },
+   "fire": {
+    "E_start": 0.12656492573091147,
+    "E_end": 0.05956669334997566,
+    "fmax_end": 0.0021111199157328123,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.05956669334997566,
+    "E_end": -4.910189408919234e+16,
+    "fmax_end": 774949677713010.1,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -1413656577592959.5,
+      "fmax": 24944641066156.277,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -2976942950343087.0,
+      "fmax": 45313397990323.48,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -5803542218653044.0,
+      "fmax": 113925305862309.9,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -9699803709759132.0,
+      "fmax": 283237168420756.44,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -1.5851139711701208e+16,
+      "fmax": 96820899403993.1,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -2.1523356029582856e+16,
+      "fmax": 64732945970058.36,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -4.103764085484766e+16,
+      "fmax": 493849668453933.44,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -4.910189408919234e+16,
+      "fmax": 774949677713010.1,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -2.5377709384942364e+16,
+   "V4_per_len": 826762340346196.0,
+   "T": -2.455094704459617e+16,
+   "T_over_delta4": -3.030981116616811e+18,
+   "T_over_T_bps": -9.178949639584072e+18,
+   "T_1d": 0.00268459212586098,
+   "departure": {
+    "M0i": 6782.7896458883415,
+    "director_row": 3277.299014313252,
+    "M33_minus_1": 1200.4552864415261,
+    "M00_minus_8": 6958.956452284717,
+    "z_variation": 8375.698223892512
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.6316797373094096,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 8.243179422550975e+17,
+   "T_over_T_1d": -9.145131138579344e+18,
+   "departure_max": 6958.956452284717,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 2893.3
+  },
+  "d0.3_w25_n96_L96": {
+   "delta": 0.3,
+   "w1s": 25.0,
+   "n": 96,
+   "L": 96.0,
+   "arm": "L",
+   "tag": "d0.3_w25_n96_L96",
+   "h": 1.0,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 0.0026747011377773124,
+   "kappa_bps": 0.05255455646552789,
+   "gate": 2.6747011377773123e-09,
+   "gate_at_floor": false,
+   "T_seed_bps": 0.002665798097200935,
+   "T_seed_kicked": 0.22755219821594458,
+   "departure_seed": {
+    "M0i": 0.067916876448375,
+    "director_row": 0.06681135671658846,
+    "M33_minus_1": 0.08394013210978916,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.12952379699678737
+   },
+   "fire": {
+    "E_start": 0.9102087928637783,
+    "E_end": 0.38240208265572395,
+    "fmax_end": 0.06539371459796532,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.38240208265572395,
+    "E_end": -527704178357736.6,
+    "fmax_end": 7918965680470.1875,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -15318019466122.55,
+      "fmax": 1101529537309.3865,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -37260375519868.82,
+      "fmax": 481402731224.8749,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -70906064638746.36,
+      "fmax": 8999878466095.781,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -103520928809456.38,
+      "fmax": 11106754886556.965,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -143128792639364.38,
+      "fmax": 4186985948469.186,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -203862568228105.5,
+      "fmax": 2189561276192.249,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -420542827598611.25,
+      "fmax": 7705259975888.436,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -527704178357736.6,
+      "fmax": 7918965680470.1875,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -135334559880273.06,
+   "V4_per_len": 3408515290838.906,
+   "T": -131926044589434.16,
+   "T_over_delta4": -1.6287165998695576e+16,
+   "T_over_T_bps": -4.932365815609038e+16,
+   "T_1d": 0.00268459212586098,
+   "departure": {
+    "M0i": 3006.0106543679058,
+    "director_row": 731.1002498259498,
+    "M33_minus_1": 137.37329250078562,
+    "M00_minus_8": 3703.800780407946,
+    "z_variation": 3561.4309204199003
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.6316797373094096,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 1379972030206823.8,
+   "T_over_T_1d": -4.91419323325043e+16,
+   "departure_max": 3703.800780407946,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 2895.3
+  },
+  "d0.03_w25_n96_L96": {
+   "delta": 0.03,
+   "w1s": 25.0,
+   "n": 96,
+   "L": 96.0,
+   "arm": "L",
+   "tag": "d0.03_w25_n96_L96",
+   "h": 1.0,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 2.423293495027001e-07,
+   "kappa_bps": 0.04761470843160279,
+   "gate": 2.4232934950270013e-13,
+   "gate_at_floor": false,
+   "T_seed_bps": 2.407851910464082e-07,
+   "T_seed_kicked": 0.001749521904866143,
+   "departure_seed": {
+    "M0i": 0.06319953594641901,
+    "director_row": 0.05633641323180516,
+    "M33_minus_1": 0.07949246233305285,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.14534572229844753
+   },
+   "fire": {
+    "E_start": 0.006998087619464572,
+    "E_end": 0.0035195155226702634,
+    "fmax_end": 0.004679880124189878,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.0035195155226702634,
+    "E_end": -2390029230846187.0,
+    "fmax_end": 13348903458426.34,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -15062081730603.285,
+      "fmax": 745304715908.1309,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -112434008350826.67,
+      "fmax": 1948993868976.3928,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -386946883849651.3,
+      "fmax": 90257091180375.05,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -561632530062059.8,
+      "fmax": 11328067607779.994,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -1013298516033787.5,
+      "fmax": 112612565923047.61,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -1308921224492527.2,
+      "fmax": 3865741774961.2607,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -1524656751075026.8,
+      "fmax": 73015347288585.02,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -2390029230846187.0,
+      "fmax": 13348903458426.34,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -622619530566867.6,
+   "V4_per_len": 25112222855320.9,
+   "T": -597507307711546.8,
+   "T_over_delta4": -7.376633428537615e+20,
+   "T_over_T_bps": -2.465682794666558e+21,
+   "T_1d": 2.42329458772018e-07,
+   "departure": {
+    "M0i": 38982.72624818272,
+    "director_row": 14365.328916505101,
+    "M33_minus_1": 1836.577907689874,
+    "M00_minus_8": 45247.122330976425,
+    "z_variation": 46782.80545142709
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.815418365837403,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 6.790790423998094e+17,
+   "T_over_T_1d": -2.465681682860018e+21,
+   "departure_max": 45247.122330976425,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 2904.4
+  },
+  "d0.03_w25_n96_L48": {
+   "delta": 0.03,
+   "w1s": 25.0,
+   "n": 96,
+   "L": 48.0,
+   "arm": "h",
+   "tag": "d0.03_w25_n96_L48",
+   "h": 0.5,
+   "w": 0.018100596975,
+   "kicked": true,
+   "T_bps": 2.423293495027001e-07,
+   "kappa_bps": 0.04761470843160279,
+   "gate": 4.846586990054003e-13,
+   "gate_at_floor": false,
+   "T_seed_bps": 2.4194046015787586e-07,
+   "T_seed_kicked": 0.0004085960358685081,
+   "departure_seed": {
+    "M0i": 0.059906758158652186,
+    "director_row": 0.06266817489825716,
+    "M33_minus_1": 0.09097382797726243,
+    "M00_minus_8": 0.0,
+    "z_variation": 0.1211961661466828
+   },
+   "fire": {
+    "E_start": 0.0008171920717370162,
+    "E_end": 0.00041108505309345747,
+    "fmax_end": 0.00018504088179764288,
+    "iters": 2000
+   },
+   "lbfgs": {
+    "E_start": 0.00041108505309345747,
+    "E_end": -4.558494531365212e+16,
+    "fmax_end": 8571016678526890.0,
+    "iters": 4000,
+    "verdict": "FALLING",
+    "chunks": [
+     {
+      "iters": 500,
+      "E": -42945134406667.14,
+      "fmax": 46391851938477.39,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1000,
+      "E": -241484334943978.53,
+      "fmax": 10605183886388.762,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 1500,
+      "E": -807524941927086.8,
+      "fmax": 81764814378214.14,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2000,
+      "E": -1878294886794975.0,
+      "fmax": 57599505262818.25,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 2500,
+      "E": -5992306848553981.0,
+      "fmax": 1202191181698730.5,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3000,
+      "E": -2.0159445531784364e+16,
+      "fmax": 6423242864542467.0,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 3500,
+      "E": -2.987758998916504e+16,
+      "fmax": 165157350263053.44,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     },
+     {
+      "iters": 4000,
+      "E": -4.558494531365212e+16,
+      "fmax": 8571016678526890.0,
+      "chunk_iters": 500,
+      "scipy": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT"
+     }
+    ]
+   },
+   "E_u_per_len": -2.3920976819061296e+16,
+   "V4_per_len": 1128504162235234.5,
+   "T": -2.279247265682606e+16,
+   "T_over_delta4": -2.813885513188403e+22,
+   "T_over_T_bps": -9.405576626851011e+22,
+   "T_1d": 2.42329458772018e-07,
+   "departure": {
+    "M0i": 74102.76375145912,
+    "director_row": 57624.262808261694,
+    "M33_minus_1": 35211.44779092904,
+    "M00_minus_8": 61312.343891784774,
+    "z_variation": 74146.85674667702
+   },
+   "core_radius": null,
+   "core_radius_bps": 3.815418365837403,
+   "fire_stall": true,
+   "lbfgs_drop_rel": 1.1088932806148193e+20,
+   "T_over_T_1d": -9.405572385761432e+22,
+   "departure_max": 74102.76375145912,
+   "status": "OK",
+   "verdict": "FALLING",
+   "wall_s": 3008.4
+  }
+ }
+}
