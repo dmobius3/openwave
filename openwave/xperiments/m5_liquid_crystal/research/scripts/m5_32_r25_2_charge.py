@@ -32,10 +32,14 @@ the six spatial entries per free cell with M_00 slaved per cell, scipy L-BFGS-B
 in chunks of CS.CHUNK = 250, memory 20), the pinned shell (depth 1.6), resumable
 stage files. The gate is a decade under R23's: fmax_spatial < 1e-4 read inside a
 chunk and the last-chunk drop under 1e-5 abs(E), because the slope signal is
-5e-3 per box unit. After the gate, the kick-and-continue clause of R25-K: 0.02
-Gaussian on the six free spatial entries, M_00 re-slaved, two more chunks; the
-quoted E is the kicked end if it is lower by over 1e-4 (kick_label SADDLE), else
-the gate energy (STABLE); a row that never reaches the gate is FALLING.
+5e-3 per box unit. After the gate, the kick-and-continue clause of R25-K:
+Gaussian noise on the six free spatial entries, M_00 re-slaved, sized to a
+KICK_EXCESS excess over the re-slaved gate field (RUN-TIME DEVIATION 2026-09-23,
+the raw 0.02 amplitude was tens of percent of E), two more chunks; the quoted E
+is the kicked end if it is lower by over 1e-4 (kick_label SADDLE), else the gate
+energy, STABLE if the kicked end returned to within KICK_RETURN of it and
+UNRESOLVED if it did not shed the kick; a row that never reaches the gate is
+FALLING.
 
 THE ROWS
 --------
@@ -58,7 +62,7 @@ eigenvector has abs(n_axis) > 0.95 on every sample, the winding is the sum of
 the angle increments mod pi over pi (2 = one full turn = index 1); the tube read
 T_read(z) = the density summed over rho < 6 on each z plane with abs(z) > 9,
 per unit length; the spin-gate numbers on the rigid clock about the strand axis
-(B3.gen_catalog(cfg, M)["rot_z"], the M5.21.3 envelope renv 10): C = kin,
+(the RAW [J_z, M], no envelope, no normalization; the catalog rot_z kept as a reference): C = kin,
 omega_* = sqrt(E / (3 C)), J_* = sqrt(4 C E / 3), the gate 2 J omega / E = 1 on
 E_J = E + J^2 / (4 C), E_rot / E = 1 / 4 by construction.
 
@@ -108,6 +112,10 @@ GATE, GATE_DROP = 1e-4, 1e-5
 MAX_ITER = {16: 4, 32: 8000, 48: 8000, 64: 6000}
 STRETCH_FACTOR = 3
 KICK_AMP = 0.02
+KICK_EXCESS = (
+    0.02  # the kicked field's excess over the re-slaved source, in units of max(1, abs(E))
+)
+KICK_RETURN = 1e-3  # a kicked end within this (relative) of the gate energy has returned
 KICK_CHUNKS = 2
 KICK_LOWER = 1e-4
 LOOP_RADIUS_H = 2.0
@@ -330,22 +338,45 @@ def descend_chunks(M, cfg, p, pot, mask, tag, cap, chunks, done, stage, n_chunks
     return M, done, chunks, verdict
 
 
-def kick_field(M, mask, pot, tag, amp=KICK_AMP):
-    """0.02 Gaussian on the six spatial upper-triangle entries of the free cells, M_00 re-slaved."""
+def kick_field(M, mask, pot, tag, amp=KICK_AMP, energy=None):
+    """Gaussian noise on the six spatial upper-triangle entries of the free cells, M_00 re-slaved.
+    RUN-TIME DEVIATION (2026-09-23): with `energy` given the noise is rescaled so that the kicked
+    field sits KICK_EXCESS x max(1, abs(E_ref)) above the re-slaved source (three secant steps
+    on the quadratic scaling); the raw 0.02 amplitude raised fields of this size by tens of
+    percent of E, beyond what KICK_CHUNKS chunks relax, so the STABLE label would have read
+    the kick size (the same fault found in R25-1 and R25-K at the run). Returns
+    (Mk, seed, amp_effective, E_ref)."""
     seed = int(hashlib.sha256(tag.encode()).hexdigest()[:8], 16)
     rng = np.random.default_rng(seed)
-    Mk = M.copy()
-    S = Mk[..., 1:, 1:].copy()
     nf = int(mask.sum())
-    blk = np.zeros((nf, 3, 3))
-    blk[:, IU3[0], IU3[1]] = amp * rng.standard_normal((nf, 6))
-    blk = blk + blk.swapaxes(-1, -2) - np.einsum("...ii->...i", blk)[..., None] * np.eye(3)
-    S[mask] = S[mask] + blk
-    Mk[..., 1:, 1:] = S
-    m00 = Mk[..., 0, 0].copy()
-    m00[mask] = CS.solve_m00(S[mask], pot[1], pot[2], 0.0, m00[mask])
-    Mk[..., 0, 0] = m00
-    return Mk, seed
+    noise = amp * rng.standard_normal((nf, 6))
+
+    def build(noise):
+        Mk = M.copy()
+        S = Mk[..., 1:, 1:].copy()
+        blk = np.zeros((nf, 3, 3))
+        blk[:, IU3[0], IU3[1]] = noise
+        blk = blk + blk.swapaxes(-1, -2) - np.einsum("...ii->...i", blk)[..., None] * np.eye(3)
+        S[mask] = S[mask] + blk
+        Mk[..., 1:, 1:] = S
+        m00 = Mk[..., 0, 0].copy()
+        m00[mask] = CS.solve_m00(S[mask], pot[1], pot[2], 0.0, m00[mask])
+        Mk[..., 0, 0] = m00
+        return Mk
+
+    Mk = build(noise)
+    scale, E_ref = 1.0, None
+    if energy is not None:
+        E_ref = float(energy(build(np.zeros_like(noise))))
+        target = KICK_EXCESS * max(1.0, abs(E_ref))
+        for _ in range(3):
+            exc = float(energy(Mk)) - E_ref
+            if exc <= 0:
+                break
+            f = np.sqrt(target / exc)
+            noise, scale = noise * f, scale * f
+            Mk = build(noise)
+    return Mk, seed, amp * scale, E_ref
 
 
 # ================= reads =================
@@ -432,9 +463,23 @@ def strand_geometry(windings, cfg):
 
 
 def spin_gate_reads(M, cfg, E):
-    a0 = B3.gen_catalog(cfg, M)["rot_z"]
+    """RUN-TIME DEVIATION (2026-09-23, from the R25-0 audit): C is read with the RAW rigid
+    generator [J_z, M] (omega in radians per unit time), no envelope and no normalization; the
+    catalog's rot_z is unit-Frobenius over the lattice under the renv envelope, so its C is
+    box-dependent by construction and cannot carry the Packet B read. The catalog value is kept
+    as a reference (C_rot_z_catalog)."""
+    Jz = np.zeros((4, 4))
+    Jz[1, 2], Jz[2, 1] = -1.0, 1.0
+    # RUN-TIME CORRECTION (2026-09-24, from the R25-2 audit): the velocity of a rigid rotation
+    # of the symmetric field is the COMMUTATOR [J_z, M] (M -> R M R^T, dM = J M + M J^T = J M
+    # - M J); the first run used J M - M J^T = J M + M J (the anticommutator), an ANTISYMMETRIC
+    # matrix that is not a tangent of the symmetric field, the same form the M5.21.3 catalog
+    # uses for every generator (verified: its rot_z and boost_x fields are antisymmetric to
+    # round-off). The rows were re-read with this generator by the `reread` mode.
+    a0 = Jz @ M - M @ Jz
     C = float(B3.kin_of(M, a0, cfg))
-    out = {"C_rot_z": C, "renv": cfg["renv"], "E_stat": float(E)}
+    C_cat = float(B3.kin_of(M, B3.gen_catalog(cfg, M)["rot_z"], cfg))
+    out = {"C_rot_z": C, "C_rot_z_catalog": C_cat, "renv": cfg["renv"], "E_stat": float(E)}
     if C > 0 and E > 0:
         out["omega_star"] = float(np.sqrt(E / (3.0 * C)))
         out["J_star"] = float(np.sqrt(4.0 * C * E / 3.0))
@@ -500,7 +545,9 @@ def run_job(j):
             row["stop"] = "UPS wrap-up before the kick (resumable)"
         # the kick-and-continue clause
         if verdict == "AT_GATE":
-            Mk, seed = kick_field(M, mask, pot, tag)
+            Mk, seed, amp_eff, E_ref = kick_field(
+                M, mask, pot, tag, energy=lambda X: spatial_fmax(X, cfg, p, pot, mask)[0]
+            )
             E_k0 = spatial_fmax(Mk, cfg, p, pot, mask)[0]
             kchunks = [dict(chunk_light(Mk, cfg, p, pot, mask, 0), note="the kicked field")]
             kstage = os.path.join(OUT_NPZ, tag + "_kick_stage.npz")
@@ -510,6 +557,8 @@ def run_job(j):
             E_k = kchunks[-1]["E"]
             row["kick"] = {
                 "amp": KICK_AMP,
+                "amp_effective": amp_eff,
+                "E_ref_reslaved": E_ref,
                 "seed": seed,
                 "E_kicked_start": E_k0,
                 "E_after": E_k,
@@ -523,10 +572,16 @@ def run_job(j):
                 row["E"] = E_k
                 M = Mk
                 row["reconverged"] = bool(kchunks[-1]["fmax_spatial"] < GATE)
-            else:
+            elif E_k - E_gate < KICK_RETURN * max(1.0, abs(E_gate)):
                 row["kick_label"] = "STABLE"
                 row["E"] = E_gate
                 row["reconverged"] = True
+            else:
+                # RUN-TIME DEVIATION (2026-09-23): a kicked end still above the gate energy by
+                # more than KICK_RETURN has not shed the kick, so it is not a return
+                row["kick_label"] = "UNRESOLVED"
+                row["E"] = E_gate
+                row["reconverged"] = False
         else:
             row["kick_label"] = "FALLING"
             row["E"] = E_gate
@@ -807,7 +862,13 @@ def smoke():
         pot16 = ("v4", R0.roots_of(cfg16), W1 * W1S)
         mask16 = R21.free_mask(cfg16, True)
         M16 = np.load(os.path.join(OUT_NPZ, job_tag(j) + ".npz"))["M"]
-        Mk, seed = kick_field(M16, mask16, pot16, "smoke")
+        Mk, seed, _amp_eff, _E_ref = kick_field(
+            M16,
+            mask16,
+            pot16,
+            "smoke",
+            energy=lambda X: spatial_fmax(X, cfg16, p, pot16, mask16)[0],
+        )
         out["kick_wire"] = {
             "seed": seed,
             "rms_change_free": float(np.sqrt(np.mean((Mk - M16)[mask16] ** 2))),
@@ -906,6 +967,23 @@ def main():
         run_pool(jobs_stretch(), sys.argv[2] if len(sys.argv) > 2 else 12)
     elif mode == "run_pair":
         run_pool(jobs_pair(), sys.argv[2] if len(sys.argv) > 2 else 12)
+    elif mode == "reread":
+        # recompute the end reads of every stored row from its end field (the spin gate on the
+        # commutator generator), then the caller re-collects
+        J = load_json()
+        for tag, r in J["rows"].items():
+            f = os.path.join(OUT_NPZ, tag + ".npz")
+            if r.get("status") != "OK" or not os.path.exists(f):
+                continue
+            j = dict(n=r["n"], L=r["L"], delta=r["delta"], w1s=r["w1s"])
+            cfg = R21.cfg_of(j["n"], j["L"], G, j["delta"])
+            p = R21.params_of(G, j["delta"])
+            pot = ("v4", R0.roots_of(cfg), W1 * j["w1s"])
+            M = np.load(f)["M"]
+            r["end_reads"] = reads_row(M, cfg, p, pot)
+            r["end_reads"]["reread"] = "2026-09-24, the commutator generator"
+            log(f"reread {tag}: C {r['end_reads']['spin_gate']['C_rot_z']:.1f}")
+        save_json(J)
     elif mode == "collect":
         collect()
     elif mode == "plot":

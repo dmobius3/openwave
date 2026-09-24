@@ -20,13 +20,13 @@
   "status": "OK",
   "verdict": "FALLING",
   "T_seed_bps": 0.0026636061123174485,
-  "T_seed_kicked": 0.0069334324030979185,
-  "T": 0.004711512067771146,
-  "T_over_T_bps": 1.7615097257880674,
-  "departure_max": 0.05797536109803492,
-  "core_radius": 2.1548294665900305,
+  "T_seed_kicked": 0.003332269671716629,
+  "T": 0.0030565053080357793,
+  "T_over_T_bps": 1.142746479173276,
+  "departure_max": 0.025358740136432655,
+  "core_radius": 2.2324238297065064,
   "gate": 2.6747011377773123e-09,
-  "departure_seed_max": 0.05798647574556985
+  "departure_seed_max": 0.0253611679320905
  },
  "classify": {
   "in_block": "STRAND_IN_BLOCK",

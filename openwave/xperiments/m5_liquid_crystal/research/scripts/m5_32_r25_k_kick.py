@@ -77,6 +77,7 @@ SRC = {
 G = 8.0
 ITERS = 500
 KICK_AMP = 0.02
+KICK_EXCESS = 0.02  # the kicked field's excess over the source, in units of max(1, abs(E))
 TOL_STABLE, TOL_SADDLE, CORE_TOL_H = 1e-5, 1e-4, 0.2
 T0 = time.time()
 
@@ -145,25 +146,50 @@ def core_of(M, cfg, pot):
     return [float(np.sum(wts * C[sel]) / np.sum(wts)) for C in (X, Y, Z)]
 
 
-def kick_field(M, mask, amp, seed, reslave, roots, w, c):
-    """the six spatial entries kicked on the free cells, block-diagonal kept, M_00 re-slaved if asked."""
+def kick_field(M, mask, amp, seed, reslave, roots, w, c, energy=None):
+    """the six spatial entries kicked on the free cells, block-diagonal kept, M_00 re-slaved if asked.
+    RUN-TIME DEVIATION (2026-09-23 15:54 UTC): with `energy` given, the noise is rescaled so
+    that the kicked field sits KICK_EXCESS x max(1, abs(E0)) above the source field (three
+    secant steps on the quadratic scaling): the raw 0.02 amplitude raised the R22-1 rows by
+    37 percent of E (the smoke's 10.65 to 14.60) while their controls still descend at fmax
+    0.4 to 9, beyond what 500 iterations relax, so the labels would have read the kick size,
+    not the field. Returns (Mk, amp_effective)."""
     rng = np.random.default_rng(seed)
-    Mk = M.copy()
-    S = Mk[..., 1:, 1:].copy()
     nf = int(mask.sum())
     noise = amp * rng.standard_normal((nf, 6))
-    blk = np.zeros((nf, 3, 3))
-    blk[:, IU3[0], IU3[1]] = noise
-    blk = blk + blk.swapaxes(-1, -2) - np.einsum("...ii->...i", blk)[..., None] * np.eye(3)
-    S[mask] = S[mask] + blk
-    Mk[..., 1:, 1:] = S
-    Mk[..., 0, 1:] = 0.0
-    Mk[..., 1:, 0] = 0.0
-    if reslave:
-        m00 = Mk[..., 0, 0].copy()
-        m00[mask] = CS.solve_m00(S[mask], roots, w, c, m00[mask])
-        Mk[..., 0, 0] = m00
-    return Mk
+
+    def build(noise):
+        Mk = M.copy()
+        S = Mk[..., 1:, 1:].copy()
+        blk = np.zeros((nf, 3, 3))
+        blk[:, IU3[0], IU3[1]] = noise
+        blk = blk + blk.swapaxes(-1, -2) - np.einsum("...ii->...i", blk)[..., None] * np.eye(3)
+        S[mask] = S[mask] + blk
+        Mk[..., 1:, 1:] = S
+        Mk[..., 0, 1:] = 0.0
+        Mk[..., 1:, 0] = 0.0
+        if reslave:
+            m00 = Mk[..., 0, 0].copy()
+            m00[mask] = CS.solve_m00(S[mask], roots, w, c, m00[mask])
+            Mk[..., 0, 0] = m00
+        return Mk
+
+    Mk = build(noise)
+    scale = 1.0
+    E0 = None
+    if energy is not None:
+        # the reference is the SOURCE with the same re-slave applied (zero noise): on an
+        # unrelaxed field the re-slave alone lowers E, and that is not the kick
+        E0 = energy(build(np.zeros_like(noise)))
+        target = KICK_EXCESS * max(1.0, abs(E0))
+        for _ in range(3):
+            exc = energy(Mk) - E0
+            if exc <= 0:
+                break
+            f = np.sqrt(target / exc)
+            noise, scale = noise * f, scale * f
+            Mk = build(noise)
+    return Mk, amp * scale, E0
 
 
 def continue_r23(M, cfg, p, pot, c, iters, tag):
@@ -206,7 +232,11 @@ def continue_r23(M, cfg, p, pot, c, iters, tag):
 def continue_row(fam, M, cfg, p, pot, c, pinned, iters, tag):
     if fam == "r23_1":
         return continue_r23(M, cfg, p, pot, c, iters, tag)
-    Mp, pol = R21.polish(M, cfg, p, pot, pinned, tag, max_iter=iters, gate=1e-3, log_every=100)
+    # RUN-TIME DEVIATION (2026-09-23 16:26 UTC): gate 0, so BOTH arms spend the same `iters`
+    # budget; with the polish gate at 1e-3 a POLISHED source stopped its control at zero
+    # iterations while the kicked arm ran 500 and ended lower, a SADDLE label that read the
+    # budget, not the field (the first live row, bia_pin_d0.3_w1_n32_L48)
+    Mp, pol = R21.polish(M, cfg, p, pot, pinned, tag, max_iter=iters, gate=0.0, log_every=100)
     return Mp, int(pol["iters"])
 
 
@@ -258,8 +288,16 @@ def run_job(job):
                 M0
                 if kind == "control"
                 else kick_field(
-                    M0, mask, KICK_AMP, row["kick_seed"], fam == "r23_1", pot[1], pot[2], c
-                )
+                    M0,
+                    mask,
+                    KICK_AMP,
+                    row["kick_seed"],
+                    fam == "r23_1",
+                    pot[1],
+                    pot[2],
+                    c,
+                    energy=lambda X: energy_of(fam, X, cfg, p, pot, c),
+                )[0]
             )
             E_start = energy_of(fam, Ms, cfg, p, pot, c)
             Me, its = continue_row(fam, Ms, cfg, p, pot, c, pinned, ITERS, f"{tag}:{kind}")
@@ -397,13 +435,26 @@ def smoke():
             cfg, p, pot, pinned, c = setup_of(fam, r)
             mask = R21.free_mask(cfg, pinned)
             E0 = energy_of(fam, M, cfg, p, pot, c)
-            Mk = kick_field(M, mask, KICK_AMP, 7, fam == "r23_1", pot[1], pot[2], c)
+            Mk, amp_eff, E_ref = kick_field(
+                M,
+                mask,
+                KICK_AMP,
+                7,
+                fam == "r23_1",
+                pot[1],
+                pot[2],
+                c,
+                energy=lambda X: energy_of(fam, X, cfg, p, pot, c),
+            )
             Ek = energy_of(fam, Mk, cfg, p, pot, c)
+            rec_amp = float(amp_eff)
             Me, its = continue_row(fam, Mk, cfg, p, pot, c, pinned, 2, f"smoke:{fam}")
             Ee = energy_of(fam, Me, cfg, p, pot, c)
             rec = {
                 "E0": E0,
+                "E_ref_reslaved": E_ref,
                 "E_kicked": Ek,
+                "kick_amp_effective": rec_amp,
                 "E_after_2_its": Ee,
                 "iters": its,
                 "block_diagonal_kept": bool(np.abs(Mk[..., 0, 1:]).max() == 0.0),
@@ -416,7 +467,7 @@ def smoke():
                 ),
                 "fmax_after": fmax_of(fam, Me, cfg, p, pot, c, mask),
             }
-            rec["kick_raised_E"] = Ek > E0
+            rec["kick_raised_E"] = Ek > E_ref
             rec["descent_lowered_E"] = Ee < Ek
             out[fam] = rec
             ok = ok and rec["block_diagonal_kept"] and rec["pinned_cells_untouched"]

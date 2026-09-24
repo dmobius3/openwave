@@ -1,0 +1,1855 @@
+{
+ "task": "M5.32 R25-1 audit",
+ "auditor_read_audited_scripts": false,
+ "summary": {
+  "CONFIRMED": 3,
+  "QUALIFIED": 10
+ },
+ "checks": {
+  "0_own_gradient_gate": {
+   "method": "complex-step derivatives on 12 random symmetric directions of a random n 8 slab; the stack's grad (u part) plus R0's V4 gradient at the audited weight as a second opinion",
+   "numbers": {
+    "worst_rel_complex_step": 4.1436019959483147e-13,
+    "rel_vs_stack": 7.166413883865639e-17,
+    "E": 4343.343178960307,
+    "E_stack": 4343.343178960307
+   },
+   "verdict": "CONFIRMED",
+   "note": "the own gradient is exact to 4.1e-13 (complex step) and agrees with the stack to 7.2e-17"
+  },
+  "1_rows_recomputed": {
+   "method": "own slab energy (own open-end sym stencil, own eta algebra, own V4 traces) on every stored end field; own eigen-decompositions for the channels; the stack's e_parts as a second opinion on one field",
+   "numbers": {
+    "rows": 22,
+    "worst_rel_T": 2.220446049250313e-16,
+    "worst_rel_T_over_T_bps": 2.220446049250313e-16,
+    "worst_rel_departure": 0.0,
+    "worst_periodic_z_shift_on_T": 4.9691628989378955e-06,
+    "stack_e_parts_T_over_own_T_d0.3_w25": 1.0000000000000002,
+    "per_row": {
+     "d0.01_w6.25_n48_L48": {
+      "T_own": 1.2900307328810844e-09,
+      "T_stored": 1.2900307328810844e-09,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000036506978216,
+      "T_over_T_bps_own": 0.8631770219867627,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 1.170832675256861e-06,
+       "M33_minus_1": 0.0006565077597109337,
+       "director_eig_minus_1": 0.0006565077674380859,
+       "pair_mean_minus_s0": 0.0003106988445443666,
+       "director_row_maxentry": 0.0003670040540268849,
+       "director_row_norm": 0.00038511112616694976,
+       "z_variation_vs_z0": 0.0004898835856423714,
+       "z_variation_ptp": 0.0005763624559014855
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.01_w100_n48_L48": {
+      "T_own": 5.103731800237475e-09,
+      "T_stored": 5.103731800237475e-09,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000003191664966,
+      "T_over_T_bps_own": 0.8537440047085717,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 1.1298243229873606e-06,
+       "M33_minus_1": 0.0006335142223479195,
+       "director_eig_minus_1": 0.0006335143283964229,
+       "pair_mean_minus_s0": 0.00029980424610292003,
+       "director_row_maxentry": 0.000159242743969637,
+       "director_row_norm": 0.000160286799947536,
+       "z_variation_vs_z0": 0.00023782903581644443,
+       "z_variation_ptp": 0.00024575710542711293
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.01_w25_n48_L48": {
+      "T_own": 2.570539689349372e-09,
+      "T_stored": 2.570539689349372e-09,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.000001073712052,
+      "T_over_T_bps_own": 0.8599914472564361,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 1.1569871283256816e-06,
+       "M33_minus_1": 0.0006487481749806179,
+       "director_eig_minus_1": 0.0006487483095618529,
+       "pair_mean_minus_s0": 0.0003070270913647401,
+       "director_row_maxentry": 0.00024683312108107243,
+       "director_row_norm": 0.0002538746713547666,
+       "z_variation_vs_z0": 0.0003281575760184273,
+       "z_variation_ptp": 0.00034407802836501503
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.03_w100_n48_L48": {
+      "T_own": 4.0374398097525523e-07,
+      "T_stored": 4.0374398097525523e-07,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000011304079202,
+      "T_over_T_bps_own": 0.8330480435073271,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 3.576476093059e-06,
+       "M33_minus_1": 0.0019986599021729985,
+       "director_eig_minus_1": 0.001998660063081322,
+       "pair_mean_minus_s0": 0.0008457858011327406,
+       "director_row_maxentry": 0.0004065495112695832,
+       "director_row_norm": 0.0004458708805127663,
+       "z_variation_vs_z0": 0.0009291169628691115,
+       "z_variation_ptp": 0.0013064115870817991
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.03_w25_n48_L48": {
+      "T_own": 2.0301996706062674e-07,
+      "T_stored": 2.0301996706062674e-07,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000008150454802,
+      "T_over_T_bps_own": 0.8377853011913632,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 3.6521340026259472e-06,
+       "M33_minus_1": 0.00204091799646348,
+       "director_eig_minus_1": 0.002040918029111438,
+       "pair_mean_minus_s0": 0.0008639633517536563,
+       "director_row_maxentry": 0.00043417111690265196,
+       "director_row_norm": 0.0004801773700672691,
+       "z_variation_vs_z0": 0.0008135814387813089,
+       "z_variation_ptp": 0.000896321091009805
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.03_w6.25_n48_L48": {
+      "T_own": 1.0180652122843448e-07,
+      "T_stored": 1.0180652122843447e-07,
+      "rel_T": 2.220446049250313e-16,
+      "T_periodic_z_over_T": 1.0000023331439223,
+      "T_over_T_bps_own": 0.8402326951923759,
+      "rel_ratio": 2.220446049250313e-16,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 3.691220040735743e-06,
+       "M33_minus_1": 0.0020627401956444897,
+       "director_eig_minus_1": 0.0020627402150289837,
+       "pair_mean_minus_s0": 0.0008781514189944625,
+       "director_row_maxentry": 0.00043593052118501643,
+       "director_row_norm": 0.00046403406005741693,
+       "z_variation_vs_z0": 0.0011224810481799223,
+       "z_variation_ptp": 0.0011497041662736122
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.3_w25_n32_L48": {
+      "T_own": 0.0015892363037503853,
+      "T_stored": 0.0015892363037503853,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000022391749184,
+      "T_over_T_bps_own": 0.5941734129858887,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 5.065291797260822e-05,
+       "M33_minus_1": 0.03237482677647785,
+       "director_eig_minus_1": 0.0323748375403928,
+       "pair_mean_minus_s0": 0.00525780991474036,
+       "director_row_maxentry": 0.0036212882973391293,
+       "director_row_norm": 0.003763860221649599,
+       "z_variation_vs_z0": 0.00873644436362897,
+       "z_variation_ptp": 0.00873644436362897
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.1_w25_n48_L48": {
+      "T_own": 2.368896014568546e-05,
+      "T_stored": 2.368896014568546e-05,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.000001201826492,
+      "T_over_T_bps_own": 0.7837638656366227,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 1.3945095815870445e-05,
+       "M33_minus_1": 0.007855495415522995,
+       "director_eig_minus_1": 0.007855495426272174,
+       "pair_mean_minus_s0": 0.002312032055906757,
+       "director_row_maxentry": 0.000932683762939581,
+       "director_row_norm": 0.0010080606053993976,
+       "z_variation_vs_z0": 0.00263203527761676,
+       "z_variation_ptp": 0.0028493413889317185
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.03_w25_n32_L48": {
+      "T_own": 2.0158786500633994e-07,
+      "T_stored": 2.0158786500633994e-07,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.000000814975287,
+      "T_over_T_bps_own": 0.8318755669506461,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 3.5571995127270384e-06,
+       "M33_minus_1": 0.0019878918143959963,
+       "director_eig_minus_1": 0.001987892510165364,
+       "pair_mean_minus_s0": 0.0008413701326724643,
+       "director_row_maxentry": 0.000543396449732749,
+       "director_row_norm": 0.000589939284870486,
+       "z_variation_vs_z0": 0.0009666417335939144,
+       "z_variation_ptp": 0.0009666417335939144
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.3_w25_n48_L48": {
+      "T_own": 0.0015981682118314513,
+      "T_stored": 0.0015981682118314513,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.000001656715807,
+      "T_over_T_bps_own": 0.597512817136473,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 5.165674500299626e-05,
+       "M33_minus_1": 0.032987892496449955,
+       "director_eig_minus_1": 0.03298789334056289,
+       "pair_mean_minus_s0": 0.005333864054391698,
+       "director_row_maxentry": 0.00259712814758961,
+       "director_row_norm": 0.002980362146785466,
+       "z_variation_vs_z0": 0.007629327690237021,
+       "z_variation_ptp": 0.010128195077323451
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.3_w6.25_n48_L48": {
+      "T_own": 0.0008008291796920728,
+      "T_stored": 0.0008008291796920728,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000032590840788,
+      "T_over_T_bps_own": 0.5988176909795351,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 5.207239851164521e-05,
+       "M33_minus_1": 0.033241992438282075,
+       "director_eig_minus_1": 0.03324199427398626,
+       "pair_mean_minus_s0": 0.005347280542322327,
+       "director_row_maxentry": 0.0014362586677124298,
+       "director_row_norm": 0.001462585482857548,
+       "z_variation_vs_z0": 0.011445311643478822,
+       "z_variation_ptp": 0.011445311643478822
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.3_w100_n48_L48": {
+      "T_own": 0.0031820947428870235,
+      "T_stored": 0.0031820947428870235,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000024940046823,
+      "T_over_T_bps_own": 0.5948505232871283,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 5.0834219497512364e-05,
+       "M33_minus_1": 0.03248984166943192,
+       "director_eig_minus_1": 0.03248984268320691,
+       "pair_mean_minus_s0": 0.005269140824310514,
+       "director_row_maxentry": 0.0016801004884263858,
+       "director_row_norm": 0.0019827781897065115,
+       "z_variation_vs_z0": 0.0061363592704564525,
+       "z_variation_ptp": 0.006990374053633073
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.1_w6.25_n48_L48": {
+      "T_own": 1.1875342275421492e-05,
+      "T_stored": 1.1875342275421492e-05,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000007858315503,
+      "T_over_T_bps_own": 0.7858060556733684,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 1.4080238877056672e-05,
+       "M33_minus_1": 0.007931258743190117,
+       "director_eig_minus_1": 0.007931258760698334,
+       "pair_mean_minus_s0": 0.002334059423005422,
+       "director_row_maxentry": 0.0006010386776396653,
+       "director_row_norm": 0.0006774547374436145,
+       "z_variation_vs_z0": 0.0042134447040370615,
+       "z_variation_ptp": 0.0042134447040370615
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.1_w100_n48_L48": {
+      "T_own": 4.7125278648457654e-05,
+      "T_stored": 4.7125278648457654e-05,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000007284627985,
+      "T_over_T_bps_own": 0.7795844633021021,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 1.368017135128241e-05,
+       "M33_minus_1": 0.007706983681738944,
+       "director_eig_minus_1": 0.007706983854915972,
+       "pair_mean_minus_s0": 0.002301560956928933,
+       "director_row_maxentry": 0.0009584977278604172,
+       "director_row_norm": 0.0009589256977289878,
+       "z_variation_vs_z0": 0.002393238943998663,
+       "z_variation_ptp": 0.002393238943998663
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.03_w25_n64_L48": {
+      "T_own": 2.0353998327069527e-07,
+      "T_stored": 2.0353998327069527e-07,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000018493365883,
+      "T_over_T_bps_own": 0.8399312080372969,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 3.685314897694525e-06,
+       "M33_minus_1": 0.002059449573462343,
+       "director_eig_minus_1": 0.002059449576289711,
+       "pair_mean_minus_s0": 0.0008723471189648474,
+       "director_row_maxentry": 0.0006042602985731606,
+       "director_row_norm": 0.0006128596172858741,
+       "z_variation_vs_z0": 0.0008750214886302015,
+       "z_variation_ptp": 0.0008750214886302015
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.3_w25_n64_L48": {
+      "T_own": 0.0016012237467374955,
+      "T_stored": 0.0016012237467374955,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000020600200439,
+      "T_over_T_bps_own": 0.5986552008080122,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 5.2025327394270945e-05,
+       "M33_minus_1": 0.033213564056711796,
+       "director_eig_minus_1": 0.03321356487862026,
+       "pair_mean_minus_s0": 0.005344637329628699,
+       "director_row_maxentry": 0.001495268757742997,
+       "director_row_norm": 0.0017102375251995755,
+       "z_variation_vs_z0": 0.008546744434913638,
+       "z_variation_ptp": 0.010034689770930205
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.03_w25_n72_L72": {
+      "T_own": 2.0301741550919756e-07,
+      "T_stored": 2.0301741550919753e-07,
+      "rel_T": 2.220446049250313e-16,
+      "T_periodic_z_over_T": 1.0000015098148403,
+      "T_over_T_bps_own": 0.8377747719202104,
+      "rel_ratio": 2.220446049250313e-16,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 3.6521792701194045e-06,
+       "M33_minus_1": 0.0020409428177788533,
+       "director_eig_minus_1": 0.002040943268795855,
+       "pair_mean_minus_s0": 0.0008637040725846303,
+       "director_row_maxentry": 0.0004197427502600929,
+       "director_row_norm": 0.0004648936033926452,
+       "z_variation_vs_z0": 0.0006334725155873629,
+       "z_variation_ptp": 0.0008152293935333886
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.3_w25_n72_L72": {
+      "T_own": 0.0015981679117959098,
+      "T_stored": 0.0015981679117959098,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000022722747717,
+      "T_over_T_bps_own": 0.597512704961121,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 5.1635202481155794e-05,
+       "M33_minus_1": 0.03297690449198661,
+       "director_eig_minus_1": 0.03297690539333894,
+       "pair_mean_minus_s0": 0.0053023265473297245,
+       "director_row_maxentry": 0.0017482760011591541,
+       "director_row_norm": 0.0019407368209612642,
+       "z_variation_vs_z0": 0.00681745338125133,
+       "z_variation_ptp": 0.00681745338125133
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.03_w25_n96_L96": {
+      "T_own": 2.0304293657140473e-07,
+      "T_stored": 2.0304293657140473e-07,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000029245531932,
+      "T_over_T_bps_own": 0.8378800875258502,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 3.6533069606529507e-06,
+       "M33_minus_1": 0.0020415669334713136,
+       "director_eig_minus_1": 0.0020415692447632123,
+       "pair_mean_minus_s0": 0.0008659693027354236,
+       "director_row_maxentry": 0.0004944609623771453,
+       "director_row_norm": 0.0005022035638674637,
+       "z_variation_vs_z0": 0.0010494058752479442,
+       "z_variation_ptp": 0.0014081324990823812
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.3_w25_n96_L48": {
+      "T_own": 0.0016033916817616602,
+      "T_stored": 0.0016033916817616602,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000030089280478,
+      "T_over_T_bps_own": 0.5994657343639093,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 5.22908107895385e-05,
+       "M33_minus_1": 0.03337247853086571,
+       "director_eig_minus_1": 0.033372478799871264,
+       "pair_mean_minus_s0": 0.0053605134465109505,
+       "director_row_maxentry": 0.0010115142391957683,
+       "director_row_norm": 0.001174262168175139,
+       "z_variation_vs_z0": 0.009060555399144448,
+       "z_variation_ptp": 0.009060555399144448
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.3_w25_n96_L96": {
+      "T_own": 0.0015981908043197417,
+      "T_stored": 0.0015981908043197417,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.000004969162899,
+      "T_over_T_bps_own": 0.5975212638701926,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 5.16674812978124e-05,
+       "M33_minus_1": 0.032994463056259526,
+       "director_eig_minus_1": 0.03299446373368061,
+       "pair_mean_minus_s0": 0.005325181389579474,
+       "director_row_maxentry": 0.001990492226790014,
+       "director_row_norm": 0.002012124473031601,
+       "z_variation_vs_z0": 0.004969822555217033,
+       "z_variation_ptp": 0.004969822555217033
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     },
+     "d0.03_w25_n96_L48": {
+      "T_own": 2.0391644574919774e-07,
+      "T_stored": 2.0391644574919774e-07,
+      "rel_T": 0.0,
+      "T_periodic_z_over_T": 1.0000016987215152,
+      "T_over_T_bps_own": 0.8414847238589465,
+      "rel_ratio": 0.0,
+      "dep_own": {
+       "M0i": 0.0,
+       "M00_minus_8": 3.7103734899327874e-06,
+       "M33_minus_1": 0.002073441202436281,
+       "director_eig_minus_1": 0.002073441473989431,
+       "pair_mean_minus_s0": 0.0008797376034460718,
+       "director_row_maxentry": 0.000356641329152097,
+       "director_row_norm": 0.0003612174172140098,
+       "z_variation_vs_z0": 0.0009460980848215961,
+       "z_variation_ptp": 0.0009460980848215961
+      },
+      "dep_rel_max": 0.0,
+      "w_check": 0.0
+     }
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "every stored T, T / T_bps and channel reproduced to 1e-8 with the OPEN-END stencil along z (a periodic z stencil shifts T by up to 5.0e-06): the slab is not periodic in z; the stored z_variation is max |M(z) - M(z_0)| and the director_row is the max entry, not norms"
+  },
+  "2_ladder_reading": {
+   "method": "the claim's ranges tested on the auditor's own recomputed T / T_bps and channels",
+   "numbers": {
+    "ranges": {
+     "0.01": {
+      "h1_L48_by_w": {
+       "6.25": 0.8631770219867627,
+       "25": 0.8599914472564361,
+       "100": 0.8537440047085717
+      },
+      "w_spread_rel": 0.010981766792868839
+     },
+     "0.03": {
+      "h1_L48_by_w": {
+       "6.25": 0.8402326951923759,
+       "25": 0.8377853011913632,
+       "100": 0.8330480435073271
+      },
+      "w_spread_rel": 0.008583587493414308
+     },
+     "0.1": {
+      "h1_L48_by_w": {
+       "6.25": 0.7858060556733684,
+       "25": 0.7837638656366227,
+       "100": 0.7795844633021021
+      },
+      "w_spread_rel": 0.007945317360178917
+     },
+     "0.3": {
+      "h1_L48_by_w": {
+       "6.25": 0.5988176909795351,
+       "25": 0.597512817136473,
+       "100": 0.5948505232871283
+      },
+      "w_spread_rel": 0.006644500398654421
+     }
+    },
+    "h_ladder_d0.03_T_over_T_bps": {
+     "1.5": 0.8318755669506461,
+     "1.0": 0.8377853011913632,
+     "0.75": 0.8399312080372969,
+     "0.5": 0.8414847238589465
+    },
+    "director_row_maxentry_max": 0.0036212882973391293,
+    "diag_channel_min_max": [
+     0.0006335142223479195,
+     0.03337247853086571
+    ],
+    "pair_mean_shift_min_max": [
+     0.00029980424610292003,
+     0.0053605134465109505
+    ],
+    "z_variation_ptp_min_max": [
+     0.00024575710542711293,
+     0.011445311643478822
+    ],
+    "core_radius_by_delta_w": {
+     "0.01": {
+      "6.25": 3.4447287409475673,
+      "25.0": 2.413601230469797,
+      "100.0": 1.682042439152066
+     },
+     "0.03": {
+      "6.25": 3.625020854558658,
+      "25.0": 2.5392224971503965,
+      "100.0": 1.7747299037217101
+     },
+     "0.1": {
+      "6.25": 3.708262513490156,
+      "25.0": 2.598186375166321,
+      "100.0": 1.8164407525116137
+     },
+     "0.3": {
+      "6.25": 3.9050011444692623,
+      "25.0": 2.75195534396601,
+      "100.0": 1.9306820362451598
+     }
+    },
+    "claims": {
+     "0.01_in_0.85_0.87": true,
+     "0.03_in_0.83_0.845": true,
+     "0.1_in_0.775_0.79": true,
+     "0.3_in_0.59_0.60": true,
+     "w_spread_under_1pct": false,
+     "h003_h1.5_0.832_h1_0.838": 1.0,
+     "M0i_all_zero": 1.0,
+     "director_row_under_1e-2": 1.0,
+     "diag_in_6e-4_3.5e-2": 1.0
+    },
+    "failed_claims": [
+     "w_spread_under_1pct"
+    ]
+   },
+   "verdict": "QUALIFIED",
+   "note": "the four delta ranges, the h 0.03 pair, M_0i = 0, the row under 1e-2 and the diagonal range hold; the w spread at fixed delta is 1.10 / 0.86 / 0.79 / 0.66 percent at delta 0.01 / 0.03 / 0.1 / 0.3 (over 1 percent at delta 0.01, ordered with the core radius 1.68 to 3.44 units at h 1: the lattice factor, not the physics); the wording 'the departure is in the DIAGONAL slots' misses the pair mean (s = (l+ + l-) / 2 shifts by up to 5.4e-03 of delta) and the z variation (peak to peak up to 1.1e-02 of delta), both above the director row"
+  },
+  "3a_K_eff_sympy": {
+   "method": "own sympy: residuals of the four trace targets linearized in x = f - f0 with the two (and three) slots shifted, the quadratic form minimized in closed form",
+   "numbers": {
+    "K_block_quadratic_at_s0_0.15": 4.9395999999999995,
+    "K_block_author_at_0.15": 4.882899999999999,
+    "K_eff2_minus_claimed_simplified": "0",
+    "K_eff2_limit_s0_0": 3.0392931887310546,
+    "K_eff2_over_4_limit": 0.7598232971827636,
+    "ratio_limit_sqrt": 0.8716784368003855,
+    "c_shift_M33_limit": -0.2436386183938715,
+    "a_shift_M00_limit": 0.0004327394470793965,
+    "c_shift_M33_at_0.15": -0.4364568603333434,
+    "a_shift_M00_at_0.15": 0.0006477972812868188,
+    "K_eff3_limit_s0_0": 2.975783015821763,
+    "K_eff3_at_0.15": 1.7386576490029355,
+    "K_eff2_at_0.15": 1.7732392792285459,
+    "s_shift_limit": 0.1301057474975783,
+    "s_shift_at_0.15": 0.10104569793386739,
+    "K_eff3_over_K_eff2_limit": 0.9791036372717277
+   },
+   "verdict": "QUALIFIED",
+   "note": "K_eff(s0) reproduced exactly (the difference simplifies to 0), limit 3.0393; the M_33 shift coefficient is -0.2436 in the limit (the record's -0.25 is a rounding) and -0.4365 at delta 0.3, M_00 shift 4.3e-04; a THIRD slot (the pair mean s) lowers the quadratic stiffness further to 2.976 in the limit (0.9791 of K_eff2), so K_eff is not the stack's stiffness either"
+  },
+  "3b_T_slaved_integral": {
+   "method": "own least-squares slaved potential (2 and 3 slots), own 160-node Gauss-Legendre Bogomolny integral, own axis solution against the measured axis shift of the h 1 rows",
+   "numbers": {
+    "0.01": {
+     "T_slaved2_own": 2.58425238068277e-09,
+     "T_slaved2_stored": 2.5842523792397564e-09,
+     "rel_vs_stored": 5.583873363690373e-10,
+     "T_slaved2_over_T_bps": 0.8645791209322992,
+     "claimed_ratio": 0.8646,
+     "T_block_exact_over_T_bps": 1.0000000056864538,
+     "T_1d_stored_over_T_bps": 1.0000000059829763,
+     "T_slaved3_over_T_bps": 0.8559819453263319,
+     "T_slaved3_over_T_slaved2": 0.9900562303694117,
+     "ratio_w6.25_w100": [
+      0.8645791210391759,
+      0.8645791210391759
+     ],
+     "m33_axis_slaved2": 6.246202044257743e-06,
+     "m33_axis_slaved2_from_curve_node": 6.2458537033460715e-06,
+     "m00_axis_slaved2": -1.112893244226143e-08,
+     "m33_axis_measured_h1": 6.487481749806179e-06,
+     "m00_axis_measured_h1": -1.1569871283256816e-08,
+     "m33_axis_meas_over_slaved2": 1.0386282262147202,
+     "m00_axis_meas_over_slaved2": 1.0396209468682682,
+     "m33_axis_slaved3": 6.643248359416987e-06,
+     "m33_axis_meas_over_slaved3": 0.9765526439501536,
+     "m00_axis_slaved3": -1.1847753889071555e-08,
+     "s_axis_slaved3": -3.1435776610055574e-06,
+     "s_axis_measured_h1": -3.0702709136474007e-06,
+     "m33_axis_stored_channel_times_delta": 6.487481749806179e-06
+    },
+    "0.03": {
+     "T_slaved2_own": 2.0593731029762696e-07,
+     "T_slaved2_stored": 2.059373102922945e-07,
+     "rel_vs_stored": 2.58935095587276e-11,
+     "T_slaved2_over_T_bps": 0.8498240544129069,
+     "claimed_ratio": 0.8498,
+     "T_block_exact_over_T_bps": 1.000000450494807,
+     "T_1d_stored_over_T_bps": 1.0000004509124383,
+     "T_slaved3_over_T_bps": 0.8422263237298878,
+     "T_slaved3_over_T_slaved2": 0.9910596427065508,
+     "ratio_w6.25_w100": [
+      0.8498240543993937,
+      0.8498240543993937
+     ],
+     "m33_axis_slaved2": 5.901537382735356e-05,
+     "m33_axis_slaved2_from_curve_node": 5.90119697643221e-05,
+     "m00_axis_slaved2": -1.0553605545027267e-07,
+     "m33_axis_measured_h1": 6.122753989390439e-05,
+     "m00_axis_measured_h1": -1.0956402007877841e-07,
+     "m33_axis_meas_over_slaved2": 1.0374845726305557,
+     "m00_axis_meas_over_slaved2": 1.0381667157382404,
+     "m33_axis_slaved3": 6.248988494039764e-05,
+     "m33_axis_meas_over_slaved3": 0.9797992099409806,
+     "m00_axis_slaved3": -1.1182411352450572e-07,
+     "s_axis_slaved3": -2.644734030469477e-05,
+     "s_axis_measured_h1": -2.591890055260969e-05,
+     "m33_axis_stored_channel_times_delta": 6.122753989390439e-05
+    },
+    "0.1": {
+     "T_slaved2_own": 2.396738366841669e-05,
+     "T_slaved2_stored": 2.3967383668268345e-05,
+     "rel_vs_stored": 6.189493362285248e-12,
+     "T_slaved2_over_T_bps": 0.7929756797102658,
+     "claimed_ratio": 0.793,
+     "T_block_exact_over_T_bps": 1.0000544893224765,
+     "T_1d_stored_over_T_bps": 1.0000544929460287,
+     "T_slaved3_over_T_bps": 0.7878314237870864,
+     "T_slaved3_over_T_slaved2": 0.9935127191731037,
+     "ratio_w6.25_w100": [
+      0.7929756797091733,
+      0.7929756797091733
+     ],
+     "m33_axis_slaved2": 0.0007650587898730965,
+     "m33_axis_slaved2_from_curve_node": 0.0007650161063588179,
+     "m00_axis_slaved2": -1.357007179514369e-06,
+     "m33_axis_measured_h1": 0.0007855495415522995,
+     "m00_axis_measured_h1": -1.3945095815870445e-06,
+     "m33_axis_meas_over_slaved2": 1.0267832380340365,
+     "m00_axis_meas_over_slaved2": 1.027636111760364,
+     "m33_axis_slaved3": 0.000800591180718957,
+     "m33_axis_meas_over_slaved3": 0.9812118350427623,
+     "m00_axis_slaved3": -1.421355380060163e-06,
+     "s_axis_slaved3": -0.000235621819140365,
+     "s_axis_measured_h1": -0.0002312032055906757,
+     "m33_axis_stored_channel_times_delta": 0.0007855495415522995
+    },
+    "0.3": {
+     "T_slaved2_own": 0.0016155599265898362,
+     "T_slaved2_stored": 0.0016155599265891623,
+     "rel_vs_stored": 4.1722181265413383e-13,
+     "T_slaved2_over_T_bps": 0.6040151192115517,
+     "claimed_ratio": 0.604,
+     "T_block_exact_over_T_bps": 1.0036907831482564,
+     "T_1d_stored_over_T_bps": 1.0036979787924594,
+     "T_slaved3_over_T_bps": 0.6001018253771793,
+     "T_slaved3_over_T_slaved2": 0.9935211988741596,
+     "ratio_w6.25_w100": [
+      0.6040151192116536,
+      0.6040151192116536
+     ],
+     "m33_axis_slaved2": 0.009698768170990357,
+     "m33_axis_slaved2_from_curve_node": 0.009698230648946815,
+     "m00_axis_slaved2": -1.5108380465811422e-05,
+     "m33_axis_measured_h1": 0.009896367748934987,
+     "m00_axis_measured_h1": -1.5497023500898877e-05,
+     "m33_axis_meas_over_slaved2": 1.0203736778177317,
+     "m00_axis_meas_over_slaved2": 1.0257236727633985,
+     "m33_axis_slaved3": 0.010050083781913077,
+     "m33_axis_meas_over_slaved3": 0.9847049998473913,
+     "m00_axis_slaved3": -1.57488683498741e-05,
+     "s_axis_slaved3": -0.0016120244684211527,
+     "s_axis_measured_h1": -0.0016001592163175093,
+     "m33_axis_stored_channel_times_delta": 0.009896367748934987
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "T_slaved and its four ratios reproduced (worst 2.4e-05), w-independent; the measured axis shift of M_33 sits 3.9/3.7/2.7/2.0 percent above the two-slot 1D solution at delta 0.01/0.03/0.1/0.3 (the record's 'to 2 percent' holds at delta 0.3 only) and -2.3/-2.0/-1.9/-1.5 percent off the three-slot one; a third slaved slot (the pair mean) lowers the bound to 0.9901/0.9911/0.9935/0.9935 of T_slaved2, and the measured pair-mean axis shift is 0.99 of that slot's prediction at delta 0.3: T_slaved is not a bound on the stack, T_slaved3 is the radial-ansatz value"
+  },
+  "3c_commutation": {
+   "method": "own lattice field with the pair winding and radial m00, m33, s profiles versus the frozen field: E_u compared by the own stencil energy; own sympy on block-diagonal A_x, A_y",
+   "numbers": {
+    "E_u_frozen": 0.005021294342899076,
+    "E_u_with_radial_diag_and_pair_mean": 0.005021294342899076,
+    "rel_extra_term": 0.0,
+    "V4_frozen": 0.0056642931919630175,
+    "V4_varying": 797995.1820932049,
+    "E_u_control_pair_diagonal_shift_rel": 0.6546356452097648,
+    "sympy_F_outside_pair_block_zero": true
+   },
+   "verdict": "CONFIRMED",
+   "note": "no extra kinetic term at round-off (0.0e+00 relative) for M_00, M_33 AND the pair mean s (the identity in the pair block commutes with the winding as well); a shift confined to one pair-diagonal entry, the control, does couple (6.5e-01 relative)"
+  },
+  "3d_channel_projections": {
+   "method": "own projections of the stored end fields (z average, director row zeroed, pair mean reset, diagonal slots frozen) with the own energy",
+   "numbers": {
+    "d0.3_w25_n48_L48": {
+     "T": 0.0015981682118314513,
+     "T_over_T_slaved": 0.98923486868455,
+     "z_averaged_over_T": 0.9999969931064419,
+     "director_row_zeroed_over_T": 1.000004790472144,
+     "pair_mean_reset_over_T": 1.0082045711356438,
+     "diag_slots_frozen_over_T": 1.966295827894967,
+     "z_avg_and_row_zeroed_over_T": 1.0000022525512884,
+     "z_avg_and_row_zeroed_over_T_slaved": 0.989237096986828
+    },
+    "d0.3_w25_n96_L48": {
+     "T": 0.0016033916817616602,
+     "T_over_T_slaved": 0.9924680944190091,
+     "z_averaged_over_T": 0.9999946883843003,
+     "director_row_zeroed_over_T": 0.9999987469951733,
+     "pair_mean_reset_over_T": 1.008215841729061,
+     "diag_slots_frozen_over_T": 1.9690895420116872,
+     "z_avg_and_row_zeroed_over_T": 0.9999940643225766,
+     "z_avg_and_row_zeroed_over_T_slaved": 0.9924622034485476
+    },
+    "d0.03_w25_n48_L48": {
+     "T": 2.0301996706062674e-07,
+     "T_over_T_slaved": 0.9858338286174221,
+     "z_averaged_over_T": 0.9999927969387968,
+     "director_row_zeroed_over_T": 0.9999982796986143,
+     "pair_mean_reset_over_T": 1.0095415781893038,
+     "diag_slots_frozen_over_T": 1.2150607513487128,
+     "z_avg_and_row_zeroed_over_T": 0.9999924422372197,
+     "z_avg_and_row_zeroed_over_T_slaved": 0.9858263779192046
+    },
+    "d0.01_w6.25_n48_L48": {
+     "T": 1.2900307328810844e-09,
+     "T_over_T_slaved": 0.9983782878517382,
+     "z_averaged_over_T": 0.9999779435625439,
+     "director_row_zeroed_over_T": 0.999991292214752,
+     "pair_mean_reset_over_T": 1.0091591845232444,
+     "diag_slots_frozen_over_T": 1.1654465663752507,
+     "z_avg_and_row_zeroed_over_T": 0.9999766330285992,
+     "z_avg_and_row_zeroed_over_T_slaved": 0.9983549587748388
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "freezing M_33 and M_00 raises T to 1.966 of the stored value at delta 0.3 (the deficit sits there); the z average and the director row are energetically INERT (both projections move T by under 2.2e-05 relative on the four fields: unrelaxed kick residue, neither a channel nor a cost); resetting the pair mean to s0 RAISES T by 0.82 to 0.95 percent: the pair mean IS a relaxation channel of the stack that the two-slot bound does not carry"
+  },
+  "4_label_rule": {
+   "method": "the pre-registered rule re-applied by the auditor to the rows' verdicts, ratios and departures; the gate recomputed per row",
+   "numbers": {
+    "stored_label": "UNRESOLVED",
+    "label_by_rule": "UNRESOLVED",
+    "rows_at_gate": 0,
+    "rows_reaching_gate_by_fmax": [],
+    "verdict_counts": {
+     "LINE_SEARCH_STALL": 11,
+     "FALLING": 11
+    },
+    "leaves_pairs_if_gate_waived": [
+     "d0.03_w25_n48_L48",
+     "d0.3_w25_n48_L48",
+     "d0.03_w25_n72_L72",
+     "d0.3_w25_n72_L72",
+     "d0.03_w25_n96_L96",
+     "d0.3_w25_n96_L96"
+    ],
+    "gates": {
+     "d0.01_w6.25_n48_L48": {
+      "gate_own": 1e-13,
+      "gate_stored": 1e-13,
+      "fmax_end": 5.737045664303709e-09,
+      "fmax_over_gate": 57370.45664303709,
+      "reached": false
+     },
+     "d0.01_w100_n48_L48": {
+      "gate_own": 1e-13,
+      "gate_stored": 1e-13,
+      "fmax_end": 5.325333948572329e-09,
+      "fmax_over_gate": 53253.339485723285,
+      "reached": false
+     },
+     "d0.01_w25_n48_L48": {
+      "gate_own": 1e-13,
+      "gate_stored": 1e-13,
+      "fmax_end": 1.8121877799856956e-08,
+      "fmax_over_gate": 181218.77799856957,
+      "reached": false
+     },
+     "d0.03_w100_n48_L48": {
+      "gate_own": 4.846586990054003e-13,
+      "gate_stored": 4.846586990054003e-13,
+      "fmax_end": 6.280306713320526e-08,
+      "fmax_over_gate": 129582.04869135235,
+      "reached": false
+     },
+     "d0.03_w25_n48_L48": {
+      "gate_own": 2.4232934950270013e-13,
+      "gate_stored": 2.4232934950270013e-13,
+      "fmax_end": 2.1109829777595466e-08,
+      "fmax_over_gate": 87112.14642764619,
+      "reached": false
+     },
+     "d0.03_w6.25_n48_L48": {
+      "gate_own": 1.2116467475135007e-13,
+      "gate_stored": 1.2116467475135007e-13,
+      "fmax_end": 1.232820561430755e-08,
+      "fmax_over_gate": 101747.52368713955,
+      "reached": false
+     },
+     "d0.3_w25_n32_L48": {
+      "gate_own": 1.7831340918515415e-09,
+      "gate_stored": 1.7831340918515415e-09,
+      "fmax_end": 0.00043878738797268225,
+      "fmax_over_gate": 246076.49529994762,
+      "reached": false
+     },
+     "d0.1_w25_n48_L48": {
+      "gate_own": 3.022461379543669e-11,
+      "gate_stored": 3.022461379543669e-11,
+      "fmax_end": 1.644989124630604e-07,
+      "fmax_over_gate": 5442.548036391997,
+      "reached": false
+     },
+     "d0.03_w25_n32_L48": {
+      "gate_own": 1.6155289966846676e-13,
+      "gate_stored": 1.6155289966846676e-13,
+      "fmax_end": 3.616153203522683e-08,
+      "fmax_over_gate": 223837.0967617187,
+      "reached": false
+     },
+     "d0.3_w25_n48_L48": {
+      "gate_own": 2.6747011377773123e-09,
+      "gate_stored": 2.6747011377773123e-09,
+      "fmax_end": 0.0004855460896509627,
+      "fmax_over_gate": 181532.83848918296,
+      "reached": false
+     },
+     "d0.3_w6.25_n48_L48": {
+      "gate_own": 1.3373505688886562e-09,
+      "gate_stored": 1.3373505688886562e-09,
+      "fmax_end": 4.018694247927973e-06,
+      "fmax_over_gate": 3004.9669409177613,
+      "reached": false
+     },
+     "d0.3_w100_n48_L48": {
+      "gate_own": 5.349402275554625e-09,
+      "gate_stored": 5.349402275554625e-09,
+      "fmax_end": 0.00551140386788912,
+      "fmax_over_gate": 1030284.0549260615,
+      "reached": false
+     },
+     "d0.1_w6.25_n48_L48": {
+      "gate_own": 1.5112306897718346e-11,
+      "gate_stored": 1.5112306897718346e-11,
+      "fmax_end": 2.8705639688429687e-06,
+      "fmax_over_gate": 189948.7608524127,
+      "reached": false
+     },
+     "d0.1_w100_n48_L48": {
+      "gate_own": 6.044922759087338e-11,
+      "gate_stored": 6.044922759087338e-11,
+      "fmax_end": 1.326417654157197e-06,
+      "fmax_over_gate": 21942.67333132077,
+      "reached": false
+     },
+     "d0.03_w25_n64_L48": {
+      "gate_own": 3.2310579933693353e-13,
+      "gate_stored": 3.2310579933693353e-13,
+      "fmax_end": 9.917571426169337e-09,
+      "fmax_over_gate": 30694.501449747517,
+      "reached": false
+     },
+     "d0.3_w25_n64_L48": {
+      "gate_own": 3.566268183703083e-09,
+      "gate_stored": 3.566268183703083e-09,
+      "fmax_end": 1.0287485030848484e-05,
+      "fmax_over_gate": 2884.6638841856065,
+      "reached": false
+     },
+     "d0.03_w25_n72_L72": {
+      "gate_own": 2.4232934950270013e-13,
+      "gate_stored": 2.4232934950270013e-13,
+      "fmax_end": 3.161245903235026e-08,
+      "fmax_over_gate": 130452.45694433733,
+      "reached": false
+     },
+     "d0.3_w25_n72_L72": {
+      "gate_own": 2.6747011377773123e-09,
+      "gate_stored": 2.6747011377773123e-09,
+      "fmax_end": 3.968090790247569e-05,
+      "fmax_over_gate": 14835.64176274688,
+      "reached": false
+     },
+     "d0.03_w25_n96_L96": {
+      "gate_own": 2.4232934950270013e-13,
+      "gate_stored": 2.4232934950270013e-13,
+      "fmax_end": 5.396363185150937e-08,
+      "fmax_over_gate": 222687.14855320522,
+      "reached": false
+     },
+     "d0.3_w25_n96_L48": {
+      "gate_own": 5.349402275554625e-09,
+      "gate_stored": 5.349402275554625e-09,
+      "fmax_end": 8.049090207558514e-05,
+      "fmax_over_gate": 15046.709506856047,
+      "reached": false
+     },
+     "d0.3_w25_n96_L96": {
+      "gate_own": 2.6747011377773123e-09,
+      "gate_stored": 2.6747011377773123e-09,
+      "fmax_end": 4.001020536058275e-05,
+      "fmax_over_gate": 14958.757371237145,
+      "reached": false
+     },
+     "d0.03_w25_n96_L48": {
+      "gate_own": 4.846586990054003e-13,
+      "gate_stored": 4.846586990054003e-13,
+      "fmax_end": 5.6553293586306526e-08,
+      "fmax_over_gate": 116686.84313799221,
+      "reached": false
+     }
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "UNRESOLVED follows the rule (no AT_GATE row); if the gate clause were waived, 6 (delta, w) pairs at h 1 with their h 0.5 twins satisfy the LEAVES condition: ['d0.03_w25_n48_L48', 'd0.3_w25_n48_L48', 'd0.03_w25_n72_L72', 'd0.3_w25_n72_L72', 'd0.03_w25_n96_L96', 'd0.3_w25_n96_L96']; the closest approach to the gate is fmax / gate = 2885 (see 3e for whether the gate is reachable)"
+  },
+  "4b_round_off_floors": {
+   "method": "own scan of E and grad . D along a random static direction of amplitude 1e-6 delta on the stored fields (21 points), the residual of a quadratic (E) and a linear (grad) fit; the gradient at the exact vacuum",
+   "numbers": {
+    "d0.01_w6.25_n48_L48": {
+     "E": 5.160122931524338e-09,
+     "E_floor_abs": 1.330871524239171e-18,
+     "E_floor_rel": 2.5791469348696736e-10,
+     "grad_floor_per_entry_scan": 4.9671180457496605e-12,
+     "grad_at_exact_vacuum": 0.0,
+     "grad_at_vacuum_plus_1e-8_pair_entry": 0.0,
+     "gate": 1e-13,
+     "gate_over_grad_floor_scan": 0.020132398521426228,
+     "stored_fmax_end": 5.737045664303709e-09
+    },
+    "d0.03_w25_n48_L48": {
+     "E": 8.12079868242507e-07,
+     "E_floor_abs": 1.9914432890514534e-17,
+     "E_floor_rel": 2.4522751602761806e-11,
+     "grad_floor_per_entry_scan": 2.332482132818078e-11,
+     "grad_at_exact_vacuum": 0.0,
+     "grad_at_vacuum_plus_1e-8_pair_entry": 0.0,
+     "gate": 2.4232934950270013e-13,
+     "gate_over_grad_floor_scan": 0.010389333581300389,
+     "stored_fmax_end": 2.1109829777595466e-08
+    },
+    "d0.1_w25_n48_L48": {
+     "E": 9.475584058274184e-05,
+     "E_floor_abs": 1.4032478968411034e-16,
+     "E_floor_rel": 1.4809091325782415e-12,
+     "grad_floor_per_entry_scan": 3.690516090759146e-11,
+     "grad_at_exact_vacuum": 0.0,
+     "grad_at_vacuum_plus_1e-8_pair_entry": 0.0,
+     "gate": 3.022461379543669e-11,
+     "gate_over_grad_floor_scan": 0.8189806805372695,
+     "stored_fmax_end": 1.644989124630604e-07
+    },
+    "d0.3_w25_n48_L48": {
+     "E": 0.006392672847325805,
+     "E_floor_abs": 7.266597232936349e-16,
+     "E_floor_rel": 1.1367071968927873e-13,
+     "grad_floor_per_entry_scan": 8.531635028660213e-11,
+     "grad_at_exact_vacuum": 0.0,
+     "grad_at_vacuum_plus_1e-8_pair_entry": 0.0,
+     "gate": 2.6747011377773123e-09,
+     "gate_over_grad_floor_scan": 31.350393316078605,
+     "stored_fmax_end": 0.0004855460896509627
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "energy floor {'d0.01_w6.25_n48_L48': '2.6e-10', 'd0.03_w25_n48_L48': '2.5e-11', 'd0.1_w25_n48_L48': '1.5e-12', 'd0.3_w25_n48_L48': '1.1e-13'} relative; gradient floor per entry {'d0.01_w6.25_n48_L48': '5.0e-12', 'd0.03_w25_n48_L48': '2.3e-11', 'd0.1_w25_n48_L48': '3.7e-11', 'd0.3_w25_n48_L48': '8.5e-11'} against the gate {'d0.01_w6.25_n48_L48': '1.0e-13', 'd0.03_w25_n48_L48': '2.4e-13', 'd0.1_w25_n48_L48': '3.0e-11', 'd0.3_w25_n48_L48': '2.7e-09'}: the gate sits within a decade of the round-off floor on ['d0.01_w6.25_n48_L48', 'd0.03_w25_n48_L48', 'd0.1_w25_n48_L48'] (the V4 traces tr N^p are differences of O(8^p) numbers, so their residuals carry an absolute floor that does not shrink with delta)"
+  },
+  "5_kick_sizing": {
+   "method": "read from the JSON rows",
+   "numbers": {
+    "excess_over_T_bps_min_max": [
+     0.2499981418310715,
+     0.25000137535734096
+    ],
+    "lattice_factor_d0.3_w25": {
+     "1.5": 0.9844612850004419,
+     "1.0": 0.9929988199156464,
+     "0.75": 0.9960427911462634,
+     "0.5": 0.9982351022651355
+    }
+   },
+   "verdict": "CONFIRMED",
+   "note": "excess 0.25 T_bps on every row to 1.9e-06; T_seed_bps / T_1d = 0.9845 / 0.9930 / 0.9960 / 0.9982 at h 1.5 / 1 / 0.75 / 0.5"
+  },
+  "6_h_L_ladders": {
+   "method": "own fit y0 + c h^p on the four h points of T / T_slaved, triplet orders, the L spread at h 1",
+   "numbers": {
+    "0.3": {
+     "h_points": [
+      [
+       0.5,
+       0.9924680944190091,
+       0.9982351022651355,
+       "FALLING"
+      ],
+      [
+       0.75,
+       0.991126185036086,
+       0.9960427911462634,
+       "FALLING"
+      ],
+      [
+       1.0,
+       0.98923486868455,
+       0.9929988199156464,
+       "FALLING"
+      ],
+      [
+       1.5,
+       0.983706192258462,
+       0.9844612850004419,
+       "FALLING"
+      ]
+     ],
+     "T_over_T_slaved_corrected_by_lattice_factor": [
+      0.9942227959795842,
+      0.995063860555108,
+      0.99620951087191,
+      0.9992329888909958
+     ],
+     "three_parameter_fit": {
+      "y_inf": 0.9934963386174356,
+      "c": -0.004264814999729855,
+      "order": 2.04932351098232
+     },
+     "triplet_orders": [
+      2.02,
+      2.063
+     ],
+     "L_points_h1": [
+      [
+       48.0,
+       0.98923486868455
+      ],
+      [
+       72.0,
+       0.9892346829684174
+      ],
+      [
+       96.0,
+       0.9892488529929737
+      ]
+     ],
+     "L_spread_rel": 1.4170024556281469e-05,
+     "T_slaved3_over_T_slaved2": 0.9935211988741596,
+     "h_points_over_T_slaved3": [
+      0.9989400281983476,
+      0.9975893681576321,
+      0.9956857184381503,
+      0.9901209892382571
+     ]
+    },
+    "0.03": {
+     "h_points": [
+      [
+       0.5,
+       0.9901869916615474,
+       0.99839475309311,
+       "FALLING"
+      ],
+      [
+       0.75,
+       0.9883589475933398,
+       0.9963994514588225,
+       "LINE_SEARCH_STALL"
+      ],
+      [
+       1.0,
+       0.9858338286174221,
+       0.9936268740909572,
+       "LINE_SEARCH_STALL"
+      ],
+      [
+       1.5,
+       0.9788797606427838,
+       0.9858370702028908,
+       "LINE_SEARCH_STALL"
+      ]
+     ],
+     "T_over_T_slaved_corrected_by_lattice_factor": [
+      0.9917790419008772,
+      0.9919304412967002,
+      0.9921569699081814,
+      0.9929427389470401
+     ],
+     "three_parameter_fit": {
+      "y_inf": 0.9917556943882944,
+      "c": -0.005915309439743919,
+      "order": 1.918516364333892
+     },
+     "triplet_orders": [
+      1.959,
+      1.897
+     ],
+     "L_points_h1": [
+      [
+       48.0,
+       0.9858338286174221
+      ],
+      [
+       72.0,
+       0.9858214386749411
+      ],
+      [
+       96.0,
+       0.9859453650395759
+      ]
+     ],
+     "L_spread_rel": 0.00012392636463476325,
+     "T_slaved3_over_T_slaved2": 0.9910596427065508,
+     "h_points_over_T_slaved3": [
+      0.9991194767626496,
+      0.997274941893673,
+      0.9947270437984366,
+      0.9877102431186643
+     ]
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "delta 0.3: T / T_slaved = 0.9837, 0.9892, 0.9911, 0.9925 at h 1.5, 1, 0.75, 0.5, fit order 2.05 with y_inf 0.9935 against the THIRD-slot bound's 0.9935 of T_slaved; divided by the BPS profile's own lattice factor the ratio reads 0.9992, 0.9962, 0.9951, 0.9942 (falling with finer h); L 48 / 72 / 96 agree to 1.4e-05; delta 0.03: fit order 1.92, y_inf 0.9918 against the third slot's 0.9911, L spread 1.2e-04. The h extrapolation lands on the three-slot 1D value, so the 1 to 2 percent under T_slaved at h 0.5 is the pair-mean channel plus the lattice factor, not the unconverged descent; every h point carries a FALLING or a stall verdict, so no order is a converged statement"
+  },
+  "7_ten_entry_witness": {
+   "method": "the fullkick JSON rows read; the own energy (no gradient) on one stored fullkick array; own entry magnitudes",
+   "numbers": {
+    "rows": 22,
+    "E_end_min_max": [
+     -4.910189408919234e+16,
+     -20112124682540.492
+    ],
+    "T_min_max": [
+     -2.455094704459617e+16,
+     -5028031170635.123
+    ],
+    "E_end_by_row": {
+     "d0.01_w25_n48_L48": -2005893550030745.5,
+     "d0.03_w100_n48_L48": -20112124682540.492,
+     "d0.03_w6.25_n48_L48": -3.4787876771602932e+16,
+     "d0.1_w6.25_n48_L48": -1065886973892131.5,
+     "d0.3_w25_n48_L48": -3679949179493064.0,
+     "d0.01_w100_n48_L48": -32409150759227.094,
+     "d0.3_w6.25_n48_L48": -1.0650442932652344e+16,
+     "d0.1_w100_n48_L48": -541764663215752.4,
+     "d0.01_w6.25_n48_L48": -3.107716874151053e+16,
+     "d0.03_w25_n48_L48": -1062053689389520.4,
+     "d0.1_w25_n48_L48": -360995507531979.8,
+     "d0.3_w100_n48_L48": -81157182284132.97,
+     "d0.3_w25_n32_L48": -108145592742868.05,
+     "d0.03_w25_n32_L48": -696254187593802.1,
+     "d0.3_w25_n64_L48": -1.657922152345046e+16,
+     "d0.03_w25_n64_L48": -2.7145424732260136e+16,
+     "d0.3_w25_n72_L72": -1.250450779370717e+16,
+     "d0.03_w25_n72_L72": -1.3827729491302612e+16,
+     "d0.3_w25_n96_L48": -4.910189408919234e+16,
+     "d0.3_w25_n96_L96": -527704178357736.6,
+     "d0.03_w25_n96_L96": -2390029230846187.0,
+     "d0.03_w25_n96_L48": -4.558494531365212e+16
+    },
+    "all_in_claimed_range_1e15_1e24": false,
+    "all_falling": true,
+    "own_T_on_stored_field": -919987294873266.0,
+    "stored_T": -919987294873266.0,
+    "E_u_per_len_own": -1000252830464442.8,
+    "V4_per_len_own": 80265535591176.73,
+    "entry_magnitudes": {
+     "M00_max_abs": 1646.0038897830784,
+     "M0i_max_abs": 1548.9042546571075,
+     "pair_block_max_abs": 1381.197509217762,
+     "M33_max_abs": 48.50607147006314,
+     "director_row_max_abs": 90.96712363152245
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "the end fields are boost textures (M_0i, M_00 and the pair block at 2e+03) and the functional itself is at -9.2e+14 per unit length on the stored field (E_u -1.0e+15, V4 8.0e+13); the stored E_end values run -2.0e+13 to -4.9e+16 (the record's '-1e15 to -1e24' overstates the range); the certified static action is unbounded below on unconstrained time-space components, which are not the Hamiltonian's static sector (M_0i = 0 is an invariant subspace of the static descent), so this sector is not the static measurement's"
+  },
+  "3e_own_descent": {
+   "method": "own scaled L-BFGS (variables M / delta, energy / (T_bps nz h), ftol 0, gtol 1e-16, own exact gradient, shell and time row frozen) continued from the stored end fields, up to 1500 iterations (three times that at delta 0.3)",
+   "numbers": {
+    "d0.3_w25_n48_L48|free|kick0": {
+     "tag": "d0.3_w25_n48_L48|free|kick0",
+     "row": "d0.3_w25_n48_L48",
+     "mode": "free",
+     "kick": 0.0,
+     "status": "OK",
+     "iters": 4500,
+     "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+     "wall_s": 233.0774118900299,
+     "T_start": 0.0015981682118314513,
+     "T_end": 0.0015900864229969414,
+     "drop_rel": 0.005056907511161501,
+     "T_end_over_T_slaved": 0.9842323994467964,
+     "T_start_over_T_slaved": 0.98923486868455,
+     "T_end_over_T_slaved3": 0.9906506278498244,
+     "fmax_start": 0.0004855460896509627,
+     "fmax_end": 0.00043051097704153215,
+     "gate": 2.6747011377773123e-09,
+     "at_gate": false,
+     "history_iter_T_fmax": [
+      [
+       250,
+       0.001598156220046732,
+       7.483998795285163e-06
+      ],
+      [
+       500,
+       0.0015981491460740232,
+       0.00019074081550226704
+      ],
+      [
+       750,
+       0.001598142360595719,
+       4.9307128768660835e-05
+      ],
+      [
+       1000,
+       0.0015981256284934146,
+       0.00014545101497692725
+      ],
+      [
+       1250,
+       0.0015980534776053384,
+       0.0007473006139849248
+      ],
+      [
+       1500,
+       0.0015978813904515303,
+       0.00043982397350751656
+      ],
+      [
+       1750,
+       0.0015973873446740606,
+       0.0003428881028875513
+      ],
+      [
+       2000,
+       0.0015965810405846087,
+       0.0008646527262341219
+      ],
+      [
+       2250,
+       0.0015960815594179686,
+       0.0007248491386939369
+      ],
+      [
+       2500,
+       0.0015957731519089325,
+       0.00018111855362586138
+      ],
+      [
+       2750,
+       0.0015952652480674028,
+       0.0014177922935125487
+      ],
+      [
+       3000,
+       0.0015942964263144686,
+       0.00037974170065325184
+      ],
+      [
+       3250,
+       0.0015941626422356046,
+       0.0006510089774451819
+      ],
+      [
+       3500,
+       0.0015931373732816195,
+       0.005236553154445142
+      ],
+      [
+       3750,
+       0.0015929672851911403,
+       0.0013015458185638845
+      ],
+      [
+       4000,
+       0.0015925048693439922,
+       0.011791755755301378
+      ],
+      [
+       4250,
+       0.0015907623815285938,
+       0.0004415588715733637
+      ],
+      [
+       4500,
+       0.0015900864229969414,
+       0.00043051097704153215
+      ]
+     ],
+     "fmax_cell_radius": 9.924716620639604,
+     "grad_share_inside_rho_6": 0.17037568563430264,
+     "end_z_averaged_over_T_end": 0.9988226312762177,
+     "end_row_zeroed_over_T_end": 1.0177531762121943,
+     "dep_start": {
+      "M0i": 0.0,
+      "M00_minus_8": 5.165674500299626e-05,
+      "M33_minus_1": 0.032987892496449955,
+      "director_eig_minus_1": 0.03298789334056289,
+      "pair_mean_minus_s0": 0.005333864054391698,
+      "director_row_maxentry": 0.00259712814758961,
+      "director_row_norm": 0.002980362146785466,
+      "z_variation_vs_z0": 0.007629327690237021,
+      "z_variation_ptp": 0.010128195077323451
+     },
+     "dep_end": {
+      "M0i": 0.0,
+      "M00_minus_8": 5.206430459203659e-05,
+      "M33_minus_1": 0.033223266458260646,
+      "director_eig_minus_1": 0.03322344194162552,
+      "pair_mean_minus_s0": 0.0055198139803835,
+      "director_row_maxentry": 0.1108428714755347,
+      "director_row_norm": 0.1262357532335163,
+      "z_variation_vs_z0": 0.05230570673475793,
+      "z_variation_ptp": 0.0796916685863569
+     }
+    },
+    "d0.3_w25_n32_L48|free|kick0": {
+     "tag": "d0.3_w25_n32_L48|free|kick0",
+     "row": "d0.3_w25_n32_L48",
+     "mode": "free",
+     "kick": 0.0,
+     "status": "OK",
+     "iters": 4500,
+     "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+     "wall_s": 104.54253005981445,
+     "T_start": 0.001589236303750385,
+     "T_end": 0.0015778522051692566,
+     "drop_rel": 0.007163251024572936,
+     "T_end_over_T_slaved": 0.9766596578688878,
+     "T_start_over_T_slaved": 0.9837061922584619,
+     "T_end_over_T_slaved3": 0.9830285040476449,
+     "fmax_start": 0.00043878738797268225,
+     "fmax_end": 0.02071331472600084,
+     "gate": 1.7831340918515415e-09,
+     "at_gate": false,
+     "history_iter_T_fmax": [
+      [
+       250,
+       0.0015891868682988265,
+       0.0009476134324128312
+      ],
+      [
+       500,
+       0.0015891458687182346,
+       0.002229388715338825
+      ],
+      [
+       750,
+       0.0015889297373437306,
+       0.003591261051740662
+      ],
+      [
+       1000,
+       0.0015885846752320921,
+       0.0019546914612760136
+      ],
+      [
+       1250,
+       0.0015878836143900024,
+       0.00571187057681065
+      ],
+      [
+       1500,
+       0.0015875311997538746,
+       0.0015899670677152287
+      ],
+      [
+       1750,
+       0.0015868652026846102,
+       0.003789934132042854
+      ],
+      [
+       2000,
+       0.0015855475305335345,
+       0.012679981066619366
+      ],
+      [
+       2250,
+       0.0015854639480293474,
+       0.0009502487103193492
+      ],
+      [
+       2500,
+       0.0015844543092105165,
+       0.00933315104872707
+      ],
+      [
+       2750,
+       0.0015842765557082179,
+       0.001681900624997363
+      ],
+      [
+       3000,
+       0.0015840682533244238,
+       0.007506220378936066
+      ],
+      [
+       3250,
+       0.001583571455961575,
+       0.0034720531828650696
+      ],
+      [
+       3500,
+       0.001582727314650404,
+       0.0062212011882030755
+      ],
+      [
+       3750,
+       0.0015817149643651421,
+       0.003222985712123743
+      ],
+      [
+       4000,
+       0.0015798488684550189,
+       0.012603895758706038
+      ],
+      [
+       4250,
+       0.0015785767777234834,
+       0.007569091297965264
+      ],
+      [
+       4500,
+       0.0015778522051692566,
+       0.02071331472600084
+      ]
+     ],
+     "fmax_cell_radius": 1.0606601717798212,
+     "grad_share_inside_rho_6": 0.558068153218213,
+     "end_z_averaged_over_T_end": 0.9994591138558048,
+     "end_row_zeroed_over_T_end": 1.0073804148481804,
+     "dep_start": {
+      "M0i": 0.0,
+      "M00_minus_8": 5.065291797260822e-05,
+      "M33_minus_1": 0.03237482677647785,
+      "director_eig_minus_1": 0.0323748375403928,
+      "pair_mean_minus_s0": 0.00525780991474036,
+      "director_row_maxentry": 0.0036212882973391293,
+      "director_row_norm": 0.003763860221649599,
+      "z_variation_vs_z0": 0.00873644436362897,
+      "z_variation_ptp": 0.00873644436362897
+     },
+     "dep_end": {
+      "M0i": 0.0,
+      "M00_minus_8": 5.170030365005592e-05,
+      "M33_minus_1": 0.032979704086750036,
+      "director_eig_minus_1": 0.03298016208803064,
+      "pair_mean_minus_s0": 0.005304884822737259,
+      "director_row_maxentry": 0.09434687329240724,
+      "director_row_norm": 0.09436516938014052,
+      "z_variation_vs_z0": 0.025954570442904834,
+      "z_variation_ptp": 0.025954570442904834
+     }
+    },
+    "d0.03_w25_n48_L48|free|kick0": {
+     "tag": "d0.03_w25_n48_L48|free|kick0",
+     "row": "d0.03_w25_n48_L48",
+     "mode": "free",
+     "kick": 0.0,
+     "status": "OK",
+     "iters": 5,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+     "wall_s": 3.9134929180145264,
+     "T_start": 2.0301996706062674e-07,
+     "T_end": 2.0301996706059776e-07,
+     "drop_rel": 1.4277468096679513e-13,
+     "T_end_over_T_slaved": 0.9858338286172813,
+     "T_start_over_T_slaved": 0.9858338286174221,
+     "T_end_over_T_slaved3": 0.9947270437982946,
+     "fmax_start": 2.1109829777595466e-08,
+     "fmax_end": 2.1109829764731603e-08,
+     "gate": 2.4232934950270013e-13,
+     "at_gate": false,
+     "history_iter_T_fmax": [],
+     "fmax_cell_radius": 0.7071067811865476,
+     "grad_share_inside_rho_6": 0.20272820127221886,
+     "end_z_averaged_over_T_end": 0.9999927969385393,
+     "end_row_zeroed_over_T_end": 0.9999982796984607,
+     "dep_start": {
+      "M0i": 0.0,
+      "M00_minus_8": 3.6521340026259472e-06,
+      "M33_minus_1": 0.00204091799646348,
+      "director_eig_minus_1": 0.002040918029111438,
+      "pair_mean_minus_s0": 0.0008639633517536563,
+      "director_row_maxentry": 0.00043417111690265196,
+      "director_row_norm": 0.0004801773700672691,
+      "z_variation_vs_z0": 0.0008135814387813089,
+      "z_variation_ptp": 0.000896321091009805
+     },
+     "dep_end": {
+      "M0i": 0.0,
+      "M00_minus_8": 3.6521340322318947e-06,
+      "M33_minus_1": 0.00204091799646348,
+      "director_eig_minus_1": 0.00204091802911884,
+      "pair_mean_minus_s0": 0.0008639633517507652,
+      "director_row_maxentry": 0.00043417111690201776,
+      "director_row_norm": 0.00048017737006657833,
+      "z_variation_vs_z0": 0.0008135814387812655,
+      "z_variation_ptp": 0.0008963210910098123
+     }
+    },
+    "d0.01_w6.25_n48_L48|free|kick0": {
+     "tag": "d0.01_w6.25_n48_L48|free|kick0",
+     "row": "d0.01_w6.25_n48_L48",
+     "mode": "free",
+     "kick": 0.0,
+     "status": "OK",
+     "iters": 607,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+     "wall_s": 40.16096472740173,
+     "T_start": 1.2900307328810844e-09,
+     "T_end": 1.277341442836445e-09,
+     "drop_rel": 0.009836424606954774,
+     "T_end_over_T_slaved": 0.9885578150940639,
+     "T_start_over_T_slaved": 0.9983782878517382,
+     "T_end_over_T_slaved3": 0.9984865351791296,
+     "fmax_start": 5.737045664303709e-09,
+     "fmax_end": 1.198962874829235e-09,
+     "gate": 1e-13,
+     "at_gate": false,
+     "history_iter_T_fmax": [
+      [
+       250,
+       1.2778318702443404e-09,
+       6.002872281731346e-08
+      ],
+      [
+       500,
+       1.2773538685350938e-09,
+       8.297953616237265e-08
+      ]
+     ],
+     "fmax_cell_radius": 5.1478150704935,
+     "grad_share_inside_rho_6": 0.22913323769226895,
+     "end_z_averaged_over_T_end": 0.9998726452282853,
+     "end_row_zeroed_over_T_end": 0.9999761391294465,
+     "dep_start": {
+      "M0i": 0.0,
+      "M00_minus_8": 1.170832675256861e-06,
+      "M33_minus_1": 0.0006565077597109337,
+      "director_eig_minus_1": 0.0006565077674380859,
+      "pair_mean_minus_s0": 0.0003106988445443666,
+      "director_row_maxentry": 0.0003670040540268849,
+      "director_row_norm": 0.00038511112616694976,
+      "z_variation_vs_z0": 0.0004898835856423714,
+      "z_variation_ptp": 0.0005763624559014855
+     },
+     "dep_end": {
+      "M0i": 0.0,
+      "M00_minus_8": 1.1733912508304911e-06,
+      "M33_minus_1": 0.0006579394676409223,
+      "director_eig_minus_1": 0.00065793989494356,
+      "pair_mean_minus_s0": 0.00031294444779849523,
+      "director_row_maxentry": 0.000607986849324968,
+      "director_row_norm": 0.0006557545726323943,
+      "z_variation_vs_z0": 0.0010666222672066003,
+      "z_variation_ptp": 0.0016259286619118435
+     }
+    },
+    "d0.3_w25_n48_L48|zinv|kick0": {
+     "tag": "d0.3_w25_n48_L48|zinv|kick0",
+     "row": "d0.3_w25_n48_L48",
+     "mode": "zinv",
+     "kick": 0.0,
+     "status": "OK",
+     "iters": 4500,
+     "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+     "wall_s": 198.21397018432617,
+     "T_start": 0.0015981634063097503,
+     "T_end": 0.0015858476338454562,
+     "drop_rel": 0.007706203518157095,
+     "T_end_over_T_slaved": 0.9816086718575423,
+     "T_start_over_T_slaved": 0.9892318941605959,
+     "T_end_over_T_slaved3": 0.9880097908025351,
+     "fmax_start": 0.0001891392007454409,
+     "fmax_end": 0.0002464945108527211,
+     "gate": 2.6747011377773123e-09,
+     "at_gate": false,
+     "history_iter_T_fmax": [
+      [
+       250,
+       0.001598145274533321,
+       7.325395584620309e-05
+      ],
+      [
+       500,
+       0.0015981377296074599,
+       0.00011796989594439464
+      ],
+      [
+       750,
+       0.0015980915949584118,
+       0.00023939577975709211
+      ],
+      [
+       1000,
+       0.0015980141238230708,
+       0.0009112770132995319
+      ],
+      [
+       1250,
+       0.0015978115040792213,
+       0.004239203049103357
+      ],
+      [
+       1500,
+       0.0015971019705141364,
+       0.00018562583084474893
+      ],
+      [
+       1750,
+       0.0015966217736646557,
+       0.00012177804910688816
+      ],
+      [
+       2000,
+       0.0015955820174273954,
+       0.008367668988306584
+      ],
+      [
+       2250,
+       0.0015946926605420767,
+       0.0007703275522555827
+      ],
+      [
+       2500,
+       0.0015936616247005904,
+       0.001005766598448695
+      ],
+      [
+       2750,
+       0.0015933418059778134,
+       0.0007423244278626888
+      ],
+      [
+       3000,
+       0.00159321888339878,
+       0.0021942237969087564
+      ],
+      [
+       3250,
+       0.0015928001078613714,
+       0.0004307169924790532
+      ],
+      [
+       3500,
+       0.0015907709990290782,
+       0.0012061598431429565
+      ],
+      [
+       3750,
+       0.0015894670062263623,
+       0.0005155525326244921
+      ],
+      [
+       4000,
+       0.0015883106665366587,
+       0.00048060544820878806
+      ],
+      [
+       4250,
+       0.0015871485443110021,
+       0.007477769087057299
+      ],
+      [
+       4500,
+       0.0015858476338454562,
+       0.0002464945108527211
+      ]
+     ],
+     "fmax_cell_radius": 4.743416490252569,
+     "grad_share_inside_rho_6": 0.24769163204362743,
+     "end_z_averaged_over_T_end": 1.0,
+     "end_row_zeroed_over_T_end": 1.034940859017625,
+     "dep_start": {
+      "M0i": 0.0,
+      "M00_minus_8": 5.164924290923523e-05,
+      "M33_minus_1": 0.03298448152683209,
+      "director_eig_minus_1": 0.03298448210751352,
+      "pair_mean_minus_s0": 0.0053319815542995,
+      "director_row_maxentry": 0.0025848703530271236,
+      "director_row_norm": 0.002965261767794247,
+      "z_variation_vs_z0": 0.0,
+      "z_variation_ptp": 0.0
+     },
+     "dep_end": {
+      "M0i": 0.0,
+      "M00_minus_8": 5.12521928571393e-05,
+      "M33_minus_1": 0.03279196542839221,
+      "director_eig_minus_1": 0.03279264216523803,
+      "pair_mean_minus_s0": 0.005917711119918697,
+      "director_row_maxentry": 0.13619085883161142,
+      "director_row_norm": 0.15257941296544586,
+      "z_variation_vs_z0": 0.0,
+      "z_variation_ptp": 0.0
+     }
+    },
+    "d0.03_w25_n48_L48|free|kick0.0001": {
+     "tag": "d0.03_w25_n48_L48|free|kick0.0001",
+     "row": "d0.03_w25_n48_L48",
+     "mode": "free",
+     "kick": 0.0001,
+     "status": "OK",
+     "iters": 203,
+     "message": "ABNORMAL: ",
+     "wall_s": 15.561619997024536,
+     "T_start": 0.0013342580259336847,
+     "T_end": 2.030030175935751e-07,
+     "drop_rel": 0.9998478532535328,
+     "T_end_over_T_slaved": 0.9857515246044797,
+     "T_start_over_T_slaved": 6478.9523765262475,
+     "T_end_over_T_slaved3": 0.9946439973203077,
+     "fmax_start": 2.1109829777595466e-08,
+     "fmax_end": 2.010954267078249e-08,
+     "gate": 2.4232934950270013e-13,
+     "at_gate": false,
+     "history_iter_T_fmax": [],
+     "fmax_cell_radius": 0.7071067811865476,
+     "grad_share_inside_rho_6": 0.2506244691036604,
+     "end_z_averaged_over_T_end": 0.999992514172458,
+     "end_row_zeroed_over_T_end": 0.9999973138846106,
+     "dep_start": {
+      "M0i": 0.0,
+      "M00_minus_8": 3.6521340026259472e-06,
+      "M33_minus_1": 0.00204091799646348,
+      "director_eig_minus_1": 0.002040918029111438,
+      "pair_mean_minus_s0": 0.0008639633517536563,
+      "director_row_maxentry": 0.00043417111690265196,
+      "director_row_norm": 0.0004801773700672691,
+      "z_variation_vs_z0": 0.0008135814387813089,
+      "z_variation_ptp": 0.000896321091009805
+     },
+     "dep_end": {
+      "M0i": 0.0,
+      "M00_minus_8": 3.652590348697989e-06,
+      "M33_minus_1": 0.002041172075273323,
+      "director_eig_minus_1": 0.0020411722134590824,
+      "pair_mean_minus_s0": 0.0008652527947422088,
+      "director_row_maxentry": 0.0005520852117728288,
+      "director_row_norm": 0.0005523526459623527,
+      "z_variation_vs_z0": 0.0009633170344937568,
+      "z_variation_ptp": 0.0009633170344937568
+     }
+    },
+    "d0.01_w6.25_n48_L48|zinv|kick0": {
+     "tag": "d0.01_w6.25_n48_L48|zinv|kick0",
+     "row": "d0.01_w6.25_n48_L48",
+     "mode": "zinv",
+     "kick": 0.0,
+     "status": "OK",
+     "iters": 87,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+     "wall_s": 5.423484802246094,
+     "T_start": 1.2900022793989082e-09,
+     "T_end": 1.278583001358677e-09,
+     "drop_rel": 0.008852137878044952,
+     "T_end_over_T_slaved": 0.9895186798549563,
+     "T_start_over_T_slaved": 0.9983562671834747,
+     "T_end_over_T_slaved3": 0.9994570505210045,
+     "fmax_start": 2.9632062846540073e-09,
+     "fmax_end": 1.5311374044017553e-09,
+     "gate": 1e-13,
+     "at_gate": false,
+     "history_iter_T_fmax": [],
+     "fmax_cell_radius": 2.5495097567963922,
+     "grad_share_inside_rho_6": 0.48101734344954233,
+     "end_z_averaged_over_T_end": 1.0,
+     "end_row_zeroed_over_T_end": 0.9999803900274001,
+     "dep_start": {
+      "M0i": 0.0,
+      "M00_minus_8": 1.170770502767482e-06,
+      "M33_minus_1": 0.0006564723282309615,
+      "director_eig_minus_1": 0.0006564723439073106,
+      "pair_mean_minus_s0": 0.0003106823239104606,
+      "director_row_maxentry": 0.00015104460103259397,
+      "director_row_norm": 0.00016599108628626455,
+      "z_variation_vs_z0": 0.0,
+      "z_variation_ptp": 0.0
+     },
+     "dep_end": {
+      "M0i": 0.0,
+      "M00_minus_8": 1.173190256054113e-06,
+      "M33_minus_1": 0.0006578261872336455,
+      "director_eig_minus_1": 0.0006578286778413656,
+      "pair_mean_minus_s0": 0.00031137189745724866,
+      "director_row_maxentry": 0.0007046998195806116,
+      "director_row_norm": 0.000888973625047746,
+      "z_variation_vs_z0": 0.0,
+      "z_variation_ptp": 0.0
+     }
+    }
+   },
+   "verdict": "QUALIFIED",
+   "note": "relative drops {'d0.3_w25_n48_L48|free|kick0': '5.06e-03', 'd0.3_w25_n32_L48|free|kick0': '7.16e-03', 'd0.03_w25_n48_L48|free|kick0': '1.43e-13', 'd0.01_w6.25_n48_L48|free|kick0': '9.84e-03', 'd0.3_w25_n48_L48|zinv|kick0': '7.71e-03', 'd0.03_w25_n48_L48|free|kick0.0001': '1.00e+00', 'd0.01_w6.25_n48_L48|zinv|kick0': '8.85e-03'}; fmax_end against the gate {'d0.3_w25_n48_L48|free|kick0': ('4.3e-04', '2.7e-09'), 'd0.3_w25_n32_L48|free|kick0': ('2.1e-02', '1.8e-09'), 'd0.03_w25_n48_L48|free|kick0': ('2.1e-08', '2.4e-13'), 'd0.01_w6.25_n48_L48|free|kick0': ('1.2e-09', '1.0e-13'), 'd0.3_w25_n48_L48|zinv|kick0': ('2.5e-04', '2.7e-09'), 'd0.03_w25_n48_L48|free|kick0.0001': ('2.0e-08', '2.4e-13'), 'd0.01_w6.25_n48_L48|zinv|kick0': ('1.5e-09', '1.0e-13')} (no run reaches it, fmax does not even fall at delta 0.3); T_end / T_slaved3 {'d0.3_w25_n48_L48|free|kick0': '0.9907', 'd0.3_w25_n32_L48|free|kick0': '0.9830', 'd0.03_w25_n48_L48|free|kick0': '0.9947', 'd0.01_w6.25_n48_L48|free|kick0': '0.9985', 'd0.3_w25_n48_L48|zinv|kick0': '0.9880', 'd0.03_w25_n48_L48|free|kick0.0001': '0.9946', 'd0.01_w6.25_n48_L48|zinv|kick0': '0.9995'}; the z variation {'d0.3_w25_n48_L48|free|kick0': ('1.0e-02', '8.0e-02'), 'd0.3_w25_n32_L48|free|kick0': ('8.7e-03', '2.6e-02'), 'd0.03_w25_n48_L48|free|kick0': ('9.0e-04', '9.0e-04'), 'd0.01_w6.25_n48_L48|free|kick0': ('5.8e-04', '1.6e-03'), 'd0.3_w25_n48_L48|zinv|kick0': ('0.0e+00', '0.0e+00'), 'd0.03_w25_n48_L48|free|kick0.0001': ('9.0e-04', '9.6e-04'), 'd0.01_w6.25_n48_L48|zinv|kick0': ('0.0e+00', '0.0e+00')} and the director row {'d0.3_w25_n48_L48|free|kick0': ('2.6e-03', '1.1e-01'), 'd0.3_w25_n32_L48|free|kick0': ('3.6e-03', '9.4e-02'), 'd0.03_w25_n48_L48|free|kick0': ('4.3e-04', '4.3e-04'), 'd0.01_w6.25_n48_L48|free|kick0': ('3.7e-04', '6.1e-04'), 'd0.3_w25_n48_L48|zinv|kick0': ('2.6e-03', '1.4e-01'), 'd0.03_w25_n48_L48|free|kick0.0001': ('4.3e-04', '5.5e-04'), 'd0.01_w6.25_n48_L48|zinv|kick0': ('1.5e-04', '7.0e-04')} move while the energy falls; z-averaging or zeroing the row on the end field moves T by {'d0.3_w25_n48_L48|free|kick0': ('-1.2e-03', '1.8e-02'), 'd0.3_w25_n32_L48|free|kick0': ('-5.4e-04', '7.4e-03'), 'd0.03_w25_n48_L48|free|kick0': ('-7.2e-06', '-1.7e-06'), 'd0.01_w6.25_n48_L48|free|kick0': ('-1.3e-04', '-2.4e-05'), 'd0.3_w25_n48_L48|zinv|kick0': ('0.0e+00', '3.5e-02'), 'd0.03_w25_n48_L48|free|kick0.0001': ('-7.5e-06', '-2.7e-06'), 'd0.01_w6.25_n48_L48|zinv|kick0': ('0.0e+00', '-2.0e-05')} (a positive row number means the grown row carries energy: a channel outside the radial block-diagonal ansatz); the residual gradient sits at radius {'d0.3_w25_n48_L48|free|kick0': '9.9', 'd0.3_w25_n32_L48|free|kick0': '1.1', 'd0.03_w25_n48_L48|free|kick0': '0.7', 'd0.01_w6.25_n48_L48|free|kick0': '5.1', 'd0.3_w25_n48_L48|zinv|kick0': '4.7', 'd0.03_w25_n48_L48|free|kick0.0001': '0.7', 'd0.01_w6.25_n48_L48|zinv|kick0': '2.5'} with a share {'d0.3_w25_n48_L48|free|kick0': '0.17', 'd0.3_w25_n32_L48|free|kick0': '0.56', 'd0.03_w25_n48_L48|free|kick0': '0.20', 'd0.01_w6.25_n48_L48|free|kick0': '0.23', 'd0.3_w25_n48_L48|zinv|kick0': '0.25', 'd0.03_w25_n48_L48|free|kick0.0001': '0.25', 'd0.01_w6.25_n48_L48|zinv|kick0': '0.48'} inside rho 6. The z-invariant runs (zinv) say whether the drop needs z dependence; the kicked run says whether the delta 0.03 stall is a point stall of the line search"
+  }
+ },
+ "wall_s": 241.78439664840698
+}

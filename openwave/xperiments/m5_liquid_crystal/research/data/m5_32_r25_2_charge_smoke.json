@@ -45,11 +45,12 @@
   }
  ],
  "spin_gate_seed": {
-  "C_rot_z": 0.7001866747985429,
+  "C_rot_z": 8140.082966722819,
+  "C_rot_z_catalog": 0.7001866747985429,
   "renv": 10.0,
   "E_stat": 28.17828362895123,
-  "omega_star": 3.662601930716593,
-  "J_star": 5.1290101339583485,
+  "omega_star": 0.03396895799865967,
+  "J_star": 553.0202728044248,
   "E_rot_over_E": 0.25
  },
  "wire": {
@@ -64,7 +65,7 @@
  },
  "kick_wire": {
   "seed": 81103051,
-  "rms_change_free": 0.014901022920660643,
+  "rms_change_free": 0.003842056790654403,
   "pinned_untouched": true,
   "block_diagonal": true
  },

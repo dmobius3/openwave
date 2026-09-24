@@ -25,10 +25,12 @@ A z-invariant slab n x n x NZ at spacing h, the x and y faces pinned (depth
 1.6) at the BPS profile, z free (the stack's derivative is one-sided at the
 faces). Seed = the BPS profile (the exact block minimizer, an admissible
 configuration no block-sector state beats) plus a z-DEPENDENT random kick of
-KICK x delta in the 9 entries other than M_00 of the free cells (M_00 is stiff
-under V4 and slaved by it): the channels that leave the block (M_0i, the
-director row, M_33, the z variation) are all excited.
-FIRE (FIRE_ITERS) then L-BFGS on the 10 free entries to the gate
+KICK x delta in the 6 spatial entries of the free cells (M_00 is stiff under
+V4 and slaved by it; M_0i stays 0, the static sector, see static_sector): the
+channels that leave the block (the director row, M_33, the z variation) are
+all excited. RUN-TIME DEVIATION 2026-09-23: the first pool kicked M_0i too and
+every row ran away (the fullkick witness files).
+FIRE (FIRE_ITERS) then L-BFGS on the 7 static entries to the gate
     fmax < max(GATE_REL x T_BPS / h, GATE_FLOOR)
 (the delta 0.01 rows sit at the round-off floor and say so). Reads: T =
 (E_u + V4) / (NZ h), T / T_BPS, T / T_1D (the 1D pinned-axis minimizer with the
@@ -77,6 +79,7 @@ NZ = 4
 SG = -8.0  # vac4 = diag(-SG, 1, delta, 0) = diag(8, 1, delta, 0)
 PIN_DEPTH = 1.6
 KICK = 0.02
+KICK_EXCESS = 0.25  # the kicked seed's excess over the BPS seed, in units of T_bps
 FIRE_ITERS = 2000
 LBFGS_ITERS = 4000
 LBFGS_CHUNK = 500
@@ -129,6 +132,41 @@ def T_1d_of(f, rho, f0, s0, w, m=1):
     fm = 0.5 * (f[1:] + f[:-1])
     u = 8.0 * m * m * (fp / rm) ** 2
     return float(2 * np.pi * np.sum((u + V_block(fm, f0, s0, w)) * rm * np.diff(rho)))
+
+
+def V_slaved(f, s0, w, C):
+    """RUN-TIME READ (2026-09-23): the block potential minimized over (M_00, M_33) at fixed pair
+    weight f = b^2: the bound freezes M_00 = 8 and M_33 = 1, the stack lets them relax per cell,
+    and the radial gradients of the diagonal slots commute with the pair's winding, so the 1D
+    kinetic term is unchanged and the Bogomolny argument goes through with V_slaved in place of
+    the block V (T_slaved below). Returns (V_min, m00, m33)."""
+    from scipy.optimize import minimize
+
+    b = np.sqrt(max(f, 0.0))
+
+    def V(x):
+        ev = np.array([-x[0], s0 + b, s0 - b, x[1]])
+        return w * sum((np.sum(ev**q) - C[q - 1]) ** 2 for q in (1, 2, 3, 4))
+
+    r = minimize(
+        V,
+        [8.0, 1.0],
+        method="Nelder-Mead",
+        options={"xatol": 1e-12, "fatol": 1e-30, "maxiter": 4000},
+    )
+    return float(r.fun), float(r.x[0]), float(r.x[1])
+
+
+def T_slaved(delta, w, m=1):
+    """the Bogomolny value with M_00 and M_33 slaved: 4 pi sqrt(8) m int_0^f0 sqrt(V_slaved) df
+    (the frozen version of this integral with the exact block V is the pinned 1D minimizer)."""
+    from scipy.integrate import quad
+
+    s0 = delta / 2.0
+    f0 = s0**2
+    C = [(-8.0) ** q + 1.0 + delta**q for q in (1, 2, 3, 4)]
+    val = quad(lambda f: np.sqrt(V_slaved(f, s0, w, C)[0]), 0.0, f0, limit=100)[0]
+    return 4.0 * np.pi * np.sqrt(8.0) * m * val
 
 
 def T_1d_min(delta, w, m=1, rho_max=40.0, npts=801):
@@ -204,7 +242,21 @@ def grad_w(M, cfg, w):
     q = R0.roots_of(cfg)
     _, g1 = R0.v4_energy_grad(M, cfg, q, W1, True)
     _, gw = R0.v4_energy_grad(M, cfg, q, w, True)
-    return G - g1 + gw
+    return static_sector(G - g1 + gw)
+
+
+def static_sector(G):
+    """RUN-TIME DEVIATION (2026-09-23 15:47 UTC): the descent stays in the block-diagonal
+    static sector M_0i = 0, the sector every rung's static measurement lives in (R20 § 6.10:
+    the static gradient is block-diagonal; R24 § 6.15: the time-space components lower the
+    certified static action without bound and are not the Hamiltonian's sector). The first
+    R25-1 pool kicked M_0i and every row ran away through a boost texture (E to -1e15, kept
+    as the witness data/m5_32_r25_1_strand_fullkick.json). The gradient's time row is zeroed
+    here; M_00 stays free (unkicked)."""
+    G = G.copy()
+    G[..., 0, 1:] = 0.0
+    G[..., 1:, 0] = 0.0
+    return G
 
 
 def fire_slab(M0, cfg, w, free, iters, dt0=0.02, dt_max=0.2, log_every=500, tag=""):
@@ -373,7 +425,20 @@ def run_job(j, kicked=True, fire_iters=FIRE_ITERS, lbfgs_iters=LBFGS_ITERS):
             rng = np.random.default_rng(zlib.crc32(tag.encode()))
             kick = KICK * delta * rng.standard_normal(M0.shape)
             kick[..., 0, 0] = 0.0  # M_00 is stiff under V4 (the R20 trap): not a departure channel
-            M0 = M0 + B3.sym4(kick) * free[..., None, None]
+            kick[..., 0, 1:] = 0.0  # the static sector (see static_sector): no time-space kick
+            kick[..., 1:, 0] = 0.0
+            kick = B3.sym4(kick) * free[..., None, None]
+            # RUN-TIME DEVIATION 2 (2026-09-23): the kick is sized against the BOUND, an excess
+            # of KICK_EXCESS x T_bps above the seed, not against delta: at 0.02 delta the kicked
+            # seed sat 21x the bound at delta 0.3 and 15000x at delta 0.01 (the kick energy
+            # scales as delta^2, the bound as delta^4), beyond what FIRE + L-BFGS relax
+            for _ in range(3):
+                eu1, ev1 = energy_parts(M0 + kick, cfg, w)
+                exc = (eu1 + ev1) / (NZ * h) - row["T_seed_bps"]
+                if exc <= 0:
+                    break
+                kick = kick * np.sqrt(KICK_EXCESS * row["T_bps"] / exc)
+            M0 = M0 + kick
         eu1, ev1 = energy_parts(M0, cfg, w)
         row["T_seed_kicked"] = (eu1 + ev1) / (NZ * h)
         row["departure_seed"] = departure(M0, delta)
@@ -525,6 +590,36 @@ def collect():
             }
         )
     out["ladder"] = lad
+    # RUN-TIME READ: the slaved bound per (delta, w) and each row against it
+    slaved = {}
+    for r in rows.values():
+        if r.get("status") != "OK":
+            continue
+        key = (r["delta"], r["w1s"])
+        if key not in slaved:
+            slaved[key] = T_slaved(r["delta"], W1 * r["w1s"])
+        r["T_slaved"] = slaved[key]
+        r["T_over_T_slaved"] = r["T"] / slaved[key]
+    for key, lst in lad.items():
+        for e in lst:
+            e["T_over_T_slaved"] = rows[e["tag"]].get("T_over_T_slaved")
+    out["slaved_bound"] = {
+        f"d{d:g}_w{ws:g}": {
+            "T_slaved": t,
+            "T_bps_lead": T_bps(d, W1 * ws),
+            "T_slaved_over_T_bps": t / T_bps(d, W1 * ws),
+            "m33_at_f0_over_4": V_slaved(
+                (d / 2) ** 2 / 4, d / 2, W1 * ws, [(-8.0) ** q + 1.0 + d**q for q in (1, 2, 3, 4)]
+            )[2],
+        }
+        for (d, ws), t in sorted(slaved.items())
+    }
+    out["slaved_bound"]["note"] = (
+        "K_eff(s0) = 4 (175936 s0^4 + 1262016 s0^3 + 1677108 s0^2 - 2064132 s0 + 642249) / 845261 at "
+        "quadratic order (sympy, the two shifts solved), limit 3.039 = 0.760 of the frozen 4 as delta -> 0, "
+        "so T_slaved / T_bps -> 0.872; the shift is the director eigenvalue (M_33 - 1 = -0.25 (f - f0) at "
+        "small delta), M_00 moves by 4e-4 (f - f0)"
+    )
     # the laws, reported: T / delta^4 across delta and T / sqrt(w) across w at n 48 L 48
     base = {
         (r["delta"], r["w1s"]): r
@@ -600,6 +695,21 @@ def plot():
         if pts:
             ax[0].plot([p[0] for p in pts], [p[1] for p in pts], mk + "-", label=f"W1 x {ws:g}")
     ax[0].axhline(1.0, color="k", lw=0.8)
+    # the slaved bound (M_00 and M_33 relaxed per radius), from the collect
+    sl = (J.get("collect") or {}).get("slaved_bound") or {}
+    spts = sorted(
+        (v["T_bps_lead"] and float(k.split("_")[0][1:]), v["T_slaved_over_T_bps"])
+        for k, v in sl.items()
+        if k != "note" and k.endswith("_w25")
+    )
+    if spts:
+        ax[0].plot(
+            [p[0] for p in spts],
+            [p[1] for p in spts],
+            "k--",
+            lw=1.2,
+            label="slaved bound (M_33, M_00 relaxed)",
+        )
     ax[0].set_xscale("log")
     ax[0].set_xlabel("delta")
     ax[0].set_ylabel("T / T_BPS")
@@ -607,7 +717,7 @@ def plot():
     for d, mk in ((0.3, "o"), (0.03, "s")):
         pts = sorted(
             [
-                (r["h"], r["T"] / r["T_1d"])
+                (r["h"], r.get("T_over_T_slaved") or r["T"] / r["T_1d"])
                 for r in rows
                 if r["delta"] == d and r["w1s"] == 25.0 and r["L"] == 48.0
             ]
@@ -616,7 +726,7 @@ def plot():
             ax[1].plot([p[0] for p in pts], [p[1] for p in pts], mk + "-", label=f"delta {d:g}")
     ax[1].axhline(1.0, color="k", lw=0.8)
     ax[1].set_xlabel("h")
-    ax[1].set_ylabel("T / T_1D")
+    ax[1].set_ylabel("T / T_slaved")
     ax[1].legend()
     fig.suptitle("R25-1: the straight strand against the Bogomolny tension")
     fig.tight_layout()
