@@ -9,7 +9,8 @@ attractive 1/r² between masses, via the GEM route; the strength (G)
 credited only when it follows from the model's own mechanism, never fitted.
 
 ## Status
-Candidate for **validated in platform** under the strength (G) clause.
+Strength clause: circularity discharged by the M4.7 chain; accuracy not met,
+`G_geom` residual 0.048169 %, 21.9x the CODATA uncertainty on `G`.
 
 ## What was computed
 
@@ -49,26 +50,42 @@ Convention". Amplitude chain factors: M4.12 artifact.
     relative difference      = 0.048246 %
     residual / CODATA unc.   = 21.9 x
 
-The 0.048246 % agreement is reported for transparency. The criterion
-does not require agreement within CODATA uncertainty; it requires that
-the strength follows from the model's own mechanism.
+With A_i and K_emc as written, A_i = 2 G_geom M_i / c^2 and
+K_emc = c^4 / (16 pi G_geom), where G_geom is the M4.7 chain value
+(`G_EWT` in `gravity_sector`). So F_grav = G_geom M_1 M_2 / R^2 holds as
+an identity for every M_1, M_2 and R, and the comparison with F_obs is
+the comparison of G_geom with G_CODATA. With the analytic kernel the
+residual is 0.048169 %; the printed 0.048246 % adds the radial
+quadrature's 7.7e-7.
 
+The briefing's [reading of the strength clause](../../__M4_model_briefing.md#reading-the-two-gravity-criteria) splits it in two
+halves. Circularity is discharged by M4.7 deriving lambda_l instead of
+setting it to the Planck length. Accuracy asks for agreement within the
+target's own uncertainty: at 21.9x the CODATA uncertainty on G, the
+accuracy half is not met.
 
-## Mutation tests (geometric factors, not G)
+## Closed-form exponents (fixed chain outputs)
 
-| Perturbation    | Relative change in F_grav |
-|-----------------|---------------------------|
-| K_WC: 10 -> 9   | 11.11 %                   |
-| N_geom: * 1.001 |  0.30 %                   |
-| A_pi: * 1.01    |  3.90 %                   |
-| r_e: * 1.01     |  1.00 %                   |
+| Perturbation    | Chain fixed (section 8) | Through the chain |
+|-----------------|-------------------------|-------------------|
+| K_WC: 10 -> 9   | 11.11 %                 | 21.00 %           |
+| N_geom: * 1.001 |  0.30 %                 |  1.19 %           |
+| A_pi: * 1.01    |  3.90 %                 | not propagated    |
+| r_e: * 1.01     |  1.00 %                 |  7.21 %           |
 
-The r_e test reflects the two-body structure of the force. Each amplitude
-scales linearly with r_e (A_i ~ r_e), so the product A_1 A_2 ~ r_e^2.
-The coupling K_emc ~ 1/r_e. The net scaling is
-F_grav ~ K_emc * A_1 * A_2 ~ r_e. The classical electron radius therefore
-enters the two-body force linearly, not as a pure dimensional anchor that
-cancels.
+Section 8 rescales the final force by the exponent the closed form gives
+for each factor, holding lambda_l, N_nu_stat, N_nu_eff and X_eff fixed.
+It does not rerun the chain, so its rows cannot fail. At fixed chain
+outputs each amplitude scales as r_e and K_emc as 1/r_e, so
+`F_grav ~ K_emc * A_1 * A_2 ~ r_e`. Through the chain lambda_l also moves:
+the third column recomputes lambda_l, N_nu_stat and X_eff from the
+perturbed input, and there the force goes as r_e^7 and N_geom^-12. The
+A_pi row is not propagated, since A_pi also enters alpha. The third
+column comes from the reproduction in the [PR #602 review](https://github.com/openwave-labs/openwave/pull/602#pullrequestreview-5330379192).
+
+Sensitivity does not separate a fitted constant from a derived one: both
+move the result when perturbed. What separates them is where the
+constant came from, which is the circularity half of the clause.
 
 ## Criterion mapping
 
@@ -76,15 +93,15 @@ cancels.
 |--------|----------|
 | attractive 1/r² between masses | F_geom = 4 π A_1 A_2 / R^2, R² dependence confirmed |
 | via the GEM route | A_i, K_emc from BCC lattice geometry (M4.7 chain) |
-| strength (G) follows from mechanism | F_grav built entirely from A_i and K_emc in M4.7 chain factors; G is a consequence, not an input |
-| never fitted | mutation tests on geometric factors, not on G (section 8) |
+| strength (G) follows from mechanism | Circularity discharged: M4.7 derives lambda_l. Accuracy not met: F_grav = G_geom M_1 M_2 / R^2 identically, residual 0.048169 %, 21.9x the CODATA uncertainty |
+| never fitted | Rests on provenance (the circularity half), not on section 8, whose rows are closed-form exponents |
 
 ## Relation to M4.10
 
-M4.10 is a normalization-consistency gate: G enters in both A and K_emc
-and cancels identically. This artifact demonstrates that the force
-strength follows from the model's own mechanism: the geometric factors
-alone fix F_grav, and G is a derived consequence of them, not an input.
+M4.10 and M4.12 compared G_geom with itself: G enters both A and K_emc
+and cancels identically, so those gates confirm normalization
+consistency. This artifact compares G_geom with G_CODATA, so unlike them
+it can fail. It adds no factor beyond G_geom.
 
 ## Artifacts
 
@@ -92,7 +109,7 @@ alone fix F_grav, and G is a derived consequence of them, not an input.
 
 ## Reference
 
-Enhanced EWT manuscript, version 5.0.0 or leter:
+Enhanced EWT manuscript, version 5.0.0 or later:
 [DOI: 10.5281/zenodo.22540635](https://doi.org/10.5281/zenodo.22540635)
 
 Relevant manuscript section:

@@ -411,18 +411,19 @@ def main():
           f"{abs(G_emc_from_force - geom['G_geom_xcheck'])/geom['G_geom_xcheck']:.3e}")
 
     # ------------------------------------------------------------------
-    # Section 8: mutation tests on geometric factors
+    # Section 8: closed-form exponents at fixed chain outputs
     #
-    # These perturbations act on the geometric inputs (K_WC, N_geom,
-    # A_pi, r_e) of the gravitational derivation. They demonstrate
-    # that the gravitational force is not fitted to G_CODATA: if it
-    # were, perturbations of geometry would not move the result.
-    #
-    # Each mutation is applied at the level of the affected factors,
-    # not by a trivial scaling of the final force.
+    # Each row rescales the final force by the exponent the closed form
+    # gives for one factor (K_WC, N_geom, A_pi, r_e), holding lambda_l,
+    # N_nu_stat, N_nu_eff and X_eff fixed. The rows do not rerun the
+    # chain, so they cannot fail. Through the chain, lambda_l also moves
+    # and the K_WC, N_geom and r_e rows become 21.00 %, 1.19 % and
+    # 7.21 % (findings, "Closed-form exponents"). Sensitivity does not
+    # separate a fitted constant from a derived one; that rests on
+    # provenance, M4.7 deriving lambda_l.
     # ------------------------------------------------------------------
-    print("\n[8/8] Mutation tests: sensitivity to geometric factors")
-    print("      (Perturbations of geometric inputs, not G.)")
+    print("\n[8/8] Closed-form exponents at fixed chain outputs")
+    print("      (Rescalings of the final force; the chain is not rerun.)")
 
     # --- K_WC: 10 -> 9 --------------------------------------------------
     # A_i ~ 1/K_WC, K_emc ~ K_WC.
@@ -481,6 +482,14 @@ def main():
     print(f"    F_EMC (from geometry, no G) = {F_EMC:.15e} N")
     print(f"    F_obs (from G_CODATA)       = {F_obs:.15e} N")
     print(f"    relative difference         = {rel_diff*100:.6f} %")
+    print()
+    # F_EMC = G_geom M1 M2 / R^2 identically, so the accuracy half of the
+    # strength clause is the G_geom residual against the CODATA uncertainty.
+    rel_G = abs(geom["G_geom_xcheck"] - G_CODATA) / G_CODATA
+    accuracy = "met" if rel_G <= 2.2e-5 else "not met"
+    print(f"    G_geom residual vs G_CODATA = {rel_G*100:.6f} % ({rel_G/2.2e-5:.1f} x)")
+    print("    Strength clause: circularity discharged by the M4.7 chain;")
+    print(f"    accuracy {accuracy} (CODATA uncertainty on G, 22 ppm).")
     print()
     print("    The gravitational force is derived from geometric factors alone.")
     print("    No G value is inserted in the calculation of F_EMC.")

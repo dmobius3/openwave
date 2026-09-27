@@ -35,9 +35,12 @@ the strength is already fixed by the geometry.
 
 ## Acceptance
 - No G appears as an input in the force calculation.
-- F_grav agrees with F_obs at the level fixed by the M4.7 chain.
-- Mutation tests show the force is controlled by geometric factors,
-  not by a fitted coupling.
+- F_grav is compared with F_obs within the CODATA uncertainty on G.
+  Since F_grav = G_geom M_1 M_2 / R^2 identically, this is the G_geom
+  accuracy statement (result: not met, 21.9x).
+- The section 8 rows report the closed-form exponents at fixed chain
+  outputs. They cannot show the absence of a fitted coupling; that rests
+  on provenance, M4.7 deriving lambda_l.
 - G recovered from F_grav agrees with the M4.7 chain (structural
   consistency, not a test).
 
