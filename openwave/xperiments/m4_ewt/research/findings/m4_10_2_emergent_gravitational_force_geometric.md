@@ -61,11 +61,14 @@ the strength follows from the model's own mechanism.
 | K_WC: 10 -> 9   | 11.11 %                   |
 | N_geom: * 1.001 |  0.30 %                   |
 | A_pi: * 1.01    |  3.90 %                   |
-| r_e: * 1.01     |  0.00 %                   |
+| r_e: * 1.01     |  1.00 %                   |
 
-The r_e test is structural: A ~ r_e and K_emc ~ 1/r_e, so r_e cancels
-identically in F_grav. The dimensional anchor r_e fixes units, not the
-magnitude of the force.
+The r_e test reflects the two-body structure of the force. Each amplitude
+scales linearly with r_e (A_i ~ r_e), so the product A_1 A_2 ~ r_e^2.
+The coupling K_emc ~ 1/r_e. The net scaling is
+F_grav ~ K_emc * A_1 * A_2 ~ r_e. The classical electron radius therefore
+enters the two-body force linearly, not as a pure dimensional anchor that
+cancels.
 
 ## Criterion mapping
 

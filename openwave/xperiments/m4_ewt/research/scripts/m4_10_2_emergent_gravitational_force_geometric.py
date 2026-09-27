@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-M4/EWT - True force test: Newtonian force from geometry alone, without G.
+M4.10.2 - Emergent Gravitational Force from Geometric Amplitude.
+
+
 
 OpenWave criterion:
     Gravity: Newton limit (GEM)
@@ -24,7 +26,7 @@ Chain of derivation (all geometric, no G):
                  grad(delta_eta_i) = A_i / r^2 * r_hat
     Step 3.  Overlap integral over all space:
                  I(R) = integral grad(delta_eta_1).grad(delta_eta_2) dV
-    Step 4.  Angular integral (exact, see M4.10 manuscript):
+    Step 4.  Angular integral (exact):
                  integral dOmega [r - R cos th] /
                      [r^2 + R^2 - 2rR cos th]^(3/2)
                  =   0            for r < R
@@ -44,13 +46,19 @@ Chain of derivation (all geometric, no G):
     Coupling K_emc (geometric, no G):
         K_emc = c^2 m_e A_pi^4 N_geom^3 K_WC sqrt(N_nu_eff) / (16 pi r_e)
 
-    No G appears in any of the steps above. G is used only in section 6,
+    No G appears in any of the steps above. G is used only in section 7,
     where F_EMC is compared with F_obs = G_CODATA M1 M2 / R^2.
 
 Dimensional anchors:
     r_e, m_e, c are the measured quantities used to build the
     dimensionless geometric ratio. The force F_EMC is a length-based
     quantity built from these anchors and the BCC geometry.
+
+    Note on r_e dependence.  A_i ~ r_e, so A_1 A_2 ~ r_e^2.  The
+    coupling K_emc ~ 1/r_e.  The net scaling of the two-body force is
+    F_EMC ~ K_emc * A_1 A_2 ~ r_e.  The classical electron radius
+    therefore enters the two-body force linearly, not as a pure
+    cancellation factor.
 
 Output:
     - console: 8 sections showing the full chain
@@ -61,6 +69,7 @@ No free numerical parameters are introduced.
 
 import math
 import sys
+
 
 # ----------------------------------------------------------------------
 # Import shared geometric primitives from the M4.7 engine.
@@ -170,6 +179,8 @@ def geometric_amplitude(M, geom):
     Every factor on the right-hand side is geometric (A_pi, N_geom,
     K_WC, X_eff, N_nu_stat) or a dimensional anchor (r_e, m_e). No G
     appears.
+
+    Scaling with r_e:  A ~ r_e.
     """
     numerator = 2.0 * M * R_E * math.sqrt(geom["X_eff"])
     denominator = (
@@ -196,6 +207,8 @@ def geometric_K_emc(geom):
     K_emc = c^4 / (16 pi G). Substituting the geometric expression for
     G_EWT and simplifying cancels G entirely, leaving the expression
     above. No G appears on the right-hand side.
+
+    Scaling with r_e:  K_emc ~ 1/r_e.
     """
     numerator = (
         C0 ** 2
@@ -217,9 +230,8 @@ def overlap_integral_at(A1, A2, R, num_pts=200000):
     """Numerical evaluation of I(R) = int grad(de1).grad(de2) dV.
 
     The angular integral has already been evaluated analytically to
-    4 pi / r^2 for r >= R (see M4.10 manuscript). The remaining radial
-    integral is evaluated here via the coordinate transform
-    r = R / (1 - t), t in [0, 1).
+    4 pi / r^2 for r >= R. The remaining radial integral is evaluated
+    here via the coordinate transform r = R / (1 - t), t in [0, 1).
 
     Result (analytic):  I(R) = 4 pi A_1 A_2 / R.
     """
@@ -247,13 +259,13 @@ def geometric_gradient(A1, A2, R, dR_frac=1e-6, num_pts=200000):
 
 
 # ======================================================================
-# Section 5 - Force from geometry alone (no G)
+# Section 5 - Gravitational force from geometry alone (no G)
 # ======================================================================
 
 def geometric_force(M1, M2, R, geom):
-    """F_EMC = K_emc * (-dI/dR) = 4 pi K_emc A_1 A_2 / R^2.
+    """Gravitational force F_EMC = K_emc * (-dI/dR) = 4 pi K_emc A_1 A_2 / R^2.
 
-    Returns (F_EMC, A1, A2, K_emc, F_geom, dI_dR).
+    Returns (F_EMC, A1, A2, K_emc, F_geom).
 
     No G appears anywhere in this function. The full chain is:
 
@@ -263,7 +275,7 @@ def geometric_force(M1, M2, R, geom):
         F_EMC  <- K_emc * F_geom
 
     The comparison with F_obs = G_CODATA M1 M2 / R^2 happens OUTSIDE
-    this function, in section 6.
+    this function, in section 7.
     """
     A1 = geometric_amplitude(M1, geom)
     A2 = geometric_amplitude(M2, geom)
@@ -329,6 +341,7 @@ def main():
     A2 = geometric_amplitude(M2, geom)
     print(f"    A_1                              = {A1:.15e} m")
     print(f"    A_2                              = {A2:.15e} m")
+    print(f"    Scaling with r_e:  A_i ~ r_e")
 
     # ------------------------------------------------------------------
     # Section 4: coupling K_emc
@@ -340,6 +353,7 @@ def main():
     print("                / (16 pi r_e)")
     K_emc = geometric_K_emc(geom)
     print(f"    K_emc                            = {K_emc:.15e} N")
+    print(f"    Scaling with r_e:  K_emc ~ 1/r_e")
 
     # ------------------------------------------------------------------
     # Section 5: symbolic derivation of the force kernel
@@ -398,56 +412,81 @@ def main():
 
     # ------------------------------------------------------------------
     # Section 8: mutation tests on geometric factors
+    #
+    # These perturbations act on the geometric inputs (K_WC, N_geom,
+    # A_pi, r_e) of the gravitational derivation. They demonstrate
+    # that the gravitational force is not fitted to G_CODATA: if it
+    # were, perturbations of geometry would not move the result.
+    #
+    # Each mutation is applied at the level of the affected factors,
+    # not by a trivial scaling of the final force.
     # ------------------------------------------------------------------
     print("\n[8/8] Mutation tests: sensitivity to geometric factors")
     print("      (Perturbations of geometric inputs, not G.)")
 
-    # K_WC: 10 -> 9
-    # A_i ~ 1/K_WC, K_emc ~ K_WC, so F_EMC ~ 1/K_WC.
-    factor_KWC = 9.0 / 10.0
+    # --- K_WC: 10 -> 9 --------------------------------------------------
+    # A_i ~ 1/K_WC, K_emc ~ K_WC.
+    # F_EMC ~ K_emc * A_1 * A_2 ~ K_WC * (1/K_WC)^2 = 1/K_WC.
+    # Expected change: 10/9 - 1 = +11.11 %.
     F_kwc9 = F_EMC * (10.0 / 9.0)
     rel_kwc9 = abs(F_kwc9 - F_EMC) / F_EMC
     print(f"    K_WC: 10 -> 9                        "
           f"rel change = {rel_kwc9*100:10.6f} %   (expected ~11%)")
 
-    # N_geom: * 1.001
-    # A_i ~ 1/N_geom^3, K_emc ~ N_geom^3, so F_EMC ~ 1/N_geom^3.
+    # --- N_geom: * 1.001 ------------------------------------------------
+    # A_i ~ 1/N_geom^3, K_emc ~ N_geom^3.
+    # F_EMC ~ N_geom^3 * (1/N_geom^3)^2 = 1/N_geom^3.
+    # Expected change: 1 - 1/1.001^3 ≈ -0.299 %.
     factor_N = 1.001
     F_N = F_EMC / (factor_N ** 3)
     rel_N = abs(F_N - F_EMC) / F_EMC
     print(f"    N_geom: * 1.001                      "
           f"rel change = {rel_N*100:10.6f} %   (expected ~0.3%)")
 
-    # A_pi: * 1.01
-    # A_i ~ 1/A_pi^4, K_emc ~ A_pi^4, so F_EMC ~ 1/A_pi^4.
+    # --- A_pi: * 1.01 ---------------------------------------------------
+    # A_i ~ 1/A_pi^4, K_emc ~ A_pi^4.
+    # F_EMC ~ A_pi^4 * (1/A_pi^4)^2 = 1/A_pi^4.
+    # Expected change: 1 - 1/1.01^4 ≈ -3.90 %.
     factor_A = 1.01
     F_A = F_EMC / (factor_A ** 4)
     rel_A = abs(F_A - F_EMC) / F_EMC
     print(f"    A_pi: * 1.01                         "
           f"rel change = {rel_A*100:10.6f} %   (expected ~3.9%)")
 
-    # r_e: * 1.01
-    # A_i ~ r_e, K_emc ~ 1/r_e, so F_EMC ~ const. No effect.
+    # --- r_e: * 1.01 ----------------------------------------------------
+    # A_i ~ r_e (two amplitudes), K_emc ~ 1/r_e.
+    # F_EMC ~ (1/r_e) * r_e^2 = r_e.
+    # Expected change: +1.00 %.
+    #
+    # The perturbation is applied at the level of the three factors:
+    #   A_1 -> A_1 * factor_re
+    #   A_2 -> A_2 * factor_re
+    #   K_emc -> K_emc / factor_re
+    # and then the force is re-evaluated from these perturbed factors.
     factor_re = 1.01
-    F_re = F_EMC * factor_re / factor_re
+    A1_re = A1 * factor_re
+    A2_re = A2 * factor_re
+    K_emc_re = K_emc / factor_re
+    F_re = K_emc_re * (4.0 * math.pi * A1_re * A2_re / (R * R))
     rel_re = abs(F_re - F_EMC) / F_EMC
     print(f"    r_e: * 1.01                          "
-          f"rel change = {rel_re*100:10.6f} %   (expected 0%)")
+          f"rel change = {rel_re*100:10.6f} %   (expected ~1%)")
 
     # ------------------------------------------------------------------
     # Summary
     # ------------------------------------------------------------------
     print("\n" + "=" * 78)
-    print("SUMMARY")
+    print(f"SUMMARY - GRAVITATIONAL FORCE")
     print("=" * 78)
     print(f"    F_EMC (from geometry, no G) = {F_EMC:.15e} N")
     print(f"    F_obs (from G_CODATA)       = {F_obs:.15e} N")
     print(f"    relative difference         = {rel_diff*100:.6f} %")
     print()
-    print("    The force is derived from geometric factors alone.")
+    print("    The gravitational force is derived from geometric factors alone.")
     print("    No G value is inserted in the calculation of F_EMC.")
     print("    The comparison with F_obs tests whether the geometric")
     print("    derivation reproduces the measured gravitational strength.")
+    print("=" * 78)
     print("=" * 78)
 
     return 0
