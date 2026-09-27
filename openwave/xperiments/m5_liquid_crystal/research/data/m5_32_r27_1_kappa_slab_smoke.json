@@ -1,0 +1,54 @@
+{
+ "rows": {
+  "bps_m1_d0.03_n16_L48_k0.3": {
+   "status": "OK",
+   "verdict": "FALLING",
+   "seed_note": "the BPS strand, m 1",
+   "stop": null,
+   "traceback": null,
+   "end": {
+    "E_quartic_over_T_bps": 0.7857902749651268,
+    "E_total_over_T_bps": 1.0819322683539423,
+    "core_count": 0
+   }
+  },
+  "bps_m2_d0.03_n16_L48_k0.3": {
+   "status": "OK",
+   "verdict": "FALLING",
+   "seed_note": "the full strand, m 2",
+   "stop": null,
+   "traceback": null,
+   "end": {
+    "E_quartic_over_T_bps": 1.605648073311274,
+    "E_total_over_T_bps": 2.3971956707204107,
+    "core_count": 0
+   }
+  },
+  "pair_d4_d0.03_n16_L48_k0.3": {
+   "status": "OK",
+   "verdict": "FALLING",
+   "seed_note": "two like half strands at d 12",
+   "stop": null,
+   "traceback": null,
+   "end": {
+    "E_quartic_over_T_bps": 1.5754612806667672,
+    "E_total_over_T_bps": 2.269930262588089,
+    "core_count": 0
+   }
+  },
+  "wall_d0.03_n48_L48_k0.3": {
+   "status": "OK",
+   "verdict": "FALLING",
+   "seed_note": "the stored wall state (R26-2 escape row)",
+   "stop": null,
+   "traceback": null,
+   "end": {
+    "E_quartic_over_T_bps": 2.0378414755096874,
+    "E_total_over_T_bps": 5.478482691224002,
+    "core_count": 4
+   }
+  }
+ },
+ "synthetic_wall_label": "WALL_TENSION_VANISHES",
+ "PASS": true
+}
