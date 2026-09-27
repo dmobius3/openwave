@@ -1,0 +1,577 @@
+{
+ "task": "M5.32 R27-0",
+ "definition": "E_kappa = kappa h^3 sum_br w_br sum_i <d_i S, d_i S>, S the spatial block, the certified stencil branches (bond sum)",
+ "a_rank_one": {
+  "rows": {
+   "n48": {
+    "diagonal_45": {
+     "E_curv_per_len_over_T_bps": 5.143584359452919e-29
+    },
+    "axis_x": {
+     "E_curv_per_len_over_T_bps": 0.0
+    },
+    "generic_30": {
+     "E_curv_per_len_over_T_bps": 0.245253685620748
+    },
+    "winding_falsifier": {
+     "E_curv_per_len_over_T_bps": 0.4936268716405557
+    }
+   },
+   "n96": {
+    "diagonal_45": {
+     "E_curv_per_len_over_T_bps": 9.456761474363372e-29
+    },
+    "axis_x": {
+     "E_curv_per_len_over_T_bps": 0.0
+    },
+    "generic_30": {
+     "E_curv_per_len_over_T_bps": 0.06691453565392307
+    },
+    "winding_falsifier": {
+     "E_curv_per_len_over_T_bps": 0.49839475278478773
+    }
+   }
+  },
+  "generic_ratio_h1_over_h05": 3.665178024834269,
+  "fails_if": "the diagonal or axis wall's curvature energy exceeds 1e-12 T_bps, or the winding falsifier's is below 0.1 T_bps, or the generic wall's residue does not fall by at least 3x from h 1 to h 0.5 (an O(h^2) stencil residue)",
+  "PASS": true,
+  "wall_s": 0.3
+ },
+ "b_term_and_gradient": {
+  "E_eta_4x4": 1.025711455896809,
+  "E_frobenius_block": 1.0257114558968043,
+  "E_M00_part": 4.574516626909799e-15,
+  "M0i_max": 0.0,
+  "eta_minus_block_minus_M00_rel": 8.620365504112488e-17,
+  "M00_part_over_block": 4.459847455744938e-15,
+  "E_dsym_4x4_plan_time_definition": 0.3956269092836151,
+  "complex_step_rel": 0.0,
+  "fd_rel_1e-4": 0.000282110909814627,
+  "fd_rel_1e-5": 2.8203814696788284e-06,
+  "kappa_used": 2.835058707119449e-07,
+  "fails_if": "the eta form differs from the block Frobenius form plus the M_00 part by more than 1e-12 relative, the complex-step derivative differs from <G, V> by more than 1e-8, or the central finite difference at 1e-5 differs by more than 1e-5 relative",
+  "PASS": true,
+  "wall_s": 0.2
+ },
+ "c_winding_coefficient": {
+  "rows": {
+   "d0.03_m1": {
+    "E_kappa_per_len": {
+     "L48": 0.006698285274881885,
+     "L96": 0.008663315658390498
+    },
+    "two_box_difference": 0.0019650303835086133,
+    "prediction_4pi_m2_b02_ln2": 0.0019598274812732417,
+    "rel_err": 0.0026547756295321823
+   },
+   "d0.03_m2": {
+    "E_kappa_per_len": {
+     "L48": 0.020040535623981476,
+     "L96": 0.02789947611421007
+    },
+    "two_box_difference": 0.007858940490228596,
+    "prediction_4pi_m2_b02_ln2": 0.007839309925092967,
+    "rel_err": 0.0025041190261904478
+   },
+   "d0.3_m1": {
+    "E_kappa_per_len": {
+     "L48": 0.6836634958298076,
+     "L96": 0.88016653418067
+    },
+    "two_box_difference": 0.19650303835086247,
+    "prediction_4pi_m2_b02_ln2": 0.1959827481273242,
+    "rel_err": 0.0026547756295378644
+   },
+   "d0.3_m2": {
+    "E_kappa_per_len": {
+     "L48": 2.0585705310885087,
+     "L96": 2.84446458951917
+    },
+    "two_box_difference": 0.7858940584306611,
+    "prediction_4pi_m2_b02_ln2": 0.7839309925092968,
+    "rel_err": 0.002504131026993456
+   }
+  },
+  "ratio_m2_over_m1_d0.03": 3.999398969188584,
+  "ratio_m2_over_m1_d0.3": 3.9993990170646727,
+  "fails_if": "any two-box difference is off 4 pi m^2 b0^2 ln 2 by more than 3 percent, or the m 2 to m 1 ratio is off 4 by more than 1 percent",
+  "PASS": true,
+  "wall_s": 0.0
+ },
+ "d_wall_coefficient": {
+  "rows": {
+   "W4h": {
+    "E_per_area": 0.0010544155877284286,
+    "prediction_2pi2_b02_over_W": 0.0011103304951225529,
+    "prediction_lattice_sine": 0.0010544155877284288,
+    "rel_err_continuum": 0.050358796448216656,
+    "rel_err_lattice": 2.0564987564746574e-16
+   },
+   "W8h": {
+    "E_per_area": 0.0005480673659187354,
+    "prediction_2pi2_b02_over_W": 0.0005551652475612764,
+    "prediction_lattice_sine": 0.0005480673659187353,
+    "rel_err_continuum": 0.01278516923334187,
+    "rel_err_lattice": 1.9782279331082533e-16
+   }
+  },
+  "fails_if": "the bond sum differs from the lattice-sine prediction by more than 1e-6, or from 2 pi^2 b0^2 / W by more than 3 percent at W 8 h (the W 4 h continuum error is the 5 percent sine factor, reported)",
+  "PASS": true,
+  "wall_s": 0.0
+ },
+ "e_masked_reader": {
+  "carriers_theta_phi_deg": [
+   [
+    29.999999999999996,
+    0.0
+   ],
+   [
+    90.0,
+    90.0
+   ],
+   [
+    119.99999999999999,
+    200.0
+   ]
+  ],
+  "r_t": 2.25,
+  "dipole_masked": {
+   "a_read_per_shell_r2": [
+    0.010353296017825465,
+    0.010306007396118115,
+    0.010282868787206642,
+    0.010210270874400042,
+    0.01013694916353343,
+    0.010111143438975621,
+    0.01009018978490833,
+    0.010087236053709358,
+    0.010063308240132022
+   ],
+   "a_true": 0.01,
+   "max_rel_err": 0.03532960178254645,
+   "slope_a1": -2.028184238297623,
+   "m0_content_min": 0.9999853098533837
+  },
+  "footprint_unmasked": {
+   "a1_per_shell": [
+    -0.009692980467171123,
+    -0.0018687999324544498,
+    -0.0030131594256926175,
+    -0.004548288638584783,
+    -0.0009709942244267218,
+    -0.0008005144463204498,
+    -0.0006558598117014287,
+    -0.0009318950071539172,
+    -0.001016497910524825
+   ],
+   "prediction_per_shell": [
+    -0.00741201442663489,
+    -0.004743689233046328,
+    -0.0032942286340599514,
+    -0.002420249608697106,
+    -0.0018530036066587226,
+    -0.0014641016151377558,
+    -0.001185922308261582,
+    -0.0009801010812079192,
+    -0.0008235571585149879
+   ],
+   "ratio_read_over_pred": [
+    1.3077390179300836,
+    0.3939549664079352,
+    0.9146782935885868,
+    1.8792642801141761,
+    0.5240109738251334,
+    0.5467615348850839,
+    0.5530377556206355,
+    0.9508152016375793,
+    1.2342773054850762
+   ],
+   "slope_a1": -2.040732302655879,
+   "mean_ratio_read_over_pred": 0.9227265921660321
+  },
+  "footprint_masked": {
+   "a1_per_shell": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "max_abs_masked_over_unmasked": 0.0
+  },
+  "footprint_wider_than_mask_ratio": [
+   -0.0740646206123532,
+   -0.7556891221325254,
+   -1.037756591218946,
+   0.12120704948824514,
+   -2.5738802185521883,
+   -0.18125739593668666,
+   -0.6194606220301715,
+   -0.6267260696529782,
+   -0.6126866240959763
+  ],
+  "fails_if": "the masked dipole coefficient is off by more than 5 percent on any shell of r 6 to 18 or its slope is off -2 by more than 5 percent, or the footprint's unmasked l = 1 slope is off -2 by more than 0.5, its mean ratio to the solid-angle prediction is outside 0.7 to 1.3, or the masked footprint read exceeds 1e-3 of the unmasked",
+  "PASS": true,
+  "wall_s": 0.0
+ },
+ "f_charge_control": {
+  "charge_abs_total_free": 1.0256679411346088,
+  "charge_net_free": 0.9990642162570327,
+  "net_charge_outer": 0.02556930852434388,
+  "net_charge_outer_in_tubes": 0.0038338556748845217,
+  "fraction_inside_core": 0.9642047084661437,
+  "fraction_outer_in_tubes": 0.008104200926119267,
+  "fraction_outer_outside_tubes": 0.027691090607736887,
+  "tubes_share_of_outer": 0.22640410453017526,
+  "r2_abs_weighted_all": 8.40620827289389,
+  "r2_abs_weighted_tubes": 65.42063967703741,
+  "r2_abs_weighted_rest": 130.65900140718207,
+  "tube_cells_outer": 1048,
+  "r_core": 6.0,
+  "r_t": 4.5,
+  "fails_if": "the net charge outside r 6 exceeds 5 percent of the total, the |rho| fraction outside r 6 (the reader floor) exceeds 5 percent, or the net charge is off 1 by more than 5 percent (the floors measured here, net 2.6 and abs 3.6 percent at h 1.5, are quoted beside every R27-3 (b) split)",
+  "PASS": true,
+  "wall_s": 0.0
+ },
+ "g_coulomb_uniaxial": {
+  "C_sympy_pole": 8.0,
+  "C_sympy_generic_point": 8.0,
+  "c_4piC": 100.53096491487338,
+  "shells_r_C_lattice": [
+   [
+    9.0,
+    8.23027777304039
+   ],
+   [
+    10.5,
+    8.098807704043443
+   ],
+   [
+    12.0,
+    8.068174191295425
+   ],
+   [
+    13.5,
+    8.059576868988964
+   ],
+   [
+    15.0,
+    8.04450498290772
+   ],
+   [
+    16.5,
+    8.03576576582002
+   ],
+   [
+    18.0,
+    8.030111969205482
+   ]
+  ],
+  "C_lattice_max_rel_err": 0.02878472163004875,
+  "E_gt_R": [
+   [
+    6.0,
+    14.95501428561494
+   ],
+   [
+    7.5,
+    10.814067994006106
+   ],
+   [
+    9.0,
+    8.6690922200304
+   ],
+   [
+    10.5,
+    7.001682637597229
+   ],
+   [
+    12.0,
+    5.830308241741004
+   ],
+   [
+    13.5,
+    4.88411843570978
+   ],
+   [
+    15.0,
+    4.163720506854394
+   ],
+   [
+    16.5,
+    3.5551239975549285
+   ],
+   [
+    18.0,
+    3.0682549956388114
+   ],
+   [
+    19.5,
+    2.6059279429100433
+   ],
+   [
+    21.0,
+    2.2538422042108746
+   ],
+   [
+    22.5,
+    1.9198917209040718
+   ],
+   [
+    24.0,
+    1.651969407035775
+   ],
+   [
+    25.5,
+    1.4071800809957486
+   ],
+   [
+    27.0,
+    1.1919075715097185
+   ],
+   [
+    28.5,
+    0.995892059424264
+   ],
+   [
+    30.0,
+    0.8194706519193379
+   ],
+   [
+    31.5,
+    0.6546816362776031
+   ],
+   [
+    33.0,
+    0.5131443764501993
+   ]
+  ],
+  "c_fit": 100.61391936114259,
+  "R_eff_fit": 39.518988171965205,
+  "c_fit_over_4piC": 1.0008251631359497,
+  "local_exponent_E_gt_R": -1.4935224871041244,
+  "E_total_free": 37.39753122349456,
+  "c_over_E_total": 2.6881711606598238,
+  "V4_max_on_seed": 0.13021911795486724,
+  "fails_if": "sympy's C at the pole differs from the generic point, the lattice C on r 9 to 18 is off by more than 3 percent, or the fitted c is off 4 pi C by more than 3 percent",
+  "PASS": true,
+  "wall_s": 0.8
+ },
+ "h_pair_seed_loops": {
+  "winding_core_plus": 1.0,
+  "winding_core_minus": 1.0,
+  "winding_outer_rho12": 1.9999999999999998,
+  "winding_bps_m1_outer": 0.9999999999999994,
+  "winding_bps_m2_outer": 2.0,
+  "cores": [
+   [
+    -2.9383481654498596,
+    0.0,
+    8
+   ],
+   [
+    2.9383481654498596,
+    0.0,
+    8
+   ]
+  ],
+  "walls": {
+   "wall_bonds_150": 0,
+   "wall_components": 0,
+   "wall_b_over_b0_median": null,
+   "wall_width_h_median": null,
+   "wall_bonds_90": 0,
+   "b_over_b0_min_free": 0.13423875598574544,
+   "core_cells": 52
+  },
+  "walls_on_stored_wall_state_d0.03": {
+   "wall_bonds_150": 27,
+   "wall_components": 1,
+   "wall_b_over_b0_median": 0.999509395357407,
+   "wall_width_h_median": 3.0,
+   "wall_bonds_90": 46,
+   "b_over_b0_min_free": 0.9737926921364879,
+   "core_cells": 0
+  },
+  "walls_on_bps_seed": {
+   "wall_bonds_150": 0,
+   "wall_components": 0,
+   "wall_b_over_b0_median": null,
+   "wall_width_h_median": null,
+   "wall_bonds_90": 0,
+   "b_over_b0_min_free": 0.15338251138450254,
+   "core_cells": 16
+  },
+  "core_distance": 5.876696330899719,
+  "fails_if": "either core reads a winding other than 1 (within 0.05), the outer loop other than 2, the m 1 and m 2 seeds other than 1 and 2, the core finder does not return two cores at distance d within 1 h, the seed shows wall bonds, or the stored wall state shows none",
+  "PASS": true,
+  "wall_s": 0.0
+ },
+ "stored": {
+  "slab": {
+   "d0.3": {
+    "T_bps": 0.0026747011377773124,
+    "kappa_bps": 0.05255455646552789,
+    "bps_seed_m1": {
+     "E_kappa_per_len_bond": 0.6836634958298076,
+     "E_kappa_per_len_dsym_4x4": 0.6793596556500916
+    },
+    "bps_seed_m2": {
+     "E_kappa_per_len_bond": 2.0585705310885087,
+     "E_kappa_per_len_dsym_4x4": 2.0192255666659626
+    },
+    "pair_d6h_seed": {
+     "E_kappa_per_len_bond": 1.9850642056294947,
+     "E_kappa_per_len_dsym_4x4": 1.9621009862654473
+    },
+    "wall_state": {
+     "E_kappa_per_len_bond": 16.186223644235813,
+     "E_kappa_per_len_dsym_4x4": 7.462180110970508
+    },
+    "kappa_ref": 0.003912306498873179,
+    "kappa_ref_plan_time_dsym": 0.003937091517773222,
+    "wall_over_seed": 23.675717283382994,
+    "m2_over_m1": 3.0110873896958408
+   },
+   "d0.03": {
+    "T_bps": 2.423293495027001e-07,
+    "kappa_bps": 0.04761470843160279,
+    "bps_seed_m1": {
+     "E_kappa_per_len_bond": 0.006698285274881885,
+     "E_kappa_per_len_dsym_4x4": 0.006658756478371244
+    },
+    "bps_seed_m2": {
+     "E_kappa_per_len_bond": 0.020040535623981476,
+     "E_kappa_per_len_dsym_4x4": 0.019676756504022945
+    },
+    "pair_d6h_seed": {
+     "E_kappa_per_len_bond": 0.01939865730589667,
+     "E_kappa_per_len_dsym_4x4": 0.01918485595516116
+    },
+    "wall_state": {
+     "E_kappa_per_len_bond": 0.2564278639742011,
+     "E_kappa_per_len_dsym_4x4": 0.09890672732090378
+    },
+    "smooth_row": {
+     "E_kappa_per_len_bond": 0.006479398490361313,
+     "E_kappa_per_len_dsym_4x4": 0.006444335743841463
+    },
+    "kappa_ref": 3.617781858461877e-05,
+    "kappa_ref_plan_time_dsym": 3.639258325331861e-05,
+    "wall_over_seed": 38.28261315411396,
+    "m2_over_m1": 2.9918904318889084
+   },
+   "d0.01": {
+    "T_bps": 2.9890293648267846e-09,
+    "kappa_bps": 0.0475718798459011,
+    "bps_seed_m1": {
+     "E_kappa_per_len_bond": 0.000744113720327182,
+     "E_kappa_per_len_dsym_4x4": 0.0007397250178080481
+    },
+    "bps_seed_m2": {
+     "E_kappa_per_len_bond": 0.002226173407665552,
+     "E_kappa_per_len_dsym_4x4": 0.0021857823941118584
+    },
+    "pair_d6h_seed": {
+     "E_kappa_per_len_bond": 0.002154945136423304,
+     "E_kappa_per_len_dsym_4x4": 0.002131205009902524
+    },
+    "wall_state": {
+     "E_kappa_per_len_bond": 0.03834546804455271,
+     "E_kappa_per_len_dsym_4x4": 0.014459811137102062
+    },
+    "smooth_row": {
+     "E_kappa_per_len_bond": 0.0007228391171375753,
+     "E_kappa_per_len_dsym_4x4": 0.0007189236683925335
+    },
+    "kappa_ref": 4.016898604574214e-06,
+    "kappa_ref_plan_time_dsym": 4.040730396930296e-06,
+    "wall_over_seed": 51.531730966729725,
+    "m2_over_m1": 2.991711275914544
+   }
+  },
+  "census": {
+   "rows": {
+    "1_1_1_1": {
+     "sum_k2": 1.0,
+     "E_kappa_seed": 961.5280769667631,
+     "E_kappa_end": 2559.391625738658,
+     "E_quartic_end": 8.379913414985914,
+     "gate_label": "AT_GATE",
+     "kick_label": "STABLE"
+    },
+    "2_1_1": {
+     "sum_k2": 1.5,
+     "E_kappa_seed": 982.3760683548321,
+     "E_kappa_end": 4227.874330291192,
+     "E_quartic_end": 8.119317808614188,
+     "gate_label": "FALLING",
+     "kick_label": "FALLING"
+    },
+    "2_2": {
+     "sum_k2": 2.0,
+     "E_kappa_seed": 985.8265330335262,
+     "E_kappa_end": 3135.0226553436764,
+     "E_quartic_end": 8.388130054207696,
+     "gate_label": "AT_GATE",
+     "kick_label": "STABLE"
+    },
+    "3_1": {
+     "sum_k2": 2.5,
+     "E_kappa_seed": 1003.4880992091195,
+     "E_kappa_end": 3345.2259051443743,
+     "E_quartic_end": 8.226085921532048,
+     "gate_label": "AT_GATE",
+     "kick_label": "STABLE"
+    },
+    "4": {
+     "sum_k2": 4.0,
+     "E_kappa_seed": 1057.0484773007827,
+     "E_kappa_end": 3830.632563732022,
+     "E_quartic_end": 8.558571723498371,
+     "gate_label": "FALLING",
+     "kick_label": "FALLING"
+    }
+   },
+   "seed_order_by_E_kappa": [
+    "1_1_1_1",
+    "2_1_1",
+    "2_2",
+    "3_1",
+    "4"
+   ],
+   "end_order_by_E_kappa": [
+    "1_1_1_1",
+    "2_2",
+    "3_1",
+    "4",
+    "2_1_1"
+   ],
+   "sum_k2_order": [
+    "1_1_1_1",
+    "2_1_1",
+    "2_2",
+    "3_1",
+    "4"
+   ],
+   "seeds_in_sum_k2_order": true,
+   "ends_in_sum_k2_order": false,
+   "seed_E_kappa_spread": 95.52040033401954,
+   "seed_E_kappa_min": 961.5280769667631,
+   "end_E_kappa_spread": 1668.4827045525335,
+   "quartic_end_spread_kappa0": 0.4392539148841834,
+   "kappa_census": [
+    0.0022992675561879076,
+    0.00919707022475163
+   ],
+   "kappa_census_rule": "kappa x (the seeds' E_kappa spread) = 0.5 and 2 x the kappa-0 quartic spread"
+  },
+  "wall_s": 0.2
+ },
+ "PASS": true,
+ "wall_s": 2.3
+}

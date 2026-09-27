@@ -1,0 +1,2728 @@
+{
+ "task": "M5.32 R27-2 + R27-3(e) audit",
+ "date": "2026-09-27",
+ "claims": {
+  "1": {
+   "P1_1_1_1_d0.3_w25_n32_L48_k2.299e-03": {
+    "own_split": {
+     "E_curv": 6.320902392263024,
+     "V4": 2.4209628164313584,
+     "E_quartic": 8.741865208694382,
+     "E_kappa": 916.8795905902002,
+     "E_kappa_bondsum": 916.8795905902002,
+     "kappaE_kappa": 2.108151495574899,
+     "E_total": 10.85001670426928
+    },
+    "claimed_end_split": {
+     "E_quartic": 8.741865208694383,
+     "E_curv": 6.320902392263025,
+     "V4": 2.4209628164313584,
+     "E_kappa": 916.8795905902002,
+     "kappaE_kappa": 2.108151495574899,
+     "E_total": 10.850016704269283
+    },
+    "max_abs_dev_vs_end_split": 3.552713678800501e-15,
+    "E_quartic_stack_energy_parts": 8.741865208694383,
+    "E_kappa_bondsum_minus_branch": 0.0,
+    "gate_from_chunks": {
+     "first_gate_iters": 1250,
+     "last_iters": 1250,
+     "last_fmax": 1.7335546249924033e-05,
+     "last_drop": 6.694219694125536e-06,
+     "last_drop_rel": 6.169778237752835e-07,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 1250,
+    "kick_from_chunks": {
+     "E_kicked_start": 11.067017016064874,
+     "E_after": 10.850016501576281,
+     "E_after_minus_ref": -2.026930019383144e-07,
+     "fmax_after": 5.794921070233802e-07,
+     "last_drop": 1.995995546621998e-08,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 500
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 6.694219694125536e-06,
+    "own_gmax_spatial_end_field": 1.7335546249924033e-05,
+    "own_gmax_M00_end_field": 9.160897040949578e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 26.614674474630743,
+    "claimed_E_seed": 26.614674474630743,
+    "own_certified": true
+   },
+   "P2_1_1_d0.3_w25_n32_L48_k2.299e-03": {
+    "own_split": {
+     "E_curv": 6.414709767834923,
+     "V4": 2.4514959705763273,
+     "E_quartic": 8.86620573841125,
+     "E_kappa": 824.0952898611922,
+     "E_kappa_bondsum": 824.0952898611922,
+     "kappaE_kappa": 1.8948155631851087,
+     "E_total": 10.761021301596358
+    },
+    "claimed_end_split": {
+     "E_quartic": 8.86620573841125,
+     "E_curv": 6.414709767834921,
+     "V4": 2.4514959705763277,
+     "E_kappa": 824.0952898611922,
+     "kappaE_kappa": 1.8948155631851087,
+     "E_total": 10.761021301596358
+    },
+    "max_abs_dev_vs_end_split": 1.7763568394002505e-15,
+    "E_quartic_stack_energy_parts": 8.86620573841125,
+    "E_kappa_bondsum_minus_branch": 0.0,
+    "gate_from_chunks": {
+     "first_gate_iters": 1250,
+     "last_iters": 1250,
+     "last_fmax": 7.507883101403752e-06,
+     "last_drop": 7.66730424039963e-06,
+     "last_drop_rel": 7.12507114846266e-07,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 1250,
+    "kick_from_chunks": {
+     "E_kicked_start": 10.976241692681088,
+     "E_after": 10.76102059229366,
+     "E_after_minus_ref": -7.093026983540085e-07,
+     "fmax_after": 4.020896908851326e-06,
+     "last_drop": 1.334558987764467e-07,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 500
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 7.66730424039963e-06,
+    "own_gmax_spatial_end_field": 7.507883101403779e-06,
+    "own_gmax_M00_end_field": 9.156632951867749e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 26.97502842156045,
+    "claimed_E_seed": 26.97502842156045,
+    "own_certified": true
+   },
+   "P2_2_d0.3_w25_n32_L48_k2.299e-03": {
+    "own_split": {
+     "E_curv": 6.68063890310828,
+     "V4": 2.3065360063511298,
+     "E_quartic": 8.987174909459409,
+     "E_kappa": 864.8738540556448,
+     "E_kappa_bondsum": 864.8738540556448,
+     "kappaE_kappa": 1.9885763928253393,
+     "E_total": 10.975751302284747
+    },
+    "claimed_end_split": {
+     "E_quartic": 8.98717490945941,
+     "E_curv": 6.68063890310828,
+     "V4": 2.30653600635113,
+     "E_kappa": 864.8738540556446,
+     "kappaE_kappa": 1.988576392825339,
+     "E_total": 10.975751302284749
+    },
+    "max_abs_dev_vs_end_split": 1.1368683772161603e-13,
+    "E_quartic_stack_energy_parts": 8.98717490945941,
+    "E_kappa_bondsum_minus_branch": 0.0,
+    "gate_from_chunks": {
+     "first_gate_iters": 1250,
+     "last_iters": 1250,
+     "last_fmax": 5.928188190144337e-07,
+     "last_drop": 3.464880293790884e-07,
+     "last_drop_rel": 3.156850222243668e-08,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 1250,
+    "kick_from_chunks": {
+     "E_kicked_start": 11.195266297034122,
+     "E_after": 10.975751301701715,
+     "E_after_minus_ref": -5.830340654711108e-10,
+     "fmax_after": 3.5298468887960156e-08,
+     "last_drop": 8.97559360168998e-10,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 500
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 3.464880293790884e-07,
+    "own_gmax_spatial_end_field": 5.928188190144337e-07,
+    "own_gmax_M00_end_field": 9.126129744485914e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 27.129656414728146,
+    "claimed_E_seed": 27.129656414728142,
+    "own_certified": true
+   },
+   "P3_1_d0.3_w25_n32_L48_k2.299e-03": {
+    "own_split": {
+     "E_curv": 6.415213216125579,
+     "V4": 2.4860688043487604,
+     "E_quartic": 8.90128202047434,
+     "E_kappa": 846.9917461691734,
+     "E_kappa_bondsum": 846.9917461691733,
+     "kappaE_kappa": 1.947460642325724,
+     "E_total": 10.848742662800065
+    },
+    "claimed_end_split": {
+     "E_quartic": 8.90128202047434,
+     "E_curv": 6.415213216125579,
+     "V4": 2.4860688043487604,
+     "E_kappa": 846.9917461691734,
+     "kappaE_kappa": 1.947460642325724,
+     "E_total": 10.848742662800065
+    },
+    "max_abs_dev_vs_end_split": 0.0,
+    "E_quartic_stack_energy_parts": 8.90128202047434,
+    "E_kappa_bondsum_minus_branch": -1.1368683772161603e-13,
+    "gate_from_chunks": {
+     "first_gate_iters": 1250,
+     "last_iters": 1250,
+     "last_fmax": 5.354130823894524e-05,
+     "last_drop": 2.5188146638654985e-05,
+     "last_drop_rel": 2.321757223076569e-06,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 1250,
+    "kick_from_chunks": {
+     "E_kicked_start": 11.065717481634346,
+     "E_after": 10.848729037123606,
+     "E_after_minus_ref": -1.3625676459128044e-05,
+     "fmax_after": 6.148142444883627e-05,
+     "last_drop": 6.897164842811776e-06,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 500
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 2.5188146638654985e-05,
+    "own_gmax_spatial_end_field": 5.354130823894521e-05,
+    "own_gmax_M00_end_field": 9.136392111613878e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 27.251256695411595,
+    "claimed_E_seed": 27.251256695411595,
+    "own_certified": true
+   },
+   "P4_d0.3_w25_n32_L48_k2.299e-03": {
+    "own_split": {
+     "E_curv": 6.721488019935552,
+     "V4": 2.3930983574160947,
+     "E_quartic": 9.114586377351646,
+     "E_kappa": 883.3111033889468,
+     "E_kappa_bondsum": 883.3111033889469,
+     "kappaE_kappa": 2.030968562042748,
+     "E_total": 11.145554939394394
+    },
+    "claimed_end_split": {
+     "E_quartic": 9.114586377351646,
+     "E_curv": 6.721488019935551,
+     "V4": 2.3930983574160947,
+     "E_kappa": 883.3111033889468,
+     "kappaE_kappa": 2.030968562042748,
+     "E_total": 11.145554939394394
+    },
+    "max_abs_dev_vs_end_split": 8.881784197001252e-16,
+    "E_quartic_stack_energy_parts": 9.114586377351646,
+    "E_kappa_bondsum_minus_branch": 1.1368683772161603e-13,
+    "gate_from_chunks": {
+     "first_gate_iters": 1750,
+     "last_iters": 1750,
+     "last_fmax": 3.7624522470769005e-05,
+     "last_drop": 5.469779239319905e-05,
+     "last_drop_rel": 4.907588064535719e-06,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 1750,
+    "kick_from_chunks": {
+     "E_kicked_start": 11.368466009012444,
+     "E_after": 11.145540203764668,
+     "E_after_minus_ref": -1.473562972620357e-05,
+     "fmax_after": 1.8055811807653004e-05,
+     "last_drop": 3.4788176854760877e-06,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 500
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 5.469779239319905e-05,
+    "own_gmax_spatial_end_field": 3.7624522470769005e-05,
+    "own_gmax_M00_end_field": 9.148498208988443e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 28.029374789309962,
+    "claimed_E_seed": 28.029374789309962,
+    "own_certified": true
+   },
+   "P1_1_1_1_d0.3_w25_n32_L48_k9.197e-03": {
+    "own_split": {
+     "E_curv": 6.462362866048927,
+     "V4": 2.73607356450583,
+     "E_quartic": 9.198436430554757,
+     "E_kappa": 806.6505519137196,
+     "E_kappa_bondsum": 806.6505519137195,
+     "kappaE_kappa": 7.41882177278514,
+     "E_total": 16.617258203339897
+    },
+    "claimed_end_split": {
+     "E_quartic": 9.198436430554755,
+     "E_curv": 6.4623628660489265,
+     "V4": 2.7360735645058294,
+     "E_kappa": 806.6505519137196,
+     "kappaE_kappa": 7.41882177278514,
+     "E_total": 16.617258203339894
+    },
+    "max_abs_dev_vs_end_split": 3.552713678800501e-15,
+    "E_quartic_stack_energy_parts": 9.198436430554755,
+    "E_kappa_bondsum_minus_branch": -1.1368683772161603e-13,
+    "gate_from_chunks": {
+     "first_gate_iters": 750,
+     "last_iters": 750,
+     "last_fmax": 7.326972197650933e-06,
+     "last_drop": 2.4331729711946082e-05,
+     "last_drop_rel": 1.4642445470971655e-06,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 750,
+    "kick_from_chunks": {
+     "E_kicked_start": 16.949603321348864,
+     "E_after": 16.617258174848597,
+     "E_after_minus_ref": -2.8491296433230673e-08,
+     "fmax_after": 1.9211045438694355e-08,
+     "last_drop": 7.966001192016847e-10,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 484
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 2.4331729711946082e-05,
+    "own_gmax_spatial_end_field": 7.326972197650933e-06,
+    "own_gmax_M00_end_field": 9.127068895586551e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 33.24710540983102,
+    "claimed_E_seed": 33.24710540983102,
+    "own_certified": true
+   },
+   "P2_1_1_d0.3_w25_n32_L48_k9.197e-03": {
+    "own_split": {
+     "E_curv": 6.270280565239312,
+     "V4": 2.8254973872571156,
+     "E_quartic": 9.095777952496427,
+     "E_kappa": 762.9719741057091,
+     "E_kappa_bondsum": 762.971974105709,
+     "kappaE_kappa": 7.0171068253675895,
+     "E_total": 16.112884777864018
+    },
+    "claimed_end_split": {
+     "E_quartic": 9.095777952496428,
+     "E_curv": 6.270280565239313,
+     "V4": 2.825497387257116,
+     "E_kappa": 762.9719741057091,
+     "kappaE_kappa": 7.0171068253675895,
+     "E_total": 16.112884777864018
+    },
+    "max_abs_dev_vs_end_split": 1.7763568394002505e-15,
+    "E_quartic_stack_energy_parts": 9.095777952496428,
+    "E_kappa_bondsum_minus_branch": -1.1368683772161603e-13,
+    "gate_from_chunks": {
+     "first_gate_iters": 750,
+     "last_iters": 750,
+     "last_fmax": 1.1071859404726287e-06,
+     "last_drop": 3.1900700037112983e-06,
+     "last_drop_rel": 1.9798254922630842e-07,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 750,
+    "kick_from_chunks": {
+     "E_kicked_start": 16.435142422696508,
+     "E_after": 16.11288477630302,
+     "E_after_minus_ref": -1.5609984416187217e-09,
+     "fmax_after": 3.233914947745227e-08,
+     "last_drop": 6.566480692526966e-11,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 386
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 3.1900700037112983e-06,
+    "own_gmax_spatial_end_field": 1.1071859404725203e-06,
+    "own_gmax_M00_end_field": 9.142165188942564e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 33.75126468739155,
+    "claimed_E_seed": 33.75126468739155,
+    "own_certified": true
+   },
+   "P2_2_d0.3_w25_n32_L48_k9.197e-03": {
+    "own_split": {
+     "E_curv": 6.543012232161084,
+     "V4": 2.7257488570561943,
+     "E_quartic": 9.268761089217278,
+     "E_kappa": 781.058739075745,
+     "E_kappa_bondsum": 781.0587390757449,
+     "kappaE_kappa": 7.183452072935587,
+     "E_total": 16.452213162152866
+    },
+    "claimed_end_split": {
+     "E_quartic": 9.268761089217277,
+     "E_curv": 6.543012232161083,
+     "V4": 2.725748857056194,
+     "E_kappa": 781.058739075745,
+     "kappaE_kappa": 7.183452072935587,
+     "E_total": 16.452213162152866
+    },
+    "max_abs_dev_vs_end_split": 1.7763568394002505e-15,
+    "E_quartic_stack_energy_parts": 9.268761089217277,
+    "E_kappa_bondsum_minus_branch": -1.1368683772161603e-13,
+    "gate_from_chunks": {
+     "first_gate_iters": 445,
+     "last_iters": 445,
+     "last_fmax": 9.256384541072183e-09,
+     "last_drop": 2.8412668839905564e-07,
+     "last_drop_rel": 1.7258060357465133e-08,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 445,
+    "kick_from_chunks": {
+     "E_kicked_start": 16.79268789345112,
+     "E_after": 16.452213162152866,
+     "E_after_minus_ref": -0.011206394503975758,
+     "fmax_after": 0.001064485743042355,
+     "last_drop": 0.01120639445566951,
+     "own_label": "SADDLE",
+     "own_reconverged": false,
+     "kick_iters": 500
+    },
+    "claimed_kick_label": "SADDLE",
+    "claimed_reconverged": false,
+    "claimed_E_err": 0.01120639445566951,
+    "own_gmax_spatial_end_field": 0.001064485743042355,
+    "own_gmax_M00_end_field": 9.161625832976306e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": false,
+    "seed_E_total_own": 33.929693305027726,
+    "claimed_E_seed": 33.929693305027726,
+    "own_certified": false
+   },
+   "P3_1_d0.3_w25_n32_L48_k9.197e-03": {
+    "own_split": {
+     "E_curv": 6.298869023099169,
+     "V4": 2.856272863014223,
+     "E_quartic": 9.155141886113391,
+     "E_kappa": 779.9167207838263,
+     "E_kappa_bondsum": 779.9167207838265,
+     "kappaE_kappa": 7.17294885050686,
+     "E_total": 16.32809073662025
+    },
+    "claimed_end_split": {
+     "E_quartic": 9.155141886113391,
+     "E_curv": 6.298869023099169,
+     "V4": 2.8562728630142225,
+     "E_kappa": 779.9167207838263,
+     "kappaE_kappa": 7.17294885050686,
+     "E_total": 16.32809073662025
+    },
+    "max_abs_dev_vs_end_split": 4.440892098500626e-16,
+    "E_quartic_stack_energy_parts": 9.155141886113391,
+    "E_kappa_bondsum_minus_branch": 1.1368683772161603e-13,
+    "gate_from_chunks": {
+     "first_gate_iters": 750,
+     "last_iters": 750,
+     "last_fmax": 2.85090493371519e-07,
+     "last_drop": 6.995803936149514e-07,
+     "last_drop_rel": 4.2845204923191006e-08,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 750,
+    "kick_from_chunks": {
+     "E_kicked_start": 16.654652503208567,
+     "E_after": 16.328090736431207,
+     "E_after_minus_ref": -1.8904344756265345e-10,
+     "fmax_after": 2.4561976637478555e-08,
+     "last_drop": 8.828848763187125e-11,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 398
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 6.995803936149514e-07,
+    "own_gmax_spatial_end_field": 2.8509049337184424e-07,
+    "own_gmax_M00_end_field": 9.143336010195013e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 34.1731195840082,
+    "claimed_E_seed": 34.1731195840082,
+    "own_certified": true
+   },
+   "P4_d0.3_w25_n32_L48_k9.197e-03": {
+    "own_split": {
+     "E_curv": 6.604966783180392,
+     "V4": 2.7955634726290692,
+     "E_quartic": 9.40053025580946,
+     "E_kappa": 800.1400913844079,
+     "E_kappa_bondsum": 800.1400913844079,
+     "kappaE_kappa": 7.358944610101586,
+     "E_total": 16.759474865911045
+    },
+    "claimed_end_split": {
+     "E_quartic": 9.40053025580946,
+     "E_curv": 6.604966783180392,
+     "V4": 2.7955634726290692,
+     "E_kappa": 800.1400913844079,
+     "kappaE_kappa": 7.358944610101586,
+     "E_total": 16.759474865911045
+    },
+    "max_abs_dev_vs_end_split": 0.0,
+    "E_quartic_stack_energy_parts": 9.40053025580946,
+    "E_kappa_bondsum_minus_branch": 0.0,
+    "gate_from_chunks": {
+     "first_gate_iters": 750,
+     "last_iters": 750,
+     "last_fmax": 1.945955129540721e-07,
+     "last_drop": 2.5998184227660204e-06,
+     "last_drop_rel": 1.5512529142867594e-07,
+     "last_at_gate": true
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_iters": 750,
+    "kick_from_chunks": {
+     "E_kicked_start": 17.094664314418587,
+     "E_after": 16.75947486539124,
+     "E_after_minus_ref": -5.198046437726589e-10,
+     "fmax_after": 3.131868855070106e-08,
+     "last_drop": 9.299938596996071e-11,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 362
+    },
+    "claimed_kick_label": "STABLE",
+    "claimed_reconverged": true,
+    "claimed_E_err": 2.5998184227660204e-06,
+    "own_gmax_spatial_end_field": 1.9459551295428895e-07,
+    "own_gmax_M00_end_field": 9.163345707219328e-10,
+    "pin_shell_equals_seed": true,
+    "end_equals_gate_field": true,
+    "seed_E_total_own": 35.320686596836524,
+    "claimed_E_seed": 35.320686596836524,
+    "own_certified": true
+   },
+   "own_descent_2_2_kappa_b": {
+    "E_start": 16.452213162152866,
+    "E_end": 16.451322654552747,
+    "drop": 0.0008905076001184398,
+    "nit": 300,
+    "nfev": 320,
+    "gmax_spatial_end": 0.000950008264009817,
+    "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "E_every_50_evals": [
+     16.452213162152866,
+     16.451833668142534,
+     16.451641694987195,
+     16.451538487304234,
+     16.45145692595421,
+     16.451361889024092,
+     16.45134854407923
+    ],
+    "partition_R3_after": [
+     4
+    ],
+    "partition_R9_after": [
+     4
+    ],
+    "split_after": {
+     "E_curv": 6.5390267107546745,
+     "V4": 2.7305101506552756,
+     "E_quartic": 9.26953686140995,
+     "E_kappa": 780.87756401107,
+     "E_kappa_bondsum": 780.87756401107,
+     "kappaE_kappa": 7.181785793142797,
+     "E_total": 16.451322654552747
+    },
+    "E_ref_gate": 16.46341955665684,
+    "E_end_claimed": 16.452213162152866,
+    "E_211_kappa_b": 16.112884777864018,
+    "E_31_kappa_b": 16.32809073662025
+   }
+  },
+  "2": {
+   "per_kappa": {
+    "a": {
+     "kappa": 0.002299,
+     "E_total_own": {
+      "1_1_1_1": 10.85001670426928,
+      "2_1_1": 10.761021301596358,
+      "2_2": 10.975751302284747,
+      "3_1": 10.848742662800065,
+      "4": 11.145554939394394
+     },
+     "E_quartic_own": {
+      "1_1_1_1": 8.741865208694382,
+      "2_1_1": 8.86620573841125,
+      "2_2": 8.987174909459409,
+      "3_1": 8.90128202047434,
+      "4": 9.114586377351646
+     },
+     "E_kappa_own": {
+      "1_1_1_1": 916.8795905902002,
+      "2_1_1": 824.0952898611922,
+      "2_2": 864.8738540556448,
+      "3_1": 846.9917461691734,
+      "4": 883.3111033889468
+     },
+     "E_err_claimed": {
+      "1_1_1_1": 6.694219694125536e-06,
+      "2_1_1": 7.66730424039963e-06,
+      "2_2": 3.464880293790884e-07,
+      "3_1": 2.5188146638654985e-05,
+      "4": 5.469779239319905e-05
+     },
+     "order_total": [
+      "2_1_1",
+      "3_1",
+      "1_1_1_1",
+      "2_2",
+      "4"
+     ],
+     "order_quartic": [
+      "1_1_1_1",
+      "2_1_1",
+      "3_1",
+      "2_2",
+      "4"
+     ],
+     "order_by_sum_k2": [
+      "1_1_1_1",
+      "2_1_1",
+      "2_2",
+      "3_1",
+      "4"
+     ],
+     "inversions_vs_sum_k2": [
+      {
+       "pair": [
+        "1_1_1_1",
+        "2_1_1"
+       ],
+       "E_a_minus_E_b": 0.08899540267292139,
+       "two_errors": 1.4361523934525167e-05,
+       "resolved": true
+      },
+      {
+       "pair": [
+        "1_1_1_1",
+        "3_1"
+       ],
+       "E_a_minus_E_b": 0.001274041469214282,
+       "two_errors": 3.188236633278052e-05,
+       "resolved": true
+      },
+      {
+       "pair": [
+        "2_2",
+        "3_1"
+       ],
+       "E_a_minus_E_b": 0.1270086394846821,
+       "two_errors": 2.5534634668034073e-05,
+       "resolved": true
+      }
+     ],
+     "spread_total": 0.38453363779803595,
+     "spread_kappaE_kappa": 0.2133111073759894,
+     "d_1111_vs_211": 0.08899540267292139,
+     "d_31_vs_1111": -0.001274041469214282,
+     "two_err_31_1111": 3.188236633278052e-05
+    },
+    "b": {
+     "kappa": 0.009197,
+     "E_total_own": {
+      "1_1_1_1": 16.617258203339897,
+      "2_1_1": 16.112884777864018,
+      "2_2": 16.452213162152866,
+      "3_1": 16.32809073662025,
+      "4": 16.759474865911045
+     },
+     "E_quartic_own": {
+      "1_1_1_1": 9.198436430554757,
+      "2_1_1": 9.095777952496427,
+      "2_2": 9.268761089217278,
+      "3_1": 9.155141886113391,
+      "4": 9.40053025580946
+     },
+     "E_kappa_own": {
+      "1_1_1_1": 806.6505519137196,
+      "2_1_1": 762.9719741057091,
+      "2_2": 781.058739075745,
+      "3_1": 779.9167207838263,
+      "4": 800.1400913844079
+     },
+     "E_err_claimed": {
+      "1_1_1_1": 2.4331729711946082e-05,
+      "2_1_1": 3.1900700037112983e-06,
+      "2_2": 0.01120639445566951,
+      "3_1": 6.995803936149514e-07,
+      "4": 2.5998184227660204e-06
+     },
+     "order_total": [
+      "2_1_1",
+      "3_1",
+      "2_2",
+      "1_1_1_1",
+      "4"
+     ],
+     "order_quartic": [
+      "2_1_1",
+      "3_1",
+      "1_1_1_1",
+      "2_2",
+      "4"
+     ],
+     "order_by_sum_k2": [
+      "1_1_1_1",
+      "2_1_1",
+      "2_2",
+      "3_1",
+      "4"
+     ],
+     "inversions_vs_sum_k2": [
+      {
+       "pair": [
+        "1_1_1_1",
+        "2_1_1"
+       ],
+       "E_a_minus_E_b": 0.5043734254758796,
+       "two_errors": 2.752179971565738e-05,
+       "resolved": true
+      },
+      {
+       "pair": [
+        "1_1_1_1",
+        "2_2"
+       ],
+       "E_a_minus_E_b": 0.16504504118703167,
+       "two_errors": 0.011230726185381457,
+       "resolved": true
+      },
+      {
+       "pair": [
+        "1_1_1_1",
+        "3_1"
+       ],
+       "E_a_minus_E_b": 0.2891674667196469,
+       "two_errors": 2.5031310105561033e-05,
+       "resolved": true
+      },
+      {
+       "pair": [
+        "2_2",
+        "3_1"
+       ],
+       "E_a_minus_E_b": 0.12412242553261521,
+       "two_errors": 0.011207094036063125,
+       "resolved": true
+      }
+     ],
+     "spread_total": 0.6465900880470272,
+     "spread_kappaE_kappa": 0.4017118801002722,
+     "d_1111_vs_211": 0.5043734254758796,
+     "d_31_vs_1111": -0.2891674667196469,
+     "two_err_31_1111": 2.5031310105561033e-05
+    }
+   },
+   "E_kappa_anatomy_kappa_a": {
+    "E_kappa_hedgehog_seed_axes_1_0.3_0": 1045.4553630622386,
+    "E_kappa_director_only_seed_axes_1_0.15_0.15": 899.2145490755256,
+    "channels_hedgehog_seed_1_0.3_0": {
+     "eigenvalue": 11.258222294830182,
+     "director": 916.7305719245568,
+     "pair": 117.46656884285156,
+     "sum": 1045.4553630622386,
+     "E_kappa_check": 1045.4553630622383
+    },
+    "channels_director_only_seed": {
+     "eigenvalue": 8.347054168886576,
+     "director": 888.8679700352066,
+     "pair": 1.9995248714323965,
+     "sum": 899.2145490755255,
+     "E_kappa_check": 899.2145490755256
+    },
+    "per_part": {
+     "1_1_1_1": {
+      "E_kappa_end": 916.8795905902002,
+      "E_kappa_seed": 961.5280769667631,
+      "channels_end": {
+       "eigenvalue": 75.16142072695862,
+       "director": 738.5846773445621,
+       "pair": 103.13349251867953,
+       "sum": 916.8795905902002,
+       "E_kappa_check": 916.8795905902002
+      },
+      "channels_seed": {
+       "eigenvalue": 17.621750610790055,
+       "director": 914.085839371901,
+       "pair": 29.820486984072176,
+       "sum": 961.5280769667633,
+       "E_kappa_check": 961.5280769667631
+      },
+      "regions_end": {
+       "total": 916.8795905902002,
+       "director_core_r<4.5": 3.348370343736448,
+       "pair_cores_gap<delta/2": 22.829235059878023,
+       "pair_core_cells": 666,
+       "pin_shell": 143.33670998682322,
+       "rest": 747.3652751997627
+      },
+      "regions_seed": {
+       "total": 961.5280769667631,
+       "director_core_r<4.5": 36.088326055808366,
+       "pair_cores_gap<delta/2": 19.877147533124074,
+       "pair_core_cells": 176,
+       "pin_shell": 138.68265051980063,
+       "rest": 766.87995285803
+      }
+     },
+     "2_1_1": {
+      "E_kappa_end": 824.0952898611922,
+      "E_kappa_seed": 982.3760683548321,
+      "channels_end": {
+       "eigenvalue": 67.99906211142056,
+       "director": 657.9326602818082,
+       "pair": 98.16356746796347,
+       "sum": 824.0952898611923,
+       "E_kappa_check": 824.0952898611922
+      },
+      "channels_seed": {
+       "eigenvalue": 16.15240398561482,
+       "director": 913.92139785473,
+       "pair": 52.30226651448717,
+       "sum": 982.376068354832,
+       "E_kappa_check": 982.376068354832
+      },
+      "regions_end": {
+       "total": 824.0952898611922,
+       "director_core_r<4.5": 3.1412755148637457,
+       "pair_cores_gap<delta/2": 19.847927743425288,
+       "pair_core_cells": 677,
+       "pin_shell": 148.75130908089264,
+       "rest": 652.3547775220104
+      },
+      "regions_seed": {
+       "total": 982.3760683548321,
+       "director_core_r<4.5": 36.09729312089455,
+       "pair_cores_gap<delta/2": 20.87315489389666,
+       "pair_core_cells": 156,
+       "pin_shell": 142.65075505452648,
+       "rest": 782.7548652855144
+      }
+     },
+     "2_2": {
+      "E_kappa_end": 864.8738540556448,
+      "E_kappa_seed": 985.8265330335262,
+      "channels_end": {
+       "eigenvalue": 72.47916685286027,
+       "director": 693.8285490174815,
+       "pair": 98.56613818530306,
+       "sum": 864.8738540556449,
+       "E_kappa_check": 864.8738540556448
+      },
+      "channels_seed": {
+       "eigenvalue": 14.847676850064412,
+       "director": 913.7528795348068,
+       "pair": 57.22597664865508,
+       "sum": 985.8265330335263,
+       "E_kappa_check": 985.8265330335262
+      },
+      "regions_end": {
+       "total": 864.8738540556448,
+       "director_core_r<4.5": 3.1726539731302568,
+       "pair_cores_gap<delta/2": 28.40785028500668,
+       "pair_core_cells": 784,
+       "pin_shell": 151.6483401390043,
+       "rest": 681.6450096585036
+      },
+      "regions_seed": {
+       "total": 985.8265330335262,
+       "director_core_r<4.5": 36.00692935020034,
+       "pair_cores_gap<delta/2": 22.20960308293371,
+       "pair_core_cells": 144,
+       "pin_shell": 143.75165885304932,
+       "rest": 783.8583417473428
+      }
+     },
+     "3_1": {
+      "E_kappa_end": 846.9917461691734,
+      "E_kappa_seed": 1003.4880992091195,
+      "channels_end": {
+       "eigenvalue": 71.39828920276533,
+       "director": 673.8013275957383,
+       "pair": 101.79212937066983,
+       "sum": 846.9917461691734,
+       "E_kappa_check": 846.9917461691733
+      },
+      "channels_seed": {
+       "eigenvalue": 14.597223436077407,
+       "director": 913.669893114033,
+       "pair": 75.220982659009,
+       "sum": 1003.4880992091195,
+       "E_kappa_check": 1003.4880992091196
+      },
+      "regions_end": {
+       "total": 846.9917461691734,
+       "director_core_r<4.5": 2.904603765023489,
+       "pair_cores_gap<delta/2": 24.742885193348034,
+       "pair_core_cells": 769,
+       "pin_shell": 153.88072104083236,
+       "rest": 665.4635361699695
+      },
+      "regions_seed": {
+       "total": 1003.4880992091195,
+       "director_core_r<4.5": 36.05707776426909,
+       "pair_cores_gap<delta/2": 25.394178139434924,
+       "pair_core_cells": 196,
+       "pin_shell": 147.69063518002292,
+       "rest": 794.3462081253925
+      }
+     },
+     "4": {
+      "E_kappa_end": 883.3111033889468,
+      "E_kappa_seed": 1057.0484773007827,
+      "channels_end": {
+       "eigenvalue": 75.91647944282418,
+       "director": 683.7723884902571,
+       "pair": 123.62223545586556,
+       "sum": 883.3111033889468,
+       "E_kappa_check": 883.3111033889469
+      },
+      "channels_seed": {
+       "eigenvalue": 12.903838005209767,
+       "director": 913.4122167995854,
+       "pair": 130.73242249598758,
+       "sum": 1057.0484773007827,
+       "E_kappa_check": 1057.048477300783
+      },
+      "regions_end": {
+       "total": 883.3111033889468,
+       "director_core_r<4.5": 3.04673410735598,
+       "pair_cores_gap<delta/2": 33.611486672710214,
+       "pair_core_cells": 1073,
+       "pin_shell": 165.6751073974963,
+       "rest": 680.9777752113844
+      },
+      "regions_seed": {
+       "total": 1057.0484773007827,
+       "director_core_r<4.5": 36.28825146495884,
+       "pair_cores_gap<delta/2": 26.825997283307345,
+       "pair_core_cells": 196,
+       "pin_shell": 158.53911764347896,
+       "rest": 835.3951109090376
+      }
+     }
+    },
+    "log_term_per_unit_k2_16pi_b0^2_ln(L/xi)": {
+     "b0": 0.15,
+     "xi": 1.5,
+     "ln(Rbox/xi)": 2.7035958507528295,
+     "per_unit_k2": 3.057694870680337,
+     "predicted_spread_1111_to_4": 9.173084612041011
+    }
+   }
+  },
+  "3": {
+   "E_kappa0_R26_4_claimed": {
+    "1_1_1_1": 8.379913414985914,
+    "2_1_1": 8.119317808614188,
+    "2_2": 8.388130054207696,
+    "3_1": 8.226085921532048,
+    "4": 8.558571723498371
+   },
+   "own_reads_of_R26_4_end_fields": {
+    "1_1_1_1": {
+     "E_quartic_own": 8.379913414985914,
+     "E_kappa_own": 2559.391625738658,
+     "gate_label": "AT_GATE",
+     "E_err": 6.251709443461095e-07
+    },
+    "2_1_1": {
+     "E_quartic_own": 8.119317808614188,
+     "E_kappa_own": 4227.874330291192,
+     "gate_label": "FALLING",
+     "E_err": 0.001313913610319517
+    },
+    "2_2": {
+     "E_quartic_own": 8.388130054207696,
+     "E_kappa_own": 3135.022655343677,
+     "gate_label": "AT_GATE",
+     "E_err": 1.4208185827868647e-06
+    },
+    "3_1": {
+     "E_quartic_own": 8.226085921532048,
+     "E_kappa_own": 3345.2259051443743,
+     "gate_label": "AT_GATE",
+     "E_err": 1.987932062341713e-05
+    },
+    "4": {
+     "E_quartic_own": 8.558571723498371,
+     "E_kappa_own": 3830.632563732022,
+     "gate_label": "FALLING",
+     "E_err": 0.0012411597865060742
+    }
+   },
+   "order_kappa0": [
+    "2_1_1",
+    "3_1",
+    "1_1_1_1",
+    "2_2",
+    "4"
+   ],
+   "order_kappa_a": [
+    "2_1_1",
+    "3_1",
+    "1_1_1_1",
+    "2_2",
+    "4"
+   ],
+   "order_kappa_b": [
+    "2_1_1",
+    "3_1",
+    "2_2",
+    "1_1_1_1",
+    "4"
+   ],
+   "spread_kappa0": 0.4392539148841834,
+   "spread_kappa_a": 0.38453363779803595,
+   "spread_kappa_b": 0.6465900880470272,
+   "E_kappa_of_kappa0_end_fields": {
+    "1_1_1_1": 2559.391625738658,
+    "2_1_1": 4227.874330291192,
+    "2_2": 3135.022655343677,
+    "3_1": 3345.2259051443743,
+    "4": 3830.632563732022
+   },
+   "kappa0_uncertified_rows": [
+    "2_1_1",
+    "4"
+   ]
+  },
+  "4": {
+   "1_1_1_1": {
+    "reader_by_sphere": {
+     "R3": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 1746,
+      "flagged": []
+     },
+     "R4.5": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 1622,
+      "flagged": []
+     },
+     "R6": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 1538,
+      "flagged": []
+     },
+     "R9": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 1236,
+      "flagged": []
+     },
+     "R12": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 796,
+      "flagged": []
+     },
+     "R15": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 344,
+      "flagged": []
+     },
+     "R18": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 8,
+      "flagged": []
+     },
+     "R21": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 16,
+      "flagged": []
+     }
+    },
+    "claimed_interior": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "claimed_r9": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "own_R3_matches_claimed_interior": true,
+    "own_R9_matches_claimed_r9": true,
+    "pair_gap_closure_clusters": {
+     "R3": {
+      "R": 3.0,
+      "shell_cells": 80,
+      "closed_cells": 2,
+      "clusters": 2,
+      "list": [
+       {
+        "cells": 1,
+        "xyz": [
+         -0.75,
+         -2.25,
+         2.25
+        ],
+        "theta_deg": 46.5,
+        "phi_deg": -108.4,
+        "min_gap": 0.015392172749737504
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         2.25,
+         0.75,
+         -2.25
+        ],
+        "theta_deg": 133.5,
+        "phi_deg": 18.4,
+        "min_gap": 0.015392263252950872
+       }
+      ]
+     },
+     "R6": {
+      "R": 6.0,
+      "shell_cells": 344,
+      "closed_cells": 2,
+      "clusters": 2,
+      "list": [
+       {
+        "cells": 1,
+        "xyz": [
+         -0.75,
+         -3.75,
+         5.25
+        ],
+        "theta_deg": 36.1,
+        "phi_deg": -101.3,
+        "min_gap": 0.0266100451875724
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         3.75,
+         0.75,
+         -5.25
+        ],
+        "theta_deg": 143.9,
+        "phi_deg": 11.3,
+        "min_gap": 0.026609880061372382
+       }
+      ]
+     },
+     "R9": {
+      "R": 9.0,
+      "shell_cells": 824,
+      "closed_cells": 2,
+      "clusters": 2,
+      "list": [
+       {
+        "cells": 1,
+        "xyz": [
+         -0.75,
+         -5.25,
+         6.75
+        ],
+        "theta_deg": 38.2,
+        "phi_deg": -98.1,
+        "min_gap": 0.023042756596273334
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         5.25,
+         0.75,
+         -6.75
+        ],
+        "theta_deg": 141.8,
+        "phi_deg": 8.1,
+        "min_gap": 0.02304332254330485
+       }
+      ]
+     }
+    },
+    "own_R21_matches_claimed_interior": true,
+    "r9_cluster_count_by_gap_threshold_x_delta": {
+     "frac0.1": 2,
+     "frac0.25": 4,
+     "frac0.5": 4
+    },
+    "r9_carriers_claimed": 4
+   },
+   "2_1_1": {
+    "reader_by_sphere": {
+     "R3": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 48,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R4.5": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 216,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R6": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 312,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R9": {
+      "partition": [
+       3,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 198,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R12": {
+      "partition": [
+       2,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 188,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R15": {
+      "partition": [
+       2,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 71,
+      "flagged": []
+     },
+     "R18": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 12,
+      "flagged": []
+     },
+     "R21": {
+      "partition": [
+       2,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 6,
+      "flagged": []
+     }
+    },
+    "claimed_interior": [
+     2,
+     1,
+     1
+    ],
+    "claimed_r9": [
+     3,
+     1
+    ],
+    "own_R3_matches_claimed_interior": false,
+    "own_R9_matches_claimed_r9": true,
+    "pair_gap_closure_clusters": {
+     "R3": {
+      "R": 3.0,
+      "shell_cells": 80,
+      "closed_cells": 1,
+      "clusters": 1,
+      "list": [
+       {
+        "cells": 1,
+        "xyz": [
+         2.25,
+         -0.75,
+         -2.25
+        ],
+        "theta_deg": 133.5,
+        "phi_deg": -18.4,
+        "min_gap": 0.02325910733102149
+       }
+      ]
+     },
+     "R6": {
+      "R": 6.0,
+      "shell_cells": 344,
+      "closed_cells": 0,
+      "clusters": 0,
+      "list": []
+     },
+     "R9": {
+      "R": 9.0,
+      "shell_cells": 824,
+      "closed_cells": 3,
+      "clusters": 2,
+      "list": [
+       {
+        "cells": 2,
+        "xyz": [
+         7.5,
+         -0.75,
+         -4.5
+        ],
+        "theta_deg": 120.8,
+        "phi_deg": -5.7,
+        "min_gap": 0.015781608984493267
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         -6.75,
+         0.75,
+         -3.75
+        ],
+        "theta_deg": 118.9,
+        "phi_deg": 173.7,
+        "min_gap": 0.024938753459191554
+       }
+      ]
+     }
+    },
+    "own_R21_matches_claimed_interior": true,
+    "r9_cluster_count_by_gap_threshold_x_delta": {
+     "frac0.1": 2,
+     "frac0.25": 4,
+     "frac0.5": 2
+    },
+    "r9_carriers_claimed": 2
+   },
+   "2_2": {
+    "reader_by_sphere": {
+     "R3": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 168,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R4.5": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 312,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R6": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 456,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R9": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 48,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R12": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 172,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R15": {
+      "partition": [
+       2,
+       2
+      ],
+      "total": 4.0,
+      "unreadable": 0,
+      "flagged": []
+     },
+     "R18": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 0,
+      "flagged": []
+     },
+     "R21": {
+      "partition": [
+       2,
+       2
+      ],
+      "total": 4.0,
+      "unreadable": 40,
+      "flagged": []
+     }
+    },
+    "claimed_interior": [
+     2,
+     2
+    ],
+    "claimed_r9": [
+     4
+    ],
+    "own_R3_matches_claimed_interior": false,
+    "own_R9_matches_claimed_r9": true,
+    "pair_gap_closure_clusters": {
+     "R3": {
+      "R": 3.0,
+      "shell_cells": 80,
+      "closed_cells": 0,
+      "clusters": 0,
+      "list": []
+     },
+     "R6": {
+      "R": 6.0,
+      "shell_cells": 344,
+      "closed_cells": 4,
+      "clusters": 4,
+      "list": [
+       {
+        "cells": 1,
+        "xyz": [
+         -3.75,
+         2.25,
+         3.75
+        ],
+        "theta_deg": 49.4,
+        "phi_deg": 149.0,
+        "min_gap": 0.029845354658831175
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         -2.25,
+         3.75,
+         -3.75
+        ],
+        "theta_deg": 130.6,
+        "phi_deg": 121.0,
+        "min_gap": 0.029847387210165083
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         2.25,
+         -3.75,
+         3.75
+        ],
+        "theta_deg": 49.4,
+        "phi_deg": -59.0,
+        "min_gap": 0.0298478329301064
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         3.75,
+         -2.25,
+         -3.75
+        ],
+        "theta_deg": 130.6,
+        "phi_deg": -31.0,
+        "min_gap": 0.029844966900018227
+       }
+      ]
+     },
+     "R9": {
+      "R": 9.0,
+      "shell_cells": 824,
+      "closed_cells": 0,
+      "clusters": 0,
+      "list": []
+     }
+    },
+    "own_R21_matches_claimed_interior": true,
+    "r9_cluster_count_by_gap_threshold_x_delta": {
+     "frac0.1": 0,
+     "frac0.25": 4,
+     "frac0.5": 4
+    },
+    "r9_carriers_claimed": 1
+   },
+   "3_1": {
+    "reader_by_sphere": {
+     "R3": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 1971,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R4.5": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 1944,
+      "flagged": []
+     },
+     "R6": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 1825,
+      "flagged": []
+     },
+     "R9": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 1480,
+      "flagged": []
+     },
+     "R12": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 966,
+      "flagged": []
+     },
+     "R15": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 341,
+      "flagged": []
+     },
+     "R18": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 14,
+      "flagged": []
+     },
+     "R21": {
+      "partition": [
+       3,
+       1,
+       1,
+       -1
+      ],
+      "total": 4.0,
+      "unreadable": 0,
+      "flagged": []
+     }
+    },
+    "claimed_interior": [
+     3,
+     1,
+     1,
+     -1
+    ],
+    "claimed_r9": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "own_R3_matches_claimed_interior": false,
+    "own_R9_matches_claimed_r9": true,
+    "pair_gap_closure_clusters": {
+     "R3": {
+      "R": 3.0,
+      "shell_cells": 80,
+      "closed_cells": 2,
+      "clusters": 1,
+      "list": [
+       {
+        "cells": 2,
+        "xyz": [
+         -2.25,
+         0.0,
+         -1.5
+        ],
+        "theta_deg": 123.7,
+        "phi_deg": 180.0,
+        "min_gap": 0.01819511535637336
+       }
+      ]
+     },
+     "R6": {
+      "R": 6.0,
+      "shell_cells": 344,
+      "closed_cells": 2,
+      "clusters": 2,
+      "list": [
+       {
+        "cells": 1,
+        "xyz": [
+         -3.75,
+         2.25,
+         -3.75
+        ],
+        "theta_deg": 130.6,
+        "phi_deg": 149.0,
+        "min_gap": 0.029779279439412026
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         0.75,
+         -0.75,
+         5.25
+        ],
+        "theta_deg": 11.4,
+        "phi_deg": -45.0,
+        "min_gap": 0.024224641116657647
+       }
+      ]
+     },
+     "R9": {
+      "R": 9.0,
+      "shell_cells": 824,
+      "closed_cells": 4,
+      "clusters": 3,
+      "list": [
+       {
+        "cells": 2,
+        "xyz": [
+         -6.0,
+         -3.0,
+         -6.0
+        ],
+        "theta_deg": 131.8,
+        "phi_deg": -153.4,
+        "min_gap": 0.023665370822315096
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         -5.25,
+         3.75,
+         -6.75
+        ],
+        "theta_deg": 136.3,
+        "phi_deg": 144.5,
+        "min_gap": 0.023077440099727925
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         9.75,
+         -0.75,
+         0.75
+        ],
+        "theta_deg": 85.6,
+        "phi_deg": -4.4,
+        "min_gap": 0.02400608597324516
+       }
+      ]
+     }
+    },
+    "own_R21_matches_claimed_interior": true,
+    "r9_cluster_count_by_gap_threshold_x_delta": {
+     "frac0.1": 3,
+     "frac0.25": 4,
+     "frac0.5": 3
+    },
+    "r9_carriers_claimed": 4
+   },
+   "4": {
+    "reader_by_sphere": {
+     "R3": {
+      "partition": [
+       4
+      ],
+      "total": 4.0,
+      "unreadable": 306,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R4.5": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 254,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R6": {
+      "partition": [
+       2,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 179,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R9": {
+      "partition": [
+       2,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 145,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R12": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 218,
+      "flagged": [
+       "N",
+       "S"
+      ]
+     },
+     "R15": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 243,
+      "flagged": []
+     },
+     "R18": {
+      "partition": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "total": 4.0,
+      "unreadable": 8,
+      "flagged": []
+     },
+     "R21": {
+      "partition": [
+       4,
+       1,
+       1,
+       1,
+       1,
+       -1,
+       -1,
+       -1,
+       -1
+      ],
+      "total": 4.0,
+      "unreadable": 66,
+      "flagged": []
+     }
+    },
+    "claimed_interior": [
+     4,
+     1,
+     1,
+     1,
+     1,
+     -1,
+     -1,
+     -1,
+     -1
+    ],
+    "claimed_r9": [
+     2,
+     1,
+     1
+    ],
+    "own_R3_matches_claimed_interior": false,
+    "own_R9_matches_claimed_r9": true,
+    "pair_gap_closure_clusters": {
+     "R3": {
+      "R": 3.0,
+      "shell_cells": 80,
+      "closed_cells": 0,
+      "clusters": 0,
+      "list": []
+     },
+     "R6": {
+      "R": 6.0,
+      "shell_cells": 344,
+      "closed_cells": 4,
+      "clusters": 2,
+      "list": [
+       {
+        "cells": 2,
+        "xyz": [
+         -3.75,
+         4.5,
+         -0.75
+        ],
+        "theta_deg": 97.3,
+        "phi_deg": 129.8,
+        "min_gap": 0.022509120393641113
+       },
+       {
+        "cells": 2,
+        "xyz": [
+         3.75,
+         4.5,
+         -0.75
+        ],
+        "theta_deg": 97.3,
+        "phi_deg": 50.2,
+        "min_gap": 0.01884409302779108
+       }
+      ]
+     },
+     "R9": {
+      "R": 9.0,
+      "shell_cells": 824,
+      "closed_cells": 2,
+      "clusters": 2,
+      "list": [
+       {
+        "cells": 1,
+        "xyz": [
+         5.25,
+         -6.75,
+         -0.75
+        ],
+        "theta_deg": 95.0,
+        "phi_deg": -52.1,
+        "min_gap": 0.029663297556416196
+       },
+       {
+        "cells": 1,
+        "xyz": [
+         5.25,
+         8.25,
+         -2.25
+        ],
+        "theta_deg": 103.0,
+        "phi_deg": 57.5,
+        "min_gap": 0.009561651398703463
+       }
+      ]
+     }
+    },
+    "own_R21_matches_claimed_interior": true,
+    "r9_cluster_count_by_gap_threshold_x_delta": {
+     "frac0.1": 2,
+     "frac0.25": 4,
+     "frac0.5": 4
+    },
+    "r9_carriers_claimed": 3
+   }
+  },
+  "5": {
+   "P1_1_1_1_d0.3_w25_n32_L48_k2.299e-03": {
+    "beta2_r6_own": 0.028617693493851126,
+    "beta2_r6_stack": 0.028617693493851126,
+    "beta2_r6_claimed": 0.028617693493851126,
+    "virial_own": 0.8703014560105755,
+    "virial_claimed": 0.8703014560105756
+   },
+   "P2_1_1_d0.3_w25_n32_L48_k2.299e-03": {
+    "beta2_r6_own": 0.01889509431496239,
+    "beta2_r6_stack": 0.01889509431496239,
+    "beta2_r6_claimed": 0.01889509431496239,
+    "virial_own": 0.8722170523395252,
+    "virial_claimed": 0.8722170523395248
+   },
+   "P2_2_d0.3_w25_n32_L48_k2.299e-03": {
+    "beta2_r6_own": 0.11116237713187038,
+    "beta2_r6_stack": 0.11116237713187038,
+    "beta2_r6_claimed": 0.11116237713187038,
+    "virial_own": 0.9654649345328378,
+    "virial_claimed": 0.9654649345328377
+   },
+   "P3_1_d0.3_w25_n32_L48_k2.299e-03": {
+    "beta2_r6_own": 0.014212778042746899,
+    "beta2_r6_stack": 0.014212778042746899,
+    "beta2_r6_claimed": 0.014212778042746899,
+    "virial_own": 0.8601549569483296,
+    "virial_claimed": 0.8601549569483296
+   },
+   "P4_d0.3_w25_n32_L48_k2.299e-03": {
+    "beta2_r6_own": 0.1391694078307486,
+    "beta2_r6_stack": 0.1391694078307486,
+    "beta2_r6_claimed": 0.1391694078307486,
+    "virial_own": 0.9362323114309099,
+    "virial_claimed": 0.9362323114309098
+   },
+   "P1_1_1_1_d0.3_w25_n32_L48_k9.197e-03": {
+    "beta2_r6_own": 0.0010948735818745448,
+    "beta2_r6_stack": 0.0010948735818745448,
+    "beta2_r6_claimed": 0.0010948735818745448,
+    "virial_own": 0.7873037418636456,
+    "virial_claimed": 0.7873037418636456
+   },
+   "P2_1_1_d0.3_w25_n32_L48_k9.197e-03": {
+    "beta2_r6_own": 0.0020368607059519928,
+    "beta2_r6_stack": 0.0020368607059519928,
+    "beta2_r6_claimed": 0.0020368607059519928,
+    "virial_own": 0.7397258731056269,
+    "virial_claimed": 0.7397258731056268
+   },
+   "P2_2_d0.3_w25_n32_L48_k9.197e-03": {
+    "beta2_r6_own": 0.037613847065757544,
+    "beta2_r6_stack": 0.037613847065757544,
+    "beta2_r6_claimed": 0.037613847065757544,
+    "virial_own": 0.800148579991522,
+    "virial_claimed": 0.8001485799915221
+   },
+   "P3_1_d0.3_w25_n32_L48_k9.197e-03": {
+    "beta2_r6_own": 0.0013512999204376985,
+    "beta2_r6_stack": 0.0013512999204376985,
+    "beta2_r6_claimed": 0.0013512999204376985,
+    "virial_own": 0.7350918866637944,
+    "virial_claimed": 0.7350918866637945
+   },
+   "P4_d0.3_w25_n32_L48_k9.197e-03": {
+    "beta2_r6_own": 0.08717700266596662,
+    "beta2_r6_stack": 0.08717700266596662,
+    "beta2_r6_claimed": 0.08717700266596662,
+    "virial_own": 0.7875534274036466,
+    "virial_claimed": 0.7875534274036466
+   }
+  },
+  "6": {
+   "3_1": {
+    "mean_abs_director_dot_rhat_on_shell": {
+     "R9": 0.5220637275323441,
+     "R18": 0.6637525202351057
+    },
+    "min_director_gap_pinned_kappa0_R26_4_field": 0.03326061562967397,
+    "source": "stage",
+    "iters_done": 5750,
+    "E_chunks_tail": [
+     [
+      4500,
+      0.2349215896061969
+     ],
+     [
+      4750,
+      0.2254948655400609
+     ],
+     [
+      5000,
+      0.21604319748491463
+     ],
+     [
+      5250,
+      0.20375736928725832
+     ],
+     [
+      5500,
+      0.19239132690444546
+     ],
+     [
+      5750,
+      0.18349624492212246
+     ]
+    ],
+    "E_quartic_own_latest": 0.18349624492212244,
+    "E_kappa_own_latest": 9390.662228164187,
+    "E_seed_own": 24.943969065879394,
+    "pin_shell_moved_maxabs": 0.9377072659901358,
+    "degree": {
+     "R9": {
+      "own_solid_angle": {
+       "R": 9.0,
+       "degree": 2.9999931676311355,
+       "min_abs_align": 0.00015527214525895441,
+       "gap_dir_min": 0.26451034552528807
+      },
+      "stack_degree_reader": 4.999996155336672,
+      "charge_inside_R26_3_density": 0.006206904382593094
+     },
+     "R18": {
+      "own_solid_angle": {
+       "R": 18.0,
+       "degree": 0.9999669820957596,
+       "min_abs_align": 0.00161097289325639,
+       "gap_dir_min": 0.021104619409767822
+      },
+      "stack_degree_reader": -1.8584905751023575e-05,
+      "charge_inside_R26_3_density": 0.041869213295351274
+     }
+    },
+    "charge_inside_r6": 0.003286718897052006,
+    "charge_abs_total_inside_pin": 5.139557394064978,
+    "min_director_gap_cell_xyz": [
+     6.75,
+     9.75,
+     -6.75
+    ],
+    "min_director_gap": 0.28226105300954796,
+    "min_pair_gap": 0.10025914133502169,
+    "mean_block_eigs_r<6": [
+     0.0353144179894208,
+     0.26913735569131864,
+     0.9962964380733096
+    ],
+    "reference_pinned_E_quartic_kappa0_R26_4": 8.226085921532048
+   },
+   "1_1_1_1": {
+    "mean_abs_director_dot_rhat_on_shell": {
+     "R9": 0.6048968180877944,
+     "R18": 0.6714475617024395
+    },
+    "min_director_gap_pinned_kappa0_R26_4_field": 0.005514051245113394,
+    "source": "stage",
+    "iters_done": 5750,
+    "E_chunks_tail": [
+     [
+      4500,
+      0.4779302450685039
+     ],
+     [
+      4750,
+      0.4462197160319057
+     ],
+     [
+      5000,
+      0.41916339740217
+     ],
+     [
+      5250,
+      0.3858168840832125
+     ],
+     [
+      5500,
+      0.3545208950929129
+     ],
+     [
+      5750,
+      0.34174421253715653
+     ]
+    ],
+    "E_quartic_own_latest": 0.3417442125371566,
+    "E_kappa_own_latest": 14925.372618016116,
+    "E_seed_own": 24.403864162897314,
+    "pin_shell_moved_maxabs": 0.836873258881426,
+    "degree": {
+     "R9": {
+      "own_solid_angle": {
+       "R": 9.0,
+       "degree": 6.0000045006731515,
+       "min_abs_align": 0.00040886814739961563,
+       "gap_dir_min": 0.07467467756002666
+      },
+      "stack_degree_reader": 5.000002536063372,
+      "charge_inside_R26_3_density": 0.07660433258780208
+     },
+     "R18": {
+      "own_solid_angle": {
+       "R": 18.0,
+       "degree": -3.9999811219227133,
+       "min_abs_align": 0.0012461854481788258,
+       "gap_dir_min": 0.04850957077776896
+      },
+      "stack_degree_reader": -0.9999889379133765,
+      "charge_inside_R26_3_density": -0.1241488672603045
+     }
+    },
+    "charge_inside_r6": -0.002654351794643507,
+    "charge_abs_total_inside_pin": 8.577328104949688,
+    "min_director_gap_cell_xyz": [
+     -3.75,
+     3.75,
+     -0.75
+    ],
+    "min_director_gap": 0.3901615944140102,
+    "min_pair_gap": 0.010276448613979139,
+    "mean_block_eigs_r<6": [
+     0.09941559590772492,
+     0.3685350062808583,
+     0.8331696038889314
+    ],
+    "reference_pinned_E_quartic_kappa0_R26_4": 8.379913414985914
+   }
+  },
+  "7": {
+   "S1_d0.1_w25_n32_L48": {
+    "delta": 0.1,
+    "E_quartic_own": 13.869664310077896,
+    "E_claimed": 13.869664310077896,
+    "stack_generator": {
+     "internal": 17467.08842601021,
+     "orbital": 10369.341480579704,
+     "rigid": 20980.98216950133
+    },
+    "stack_generator_within_r18": {
+     "internal": 13971.93280021314,
+     "orbital": 9115.863336635608,
+     "rigid": 18122.71250952686
+    },
+    "own_generator": {
+     "internal": 17467.08842601021,
+     "orbital": 10385.082154162123,
+     "rigid": 20979.154381089862,
+     "within_r18": {
+      "internal": 13971.93280021314,
+      "orbital": 9115.863336635608,
+      "rigid": 18122.71250952686
+     },
+     "rigid_over_internal": 1.2010676232594002
+    },
+    "claimed_C_int_orb_rigid": [
+     17467,
+     10369,
+     20981
+    ],
+    "gate_from_chunks": {
+     "first_gate_iters": 8750,
+     "last_iters": 9000,
+     "last_fmax": 3.7290734425067355e-05,
+     "last_drop": 2.4099089532825246e-06,
+     "last_drop_rel": 1.7375394958416192e-07,
+     "last_at_gate": true
+    },
+    "kick_from_chunks": {
+     "E_kicked_start": 14.147057596190058,
+     "E_after": 13.869660672490284,
+     "E_after_minus_ref": -3.6375876124594697e-06,
+     "fmax_after": 7.840703654752614e-05,
+     "last_drop": 3.476021985804323e-06,
+     "own_label": "STABLE",
+     "own_reconverged": true,
+     "kick_iters": 500
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_kick_label": "STABLE",
+    "partition_r9_stack": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "iters": 9000
+   },
+   "S1_d0.03_w25_n32_L48": {
+    "delta": 0.03,
+    "E_quartic_own": 17.10543151062128,
+    "E_claimed": 17.10543151062128,
+    "stack_generator": {
+     "internal": 13568.633531953481,
+     "orbital": 3134.818284338173,
+     "rigid": 13430.29721539895
+    },
+    "stack_generator_within_r18": {
+     "internal": 10759.819820091983,
+     "orbital": 1949.9613727695878,
+     "rigid": 11290.275059107878
+    },
+    "own_generator": {
+     "internal": 13568.633531953481,
+     "orbital": 3153.098657991013,
+     "rigid": 13428.180266488844,
+     "within_r18": {
+      "internal": 10759.819820091983,
+      "orbital": 1949.9613727695871,
+      "rigid": 11290.275059107877
+     },
+     "rigid_over_internal": 0.9896486801612059
+    },
+    "claimed_C_int_orb_rigid": [
+     13569,
+     3135,
+     13430
+    ],
+    "gate_from_chunks": {
+     "first_gate_iters": 9750,
+     "last_iters": 13750,
+     "last_fmax": 8.465534342220484e-05,
+     "last_drop": 8.437077770651058e-06,
+     "last_drop_rel": 4.932396920482375e-07,
+     "last_at_gate": true
+    },
+    "kick_from_chunks": {
+     "E_kicked_start": 17.447540140091412,
+     "E_after": 17.10542710122095,
+     "E_after_minus_ref": -4.409400329308255e-06,
+     "fmax_after": 0.00011181041857192577,
+     "last_drop": 4.548919459779199e-06,
+     "own_label": "STABLE",
+     "own_reconverged": false,
+     "kick_iters": 500
+    },
+    "claimed_gate_label": "AT_GATE",
+    "claimed_kick_label": "STABLE",
+    "partition_r9_stack": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1
+    ],
+    "iters": 13750
+   },
+   "S1_d0.3_reference_R26_3": {
+    "stack_generator": {
+     "internal": 14070.772691545233,
+     "orbital": 1403.4271466045493,
+     "rigid": 14031.367755248113
+    },
+    "own_generator": {
+     "internal": 14070.772691545233,
+     "orbital": 1413.1904236971154,
+     "rigid": 14030.22555663058,
+     "within_r18": {
+      "internal": 12063.053994093343,
+      "orbital": 729.9098174281255,
+      "rigid": 12440.246211040332
+     },
+     "rigid_over_internal": 0.9971183434056171
+    },
+    "claimed": [
+     14071,
+     1403,
+     14031
+    ]
+   }
+  }
+ },
+ "verdicts": {
+  "1": {
+   "verdict": "QUALIFIED",
+   "max_abs_dev_end_split": 1.1368683772161603e-13,
+   "all_last_chunks_at_gate": true,
+   "kick_labels_reproduced": true,
+   "iters_range_own": [
+    445,
+    1750
+   ],
+   "iters_range_claimed": [
+    750,
+    1750
+   ],
+   "kappa0_R26_4_iters_and_labels": {
+    "1_1_1_1": [
+     7000,
+     "AT_GATE"
+    ],
+    "2_1_1": [
+     8000,
+     "FALLING"
+    ],
+    "2_2": [
+     3500,
+     "AT_GATE"
+    ],
+    "3_1": [
+     6500,
+     "AT_GATE"
+    ],
+    "4": [
+     8000,
+     "FALLING"
+    ]
+   },
+   "own_gmax_equals_chunk_fmax_on_stable_rows": true,
+   "note": "the stated 750 to 1750 range is off: P2_2_d0.3_w25_n32_L48_k9.197e-03 reached the gate at 445 iterations (L-BFGS ABNORMAL termination, fmax 9e-9); every other statement of the claim reproduces; own 300-iteration L-BFGS continuation of the {2,2} kappa-b kicked end field: E 16.452213 -> 16.451323 (drop 8.9e-04), gmax still 9.5e-04, partition [4] at R 3 and R 9 unchanged: the saddle escape is a slow creep, the row's E 16.4522 is an unconverged upper bound, SADDLE / not reconverged is the right label",
+   "own_descent_2_2_kappa_b": {
+    "E_start": 16.452213162152866,
+    "E_end": 16.451322654552747,
+    "drop": 0.0008905076001184398,
+    "gmax_end": 0.000950008264009817,
+    "partition_R3_R9_after": [
+     [
+      4
+     ],
+     [
+      4
+     ]
+    ]
+   }
+  },
+  "2": {
+   "verdict": "QUALIFIED",
+   "orders_reproduced": {
+    "total_a": true,
+    "total_b": true,
+    "quartic_a": true,
+    "quartic_b_first_four": true
+   },
+   "inversion_1111_vs_211": {
+    "a": {
+     "pair": [
+      "1_1_1_1",
+      "2_1_1"
+     ],
+     "E_a_minus_E_b": 0.08899540267292139,
+     "two_errors": 1.4361523934525167e-05,
+     "resolved": true
+    },
+    "b": {
+     "pair": [
+      "1_1_1_1",
+      "2_1_1"
+     ],
+     "E_a_minus_E_b": 0.5043734254758796,
+     "two_errors": 2.752179971565738e-05,
+     "resolved": true
+    },
+    "both_resolved": true
+   },
+   "inversion_31_vs_1111_kappa_a": {
+    "d": -0.001274041469214282,
+    "two_errors": 3.188236633278052e-05,
+    "resolved": true,
+    "ratio_to_two_errors": 39.960693504244375
+   },
+   "E_kappa_director_channel_kappa_a": {
+    "1_1_1_1": 738.5846773445621,
+    "2_1_1": 657.9326602818082,
+    "2_2": 693.8285490174815,
+    "3_1": 673.8013275957383,
+    "4": 683.7723884902571
+   },
+   "E_kappa_pair_channel_kappa_a": {
+    "1_1_1_1": 103.13349251867953,
+    "2_1_1": 98.16356746796347,
+    "2_2": 98.56613818530306,
+    "3_1": 101.79212937066983,
+    "4": 123.62223545586556
+   },
+   "E_kappa_eigenvalue_channel_kappa_a": {
+    "1_1_1_1": 75.16142072695862,
+    "2_1_1": 67.99906211142056,
+    "2_2": 72.47916685286027,
+    "3_1": 71.39828920276533,
+    "4": 75.91647944282418
+   },
+   "E_kappa_pair_channel_spread": 25.45866798790209,
+   "E_kappa_director_channel_spread": 80.65201706275388,
+   "E_kappa_eigenvalue_channel_spread": 7.917417331403627,
+   "E_kappa_director_channel_hedgehog_seed": 916.7305719245568,
+   "log_term_predicted_spread": 9.173084612041011,
+   "E_kappa_pair_channel_seeds": {
+    "1_1_1_1": 29.820486984072176,
+    "2_1_1": 52.30226651448717,
+    "2_2": 57.22597664865508,
+    "3_1": 75.220982659009,
+    "4": 130.73242249598758
+   },
+   "note": "the orders, both inversions of {1,1,1,1} against {2,1,1} (0.089 and 0.504 against two-error bounds 1.4e-5 and 2.8e-5) and the resolved {3,1} < {1,1,1,1} at kappa a (0.00127, 40 times the two errors) all reproduce; REFUTED is fair for the prediction AS STATED (the total order by sum k^2). But the prediction was never testable on this box: the lattice-exact channel split of E_kappa gives the director-rotation channel 658 to 739 (spread 81), the eigenvalue channel 68 to 76 (spread 8) and the pair-rotation channel (the only piece the log term describes) 98 to 124 (spread 25), against a log-term spread of 9.2 for ln(22.4/1.5); the seeds' pair channel IS ordered by sum k^2 (30, 52, 57, 75, 131) and the relaxation erases that order (103, 98, 99, 102, 124). The winding log term cannot be isolated on one box; it needs a box ladder at fixed partition"
+  },
+  "3": {
+   "verdict": "QUALIFIED",
+   "order_equal_kappa_a": true,
+   "order_equal_kappa_b": false,
+   "spreads_kappa0_a_b": [
+    0.4392539148841834,
+    0.38453363779803595,
+    0.6465900880470272
+   ],
+   "note": "the kappa-a order equals the kappa-0 order and the total spread narrows 0.439 -> 0.385, but two of the five kappa-0 rows ({4}, {2,1,1}) were FALLING (E_err 1e-3, never certified) and at kappa b the order changes ({2,2} drops below {1,1,1,1}) while the spread WIDENS to 0.647: 'converged them' holds at kappa a only"
+  },
+  "4": {
+   "verdict": "QUALIFIED",
+   "reader_reproduces_r9_and_the_quoted_interior_as_R21": true,
+   "R3_reads": {
+    "1_1_1_1": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "2_1_1": [
+     4
+    ],
+    "2_2": [
+     4
+    ],
+    "3_1": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "4": [
+     4
+    ]
+   },
+   "R21_reads": {
+    "1_1_1_1": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "2_1_1": [
+     2,
+     1,
+     1
+    ],
+    "2_2": [
+     2,
+     2
+    ],
+    "3_1": [
+     3,
+     1,
+     1,
+     -1
+    ],
+    "4": [
+     4,
+     1,
+     1,
+     1,
+     1,
+     -1,
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "flagged_cap_rings_R3_to_R12": {
+    "1_1_1_1": [],
+    "2_1_1": [
+     "R12",
+     "R3",
+     "R4.5",
+     "R6",
+     "R9"
+    ],
+    "2_2": [
+     "R12",
+     "R3",
+     "R4.5",
+     "R6",
+     "R9"
+    ],
+    "3_1": [
+     "R3"
+    ],
+    "4": [
+     "R12",
+     "R3",
+     "R4.5",
+     "R6",
+     "R9"
+    ]
+   },
+   "r9_closure_cluster_counts_by_threshold": {
+    "1_1_1_1": {
+     "frac0.1": 2,
+     "frac0.25": 4,
+     "frac0.5": 4
+    },
+    "2_1_1": {
+     "frac0.1": 2,
+     "frac0.25": 4,
+     "frac0.5": 2
+    },
+    "2_2": {
+     "frac0.1": 0,
+     "frac0.25": 4,
+     "frac0.5": 4
+    },
+    "3_1": {
+     "frac0.1": 3,
+     "frac0.25": 4,
+     "frac0.5": 3
+    },
+    "4": {
+     "frac0.1": 2,
+     "frac0.25": 4,
+     "frac0.5": 4
+    }
+   },
+   "r9_carriers_claimed": {
+    "1_1_1_1": 4,
+    "2_1_1": 2,
+    "2_2": 1,
+    "3_1": 4,
+    "4": 3
+   },
+   "note": "the r 9 partitions reproduce exactly; the quoted 'interior partitions' are the R 21 reads (the largest readable sphere, 1.4 h inside the pinned faces), NOT the inner spheres: at R 3 the reader gives [1,1,1,1], [4], [4], [1,1,1,1], [4] and the R 3 to R 12 reads of {2,1,1}, {2,2}, {4} rest on FLAGGED polar cap rings (fallback rings with up to 30 percent unreadable samples); the own pair-gap closure count on the r 9 shell finds fewer closed cores than carriers at gap < 0.1 delta, so the r 9 reorganization is a reader statement, not an independent core count"
+  },
+  "5": {
+   "verdict": "CONFIRMED",
+   "virial_range_a": [
+    0.8601549569483296,
+    0.9654649345328378
+   ],
+   "virial_range_b": [
+    0.7350918866637944,
+    0.800148579991522
+   ],
+   "beta2_r6_range_b": [
+    0.0010948735818745448,
+    0.08717700266596662
+   ],
+   "note": ""
+  },
+  "6": {
+   "verdict": "CONFIRMED",
+   "source": {
+    "3_1": [
+     "stage",
+     5750
+    ],
+    "1_1_1_1": [
+     "stage",
+     5750
+    ]
+   },
+   "E_quartic_latest": {
+    "3_1": 0.18349624492212244,
+    "1_1_1_1": 0.3417442125371566
+   },
+   "charge_inside_r9_r18": {
+    "3_1": [
+     0.006206904382593094,
+     0.041869213295351274
+    ],
+    "1_1_1_1": [
+     0.07660433258780208,
+     -0.1241488672603045
+    ]
+   },
+   "min_director_gap_free_vs_pinned": {
+    "3_1": [
+     0.28226105300954796,
+     0.03326061562967397
+    ],
+    "1_1_1_1": [
+     0.3901615944140102,
+     0.005514051245113394
+    ]
+   },
+   "mean_abs_align_r9_r18": {
+    "3_1": {
+     "R9": 0.5220637275323441,
+     "R18": 0.6637525202351057
+    },
+    "1_1_1_1": {
+     "R9": 0.6048968180877944,
+     "R18": 0.6714475617024395
+    }
+   },
+   "note": "read at the latest stage files (the twins were still running): the energies fall as claimed and the unit charge is gone: no director core survives anywhere in the box (min director gap far above the pinned kappa-0 fields' core values), the charge integral inside r 9 is at the percent level, the mean |d . rhat| on r 9 is far from the hedgehog's 1. The sphere degree reads (own and R26-0) return integers that mean nothing here: the outward lift is undefined where |d . rhat| ~ 1e-4, as it is on every sphere of a near-uniform director"
+  },
+  "7": {
+   "verdict": "QUALIFIED",
+   "C_rigid_by_delta_stack": {
+    "0.03": 13430.29721539895,
+    "0.1": 20980.98216950133,
+    "0.3": 14031.367755248113
+   },
+   "C_rigid_by_delta_own_stencil": {
+    "0.03": 13428.180266488844,
+    "0.1": 20979.154381089862,
+    "0.3": 14030.22555663058
+   },
+   "non_monotone_stack": true,
+   "non_monotone_own": true,
+   "d0.03_kick_fmax_after": 0.00011181041857192577,
+   "d0.03_kick_reconverged_own": false,
+   "d0.03_C_rigid_at_8000_vs_end": [
+    12902.509907646585,
+    13430.29721539895
+   ],
+   "note": "the three inertias reproduce with the stack and with the own face-stencil (C_orb differs by 0.1 percent, faces only) and both descents pass the gate from their chunks; the non-monotonicity is robust (C_rigid at delta 0.1 is 50 percent above both neighbors) but the 0.03 < 0.3 side (13430 vs 14031, 4 percent) is inside the delta-0.03 row's own stage-to-end drift (12903 at 8000 iterations -> 13430 at 13750); the delta-0.03 kick returned to the energy (4e-6 above the reference) with fmax 1.1e-4, a 10 percent miss of the gate, so STABLE rests on the energy, not on a reconverged kicked field"
+  }
+ },
+ "summary": {
+  "counts": {
+   "QUALIFIED": 5,
+   "CONFIRMED": 2
+  },
+  "refuted": [],
+  "qualified": {
+   "1": "the stated 750 to 1750 range is off: P2_2_d0.3_w25_n32_L48_k9.197e-03 reached the gate at 445 iterations (L-BFGS ABNORMAL termination, fmax 9e-9); every other statement of the claim reproduces; own 300-iteration L-BFGS continuation of the {2,2} kappa-b kicked end field: E 16.452213 -> 16.451323 (drop 8.9e-04), gmax still 9.5e-04, partition [4] at R 3 and R 9 unchanged: the saddle escape is a slow creep, the row's E 16.4522 is an unconverged upper bound, SADDLE / not reconverged is the right label",
+   "2": "the orders, both inversions of {1,1,1,1} against {2,1,1} (0.089 and 0.504 against two-error bounds 1.4e-5 and 2.8e-5) and the resolved {3,1} < {1,1,1,1} at kappa a (0.00127, 40 times the two errors) all reproduce; REFUTED is fair for the prediction AS STATED (the total order by sum k^2). But the prediction was never testable on this box: the lattice-exact channel split of E_kappa gives the director-rotation channel 658 to 739 (spread 81), the eigenvalue channel 68 to 76 (spread 8) and the pair-rotation channel (the only piece the log term describes) 98 to 124 (spread 25), against a log-term spread of 9.2 for ln(22.4/1.5); the seeds' pair channel IS ordered by sum k^2 (30, 52, 57, 75, 131) and the relaxation erases that order (103, 98, 99, 102, 124). The winding log term cannot be isolated on one box; it needs a box ladder at fixed partition",
+   "3": "the kappa-a order equals the kappa-0 order and the total spread narrows 0.439 -> 0.385, but two of the five kappa-0 rows ({4}, {2,1,1}) were FALLING (E_err 1e-3, never certified) and at kappa b the order changes ({2,2} drops below {1,1,1,1}) while the spread WIDENS to 0.647: 'converged them' holds at kappa a only",
+   "4": "the r 9 partitions reproduce exactly; the quoted 'interior partitions' are the R 21 reads (the largest readable sphere, 1.4 h inside the pinned faces), NOT the inner spheres: at R 3 the reader gives [1,1,1,1], [4], [4], [1,1,1,1], [4] and the R 3 to R 12 reads of {2,1,1}, {2,2}, {4} rest on FLAGGED polar cap rings (fallback rings with up to 30 percent unreadable samples); the own pair-gap closure count on the r 9 shell finds fewer closed cores than carriers at gap < 0.1 delta, so the r 9 reorganization is a reader statement, not an independent core count",
+   "7": "the three inertias reproduce with the stack and with the own face-stencil (C_orb differs by 0.1 percent, faces only) and both descents pass the gate from their chunks; the non-monotonicity is robust (C_rigid at delta 0.1 is 50 percent above both neighbors) but the 0.03 < 0.3 side (13430 vs 14031, 4 percent) is inside the delta-0.03 row's own stage-to-end drift (12903 at 8000 iterations -> 13430 at 13750); the delta-0.03 kick returned to the energy (4e-6 above the reference) with fmax 1.1e-4, a 10 percent miss of the gate, so STABLE rests on the energy, not on a reconverged kicked field"
+  },
+  "blind_spots": [
+   "E_err is the last chunk's drop as the rows define it; no independent Richardson-style estimate of the remaining tail was made beyond the geometric drop ratio",
+   "the twins were read at their 5750-iteration stage files (still running); a later field can differ",
+   "the own descent ran 300 L-BFGS iterations from the audited {2,2} kappa-b end field, not from an independent seed",
+   "the channel split of E_kappa assigns each bond's mixing by the eigenframes; where two eigenvalues are nearly degenerate the frame is ill-conditioned but the channel weight (l_k - l_l)^2 vanishes there"
+  ],
+  "wall_s": 251.51757311820984
+ }
+}

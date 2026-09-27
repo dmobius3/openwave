@@ -10,7 +10,7 @@
 
 | TaskID | Title | Description | Gated By |
 | --- | --- | --- | --- |
-| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS: one autonomous rung ladder, audited. R0-R12: the hedgehog is not a protected soliton, the ring is. R13-R19: no fixed-J minimizer, no bound doublet, the anticommutator repels. R20-R24: box, pin, optimizer and seed set every energy; a linear invariant confines the halo, ending first order. R25: strand ladder, kick census, boost pool. R26 running: the index-partition census. [Method note](findings/m5_32_method_note.md), [ledger](findings/m5_32_candidate_ledger.md) | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
+| [M5.32](tasks/m5_32_task_details.md) | The Lagrangian hunt: an autonomous search for the corrected 4×4 action | 🔶 IN PROGRESS: one autonomous rung ladder, audited. R0-R12: the hedgehog is not a protected soliton, the ring is. R13-R19: no fixed-J minimizer, no bound doublet. R20-R24: box, pin, optimizer and seed set every energy; a linear invariant confines the halo, ending first order. R25: strand ladder, kick census, boost pool. R26: 0.258 on a saddle. R27 running: the kappa arm. [Method note](findings/m5_32_method_note.md), [ledger](findings/m5_32_candidate_ledger.md) | user "go" + reset time (the 2026-08-20 WAIT posture lifted 2026-08-27); the user's `killswitch` keyword (any case) is the only stop, no caps |
 
 ## BACKLOG
 

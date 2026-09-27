@@ -1,0 +1,38 @@
+{
+ "rows": {
+  "P3_1_d0.3_w25_n16_L48_k2.299e-03": {
+   "status": "OK",
+   "gate_label": "FALLING",
+   "kick_label": "FALLING",
+   "E": 10.555136531157217,
+   "end_split": {
+    "E_quartic": 8.387908360145026,
+    "E_curv": 6.437553651629,
+    "V4": 1.9503547085160253,
+    "E_kappa": 942.5732839049695,
+    "kappaE_kappa": 2.16722817101219,
+    "E_total": 10.555136531157217
+   },
+   "stop": null
+  },
+  "P1_1_1_1_d0.3_w25_n16_L48_k0.000e+00_free": {
+   "status": "OK",
+   "gate_label": "FALLING",
+   "kick_label": "FALLING",
+   "E": 5.030950026109937,
+   "end_split": {
+    "E_quartic": 5.030950026109937,
+    "E_curv": 3.5216646910516523,
+    "V4": 1.5092853350582847,
+    "E_kappa": 2934.7039919461085,
+    "kappaE_kappa": 0.0,
+    "E_total": 5.030950026109937
+   },
+   "stop": null
+  }
+ },
+ "wrapper_rel_err": 0.0,
+ "wrapper_grad_fd_rel_err": 1.6347516176022089e-07,
+ "synthetic_label": "ORDER_K2_CONFIRMED",
+ "PASS": true
+}
