@@ -70,7 +70,6 @@ No free numerical parameters are introduced.
 import math
 import sys
 
-
 # ----------------------------------------------------------------------
 # Import shared geometric primitives from the M4.7 engine.
 #
@@ -81,9 +80,14 @@ import sys
 
 try:
     from m4_7_ewt_emergence_engine import (
-        PI, C0, M_E, R_E, E_CHARGE_CODATA, G_CODATA,
+        PI,
+        C0,
+        M_E,
+        R_E,
+        E_CHARGE_CODATA,
+        G_CODATA,
         BCC_IDEAL_PROJECTION_LP,
-        compute_alpha_core,        # returns A_pi = 4 pi^3 + pi^2 + pi
+        compute_alpha_core,  # returns A_pi = 4 pi^3 + pi^2 + pi
         derive_eps_M_from_BCC,
         derive_planck_charge_from_e,
         derive_neutrino_radius,
@@ -91,9 +95,7 @@ try:
         gravity_sector,
     )
 except ImportError:
-    raise ImportError(
-        "This module requires m4_7_ewt_emergence_engine.py in the same directory."
-    )
+    raise ImportError("This module requires m4_7_ewt_emergence_engine.py in the same directory.")
 
 
 # Electron wave-center count, fixed by the 1-3-6 geometry.
@@ -103,6 +105,7 @@ K_WC = 10
 # ======================================================================
 # Section 1 - Geometric primitives (no G)
 # ======================================================================
+
 
 def geometric_primitives():
     """Collect every geometric factor that enters the force.
@@ -150,15 +153,15 @@ def geometric_primitives():
     )
 
     return {
-        "A_pi":          A_pi,
-        "eps_M":         eps_M,
-        "alpha_geom":    alpha_geom,
-        "N_geom":        N_geom,
-        "r_nu":          r_nu,
-        "lambda_l":      lambda_l,
-        "N_nu_stat":     res["N_nu_statutory"],
-        "N_nu_eff":      res["N_nu_eff"],
-        "X_eff":         res["X_eff"],
+        "A_pi": A_pi,
+        "eps_M": eps_M,
+        "alpha_geom": alpha_geom,
+        "N_geom": N_geom,
+        "r_nu": r_nu,
+        "lambda_l": lambda_l,
+        "N_nu_stat": res["N_nu_statutory"],
+        "N_nu_eff": res["N_nu_eff"],
+        "X_eff": res["X_eff"],
         # Cross-check only. Not used in the force computation.
         "G_geom_xcheck": res["G_EWT"],
     }
@@ -167,6 +170,7 @@ def geometric_primitives():
 # ======================================================================
 # Section 2 - Monopole amplitude A from geometric factors (no G)
 # ======================================================================
+
 
 def geometric_amplitude(M, geom):
     """Monopole amplitude A_i, written in chain factors without G.
@@ -184,11 +188,7 @@ def geometric_amplitude(M, geom):
     """
     numerator = 2.0 * M * R_E * math.sqrt(geom["X_eff"])
     denominator = (
-        M_E
-        * geom["A_pi"] ** 4
-        * geom["N_geom"] ** 3
-        * K_WC
-        * math.sqrt(geom["N_nu_stat"])
+        M_E * geom["A_pi"] ** 4 * geom["N_geom"] ** 3 * K_WC * math.sqrt(geom["N_nu_stat"])
     )
     return numerator / denominator
 
@@ -196,6 +196,7 @@ def geometric_amplitude(M, geom):
 # ======================================================================
 # Section 3 - EMC coupling K_emc from geometric factors (no G)
 # ======================================================================
+
 
 def geometric_K_emc(geom):
     """EMC field coupling K_emc, written without G.
@@ -211,12 +212,7 @@ def geometric_K_emc(geom):
     Scaling with r_e:  K_emc ~ 1/r_e.
     """
     numerator = (
-        C0 ** 2
-        * M_E
-        * geom["A_pi"] ** 4
-        * geom["N_geom"] ** 3
-        * K_WC
-        * math.sqrt(geom["N_nu_eff"])
+        C0**2 * M_E * geom["A_pi"] ** 4 * geom["N_geom"] ** 3 * K_WC * math.sqrt(geom["N_nu_eff"])
     )
     denominator = 16.0 * PI * R_E
     return numerator / denominator
@@ -225,6 +221,7 @@ def geometric_K_emc(geom):
 # ======================================================================
 # Section 4 - Overlap integral and force kernel
 # ======================================================================
+
 
 def overlap_integral_at(A1, A2, R, num_pts=200000):
     """Numerical evaluation of I(R) = int grad(de1).grad(de2) dV.
@@ -262,6 +259,7 @@ def geometric_gradient(A1, A2, R, dR_frac=1e-6, num_pts=200000):
 # Section 5 - Gravitational force from geometry alone (no G)
 # ======================================================================
 
+
 def geometric_force(M1, M2, R, geom):
     """Gravitational force F_EMC = K_emc * (-dI/dR) = 4 pi K_emc A_1 A_2 / R^2.
 
@@ -288,6 +286,7 @@ def geometric_force(M1, M2, R, geom):
 # ======================================================================
 # Main
 # ======================================================================
+
 
 def main():
     print("=" * 78)
@@ -319,8 +318,8 @@ def main():
     # Section 2: physical parameters
     # ------------------------------------------------------------------
     print("\n[2/8] Physical parameters for the force test")
-    M1 = 1.989e30       # Sun
-    M2 = 5.972e24       # Earth
+    M1 = 1.989e30  # Sun
+    M2 = 5.972e24  # Earth
     R = 1.495978707e11  # 1 AU
     print(f"    M1 (Sun)                         = {M1:.6e} kg")
     print(f"    M2 (Earth)                       = {M2:.6e} kg")
@@ -407,8 +406,10 @@ def main():
     print("    Cross-check only (not used in the calculation):")
     print(f"    G_emc = F_EMC R^2 / (M1 M2)          = {G_emc_from_force:.15e}")
     print(f"    G_geom from M4.7 chain               = {geom['G_geom_xcheck']:.15e}")
-    print(f"    relative difference                  = "
-          f"{abs(G_emc_from_force - geom['G_geom_xcheck'])/geom['G_geom_xcheck']:.3e}")
+    print(
+        f"    relative difference                  = "
+        f"{abs(G_emc_from_force - geom['G_geom_xcheck'])/geom['G_geom_xcheck']:.3e}"
+    )
 
     # ------------------------------------------------------------------
     # Section 8: closed-form exponents at fixed chain outputs
@@ -431,28 +432,34 @@ def main():
     # Expected change: 10/9 - 1 = +11.11 %.
     F_kwc9 = F_EMC * (10.0 / 9.0)
     rel_kwc9 = abs(F_kwc9 - F_EMC) / F_EMC
-    print(f"    K_WC: 10 -> 9                        "
-          f"rel change = {rel_kwc9*100:10.6f} %   (expected ~11%)")
+    print(
+        f"    K_WC: 10 -> 9                        "
+        f"rel change = {rel_kwc9*100:10.6f} %   (expected ~11%)"
+    )
 
     # --- N_geom: * 1.001 ------------------------------------------------
     # A_i ~ 1/N_geom^3, K_emc ~ N_geom^3.
     # F_EMC ~ N_geom^3 * (1/N_geom^3)^2 = 1/N_geom^3.
     # Expected change: 1 - 1/1.001^3 ≈ -0.299 %.
     factor_N = 1.001
-    F_N = F_EMC / (factor_N ** 3)
+    F_N = F_EMC / (factor_N**3)
     rel_N = abs(F_N - F_EMC) / F_EMC
-    print(f"    N_geom: * 1.001                      "
-          f"rel change = {rel_N*100:10.6f} %   (expected ~0.3%)")
+    print(
+        f"    N_geom: * 1.001                      "
+        f"rel change = {rel_N*100:10.6f} %   (expected ~0.3%)"
+    )
 
     # --- A_pi: * 1.01 ---------------------------------------------------
     # A_i ~ 1/A_pi^4, K_emc ~ A_pi^4.
     # F_EMC ~ A_pi^4 * (1/A_pi^4)^2 = 1/A_pi^4.
     # Expected change: 1 - 1/1.01^4 ≈ -3.90 %.
     factor_A = 1.01
-    F_A = F_EMC / (factor_A ** 4)
+    F_A = F_EMC / (factor_A**4)
     rel_A = abs(F_A - F_EMC) / F_EMC
-    print(f"    A_pi: * 1.01                         "
-          f"rel change = {rel_A*100:10.6f} %   (expected ~3.9%)")
+    print(
+        f"    A_pi: * 1.01                         "
+        f"rel change = {rel_A*100:10.6f} %   (expected ~3.9%)"
+    )
 
     # --- r_e: * 1.01 ----------------------------------------------------
     # A_i ~ r_e (two amplitudes), K_emc ~ 1/r_e.
@@ -470,8 +477,10 @@ def main():
     K_emc_re = K_emc / factor_re
     F_re = K_emc_re * (4.0 * math.pi * A1_re * A2_re / (R * R))
     rel_re = abs(F_re - F_EMC) / F_EMC
-    print(f"    r_e: * 1.01                          "
-          f"rel change = {rel_re*100:10.6f} %   (expected ~1%)")
+    print(
+        f"    r_e: * 1.01                          "
+        f"rel change = {rel_re*100:10.6f} %   (expected ~1%)"
+    )
 
     # ------------------------------------------------------------------
     # Summary
