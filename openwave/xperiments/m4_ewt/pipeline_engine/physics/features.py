@@ -13,6 +13,7 @@ from dataclasses import dataclass
 
 import taichi as ti
 
+
 # =============================================================================
 # Grid and statistics
 # =============================================================================
@@ -141,3 +142,46 @@ class EMCFluxField:
     """
 
     flux: ti.field
+
+    
+# =============================================================================
+# Tracker fields
+# =============================================================================
+
+
+@dataclass
+class TrackerFields:
+    """
+    Per-voxel tracker fields plus scalar global averages.
+
+    Allocated by AllocateTrackers (order 20, after AllocateWaveField).
+    Which fields get written, and how, is a physics decision (see the
+    real TrackersUpdate in the physics layer). This class only fixes
+    the shape.
+
+    Per-voxel (shape = (nx, ny, nz), f32):
+        amp_local           RMS amplitude envelope
+        freq_local          zero-crossing frequency
+        energy_long_local   longitudinal mode energy
+        energy_trans_local  transverse mode energy
+        rho_local           EMC density mirror; shares the buffer with
+                            EMCDensityField.rho (same ti.field object,
+                            see AllocateTrackers)
+        last_crossing       timestamp of last positive-going zero crossing
+                            (internal state for freq_local)
+
+    Scalars (shape = (), f32):
+        amp_global          three-plane average of amp_local
+        freq_global         three-plane average of freq_local
+        energy_global       three-plane average of energy_long_local
+    """
+
+    amp_local: ti.field
+    freq_local: ti.field
+    energy_long_local: ti.field
+    energy_trans_local: ti.field
+    rho_local: ti.field
+    last_crossing: ti.field
+    amp_global: ti.field
+    freq_global: ti.field
+    energy_global: ti.field
