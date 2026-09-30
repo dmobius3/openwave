@@ -6,7 +6,7 @@ Taichi and is skipped when Taichi cannot initialise.
 """
 
 from __future__ import annotations
-
+from .units import NaturalUnitSystem
 import sys
 
 from openwave.xperiments.m4_ewt.pipeline_engine.context import FeatureBag
@@ -39,7 +39,7 @@ def test_field_classes_are_distinct():
 
 
 def test_grid_and_stats_are_independent():
-    grid = WaveGrid(nx=4, ny=4, nz=4, dx=0.1, c=1.0)
+    grid = WaveGrid(nx=4, ny=4, nz=4, dx=0.1)
     stats = WaveStats()
     assert grid.max_size == 4
     assert grid.center == (2, 2, 2)
@@ -127,11 +127,11 @@ def test_allocation_provides_all_features():
     class AllocPipeline(Pipeline):
         def __init__(self) -> None:
             super().__init__()
-            self.add(AllocateWaveField(nx=4, ny=4, nz=4, dx=0.1, c=1.0))
+            self.add(AllocateWaveField(nx=4, ny=4, nz=4, dx=0.1))
 
     sinks = {"session": InMemorySink()}
     runner = Runner(sinks)
-    ctx = runner.run(AllocPipeline(), name="alloc_test", params={}, max_steps=0)
+    ctx = runner.run(AllocPipeline(), name="alloc_test", params={}, max_steps=0, initial_features=[NaturalUnitSystem()])
 
     assert not ctx.diag.errors, ctx.diag.errors
     for key in (

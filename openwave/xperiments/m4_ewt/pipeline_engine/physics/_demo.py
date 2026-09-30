@@ -24,7 +24,11 @@ from ..loggers import LogProcessor
 
 from .allocator import AllocateWaveField
 from .seed import SeedMultiCenter
-from .evolution import LaplacianProcessor, LeapfrogProcessor
+from .evolution import (
+    ClearAccelerationProcessor,
+    LaplacianProcessor,
+    LeapfrogProcessor,
+)
 from .nonlinearity import NonlinearCubic
 from .boundary import DirichletBoundaryProcessor
 from .measure import AmplitudeTracker
@@ -32,7 +36,7 @@ from .visualize import TaichiWindowProcessor
 from .features import WaveStats
 from .wc_types import WCState
 from .wc_factory import build_wc_state
-
+from .units import NaturalUnitSystem, UnitSystem
 
 def _payload(ctx) -> Mapping[str, Any]:
     stats = ctx.data.require(WaveStats)
@@ -59,9 +63,10 @@ class WavePipeline(Pipeline):
         with_window: bool = True,
         external_provides: tuple[type, ...] = (),
     ):
-        super().__init__(external_provides=external_provides)
-        self.add(AllocateWaveField(nx=grid, ny=grid, nz=grid, dx=1.0, c=1.0))
+        super().__init__(external_provides=(UnitSystem,) + tuple(external_provides))
+        self.add(AllocateWaveField(nx=grid, ny=grid, nz=grid, dx=1.0))
         self.add(SeedMultiCenter(radius=4.0))
+        self.add(ClearAccelerationProcessor())
         self.add(LaplacianProcessor())
         if gamma > 0.0:
             self.add(NonlinearCubic(gamma=gamma))
@@ -159,7 +164,7 @@ def main() -> None:
         output_dir=out,
         dt=0.3,
         max_steps=max_steps,
-        initial_features=[wc_state],
+        initial_features=[wc_state, NaturalUnitSystem()],
     )
 
     print("=" * 64)

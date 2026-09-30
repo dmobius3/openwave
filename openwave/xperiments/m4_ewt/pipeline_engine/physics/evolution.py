@@ -21,6 +21,7 @@ from ..pipeline import BaseProcessor, Stage
 import taichi as ti
 
 from .features import PsiLongField, WaveGrid, WaveSpeedField
+from .units import UnitSystem
 
 # ======================================================================
 # Accumulator clear
@@ -78,8 +79,9 @@ class LaplacianProcessor(BaseProcessor):
     other additive processors; requires ClearAccelerationProcessor to
     have zeroed psi_new first (order 0 before order 10).
 
-    field_type selects which triple-buffer field to operate on. Default
-    is PsiLongField.
+    The wave speed c comes from the UnitSystem feature, not from the
+    grid. field_type selects which triple-buffer field to operate on.
+    Default is PsiLongField.
     """
 
     name = "Laplacian"
@@ -89,13 +91,22 @@ class LaplacianProcessor(BaseProcessor):
 
     def __init__(self, field_type=PsiLongField):
         self.field_type = field_type
-        self.requires = (WaveGrid, field_type)
+        self.requires = (WaveGrid, field_type, UnitSystem)
 
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
+        units = ctx.data.require(UnitSystem)
         field = ctx.data.require(self.field_type)
-        _laplacian(field.psi, field.psi_new, grid.nx, grid.ny, grid.nz, grid.dx, grid.c)
+        _laplacian(
+            field.psi, field.psi_new,
+            grid.nx, grid.ny, grid.nz, grid.dx,
+            float(units.c),
+        )
 
+
+# ======================================================================
+# Leapfrog
+# ======================================================================
 
 @ti.kernel
 def _laplacian(
@@ -119,12 +130,6 @@ def _laplacian(
             + psi[i, j, k - 1]
         )
         out[i, j, k] += c2 * (face_sum - 6.0 * psi[i, j, k]) * inv_dx2
-
-
-# ======================================================================
-# Leapfrog
-# ======================================================================
-
 
 class LeapfrogProcessor(BaseProcessor):
     """

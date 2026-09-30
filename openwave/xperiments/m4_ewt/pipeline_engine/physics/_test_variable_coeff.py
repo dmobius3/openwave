@@ -428,7 +428,7 @@ def test_pipeline_runs_with_variable_coeff_chain():
     class P(Pipeline):
         def __init__(self):
             super().__init__(external_provides=(UnitSystem,))
-            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
+            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0))
             self.add(AllocateWaveSpeed())
             self.add(_SeedHarmonicLong(amp=0.3))
             self.add(ClearAccelerationProcessor())

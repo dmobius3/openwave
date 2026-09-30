@@ -47,10 +47,17 @@ class UpdateEMCDensityProcessor(BaseProcessor):
     immediately consistent with the current psi; the density does not
     evolve on its own (that is B4b/B4c, deferred).
 
-    beta_rho sets the push-out strength. beta_rho = 0 gives uniform
-    statutory density (no push-out); beta_rho = 1 gives a full
-    depletion at |psi|^2 = 1. Its physical value is a model choice to
-    be settled by the eventual EMC dynamics; the processor is agnostic.
+    beta_rho sets the push-out strength, normalised to the statutory
+    background: the processor here uses the plan's beta_rho / rho_0 as a
+    single dimensionless coefficient, because rho is stored normalised.
+    beta_rho = 0 gives uniform statutory density (no push-out);
+    beta_rho = 1 gives full depletion at |psi|^2 = 1.
+
+    No floor is applied to rho. The regime beta_rho |psi|^2 > 1 gives
+    rho < 0, hence c2_local < 0, which is outside the model's domain of
+    validity. A pipeline that reaches this regime is misconfigured;
+    the negative c2 is the signal. Clamping would hide the parameter
+    error.
     """
 
     name = "UpdateEMCDensity"

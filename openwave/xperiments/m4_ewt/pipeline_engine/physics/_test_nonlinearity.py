@@ -26,7 +26,7 @@ from .evolution import (
     LeapfrogProcessor,
 )
 from .nonlinearity import NonlinearCubic
-
+from .units import NaturalUnitSystem, UnitSystem
 
 _TI_INITIALIZED = False
 
@@ -157,8 +157,8 @@ def test_nonlinear_zero_gamma_in_pipeline_is_noop():
     def _build(with_nonlinear):
         class P(Pipeline):
             def __init__(self):
-                super().__init__()
-                self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0, c=1.0))
+                super().__init__(external_provides=(UnitSystem,))
+                self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0))
                 self.add(_SeedLinear())
                 self.add(ClearAccelerationProcessor())
                 self.add(LaplacianProcessor())
@@ -187,31 +187,17 @@ def test_nonlinear_composes_with_laplacian_in_pipeline():
 
     class P(Pipeline):
         def __init__(self):
-            super().__init__()
-            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
+            super().__init__(external_provides=(UnitSystem,))
+            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0))
             self.add(_SeedLinear())
             self.add(ClearAccelerationProcessor())
             self.add(LaplacianProcessor())
             self.add(NonlinearCubic(gamma=0.5))
 
-    ctx = _run(P(), max_steps=0)  # setup only; we read accel before leapfrog
+    ctx = _run(P(), max_steps=1)
+    assert ctx.diag.errors == [], ctx.diag.errors
 
-    # max_steps=0 means pipeline.setup() runs but no .step(). To exercise
-    # UPDATE processors, run one step with a pipeline without leapfrog
-    # so accel survives the step.
-    class P2(Pipeline):
-        def __init__(self):
-            super().__init__()
-            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
-            self.add(_SeedLinear())
-            self.add(ClearAccelerationProcessor())
-            self.add(LaplacianProcessor())
-            self.add(NonlinearCubic(gamma=0.5))
-
-    ctx2 = _run(P2(), max_steps=1)
-    assert ctx2.diag.errors == [], ctx2.diag.errors
-
-    long_field = ctx2.data.require(PsiLongField)
+    long_field = ctx.data.require(PsiLongField)
     psi = long_field.psi.to_numpy()
     accel = long_field.psi_new.to_numpy()
 
@@ -270,6 +256,7 @@ def _run(pipeline, max_steps=1):
     from ..sinks import InMemorySink
     return Runner({"session": InMemorySink()}).run(
         pipeline, name="nonlinear_test", params={}, dt=0.1, max_steps=max_steps,
+        initial_features=[NaturalUnitSystem()],
     )
 
 

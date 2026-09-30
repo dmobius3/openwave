@@ -98,6 +98,10 @@ class AllocateWaveField(BaseProcessor):
     Allocates the grid feature, the five field features, and the stats
     holder. Runs once at setup.
 
+    Wave speed is not allocated here: it comes from the UnitSystem
+    feature (constant) or WaveSpeedField (variable local). Both are
+    separate allocators.
+
     All fields are allocated together so that a pipeline can use any
     subset without reallocation. Memory cost: three triple-buffered
     vector fields and two scalar fields, 29 f32 values per voxel against
@@ -118,15 +122,14 @@ class AllocateWaveField(BaseProcessor):
         WaveStats,
     )
 
-    def __init__(self, nx: int, ny: int, nz: int, dx: float, c: float):
+    def __init__(self, nx: int, ny: int, nz: int, dx: float):
         self.nx = nx
         self.ny = ny
         self.nz = nz
         self.dx = dx
-        self.c = c
 
     def setup(self, ctx) -> None:
-        grid = WaveGrid(nx=self.nx, ny=self.ny, nz=self.nz, dx=self.dx, c=self.c)
+        grid = WaveGrid(nx=self.nx, ny=self.ny, nz=self.nz, dx=self.dx)
         shape = (self.nx, self.ny, self.nz)
         ctx.data.set(grid)
 

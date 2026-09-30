@@ -97,7 +97,7 @@ def _build_emc_pipeline(nx=16, ny=16, nz=16, seed_mode="zero",
     class P(Pipeline):
         def __init__(self):
             super().__init__(external_provides=(UnitSystem,))
-            self.add(AllocateWaveField(nx=nx, ny=ny, nz=nz, dx=1.0, c=1.0))
+            self.add(AllocateWaveField(nx=nx, ny=ny, nz=nz, dx=1.0))
             if with_wave_speed:
                 self.add(AllocateWaveSpeed())
             self.add(_SeedPsi(mode=seed_mode, amp=amp, sigma=sigma))

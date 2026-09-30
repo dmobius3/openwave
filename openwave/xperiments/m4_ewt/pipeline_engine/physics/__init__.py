@@ -41,11 +41,10 @@ __all__ = [
     "PsiTransField",
     "EMCDensityField",
     "EMCFluxField",
+    "TrackerFields",
+    "WaveSpeedField",
     "WaveGrid",
     "WaveStats",
-    "TrackerFields",
-    "WaveSpeedField", 
-    "AllocateWaveSpeed"
     # units
     "UnitSystem",
     "NaturalUnitSystem",
@@ -55,15 +54,17 @@ __all__ = [
     # processors
     "AllocateWaveField",
     "AllocateTrackers",
+    "AllocateWaveSpeed",
     "SeedPulse",
     "SeedMultiCenter",
+    "ClearAccelerationProcessor",
     "LaplacianProcessor",
+    "LaplacianVariableCoeffProcessor",
     "LeapfrogProcessor",
     "NonlinearCubic",
     "DirichletBoundaryProcessor",
     "AmplitudeTracker",
     "TaichiWindowProcessor",
-    "UpdateEMCDensityProcessor", 
+    "UpdateEMCDensityProcessor",
     "UpdateWaveSpeedProcessor",
-    "LaplacianVariableCoeffProcessor"
 ]

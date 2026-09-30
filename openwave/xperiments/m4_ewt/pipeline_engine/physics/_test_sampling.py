@@ -26,7 +26,7 @@ from .features import (
 )
 from ..pipeline import BaseProcessor, Stage
 from ..utils.sampling import ThreePlaneSampler
-
+from .units import NaturalUnitSystem
 # ======================================================================
 # Taichi init
 # ======================================================================
@@ -147,7 +147,7 @@ def _make_pipeline():
     class P(Pipeline):
         def __init__(self) -> None:
             super().__init__()
-            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
+            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0))
             self.add(AllocateTrackers())
             self.add(_MockTrackersUpdate())
 
@@ -164,7 +164,7 @@ def _run_mock(max_steps: int = 10):
         name="mock_tracker_test",
         params={},
         dt=0.1,
-        max_steps=max_steps,
+        max_steps=max_steps, initial_features=[NaturalUnitSystem()]
     )
 
 
@@ -206,11 +206,11 @@ def test_rho_local_shares_buffer_with_emc():
     class P(Pipeline):
         def __init__(self) -> None:
             super().__init__()
-            self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0, c=1.0))
+            self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0))
             self.add(AllocateTrackers())
 
     runner = Runner({"session": InMemorySink()})
-    ctx = runner.run(P(), name="rho_share_test", params={}, max_steps=0)
+    ctx = runner.run(P(), name="rho_share_test", params={}, max_steps=0, initial_features=[NaturalUnitSystem()])
 
     emc = ctx.data.require(EMCDensityField)
     trk = ctx.data.require(TrackerFields)
@@ -283,12 +283,12 @@ def test_mock_requires_declared():
     class P(Pipeline):
         def __init__(self) -> None:
             super().__init__(error_policy=ErrorPolicy.FAIL_FAST)
-            self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0, c=1.0))
+            self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0))
             self.add(_MockTrackersUpdate())
 
     runner = Runner({"session": InMemorySink()})
     try:
-        runner.run(P(), name="missing_trackers", params={}, max_steps=1)
+        runner.run(P(), name="missing_trackers", params={}, max_steps=1, initial_features=[NaturalUnitSystem()])
     except PipelineError as e:
         assert "TrackerFields" in str(e), str(e)
         return

@@ -1,6 +1,7 @@
 """
 Tests for 1.3a: parameterised LaplacianProcessor, LeapfrogProcessor,
-and ClearAccelerationProcessor.
+and ClearAccelerationProcessor. Plus two structural tests for the Q3
+migration of the wave speed c from WaveGrid to UnitSystem.
 
 Every test names the mutation it catches, or states explicitly that it
 is a smoke check and cannot catch a specific mutation.
@@ -37,6 +38,7 @@ from .evolution import (
     LaplacianProcessor,
     LeapfrogProcessor,
 )
+from .units import NaturalUnitSystem, UnitSystem
 
 
 # ======================================================================
@@ -111,8 +113,8 @@ def _seed_both(base: ti.template(), base_prev: ti.template(),
 def _build_default_pipeline():
     class P(Pipeline):
         def __init__(self):
-            super().__init__()
-            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
+            super().__init__(external_provides=(UnitSystem,))
+            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0))
             self.add(_SeedBothFields())
             self.add(ClearAccelerationProcessor())
             self.add(LaplacianProcessor())
@@ -123,8 +125,8 @@ def _build_default_pipeline():
 def _build_parameterised_pipeline():
     class P(Pipeline):
         def __init__(self):
-            super().__init__()
-            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
+            super().__init__(external_provides=(UnitSystem,))
+            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0))
             self.add(_SeedBothFields())
             self.add(ClearAccelerationProcessor(field_type=PsiBaseField))
             self.add(LaplacianProcessor(field_type=PsiBaseField))
@@ -137,6 +139,7 @@ def _run(pipeline, max_steps=1):
     from ..sinks import InMemorySink
     return Runner({"session": InMemorySink()}).run(
         pipeline, name="multifield_test", params={}, dt=0.1, max_steps=max_steps,
+        initial_features=[NaturalUnitSystem()],
     )
 
 
@@ -166,6 +169,31 @@ def test_requires_reflects_field_type():
         assert PsiLongField not in p.requires, proc_class.__name__
 
 
+def test_wavegrid_has_no_c_attribute():
+    """
+    Q3 structural test. The wave speed c lives in UnitSystem, not in
+    WaveGrid.
+
+    Mutation: c added back to WaveGrid -> the two sources of c return,
+    and a future LaplacianProcessor could silently read the wrong one.
+    """
+    grid = WaveGrid(nx=4, ny=4, nz=4, dx=0.1)
+    assert not hasattr(grid, "c")
+
+
+def test_laplacian_requires_unitsystem():
+    """
+    Q3 structural test. LaplacianProcessor declares UnitSystem in its
+    requires, so Pipeline._validate forces the caller to provide one.
+
+    Mutation: UnitSystem dropped from requires -> the processor can no
+    longer read c from the canonical source, and a future
+    reintroduction of grid.c would go unnoticed.
+    """
+    lp = LaplacianProcessor()
+    assert UnitSystem in lp.requires
+
+
 def test_pipeline_error_when_parameterised_field_missing():
     """
     Mutation: Pipeline._validate ignores instance requires -> no
@@ -176,8 +204,9 @@ def test_pipeline_error_when_parameterised_field_missing():
 
     class Bad(Pipeline):
         def __init__(self):
-            super().__init__(error_policy=ErrorPolicy.FAIL_FAST)
-            self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0, c=1.0))
+            super().__init__(error_policy=ErrorPolicy.FAIL_FAST,
+                             external_provides=(UnitSystem,))
+            self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0))
             self.add(LaplacianProcessor(field_type=NeverProvided))
 
     try:
@@ -371,8 +400,8 @@ def test_two_fields_evolve_independently():
 
     class P(Pipeline):
         def __init__(self):
-            super().__init__()
-            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
+            super().__init__(external_provides=(UnitSystem,))
+            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0))
             self.add(_SeedBothFields())
             self.add(ClearAccelerationProcessor(field_type=PsiBaseField))
             self.add(ClearAccelerationProcessor(field_type=PsiLongField))
@@ -403,8 +432,8 @@ def test_boundary_voxels_unchanged_by_leapfrog_swap():
 
     class P(Pipeline):
         def __init__(self):
-            super().__init__()
-            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
+            super().__init__(external_provides=(UnitSystem,))
+            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0))
             self.add(_SeedBothFields())
             self.add(ClearAccelerationProcessor())
             self.add(LaplacianProcessor())
@@ -433,6 +462,8 @@ def main() -> int:
     tests = [
         test_default_field_type_is_long,
         test_requires_reflects_field_type,
+        test_wavegrid_has_no_c_attribute,
+        test_laplacian_requires_unitsystem,
         test_pipeline_error_when_parameterised_field_missing,
         test_clear_acceleration_kernel_zeros_field,
         test_laplacian_accumulates_on_repeated_application,
