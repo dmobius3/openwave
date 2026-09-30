@@ -363,3 +363,22 @@ score before the full release. The author's stress-tensor bridge parks its const
 step with one entry test, cited from the first Help Wanted ask and the native field dynamics row. Riding along: the
 well-set rank, the Gauss equation, M8.1's pass, M8.12 and M8.13, and three "planned" labels. No task, gate or
 MODELS.md icon moves.
+
+**AUTHOR-SIDE SYNC: THE PROJECTIVE CARRIER, THE SPIN SIGN, THE ORDERING FALSIFIER (2026-09-29).** The author's
+framework now realizes its Möbius carrier through the projective layer `S³/{±I}` (a ruling of 2026-09-27), with the
+conic band as its leading realization rather than a selected carrier. It adopts a transverse sampler normalized at
+unit radius for every block and, on that realization, the Friedrichs extension at the cone point and time on the
+abstract boundary circle (2026-09-29); none of these moved a computed number. The canonical's arena gains an
+`S³/{±I}` row, and its Möbius row states the carrier and these choices. Three earlier statements are corrected. The
+structural home of the 720-degree return is the central `−I` of 2I, not the Möbius anti-periodic condition: on the
+projective carrier one loop carries both signs, which derives no spin-statistics (canonical § 1 and OQ6, background §
+4, the Spin-½ cell). A stability sentence quoted from the author's onboarding proposal, which the author's repo does
+not carry, gives way to the level `2/R²` with its regime and extension (canonical § 3, background § 2, the briefing,
+the Derrick cell). The count of unassigned entries is 19 of 24, not 8: three neutrino-scale proxy rows and sixteen
+with no SM relation (briefing, canonical § 4, background § 3). The two notes of
+[#598](https://github.com/openwave-labs/openwave/pull/598)'s review close. The neutrino ladder's falsifier is now
+stated in the author's record, an inverted mass ordering favored at `χ²_NO − χ²_IO ≥ 9`, with the ladder as absolute
+masses excluded by the NuFIT 6.0 splittings (the Neutrinos cell); the entry of 2026-09-24 records the state before
+it. And the JWST measurements examined lie inside Row IV's registered ceiling, the side on which the row fails, and
+none is its score. Riding along: the Λ row's label, and the briefing's free-parameter rows, which now name the grid
+assignment and the carrier's adopted choices without a count. No task, gate or MODELS.md icon moves.
