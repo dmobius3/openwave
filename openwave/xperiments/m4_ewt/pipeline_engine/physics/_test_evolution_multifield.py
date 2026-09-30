@@ -1,5 +1,6 @@
 """
-Tests for 1.3a: parameterised LaplacianProcessor and LeapfrogProcessor.
+Tests for 1.3a: parameterised LaplacianProcessor, LeapfrogProcessor,
+and ClearAccelerationProcessor.
 
 Every test names the mutation it catches, or states explicitly that it
 is a smoke check and cannot catch a specific mutation.
@@ -31,7 +32,11 @@ from ..pipeline import (
     Stage,
 )
 from .allocator import AllocateWaveField
-from .evolution import LaplacianProcessor, LeapfrogProcessor
+from .evolution import (
+    ClearAccelerationProcessor,
+    LaplacianProcessor,
+    LeapfrogProcessor,
+)
 
 
 # ======================================================================
@@ -57,8 +62,6 @@ class _SeedBothFields(BaseProcessor):
     """
     Seeds PsiBase and PsiLong with DIFFERENT patterns on the first step.
     Base is non-linear (sin/cos), long is linear (asymmetric ramp).
-    Different patterns are deliberate: if a processor touches the wrong
-    field, tests can see it.
     """
     name = "_SeedBothFields"
     stage = Stage.PRE_UPDATE
@@ -111,6 +114,7 @@ def _build_default_pipeline():
             super().__init__()
             self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
             self.add(_SeedBothFields())
+            self.add(ClearAccelerationProcessor())
             self.add(LaplacianProcessor())
             self.add(LeapfrogProcessor())
     return P()
@@ -122,6 +126,7 @@ def _build_parameterised_pipeline():
             super().__init__()
             self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
             self.add(_SeedBothFields())
+            self.add(ClearAccelerationProcessor(field_type=PsiBaseField))
             self.add(LaplacianProcessor(field_type=PsiBaseField))
             self.add(LeapfrogProcessor(field_type=PsiBaseField))
     return P()
@@ -146,6 +151,7 @@ def test_default_field_type_is_long():
     """
     assert LaplacianProcessor().field_type is PsiLongField
     assert LeapfrogProcessor().field_type is PsiLongField
+    assert ClearAccelerationProcessor().field_type is PsiLongField
 
 
 def test_requires_reflects_field_type():
@@ -153,14 +159,11 @@ def test_requires_reflects_field_type():
     Mutation: requires hardcoded to (WaveGrid, PsiLongField) on the
     class -> fails for a parameterised instance.
     """
-    lp = LaplacianProcessor(field_type=PsiBaseField)
-    lf = LeapfrogProcessor(field_type=PsiBaseField)
-    assert WaveGrid in lp.requires
-    assert PsiBaseField in lp.requires
-    assert PsiLongField not in lp.requires
-    assert WaveGrid in lf.requires
-    assert PsiBaseField in lf.requires
-    assert PsiLongField not in lf.requires
+    for proc_class in (ClearAccelerationProcessor, LaplacianProcessor, LeapfrogProcessor):
+        p = proc_class(field_type=PsiBaseField)
+        assert WaveGrid in p.requires, proc_class.__name__
+        assert PsiBaseField in p.requires, proc_class.__name__
+        assert PsiLongField not in p.requires, proc_class.__name__
 
 
 def test_pipeline_error_when_parameterised_field_missing():
@@ -186,19 +189,72 @@ def test_pipeline_error_when_parameterised_field_missing():
 
 
 # ======================================================================
-# Taichi tests
+# Taichi tests: accumulator contract
+# ======================================================================
+
+
+def test_clear_acceleration_kernel_zeros_field():
+    """
+    Direct kernel test. Full grid, interior and boundary, must end at zero.
+
+    Mutation: _clear_accel writes nothing -> the field retains 999.0.
+    """
+    _ti_init()
+    from .evolution import _clear_accel
+
+    N = 8
+    field = ti.Vector.field(3, dtype=ti.f32, shape=(N, N, N))
+    field.fill(999.0)
+    _clear_accel(field, N, N, N)
+
+    arr = field.to_numpy()
+    assert np.abs(arr).max() < 1e-6, np.abs(arr).max()
+
+
+def test_laplacian_accumulates_on_repeated_application():
+    """
+    Contract test for += semantics: applying _laplacian twice to a
+    non-zero accumulator doubles the result at each interior voxel.
+
+    Mutation: _laplacian changed back to = (overwrite) -> the second
+    application gives the same value as the first, check fails.
+    """
+    _ti_init()
+    from .evolution import _laplacian
+
+    N = 16
+    field = ti.field(dtype=ti.f32, shape=(N, N, N))
+    acc = ti.field(dtype=ti.f32, shape=(N, N, N))
+
+    @ti.kernel
+    def _fill(f: ti.template()):
+        for i, j, k in f:
+            f[i, j, k] = (ti.sin(0.3 * ti.cast(i, ti.f32))
+                          + 0.5 * ti.cos(0.2 * ti.cast(j, ti.f32)))
+
+    _fill(field)
+    # acc starts at zero (Taichi default). Apply once, snapshot.
+    _laplacian(field, acc, N, N, N, 1.0, 1.0)
+    one = acc.to_numpy()[8, 8, 8]
+    # Apply again without clearing.
+    _laplacian(field, acc, N, N, N, 1.0, 1.0)
+    two = acc.to_numpy()[8, 8, 8]
+
+    assert abs(two - 2.0 * one) < 1e-4, (one, two)
+
+
+# ======================================================================
+# Taichi tests: parameterisation and isolation
 # ======================================================================
 
 
 def test_laplacian_default_writes_long():
     """
-    Smoke check: default pipeline runs one step without error, and
+    Smoke check: the default pipeline runs one step without error, and
     PsiLong.psi_new has the vector-field shape (16, 16, 16, 3).
 
-    This test cannot catch a no-op LaplacianProcessor.process. The
-    default field_type is PsiLongField and the PsiLong seed is linear,
-    so a correct Laplacian and a no-op both leave psi_new at zero.
-    Kept as a shape and no-crash check.
+    This test cannot catch a no-op LaplacianProcessor.process. Kept as
+    a shape and no-crash check.
     """
     _ti_init()
     ctx = _run(_build_default_pipeline(), max_steps=1)
@@ -264,6 +320,8 @@ def test_laplacian_matches_analytic_on_asymmetric_seed():
 
     field = ti.field(dtype=ti.f32, shape=(N, N, N))
     scratch = ti.field(dtype=ti.f32, shape=(N, N, N))
+    # Taichi initialises to zero, but make it explicit for the += kernel.
+    scratch.fill(0.0)
 
     @ti.kernel
     def _fill(f: ti.template()):
@@ -316,6 +374,8 @@ def test_two_fields_evolve_independently():
             super().__init__()
             self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
             self.add(_SeedBothFields())
+            self.add(ClearAccelerationProcessor(field_type=PsiBaseField))
+            self.add(ClearAccelerationProcessor(field_type=PsiLongField))
             self.add(LaplacianProcessor(field_type=PsiBaseField))
             self.add(LaplacianProcessor(field_type=PsiLongField))
             self.add(LeapfrogProcessor(field_type=PsiBaseField))
@@ -329,6 +389,41 @@ def test_two_fields_evolve_independently():
     assert max_diff < 1e-6, f"cross-talk: max diff {max_diff}"
 
 
+def test_boundary_voxels_unchanged_by_leapfrog_swap():
+    """
+    Boundary voxels of PsiLong.psi must stay at their seed value after
+    several Leapfrog steps, because the swap loop is interior-only.
+
+    Mutation: the swap loop reverted to full grid -> boundary voxels of
+    psi receive values from psi_new, which is never written there by
+    Laplacian (interior-only), so they would become 0 (initial new) and
+    the check fails.
+    """
+    _ti_init()
+
+    class P(Pipeline):
+        def __init__(self):
+            super().__init__()
+            self.add(AllocateWaveField(nx=16, ny=16, nz=16, dx=1.0, c=1.0))
+            self.add(_SeedBothFields())
+            self.add(ClearAccelerationProcessor())
+            self.add(LaplacianProcessor())
+            self.add(LeapfrogProcessor())
+
+    ctx = _run(P(), max_steps=5)
+    assert ctx.diag.errors == [], ctx.diag.errors
+
+    long_field = ctx.data.require(PsiLongField)
+    arr = long_field.psi.to_numpy()
+    # Boundary voxels: i = 0 and i = 15, etc. Seed value there is
+    # [0, 0, 0] for i=0 and [15, 30, 45] for i=15 etc.
+    for i, j, k in [(0, 8, 8), (15, 8, 8), (8, 0, 8), (8, 15, 8),
+                     (8, 8, 0), (8, 8, 15)]:
+        expected = np.array([i, 2 * j, 3 * k], dtype=np.float32)
+        assert np.allclose(arr[i, j, k], expected, atol=1e-6), \
+            (i, j, k, arr[i, j, k], expected)
+
+
 # ======================================================================
 # Runner
 # ======================================================================
@@ -339,11 +434,14 @@ def main() -> int:
         test_default_field_type_is_long,
         test_requires_reflects_field_type,
         test_pipeline_error_when_parameterised_field_missing,
+        test_clear_acceleration_kernel_zeros_field,
+        test_laplacian_accumulates_on_repeated_application,
         test_laplacian_default_writes_long,
         test_laplacian_on_base_does_not_touch_long,
         test_leapfrog_on_base_leaves_long_bit_identical,
         test_laplacian_matches_analytic_on_asymmetric_seed,
         test_two_fields_evolve_independently,
+        test_boundary_voxels_unchanged_by_leapfrog_swap,
     ]
     passed = 0
     for t in tests:
