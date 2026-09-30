@@ -6,6 +6,9 @@ Each UPDATE processor adds its contribution to psi_new:
     Laplacian   -> +c^2 * Laplacian(psi)
     Nonlinearity-> -gamma * |psi|^2 * psi   (additive, runs after Laplacian)
     Leapfrog    -> integrates: psi_new = 2*psi - psi_prev + dt^2 * accel
+
+Note: no `from __future__ import annotations` here. Taichi kernel
+definitions need live type objects, not stringified annotations.
 """
 
 from ..pipeline import BaseProcessor, Stage
@@ -17,19 +20,27 @@ from .features import PsiLongField, WaveGrid
 
 class LaplacianProcessor(BaseProcessor):
     """
-    Writes c^2 * Laplacian(psi) into psi_new (acceleration contribution
-    from the spatial operator). Overwrites; must run before any additive
-    processor in the UPDATE stage.
+    c^2 * Laplacian(psi) into psi_new. Overwrites; must run before any
+    additive processor in the UPDATE stage.
+
+    field_type selects which triple-buffer field to operate on. Default
+    is PsiLongField, preserving the behaviour of the pre-parameterised
+    version. Pass PsiBaseField (or any PsiTripleBuffer subclass) to run
+    the same operator on a different field.
     """
 
     name = "Laplacian"
     stage = Stage.UPDATE
     order = 10
-    requires = (WaveGrid, PsiLongField)
+    provides = ()
+
+    def __init__(self, field_type=PsiLongField):
+        self.field_type = field_type
+        self.requires = (WaveGrid, field_type)
 
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiLongField)
+        field = ctx.data.require(self.field_type)
         _laplacian(field.psi, field.psi_new, grid.nx, grid.ny, grid.nz, grid.dx, grid.c)
 
 
@@ -59,19 +70,26 @@ def _laplacian(
 
 class LeapfrogProcessor(BaseProcessor):
     """
-    Integrates: psi_new = 2*psi - psi_prev + dt^2 * psi_new
-    where psi_new holds the accumulated acceleration (spatial + forces).
-    Then swaps time levels: prev <- psi, psi <- new.
+    psi_new = 2*psi - psi_prev + dt^2 * psi_new, then swaps time levels.
+
+    field_type selects which triple-buffer field to integrate. Default
+    is PsiLongField. Two fields evolved independently means two
+    LeapfrogProcessor instances with different field_type, not one
+    instance handling both.
     """
 
     name = "Leapfrog"
     stage = Stage.UPDATE
     order = 20
-    requires = (WaveGrid, PsiLongField)
+    provides = ()
+
+    def __init__(self, field_type=PsiLongField):
+        self.field_type = field_type
+        self.requires = (WaveGrid, field_type)
 
     def process(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
-        field = ctx.data.require(PsiLongField)
+        field = ctx.data.require(self.field_type)
         dt2 = ctx.sim.dt * ctx.sim.dt
         _leapfrog(field.psi, field.psi_prev, field.psi_new, grid.nx, grid.ny, grid.nz, dt2)
 
