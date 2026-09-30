@@ -14,6 +14,7 @@ from .features import (
     PsiTransField,
     TrackerFields,
     WaveGrid,
+    WaveSpeedField,
     WaveStats,
 )
 
@@ -54,6 +55,31 @@ class AllocateTrackers(BaseProcessor):
                 amp_global=ti.field(dtype=ti.f32, shape=()),
                 freq_global=ti.field(dtype=ti.f32, shape=()),
                 energy_global=ti.field(dtype=ti.f32, shape=()),
+            )
+        )
+
+class AllocateWaveSpeed(BaseProcessor):
+    """
+    Allocates WaveSpeedField.c2_local. Must run AFTER AllocateWaveField,
+    since the per-voxel field is shaped by WaveGrid.
+
+    Separate from AllocateWaveField so pipelines that use the constant
+    Laplacian (LaplacianProcessor) do not pay for the extra buffer.
+    Pipelines that use LaplacianVariableCoeffProcessor must include
+    this allocator.
+    """
+
+    name = "AllocateWaveSpeed"
+    stage = None
+    order = 25
+    provides = (WaveSpeedField,)
+    requires = (WaveGrid,)
+
+    def setup(self, ctx) -> None:
+        grid = ctx.data.require(WaveGrid)
+        ctx.data.set(
+            WaveSpeedField(
+                c2_local=ti.field(dtype=ti.f32, shape=(grid.nx, grid.ny, grid.nz))
             )
         )
 

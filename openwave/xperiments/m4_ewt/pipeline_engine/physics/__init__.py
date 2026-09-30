@@ -20,7 +20,8 @@ from .units import (
     UnitSystem,
     make_unit_system,
 )
-from .allocator import AllocateTrackers, AllocateWaveField
+from .allocator import AllocateTrackers, AllocateWaveSpeed, AllocateWaveField
+from .emc import UpdateEMCDensityProcessor, UpdateWaveSpeedProcessor
 from .seed import SeedPulse, SeedMultiCenter
 from .evolution import LaplacianProcessor, LeapfrogProcessor
 from .nonlinearity import NonlinearCubic
@@ -43,6 +44,8 @@ __all__ = [
     "WaveGrid",
     "WaveStats",
     "TrackerFields",
+    "WaveSpeedField", 
+    "AllocateWaveSpeed"
     # units
     "UnitSystem",
     "NaturalUnitSystem",
@@ -60,4 +63,7 @@ __all__ = [
     "DirichletBoundaryProcessor",
     "AmplitudeTracker",
     "TaichiWindowProcessor",
+    "UpdateEMCDensityProcessor", 
+    "UpdateWaveSpeedProcessor",
+    "LaplacianVariableCoeffProcessor"
 ]

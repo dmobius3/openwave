@@ -20,8 +20,7 @@ from ..pipeline import BaseProcessor, Stage
 
 import taichi as ti
 
-from .features import PsiLongField, WaveGrid
-
+from .features import PsiLongField, WaveGrid, WaveSpeedField
 
 # ======================================================================
 # Accumulator clear
@@ -179,3 +178,77 @@ def _leapfrog(
     for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
         prev[i, j, k] = psi[i, j, k]
         psi[i, j, k] = new[i, j, k]
+
+class LaplacianVariableCoeffProcessor(BaseProcessor):
+    """
+    Adds div(c^2(rho) grad psi) to psi_new, using the conservative flux
+    form on half-grids:
+        c^2_{i+1/2} = (c^2_i + c^2_{i+1}) / 2
+        flux_x = c^2_{i+1/2} (psi_{i+1} - psi_i) / dx
+        div(c^2 grad psi) = (flux_x[i+1/2] - flux_x[i-1/2]) / dx + ...
+    Uses += so it composes with other additive processors; requires
+    ClearAccelerationProcessor to have zeroed psi_new first (order 0
+    before order 10).
+
+    The naive form c^2_i * laplacian(psi) is not self-adjoint when c^2
+    varies, so it breaks the staggered leapfrog invariant. The flux
+    form is the discrete variation of
+        E_grad = sum (1/2) c^2_{i+1/2} ((psi_{i+1} - psi_i)/dx)^2 dx
+    and conserves the invariant. Plan item 1.23 requires the flux form;
+    the naive form is a bug.
+
+    Requires WaveSpeedField to have been populated with c^2 values.
+    """
+
+    name = "LaplacianVariableCoeff"
+    stage = Stage.UPDATE
+    order = 10
+    provides = ()
+
+    def __init__(self, field_type=PsiLongField):
+        self.field_type = field_type
+        self.requires = (WaveGrid, field_type, WaveSpeedField)
+
+    def process(self, ctx) -> None:
+        grid = ctx.data.require(WaveGrid)
+        field = ctx.data.require(self.field_type)
+        c2 = ctx.data.require(WaveSpeedField).c2_local
+        _laplacian_var_coeff(
+            field.psi, c2, field.psi_new,
+            grid.nx, grid.ny, grid.nz, grid.dx,
+        )
+
+
+@ti.kernel
+def _laplacian_var_coeff(
+    psi: ti.template(),
+    c2: ti.template(),
+    out: ti.template(),
+    nx: ti.i32,
+    ny: ti.i32,
+    nz: ti.i32,
+    dx: ti.f32,
+):
+    inv_dx2 = 1.0 / (dx * dx)
+    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
+        c_ii = c2[i, j, k]
+        c2_xp = 0.5 * (c_ii + c2[i + 1, j, k])
+        c2_xm = 0.5 * (c_ii + c2[i - 1, j, k])
+        c2_yp = 0.5 * (c_ii + c2[i, j + 1, k])
+        c2_ym = 0.5 * (c_ii + c2[i, j - 1, k])
+        c2_zp = 0.5 * (c_ii + c2[i, j, k + 1])
+        c2_zm = 0.5 * (c_ii + c2[i, j, k - 1])
+
+        flux_x = (
+            c2_xp * (psi[i + 1, j, k] - psi[i, j, k])
+            - c2_xm * (psi[i, j, k] - psi[i - 1, j, k])
+        )
+        flux_y = (
+            c2_yp * (psi[i, j + 1, k] - psi[i, j, k])
+            - c2_ym * (psi[i, j, k] - psi[i, j - 1, k])
+        )
+        flux_z = (
+            c2_zp * (psi[i, j, k + 1] - psi[i, j, k])
+            - c2_zm * (psi[i, j, k] - psi[i, j, k - 1])
+        )
+        out[i, j, k] += (flux_x + flux_y + flux_z) * inv_dx2

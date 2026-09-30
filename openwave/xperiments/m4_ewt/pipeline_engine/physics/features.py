@@ -185,3 +185,22 @@ class TrackerFields:
     amp_global: ti.field
     freq_global: ti.field
     energy_global: ti.field
+
+@dataclass
+class WaveSpeedField:
+    """
+    Per-voxel local wave speed squared c^2(rho).
+
+    Written by the physics layer: UpdateWaveSpeedProcessor reads
+    EMCDensityField.rho (normalised, 1.0 = statutory) and writes
+    c2_local = c0^2 * rho / rho_0.
+
+    Read by LaplacianVariableCoeffProcessor, which uses the flux form
+    div(c^2 grad psi) instead of the constant-coefficient Laplacian.
+    The plan's item 1.23 requires this: a variable c^2 makes the naive
+    c^2_i * laplacian(psi) form non-conservative.
+
+    Representation: scalar ti.field(f32), one value per voxel, in the
+    unit system's squared speed units.
+    """
+    c2_local: ti.field
