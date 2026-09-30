@@ -17,6 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
+| [M8.14](tasks/m8_14_task_details.md) | Fixed-edge stability of the conic carrier | Whether the conic band `M(W)` in ℝP³ is a strictly stable critical point of area with its edge held fixed, at every embedded width: the check the author registered and froze (carrier page § IX), an analytic rederivation and a finite-element cross-check, run in two blind rooms with a blind auditor and two controls. Surface only, twist-blind and local; no MODELS.md cell, M8.7's gate unchanged | author-proposed, maintainer-run | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
 
 ## LATER (gated)
 
