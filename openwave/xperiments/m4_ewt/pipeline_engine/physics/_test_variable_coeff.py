@@ -338,7 +338,7 @@ def test_flux_form_conserves_staggered_invariant():
 
     drift = max(abs(e - E0) for e in Es) / abs(E0)
     print(f"  flux form relative drift: {drift:.3e}")
-    assert drift < 5e-3, f"flux form drift too large: {drift}"
+    assert drift < 1e-4, f"flux form drift too large: {drift}"
 
 
 def test_naive_form_breaks_staggered_invariant():
@@ -347,6 +347,13 @@ def test_naive_form_breaks_staggered_invariant():
     must be larger than the flux-form drift by a clear margin.
 
     Mutation: this is the discriminating test, unchanged.
+
+    Measured on N=32, dt=0.05, 50 steps, zero-boundary seed:
+        flux form drift  5.6e-06   (f32 rounding)
+        naive form drift 8.2e-04   (operator asymmetry)
+    Ratio ~146x. The naive threshold 5e-4 leaves a 1.6x margin over
+    the measured value; if the flux form were accidentally substituted,
+    naive would drop below 1e-5 and the check would fail.
     """
     _ti_init()
 
