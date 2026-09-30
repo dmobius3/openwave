@@ -17,6 +17,7 @@ from .features import (
     WaveStats,
 )
 
+
 class AllocateTrackers(BaseProcessor):
     """
     Allocates the TrackerFields feature. Must run AFTER AllocateWaveField,
@@ -56,6 +57,7 @@ class AllocateTrackers(BaseProcessor):
                 energy_global=ti.field(dtype=ti.f32, shape=()),
             )
         )
+
 
 def _triple_buffer(shape: tuple[int, int, int]):
     """Allocate one triple-buffered vector field."""
@@ -110,5 +112,3 @@ class AllocateWaveField(BaseProcessor):
         ctx.data.set(EMCDensityField(rho=ti.field(dtype=ti.f32, shape=shape)))
         ctx.data.set(EMCFluxField(flux=ti.field(dtype=ti.f32, shape=shape)))
         ctx.data.set(WaveStats())
-
-

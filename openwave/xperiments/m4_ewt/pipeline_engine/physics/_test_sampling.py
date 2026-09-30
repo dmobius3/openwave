@@ -27,7 +27,6 @@ from .features import (
 from ..pipeline import BaseProcessor, Stage
 from ..utils.sampling import ThreePlaneSampler
 
-
 # ======================================================================
 # Taichi init
 # ======================================================================
@@ -81,11 +80,17 @@ class _MockTrackersUpdate(BaseProcessor):
         trk = ctx.data.require(TrackerFields)
 
         _mock_update(
-            psi, rho,
-            trk.amp_local, trk.freq_local,
-            trk.energy_long_local, trk.energy_trans_local,
-            trk.rho_local, trk.last_crossing,
-            grid.nx, grid.ny, grid.nz,
+            psi,
+            rho,
+            trk.amp_local,
+            trk.freq_local,
+            trk.energy_long_local,
+            trk.energy_trans_local,
+            trk.rho_local,
+            trk.last_crossing,
+            grid.nx,
+            grid.ny,
+            grid.nz,
             float(ctx.sim.step),
         )
 
@@ -176,10 +181,15 @@ def test_tracker_fields_keys_independently():
 
     bag = FeatureBag()
     tf = TrackerFields(
-        amp_local=_S(), freq_local=_S(),
-        energy_long_local=_S(), energy_trans_local=_S(),
-        rho_local=_S(), last_crossing=_S(),
-        amp_global=_S(), freq_global=_S(), energy_global=_S(),
+        amp_local=_S(),
+        freq_local=_S(),
+        energy_long_local=_S(),
+        energy_trans_local=_S(),
+        rho_local=_S(),
+        last_crossing=_S(),
+        amp_global=_S(),
+        freq_global=_S(),
+        energy_global=_S(),
     )
     bag.set(tf)
     assert bag.require(TrackerFields) is tf
