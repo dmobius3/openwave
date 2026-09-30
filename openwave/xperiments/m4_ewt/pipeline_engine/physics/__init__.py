@@ -9,6 +9,7 @@ from .features import (
     PsiLongField,
     PsiTransField,
     PsiTripleBuffer,
+    TrackerFields,
     WaveGrid,
     WaveStats,
 )
@@ -19,7 +20,7 @@ from .units import (
     UnitSystem,
     make_unit_system,
 )
-from .allocator import AllocateWaveField
+from .allocator import AllocateTrackers, AllocateWaveField
 from .seed import SeedPulse, SeedMultiCenter
 from .evolution import LaplacianProcessor, LeapfrogProcessor
 from .nonlinearity import NonlinearCubic
@@ -41,6 +42,7 @@ __all__ = [
     "EMCFluxField",
     "WaveGrid",
     "WaveStats",
+    "TrackerFields",
     # units
     "UnitSystem",
     "NaturalUnitSystem",
@@ -49,6 +51,7 @@ __all__ = [
     "make_unit_system",
     # processors
     "AllocateWaveField",
+    "AllocateTrackers",
     "SeedPulse",
     "SeedMultiCenter",
     "LaplacianProcessor",
