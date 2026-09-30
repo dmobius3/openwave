@@ -12,9 +12,51 @@ from .features import (
     PsiBaseField,
     PsiLongField,
     PsiTransField,
+    TrackerFields,
     WaveGrid,
     WaveStats,
 )
+
+
+class AllocateTrackers(BaseProcessor):
+    """
+    Allocates the TrackerFields feature. Must run AFTER AllocateWaveField,
+    since the per-voxel fields are shaped by WaveGrid and rho_local
+    aliases EMCDensityField.rho.
+
+    All per-voxel trackers start at zero. The processor that populates
+    them lives in the physics layer.
+
+    rho_local shares the buffer with EMCDensityField.rho: same ti.field
+    object, not a copy. Any write through one is visible through the
+    other. This avoids duplicating ~40 MB on a 128^3 grid and makes the
+    "tracker mirrors the source" contract explicit.
+    """
+
+    name = "AllocateTrackers"
+    stage = None
+    order = 20
+    provides = (TrackerFields,)
+    requires = (WaveGrid, EMCDensityField)
+
+    def setup(self, ctx) -> None:
+        grid = ctx.data.require(WaveGrid)
+        emc = ctx.data.require(EMCDensityField)
+        shape = (grid.nx, grid.ny, grid.nz)
+
+        ctx.data.set(
+            TrackerFields(
+                amp_local=ti.field(dtype=ti.f32, shape=shape),
+                freq_local=ti.field(dtype=ti.f32, shape=shape),
+                energy_long_local=ti.field(dtype=ti.f32, shape=shape),
+                energy_trans_local=ti.field(dtype=ti.f32, shape=shape),
+                rho_local=emc.rho,  # shared buffer, not a copy
+                last_crossing=ti.field(dtype=ti.f32, shape=shape),
+                amp_global=ti.field(dtype=ti.f32, shape=()),
+                freq_global=ti.field(dtype=ti.f32, shape=()),
+                energy_global=ti.field(dtype=ti.f32, shape=()),
+            )
+        )
 
 
 def _triple_buffer(shape: tuple[int, int, int]):
