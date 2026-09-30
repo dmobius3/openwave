@@ -13,7 +13,6 @@ from dataclasses import dataclass
 
 import taichi as ti
 
-
 # =============================================================================
 # Grid and statistics
 # =============================================================================
@@ -143,7 +142,7 @@ class EMCFluxField:
 
     flux: ti.field
 
-    
+
 # =============================================================================
 # Tracker fields
 # =============================================================================
@@ -166,12 +165,17 @@ class TrackerFields:
         energy_trans_local  transverse mode energy
         rho_local           EMC density mirror; shares the buffer with
                             EMCDensityField.rho (same ti.field object,
-                            see AllocateTrackers)
+                            see AllocateTrackers). Read-only for
+                            Stage.MEASURE processors: a write here
+                            rewrites the density the physics reads. The
+                            test fixture may write it; a real
+                            TrackersUpdate must not.
         last_crossing       timestamp of last positive-going zero crossing
                             (internal state for freq_local)
 
     Scalars (shape = (), f32):
-        amp_global          three-plane average of amp_local
+        amp_global          RMS of amp_local over the three centre
+                            planes, sqrt(<amp_local^2>)
         freq_global         three-plane average of freq_local
         energy_global       three-plane average of energy_long_local
     """

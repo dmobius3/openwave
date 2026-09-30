@@ -4,8 +4,13 @@ Three-plane sampling for scalar 3D fields.
 Estimates the average of a scalar field over three centre-axis planes
 instead of the whole volume. Samples ~3 N^2 voxels instead of N^3
 (~3% at N = 100), a deliberate performance compromise documented in
-the plan (item 1.2). Assumes the field is near-isotropic: valid for
-solitons, waves, and slowly varying fields.
+the plan (item 1.2). It stands in for the volume mean only where the
+field is near-isotropic about the centre planes. A localized structure
+centred on the grid lies on all three planes, so the estimate
+overweights it: for a Gaussian of width sigma voxels it reads about
+N / (sqrt(2 pi) sigma) times the volume mean (3.0x at N = 32, 12.6x
+at N = 128, sigma = 4). Where the volume mean itself is needed, use a
+full reduction.
 
 Engine layer: takes raw grid dimensions, not a physics WaveGrid.
 Domain-agnostic and Taichi-only.
