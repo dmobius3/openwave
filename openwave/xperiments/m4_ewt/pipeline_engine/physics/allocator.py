@@ -14,6 +14,7 @@ from .features import (
     PsiTransField,
     TrackerFields,
     WaveGrid,
+    WaveSpeedField,
     WaveStats,
 )
 
@@ -59,6 +60,30 @@ class AllocateTrackers(BaseProcessor):
         )
 
 
+class AllocateWaveSpeed(BaseProcessor):
+    """
+    Allocates WaveSpeedField.c2_local. Must run AFTER AllocateWaveField,
+    since the per-voxel field is shaped by WaveGrid.
+
+    Separate from AllocateWaveField so pipelines that use the constant
+    Laplacian (LaplacianProcessor) do not pay for the extra buffer.
+    Pipelines that use LaplacianVariableCoeffProcessor must include
+    this allocator.
+    """
+
+    name = "AllocateWaveSpeed"
+    stage = None
+    order = 25
+    provides = (WaveSpeedField,)
+    requires = (WaveGrid,)
+
+    def setup(self, ctx) -> None:
+        grid = ctx.data.require(WaveGrid)
+        ctx.data.set(
+            WaveSpeedField(c2_local=ti.field(dtype=ti.f32, shape=(grid.nx, grid.ny, grid.nz)))
+        )
+
+
 def _triple_buffer(shape: tuple[int, int, int]):
     """Allocate one triple-buffered vector field."""
     return (
@@ -72,6 +97,10 @@ class AllocateWaveField(BaseProcessor):
     """
     Allocates the grid feature, the five field features, and the stats
     holder. Runs once at setup.
+
+    Wave speed is not allocated here: it comes from the UnitSystem
+    feature (constant) or WaveSpeedField (variable local). Both are
+    separate allocators.
 
     All fields are allocated together so that a pipeline can use any
     subset without reallocation. Memory cost: three triple-buffered
@@ -93,15 +122,14 @@ class AllocateWaveField(BaseProcessor):
         WaveStats,
     )
 
-    def __init__(self, nx: int, ny: int, nz: int, dx: float, c: float):
+    def __init__(self, nx: int, ny: int, nz: int, dx: float):
         self.nx = nx
         self.ny = ny
         self.nz = nz
         self.dx = dx
-        self.c = c
 
     def setup(self, ctx) -> None:
-        grid = WaveGrid(nx=self.nx, ny=self.ny, nz=self.nz, dx=self.dx, c=self.c)
+        grid = WaveGrid(nx=self.nx, ny=self.ny, nz=self.nz, dx=self.dx)
         shape = (self.nx, self.ny, self.nz)
         ctx.data.set(grid)
 
