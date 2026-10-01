@@ -16,7 +16,10 @@ import traceback
 import numpy as np
 import taichi as ti
 
-from .features import PsiLongField, WaveGrid, WaveSpeedField
+from dataclasses import dataclass
+from .units import UnitSystem
+
+from .features import PsiBaseField, PsiLongField, WaveGrid, WaveSpeedField
 from ..pipeline import BaseProcessor, Pipeline, Stage
 from .allocator import AllocateWaveField, AllocateWaveSpeed
 from .emc import UpdateEMCDensityProcessor, UpdateWaveSpeedProcessor
@@ -39,6 +42,98 @@ def _ti_init():
         ti.init(arch=ti.cpu, log_level=ti.ERROR)
         _TI_INITIALIZED = True
 
+@dataclass(frozen=True)
+class _UnitsC2(UnitSystem):
+    """
+    UnitSystem with c = 2, so a mutation dropping the square in
+    c0_sq = c**2 produces a factor-2 error, not an identity.
+    """
+    @property
+    def c(self): return 2.0
+    @property
+    def wavelength(self): return 1.0
+    @property
+    def dx(self): return 0.5
+    @property
+    def dt(self): return 0.05
+    @property
+    def rho_0(self): return 1.0
+    def to_physical_length(self, x): return x
+    def to_physical_time(self, t): return t
+    def to_physical_energy(self, E): return E
+    def to_physical_density(self, r): return r
+
+
+class _SeedBasesAtStep0(BaseProcessor):
+    """
+    Seed PsiBase and PsiLong from numpy arrays at step 0.
+
+    PsiLong carries a sentinel (1e6). Any processor that ignores its
+    field_type and reads or writes PsiLong instead of PsiBase will
+    surface as a large diff in that sentinel.
+    """
+    name = "_SeedBasesAtStep0"
+    stage = Stage.PRE_UPDATE
+    order = 5
+    requires = (WaveGrid, PsiBaseField, PsiLongField)
+    provides = ()
+
+    def __init__(self, base_np, long_np):
+        self.base_np = base_np
+        self.long_np = long_np
+
+    def process(self, ctx):
+        if ctx.sim.step > 0:
+            return
+        bf = ctx.data.require(PsiBaseField)
+        lf = ctx.data.require(PsiLongField)
+        zeros_b = np.zeros_like(self.base_np)
+        zeros_l = np.zeros_like(self.long_np)
+        bf.psi.from_numpy(self.base_np)
+        bf.psi_prev.from_numpy(self.base_np)
+        bf.psi_new.from_numpy(zeros_b)
+        lf.psi.from_numpy(self.long_np)
+        lf.psi_prev.from_numpy(self.long_np)
+        lf.psi_new.from_numpy(zeros_l)
+
+
+def _numpy_step(psi, prev, dx, dt2, beta_rho, c0_sq):
+    """
+    One production step, numpy float64, no Taichi.
+
+    Mirrors the four kernels in order: _update_rho, _update_c2,
+    _laplacian_var_coeff, _leapfrog. Interior-only where the Taichi
+    kernels are interior-only.
+    """
+    rho = 1.0 - beta_rho * np.sum(psi * psi, axis=-1)
+    c2 = c0_sq * rho
+
+    interior = (slice(1, -1),) * 3
+    c_ii = c2[interior]
+    c2_xp = 0.5 * (c_ii + c2[2:, 1:-1, 1:-1])
+    c2_xm = 0.5 * (c_ii + c2[:-2, 1:-1, 1:-1])
+    c2_yp = 0.5 * (c_ii + c2[1:-1, 2:, 1:-1])
+    c2_ym = 0.5 * (c_ii + c2[1:-1, :-2, 1:-1])
+    c2_zp = 0.5 * (c_ii + c2[1:-1, 1:-1, 2:])
+    c2_zm = 0.5 * (c_ii + c2[1:-1, 1:-1, :-2])
+    inv_dx2 = 1.0 / (dx * dx)
+
+    flux_x = (c2_xp[..., None] * (psi[2:, 1:-1, 1:-1] - psi[interior])
+              - c2_xm[..., None] * (psi[interior] - psi[:-2, 1:-1, 1:-1]))
+    flux_y = (c2_yp[..., None] * (psi[1:-1, 2:, 1:-1] - psi[interior])
+              - c2_ym[..., None] * (psi[interior] - psi[1:-1, :-2, 1:-1]))
+    flux_z = (c2_zp[..., None] * (psi[1:-1, 1:-1, 2:] - psi[interior])
+              - c2_zm[..., None] * (psi[interior] - psi[1:-1, 1:-1, :-2]))
+
+    new = np.zeros_like(psi)
+    new[interior] = (flux_x + flux_y + flux_z) * inv_dx2
+    new[interior] = 2.0 * psi[interior] - prev[interior] + dt2 * new[interior]
+
+    psi_out = psi.copy()
+    prev_out = prev.copy()
+    prev_out[interior] = psi[interior]
+    psi_out[interior] = new[interior]
+    return psi_out, prev_out, rho, c2
 
 # ======================================================================
 # Kernel-level tests
@@ -447,6 +542,97 @@ def test_pipeline_runs_with_variable_coeff_chain():
     assert ctx.diag.errors == [], ctx.diag.errors
     assert ctx.sim.step == 20
 
+def test_production_pipeline_vs_numpy():
+    """
+    Run the production chain (Allocate + Clear + EMCDensity + WaveSpeed
+    + LaplacianVarCoeff + Leapfrog) for a few steps and compare PsiBase
+    to a numpy float64 reference.
+
+    Arena deliberately hostile to the common mutations:
+      - non-cubic grid (6, 8, 10)
+      - dx = 0.5, so 1/dx and 1/dx^2 differ by 2x
+      - c = 2, so c and c^2 differ by 2x
+      - psi has all three components non-zero and axis-asymmetric,
+        so a rho = 1 - beta*psi[0]^2 reading sees a different field
+      - PsiLong carries a 1e6 sentinel, so field_type confusion is
+        loud
+      - c2 varies along all three axes, so an x-neighbour read in a
+        y-face term sees a different value
+
+    Mutation: each of the following leaves the pipeline-level tests
+    green but changes the output here: 1/dx for 1/dx^2, c for c^2,
+    field_type ignored, rho from psi[0] only, AllocateWaveSpeed shaped
+    (nx, nx, nx), wrong neighbour index in a c2 half-grid average.
+    """
+    _ti_init()
+
+    nx, ny, nz = 6, 8, 10
+    dx = 0.5
+    dt = 0.05
+    dt2 = dt * dt
+    beta_rho = 0.1
+    n_steps = 3
+    c0 = 2.0
+    c0_sq = c0 * c0
+
+    rng = np.random.default_rng(seed=607_002)
+    base_np = rng.standard_normal((nx, ny, nz, 3)).astype(np.float32) * 0.3
+    long_np = np.full((nx, ny, nz, 3), 1e6, dtype=np.float32)
+
+    # Arena invariant: the three components must be distinguishable.
+    # A rho reading that picks psi[..., 0] only would otherwise see the
+    # same value as the correct sum on a symmetric seed.
+    per_comp = np.abs(base_np).sum(axis=(0, 1, 2))
+    assert per_comp.min() > 1.0, (
+        f"arena error: a component is too small ({per_comp}); a psi[0]-only "
+        f"rho reading might slip through"
+    )
+
+    class P(Pipeline):
+        def __init__(self):
+            super().__init__(external_provides=(UnitSystem,))
+            self.add(AllocateWaveField(nx=nx, ny=ny, nz=nz, dx=dx))
+            self.add(AllocateWaveSpeed())
+            self.add(_SeedBasesAtStep0(base_np, long_np))
+            self.add(ClearAccelerationProcessor(field_type=PsiBaseField))
+            self.add(UpdateEMCDensityProcessor(
+                field_type=PsiBaseField, beta_rho=beta_rho))
+            self.add(UpdateWaveSpeedProcessor())
+            self.add(LaplacianVariableCoeffProcessor(field_type=PsiBaseField))
+            self.add(LeapfrogProcessor(field_type=PsiBaseField))
+
+    from ..runner import Runner
+    from ..sinks import InMemorySink
+    runner = Runner({"session": InMemorySink()})
+    ctx = runner.run(
+        P(), name="stage2_prod_vs_numpy", params={},
+        dt=dt, max_steps=n_steps,
+        initial_features=[_UnitsC2()],
+    )
+    assert ctx.diag.errors == [], ctx.diag.errors
+
+    psi_prod = ctx.data.require(PsiBaseField).psi.to_numpy()
+    long_after = ctx.data.require(PsiLongField).psi.to_numpy()
+
+    # Sentinel: PsiLong must be exactly where the seed put it, since no
+    # processor in the chain names PsiLongField. A field_type confusion
+    # in any of them shows up here.
+    assert np.allclose(long_after, long_np, atol=1e-6), (
+        f"PsiLong sentinel changed; a processor ignored field_type. "
+        f"max diff {np.abs(long_after - long_np).max()}"
+    )
+
+    psi_ref = base_np.astype(np.float64).copy()
+    prev_ref = psi_ref.copy()
+    for _ in range(n_steps):
+        psi_ref, prev_ref, _, _ = _numpy_step(
+            psi_ref, prev_ref, dx, dt2, beta_rho, c0_sq
+        )
+
+    diff = np.abs(psi_prod - psi_ref).max()
+    assert diff < 1e-3, (
+        f"production vs numpy, {n_steps} steps: max diff {diff}"
+    )
 
 # ======================================================================
 # Runner
@@ -461,6 +647,7 @@ def main() -> int:
         test_flux_form_conserves_staggered_invariant,
         test_naive_form_breaks_staggered_invariant,
         test_pipeline_runs_with_variable_coeff_chain,
+        test_production_pipeline_vs_numpy,
     ]
     passed = 0
     for t in tests:
