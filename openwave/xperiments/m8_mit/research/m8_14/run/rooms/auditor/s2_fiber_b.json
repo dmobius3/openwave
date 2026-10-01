@@ -1,0 +1,84 @@
+{
+ "1.7": [
+  [
+   {
+    "level": 0,
+    "max_abs_gw_free_times_hw": 1.110223024625157e-16,
+    "max_leak": 1.5099790769099953e-31,
+    "min_Kdiag": 4.026555205684709
+   },
+   {
+    "level": 1,
+    "max_abs_gw_free_times_hw": 0.0,
+    "max_leak": 0.0,
+    "min_Kdiag": 4.015003377991052
+   },
+   {
+    "level": 2,
+    "max_abs_gw_free_times_hw": 0.0,
+    "max_leak": 0.0,
+    "min_Kdiag": 4.006571675488004
+   },
+   {
+    "level": 3,
+    "max_abs_gw_free_times_hw": 0.0,
+    "max_leak": 0.0,
+    "min_Kdiag": NaN
+   },
+   {
+    "level": 4,
+    "max_abs_gw_free_times_hw": 0.0,
+    "max_leak": 0.0,
+    "min_Kdiag": NaN
+   }
+  ],
+  [
+   3.76875593203029e-32,
+   1.110223024625157e-16
+  ]
+ ],
+ "0.25": [
+  [
+   {
+    "level": 0,
+    "max_abs_gw_free_times_hw": 1.1102230246251565e-16,
+    "max_leak": 1.0267857722987962e-30,
+    "min_Kdiag": 6.578536837885042
+   },
+   {
+    "level": 1,
+    "max_abs_gw_free_times_hw": 0.0,
+    "max_leak": 0.0,
+    "min_Kdiag": 6.571540809747368
+   },
+   {
+    "level": 2,
+    "max_abs_gw_free_times_hw": 0.0,
+    "max_leak": 0.0,
+    "min_Kdiag": 6.472497777083618
+   },
+   {
+    "level": 3,
+    "max_abs_gw_free_times_hw": 0.0,
+    "max_leak": 0.0,
+    "min_Kdiag": NaN
+   },
+   {
+    "level": 4,
+    "max_abs_gw_free_times_hw": 0.0,
+    "max_leak": 0.0,
+    "min_Kdiag": NaN
+   }
+  ],
+  [
+   1.5863825800515702e-31,
+   1.1102230246251565e-16
+  ]
+ ],
+ "planted_fired": true,
+ "lines": [
+  "PASS  F1 room b W=1.7: max |gw_free|*h_w 1.1e-16, max leak 1.5e-31, ratio to min K-diagonal 3.8e-32",
+  "PASS  F1 room b W=0.25: max |gw_free|*h_w 1.1e-16, max leak 1.0e-30, ratio to min K-diagonal 1.6e-31",
+  "[planted] FAIL  F1 room b W=1.7: max |gw_free|*h_w 4.3e-07, max leak 2.2e-12, ratio to min K-diagonal 5.5e-13"
+ ]
+}

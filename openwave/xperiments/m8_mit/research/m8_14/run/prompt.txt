@@ -1,0 +1,1 @@
+You are working in the current directory, a sealed room. Read BRIEF.md first, then the files it names, and do what they ask.

@@ -1,0 +1,1176 @@
+{
+ "checks": {
+  "K2_a_1/4": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999967206030562
+  },
+  "K2_a_1/2": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999997073133934
+  },
+  "K2_a_1": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.999999950074028
+  },
+  "K2_a_7/5": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999739911496
+  },
+  "K2_a_3/2": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999769617093
+  },
+  "K2_a_pi/2": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999785279287
+  },
+  "K2_a_17/10": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999798795832
+  },
+  "K2_b_1/4": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999967206030564
+  },
+  "K2_b_1/2": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999997073133933
+  },
+  "K2_b_1": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999500740278
+  },
+  "K2_b_7/5": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999739911495
+  },
+  "K2_b_3/2": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999769617095
+  },
+  "K2_b_pi/2": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999785279289
+  },
+  "K2_b_17/10": {
+   "seam_residual": 0.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 0.9999999798795834
+  }
+ },
+ "planted": {
+  "K1_cubic_grading": true,
+  "K2_a_periodic_seam": {
+   "fired": true,
+   "seam_residual": 2.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 4.389871932877332e-15
+  },
+  "K2_b_periodic_seam": {
+   "fired": true,
+   "seam_residual": 2.0,
+   "zero_data": 0.0,
+   "corr_closed_form": 1.737657640097271e-15
+  },
+  "K4_missed_lam1": true,
+  "K3_shifted_eigenvalue": true,
+  "K5_altered_json": true,
+  "K6_wrong_levels": true,
+  "K7_offset_2e-3": true
+ },
+ "v3": {
+  "a_1/4": {
+   "room_bottom": 45.76158928193098,
+   "room_err": 0.005598895614426169,
+   "room_p": 1.996683641266385,
+   "mine": 45.76160291153779,
+   "mine_err": 4.576160291153779e-11,
+   "rel_diff": -2.9783936630033644e-07,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.0024343384393418353,
+   "finest_rel_vs_mine_lowest6": [
+    0.00012205136298243403,
+    0.00026953038798859647,
+    0.0004085144531363857,
+    0.0005542226598478859,
+    0.0007067376829420249,
+    0.0008680616659080438
+   ]
+  },
+  "a_1/2": {
+   "room_bottom": 13.01119655021694,
+   "room_err": 0.001183940446745524,
+   "room_p": 1.9994196170962417,
+   "mine": 13.01119705467919,
+   "mine_err": 1.301119705467919e-11,
+   "rel_diff": -3.877139417924196e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.0004260875208186785,
+   "finest_rel_vs_mine_lowest6": [
+    9.095519647595965e-05,
+    0.00017054899661901005,
+    0.0002506746509158151,
+    0.0003384154008166703,
+    0.00028296922459454836,
+    0.00043701841636114446
+   ]
+  },
+  "a_1": {
+   "room_bottom": 4.038197480572941,
+   "room_err": 0.00031897778065737015,
+   "room_p": 2.0002258353559204,
+   "mine": 4.038197427067339,
+   "mine_err": 4.038197427067339e-12,
+   "rel_diff": 1.3249872670506895e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.00016774084269049393,
+   "finest_rel_vs_mine_lowest6": [
+    7.900339000780042e-05,
+    0.0001281229225774527,
+    0.00025973221530799126,
+    0.00018290645905687957,
+    0.00036861120163764714,
+    0.00024407489358975557
+   ]
+  },
+  "a_7/5": {
+   "room_bottom": 2.3808755427627752,
+   "room_err": 0.00018421694157044755,
+   "room_p": 2.000371376516264,
+   "mine": 2.380875488665504,
+   "mine_err": 2.380875488665531e-12,
+   "rel_diff": 2.27215876532415e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.00029366067336689426,
+   "finest_rel_vs_mine_lowest6": [
+    7.739633580958063e-05,
+    0.0001187997686393456,
+    0.00025728003111584897,
+    0.0001669011578992605,
+    0.00035442130653543793,
+    0.000540624004182919
+   ]
+  },
+  "a_3/2": {
+   "room_bottom": 2.143820313410615,
+   "room_err": 0.00016583418731697108,
+   "room_p": 2.000314193631752,
+   "mine": 2.143820262428569,
+   "mine_err": 2.1438202624285723e-12,
+   "rel_diff": 2.3780933053845366e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.0003074278408157497,
+   "finest_rel_vs_mine_lowest6": [
+    7.73783009099806e-05,
+    0.00011755593540442192,
+    0.0002572937296127355,
+    0.00016456128646324464,
+    0.00035286419589242374,
+    0.0005410947993125805
+   ]
+  },
+  "a_pi/2": {
+   "room_bottom": 2.0000000503003306,
+   "room_err": 0.00015483534310734015,
+   "room_p": 2.0002029806631714,
+   "mine": 2.0000000000001403,
+   "mine_err": 2.00000000000014e-12,
+   "rel_diff": 2.515009511760803e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.0003248624585689638,
+   "finest_rel_vs_mine_lowest6": [
+    7.744282164878225e-05,
+    0.00011685873950389802,
+    0.00025738913527567517,
+    0.0001631776846595766,
+    0.0003520406898167748,
+    0.0005415615137110769
+   ]
+  },
+  "a_17/10": {
+   "room_bottom": 1.7777699076110578,
+   "room_err": 0.00013815160300212348,
+   "room_p": 1.9997055585772312,
+   "mine": 1.7777698463058955,
+   "mine_err": 1.7777698463058955e-12,
+   "rel_diff": 3.4484307632603494e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.00044375281175012085,
+   "finest_rel_vs_mine_lowest6": [
+    7.774510769861577e-05,
+    0.0002577048884600632,
+    0.00011596062092386477,
+    0.0005426324725170696,
+    0.0003510056486734443,
+    0.00016119108769264948
+   ]
+  },
+  "b_1/4": {
+   "room_bottom": 45.76158928193097,
+   "room_err": 0.005598895614774335,
+   "room_p": 1.9966836412222806,
+   "mine": 45.76160291153779,
+   "mine_err": 4.576160291153779e-11,
+   "rel_diff": -2.9783936645560695e-07,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.0024343384404595333,
+   "finest_rel_vs_mine_lowest6": [
+    0.00012205136298988702,
+    0.0002695303880002567,
+    0.00040851445314156037,
+    0.0005542226598516075,
+    0.000706737682947659,
+    0.000868061665914196
+   ]
+  },
+  "b_1/2": {
+   "room_bottom": 13.011196550216825,
+   "room_err": 0.0011839404469693449,
+   "room_p": 1.99941961696502,
+   "mine": 13.01119705467919,
+   "mine_err": 1.301119705467919e-11,
+   "rel_diff": -3.877140305338276e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.000426087618262623,
+   "finest_rel_vs_mine_lowest6": [
+    9.095519648428767e-05,
+    0.0001705489966140049,
+    0.00025067465092065293,
+    0.0003384154008203963,
+    0.00028296922460184607,
+    0.0004370184163587004
+   ]
+  },
+  "b_1": {
+   "room_bottom": 4.038197480573127,
+   "room_err": 0.00031897778053036063,
+   "room_p": 2.0002258356153,
+   "mine": 4.038197427067339,
+   "mine_err": 4.038197427067339e-12,
+   "rel_diff": 1.3249918858805388e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.00016774142749227073,
+   "finest_rel_vs_mine_lowest6": [
+    7.900339002253668e-05,
+    0.00012812292258441898,
+    0.0002597322153198689,
+    0.0001829064590716813,
+    0.00036861120163981604,
+    0.00024407489360203373
+   ]
+  },
+  "b_7/5": {
+   "room_bottom": 2.3808755427625865,
+   "room_err": 0.00018421694163173186,
+   "room_p": 2.000371376336329,
+   "mine": 2.380875488665504,
+   "mine_err": 2.380875488665531e-12,
+   "rel_diff": 2.2721508380757458e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.00029365964872763307,
+   "finest_rel_vs_mine_lowest6": [
+    7.739633575604837e-05,
+    0.00011879976862567075,
+    0.0002572800311118226,
+    0.00016690115788738948,
+    0.0003544213065368572,
+    0.0005406240041824355
+   ]
+  },
+  "b_3/2": {
+   "room_bottom": 2.143820313410318,
+   "room_err": 0.0001658341874768432,
+   "room_p": 2.0003141930166914,
+   "mine": 2.143820262428569,
+   "mine_err": 2.1438202624285723e-12,
+   "rel_diff": 2.37807944714807e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.0003074260489968549,
+   "finest_rel_vs_mine_lowest6": [
+    7.73783008459717e-05,
+    0.0001175559353871943,
+    0.0002572937295758701,
+    0.0001645612864584914,
+    0.0003528641958760197,
+    0.0005410947992987915
+   ]
+  },
+  "b_pi/2": {
+   "room_bottom": 2.0000000503004483,
+   "room_err": 0.00015483534299631785,
+   "room_p": 2.000202981162015,
+   "mine": 2.0000000000001403,
+   "mine_err": 2.00000000000014e-12,
+   "rel_diff": 2.5150153959428336e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.0003248632188586064,
+   "finest_rel_vs_mine_lowest6": [
+    7.744282165211292e-05,
+    0.00011685873949116746,
+    0.00025738913526975396,
+    0.0001631776846527672,
+    0.0003520406897963467,
+    0.0005415615137100407
+   ]
+  },
+  "b_17/10": {
+   "room_bottom": 1.7777699076114313,
+   "room_err": 0.00013815160277386163,
+   "room_p": 1.999705559652302,
+   "mine": 1.7777698463058955,
+   "mine_err": 1.7777698463058955e-12,
+   "rel_diff": 3.4484517715492604e-08,
+   "within_1e-3": true,
+   "abs_diff_over_room_err": 0.0004437555158831879,
+   "finest_rel_vs_mine_lowest6": [
+    7.774510778030079e-05,
+    0.00025770488850613367,
+    0.0001159606209537035,
+    0.000542632472533209,
+    0.00035100564869629903,
+    0.0001611910877017838
+   ]
+  }
+ },
+ "residuals": {
+  "a_1/4": [
+   {
+    "level": 0,
+    "max_residual": 5.469657219039959e-15,
+    "rerun_vs_json_rel": 2.61484964295497e-15,
+    "lam7": 184.1886947775406,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 2.1351787106453323e-14,
+    "rerun_vs_json_rel": 2.003012764493104e-15,
+    "lam7": 173.2861863217009,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 8.714338944588186e-14,
+    "rerun_vs_json_rel": 1.5496858172181115e-15,
+    "lam7": 165.8603666776855,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 3.530885730755657e-13,
+    "rerun_vs_json_rel": 2.3765890098183376e-15,
+    "lam7": 163.83691037748505
+   },
+   {
+    "level": 4,
+    "max_residual": 1.40747391732099e-12,
+    "rerun_vs_json_rel": 3.1821990428285693e-15,
+    "lam7": 163.32920098594434
+   }
+  ],
+  "a_1/2": [
+   {
+    "level": 0,
+    "max_residual": 5.695596796117673e-15,
+    "rerun_vs_json_rel": 2.5582700112312636e-15,
+    "lam7": 67.12390038254644,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 2.1774056703590295e-14,
+    "rerun_vs_json_rel": 3.3007824631215766e-15,
+    "lam7": 62.04874487156253,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 9.294808349150367e-14,
+    "rerun_vs_json_rel": 1.933538044489393e-15,
+    "lam7": 60.76026694710415,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 3.7822500664298737e-13,
+    "rerun_vs_json_rel": 3.667935484524388e-15,
+    "lam7": 60.43619525675266
+   },
+   {
+    "level": 4,
+    "max_residual": 1.5189494934520042e-12,
+    "rerun_vs_json_rel": 1.552265842358004e-15,
+    "lam7": 60.35503853120973
+   }
+  ],
+  "a_1": [
+   {
+    "level": 0,
+    "max_residual": 7.302545063860129e-15,
+    "rerun_vs_json_rel": 1.6647053452996203e-15,
+    "lam7": 30.53010349186703,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 3.1415059636542044e-14,
+    "rerun_vs_json_rel": 1.2363264265947468e-15,
+    "lam7": 27.84724004214603,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 1.2898773256635446e-13,
+    "rerun_vs_json_rel": 2.6406470450866352e-15,
+    "lam7": 27.15233317983746,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 5.343029106564796e-13,
+    "rerun_vs_json_rel": 2.0457533723443277e-15,
+    "lam7": 26.977408786953163
+   },
+   {
+    "level": 4,
+    "max_residual": 2.1401322145089496e-12,
+    "rerun_vs_json_rel": 1.5394883249864215e-15,
+    "lam7": 26.933606103476457
+   }
+  ],
+  "a_7/5": [
+   {
+    "level": 0,
+    "max_residual": 1.04034719819416e-14,
+    "rerun_vs_json_rel": 1.891085367598215e-15,
+    "lam7": 22.31163640287751,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 4.341616947289321e-14,
+    "rerun_vs_json_rel": 1.862773498675009e-15,
+    "lam7": 21.411330979857283,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 1.8062979900778554e-13,
+    "rerun_vs_json_rel": 1.4380368460685061e-15,
+    "lam7": 21.187437798940483,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 8.018643034855962e-13,
+    "rerun_vs_json_rel": 1.7063947034964574e-15,
+    "lam7": 21.131502923165936
+   },
+   {
+    "level": 4,
+    "max_residual": 3.0614792440798118e-12,
+    "rerun_vs_json_rel": 3.036268474475642e-15,
+    "lam7": 21.11752055179499
+   }
+  ],
+  "a_3/2": [
+   {
+    "level": 0,
+    "max_residual": 1.2546156223908113e-14,
+    "rerun_vs_json_rel": 4.062096549285666e-16,
+    "lam7": 21.566511487275818,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 4.9915245017031773e-14,
+    "rerun_vs_json_rel": 8.552103843878356e-16,
+    "lam7": 20.71100675751924,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 2.1846998362037436e-13,
+    "rerun_vs_json_rel": 1.4365910781609622e-15,
+    "lam7": 20.497988365880136,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 8.94545451002373e-13,
+    "rerun_vs_json_rel": 2.734909962590328e-15,
+    "lam7": 20.444752062721058
+   },
+   {
+    "level": 4,
+    "max_residual": 3.5977573830945685e-12,
+    "rerun_vs_json_rel": 2.420124583661446e-15,
+    "lam7": 20.43144252908315
+   }
+  ],
+  "a_pi/2": [
+   {
+    "level": 0,
+    "max_residual": 1.1763434677366577e-14,
+    "rerun_vs_json_rel": 2.131025756346129e-15,
+    "lam7": 21.103559155162397,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 5.22626332550157e-14,
+    "rerun_vs_json_rel": 1.1649713693125726e-15,
+    "lam7": 20.275207451775472,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 2.2084798229606433e-13,
+    "rerun_vs_json_rel": 2.067020577184708e-15,
+    "lam7": 20.06879942465534,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 9.629413579992728e-13,
+    "rerun_vs_json_rel": 1.921680068098615e-15,
+    "lam7": 20.017202667866414
+   },
+   {
+    "level": 4,
+    "max_residual": 3.6268145476074223e-12,
+    "rerun_vs_json_rel": 1.1839331614009431e-15,
+    "lam7": 20.00430142288867
+   }
+  ],
+  "a_17/10": [
+   {
+    "level": 0,
+    "max_residual": 1.2230031119364498e-14,
+    "rerun_vs_json_rel": 1.224545126670436e-15,
+    "lam7": 20.369737393654447,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 6.237611550477998e-14,
+    "rerun_vs_json_rel": 3.011770196966653e-15,
+    "lam7": 18.40272619160876,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 2.755925374815114e-13,
+    "rerun_vs_json_rel": 1.5442117902705122e-15,
+    "lam7": 17.615322157531818,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 1.011593645814266e-12,
+    "rerun_vs_json_rel": 1.8936449606562384e-15,
+    "lam7": 17.42091388199786
+   },
+   {
+    "level": 4,
+    "max_residual": 4.055208481321516e-12,
+    "rerun_vs_json_rel": 1.6979756815841601e-15,
+    "lam7": 17.372475055983497
+   }
+  ],
+  "b_1/4": [
+   {
+    "level": 0,
+    "max_residual": 6.602784512490243e-15,
+    "rerun_vs_json_rel": 1.3074248214774808e-15,
+    "lam7": 184.18869477754043,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 2.255015231720759e-14,
+    "rerun_vs_json_rel": 1.621177866072131e-15,
+    "lam7": 173.2861863217007,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 8.108261793621771e-14,
+    "rerun_vs_json_rel": 2.7855660131498194e-15,
+    "lam7": 165.860366677686,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 3.573205118680815e-13,
+    "rerun_vs_json_rel": 3.8828989832683e-15,
+    "lam7": 163.8369103774857
+   },
+   {
+    "level": 4,
+    "max_residual": 1.4141140067235383e-12,
+    "rerun_vs_json_rel": 4.2488975465862736e-15,
+    "lam7": 163.32920098594633
+   }
+  ],
+  "b_1/2": [
+   {
+    "level": 0,
+    "max_residual": 8.227960832866078e-15,
+    "rerun_vs_json_rel": 1.940792549836589e-15,
+    "lam7": 67.12390038254638,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 2.2976794271257777e-14,
+    "rerun_vs_json_rel": 2.287920070984864e-15,
+    "lam7": 62.04874487156252,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 9.0224387186361e-14,
+    "rerun_vs_json_rel": 2.0170540892866788e-15,
+    "lam7": 60.76026694710428,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 3.6412982788964837e-13,
+    "rerun_vs_json_rel": 1.4638905461828022e-15,
+    "lam7": 60.43619525675313
+   },
+   {
+    "level": 4,
+    "max_residual": 1.497594065004419e-12,
+    "rerun_vs_json_rel": 1.1336140335336272e-15,
+    "lam7": 60.35503853120955
+   }
+  ],
+  "b_1": [
+   {
+    "level": 0,
+    "max_residual": 8.720177510620402e-15,
+    "rerun_vs_json_rel": 1.2465637054740121e-15,
+    "lam7": 30.530103491867017,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 3.16311822028817e-14,
+    "rerun_vs_json_rel": 2.6870665567332133e-15,
+    "lam7": 27.84724004214605,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 1.2850204530532528e-13,
+    "rerun_vs_json_rel": 4.975809631205474e-15,
+    "lam7": 27.15233317983743,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 5.342146930109755e-13,
+    "rerun_vs_json_rel": 2.3322944733301983e-15,
+    "lam7": 26.977408786953163
+   },
+   {
+    "level": 4,
+    "max_residual": 2.1557111323451806e-12,
+    "rerun_vs_json_rel": 1.6738876936793369e-15,
+    "lam7": 26.93360610347654
+   }
+  ],
+  "b_7/5": [
+   {
+    "level": 0,
+    "max_residual": 1.0953151957582793e-14,
+    "rerun_vs_json_rel": 3.252562753038336e-15,
+    "lam7": 22.311636402877507,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 4.86777020252719e-14,
+    "rerun_vs_json_rel": 2.0404785433325924e-15,
+    "lam7": 21.411330979857297,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 1.9147211351956677e-13,
+    "rerun_vs_json_rel": 3.207434839506774e-15,
+    "lam7": 21.187437798940493,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 8.10850303211133e-13,
+    "rerun_vs_json_rel": 3.739017242231329e-15,
+    "lam7": 21.131502923165712
+   },
+   {
+    "level": 4,
+    "max_residual": 3.2368295261852563e-12,
+    "rerun_vs_json_rel": 1.585732284107388e-15,
+    "lam7": 21.11752055179421
+   }
+  ],
+  "b_3/2": [
+   {
+    "level": 0,
+    "max_residual": 1.0095816998453596e-14,
+    "rerun_vs_json_rel": 1.382093939864482e-15,
+    "lam7": 21.56651148727585,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 5.26073398150034e-14,
+    "rerun_vs_json_rel": 9.891948142851363e-16,
+    "lam7": 20.711006757519186,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 2.234417857532606e-13,
+    "rerun_vs_json_rel": 1.563206976839276e-15,
+    "lam7": 20.497988365880147,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 8.436935053830696e-13,
+    "rerun_vs_json_rel": 2.875003120530488e-15,
+    "lam7": 20.444752062721292
+   },
+   {
+    "level": 4,
+    "max_residual": 3.4567512378280406e-12,
+    "rerun_vs_json_rel": 1.4236026962714633e-15,
+    "lam7": 20.43144252908291
+   }
+  ],
+  "b_pi/2": [
+   {
+    "level": 0,
+    "max_residual": 1.1679662987924903e-14,
+    "rerun_vs_json_rel": 1.1497806150921788e-15,
+    "lam7": 21.103559155162454,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 5.3586250708674294e-14,
+    "rerun_vs_json_rel": 2.605616361301531e-15,
+    "lam7": 20.275207451775472,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 2.1838255414370992e-13,
+    "rerun_vs_json_rel": 3.532797408075523e-15,
+    "lam7": 20.068799424655403,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 8.883125606101755e-13,
+    "rerun_vs_json_rel": 2.9575491972293677e-15,
+    "lam7": 20.01720266786631
+   },
+   {
+    "level": 4,
+    "max_residual": 3.688674631244251e-12,
+    "rerun_vs_json_rel": 2.812106122751144e-15,
+    "lam7": 20.00430142288849
+   }
+  ],
+  "b_17/10": [
+   {
+    "level": 0,
+    "max_residual": 1.2881321682833942e-14,
+    "rerun_vs_json_rel": 1.3382462607819654e-15,
+    "lam7": 20.36973739365452,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 1,
+    "max_residual": 5.920160589734572e-14,
+    "rerun_vs_json_rel": 1.477265171447957e-15,
+    "lam7": 18.402726191608743,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 2,
+    "max_residual": 2.652279759914887e-13,
+    "rerun_vs_json_rel": 1.2606785882405357e-15,
+    "lam7": 17.615322157531836,
+    "count_below_lam1": 0,
+    "count_below_mid67": 6
+   },
+   {
+    "level": 3,
+    "max_residual": 9.976752931960432e-13,
+    "rerun_vs_json_rel": 1.1046262270494893e-15,
+    "lam7": 17.420913881997755
+   },
+   {
+    "level": 4,
+    "max_residual": 4.084194668585582e-12,
+    "rerun_vs_json_rel": 1.8943031322416412e-15,
+    "lam7": 17.372475055983752
+   }
+  ]
+ },
+ "inertia": {},
+ "a_vs_b": {
+  "1/4": {
+   "max_rel_levels": 1.551947773680429e-14,
+   "extrap_rel": 1.5527055482766175e-16
+  },
+  "1/2": {
+   "max_rel_levels": 2.6749216508483346e-14,
+   "extrap_rel": 8.874141138010258e-15
+  },
+  "1": {
+   "max_rel_levels": 2.264710367781633e-14,
+   "extrap_rel": -4.618829788149799e-14
+  },
+  "7/5": {
+   "max_rel_levels": 5.3528099287518004e-14,
+   "extrap_rel": 7.927248224293133e-14
+  },
+  "3/2": {
+   "max_rel_levels": 6.400394237500609e-14,
+   "extrap_rel": 1.3858236137201347e-13
+  },
+  "pi/2": {
+   "max_rel_levels": 5.615989011487555e-14,
+   "extrap_rel": -5.884181882524836e-14
+  },
+  "17/10": {
+   "max_rel_levels": 8.167867335342696e-14,
+   "extrap_rel": -2.1008288186501035e-13
+  }
+ },
+ "summary": {
+  "pass": 238,
+  "fail": 0,
+  "planted_fired": {
+   "K1_cubic_grading": true,
+   "K2_a_periodic_seam": true,
+   "K2_b_periodic_seam": true,
+   "K4_missed_lam1": true,
+   "K3_shifted_eigenvalue": true,
+   "K5_altered_json": true,
+   "K6_wrong_levels": true,
+   "K7_offset_2e-3": true
+  },
+  "lines": [
+   "PASS  K1 room a W=0.250000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room a W=0.500000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room a W=1.000000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room a W=1.400000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room a W=1.500000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room a W=1.570796 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room a W=1.700000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room b W=0.250000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room b W=0.500000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room b W=1.000000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room b W=1.400000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room b W=1.500000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room b W=1.570796 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K1 room b W=1.700000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "[planted] FAIL  K1 room a W=1.400000 mesh: grading (k/16)^2, 8 cells, nested midpoint levels, ndof [217, 945, 3937, 16065, 64897]",
+   "PASS  K2 room a W=0.250000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 0.999997",
+   "PASS  K2 room a W=0.500000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room a W=1.000000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room a W=1.400000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room a W=1.500000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room a W=1.570796 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room a W=1.700000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "[planted] FAIL  K2 room a W=1.400000 level 2: seam residual 2.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 0.000000",
+   "PASS  K2 room b W=0.250000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 0.999997",
+   "PASS  K2 room b W=0.500000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room b W=1.000000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room b W=1.400000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room b W=1.500000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room b W=1.570796 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "PASS  K2 room b W=1.700000 level 2: seam residual 0.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 1.000000",
+   "[planted] FAIL  K2 room b W=1.400000 level 2: seam residual 2.0e+00, data on arcs/fiber 0.0e+00, corr. with closed-form bottom 0.000000",
+   "PASS  K3 room a W=1/4 level 0: max eigen-residual 5.5e-15",
+   "PASS  K5 room a W=1/4 level 0: rerun vs JSON eigenvalues, max rel 2.6e-15",
+   "PASS  K4 room a W=1/4 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1/4 level 1: max eigen-residual 2.1e-14",
+   "PASS  K5 room a W=1/4 level 1: rerun vs JSON eigenvalues, max rel 2.0e-15",
+   "PASS  K4 room a W=1/4 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1/4 level 2: max eigen-residual 8.7e-14",
+   "PASS  K5 room a W=1/4 level 2: rerun vs JSON eigenvalues, max rel 1.5e-15",
+   "PASS  K4 room a W=1/4 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1/4 level 3: max eigen-residual 3.5e-13",
+   "PASS  K5 room a W=1/4 level 3: rerun vs JSON eigenvalues, max rel 2.4e-15",
+   "PASS  K3 room a W=1/4 level 4: max eigen-residual 1.4e-12",
+   "PASS  K5 room a W=1/4 level 4: rerun vs JSON eigenvalues, max rel 3.2e-15",
+   "PASS  K3 room a W=1/2 level 0: max eigen-residual 5.7e-15",
+   "PASS  K5 room a W=1/2 level 0: rerun vs JSON eigenvalues, max rel 2.6e-15",
+   "PASS  K4 room a W=1/2 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1/2 level 1: max eigen-residual 2.2e-14",
+   "PASS  K5 room a W=1/2 level 1: rerun vs JSON eigenvalues, max rel 3.3e-15",
+   "PASS  K4 room a W=1/2 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1/2 level 2: max eigen-residual 9.3e-14",
+   "PASS  K5 room a W=1/2 level 2: rerun vs JSON eigenvalues, max rel 1.9e-15",
+   "PASS  K4 room a W=1/2 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1/2 level 3: max eigen-residual 3.8e-13",
+   "PASS  K5 room a W=1/2 level 3: rerun vs JSON eigenvalues, max rel 3.7e-15",
+   "PASS  K3 room a W=1/2 level 4: max eigen-residual 1.5e-12",
+   "PASS  K5 room a W=1/2 level 4: rerun vs JSON eigenvalues, max rel 1.6e-15",
+   "PASS  K3 room a W=1 level 0: max eigen-residual 7.3e-15",
+   "PASS  K5 room a W=1 level 0: rerun vs JSON eigenvalues, max rel 1.7e-15",
+   "PASS  K4 room a W=1 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1 level 1: max eigen-residual 3.1e-14",
+   "PASS  K5 room a W=1 level 1: rerun vs JSON eigenvalues, max rel 1.2e-15",
+   "PASS  K4 room a W=1 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1 level 2: max eigen-residual 1.3e-13",
+   "PASS  K5 room a W=1 level 2: rerun vs JSON eigenvalues, max rel 2.6e-15",
+   "PASS  K4 room a W=1 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=1 level 3: max eigen-residual 5.3e-13",
+   "PASS  K5 room a W=1 level 3: rerun vs JSON eigenvalues, max rel 2.0e-15",
+   "PASS  K3 room a W=1 level 4: max eigen-residual 2.1e-12",
+   "PASS  K5 room a W=1 level 4: rerun vs JSON eigenvalues, max rel 1.5e-15",
+   "PASS  K3 room a W=7/5 level 0: max eigen-residual 1.0e-14",
+   "PASS  K5 room a W=7/5 level 0: rerun vs JSON eigenvalues, max rel 1.9e-15",
+   "PASS  K4 room a W=7/5 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=7/5 level 1: max eigen-residual 4.3e-14",
+   "PASS  K5 room a W=7/5 level 1: rerun vs JSON eigenvalues, max rel 1.9e-15",
+   "PASS  K4 room a W=7/5 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "[planted] FAIL  K4 room a W=7/5 level 1 with lam1 missed: count 7 vs 6",
+   "[planted] FAIL  K3 room a W=7/5 level 1, eigenvalue shifted 1e-6: residual 1.0e-06",
+   "[planted] FAIL  K5 room a W=7/5 level 1, JSON lam1 altered 1e-7: rel 1.0e-07",
+   "PASS  K3 room a W=7/5 level 2: max eigen-residual 1.8e-13",
+   "PASS  K5 room a W=7/5 level 2: rerun vs JSON eigenvalues, max rel 1.4e-15",
+   "PASS  K4 room a W=7/5 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=7/5 level 3: max eigen-residual 8.0e-13",
+   "PASS  K5 room a W=7/5 level 3: rerun vs JSON eigenvalues, max rel 1.7e-15",
+   "PASS  K3 room a W=7/5 level 4: max eigen-residual 3.1e-12",
+   "PASS  K5 room a W=7/5 level 4: rerun vs JSON eigenvalues, max rel 3.0e-15",
+   "PASS  K3 room a W=3/2 level 0: max eigen-residual 1.3e-14",
+   "PASS  K5 room a W=3/2 level 0: rerun vs JSON eigenvalues, max rel 4.1e-16",
+   "PASS  K4 room a W=3/2 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=3/2 level 1: max eigen-residual 5.0e-14",
+   "PASS  K5 room a W=3/2 level 1: rerun vs JSON eigenvalues, max rel 8.6e-16",
+   "PASS  K4 room a W=3/2 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=3/2 level 2: max eigen-residual 2.2e-13",
+   "PASS  K5 room a W=3/2 level 2: rerun vs JSON eigenvalues, max rel 1.4e-15",
+   "PASS  K4 room a W=3/2 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=3/2 level 3: max eigen-residual 8.9e-13",
+   "PASS  K5 room a W=3/2 level 3: rerun vs JSON eigenvalues, max rel 2.7e-15",
+   "PASS  K3 room a W=3/2 level 4: max eigen-residual 3.6e-12",
+   "PASS  K5 room a W=3/2 level 4: rerun vs JSON eigenvalues, max rel 2.4e-15",
+   "PASS  K3 room a W=pi/2 level 0: max eigen-residual 1.2e-14",
+   "PASS  K5 room a W=pi/2 level 0: rerun vs JSON eigenvalues, max rel 2.1e-15",
+   "PASS  K4 room a W=pi/2 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=pi/2 level 1: max eigen-residual 5.2e-14",
+   "PASS  K5 room a W=pi/2 level 1: rerun vs JSON eigenvalues, max rel 1.2e-15",
+   "PASS  K4 room a W=pi/2 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=pi/2 level 2: max eigen-residual 2.2e-13",
+   "PASS  K5 room a W=pi/2 level 2: rerun vs JSON eigenvalues, max rel 2.1e-15",
+   "PASS  K4 room a W=pi/2 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=pi/2 level 3: max eigen-residual 9.6e-13",
+   "PASS  K5 room a W=pi/2 level 3: rerun vs JSON eigenvalues, max rel 1.9e-15",
+   "PASS  K3 room a W=pi/2 level 4: max eigen-residual 3.6e-12",
+   "PASS  K5 room a W=pi/2 level 4: rerun vs JSON eigenvalues, max rel 1.2e-15",
+   "PASS  K3 room a W=17/10 level 0: max eigen-residual 1.2e-14",
+   "PASS  K5 room a W=17/10 level 0: rerun vs JSON eigenvalues, max rel 1.2e-15",
+   "PASS  K4 room a W=17/10 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=17/10 level 1: max eigen-residual 6.2e-14",
+   "PASS  K5 room a W=17/10 level 1: rerun vs JSON eigenvalues, max rel 3.0e-15",
+   "PASS  K4 room a W=17/10 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=17/10 level 2: max eigen-residual 2.8e-13",
+   "PASS  K5 room a W=17/10 level 2: rerun vs JSON eigenvalues, max rel 1.5e-15",
+   "PASS  K4 room a W=17/10 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room a W=17/10 level 3: max eigen-residual 1.0e-12",
+   "PASS  K5 room a W=17/10 level 3: rerun vs JSON eigenvalues, max rel 1.9e-15",
+   "PASS  K3 room a W=17/10 level 4: max eigen-residual 4.1e-12",
+   "PASS  K5 room a W=17/10 level 4: rerun vs JSON eigenvalues, max rel 1.7e-15",
+   "PASS  K3 room b W=1/4 level 0: max eigen-residual 6.6e-15",
+   "PASS  K5 room b W=1/4 level 0: rerun vs JSON eigenvalues, max rel 1.3e-15",
+   "PASS  K4 room b W=1/4 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1/4 level 1: max eigen-residual 2.3e-14",
+   "PASS  K5 room b W=1/4 level 1: rerun vs JSON eigenvalues, max rel 1.6e-15",
+   "PASS  K4 room b W=1/4 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1/4 level 2: max eigen-residual 8.1e-14",
+   "PASS  K5 room b W=1/4 level 2: rerun vs JSON eigenvalues, max rel 2.8e-15",
+   "PASS  K4 room b W=1/4 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1/4 level 3: max eigen-residual 3.6e-13",
+   "PASS  K5 room b W=1/4 level 3: rerun vs JSON eigenvalues, max rel 3.9e-15",
+   "PASS  K3 room b W=1/4 level 4: max eigen-residual 1.4e-12",
+   "PASS  K5 room b W=1/4 level 4: rerun vs JSON eigenvalues, max rel 4.2e-15",
+   "PASS  K3 room b W=1/2 level 0: max eigen-residual 8.2e-15",
+   "PASS  K5 room b W=1/2 level 0: rerun vs JSON eigenvalues, max rel 1.9e-15",
+   "PASS  K4 room b W=1/2 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1/2 level 1: max eigen-residual 2.3e-14",
+   "PASS  K5 room b W=1/2 level 1: rerun vs JSON eigenvalues, max rel 2.3e-15",
+   "PASS  K4 room b W=1/2 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1/2 level 2: max eigen-residual 9.0e-14",
+   "PASS  K5 room b W=1/2 level 2: rerun vs JSON eigenvalues, max rel 2.0e-15",
+   "PASS  K4 room b W=1/2 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1/2 level 3: max eigen-residual 3.6e-13",
+   "PASS  K5 room b W=1/2 level 3: rerun vs JSON eigenvalues, max rel 1.5e-15",
+   "PASS  K3 room b W=1/2 level 4: max eigen-residual 1.5e-12",
+   "PASS  K5 room b W=1/2 level 4: rerun vs JSON eigenvalues, max rel 1.1e-15",
+   "PASS  K3 room b W=1 level 0: max eigen-residual 8.7e-15",
+   "PASS  K5 room b W=1 level 0: rerun vs JSON eigenvalues, max rel 1.2e-15",
+   "PASS  K4 room b W=1 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1 level 1: max eigen-residual 3.2e-14",
+   "PASS  K5 room b W=1 level 1: rerun vs JSON eigenvalues, max rel 2.7e-15",
+   "PASS  K4 room b W=1 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1 level 2: max eigen-residual 1.3e-13",
+   "PASS  K5 room b W=1 level 2: rerun vs JSON eigenvalues, max rel 5.0e-15",
+   "PASS  K4 room b W=1 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=1 level 3: max eigen-residual 5.3e-13",
+   "PASS  K5 room b W=1 level 3: rerun vs JSON eigenvalues, max rel 2.3e-15",
+   "PASS  K3 room b W=1 level 4: max eigen-residual 2.2e-12",
+   "PASS  K5 room b W=1 level 4: rerun vs JSON eigenvalues, max rel 1.7e-15",
+   "PASS  K3 room b W=7/5 level 0: max eigen-residual 1.1e-14",
+   "PASS  K5 room b W=7/5 level 0: rerun vs JSON eigenvalues, max rel 3.3e-15",
+   "PASS  K4 room b W=7/5 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=7/5 level 1: max eigen-residual 4.9e-14",
+   "PASS  K5 room b W=7/5 level 1: rerun vs JSON eigenvalues, max rel 2.0e-15",
+   "PASS  K4 room b W=7/5 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=7/5 level 2: max eigen-residual 1.9e-13",
+   "PASS  K5 room b W=7/5 level 2: rerun vs JSON eigenvalues, max rel 3.2e-15",
+   "PASS  K4 room b W=7/5 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=7/5 level 3: max eigen-residual 8.1e-13",
+   "PASS  K5 room b W=7/5 level 3: rerun vs JSON eigenvalues, max rel 3.7e-15",
+   "PASS  K3 room b W=7/5 level 4: max eigen-residual 3.2e-12",
+   "PASS  K5 room b W=7/5 level 4: rerun vs JSON eigenvalues, max rel 1.6e-15",
+   "PASS  K3 room b W=3/2 level 0: max eigen-residual 1.0e-14",
+   "PASS  K5 room b W=3/2 level 0: rerun vs JSON eigenvalues, max rel 1.4e-15",
+   "PASS  K4 room b W=3/2 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=3/2 level 1: max eigen-residual 5.3e-14",
+   "PASS  K5 room b W=3/2 level 1: rerun vs JSON eigenvalues, max rel 9.9e-16",
+   "PASS  K4 room b W=3/2 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=3/2 level 2: max eigen-residual 2.2e-13",
+   "PASS  K5 room b W=3/2 level 2: rerun vs JSON eigenvalues, max rel 1.6e-15",
+   "PASS  K4 room b W=3/2 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=3/2 level 3: max eigen-residual 8.4e-13",
+   "PASS  K5 room b W=3/2 level 3: rerun vs JSON eigenvalues, max rel 2.9e-15",
+   "PASS  K3 room b W=3/2 level 4: max eigen-residual 3.5e-12",
+   "PASS  K5 room b W=3/2 level 4: rerun vs JSON eigenvalues, max rel 1.4e-15",
+   "PASS  K3 room b W=pi/2 level 0: max eigen-residual 1.2e-14",
+   "PASS  K5 room b W=pi/2 level 0: rerun vs JSON eigenvalues, max rel 1.1e-15",
+   "PASS  K4 room b W=pi/2 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=pi/2 level 1: max eigen-residual 5.4e-14",
+   "PASS  K5 room b W=pi/2 level 1: rerun vs JSON eigenvalues, max rel 2.6e-15",
+   "PASS  K4 room b W=pi/2 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=pi/2 level 2: max eigen-residual 2.2e-13",
+   "PASS  K5 room b W=pi/2 level 2: rerun vs JSON eigenvalues, max rel 3.5e-15",
+   "PASS  K4 room b W=pi/2 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=pi/2 level 3: max eigen-residual 8.9e-13",
+   "PASS  K5 room b W=pi/2 level 3: rerun vs JSON eigenvalues, max rel 3.0e-15",
+   "PASS  K3 room b W=pi/2 level 4: max eigen-residual 3.7e-12",
+   "PASS  K5 room b W=pi/2 level 4: rerun vs JSON eigenvalues, max rel 2.8e-15",
+   "PASS  K3 room b W=17/10 level 0: max eigen-residual 1.3e-14",
+   "PASS  K5 room b W=17/10 level 0: rerun vs JSON eigenvalues, max rel 1.3e-15",
+   "PASS  K4 room b W=17/10 level 0: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=17/10 level 1: max eigen-residual 5.9e-14",
+   "PASS  K5 room b W=17/10 level 1: rerun vs JSON eigenvalues, max rel 1.5e-15",
+   "PASS  K4 room b W=17/10 level 1: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=17/10 level 2: max eigen-residual 2.7e-13",
+   "PASS  K5 room b W=17/10 level 2: rerun vs JSON eigenvalues, max rel 1.3e-15",
+   "PASS  K4 room b W=17/10 level 2: inertia below 0.999999*lam1: 0, below (lam6+lam7)/2: 6",
+   "PASS  K3 room b W=17/10 level 3: max eigen-residual 1.0e-12",
+   "PASS  K5 room b W=17/10 level 3: rerun vs JSON eigenvalues, max rel 1.1e-15",
+   "PASS  K3 room b W=17/10 level 4: max eigen-residual 4.1e-12",
+   "PASS  K5 room b W=17/10 level 4: rerun vs JSON eigenvalues, max rel 1.9e-15",
+   "PASS  K6 room a W=1/4: p 1.996684 extrap 45.761589281931 err 5.599e-03 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room a W=1/2: p 1.999420 extrap 13.011196550217 err 1.184e-03 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room a W=1: p 2.000226 extrap 4.038197480573 err 3.190e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room a W=7/5: p 2.000371 extrap 2.380875542763 err 1.842e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room a W=3/2: p 2.000314 extrap 2.143820313411 err 1.658e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room a W=pi/2: p 2.000203 extrap 2.000000050300 err 1.548e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room a W=17/10: p 1.999706 extrap 1.777769907611 err 1.382e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room b W=1/4: p 1.996684 extrap 45.761589281931 err 5.599e-03 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room b W=1/2: p 1.999420 extrap 13.011196550217 err 1.184e-03 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room b W=1: p 2.000226 extrap 4.038197480573 err 3.190e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room b W=7/5: p 2.000371 extrap 2.380875542763 err 1.842e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room b W=3/2: p 2.000314 extrap 2.143820313410 err 1.658e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room b W=pi/2: p 2.000203 extrap 2.000000050300 err 1.548e-04 vs JSON, max rel 0.0e+00",
+   "PASS  K6 room b W=17/10: p 1.999706 extrap 1.777769907611 err 1.382e-04 vs JSON, max rel 0.0e+00",
+   "[planted] FAIL  K6 room a W=7/5 with levels 1,2,3: extrap 2.380876394618 vs JSON 2.380875542763",
+   "PASS  K7 V3 room a W=1/4: extrap 45.761589281931 vs mine 45.761602911538, rel -2.978e-07",
+   "PASS  K7 V3 room a W=1/2: extrap 13.011196550217 vs mine 13.011197054679, rel -3.877e-08",
+   "PASS  K7 V3 room a W=1: extrap 4.038197480573 vs mine 4.038197427067, rel +1.325e-08",
+   "PASS  K7 V3 room a W=7/5: extrap 2.380875542763 vs mine 2.380875488666, rel +2.272e-08",
+   "PASS  K7 V3 room a W=3/2: extrap 2.143820313411 vs mine 2.143820262429, rel +2.378e-08",
+   "PASS  K7 V3 room a W=pi/2: extrap 2.000000050300 vs mine 2.000000000000, rel +2.515e-08",
+   "PASS  K7 V3 room a W=17/10: extrap 1.777769907611 vs mine 1.777769846306, rel +3.448e-08",
+   "PASS  K7 V3 room b W=1/4: extrap 45.761589281931 vs mine 45.761602911538, rel -2.978e-07",
+   "PASS  K7 V3 room b W=1/2: extrap 13.011196550217 vs mine 13.011197054679, rel -3.877e-08",
+   "PASS  K7 V3 room b W=1: extrap 4.038197480573 vs mine 4.038197427067, rel +1.325e-08",
+   "PASS  K7 V3 room b W=7/5: extrap 2.380875542763 vs mine 2.380875488666, rel +2.272e-08",
+   "PASS  K7 V3 room b W=3/2: extrap 2.143820313410 vs mine 2.143820262429, rel +2.378e-08",
+   "PASS  K7 V3 room b W=pi/2: extrap 2.000000050300 vs mine 2.000000000000, rel +2.515e-08",
+   "PASS  K7 V3 room b W=17/10: extrap 1.777769907611 vs mine 1.777769846306, rel +3.448e-08",
+   "[planted] FAIL  K7 V3 planted room bottom 1.781325385999 vs mine 1.777769846306"
+  ],
+  "quick": false
+ }
+}
