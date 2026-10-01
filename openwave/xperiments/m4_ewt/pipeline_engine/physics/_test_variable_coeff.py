@@ -25,6 +25,7 @@ from .allocator import AllocateWaveField, AllocateWaveSpeed
 from .emc import UpdateEMCDensityProcessor, UpdateWaveSpeedProcessor
 from .evolution import (
     ClearAccelerationProcessor,
+    LaplacianProcessor,
     LaplacianVariableCoeffProcessor,
     LeapfrogProcessor,
     _clear_accel,
@@ -684,6 +685,74 @@ def test_production_pipeline_vs_numpy():
     assert diff < 1e-3, f"production vs numpy, {n_steps} steps: max diff {diff}"
 
 
+def test_production_constant_laplacian_vs_numpy():
+    """
+    The constant-coefficient chain (Allocate + Clear + Laplacian +
+    Leapfrog) on the arena of test_production_pipeline_vs_numpy, against
+    a numpy float64 reference of psi_tt = c^2 lap(psi).
+
+    test_production_pipeline_vs_numpy runs LaplacianVariableCoeff, so it
+    never reaches LaplacianProcessor. This test pins that processor's
+    wiring: c read from UnitSystem (c = 2, so 1, c and c^2 all differ),
+    1/dx^2 with dx = 0.5, and field_type (the PsiLong sentinel).
+
+    Mutation caught: LaplacianProcessor ignores units.c or passes c^2,
+    swaps dx and c, ignores field_type; _laplacian uses 1/dx for 1/dx^2.
+    """
+    _ti_init()
+
+    nx, ny, nz = 6, 8, 10
+    dx = 0.5
+    dt = 0.05
+    dt2 = dt * dt
+    n_steps = 3
+    c0_sq = 4.0
+
+    rng = np.random.default_rng(seed=607_003)
+    base_np = rng.standard_normal((nx, ny, nz, 3)).astype(np.float32) * 0.3
+    long_np = np.full((nx, ny, nz, 3), 1e6, dtype=np.float32)
+
+    class P(Pipeline):
+        def __init__(self):
+            super().__init__(external_provides=(UnitSystem,))
+            self.add(AllocateWaveField(nx=nx, ny=ny, nz=nz, dx=dx))
+            self.add(_SeedBasesAtStep0(base_np, long_np))
+            self.add(ClearAccelerationProcessor(field_type=PsiBaseField))
+            self.add(LaplacianProcessor(field_type=PsiBaseField))
+            self.add(LeapfrogProcessor(field_type=PsiBaseField))
+
+    from ..runner import Runner
+    from ..sinks import InMemorySink
+
+    runner = Runner({"session": InMemorySink()})
+    ctx = runner.run(
+        P(),
+        name="prod_const_laplacian_vs_numpy",
+        params={},
+        dt=dt,
+        max_steps=n_steps,
+        initial_features=[_UnitsC2()],
+    )
+    assert ctx.diag.errors == [], ctx.diag.errors
+
+    psi_prod = ctx.data.require(PsiBaseField).psi.to_numpy()
+    long_after = ctx.data.require(PsiLongField).psi.to_numpy()
+    assert np.allclose(long_after, long_np, atol=1e-6), (
+        f"PsiLong sentinel changed; a processor ignored field_type. "
+        f"max diff {np.abs(long_after - long_np).max()}"
+    )
+
+    # beta_rho = 0 makes rho = 1 and c2 = c0^2 everywhere, so the
+    # flux-form reference reduces to c0^2 * lap(psi) exactly.
+    psi_ref = base_np.astype(np.float64).copy()
+    prev_ref = psi_ref.copy()
+    for _ in range(n_steps):
+        psi_ref, prev_ref, _, _ = _numpy_step(psi_ref, prev_ref, dx, dt2, 0.0, c0_sq)
+
+    diff = np.abs(psi_prod - psi_ref).max()
+    assert diff < 1e-3, f"production vs numpy, {n_steps} steps: max diff {diff}"
+
+
 # ======================================================================
 # Runner
 # ======================================================================
@@ -698,6 +767,7 @@ def main() -> int:
         test_naive_form_breaks_staggered_invariant,
         test_pipeline_runs_with_variable_coeff_chain,
         test_production_pipeline_vs_numpy,
+        test_production_constant_laplacian_vs_numpy,
     ]
     passed = 0
     for t in tests:
