@@ -178,10 +178,12 @@ def test_nonlinear_composes_with_laplacian_in_pipeline():
     """
     After Clear + Laplacian + NonlinearCubic, accel at an interior voxel
     equals (Laplacian contribution) + (nonlinear contribution), computed
-    independently.
+    independently from a harmonic seed with non-zero Laplacian.
 
-    Mutation: NonlinearCubic uses = instead of += -> accel loses the
-    Laplacian part, and the check against lap + nl fails.
+    Mutation caught: NonlinearCubic uses = instead of +=. With the
+    harmonic seed the Laplacian contribution is non-zero, so a dropped
+    term changes the result. A ramp seed would have zero Laplacian and
+    this test could not see the difference.
     """
     _ti_init()
 
@@ -241,11 +243,22 @@ class _SeedLinear(BaseProcessor):
 @ti.kernel
 def _seed_linear(psi: ti.template(), prev: ti.template(),
                  nx: ti.i32, ny: ti.i32, nz: ti.i32):
+    """
+    Harmonic seed, asymmetric per axis.
+
+    A ramp seed (i, 2j, 3k) has zero Laplacian, so the composition
+    test cannot tell += from = after a clear. This seed has a
+    non-zero discrete Laplacian on the interior, which is what makes
+    the composition visible.
+    """
+    kx = 2.0 * ti.math.pi / 8.0
+    ky = 2.0 * ti.math.pi / 6.0
+    kz = 2.0 * ti.math.pi / 5.0
     for i, j, k in ti.ndrange(nx, ny, nz):
         v = ti.Vector([
-            ti.cast(i, ti.f32),
-            ti.cast(2 * j, ti.f32),
-            ti.cast(3 * k, ti.f32),
+            0.3 * ti.sin(kx * ti.cast(i, ti.f32)),
+            0.2 * ti.cos(ky * ti.cast(j, ti.f32)),
+            0.1 * ti.sin(kz * ti.cast(k, ti.f32)),
         ])
         psi[i, j, k] = v
         prev[i, j, k] = v

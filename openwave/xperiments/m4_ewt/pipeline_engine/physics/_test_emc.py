@@ -206,9 +206,13 @@ def test_emc_beta_zero_is_noop():
 
 def test_wave_speed_statutory_rho_gives_c0_squared():
     """
-    rho = 1 (no deficit) -> c^2 = c0^2 = units.c**2.
+    Smoke check: rho = 1 (no deficit) -> c^2 = c0^2 = units.c**2.
 
-    Mutation: formula changed to c^2 = c0^2 / rho or similar -> check fails.
+    This test cannot tell c0^2 * rho from c0^2 / rho, because at rho = 1
+    both give c0^2. The discriminating test is
+    test_wave_speed_deficit_halves_c_squared, where rho = 0.5. This test
+    catches only gross errors: missing c0 factor, missing rho factor,
+    wrong sign of the exponent.
     """
     _ti_init()
     ctx = _run(_build_emc_pipeline(seed_mode="zero", beta_rho=1.0), max_steps=1)

@@ -297,20 +297,32 @@ def test_laplacian_default_writes_long():
 def test_laplacian_on_base_does_not_touch_long():
     """
     Mutation: Laplacian writes to PsiLong regardless of field_type ->
-    PsiLong.psi changes from its seed, check fails.
+    PsiLong.psi_new moves off zero, check fails.
+
+    PsiLong.psi and PsiLong.psi_prev are seeded by _SeedBothFields to
+    the asymmetric ramp [i, 2j, 3k]; PsiLong.psi_new is left at zero by
+    the seed and stays zero under a correct field_type=PsiBaseField
+    Laplacian. A wiring error that writes to PsiLong.psi_new would
+    move it off zero.
     """
     _ti_init()
     ctx = _run(_build_parameterised_pipeline(), max_steps=1)
     assert ctx.diag.errors == [], ctx.diag.errors
 
     long_field = ctx.data.require(PsiLongField)
-    arr = long_field.psi.to_numpy()
+    psi_arr = long_field.psi.to_numpy()
+    prev_arr = long_field.psi_prev.to_numpy()
+    new_arr = long_field.psi_new.to_numpy()
     for i in (1, 8, 14):
         for j in (1, 8, 14):
             for k in (1, 8, 14):
                 expected = np.array([i, 2 * j, 3 * k], dtype=np.float32)
-                assert np.allclose(arr[i, j, k], expected, atol=1e-6), \
-                    (i, j, k, arr[i, j, k], expected)
+                assert np.allclose(psi_arr[i, j, k], expected, atol=1e-6), \
+                    (i, j, k, psi_arr[i, j, k], expected)
+                assert np.allclose(prev_arr[i, j, k], expected, atol=1e-6), \
+                    (i, j, k, prev_arr[i, j, k], expected)
+                assert np.allclose(new_arr[i, j, k], 0.0, atol=1e-6), \
+                    (i, j, k, new_arr[i, j, k], "must be 0")
 
 
 def test_leapfrog_on_base_leaves_long_bit_identical():

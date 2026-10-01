@@ -143,11 +143,14 @@ def _numpy_step(psi, prev, dx, dt2, beta_rho, c0_sq):
 
 def test_var_coeff_const_matches_const_laplacian():
     """
-    c^2 = c0^2 everywhere -> _laplacian_var_coeff must match the
-    constant-coefficient _laplacian at every interior voxel.
+    Smoke check: c^2 = c0^2 everywhere -> _laplacian_var_coeff matches
+    the constant-coefficient _laplacian at every interior voxel.
 
-    Mutation: half-grid average wrong (e.g. c2[i+1] used directly)
-    -> outputs differ, check fails.
+    This test cannot catch a wrong half-grid average, because with a
+    constant c^2 every neighbour reads the same value. The averaging
+    arm is caught by test_var_coeff_missing_half_average_changes_result
+    on a variable c^2 field. This test catches only gross kernel
+    errors: wrong stencil shape, wrong dx power, wrong interior scope.
     """
     _ti_init()
     from .evolution import _laplacian
@@ -223,12 +226,17 @@ def test_var_coeff_accumulates_not_overwrites():
 
 def test_var_coeff_missing_half_average_changes_result():
     """
-    A kernel that drops the half-grid average (uses c2[i+1] directly
-    instead of 0.5*(c2[i]+c2[i+1])) must give a different result on a
-    variable c2 field.
+    The production kernel and a no-average kernel must give different
+    results on a variable c2 field.
 
-    Mutation: production kernel drops the average -> production and the
-    reference (correctly averaged) kernel diverge, check fails.
+    Naming: the no-average kernel is NOT a reference. It is a negative
+    control. The production kernel is the correctly-averaged one; the
+    local _laplacian_var_coeff_no_average is the mutation target.
+    This test only shows the two kernels differ. Whether the production
+    one is the flux form the plan pins is checked by
+    test_flux_form_conserves_staggered_invariant.
+
+    Mutation caught: _laplacian_var_coeff drops the half-grid average.
     """
     _ti_init()
 
