@@ -383,3 +383,12 @@ masses excluded by the NuFIT 6.0 splittings (the Neutrinos cell); the entry of 2
 it. And the JWST measurements examined lie inside Row IV's registered ceiling, the side on which the row fails, and
 none is its score. Riding along: the Λ row's label, and the briefing's free-parameter rows, which now name the grid
 assignment and the carrier's adopted choices without a count. No task, gate or MODELS.md icon moves.
+
+**M8.14 AUTHOR NOTES (2026-10-01).** The author's dated Result on the carrier page landed (MIT `df9b3f7`): it scores
+the run against the frozen terms, quotes the task's declared reading of "agrees", and reaches Reproduced. A dated note
+closes the task file. The two notes of [#608](https://github.com/openwave-labs/openwave/pull/608)'s review close
+there: the filed pre-registration's run-before-write line gains #595 and #598 beside #606, and its Sources link is
+pinned at `7c402c5`, with the filed bytes unchanged. The note also records the carrier page's Proposition 7 (MIT
+`cbe00a8`), which proves analytically that with the edge fixed the conic band has the least area among
+finite-piecewise-smooth carrier-class competitors; a tie and the Lipschitz class stay open. No task, gate or MODELS.md
+icon moves.
