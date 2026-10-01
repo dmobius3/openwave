@@ -20,13 +20,19 @@ import taichi as ti
 
 @dataclass
 class WaveGrid:
-    """Grid + wave parameters for a scalar/vector wave field."""
+    """
+    Grid geometry for a scalar/vector wave field.
+
+    Holds grid dimensions and the voxel step only. The wave speed is
+    not stored here: it comes from the UnitSystem feature, and a
+    variable local speed from WaveSpeedField. Keeping c out of WaveGrid
+    removes the ambiguity of two possible sources.
+    """
 
     nx: int
     ny: int
     nz: int
     dx: float
-    c: float
 
     @property
     def max_size(self) -> int:
@@ -189,3 +195,27 @@ class TrackerFields:
     amp_global: ti.field
     freq_global: ti.field
     energy_global: ti.field
+
+
+@dataclass
+class WaveSpeedField:
+    """
+    Per-voxel local wave speed squared c^2(rho).
+
+    Written by the physics layer: UpdateWaveSpeedProcessor reads
+    EMCDensityField.rho (normalised, 1.0 = statutory background) and
+    writes c2_local = c0^2 * rho_norm. The absolute density rho_0 is
+    not stored (it is ~3.3e52, beyond f32 range); the normalised form
+    is used throughout the EMC chain.
+
+    Read by LaplacianVariableCoeffProcessor, which uses the flux form
+    div(c^2 grad psi) instead of the constant-coefficient Laplacian.
+    The plan's item 1.23 requires this: a variable c^2 makes the naive
+    c^2_i * laplacian(psi) form a different wave equation, not the one
+    the plan specifies.
+
+    Representation: scalar ti.field(f32), one value per voxel, in the
+    unit system's squared speed units.
+    """
+
+    c2_local: ti.field

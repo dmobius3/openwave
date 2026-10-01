@@ -11,6 +11,7 @@ from .features import (
     PsiTripleBuffer,
     TrackerFields,
     WaveGrid,
+    WaveSpeedField,
     WaveStats,
 )
 from .units import (
@@ -20,9 +21,15 @@ from .units import (
     UnitSystem,
     make_unit_system,
 )
-from .allocator import AllocateTrackers, AllocateWaveField
+from .allocator import AllocateTrackers, AllocateWaveSpeed, AllocateWaveField
+from .emc import UpdateEMCDensityProcessor, UpdateWaveSpeedProcessor
 from .seed import SeedPulse, SeedMultiCenter
-from .evolution import LaplacianProcessor, LeapfrogProcessor
+from .evolution import (
+    ClearAccelerationProcessor,
+    LaplacianProcessor,
+    LaplacianVariableCoeffProcessor,
+    LeapfrogProcessor,
+)
 from .nonlinearity import NonlinearCubic
 from .boundary import DirichletBoundaryProcessor
 from .measure import AmplitudeTracker
@@ -40,9 +47,10 @@ __all__ = [
     "PsiTransField",
     "EMCDensityField",
     "EMCFluxField",
+    "TrackerFields",
+    "WaveSpeedField",
     "WaveGrid",
     "WaveStats",
-    "TrackerFields",
     # units
     "UnitSystem",
     "NaturalUnitSystem",
@@ -52,12 +60,17 @@ __all__ = [
     # processors
     "AllocateWaveField",
     "AllocateTrackers",
+    "AllocateWaveSpeed",
     "SeedPulse",
     "SeedMultiCenter",
+    "ClearAccelerationProcessor",
     "LaplacianProcessor",
+    "LaplacianVariableCoeffProcessor",
     "LeapfrogProcessor",
     "NonlinearCubic",
     "DirichletBoundaryProcessor",
     "AmplitudeTracker",
     "TaichiWindowProcessor",
+    "UpdateEMCDensityProcessor",
+    "UpdateWaveSpeedProcessor",
 ]

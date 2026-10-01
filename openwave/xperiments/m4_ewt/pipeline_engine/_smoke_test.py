@@ -26,12 +26,18 @@ try:
         Runner,
         Stage,
     )
+    from .physics.units import NaturalUnitSystem
 except ImportError:
     from context import Context
     from pipeline import BaseProcessor, ErrorPolicy, Pipeline, PipelineError, Stage
     from sinks import InMemorySink, JsonSessionSink, LiveJsonSink
     from loggers import LogProcessor
     from runner import Runner
+
+    try:
+        from physics.units import NaturalUnitSystem
+    except ImportError:
+        from openwave.xperiments.m4_ewt.pipeline_engine.physics.units import NaturalUnitSystem
 
 
 # ================================================================
@@ -218,7 +224,7 @@ def _run_external_feature(out_dir: Path) -> Context:
         output_dir=out_dir,
         dt=1.0,
         max_steps=50,
-        initial_features=[tags],
+        initial_features=[tags, NaturalUnitSystem()],
     )
 
 
@@ -239,7 +245,9 @@ def test_stateless_guard() -> tuple[bool, str]:
     runner = Runner({}, check_stateless=True)
     pipeline = Pipeline(error_policy=ErrorPolicy.FAIL_FAST).add(p)
     try:
-        runner.run(pipeline, name="stateless_test", max_steps=5)
+        runner.run(
+            pipeline, name="stateless_test", max_steps=5, initial_features=[NaturalUnitSystem()]
+        )
     except PipelineError as e:
         if "mutated instance fields" in str(e):
             return True, "PipelineError raised on in-place mutation"
