@@ -452,6 +452,89 @@ def test_boundary_voxels_unchanged_by_leapfrog_swap():
         assert np.allclose(arr[i, j, k], expected, atol=1e-6), \
             (i, j, k, arr[i, j, k], expected)
 
+def test_leapfrog_kernel_matches_numpy():
+    """
+    Direct kernel test of _leapfrog against a numpy reference.
+
+    Mutation: each of the following leaves the pipeline-level tests
+    green but changes the output on this arena:
+      - sign error in the dt2 * accel term
+      - full-grid scope where the correct scope is interior-only
+      - time-level swap order inverted
+      - wrong axis index in a neighbour read
+    """
+    _ti_init()
+    from .evolution import _leapfrog
+
+    nx, ny, nz = 6, 8, 10
+    dt2 = 0.37
+    rng = np.random.default_rng(seed=607_001)
+
+    psi_np = rng.standard_normal((nx, ny, nz, 3)).astype(np.float32)
+    prev_np = rng.standard_normal((nx, ny, nz, 3)).astype(np.float32)
+    new_np = rng.standard_normal((nx, ny, nz, 3)).astype(np.float32)
+
+    # Arena invariant: prev != psi on the boundary. Random data
+    # guarantees it; assert so a future change to the seed does not
+    # silently remove the arm that catches a full-grid swap.
+    boundary = np.zeros((nx, ny, nz), dtype=bool)
+    boundary[0, :, :] = True
+    boundary[-1, :, :] = True
+    boundary[:, 0, :] = True
+    boundary[:, -1, :] = True
+    boundary[:, :, 0] = True
+    boundary[:, :, -1] = True
+    assert not np.allclose(psi_np[boundary], prev_np[boundary], atol=1e-6), (
+        "arena error: prev == psi on boundary; a full-grid swap would "
+        "not change any boundary voxel and this test could not see it"
+    )
+
+    psi = ti.Vector.field(3, dtype=ti.f32, shape=(nx, ny, nz))
+    prev = ti.Vector.field(3, dtype=ti.f32, shape=(nx, ny, nz))
+    new = ti.Vector.field(3, dtype=ti.f32, shape=(nx, ny, nz))
+    psi.from_numpy(psi_np)
+    prev.from_numpy(prev_np)
+    new.from_numpy(new_np)
+
+    _leapfrog(psi, prev, new, nx, ny, nz, dt2)
+
+    psi_out = psi.to_numpy()
+    prev_out = prev.to_numpy()
+    new_out = new.to_numpy()
+
+    # Numpy reference: interior-only integration, interior-only swap.
+    # new_ref carries the integrated values, not the input new.
+    interior = (slice(1, -1),) * 3
+    psi_ref = psi_np.copy()
+    prev_ref = prev_np.copy()
+    new_ref = new_np.copy()
+    new_ref[interior] = (
+        2.0 * psi_np[interior] - prev_np[interior] + dt2 * new_np[interior]
+    )
+    prev_ref[interior] = psi_np[interior]
+    psi_ref[interior] = new_ref[interior]
+
+    # Interior: all three buffers must match the reference.
+    assert np.allclose(psi_out[interior], psi_ref[interior], atol=1e-5), (
+        f"psi interior max diff {np.abs(psi_out[interior] - psi_ref[interior]).max()}"
+    )
+    assert np.allclose(prev_out[interior], prev_ref[interior], atol=1e-5), (
+        f"prev interior max diff {np.abs(prev_out[interior] - prev_ref[interior]).max()}"
+    )
+    assert np.allclose(new_out[interior], new_ref[interior], atol=1e-5), (
+        f"new interior max diff {np.abs(new_out[interior] - new_ref[interior]).max()}"
+    )
+
+    # Boundary: untouched. This is where a full-grid scope fires.
+    assert np.allclose(psi_out[boundary], psi_np[boundary], atol=1e-6), (
+        "psi boundary changed; the swap is not interior-only"
+    )
+    assert np.allclose(prev_out[boundary], prev_np[boundary], atol=1e-6), (
+        "prev boundary changed; the swap is not interior-only"
+    )
+    assert np.allclose(new_out[boundary], new_np[boundary], atol=1e-6), (
+        "new boundary changed; the integration is not interior-only"
+    )
 
 # ======================================================================
 # Runner
@@ -473,6 +556,7 @@ def main() -> int:
         test_laplacian_matches_analytic_on_asymmetric_seed,
         test_two_fields_evolve_independently,
         test_boundary_voxels_unchanged_by_leapfrog_swap,
+        test_leapfrog_kernel_matches_numpy,
     ]
     passed = 0
     for t in tests:
