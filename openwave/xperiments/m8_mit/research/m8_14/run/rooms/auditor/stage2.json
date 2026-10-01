@@ -1,0 +1,471 @@
+{
+ "R": 1,
+ "stage": 2,
+ "comparison_values": "my stage-1 values in stage1.json, unchanged",
+ "stage1_corrections": [],
+ "rooms": {
+  "A": {
+   "valid": true,
+   "reasons": [
+    "All explicit T4 requirements met, read from the script and confirmed by K1/K2: P1 in (y,w) on [0,pi]x[-W,W]; seam phi(pi,-w_j) = -phi(0,w_j) imposed with sign -1 (K2 seam residual 0; the room's own periodic plant gives 2.0); weight |cos y|; zero data on w = +-W and on the fiber; level-0 nodes pi/2 -+ (pi/2)(k/16)^2 with 8 w-cells; exactly four uniform (midpoint) refinements; p from levels 2,3,4; Richardson from 3,4 with that p; err = |extrap - finest|; all seven widths; six eigenvalues per level.",
+    "Geometry, normal, seam condition, admissible class and data of sections 2-3 used as stated.",
+    "No sign of any source beyond the spec sheet (manifest, scripts and logs scanned; no outside paths, no network).",
+    "Script, JSON and report agree: rerun reproduces every JSON leaf (C1), every printed T4/T3/T5 number matches the JSON (C2, C3), p/extrap/err recomputed from the JSON levels (K6).",
+    "Eigensolver converged at its own level: max relative residual over all widths, levels and six pairs about 4e-12 (K3); Sylvester inertia confirms no eigenvalue missed at levels 0-2 (K4).",
+    "Reading of 'uniform refinement' (midpoint insertion, no regrading) is a reading, not a violation; the regraded alternative moves no bottom by more than 3.1e-7 relative (s2_regrade)."
+   ],
+   "instrument_defects_immaterial": [
+    "C4.5 is only a 5% gross check (it can fail: the periodic-seam plant gives 264.85 vs 2.38)."
+   ],
+   "max_residual": 4.055208481321516e-12,
+   "rerun_json_max_rel": 8.411862457779456e-11,
+   "v3": {
+    "1/4": {
+     "room_bottom": 45.76158928193098,
+     "room_err_estimate": 0.005598895614426169,
+     "room_p": 1.996683641266385,
+     "mine_stage1": 45.76160291153779,
+     "mine_err": 4.576160291153779e-11,
+     "rel_diff": -2.9783936630033644e-07,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.0024343384393418353
+    },
+    "1/2": {
+     "room_bottom": 13.01119655021694,
+     "room_err_estimate": 0.001183940446745524,
+     "room_p": 1.9994196170962417,
+     "mine_stage1": 13.01119705467919,
+     "mine_err": 1.301119705467919e-11,
+     "rel_diff": -3.877139417924196e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.0004260875208186785
+    },
+    "1": {
+     "room_bottom": 4.038197480572941,
+     "room_err_estimate": 0.00031897778065737015,
+     "room_p": 2.0002258353559204,
+     "mine_stage1": 4.038197427067339,
+     "mine_err": 4.038197427067339e-12,
+     "rel_diff": 1.3249872670506895e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.00016774084269049393
+    },
+    "7/5": {
+     "room_bottom": 2.3808755427627752,
+     "room_err_estimate": 0.00018421694157044755,
+     "room_p": 2.000371376516264,
+     "mine_stage1": 2.380875488665504,
+     "mine_err": 2.380875488665531e-12,
+     "rel_diff": 2.27215876532415e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.00029366067336689426
+    },
+    "3/2": {
+     "room_bottom": 2.143820313410615,
+     "room_err_estimate": 0.00016583418731697108,
+     "room_p": 2.000314193631752,
+     "mine_stage1": 2.143820262428569,
+     "mine_err": 2.1438202624285723e-12,
+     "rel_diff": 2.3780933053845366e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.0003074278408157497
+    },
+    "pi/2": {
+     "room_bottom": 2.0000000503003306,
+     "room_err_estimate": 0.00015483534310734015,
+     "room_p": 2.0002029806631714,
+     "mine_stage1": 2.0000000000001403,
+     "mine_err": 2.00000000000014e-12,
+     "rel_diff": 2.515009511760803e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.0003248624585689638
+    },
+    "17/10": {
+     "room_bottom": 1.7777699076110578,
+     "room_err_estimate": 0.00013815160300212348,
+     "room_p": 1.9997055585772312,
+     "mine_stage1": 1.7777698463058955,
+     "mine_err": 1.7777698463058955e-12,
+     "rel_diff": 3.4484307632603494e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.00044375281175012085
+    }
+   },
+   "G": {
+    "T1": {
+     "steps": {
+      "1 varied map F_t = cos(t phi/R) X + R sin(t phi/R) e4": "ESTABLISHED",
+      "2 well defined on RP^3; edge and cone point fixed": "ESTABLISHED",
+      "3 exact metric g_t = c^2 g + t^2 dphi dphi": "ESTABLISHED",
+      "4 exact area via matrix-determinant lemma": "ESTABLISHED",
+      "5 differentiation under the integral; A''(0) = Q": "ESTABLISHED",
+      "boundary/vertex terms: none": "ESTABLISHED",
+      "extension to the admissible class by continuity": "ESTABLISHED"
+     },
+     "establishes": "Q(phi) = int (|grad phi|^2 - 2 phi^2/R^2) dA, dA = |cos(y/R)| dy dw; no edge, seam, corner or cone-point term; unique continuous extension to the admissible class. Independently confirmed numerically (G1: A''(0) vs Q, rel 3.0e-08 at W=7/5, 2.5e-08 at W=17/10)."
+    },
+    "T2": {
+     "steps": {
+      "reading R1 (seam matching of all derivatives; literal value-only domain not symmetric)": "ESTABLISHED",
+      "1 sector reduction, closure = direct sum of sector closures": "ESTABLISHED",
+      "2 endpoints are the two poles (the cone point twice)": "ESTABLISHED",
+      "3 Frobenius exponents +-nu, LC iff nu < 1": "ESTABLISHED",
+      "4 classification": "ESTABLISHED",
+      "5 Friedrichs realization selected (separated, no r^-nu part at either end)": "ESTABLISHED"
+     },
+     "remark": "Step 3's side remark 'if the weight cos psi were dropped the threshold would move to nu < 1/2' holds only if the measure alone changes; if the area element is dropped from operator and measure, the threshold is nu < sqrt(3)/2 (G4). Not part of the argument; the step stands.",
+     "establishes": "0 < W <= pi R/2: every sector limit-point at the cone point (nu_k >= 1; nu = 1 at W = pi/2, k = 1 is limit-point); closure self-adjoint, no other extensions. W/R = 17/10: sector k = 1 (nu_1 = 5pi/17 = 0.924) limit-circle at both ends, k >= 2 limit-point; deficiency (2,2), U(2) family; the admissible class selects the Friedrichs extension (separated, f = O(r^nu))."
+    },
+    "T3": {
+     "steps": {
+      "1 Legendre form in x = sin psi": "ESTABLISHED",
+      "2 reduction to Gegenbauer, lambda = (nu+n)(nu+n+1)": "ESTABLISHED",
+      "3 f_{k,n} e_k lie in D(A) with A f = lambda f": "ESTABLISHED, SUPPLIED",
+      "4 completeness, spectrum exactly {lambda_{k,n}}": "ESTABLISHED",
+      "lowest eigenvalue": "ESTABLISHED"
+     },
+     "supplied": {
+      "3": "The step works with sector test functions and the sector form; the passage to the 2D Friedrichs operator needs A = (+)_k A_k. Supplied: for u in the core D, integrating twice by parts in theta (u = e_k = 0 at theta = +-W) and Parseval give a(u) = sum_k a_k(u_k); so the form closure is H = {u : u_k in H_k, sum a_k(u_k) < inf} and its operator is (+)_k A_k. Hence a(f e_k, g) = a_k(f, g_k) = lambda <f, g_k> = lambda <f e_k, g> for all g in H."
+     },
+     "establishes": "spectrum exactly {(nu_k+n)(nu_k+n+1)/R^2 : k >= 1, n >= 0}, nu_k = k pi R/(2W), labels (k,n), multiplicity = number of labels; complete (eigenbasis, compact resolvent); lowest pi(pi R + 2W)/(4 W^2 R), label (1,0). Values agree with my stage-1 closed form (G5)."
+    },
+    "T5": {
+     "steps": {
+      "1 operator of Q is J = A - 2/R^2": "ESTABLISHED",
+      "2 lowest eigenvalue (nu_1 - 1)(nu_1 + 2)/R^2, sign = sign(pi R/2 - W)": "ESTABLISHED",
+      "3 index and nullity by counting nu_k + n < 1, = 1; min-max": "ESTABLISHED"
+     },
+     "establishes": {
+      "1/4": {
+       "lowest_jacobi": 43.76160291153702,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "1/2": {
+       "lowest_jacobi": 11.011197054679151,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "1": {
+       "lowest_jacobi": 2.038197427067236,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "7/5": {
+       "lowest_jacobi": 0.38087548866591575,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "3/2": {
+       "lowest_jacobi": 0.1438202624287487,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "pi/2": {
+       "lowest_jacobi": 0.0,
+       "sign": "0",
+       "index": 0,
+       "nullity": 1
+      },
+      "17/10": {
+       "lowest_jacobi": -0.22223015369423393,
+       "sign": "-",
+       "index": 1,
+       "nullity": 0
+      }
+     }
+    }
+   }
+  },
+  "B": {
+   "valid": true,
+   "reasons": [
+    "All explicit T4 requirements met, read from the script and confirmed by K1/K2: P1 in (y,w) on [0,pi]x[-W,W]; seam phi(pi,-w_j) = -phi(0,w_j) imposed with sign -1 (K2 seam residual 0; the room's own periodic plant gives 2.0); weight |cos y|; zero data on w = +-W and on the fiber; level-0 nodes pi/2 -+ (pi/2)(k/16)^2 with 8 w-cells; exactly four uniform (midpoint) refinements; p from levels 2,3,4; Richardson from 3,4 with that p; err = |extrap - finest|; all seven widths; six eigenvalues per level.",
+    "Geometry, normal, seam condition, admissible class and data of sections 2-3 used as stated.",
+    "No sign of any source beyond the spec sheet (manifest, scripts and logs scanned; no outside paths, no network).",
+    "Script, JSON and report agree: rerun reproduces every JSON leaf (C1), every printed T4/T3/T5 number matches the JSON (C2, C3), p/extrap/err recomputed from the JSON levels (K6).",
+    "Eigensolver converged at its own level: max relative residual over all widths, levels and six pairs about 4e-12 (K3); Sylvester inertia confirms no eigenvalue missed at levels 0-2 (K4).",
+    "Reading of 'uniform refinement' (midpoint insertion, no regrading) is a reading, not a violation; the regraded alternative moves no bottom by more than 3.1e-7 relative (s2_regrade)."
+   ],
+   "instrument_defects_immaterial": [
+    "Report says the free node's w-gradient on fiber-edge triangles is 'exactly zero'; it is computed via np.linalg.inv and is zero only to roundoff (|gw|*h_w <= 1.1e-16, leaked stiffness / K-diagonal <= 1.6e-31, F1). Immaterial: Room B's eigenvalues equal Room A's (which drops the term exactly) to 8.2e-14 relative.",
+    "The --plant switch plants the periodic seam and the signed-cos weight together; each check is still shown to fail, and I planted the seam sign alone (K2: residual 2.0).",
+    "T4 checks run on the level-0 mesh at three widths only (1/4, pi/2, 17/10)."
+   ],
+   "max_residual": 4.084194668585582e-12,
+   "rerun_json_max_rel": 4.205931228860245e-11,
+   "v3": {
+    "1/4": {
+     "room_bottom": 45.76158928193097,
+     "room_err_estimate": 0.005598895614774335,
+     "room_p": 1.9966836412222806,
+     "mine_stage1": 45.76160291153779,
+     "mine_err": 4.576160291153779e-11,
+     "rel_diff": -2.9783936645560695e-07,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.0024343384404595333
+    },
+    "1/2": {
+     "room_bottom": 13.011196550216825,
+     "room_err_estimate": 0.0011839404469693449,
+     "room_p": 1.99941961696502,
+     "mine_stage1": 13.01119705467919,
+     "mine_err": 1.301119705467919e-11,
+     "rel_diff": -3.877140305338276e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.000426087618262623
+    },
+    "1": {
+     "room_bottom": 4.038197480573127,
+     "room_err_estimate": 0.00031897778053036063,
+     "room_p": 2.0002258356153,
+     "mine_stage1": 4.038197427067339,
+     "mine_err": 4.038197427067339e-12,
+     "rel_diff": 1.3249918858805388e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.00016774142749227073
+    },
+    "7/5": {
+     "room_bottom": 2.3808755427625865,
+     "room_err_estimate": 0.00018421694163173186,
+     "room_p": 2.000371376336329,
+     "mine_stage1": 2.380875488665504,
+     "mine_err": 2.380875488665531e-12,
+     "rel_diff": 2.2721508380757458e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.00029365964872763307
+    },
+    "3/2": {
+     "room_bottom": 2.143820313410318,
+     "room_err_estimate": 0.0001658341874768432,
+     "room_p": 2.0003141930166914,
+     "mine_stage1": 2.143820262428569,
+     "mine_err": 2.1438202624285723e-12,
+     "rel_diff": 2.37807944714807e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.0003074260489968549
+    },
+    "pi/2": {
+     "room_bottom": 2.0000000503004483,
+     "room_err_estimate": 0.00015483534299631785,
+     "room_p": 2.000202981162015,
+     "mine_stage1": 2.0000000000001403,
+     "mine_err": 2.00000000000014e-12,
+     "rel_diff": 2.5150153959428336e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.0003248632188586064
+    },
+    "17/10": {
+     "room_bottom": 1.7777699076114313,
+     "room_err_estimate": 0.00013815160277386163,
+     "room_p": 1.999705559652302,
+     "mine_stage1": 1.7777698463058955,
+     "mine_err": 1.7777698463058955e-12,
+     "rel_diff": 3.4484517715492604e-08,
+     "exceeds_1e-3": false,
+     "located_defect": null,
+     "abs_diff_over_room_err": 0.0004437555158831879
+    }
+   },
+   "G": {
+    "T1": {
+     "steps": {
+      "1 geodesics of S^3(R)": "ESTABLISHED",
+      "2 varied surface, well defined on RP^3, edge and cone point fixed": "ESTABLISHED",
+      "3 induced metric g_t = cos^2 u g + du du": "ESTABLISHED",
+      "4 exact density cos u sqrt(cos^2 u + t^2 |grad phi|^2)|cos y|": "ESTABLISHED",
+      "5 differentiation under the integral; A''(0) = Q": "ESTABLISHED",
+      "boundary, seam, vertex terms: none": "ESTABLISHED",
+      "extension by continuity": "ESTABLISHED"
+     },
+     "establishes": "Q(phi) = int (|grad phi|^2 - 2 phi^2/R^2) dA, dA = |cos(y/R)| dy dw; no edge, seam, corner or cone-point term; unique continuous extension to the admissible class. Independently confirmed numerically (G1: A''(0) vs Q, rel 3.0e-08 at W=7/5, 2.5e-08 at W=17/10)."
+    },
+    "T2": {
+     "steps": {
+      "reading D0 (smooth on the lune; literal domain not symmetric; form closure unchanged)": "ESTABLISHED",
+      "sectors and orthonormal basis s_k": "ESTABLISHED",
+      "(a)-(c) deficiency indices split over sectors": "ESTABLISHED",
+      "endpoint analysis: tan^(+-nu)(r/2), exponents +-nu, LC iff nu < 1": "ESTABLISHED",
+      "classification": "ESTABLISHED",
+      "realization selected: Friedrichs": "ESTABLISHED"
+     },
+     "establishes": "0 < W <= pi R/2: every sector limit-point at the cone point (nu_k >= 1; nu = 1 at W = pi/2, k = 1 is limit-point); closure self-adjoint, no other extensions. W/R = 17/10: sector k = 1 (nu_1 = 5pi/17 = 0.924) limit-circle at both ends, k >= 2 limit-point; deficiency (2,2), U(2) family; the admissible class selects the Friedrichs extension (separated, f = O(r^nu))."
+    },
+    "T3": {
+     "steps": {
+      "1 sector ODE to Gegenbauer, lambda = (nu+m)(nu+m+1)": "ESTABLISHED",
+      "2 F_{k,m} in the form domain (cutoff estimate)": "ESTABLISHED",
+      "3 F_{k,m} in D(A_F), A_F F = lambda F (2D Green formula on D0)": "ESTABLISHED",
+      "4 completeness of {F_{k,m}} in L^2(L_W)": "ESTABLISHED",
+      "5 spectrum = closure of eigenvalues, discrete": "ESTABLISHED"
+     },
+     "establishes": "spectrum exactly {(nu_k+m)(nu_k+n+1)/R^2 : k >= 1, m >= 0}, nu_k = k pi R/(2W), labels (k,m), multiplicity = number of labels; complete (eigenbasis, compact resolvent); lowest pi(pi R + 2W)/(4 W^2 R), label (1,0). Values agree with my stage-1 closed form (G5)."
+    },
+    "T5": {
+     "steps": {
+      "J = A_F - 2, eigenvalues (nu_k+m-1)(nu_k+m+2)": "ESTABLISHED",
+      "min-max: index = number of negative eigenvalues, nullity = dim ker J": "ESTABLISHED",
+      "sign analysis: negative iff m = 0 and k < 2W/pi; zero iff m = 0, k = 2W/pi": "ESTABLISHED",
+      "table per width (exact sympy decisions)": "ESTABLISHED"
+     },
+     "establishes": {
+      "1/4": {
+       "lowest_jacobi": 43.76160291153702,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "1/2": {
+       "lowest_jacobi": 11.011197054679151,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "1": {
+       "lowest_jacobi": 2.038197427067236,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "7/5": {
+       "lowest_jacobi": 0.38087548866591575,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "3/2": {
+       "lowest_jacobi": 0.1438202624287487,
+       "sign": "+",
+       "index": 0,
+       "nullity": 0
+      },
+      "pi/2": {
+       "lowest_jacobi": 0.0,
+       "sign": "0",
+       "index": 0,
+       "nullity": 1
+      },
+      "17/10": {
+       "lowest_jacobi": -0.22223015369423393,
+       "sign": "-",
+       "index": 1,
+       "nullity": 0
+      }
+     }
+    }
+   }
+  }
+ },
+ "status_of_arguments": "audited arguments (not verified or proven theorems)",
+ "checks": {
+  "s2_audit": {
+   "pass": 238,
+   "fail": 0,
+   "planted_fired": {
+    "K1_cubic_grading": true,
+    "K2_a_periodic_seam": true,
+    "K2_b_periodic_seam": true,
+    "K4_missed_lam1": true,
+    "K3_shifted_eigenvalue": true,
+    "K5_altered_json": true,
+    "K6_wrong_levels": true,
+    "K7_offset_2e-3": true
+   }
+  },
+  "s2_compare": {
+   "lines": [
+    "PASS  C1 room a: rerun JSON vs return JSON, 560 leaves, same keys True, max rel 8.4e-11 at /extra_t4_vs_closed_form/1/4/extrap_minus_exact",
+    "PASS  C1 room b: rerun JSON vs return JSON, 558 leaves, same keys True, max rel 4.2e-11 at /t4_minus_exact_extra/1/4/extrap_minus_exact_bottom",
+    "[planted] FAIL  C1 room a: rerun JSON vs return JSON, 560 leaves, same keys True, max rel 1.0e-06 at /t4/1/4/levels[0][0]",
+    "PASS  C2 room a: 231 printed T4 numbers vs JSON, mismatches []",
+    "PASS  C2 room b: 231 printed T4 numbers vs JSON, mismatches []",
+    "[planted] FAIL  C2 room a: 231 printed T4 numbers vs JSON, mismatches [('7/5', '4', 0, '2.3810597598', 2.3810597597043457)]",
+    "PASS  C3 room a: 49 printed T3/T5 numbers vs JSON, mismatches []",
+    "PASS  C3 room b: 49 printed T3/T5 numbers vs JSON, mismatches []",
+    "[planted] FAIL  C3 room a: 49 printed T3/T5 numbers vs JSON, mismatches [('1', '4.0381974272', 4.038197427067236)]"
+   ]
+  },
+  "s2_symbolic": {
+   "lines": [
+    "PASS  G1 W=1.4: area 5.600000000197 (4W = 5.6), A''(0) = 0.390679636, Q = 0.390679625, rel 3.0e-08, test phi seam residual 0.0e+00",
+    "PASS  G1 W=1.7: area 6.800000000170 (4W = 6.8), A''(0) = 0.291771906, Q = 0.291771913, rel 2.5e-08, test phi seam residual 0.0e+00",
+    "[planted] FAIL  G1 W=1.4: area 5.600000000197 (4W = 5.6), A''(0) = 0.390679636, Q = 0.955419220, rel 5.9e-01, test phi seam residual 0.0e+00",
+    "PASS  G2 Room A T3 step 2 identity for ((1-x^2) f')'",
+    "[planted] FAIL  G2 Room A T3 step 2 identity for ((1-x^2) f')'",
+    "PASS  G3 sector ODE solved by (1-x^2)^(nu/2) C_m^(nu+1/2) with lam=(nu+m)(nu+m+1)",
+    "[planted] FAIL  G3 sector ODE solved by (1-x^2)^(nu/2) C_m^(nu+1/2) with lam=(nu+m)(nu+m+1)",
+    "PASS  G4 weighted indicial roots [-nu, nu]; unweighted roots [1/2 - sqrt(4*nu**2 + 1)/2, sqrt(4*nu**2 + 1)/2 + 1/2]; unweighted LC threshold nu < [sqrt(3)/2]",
+    "[planted] FAIL  G4 planted operator: indicial roots [-sqrt(4*nu**2 + 1)/2 - 1/2, sqrt(4*nu**2 + 1)/2 - 1/2] vs +-nu",
+    "PASS  G5 lowest six vs my stage-1 closed form and both rooms; T5 sign/index/nullity vs both rooms",
+    "[planted] FAIL  G5 lowest six vs my stage-1 closed form and both rooms; T5 sign/index/nullity vs both rooms",
+    "PASS  G6 W=1.570796: Hausdorff distance in RP^3 between the edges w=+W and w=-W: 5.6e-16",
+    "[planted] FAIL  G6 W=1.400000: Hausdorff distance in RP^3 between the edges w=+W and w=-W: 3.4e-01"
+   ]
+  },
+  "s2_fiber_b": {
+   "lines": [
+    "PASS  F1 room b W=1.7: max |gw_free|*h_w 1.1e-16, max leak 1.5e-31, ratio to min K-diagonal 3.8e-32",
+    "PASS  F1 room b W=0.25: max |gw_free|*h_w 1.1e-16, max leak 1.0e-30, ratio to min K-diagonal 1.6e-31",
+    "[planted] FAIL  F1 room b W=1.7: max |gw_free|*h_w 4.3e-07, max leak 2.2e-12, ratio to min K-diagonal 5.5e-13"
+   ],
+   "planted_fired": true
+  },
+  "s2_regrade_rel_vs_mine": {
+   "1/4": -3.006198415681255e-07,
+   "1/2": -4.052115534774291e-08,
+   "1": 1.2596925630413887e-08,
+   "7/5": 2.39234040230824e-08,
+   "3/2": 2.549086605052647e-08,
+   "pi/2": 2.6208953007865013e-08,
+   "17/10": 2.6313550828847612e-08
+  },
+  "a_vs_b": {
+   "1/4": {
+    "max_rel_levels": 1.551947773680429e-14,
+    "extrap_rel": 1.5527055482766175e-16
+   },
+   "1/2": {
+    "max_rel_levels": 2.6749216508483346e-14,
+    "extrap_rel": 8.874141138010258e-15
+   },
+   "1": {
+    "max_rel_levels": 2.264710367781633e-14,
+    "extrap_rel": -4.618829788149799e-14
+   },
+   "7/5": {
+    "max_rel_levels": 5.3528099287518004e-14,
+    "extrap_rel": 7.927248224293133e-14
+   },
+   "3/2": {
+    "max_rel_levels": 6.400394237500609e-14,
+    "extrap_rel": 1.3858236137201347e-13
+   },
+   "pi/2": {
+    "max_rel_levels": 5.615989011487555e-14,
+    "extrap_rel": -5.884181882524836e-14
+   },
+   "17/10": {
+    "max_rel_levels": 8.167867335342696e-14,
+    "extrap_rel": -2.1008288186501035e-13
+   }
+  }
+ }
+}

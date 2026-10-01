@@ -1,0 +1,44 @@
+{
+ "C1_a": {
+  "n_leaves": 560,
+  "same_keys": true,
+  "max_rel": 8.411862457779456e-11,
+  "where": "/extra_t4_vs_closed_form/1/4/extrap_minus_exact"
+ },
+ "C1_b": {
+  "n_leaves": 558,
+  "same_keys": true,
+  "max_rel": 4.205931228860245e-11,
+  "where": "/t4_minus_exact_extra/1/4/extrap_minus_exact_bottom"
+ },
+ "C1_planted_fired": true,
+ "C2_a": {
+  "n": 231,
+  "mismatches": []
+ },
+ "C2_b": {
+  "n": 231,
+  "mismatches": []
+ },
+ "C2_planted_fired": true,
+ "C3_a": {
+  "n": 49,
+  "mismatches": []
+ },
+ "C3_b": {
+  "n": 49,
+  "mismatches": []
+ },
+ "C3_planted_fired": true,
+ "lines": [
+  "PASS  C1 room a: rerun JSON vs return JSON, 560 leaves, same keys True, max rel 8.4e-11 at /extra_t4_vs_closed_form/1/4/extrap_minus_exact",
+  "PASS  C1 room b: rerun JSON vs return JSON, 558 leaves, same keys True, max rel 4.2e-11 at /t4_minus_exact_extra/1/4/extrap_minus_exact_bottom",
+  "[planted] FAIL  C1 room a: rerun JSON vs return JSON, 560 leaves, same keys True, max rel 1.0e-06 at /t4/1/4/levels[0][0]",
+  "PASS  C2 room a: 231 printed T4 numbers vs JSON, mismatches []",
+  "PASS  C2 room b: 231 printed T4 numbers vs JSON, mismatches []",
+  "[planted] FAIL  C2 room a: 231 printed T4 numbers vs JSON, mismatches [('7/5', '4', 0, '2.3810597598', 2.3810597597043457)]",
+  "PASS  C3 room a: 49 printed T3/T5 numbers vs JSON, mismatches []",
+  "PASS  C3 room b: 49 printed T3/T5 numbers vs JSON, mismatches []",
+  "[planted] FAIL  C3 room a: 49 printed T3/T5 numbers vs JSON, mismatches [('1', '4.0381974272', 4.038197427067236)]"
+ ]
+}

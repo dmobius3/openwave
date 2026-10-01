@@ -1,0 +1,566 @@
+{
+ "log": [
+  {
+   "check": "C1 assembly identities",
+   "planted": false,
+   "ok": true,
+   "detail": "max identity defect 5.33e-15 (tol 1e-12)"
+  },
+  {
+   "check": "C1 assembly identities, 1-point quadrature",
+   "planted": true,
+   "ok": false,
+   "detail": "max identity defect 4.07e-03 (tol 1e-12)"
+  },
+  {
+   "check": "C2 eigen-residual W=17/10 N=32",
+   "planted": false,
+   "ok": true,
+   "detail": "max relative residual 1.58e-13 (tol 1e-9)"
+  },
+  {
+   "check": "C2 eigen-residual with eigenvalue shifted 1e-6",
+   "planted": true,
+   "ok": false,
+   "detail": "max relative residual 1.00e-06 (tol 1e-9)"
+  },
+  {
+   "check": "C3 seam phi(pi,-w)=-phi(0,w), zero on w=+-W and fiber",
+   "planted": false,
+   "ok": true,
+   "detail": "max seam/boundary violation 0.00e+00 (tol 1e-12)"
+  },
+  {
+   "check": "C3 with seam sign flipped (+)",
+   "planted": true,
+   "ok": false,
+   "detail": "max seam/boundary violation 2.00e+00 (tol 1e-12)"
+  },
+  {
+   "check": "C3 with seam reflection w->-w omitted",
+   "planted": true,
+   "ok": false,
+   "detail": "max seam/boundary violation 2.00e+00 (tol 1e-12)"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/4 eig1",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9973458417834715 p_prev=3.990124648952502"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/4 eig2",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9911991470595534 p_prev=3.963669323005155"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/4 eig3",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.989773279399506 p_prev=3.961700930315481"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/4 eig4",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.982779514910108 p_prev=3.9284993186430563"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/4 eig5",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9806803769255565 p_prev=3.9283435531911226"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/4 eig6",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.972595924076068 p_prev=3.884985189762372"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/2 eig1",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9988895252715695 p_prev=3.9957158477832313"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/2 eig2",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.994859831733014 p_prev=3.9790688504904126"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/2 eig3",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9942413740079683 p_prev=3.9780427463655283"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/2 eig4",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9891818370585432 p_prev=3.9556416428369046"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/2 eig5",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9975564635612253 p_prev=3.9904052718055087"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1/2 eig6",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9880597780347027 p_prev=3.9548001842141653"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1 eig1",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.999360667765213 p_prev=3.9974538662506958"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1 eig2",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9967540690370256 p_prev=3.986890079132845"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1 eig3",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997722332756449 p_prev=3.990965097617512"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1 eig4",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.996420170022894 p_prev=3.986223078745816"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1 eig5",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9964687597938955 p_prev=3.9857822452232403"
+  },
+  {
+   "check": "C4 A asymptotic regime W=1 eig6",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.992313622758117 p_prev=3.9686733405687025"
+  },
+  {
+   "check": "C4 A asymptotic regime W=7/5 eig1",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9994938585884996 p_prev=3.997650310444995"
+  },
+  {
+   "check": "C4 A asymptotic regime W=7/5 eig2",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9973166341131448 p_prev=3.9891856613048984"
+  },
+  {
+   "check": "C4 A asymptotic regime W=7/5 eig3",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997728786691245 p_prev=3.9909725812573322"
+  },
+  {
+   "check": "C4 A asymptotic regime W=7/5 eig4",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997024964224152 p_prev=3.9885103401574526"
+  },
+  {
+   "check": "C4 A asymptotic regime W=7/5 eig5",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997018073692574 p_prev=3.9880493242077946"
+  },
+  {
+   "check": "C4 A asymptotic regime W=7/5 eig6",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.994889903609169 p_prev=3.97986530549272"
+  },
+  {
+   "check": "C4 A asymptotic regime W=3/2 eig1",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9993759735392205 p_prev=3.9976667345368533"
+  },
+  {
+   "check": "C4 A asymptotic regime W=3/2 eig2",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9973885803172546 p_prev=3.989576371205779"
+  },
+  {
+   "check": "C4 A asymptotic regime W=3/2 eig3",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997725868999098 p_prev=3.990967998902758"
+  },
+  {
+   "check": "C4 A asymptotic regime W=3/2 eig4",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997118750985811 p_prev=3.9888875554503143"
+  },
+  {
+   "check": "C4 A asymptotic regime W=3/2 eig5",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997096962986158 p_prev=3.9883794211841734"
+  },
+  {
+   "check": "C4 A asymptotic regime W=3/2 eig6",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.994887731114539 p_prev=3.97985627388227"
+  },
+  {
+   "check": "C4 A asymptotic regime W=pi/2 eig1",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9995443214096658 p_prev=3.997679045300777"
+  },
+  {
+   "check": "C4 A asymptotic regime W=pi/2 eig2",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9974842867638225 p_prev=3.9898260531205527"
+  },
+  {
+   "check": "C4 A asymptotic regime W=pi/2 eig3",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9977277277526264 p_prev=3.9909644363516485"
+  },
+  {
+   "check": "C4 A asymptotic regime W=pi/2 eig4",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9971877711221917 p_prev=3.9891251583180063"
+  },
+  {
+   "check": "C4 A asymptotic regime W=pi/2 eig5",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9971477262843464 p_prev=3.9885799371924535"
+  },
+  {
+   "check": "C4 A asymptotic regime W=pi/2 eig6",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.994886622925535 p_prev=3.9798502168600334"
+  },
+  {
+   "check": "C4 A asymptotic regime W=17/10 eig1",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.999249048300433 p_prev=3.99767131074841"
+  },
+  {
+   "check": "C4 A asymptotic regime W=17/10 eig2",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997721755989648 p_prev=3.9909574319941554"
+  },
+  {
+   "check": "C4 A asymptotic regime W=17/10 eig3",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9975202415800166 p_prev=3.9902236443789376"
+  },
+  {
+   "check": "C4 A asymptotic regime W=17/10 eig4",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.994883916697591 p_prev=3.979839892647104"
+  },
+  {
+   "check": "C4 A asymptotic regime W=17/10 eig5",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.9972195162963464 p_prev=3.9888895598452274"
+  },
+  {
+   "check": "C4 A asymptotic regime W=17/10 eig6",
+   "planted": false,
+   "ok": true,
+   "detail": "monotone=True p_last=3.997275325615283 p_prev=3.9895034909614138"
+  },
+  {
+   "check": "C4 on W=17/10 bottom sequence with +-1e-6 alternating noise",
+   "planted": true,
+   "ok": false,
+   "detail": "monotone=False p_last=None p_prev=None"
+  },
+  {
+   "check": "C5 A vs B, W=1/4",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.0145 (must be <= 1)"
+  },
+  {
+   "check": "C5' B vs closed form, W=1/4",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00846 (must be <= 1)"
+  },
+  {
+   "check": "C5' A vs closed form, W=1/4",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.0146 (must be <= 1)"
+  },
+  {
+   "check": "C5 A vs B, W=1/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00668 (must be <= 1)"
+  },
+  {
+   "check": "C5' B vs closed form, W=1/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00846 (must be <= 1)"
+  },
+  {
+   "check": "C5' A vs closed form, W=1/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00668 (must be <= 1)"
+  },
+  {
+   "check": "C5 A vs B, W=1",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00433 (must be <= 1)"
+  },
+  {
+   "check": "C5' B vs closed form, W=1",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.0645 (must be <= 1)"
+  },
+  {
+   "check": "C5' A vs closed form, W=1",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00433 (must be <= 1)"
+  },
+  {
+   "check": "C5 A vs B, W=7/5",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00287 (must be <= 1)"
+  },
+  {
+   "check": "C5' B vs closed form, W=7/5",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.0865 (must be <= 1)"
+  },
+  {
+   "check": "C5' A vs closed form, W=7/5",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00287 (must be <= 1)"
+  },
+  {
+   "check": "C5 A vs B, W=3/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00287 (must be <= 1)"
+  },
+  {
+   "check": "C5' B vs closed form, W=3/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.524 (must be <= 1)"
+  },
+  {
+   "check": "C5' A vs closed form, W=3/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00287 (must be <= 1)"
+  },
+  {
+   "check": "C5 A vs B, W=pi/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00287 (must be <= 1)"
+  },
+  {
+   "check": "C5' B vs closed form, W=pi/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.0706 (must be <= 1)"
+  },
+  {
+   "check": "C5' A vs closed form, W=pi/2",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00287 (must be <= 1)"
+  },
+  {
+   "check": "C5 A vs B, W=17/10",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00379 (must be <= 1)"
+  },
+  {
+   "check": "C5' B vs closed form, W=17/10",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.0793 (must be <= 1)"
+  },
+  {
+   "check": "C5' A vs closed form, W=17/10",
+   "planted": false,
+   "ok": true,
+   "detail": "max |diff|/(errA+errB) = 0.00361 (must be <= 1)"
+  },
+  {
+   "check": "C5 A(width misread: solved at W/2, extrapolated N=32,64,128) vs B, W=7/5",
+   "planted": true,
+   "ok": false,
+   "detail": "max |diff|/(errA+errB) = 7.45e+07 (must be <= 1)"
+  },
+  {
+   "check": "C5 B(wrong transverse eigenvalue) vs B, W=7/5",
+   "planted": true,
+   "ok": false,
+   "detail": "max |diff|/(errA+errB) = 2.03e+10 (must be <= 1)"
+  },
+  {
+   "check": "C6 sector cutoff W=1/4",
+   "planted": false,
+   "ok": true,
+   "detail": "next sector k=2 changes lowest six by 0.00e+00"
+  },
+  {
+   "check": "C6 sector cutoff W=1/2",
+   "planted": false,
+   "ok": true,
+   "detail": "next sector k=3 changes lowest six by 0.00e+00"
+  },
+  {
+   "check": "C6 sector cutoff W=1",
+   "planted": false,
+   "ok": true,
+   "detail": "next sector k=4 changes lowest six by 0.00e+00"
+  },
+  {
+   "check": "C6 sector cutoff W=7/5",
+   "planted": false,
+   "ok": true,
+   "detail": "next sector k=4 changes lowest six by 0.00e+00"
+  },
+  {
+   "check": "C6 sector cutoff W=3/2",
+   "planted": false,
+   "ok": true,
+   "detail": "next sector k=4 changes lowest six by 0.00e+00"
+  },
+  {
+   "check": "C6 sector cutoff W=pi/2",
+   "planted": false,
+   "ok": true,
+   "detail": "next sector k=4 changes lowest six by 0.00e+00"
+  },
+  {
+   "check": "C6 sector cutoff W=17/10",
+   "planted": false,
+   "ok": true,
+   "detail": "next sector k=4 changes lowest six by 0.00e+00"
+  },
+  {
+   "check": "C6 sector cutoff with only k=1 kept, W=pi/2",
+   "planted": true,
+   "ok": false,
+   "detail": "next sector k=2 changes lowest six by 2.20e+01"
+  }
+ ],
+ "extra_numbers": {
+  "C3_correct_vals_W7/5_N16": [
+   2.3809371619747712,
+   6.625355708626001,
+   7.282725064177238,
+   12.872054136853471,
+   13.773624137145616,
+   14.728698932779087
+  ],
+  "planted_seam_plus_vals_W7/5_N16": [
+   2.3809371619747717,
+   6.625355708626008,
+   7.282725064177232,
+   12.87205413685346,
+   13.773624137145605,
+   14.72869893277907
+  ],
+  "planted_noreflect_vals_W7/5_N16": [
+   2.3809371619747743,
+   6.625355708626005,
+   7.282725064177236,
+   12.872054136853462,
+   13.773624137145616,
+   14.728698932779078
+  ],
+  "info_seam_cut_levels_W7/5_N32_64_128": [
+   [
+    2.380879366913571,
+    6.624901488421471,
+    7.279713031417353,
+    12.869069442688527,
+    13.767892110696947,
+    14.698051036062589
+   ],
+   [
+    2.380875731432848,
+    6.624872208167636,
+    7.279520143318368,
+    12.868877869171516,
+    13.767521615623021,
+    14.696031686388675
+   ],
+   [
+    2.380875503844936,
+    6.624870364382503,
+    7.279508012140436,
+    12.868865800090058,
+    13.767498267070236,
+    14.695903703268792
+   ]
+  ],
+  "info_seam_cut_extrap_W7/5": [
+   2.3808754886460255,
+   6.6248702404764845,
+   7.279507197978095,
+   12.868864988618594,
+   13.7674966966817,
+   14.695895043033715
+  ],
+  "planted_halfwidth_extrap_W7/5": [
+   7.2795072019866325,
+   13.76749670212854,
+   22.25548618412324,
+   24.630039287334146,
+   32.74347542192864,
+   35.60601824666448
+  ],
+  "planted_wrongmu_vals_W7/5_N8": [
+   7.279507202099549,
+   13.767496707227762,
+   22.255486212376344,
+   24.630039303271097,
+   32.743475717510925,
+   35.606018313532346
+  ]
+ }
+}

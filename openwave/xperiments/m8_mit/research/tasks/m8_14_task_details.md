@@ -172,3 +172,122 @@ The tolerance, the mesh, the refinement count, the order estimate, the extrapola
   - The roadmap Done row.
   - After the verdict, the author records a dated Result on the carrier page, scored against its frozen terms and quoting this task's declared reading of "agrees".
 - **What does not move.** No `MODELS.md` cell, and M8.7's gate is unchanged.
+
+## AS RUN (go, 2026-10-01)
+
+The maintainer's go. Everything above this heading is the filed pre-registration, byte for byte: its 17,802 bytes are a prefix of this file and hash to the `72651e2e…` restated in the [#608 review](https://github.com/openwave-labs/openwave/pull/608). This section records what was fixed before the rooms opened, so the posture is readable afterwards rather than reconstructed.
+
+| Item | As run |
+| --- | --- |
+| Posture | OFFLINE, as the FIREWALL requires. Each room is a headless one-shot session with four tools, no network, no MCP server and no instruction file, running code only through an interpreter sandboxed to the room (`CLEAN_ROOM_STANDARDS.md` § 3.4) |
+| Rooms | Solver A, Solver B and the auditor's stage 1, launched independently and in parallel. The auditor's stage 2 is a second launch, opened only after both returns and its own stage-1 commit are hashed |
+| Exactness rule | [#547](https://github.com/openwave-labs/openwave/pull/547)'s: exact means a symbolic derivation, or an identification stating its precision, repeated at a second precision |
+| Argument-grading rule | M8.11's with M8.13's resolution, as the auditor brief states it: one verdict per step, ESTABLISHED; ESTABLISHED, SUPPLIED with the supplied part named; GAP; or DEFECT. A passing argument is recorded as an audited argument |
+| No-search rule | every computed number is reported, and nothing is tuned toward a target. Each brief carries it |
+| Replacement rooms | one per room, as authorized in the verdict rule, each a clean context with the spec sheet and the solver brief alone |
+
+### The packet, hashed at the go
+
+| File | Who sees it | SHA-256 |
+| --- | --- | --- |
+| [`m8_14/spec_sheet.md`](../m8_14/spec_sheet.md) | all rooms | `0ce4e605b0f95f57b6d86cc900583b38696a9a5439cc3a1b194d640cf947f492` |
+| [`m8_14/auditor_brief.md`](../m8_14/auditor_brief.md) | the auditor | `a53b66426f7e160cf5c20275141a623f91a852172d2df5fce8ae4361bd890acd` |
+| [`m8_14/frozen_terms_ix.txt`](../m8_14/frozen_terms_ix.txt) | no room | `43e7165a0ba67eafd722896ce493e21b896bb1f1643aa45d6ed58c39c3612cb9` |
+| `m8_14/run/brief_solver.md` | Solvers A and B | `b69b6fa0a3dea54f97eb60d3f2f014664fee610d47f8eea7eba67aec7607f886` |
+| `m8_14/run/brief_auditor_s1.md` | the auditor, stage 1 | `d315153b3aea5acdc685b22e599e5961d9292a951882515c03835e8e4264faea` |
+| `m8_14/run/brief_auditor_s2.md` | the auditor, stage 2 | `d90453d3ba22cb2bb5a70fe2e4355d52fdc171c4ab28e89f7826a0d00cc44f1f` |
+| `m8_14/run/prompt.txt` | every room, as its opening prompt | `c91894f7d99079f3b0751b1a3b01e1612d3f2f8746bdd7fcd3851b27d778cacd` |
+
+The spec sheet, the auditor brief and the frozen terms are byte-identical to the files merged in #608. The three briefs carry room mechanics only: tools, containment, the exactness and no-search rules, the return format, and the manifest.
+
+**The packet, read again at the go.** The handout gate finds no frozen value and no withheld term in any packet file; its hits are the five widths the spec sheet must carry and the spec sheet's own word "conic", which describes the cone point. Its selftest fires on a planted value and a planted term. Read for structural hints, the two the review named stand as judged there (T2 names the limit-circle case and `17/10`; the auditor brief says a wrong seam sign can leave the numbers unchanged), and the three briefs add none.
+
+### Note, 2026-10-01, at the go: the seam diagnostic
+
+Agreed by the author in the [#608 thread](https://github.com/openwave-labs/openwave/pull/608#issuecomment-5919060713), and added here with the filed text untouched. The adjudication records each return's lowest six levels, at the finest level, against F1b's formula and against the auditor's own values. It is a diagnostic and cannot change the frozen verdict. The bottom is even across the seam, so a return with the seam deleted and both ends left free passes F2, and the second level is what separates it: the bottom repeats there.
+
+⚠️ **Corrected during the run, before anything landed.** As first written at the go, this note followed the author's agreeing comment and named a seam glued without the `w`-reversal as a second case the second level separates. It is not one. The auditor's stage 1 found it invisible, the maintainer's own code confirms it at `W/R = 1` and `7/5` on the third level, and the adversarial audit confirms it on the full protocol (FINDINGS F4). A seam glued without the reversal, a flipped seam sign, and a seam cut with zero data on one end only all leave the lowest six levels unchanged; only the both-ends-free deletion moves the second level. For those three, the validity audit's reading of the code is the only check.
+
+### The maintainer's own route, run before the rooms opened
+
+| Check | Result |
+| --- | --- |
+| The frozen values table | parsed from this file and recomputed at 30 digits: all 21 computed entries match to the printed six decimals, and `J`'s bottom is the `−Δ` bottom minus 2 at every width. A one-unit change in a sixth decimal fires |
+| The outcome rules, encoded | the frozen per-width outcome (Reproduced, Contradicted, Unresolved), F2's rule over the five widths, and the two control gates. Eight planted cases each give the outcome the frozen text assigns them, including a miss inside ten times its error estimate (Unresolved) and a miss of `9 × 10⁻⁴` relative (still Reproduced) |
+| The reviewer's implementation of the frozen protocol | re-run from the #608 review at all seven widths, 16 seconds in all, and it reproduces the review's table digit for digit: F2 Reproduced at all five widths, N1 within tolerance, N2's `J` bottom `−0.222230` |
+| The seam-diagnostic reference | F1b's lowest six levels at all seven widths, computed from the formula; at `W = πR/2` they are the hemisphere's 2, 6, 6, 12, 12, 12 |
+
+## FINDINGS (run closed 2026-10-01)
+
+Full record: [`../findings/m8_14_method_note.md`](../findings/m8_14_method_note.md). Room returns, hashed: [`../m8_14/run/rooms/`](../m8_14/run/rooms/).
+
+**Reproduced.** Two blind rooms, offline, each ruled VALID by a blind two-stage auditor, each establishing the reduction and the full spectrum and each reproducing the frozen finite-element bottom at all five widths, with both controls passing. By the verdict rule, two valid Reproduced returns give Reproduced.
+
+| F | Finding |
+| --- | --- |
+| F1 | ⭐ The frozen check reproduces in full. Both rooms reduce the band's Dirichlet problem to the lune of opening `2W/R`, derive `(ν_m + ℓ)(ν_m + ℓ + 1)/R²` with a completeness argument, and run the frozen protocol to a miss of at most `3.0 × 10⁻⁷` relative at the five widths, against `10⁻³` |
+| F2 | Neither room was told the lune or the reduction. Solver A found it by unfolding the lower sheet in latitude and longitude with `u = −φ` there; Solver B by an explicit unitary onto the lune, the seam becoming its equator arc |
+| F3 | Every graded step is ESTABLISHED in both rooms, one with a supplied part: in Solver A's T3, the auditor supplied that the 2D operator is the direct sum of the sector operators |
+| F4 | ⚠️ **The seam is invisible in three of the four ways it can be wrong.** A flipped sign, a glue without the `w`-reversal, and a cut with zero data on one end only all leave the lowest six levels unchanged; only a seam deleted with both ends free shows, as a repeated bottom. Found by the auditor at stage 1 and confirmed by the adversarial audit on the full protocol, all seven widths and five levels. No numerical gate in the protocol sees these three errors, the seam diagnostic included; reading the code and testing the seam map with a function odd in `w` do, and both rooms pass. It corrects the author's agreeing comment and the seam note as first written at the go (AS RUN section) |
+| F5 | The two rooms' finite-element numbers agree to `8.2 × 10⁻¹⁴` relative at every width and level, and with the reviewer's own implementation of the protocol in #608 to `10⁻¹²`. Three independent codes reached the same discrete spectrum, so the protocol as frozen determines its numbers |
+| F6 | The protocol's error estimate `\|λ_ext − λ_finest\|` measures the finest level, not the extrapolation: it overstates the extrapolated value's actual error by two to four orders of magnitude at every width, as both rooms report |
+
+### The adjudication
+
+| ID | Adjudicated | How |
+| --- | --- | --- |
+| F1a | ✅ agrees, both rooms, ESTABLISHED, SUPPLIED | the maintainer identifies each room's map with § 1.3 of the method note: an isometry on each sheet, the seam condition becoming continuity across an interior line, the edges `θ = ±W/R`, the two sides of the fiber the two poles. The auditor graded it through the steps that use it; the adversarial audit graded it directly and named two supplied parts in each room, S-a (the value-only seam class has the same form closure as the smooth core) and S-b (the vertex-excluded problem is the lune's Dirichlet problem, points having zero capacity in two dimensions), method note § 5.2 |
+| F1b | ✅ agrees, both rooms | the full spectrum with labels, complete, every step ESTABLISHED |
+| F2 | ✅ Reproduced, both rooms | the frozen outcome at each width, from each room's own JSON: miss and error estimate within a relative `10⁻³`, the reading the frozen text states, `p` between 1.9967 and 2.0004. Under an absolute reading `W/R = 1/4` and `1/2` would be Unresolved |
+| A1 | ✅ audited argument | exact density, no edge, seam or vertex term, extension by continuity |
+| A2 | ✅ audited argument | indicial roots `±ν_k`, limit-circle iff `ν_k < 1`, so every sector limit-point for `W ≤ πR/2` |
+| A3 | ✅ audited argument | `J`'s bottom `(α₀ − 1)(α₀ + 2)/R² > 0`, index 0, nullity 0, at every embedded width |
+| N1 | ✅ passes | `2.000000050` against 2, a miss of `2.5 × 10⁻⁸` relative |
+| N2 | ✅ passes | `J`'s bottom `−0.2222301`, about 1,600 times its error estimate |
+| Verdict | ⭐ **Reproduced** | two valid Reproduced returns |
+
+### DEVIATIONS LOG
+
+| # | Deviation |
+| --- | --- |
+| 1 | The seam note as written at the go named a glue without the `w`-reversal as a case the second level separates, taking the author's agreeing comment as given. It is invisible at every level (F4). Corrected in place before anything landed, with the correction marked there |
+| 2 | The handout gate's selftest printed FAIL on the spec sheet: the value it plants is a width the sheet must carry, so it was already a hit and the arm could not fire there. Rerun on a packet file with no hits, it passed, and a second arm planting a frozen decimal fired. A maintainer-tool arm dead on its arena, the same shape `PR_REVIEW_STANDARDS.md` D12 names |
+| 3 | The maintainer's frozen-table parser stopped with an error on the `π/2` label at its first run, and was fixed before it printed any result. A loud failure, recorded for completeness |
+| 4 | Two rooms' manifests report a session-context line carrying the operator's account e-mail address, loaded without being asked for and not used. No return file or transcript echoes it. A containment observation for `CLEAN_ROOM_STANDARDS.md` § 3.4: the restricted headless session still receives that context |
+| 5 | The maintainer's seam-variant run was at level 2, not the level 3 its docstring names, and at two widths only. The seam claim is recorded from the adversarial audit's run on the full protocol |
+| 6 | The auditor's seam check K2 tests the bottom eigenvector, which is even in `w`, so it cannot see a missing `w`-reversal. Found by the adversarial audit. Validity rests on reading the code and on a test of the seam map with a function odd in `w` |
+| 7 | The maintainer's scorer scores each room's reported `p`, `λ_ext` and `err`, and reports their agreement with its own recomputation from the levels without gating on it. Every agreement flag is true here, to `2.6 × 10⁻¹⁵`; the next run should gate on it |
+| 8 | A run note of the maintainer's recorded that one room's report omits a width from a table. False: the maintainer's own read had filtered out that row. Found by the adversarial audit and not carried into the record |
+
+## TASK REVIEW (2026-10-01)
+
+Task Duration: 01:11 (from 10:26 to 11:37)
+Usage Cap Triggered: NO
+
+| Result | |
+| --- | --- |
+| ✅ | Reproduced under the frozen verdict rule: two blind rooms, offline, both VALID, each establishing the reduction and the full spectrum and reproducing the frozen bottom at all five widths, the largest miss `3.0 × 10⁻⁷` relative |
+| ✅ | N1 and N2 pass: `2.000000050`, and `J`'s bottom `−0.2222301` at about 1,600 times its error estimate |
+| ✅ | F1a, F1b and A1 to A3 ESTABLISHED in both rooms, with supplied parts named: one by the auditor in Solver A's T3, and S-a and S-b in the reduction by the adversarial audit |
+| ✅ | The adversarial audit refuted none of eight claims, with its own code |
+| ✅ | Containment clean: no read outside a room, no network, no withheld source |
+| ⚠️ | The seam note as first written at the go named the no-reversal glue as visible in the second level; it is invisible at every level. Corrected in place (F4) |
+| ⚠️ | The auditor's seam check K2 cannot see a missing `w`-reversal; validity rests on reading the code and on a test with a function odd in `w` |
+| ⚠️ | Three defects in the maintainer's own instruments, none touching the verdict (deviations 5, 7 and 8) |
+
+Issues: none blocking. The filed pre-registration is an exact byte prefix of this file, so its own lint findings stay as filed.
+
+Deviations from plan: eight, logged above. Four were in the maintainer's own instruments or notes, one in the auditor's checks, none in the rooms' mathematics.
+
+Action needed: none outstanding on the platform side. The dated Result on the carrier page is the author's, per the records list.
+
+### Findings
+
+The conic carrier is a strictly stable critical point of area with its edge held fixed at every embedded width, as an audited argument: two blind rooms found the reduction to a lune without being told it, derived its full Dirichlet spectrum, and reproduced the frozen bottom at all five widths. The seam is invisible to every numerical gate of the protocol in three of the four ways it can be wrong, so reading the code is the only check on it.
+
+### Research docs created/updated
+
+- [`tasks/m8_14_task_details.md`](m8_14_task_details.md) (this file): AS RUN, FINDINGS F1-F6, the adjudication, the deviations log
+- [`findings/m8_14_method_note.md`](../findings/m8_14_method_note.md): the author-facing record
+- [`m8_14/run/`](../m8_14/run/): the room briefs and prompt, the hashed room returns, [`adversarial_audit.md`](../m8_14/run/adversarial_audit.md), the maintainer's scoring scripts
+- [`m8_roadmap.md`](../m8_roadmap.md), [`m8_theory_canonical.md`](../m8_theory_canonical.md), [`__M8_model_briefing.md`](../../__M8_model_briefing.md)
