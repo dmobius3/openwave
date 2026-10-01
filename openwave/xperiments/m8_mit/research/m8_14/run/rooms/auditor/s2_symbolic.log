@@ -1,0 +1,20 @@
+PASS  G1 W=1.4: area 5.600000000197 (4W = 5.6), A''(0) = 0.390679636, Q = 0.390679625, rel 3.0e-08, test phi seam residual 0.0e+00
+PASS  G1 W=1.7: area 6.800000000170 (4W = 6.8), A''(0) = 0.291771906, Q = 0.291771913, rel 2.5e-08, test phi seam residual 0.0e+00
+[planted] FAIL  G1 W=1.4: area 5.600000000197 (4W = 5.6), A''(0) = 0.390679636, Q = 0.955419220, rel 5.9e-01, test phi seam residual 0.0e+00
+PASS  G2 Room A T3 step 2 identity for ((1-x^2) f')'
+[planted] FAIL  G2 Room A T3 step 2 identity for ((1-x^2) f')'
+PASS  G3 sector ODE solved by (1-x^2)^(nu/2) C_m^(nu+1/2) with lam=(nu+m)(nu+m+1)
+[planted] FAIL  G3 sector ODE solved by (1-x^2)^(nu/2) C_m^(nu+1/2) with lam=(nu+m)(nu+m+1)
+PASS  G4 weighted indicial roots [-nu, nu]; unweighted roots [1/2 - sqrt(4*nu**2 + 1)/2, sqrt(4*nu**2 + 1)/2 + 1/2]; unweighted LC threshold nu < [sqrt(3)/2]
+[planted] FAIL  G4 planted operator: indicial roots [-sqrt(4*nu**2 + 1)/2 - 1/2, sqrt(4*nu**2 + 1)/2 - 1/2] vs +-nu
+PASS  G5 lowest six vs my stage-1 closed form and both rooms; T5 sign/index/nullity vs both rooms
+[planted] FAIL  G5 lowest six vs my stage-1 closed form and both rooms; T5 sign/index/nullity vs both rooms
+   W=1/4    J_low=+43.761602911537 sign +1 index 0 nullity 0
+   W=1/2    J_low=+11.011197054679 sign +1 index 0 nullity 0
+   W=1      J_low=+2.038197427067 sign +1 index 0 nullity 0
+   W=7/5    J_low=+0.380875488666 sign +1 index 0 nullity 0
+   W=3/2    J_low=+0.143820262429 sign +1 index 0 nullity 0
+   W=pi/2   J_low=+0.000000000000 sign +0 index 0 nullity 1
+   W=17/10  J_low=-0.222230153694 sign -1 index 1 nullity 0
+PASS  G6 W=1.570796: Hausdorff distance in RP^3 between the edges w=+W and w=-W: 5.6e-16
+[planted] FAIL  G6 W=1.400000: Hausdorff distance in RP^3 between the edges w=+W and w=-W: 3.4e-01
