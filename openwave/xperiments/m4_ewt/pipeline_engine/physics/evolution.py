@@ -108,11 +108,6 @@ class LaplacianProcessor(BaseProcessor):
         )
 
 
-# ======================================================================
-# Leapfrog
-# ======================================================================
-
-
 @ti.kernel
 def _laplacian(
     psi: ti.template(),
@@ -135,6 +130,11 @@ def _laplacian(
             + psi[i, j, k - 1]
         )
         out[i, j, k] += c2 * (face_sum - 6.0 * psi[i, j, k]) * inv_dx2
+
+
+# ======================================================================
+# Leapfrog
+# ======================================================================
 
 
 class LeapfrogProcessor(BaseProcessor):

@@ -33,6 +33,7 @@ except ImportError:
     from sinks import InMemorySink, JsonSessionSink, LiveJsonSink
     from loggers import LogProcessor
     from runner import Runner
+
     try:
         from physics.units import NaturalUnitSystem
     except ImportError:
@@ -244,7 +245,9 @@ def test_stateless_guard() -> tuple[bool, str]:
     runner = Runner({}, check_stateless=True)
     pipeline = Pipeline(error_policy=ErrorPolicy.FAIL_FAST).add(p)
     try:
-        runner.run(pipeline, name="stateless_test", max_steps=5, initial_features=[NaturalUnitSystem()])
+        runner.run(
+            pipeline, name="stateless_test", max_steps=5, initial_features=[NaturalUnitSystem()]
+        )
     except PipelineError as e:
         if "mutated instance fields" in str(e):
             return True, "PipelineError raised on in-place mutation"
