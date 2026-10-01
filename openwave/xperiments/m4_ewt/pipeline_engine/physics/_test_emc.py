@@ -25,7 +25,6 @@ from .allocator import AllocateWaveField, AllocateWaveSpeed
 from .emc import UpdateEMCDensityProcessor, UpdateWaveSpeedProcessor
 from .units import NaturalUnitSystem, UnitSystem
 
-
 _TI_INITIALIZED = False
 
 
@@ -56,9 +55,13 @@ class _SeedPsi(BaseProcessor):
         grid = ctx.data.require(WaveGrid)
         field = ctx.data.require(PsiLongField)
         _seed_psi(
-            field.psi, field.psi_prev,
-            grid.nx, grid.ny, grid.nz,
-            self.amp, self.sigma,
+            field.psi,
+            field.psi_prev,
+            grid.nx,
+            grid.ny,
+            grid.nz,
+            self.amp,
+            self.sigma,
             0 if self.mode == "zero" else 1 if self.mode == "const" else 2,
         )
 
@@ -91,9 +94,17 @@ def _seed_psi(
         prev[i, j, k] = v
 
 
-def _build_emc_pipeline(nx=16, ny=16, nz=16, seed_mode="zero",
-                        amp=1.0, sigma=3.0, beta_rho=1.0,
-                        with_wave_speed=True, with_emc=True):
+def _build_emc_pipeline(
+    nx=16,
+    ny=16,
+    nz=16,
+    seed_mode="zero",
+    amp=1.0,
+    sigma=3.0,
+    beta_rho=1.0,
+    with_wave_speed=True,
+    with_emc=True,
+):
     class P(Pipeline):
         def __init__(self):
             super().__init__(external_provides=(UnitSystem,))
@@ -105,15 +116,21 @@ def _build_emc_pipeline(nx=16, ny=16, nz=16, seed_mode="zero",
                 self.add(UpdateEMCDensityProcessor(beta_rho=beta_rho))
             if with_wave_speed:
                 self.add(UpdateWaveSpeedProcessor())
+
     return P()
 
 
 def _run(pipeline, max_steps=1):
     from ..runner import Runner
     from ..sinks import InMemorySink
+
     units = NaturalUnitSystem()
     return Runner({"session": InMemorySink()}).run(
-        pipeline, name="emc_test", params={}, dt=0.1, max_steps=max_steps,
+        pipeline,
+        name="emc_test",
+        params={},
+        dt=0.1,
+        max_steps=max_steps,
         initial_features=[units],
     )
 
@@ -148,8 +165,7 @@ def test_emc_const_psi_gives_uniform_deficit():
     _ti_init()
     amp = 0.5
     beta = 0.8
-    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=amp, beta_rho=beta),
-               max_steps=1)
+    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=amp, beta_rho=beta), max_steps=1)
     assert ctx.diag.errors == [], ctx.diag.errors
 
     rho = ctx.data.require(EMCDensityField).rho.to_numpy()
@@ -169,9 +185,12 @@ def test_emc_gaussian_psi_gives_gaussian_deficit():
     beta = 1.0
     sigma = 3.0
     N = 16
-    ctx = _run(_build_emc_pipeline(
-        nx=N, ny=N, nz=N, seed_mode="gauss", amp=amp, sigma=sigma, beta_rho=beta),
-        max_steps=1)
+    ctx = _run(
+        _build_emc_pipeline(
+            nx=N, ny=N, nz=N, seed_mode="gauss", amp=amp, sigma=sigma, beta_rho=beta
+        ),
+        max_steps=1,
+    )
     assert ctx.diag.errors == [], ctx.diag.errors
 
     rho = ctx.data.require(EMCDensityField).rho.to_numpy()
@@ -192,8 +211,7 @@ def test_emc_beta_zero_is_noop():
     Mutation: beta_rho ignored -> rho != 1 for non-zero psi, check fails.
     """
     _ti_init()
-    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=2.0, beta_rho=0.0),
-               max_steps=1)
+    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=2.0, beta_rho=0.0), max_steps=1)
     assert ctx.diag.errors == [], ctx.diag.errors
     rho = ctx.data.require(EMCDensityField).rho.to_numpy()
     assert np.allclose(rho, 1.0, atol=1e-6)
@@ -233,8 +251,7 @@ def test_wave_speed_deficit_halves_c_squared():
     _ti_init()
     # psi = 0.7071 = sqrt(0.5) with beta=1 gives rho = 1 - 0.5 = 0.5
     amp = np.sqrt(0.5)
-    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=float(amp), beta_rho=1.0),
-               max_steps=1)
+    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=float(amp), beta_rho=1.0), max_steps=1)
     assert ctx.diag.errors == [], ctx.diag.errors
 
     c2 = ctx.data.require(WaveSpeedField).c2_local.to_numpy()
@@ -250,8 +267,7 @@ def test_wave_speed_full_deficit_gives_zero():
     Mutation: c^2 floored at some minimum -> c^2 != 0, check fails.
     """
     _ti_init()
-    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=1.0, beta_rho=1.0),
-               max_steps=1)
+    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=1.0, beta_rho=1.0), max_steps=1)
     assert ctx.diag.errors == [], ctx.diag.errors
     c2 = ctx.data.require(WaveSpeedField).c2_local.to_numpy()
     assert np.allclose(c2, 0.0, atol=1e-6), (c2.min(), c2.max())
@@ -267,9 +283,10 @@ def test_wave_speed_spatial_variation_matches_rho():
     """
     _ti_init()
     N = 16
-    ctx = _run(_build_emc_pipeline(
-        nx=N, ny=N, nz=N, seed_mode="gauss", amp=0.8, sigma=3.0, beta_rho=1.0),
-        max_steps=1)
+    ctx = _run(
+        _build_emc_pipeline(nx=N, ny=N, nz=N, seed_mode="gauss", amp=0.8, sigma=3.0, beta_rho=1.0),
+        max_steps=1,
+    )
     assert ctx.diag.errors == [], ctx.diag.errors
 
     rho = ctx.data.require(EMCDensityField).rho.to_numpy()
@@ -283,6 +300,35 @@ def test_wave_speed_spatial_variation_matches_rho():
     ratio = c2[c, c, c] / rho[c, c, c]
     units = NaturalUnitSystem()
     assert abs(ratio - float(units.c) ** 2) < 1e-4, (ratio, float(units.c) ** 2)
+
+
+def test_negative_c2_regime_is_reachable():
+    """
+    The plan documents beta_rho |psi|^2 > 1 as a regime outside the
+    model's domain of validity: rho < 0, hence c2_local < 0. The plan
+    does not floor rho; the negative value is the signal.
+
+    This test pins that the regime is reachable and that the sign of
+    the output matches the sign of the input. It does not guard the
+    regime, and it does not test that the simulation stays stable
+    there.
+
+    Mutation caught: a floor on rho, e.g. max(0.0, 1 - beta*|psi|^2),
+    hides the regime and the test fails on the sign check.
+    """
+    _ti_init()
+    # psi = 1.5, beta_rho = 1.0 -> rho = 1 - 2.25 = -1.25
+    ctx = _run(_build_emc_pipeline(seed_mode="const", amp=1.5, beta_rho=1.0), max_steps=1)
+    assert ctx.diag.errors == [], ctx.diag.errors
+
+    rho = ctx.data.require(EMCDensityField).rho.to_numpy()
+    c2 = ctx.data.require(WaveSpeedField).c2_local.to_numpy()
+
+    assert rho.min() < 0.0, f"rho must reach negative values in this regime, got min {rho.min()}"
+    assert c2.min() < 0.0, f"c2 must track rho in sign, got min {c2.min()}"
+    # Center voxel: rho = 1 - 1.5^2 = -1.25, c2 = -1.25 * c0^2.
+    c = rho.shape[0] // 2
+    assert abs(rho[c, c, c] - (-1.25)) < 1e-5, rho[c, c, c]
 
 
 # ----------------------------------------------------------------------
@@ -300,6 +346,7 @@ def main() -> int:
         test_wave_speed_deficit_halves_c_squared,
         test_wave_speed_full_deficit_gives_zero,
         test_wave_speed_spatial_variation_matches_rho,
+        test_negative_c2_regime_is_reachable,
     ]
     passed = 0
     for t in tests:

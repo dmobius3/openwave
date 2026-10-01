@@ -196,6 +196,7 @@ class TrackerFields:
     freq_global: ti.field
     energy_global: ti.field
 
+
 @dataclass
 class WaveSpeedField:
     """
@@ -216,4 +217,5 @@ class WaveSpeedField:
     Representation: scalar ti.field(f32), one value per voxel, in the
     unit system's squared speed units.
     """
+
     c2_local: ti.field

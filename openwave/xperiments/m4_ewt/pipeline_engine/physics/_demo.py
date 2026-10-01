@@ -38,6 +38,7 @@ from .wc_types import WCState
 from .wc_factory import build_wc_state
 from .units import NaturalUnitSystem, UnitSystem
 
+
 def _payload(ctx) -> Mapping[str, Any]:
     stats = ctx.data.require(WaveStats)
     wc_state = ctx.data.require(WCState)

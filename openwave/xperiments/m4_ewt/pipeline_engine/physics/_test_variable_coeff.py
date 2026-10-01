@@ -33,7 +33,6 @@ from .evolution import (
 )
 from .units import NaturalUnitSystem, UnitSystem
 
-
 _TI_INITIALIZED = False
 
 
@@ -43,26 +42,45 @@ def _ti_init():
         ti.init(arch=ti.cpu, log_level=ti.ERROR)
         _TI_INITIALIZED = True
 
+
 @dataclass(frozen=True)
 class _UnitsC2(UnitSystem):
     """
     UnitSystem with c = 2, so a mutation dropping the square in
     c0_sq = c**2 produces a factor-2 error, not an identity.
     """
+
     @property
-    def c(self): return 2.0
+    def c(self):
+        return 2.0
+
     @property
-    def wavelength(self): return 1.0
+    def wavelength(self):
+        return 1.0
+
     @property
-    def dx(self): return 0.5
+    def dx(self):
+        return 0.5
+
     @property
-    def dt(self): return 0.05
+    def dt(self):
+        return 0.05
+
     @property
-    def rho_0(self): return 1.0
-    def to_physical_length(self, x): return x
-    def to_physical_time(self, t): return t
-    def to_physical_energy(self, E): return E
-    def to_physical_density(self, r): return r
+    def rho_0(self):
+        return 1.0
+
+    def to_physical_length(self, x):
+        return x
+
+    def to_physical_time(self, t):
+        return t
+
+    def to_physical_energy(self, E):
+        return E
+
+    def to_physical_density(self, r):
+        return r
 
 
 class _SeedBasesAtStep0(BaseProcessor):
@@ -73,6 +91,7 @@ class _SeedBasesAtStep0(BaseProcessor):
     field_type and reads or writes PsiLong instead of PsiBase will
     surface as a large diff in that sentinel.
     """
+
     name = "_SeedBasesAtStep0"
     stage = Stage.PRE_UPDATE
     order = 5
@@ -119,12 +138,15 @@ def _numpy_step(psi, prev, dx, dt2, beta_rho, c0_sq):
     c2_zm = 0.5 * (c_ii + c2[1:-1, 1:-1, :-2])
     inv_dx2 = 1.0 / (dx * dx)
 
-    flux_x = (c2_xp[..., None] * (psi[2:, 1:-1, 1:-1] - psi[interior])
-              - c2_xm[..., None] * (psi[interior] - psi[:-2, 1:-1, 1:-1]))
-    flux_y = (c2_yp[..., None] * (psi[1:-1, 2:, 1:-1] - psi[interior])
-              - c2_ym[..., None] * (psi[interior] - psi[1:-1, :-2, 1:-1]))
-    flux_z = (c2_zp[..., None] * (psi[1:-1, 1:-1, 2:] - psi[interior])
-              - c2_zm[..., None] * (psi[interior] - psi[1:-1, 1:-1, :-2]))
+    flux_x = c2_xp[..., None] * (psi[2:, 1:-1, 1:-1] - psi[interior]) - c2_xm[..., None] * (
+        psi[interior] - psi[:-2, 1:-1, 1:-1]
+    )
+    flux_y = c2_yp[..., None] * (psi[1:-1, 2:, 1:-1] - psi[interior]) - c2_ym[..., None] * (
+        psi[interior] - psi[1:-1, :-2, 1:-1]
+    )
+    flux_z = c2_zp[..., None] * (psi[1:-1, 1:-1, 2:] - psi[interior]) - c2_zm[..., None] * (
+        psi[interior] - psi[1:-1, 1:-1, :-2]
+    )
 
     new = np.zeros_like(psi)
     new[interior] = (flux_x + flux_y + flux_z) * inv_dx2
@@ -135,6 +157,7 @@ def _numpy_step(psi, prev, dx, dt2, beta_rho, c0_sq):
     prev_out[interior] = psi[interior]
     psi_out[interior] = new[interior]
     return psi_out, prev_out, rho, c2
+
 
 # ======================================================================
 # Kernel-level tests
@@ -169,11 +192,13 @@ def test_var_coeff_const_matches_const_laplacian():
     def _fill(p: ti.template(), c: ti.template()):
         kx = 2.0 * ti.math.pi / 8.0
         for i, j, k in p:
-            p[i, j, k] = ti.Vector([
-                ti.sin(kx * ti.cast(i, ti.f32)),
-                ti.cos(kx * ti.cast(j, ti.f32)),
-                0.5 * ti.sin(kx * ti.cast(k, ti.f32)),
-            ])
+            p[i, j, k] = ti.Vector(
+                [
+                    ti.sin(kx * ti.cast(i, ti.f32)),
+                    ti.cos(kx * ti.cast(j, ti.f32)),
+                    0.5 * ti.sin(kx * ti.cast(k, ti.f32)),
+                ]
+            )
             c[i, j, k] = c2_val
 
     _fill(psi, c2)
@@ -208,9 +233,13 @@ def test_var_coeff_accumulates_not_overwrites():
     def _fill(p: ti.template(), c: ti.template()):
         kx = 2.0 * ti.math.pi / 8.0
         for i, j, k in p:
-            p[i, j, k] = ti.Vector([
-                ti.sin(kx * ti.cast(i, ti.f32)), 0.0, 0.0,
-            ])
+            p[i, j, k] = ti.Vector(
+                [
+                    ti.sin(kx * ti.cast(i, ti.f32)),
+                    0.0,
+                    0.0,
+                ]
+            )
             c[i, j, k] = 1.0 + 0.5 * ti.sin(2.0 * kx * ti.cast(i, ti.f32))
 
     _fill(psi, c2)
@@ -252,11 +281,13 @@ def test_var_coeff_missing_half_average_changes_result():
     def _fill(p: ti.template(), c: ti.template()):
         kx = 2.0 * ti.math.pi / 8.0
         for i, j, k in p:
-            p[i, j, k] = ti.Vector([
-                ti.sin(kx * ti.cast(i, ti.f32)),
-                ti.cos(kx * ti.cast(j, ti.f32)),
-                0.0,
-            ])
+            p[i, j, k] = ti.Vector(
+                [
+                    ti.sin(kx * ti.cast(i, ti.f32)),
+                    ti.cos(kx * ti.cast(j, ti.f32)),
+                    0.0,
+                ]
+            )
             # c2 varies strongly with x
             c[i, j, k] = 1.0 + 0.5 * ti.sin(kx * ti.cast(i, ti.f32))
 
@@ -294,17 +325,14 @@ def _laplacian_var_coeff_no_average(
         c2_zp = c2[i, j, k + 1]
         c2_zm = c2[i, j, k - 1]
 
-        flux_x = (
-            c2_xp * (psi[i + 1, j, k] - psi[i, j, k])
-            - c2_xm * (psi[i, j, k] - psi[i - 1, j, k])
+        flux_x = c2_xp * (psi[i + 1, j, k] - psi[i, j, k]) - c2_xm * (
+            psi[i, j, k] - psi[i - 1, j, k]
         )
-        flux_y = (
-            c2_yp * (psi[i, j + 1, k] - psi[i, j, k])
-            - c2_ym * (psi[i, j, k] - psi[i, j - 1, k])
+        flux_y = c2_yp * (psi[i, j + 1, k] - psi[i, j, k]) - c2_ym * (
+            psi[i, j, k] - psi[i, j - 1, k]
         )
-        flux_z = (
-            c2_zp * (psi[i, j, k + 1] - psi[i, j, k])
-            - c2_zm * (psi[i, j, k] - psi[i, j, k - 1])
+        flux_z = c2_zp * (psi[i, j, k + 1] - psi[i, j, k]) - c2_zm * (
+            psi[i, j, k] - psi[i, j, k - 1]
         )
         out[i, j, k] += (flux_x + flux_y + flux_z) * inv_dx2
 
@@ -336,6 +364,7 @@ def _seed_zero_boundary(
         psi_prev[i, j, k] = v
         c2[i, j, k] = 1.0 + 0.3 * ti.cos(2.0 * kx * ti.cast(i, ti.f32))
 
+
 @ti.kernel
 def _laplacian_naive(
     psi: ti.template(),
@@ -354,9 +383,12 @@ def _laplacian_naive(
     inv_dx2 = 1.0 / (dx * dx)
     for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
         lap = (
-            psi[i + 1, j, k] + psi[i - 1, j, k]
-            + psi[i, j + 1, k] + psi[i, j - 1, k]
-            + psi[i, j, k + 1] + psi[i, j, k - 1]
+            psi[i + 1, j, k]
+            + psi[i - 1, j, k]
+            + psi[i, j + 1, k]
+            + psi[i, j - 1, k]
+            + psi[i, j, k + 1]
+            + psi[i, j, k - 1]
             - 6.0 * psi[i, j, k]
         ) * inv_dx2
         out[i, j, k] += c2[i, j, k] * lap
@@ -382,6 +414,7 @@ def _leapfrog_naive_step(psi, psi_prev, psi_new, c2, nx, ny, nz, dx, dt2):
     _clear_accel(psi_new, nx, ny, nz)
     _laplacian_naive(psi, c2, psi_new, nx, ny, nz, dx)
     _leapfrog(psi, psi_prev, psi_new, nx, ny, nz, dt2)
+
 
 def _staggered_energy(psi, psi_prev, c2, scratch, N, dx, dt):
     """
@@ -508,13 +541,13 @@ class _SeedHarmonicLong(BaseProcessor):
             return
         grid = ctx.data.require(WaveGrid)
         field = ctx.data.require(PsiLongField)
-        _seed_harmonic_long(field.psi, field.psi_prev,
-                            grid.nx, grid.ny, grid.nz, self.amp)
+        _seed_harmonic_long(field.psi, field.psi_prev, grid.nx, grid.ny, grid.nz, self.amp)
 
 
 @ti.kernel
-def _seed_harmonic_long(psi: ti.template(), prev: ti.template(),
-                        nx: ti.i32, ny: ti.i32, nz: ti.i32, amp: ti.f32):
+def _seed_harmonic_long(
+    psi: ti.template(), prev: ti.template(), nx: ti.i32, ny: ti.i32, nz: ti.i32, amp: ti.f32
+):
     kx = 2.0 * ti.math.pi / 8.0
     for i, j, k in ti.ndrange(nx, ny, nz):
         v = ti.Vector([amp * ti.sin(kx * ti.cast(i, ti.f32)), 0.0, 0.0])
@@ -545,13 +578,19 @@ def test_pipeline_runs_with_variable_coeff_chain():
 
     from ..runner import Runner
     from ..sinks import InMemorySink
+
     runner = Runner({"session": InMemorySink()})
     ctx = runner.run(
-        P(), name="var_coeff_chain", params={}, dt=0.05, max_steps=20,
+        P(),
+        name="var_coeff_chain",
+        params={},
+        dt=0.05,
+        max_steps=20,
         initial_features=[NaturalUnitSystem()],
     )
     assert ctx.diag.errors == [], ctx.diag.errors
     assert ctx.sim.step == 20
+
 
 def test_production_pipeline_vs_numpy():
     """
@@ -606,18 +645,21 @@ def test_production_pipeline_vs_numpy():
             self.add(AllocateWaveSpeed())
             self.add(_SeedBasesAtStep0(base_np, long_np))
             self.add(ClearAccelerationProcessor(field_type=PsiBaseField))
-            self.add(UpdateEMCDensityProcessor(
-                field_type=PsiBaseField, beta_rho=beta_rho))
+            self.add(UpdateEMCDensityProcessor(field_type=PsiBaseField, beta_rho=beta_rho))
             self.add(UpdateWaveSpeedProcessor())
             self.add(LaplacianVariableCoeffProcessor(field_type=PsiBaseField))
             self.add(LeapfrogProcessor(field_type=PsiBaseField))
 
     from ..runner import Runner
     from ..sinks import InMemorySink
+
     runner = Runner({"session": InMemorySink()})
     ctx = runner.run(
-        P(), name="stage2_prod_vs_numpy", params={},
-        dt=dt, max_steps=n_steps,
+        P(),
+        name="stage2_prod_vs_numpy",
+        params={},
+        dt=dt,
+        max_steps=n_steps,
         initial_features=[_UnitsC2()],
     )
     assert ctx.diag.errors == [], ctx.diag.errors
@@ -636,14 +678,11 @@ def test_production_pipeline_vs_numpy():
     psi_ref = base_np.astype(np.float64).copy()
     prev_ref = psi_ref.copy()
     for _ in range(n_steps):
-        psi_ref, prev_ref, _, _ = _numpy_step(
-            psi_ref, prev_ref, dx, dt2, beta_rho, c0_sq
-        )
+        psi_ref, prev_ref, _, _ = _numpy_step(psi_ref, prev_ref, dx, dt2, beta_rho, c0_sq)
 
     diff = np.abs(psi_prod - psi_ref).max()
-    assert diff < 1e-3, (
-        f"production vs numpy, {n_steps} steps: max diff {diff}"
-    )
+    assert diff < 1e-3, f"production vs numpy, {n_steps} steps: max diff {diff}"
+
 
 # ======================================================================
 # Runner

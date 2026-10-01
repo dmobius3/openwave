@@ -27,6 +27,7 @@ from .features import (
 from ..pipeline import BaseProcessor, Stage
 from ..utils.sampling import ThreePlaneSampler
 from .units import NaturalUnitSystem
+
 # ======================================================================
 # Taichi init
 # ======================================================================
@@ -164,7 +165,8 @@ def _run_mock(max_steps: int = 10):
         name="mock_tracker_test",
         params={},
         dt=0.1,
-        max_steps=max_steps, initial_features=[NaturalUnitSystem()]
+        max_steps=max_steps,
+        initial_features=[NaturalUnitSystem()],
     )
 
 
@@ -210,7 +212,9 @@ def test_rho_local_shares_buffer_with_emc():
             self.add(AllocateTrackers())
 
     runner = Runner({"session": InMemorySink()})
-    ctx = runner.run(P(), name="rho_share_test", params={}, max_steps=0, initial_features=[NaturalUnitSystem()])
+    ctx = runner.run(
+        P(), name="rho_share_test", params={}, max_steps=0, initial_features=[NaturalUnitSystem()]
+    )
 
     emc = ctx.data.require(EMCDensityField)
     trk = ctx.data.require(TrackerFields)
@@ -288,7 +292,13 @@ def test_mock_requires_declared():
 
     runner = Runner({"session": InMemorySink()})
     try:
-        runner.run(P(), name="missing_trackers", params={}, max_steps=1, initial_features=[NaturalUnitSystem()])
+        runner.run(
+            P(),
+            name="missing_trackers",
+            params={},
+            max_steps=1,
+            initial_features=[NaturalUnitSystem()],
+        )
     except PipelineError as e:
         assert "TrackerFields" in str(e), str(e)
         return

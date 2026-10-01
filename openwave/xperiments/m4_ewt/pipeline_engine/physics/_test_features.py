@@ -131,7 +131,13 @@ def test_allocation_provides_all_features():
 
     sinks = {"session": InMemorySink()}
     runner = Runner(sinks)
-    ctx = runner.run(AllocPipeline(), name="alloc_test", params={}, max_steps=0, initial_features=[NaturalUnitSystem()])
+    ctx = runner.run(
+        AllocPipeline(),
+        name="alloc_test",
+        params={},
+        max_steps=0,
+        initial_features=[NaturalUnitSystem()],
+    )
 
     assert not ctx.diag.errors, ctx.diag.errors
     for key in (

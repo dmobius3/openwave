@@ -133,10 +133,8 @@ def test_apply_cubic_touches_interior_only():
     _apply_cubic(psi, accel, 2.0, N, N, N)
     arr = accel.to_numpy()
 
-    for i, j, k in [(0, 8, 8), (15, 8, 8), (8, 0, 8), (8, 15, 8),
-                     (8, 8, 0), (8, 8, 15)]:
-        assert np.allclose(arr[i, j, k], 999.0, atol=1e-6), \
-            (i, j, k, arr[i, j, k])
+    for i, j, k in [(0, 8, 8), (15, 8, 8), (8, 0, 8), (8, 15, 8), (8, 8, 0), (8, 8, 15)]:
+        assert np.allclose(arr[i, j, k], 999.0, atol=1e-6), (i, j, k, arr[i, j, k])
 
 
 # ======================================================================
@@ -165,6 +163,7 @@ def test_nonlinear_zero_gamma_in_pipeline_is_noop():
                 if with_nonlinear:
                     self.add(NonlinearCubic(gamma=0.0))
                 self.add(LeapfrogProcessor())
+
         return P()
 
     ctx_a = _run(_build(False), max_steps=5)
@@ -207,16 +206,18 @@ def test_nonlinear_composes_with_laplacian_in_pipeline():
     c = 8
     dx2 = 1.0
     lap = (
-        psi[c + 1, c, c] + psi[c - 1, c, c]
-        + psi[c, c + 1, c] + psi[c, c - 1, c]
-        + psi[c, c, c + 1] + psi[c, c, c - 1]
+        psi[c + 1, c, c]
+        + psi[c - 1, c, c]
+        + psi[c, c + 1, c]
+        + psi[c, c - 1, c]
+        + psi[c, c, c + 1]
+        + psi[c, c, c - 1]
         - 6.0 * psi[c, c, c]
     ) / dx2
     u = float(np.dot(psi[c, c, c], psi[c, c, c]))
     nl = -0.5 * u * psi[c, c, c]
     expected = lap + nl
-    assert np.allclose(accel[c, c, c], expected, atol=1e-4), \
-        (accel[c, c, c], expected)
+    assert np.allclose(accel[c, c, c], expected, atol=1e-4), (accel[c, c, c], expected)
 
 
 # ======================================================================
@@ -226,6 +227,7 @@ def test_nonlinear_composes_with_laplacian_in_pipeline():
 
 class _SeedLinear(BaseProcessor):
     """Linear ramp seed, deterministic and asymmetric per axis."""
+
     name = "_SeedLinear"
     stage = Stage.PRE_UPDATE
     order = 10
@@ -241,8 +243,7 @@ class _SeedLinear(BaseProcessor):
 
 
 @ti.kernel
-def _seed_linear(psi: ti.template(), prev: ti.template(),
-                 nx: ti.i32, ny: ti.i32, nz: ti.i32):
+def _seed_linear(psi: ti.template(), prev: ti.template(), nx: ti.i32, ny: ti.i32, nz: ti.i32):
     """
     Harmonic seed, asymmetric per axis.
 
@@ -255,11 +256,13 @@ def _seed_linear(psi: ti.template(), prev: ti.template(),
     ky = 2.0 * ti.math.pi / 6.0
     kz = 2.0 * ti.math.pi / 5.0
     for i, j, k in ti.ndrange(nx, ny, nz):
-        v = ti.Vector([
-            0.3 * ti.sin(kx * ti.cast(i, ti.f32)),
-            0.2 * ti.cos(ky * ti.cast(j, ti.f32)),
-            0.1 * ti.sin(kz * ti.cast(k, ti.f32)),
-        ])
+        v = ti.Vector(
+            [
+                0.3 * ti.sin(kx * ti.cast(i, ti.f32)),
+                0.2 * ti.cos(ky * ti.cast(j, ti.f32)),
+                0.1 * ti.sin(kz * ti.cast(k, ti.f32)),
+            ]
+        )
         psi[i, j, k] = v
         prev[i, j, k] = v
 
@@ -267,8 +270,13 @@ def _seed_linear(psi: ti.template(), prev: ti.template(),
 def _run(pipeline, max_steps=1):
     from ..runner import Runner
     from ..sinks import InMemorySink
+
     return Runner({"session": InMemorySink()}).run(
-        pipeline, name="nonlinear_test", params={}, dt=0.1, max_steps=max_steps,
+        pipeline,
+        name="nonlinear_test",
+        params={},
+        dt=0.1,
+        max_steps=max_steps,
         initial_features=[NaturalUnitSystem()],
     )
 

@@ -98,8 +98,12 @@ class LaplacianProcessor(BaseProcessor):
         units = ctx.data.require(UnitSystem)
         field = ctx.data.require(self.field_type)
         _laplacian(
-            field.psi, field.psi_new,
-            grid.nx, grid.ny, grid.nz, grid.dx,
+            field.psi,
+            field.psi_new,
+            grid.nx,
+            grid.ny,
+            grid.nz,
+            grid.dx,
             float(units.c),
         )
 
@@ -107,6 +111,7 @@ class LaplacianProcessor(BaseProcessor):
 # ======================================================================
 # Leapfrog
 # ======================================================================
+
 
 @ti.kernel
 def _laplacian(
@@ -130,6 +135,7 @@ def _laplacian(
             + psi[i, j, k - 1]
         )
         out[i, j, k] += c2 * (face_sum - 6.0 * psi[i, j, k]) * inv_dx2
+
 
 class LeapfrogProcessor(BaseProcessor):
     """
@@ -184,6 +190,7 @@ def _leapfrog(
         prev[i, j, k] = psi[i, j, k]
         psi[i, j, k] = new[i, j, k]
 
+
 class LaplacianVariableCoeffProcessor(BaseProcessor):
     """
     Adds div(c^2(rho) grad psi) to psi_new, using the conservative flux
@@ -195,12 +202,16 @@ class LaplacianVariableCoeffProcessor(BaseProcessor):
     ClearAccelerationProcessor to have zeroed psi_new first (order 0
     before order 10).
 
-    The naive form c^2_i * laplacian(psi) is not self-adjoint when c^2
-    varies, so it breaks the staggered leapfrog invariant. The flux
-    form is the discrete variation of
+    The naive form c^2_i * laplacian(psi) is a different wave equation
+    when c^2 varies: it discretises psi_tt = c^2 lap(psi), not the flux
+    form psi_tt = div(c^2 grad psi). Each has a conserved invariant of
+    its own; they are not the same law, and the leapfrog integrates each
+    of them exactly. Plan item 1.23 pins the flux form
         E_grad = sum (1/2) c^2_{i+1/2} ((psi_{i+1} - psi_i)/dx)^2 dx
-    and conserves the invariant. Plan item 1.23 requires the flux form;
-    the naive form is a bug.
+    because that is the equation the EMC chain implies when c^2 depends
+    on rho. The naive form is not a bug; it is a different equation, and
+    the discrete difference between them is measurable (see
+    _test_variable_coeff, test_naive_form_breaks_staggered_invariant).
 
     Requires WaveSpeedField to have been populated with c^2 values.
     """
@@ -219,8 +230,13 @@ class LaplacianVariableCoeffProcessor(BaseProcessor):
         field = ctx.data.require(self.field_type)
         c2 = ctx.data.require(WaveSpeedField).c2_local
         _laplacian_var_coeff(
-            field.psi, c2, field.psi_new,
-            grid.nx, grid.ny, grid.nz, grid.dx,
+            field.psi,
+            c2,
+            field.psi_new,
+            grid.nx,
+            grid.ny,
+            grid.nz,
+            grid.dx,
         )
 
 
@@ -244,16 +260,13 @@ def _laplacian_var_coeff(
         c2_zp = 0.5 * (c_ii + c2[i, j, k + 1])
         c2_zm = 0.5 * (c_ii + c2[i, j, k - 1])
 
-        flux_x = (
-            c2_xp * (psi[i + 1, j, k] - psi[i, j, k])
-            - c2_xm * (psi[i, j, k] - psi[i - 1, j, k])
+        flux_x = c2_xp * (psi[i + 1, j, k] - psi[i, j, k]) - c2_xm * (
+            psi[i, j, k] - psi[i - 1, j, k]
         )
-        flux_y = (
-            c2_yp * (psi[i, j + 1, k] - psi[i, j, k])
-            - c2_ym * (psi[i, j, k] - psi[i, j - 1, k])
+        flux_y = c2_yp * (psi[i, j + 1, k] - psi[i, j, k]) - c2_ym * (
+            psi[i, j, k] - psi[i, j - 1, k]
         )
-        flux_z = (
-            c2_zp * (psi[i, j, k + 1] - psi[i, j, k])
-            - c2_zm * (psi[i, j, k] - psi[i, j, k - 1])
+        flux_z = c2_zp * (psi[i, j, k + 1] - psi[i, j, k]) - c2_zm * (
+            psi[i, j, k] - psi[i, j, k - 1]
         )
         out[i, j, k] += (flux_x + flux_y + flux_z) * inv_dx2

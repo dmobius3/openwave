@@ -11,6 +11,7 @@ from .features import (
     PsiTripleBuffer,
     TrackerFields,
     WaveGrid,
+    WaveSpeedField,
     WaveStats,
 )
 from .units import (
@@ -23,7 +24,12 @@ from .units import (
 from .allocator import AllocateTrackers, AllocateWaveSpeed, AllocateWaveField
 from .emc import UpdateEMCDensityProcessor, UpdateWaveSpeedProcessor
 from .seed import SeedPulse, SeedMultiCenter
-from .evolution import LaplacianProcessor, LeapfrogProcessor
+from .evolution import (
+    ClearAccelerationProcessor,
+    LaplacianProcessor,
+    LaplacianVariableCoeffProcessor,
+    LeapfrogProcessor,
+)
 from .nonlinearity import NonlinearCubic
 from .boundary import DirichletBoundaryProcessor
 from .measure import AmplitudeTracker

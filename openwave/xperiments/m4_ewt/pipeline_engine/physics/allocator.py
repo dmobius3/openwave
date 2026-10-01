@@ -59,6 +59,7 @@ class AllocateTrackers(BaseProcessor):
             )
         )
 
+
 class AllocateWaveSpeed(BaseProcessor):
     """
     Allocates WaveSpeedField.c2_local. Must run AFTER AllocateWaveField,
@@ -79,10 +80,9 @@ class AllocateWaveSpeed(BaseProcessor):
     def setup(self, ctx) -> None:
         grid = ctx.data.require(WaveGrid)
         ctx.data.set(
-            WaveSpeedField(
-                c2_local=ti.field(dtype=ti.f32, shape=(grid.nx, grid.ny, grid.nz))
-            )
+            WaveSpeedField(c2_local=ti.field(dtype=ti.f32, shape=(grid.nx, grid.ny, grid.nz)))
         )
+
 
 def _triple_buffer(shape: tuple[int, int, int]):
     """Allocate one triple-buffered vector field."""

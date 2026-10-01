@@ -40,7 +40,6 @@ from .evolution import (
 )
 from .units import NaturalUnitSystem, UnitSystem
 
-
 # ======================================================================
 # Taichi init
 # ======================================================================
@@ -65,6 +64,7 @@ class _SeedBothFields(BaseProcessor):
     Seeds PsiBase and PsiLong with DIFFERENT patterns on the first step.
     Base is non-linear (sin/cos), long is linear (asymmetric ramp).
     """
+
     name = "_SeedBothFields"
     stage = Stage.PRE_UPDATE
     order = 10
@@ -77,28 +77,37 @@ class _SeedBothFields(BaseProcessor):
         grid = ctx.data.require(WaveGrid)
         base = ctx.data.require(PsiBaseField)
         long = ctx.data.require(PsiLongField)
-        _seed_both(base.psi, base.psi_prev, long.psi, long.psi_prev,
-                   grid.nx, grid.ny, grid.nz)
+        _seed_both(base.psi, base.psi_prev, long.psi, long.psi_prev, grid.nx, grid.ny, grid.nz)
 
 
 @ti.kernel
-def _seed_both(base: ti.template(), base_prev: ti.template(),
-               long: ti.template(), long_prev: ti.template(),
-               nx: ti.i32, ny: ti.i32, nz: ti.i32):
+def _seed_both(
+    base: ti.template(),
+    base_prev: ti.template(),
+    long: ti.template(),
+    long_prev: ti.template(),
+    nx: ti.i32,
+    ny: ti.i32,
+    nz: ti.i32,
+):
     for i, j, k in ti.ndrange(nx, ny, nz):
         kx = 2.0 * ti.math.pi / ti.cast(nx, ti.f32)
         ky = 2.0 * ti.math.pi / ti.cast(ny, ti.f32)
         kz = 3.0 * ti.math.pi / ti.cast(nz, ti.f32)
-        b = ti.Vector([
-            ti.sin(kx * i) + ti.cos(ky * j),
-            ti.sin(kx * i) + ti.sin(kz * k),
-            ti.cos(ky * j) + ti.sin(kz * k),
-        ])
-        l = ti.Vector([
-            ti.cast(i, ti.f32),
-            ti.cast(2 * j, ti.f32),
-            ti.cast(3 * k, ti.f32),
-        ])
+        b = ti.Vector(
+            [
+                ti.sin(kx * i) + ti.cos(ky * j),
+                ti.sin(kx * i) + ti.sin(kz * k),
+                ti.cos(ky * j) + ti.sin(kz * k),
+            ]
+        )
+        l = ti.Vector(
+            [
+                ti.cast(i, ti.f32),
+                ti.cast(2 * j, ti.f32),
+                ti.cast(3 * k, ti.f32),
+            ]
+        )
         base[i, j, k] = b
         base_prev[i, j, k] = b
         long[i, j, k] = l
@@ -119,6 +128,7 @@ def _build_default_pipeline():
             self.add(ClearAccelerationProcessor())
             self.add(LaplacianProcessor())
             self.add(LeapfrogProcessor())
+
     return P()
 
 
@@ -131,14 +141,20 @@ def _build_parameterised_pipeline():
             self.add(ClearAccelerationProcessor(field_type=PsiBaseField))
             self.add(LaplacianProcessor(field_type=PsiBaseField))
             self.add(LeapfrogProcessor(field_type=PsiBaseField))
+
     return P()
 
 
 def _run(pipeline, max_steps=1):
     from ..runner import Runner
     from ..sinks import InMemorySink
+
     return Runner({"session": InMemorySink()}).run(
-        pipeline, name="multifield_test", params={}, dt=0.1, max_steps=max_steps,
+        pipeline,
+        name="multifield_test",
+        params={},
+        dt=0.1,
+        max_steps=max_steps,
         initial_features=[NaturalUnitSystem()],
     )
 
@@ -199,13 +215,13 @@ def test_pipeline_error_when_parameterised_field_missing():
     Mutation: Pipeline._validate ignores instance requires -> no
     PipelineError, then KeyError later. Check fails on missing error.
     """
+
     class NeverProvided:
         pass
 
     class Bad(Pipeline):
         def __init__(self):
-            super().__init__(error_policy=ErrorPolicy.FAIL_FAST,
-                             external_provides=(UnitSystem,))
+            super().__init__(error_policy=ErrorPolicy.FAIL_FAST, external_provides=(UnitSystem,))
             self.add(AllocateWaveField(nx=8, ny=8, nz=8, dx=1.0))
             self.add(LaplacianProcessor(field_type=NeverProvided))
 
@@ -258,8 +274,7 @@ def test_laplacian_accumulates_on_repeated_application():
     @ti.kernel
     def _fill(f: ti.template()):
         for i, j, k in f:
-            f[i, j, k] = (ti.sin(0.3 * ti.cast(i, ti.f32))
-                          + 0.5 * ti.cos(0.2 * ti.cast(j, ti.f32)))
+            f[i, j, k] = ti.sin(0.3 * ti.cast(i, ti.f32)) + 0.5 * ti.cos(0.2 * ti.cast(j, ti.f32))
 
     _fill(field)
     # acc starts at zero (Taichi default). Apply once, snapshot.
@@ -317,12 +332,27 @@ def test_laplacian_on_base_does_not_touch_long():
         for j in (1, 8, 14):
             for k in (1, 8, 14):
                 expected = np.array([i, 2 * j, 3 * k], dtype=np.float32)
-                assert np.allclose(psi_arr[i, j, k], expected, atol=1e-6), \
-                    (i, j, k, psi_arr[i, j, k], expected)
-                assert np.allclose(prev_arr[i, j, k], expected, atol=1e-6), \
-                    (i, j, k, prev_arr[i, j, k], expected)
-                assert np.allclose(new_arr[i, j, k], 0.0, atol=1e-6), \
-                    (i, j, k, new_arr[i, j, k], "must be 0")
+                assert np.allclose(psi_arr[i, j, k], expected, atol=1e-6), (
+                    i,
+                    j,
+                    k,
+                    psi_arr[i, j, k],
+                    expected,
+                )
+                assert np.allclose(prev_arr[i, j, k], expected, atol=1e-6), (
+                    i,
+                    j,
+                    k,
+                    prev_arr[i, j, k],
+                    expected,
+                )
+                assert np.allclose(new_arr[i, j, k], 0.0, atol=1e-6), (
+                    i,
+                    j,
+                    k,
+                    new_arr[i, j, k],
+                    "must be 0",
+                )
 
 
 def test_leapfrog_on_base_leaves_long_bit_identical():
@@ -340,8 +370,13 @@ def test_leapfrog_on_base_leaves_long_bit_identical():
         for j in (1, 8, 14):
             for k in (1, 8, 14):
                 expected = np.array([i, 2 * j, 3 * k], dtype=np.float32)
-                assert np.allclose(arr[i, j, k], expected, atol=1e-6), \
-                    (i, j, k, arr[i, j, k], expected)
+                assert np.allclose(arr[i, j, k], expected, atol=1e-6), (
+                    i,
+                    j,
+                    k,
+                    arr[i, j, k],
+                    expected,
+                )
 
 
 def test_laplacian_matches_analytic_on_asymmetric_seed():
@@ -375,6 +410,7 @@ def test_laplacian_matches_analytic_on_asymmetric_seed():
     _fill(field)
 
     from .evolution import _laplacian
+
     _laplacian(field, scratch, N, N, N, dx, c)
 
     out = scratch.to_numpy()
@@ -388,9 +424,7 @@ def test_laplacian_matches_analytic_on_asymmetric_seed():
     for i in (5, 16, 25):
         for j in (5, 16, 25):
             for k in (5, 16, 25):
-                expected = (f_i * math.sin(kx * i)
-                            + f_j * math.cos(ky * j)
-                            + f_k * math.sin(kz * k))
+                expected = f_i * math.sin(kx * i) + f_j * math.cos(ky * j) + f_k * math.sin(kz * k)
                 actual = out[i, j, k]
                 worst = max(worst, abs(actual - expected))
     assert worst < 1e-3, f"worst analytic error {worst}"
@@ -458,11 +492,10 @@ def test_boundary_voxels_unchanged_by_leapfrog_swap():
     arr = long_field.psi.to_numpy()
     # Boundary voxels: i = 0 and i = 15, etc. Seed value there is
     # [0, 0, 0] for i=0 and [15, 30, 45] for i=15 etc.
-    for i, j, k in [(0, 8, 8), (15, 8, 8), (8, 0, 8), (8, 15, 8),
-                     (8, 8, 0), (8, 8, 15)]:
+    for i, j, k in [(0, 8, 8), (15, 8, 8), (8, 0, 8), (8, 15, 8), (8, 8, 0), (8, 8, 15)]:
         expected = np.array([i, 2 * j, 3 * k], dtype=np.float32)
-        assert np.allclose(arr[i, j, k], expected, atol=1e-6), \
-            (i, j, k, arr[i, j, k], expected)
+        assert np.allclose(arr[i, j, k], expected, atol=1e-6), (i, j, k, arr[i, j, k], expected)
+
 
 def test_leapfrog_kernel_matches_numpy():
     """
@@ -520,33 +553,32 @@ def test_leapfrog_kernel_matches_numpy():
     psi_ref = psi_np.copy()
     prev_ref = prev_np.copy()
     new_ref = new_np.copy()
-    new_ref[interior] = (
-        2.0 * psi_np[interior] - prev_np[interior] + dt2 * new_np[interior]
-    )
+    new_ref[interior] = 2.0 * psi_np[interior] - prev_np[interior] + dt2 * new_np[interior]
     prev_ref[interior] = psi_np[interior]
     psi_ref[interior] = new_ref[interior]
 
     # Interior: all three buffers must match the reference.
-    assert np.allclose(psi_out[interior], psi_ref[interior], atol=1e-5), (
-        f"psi interior max diff {np.abs(psi_out[interior] - psi_ref[interior]).max()}"
-    )
-    assert np.allclose(prev_out[interior], prev_ref[interior], atol=1e-5), (
-        f"prev interior max diff {np.abs(prev_out[interior] - prev_ref[interior]).max()}"
-    )
-    assert np.allclose(new_out[interior], new_ref[interior], atol=1e-5), (
-        f"new interior max diff {np.abs(new_out[interior] - new_ref[interior]).max()}"
-    )
+    assert np.allclose(
+        psi_out[interior], psi_ref[interior], atol=1e-5
+    ), f"psi interior max diff {np.abs(psi_out[interior] - psi_ref[interior]).max()}"
+    assert np.allclose(
+        prev_out[interior], prev_ref[interior], atol=1e-5
+    ), f"prev interior max diff {np.abs(prev_out[interior] - prev_ref[interior]).max()}"
+    assert np.allclose(
+        new_out[interior], new_ref[interior], atol=1e-5
+    ), f"new interior max diff {np.abs(new_out[interior] - new_ref[interior]).max()}"
 
     # Boundary: untouched. This is where a full-grid scope fires.
-    assert np.allclose(psi_out[boundary], psi_np[boundary], atol=1e-6), (
-        "psi boundary changed; the swap is not interior-only"
-    )
-    assert np.allclose(prev_out[boundary], prev_np[boundary], atol=1e-6), (
-        "prev boundary changed; the swap is not interior-only"
-    )
-    assert np.allclose(new_out[boundary], new_np[boundary], atol=1e-6), (
-        "new boundary changed; the integration is not interior-only"
-    )
+    assert np.allclose(
+        psi_out[boundary], psi_np[boundary], atol=1e-6
+    ), "psi boundary changed; the swap is not interior-only"
+    assert np.allclose(
+        prev_out[boundary], prev_np[boundary], atol=1e-6
+    ), "prev boundary changed; the swap is not interior-only"
+    assert np.allclose(
+        new_out[boundary], new_np[boundary], atol=1e-6
+    ), "new boundary changed; the integration is not interior-only"
+
 
 # ======================================================================
 # Runner
