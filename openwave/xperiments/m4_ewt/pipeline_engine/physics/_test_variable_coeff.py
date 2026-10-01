@@ -29,6 +29,7 @@ from .evolution import (
     LeapfrogProcessor,
     _clear_accel,
     _laplacian_var_coeff,
+    _leapfrog,
 )
 from .units import NaturalUnitSystem, UnitSystem
 
@@ -328,48 +329,20 @@ def _seed_zero_boundary(
         c2[i, j, k] = 1.0 + 0.3 * ti.cos(2.0 * kx * ti.cast(i, ti.f32))
 
 @ti.kernel
-def _leapfrog_var_coeff_step(
+def _laplacian_naive(
     psi: ti.template(),
-    psi_prev: ti.template(),
-    psi_new: ti.template(),
     c2: ti.template(),
-    nx: ti.i32, ny: ti.i32, nz: ti.i32,
-    dx: ti.f32, dt2: ti.f32,
+    out: ti.template(),
+    nx: ti.i32,
+    ny: ti.i32,
+    nz: ti.i32,
+    dx: ti.f32,
 ):
-    inv_dx2 = 1.0 / (dx * dx)
-    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
-        c_ii = c2[i, j, k]
-        c2_xp = 0.5 * (c_ii + c2[i + 1, j, k])
-        c2_xm = 0.5 * (c_ii + c2[i - 1, j, k])
-        c2_yp = 0.5 * (c_ii + c2[i, j + 1, k])
-        c2_ym = 0.5 * (c_ii + c2[i, j - 1, k])
-        c2_zp = 0.5 * (c_ii + c2[i, j, k + 1])
-        c2_zm = 0.5 * (c_ii + c2[i, j, k - 1])
-        lap = inv_dx2 * (
-            c2_xp * (psi[i + 1, j, k] - psi[i, j, k])
-            - c2_xm * (psi[i, j, k] - psi[i - 1, j, k])
-            + c2_yp * (psi[i, j + 1, k] - psi[i, j, k])
-            - c2_ym * (psi[i, j, k] - psi[i, j - 1, k])
-            + c2_zp * (psi[i, j, k + 1] - psi[i, j, k])
-            - c2_zm * (psi[i, j, k] - psi[i, j, k - 1])
-        )
-        psi_new[i, j, k] = (
-            2.0 * psi[i, j, k] - psi_prev[i, j, k] + dt2 * lap
-        )
-    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
-        psi_prev[i, j, k] = psi[i, j, k]
-        psi[i, j, k] = psi_new[i, j, k]
-
-
-@ti.kernel
-def _leapfrog_naive_step(
-    psi: ti.template(),
-    psi_prev: ti.template(),
-    psi_new: ti.template(),
-    c2: ti.template(),
-    nx: ti.i32, ny: ti.i32, nz: ti.i32,
-    dx: ti.f32, dt2: ti.f32,
-):
+    """
+    c2 * laplacian(psi), no half-grid averaging. Local negative control:
+    the naive form is the equation the plan refuses to ship, so it lives
+    here and not in evolution.py.
+    """
     inv_dx2 = 1.0 / (dx * dx)
     for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
         lap = (
@@ -378,14 +351,29 @@ def _leapfrog_naive_step(
             + psi[i, j, k + 1] + psi[i, j, k - 1]
             - 6.0 * psi[i, j, k]
         ) * inv_dx2
-        psi_new[i, j, k] = (
-            2.0 * psi[i, j, k] - psi_prev[i, j, k]
-            + dt2 * c2[i, j, k] * lap
-        )
-    for i, j, k in ti.ndrange((1, nx - 1), (1, ny - 1), (1, nz - 1)):
-        psi_prev[i, j, k] = psi[i, j, k]
-        psi[i, j, k] = psi_new[i, j, k]
+        out[i, j, k] += c2[i, j, k] * lap
 
+
+def _leapfrog_var_coeff_step(psi, psi_prev, psi_new, c2, nx, ny, nz, dx, dt2):
+    """
+    One production step in flux form. Calls the three kernels from
+    evolution.py, so any mutation in _clear_accel, _laplacian_var_coeff
+    or _leapfrog reaches this step.
+    """
+    _clear_accel(psi_new, nx, ny, nz)
+    _laplacian_var_coeff(psi, c2, psi_new, nx, ny, nz, dx)
+    _leapfrog(psi, psi_prev, psi_new, nx, ny, nz, dt2)
+
+
+def _leapfrog_naive_step(psi, psi_prev, psi_new, c2, nx, ny, nz, dx, dt2):
+    """
+    One step with the naive laplacian (local) and the PRODUCTION
+    _leapfrog. The naive laplacian is the negative control; the leapfrog
+    half is production, so mutations to _leapfrog are caught here too.
+    """
+    _clear_accel(psi_new, nx, ny, nz)
+    _laplacian_naive(psi, c2, psi_new, nx, ny, nz, dx)
+    _leapfrog(psi, psi_prev, psi_new, nx, ny, nz, dt2)
 
 def _staggered_energy(psi, psi_prev, c2, scratch, N, dx, dt):
     """
@@ -407,7 +395,14 @@ def test_flux_form_conserves_staggered_invariant():
     Leapfrog + flux-form LaplacianVarCoeff, variable c^2, zero boundary
     seed. The staggered invariant is conserved over 50 steps.
 
-    Mutation: half-grid average wrong, or += semantics broken.
+    The step runs the production kernels from evolution.py:
+    _clear_accel, _laplacian_var_coeff, _leapfrog. A mutation in any
+    of them reaches this test.
+
+    Mutation caught: half-grid average dropped or read from the wrong
+    neighbour in _laplacian_var_coeff. A single-laplacian step cannot
+    tell += from = after a clear, so that arm is not claimed here; it
+    is caught by test_nonlinear_composes_with_laplacian_in_pipeline.
     """
     _ti_init()
 
@@ -441,9 +436,17 @@ def test_naive_form_breaks_staggered_invariant():
     Leapfrog + naive form c^2_i * laplacian(psi), same seed. Drift
     must be larger than the flux-form drift by a clear margin.
 
-    Mutation: this is the discriminating test, unchanged.
+    The leapfrog half is production (_leapfrog from evolution.py); the
+    laplacian half is _laplacian_naive, the local negative control,
+    because the naive form is the equation the plan refuses to ship.
 
-    Measured on N=32, dt=0.05, 50 steps, zero-boundary seed:
+    Mutation caught: the naive form replaced by the flux form. The
+    assertion is one-sided (drift > 5e-4), so a mutation that raises
+    the drift above the threshold does not fire here. Sign flips in
+    _leapfrog are caught by test_flux_form_conserves_staggered_invariant
+    and by test_production_pipeline_vs_numpy, not by this test.
+
+    Measured on N=32, dt=0.01, 50 steps, zero-boundary seed:
         flux form drift  5.6e-06   (f32 rounding)
         naive form drift 8.2e-04   (operator asymmetry)
     Ratio ~146x. The naive threshold 5e-4 leaves a 1.6x margin over
