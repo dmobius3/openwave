@@ -1,0 +1,194 @@
+===== t1_second_variation.py
+C1.1 [y<=piR/2] g = ds^2 of sec.2 and g_t = cos^2 g + t^2 dphi dphi: PASS
+C1.2 [y<=piR/2] t^2 coeff of dA_t/dA = (|grad phi|^2 - 2 phi^2/R^2)/2: PASS
+C1.1 [y>piR/2] g = ds^2 of sec.2 and g_t = cos^2 g + t^2 dphi dphi: PASS
+C1.2 [y>piR/2] t^2 coeff of dA_t/dA = (|grad phi|^2 - 2 phi^2/R^2)/2: PASS
+C1.3 seam: F(piR,-w) = -F(0,w) (same point of RP^3): PASS
+T1_ALL PASS
+===== t3_spectrum.py
+C3.1 Gegenbauer eigenfunctions of the sector ODE, n=0..5, symbolic nu: PASS
+C3.2 separated eigenfunctions solve -Delta u = lambda u in (psi, w), n=0..3: PASS
+C3.3 seam condition with derivatives (k=1..4, n=0..2, d=0..3, W=7/5): PASS
+T3_ALL PASS
+W=1/4    nu1=6.283185307179586 LC sectors=[] bottom=45.761602911537018 labels=[[1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5]] jac_low=+43.761602911537018 neg=0 null=0
+        lowest6 = 45.761602911537, 60.327973525896, 76.894344140255, 95.460714754615, 116.027085368974, 138.593455983333
+W=1/2    nu1=3.141592653589793 LC sectors=[] bottom=13.011197054679151 labels=[[1, 0], [1, 1], [1, 2], [1, 3], [2, 0], [1, 4]] jac_low=+11.011197054679151 neg=0 null=0
+        lowest6 = 13.011197054679, 21.294382361859, 31.577567669038, 43.860752976218, 45.761602911537, 58.143938283397
+W=1      nu1=1.570796326794897 LC sectors=[] bottom=4.038197427067236 labels=[[1, 0], [1, 1], [2, 0], [1, 2], [2, 1], [1, 3]] jac_low=+2.038197427067236 neg=0 null=0
+        lowest6 = 4.038197427067, 9.179790080657, 13.011197054679, 16.321382734247, 21.294382361859, 25.462975387837
+W=7/5    nu1=1.121997376282069 LC sectors=[] bottom=2.380875488665916 labels=[[1, 0], [1, 1], [2, 0], [1, 2], [2, 1], [3, 0]] jac_low=+0.380875488665916 neg=0 null=0
+        lowest6 = 2.380875488666, 6.624870241230, 7.279507202100, 12.868864993794, 13.767496707228, 14.695895140301
+W=3/2    nu1=1.047197551196598 LC sectors=[] bottom=2.143820262428749 labels=[[1, 0], [1, 1], [2, 0], [1, 2], [2, 1], [3, 0]] jac_low=+0.143820262428749 neg=0 null=0
+        lowest6 = 2.143820262429, 6.238215364822, 6.480885947322, 12.332610467215, 12.669676152108, 13.011197054679
+W=pi/2   nu1=1.000000000000000 LC sectors=[] bottom=2.000000000000000 labels=[[1, 0], [1, 1], [2, 0], [1, 2], [2, 1], [3, 0]] jac_low=+0.000000000000000 neg=0 null=1
+        lowest6 = 2.000000000000, 6.000000000000, 6.000000000000, 12.000000000000, 12.000000000000, 12.000000000000
+W=17/10  nu1=0.923997839291116 LC sectors=[1] bottom=1.777769846305766 labels=[[1, 0], [2, 0], [1, 1], [3, 0], [2, 1], [1, 2]] jac_low=-0.222230153694234 neg=1 null=0
+        lowest6 = 1.777769846306, 5.263083706641, 5.625765524888, 10.455941581005, 10.959075063805, 11.473761203470
+===== t4_fem.py
+W = 1/4  (0.25)
+  C4.1 [W=1/4] mass total 1.000000000000000 vs 4W=1.000000000000000: PASS
+  C4.2 [W=1/4] y-stiffness of phi=y 1.000000000000151 vs 4W: PASS
+  C4.3 [W=1/4] K, M symmetric and M SPD: PASS
+  C4.4 [W=1/4, level 0] dropped divergent terms meet zero gradients: PASS
+   level 0 ndof=   217 : 47.1476815893 64.3714547952 84.6915018190 108.6934750033 136.4154980252 168.6695606584
+  C4.4 [W=1/4, level 1] dropped divergent terms meet zero gradients: PASS
+   level 1 ndof=   945 : 46.1158097873 61.3603140582 78.8877413710 98.8254717310 121.2388143889 146.2524103195
+  C4.4 [W=1/4, level 2] dropped divergent terms meet zero gradients: PASS
+   level 2 ndof=  3937 : 45.8507607068 60.5876239882 77.3958886140 96.3059030453 117.3368920021 140.5159219711
+  C4.4 [W=1/4, level 3] dropped divergent terms meet zero gradients: PASS
+   level 3 ndof= 16065 : 45.7839334422 60.3929885130 77.0199405617 95.6722742148 116.3549771052 139.0745629759
+  C4.4 [W=1/4, level 4] dropped divergent terms meet zero gradients: PASS
+   level 4 ndof= 64897 : 45.7671881775 60.3442337480 76.9257565912 95.5136212459 116.1090860824 138.7137636496
+  C4.5 [W=1/4] interpolant Rayleigh quotient 45.7671890987 vs closed form 45.7616029115: PASS
+   p = 1.996684  extrap = 45.761589281931  err = 5.599e-03  (ratio 3.990816)
+W = 1/2  (0.5)
+  C4.1 [W=1/2] mass total 2.000000000000000 vs 4W=2.000000000000000: PASS
+  C4.2 [W=1/2] y-stiffness of phi=y 1.999999999999984 vs 4W: PASS
+  C4.3 [W=1/2] K, M symmetric and M SPD: PASS
+  C4.4 [W=1/2, level 0] dropped divergent terms meet zero gradients: PASS
+   level 0 ndof=   217 : 13.3126078573 22.2194759002 33.5685384037 47.5942447618 49.0137421855 64.5646145956
+  C4.4 [W=1/2, level 1] dropped divergent terms meet zero gradients: PASS
+   level 1 ndof=   945 : 13.0868167765 21.5264939056 32.0818941344 44.8064220477 46.5844116303 59.7650030564
+  C4.4 [W=1/2, level 2] dropped divergent terms meet zero gradients: PASS
+   level 2 ndof=  3937 : 13.0301243623 21.3524704626 31.7040809952 44.0979832459 45.9683874194 58.5501859128
+  C4.4 [W=1/2, level 3] dropped divergent terms meet zero gradients: PASS
+   level 3 ndof= 16065 : 13.0159304072 21.3089083119 31.6092235266 43.9201125170 45.8133785900 58.2455624934
+  C4.4 [W=1/2, level 4] dropped divergent terms meet zero gradients: PASS
+   level 4 ndof= 64897 : 13.0123804907 21.2980140974 31.5854833648 43.8755961305 45.7745520368 58.1693482552
+  C4.5 [W=1/2] interpolant Rayleigh quotient 13.0123805480 vs closed form 13.0111970547: PASS
+   p = 1.999420  extrap = 13.011196550217  err = 1.184e-03  (ratio 3.998391)
+W = 1  (1.0)
+  C4.1 [W=1] mass total 4.000000000000000 vs 4W=4.000000000000000: PASS
+  C4.2 [W=1] y-stiffness of phi=y 4.000000000000000 vs 4W: PASS
+  C4.3 [W=1] K, M symmetric and M SPD: PASS
+  C4.4 [W=1, level 0] dropped divergent terms meet zero gradients: PASS
+   level 0 ndof=   217 : 4.1201239976 9.4810950163 13.8719077087 17.1000342615 23.2813603638 27.0897906115
+  C4.4 [W=1, level 1] dropped divergent terms meet zero gradients: PASS
+   level 1 ndof=   945 : 4.0586293941 9.2550724839 13.2272330236 16.5131874034 21.7956917617 25.8624441097
+  C4.4 [W=1, level 2] dropped divergent terms meet zero gradients: PASS
+   level 2 ndof=  3937 : 4.0433027231 9.1986088226 13.0652528523 16.3691893425 21.4199131927 25.5625075009
+  C4.4 [W=1, level 3] dropped divergent terms meet zero gradients: PASS
+   level 3 ndof= 16065 : 4.0394735914 9.1844946696 13.0247140008 16.3333259491 21.3257768571 25.4878394837
+  C4.4 [W=1, level 4] dropped divergent terms meet zero gradients: PASS
+   level 4 ndof= 64897 : 4.0385164584 9.1809662222 13.0145764817 16.3243680206 21.3022317097 25.4691902608
+  C4.5 [W=1] interpolant Rayleigh quotient 4.0385164643 vs closed form 4.0381974271: PASS
+   p = 2.000226  extrap = 4.038197480573  err = 3.190e-04  (ratio 4.000626)
+W = 7/5  (1.4)
+  C4.1 [W=7/5] mass total 5.600000000000001 vs 4W=5.600000000000000: PASS
+  C4.2 [W=7/5] y-stiffness of phi=y 5.599999999999906 vs 4W: PASS
+  C4.3 [W=7/5] K, M symmetric and M SPD: PASS
+  C4.4 [W=7/5, level 0] dropped divergent terms meet zero gradients: PASS
+   level 0 ndof=   217 : 2.4282858380 6.8267585220 7.7650797853 13.4222387659 15.0293106368 16.7663490529
+  C4.4 [W=7/5, level 1] dropped divergent terms meet zero gradients: PASS
+   level 1 ndof=   945 : 2.3926822162 6.6752602421 7.3997509968 13.0064837665 14.0806251808 15.2071295106
+  C4.4 [W=7/5, level 2] dropped divergent terms meet zero gradients: PASS
+   level 2 ndof=  3937 : 2.3838245317 6.6374635061 7.3094955941 12.9032375064 13.8456190717 14.8231821257
+  C4.4 [W=7/5, level 3] dropped divergent terms meet zero gradients: PASS
+   level 3 ndof= 16065 : 2.3816126002 6.6280183693 7.2869998074 12.8774565389 13.7870172098 14.7276833601
+  C4.4 [W=7/5, level 4] dropped divergent terms meet zero gradients: PASS
+   level 4 ndof= 64897 : 2.3810597597 6.6256572743 7.2813800739 12.8710128223 13.7723762014 14.7038400940
+  C4.5 [W=7/5] interpolant Rayleigh quotient 2.3810597653 vs closed form 2.3808754887: PASS
+   p = 2.000371  extrap = 2.380875542763  err = 1.842e-04  (ratio 4.001030)
+W = 3/2  (1.5)
+  C4.1 [W=3/2] mass total 6.000000000000000 vs 4W=6.000000000000000: PASS
+  C4.2 [W=3/2] y-stiffness of phi=y 6.000000000000096 vs 4W: PASS
+  C4.3 [W=3/2] K, M symmetric and M SPD: PASS
+  C4.4 [W=3/2, level 0] dropped divergent terms meet zero gradients: PASS
+   level 0 ndof=   217 : 2.1865024844 6.4263245361 6.9140518166 12.8549195651 13.8285296756 14.8551467853
+  C4.4 [W=3/2, level 1] dropped divergent terms meet zero gradients: PASS
+   level 1 ndof=   945 : 2.1544479192 6.2851612727 6.5879966135 12.4625954396 12.9567352005 13.4647893694
+  C4.4 [W=3/2, level 2] dropped divergent terms meet zero gradients: PASS
+   level 2 ndof=  3937 : 2.1464748164 6.2499481908 6.5075889694 12.3650833310 12.7412629814 13.1240244452
+  C4.4 [W=3/2, level 3] dropped divergent terms meet zero gradients: PASS
+   level 3 ndof= 16065 : 2.1444837946 6.2411485492 6.4875570675 12.3407279985 12.6875616560 13.0393673763
+  C4.4 [W=3/2, level 4] dropped divergent terms meet zero gradients: PASS
+   level 4 ndof= 64897 : 2.1439861476 6.2389487041 6.4825534386 12.3346399375 12.6741468272 13.0182373457
+  C4.5 [W=3/2] interpolant Rayleigh quotient 2.1439861581 vs closed form 2.1438202624: PASS
+   p = 2.000314  extrap = 2.143820313411  err = 1.658e-04  (ratio 4.000871)
+W = pi/2  (1.5707963267948966)
+  C4.1 [W=pi/2] mass total 6.283185307179586 vs 4W=6.283185307179586: PASS
+  C4.2 [W=pi/2] y-stiffness of phi=y 6.283185307179691 vs 4W: PASS
+  C4.3 [W=pi/2] K, M symmetric and M SPD: PASS
+  C4.4 [W=pi/2, level 0] dropped divergent terms meet zero gradients: PASS
+   level 0 ndof=   217 : 2.0398446446 6.1798114043 6.4016403433 12.5035338084 13.0966272424 13.7071188919
+  C4.4 [W=pi/2, level 1] dropped divergent terms meet zero gradients: PASS
+   level 1 ndof=   945 : 2.0099207147 6.0448742180 6.0992291697 12.1253672917 12.2713472267 12.4190106864
+  C4.4 [W=pi/2, level 2] dropped divergent terms meet zero gradients: PASS
+   level 2 ndof=  3937 : 2.0024781130 6.0112158016 6.0247325760 12.0313247125 12.0676504257 12.1041670094
+  C4.4 [W=pi/2, level 3] dropped divergent terms meet zero gradients: PASS
+   level 3 ndof= 16065 : 2.0006194788 6.0028041737 6.0061784976 12.0078313970 12.0169008856 12.0260043340
+  C4.4 [W=pi/2, level 4] dropped divergent terms meet zero gradients: PASS
+   level 4 ndof= 64897 : 2.0001548856 6.0007011524 6.0015443348 12.0019581322 12.0042244883 12.0064987382
+  C4.5 [W=pi/2] interpolant Rayleigh quotient 2.0001549031 vs closed form 2.0000000000: PASS
+   p = 2.000203  extrap = 2.000000050300  err = 1.548e-04  (ratio 4.000563)
+W = 17/10  (1.7)
+  C4.1 [W=17/10] mass total 6.800000000000001 vs 4W=6.800000000000000: PASS
+  C4.2 [W=17/10] y-stiffness of phi=y 6.800000000000017 vs 4W: PASS
+  C4.3 [W=17/10] K, M symmetric and M SPD: PASS
+  C4.4 [W=17/10, level 0] dropped divergent terms meet zero gradients: PASS
+   level 0 ndof=   217 : 1.8132823372 5.6164590398 5.7928633358 11.9463898560 11.9549594879 11.9599043885
+  C4.4 [W=17/10, level 1] dropped divergent terms meet zero gradients: PASS
+   level 1 ndof=   945 : 1.7866129810 5.3502722352 5.6674720810 10.8221677892 11.2062932234 11.5920255262
+  C4.4 [W=17/10, level 2] dropped divergent terms meet zero gradients: PASS
+   level 2 ndof=  3937 : 1.7799794312 5.2848076529 5.6361926219 10.5469091989 11.0206837269 11.5033239002
+  C4.4 [W=17/10, level 3] dropped divergent terms meet zero gradients: PASS
+   level 3 ndof= 16065 : 1.7783224013 5.2685101338 5.6283734585 10.4786459308 10.9744649295 11.4811549184
+  C4.4 [W=17/10, level 4] dropped divergent terms meet zero gradients: PASS
+   level 4 ndof= 64897 : 1.7779080592 5.2644400290 5.6264178922 10.4616153144 10.9629217611 11.4756106715
+  C4.5 [W=17/10] interpolant Rayleigh quotient 1.7779081028 vs closed form 1.7777698463: PASS
+   p = 1.999706  extrap = 1.777769907611  err = 1.382e-04  (ratio 3.999184)
+T4_ALL PASS 
+===== planted defects
+--- t1_second_variation.py --plant straight: targets ['C1.1', 'C1.2'] -> FIRED (rc=0)
+    C1.1 [y<=piR/2] g = ds^2 of sec.2 and g_t = cos^2 g + t^2 dphi dphi: FAIL
+    C1.2 [y<=piR/2] t^2 coeff of dA_t/dA = (|grad phi|^2 - 2 phi^2/R^2)/2: FAIL
+    C1.1 [y>piR/2] g = ds^2 of sec.2 and g_t = cos^2 g + t^2 dphi dphi: FAIL
+    C1.2 [y>piR/2] t^2 coeff of dA_t/dA = (|grad phi|^2 - 2 phi^2/R^2)/2: FAIL
+    T1_ALL FAIL
+--- t1_second_variation.py --plant seamsign: targets ['C1.3'] -> FIRED (rc=0)
+    C1.3 seam: F(piR,-w) = -F(0,w) (same point of RP^3): FAIL
+    T1_ALL FAIL
+--- t3_spectrum.py --plant lam: targets ['C3.1', 'C3.2'] -> FIRED (rc=0)
+    C3.1 Gegenbauer eigenfunctions of the sector ODE, n=0..5, symbolic nu: FAIL
+    C3.2 separated eigenfunctions solve -Delta u = lambda u in (psi, w), n=0..3: FAIL
+    T3_ALL FAIL
+--- t3_spectrum.py --plant seam: targets ['C3.3'] -> FIRED (rc=0)
+    C3.3 seam condition with derivatives (k=1..4, n=0..2, d=0..3, W=7/5): FAIL
+    T3_ALL FAIL
+--- t4_fem.py --plant abscos --only 7/5: targets ['C4.1'] -> FIRED (rc=0)
+      C4.1 [W=7/5] mass total 0.000000000000000 vs 4W=5.600000000000000: FAIL
+      C4.2 [W=7/5] y-stiffness of phi=y -0.000000000000000 vs 4W: FAIL
+      C4.3 [W=7/5] K, M symmetric and M SPD: FAIL
+      C4.5 [W=7/5] interpolant Rayleigh quotient 165407446033954304.0000000000 vs closed form 2.3808754887: FAIL
+    T4_ALL FAIL failed: C4.1 [W=7/5] mass total 0.000000000000000 vs 4W=5.600000000000000; C4.2 [W=7/5] y-stiffness of phi=y -0.000000000000000 vs 4W; C4.3 [W=7/5] K, M symmetric and M SPD; C4.5 [W=7/5] interpolant Rayleigh quotient 165407446033954304.0000000000 vs closed form 2.3808754887
+--- t4_fem.py --plant ygrad --only 7/5: targets ['C4.2'] -> FIRED (rc=0)
+      C4.2 [W=7/5] y-stiffness of phi=y 0.137073184307243 vs 4W: FAIL
+      C4.5 [W=7/5] interpolant Rayleigh quotient 1.8200375995 vs closed form 2.3808754887: FAIL
+    T4_ALL FAIL failed: C4.2 [W=7/5] y-stiffness of phi=y 0.137073184307243 vs 4W; C4.5 [W=7/5] interpolant Rayleigh quotient 1.8200375995 vs closed form 2.3808754887
+--- t4_fem.py --plant asym --only 7/5: targets ['C4.3'] -> FIRED (rc=0)
+      C4.2 [W=7/5] y-stiffness of phi=y -3.567455843882765 vs 4W: FAIL
+      C4.3 [W=7/5] K, M symmetric and M SPD: FAIL
+      C4.5 [W=7/5] interpolant Rayleigh quotient -60.9918951355 vs closed form 2.3808754887: FAIL
+    T4_ALL FAIL failed: C4.2 [W=7/5] y-stiffness of phi=y -3.567455843882765 vs 4W; C4.3 [W=7/5] K, M symmetric and M SPD; C4.5 [W=7/5] interpolant Rayleigh quotient -60.9918951355 vs closed form 2.3808754887
+--- t4_fem.py --plant fibidx --only 7/5: targets ['C4.4'] -> FIRED (rc=0)
+      C4.4 [W=7/5, level 0] dropped divergent terms meet zero gradients: FAIL
+      C4.4 [W=7/5, level 1] dropped divergent terms meet zero gradients: FAIL
+      C4.4 [W=7/5, level 2] dropped divergent terms meet zero gradients: FAIL
+      C4.4 [W=7/5, level 3] dropped divergent terms meet zero gradients: FAIL
+      C4.4 [W=7/5, level 4] dropped divergent terms meet zero gradients: FAIL
+    T4_ALL FAIL failed: C4.4 [W=7/5, level 0] dropped divergent terms meet zero gradients; C4.4 [W=7/5, level 1] dropped divergent terms meet zero gradients; C4.4 [W=7/5, level 2] dropped divergent terms meet zero gradients; C4.4 [W=7/5, level 3] dropped divergent terms meet zero gradients; C4.4 [W=7/5, level 4] dropped divergent terms meet zero gradients
+--- t4_fem.py --plant seam --only 7/5: targets ['C4.5'] -> FIRED (rc=0)
+      C4.5 [W=7/5] interpolant Rayleigh quotient 264.8539363600 vs closed form 2.3808754887: FAIL
+    T4_ALL FAIL failed: C4.5 [W=7/5] interpolant Rayleigh quotient 264.8539363600 vs closed form 2.3808754887
+===== extra: T4 extrapolation minus closed form
+W=1/4    extrap-exact=-1.363e-05  finest-exact=+5.59e-03 +1.63e-02 +3.14e-02 +5.29e-02 +8.20e-02 +1.20e-01
+W=1/2    extrap-exact=-5.045e-07  finest-exact=+1.18e-03 +3.63e-03 +7.92e-03 +1.48e-02 +1.29e-02 +2.54e-02
+W=1      extrap-exact=+5.351e-08  finest-exact=+3.19e-04 +1.18e-03 +3.38e-03 +2.99e-03 +7.85e-03 +6.21e-03
+W=7/5    extrap-exact=+5.410e-08  finest-exact=+1.84e-04 +7.87e-04 +1.87e-03 +2.15e-03 +4.88e-03 +7.94e-03
+W=3/2    extrap-exact=+5.098e-08  finest-exact=+1.66e-04 +7.33e-04 +1.67e-03 +2.03e-03 +4.47e-03 +7.04e-03
+W=pi/2   extrap-exact=+5.030e-08  finest-exact=+1.55e-04 +7.01e-04 +1.54e-03 +1.96e-03 +4.22e-03 +6.50e-03
+W=17/10  extrap-exact=+6.131e-08  finest-exact=+1.38e-04 +1.36e-03 +6.52e-04 +5.67e-03 +3.85e-03 +1.85e-03
+all planted defects fired: True
+wrote results.json
+===== make_tables.py
+wrote t4_tables.md

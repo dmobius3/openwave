@@ -124,7 +124,7 @@ The two rooms' finite-element numbers agree at every width and level to `8.2 × 
 | 7/5 | 2.380875543 | 2.0004 | 1.84e-4 | 2.380875 | 2.3e-8 | Reproduced |
 | 3/2 | 2.143820313 | 2.0003 | 1.66e-4 | 2.143820 | 2.4e-8 | Reproduced |
 | π/2 (N1) | 2.000000050 | 2.0002 | 1.55e-4 | 2 | 2.5e-8 | control passes |
-| 17/10 (N2) | 1.777769908 | 1.9997 | 1.38e-4 | 1.777770 | 3.5e-8 | control passes |
+| 17/10 (N2) | 1.777769908 | 1.9997 | 1.38e-4 | 1.777770 | 3.4e-8 | control passes |
 
 Every error estimate sits within the tolerance, read as the frozen text states it, a relative `10⁻³`; the largest relative one is `1.2 × 10⁻⁴`, at `W/R = 1/4`. Under an absolute `10⁻³` reading, which the frozen text does not support, `W/R = 1/4` and `1/2` would be Unresolved. Each outcome is scored on the room's reported `p`, `λ_ext` and `err`, which equal the values recomputed from its own levels to `2.6 × 10⁻¹⁵`. The estimate bounds the extrapolated value's actual error by two to four orders of magnitude, as both rooms state: it measures the finest level, not the extrapolation.
 

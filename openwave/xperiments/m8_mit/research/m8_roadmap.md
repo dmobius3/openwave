@@ -387,8 +387,8 @@ assignment and the carrier's adopted choices without a count. No task, gate or M
 **M8.14 AUTHOR NOTES (2026-10-01).** The author's dated Result on the carrier page landed (MIT `df9b3f7`): it scores
 the run against the frozen terms, quotes the task's declared reading of "agrees", and reaches Reproduced. A dated note
 closes the task file. The two notes of [#608](https://github.com/openwave-labs/openwave/pull/608)'s review close
-there: the filed pre-registration's run-before-write line gains #595 and #598 beside #606, and its Sources link is
-pinned at `7c402c5`, with the filed bytes unchanged. The note also records the carrier page's Proposition 7 (MIT
-`33e9dea`), which proves analytically that with the edge fixed the conic band has the least area among
+there, with the filed bytes unchanged: the note adds #589, #595 and #598 beside #606 to the run-before-write count,
+and pins the Sources links at `7c402c5`. The note also records the carrier page's Proposition 7
+(MIT `33e9dea`), which proves analytically that with the edge fixed the conic band has the least area among
 finite-piecewise-smooth carrier-class competitors and ties only with maps that cover it once; the Lipschitz class
 stays open. No task, gate or MODELS.md icon moves.
