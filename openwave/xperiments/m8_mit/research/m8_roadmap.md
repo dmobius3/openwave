@@ -389,6 +389,6 @@ the run against the frozen terms, quotes the task's declared reading of "agrees"
 closes the task file. The two notes of [#608](https://github.com/openwave-labs/openwave/pull/608)'s review close
 there: the filed pre-registration's run-before-write line gains #595 and #598 beside #606, and its Sources link is
 pinned at `7c402c5`, with the filed bytes unchanged. The note also records the carrier page's Proposition 7 (MIT
-`cbe00a8`), which proves analytically that with the edge fixed the conic band has the least area among
-finite-piecewise-smooth carrier-class competitors; a tie and the Lipschitz class stay open. No task, gate or MODELS.md
-icon moves.
+`33e9dea`), which proves analytically that with the edge fixed the conic band has the least area among
+finite-piecewise-smooth carrier-class competitors and ties only with maps that cover it once; the Lipschitz class
+stays open. No task, gate or MODELS.md icon moves.
