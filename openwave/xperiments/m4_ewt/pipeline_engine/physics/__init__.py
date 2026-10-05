@@ -34,6 +34,7 @@ from .nonlinearity import NonlinearCubic
 from .boundary import DirichletBoundaryProcessor
 from .measure import AmplitudeTracker
 from .visualize import TaichiWindowProcessor
+from .seed import SeedMultiCenter, SeedPulse, SeedBaseWave
 
 __all__ = [
     # wave centers
@@ -73,4 +74,5 @@ __all__ = [
     "TaichiWindowProcessor",
     "UpdateEMCDensityProcessor",
     "UpdateWaveSpeedProcessor",
+    "SeedBaseWave",
 ]
