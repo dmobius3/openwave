@@ -4,7 +4,10 @@ Checks, per roadmap file:
 1. Budget: every `Description` cell, row `Title` cell, blockquote and change-log
    entry stays inside its cap (CAPS below). Words are counted after markdown is
    removed, so formatting never buys room: link labels count and link targets do
-   not, "<br>" is a space, and ` * _ # are stripped.
+   not, "<br>" is a space, and ` * _ # are stripped. A blockquote paragraph and a
+   change-log entry are each counted whole, across every line they wrap onto: a
+   paragraph ends at a quoted blank line (">"), an entry runs from its bold opening
+   line to the next blank line.
 2. Column: every live/DONE table declares a column named exactly `Description`,
    which is what the budget attaches to. A table without one is reported rather
    than silently skipped.
@@ -78,8 +81,31 @@ def check(path):
     width = None  # cell count of the current table's header
     header_line = None
     tables = 0  # tables seen in this file, for the "no Description column" report
+    # An open blockquote paragraph or change-log entry. Each is budgeted whole, so it
+    # is collected across every line it wraps onto and counted when it ends:
+    # counting line by line let a hard-wrapped entry pass at any length.
+    block = None
+
+    def close():
+        nonlocal block
+        if block is not None:
+            n = words(" ".join(block["lines"]))
+            if n > block["cap"]:
+                errors.append(
+                    f"{rel}:{block['start']}: {block['what']} is {n} words, cap {block['cap']}"
+                )
+        block = None
 
     for i, line in enumerate(path.read_text().splitlines(), 1):
+        if block is not None:
+            if block["kind"] == "quote" and line.startswith(">") and line.strip() != ">":
+                block["lines"].append(line)
+                continue
+            if block["kind"] == "entry" and line.strip() and not line.startswith(("#", "|", ">")):
+                block["lines"].append(line)  # an entry is one paragraph: it runs to a blank line
+                continue
+            close()
+
         if line.startswith("#"):
             level = len(line) - len(line.lstrip("#"))
             title = line.strip("# ").strip()
@@ -101,17 +127,21 @@ def check(path):
             idx = width = None  # a blank or prose line ends the table above it
 
         if line.startswith(">"):
+            if line.strip() == ">":
+                continue  # a quoted blank line separates paragraphs, each budgeted alone
             cap = CAPS["blockquote"] if section else CAPS["intro"]
-            n = words(line)
-            if n > cap:
-                what = f"{section} blockquote" if section else "intro blockquote"
-                errors.append(f"{rel}:{i}: {what} is {n} words, cap {cap}")
+            what = f"{section} blockquote" if section else "intro blockquote"
+            block = {"kind": "quote", "start": i, "lines": [line], "cap": cap, "what": what}
             continue
 
         if changelog and line.strip().startswith("**"):
-            n = words(line)
-            if n > CAPS["changelog"]:
-                errors.append(f"{rel}:{i}: change-log entry is {n} words, cap {CAPS['changelog']}")
+            block = {
+                "kind": "entry",
+                "start": i,
+                "lines": [line],
+                "cap": CAPS["changelog"],
+                "what": "change-log entry",
+            }
             continue
 
         if not line.startswith("|") or RULE.match(line):
@@ -163,6 +193,7 @@ def check(path):
                     f" cap {CAPS['other']}"
                 )
 
+    close()  # a block that runs to the end of the file
     return errors, tables
 
 
