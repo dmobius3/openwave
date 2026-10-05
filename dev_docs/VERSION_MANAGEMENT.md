@@ -39,13 +39,13 @@ When bumping the version, update **both** files:
 1. Edit `openwave/__init__.py`:
 
    ```python
-   __version__ = "26.9.7"  # Update this to today's date
+   __version__ = "26.12"  # The previous release plus one
    ```
 
 1. Edit `pyproject.toml`:
 
    ```toml
-   version = "26.9.7"  # Update this to match
+   version = "26.12"  # Update this to match
    ```
 
 ### Why This Works with Editable Installs
@@ -57,8 +57,11 @@ Both installation methods will see the same version number.
 
 ## Version Numbering
 
-OpenWave uses **calendar versioning (CalVer)** in the form `YY.M.D`: the date the release was
-cut. `26.9.7` is 7 September 2026. Adopted 2026-09-07, replacing SemVer at `1.6.10`.
+OpenWave uses **calendar versioning (CalVer)** in the form `YY.N`: the year the release was cut,
+then the release count in that year. `26.11` is the eleventh-numbered release of 2026, and the
+first release of 2027 is `27.1`: the count restarts each January. This is the scheme pip uses
+(`24.0`, `24.1`, ..., `25.0`). Adopted 2026-10-05, replacing `YY.M.D` (the release date), which
+had replaced SemVer at `1.6.10` on 2026-09-07.
 
 ### Why not SemVer
 
@@ -67,30 +70,35 @@ project has no resolver to make one to: it is not published to PyPI, nothing pin
 range against it, and with no CI there is nothing that could check such a promise even in
 principle. `MINOR` versus `PATCH` was a judgment call made on every release for no reader.
 
-A date is a fact the project can keep. It also carries information the old scheme did not: a
-reader of a dated finding, method note or run record can tell at a glance whether the engine
-predates or postdates it, which matters in a repository where results cite the version they
-were produced with.
+### Why `YY.N` replaced `YY.M.D`
 
-The tradeoff, stated plainly: CalVer says nothing about compatibility, and it makes a release
-gap visible on the front page. Both are accepted. The compatibility signal was never verified,
-and "last released September 2026" is useful to anyone deciding whether to build on the engine.
+The date form needed a fourth component (`26.9.7.1`) for a second release on the same day, and a
+letter there (`26.9.7b`) would have been read by PEP 440 as a beta of a release that already
+shipped. A count has no same-day case: every release is the previous one plus one.
+
+The tradeoff, stated plainly: the number no longer carries the day. The year still tells a reader
+of a dated finding, method note or run record roughly where the engine stood, and the exact date
+is the date of the `v<version>` git tag and its GitHub release. CalVer still says nothing about
+compatibility, which was never verified anyway.
 
 ### Rules
 
 | Rule | Reason |
 | --- | --- |
-| No zero padding: `26.9.7`, never `26.09.07` | PEP 440 strips leading zeros, so the padded form installs as `26.9.7` and stops matching its own tag |
+| Each release is the previous one plus one: `26.11`, `26.12`, `26.13` | No judgment call, and no same-day collision |
+| The first release of a new year is `YY.1`: `27.1` | The year in front would mean nothing if the count ran on forever (`27.143` would look like 143 releases in 2027) |
+| No zero padding: `26.11`, never `26.011` | PEP 440 strips leading zeros, so the padded form installs as `26.11` and stops matching its own tag |
 | No `v` in `__init__.py` or `pyproject.toml` | PEP 440 strips it too. The `v` prefix belongs on the git tag alone, which is where the existing convention already puts it |
-| A second release on a day already used adds a fourth component: `26.9.7.1` | ⚠️ NOT a letter suffix. PEP 440 reads `26.9.7b` as a **beta** of `26.9.7`, which sorts BEFORE it and which `pip install` skips by default, so an emergency fix numbered that way would be both invisible and considered older than the release it fixes |
-| One release per day is the norm | Four days in the pre-CalVer history carried two releases (2026-01-20, 2026-07-02, 2026-07-20, 2026-07-29). The fourth component exists for that case and is expected to stay rare |
+| No letter suffix | ⚠️ PEP 440 reads `26.11b` as a **beta** of `26.11`, which sorts BEFORE it and which `pip install` skips by default |
+| The count is releases (tags), not commits | Work between releases keeps the last released version |
 
 ### Ordering
 
-`YY.M.D` sorts correctly under PEP 440 because each component is compared as an integer, not as
-text: `26.9.7 < 26.10.1 < 27.1.3`. The switch also moved forward, never back, since
-`1.6.10 < 26.9.7`. That makes it a one-way change: returning to SemVer would require a version
-decrease, which no installer would select.
+`YY.N` sorts correctly under PEP 440 because each component is compared as an integer, not as
+text: `26.9 < 26.11 < 26.100 < 27.1`. Each switch moved forward, never back: `1.6.10 < 26.9.7`,
+and the first `YY.N`, `26.11`, is greater than every `26.10.x` and than the last dated release,
+`26.9.22` (11 > 9 and 11 > 10 in the second component). Returning to either earlier scheme would
+require a version decrease, which no installer would select.
 
 ## Implementation Details
 
@@ -162,24 +170,24 @@ This ensures:
 git add .
 git commit -m "Add new feature X"
 
-# 2. Bump the version to today's date, YY.M.D with no zero padding
-date +%y.%-m.%-d          # prints the version to use, e.g. 26.9.7
-# Edit: openwave/__init__.py → __version__ = "26.9.7"
-# Edit: pyproject.toml → version = "26.9.7"
+# 2. Bump the version: the previous release plus one, or YY.1 for the first release of a year
+git tag --list 'v*' --sort=-v:refname | head -1   # the previous release, e.g. v26.11
+# Edit: openwave/__init__.py → __version__ = "26.12"
+# Edit: pyproject.toml → version = "26.12"
 
 # 3. Commit the version bump
 git add openwave/__init__.py pyproject.toml
-git commit -m "Bump version to 26.9.7"
+git commit -m "Bump version to 26.12"
 
 # 4. Create a git tag
-git tag -a v26.9.7 -m "Release version 26.9.7"
+git tag -a v26.12 -m "Release version 26.12"
 
 # 5. Push everything
 git push origin main
-git push origin v26.9.7
+git push origin v26.12
 
 # 6. Create GitHub release (via UI or gh cli)
-gh release create v26.9.7 --title "v26.9.7" --notes "Release notes here"
+gh release create v26.12 --title "v26.12" --notes "Release notes here"
 
 # 7. (Optional) Publish to PyPI
 python -m build
@@ -197,9 +205,9 @@ git commit -m "Fix bug Y"
 git commit -m "Update docs"
 
 # Then bump version as last commit before tag
-# Edit version files to today's date...
-git commit -m "Bump version to 26.9.7"
-git tag -a v26.9.7 -m "Release v26.9.7"
+# Edit version files to the next number...
+git commit -m "Bump version to 26.12"
+git tag -a v26.12 -m "Release v26.12"
 ```
 
 ### What NOT to Do
@@ -210,15 +218,14 @@ git tag -a v26.9.7 -m "Release v26.9.7"
 
 ### Which Number to Use
 
-Read a calendar. There is no judgment call to make and no need to look up the previous
-version:
+The previous release plus one, read from the tags:
 
 ```bash
-date +%y.%-m.%-d          # 26.9.7
+git tag --list 'v*' --sort=-v:refname | head -1   # v26.11, so the next is 26.12
 ```
 
-The only decision left is the rare one: if that exact version was already released today, add
-a fourth component (`26.9.7.1`, then `26.9.7.2`).
+The only other case is the first release of a year: `YY.1` (`27.1`), whatever the last count of
+the year before was.
 
 ### Pre-release Versions
 
@@ -227,31 +234,31 @@ silently mutate on install. Python rewrites them:
 
 | Written | What pip records |
 | --- | --- |
-| `26.9.7-dev` | `26.9.7.dev0` |
-| `26.9.7-alpha.1` | `26.9.7a1` |
-| `26.9.7-beta.1` | `26.9.7b1` |
-| `26.9.7-rc.1` | `26.9.7rc1` |
+| `26.12-dev` | `26.12.dev0` |
+| `26.12-alpha.1` | `26.12a1` |
+| `26.12-beta.1` | `26.12b1` |
+| `26.12-rc.1` | `26.12rc1` |
 
 Write the canonical form directly if a pre-release is ever needed:
 
 ```python
-__version__ = "26.9.7.dev0"   # Development (ongoing work)
-__version__ = "26.9.7a1"      # Alpha (early testing)
-__version__ = "26.9.7b1"      # Beta (feature complete)
-__version__ = "26.9.7rc1"     # Release candidate (final testing)
-__version__ = "26.9.7"        # Final release
+__version__ = "26.12.dev0"   # Development (ongoing work)
+__version__ = "26.12a1"      # Alpha (early testing)
+__version__ = "26.12b1"      # Beta (feature complete)
+__version__ = "26.12rc1"     # Release candidate (final testing)
+__version__ = "26.12"        # Final release
 ```
 
-⚠️ All four sort BEFORE `26.9.7`, and `pip install` skips them unless asked for with
-`--pre`. That is what they are for. It is also why a same-day hotfix must never be numbered
-`26.9.7b`: it would be treated as a beta of a release that already shipped.
+⚠️ All four sort BEFORE `26.12`, and `pip install` skips them unless asked for with
+`--pre`. That is what they are for. It is also why a hotfix must never be numbered `26.12b`:
+it would be treated as a beta of a release that already shipped. A hotfix is simply the next number.
 
-In practice a date-based scheme has little use for these. The working version between releases
+In practice a counted scheme has little use for these. The working version between releases
 is simply the last released version until the day a new one is cut.
 
 ### Automation Options
 
-Version bumping needs no tool now that the number is a date, and `bumpver update --patch`
+Version bumping needs no tool now that the number is a count, and `bumpver update --patch`
 style commands no longer map onto anything. If any automation is added later, the useful
 target is checking that the two files agree and that the tag matches, not computing the number:
 
@@ -269,7 +276,6 @@ sys.exit(0 if t==i else f'version mismatch: pyproject {t} vs __init__ {i}')"
 1. Bump version BEFORE creating git tags and releases
 1. Use the pattern shown above when accessing version in code
 1. Keep version numbers synchronized between source and build config
-1. Use today's date, `YY.M.D`, with no zero padding and no `v` prefix in the files
+1. Use `YY.N`, the previous release plus one (`YY.1` in a new year), with no zero padding and no `v` prefix in the files
 1. Create dedicated version bump commits
 1. Document version changes in commit messages and release notes
-1. Reserve a fourth component (`26.9.7.1`) for a second release on the same day
