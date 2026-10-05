@@ -14,11 +14,13 @@
 MIT is a **top-down structural model**: a fixed arena (the three-sphere S³, its quotients
 S³/{±I} and S³/2I, and a Möbius edge), a single background standing wave
 `Ψ = cos(t/2)` sampled on it, and a phase-to-time map (the Waltz clock
-`dt/dτ = S^(-1/2)`). Particles are representation-theory slots: an irrep of 2I at a
-McKay-lattice position, read in one of the three flat connections (the three
-generations), with color from the Z₃ face stabilizers. The couplings, the fermion mass
-ratios, and Λ are read off this structure (McKay distance, Reidemeister torsion, the
-120-cell), not evolved from a dynamics.
+`dt/dτ_H = S^(-1/2)`). Particles are representation-theory slots: an irrep of 2I at a
+McKay-lattice position, read in one of the three flat connections (read as the three
+generations), with color from the Z₃ face stabilizers. The couplings and the fermion
+mass ratios are read off this structure (McKay distance, Reidemeister torsion, the
+120-cell), and the conditional relation `Λ_ref = 3/R²` is seeded by the carrier's first
+positive level `2/R²` and lifted by the Gauss relation and the de Sitter `½` imported
+from GR. None of these is evolved from a dynamics.
 
 The existing OpenWave columns run the same program from the opposite end: they start
 from a nonlinear field Lagrangian and evolve it until particles emerge, and their
@@ -31,10 +33,10 @@ absent where they are strong.
 
 | Gap | The honest statement | What supplies it |
 | --- | --- | --- |
-| No field equation | MIT has no Lagrangian and no equation of motion; Einstein's equations are kept unchanged as the geometry's dynamics. Masses are assigned by structure, not evolved | M8.4: the Lagrangian-family survey, drawing candidates from M4/M5/M7 ([`m8_platform_pointers.md`](m8_platform_pointers.md) § 2), CLOSED UNRESOLVED 2026-08-26 before any candidate ran; the gap stands; the target-free chassis program's first protocol (M8.5-C) terminated without adjudication on a frozen-arm defect, and its derived successor was adjudicated `M8.5-C2-FAILED` 2026-08-31, instrument-attributed ([#506](https://github.com/openwave-labs/openwave/issues/506)); no route is authorized today, and the gap stays open ([#512](https://github.com/openwave-labs/openwave/discussions/512)) |
+| No field equation | MIT has no Lagrangian and no equation of motion; Einstein's equations are kept unchanged as the geometry's dynamics. Masses are assigned by structure, not evolved. The author's frozen slot action (2026-10-04) is an effective model for an M8 run, not MIT's physical matter action, so it leaves this gap standing | M8.4: the Lagrangian-family survey, drawing candidates from M4/M5/M7 ([`m8_platform_pointers.md`](m8_platform_pointers.md) § 2), CLOSED UNRESOLVED 2026-08-26 before any candidate ran; the gap stands; the target-free chassis program's first protocol (M8.5-C) terminated without adjudication on a frozen-arm defect, and its derived successor was adjudicated `M8.5-C2-FAILED` 2026-08-31, instrument-attributed ([#506](https://github.com/openwave-labs/openwave/issues/506)); no route is authorized today, and the gap stays open ([#512](https://github.com/openwave-labs/openwave/discussions/512)) |
 | No defect concept | MIT's topology is the ARENA (the manifold itself), not topology IN a field (M5's sense: defects, windings, vortex strings). Its particles are explicitly not vortices | M8.4 was to put a dynamical field ON S³/2I and ask whether its defect or standing-wave sectors realize the McKay slots; it CLOSED UNRESOLVED 2026-08-26 with no target configuration executed. On the standing-wave side, [M8.11](tasks/m8_11_task_details.md) established, as an audited argument, that its pinned stationary cubic equation has local branch germs at six of the level-6 critical rays in each of sectors `3′` and `4`, for sufficiently small amplitude (2026-09-18). Whether any defect or standing-wave sector realizes the McKay slots is untested |
-| Stability not derived | MIT's spectral statement, the first positive level `2/R²` in the narrow conic regime, under the Friedrichs extension it adopts at the cone point (and under bridging with `δ₀ > 2R/e`), concerns a level, not the stability of a matter state. No Derrick analysis exists because there is no soliton | M8.4 was to run a Derrick analysis on a compact arena (see § 4 below); it CLOSED UNRESOLVED 2026-08-26 without a candidate-family Derrick analysis. The branch germs of [M8.11](tasks/m8_11_task_details.md) carry no stability claim, so stability remains unaddressed |
-| Clock assumed, not derived | The Waltz exponent −1/2 is empirically forced (Δχ² > 60 vs integer alternatives) but not derived from the embedding. The opposite of M5, where the clock is the measured energy-minimizing state | The M8 dynamics question: does the background mode + field coupling SELECT the clock |
+| Stability not derived | MIT's spectral statement, the first positive level `2/R²` in the narrow conic regime, under the Friedrichs extension it adopts at the cone point (and under bridging with `δ₀ > 2R/e`), concerns a level, not the stability of a matter state. MIT's physical theory has no soliton and so no Derrick analysis; under the author's frozen slot action, a Pohozaev argument shows localized standing waves vanish in flat three-space, so no lump much smaller than R is expected, and states at the curvature scale are not excluded | M8.4 was to run a Derrick analysis on a compact arena (see § 4 below); it CLOSED UNRESOLVED 2026-08-26 without a candidate-family Derrick analysis. The branch germs of [M8.11](tasks/m8_11_task_details.md) carry no stability claim, so stability remains unaddressed |
+| Clock not derived from the postulate | The Waltz exponent −1/2 enters through the GR correspondence (standard matter dilution and the Friedmann relation, imported from GR) and is empirically unique in its family (Δχ² > 60 vs integer alternatives), but is not derived at the postulate layer. The opposite of M5, where the clock is the measured energy-minimizing state | The M8 dynamics question: does the background mode + field coupling SELECT the clock |
 | Radiation unmodeled | photon/gluon are "massless at the edge-only level", a layer label with no wave mechanics behind it | downstream of a validated field dynamics; not an early target |
 
 ## 3. Evidence weight (the author's own ledger, adopted as the column's grading)
@@ -45,25 +47,30 @@ framework itself, and the M8 column adopts its verdicts as the grading baseline:
 
 | Layer | Weight | Why |
 | --- | --- | --- |
-| Structural results | the durable core | 3 generations from the 3 flat connections of S³/2I, the coexact mass gap 4/R², color from Z₃ stabilizers, chirality: retrodictions with zero adjustable freedom (the ledger's "bones") |
+| Structural results | the durable core | the count of 3 flat connections of S³/2I (read as the 3 generations, an identification the ledger cordons off as interpretation), the coexact mass gap 4/R², color from Z₃ stabilizers, chirality: retrodictions with zero adjustable freedom (the ledger's "bones") |
 | The 2/R² eigenvalue | decidable, verified | the M8.1 certification gate PASSED (2026-07-21): blind two-agent eigensolve, adversarially audited |
 | The 24-slot mass table | LOW evidential weight | the author's own pre-registered null on the corrected table (`mass-null-v1.1`, p_A = 0.690, superseding `mass-null-v1.0`'s p = 0.174 on the pre-correction table): the compatible-coverage count is typical under random torsion reassignment and carries no evidential weight for the torsion map; the well set {13, 21, 34, 55} is never extremal under its own variational test; 19 of 24 entries carry no adjudicated SM assignment, the up and charm quarks unassigned and the bottom compatible only out of its sector; down 3.2× residual, top compatible within ×3 (0.93, symmetrized 1.07) |
 | The calibration web | consistency, not prediction | α is input-and-output (Cycle 2); m_e ↔ Λ closes to ~11%; the two routes to R disagree by 3.2× on the canonical pair and 1.7× on the best assigned pair (Cycle 7, the framework's flagged master-scale tension) |
 | Forward bets | the falsifiable layer | Euclid DR1 pre-registered thresholds, four rows at the full release (mid 2027) and Row IV on the first qualifying measurement, from DR1-Foundation data or later; the JWST measurements examined lie inside Row IV's registered ceiling, the side on which the row fails, and none is its score |
 
 The practical rule for M8 tasks: **target the structural ladder (slot structure, gap
-ratios, generation count), not the numeric mass table.** A dynamics whose spectrum
-reproduces the McKay SLOT STRUCTURE without per-slot tuning would be a result; chasing
-the 24 numbers would inherit freedom the author's own audit already flagged.
+ratios, generation count), not the numeric mass table.** Slot placement alone is
+kinematic: any Laplace-type kinetic term on the flat bundles puts each slot at its McKay
+level, which is calibration, never evidence ([M8.4 kinematic close](findings/m8_4_kinematic_close.md)). A
+common finite-amplitude branch or stability structure across the eight slots under one
+action, without per-slot tuning, would be a result; MIT files no relation among slot
+energies for it to meet (the author's [slot relation](https://github.com/dmobius3/mode-identity-theory/blob/main/files/framework/files/working/files/slot-relation.md#viii-report),
+reported OPEN 2026-10-04). Chasing the 24 numbers would inherit freedom the author's own
+audit already flagged.
 
 ## 4. Why the combination is technically attractive
 
 | Feature | Why it matters |
 | --- | --- |
-| Compact arena vs Derrick | On a compact manifold the Derrick scaling argument loses its free dilation (the radius R sets a scale), so the collapse pressure that constrains flat-space solitons is structurally weakened. And the platform's measured lesson (M6: oscillation is a genuine third Derrick escape; M5: stability requires time-periodicity) rides naturally on a background clock: the two mechanisms stack |
+| Compact arena vs Derrick | On a compact manifold the Derrick scaling argument loses its free dilation (the radius R sets a scale), so the collapse pressure that constrains flat-space solitons is structurally weakened, though only at the curvature scale: under the author's frozen slot action, localized standing waves vanish in flat three-space (Pohozaev), so no lump much smaller than R is expected. And the platform's measured lesson (M6: oscillation is a genuine third Derrick escape; M5: stability requires time-periodicity) rides naturally on a background clock: the two mechanisms stack |
 | The central −I and the Möbius sign | 2I ⊂ SU(2) carries the spinor sign: its central `−I` acts as −1 on half-integer-spin representations, the 720-degree return behind the spin-statistics row that most columns leave 🚧. On MIT's projective carrier one loop carries that sign and the Möbius orientation sign together, which makes the spin sign geometric on the carrier; through the adopted transverse sampler, the integer-spin samples are the anti-periodic ones. That derives neither spin-statistics nor anticommutation; a field dynamics on the arena would still have to supply them |
-| Spectral basis = target ladder | Simulating on S³/2I naturally expands fields in 2I-symmetric harmonics, the same representation theory the McKay ladder lives in. The simulation basis and the target spectrum speak one language, so "do defect energies land on McKay slots" is a well-posed, pre-registrable question |
-| Clean division of labor | MIT supplies the arena and the target spectrum (top-down); the platform supplies Lagrangian candidates, simulation engineering, and grading standards (bottom-up). Either outcome is a result: energies on the slots validates both halves; energies off the slots is a clean documented negative, which this author demonstrably accepts |
+| Spectral basis = target ladder | Simulating on S³/2I naturally expands fields in 2I-symmetric harmonics, the same representation theory the McKay ladder lives in. The simulation basis and the slot structure speak one language, so slot identity is manifest. Placement on the slots is then kinematic, calibration and never evidence; the well-posed, pre-registrable question is dynamical, whether one action carries a common finite-amplitude branch or stability structure across the eight slots |
+| Clean division of labor | MIT supplies the arena and the slot structure (top-down), and files no relation among slot energies (the author's [slot relation](https://github.com/dmobius3/mode-identity-theory/blob/main/files/framework/files/working/files/slot-relation.md#viii-report), reported OPEN 2026-10-04); the platform supplies Lagrangian candidates, simulation engineering, and grading standards (bottom-up). Either outcome is a result: a common branch or stability structure across the eight slots under one action is a dynamical result with no claim on a relation; its absence is a clean documented negative, which this author demonstrably accepts |
 | Cross-model payoff, closed on the M5 side | M8.6 (the McKay rule vs M5's lepton hierarchy) was the ONE candidate mechanism on the table for M5's open hierarchy origin. GATED 2026-07-29 (`1 : 5.9 : 15.1` is `Λ := m^(1/3)` from the masses, not measured M5 output) and CLOSED 2026-08-07: the M5.21.11 bridge's last admissible route (the pre-registered extrapolation) failed terminally, so no admissible M5-side target exists as instrumented ([finding 9](tasks/m8_6_task_details.md), [readiness note](findings/m8_6_readiness_note.md)) |
 
 ## 5. Onboarding evaluation of record (2026-07-21)

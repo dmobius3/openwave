@@ -1,6 +1,6 @@
 # M8 / MIT, ROADMAP
 
-> The M8 model's task roadmap. The program is a **field-dynamics collaboration**: MIT supplies the arena (S³/2I + the Möbius edge) and the target spectrum (the McKay ladder); the platform supplies Lagrangian candidates, simulation engineering, and grading standards. Live work: [IN PROGRESS](#in-progress) → [BACKLOG](#backlog) → [LATER](#later-gated); the validated record: [DONE](#done). Reading rules (spec of record, mode of work, standing rules): [§ CONVENTIONS](#conventions). Dated scaffold, ruling, and close-out records: [§ CHANGE-LOG](#change-log).
+> The M8 model's task roadmap. The program is a **field-dynamics collaboration**: MIT supplies the arena (the Möbius carrier in ℝP³, observed on S³/2I) and the slot structure (the McKay ladder; MIT files no relation among slot energies); the platform supplies Lagrangian candidates, simulation engineering, and grading standards. Live work: [IN PROGRESS](#in-progress) → [BACKLOG](#backlog) → [LATER](#later-gated); the validated record: [DONE](#done). Reading rules (spec of record, mode of work, standing rules): [§ CONVENTIONS](#conventions). Dated scaffold, ruling, and close-out records: [§ CHANGE-LOG](#change-log).
 
 ---
 
@@ -28,13 +28,13 @@
 
 ---
 
-## STATUS AT A GLANCE (2026-09-24)
+## STATUS AT A GLANCE (2026-10-04)
 
 | Question | Answer |
 | --- | --- |
-| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13), and M8.11 showed, as an audited argument, that those expansions and the two at the pyramid and the prism are Taylor expansions of local branch germs (2026-09-18). M8.12 reproduced the level-6 quartic's reduced Morse census blind (2026-09-21), and M8.13 found, as an audited argument, that the hexagon orbit is its only maximizer, the uniqueness clause M8.12 left unresolved (2026-09-22), each marked "No stability claim" in its Done row. M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. M8.14 reproduced blind the author's frozen check that the conic carrier is a strictly stable critical point of area with its edge held fixed, at every embedded width (2026-10-01), a surface result that is twist-blind and local. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). Nothing is in progress |
+| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13), and M8.11 showed, as an audited argument, that those expansions and the two at the pyramid and the prism are Taylor expansions of local branch germs (2026-09-18). M8.12 reproduced the level-6 quartic's reduced Morse census blind (2026-09-21), and M8.13 found, as an audited argument, that the hexagon orbit is its only maximizer, the uniqueness clause M8.12 left unresolved (2026-09-22), each marked "No stability claim" in its Done row. M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. M8.14 reproduced blind the author's frozen check that the conic carrier is a strictly stable critical point of area with its edge held fixed, at every embedded width (2026-10-01), a surface result that is twist-blind and local. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). On the author's side, the slot relation was reported OPEN (2026-10-04), so MIT files no relation among slot energies, and an effective slot action for a future M8 run is frozen with its ceilings (2026-10-04). Nothing is in progress |
 | What kind of column is it? | The platform's first top-down structural model: strong on the origin of the numbers (representation theory on S³/2I), absent on dynamics. The M8 program exists to supply the dynamics half |
-| What decides the program? | Field dynamics remains the decisive question (does ANY reasonable Lagrangian on S³/2I realize the McKay slot structure?), and it stands without a live route in this column. Per [#512](https://github.com/openwave-labs/openwave/discussions/512), the two MODELS.md criteria gated on it stay open and nothing is pending; a future program is reviewed on arrival, under run-before-write and the maintainer-reproduction rule |
+| What decides the program? | Field dynamics remains the decisive question (does ANY reasonable action on S³/2I carry a common finite-amplitude branch or stability structure across the eight McKay slots? Placement on the slots is kinematic, and MIT files no relation among slot energies), and it stands without a live route in this column. Per [#512](https://github.com/openwave-labs/openwave/discussions/512), the two MODELS.md criteria gated on it stay open and nothing is pending; a future program is reviewed on arrival, under run-before-write and the maintainer-reproduction rule |
 | Evidence discipline | The author's own claim ledger is adopted as the grading baseline (structural results = the core; the numeric mass table = low weight, capped by the author's own pre-registered nulls); platform standards (pre-registration, adversarial audit, method notes) apply from day one |
 
 ## CONVENTIONS
@@ -392,3 +392,15 @@ and pins the Sources links at `7c402c5`. The note also records the carrier page'
 (MIT `33e9dea`), which proves analytically that with the edge fixed the conic band has the least area among
 finite-piecewise-smooth carrier-class competitors and ties only with maps that cover it once; the Lipschitz class
 stays open. No task, gate or MODELS.md icon moves.
+
+**AUTHOR-SIDE SYNC: NO SLOT RELATION, A FROZEN SLOT ACTION, THE CARRIER'S LAYER AND EDGE (2026-10-04).** The author's
+slot relation was reported OPEN: MIT files no relation among slot energies, so M8.2's last rung, energies obeying "a
+separately pre-registered MIT relation", has none to score; the pinned pre-registration is unchanged. The author also
+froze an effective slot-amplitude action for a future M8 run, MOTIVATED and not MIT's physical matter action, with
+ceilings; no run is filed. The living docs say so, and slot placement, which is kinematic, replaces "the target
+spectrum". Two rulings: the edge is held fixed as a modeling input (2026-10-01), so M8.14's result is fixed-edge
+stability, not vacuum stability; and ℝP³ is the carrier's physical domain, S³/2I its observable domain, with the pose
+free (2026-10-02). Corrected: the H₀ test was exploratory, not pre-registered; the twisted condition is per lap, the
+lap `πR` only on the conic model; Λ's 3 is derived and its ½ imported; the generation count is forced and its
+identification a reading; the clock's exponent enters through the GR correspondence; OQ1's branch is `M4L_Erho`, not
+`M4_int`; the pointers' two signs; and the dark-matter cell. No task, gate or MODELS.md icon moves.
