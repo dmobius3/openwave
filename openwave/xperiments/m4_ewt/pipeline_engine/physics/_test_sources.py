@@ -466,19 +466,39 @@ def test_seed_base_wave_shape_validation():
 def test_seed_base_wave_runs_once():
     """
     SeedBaseWave writes at step 0 and returns early thereafter. A
-    pipeline that steps further leaves the seeded field unchanged.
+    POST_UPDATE processor adds 1.0 to PsiBase.psi and psi_prev at every
+    step, so after three steps both read seed + 3. Without that, nothing
+    moves the field and a re-seed writes the same values back.
+
+    Mutation caught: SeedBaseWave re-seeds psi or psi_prev at every
+    step (that buffer reads seed + 1).
     """
     _ti_init()
     shape = (8, 8, 8, 3)
     arr = np.zeros(shape, dtype=np.float32)
     arr[4, 4, 4] = [0.5, 0.7, 0.9]
 
-    ctx = _run([SeedBaseWave(arr)], max_steps=3)
+    class _ShiftBase(BaseProcessor):
+        name = "_ShiftBase"
+        stage = Stage.POST_UPDATE
+        order = 50
+        requires = (PsiBaseField,)
+
+        def process(self, ctx):
+            f = ctx.data.require(PsiBaseField)
+            f.psi.from_numpy(f.psi.to_numpy() + 1.0)
+            f.psi_prev.from_numpy(f.psi_prev.to_numpy() + 1.0)
+
+    ctx = _run([SeedBaseWave(arr), _ShiftBase()], max_steps=3)
     assert ctx.diag.errors == [], ctx.diag.errors
 
-    base_psi = ctx.data.require(PsiBaseField).psi.to_numpy()
-    assert np.allclose(base_psi[4, 4, 4], arr[4, 4, 4], atol=1e-6), \
+    base = ctx.data.require(PsiBaseField)
+    base_psi = base.psi.to_numpy()
+    base_prev = base.psi_prev.to_numpy()
+    assert np.allclose(base_psi[4, 4, 4], arr[4, 4, 4] + 3.0, atol=1e-5), \
         base_psi[4, 4, 4]
+    assert np.allclose(base_prev[4, 4, 4], arr[4, 4, 4] + 3.0, atol=1e-5), \
+        base_prev[4, 4, 4]
 
 
 # ======================================================================

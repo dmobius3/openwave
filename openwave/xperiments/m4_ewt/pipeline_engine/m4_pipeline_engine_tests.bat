@@ -22,6 +22,8 @@ set TESTS=^
  openwave.xperiments.m4_ewt.pipeline_engine.physics._test_emc ^
  openwave.xperiments.m4_ewt.pipeline_engine.physics._test_variable_coeff ^
  openwave.xperiments.m4_ewt.pipeline_engine.physics._test_sources ^
+ openwave.xperiments.m4_ewt.pipeline_engine.physics._test_boundary ^
+ openwave.xperiments.m4_ewt.pipeline_engine.physics._test_wc_reflector ^
  openwave.xperiments.m4_ewt.pipeline_engine._check_dimensional_literals ^
  openwave.xperiments.m4_ewt.pipeline_engine._smoke_test
 

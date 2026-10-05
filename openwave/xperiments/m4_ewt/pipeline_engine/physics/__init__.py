@@ -32,10 +32,10 @@ from .evolution import (
     LeapfrogProcessor,
 )
 from .nonlinearity import NonlinearCubic
-from .boundary import DirichletBoundaryProcessor
+from .boundary import BoundaryProcessor, DirichletBoundaryProcessor
 from .measure import AmplitudeTracker
 from .visualize import TaichiWindowProcessor
-from .seed import SeedMultiCenter, SeedPulse, SeedBaseWave
+from .seed import SeedBaseWave
 
 __all__ = [
     # wave centers

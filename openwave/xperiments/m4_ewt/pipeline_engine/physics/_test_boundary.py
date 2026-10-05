@@ -243,6 +243,92 @@ def test_kind_override_beats_feature():
     assert np.allclose(psi[0, :, :], 0.0, atol=1e-6)
 
 
+def _numpy_boundary(kind, p):
+    """Reference for the three kernels: every face, any grid shape."""
+    p = p.copy()
+    if kind == "absorbing":
+        p[0] = p[-1] = 0.0
+        p[:, 0] = p[:, -1] = 0.0
+        p[:, :, 0] = p[:, :, -1] = 0.0
+    elif kind == "periodic":
+        p[0], p[-1] = p[-2], p[1]
+        p[:, 0], p[:, -1] = p[:, -2], p[:, 1]
+        p[:, :, 0], p[:, :, -1] = p[:, :, -2], p[:, :, 1]
+    else:
+        p[0], p[-1] = p[1], p[-2]
+        p[:, 0], p[:, -1] = p[:, 1], p[:, -2]
+        p[:, :, 0], p[:, :, -1] = p[:, :, 1], p[:, :, -2]
+    return p
+
+
+def test_kinds_match_numpy_reference_all_faces():
+    """
+    Each kind against a numpy reference on a non-cubic grid (5, 7, 9),
+    with random psi and a different random psi_prev, applied to
+    PsiBaseField while PsiLongField carries a random sentinel near 1e6.
+    The sentinel is not uniform, so a copy kernel run on PsiLong moves it.
+
+    The tests above seed values on the x axis of a cubic grid, so they
+    see neither the y and z faces nor an nx/ny/nz mix-up.
+
+    Mutation caught: a y or z face dropped or copied from the wrong
+    cell; ny and nz swapped; psi_prev left alone; the processor
+    ignoring field_type (the sentinel moves).
+    """
+    _ti_init()
+    from .features import PsiBaseField
+
+    nx, ny, nz = 5, 7, 9
+    rng = np.random.default_rng(seed=615)
+    psi0 = rng.standard_normal((nx, ny, nz, 3)).astype(np.float32)
+    prev0 = rng.standard_normal((nx, ny, nz, 3)).astype(np.float32)
+    sentinel = (1e6 + rng.standard_normal((nx, ny, nz, 3))).astype(np.float32)
+
+    class _SeedBaseAndSentinel(BaseProcessor):
+        name = "_SeedBaseAndSentinel"
+        stage = Stage.PRE_UPDATE
+        order = 10
+        requires = (PsiBaseField, PsiLongField)
+
+        def process(self, ctx):
+            if ctx.sim.step > 0:
+                return
+            base = ctx.data.require(PsiBaseField)
+            long = ctx.data.require(PsiLongField)
+            base.psi.from_numpy(psi0)
+            base.psi_prev.from_numpy(prev0)
+            long.psi.from_numpy(sentinel)
+            long.psi_prev.from_numpy(sentinel)
+
+    class P(Pipeline):
+        def __init__(self):
+            super().__init__(
+                error_policy=ErrorPolicy.FAIL_FAST,
+                external_provides=(BoundaryCondition,),
+            )
+            self.add(AllocateWaveField(nx=nx, ny=ny, nz=nz, dx=1.0))
+            self.add(_SeedBaseAndSentinel())
+            self.add(BoundaryProcessor(field_type=PsiBaseField))
+
+    from ..runner import Runner
+    from ..sinks import InMemorySink
+
+    for kind in ("absorbing", "periodic", "reflecting"):
+        ctx = Runner({"session": InMemorySink()}).run(
+            P(), name=f"reference_{kind}", params={}, dt=0.1, max_steps=1,
+            initial_features=[BoundaryCondition(kind)],
+        )
+        assert ctx.diag.errors == [], ctx.diag.errors
+        base = ctx.data.require(PsiBaseField)
+        long = ctx.data.require(PsiLongField)
+        d_psi = np.abs(base.psi.to_numpy() - _numpy_boundary(kind, psi0)).max()
+        d_prev = np.abs(base.psi_prev.to_numpy() - _numpy_boundary(kind, prev0)).max()
+        d_long = np.abs(long.psi.to_numpy() - sentinel).max()
+        assert d_psi == 0.0, f"{kind}: psi differs from reference by {d_psi}"
+        assert d_prev == 0.0, f"{kind}: psi_prev differs from reference by {d_prev}"
+        assert d_long == 0.0, f"{kind}: PsiLong sentinel moved by {d_long}"
+
+
 # ======================================================================
 # Runner
 # ======================================================================
@@ -258,6 +344,7 @@ def main() -> int:
         test_periodic_wraps_opposite_face,
         test_reflecting_mirrors_interior,
         test_kind_override_beats_feature,
+        test_kinds_match_numpy_reference_all_faces,
     ]
     passed = 0
     for t in tests:
