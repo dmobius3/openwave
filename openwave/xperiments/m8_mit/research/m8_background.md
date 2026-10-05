@@ -15,7 +15,7 @@ MIT is a **top-down structural model**: a fixed arena (the three-sphere S³, its
 S³/{±I} and S³/2I, and a Möbius edge), a single background standing wave
 `Ψ = cos(t/2)` sampled on it, and a phase-to-time map (the Waltz clock
 `dt/dτ_H = S^(-1/2)`). Particles are representation-theory slots: an irrep of 2I at a
-McKay-lattice position, read in one of the three flat connections (the three
+McKay-lattice position, read in one of the three flat connections (read as the three
 generations), with color from the Z₃ face stabilizers. The couplings and the fermion
 mass ratios are read off this structure (McKay distance, Reidemeister torsion, the
 120-cell), and the conditional relation `Λ_ref = 3/R²` is seeded by the carrier's first

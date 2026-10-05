@@ -13,6 +13,8 @@
 > ([discussion #312](https://github.com/openwave-labs/openwave/discussions/312)),
 > not yet verified in-platform. Verification status is tracked per item; the first
 > flip is the M8.1 certification gate ([`m8_roadmap.md`](m8_roadmap.md)).
+> M8.1 made that flip on 2026-07-21, and § 3's Platform status column carries each
+> in-platform verdict since.
 
 ## 1. The arena (topology is the input)
 
