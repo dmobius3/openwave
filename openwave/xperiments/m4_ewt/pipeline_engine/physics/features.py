@@ -225,7 +225,9 @@ class BoundaryCondition:
     """
     Outer boundary kind and domain radius.
 
-    kind: one of "absorbing", "periodic", "reflecting".
+    kind: one of "dirichlet", "periodic", "reflecting". "absorbing"
+        is reserved for a real absorber (plan item 1.7) and is
+        rejected until one lands.
     r_domain: the domain radius the boundary applies at. Currently
         unused (the grid edges are the boundary); kept so a future
         non-rectangular domain can register it.
@@ -237,9 +239,9 @@ class BoundaryCondition:
     r_domain: float = 1.0
 
     def __post_init__(self):
-        if self.kind not in ("absorbing", "periodic", "reflecting"):
+        if self.kind not in ("dirichlet", "periodic", "reflecting"):
             raise ValueError(
-                f"BoundaryCondition: kind must be 'absorbing', "
+                f"BoundaryCondition: kind must be 'dirichlet', "
                 f"'periodic' or 'reflecting', got {self.kind!r}"
             )
         if self.r_domain <= 0.0:

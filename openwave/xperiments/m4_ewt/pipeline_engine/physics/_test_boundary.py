@@ -1,7 +1,7 @@
 """
 Tests for BoundaryCondition and BoundaryProcessor (plan item 1.7).
 
-Three kinds: absorbing, periodic, reflecting. Each has a test on a
+Three kinds: dirichlet, periodic, reflecting. Each has a test on a
 prepared arena that makes the kind's behaviour visible.
 
 No energy budget is checked. Flux accounting through the boundary is
@@ -87,23 +87,24 @@ def _build_pipeline(seed_arr, bc, max_steps=1):
 
 
 def test_boundary_condition_accepts_three_kinds():
-    for kind in ("absorbing", "periodic", "reflecting"):
+    for kind in ("dirichlet", "periodic", "reflecting"):
         bc = BoundaryCondition(kind=kind)
         assert bc.kind == kind
 
 
 def test_boundary_condition_rejects_unknown_kind():
-    try:
-        BoundaryCondition(kind="banana")
-    except ValueError:
-        return
-    raise AssertionError("expected ValueError for unknown kind")
+    for kind in ("banana", "absorbing"):
+        try:
+            BoundaryCondition(kind=kind)
+        except ValueError:
+            continue
+        raise AssertionError(f"expected ValueError for kind={kind!r}")
 
 
 def test_boundary_condition_rejects_nonpositive_r_domain():
     for bad in (0.0, -1.0):
         try:
-            BoundaryCondition(kind="absorbing", r_domain=bad)
+            BoundaryCondition(kind="dirichlet", r_domain=bad)
         except ValueError:
             continue
         raise AssertionError(f"expected ValueError for r_domain={bad}")
@@ -142,17 +143,17 @@ def test_boundary_processor_requires_boundary_condition():
     raise AssertionError("expected PipelineError, none raised")
 
 
-def test_absorbing_zeroes_outer_shell():
+def test_dirichlet_zeroes_outer_shell():
     """
-    Absorbing kind: outer shell of psi and psi_prev is zero after one
+    Dirichlet kind: outer shell of psi and psi_prev is zero after one
     step, interior unchanged.
 
-    Mutation caught: absorbing zeros the interior, or does not zero
+    Mutation caught: dirichlet zeros the interior, or does not zero
     the shell.
     """
     _ti_init()
     arr = np.ones((6, 6, 6, 3), dtype=np.float32)
-    ctx = _build_pipeline(arr, BoundaryCondition("absorbing"), max_steps=1)
+    ctx = _build_pipeline(arr, BoundaryCondition("dirichlet"), max_steps=1)
     assert ctx.diag.errors == [], ctx.diag.errors
 
     psi = ctx.data.require(PsiLongField).psi.to_numpy()
@@ -218,8 +219,8 @@ def test_kind_override_beats_feature():
     _ti_init()
     arr = np.ones((6, 6, 6, 3), dtype=np.float32)
 
-    # Feature says periodic; processor override says absorbing.
-    # With absorbing override, the shell must be zeroed.
+    # Feature says periodic; processor override says dirichlet.
+    # With dirichlet override, the shell must be zeroed.
     class P(Pipeline):
         def __init__(self):
             super().__init__(
@@ -229,7 +230,7 @@ def test_kind_override_beats_feature():
             self.add(AllocateWaveField(nx=6, ny=6, nz=6, dx=1.0))
             self.add(_SeedField(arr))
             self.add(BoundaryProcessor(
-                field_type=PsiLongField, kind_override="absorbing"))
+                field_type=PsiLongField, kind_override="dirichlet"))
 
     from ..runner import Runner
     from ..sinks import InMemorySink
@@ -239,14 +240,14 @@ def test_kind_override_beats_feature():
     )
     assert ctx.diag.errors == [], ctx.diag.errors
     psi = ctx.data.require(PsiLongField).psi.to_numpy()
-    # Absorbing won: shell is zero.
+    # Dirichlet won: shell is zero.
     assert np.allclose(psi[0, :, :], 0.0, atol=1e-6)
 
 
 def _numpy_boundary(kind, p):
     """Reference for the three kernels: every face, any grid shape."""
     p = p.copy()
-    if kind == "absorbing":
+    if kind == "dirichlet":
         p[0] = p[-1] = 0.0
         p[:, 0] = p[:, -1] = 0.0
         p[:, :, 0] = p[:, :, -1] = 0.0
@@ -313,7 +314,7 @@ def test_kinds_match_numpy_reference_all_faces():
     from ..runner import Runner
     from ..sinks import InMemorySink
 
-    for kind in ("absorbing", "periodic", "reflecting"):
+    for kind in ("dirichlet", "periodic", "reflecting"):
         ctx = Runner({"session": InMemorySink()}).run(
             P(), name=f"reference_{kind}", params={}, dt=0.1, max_steps=1,
             initial_features=[BoundaryCondition(kind)],
@@ -340,7 +341,7 @@ def main() -> int:
         test_boundary_condition_rejects_unknown_kind,
         test_boundary_condition_rejects_nonpositive_r_domain,
         test_boundary_processor_requires_boundary_condition,
-        test_absorbing_zeroes_outer_shell,
+        test_dirichlet_zeroes_outer_shell,
         test_periodic_wraps_opposite_face,
         test_reflecting_mirrors_interior,
         test_kind_override_beats_feature,

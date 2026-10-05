@@ -1,4 +1,4 @@
-"""Outer boundary condition. Dirichlet psi = 0 for now."""
+"""Outer boundary conditions (plan item 1.7): dirichlet, periodic, reflecting."""
 
 from ..pipeline import BaseProcessor, Stage
 
@@ -38,7 +38,7 @@ def _dirichlet(
             prev[i, j, k] = z
 
 @ti.kernel
-def _boundary_absorbing(
+def _boundary_dirichlet(
     psi: ti.template(),
     prev: ti.template(),
     nx: ti.i32,
@@ -123,9 +123,10 @@ class BoundaryProcessor(BaseProcessor):
     tests in _test_boundary.py check the field's behaviour at the
     edge, not an energy budget.
 
-    The three kernels are first-order: absorbing zeroes the outer
-    shell (Dirichlet-like, not a Mur or PML boundary); periodic copies
-    the opposite face; reflecting copies the interior neighbour.
+    The three kernels are first-order: dirichlet zeroes the outer
+    shell, a fixed-end wall that reflects with the sign inverted (not
+    a Mur or PML absorber); periodic copies the opposite face;
+    reflecting copies the interior neighbour.
     """
 
     name = "BoundaryProcessor"
@@ -143,8 +144,8 @@ class BoundaryProcessor(BaseProcessor):
         bc = ctx.data.require(BoundaryCondition)
         field = ctx.data.require(self.field_type)
         kind = self.kind_override or bc.kind
-        if kind == "absorbing":
-            _boundary_absorbing(field.psi, field.psi_prev,
+        if kind == "dirichlet":
+            _boundary_dirichlet(field.psi, field.psi_prev,
                                 grid.nx, grid.ny, grid.nz)
         elif kind == "periodic":
             _boundary_periodic(field.psi, field.psi_prev,
