@@ -6,18 +6,19 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "OPENWAVE"
 
-# Calendar versioning (CalVer), YY.M.D: the date the release was cut. Adopted 2026-09-07,
-# replacing SemVer at 1.6.10. SemVer encodes a backward-compatibility promise to a dependency
-# resolver, and this project has no resolver to make one to: it is not on PyPI, nothing pins a
-# range against it, and with no CI there is nothing that could verify such a promise. A date is
-# a fact the project can actually keep. It also lets a reader of a dated finding or method note
-# tell at a glance whether the engine predates it.
+# Calendar versioning (CalVer), YY.N since 2026-10-05: the year the release was cut, then the
+# release count in that year (26.1, 26.2, ...), restarting at 27.1 in January (the pip scheme).
+# It replaced YY.M.D (the release date, adopted 2026-09-07, replacing SemVer at 1.6.10), whose
+# same-day second release needed a fourth component. SemVer encodes a backward-compatibility
+# promise to a dependency resolver, and this project has no resolver to make one to: it is not on
+# PyPI, nothing pins a range against it, and with no CI there is nothing that could verify such a
+# promise. The first YY.N, 26.11, sorts after every 26.10.x and after 26.9.22, because PEP 440
+# compares each part as a number.
 #
-# Rules: no zero padding (PEP 440 strips it, so "26.09.07" installs as "26.9.7" and stops
-# matching its own tag). No "v" here; that prefix belongs on the git tag alone. A second release
-# on a day already used takes a fourth component, "26.9.7.1", NOT a letter suffix, because
-# PEP 440 reads "26.9.7b" as a beta that sorts BEFORE 26.9.7 and that pip skips by default.
-version = "26.9.22"
+# Rules: no zero padding (PEP 440 strips it, so "26.011" installs as "26.11" and stops matching
+# its own tag). No "v" here; that prefix belongs on the git tag alone. No letter suffix: PEP 440
+# reads "26.11b" as a beta that sorts BEFORE 26.11 and that pip skips by default.
+version = "26.11"
 
 requires-python = ">=3.12"
 
