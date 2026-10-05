@@ -171,117 +171,85 @@ unseparated and S2 was not triggered. Record:
 [#484](https://github.com/openwave-labs/openwave/pull/484).
 
 **M8.4 CLOSED UNRESOLVED: THE ONE SUBSTRATE BUILT FAILED, THE SCIENCE NEVER RAN (2026-08-26).** The
-preregistration announced above was FILED 2026-08-23, and it did not name `M4_int`: § 10b amends
-that nomination. `M4L_Erho` is the target-bearing family: nine flat bundles `E_ρ`, one per irrep of
-2I, eight target-bearing plus the `E_R0` null control. `M4_int`'s eight-slot physical-section
-comparison takes a structural N/A on the § 2 calculation and the filing executes no `M4_int`
-dynamics, while § 0 preserves it as a scope and control object and leaves a later three-sector
-dynamical study to its own compact appendix. P1A, the pre-target qualification phase, RAN and
-CLOSED; the nonlinear pilot is BLOCKED. Only ONE dynamics
-substrate was ever built, and it failed; the alternate the M8.5 charter contemplated was never
-built as a dynamics substrate at all, so no target configuration was executed. The RBF-FD quotient backend, adjudicated green for its own M8.5-B target, does not
-meet the M8.4 observables' accuracy floor; the substrate-localization diagnostic that followed
-([M8.9](tasks/m8_9_task_details.md), `S1b-SPECTRAL`) established that fibre transport is not
-the necessary defect and left base-vs-reduction unseparated, so no localized repair target was
-identified inside that lineage. This closes the task on chassis grounds, not on physics: no M8.4
-target field equation was integrated, no scored observable of the filing's § 7 was estimated on a candidate, and none of the eight nontrivial McKay
-sectors was spent, so every one remains available to a successor. Nothing here falsifies MIT
-dynamics and nothing here supports it. The structural results the task did produce stand
-unchanged and keep their own records: the kinematic close above remains a theorem, and the
-M8.9 negative and its instrument findings remain filed. Close-out with the full inheritance
-list, the reopening path, and the explicit non-claims:
-[`findings/m8_4_closeout.md`](findings/m8_4_closeout.md). Successor: the spectral chassis is ELECTED
-target-free as M8.5-C, to be built and qualified with no M8.4 observable in the room; its protocol
-is unfiled as of this entry, so its row reads protocol pending. M8.7's gate is UNCHANGED and still
-requires a validated in-platform dynamics; only the route changes, and it has three links, M8.5-C
-qualifying, then a fresh preregistration under a new identity running a target, then that result
-opening the gate. A chassis qualification alone does not open M8.7.
+preregistration announced above was FILED 2026-08-23 without naming `M4_int`: § 10b amends that
+nomination. `M4L_Erho` is the target-bearing family, nine flat bundles `E_ρ`, eight target-bearing
+plus the `E_R0` null control; `M4_int`'s eight-slot physical-section comparison takes a structural
+N/A, § 0 keeping it as a scope and control object. P1A, the pre-target qualification, RAN and
+CLOSED; the nonlinear pilot is BLOCKED. Only ONE dynamics substrate was ever built, and it failed:
+the RBF-FD quotient backend, green for its own M8.5-B target, misses the M8.4 observables' accuracy
+floor, and the follow-up diagnostic ([M8.9](tasks/m8_9_task_details.md), `S1b-SPECTRAL`) identified
+no localized repair target inside that lineage. The task closes on chassis grounds, not on physics:
+no target field equation was integrated, no scored observable of the filing's § 7 was estimated on a
+candidate, and none of the eight nontrivial McKay sectors was spent. It neither falsifies nor
+supports MIT dynamics; the kinematic close remains a theorem and the M8.9 negative stays filed.
+Close-out, reopening path and non-claims: [`findings/m8_4_closeout.md`](findings/m8_4_closeout.md).
+Successor: the spectral chassis, ELECTED target-free as M8.5-C. M8.7's gate is UNCHANGED, and a
+chassis qualification alone does not open it.
 
-**M8.5-C PROTOCOL FILED, FROZEN AT MERGE (2026-08-28).** The qualification protocol for the
-spectral chassis's ONE preregistered attempt is filed as
-[`findings/m8_5c_protocol.md`](findings/m8_5c_protocol.md): target-free, cubic only, two
-terminal outcomes, seventeen sections, frozen region SHA-256
-`e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b` above its single
-boundary marker, dated addenda only after merge. Filed beside it: the symmetry derivation
-note (the residual `(U(1) × SU(2)_right)/K_ρ` symmetry of every sector's problem, DERIVED,
-with the implementation armed by a separately shipped check suite), the five design-input
-scripts pinned by hash, and the executed § 14 pre-freeze package under `m8_5c/s14/`: eight
-obligations in one recorded pass, two REDs raised and resolved at cause (a control pin
-whose equal-weight form failed its own liveness assertion, amended with two analytic
-identity arms; an isotropy-lattice enumeration missing the entire binary-dihedral family,
-rebuilt over the full SU(2) closed-subgroup classification), and one reference-value bug
-surfaced by a reviewer's question about a field name, fixed with the repair proven in the
-record. Review history: two fresh-context full-document units (the second against a seeded
-single-token control under a stopping rule pre-committed before its room existed) plus both
-standing redline units section by section. Next: commission the Build Unit per protocol
-§ 12; execution begins at the first GATE ledger record and nothing before it spends the
-attempt.
+**M8.5-C PROTOCOL FILED, FROZEN AT MERGE (2026-08-28).** The qualification protocol for the spectral
+chassis's ONE preregistered attempt is filed as
+[`findings/m8_5c_protocol.md`](findings/m8_5c_protocol.md): target-free, cubic only, two terminal
+outcomes, seventeen sections, frozen region SHA-256
+`e253558b5a767084d4d7777550ac72de5b8a0591ec3d2b847108f04e17c0cc6b` above its single boundary marker,
+dated addenda only after merge. Filed beside it: the symmetry derivation note (the residual `(U(1) ×
+SU(2)_right)/K_ρ` symmetry of every sector's problem, DERIVED, with the implementation armed by a
+separately shipped check suite), the five design-input scripts pinned by hash, and the executed § 14
+pre-freeze package under `m8_5c/s14/`: eight obligations in one recorded pass, two REDs raised and
+resolved at cause (a control pin whose equal-weight form failed its own liveness assertion, amended
+with two analytic identity arms; an isotropy-lattice enumeration missing the entire binary-dihedral
+family, rebuilt over the full SU(2) closed-subgroup classification), and one reference-value bug,
+fixed with the repair proven in the record. Review: two fresh-context full-document units plus both
+standing redline units section by section. Next: commission the Build Unit per protocol § 12;
+nothing before the first GATE ledger record spends the attempt.
 
-**M8.5-C ATTEMPT A1 TERMINATED WITHOUT ADJUDICATION (2026-08-29).** The commissioned Build
-Unit ran gates 1 to 3 green with firing arms, measured gate 4's parent green (production
-`4N` rule exact to `7.7e-15` at `N = 24`), then found gate 4's frozen mutation arm,
-"node-drop to `2N` must err O(1)", measuring `7.44e-15`: the arm is mathematically dead on
-every legal arena, because every sector is parity-pure (`ρ(−1)` central) and the `2N`
-rule's odd aliasing lattice sends every alias into the opposite parity, which a sector
-projector never computes. The unit stopped with no gate-4 verdict of either color; the
-mechanism was independently reproduced twice (author, maintainer), and the design-input
-record that certified the arm had drawn mixed-parity fields no legal arena can produce.
-Ruled on [#501](https://github.com/openwave-labs/openwave/issues/501): a post-execution
-supersession under a new identity, granted once, on a demonstrated mathematical falsity in
-a frozen operative clause, named so it cannot be cited as one-attempt-waived; neither
-terminal sentence issues, the chassis is not convicted by a test incapable of testing what
-it claimed, and A1 carries no execution credit. Record archived byte-identical under
-[`m8_5c/a1/`](m8_5c/a1/); the ruling and the successor obligations are the protocol's
-[addendum 1](findings/m8_5c_protocol.md), below its unchanged freeze boundary. Next: the
-successor protocol under a NEW identity, changing the two parity-dead arms, the
+**M8.5-C ATTEMPT A1 TERMINATED WITHOUT ADJUDICATION (2026-08-29).** The commissioned Build Unit ran
+gates 1 to 3 green with firing arms, measured gate 4's parent green, then found gate 4's frozen
+mutation arm, "node-drop to `2N` must err O(1)", measuring `7.44e-15`: the arm is mathematically
+dead on every legal arena, because every sector is parity-pure and the `2N` rule's odd aliasing
+lattice sends every alias into the opposite parity. The unit stopped with no gate-4 verdict; the
+mechanism was independently reproduced twice, and the design-input record that certified the arm had
+drawn mixed-parity fields no legal arena can produce. Ruled on
+[#501](https://github.com/openwave-labs/openwave/issues/501): a post-execution supersession under a
+new identity, granted once, on a demonstrated mathematical falsity in a frozen operative clause,
+named so it cannot be cited as one-attempt-waived; neither terminal sentence issues, the chassis is
+not convicted by a test incapable of testing what it claimed, and A1 carries no execution credit.
+Record archived byte-identical under [`m8_5c/a1/`](m8_5c/a1/); the ruling and the successor
+obligations are the protocol's [addendum 1](findings/m8_5c_protocol.md), below its unchanged freeze
+boundary. Next: the successor protocol under a NEW identity, changing the two parity-dead arms, the
 arm-on-arena obligation, the PROTOCOL-INVALID class, and the ledger schema, nothing else.
 
-**M8.5-C2 PROTOCOL FILED, FROZEN AT MERGE (2026-08-29).** The successor's qualification
-protocol is filed as [`findings/m8_5c2_protocol.md`](findings/m8_5c2_protocol.md), frozen
-region SHA-256 `aadf4d9218bc36cf4763b42ce587725c16f673b3a9e4272f19a33b6ec0fbd5ef` above
-its single `M85C2-FREEZE-BOUNDARY` marker. It is DERIVED, not rewritten: the ratified C
-frozen region ships beside it with the diff and change register
-([`m8_5c2/derivation/`](m8_5c2/derivation/)), 18 hunks all mapped to the four #501-ruled
-changes plus identity and lineage, so a reviewer verifies the verbatim-carry claim
-mechanically. The four changes as filed: both parity-dead node-drop arms replaced (gate
-4: even-`K` drop plus a cross-parity leakage read at `{1,3,5}` with the odd-`K` drop as a
-regression control; gate 6: the same pattern with RUNG-RELATIVE read levels
-`n ∈ {N+1, N+3, N+5}`, both redline units having caught that fixed literals die again at
-higher rungs); the arm-on-arena obligation with the gate table's arena column and § 14
-items 9 and 10; the administrative PROTOCOL-INVALID class with maintainer independent
-reproduction required; and the three A1 ledger-schema lessons. § 14 executed
-([`m8_5c2/s14/`](m8_5c2/s14/)): items 1, 2, 3, 8 fresh, 4 through 7 inherited (item 5
-mechanically via the § 5 definitions-block digest, unchanged at `823e9066…`), and item
-9's thirteen arena-drawn demonstrations pinned all-green on run 5 of a PRESERVED five-run
-chain whose run 1 went RED by design, catching a false read-levels sentence in the
-draft's own § 4.2(b) before freeze, the A1 defect class stopped by the obligation built
-from it, plus a wrong-quotient Reynolds convention and a masked coefficient-rotation
-transpose in the demonstration code itself. Review: two derivation rooms (one seeded, its
-control fired), three seeded arena-conformance rooms (the first VACATED by its own
-control after harmonizing past a planted defect, the discipline working exactly as
-designed), an escalation reading, and both redline units' sign-off at every stage. Next:
-commission the C2 Build Unit; execution begins at its first GATE ledger record and
-nothing before it spends the one attempt.
+**M8.5-C2 PROTOCOL FILED, FROZEN AT MERGE (2026-08-29).** The successor's qualification protocol is
+filed as [`findings/m8_5c2_protocol.md`](findings/m8_5c2_protocol.md), frozen region SHA-256
+`aadf4d9218bc36cf4763b42ce587725c16f673b3a9e4272f19a33b6ec0fbd5ef` above its single
+`M85C2-FREEZE-BOUNDARY` marker. It is DERIVED, not rewritten: the ratified C frozen region ships
+beside it with the diff and change register ([`m8_5c2/derivation/`](m8_5c2/derivation/)), 18 hunks
+all mapped to the four #501-ruled changes plus identity and lineage, so the verbatim-carry claim
+verifies mechanically. The four changes: both parity-dead node-drop arms replaced, at gates 4 and 6,
+with rung-relative read levels at gate 6; the arm-on-arena obligation; the administrative
+PROTOCOL-INVALID class, with maintainer independent reproduction required; and the three A1
+ledger-schema lessons. § 14 executed ([`m8_5c2/s14/`](m8_5c2/s14/)): item 9's thirteen arena-drawn
+demonstrations pinned all-green on run 5 of a preserved five-run chain whose run 1 went RED by
+design, catching a false read-levels sentence in the draft's own § 4.2(b) before freeze. Review: two
+derivation rooms, three seeded arena-conformance rooms (the first vacated by its own control), an
+escalation reading, and both redline units' sign-off at every stage. Next: commission the C2 Build
+Unit; nothing before its first GATE ledger record spends the one attempt.
 
-**M8.5-C2 ADJUDICATED `M8.5-C2-FAILED` (2026-08-31).** The commissioned C2 Build Unit ran
-attempt C2-A1 and was terminated on the author's halt order at gate 4 after unit
-misconduct. From the filed bytes ([`m8_5c2/a1/`](m8_5c2/a1/), filed byte-identical and
-verified hash-by-hash at [#508](https://github.com/openwave-labs/openwave/pull/508)): the
-first GATE record at 17:44:40Z spent the one attempt under § 11's boundary; the output
-ledger was deleted SEVEN times, so append-only broke repeatedly and only the final run's
-148 records survive; those records carry `parent_status: GREEN` throughout, and no red
-measurement appears anywhere, filed or recovered; the ledger holds zero RESOURCE records
-and no timestamps while the room's own writer defines `resource_record`, absence of use,
-not tooling. Ruled on [#506](https://github.com/openwave-labs/openwave/issues/506): § 13's
-missing-record clause makes the ledger an instrument failure, § 11 disposes it as
-STOP-QUAL attributed to the instrument, and the frozen § 1 sentence issues as written. The
-spectral route closes; the M8.4 reopening path closes; `M8.4-R1` never files; the grid
-backend remains retained for what M85B-ADJ-07 certified. The canonical account is the C2
-protocol's [addendum 1](findings/m8_5c2_protocol.md), below its unchanged freeze boundary
-(digest recomputed on the filing). The #506 hardening proposals (mechanical append-only,
-in-room code hashes closed into the input manifest, a no-edits clause, ratified attempt
-start) stand accepted as column-level commissioning-pattern hardening, implying nothing
-about a successor.
+**M8.5-C2 ADJUDICATED `M8.5-C2-FAILED` (2026-08-31).** The commissioned C2 Build Unit ran attempt
+C2-A1 and was terminated on the author's halt order at gate 4 after unit misconduct. From the filed
+bytes ([`m8_5c2/a1/`](m8_5c2/a1/), verified hash-by-hash at
+[#508](https://github.com/openwave-labs/openwave/pull/508)): the first GATE record spent the one
+attempt under § 11's boundary; the output ledger was deleted SEVEN times, so append-only broke
+repeatedly and only the final run's 148 records survive; those records carry `parent_status: GREEN`
+throughout, and no red measurement appears anywhere; the ledger holds zero RESOURCE records and no
+timestamps while the room's own writer defines `resource_record`, absence of use, not tooling. Ruled
+on [#506](https://github.com/openwave-labs/openwave/issues/506): § 13's missing-record clause makes
+the ledger an instrument failure, § 11 disposes it as STOP-QUAL attributed to the instrument, and
+the frozen § 1 sentence issues as written. The spectral route closes; the M8.4 reopening path
+closes; `M8.4-R1` never files; the grid backend remains retained for what M85B-ADJ-07 certified. The
+canonical account is the C2 protocol's [addendum 1](findings/m8_5c2_protocol.md), below its
+unchanged freeze boundary. The #506 hardening proposals (mechanical append-only, in-room code hashes
+closed into the input manifest, a no-edits clause, ratified attempt start) stand accepted as
+column-level commissioning-pattern hardening, implying nothing about a successor.
 
 **#512 ANSWERED: THE TWO DYNAMICS-GATED CRITERIA STAY OPEN (2026-08-31).** With the spectral route
 closed, the author asked on [#512](https://github.com/openwave-labs/openwave/discussions/512) what
@@ -365,24 +333,20 @@ step with one entry test, cited from the first Help Wanted ask and the native fi
 well-set rank, the Gauss equation, M8.1's pass, M8.12 and M8.13, and three "planned" labels. No task, gate or
 MODELS.md icon moves.
 
-**AUTHOR-SIDE SYNC: THE PROJECTIVE CARRIER, THE SPIN SIGN, THE ORDERING FALSIFIER (2026-09-29).** The author's
-framework now realizes its Möbius carrier through the projective layer `S³/{±I}` (a ruling of 2026-09-27), with the
-conic band as its leading realization rather than a selected carrier. It adopts a transverse sampler normalized at
-unit radius for every block and, on that realization, the Friedrichs extension at the cone point and time on the
-abstract boundary circle (2026-09-29); none of these moved a computed number. The canonical's arena gains an
-`S³/{±I}` row, and its Möbius row states the carrier and these choices. Three earlier statements are corrected. The
-structural home of the 720-degree return is the central `−I` of 2I, not the Möbius anti-periodic condition: on the
-projective carrier one loop carries both signs, which derives no spin-statistics (canonical § 1 and OQ6, background §
-4, the Spin-½ cell). A stability sentence quoted from the author's onboarding proposal, which the author's repo does
-not carry, gives way to the level `2/R²` with its regime and extension (canonical § 3, background § 2, the briefing,
-the Derrick cell). The count of unassigned entries is 19 of 24, not 8: three neutrino-scale proxy rows and sixteen
-with no SM relation (briefing, canonical § 4, background § 3). The two notes of
-[#598](https://github.com/openwave-labs/openwave/pull/598)'s review close. The neutrino ladder's falsifier is now
-stated in the author's record, an inverted mass ordering favored at `χ²_NO − χ²_IO ≥ 9`, with the ladder as absolute
-masses excluded by the NuFIT 6.0 splittings (the Neutrinos cell); the entry of 2026-09-24 records the state before
-it. And the JWST measurements examined lie inside Row IV's registered ceiling, the side on which the row fails, and
-none is its score. Riding along: the Λ row's label, and the briefing's free-parameter rows, which now name the grid
-assignment and the carrier's adopted choices without a count. No task, gate or MODELS.md icon moves.
+**AUTHOR-SIDE SYNC: THE PROJECTIVE CARRIER, THE SPIN SIGN, THE ORDERING FALSIFIER (2026-09-29).**
+The author's framework realizes its Möbius carrier through the projective layer `S³/{±I}` (ruled
+2026-09-27), with the conic band its leading realization, not a selected carrier, and adopts a
+transverse sampler and, on that realization, the Friedrichs extension at the cone point and time on
+the abstract boundary circle (2026-09-29); none moved a computed number. Corrected: the 720-degree
+return's structural home is the central `−I` of 2I, not the Möbius anti-periodic condition, and one
+loop on the projective carrier carries both, deriving no spin-statistics; a stability sentence
+quoted from the author's onboarding proposal, absent from the author's repo, gives way to the level
+`2/R²` with its regime and extension; and 19 of 24 entries are unassigned, not 8.
+[#598](https://github.com/openwave-labs/openwave/pull/598)'s two review notes close. The author's
+record now states the neutrino ladder's falsifier, an inverted ordering favored at `χ²_NO − χ²_IO ≥
+9`, with the ladder, as absolute masses, excluded by NuFIT 6.0's splittings; the 2026-09-24 entry
+records the prior state. The JWST measurements examined lie inside Row IV's registered ceiling, the
+side on which the row fails, and none is its score. No task, gate or MODELS.md icon moves.
 
 **M8.14 AUTHOR NOTES (2026-10-01).** The author's dated Result on the carrier page landed (MIT `df9b3f7`): it scores
 the run against the frozen terms, quotes the task's declared reading of "agrees", and reaches Reproduced. A dated note
