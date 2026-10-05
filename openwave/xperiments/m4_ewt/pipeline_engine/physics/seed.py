@@ -1,10 +1,10 @@
 """Initial condition: a Gaussian pulse of radial displacement."""
 
-from ..pipeline import BaseProcessor, Stage
-
+import numpy as np
 import taichi as ti
 
-from .features import PsiLongField, WaveGrid
+from ..pipeline import BaseProcessor, Stage
+from .features import PsiBaseField, PsiLongField, WaveGrid
 
 
 class SeedPulse(BaseProcessor):
@@ -150,3 +150,36 @@ def _add_pulse(
             v = env * (d / r)
             psi[i, j, k] += v
             prev[i, j, k] += v
+
+
+class SeedBaseWave(BaseProcessor):
+    """
+    Seed PsiBaseField once, at step 0, from a caller-supplied array.
+
+    The array has shape (nx, ny, nz, 3). It is written to both psi and
+    psi_prev, so the field starts at rest. No profile is built here:
+    the physics caller supplies the values.
+
+    Stage.PRE_UPDATE, order 10 (same slot as SeedPulse and
+    SeedMultiCenter). Runs once.
+    """
+
+    name = "SeedBaseWave"
+    stage = Stage.PRE_UPDATE
+    order = 10
+    requires = (WaveGrid, PsiBaseField)
+
+    def __init__(self, field_array):
+        self.field_array = field_array
+
+    def process(self, ctx) -> None:
+        if ctx.sim.step > 0:
+            return
+        grid = ctx.data.require(WaveGrid)
+        field = ctx.data.require(PsiBaseField)
+        arr = np.asarray(self.field_array, dtype=np.float32)
+        expected = (grid.nx, grid.ny, grid.nz, 3)
+        if arr.shape != expected:
+            raise ValueError(f"SeedBaseWave: array shape {arr.shape} != grid {expected}")
+        field.psi.from_numpy(arr)
+        field.psi_prev.from_numpy(arr)

@@ -3,6 +3,7 @@
 from .wc_types import WC, WCState
 from .wc_factory import build_wc_state
 from .features import (
+    BoundaryCondition,
     EMCDensityField,
     EMCFluxField,
     PsiBaseField,
@@ -31,9 +32,10 @@ from .evolution import (
     LeapfrogProcessor,
 )
 from .nonlinearity import NonlinearCubic
-from .boundary import DirichletBoundaryProcessor
+from .boundary import BoundaryProcessor, DirichletBoundaryProcessor
 from .measure import AmplitudeTracker
 from .visualize import TaichiWindowProcessor
+from .seed import SeedBaseWave
 
 __all__ = [
     # wave centers
@@ -73,4 +75,7 @@ __all__ = [
     "TaichiWindowProcessor",
     "UpdateEMCDensityProcessor",
     "UpdateWaveSpeedProcessor",
+    "SeedBaseWave",
+    "BoundaryCondition",
+    "BoundaryProcessor",
 ]

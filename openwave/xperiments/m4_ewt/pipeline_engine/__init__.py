@@ -22,6 +22,8 @@ Design rules:
     Z8. Params are typed and grouped separately from run identity.
 """
 
+from .contracts import ScatteringOperatorInterface, SourceTermInterface
+
 from .context import (
     Context,
     Diagnostics,
@@ -71,4 +73,6 @@ __all__ = [
     # runner
     "IRunner",
     "Runner",
+    "ScatteringOperatorInterface",
+    "SourceTermInterface",
 ]

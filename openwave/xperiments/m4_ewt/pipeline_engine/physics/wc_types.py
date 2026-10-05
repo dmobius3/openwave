@@ -17,6 +17,13 @@ class WC:
     phase: radians. Used only as a sign convention for the seed envelope
            (cos(phase)). This is an imposed sign, NOT a charge model. The
            emergent-charge question is M4.2.
+
+    Reflector attributes (plan Section 6, item 1.5):
+      reflect_coeff_long  -- amplitude reflection coefficient for the
+                             longitudinal mode. Default 1.0.
+      reflect_coeff_trans -- amplitude conversion coefficient into the
+                             transverse mode. Default 0.0.
+      phase_shift         -- reflection phase shift in radians. Default 0.0.
     """
 
     x: float
@@ -25,6 +32,9 @@ class WC:
     phase: float = 0.0
     active: bool = True
     amplitude: float = 1.0
+    reflect_coeff_long: float = 1.0
+    reflect_coeff_trans: float = 0.0
+    phase_shift: float = 0.0
 
 
 @dataclass

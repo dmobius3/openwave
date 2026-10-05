@@ -205,8 +205,13 @@ class LaplacianVariableCoeffProcessor(BaseProcessor):
     The naive form c^2_i * laplacian(psi) is a different wave equation
     when c^2 varies: it discretises psi_tt = c^2 lap(psi), not the flux
     form psi_tt = div(c^2 grad psi). Each has a conserved invariant of
-    its own; they are not the same law, and the leapfrog integrates each
-    of them exactly. Plan item 1.23 pins the flux form
+    its own; they are not the same law, and the leapfrog conserves each
+    form's own discrete invariant. For the flux form that invariant is
+    the staggered energy above. For the naive form it is the same
+    staggered expression weighted by 1/c^2, which stays conserved even
+    where c^2 < 0 and is a positive energy that bounds the solution only
+    while c^2 > 0, the boundary test_negative_c2_regime_is_reachable
+    pins. Plan item 1.23 pins the flux form
         E_grad = sum (1/2) c^2_{i+1/2} ((psi_{i+1} - psi_i)/dx)^2 dx
     because that is the equation the EMC chain implies when c^2 depends
     on rho. The naive form is not a bug; it is a different equation, and
