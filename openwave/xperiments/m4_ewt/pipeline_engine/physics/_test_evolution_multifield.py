@@ -506,7 +506,6 @@ def test_leapfrog_kernel_matches_numpy():
       - sign error in the dt2 * accel term
       - full-grid scope where the correct scope is interior-only
       - time-level swap order inverted
-      - wrong axis index in a neighbour read
     """
     _ti_init()
     from .evolution import _leapfrog

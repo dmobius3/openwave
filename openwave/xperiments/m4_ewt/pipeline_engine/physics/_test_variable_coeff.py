@@ -170,11 +170,17 @@ def test_var_coeff_const_matches_const_laplacian():
     Smoke check: c^2 = c0^2 everywhere -> _laplacian_var_coeff matches
     the constant-coefficient _laplacian at every interior voxel.
 
-    This test cannot catch a wrong half-grid average, because with a
-    constant c^2 every neighbour reads the same value. The averaging
-    arm is caught by test_var_coeff_missing_half_average_changes_result
-    on a variable c^2 field. This test catches only gross kernel
-    errors: wrong stencil shape, wrong dx power, wrong interior scope.
+    This test runs at dx = 1, where 1 / dx and 1 / dx^2 agree, so it
+    cannot catch a wrong dx power; the dx power is pinned by
+    test_production_pipeline_vs_numpy on the flux kernel and by
+    test_production_constant_laplacian_vs_numpy on the constant kernel,
+    both at dx = 0.5.
+
+    This test cannot catch a wrong half-grid average either, because
+    with a constant c^2 every neighbour reads the same value. That arm
+    is caught by test_var_coeff_missing_half_average_changes_result on
+    a variable c^2 field. What this test does catch: wrong stencil
+    shape, wrong interior scope, wrong coefficient sign.
     """
     _ti_init()
     from .evolution import _laplacian
