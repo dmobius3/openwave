@@ -32,9 +32,7 @@ class SourceTermInterface(BaseProcessor):
     order = 7
 
     def contribute(self, ctx) -> None:
-        raise NotImplementedError(
-            f"{type(self).__name__} must implement contribute(ctx)"
-        )
+        raise NotImplementedError(f"{type(self).__name__} must implement contribute(ctx)")
 
     def process(self, ctx) -> None:
         self.contribute(ctx)
@@ -58,9 +56,7 @@ class ScatteringOperatorInterface(BaseProcessor):
     order = 7
 
     def scatter(self, ctx) -> None:
-        raise NotImplementedError(
-            f"{type(self).__name__} must implement scatter(ctx)"
-        )
+        raise NotImplementedError(f"{type(self).__name__} must implement scatter(ctx)")
 
     def process(self, ctx) -> None:
         self.scatter(ctx)

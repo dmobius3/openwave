@@ -151,6 +151,7 @@ def _add_pulse(
             psi[i, j, k] += v
             prev[i, j, k] += v
 
+
 class SeedBaseWave(BaseProcessor):
     """
     Seed PsiBaseField once, at step 0, from a caller-supplied array.
@@ -179,8 +180,6 @@ class SeedBaseWave(BaseProcessor):
         arr = np.asarray(self.field_array, dtype=np.float32)
         expected = (grid.nx, grid.ny, grid.nz, 3)
         if arr.shape != expected:
-            raise ValueError(
-                f"SeedBaseWave: array shape {arr.shape} != grid {expected}"
-            )
+            raise ValueError(f"SeedBaseWave: array shape {arr.shape} != grid {expected}")
         field.psi.from_numpy(arr)
         field.psi_prev.from_numpy(arr)

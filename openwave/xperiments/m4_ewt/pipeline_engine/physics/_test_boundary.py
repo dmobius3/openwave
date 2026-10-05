@@ -31,7 +31,6 @@ from ..pipeline import (
 from .allocator import AllocateWaveField
 from .boundary import BoundaryProcessor
 
-
 _TI_INITIALIZED = False
 
 
@@ -76,7 +75,11 @@ def _build_pipeline(seed_arr, bc, max_steps=1):
     from ..sinks import InMemorySink
 
     return Runner({"session": InMemorySink()}).run(
-        P(), name="boundary_test", params={}, dt=0.1, max_steps=max_steps,
+        P(),
+        name="boundary_test",
+        params={},
+        dt=0.1,
+        max_steps=max_steps,
         initial_features=[bc],
     )
 
@@ -135,7 +138,11 @@ def test_boundary_processor_requires_boundary_condition():
 
     try:
         Runner({"session": InMemorySink()}).run(
-            Bad(), name="missing_bc", params={}, dt=0.1, max_steps=1,
+            Bad(),
+            name="missing_bc",
+            params={},
+            dt=0.1,
+            max_steps=1,
         )
     except PipelineError as e:
         assert "BoundaryCondition" in str(e), str(e)
@@ -229,13 +236,17 @@ def test_kind_override_beats_feature():
             )
             self.add(AllocateWaveField(nx=6, ny=6, nz=6, dx=1.0))
             self.add(_SeedField(arr))
-            self.add(BoundaryProcessor(
-                field_type=PsiLongField, kind_override="dirichlet"))
+            self.add(BoundaryProcessor(field_type=PsiLongField, kind_override="dirichlet"))
 
     from ..runner import Runner
     from ..sinks import InMemorySink
+
     ctx = Runner({"session": InMemorySink()}).run(
-        P(), name="override_test", params={}, dt=0.1, max_steps=1,
+        P(),
+        name="override_test",
+        params={},
+        dt=0.1,
+        max_steps=1,
         initial_features=[BoundaryCondition("periodic")],
     )
     assert ctx.diag.errors == [], ctx.diag.errors
@@ -316,7 +327,11 @@ def test_kinds_match_numpy_reference_all_faces():
 
     for kind in ("dirichlet", "periodic", "reflecting"):
         ctx = Runner({"session": InMemorySink()}).run(
-            P(), name=f"reference_{kind}", params={}, dt=0.1, max_steps=1,
+            P(),
+            name=f"reference_{kind}",
+            params={},
+            dt=0.1,
+            max_steps=1,
             initial_features=[BoundaryCondition(kind)],
         )
         assert ctx.diag.errors == [], ctx.diag.errors

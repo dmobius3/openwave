@@ -7,7 +7,6 @@ import taichi as ti
 from .features import BoundaryCondition, PsiLongField, WaveGrid
 
 
-
 class DirichletBoundaryProcessor(BaseProcessor):
     """Zero the outer shell of the grid every step."""
 
@@ -37,6 +36,7 @@ def _dirichlet(
             psi[i, j, k] = z
             prev[i, j, k] = z
 
+
 @ti.kernel
 def _boundary_dirichlet(
     psi: ti.template(),
@@ -47,11 +47,7 @@ def _boundary_dirichlet(
 ):
     z = ti.Vector([0.0, 0.0, 0.0])
     for i, j, k in ti.ndrange(nx, ny, nz):
-        on_edge = (
-            i == 0 or i == nx - 1
-            or j == 0 or j == ny - 1
-            or k == 0 or k == nz - 1
-        )
+        on_edge = i == 0 or i == nx - 1 or j == 0 or j == ny - 1 or k == 0 or k == nz - 1
         if on_edge:
             psi[i, j, k] = z
             prev[i, j, k] = z
@@ -145,13 +141,10 @@ class BoundaryProcessor(BaseProcessor):
         field = ctx.data.require(self.field_type)
         kind = self.kind_override or bc.kind
         if kind == "dirichlet":
-            _boundary_dirichlet(field.psi, field.psi_prev,
-                                grid.nx, grid.ny, grid.nz)
+            _boundary_dirichlet(field.psi, field.psi_prev, grid.nx, grid.ny, grid.nz)
         elif kind == "periodic":
-            _boundary_periodic(field.psi, field.psi_prev,
-                               grid.nx, grid.ny, grid.nz)
+            _boundary_periodic(field.psi, field.psi_prev, grid.nx, grid.ny, grid.nz)
         elif kind == "reflecting":
-            _boundary_reflecting(field.psi, field.psi_prev,
-                                 grid.nx, grid.ny, grid.nz)
+            _boundary_reflecting(field.psi, field.psi_prev, grid.nx, grid.ny, grid.nz)
         else:
             raise ValueError(f"BoundaryProcessor: unknown kind {kind!r}")

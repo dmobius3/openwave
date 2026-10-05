@@ -220,6 +220,7 @@ class WaveSpeedField:
 
     c2_local: ti.field
 
+
 @dataclass
 class BoundaryCondition:
     """
@@ -235,6 +236,7 @@ class BoundaryCondition:
     Plan Section 6, item 1.7. The processor that consumes this feature
     is physics/boundary.py::BoundaryProcessor.
     """
+
     kind: str
     r_domain: float = 1.0
 
@@ -245,6 +247,4 @@ class BoundaryCondition:
                 f"'periodic' or 'reflecting', got {self.kind!r}"
             )
         if self.r_domain <= 0.0:
-            raise ValueError(
-                f"BoundaryCondition: r_domain must be > 0, got {self.r_domain}"
-            )
+            raise ValueError(f"BoundaryCondition: r_domain must be > 0, got {self.r_domain}")

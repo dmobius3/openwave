@@ -42,7 +42,7 @@ def test_default_reflector_is_unitary():
     (1.0, 1.0) or (0.5, 0.5).
     """
     wc = WC(0.0, 0.0, 0.0)
-    total = wc.reflect_coeff_long ** 2 + wc.reflect_coeff_trans ** 2
+    total = wc.reflect_coeff_long**2 + wc.reflect_coeff_trans**2
     assert abs(total - 1.0) < 1e-12, total
 
 
@@ -54,7 +54,9 @@ def test_custom_reflector_attributes_persist():
     by __post_init__ or a base class.
     """
     wc = WC(
-        x=1.0, y=2.0, z=3.0,
+        x=1.0,
+        y=2.0,
+        z=3.0,
         reflect_coeff_long=0.8,
         reflect_coeff_trans=0.6,
         phase_shift=0.25,
@@ -63,7 +65,7 @@ def test_custom_reflector_attributes_persist():
     assert wc.reflect_coeff_trans == 0.6
     assert wc.phase_shift == 0.25
     # This pair is unitary: 0.8^2 + 0.6^2 = 0.64 + 0.36 = 1.0.
-    total = wc.reflect_coeff_long ** 2 + wc.reflect_coeff_trans ** 2
+    total = wc.reflect_coeff_long**2 + wc.reflect_coeff_trans**2
     assert abs(total - 1.0) < 1e-12, total
 
 
@@ -78,7 +80,7 @@ def test_non_unitary_pair_is_legal():
     pair and the persistence, not a runtime rule.
     """
     wc = WC(0.0, 0.0, 0.0, reflect_coeff_long=0.5, reflect_coeff_trans=0.5)
-    total = wc.reflect_coeff_long ** 2 + wc.reflect_coeff_trans ** 2
+    total = wc.reflect_coeff_long**2 + wc.reflect_coeff_trans**2
     # 0.25 + 0.25 = 0.5, not 1.0. Construction does not raise.
     assert abs(total - 0.5) < 1e-12, total
 

@@ -26,7 +26,6 @@ from ..contracts import ScatteringOperatorInterface, SourceTermInterface
 from .features import PsiBaseField, PsiLongField, WaveGrid
 from .seed import SeedBaseWave
 
-
 _TI_INITIALIZED = False
 
 
@@ -256,10 +255,13 @@ def test_source_terms_superpose():
     this failure mode on the negative control.
     """
     _ti_init()
-    ctx = _run([
-        _AddVectorSource(1.0, 0.0, 0.0, order=7),
-        _AddVectorSource(0.0, 2.0, 0.0, order=8),
-    ], max_steps=1)
+    ctx = _run(
+        [
+            _AddVectorSource(1.0, 0.0, 0.0, order=7),
+            _AddVectorSource(0.0, 2.0, 0.0, order=8),
+        ],
+        max_steps=1,
+    )
     assert ctx.diag.errors == [], ctx.diag.errors
 
     field = ctx.data.require(PsiLongField)
@@ -277,17 +279,19 @@ def test_overwrite_source_breaks_superposition():
     the failure mode that test_source_terms_superpose detects.
     """
     _ti_init()
-    ctx = _run([
-        _AddVectorSource(1.0, 0.0, 0.0, order=7),
-        _OverwriteVectorSource(0.0, 2.0, 0.0, order=8),
-    ], max_steps=1)
+    ctx = _run(
+        [
+            _AddVectorSource(1.0, 0.0, 0.0, order=7),
+            _OverwriteVectorSource(0.0, 2.0, 0.0, order=8),
+        ],
+        max_steps=1,
+    )
     assert ctx.diag.errors == [], ctx.diag.errors
 
     field = ctx.data.require(PsiLongField)
     arr = field.psi_new.to_numpy()
     # Overwrite wipes the first source's contribution.
-    assert np.allclose(arr[4, 4, 4], np.array([0.0, 2.0, 0.0]),
-                       atol=1e-6), arr[4, 4, 4]
+    assert np.allclose(arr[4, 4, 4], np.array([0.0, 2.0, 0.0]), atol=1e-6), arr[4, 4, 4]
 
 
 def test_source_term_does_not_touch_psi():
@@ -303,10 +307,10 @@ def test_source_term_does_not_touch_psi():
     assert ctx.diag.errors == [], ctx.diag.errors
 
     field = ctx.data.require(PsiLongField)
-    assert np.allclose(field.psi.to_numpy(), 0.0, atol=1e-6), \
-        "psi must be untouched by a source"
-    assert np.allclose(field.psi_prev.to_numpy(), 0.0, atol=1e-6), \
-        "psi_prev must be untouched by a source"
+    assert np.allclose(field.psi.to_numpy(), 0.0, atol=1e-6), "psi must be untouched by a source"
+    assert np.allclose(
+        field.psi_prev.to_numpy(), 0.0, atol=1e-6
+    ), "psi_prev must be untouched by a source"
 
 
 def test_source_interface_process_raises():
@@ -360,10 +364,8 @@ def test_scattering_operator_preserves_magnitude():
     long_after = ctx.data.require(PsiLongField).psi.to_numpy()
 
     # The magnitudes are swapped at each interior voxel.
-    assert np.allclose(base_after[4, 4, 4], long_val, atol=1e-6), \
-        base_after[4, 4, 4]
-    assert np.allclose(long_after[4, 4, 4], base_val, atol=1e-6), \
-        long_after[4, 4, 4]
+    assert np.allclose(base_after[4, 4, 4], long_val, atol=1e-6), base_after[4, 4, 4]
+    assert np.allclose(long_after[4, 4, 4], base_val, atol=1e-6), long_after[4, 4, 4]
 
     # Total magnitude per voxel is preserved.
     m_before = (base_np[4, 4, 4] ** 2).sum() + (long_np[4, 4, 4] ** 2).sum()
@@ -388,8 +390,7 @@ def test_nonunitary_scatterer_breaks_magnitude():
     long_val = np.array([0.0, 2.0, 0.0], dtype=np.float32)
     base_np, long_np = _seed_pair(base_val, long_val)
 
-    ctx = _run([_SeedPair(base_np, long_np), _NonUnitaryScatterer()],
-               max_steps=1)
+    ctx = _run([_SeedPair(base_np, long_np), _NonUnitaryScatterer()], max_steps=1)
     assert ctx.diag.errors == [], ctx.diag.errors
 
     base_after = ctx.data.require(PsiBaseField).psi.to_numpy()
@@ -458,9 +459,7 @@ def test_seed_base_wave_shape_validation():
         ctx = _run([SeedBaseWave(arr)], max_steps=1)
     except ValueError:
         return
-    raise AssertionError(
-        f"expected ValueError, got errors={ctx.diag.errors if ctx else 'none'}"
-    )
+    raise AssertionError(f"expected ValueError, got errors={ctx.diag.errors if ctx else 'none'}")
 
 
 def test_seed_base_wave_runs_once():
@@ -495,10 +494,8 @@ def test_seed_base_wave_runs_once():
     base = ctx.data.require(PsiBaseField)
     base_psi = base.psi.to_numpy()
     base_prev = base.psi_prev.to_numpy()
-    assert np.allclose(base_psi[4, 4, 4], arr[4, 4, 4] + 3.0, atol=1e-5), \
-        base_psi[4, 4, 4]
-    assert np.allclose(base_prev[4, 4, 4], arr[4, 4, 4] + 3.0, atol=1e-5), \
-        base_prev[4, 4, 4]
+    assert np.allclose(base_psi[4, 4, 4], arr[4, 4, 4] + 3.0, atol=1e-5), base_psi[4, 4, 4]
+    assert np.allclose(base_prev[4, 4, 4], arr[4, 4, 4] + 3.0, atol=1e-5), base_prev[4, 4, 4]
 
 
 # ======================================================================
