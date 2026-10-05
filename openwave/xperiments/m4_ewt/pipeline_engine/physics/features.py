@@ -219,3 +219,30 @@ class WaveSpeedField:
     """
 
     c2_local: ti.field
+
+@dataclass
+class BoundaryCondition:
+    """
+    Outer boundary kind and domain radius.
+
+    kind: one of "absorbing", "periodic", "reflecting".
+    r_domain: the domain radius the boundary applies at. Currently
+        unused (the grid edges are the boundary); kept so a future
+        non-rectangular domain can register it.
+
+    Plan Section 6, item 1.7. The processor that consumes this feature
+    is physics/boundary.py::BoundaryProcessor.
+    """
+    kind: str
+    r_domain: float = 1.0
+
+    def __post_init__(self):
+        if self.kind not in ("absorbing", "periodic", "reflecting"):
+            raise ValueError(
+                f"BoundaryCondition: kind must be 'absorbing', "
+                f"'periodic' or 'reflecting', got {self.kind!r}"
+            )
+        if self.r_domain <= 0.0:
+            raise ValueError(
+                f"BoundaryCondition: r_domain must be > 0, got {self.r_domain}"
+            )

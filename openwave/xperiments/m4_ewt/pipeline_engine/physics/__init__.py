@@ -3,6 +3,7 @@
 from .wc_types import WC, WCState
 from .wc_factory import build_wc_state
 from .features import (
+    BoundaryCondition,
     EMCDensityField,
     EMCFluxField,
     PsiBaseField,
@@ -75,4 +76,6 @@ __all__ = [
     "UpdateEMCDensityProcessor",
     "UpdateWaveSpeedProcessor",
     "SeedBaseWave",
+    "BoundaryCondition",
+    "BoundaryProcessor",
 ]
