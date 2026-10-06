@@ -381,3 +381,11 @@ in-platform check and nothing is pending. His reply matched `β_ρ` at the `3′
 M8.1.2's audit record, and read the ground states as curvature-scale states that speak to the particle-stability
 cell's open clause without moving its icon; the slot action keeps such global standing waves apart from particle
 states. The status snapshot records the Result on the author's side. No task, gate or MODELS.md icon moves.
+
+**AUTHOR-SIDE SYNC: LEAST AREA FOR LIPSCHITZ COMPETITORS, AND C12 (2026-10-05).** The author's carrier page proves
+Proposition 7's least area for Lipschitz carrier-class competitors, equality case included, as Proposition 8 (MIT
+`fd2962f`), so the class the 2026-10-01 entry left open is closed; M8.14's task file gains a dated note, and that entry
+stays as dated. The author's stress-tensor bridge gains C12 (MIT `7867ca3`), from a check that classifies the static
+domain's linear stability on each placement branch: a candidate that places unchanged Einstein dynamics on the physical
+static metric declares its perturbation sectors and its source's response law, and records the stability
+classification. The first Help Wanted ask now cites C1 to C12. No task, gate or MODELS.md icon moves.
