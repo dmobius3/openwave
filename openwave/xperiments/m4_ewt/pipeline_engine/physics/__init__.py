@@ -6,6 +6,7 @@ from .features import (
     BoundaryCondition,
     EMCDensityField,
     EMCFluxField,
+    EnergyBudget,
     PsiBaseField,
     PsiLongField,
     PsiTransField,
@@ -42,6 +43,7 @@ from .boundary import BoundaryProcessor, DirichletBoundaryProcessor
 from .measure import AmplitudeTracker
 from .visualize import TaichiWindowProcessor
 from .seed import SeedBaseWave
+from .energy import EnergyBudgetUpdate
 
 __all__ = [
     # wave centers
@@ -88,4 +90,6 @@ __all__ = [
     "NoOpRule",
     "WCDriftRule",
     "WCMotionProcessor",
+    "EnergyBudget",
+    "EnergyBudgetUpdate",
 ]
