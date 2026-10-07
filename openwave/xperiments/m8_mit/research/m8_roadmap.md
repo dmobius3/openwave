@@ -17,6 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
+| [M8.15](tasks/m8_15_task_details.md) | The soft-slot branches at finite amplitude | Whether the branches born at the soft slots' named non-minimizing orbits continue to finite amplitude, stay linearly stable and pass a pre-registered persistence test under the frozen slot action: nine branches on a pinned finite-element solver, four armed controls. An effective model with no slot relation (row 6 ceiling); no mass, no MODELS.md cell, M8.7's gate unchanged | author-proposed and author-run, maintainer-adjudicated | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
 
 ## LATER (gated)
 
@@ -28,13 +29,13 @@
 
 ---
 
-## STATUS AT A GLANCE (2026-10-04)
+## STATUS AT A GLANCE (2026-10-05)
 
 | Question | Answer |
 | --- | --- |
-| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13), and M8.11 showed, as an audited argument, that those expansions and the two at the pyramid and the prism are Taylor expansions of local branch germs (2026-09-18). M8.12 reproduced the level-6 quartic's reduced Morse census blind (2026-09-21), and M8.13 found, as an audited argument, that the hexagon orbit is its only maximizer, the uniqueness clause M8.12 left unresolved (2026-09-22), each marked "No stability claim" in its Done row. M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. M8.14 reproduced blind the author's frozen check that the conic carrier is a strictly stable critical point of area with its edge held fixed, at every embedded width (2026-10-01), a surface result that is twist-blind and local. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). On the author's side, the slot relation was reported OPEN (2026-10-04), so MIT files no relation among slot energies, and an effective slot action for a future M8 run is frozen with its ceilings (2026-10-04). Nothing is in progress |
+| Where is M8? | All four bedrock papers are verified blind in-platform: M8.1 (2026-07-21), M8.1.1 (2026-07-28) and M8.1.2 (2026-09-10), M8.10 carried the fourth paper's range equation one order at its critical rays (2026-09-13), and M8.11 showed, as an audited argument, that those expansions and the two at the pyramid and the prism are Taylor expansions of local branch germs (2026-09-18). M8.12 reproduced the level-6 quartic's reduced Morse census blind (2026-09-21), and M8.13 found, as an audited argument, that the hexagon orbit is its only maximizer, the uniqueness clause M8.12 left unresolved (2026-09-22), each marked "No stability claim" in its Done row. M8.2 locked the dynamics pre-registration; M8.3, M8.5 (the grid backend), M8.8 and M8.9 closed on their own records, and M8.6 closed without running. M8.14 reproduced blind the author's frozen check that the conic carrier is a strictly stable critical point of area with its edge held fixed, at every embedded width (2026-10-01), a surface result that is twist-blind and local. Field dynamics has no live route: M8.4 closed unresolved (2026-08-26) and the spectral chassis adjudicated `M8.5-C2-FAILED` (2026-08-31, instrument-attributed, [#506](https://github.com/openwave-labs/openwave/issues/506)). On the author's side, the slot relation was reported OPEN (2026-10-04), so MIT files no relation among slot energies, and an effective slot action for a future M8 run is frozen with its ceilings (2026-10-04). Under that action the author's Result, The Slot Ground States, derives by a generic mechanism an orbitally stable set of fixed-charge ground states in every slot, with the five rigid slots' exact branches orbitally stable and their linearized spectrum on the imaginary axis (2026-10-05); no platform check was wanted ([#512](https://github.com/openwave-labs/openwave/discussions/512)). Nothing is in progress |
 | What kind of column is it? | The platform's first top-down structural model: strong on the origin of the numbers (representation theory on S³/2I), absent on dynamics. The M8 program exists to supply the dynamics half |
-| What decides the program? | Field dynamics remains the decisive question (does ANY reasonable action on S³/2I carry a common finite-amplitude branch or stability structure across the eight McKay slots? Placement on the slots is kinematic, and MIT files no relation among slot energies), and it stands without a live route in this column. Per [#512](https://github.com/openwave-labs/openwave/discussions/512), the two MODELS.md criteria gated on it stay open and nothing is pending; a future program is reviewed on arrival, under run-before-write and the maintainer-reproduction rule |
+| What decides the program? | Field dynamics remains the decisive question (does ANY reasonable action on S³/2I carry a common finite-amplitude branch or stability structure across the eight McKay slots? Placement on the slots is kinematic, and MIT files no relation among slot energies), and it stands without a live route in this column. The author's Slot Ground States (2026-10-05) addresses the question's literal wording by a generic mechanism, and does not decide it. Per [#512](https://github.com/openwave-labs/openwave/discussions/512), the two MODELS.md criteria gated on it stay open and nothing is pending; a future program is reviewed on arrival, under run-before-write and the maintainer-reproduction rule |
 | Evidence discipline | The author's own claim ledger is adopted as the grading baseline (structural results = the core; the numeric mass table = low weight, capped by the author's own pre-registered nulls); platform standards (pre-registration, adversarial audit, method notes) apply from day one |
 
 ## CONVENTIONS
@@ -368,3 +369,24 @@ free (2026-10-02). Corrected: the H₀ test was exploratory, not pre-registered;
 lap `πR` only on the conic model; Λ's 3 is derived and its ½ imported; the generation count is forced and its
 identification a reading; the clock's exponent enters through the GR correspondence; OQ1's branch is `M4L_Erho`, not
 `M4_int`; the pointers' two signs; and the dark-matter cell. No task, gate or MODELS.md icon moves.
+
+**AUTHOR-SIDE SYNC: THE SLOT GROUND STATES (2026-10-05).** The author's working Result (MIT `65f063e`; Theorem D,
+`9c3d600`) derives, under the frozen slot action and without a run, an orbitally stable set of fixed-charge ground
+states in every slot. In the five rigid slots and the control they are the exact lowest-level branches, orbitally
+stable at every nonzero charge, with the linearization's whole spectrum on the imaginary axis; in the soft slots the
+sets are not shown to be branches. The mechanism is generic, so the Result addresses the decisive question's literal
+wording and does not decide it; the rigid branches carry M8.4's persistence pre-label, the common structure earns no
+more, and no relation among slot energies is filed. Per
+[#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18765758), the maintainer wants no
+in-platform check and nothing is pending. His reply matched `β_ρ` at the `3′` and `4` blocks to the `w6` weights in
+M8.1.2's audit record, and read the ground states as curvature-scale states that speak to the particle-stability
+cell's open clause without moving its icon; the slot action keeps such global standing waves apart from particle
+states. The status snapshot records the Result on the author's side. No task, gate or MODELS.md icon moves.
+
+**AUTHOR-SIDE SYNC: LEAST AREA FOR LIPSCHITZ COMPETITORS, AND C12 (2026-10-05).** The author's carrier page proves
+Proposition 7's least area for Lipschitz carrier-class competitors, equality case included, as Proposition 8 (MIT
+`fd2962f`), so the class the 2026-10-01 entry left open is closed; M8.14's task file gains a dated note, and that entry
+stays as dated. The author's stress-tensor bridge gains C12 (MIT `7867ca3`), from a check that classifies the static
+domain's linear stability on each placement branch: a candidate that places unchanged Einstein dynamics on the physical
+static metric declares its perturbation sectors and its source's response law, and records the stability
+classification. The first Help Wanted ask now cites C1 to C12. No task, gate or MODELS.md icon moves.
