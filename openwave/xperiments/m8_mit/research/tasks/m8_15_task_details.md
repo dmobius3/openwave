@@ -161,7 +161,7 @@ None of the known answers leans on the targets.
 - **The floor, `r_f⁽ʰ⁾`,** at level `h = 3` for the linear record and `h = 2` for the dynamics: the largest modulus among the paired lifted modes (below) of C1, C2a and C2b at that level. Closing runs, pinned: `r_f⁽³⁾ = 1.040×10⁻⁶` (C2a's pair at `ε = 0.5`; C2b 6.8×10⁻⁷; C1 below 10⁻¹²) and `r_f⁽²⁾ = 3.970×10⁻⁵` (C2b's pair at `ε = 0.5`; C2a 9.2×10⁻⁶). All are imaginary pairs.
 - **The zero tolerance,** `τ₀⁽ʰ⁾ = 10 r_f⁽ʰ⁾`: the displacement from 0 that the identified paired modes may show. It never defines the cluster by itself (§ THE LINEAR VERDICT).
 - **The ellipticity tolerance,** `τ_Re⁽ʰ⁾ = 10 r_f⁽ʰ⁾`. A candidate instability needs a real part above `τ_Re⁽³⁾` and level stability (below).
-- **Which level's values apply.** The linear record uses `τ₀⁽³⁾` and `τ_Re⁽³⁾`. The level-2 cluster, which the persistence perturbation is projected off, uses `τ₀⁽²⁾`. The dynamics margin is `r_f⁽²⁾ T`.
+- **Which level's values apply.** The linear record uses `τ₀⁽³⁾` and `τ_Re⁽³⁾`. The level-2 cluster, which the persistence perturbation is projected off, uses `τ₀⁽²⁾`.
 - **Two kinds of lifted mode.** The mesh breaks right `SU(2)` to 2I. A rotation direction lifts in one of two ways, read from the Result's `σ`-structure.
   - **Paired.** The direction is `σ`-paired with another, through `J(u) ≠ 0`. It lifts linearly in the mesh's breaking, and `τ₀` bounds it. This covers `v₂`, two of the third outside orbit's three directions, C1, C2a and C2b.
   - **C1's rigid family.** It adds two lifted directions: those of the family's tangent that the symmetry orbit does not span. They are paired with each other, and `τ₀` bounds them.
@@ -175,7 +175,7 @@ None of the known answers leans on the targets.
   - **The binding mode** is the third outside orbit's smallest, `τ ≈ 5.74×10⁻³`. At `ε = 0.25` it is `2.2×10⁻⁵` in `R4` and `1.3×10⁻⁵` in `R5`, resolved only if `r_f⁽³⁾ ≤ 2.2×10⁻⁷` and `1.3×10⁻⁷`.
   - Next is `v₂`'s Krein-negative frequency, `1.9×10⁻⁴` and `1.1×10⁻⁴` at `ε = 0.25`, resolved if `r_f⁽³⁾ ≤ 1.9×10⁻⁶` and `1.1×10⁻⁶`.
   - Every other target mode is resolved at 0.25 if `r_f⁽³⁾ ≤ 3.2×10⁻⁶`, the bound set by the third outside orbit's second-smallest mode in `R5`.
-  - **At the closing floor** `r_f⁽³⁾ = 1.040×10⁻⁶`, every target mode is resolved at `ε = 0.25` except the third outside orbit's smallest, which is first resolved at `ε ≈ 1.41` in `R4` and 2 in `R5`. `v₂`'s Krein-negative mode in `R5` clears its bound, 1.09×10⁻⁶, by 5%.
+  - **At the closing floor** `r_f⁽³⁾ = 1.040×10⁻⁶`, every target mode is resolved at `ε = 0.25` except the third outside orbit's smallest, which is first resolved at `ε ≈ 1.41` in `R4` and 2 in `R5`. `v₂`'s Krein-negative mode in `R5` clears its bound, 1.087×10⁻⁶, by 4.5%.
 - **The reference floor.** The unperturbed reference's distance from its stationary family must stay at most `η_ref = η` up to the run's first event, or `T` if there is none. Otherwise that test is Invalid, never Fails.
 - **Conservation floors.**
   - The relative charge drift stays ≤ 10⁻¹⁰ over every run.
@@ -245,7 +245,7 @@ None of the known answers leans on the targets.
     - **With no genuine slow mode,** as in C1, whose slow spectrum is its symmetry cluster alone, the whole `η` goes to the fast half.
     - The lifted rotation modes are not excited at linear order. An unsplit white draw puts only about 5% of `η` into the slow modes at level 2 (3% at C3, 8% at C2a), so the test would probe mostly the fast modes, which are coercive and stable.
   - Position and velocity are perturbed together: `(Φ + δ, Π₀(Φ + δ) + p)`, with `(δ, p)` the projected direction's position and rotating-frame velocity parts, and `Π₀` the standing formula. This is one restricted phase-space direction, and the verdict is stated for it, not as generic phase-space stability.
-- **Duration** `T = 1000`, with `dt` 0.8 times the level-2 stability limit `2/ω_max`: 0.008197 in `R2`, 0.008158 in `R3`, 0.008187 in `R4` and `R5`. The margin `r_f⁽²⁾ T` is 0.040.
+- **Duration** `T = 1000`, with `dt` 0.8 times the level-2 stability limit `2/ω_max`: 0.008197 in `R2`, 0.008158 in `R3`, 0.008187 in `R4` and `R5`. The level-2 floor rate times `T` is 0.040.
 - **The measure.** The perturbed and reference trajectories are integrated in lockstep, and compared every unit of time, at the nearest step. Their difference is aligned modulo the exact continuous symmetries (the phase in `R4` and `R5`, Sp(1) in `R2`), in closed form, and `d(t)` is its `M`-norm. Two parts of it are read with the level-2 `G_tol`. All three are relative to `‖Φ‖_M`, as `η` is:
   - `d_⊥`, the `M`-norm of its component off `G_tol`, from the Ω-orthogonal spectral projection;
   - `d_rot`, the `M`-norm of its `M`-orthogonal projection onto `span{X_aΦ}`: how far the run has turned along the lifted rotation directions.
@@ -260,9 +260,9 @@ None of the known answers leans on the targets.
   - **Invalid (drift)** if `d_rot` exceeds `√η` before `d_⊥` exceeds `100η`. Up to that turn, the leak into `d_⊥`, second order in the turn, stays within about `η/2`.
   - **Fails** if `d_⊥` exceeds `100η` first, whatever the later drift. A tie at one observation is Invalid (drift).
   - Otherwise, over `[0, T]`: **Persists** if `max d_⊥ ≤ 10η`, and **Unresolved** if not.
+  - **Persists is relative to `T`.** It says the perturbation stayed within `10η` along the one direction over `[0, T]`. Where `T` spans less than a period of the branch's slowest slow mode, as it may at T1 and T4, it does not speak to growth on that mode's time scale.
 
   `d`, `d_⊥`, `d_rot`, and the reference trajectory's own distance from the family are all reported. The last is the floor of the measure.
-- **Cross-level check.** The same test at level 1 runs only where level 1's floor rate times `T` is at most 0.1, and there it must give the same verdict. A disagreement makes the point Unresolved. Where the margin fails, the check is not run, and that is recorded.
 
 ## THE VERDICT RULE, AND STOP CONDITIONS
 
@@ -326,8 +326,8 @@ None of the known answers leans on the targets.
 
   It is published with scripts, data and a reproduction route.
 - **Adjudication** by the maintainer, under the rule above.
-- **Records:**
+- **Records,** all by the author, since the author runs:
   - a method note, equations first, with an equation-to-code map;
-  - the roadmap Done row;
-  - after the verdict, the author records a dated note on the Result page.
+  - the roadmap's Done row, stating the maintainer's adjudicated verdict;
+  - after the verdict, a dated note on the Result page.
 - **What does not move.** No `MODELS.md` cell, and M8.7's gate is unchanged.

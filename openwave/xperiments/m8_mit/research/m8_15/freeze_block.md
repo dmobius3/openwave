@@ -4,13 +4,14 @@ The items the pre-registration fixes at the freeze (§ FIXED AT THE FREEZE of [t
 
 ## The terms
 
-- **SHA-256 of [`tasks/m8_15_task_details.md`](../tasks/m8_15_task_details.md):** `b21eed1a487dea27431ecc3336417fa558df3b9b848fcce6ba3def7dafcbe5e4`.
-- The same hash is on the author's parent page, MIT [`soft-slot-branches.md`](https://github.com/dmobius3/mode-identity-theory/blob/ae1286ace4a6be47f5637425eb0c4ba58806e2b9/files/framework/files/working/files/soft-slot-branches.md) § VI, at `ae1286a` on `main`, pushed on 2026-10-07 before any target was run. The page also keeps the terms' first hash, taken the same day before a rendering fix to one table row that changes no term.
+- **SHA-256 of [`tasks/m8_15_task_details.md`](../tasks/m8_15_task_details.md):** `e0c32d01ba374a2efd758ab33466fcdc89836f17989baa8b401ef70f1012cca8`, which governs.
+- The same hash is on the author's parent page, MIT [`soft-slot-branches.md`](https://github.com/dmobius3/mode-identity-theory/blob/cdab1c249701dabac8f9854d16c6e2cc458bf831/files/framework/files/working/files/soft-slot-branches.md) § VI, at `cdab1c2` on `main`, pushed on 2026-10-07 before any target was run.
+- It replaces the hash of the terms as first filed in this pull request, `b21eed1a487dea27431ecc3336417fa558df3b9b848fcce6ba3def7dafcbe5e4`. At the maintainer's request here, the terms were revised before the go and before any target was run. The page keeps that hash, and the one before it, `c079f2a06da86c73f5cbd79e732da725539bc91e6f517ff32a9603c0c3febc17`, taken before a rendering fix to one table row that changes no term.
 
 ## The solver
 
-- **The commit:** MIT [`6058f95`](https://github.com/dmobius3/mode-identity-theory/tree/6058f95c3a893652d8fb1db19e7d2d14060ba881/files/framework/files/working/files/scripts/soft-slot-dynamics) (`6058f95c3a893652d8fb1db19e7d2d14060ba881`), folder `files/framework/files/working/files/scripts/soft-slot-dynamics/`, unchanged at `ae1286a`. It carries the reproduction route [`REPRODUCE.md`](https://github.com/dmobius3/mode-identity-theory/blob/6058f95c3a893652d8fb1db19e7d2d14060ba881/files/framework/files/working/files/scripts/soft-slot-dynamics/REPRODUCE.md) and [`SHA256SUMS`](https://github.com/dmobius3/mode-identity-theory/blob/6058f95c3a893652d8fb1db19e7d2d14060ba881/files/framework/files/working/files/scripts/soft-slot-dynamics/SHA256SUMS), which pins every file in the folder.
-- **The manifest,** [`m8_15_solver/out/MANIFEST.json`](https://github.com/dmobius3/mode-identity-theory/blob/6058f95c3a893652d8fb1db19e7d2d14060ba881/files/framework/files/working/files/scripts/soft-slot-dynamics/m8_15_solver/out/MANIFEST.json): the SHA-256 of every file the run executes, the outside-orbit check with its imports and point copy, and the frozen numbers. Paths are relative to `m8_15_solver/`.
+- **The commit:** MIT [`6058f95`](https://github.com/dmobius3/mode-identity-theory/tree/6058f95c3a893652d8fb1db19e7d2d14060ba881/files/framework/files/working/files/scripts/soft-slot-dynamics) (`6058f95c3a893652d8fb1db19e7d2d14060ba881`), folder `files/framework/files/working/files/scripts/soft-slot-dynamics/`, unchanged at `cdab1c2`. It carries the reproduction route [`REPRODUCE.md`](https://github.com/dmobius3/mode-identity-theory/blob/6058f95c3a893652d8fb1db19e7d2d14060ba881/files/framework/files/working/files/scripts/soft-slot-dynamics/REPRODUCE.md) and [`SHA256SUMS`](https://github.com/dmobius3/mode-identity-theory/blob/6058f95c3a893652d8fb1db19e7d2d14060ba881/files/framework/files/working/files/scripts/soft-slot-dynamics/SHA256SUMS), which pins every file in the folder.
+- **The manifest,** [`m8_15_solver/out/MANIFEST.json`](https://github.com/dmobius3/mode-identity-theory/blob/6058f95c3a893652d8fb1db19e7d2d14060ba881/files/framework/files/working/files/scripts/soft-slot-dynamics/m8_15_solver/out/MANIFEST.json): the SHA-256 of every file the run executes, the outside-orbit check with its imports and point copy, and the frozen numbers. Paths are relative to `m8_15_solver/`, except the `m8_15_math/` entries, which sit beside it (`../m8_15_math/` from there).
 
   | file | SHA-256 |
   | --- | --- |
@@ -94,4 +95,4 @@ As written in the task: § THE SOLVER for the continuation in `m`, the accepted 
 
 ## The order
 
-The solver landed on MIT `main` at `6058f95` and the terms-hash line at `ae1286a`, both on 2026-10-07. The pre-registration is this pull request's merge, and no target is solved before it. After the maintainer's go, the guard file `out/FROZEN.json`, which the solver requires before any target runs, is written with the terms' SHA-256.
+The solver landed on MIT `main` at `6058f95`, the terms-hash line at `ae1286a`, and the revised terms' hash at `cdab1c2`, all on 2026-10-07. The pre-registration is this pull request's merge, and no target is solved before it. After the maintainer's go, the guard file `out/FROZEN.json`, which the solver requires before any target runs, is written with the governing terms' SHA-256.
