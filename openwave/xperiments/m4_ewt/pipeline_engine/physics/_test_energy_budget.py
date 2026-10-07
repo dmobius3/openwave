@@ -369,6 +369,37 @@ def test_variable_c2_path_differs_from_const_path():
         f"relative difference {rel} < 1e-3"
     )
 
+def test_energy_total_includes_all_three_components():
+    """
+    Structural check: E_total is the sum of its three components.
+    E_kin alone is strictly positive on a moving field, so a property
+    that drops it from the sum leaves E_total equal to E_grad plus
+    E_deform and this test fails.
+
+    Mutation caught: E_total defined as E_grad + E_deform (kinetic
+    term dropped), or any component substituted for another.
+    """
+    _ti_init()
+    ctx = _run(grid_n=12, dt=0.05, max_steps=5)
+    assert ctx.diag.errors == [], ctx.diag.errors
+
+    b = ctx.data.require(EnergyBudget)
+
+    # All three components present and positive on this arena.
+    assert b.E_kin > 0.0, b.E_kin
+    assert b.E_grad > 0.0, b.E_grad
+    # E_deform = 0 here (uniform rho), but the test does not depend
+    # on that; the next assertion covers it.
+
+    # E_total must exceed E_grad + E_deform by exactly E_kin. If E_total
+    # excludes E_kin, this fails; if it includes E_kin once, it holds.
+    assert b.E_total > b.E_grad + b.E_deform, (
+        f"E_total {b.E_total} not greater than E_grad + E_deform "
+        f"{b.E_grad + b.E_deform}"
+    )
+    assert abs(b.E_total - (b.E_kin + b.E_grad + b.E_deform)) < 1e-9, (
+        f"E_total {b.E_total} vs sum {b.E_kin + b.E_grad + b.E_deform}"
+    )
 
 # ======================================================================
 # Negative control: kinetic term is required
@@ -470,6 +501,7 @@ def main() -> int:
         test_uniform_rho_gives_zero_deform,
         test_deficit_contributes_to_deform,
         test_standing_wave_conserves_total_energy,
+        test_energy_total_includes_all_three_components,
         test_dE_dt_zero_on_static_state,
         test_variable_c2_path_differs_from_const_path,
         test_gradient_only_energy_oscillates,
