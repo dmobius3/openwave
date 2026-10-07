@@ -31,6 +31,12 @@ from .evolution import (
     LaplacianVariableCoeffProcessor,
     LeapfrogProcessor,
 )
+from .motion import (
+    GradRhoRule,
+    NoOpRule,
+    WCDriftRule,
+    WCMotionProcessor,
+)
 from .nonlinearity import NonlinearCubic
 from .boundary import BoundaryProcessor, DirichletBoundaryProcessor
 from .measure import AmplitudeTracker
@@ -78,4 +84,8 @@ __all__ = [
     "SeedBaseWave",
     "BoundaryCondition",
     "BoundaryProcessor",
+    "GradRhoRule",
+    "NoOpRule",
+    "WCDriftRule",
+    "WCMotionProcessor",
 ]
