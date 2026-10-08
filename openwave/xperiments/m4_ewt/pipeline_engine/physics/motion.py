@@ -43,9 +43,7 @@ class WCDriftRule:
     """
 
     def __call__(self, ctx, wc_index):
-        raise NotImplementedError(
-            f"{type(self).__name__} must implement __call__(ctx, wc_index)"
-        )
+        raise NotImplementedError(f"{type(self).__name__} must implement __call__(ctx, wc_index)")
 
 
 class NoOpRule(WCDriftRule):

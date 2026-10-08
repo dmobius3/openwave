@@ -46,7 +46,6 @@ from .evolution import (
 )
 from .units import UnitSystem
 
-
 _TI_INITIALIZED = False
 
 
@@ -68,22 +67,40 @@ class _UnitsWithC(UnitSystem):
     Local unit system with a chosen c. The rest is fixed so a test can
     set c != 1 without touching the shipped implementations.
     """
+
     c_value: float = 1.0
 
     @property
-    def c(self): return self.c_value
+    def c(self):
+        return self.c_value
+
     @property
-    def wavelength(self): return 1.0
+    def wavelength(self):
+        return 1.0
+
     @property
-    def dx(self): return 0.05
+    def dx(self):
+        return 0.05
+
     @property
-    def dt(self): return 0.01
+    def dt(self):
+        return 0.01
+
     @property
-    def rho_0(self): return 1.0
-    def to_physical_length(self, x): return x
-    def to_physical_time(self, t): return t
-    def to_physical_energy(self, E): return E
-    def to_physical_density(self, r): return r
+    def rho_0(self):
+        return 1.0
+
+    def to_physical_length(self, x):
+        return x
+
+    def to_physical_time(self, t):
+        return t
+
+    def to_physical_energy(self, E):
+        return E
+
+    def to_physical_density(self, r):
+        return r
 
 
 class _SeedStandingWave(BaseProcessor):
@@ -107,9 +124,13 @@ class _SeedStandingWave(BaseProcessor):
         grid = ctx.data.require(WaveGrid)
         field = ctx.data.require(PsiLongField)
         _seed_standing_wave(
-            field.psi, field.psi_prev,
-            grid.nx, grid.ny, grid.nz,
-            self.amp, self.mode,
+            field.psi,
+            field.psi_prev,
+            grid.nx,
+            grid.ny,
+            grid.nz,
+            self.amp,
+            self.mode,
         )
 
 
@@ -170,8 +191,7 @@ class _SeedRhoDeficit(BaseProcessor):
 
 def _rho_deficit_array(nx, ny, nz):
     cx, cy, cz = (nx - 1) / 2.0, (ny - 1) / 2.0, (nz - 1) / 2.0
-    i, j, k = np.meshgrid(
-        np.arange(nx), np.arange(ny), np.arange(nz), indexing="ij")
+    i, j, k = np.meshgrid(np.arange(nx), np.arange(ny), np.arange(nz), indexing="ij")
     r2 = (i - cx) ** 2 + (j - cy) ** 2 + (k - cz) ** 2
     return (1.0 - 0.5 * np.exp(-r2 / 8.0)).astype(np.float32)
 
@@ -194,8 +214,18 @@ class _RunResult:
         self.dE_dt = dE_dt
 
 
-def _run(grid_n=16, dx=1.0, dt=0.05, max_steps=100, amp=1.0, mode=1,
-         rho_def=False, kappa=1.0, use_variable_c2=False, c_value=1.0):
+def _run(
+    grid_n=16,
+    dx=1.0,
+    dt=0.05,
+    max_steps=100,
+    amp=1.0,
+    mode=1,
+    rho_def=False,
+    kappa=1.0,
+    use_variable_c2=False,
+    c_value=1.0,
+):
     """
     Minimal energy pipeline: allocate, seed standing wave, seed rho,
     Clear, Laplacian, Leapfrog, EnergyBudgetUpdate, plus a recorder
@@ -225,14 +255,12 @@ def _run(grid_n=16, dx=1.0, dt=0.05, max_steps=100, amp=1.0, mode=1,
                 error_policy=ErrorPolicy.FAIL_FAST,
                 external_provides=(UnitSystem,),
             )
-            self.add(AllocateWaveField(
-                nx=grid_n, ny=grid_n, nz=grid_n, dx=dx))
+            self.add(AllocateWaveField(nx=grid_n, ny=grid_n, nz=grid_n, dx=dx))
             if use_variable_c2:
                 self.add(AllocateWaveSpeed())
             self.add(_SeedStandingWave(amp=amp, mode=mode))
             if use_variable_c2:
-                self.add(UpdateEMCDensityProcessor(
-                    field_type=PsiLongField, beta_rho=0.1))
+                self.add(UpdateEMCDensityProcessor(field_type=PsiLongField, beta_rho=0.1))
                 self.add(UpdateWaveSpeedProcessor())
             elif rho_def:
                 self.add(_SeedRhoDeficit())
@@ -241,17 +269,21 @@ def _run(grid_n=16, dx=1.0, dt=0.05, max_steps=100, amp=1.0, mode=1,
             self.add(ClearAccelerationProcessor(field_type=PsiLongField))
             self.add(LaplacianProcessor(field_type=PsiLongField))
             self.add(LeapfrogProcessor(field_type=PsiLongField))
-            self.add(EnergyBudgetUpdate(
-                field_type=PsiLongField,
-                use_variable_c2=use_variable_c2,
-                kappa=kappa))
+            self.add(
+                EnergyBudgetUpdate(
+                    field_type=PsiLongField, use_variable_c2=use_variable_c2, kappa=kappa
+                )
+            )
             self.add(_Record())
 
     from ..runner import Runner
     from ..sinks import InMemorySink
 
     ctx = Runner({"session": InMemorySink()}).run(
-        P(), name="energy_budget_test", params={}, dt=dt,
+        P(),
+        name="energy_budget_test",
+        params={},
+        dt=dt,
         max_steps=max_steps,
         initial_features=[_UnitsWithC(c_value)],
     )
@@ -319,12 +351,11 @@ def test_energy_total_includes_all_three_components():
     assert b.E_grad > 0.0, b.E_grad
 
     assert b.E_total > b.E_grad + b.E_deform, (
-        f"E_total {b.E_total} not greater than E_grad + E_deform "
-        f"{b.E_grad + b.E_deform}"
+        f"E_total {b.E_total} not greater than E_grad + E_deform " f"{b.E_grad + b.E_deform}"
     )
-    assert abs(b.E_total - (b.E_kin + b.E_grad + b.E_deform)) < 1e-9, (
-        f"E_total {b.E_total} vs sum {b.E_kin + b.E_grad + b.E_deform}"
-    )
+    assert (
+        abs(b.E_total - (b.E_kin + b.E_grad + b.E_deform)) < 1e-9
+    ), f"E_total {b.E_total} vs sum {b.E_kin + b.E_grad + b.E_deform}"
 
 
 def test_dE_dt_zero_on_static_state():
@@ -361,8 +392,13 @@ def test_dE_dt_zero_on_static_state():
 
     from ..runner import Runner
     from ..sinks import InMemorySink
+
     ctx = Runner({"session": InMemorySink()}).run(
-        P(), name="static_test", params={}, dt=0.05, max_steps=4,
+        P(),
+        name="static_test",
+        params={},
+        dt=0.05,
+        max_steps=4,
         initial_features=[_UnitsWithC(1.0)],
     )
     assert ctx.diag.errors == [], ctx.diag.errors
@@ -383,10 +419,8 @@ def test_variable_c2_path_differs_from_const_path():
     """
     _ti_init()
 
-    r_const = _run(grid_n=12, dt=0.05, max_steps=1,
-                   use_variable_c2=False)
-    r_var = _run(grid_n=12, dt=0.05, max_steps=1,
-                 use_variable_c2=True)
+    r_const = _run(grid_n=12, dt=0.05, max_steps=1, use_variable_c2=False)
+    r_var = _run(grid_n=12, dt=0.05, max_steps=1, use_variable_c2=True)
     assert r_const.ctx.diag.errors == [], r_const.ctx.diag.errors
     assert r_var.ctx.diag.errors == [], r_var.ctx.diag.errors
 
@@ -435,8 +469,7 @@ def test_standing_wave_conserves_total_energy():
     arr = np.array(r.E_total)
     spread = (arr.max() - arr.min()) / abs(arr.mean())
     assert spread < 5e-4, (
-        f"E_total spread over {steps} steps = {spread}, "
-        f"expected < 5e-4 (mean form, edge sum)"
+        f"E_total spread over {steps} steps = {spread}, " f"expected < 5e-4 (mean form, edge sum)"
     )
 
 
@@ -498,9 +531,9 @@ def test_dE_dt_matches_finite_difference():
     for step in range(1, steps):
         expected = (r.E_total[step] - r.E_total[step - 1]) / dt
         got = r.dE_dt[step]
-        assert abs(got - expected) < 1e-9, (
-            f"step {step}: dE_dt {got} vs finite difference {expected}"
-        )
+        assert (
+            abs(got - expected) < 1e-9
+        ), f"step {step}: dE_dt {got} vs finite difference {expected}"
 
 
 def test_conservation_at_nonunit_dx():
@@ -532,8 +565,7 @@ def test_conservation_at_nonunit_dx():
     arr = np.array(r.E_total)
     spread = (arr.max() - arr.min()) / abs(arr.mean())
     assert spread < 1e-3, (
-        f"E_total spread at dx=0.5 over {steps} steps = {spread}, "
-        f"expected < 1e-3"
+        f"E_total spread at dx=0.5 over {steps} steps = {spread}, " f"expected < 1e-3"
     )
 
 
@@ -600,8 +632,7 @@ def test_budget_update_requires_all_features():
     assert UnitSystem in proc.requires, proc.requires
     assert WaveSpeedField not in proc.requires, proc.requires
 
-    proc_var = EnergyBudgetUpdate(
-        field_type=PsiLongField, use_variable_c2=True)
+    proc_var = EnergyBudgetUpdate(field_type=PsiLongField, use_variable_c2=True)
     assert WaveSpeedField in proc_var.requires, proc_var.requires
 
 

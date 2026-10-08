@@ -124,18 +124,45 @@ def _integrate_energy_const_c2(
     # Gradient, forward differences on every edge, all three axes.
     for i, j, k in ti.ndrange((0, nx - 1), (0, ny), (0, nz)):
         out_grad[None] += _edge_energy(
-            psi, psi_prev, c2_const, inv_dx, dv,
-            i, j, k, i + 1, j, k,
+            psi,
+            psi_prev,
+            c2_const,
+            inv_dx,
+            dv,
+            i,
+            j,
+            k,
+            i + 1,
+            j,
+            k,
         )
     for i, j, k in ti.ndrange((0, nx), (0, ny - 1), (0, nz)):
         out_grad[None] += _edge_energy(
-            psi, psi_prev, c2_const, inv_dx, dv,
-            i, j, k, i, j + 1, k,
+            psi,
+            psi_prev,
+            c2_const,
+            inv_dx,
+            dv,
+            i,
+            j,
+            k,
+            i,
+            j + 1,
+            k,
         )
     for i, j, k in ti.ndrange((0, nx), (0, ny), (0, nz - 1)):
         out_grad[None] += _edge_energy(
-            psi, psi_prev, c2_const, inv_dx, dv,
-            i, j, k, i, j, k + 1,
+            psi,
+            psi_prev,
+            c2_const,
+            inv_dx,
+            dv,
+            i,
+            j,
+            k,
+            i,
+            j,
+            k + 1,
         )
 
 
@@ -169,20 +196,47 @@ def _integrate_energy_var_c2(
     for i, j, k in ti.ndrange((0, nx - 1), (0, ny), (0, nz)):
         c2_half = 0.5 * (c2_field[i, j, k] + c2_field[i + 1, j, k])
         out_grad[None] += _edge_energy(
-            psi, psi_prev, c2_half, inv_dx, dv,
-            i, j, k, i + 1, j, k,
+            psi,
+            psi_prev,
+            c2_half,
+            inv_dx,
+            dv,
+            i,
+            j,
+            k,
+            i + 1,
+            j,
+            k,
         )
     for i, j, k in ti.ndrange((0, nx), (0, ny - 1), (0, nz)):
         c2_half = 0.5 * (c2_field[i, j, k] + c2_field[i, j + 1, k])
         out_grad[None] += _edge_energy(
-            psi, psi_prev, c2_half, inv_dx, dv,
-            i, j, k, i, j + 1, k,
+            psi,
+            psi_prev,
+            c2_half,
+            inv_dx,
+            dv,
+            i,
+            j,
+            k,
+            i,
+            j + 1,
+            k,
         )
     for i, j, k in ti.ndrange((0, nx), (0, ny), (0, nz - 1)):
         c2_half = 0.5 * (c2_field[i, j, k] + c2_field[i, j, k + 1])
         out_grad[None] += _edge_energy(
-            psi, psi_prev, c2_half, inv_dx, dv,
-            i, j, k, i, j, k + 1,
+            psi,
+            psi_prev,
+            c2_half,
+            inv_dx,
+            dv,
+            i,
+            j,
+            k,
+            i,
+            j,
+            k + 1,
         )
 
 
@@ -210,8 +264,7 @@ class EnergyBudgetUpdate(BaseProcessor):
     order = 5
     provides = (EnergyBudget,)
 
-    def __init__(self, field_type=PsiLongField, use_variable_c2=False,
-                 kappa=1.0):
+    def __init__(self, field_type=PsiLongField, use_variable_c2=False, kappa=1.0):
         self.field_type = field_type
         self.use_variable_c2 = use_variable_c2
         self.kappa = float(kappa)
@@ -236,29 +289,47 @@ class EnergyBudgetUpdate(BaseProcessor):
 
         dt = ctx.sim.dt
         if dt <= 0.0:
-            raise ValueError(
-                f"EnergyBudgetUpdate: dt must be > 0, got {dt}"
-            )
+            raise ValueError(f"EnergyBudgetUpdate: dt must be > 0, got {dt}")
 
         inv_dt = 1.0 / dt
         inv_dx = 1.0 / grid.dx
-        dv = grid.dx ** 3
+        dv = grid.dx**3
 
         if self.use_variable_c2:
             c2_field = ctx.data.require(WaveSpeedField).c2_local
             _integrate_energy_var_c2(
-                field.psi, field.psi_prev, rho, c2_field,
-                self.kappa, inv_dt, inv_dx, dv,
-                grid.nx, grid.ny, grid.nz,
-                self._out_kin, self._out_grad, self._out_deform,
+                field.psi,
+                field.psi_prev,
+                rho,
+                c2_field,
+                self.kappa,
+                inv_dt,
+                inv_dx,
+                dv,
+                grid.nx,
+                grid.ny,
+                grid.nz,
+                self._out_kin,
+                self._out_grad,
+                self._out_deform,
             )
         else:
             c2_const = float(units.c) ** 2
             _integrate_energy_const_c2(
-                field.psi, field.psi_prev, rho,
-                self.kappa, c2_const, inv_dt, inv_dx, dv,
-                grid.nx, grid.ny, grid.nz,
-                self._out_kin, self._out_grad, self._out_deform,
+                field.psi,
+                field.psi_prev,
+                rho,
+                self.kappa,
+                c2_const,
+                inv_dt,
+                inv_dx,
+                dv,
+                grid.nx,
+                grid.ny,
+                grid.nz,
+                self._out_kin,
+                self._out_grad,
+                self._out_deform,
             )
 
         budget.E_kin = float(self._out_kin[None])

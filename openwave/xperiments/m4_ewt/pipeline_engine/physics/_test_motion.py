@@ -35,7 +35,6 @@ from .motion import (
 )
 from .wc_types import WC, WCState
 
-
 _TI_INITIALIZED = False
 
 
@@ -130,7 +129,11 @@ def _build_pipeline(wcs, rule, rho_arr=None, dt=0.1, max_steps=1):
     from ..sinks import InMemorySink
 
     return Runner({"session": InMemorySink()}).run(
-        P(), name="motion_test", params={}, dt=dt, max_steps=max_steps,
+        P(),
+        name="motion_test",
+        params={},
+        dt=dt,
+        max_steps=max_steps,
         initial_features=[WCState(centers=wcs)],
     )
 
@@ -197,8 +200,7 @@ def test_constant_rule_integration_matches_analytic():
     """
     _ti_init()
     wc = WC(x=4.0, y=4.0, z=4.0)
-    ctx = _build_pipeline(
-        [wc], _ConstantRule(1.0, 0.0, 0.0), dt=0.1, max_steps=3)
+    ctx = _build_pipeline([wc], _ConstantRule(1.0, 0.0, 0.0), dt=0.1, max_steps=3)
     assert ctx.diag.errors == [], ctx.diag.errors
 
     c = ctx.data.require(WCState).centers[0]
@@ -242,8 +244,7 @@ def _rho_with_minimum_at(i0, j0, k0, nx=8, ny=8, nz=8):
     rho field with a sharp Gaussian deficit at (i0, j0, k0), 1.0
     everywhere else. Simple, smooth, monotonic toward the centre.
     """
-    i, j, k = np.meshgrid(
-        np.arange(nx), np.arange(ny), np.arange(nz), indexing="ij")
+    i, j, k = np.meshgrid(np.arange(nx), np.arange(ny), np.arange(nz), indexing="ij")
     r2 = (i - i0) ** 2 + (j - j0) ** 2 + (k - k0) ** 2
     rho = 1.0 - 0.5 * np.exp(-r2 / 2.0)
     return rho.astype(np.float32)
@@ -280,8 +281,7 @@ def test_reverse_grad_rho_moves_away():
     _ti_init()
     rho = _rho_with_minimum_at(i0=3, j0=4, k0=4)
     wc = WC(x=5.0, y=4.0, z=4.0)
-    ctx = _build_pipeline(
-        [wc], _ReverseGradRhoRule(), rho_arr=rho, max_steps=5)
+    ctx = _build_pipeline([wc], _ReverseGradRhoRule(), rho_arr=rho, max_steps=5)
     assert ctx.diag.errors == [], ctx.diag.errors
 
     c = ctx.data.require(WCState).centers[0]
@@ -326,8 +326,11 @@ def test_motion_processor_requires_all_three_features():
 
     try:
         Runner({"session": InMemorySink()}).run(
-            NoWCState(), name="missing_wcstate", params={},
-            dt=0.1, max_steps=1,
+            NoWCState(),
+            name="missing_wcstate",
+            params={},
+            dt=0.1,
+            max_steps=1,
         )
     except PipelineError as e:
         assert "WCState" in str(e), str(e)
