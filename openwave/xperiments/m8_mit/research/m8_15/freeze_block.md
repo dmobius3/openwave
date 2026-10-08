@@ -4,7 +4,7 @@ The items the pre-registration fixes at the freeze (§ FIXED AT THE FREEZE of [t
 
 ## The terms
 
-- **SHA-256 of [`tasks/m8_15_task_details.md`](../tasks/m8_15_task_details.md):** `e0c32d01ba374a2efd758ab33466fcdc89836f17989baa8b401ef70f1012cca8`, which governs.
+- **SHA-256 of [`tasks/m8_15_task_details.md`](../tasks/m8_15_task_details.md):** `e0c32d01ba374a2efd758ab33466fcdc89836f17989baa8b401ef70f1012cca8`, which governs. Since 2026-10-08 the file carries a dated note after the terms, so this is the hash of its first 42,153 bytes, the file as filed at `4b1177c8`.
 - The same hash is on the author's parent page, MIT [`soft-slot-branches.md`](https://github.com/dmobius3/mode-identity-theory/blob/cdab1c249701dabac8f9854d16c6e2cc458bf831/files/framework/files/working/files/soft-slot-branches.md) § VI, at `cdab1c2` on `main`, pushed on 2026-10-07 before any target was run.
 - It replaces the hash of the terms as first filed in this pull request, `b21eed1a487dea27431ecc3336417fa558df3b9b848fcce6ba3def7dafcbe5e4`. At the maintainer's request here, the terms were revised before the go and before any target was run. The page keeps that hash, and the one before it, `c079f2a06da86c73f5cbd79e732da725539bc91e6f517ff32a9603c0c3febc17`, taken before a rendering fix to one table row that changes no term.
 

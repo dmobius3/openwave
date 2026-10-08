@@ -331,3 +331,24 @@ None of the known answers leans on the targets.
   - the roadmap's Done row, stating the maintainer's adjudicated verdict;
   - after the verdict, a dated note on the Result page.
 - **What does not move.** No `MODELS.md` cell, and M8.7's gate is unchanged.
+
+## Dated note, 2026-10-08: after the verdict
+
+Everything above this heading is the filed pre-registration, byte for byte: its 42,153 bytes are a prefix of this file and hash to the governing `e0c32d01…`.
+
+The maintainer adjudicated the run on [#620](https://github.com/openwave-labs/openwave/pull/620), per branch, and the roadmap's Done row states that verdict. The author's dated note records it on the Result page, [The Soft-Slot Branches, § VI](https://github.com/dmobius3/mode-identity-theory/blob/bec578d274e7a358f48b3b0e84cc8a92dbe6c2b0/files/framework/files/working/files/soft-slot-branches.md#vi-what-stays-open), at MIT `bec578d`. The run's record is [`RECORD.md`](https://github.com/dmobius3/mode-identity-theory/blob/28c8a7648a88c9234d32be753cbbe3563ea2eec3/files/framework/files/working/files/scripts/soft-slot-dynamics/RECORD.md) at MIT `28c8a76`.
+
+#620 also ruled on the method note's four defect claims, and under line 34:
+- it ratified § 5.2's mechanism with independent code;
+- it confirmed § 5.3 and § 5.4;
+- it left § 5.1 unratified;
+- it ruled that the record keeps the row 6 label.
+
+Its review leaves three notes, none blocking:
+- **T4's persistence label.** It is "Not reached" (line 232), the wording the Done row uses; the method note's "none" means the same.
+- **The observation times.** The code observes every 122 steps, not at the step nearest each unit of time (line 249).
+  - In `R4` and `R5`, observation `k` falls at `0.99877 k`, with the last at `t = 999.77`.
+  - In `R2` the last is at `999.01`, while the run continues to `T`.
+
+  It moves no verdict here.
+- **The overlap figures.** § 5.1's figures, and the remark that the same rule may also take T4's smallest mode, rest on a bench check with no shipped script. Filing that script with a T1 follow-up's pre-registration would let it be checked.
