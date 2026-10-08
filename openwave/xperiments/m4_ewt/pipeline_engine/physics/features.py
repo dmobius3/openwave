@@ -248,3 +248,42 @@ class BoundaryCondition:
             )
         if self.r_domain <= 0.0:
             raise ValueError(f"BoundaryCondition: r_domain must be > 0, got {self.r_domain}")
+
+
+@dataclass
+class EnergyBudget:
+    """
+    Energy budget feature (plan Section 6, item 1.8).
+
+    E_kin, E_grad, E_deform: the three components of the total.
+    E_total = E_kin + E_grad + E_deform.
+
+    E_prev and dE_dt are set by EnergyBudgetUpdate: dE_dt is
+    (E_total - E_prev) / dt, taken before E_prev moves on, so after
+    an update E_prev equals the current E_total, ready for the next
+    step. On the first step dE_dt is 0.0, since there is no previous
+    step.
+
+    flux_boundary is reserved. No boundary in the current build
+    transports energy out (dirichlet is a fixed-end wall, periodic
+    and reflecting conserve), so it stays 0.0. It becomes meaningful
+    once a real absorber lands (plan 1.7, deferred).
+
+    All energies are in simulation units. Conversion to SI goes
+    through UnitSystem.to_physical_energy, which is not called here.
+    """
+
+    E_kin: float = 0.0
+    E_grad: float = 0.0
+    E_deform: float = 0.0
+    flux_boundary: float = 0.0
+    E_prev: float = 0.0
+    dE_dt: float = 0.0
+
+    @property
+    def E_soliton(self) -> float:
+        return self.E_kin + self.E_grad
+
+    @property
+    def E_total(self) -> float:
+        return self.E_kin + self.E_grad + self.E_deform

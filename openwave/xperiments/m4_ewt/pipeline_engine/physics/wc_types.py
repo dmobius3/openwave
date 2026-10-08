@@ -1,8 +1,10 @@
 """
 Wave center types. Pure Python, no Taichi.
 
-WC      -- a single wave center: position, phase, active flag, amplitude.
-WCState -- all wave centers for the current run. Passed in via initial_features.
+WC      -- a single wave center: position, phase, active flag, amplitude,
+           reflector attributes, and motion attributes.
+WCState -- all wave centers for the current run. Passed in via
+           initial_features.
 """
 
 from __future__ import annotations
@@ -24,6 +26,18 @@ class WC:
       reflect_coeff_trans -- amplitude conversion coefficient into the
                              transverse mode. Default 0.0.
       phase_shift         -- reflection phase shift in radians. Default 0.0.
+    These are ATTRIBUTES, not behaviours. Nothing reads them yet.
+
+    Motion attributes (plan Section 6, item 1.6):
+      velocity -- per-center velocity, grid units per sim-time.
+                  Default (0.0, 0.0, 0.0).
+      force    -- last acceleration applied by WCMotionProcessor, grid
+                  units per sim-time-squared. Default (0.0, 0.0, 0.0).
+                  Held for diagnostics; not read by any processor.
+
+    Both pairs are per-center. Plan 1.5 and 1.6 say "WCState"; the
+    WC is the correct holder, since a reflection coefficient and a
+    velocity are per-center quantities, not properties of the list.
     """
 
     x: float
@@ -35,6 +49,8 @@ class WC:
     reflect_coeff_long: float = 1.0
     reflect_coeff_trans: float = 0.0
     phase_shift: float = 0.0
+    velocity: tuple[float, float, float] = (0.0, 0.0, 0.0)
+    force: tuple[float, float, float] = (0.0, 0.0, 0.0)
 
 
 @dataclass

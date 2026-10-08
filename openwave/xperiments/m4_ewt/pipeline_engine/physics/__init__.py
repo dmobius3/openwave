@@ -6,6 +6,7 @@ from .features import (
     BoundaryCondition,
     EMCDensityField,
     EMCFluxField,
+    EnergyBudget,
     PsiBaseField,
     PsiLongField,
     PsiTransField,
@@ -31,11 +32,18 @@ from .evolution import (
     LaplacianVariableCoeffProcessor,
     LeapfrogProcessor,
 )
+from .motion import (
+    GradRhoRule,
+    NoOpRule,
+    WCDriftRule,
+    WCMotionProcessor,
+)
 from .nonlinearity import NonlinearCubic
 from .boundary import BoundaryProcessor, DirichletBoundaryProcessor
 from .measure import AmplitudeTracker
 from .visualize import TaichiWindowProcessor
 from .seed import SeedBaseWave
+from .energy import EnergyBudgetUpdate
 
 __all__ = [
     # wave centers
@@ -78,4 +86,10 @@ __all__ = [
     "SeedBaseWave",
     "BoundaryCondition",
     "BoundaryProcessor",
+    "GradRhoRule",
+    "NoOpRule",
+    "WCDriftRule",
+    "WCMotionProcessor",
+    "EnergyBudget",
+    "EnergyBudgetUpdate",
 ]
