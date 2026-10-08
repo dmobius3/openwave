@@ -34,8 +34,17 @@ Gradient discretisation (edge sum, mean in time):
 
     Shell edges are included because the 6-point Laplacian transports
     energy across them, and a mode whose gradient peaks at the shell
-    (a standing wave) loses 15% of its gradient score if they are not
+    (a standing wave) loses 26% of its gradient score if they are not
     counted.
+
+    Scope: the full-grid sums are the conserved energy only with a
+    fixed (dirichlet) shell. Under the reflecting and periodic
+    boundaries the shell voxels are copies of interior ones, so the
+    sums count them a second time: on the 16^3 mode-1 standing wave
+    E_total then swings 109% over a period, while the energy of the
+    interior nodes and edges (plus the wrap edges under periodic)
+    holds to 4e-4. Scoring those two kinds
+    needs the boundary kind, and is a follow-up.
 
 Kinetic and deformation sums run over the full grid. The kinetic
 velocity is (psi - psi_prev)/dt at each voxel; the deformation term

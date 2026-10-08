@@ -67,8 +67,9 @@ class GradRhoRule(WCDriftRule):
 
     rho is the EMC packing density. Inside a soliton it is lower than
     the statutory background, so -grad rho points toward the deficit
-    centre. A WC sitting outside the deficit drifts in; a WC sitting
-    at the centre has zero gradient and stops.
+    centre. A WC sitting outside the deficit drifts in. Nothing damps
+    the motion, so a WC arriving at the centre with speed passes
+    through and oscillates; the tests check the direction only.
 
     Reads EMCDensityField.rho. Reads nothing else. The nearest-voxel
     lookup uses round() and clamps the index to the interior so the

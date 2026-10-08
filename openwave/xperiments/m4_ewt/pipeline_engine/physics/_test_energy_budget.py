@@ -307,7 +307,8 @@ def test_energy_total_includes_all_three_components():
     E_kin > 0.
 
     Mutation caught: E_total defined as E_grad + E_deform (kinetic
-    term dropped), or any component substituted for another.
+    term dropped). Not caught here: one component substituted for
+    another inside the kernel, since the sum still adds up.
     """
     _ti_init()
     r = _run(grid_n=12, dt=0.05, max_steps=5)
@@ -415,8 +416,9 @@ def test_standing_wave_conserves_total_energy():
 
     Mutation caught: any of the kernel bugs a single-step read could
     not see (kinetic dropped, edge sum reverted to centered, shell
-    edges dropped, dE_dt hard-wired), because the spread is measured
-    over the whole run.
+    edges dropped), because the spread is measured over the whole run.
+    It reads E_total only, so a hard-wired dE_dt is caught by
+    test_dE_dt_matches_finite_difference, not here.
 
     Reference (reviewer, N=16, dt=0.05, mean form, edges, shell
     included): spread 1.64e-4. Threshold 5e-4 leaves a 3x margin.
@@ -503,19 +505,20 @@ def test_dE_dt_matches_finite_difference():
 
 def test_conservation_at_nonunit_dx():
     """
-    Same standing wave, run at dx = 0.5 (four times smaller cells, so
-    four times more edges per axis). The mean edge sum must still
-    conserve to the same O(dt^2) bar.
+    Same standing wave, run at dx = 0.5: the same 16^3 grid with cells
+    half as wide, so the mode's frequency doubles and the 350 steps
+    cover two periods. The mean edge sum must still conserve to the
+    O(dt^2) bar.
 
-    Mutation caught: any kernel that drops the dx factor, hard-codes
-    dx = 1, or reads the wrong exponent for dv.
+    Mutation caught: a kernel that drops the 1/dx in the gradient, or
+    hard-codes dx = 1 there, which unbalances E_grad against E_kin.
+    Not caught: the exponent of dv. dv multiplies all three components
+    alike, so the relative spread does not see it.
 
     Threshold: 1e-3 here, looser than the 5e-4 the dx=1 test uses.
-    The discrete dispersion contributes a (k dx)^2 term whose relative
-    share grows as dx shrinks, so the spread at dx=0.5 is measured
-    near 6.6e-4 against the same arena's 1.6e-4 at dx=1. A kernel
-    that dropped dx, hard-coded dx=1, or read the wrong dv exponent
-    gives a spread near 1e-1, two orders of magnitude above this bar.
+    The spread scales as (omega dt)^2, and omega doubles at dx = 0.5,
+    so the spread is measured near 6.6e-4, four times the 1.6e-4 at
+    dx=1.
     """
     _ti_init()
     n = 16

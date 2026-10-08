@@ -257,9 +257,11 @@ class EnergyBudget:
     E_kin, E_grad, E_deform: the three components of the total.
     E_total = E_kin + E_grad + E_deform.
 
-    E_prev and dE_dt are set by EnergyBudgetUpdate: E_prev is the
-    previous step's E_total; dE_dt is (E_total - E_prev) / dt. On the
-    first step dE_dt is 0.0, since there is no previous step.
+    E_prev and dE_dt are set by EnergyBudgetUpdate: dE_dt is
+    (E_total - E_prev) / dt, taken before E_prev moves on, so after
+    an update E_prev equals the current E_total, ready for the next
+    step. On the first step dE_dt is 0.0, since there is no previous
+    step.
 
     flux_boundary is reserved. No boundary in the current build
     transports energy out (dirichlet is a fixed-end wall, periodic
