@@ -17,7 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
-| [M8.15](tasks/m8_15_task_details.md) | The soft-slot branches at finite amplitude | Whether the branches born at the soft slots' named non-minimizing orbits continue to finite amplitude, stay linearly stable and pass a pre-registered persistence test under the frozen slot action: nine branches on a pinned finite-element solver, four armed controls. An effective model with no slot relation (row 6 ceiling); no mass, no MODELS.md cell, M8.7's gate unchanged | author-proposed and author-run, maintainer-adjudicated | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-18415036)) |
+| [M8.15](tasks/m8_15_task_details.md) | The soft-slot branches at finite amplitude | Whether the branches born at the soft slots' named non-minimizing orbits continue to finite amplitude, stay linearly stable and pass a pre-registered persistence test under the frozen slot action: nine branches on a pinned finite-element solver, four armed controls. An effective model with no slot relation (row 6 ceiling); no mass, no MODELS.md cell, M8.7's gate unchanged | author-proposed and author-run, maintainer-adjudicated | the maintainer's adjudication of the run ([method note](findings/m8_15_method_note.md)) |
 
 ## LATER (gated)
 
