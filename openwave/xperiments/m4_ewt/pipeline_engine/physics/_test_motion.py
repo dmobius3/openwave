@@ -142,11 +142,13 @@ def _build_pipeline(wcs, rule, rho_arr=None, dt=0.1, max_steps=1):
 
 def test_noop_rule_leaves_position_unchanged():
     """
-    Control: NoOpRule on a WC at rest keeps the position at its
+    Control: NoOpRule passed explicitly keeps the position at its
     starting value for any number of steps.
 
-    Mutation caught: a default rule that returns a nonzero
-    acceleration; the WC drifts.
+    The processor's default rule is NoOpRule by construction, but this
+    test passes NoOpRule explicitly, so it does not exercise the
+    default path. Mutation caught: a NoOpRule that returns a nonzero
+    acceleration.
     """
     _ti_init()
     wc = WC(x=4.0, y=4.0, z=4.0, velocity=(0.0, 0.0, 0.0))
