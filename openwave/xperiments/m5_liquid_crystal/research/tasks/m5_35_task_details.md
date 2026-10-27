@@ -47,6 +47,8 @@ Only row 15 (baryons: exact masses) is touched, and only its route line: the pap
 
 None open from the delta. Two notes for the reply: the author's `V40` to `V51` time table is the one asked for and reproduces the M5.34 reading; the DMC's run time, absent from the README, is reported from here.
 
+**The author's answer to this task's reply (2026-10-27, [discussioncomment-19219358](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-19219358)).** The three README findings of § 9, § 10 and § 12 are fixed in the author's bundle for the next deposit: the ℓ = 0 branch's README now says to quote only E15 from it (the flat valley acknowledged, the cited ℓ-free state reproducing to 3.5e-5); the `V52` time reads 5 to 10 min per tag in both tables; the `inv.py` bar reads ≤ 5e-7. The row-15 wording is confirmed as the author's reading and not a record-field run. The author looks forward to R29 = D8, then S3 and S1, the sequence decided on this side the same day.
+
 ### 5. Blindspot pass at PLAN
 
 (i) The reviews were run by "a separate Claude agent, with code written from the claims, not from our scripts": under [`AI_HYGIENE.md`](../../../../../AI_HYGIENE.md) a reproduced review is still the author's evidence about the author's stacks; it moves no icon and only closes the tag on the three corrections. (ii) `vortex_v3.py` changed under the feet of M5.34's R1c; R1c2 exists for that reason and its gate is the v1.1 values at the default options, not the README. (iii) The author's times are a 2-core container's on Python 3.13; a 2× or 5× ratio here is a machine statement and belongs in the checkpoint, not in the chart or the thread beyond one sentence. (iv) The DMC is stochastic (seed 1 stated): the gate is agreement within the stated error, and a different NumPy generator stream across Python versions is a legitimate reason for a different third digit, reported not failed. (v) The `svm_check.py` nine minutes and the seven refit tags are the only loads; the pool runs at the ingestion-pool size of the machine plan. (vi) Nothing here reads the search kit, the nuclei kit or the two v2 papers; they are R29's inputs and the user's sequencing.
@@ -135,7 +137,7 @@ Log hygiene: no warning, exception, NaN or Inf in any log; `V54` `vbp` stops at 
 
 ## TASK REVIEW (2026-10-27; presented in the terminal at 10:09 EDT and approved by the user's commit)
 
-> The record PR is [#664](https://github.com/openwave-labs/openwave/pull/664) (merge `fdb3ceae`); the reply went up as [discussioncomment-19219242](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-19219242).
+> The record PR is [#664](https://github.com/openwave-labs/openwave/pull/664) (merge `fdb3ceae`); the reply went up as [discussioncomment-19219242](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-19219242); the author's answer of the same day ([discussioncomment-19219358](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-19219358)) fixes the three README findings in the next deposit and confirms the row-15 wording (§ 4).
 
 **Task Duration:** 00:31 (from the 09:38 EDT go to the 10:09 EDT review; the pool launched at 09:44 on the user's "fan is on, go")
 **Usage Cap Triggered:** NO
