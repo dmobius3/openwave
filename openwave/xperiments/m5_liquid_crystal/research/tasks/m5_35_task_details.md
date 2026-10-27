@@ -132,3 +132,22 @@ An independent agent with the logs, the regenerated tree and the shipped tree on
 | 7 wall times shorter than the README's | QUALIFIED | every job above the 1 s log resolution is shorter (ratios 0.18 to 0.36 on the long ones); `V42`, `hess.py`, `inv.py` equal at 1 s; the README's own `V52` time is "5 to 10 minutes per tag" in one table and "about 1 h each" in another |
 
 Log hygiene: no warning, exception, NaN or Inf in any log; `V54` `vbp` stops at iteration 49 still descending (the README says "vbp not converged"); `omega_check.py` prints its divergent OBE diagnostic (S 2e13, g²/4π 6e27) that the README calls discarded; the first `V44b` run read a mid-run `V44` JSON (the rerun fixed it, § 8). Nothing refuted survives in the record: every item above is folded in where the table says.
+
+## TASK REVIEW (2026-10-27; presented in the terminal at 10:09 EDT and approved by the user's commit)
+
+> The record PR is [#664](https://github.com/openwave-labs/openwave/pull/664) (merge `fdb3ceae`); the reply went up as [discussioncomment-19219242](https://github.com/vantasnerdan/substrate-framework/discussions/186#discussioncomment-19219242).
+
+**Task Duration:** 00:31 (from the 09:38 EDT go to the 10:09 EDT review; the pool launched at 09:44 on the user's "fan is on, go")
+**Usage Cap Triggered:** NO
+
+**Results**: ✅ R0 the copy and the delta; ✅ R1r the three reviews' 14 scripts (17 jobs) at the README digits; ✅ R1c2 `V40` to `V51` from the changed replica at the v1.1 values; ✅ R1n `V52` to `V57` at the shipped optima to 1e-5, from the shipped and from the regenerated `V48`; ✅ R2 the row-15 pointer, the reviews' corrections closed as reproduced evidence, no icon; ✅ 60 jobs exit 0 in eleven minutes of wall.
+
+**Issues / blockers**: ⚠️ the `V48` `fixed` (ℓ = 0) refit reproduces its E15 on a different point of a flat valley (a score pinned, a state not: artifact read as result, reported to the author); ⚠️ `inv.py`'s `K_T` and `K_h` diagonal residuals above the README's 2e-7 bar at round-off scale; the README states `V52`'s time twice.
+
+**Deviations from plan**: `V44b` ran before `V44` and was rerun after it; the `V52` to `V57` tags started on the shipped `V48` and the chain was rerun from the regenerated state (R1n2); the plan's review-script count (19, 20) corrected to 15 files, 14 runnable, 17 jobs.
+
+**Action needed**: none open from this task; R29 = D8 PLANNING next on the user's word; the search kit sequenced S3, S1, S4.
+
+**Findings**: the scorecard v1.2 delta reproduces in full on this stack, the three independent reviews rerun to the digit, and the one thing that does not reproduce is a state, not a score: the ℓ = 0 covariant refit sits on a flat valley where E15 is pinned and the parameters and held-out radii are not.
+
+**Research docs created / updated**: this record §§ 6 to 12 · [`m5_35_reproduction_record.py`](../scripts/m5_35_reproduction_record.py) · [`m5_35_reproduction.json`](../data/m5_35_reproduction.json) · [`m5_roadmap.md`](../m5_roadmap.md) (the row to DONE, the change-log) · [`MODELS.md`](../../../../../MODELS.md) (row 15's pointer) · [`m5_32_convo.md`](m5_32_convo.md) (the rows).
