@@ -33,6 +33,35 @@ OpenWave simulates subatomic physics at the Planck scale, requiring careful atte
 - Reuse buffers in iterative calculations
 - Be mindful of memory layout (C vs Fortran order)
 
+### Lattice Step Loops: Write Into Fixed Buffers
+
+For research scripts that step a NumPy field on a lattice (a time-step loop, a relaxation, a reproduction run of a shipped package). Every `np.roll` call and every operator in an expression such as `-6.0 * u + np.roll(u, 1, 0)` allocates a new array the size of the whole field and frees it a moment later. On a large 3D grid the loop then spends its time moving memory rather than doing arithmetic, and in a pool every worker competes for the same memory bandwidth.
+
+| Practice | Reason | Check |
+| --- | --- | --- |
+| Allocate the step's work arrays once, before the loop, and write every result into them with `out=` (`np.multiply(u, dt, out=tmp)`, `np.add(v, tmp, out=v)`) | Removes the per-step allocate-and-free of full-size temporaries | Run the original and the rewrite from the same initial state and compare the fields to a stated tolerance (`1e-12` in float64), not exact equality: the order of additions can change |
+| Write a periodic shift as slice adds into the preallocated buffer, not `np.roll` | `np.roll` copies the whole field on every call | The same agreement check, on a field whose size differs along each axis so a wrong axis shows up |
+
+`np.roll` stays the right choice when the copy does not matter: a one-off shift, a small field, or code read far more often than it runs. Rewrite only the loop that runs per step on a large field.
+
+The demonstration is [`utils/demo_preallocated_step.py`](utils/demo_preallocated_step.py): a 3D field stepped both ways from the same random start, the agreement asserted to `1e-12`, and both timings printed for the machine at hand. Its `lap_into` is the slice-add Laplacian to copy from.
+
+Write the fast version as new code next to the original and keep the original as the reference. A script shipped by a model author, or pinned by hash, is reproduced as shipped and never edited for speed.
+
+### Pools: Size by What Bounds the Job
+
+| Job shape | What bounds it | Rule |
+| --- | --- | --- |
+| Many short jobs, each building a large field | Memory bandwidth: throughput stops rising at a worker count well below the core count | Measure the saturation point and stop there; more workers only add contention |
+| A few long single-threaded jobs, each solving one problem | CPU: throughput scales with the core count until memory runs out | Up to one job per core, checking peak memory per job against the machine's RAM |
+| One large job that is mostly BLAS / LAPACK (big matrix products, eigensolvers) | Its own threads | Run it alone and let the math library use its threads; do not pin it to 1 |
+
+In every pool, pin each worker's math-library threads to 1 before NumPy is imported: `OMP_NUM_THREADS=1`, `OPENBLAS_NUM_THREADS=1`, `MKL_NUM_THREADS=1` and `VECLIB_MAXIMUM_THREADS=1`, set in the environment of the launch command or at the top of the worker before `import numpy`. Otherwise N workers can each start a thread per core and fight over the CPU.
+
+Find the saturation point with a fixed-work batch: the same number of identical jobs at a few worker counts, comparing jobs per minute.
+
+**Compare fixed-work runs only.** A timing compares across machines, settings or code versions only when every run does the same work: a fixed number of steps on a fixed grid. A run that iterates to convergence does a different amount of work each time, so its wall time measures the stopping rule as much as the speed. Keep the numbers with the machine that produced them: the rules above are portable, the timings are not.
+
 ## Taichi Optimization
 
 ### Kernel Design
@@ -139,6 +168,7 @@ screen_position = lattice.get_screen_position_numpy()
 - Use thread-safe data structures when necessary
 - Minimize lock contention
 - Consider using thread-local storage for temporary data
+- For process pools of NumPy jobs (one thread per worker, sizing by job shape): [§ Pools: Size by What Bounds the Job](#pools-size-by-what-bounds-the-job)
 
 ### Vectorization
 

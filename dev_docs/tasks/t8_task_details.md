@@ -1,6 +1,6 @@
 # T8: Research-script performance note: preallocation and pool shape for NumPy lattice work
 
-> Platform task **T8**. Status: 🚧 **STAGED 2026-10-27**, no go yet · Roadmap:
+> Platform task **T8**. Status: ✅ **CLOSED 2026-10-27** · Roadmap:
 > [`../platform_roadmap.md`](../platform_roadmap.md) · Deliverable lands in
 > [`PERFORMANCE_GUIDELINES.md § Python Performance`](../PERFORMANCE_GUIDELINES.md).
 
@@ -17,3 +17,20 @@
 **Blindspot pass.** (i) A preallocated step changes the arithmetic order in some reductions, so the agreement check must be stated with its tolerance, not as exact equality. (ii) `np.roll` is sometimes the clearer code; the note says when the copy cost matters (per-step on large fields) and when it does not. (iii) Thread pinning helps pools and can hurt a single large BLAS job; the note states the rule per job shape, not globally. (iv) The author's shipped scripts are never edited for speed by us; the note is for scripts this repo writes.
 
 **Consumers.** Any research script that builds lattice fields per step (the M5 kit checks, the reproduction comparators, the planned Hessian ladders); the instrument check each needs is the agreement assertion of the demonstration script.
+
+## FINDINGS
+
+The deliverable followed the plan, with two placements settled while writing:
+
+| Planned | Landed |
+| --- | --- |
+| Two practices, each with a reason and a check | [§ Lattice Step Loops: Write Into Fixed Buffers](../PERFORMANCE_GUIDELINES.md#lattice-step-loops-write-into-fixed-buffers): a three-column table, plus when `np.roll` stays the right code (blindspot ii) and the shipped-script rule (iv) |
+| The pool-sizing rule by job shape | [§ Pools: Size by What Bounds the Job](../PERFORMANCE_GUIDELINES.md#pools-size-by-what-bounds-the-job): three job shapes, including the single large BLAS job that is NOT pinned to 1 (iii); the existing § Threading Considerations points to it |
+| The fixed-work rule | The closing paragraph of the pool section |
+| A demonstration script asserting agreement to 1e-12 | [`../utils/demo_preallocated_step.py`](../utils/demo_preallocated_step.py), 70 lines after `black`: a 3D field stepped naively and preallocated from one random start, agreement asserted to `1e-12` (tolerance stated, blindspot i), timings printed for the machine at hand only |
+| No machine numbers | None in the diff; the only figures are the tolerance and the grid defaults |
+
+**Instrument checks.** The script passes at its defaults (64³, 50 steps) and on a 17³ grid, with agreement at round-off. A mutant with the last wrap-around add removed fails the assertion, so the check can fail. The Laplacian snippet's arithmetic was checked against `np.roll` on 1D, 2D, and 3D fields with unequal axis lengths before it went into the script.
+
+**Not done, by design.** No existing research script was rewritten: the note is for scripts this repo writes, and the author packages stay as shipped.
+
