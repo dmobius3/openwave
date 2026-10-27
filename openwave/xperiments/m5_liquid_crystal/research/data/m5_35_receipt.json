@@ -1,0 +1,506 @@
+{
+ "task": "M5.35",
+ "written": "2026-10-27T15:33:29+00:00",
+ "base": "fea758b6",
+ "package": "doi:10.5281/zenodo.23681226 (scorecard v1.2, ldgs-openwave-v1.2-code-and-data.zip)",
+ "machine": "workstation",
+ "versions": {
+  "python": "3.12.14",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "sympy": "1.14.0",
+  "mpmath": "1.3.0"
+ },
+ "jobs": {
+  "r1c2_V40": {
+   "command": "python3 -E -s V40_v3_replay.py",
+   "exit": 0,
+   "wall_s": 11,
+   "log": "r1c2_V40.log"
+  },
+  "r1c2_V40b": {
+   "command": "python3 -E -s V40b_second_branch.py",
+   "exit": 0,
+   "wall_s": 27,
+   "log": "r1c2_V40b.log"
+  },
+  "r1c2_V41": {
+   "command": "python3 -E -s V41_clock_kink_check.py",
+   "exit": 0,
+   "wall_s": 0,
+   "log": "r1c2_V41.log"
+  },
+  "r1c2_V42": {
+   "command": "python3 -E -s V42_v3_arithmetic.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1c2_V42.log"
+  },
+  "r1c2_V43": {
+   "command": "python3 -E -s V43_v3_merging.py",
+   "exit": 0,
+   "wall_s": 6,
+   "log": "r1c2_V43.log"
+  },
+  "r1c2_V44": {
+   "command": "python3 -E -s V44_comoving_clock_refit.py",
+   "exit": 0,
+   "wall_s": 119,
+   "log": "r1c2_V44.log"
+  },
+  "r1c2_V44_0": {
+   "command": "python3 -E -s V44_comoving_clock_refit.py 0",
+   "exit": 0,
+   "wall_s": 25,
+   "log": "r1c2_V44_0.log"
+  },
+  "r1c2_V44b": {
+   "command": "python3 -E -s V44b_replay_fine.py",
+   "exit": 0,
+   "wall_s": 10,
+   "log": "r1c2_V44b.log"
+  },
+  "r1c2_V44b_rerun": {
+   "command": "V44b rerun after V44 (ordering fix)",
+   "exit": 0,
+   "wall_s": 7,
+   "log": "r1c2_V44b_rerun.log"
+  },
+  "r1c2_V45": {
+   "command": "python3 -E -s V45_clock_identities.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1c2_V45.log"
+  },
+  "r1c2_V46": {
+   "command": "python3 -E -s V46_v3_review_figure.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1c2_V46.log"
+  },
+  "r1c2_V47": {
+   "command": "python3 -E -s V47_inertial_mass_3d.py",
+   "exit": 0,
+   "wall_s": 0,
+   "log": "r1c2_V47.log"
+  },
+  "r1c2_V48_ell": {
+   "command": "python3 -E -s V48_covariant_omega_refit.py ell",
+   "exit": 0,
+   "wall_s": 118,
+   "log": "r1c2_V48_ell.log"
+  },
+  "r1c2_V48_fixed": {
+   "command": "python3 -E -s V48_covariant_omega_refit.py fixed",
+   "exit": 0,
+   "wall_s": 99,
+   "log": "r1c2_V48_fixed.log"
+  },
+  "r1c2_V48b": {
+   "command": "python3 -E -s V48b_readout.py",
+   "exit": 0,
+   "wall_s": 8,
+   "log": "r1c2_V48b.log"
+  },
+  "r1c2_V49": {
+   "command": "python3 -E -s V49_time_axis_not_a_clock.py",
+   "exit": 0,
+   "wall_s": 0,
+   "log": "r1c2_V49.log"
+  },
+  "r1c2_V50": {
+   "command": "python3 -E -s V50_openwave_v3_figure.py",
+   "exit": 0,
+   "wall_s": 2,
+   "log": "r1c2_V50.log"
+  },
+  "r1c2_V51": {
+   "command": "python3 -E -s V51_deuteron_covariant.py",
+   "exit": 0,
+   "wall_s": 12,
+   "log": "r1c2_V51.log"
+  },
+  "r1n2_V52_lock": {
+   "command": "python3 -E -s V52_power_and_lock_refit.py lock 3 4 1.0",
+   "exit": 0,
+   "wall_s": 90,
+   "log": "r1n2_V52_lock.log"
+  },
+  "r1n2_V52_n4": {
+   "command": "python3 -E -s V52_power_and_lock_refit.py n4 4 2 0.022858",
+   "exit": 0,
+   "wall_s": 72,
+   "log": "r1n2_V52_n4.log"
+  },
+  "r1n2_V52b": {
+   "command": "python3 -E -s V52b_replay.py",
+   "exit": 0,
+   "wall_s": 2,
+   "log": "r1n2_V52b.log"
+  },
+  "r1n2_V54_consistent": {
+   "command": "python3 -E -s V54_diagnostic_refits.py consistent",
+   "exit": 0,
+   "wall_s": 75,
+   "log": "r1n2_V54_consistent.log"
+  },
+  "r1n2_V54_nopipi": {
+   "command": "python3 -E -s V54_diagnostic_refits.py nopipi",
+   "exit": 0,
+   "wall_s": 77,
+   "log": "r1n2_V54_nopipi.log"
+  },
+  "r1n2_V54_pole": {
+   "command": "python3 -E -s V54_diagnostic_refits.py pole",
+   "exit": 0,
+   "wall_s": 49,
+   "log": "r1n2_V54_pole.log"
+  },
+  "r1n2_V54_poleguard": {
+   "command": "python3 -E -s V54_diagnostic_refits.py poleguard",
+   "exit": 0,
+   "wall_s": 56,
+   "log": "r1n2_V54_poleguard.log"
+  },
+  "r1n2_V54_vbp": {
+   "command": "python3 -E -s V54_diagnostic_refits.py vbp",
+   "exit": 0,
+   "wall_s": 78,
+   "log": "r1n2_V54_vbp.log"
+  },
+  "r1n2_V54b": {
+   "command": "python3 -E -s V54b_replay_fine.py",
+   "exit": 0,
+   "wall_s": 9,
+   "log": "r1n2_V54b.log"
+  },
+  "r1n2_V55": {
+   "command": "python3 -E -s V55_shadow_prices.py",
+   "exit": 0,
+   "wall_s": 5,
+   "log": "r1n2_V55.log"
+  },
+  "r1n2_V56": {
+   "command": "python3 -E -s V56_where_pinned_figure.py",
+   "exit": 0,
+   "wall_s": 2,
+   "log": "r1n2_V56.log"
+  },
+  "r1n2_V57": {
+   "command": "python3 -E -s V57_delta_level_vs_pole.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1n2_V57.log"
+  },
+  "r1n2_nums": {
+   "command": "python3 -E -s review_checks/v1_1_check/nums.py",
+   "exit": 0,
+   "wall_s": 0,
+   "log": "r1n2_nums.log"
+  },
+  "r1n_V52_lock": {
+   "command": "python3 -E -s V52_power_and_lock_refit.py lock 3 4 1.0",
+   "exit": 0,
+   "wall_s": 105,
+   "log": "r1n_V52_lock.log"
+  },
+  "r1n_V52_n4": {
+   "command": "python3 -E -s V52_power_and_lock_refit.py n4 4 2 0.022858",
+   "exit": 0,
+   "wall_s": 100,
+   "log": "r1n_V52_n4.log"
+  },
+  "r1n_V52b": {
+   "command": "python3 -E -s V52b_replay.py",
+   "exit": 0,
+   "wall_s": 4,
+   "log": "r1n_V52b.log"
+  },
+  "r1n_V54_consistent": {
+   "command": "python3 -E -s V54_diagnostic_refits.py consistent",
+   "exit": 0,
+   "wall_s": 101,
+   "log": "r1n_V54_consistent.log"
+  },
+  "r1n_V54_nopipi": {
+   "command": "python3 -E -s V54_diagnostic_refits.py nopipi",
+   "exit": 0,
+   "wall_s": 100,
+   "log": "r1n_V54_nopipi.log"
+  },
+  "r1n_V54_pole": {
+   "command": "python3 -E -s V54_diagnostic_refits.py pole",
+   "exit": 0,
+   "wall_s": 55,
+   "log": "r1n_V54_pole.log"
+  },
+  "r1n_V54_poleguard": {
+   "command": "python3 -E -s V54_diagnostic_refits.py poleguard",
+   "exit": 0,
+   "wall_s": 71,
+   "log": "r1n_V54_poleguard.log"
+  },
+  "r1n_V54_vbp": {
+   "command": "python3 -E -s V54_diagnostic_refits.py vbp",
+   "exit": 0,
+   "wall_s": 103,
+   "log": "r1n_V54_vbp.log"
+  },
+  "r1n_V54b": {
+   "command": "python3 -E -s V54b_replay_fine.py",
+   "exit": 0,
+   "wall_s": 10,
+   "log": "r1n_V54b.log"
+  },
+  "r1n_V55": {
+   "command": "python3 -E -s V55_shadow_prices.py",
+   "exit": 0,
+   "wall_s": 6,
+   "log": "r1n_V55.log"
+  },
+  "r1n_V56": {
+   "command": "python3 -E -s V56_where_pinned_figure.py",
+   "exit": 0,
+   "wall_s": 2,
+   "log": "r1n_V56.log"
+  },
+  "r1n_V57": {
+   "command": "python3 -E -s V57_delta_level_vs_pole.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1n_V57.log"
+  },
+  "r1r_cib": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/cib_check.py",
+   "exit": 0,
+   "wall_s": 43,
+   "log": "r1r_cib.log"
+  },
+  "r1r_dmc2_mtv3": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/dmc2.py mtv 3 0.0005 4000 1",
+   "exit": 0,
+   "wall_s": 15,
+   "log": "r1r_dmc2_mtv3.log"
+  },
+  "r1r_dmc2_mtv4": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/dmc2.py mtv 4 0.0005 4000 1",
+   "exit": 0,
+   "wall_s": 26,
+   "log": "r1r_dmc2_mtv4.log"
+  },
+  "r1r_dmc2_refit3": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/dmc2.py refit 3 0.0005 4000 1",
+   "exit": 0,
+   "wall_s": 17,
+   "log": "r1r_dmc2_refit3.log"
+  },
+  "r1r_dmc2_refit4": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/dmc2.py refit 4 0.0005 4000 1",
+   "exit": 0,
+   "wall_s": 32,
+   "log": "r1r_dmc2_refit4.log"
+  },
+  "r1r_dmc_superseded": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/dmc.py refit 3 0.0005 400 1",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1r_dmc_superseded.log"
+  },
+  "r1r_frozen_bag": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/frozen_bag.py",
+   "exit": 0,
+   "wall_s": 4,
+   "log": "r1r_frozen_bag.log"
+  },
+  "r1r_omega": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/omega_check.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1r_omega.log"
+  },
+  "r1r_svm": {
+   "command": "python3 -E -s review_checks/v1_0_adversarial/svm_check.py",
+   "exit": 0,
+   "wall_s": 163,
+   "log": "r1r_svm.log"
+  },
+  "r1r_v11_inv": {
+   "command": "python3 -E -s review_checks/v1_1_check/inv.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1r_v11_inv.log"
+  },
+  "r1r_v11_nums": {
+   "command": "python3 -E -s review_checks/v1_1_check/nums.py",
+   "exit": 0,
+   "wall_s": 0,
+   "log": "r1r_v11_nums.log"
+  },
+  "r1r_v11_v5check": {
+   "command": "python3 -E -s review_checks/v1_1_check/v5check.py",
+   "exit": 0,
+   "wall_s": 11,
+   "log": "r1r_v11_v5check.log"
+  },
+  "r1r_v11_v5free": {
+   "command": "python3 -E -s review_checks/v1_1_check/v5free.py",
+   "exit": 0,
+   "wall_s": 15,
+   "log": "r1r_v11_v5free.log"
+  },
+  "r1r_v3_arith": {
+   "command": "python3 -E -s review_checks/v3_review/arith.py",
+   "exit": 0,
+   "wall_s": 0,
+   "log": "r1r_v3_arith.log"
+  },
+  "r1r_v3_hess": {
+   "command": "python3 -E -s review_checks/v3_review/hess.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1r_v3_hess.log"
+  },
+  "r1r_v3_inertia": {
+   "command": "python3 -E -s review_checks/v3_review/inertia.py",
+   "exit": 0,
+   "wall_s": 0,
+   "log": "r1r_v3_inertia.log"
+  },
+  "r1r_v3_stress3d": {
+   "command": "python3 -E -s review_checks/v3_review/stress3d.py",
+   "exit": 0,
+   "wall_s": 1,
+   "log": "r1r_v3_stress3d.log"
+  }
+ },
+ "comparator": {
+  "V40_v3_replay.json": {
+   "leaves": 235,
+   "max_rel_diff": 5.2e-12,
+   "leaf": "/R0/errors/b00"
+  },
+  "V40b_second_branch.json": {
+   "leaves": 7,
+   "max_rel_diff": 6.08e-16,
+   "leaf": "/E15"
+  },
+  "V41_clock_kink_check.json": {
+   "leaves": 36,
+   "max_rel_diff": 5.04e-07,
+   "leaf": "/lam=0.3/E_tr"
+  },
+  "V42_v3_arithmetic.json": {
+   "leaves": 28,
+   "max_rel_diff": 0.0,
+   "leaf": "/(a) check on C9: 9(hbar c)^2 mu_S/(2 m_p Delta) vs printed r2_ES[0]"
+  },
+  "V43_v3_merging.json": {
+   "leaves": 42,
+   "max_rel_diff": 7.75e-11,
+   "leaf": "/O10/bag_fm[0]"
+  },
+  "V44_comoving_clock_refit.json": {
+   "leaves": 256,
+   "max_rel_diff": 0.182,
+   "leaf": "/1.0/errors/a11"
+  },
+  "V45_clock_identities.json": {
+   "leaves": 16,
+   "max_rel_diff": 0.00178,
+   "leaf": "/(a) max |b^mu d_mu q| / (|b| |dq|) over 200 random maps"
+  },
+  "V47_inertial_mass_3d.json": {
+   "leaves": 33,
+   "max_rel_diff": 1.3e-14,
+   "leaf": "/R0/M_I_minus_Est"
+  },
+  "V48_covariant_omega_refit_ell.json": {
+   "leaves": 114,
+   "max_rel_diff": 0.00967,
+   "leaf": "/4.5/errors/b20"
+  },
+  "V48_covariant_omega_refit_fixed.json": {
+   "leaves": 111,
+   "max_rel_diff": 1.56,
+   "leaf": "/4.5/errors/a20"
+  },
+  "V48b_readout.json": {
+   "leaves": 152,
+   "max_rel_diff": 0.867,
+   "leaf": "/covariant + omega gate, ell = 0 (V48)/errors/f"
+  },
+  "V49_time_axis_not_a_clock.json": {
+   "leaves": 23,
+   "max_rel_diff": 0.66,
+   "leaf": "/(a) max relative change over 50 random points/ruleR diagonal"
+  },
+  "V51_deuteron_covariant.json": {
+   "leaves": 44,
+   "max_rel_diff": 0.000368,
+   "leaf": "/states/covariant + omega gate (V48, ell free)/kappa"
+  },
+  "V52_refit_lock.json": {
+   "leaves": 41,
+   "max_rel_diff": 0.00565,
+   "leaf": "/5.8/errors/b00"
+  },
+  "V52_refit_n4.json": {
+   "leaves": 41,
+   "max_rel_diff": 2.1e-05,
+   "leaf": "/5.8/errors/f"
+  },
+  "V52b_replay.json": {
+   "leaves": 7266,
+   "max_rel_diff": 0.00565,
+   "leaf": "/lock/errors/b00"
+  },
+  "V54_refit_consistent.json": {
+   "leaves": 38,
+   "max_rel_diff": 0.00237,
+   "leaf": "/5.8/errors/b00"
+  },
+  "V54_refit_nopipi.json": {
+   "leaves": 38,
+   "max_rel_diff": 0.00191,
+   "leaf": "/5.8/rMV2"
+  },
+  "V54_refit_pole.json": {
+   "leaves": 38,
+   "max_rel_diff": 1.56e-09,
+   "leaf": "/5.8/params/tau"
+  },
+  "V54_refit_poleguard.json": {
+   "leaves": 38,
+   "max_rel_diff": 6.27e-12,
+   "leaf": "/5.8/errors/a20"
+  },
+  "V54_refit_vbp.json": {
+   "leaves": 38,
+   "max_rel_diff": 0.000282,
+   "leaf": "/5.8/params/tau"
+  },
+  "V54b_replay_fine.json": {
+   "leaves": 192,
+   "max_rel_diff": 0.00565,
+   "leaf": "/V52_lock/errors/b00"
+  },
+  "V55_shadow_prices.json": {
+   "leaves": 780,
+   "max_rel_diff": 0.0545,
+   "leaf": "/V48/0.02/step/f"
+  },
+  "V57_delta_level_vs_pole.json": {
+   "leaves": 276,
+   "max_rel_diff": 6.62e-05,
+   "leaf": "/V48 Vortex state/dev_level_vs_pole_pct"
+  }
+ },
+ "verdict": "the v1.2 delta reproduces in full: review_checks at the README digits, V40 to V51 at the v1.1 values from the changed replica, V52 to V57 at the shipped optima to 1e-5; the V48 fixed (ell = 0) refit reproduces its E15 on a different point of a flat valley",
+ "summary": {
+  "jobs": 60,
+  "exit_nonzero": [],
+  "no_end_line": [],
+  "wall_total_s": 1952,
+  "files_compared": 24
+ }
+}
