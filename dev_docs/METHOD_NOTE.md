@@ -20,6 +20,7 @@ The lesson generalizes: physicists verify by reading the Lagrangian / Hamiltonia
 | 4 | **Results after methods** | Each result states its pre-registered gate and convergence evidence next to the number. |
 | 5 | **Minimal inspection set** | At most ~4 artifacts, ordered physics-first: the functional module FIRST, the driver LAST. Never send a reader into a driver to find physics. |
 | 6 | **Scope honesty** | State explicitly what was NOT computed (observables, regimes, anchors), in the owner's own vocabulary for the model. |
+| 7 | **The scope line** (T9, 2026-10-27) | One line, `**Scope**:`, in every results post, task review and method note, stating what the result licenses and what it does not: the object it was computed on, the box and spacing or the sample, and the claims it does not support. Shape and two filled examples in [§ The scope line](#the-scope-line). Checked at PR review ([`PR_REVIEW_STANDARDS.md` C9](PR_REVIEW_STANDARDS.md#5-gate-c-claim-to-artifact)). |
 
 ## Pre-send checklist
 
@@ -31,8 +32,34 @@ The lesson generalizes: physicists verify by reading the Lagrangian / Hamiltonia
 | Is the functional in a small module whose docstring matches the report's equations? | yes |
 | Is each headline number next to its gate + convergence evidence? | yes |
 | Is the not-computed list explicit? | yes |
+| Is the scope line present, one sentence, naming the exclusions and not repeating the title? | yes (T9) |
+| For a reproduction or verification run: is its receipt written beside the data? | yes (T10, [§ The validation receipt](#the-validation-receipt)) |
 | REQUIRED (upgraded from RECOMMENDED 2026-07-05): has an independent second agent ADVERSARIALLY audited the note (own script, different method/seed, tried to REFUTE each claim, re-walked the equation-to-code map)? | yes, before sending; adopted from the model owner's own advice ("careful small steps, maybe multiple agents verifying each other", Duda 2026-07-03). Upgraded after the audit's first real catch (M5.18: a witness overclaim refuted + a missed vacuum-branch structure found, `m5_18_verification_note.md § 10`). Record the audit outcome IN the note (the § 10 pattern): the audit record is part of the rigor surface |
 
 ## Scope
 
 Applies to every model in `openwave/xperiments/` when reporting outward to its theory owner or any external physicist. It does not constrain internal working notes; it constrains anything that crosses the repo boundary toward a scientist.
+
+## The scope line
+
+Adopted 2026-10-27 ([T9](tasks/t9_task_details.md)) from the claim registry of the repository that hosts the M5 discussion, where every accepted claim carries a `does_not_license` field fixed before the run. The M5.32 rungs had been stating the same thing in prose ("what the poll does not do", "not in R27"); the line makes it a fixed slot a reader can find. One sentence, at most two; it names the exclusions, never repeats the title, and it is not a status label (the ✅ / 🔶 / ⚠️ labels stay as they are).
+
+| Where | The line |
+| --- | --- |
+| A reproduction verdict (M5.35) | **Scope**: a rerun of the author's scripts as shipped on pinned versions; it licenses "the package reproduces on this stack" and the path-dependence finding on the ℓ = 0 refit, and does not license any statement about the record field, any cell icon, or the physical correctness of the author's stacks. |
+| A lattice gap (the R29 plan's reads) | **Scope**: the lowest kinetic-positive ω² of the projected Hessian about one relaxed hedgehog at the toy point, extrapolated in 1/L over four rungs at one spacing with one mesh check; it licenses one of the four pre-registered words and does not license a continuum value, a physical-unit gap, or a statement about the author's vacuum. |
+
+## The validation receipt
+
+Adopted 2026-10-27 ([T10](tasks/t10_task_details.md)) from the per-run `validation-receipt.yaml` of the same repository, reduced to what a reproduction needs. Every reproduction or verification run writes one small tracked JSON beside its record at FINISH, `research/data/<id>_receipt.json`, with [`dev_docs/utils/write_receipt.py`](utils/write_receipt.py) from the run's logs and comparator output. Two receipts diff without reading two task docs; a receipt is a record of what ran, never evidence of correctness (the verdict words stay in the task record with their gates).
+
+| Field | Content |
+| --- | --- |
+| `task`, `written` | the task id; the UTC stamp of the receipt |
+| `base` | this repo's commit the run started from |
+| `package` | the commit, DOI or URL of what was reproduced, as pinned in the record |
+| `machine` | the class only (`workstation`, `laptop`, `container`); never a hostname, a path or a core count |
+| `versions` | the interpreter and the pinned libraries, read from the running interpreter |
+| `jobs` | per job: the command, the exit code, the wall seconds, the log file name |
+| `comparator` | per regenerated file: leaves compared, max relative difference, the leaf |
+| `verdict` | the pre-registered words of the task record, verbatim |

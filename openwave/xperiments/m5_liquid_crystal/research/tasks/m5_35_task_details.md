@@ -150,6 +150,8 @@ Log hygiene: no warning, exception, NaN or Inf in any log; `V54` `vbp` stops at 
 
 **Action needed**: none open from this task; R29 = D8 PLANNING next on the user's word; the search kit sequenced S3, S1, S4.
 
+**Scope**: a rerun of the author's scripts as shipped on pinned versions; it licenses "the package reproduces on this stack" and the path-dependence finding on the ℓ = 0 refit, and does not license any statement about the record field, any cell icon, or the physical correctness of the author's stacks (the line retrofitted 2026-10-27 as T9's worked example).
+
 **Findings**: the scorecard v1.2 delta reproduces in full on this stack, the three independent reviews rerun to the digit, and the one thing that does not reproduce is a state, not a score: the ℓ = 0 covariant refit sits on a flat valley where E15 is pinned and the parameters and held-out radii are not.
 
 **Research docs created / updated**: this record §§ 6 to 12 · [`m5_35_reproduction_record.py`](../scripts/m5_35_reproduction_record.py) · [`m5_35_reproduction.json`](../data/m5_35_reproduction.json) · [`m5_roadmap.md`](../m5_roadmap.md) (the row to DONE, the change-log) · [`MODELS.md`](../../../../../MODELS.md) (row 15's pointer) · [`m5_32_convo.md`](m5_32_convo.md) (the rows).
