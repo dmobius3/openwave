@@ -265,3 +265,17 @@ As M8.16.1's: the guard writes `run/FROZEN.json` and its pin, the freeze block f
 - **The method note** on OpenWave, and the maintainers' adjudication.
 - **The roadmap:** both M8 status rows record the filing, and the Done row states the adjudicated outcome.
 - **After the adjudication,** a dated note on the census page with each row's ending and its catalog status, any S6 question the record raises, and S5's obligation stated as open.
+
+## Dated note, 2026-10-29: after the adjudication
+
+Everything above this heading is the filed pre-registration, byte for byte: its 27,823 bytes are a prefix of this file and hash to the governing `667159c3…`.
+
+The maintainer adjudicated the run on [#676](https://github.com/openwave-labs/openwave/pull/676#pullrequestreview-5691493287) (2026-10-29): it stands as recorded. Every classification, both brackets and the nine row outcomes, re-derived from the run's published files against these terms, agree with the record at every point. Four rows meet an S4 completion condition: T2/R4 and T3/R5, with each change of type located, and T2/R5 and T3/R4, Elliptic throughout. Five end not settled by this run: T1/R4, T4/R4, T1/R5, T4/R5 and T5/R2. The roadmap's Done row states the outcome. The author's dated note records it on MIT, in § V of [the census page](https://github.com/dmobius3/mode-identity-theory/blob/2d4b6977c797ae5242e4ecefafc6755cebcf1f42/files/framework/files/working/files/slot-dynamics-census.md#v-the-program), with each row's ending and catalog status, the S6 questions the record raises and S5's obligation open, and the run's record is [`RECORD.md`](https://github.com/dmobius3/mode-identity-theory/blob/7b66f8a0e207888042e6bb4a9ab636f946cb2a81/files/framework/files/working/files/scripts/soft-slot-dynamics-m8-17/RECORD.md).
+
+**The approval's two comment-tier items,** both taken in the close-out:
+1. the method note gains its **Scope** line, which [`METHOD_NOTE.md` § The scope line](../../../../../dev_docs/METHOD_NOTE.md#the-scope-line) adopted on 2026-10-27, after #662 merged;
+2. both M8 status rows record the run and its adjudication, beside the Done row, as § DEFINITION OF DONE asks.
+
+**The approval's reading note,** carried with the outcome as a reading, not a cause. Along T4/R5's bisections at `N = 24` and 32, the eigenvalue nearest zero outside the cluster on the `n(L) = 7` side shrinks steadily, consistent with one pair passing through zero near `ε ≈ 8.7217`, where the change of type would be. The stopped midpoint, 8.721638, about 7×10⁻⁵ below it, put that pair in the band K1's separation test refuses; had K1 held there, the next interval would have completed the bisection. The terms count K1 failing as an unsuccessful stop, so the outcome does not change.
+
+No rule, threshold or outcome changes.
