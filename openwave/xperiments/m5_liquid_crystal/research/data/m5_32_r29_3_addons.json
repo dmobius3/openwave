@@ -1,0 +1,264 @@
+{
+ "versions": {
+  "python": "3.12.14",
+  "numpy": "2.5.3"
+ },
+ "1_gap_derivatives_per_eigenvalue_mode": {
+  "toy": {
+   "mode 0 (lambda_a = -32)": {
+    "gap 01": 0.9696969696969697,
+    "gap 02": 0.9907120743034057,
+    "gap 03": 1.0,
+    "gap 12": -0.0,
+    "gap 13": -0.0,
+    "gap 23": -0.0
+   },
+   "mode 1 (lambda_a = 1)": {
+    "gap 01": 0.030303030303030304,
+    "gap 02": -0.0,
+    "gap 03": -0.0,
+    "gap 12": 1.4285714285714286,
+    "gap 13": 1.0,
+    "gap 23": 0.0
+   },
+   "mode 2 (lambda_a = 0.3)": {
+    "gap 01": -0.0,
+    "gap 02": 0.009287925696594427,
+    "gap 03": -0.0,
+    "gap 12": -0.4285714285714286,
+    "gap 13": 0.0,
+    "gap 23": 1.0
+   },
+   "mode 3 (lambda_a = 0)": "a logarithmic derivative in lambda_a is undefined at lambda_a = 0; the linear derivative d|lambda_i - lambda_j| / d lambda_a is +-1 for the pairs containing a, 0 otherwise"
+  },
+  "R23": {
+   "mode 0 (lambda_a = -8)": {
+    "gap 01": 0.8888888888888888,
+    "gap 02": 0.9638554216867469,
+    "gap 03": 0.9638554216867469,
+    "gap 12": -0.0,
+    "gap 13": -0.0,
+    "gap 23": "degenerate pair: the gap is 0"
+   },
+   "mode 1 (lambda_a = 1)": {
+    "gap 01": 0.1111111111111111,
+    "gap 02": -0.0,
+    "gap 03": -0.0,
+    "gap 12": 1.4285714285714286,
+    "gap 13": 1.4285714285714286,
+    "gap 23": "degenerate pair: the gap is 0"
+   },
+   "mode 2 (lambda_a = 0.3)": {
+    "gap 01": -0.0,
+    "gap 02": 0.03614457831325301,
+    "gap 03": -0.0,
+    "gap 12": -0.4285714285714286,
+    "gap 13": 0.0,
+    "gap 23": "degenerate pair: the gap is 0"
+   },
+   "mode 3 (lambda_a = 0.3)": {
+    "gap 01": -0.0,
+    "gap 02": -0.0,
+    "gap 03": 0.03614457831325301,
+    "gap 12": 0.0,
+    "gap 13": -0.4285714285714286,
+    "gap 23": "degenerate pair: the gap is 0"
+   }
+  },
+  "the author's chain (labelled theirs, not recomputed)": {
+   "d ln(M_N/m_pi)/d ln g": {
+    "time-axis only": 3.76,
+    "all four eigenvalues": 3.29,
+    "projector form": 0.0
+   },
+   "source": "discussioncomment-19208635 and the Skyrmion paper v2 section 6.3; the alpha map c = 16 pi Delta^4 waits on the definition of Delta (unfilled in the reply of 2026-10-28)"
+  }
+ },
+ "2_energy_density_of_the_degenerate_point": {
+  "toy": {
+   "C_p": [
+    -30.7,
+    1025.09,
+    -32766.973,
+    1048577.0081
+   ],
+   "w": 0.000724023879,
+   "lambda_star": -22.62499180475079,
+   "rho_deg_model_units": 134017.22288131472,
+   "local_minima_(lambda, V4)": [
+    [
+     -22.625,
+     134017.22453845365
+    ],
+    [
+     22.613,
+     4526781.846011916
+    ]
+   ],
+   "rho_deg_MeV_per_unit_volume_openwave_anchor": 4087.525297880099,
+   "note": "1 model energy unit = 0.0305 MeV (M5.8 P1); the volume unit is the lattice length unit cubed, whose fm value follows from the record's r0 once its lattice value is read off the M5.8 record (the json carries the model-unit number as the primary result)",
+   "author_anchor": "not expressible from the records (R29-0 (f)): reported as model units only; the author's rho_c^(1/4) >~ 300 MeV is their bound, compared, not adopted"
+  },
+  "R23": {
+   "C_p": [
+    -6.4,
+    65.18,
+    -510.946,
+    4097.0162
+   ],
+   "w": 0.018100596975,
+   "lambda_star": -5.647231272486969,
+   "rho_deg_model_units": 884.2223687875484,
+   "local_minima_(lambda, V4)": [
+    [
+     -5.6469999999999985,
+     884.2305356889881
+    ],
+    [
+     5.599999999999994,
+     27213.606536228002
+    ]
+   ],
+   "rho_deg_MeV_per_unit_volume_openwave_anchor": 26.968782248020226,
+   "note": "1 model energy unit = 0.0305 MeV (M5.8 P1); the volume unit is the lattice length unit cubed, whose fm value follows from the record's r0 once its lattice value is read off the M5.8 record (the json carries the model-unit number as the primary result)",
+   "author_anchor": "not expressible from the records (R29-0 (f)): reported as model units only; the author's rho_c^(1/4) >~ 300 MeV is their bound, compared, not adopted"
+  }
+ },
+ "3_sign_of_the_boosts_kinetic_norm": {
+  "toy": {
+   "coefficient_of_epsdot2_in_L": {
+    "boost01": {
+     "-4 I1": 0.0,
+     "-c2 K_T (c2 = 1)": 2.0,
+     "-(kappa/2) K_cov (kappa = 1)": -1.0,
+     "-(kappa/2) K_h (kappa = 1)": 1.0,
+     "K_spec (kappa_p = 1)": 0.0
+    },
+    "boost02": {
+     "-4 I1": 0.0,
+     "-c2 K_T (c2 = 1)": 2.0,
+     "-(kappa/2) K_cov (kappa = 1)": -1.0,
+     "-(kappa/2) K_h (kappa = 1)": 1.0,
+     "K_spec (kappa_p = 1)": 0.0
+    },
+    "boost03": {
+     "-4 I1": 0.0,
+     "-c2 K_T (c2 = 1)": 2.0,
+     "-(kappa/2) K_cov (kappa = 1)": -1.0,
+     "-(kappa/2) K_h (kappa = 1)": 1.0,
+     "K_spec (kappa_p = 1)": 0.0
+    }
+   },
+   "signs": {
+    "-4 I1": "0 (no quadratic norm)",
+    "K_T": "+ (the boosts' only term)",
+    "K_cov": "-",
+    "K_h": "+",
+    "K_spec": "0 (eigenvalue modes only)"
+   }
+  },
+  "R23": {
+   "coefficient_of_epsdot2_in_L": {
+    "boost01": {
+     "-4 I1": 0.0,
+     "-c2 K_T (c2 = 1)": 2.0,
+     "-(kappa/2) K_cov (kappa = 1)": -1.0,
+     "-(kappa/2) K_h (kappa = 1)": 1.0,
+     "K_spec (kappa_p = 1)": 0.0
+    },
+    "boost02": {
+     "-4 I1": 0.0,
+     "-c2 K_T (c2 = 1)": 2.0,
+     "-(kappa/2) K_cov (kappa = 1)": -1.0,
+     "-(kappa/2) K_h (kappa = 1)": 1.0,
+     "K_spec (kappa_p = 1)": 0.0
+    },
+    "boost03": {
+     "-4 I1": 0.0,
+     "-c2 K_T (c2 = 1)": 2.0,
+     "-(kappa/2) K_cov (kappa = 1)": -1.0,
+     "-(kappa/2) K_h (kappa = 1)": 1.0,
+     "K_spec (kappa_p = 1)": 0.0
+    }
+   },
+   "signs": {
+    "-4 I1": "0 (no quadratic norm)",
+    "K_T": "+ (the boosts' only term)",
+    "K_cov": "-",
+    "K_h": "+",
+    "K_spec": "0 (eigenvalue modes only)"
+   }
+  },
+  "torsion_locked_variant_(record boost direction dE = E0 K_j, k = 0)": {
+   "TEGR (1/4, 1/2, -1)": {
+    "record boost 01": {
+     "omega2_coefficient_x^T A2 x": -16.5,
+     "|dE|^2": 33.00000000000001,
+     "sign": -1
+    },
+    "record boost 02": {
+     "omega2_coefficient_x^T A2 x": -16.5,
+     "|dE|^2": 32.300000000000004,
+     "sign": -1
+    },
+    "record boost 03": {
+     "omega2_coefficient_x^T A2 x": -16.5,
+     "|dE|^2": 32.00000000000001,
+     "sign": -1
+    }
+   },
+   "TEGR healthy sign (-1/4, -1/2, 1)": {
+    "record boost 01": {
+     "omega2_coefficient_x^T A2 x": 16.5,
+     "|dE|^2": 33.00000000000001,
+     "sign": 1
+    },
+    "record boost 02": {
+     "omega2_coefficient_x^T A2 x": 16.5,
+     "|dE|^2": 32.300000000000004,
+     "sign": 1
+    },
+    "record boost 03": {
+     "omega2_coefficient_x^T A2 x": 16.5,
+     "|dE|^2": 32.00000000000001,
+     "sign": 1
+    }
+   },
+   "a1 only (1, 0, 0)": {
+    "record boost 01": {
+     "omega2_coefficient_x^T A2 x": -64.00000000000001,
+     "|dE|^2": 33.00000000000001,
+     "sign": -1
+    },
+    "record boost 02": {
+     "omega2_coefficient_x^T A2 x": -64.00000000000001,
+     "|dE|^2": 32.300000000000004,
+     "sign": -1
+    },
+    "record boost 03": {
+     "omega2_coefficient_x^T A2 x": -64.00000000000001,
+     "|dE|^2": 32.00000000000001,
+     "sign": -1
+    }
+   },
+   "a1 only healthy (-1/4, 0, 0)": {
+    "record boost 01": {
+     "omega2_coefficient_x^T A2 x": 16.000000000000004,
+     "|dE|^2": 33.00000000000001,
+     "sign": 1
+    },
+    "record boost 02": {
+     "omega2_coefficient_x^T A2 x": 16.000000000000004,
+     "|dE|^2": 32.300000000000004,
+     "sign": 1
+    },
+    "record boost 03": {
+     "omega2_coefficient_x^T A2 x": 16.000000000000004,
+     "|dE|^2": 32.00000000000001,
+     "sign": 1
+    }
+   }
+  }
+ },
+ "wall_s": 0.6
+}

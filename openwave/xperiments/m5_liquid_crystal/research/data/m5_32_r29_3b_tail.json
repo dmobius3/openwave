@@ -1,0 +1,69 @@
+{
+ "I1_on_the_axis_(sympy)": "2*Delta**4/r**4",
+ "author_claim": "2 Delta^4 / r^4",
+ "ratio_to_2Delta^4/r^4": "1",
+ "generic_points_ratio_I1_r^4/(2Delta^4)": [
+  0.9999999999999999,
+  0.9999999999999993,
+  1.0,
+  1.0000000000000002,
+  0.9999999999999998
+ ],
+ "C_tail_=_R_E(r>R)": "32*pi*Delta**4",
+ "author_claim_C_tail": "32 pi Delta^4",
+ "d_ln_C_tail": "4 (d lam_long - d lam_perp)/Delta_dir: on the uniaxial R23 vacuum (1, 0.3, 0.3), Delta_dir = 0.7: d ln C_tail / d ln lam_long = 4/0.7 = 5.7143, d ln C_tail / d ln lam_perp = -4 x 0.3/0.7 = -1.7143",
+ "E_sharp_at_E0": [
+  [
+   0.176777,
+   0.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   1.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   1.825742,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ ],
+ "diag_pseudo_inverse": [
+  [
+   0.176777,
+   0.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   1.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   1.825742,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ ],
+ "E_sharp_equals_diag_pinv_max_abs_diff": 0.0,
+ "note_on_E_sharp": "eta^-1 E^T (E eta^-1 E^T)^+ : with E0 diagonal, E eta^-1 E^T = diag(-g, 1, delta, 0) and its pseudo-inverse diag(-1/g, 1, 1/delta, 0); eta^-1 E0^T times that gives diag(-1)(sqrt g)(-1/g) = 1/sqrt g on the time leg"
+}
