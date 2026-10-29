@@ -1,0 +1,60 @@
+{
+ "field": "rad_pin_d0.3_w25_c0_n32_L48",
+ "modes": [
+  {
+   "mode": 0,
+   "S2_bare": 0.0016146130735406837,
+   "S2_schur": 0.0013909200791699264,
+   "rel_change": -0.1385427865266947,
+   "null_response_norm_ratio": 0.0009244479121297827,
+   "omega2_bare": 0.0009629959488146322,
+   "omega2_schur": 0.0008295798066519348
+  },
+  {
+   "mode": 1,
+   "S2_bare": 0.0019127581420825676,
+   "S2_schur": 0.0016271268569852553,
+   "rel_change": -0.14932953561307202,
+   "null_response_norm_ratio": 0.0009754328041263353,
+   "omega2_bare": 0.0013296830859620863,
+   "omega2_schur": 0.0011311221282228113
+  },
+  {
+   "mode": 2,
+   "S2_bare": 0.002308385411223425,
+   "S2_schur": 0.0019965698351526407,
+   "rel_change": -0.13507951252625736,
+   "null_response_norm_ratio": 0.0010249013376144316,
+   "omega2_bare": 0.0014977296103652336,
+   "omega2_schur": 0.0012954170247009564
+  },
+  {
+   "mode": 3,
+   "S2_bare": 0.0029578382073017105,
+   "S2_schur": 0.002628913973130026,
+   "rel_change": -0.11120426849572206,
+   "null_response_norm_ratio": 0.0011219380985534764,
+   "omega2_bare": 0.001790950568816933,
+   "omega2_schur": 0.0015917892208996485
+  },
+  {
+   "mode": 4,
+   "S2_bare": 0.003102247875512246,
+   "S2_schur": 0.0027267550405221186,
+   "rel_change": -0.12103895306177799,
+   "null_response_norm_ratio": 0.00119184534314753,
+   "omega2_bare": 0.001969412583272714,
+   "omega2_schur": 0.0017310369460466928
+  },
+  {
+   "mode": 5,
+   "S2_bare": 0.00390250545792243,
+   "S2_schur": 0.0034488665229137246,
+   "rel_change": -0.11624299822253382,
+   "null_response_norm_ratio": 0.0013227593502055945,
+   "omega2_bare": 0.0023401953729122456,
+   "omega2_schur": 0.0020681640463384252
+  }
+ ],
+ "reading": "the K-null auxiliary elimination (one-step block-Jacobi on the exact per-cell V4 Hessian) applied to the six saved K+ modes"
+}

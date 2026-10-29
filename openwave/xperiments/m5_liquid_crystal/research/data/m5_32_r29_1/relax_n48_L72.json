@@ -1,0 +1,18 @@
+{
+ "delta": 0.3,
+ "w1s": 25.0,
+ "seed": "rad",
+ "src": null,
+ "c": 0.0,
+ "n": 48,
+ "L": 72.0,
+ "part": "R29-1 rung",
+ "warm_start": "rad_pin_d0.3_w25_c0.0001_n48_L72",
+ "tag": "rad_pin_d0.3_w25_c0_n48_L72",
+ "gate": 0.001,
+ "iters": 5000,
+ "label": "AT_GATE",
+ "E": 3.4679608426376607,
+ "status": "OK",
+ "wall_s": 12639.1
+}
