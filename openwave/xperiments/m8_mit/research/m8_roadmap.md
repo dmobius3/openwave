@@ -17,7 +17,7 @@
 
 | TaskID | Title | Description | Owner | Gated By |
 | --- | --- | --- | --- | --- |
-| [M8.17](tasks/m8_17_task_details.md) | The slot dynamics census run | Classify every registered point the census still needs on the nine rows M8.16.1 qualified, with its frozen instrument and convergence rule at `N = 16, 24` and 32, beside M8.15's adjudicated readings, and locate each change of type the classified points bracket. Frozen MIT instrument; no time integration, persistence test, MODELS.md cell movement or change to M8.7's gate | author-proposed and author-run, maintainer-adjudicated | registration and go ([#512](https://github.com/openwave-labs/openwave/discussions/512#discussioncomment-19071299)) |
+| [M8.17](tasks/m8_17_task_details.md) | The slot dynamics census run | Classify every registered point the census still needs on the nine rows M8.16.1 qualified, with its frozen instrument and convergence rule at `N = 16, 24` and 32, beside M8.15's adjudicated readings, and locate each change of type the classified points bracket. Frozen MIT instrument; no time integration, persistence test, MODELS.md cell movement or change to M8.7's gate | author-proposed and author-run, maintainer-adjudicated | the maintainers' adjudication of the run ([method note](findings/m8_17_method_note.md)) |
 
 ## LATER (gated)
 
