@@ -4,10 +4,12 @@
 
 Heavy binary arrays in this folder are **local-only**: gitignored, never deleted (policy 2026-07-20, which supersedes the earlier "delete raw data > 1 MB" rule). They stay on the working machine so later tasks can consume them directly, and they stay OUT of the repo so clones stay light. What IS tracked in git and readable on GitHub: the summary `.json` / `.csv` / `.txt` in this same folder, the plots, and the scripts that rebuild everything here.
 
-**Inventory**: 18 local-only files, 488.89 MB, in 1 task groups.
+**Inventory**: 83 local-only files, 1138.33 MB, in 1 task groups.
 
 | Task group | Files | Size | Producing script(s) | Record (regen commands + context) |
 | --- | --- | --- | --- | --- |
-| `(unprefixed)` | 18 | 488.89 MB | ⚠️ not resolved | ⚠️ not resolved |
+| `(unprefixed)` | 83 | 1138.33 MB | ⚠️ not resolved | ⚠️ not resolved |
 
 **Regeneration**: the exact command + runtime per dataset lives in the task record linked on its row (the task_details / findings doc), which is where the run configuration is already written down. Runs are deterministic from their fixed seeds and configs, so a regenerated array reproduces the original bit-for-bit at the stored precision.
+
+**R29-4 additions (a note beside the generated table).** `*_ritz_Z.npy` and `*_ritz_meta.npz` are the B-orthonormalized Ritz bases per rung (`m5_32_r29_4_ritz.py prep`), `*_ritz_H_<j>.npz` the `H Z_j` and `H_eff Z_j` coordinates per basis vector (`apply`), `*_Kpos_modes_r29_4regen.npz` the regenerated K-positive modes of the n 32 and n 36 rungs (`regen`); the record is `tasks/m5_32_task_details.md` § R30 EXECUTE, the R29-4 subsection, the tracked summary `../m5_32_r29_4_ritz.json`.

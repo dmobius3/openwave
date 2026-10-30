@@ -1,0 +1,52 @@
+{
+ "tag": "rad_pin_d0.3_w25_c0_n48_L72",
+ "omega2_ritz_corrected": 0.0004256934175803424,
+ "omega2_direct_S2_schur_cg_on_ritz_vector": 0.0004253277195787371,
+ "omega2_direct_bare_on_ritz_vector": 0.0005298935099022632,
+ "cg_residual": 7.410239630605486e-10,
+ "cg_steps": 4,
+ "null_response_ratio": 0.00678824096656633,
+ "rel_diff_corrected": -0.0008590642619844546,
+ "member_corrected_omega2": {
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[0]": 0.00042875626629061946,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[1]": 0.0006786665788990443,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[2]": 0.0006338965479729436,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[3]": 0.0007299661135208106,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[4]": 0.0009220965678350557,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[5]": 0.0009099036567590648,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[0]": 0.0005365565902409823,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[1]": 0.0007787771968774122,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[2]": 0.000881414885679091,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[3]": 0.0008872938829665138,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[4]": 0.0010920017798609011,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[5]": 0.0013396794530338425
+ },
+ "member_bare_omega2": {
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[0]": 0.0005301497585038234,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[1]": 0.0008043604265683976,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[2]": 0.0008623580287956535,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[3]": 0.0009513381830507796,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[4]": 0.0011430944011006968,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz[5]": 0.0011685977985069166,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[0]": 0.0006366494734965779,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[1]": 0.001052739767898633,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[2]": 0.00110767646064989,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[3]": 0.0011117648423067748,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[4]": 0.001327819696059715,
+  "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz[5]": 0.001554365818541349
+ },
+ "ritz_vector_weights_on_orthonormal_basis": [
+  0.008670500804205316,
+  0.0412078481136053,
+  0.014257772405707884,
+  -0.005390602018114412,
+  0.019031579967007453,
+  0.04329907862705056,
+  -0.12306518753382129,
+  -0.09585955458610015,
+  -0.03550966448964531,
+  -0.2008730489544507,
+  0.9125244364503664,
+  0.31162721637222657
+ ]
+}

@@ -1,0 +1,146 @@
+[
+ {
+  "tag": "rad_pin_d0.3_w25_c0_n72_L108",
+  "n": 72,
+  "L": 108.0,
+  "dim_Kpos": 1572160,
+  "members": 4,
+  "rank": 4,
+  "gram_eigenvalues": [
+   0.9999999999999708,
+   1.000000000000002,
+   1.0000000000000318,
+   1.000000000000071
+  ],
+  "generator_constraints": 9,
+  "max_member_reconstruction_B_err": 5.810861602048976e-14,
+  "max_restriction_loss": 7.122871409088019e-16,
+  "max_generator_component": 9.112241665589001e-15,
+  "files": [
+   "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz"
+  ]
+ },
+ {
+  "tag": "rad_pin_d0.3_w25_c0_n48_L72",
+  "n": 48,
+  "L": 72.0,
+  "dim_Kpos": 425920,
+  "members": 12,
+  "rank": 12,
+  "gram_eigenvalues": [
+   0.0004480840653053282,
+   0.002419637709331648,
+   0.012780319824478841,
+   0.03185683343643159,
+   0.04839613265262388,
+   0.13943190265887984,
+   1.8605680973411376,
+   1.951603867347366,
+   1.9681431665635913,
+   1.9872196801755235,
+   1.9975803622906327,
+   1.9995519159347168
+  ],
+  "generator_constraints": 9,
+  "max_member_reconstruction_B_err": 1.042676661459291e-12,
+  "max_restriction_loss": 7.238246817800309e-16,
+  "max_generator_component": 5.968712003211114e-15,
+  "files": [
+   "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes.npz",
+   "rad_pin_d0.3_w25_c0_n48_L72_Kpos_modes_pass1.npz"
+  ]
+ },
+ {
+  "tag": "rad_pin_d0.3_w25_c0_n48_L48",
+  "n": 48,
+  "L": 48.0,
+  "dim_Kpos": 425920,
+  "members": 6,
+  "rank": 6,
+  "gram_eigenvalues": [
+   0.9999999999999857,
+   0.9999999999999872,
+   0.999999999999995,
+   0.9999999999999974,
+   1.0000000000000064,
+   1.0000000000000198
+  ],
+  "generator_constraints": 9,
+  "max_member_reconstruction_B_err": 3.3408071349453605e-14,
+  "max_restriction_loss": 8.068466070530505e-16,
+  "max_generator_component": 7.460122908072048e-15,
+  "files": [
+   "rad_pin_d0.3_w25_c0_n48_L48_Kpos_modes.npz"
+  ]
+ },
+ {
+  "tag": "rad_pin_d0.3_w25_c0_n36_L54",
+  "n": 36,
+  "L": 54.0,
+  "dim_Kpos": 163840,
+  "members": 18,
+  "rank": 17,
+  "gram_eigenvalues": [
+   6.382544767632834e-14,
+   4.188410220365625e-08,
+   8.178613757287982e-08,
+   1.1305131855313644e-07,
+   2.331728221307002e-07,
+   3.6835910388555164e-07,
+   0.007604358434308186,
+   0.012989979415037043,
+   0.020459403941582407,
+   0.04551248114361288,
+   0.1561885558923957,
+   0.7216546359339638,
+   2.2783451365532508,
+   2.8438110936825214,
+   2.954487452410448,
+   2.9795404984918905,
+   2.987009976675954,
+   2.9923955891714877
+  ],
+  "generator_constraints": 9,
+  "max_member_reconstruction_B_err": 1.4221711059803772e-07,
+  "max_restriction_loss": 7.111112518217674e-16,
+  "max_generator_component": 9.084226815335979e-15,
+  "files": [
+   "rad_pin_d0.3_w25_c0_n36_L54_Kpos_modes.npz",
+   "rad_pin_d0.3_w25_c0_n36_L54_Kpos_modes_r29_4regen.npz",
+   "rad_pin_d0.3_w25_c0_n36_L54_Kpos_modes_schuriter.npz"
+  ]
+ },
+ {
+  "tag": "rad_pin_d0.3_w25_c0_n32_L48",
+  "n": 32,
+  "L": 48.0,
+  "dim_Kpos": 109760,
+  "members": 14,
+  "rank": 14,
+  "gram_eigenvalues": [
+   5.342553115570239e-05,
+   0.0002460127081115411,
+   0.000779430372760918,
+   0.00851276913095586,
+   0.0192306350800789,
+   0.037258271409343485,
+   0.057531692606545184,
+   0.3896498421193702,
+   1.63612712781216,
+   1.9780996249367426,
+   1.9882808358334831,
+   1.9993486516745211,
+   2.919894624466723,
+   2.9649870563180722
+  ],
+  "generator_constraints": 9,
+  "max_member_reconstruction_B_err": 8.819447761230555e-13,
+  "max_restriction_loss": 7.187524630896871e-16,
+  "max_generator_component": 3.054934226558784e-15,
+  "files": [
+   "rad_pin_d0.3_w25_c0_n32_L48_Kpos_modes.npz",
+   "rad_pin_d0.3_w25_c0_n32_L48_Kpos_modes_pass1.npz",
+   "rad_pin_d0.3_w25_c0_n32_L48_Kpos_modes_r29_4regen.npz"
+  ]
+ }
+]
