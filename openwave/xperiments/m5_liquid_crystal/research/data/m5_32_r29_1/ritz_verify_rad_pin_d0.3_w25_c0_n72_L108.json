@@ -1,0 +1,28 @@
+{
+ "tag": "rad_pin_d0.3_w25_c0_n72_L108",
+ "omega2_ritz_corrected": 0.0004345158780687765,
+ "omega2_direct_S2_schur_cg_on_ritz_vector": 0.00043454018447705947,
+ "omega2_direct_bare_on_ritz_vector": 0.0005271247092356549,
+ "cg_residual": 3.1787456076797506e-10,
+ "cg_steps": 4,
+ "null_response_ratio": 0.005358824960509915,
+ "rel_diff_corrected": 5.5939056567977374e-05,
+ "member_corrected_omega2": {
+  "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz[0]": 0.0004349466291646934,
+  "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz[1]": 0.0006918242423745302,
+  "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz[2]": 0.0008815907709797226,
+  "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz[3]": 0.0013113500562899631
+ },
+ "member_bare_omega2": {
+  "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz[0]": 0.0005265529713473426,
+  "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz[1]": 0.0008625735181071176,
+  "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz[2]": 0.0011003423426918183,
+  "rad_pin_d0.3_w25_c0_n72_L108_Kpos_modes.npz[3]": 0.0015706118902041465
+ },
+ "ritz_vector_weights_on_orthonormal_basis": [
+  0.042407965967850195,
+  0.9891083742319227,
+  -0.1266173876894382,
+  -0.06192112387110652
+ ]
+}
